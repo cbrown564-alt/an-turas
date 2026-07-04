@@ -7,7 +7,9 @@ and visual narrative. English → Irish only. Updated 2026-07-05.*
 
 **Phase 1 — vertical slice.** Strategy is set, first content chapter is written, the
 HTML prototype validated the core ideas, and the SwiftUI port is running on the iOS
-simulator. Next: playtesters.
+simulator. Audio and writing are in active experiment; **illustrations join the same
+wave for Chapter 1** — the slice needs the full visual + audio + text view before
+playtesters see it. Next: illustration exploration, then playtesters.
 
 ## Work completed
 
@@ -30,31 +32,42 @@ simulator. Next: playtesters.
 
 | 2026-07-05 | **TTS decision:** Gemini 3.1 Flash TTS selected for playtest clips (quite good); ElevenLabs + Gemini 2.5 rejected on pronunciation; Azure `ga-IE` scheduled as follow-up bake-off | `docs/TTS-research.md` |
 
+| 2026-07-05 | **Illustration exploration framed:** principles → six style branches (incised, chalk, print, Atlantic wash, flat graphic, manuscript) → fixed test brief → two-day wide/deep funnel → canonical style bible (will log as D4); surfaces inventoried from chapter1.json | `docs/ILLUSTRATIONS.md` |
+
 ## Immediate next steps
 
 1. **Install Gemini 3.1 TTS clips** — set `bundle_winner: gemini-3-flash` per line in
    `tools/tts-bakeoff/winners.json`, run `python bakeoff.py install`, regenerate Xcode
    project. Ears open across Chapter 1.
-2. **TestFlight build** — signed device build + TestFlight once audio is installed.
+2. **Illustration exploration (Chapter 1)** — run style tests in parallel with audio
+   and writing so the vertical slice shows the full experience: scene pages, beats,
+   and the ogham world with real art, not placeholders. Goal: enough coverage to judge
+   whether the visual identity carries the narrative (STRATEGY.md Phase 1 criterion).
+   Lock a direction here; Phase 2 scales it through the pipeline. Plan of record:
+   `docs/ILLUSTRATIONS.md` (wide fan Day 1, deep pass Day 2, then canonical → D4).
+3. **TestFlight build** — signed device build + TestFlight once audio is installed and
+   Chapter 1 illustration direction is far enough along to represent the product.
    Needs Apple Developer account/team in `ios/project.yml`.
-3. **Azure `ga-IE` bake-off (follow-up)** — add Orla/Colm to the pipeline; compare
+4. **Azure `ga-IE` bake-off (follow-up)** — add Orla/Colm to the pipeline; compare
    against Gemini 3.1 on fada pairs and full chapter (`docs/TTS-research.md`).
-4. **Native-speaker review** of Chapter 1 Irish text and TTS clips — blocker for
+5. **Native-speaker review** of Chapter 1 Irish text and TTS clips — blocker for
    testing beyond friendly audiences.
-5. **Send ABAIR commercial enquiry** — draft at `docs/ABAIR-enquiry.md`.
-6. **Recruit 10–20 playtesters** from target personas (r/gaeilge, Irish-language
+6. **Send ABAIR commercial enquiry** — draft at `docs/ABAIR-enquiry.md`.
+7. **Recruit 10–20 playtesters** from target personas (r/gaeilge, Irish-language
    Discords, a Conradh na Gaeilge branch, diaspora groups). The one question:
    *did anything pull you back for session two?* (The slice now has three
    return mechanics to measure: recarve pages, amárach hooks, tá-tú-ar-ais.)
 
 ## Long-term plan
 
-- **Phase 1 — Vertical slice (now):** SwiftUI Chapter 1, playtest, measure narrative
+- **Phase 1 — Vertical slice (now):** SwiftUI Chapter 1 with **writing, audio, and
+  illustrations explored together** — the app lives or dies on visual identity, so the
+  playtest must see the full picture, not text + ears alone. Playtest, measure narrative
   pull vs. drop-off. Exit criterion: testers return without streaks and can say why.
 - **Phase 2 — Content pipeline:** authoring format + editorial board (Irish-language
   pedagogue + historian per chapter); audio strategy settled (ABAIR agreement or
-  hybrid human/TTS); illustration style locked; Chapter 2 (monastic scriptorium)
-  produced through the pipeline as its proof.
+  hybrid human/TTS); illustration style locked from Phase 1 experiments; Chapter 2
+  (monastic scriptorium) produced through the pipeline as its proof.
 - **Phase 3 — Product build:** full iOS app (offline-first chapter packs, FSRS
   spaced repetition dressed as revisiting, músaem/artifact collection, TEG-aligned
   progress). Chapters 1–4 at launch quality.
@@ -71,6 +84,9 @@ simulator. Next: playtesters.
 - Audio: **Gemini 3.1 Flash TTS** for playtest clips; **Azure `ga-IE`** follow-up
   bake-off; **ABAIR** licensing for long-term dialect fidelity. ElevenLabs and
   Gemini 2.5 rejected on pronunciation (`docs/TTS-research.md`).
+- Illustration: style and coverage for Chapter 1 scenes — in active exploration this
+  phase; must be far enough along for playtesters to judge narrative pull, not just
+  mechanics (`docs/STRATEGY.md` Phase 1; exploration framed in `docs/ILLUSTRATIONS.md`).
 - Frame device carrying the learner between eras (SPINE.md, open creative question).
 - Business model timing: freemium subscription assumed; grant-funding strings to be
   understood before accepting (U6).
