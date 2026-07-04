@@ -182,6 +182,11 @@ struct SessionView: View {
         case .echo(let echo):
             EchoView(block: echo, activeGloss: $activeGloss, onSolved: { solved(page) })
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .turn(let turn):
+            // The reaction deserves reading at the learner's pace: the stroke
+            // is earned on speaking, but the page waits to be turned by hand.
+            TurnView(block: turn, activeGloss: $activeGloss,
+                     onSolved: { solved(page, autoTurn: false) })
         case .inscription(let inscription):
             InscriptionPageView(block: inscription)
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
@@ -209,6 +214,7 @@ struct SessionView: View {
                             return "cleachtadh"
         case .listen:       return "éist"
         case .echo:         return "abair é"
+        case .turn:         return "do líne"
         case .inscription:  return "an chloch"
         case .seanfhocal:   return "seanfhocal"
         case .artifact:     return "déantán"
@@ -216,11 +222,12 @@ struct SessionView: View {
         }
     }
 
-    private func solved(_ page: Int) {
+    private func solved(_ page: Int, autoTurn: Bool = true) {
         Haptics.chisel()
         withAnimation(Motion.pop) {
             _ = vm.solved.insert(page)
         }
+        guard autoTurn else { return }
         // Let the verdict land, then the page turns itself.
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak vm] in
             guard let vm, vm.currentPage == page, vm.isPageSolved(page) else { return }
@@ -309,15 +316,7 @@ private struct ScenePageView: View {
 
     @ViewBuilder
     private func beatView(_ beat: Beat) -> some View {
-        switch beat {
-        case .narration(let narration):
-            GlossText(markdown: narration.n, glosses: narration.glosses ?? [],
-                      activeGloss: $activeGloss,
-                      font: .system(size: 19, design: .serif), lineSpacing: 6.5)
-                .foregroundStyle(Theme.ink)
-        case .speech(let speech):
-            SpeechBeatView(beat: speech) { activeGloss = speech.gloss }
-        }
+        BeatRow(beat: beat, activeGloss: $activeGloss)
     }
 }
 

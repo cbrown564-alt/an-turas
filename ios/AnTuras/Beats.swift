@@ -71,6 +71,25 @@ struct SpeechBeatView: View {
     }
 }
 
+/// One scene paragraph, whichever material it is — quiet serif narration or
+/// a spoken line with its groove. Scene pages and turns both read through this.
+struct BeatRow: View {
+    let beat: Beat
+    @Binding var activeGloss: Gloss?
+
+    var body: some View {
+        switch beat {
+        case .narration(let narration):
+            GlossText(markdown: narration.n, glosses: narration.glosses ?? [],
+                      activeGloss: $activeGloss,
+                      font: .system(size: 19, design: .serif), lineSpacing: 6.5)
+                .foregroundStyle(Theme.ink)
+        case .speech(let speech):
+            SpeechBeatView(beat: speech) { activeGloss = speech.gloss }
+        }
+    }
+}
+
 /// The sound row under a spoken line: the rough respelling, and — when the
 /// device can speak Irish — the ear that says it aloud.
 struct SoundRow: View {

@@ -68,6 +68,30 @@ struct ScenePage: Decodable {
     let beats: [Beat]
 }
 
+// MARK: Turn pages — the scene pauses on your line
+
+/// One reply the learner can give. Every reply is acceptable Irish — the
+/// choice is social, not right/wrong — and the scene answers each one
+/// differently. `{name}` interpolates the learner's captured name.
+struct TurnReply: Decodable, Identifiable {
+    let s: String
+    let ph: String?
+    let g: String
+    let reaction: [Beat]
+    var id: String { s }
+}
+
+/// A scene page whose last beat belongs to the learner: lead-in beats, then
+/// chalk-outlined replies. Choosing carves your line into the dialogue and
+/// the conversation answers. Gates the page turn like an exercise — the
+/// scene cannot continue until you have spoken.
+struct TurnBlock: Decodable {
+    let place: String?
+    let beats: [Beat]
+    let cue: String?
+    let replies: [TurnReply]
+}
+
 // MARK: Other page payloads
 
 struct NoteBlock: Decodable {
@@ -171,6 +195,7 @@ enum Page: Decodable {
     case match(MatchBlock)
     case listen(ListenBlock)
     case echo(EchoBlock)
+    case turn(TurnBlock)
     case inscription(InscriptionBlock)
     case seanfhocal(SeanfhocalBlock)
     case artifact
@@ -189,6 +214,7 @@ enum Page: Decodable {
         case "match":       self = .match(try MatchBlock(from: decoder))
         case "listen":      self = .listen(try ListenBlock(from: decoder))
         case "echo":        self = .echo(try EchoBlock(from: decoder))
+        case "turn":        self = .turn(try TurnBlock(from: decoder))
         case "inscription": self = .inscription(try InscriptionBlock(from: decoder))
         case "seanfhocal":  self = .seanfhocal(try SeanfhocalBlock(from: decoder))
         case "artifact":    self = .artifact
@@ -202,14 +228,15 @@ enum Page: Decodable {
 
     var isExercise: Bool {
         switch self {
-        case .choice, .assemble, .typein, .match, .listen, .echo: return true
+        case .choice, .assemble, .typein, .match, .listen, .echo, .turn: return true
         default: return false
         }
     }
 
     var register: PageRegister {
         switch self {
-        case .scene: return .scene
+        // A turn reads as story, not drill — it composes like a scene.
+        case .scene, .turn: return .scene
         case .note: return .note
         case .choice, .assemble, .typein, .match, .listen, .echo: return .exercise
         case .inscription, .seanfhocal, .artifact, .fin: return .feature
