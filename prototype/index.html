@@ -1,0 +1,951 @@
+<title>An Turas — Caibidil 1: Clocha na nAinmneacha</title>
+<style>
+/* ===== Tokens: limestone day / night on the shore ===== */
+:root{
+  --bg:#ECEDE7; --raised:#F7F7F2; --sunk:#E2E4DB;
+  --ink:#23281F; --ink-soft:#5A6153; --ink-faint:#8B917F;
+  --line:#CBCEC1; --stone:#AEB4A6;
+  --moss:#4C6647; --moss-tint:rgba(76,102,71,.10); --moss-line:rgba(76,102,71,.45);
+  --lichen:#8F7414; --lichen-bright:#A98722; --lichen-tint:rgba(169,135,34,.12);
+  --rust:#A34D3B; --rust-tint:rgba(163,77,59,.10);
+  --shadow:0 1px 2px rgba(35,40,31,.08),0 6px 24px -12px rgba(35,40,31,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#131714; --raised:#1C211C; --sunk:#0E120F;
+    --ink:#D9DCD1; --ink-soft:#9AA294; --ink-faint:#6B7365;
+    --line:#333B33; --stone:#4A524A;
+    --moss:#95B28B; --moss-tint:rgba(149,178,139,.13); --moss-line:rgba(149,178,139,.5);
+    --lichen:#D2A93C; --lichen-bright:#D2A93C; --lichen-tint:rgba(210,169,60,.13);
+    --rust:#C97A66; --rust-tint:rgba(201,122,102,.13);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 28px -12px rgba(0,0,0,.55);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#ECEDE7; --raised:#F7F7F2; --sunk:#E2E4DB;
+  --ink:#23281F; --ink-soft:#5A6153; --ink-faint:#8B917F;
+  --line:#CBCEC1; --stone:#AEB4A6;
+  --moss:#4C6647; --moss-tint:rgba(76,102,71,.10); --moss-line:rgba(76,102,71,.45);
+  --lichen:#8F7414; --lichen-bright:#A98722; --lichen-tint:rgba(169,135,34,.12);
+  --rust:#A34D3B; --rust-tint:rgba(163,77,59,.10);
+  --shadow:0 1px 2px rgba(35,40,31,.08),0 6px 24px -12px rgba(35,40,31,.18);
+}
+:root[data-theme="dark"]{
+  --bg:#131714; --raised:#1C211C; --sunk:#0E120F;
+  --ink:#D9DCD1; --ink-soft:#9AA294; --ink-faint:#6B7365;
+  --line:#333B33; --stone:#4A524A;
+  --moss:#95B28B; --moss-tint:rgba(149,178,139,.13); --moss-line:rgba(149,178,139,.5);
+  --lichen:#D2A93C; --lichen-bright:#D2A93C; --lichen-tint:rgba(210,169,60,.13);
+  --rust:#C97A66; --rust-tint:rgba(201,122,102,.13);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 28px -12px rgba(0,0,0,.55);
+}
+
+html{background:var(--bg)}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Avenir Next",Avenir,Seravek,"Segoe UI",system-ui,sans-serif;
+  line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+.serif{font-family:"Iowan Old Style","Palatino Nova",Palatino,"Book Antiqua",Georgia,serif}
+.app{max-width:42rem;margin:0 auto;padding:0 1.25rem 4rem}
+h1,h2,h3{text-wrap:balance;line-height:1.15;margin:0}
+p{margin:0}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--moss);outline-offset:2px;border-radius:2px}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);font-weight:600;
+}
+.screen{display:none}
+.screen.on{display:block}
+
+/* ===== Cover ===== */
+.cover{min-height:92vh;display:flex;flex-direction:column;justify-content:center;gap:2rem;padding:3rem 0}
+.cover-stone{display:flex;justify-content:center}
+.cover h1{font-size:clamp(2.1rem,7vw,3rem);font-weight:600}
+.cover .en-sub{font-size:1.05rem;color:var(--ink-soft);margin-top:.4rem}
+.cover-meta{color:var(--ink-soft);font-size:.9rem;max-width:32rem}
+.cta{
+  align-self:flex-start;background:var(--ink);color:var(--bg);
+  padding:.8rem 1.6rem;border-radius:2px;font-weight:600;letter-spacing:.02em;
+  transition:transform .12s ease;
+}
+.cta:hover{transform:translateY(-1px)}
+.cta small{display:block;font-weight:400;opacity:.75;font-size:.72rem;letter-spacing:.06em}
+.draft-note{font-size:.75rem;color:var(--ink-faint);border-top:1px solid var(--line);padding-top:.8rem;max-width:32rem}
+
+/* ===== Map ===== */
+.map{padding-top:3rem;display:flex;flex-direction:column;gap:1.6rem}
+.map header p{color:var(--ink-soft);margin-top:.3rem}
+.waypoints{display:flex;flex-direction:column;gap:.6rem;position:relative;padding-left:2.4rem}
+.waypoints::before{content:"";position:absolute;left:.95rem;top:.8rem;bottom:.8rem;width:2px;background:var(--line)}
+.wp{
+  position:relative;text-align:left;background:var(--raised);border:1px solid var(--line);
+  border-radius:3px;padding:.9rem 1.1rem;display:flex;align-items:baseline;gap:.9rem;
+  box-shadow:var(--shadow);transition:transform .12s ease;
+}
+.wp:hover{transform:translateX(3px)}
+.wp::before{
+  content:"";position:absolute;left:-1.95rem;top:1.15rem;width:.85rem;height:.85rem;
+  background:var(--stone);border-radius:40% 45% 42% 48%;
+}
+.wp.done::before{background:var(--moss)}
+.wp .n{font-size:.72rem;color:var(--ink-faint);letter-spacing:.1em}
+.wp .t{font-weight:600}
+.wp .s{color:var(--ink-soft);font-size:.85rem}
+.wp .done-mark{margin-left:auto;color:var(--moss);font-size:.8rem;font-weight:600;letter-spacing:.05em}
+.museum-link{align-self:flex-start;color:var(--lichen);font-weight:600;font-size:.9rem;border-bottom:1px dotted var(--lichen)}
+
+/* ===== Session player ===== */
+.topbar{
+  position:sticky;top:0;z-index:5;background:var(--bg);
+  padding:.8rem 0 .5rem;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:1rem;
+}
+.topbar .back{color:var(--ink-soft);font-size:.85rem;white-space:nowrap}
+.topbar .back:hover{color:var(--ink)}
+.carve{flex:1;min-width:0}
+.topbar .sess-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap}
+.beats{display:flex;flex-direction:column;gap:1.4rem;padding-top:1.8rem}
+.beat{animation:rise .45s ease both;scroll-margin-top:4.5rem}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.scene{font-size:1.12rem;line-height:1.65;max-width:36rem}
+.scene .who{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-family:"Avenir Next",Avenir,system-ui,sans-serif;margin-bottom:.35rem}
+.scene p+p{margin-top:.7rem}
+
+i.ga{
+  font-style:normal;color:var(--moss);font-weight:600;cursor:pointer;
+  border-bottom:1px dotted var(--moss-line);white-space:nowrap;
+}
+.gloss-pop{
+  background:var(--raised);border:1px solid var(--line);border-left:3px solid var(--moss);
+  border-radius:3px;box-shadow:var(--shadow);padding:.7rem .9rem;margin:.5rem 0 0;
+  font-size:.9rem;font-family:"Avenir Next",Avenir,system-ui,sans-serif;line-height:1.5;
+  max-width:26rem;
+}
+.gloss-pop .g-ga{font-weight:700;color:var(--moss)}
+.gloss-pop .g-s{color:var(--ink-faint);font-size:.8rem;display:block;margin-top:.15rem}
+
+.note{
+  background:var(--raised);border:1px solid var(--line);border-radius:3px;
+  padding:1.1rem 1.3rem;box-shadow:var(--shadow);max-width:36rem;
+}
+.note .nt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lichen);font-weight:700;margin-bottom:.5rem}
+.note p+p{margin-top:.6rem}
+.note .ex-pair{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:1.05rem;margin-top:.6rem}
+
+.ex{background:var(--sunk);border-radius:4px;padding:1.1rem 1.2rem;max-width:36rem}
+.ex .prompt{font-weight:600;margin-bottom:.8rem}
+.opts{display:flex;flex-direction:column;gap:.5rem}
+.opt{
+  text-align:left;background:var(--raised);border:1px solid var(--line);border-radius:3px;
+  padding:.7rem 1rem;font-size:1rem;transition:border-color .1s;
+  font-family:"Iowan Old Style",Palatino,Georgia,serif;
+}
+.opt:hover{border-color:var(--ink-soft)}
+.opt.right{border-color:var(--moss);background:var(--moss-tint)}
+.opt.wrong{border-color:var(--rust);background:var(--rust-tint)}
+.opt:disabled{cursor:default;opacity:.85}
+.verdict{margin-top:.8rem;font-size:.92rem;line-height:1.5}
+.verdict.ok{color:var(--moss)}
+.verdict.no{color:var(--rust)}
+.verdict .why{color:var(--ink-soft);display:block;margin-top:.15rem}
+
+.tiles,.slots{display:flex;flex-wrap:wrap;gap:.5rem;min-height:2.6rem}
+.slots{border-bottom:2px solid var(--line);padding-bottom:.6rem;margin-bottom:.7rem}
+.tile{
+  background:var(--raised);border:1px solid var(--line);border-radius:3px;
+  padding:.45rem .8rem;font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:1.05rem;
+  box-shadow:var(--shadow);
+}
+.tile:hover{border-color:var(--ink-soft)}
+
+.type-row{display:flex;gap:.5rem;flex-wrap:wrap}
+.type-row input{
+  flex:1;min-width:12rem;font:inherit;font-family:"Iowan Old Style",Palatino,Georgia,serif;
+  font-size:1.05rem;background:var(--raised);color:var(--ink);
+  border:1px solid var(--line);border-radius:3px;padding:.55rem .8rem;
+}
+.type-row input:focus{outline:2px solid var(--moss);outline-offset:1px}
+.fada-keys{display:flex;gap:.35rem;margin-top:.5rem}
+.fada-keys button{
+  background:var(--raised);border:1px solid var(--line);border-radius:3px;
+  padding:.25rem .6rem;font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:1rem;
+}
+.check-btn,.next-btn{
+  background:var(--ink);color:var(--bg);border-radius:2px;padding:.55rem 1.2rem;
+  font-weight:600;font-size:.92rem;
+}
+.next-btn{display:block;margin-top:1.4rem}
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;max-width:30rem}
+.pair-btn{
+  background:var(--raised);border:1px solid var(--line);border-radius:3px;
+  padding:.6rem .8rem;font-size:.95rem;text-align:left;
+}
+.pair-btn.ga-side{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:1.02rem}
+.pair-btn.sel{border-color:var(--ink);background:var(--sunk)}
+.pair-btn.locked{border-color:var(--moss);background:var(--moss-tint);color:var(--ink-soft);cursor:default}
+.pair-btn.flash{border-color:var(--rust);background:var(--rust-tint)}
+
+.seanfhocal{
+  border-top:2px solid var(--lichen);border-bottom:1px solid var(--line);
+  padding:1.6rem .2rem;max-width:36rem;
+}
+.seanfhocal .sf-label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lichen);font-weight:700;margin-bottom:.7rem}
+.seanfhocal .sf-ga{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:1.5rem;line-height:1.3;font-weight:600}
+.seanfhocal .sf-en{color:var(--ink-soft);margin-top:.5rem;font-size:1rem}
+.seanfhocal .sf-note{color:var(--ink-faint);margin-top:.7rem;font-size:.85rem}
+
+.artifact{background:var(--raised);border:1px solid var(--line);border-radius:4px;padding:1.4rem;box-shadow:var(--shadow);max-width:36rem}
+.artifact .a-label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lichen);font-weight:700}
+.artifact h3{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:1.4rem;margin:.4rem 0 .8rem}
+.artifact .stone-wrap{display:flex;justify-content:center;padding:1rem 0}
+.artifact .translit{font-size:.85rem;color:var(--ink-soft);line-height:1.6}
+.artifact .translit b{color:var(--ink)}
+.stone-caption{font-size:.78rem;color:var(--ink-faint);text-align:center;margin-top:.4rem}
+
+.fin{border-top:1px solid var(--line);padding-top:1.4rem;max-width:36rem;color:var(--ink-soft);font-size:.95rem}
+.fin b{color:var(--ink)}
+.complete-banner{
+  background:var(--moss-tint);border:1px solid var(--moss-line);border-radius:3px;
+  padding:1rem 1.2rem;max-width:36rem;font-weight:600;color:var(--moss);
+}
+footer.app-foot{margin-top:4rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.75rem;color:var(--ink-faint);max-width:36rem;line-height:1.6}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+}
+@media (max-width:480px){
+  .pairs{grid-template-columns:1fr 1fr}
+  .scene{font-size:1.05rem}
+}
+</style>
+
+<div class="app">
+  <!-- ================= COVER ================= -->
+  <section id="scr-cover" class="screen cover">
+    <div class="cover-stone" id="coverStone"></div>
+    <div>
+      <p class="eyebrow">An Turas · Caibidil a hAon</p>
+      <h1 class="serif">Clocha na nAinmneacha</h1>
+      <p class="en-sub serif">The Stones of Names — Maigh Eo, c. 480 AD</p>
+    </div>
+    <p class="cover-meta">Before Ireland wrote on vellum, she wrote on stone — names, carved
+    in strokes along an edge, meant to outlast the people who spoke them. In this chapter you
+    learn Irish the way it first survived: one name at a time. Five short sessions. Every
+    correct answer carves a stroke.</p>
+    <button class="cta" id="beginBtn">Tosaigh an turas<small>Begin the journey · 5 sessions · ~10 min each</small></button>
+    <p class="draft-note">Prototype for playtesting. Draft content awaiting native-speaker review.
+    Audio is coming (see ABAIR plan) — for now, pronunciation is shown as rough English respelling.</p>
+  </section>
+
+  <!-- ================= MAP ================= -->
+  <section id="scr-map" class="screen map">
+    <header>
+      <p class="eyebrow">Caibidil a hAon · Maigh Eo, c. 480 AD</p>
+      <h2 class="serif">Cúig sheisiún — five sessions</h2>
+      <p>A stone-carver on the Mayo coast has work to finish, and you have a language to reclaim.</p>
+    </header>
+    <div class="waypoints" id="waypoints"></div>
+    <button class="museum-link" id="museumBtn" hidden>Do Mhúsaem — your artifact →</button>
+  </section>
+
+  <!-- ================= SESSION ================= -->
+  <section id="scr-session" class="screen">
+    <div class="topbar">
+      <button class="back" id="backBtn">← An léarscáil</button>
+      <div class="carve" id="carveBar"></div>
+      <span class="sess-label" id="sessLabel"></span>
+    </div>
+    <div class="beats" id="beats"></div>
+  </section>
+</div>
+
+<script>
+/* =========================================================
+   Content — Chapter 1, five sessions.
+   Inline <i class="ga" data-g="meaning" data-s="rough sound">Irish</i>
+   ========================================================= */
+const CH = { sessions: [
+
+/* ---------- SEISIÚN 1 ---------- */
+{ ga:"Dia Dhuit", en:"The first greeting, and who you are", blocks:[
+{t:'scene', html:`<p>Salt wind. A field above the grey Atlantic, County Mayo, around the year 480.
+A man kneels at a long pillar of stone, cutting notches into its edge with a chisel of iron.
+Wood smoke, wet grass, the tap-tap-tap of careful work.</p>
+<p>He looks up, unhurried, and raises a hand.</p>`},
+{t:'scene', who:"An saor cloiche — the stone-carver", html:`<p>“<i class="ga" data-g="Hello — literally ‘God to you’" data-s="JEE-a GWIT">Dia dhuit!</i>”</p>`},
+{t:'note', title:"The greeting is younger than the stone", html:`<p>That greeting is <em>new</em> here. Christianity reached this coast within living
+memory, and it rewired how people say hello: <b>Dia dhuit</b> — “God to you.”</p>
+<p>The custom is call-and-response, and the response <em>raises</em> the greeting:</p>
+<p class="ex-pair">— Dia dhuit. <span style="color:var(--ink-faint)">(God to you.)</span><br>
+— Dia is Muire dhuit. <span style="color:var(--ink-faint)">(God <em>and Mary</em> to you.)</span></p>
+<p>You never just echo a greeting in Irish. You answer it, and add to it.</p>`},
+{t:'choice', prompt:"The carver said “Dia dhuit.” What do you say back?", opts:[
+  {txt:"Dia is Muire dhuit", ok:true, why:"You raised the greeting — God and Mary to you. Exactly the custom."},
+  {txt:"Dia dhuit", ok:false, why:"Understandable — but Irish greetings escalate. The reply adds Mary: Dia is Muire dhuit."},
+  {txt:"Slán!", ok:false, why:"That's “goodbye” — a little early, you only just met him."}
+]},
+{t:'scene', who:"An saor cloiche", html:`<p>He sets down the chisel and puts a hand to his chest.</p>
+<p>“<i class="ga" data-g="I am Dáire — is mise introduces who you are" data-s="iss MISH-eh DAW-ruh">Is mise Dáire.</i>”
+A pause. A nod at you. “<i class="ga" data-g="Who are you? (emphatic ‘you’)" data-s="kay HUSS-ah">Cé thusa?</i>”</p>`},
+{t:'note', title:"The two “to be”s — what school never explained", html:`<p>Irish has <b>two</b> verbs where English has one “to be”, and they are not interchangeable.</p>
+<p><b>Is</b> — the copula — is for <em>identity</em>: who or what something <em>is</em>.<br>
+<span class="ex-pair">Is mise Dáire. — I am Dáire.</span></p>
+<p><b>Tá</b> is for <em>states and conditions</em>: how something is right now.<br>
+<span class="ex-pair">Tá mé fuar. — I am cold.</span></p>
+<p>You are not “in a state of being Niamh” — you simply <em>are</em> Niamh. Identity takes <b>is</b>.
+Half the confusion of school Irish dissolves right here.</p>`},
+{t:'choice', prompt:"How would Bríd say “I am Bríd”?", opts:[
+  {txt:"Is mise Bríd", ok:true, why:"Identity → the copula. Is mise Bríd."},
+  {txt:"Tá mé Bríd", ok:false, why:"Tá is for states — cold, tired, happy. Being Bríd isn't a passing condition; identity takes is."},
+  {txt:"Bríd is mise tá", ok:false, why:"Irish word order is strict here: Is mise Bríd."}
+]},
+{t:'assemble', prompt:"Build: “I am Áine.”", tiles:["mise","Áine","Is"], answer:"Is mise Áine"},
+{t:'type', prompt:"Your turn. Answer the carver — introduce yourself.", placeholder:"Is mise …", check:"ismise", capture:true,
+  hint:"Type the whole phrase: Is mise + your name."},
+{t:'scene', who:"Dáire", html:`<p>He repeats your name once, slowly, weighing it the way other people weigh coins —
+then glances at the pillar beside him, its edge already striped with strokes.</p>
+<p>“Names are my trade,” he says. “I cut them so they outlive the breath that spoke them.”</p>
+<p>“<i class="ga" data-g="What's your name? — literally ‘what name is on you?’" data-s="kane TAN-yim ah-TAW ort">Cén t-ainm atá ort?</i>”
+he adds — and notice the shape of that: in Irish, a name is <em>on</em> you, like a cloak.
+The language keeps a small distance between you and what you're called. More on that another day.</p>`},
+{t:'match', prompt:"Match the Irish to its meaning.", pairs:[
+  ["Dia dhuit","Hello (God to you)"],
+  ["Is mise…","I am… (identity)"],
+  ["Cé thusa?","Who are you?"],
+  ["ainm","name"]
+]},
+{t:'scene', html:`<p>The light is going. Dáire covers his tools with a hide and lifts a hand.</p>
+<p>“<i class="ga" data-g="Goodbye for now" data-s="slawn guh FOH-il">Slán go fóill.</i>” — goodbye <em>for now</em>.
+Tomorrow he'll want to know where you come from. Have an answer ready.</p>`}
+]},
+
+/* ---------- SEISIÚN 2 ---------- */
+{ ga:"Cé as Thú?", en:"Where you're from — placenames are poems", blocks:[
+{t:'scene', who:"Dáire", html:`<p>Morning. The tide far out, oystercatchers crying over the flats. Dáire is already at the stone.</p>
+<p>“<i class="ga" data-g="Where are you from? — lit. ‘who from are you?’ (Connacht; you'll also see Cárb as thú?)" data-s="kay ASS hoo">Cé as thú?</i>”</p>
+<p>He answers his own question first, the way a courteous man does:
+“<i class="ga" data-g="I am from Mayo — Maigh Eo, ‘plain of the yew trees’" data-s="iss ass my-OH may">Is as Maigh Eo mé.</i>”</p>`},
+{t:'note', title:"Every placename is a tiny poem", html:`<p><b>Maigh Eo</b> — the plain of the yews. Dáire's county is named for trees that stood
+before anyone carved anything.</p>
+<p>Nearly every Irish placename works like this — a small, worn poem hiding inside the English spelling:</p>
+<p class="ex-pair">Doire — oak grove <span style="color:var(--ink-faint)">(Derry)</span><br>
+Baile Átha Cliath — town of the hurdle ford <span style="color:var(--ink-faint)">(Dublin)</span><br>
+Béal Feirste — mouth of the sandbank ford <span style="color:var(--ink-faint)">(Belfast)</span><br>
+Cill Dara — church of the oak <span style="color:var(--ink-faint)">(Kildare)</span></p>
+<p>And if your people left, the poems travelled: Dublin, Ohio. Derry, New Hampshire.
+You may have grown up inside an Irish placename without knowing it.</p>`},
+{t:'choice', prompt:"You want to ask someone where they're from. Which is it?", opts:[
+  {txt:"Cé as thú?", ok:true, why:"Literally “who from are you?” — the Connacht way to ask."},
+  {txt:"Cé thusa?", ok:false, why:"Close — but that asks who they are, not where they're from."},
+  {txt:"Dia dhuit?", ok:false, why:"That's hello. A fine start, but it won't get you a county."}
+]},
+{t:'match', prompt:"Match the place to the poem inside it.", pairs:[
+  ["Maigh Eo","plain of the yew trees"],
+  ["Doire","oak grove"],
+  ["Baile Átha Cliath","town of the hurdle ford"],
+  ["Cill Dara","church of the oak"]
+]},
+{t:'assemble', prompt:"Build: “I am from Galway.”", tiles:["as","mé","Gaillimh","Is"], answer:"Is as Gaillimh mé"},
+{t:'type', prompt:"Now answer Dáire — where are you from? Anywhere in the world counts.", placeholder:"Is as … mé", check:"isas",
+  hint:"Is as ___ mé — put your county, city or country in the middle."},
+{t:'scene', who:"Dáire", html:`<p>He nods at your answer as if adding it to a ledger, and spreads both hands wide:</p>
+<p>“<i class="ga" data-g="A hundred thousand welcomes" data-s="kayd MEE-luh FAWL-chuh">Céad míle fáilte.</i>”</p>
+<p>A hundred thousand welcomes. People will still be saying it on this island fifteen centuries
+from now — to tourists, mostly, but they'll mean it.</p>`},
+{t:'match', prompt:"Quick return to yesterday — and one new word.", pairs:[
+  ["Is mise…","I am…"],
+  ["Cé as thú?","Where are you from?"],
+  ["fáilte","welcome"],
+  ["Slán go fóill","Goodbye for now"]
+]},
+{t:'scene', html:`<p>As you leave, Dáire mentions that a family is walking in from the east tomorrow,
+bringing him work: a stone for a man who died in the spring.</p>
+<p>“Come early,” he says. “You'll see what the stones are <em>for</em>.”</p>`}
+]},
+
+/* ---------- SEISIÚN 3 ---------- */
+{ ga:"Mac agus Iníon", en:"Son and daughter — your surname was carved first", blocks:[
+{t:'scene', html:`<p>They arrive mid-morning: a widow in a dark cloak, her grown son beside her, walking
+like a man carrying something heavier than the satchel on his back. They have come to order a stone.</p>
+<p>A girl of about twelve slips out from behind the workshop wall and stands at Dáire's elbow,
+openly studying you.</p>`},
+{t:'scene', who:"Dáire", html:`<p>“<i class="ga" data-g="This is Bríd, my daughter — iníon = daughter" data-s="shuh BREEDJ, MIN-yeen">Seo Bríd, m'iníon.</i>”
+He nods at the visiting young man. “And that is Colmán's <i class="ga" data-g="son" data-s="mock">mac</i> — his son.
+No <i class="ga" data-g="brother" data-s="jar-HAWR">deartháir</i>, no <i class="ga" data-g="sister" data-s="jre-FOOR">deirfiúr</i> —
+the last of that house.”</p>`},
+{t:'note', title:"MAQI — your surname is an ogham formula", html:`<p>On the oldest stones in Ireland, one word appears more than any other:
+<b>MAQI</b> — “of the son”. <em>X MAQI Y</em>: X, son of Y. That word is still alive —
+it became modern Irish <b>mac</b>, son.</p>
+<p>Which means millions of people are carrying an ogham inscription around on their name:</p>
+<p class="ex-pair">McCarthy — Mac Cárthaigh — son of Cárthach<br>
+O'Brien — Ó Briain — descendant of Brian<br>
+Kelly — Ó Ceallaigh — descendant of Ceallach</p>
+<p>Women's surnames answer differently: <b>Ní</b> (daughter of a Ó family), <b>Nic</b> (of a Mac family).
+Mary Kelly, in Irish, is <b>Máire Ní Cheallaigh</b>.</p>`},
+{t:'choice', prompt:"The ogham word MAQI survives today as…", opts:[
+  {txt:"mac — son", ok:true, why:"Fifteen centuries from stone to surname. Mc and Mac names all carry it."},
+  {txt:"ainm — name", ok:false, why:"Ainm is “name” — but MAQI is the word for son, the one carved between names."},
+  {txt:"fáilte — welcome", ok:false, why:"Fáilte is welcome. MAQI is the “son of” between two names on a stone."}
+]},
+{t:'match', prompt:"The family, matched.", pairs:[
+  ["athair","father"],
+  ["máthair","mother"],
+  ["mac","son"],
+  ["iníon","daughter"]
+]},
+{t:'choice', prompt:"How would “Mary Kelly” be written in Irish?", opts:[
+  {txt:"Máire Ní Cheallaigh", ok:true, why:"Ní for a woman of an Ó family — daughter of the Kellys."},
+  {txt:"Máire Mac Cheallaigh", ok:false, why:"Mac marks a son. A woman takes Ní (for Ó names) or Nic (for Mac names)."},
+  {txt:"Máire Ó Ceallaigh", ok:false, why:"Ó traditionally marks a male descendant — Mary takes Ní Cheallaigh."}
+]},
+{t:'scene', who:"Dáire", html:`<p>The widow speaks quietly with Dáire, and it is settled. The stone will say who the dead
+man was in the only way that matters here — by whose son he was:</p>
+<p class="serif" style="font-size:1.3rem">“<i class="ga" data-g="Colmán, son of Rónán — Rónáin is the ‘of Rónán’ form" data-s="KUL-mawn mock ROH-nawn">Colmán mac Rónáin.</i>”</p>`},
+{t:'note', title:"Why Rónán became Rónáin", html:`<p>Look closely: Rónán → mac <b>Rónáin</b>. Irish names bend their endings to mean
+<em>of</em> — the genitive case. You don't need to master it today; you only need to
+<em>recognise</em> it: when a name shifts shape, it usually means “of”.</p>`},
+{t:'assemble', prompt:"Set the inscription: “Colmán, son of Rónán.”", tiles:["Rónáin","Colmán","mac"], answer:"Colmán mac Rónáin"},
+{t:'scene', html:`<p>The family leaves. Bríd runs her thumb along the blank edge of the pillar where the
+strokes will go, and looks up at her father, then at you.</p>
+<p>“Tomorrow he'll make you <em>listen</em>,” she says, delighted. “He always makes them listen first.”</p>`}
+]},
+
+/* ---------- SEISIÚN 4 ---------- */
+{ ga:"Caol le Caol", en:"Learning to hear — the secret of Irish spelling", blocks:[
+{t:'scene', who:"Dáire", html:`<p>He will not let you near the chisel. Instead he smooths a patch of dust with his palm and
+scratches letters into it with a stick.</p>
+<p>“Before your hand cuts,” he says, “your ear must know what the marks are <em>for</em>.
+Stone doesn't forgive spelling.”</p>`},
+{t:'note', title:"The big secret: every consonant comes in two flavours", html:`<p>Here is the thing that makes Irish look “unpronounceable” — and the moment it stops:</p>
+<p>Every Irish consonant has <b>two sounds</b> — a <b>broad</b> one (leathan) and a
+<b>slender</b> one (caol). The vowels written around it are <em>signposts</em> telling you which:</p>
+<p class="ex-pair">a, o, u — broad signposts<br>e, i — slender signposts</p>
+<p>Those “extra” vowels in Irish words aren't decoration and aren't all pronounced —
+they're <b>instructions</b>. Irish spelling isn't chaotic; it's a machine, and you now
+hold the manual.</p>`},
+{t:'choice', prompt:"Which vowels are the broad signposts?", opts:[
+  {txt:"a, o, u", ok:true, why:"Broad: a, o, u. Slender: e, i. That's the whole sorting rule."},
+  {txt:"e, i", ok:false, why:"Those are the slender pair. Broad is a, o, u."},
+  {txt:"á, é, í", ok:false, why:"Fadas mark length, not breadth — the broad set is a, o, u."}
+]},
+{t:'choice', prompt:"In the name “Seán”, is the s broad or slender?", opts:[
+  {txt:"Slender — the e beside it says so; it sounds like “sh”", ok:true, why:"Slender s = “sh”. That's why Seán is “Shawn” — the e was the instruction."},
+  {txt:"Broad — it's just an s sound", ok:false, why:"The e beside it is a slender signpost: slender s sounds like “sh”. Seán = “Shawn”."}
+]},
+{t:'note', title:"An síneadh fada — the long mark", html:`<p>The accent — <b>á é í ó ú</b> — is called the <b>síneadh fada</b>, “the long stretch”.
+It lengthens the vowel, and it is never optional, because it changes meaning:</p>
+<p class="ex-pair">fear — man &nbsp;·&nbsp; féar — grass<br>
+sean — old &nbsp;·&nbsp; Seán — the name</p>
+<p>Drop a fada and you may turn a man into grass, or an old thing into a person.
+The dead of Chapter 1 would want their names spelled right; so do the living.</p>`},
+{t:'choice', prompt:"“Tá féar ann” — there is ___ there.", opts:[
+  {txt:"grass", ok:true, why:"féar = grass. fear (no fada) would be a man. The mark does real work."},
+  {txt:"a man", ok:false, why:"That would be fear, no fada. féar — long é — is grass."}
+]},
+{t:'choice', prompt:"In “cáil” (fame), is the c broad or slender?", opts:[
+  {txt:"Broad — á is a broad signpost", ok:true, why:"a/o/u (with or without fada) mean broad. Broad c, like English “caw”."},
+  {txt:"Slender — the i makes it slender", ok:false, why:"The signpost that matters is the one beside the consonant: c sits next to á. Broad."}
+]},
+{t:'type', prompt:"Dáire scratched a name in the dust: “Is mise Sean.” Something is missing — carve it correctly. Type the name as it should be.",
+  placeholder:"Type the corrected name", check:"exact", answer:"Seán", fada:true,
+  hint:"Use the fada keys below the box."},
+{t:'scene', who:"Dáire", html:`<p>He wipes the dust smooth and says the old spelling law aloud, half chant, half proverb —
+the rule every Irish writer since has obeyed:</p>
+<p class="serif" style="font-size:1.25rem">“<i class="ga" data-g="Slender with slender and broad with broad — the vowels flanking a consonant must agree" data-s="kweel leh kweel AH-gus LAH-han leh LAH-han">Caol le caol agus leathan le leathan.</i>”</p>
+<p>Slender with slender, broad with broad. From now on, Irish words will look different to
+you — not like tangles of letters, but like signposted roads.</p>
+<p>“Tomorrow,” he says, handing you the chisel to hold — just hold — “we carve.”</p>`}
+]},
+
+/* ---------- SEISIÚN 5 ---------- */
+{ ga:"An Chloch", en:"The stone — carving day", blocks:[
+{t:'scene', html:`<p>Dawn, and no wind for once. The pillar lies across two trestles, its edge chalked
+where the strokes will go. Bríd holds the line taut; Dáire holds the chisel out to you.</p>
+<p>“Every stroke you earn,” he says, “you cut.”</p>
+<p>Everything you've learned this week is in your hands now.</p>`},
+{t:'choice', prompt:"Bríd greets you: “Dia dhuit!” You reply —", opts:[
+  {txt:"Dia is Muire dhuit", ok:true, why:"Raised, not echoed. You've got it."},
+  {txt:"Dia dhuit", ok:false, why:"Raise it: Dia is Muire dhuit."},
+  {txt:"Céad míle fáilte", ok:false, why:"A lovely phrase — but it's the welcome you give at your own door, not the answer to hello."}
+]},
+{t:'assemble', prompt:"The widow arrives to watch. Welcome her — build: “A hundred thousand welcomes.”", tiles:["míle","fáilte","Céad"], answer:"Céad míle fáilte"},
+{t:'match', prompt:"Dáire quizzes you as you work.", pairs:[
+  ["iníon","daughter"],
+  ["deartháir","brother"],
+  ["Cé as thú?","Where are you from?"],
+  ["Slán go fóill","Goodbye for now"]
+]},
+{t:'choice', prompt:"The widow's maiden name was Ní Bhriain. That tells you she was —", opts:[
+  {txt:"a daughter of the Ó Briain family", ok:true, why:"Ní marks a woman of an Ó family — descendant of Brian."},
+  {txt:"a son of the Ó Briain family", ok:false, why:"Sons carry Ó (or Mac). Ní is the daughter's form."},
+  {txt:"from the town of Briain", ok:false, why:"It's family, not geography — daughter of the descendants of Brian."}
+]},
+{t:'type', prompt:"Bríd chalks the farewell of the dead onto the trestle, but her fadas are missing: “Slan go foill.” Carve it correctly.",
+  placeholder:"Type the corrected phrase", check:"exact", answer:"Slán go fóill", fada:true,
+  hint:"Two fadas are missing."},
+{t:'scene', html:`<p>By late afternoon it is done. You cut four of the strokes yourself — Dáire guided the
+chisel but not the choice. The pillar stands; the family stands before it; nobody speaks
+for a long time.</p>
+<p>Along the edge, reading from the bottom up, the way ogham is always read:</p>`},
+{t:'inscription', word:"colman mac ronain", caption:"COLMÁN MAC RÓNÁIN — read upward from the base, strokes cut along the stone's edge"},
+{t:'seanfhocal', ga:"Is buaine focal ná toice an tsaoil.", en:"A word is more enduring than the world's wealth.",
+ note:"Your first seanfhocal — proverb. Dáire's whole trade, in eight words. Collected to your museum."},
+{t:'scene', html:`<p><b>Fifteen hundred years later</b>, a stone very like the one you helped carve is still
+standing in a field near Killala, County Mayo — the Breastagh ogham stone, leaning into the
+same salt wind. The farm around it has changed hands a hundred times. The strokes are still legible.</p>
+<p>The wealth went. The words stayed. That is the whole story of this app, and you've just
+lived its first chapter.</p>`},
+{t:'artifact'},
+{t:'fin', html:`<p><b>Caibidil a Dó — Oileán na Naomh</b> is next: a monastery scriptorium at dawn,
+a race to finish a great gospel book before winter, and a small white cat named Pangur Bán
+who will teach you the present tense.</p>
+<p style="margin-top:.7rem">You're testing a prototype — after finishing, please tell us:
+what pulled you back, and what didn't? That answer shapes everything we build next.</p>`}
+]}
+]};
+
+/* =========================================================
+   Ogham rendering
+   ========================================================= */
+const OGHAM = {
+  b:['r',1], l:['r',2], f:['r',3], s:['r',4], n:['r',5],
+  h:['l',1], d:['l',2], t:['l',3], c:['l',4], q:['l',5],
+  m:['x',1], g:['x',2], 'ŋ':['x',3], z:['x',4], r:['x',5],
+  a:['v',1], o:['v',2], u:['v',3], e:['v',4], i:['v',5],
+  p:['p',1]
+};
+const SUBS = {k:'c','v':'f',w:'f',y:'i',j:'i'};
+const FADA_MAP = {'á':'a','é':'e','í':'i','ó':'o','ú':'u'};
+
+function oghamLetters(raw){
+  let s = raw.toLowerCase().replace(/[áéíóú]/g, ch=>FADA_MAP[ch]);
+  const out = []; const notes = new Set();
+  let i = 0;
+  while(i < s.length){
+    if(s[i]===' '){ out.push(' '); i++; continue; }
+    if(s.slice(i,i+2)==='ng'){ out.push('ŋ'); i+=2; continue; }
+    let ch = s[i];
+    if(ch==='x'){ out.push('c','s'); notes.add('x → c + s'); i++; continue; }
+    if(SUBS[ch]){ notes.add(ch+' → '+SUBS[ch]); ch = SUBS[ch]; }
+    if(ch==='p'){ notes.add('p → peith, a medieval addition (ogham was made for Primitive Irish)'); }
+    if(OGHAM[ch]) out.push(ch);
+    i++;
+  }
+  return {letters: out, notes: [...notes]};
+}
+
+/* Draw a standing stone with ogham up its central stemline. Reads bottom→top. */
+function oghamStoneSVG(raw, opts={}){
+  const {letters} = oghamLetters(raw);
+  const glyphs = letters.filter(c=>c!==' ');
+  const LH = 16;               // px per stroke row
+  const letterGap = 10, wordGap = 22, tick = 26;
+  let rows = 0;
+  letters.forEach(c=>{ rows += (c===' ') ? 0 : OGHAM[c][1]; });
+  const gaps = letters.reduce((a,c)=>a + (c===' '? wordGap : letterGap), 0);
+  const stemLen = rows*LH + gaps + 70;
+  const W = 150, H = Math.max(stemLen + 90, 260);
+  const cx = W/2;
+  const topY = 48, botY = H - 34;
+
+  let strokes = '', y = botY - 26;
+  const sw = 3.2;
+  /* start feather ᚛ */
+  strokes += `<path d="M ${cx-12} ${y+16} L ${cx} ${y+8} M ${cx-12} ${y+8} L ${cx} ${y+16}" stroke-width="2" opacity=".6"/>`;
+  for(const c of letters){
+    if(c===' '){ y -= wordGap; continue; }
+    const [grp,n] = OGHAM[c];
+    for(let k=0;k<n;k++){
+      if(grp==='r')      strokes += `<line x1="${cx}" y1="${y}" x2="${cx+tick}" y2="${y}" stroke-width="${sw}"/>`;
+      else if(grp==='l') strokes += `<line x1="${cx-tick}" y1="${y}" x2="${cx}" y2="${y}" stroke-width="${sw}"/>`;
+      else if(grp==='x') strokes += `<line x1="${cx-tick}" y1="${y+6}" x2="${cx+tick}" y2="${y-6}" stroke-width="${sw}"/>`;
+      else if(grp==='v') strokes += `<line x1="${cx-9}" y1="${y}" x2="${cx+9}" y2="${y}" stroke-width="${sw+0.6}"/>`;
+      else if(grp==='p') strokes += `<path d="M ${cx} ${y+6} Q ${cx+16} ${y} ${cx} ${y-6}" fill="none" stroke-width="${sw}"/>`;
+      y -= LH;
+    }
+    y -= letterGap;
+  }
+  const anim = opts.animate && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  return `
+<svg viewBox="0 0 ${W} ${H}" width="${opts.width||150}" role="img" aria-label="Ogham inscription: ${raw}">
+  <defs>
+    <linearGradient id="stg${opts.gid||''}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--stone)"/>
+      <stop offset="1" stop-color="var(--sunk)"/>
+    </linearGradient>
+  </defs>
+  <path d="M ${cx-34} ${H-12}
+           C ${cx-40} ${H*0.6} ${cx-36} ${H*0.3} ${cx-26} ${topY-14}
+           Q ${cx-10} ${topY-30} ${cx+12} ${topY-20}
+           C ${cx+30} ${topY-8} ${cx+36} ${H*0.45} ${cx+32} ${H-12} Z"
+        fill="url(#stg${opts.gid||''})" stroke="var(--ink-faint)" stroke-width="1" opacity=".95"/>
+  <circle cx="${cx-16}" cy="${H*0.28}" r="7" fill="var(--lichen-bright)" opacity=".28"/>
+  <circle cx="${cx+14}" cy="${H*0.62}" r="5" fill="var(--lichen-bright)" opacity=".2"/>
+  <circle cx="${cx-10}" cy="${H*0.8}" r="3.5" fill="var(--ink-faint)" opacity=".25"/>
+  <line x1="${cx}" y1="${botY}" x2="${cx}" y2="${topY}" stroke="var(--ink)" stroke-width="2" opacity=".55"/>
+  <g stroke="var(--ink)" stroke-linecap="round" class="${anim?'carve-anim':''}">${strokes}</g>
+</svg>
+<style>
+.carve-anim line, .carve-anim path{opacity:0;animation:chip .18s ease forwards}
+${glyphs.length?Array.from({length:60},(_,i)=>`.carve-anim :nth-child(${i+1}){animation-delay:${(i*0.06).toFixed(2)}s}`).join(''):''}
+@keyframes chip{to{opacity:1}}
+</style>`;
+}
+
+/* Horizontal carving progress bar: one stroke per exercise */
+function carveBarSVG(total, done){
+  const W = 300, H = 34, y = H/2;
+  const pad = 14, span = (W - pad*2) / Math.max(total,1);
+  const styles = ['r','l','x','v'];
+  let marks = '';
+  for(let i=0;i<total;i++){
+    const x = pad + span*(i+0.5);
+    const on = i < done;
+    const st = styles[i % 4];
+    const op = on ? 1 : 0.18;
+    if(st==='r')      marks += `<line x1="${x}" y1="${y}" x2="${x}" y2="${y-11}" stroke-width="3" opacity="${op}"/>`;
+    else if(st==='l') marks += `<line x1="${x}" y1="${y}" x2="${x}" y2="${y+11}" stroke-width="3" opacity="${op}"/>`;
+    else if(st==='x') marks += `<line x1="${x-5}" y1="${y+10}" x2="${x+5}" y2="${y-10}" stroke-width="3" opacity="${op}"/>`;
+    else              marks += `<line x1="${x}" y1="${y-6}" x2="${x}" y2="${y+6}" stroke-width="4" opacity="${op}"/>`;
+  }
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:300px;display:block" aria-label="${done} of ${total} strokes carved">
+    <line x1="6" y1="${y}" x2="${W-6}" y2="${y}" stroke="var(--ink-faint)" stroke-width="1.5" opacity=".5"/>
+    <g stroke="var(--moss)" stroke-linecap="round">${marks}</g>
+  </svg>`;
+}
+
+/* =========================================================
+   App state & engine
+   ========================================================= */
+const store = {
+  get(){ try{ return JSON.parse(localStorage.getItem('turas_c1')||'{}') }catch(e){ return {} } },
+  set(v){ localStorage.setItem('turas_c1', JSON.stringify(v)) }
+};
+let state = Object.assign({done:[false,false,false,false,false], name:''}, store.get());
+
+const $ = s => document.querySelector(s);
+let cur = {si:0, bi:0, exTotal:0, exDone:0};
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(el=>el.classList.remove('on'));
+  $(id).classList.add('on');
+  window.scrollTo({top:0});
+}
+
+/* ---------- Cover ---------- */
+$('#coverStone').innerHTML = oghamStoneSVG('failte', {width:130, animate:true, gid:'c'});
+$('#beginBtn').addEventListener('click', ()=>{ renderMap(); show('#scr-map'); });
+
+/* ---------- Map ---------- */
+function renderMap(){
+  const wp = $('#waypoints'); wp.innerHTML = '';
+  CH.sessions.forEach((s,i)=>{
+    const b = document.createElement('button');
+    b.className = 'wp' + (state.done[i] ? ' done' : '');
+    b.innerHTML = `<span class="n">${i+1}</span>
+      <span><span class="t serif">${s.ga}</span><br><span class="s">${s.en}</span></span>
+      ${state.done[i] ? '<span class="done-mark">carved ✓</span>' : ''}`;
+    b.addEventListener('click', ()=> startSession(i));
+    wp.appendChild(b);
+  });
+  const allDone = state.done[4];
+  $('#museumBtn').hidden = !allDone;
+}
+$('#museumBtn').addEventListener('click', ()=>{ startSession(4, /*jumpToArtifact*/true); });
+
+/* ---------- Session ---------- */
+function countExercises(s){ return s.blocks.filter(b=>['choice','assemble','type','match'].includes(b.t)).length }
+
+function startSession(si, jump){
+  cur = {si, bi:0, exTotal: countExercises(CH.sessions[si]), exDone:0};
+  $('#beats').innerHTML = '';
+  $('#sessLabel').textContent = 'Seisiún ' + (si+1) + ' · ' + CH.sessions[si].ga;
+  updateCarve();
+  show('#scr-session');
+  if(jump){
+    /* replay mode: skip to the artifact for museum viewing */
+    const s = CH.sessions[si];
+    cur.bi = s.blocks.findIndex(b=>b.t==='artifact');
+    cur.exDone = cur.exTotal;
+    updateCarve();
+  }
+  nextBeat();
+}
+$('#backBtn').addEventListener('click', ()=>{ renderMap(); show('#scr-map'); });
+
+function updateCarve(){ $('#carveBar').innerHTML = carveBarSVG(cur.exTotal, cur.exDone); }
+
+function nextBeat(){
+  const s = CH.sessions[cur.si];
+  if(cur.bi >= s.blocks.length){ finishSession(); return; }
+  const b = s.blocks[cur.bi++];
+  const host = document.createElement('div');
+  host.className = 'beat';
+  RENDER[b.t](b, host);
+  $('#beats').appendChild(host);
+  host.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth', block:'start'});
+  wireGlosses(host);
+}
+
+function continueBtn(host, label){
+  const btn = document.createElement('button');
+  btn.className = 'next-btn';
+  btn.textContent = label || 'Ar aghaidh →';
+  btn.addEventListener('click', ()=>{ btn.remove(); nextBeat(); });
+  host.appendChild(btn);
+}
+function exerciseDone(host){
+  cur.exDone++; updateCarve();
+  continueBtn(host, 'Ar aghaidh →');
+}
+
+function finishSession(){
+  if(!state.done[cur.si]){ state.done[cur.si]=true; store.set(state); }
+  const host = document.createElement('div');
+  host.className = 'beat complete-banner';
+  host.textContent = 'Seisiún ' + (cur.si+1) + ' carved. ' +
+    (cur.si<4 ? 'The next stone on the path is waiting.' : 'Caibidil a hAon complete — do mhúsaem awaits on the map.');
+  $('#beats').appendChild(host);
+  const back = document.createElement('button');
+  back.className='next-btn'; back.textContent='Ar ais chuig an léarscáil →';
+  back.addEventListener('click', ()=>{ renderMap(); show('#scr-map'); });
+  $('#beats').appendChild(back);
+  back.scrollIntoView({behavior:'smooth'});
+}
+
+/* ---------- Gloss popovers ---------- */
+function wireGlosses(scope){
+  scope.querySelectorAll('i.ga').forEach(el=>{
+    el.setAttribute('role','button'); el.setAttribute('tabindex','0');
+    const toggle = ()=>{
+      const open = el.nextElementSibling && el.nextElementSibling.classList && el.nextElementSibling.classList.contains('gloss-pop');
+      document.querySelectorAll('.gloss-pop').forEach(p=>p.remove());
+      if(open) return;
+      const pop = document.createElement('span');
+      pop.className='gloss-pop'; pop.style.display='block';
+      pop.innerHTML = `<span class="g-ga">${el.textContent}</span> — ${el.dataset.g}` +
+        (el.dataset.s ? `<span class="g-s">rough sound: “${el.dataset.s}” · real audio coming</span>` : '');
+      el.after(pop);
+    };
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+  });
+}
+
+/* ---------- Block renderers ---------- */
+const RENDER = {
+scene(b, host){
+  host.innerHTML = `<div class="scene serif">${b.who?`<span class="who">${b.who}</span>`:''}${b.html}</div>`;
+  continueBtn(host);
+},
+note(b, host){
+  host.innerHTML = `<div class="note"><div class="nt">An Nóta Gramadaí · ${b.title}</div>${b.html}</div>`;
+  continueBtn(host, 'Tuigim — got it →');
+},
+choice(b, host){
+  const ex = document.createElement('div'); ex.className='ex';
+  ex.innerHTML = `<p class="prompt">${b.prompt}</p>`;
+  const wrap = document.createElement('div'); wrap.className='opts';
+  const verdict = document.createElement('p'); verdict.className='verdict';
+  b.opts.forEach(o=>{
+    const btn = document.createElement('button'); btn.className='opt'; btn.textContent=o.txt;
+    btn.addEventListener('click', ()=>{
+      if(ex.dataset.locked) return;
+      if(o.ok){
+        ex.dataset.locked='1';
+        wrap.querySelectorAll('.opt').forEach(x=>x.disabled=true);
+        btn.classList.add('right');
+        verdict.className='verdict ok';
+        verdict.innerHTML = `Maith thú! <span class="why">${o.why}</span>`;
+        exerciseDone(host);
+      }else{
+        btn.classList.add('wrong'); btn.disabled=true;
+        verdict.className='verdict no';
+        verdict.innerHTML = `Ní hea — try again. <span class="why">${o.why}</span>`;
+      }
+    });
+    wrap.appendChild(btn);
+  });
+  ex.appendChild(wrap); ex.appendChild(verdict); host.appendChild(ex);
+},
+assemble(b, host){
+  const ex = document.createElement('div'); ex.className='ex';
+  ex.innerHTML = `<p class="prompt">${b.prompt}</p>`;
+  const slots = document.createElement('div'); slots.className='slots';
+  const bank = document.createElement('div'); bank.className='tiles';
+  const verdict = document.createElement('p'); verdict.className='verdict';
+  const chosen = [];
+  const shuffled = [...b.tiles].sort(()=>Math.random()-0.5);
+  function renderRows(){
+    slots.innerHTML=''; bank.innerHTML='';
+    chosen.forEach((w,i)=>{
+      const t=document.createElement('button'); t.className='tile'; t.textContent=w;
+      t.addEventListener('click',()=>{ if(ex.dataset.locked)return; chosen.splice(i,1); renderRows(); });
+      slots.appendChild(t);
+    });
+    shuffled.forEach(w=>{
+      const usedCount = chosen.filter(c=>c===w).length;
+      const totalCount = shuffled.filter(c=>c===w).length;
+      if(usedCount >= totalCount) return;
+      const t=document.createElement('button'); t.className='tile'; t.textContent=w;
+      t.addEventListener('click',()=>{ if(ex.dataset.locked)return; chosen.push(w); renderRows(); });
+      bank.appendChild(t);
+    });
+  }
+  renderRows();
+  const check = document.createElement('button'); check.className='check-btn'; check.textContent='Seiceáil — check';
+  check.addEventListener('click', ()=>{
+    if(ex.dataset.locked) return;
+    if(chosen.join(' ')===b.answer){
+      ex.dataset.locked='1';
+      verdict.className='verdict ok'; verdict.textContent='Maith thú! ' + b.answer + '.';
+      exerciseDone(host);
+    }else{
+      verdict.className='verdict no'; verdict.textContent='Not quite — check the word order and try again.';
+    }
+  });
+  ex.appendChild(slots); ex.appendChild(bank); ex.appendChild(document.createElement('br')); ex.appendChild(check); ex.appendChild(verdict);
+  host.appendChild(ex);
+},
+type(b, host){
+  const ex = document.createElement('div'); ex.className='ex';
+  ex.innerHTML = `<p class="prompt">${b.prompt}</p>`;
+  const row = document.createElement('div'); row.className='type-row';
+  const input = document.createElement('input');
+  input.type='text'; input.placeholder=b.placeholder||''; input.autocapitalize='off'; input.autocomplete='off'; input.spellcheck=false;
+  const check = document.createElement('button'); check.className='check-btn'; check.textContent='Seiceáil';
+  row.appendChild(input); row.appendChild(check);
+  ex.appendChild(row);
+  if(b.fada){
+    const keys = document.createElement('div'); keys.className='fada-keys';
+    'áéíóú'.split('').forEach(ch=>{
+      const k=document.createElement('button'); k.textContent=ch; k.type='button';
+      k.addEventListener('click', ()=>{
+        const s=input.selectionStart||input.value.length;
+        input.value = input.value.slice(0,s)+ch+input.value.slice(input.selectionEnd||s);
+        input.focus(); input.setSelectionRange(s+1,s+1);
+      });
+      keys.appendChild(k);
+    });
+    ex.appendChild(keys);
+  }
+  if(b.hint){ const h=document.createElement('p'); h.className='verdict'; h.style.color='var(--ink-faint)'; h.textContent=b.hint; ex.appendChild(h); }
+  const verdict = document.createElement('p'); verdict.className='verdict'; ex.appendChild(verdict);
+  const norm = s => s.trim().replace(/\s+/g,' ');
+  function grade(){
+    if(ex.dataset.locked) return;
+    const v = norm(input.value); const lv = v.toLowerCase();
+    let ok=false, echo='';
+    if(b.check==='ismise'){ ok = lv.startsWith('is mise ') && v.length>8; if(ok){ state.name = v.slice(8).trim(); store.set(state); echo = v + ' — welcome, ' + state.name + '.'; } }
+    else if(b.check==='isas'){ ok = lv.startsWith('is as ') && lv.endsWith(' mé') && v.length>9; if(ok) echo = v + ' — noted. You have a place in the story now.'; }
+    else if(b.check==='exact'){ ok = v === b.answer; if(ok) echo = b.answer + ' — carved right.'; }
+    if(ok){
+      ex.dataset.locked='1'; input.disabled=true;
+      verdict.className='verdict ok'; verdict.textContent='Maith thú! ' + echo;
+      exerciseDone(host);
+    }else{
+      verdict.className='verdict no';
+      verdict.textContent = b.check==='exact'
+        ? 'Not quite — mind the fada. Use the accent keys and try again.'
+        : 'Almost — follow the pattern “' + (b.placeholder||'') + '” exactly, then your own word.';
+    }
+  }
+  check.addEventListener('click', grade);
+  input.addEventListener('keydown', e=>{ if(e.key==='Enter') grade(); });
+  host.appendChild(ex);
+},
+match(b, host){
+  const ex = document.createElement('div'); ex.className='ex';
+  ex.innerHTML = `<p class="prompt">${b.prompt}</p>`;
+  const grid = document.createElement('div'); grid.className='pairs';
+  const left = b.pairs.map(p=>p[0]).sort(()=>Math.random()-0.5);
+  const right = b.pairs.map(p=>p[1]).sort(()=>Math.random()-0.5);
+  const key = Object.fromEntries(b.pairs);
+  let selL=null, locked=0;
+  function make(txt, side){
+    const btn=document.createElement('button');
+    btn.className='pair-btn'+(side==='L'?' ga-side':''); btn.textContent=txt;
+    btn.addEventListener('click', ()=>{
+      if(btn.classList.contains('locked')) return;
+      if(side==='L'){
+        grid.querySelectorAll('.ga-side').forEach(x=>x.classList.remove('sel'));
+        btn.classList.add('sel'); selL=btn;
+      }else{
+        if(!selL) return;
+        if(key[selL.textContent]===txt){
+          selL.classList.remove('sel'); selL.classList.add('locked'); btn.classList.add('locked');
+          selL=null; locked++;
+          if(locked===b.pairs.length){ ex.dataset.locked='1'; exerciseDone(host); }
+        }else{
+          btn.classList.add('flash');
+          setTimeout(()=>btn.classList.remove('flash'), 500);
+        }
+      }
+    });
+    return btn;
+  }
+  for(let i=0;i<b.pairs.length;i++){
+    grid.appendChild(make(left[i],'L'));
+    grid.appendChild(make(right[i],'R'));
+  }
+  ex.appendChild(grid); host.appendChild(ex);
+},
+inscription(b, host){
+  host.innerHTML = `<div class="artifact" style="background:none;border:none;box-shadow:none;padding:.4rem 0">
+    <div class="stone-wrap">${oghamStoneSVG(b.word,{width:170,animate:true,gid:'i'})}</div>
+    <p class="stone-caption">${b.caption}</p></div>`;
+  continueBtn(host);
+},
+seanfhocal(b, host){
+  host.innerHTML = `<div class="seanfhocal">
+    <div class="sf-label">Seanfhocal · collected</div>
+    <p class="sf-ga serif">${b.ga}</p>
+    <p class="sf-en serif">${b.en}</p>
+    <p class="sf-note">${b.note}</p></div>`;
+  continueBtn(host);
+},
+artifact(b, host){
+  const wrap = document.createElement('div'); wrap.className='artifact';
+  wrap.innerHTML = `<div class="a-label">Déantán · Artifact</div>
+    <h3>Do chloch féin — your own stone</h3>
+    <p style="font-size:.95rem;color:var(--ink-soft)">Dáire owes you a wage for the week. He takes a small
+    slab of the same grey stone and asks what name he should cut. Carve your name the way the
+    first Irish writers would have — read it from the bottom up.</p>
+    <div class="type-row" style="margin-top:1rem">
+      <input type="text" id="artName" placeholder="Your name" autocomplete="off" value="${(state.name||'').replace(/"/g,'')}">
+      <button class="check-btn" id="artGo">Snoigh é — carve it</button>
+    </div>
+    <div class="stone-wrap" id="artStone"></div>
+    <p class="stone-caption" id="artCap"></p>
+    <p class="translit" id="artNotes"></p>`;
+  host.appendChild(wrap);
+  const draw = ()=>{
+    const name = wrap.querySelector('#artName').value.trim();
+    if(!name) return;
+    const {notes} = oghamLetters(name);
+    wrap.querySelector('#artStone').innerHTML = oghamStoneSVG(name,{width:170,animate:true,gid:'a'+Date.now()%1000});
+    wrap.querySelector('#artCap').textContent = name.toUpperCase() + ' — read upward from the base';
+    wrap.querySelector('#artNotes').innerHTML = notes.length
+      ? '<b>Carver\'s notes:</b> ' + notes.join(' · ') + '. Ogham was cut for Primitive Irish — letters it never had borrow later signs.'
+      : 'Every letter of your name existed in the ogham alphabet — no substitutions needed.';
+  };
+  wrap.querySelector('#artGo').addEventListener('click', draw);
+  wrap.querySelector('#artName').addEventListener('keydown', e=>{ if(e.key==='Enter') draw(); });
+  if(state.name) draw();
+  continueBtn(host);
+},
+fin(b, host){
+  host.innerHTML = `<div class="fin">${b.html}</div>
+  <footer class="app-foot">An Turas — prototype, Caibidil 1 vertical slice · Connacht Irish first (see docs/DECISIONS.md) ·
+  Draft content awaiting native-speaker review · Audio pending ABAIR licensing · Your progress lives only on this device.</footer>`;
+  continueBtn(host, 'Críochnaigh — finish →');
+}
+};
+
+/* ---------- boot ---------- */
+if(state.done.some(Boolean)){ renderMap(); show('#scr-map'); }
+else show('#scr-cover');
+</script>
