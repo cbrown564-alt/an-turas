@@ -191,6 +191,9 @@ struct SessionView: View {
         case .recarve(let recarve):
             RecarveView(block: recarve, onSolved: { solved(page) })
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .lens(let lens):
+            LensView(block: lens)
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .inscription(let inscription):
             InscriptionPageView(block: inscription)
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
@@ -220,6 +223,7 @@ struct SessionView: View {
         case .echo:         return "abair é"
         case .turn:         return "do líne"
         case .recarve:      return "athsnoí"
+        case .lens:         return "logainm"
         case .inscription:  return "an chloch"
         case .seanfhocal:   return "seanfhocal"
         case .artifact:     return "déantán"

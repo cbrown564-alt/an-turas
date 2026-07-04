@@ -188,6 +188,23 @@ struct InscriptionBlock: Decodable {
     let caption: String
 }
 
+/// The placename lens: an anglicized name peels back to the Irish poem
+/// hiding inside it — the single best culture↔language bridge we have
+/// (STRATEGY §5). English spelling is chalk; the Irish beneath is carved.
+struct LensPart: Decodable, Identifiable {
+    let ga: String
+    let en: String
+    var id: String { ga }
+}
+
+struct LensBlock: Decodable {
+    let en: String
+    let ga: String
+    let parts: [LensPart]
+    let meaning: String
+    let note: String?
+}
+
 struct SeanfhocalBlock: Decodable {
     let ga: String
     let en: String
@@ -218,6 +235,7 @@ enum Page: Decodable {
     case echo(EchoBlock)
     case turn(TurnBlock)
     case recarve(RecarveBlock)
+    case lens(LensBlock)
     case inscription(InscriptionBlock)
     case seanfhocal(SeanfhocalBlock)
     case artifact
@@ -238,6 +256,7 @@ enum Page: Decodable {
         case "echo":        self = .echo(try EchoBlock(from: decoder))
         case "turn":        self = .turn(try TurnBlock(from: decoder))
         case "recarve":     self = .recarve(try RecarveBlock(from: decoder))
+        case "lens":        self = .lens(try LensBlock(from: decoder))
         case "inscription": self = .inscription(try InscriptionBlock(from: decoder))
         case "seanfhocal":  self = .seanfhocal(try SeanfhocalBlock(from: decoder))
         case "artifact":    self = .artifact
@@ -265,7 +284,7 @@ enum Page: Decodable {
         case .note: return .note
         case .choice, .assemble, .typein, .match, .listen, .echo, .recarve:
             return .exercise
-        case .inscription, .seanfhocal, .artifact, .fin: return .feature
+        case .lens, .inscription, .seanfhocal, .artifact, .fin: return .feature
         }
     }
 }
