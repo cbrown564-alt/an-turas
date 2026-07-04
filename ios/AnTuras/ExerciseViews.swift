@@ -6,7 +6,7 @@ import SwiftUI
 // and the word — then an optional beat of story, then the prompt in the same
 // serif voice the story speaks in.
 
-private struct ExerciseFrame<Content: View>: View {
+struct ExerciseFrame<Content: View>: View {
     let context: String?
     let prompt: String
     @ViewBuilder var content: Content
@@ -43,7 +43,7 @@ private struct ExerciseFrame<Content: View>: View {
     }
 }
 
-private struct Verdict: View {
+struct Verdict: View {
     let ok: Bool
     let headline: String
     var detail: String?
@@ -522,6 +522,147 @@ struct MatchView: View {
                 }
             }
         }
+    }
+}
+
+// MARK: - Listen (ear before eye)
+// The prompt is sound: Dáire says a word with his back turned, and the
+// learner picks the written form they heard. Spelling is the answer,
+// hearing is the question — "chalk before carve" applied to the ear.
+
+struct ListenView: View {
+    let block: ListenBlock
+    let onSolved: () -> Void
+
+    @ObservedObject private var speech = SpeechService.shared
+    @State private var solved = false
+    @State private var wrongPicks: Set<String> = []
+    @State private var shakes: [String: Int] = [:]
+    @State private var verdict: (ok: Bool, why: String)?
+    @State private var autoPlayed = false
+
+    var body: some View {
+        ExerciseFrame(context: block.context, prompt: block.prompt) {
+            if speech.canSpeak(block.say) {
+                earButton
+                    .padding(.bottom, 6)
+                VStack(spacing: 10) {
+                    ForEach(block.opts) { opt in
+                        optionRow(opt)
+                    }
+                }
+                if let verdict {
+                    Verdict(ok: verdict.ok,
+                            headline: verdict.ok ? "Maith thú!" : "Éist arís — listen again.",
+                            detail: verdict.why)
+                }
+            } else {
+                silentFallback
+            }
+        }
+        .onAppear {
+            guard speech.canSpeak(block.say), !autoPlayed else { return }
+            autoPlayed = true
+            // Let the page settle before the voice arrives.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+                speech.speak(block.say)
+            }
+        }
+    }
+
+    private var earButton: some View {
+        Button {
+            Haptics.tap()
+            speech.speak(block.say)
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: speech.isSpeaking(block.say)
+                      ? "speaker.wave.2.fill" : "speaker.wave.2")
+                    .font(.system(size: 19, weight: .semibold))
+                    .foregroundStyle(Theme.moss)
+                    .contentTransition(.symbolEffect(.replace))
+                    .frame(width: 54, height: 54)
+                    .background(Theme.raised)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Theme.line, lineWidth: 1))
+                    .shadow(color: Theme.ink.opacity(0.08), radius: 4, y: 2)
+                Text("Éist — hear it again")
+                    .font(.system(size: 13, weight: .medium))
+                    .foregroundStyle(Theme.inkSoft)
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(CarvePress())
+        .accessibilityLabel("Play the word again")
+    }
+
+    private func optionRow(_ opt: ChoiceOption) -> some View {
+        Button {
+            pick(opt)
+        } label: {
+            Text(opt.txt)
+                .font(.system(size: 17, design: .serif))
+                .foregroundStyle(Theme.ink)
+                .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
+                .padding(.horizontal, 16)
+                .background(background(for: opt))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay(RoundedRectangle(cornerRadius: 8)
+                    .stroke(border(for: opt), lineWidth: 1))
+                .scaleEffect(solved && opt.ok ? 1.02 : 1)
+        }
+        .disabled(solved || wrongPicks.contains(opt.id))
+        .buttonStyle(CarvePress())
+        .shake(shakes[opt.id, default: 0])
+        .animation(Motion.pop, value: solved)
+    }
+
+    private var silentFallback: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("This one needs a voice, and the chapter's audio hasn't been carved yet — the voices arrive with the TTS bake-off. The ear exercise steps aside for today.")
+                .font(.system(size: 14))
+                .foregroundStyle(Theme.inkSoft)
+                .lineSpacing(4)
+            PrimaryButton(title: "Lean ar aghaidh — continue") {
+                guard !solved else { return }
+                solved = true
+                onSolved()
+            }
+        }
+    }
+
+    private func pick(_ opt: ChoiceOption) {
+        guard !solved else { return }
+        if opt.ok {
+            withAnimation(Motion.pop) {
+                solved = true
+                verdict = (true, opt.why)
+            }
+            onSolved()
+        } else {
+            Haptics.error()
+            withAnimation(Motion.settle) {
+                wrongPicks.insert(opt.id)
+                verdict = (false, opt.why)
+            }
+            shakes[opt.id, default: 0] += 1
+            // The knock, then the word again — listening is the retry.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                if !solved { speech.speak(block.say) }
+            }
+        }
+    }
+
+    private func background(for opt: ChoiceOption) -> Color {
+        if solved && opt.ok { return Theme.mossTint }
+        if wrongPicks.contains(opt.id) { return Theme.rustTint }
+        return Theme.raised
+    }
+
+    private func border(for opt: ChoiceOption) -> Color {
+        if solved && opt.ok { return Theme.moss }
+        if wrongPicks.contains(opt.id) { return Theme.rust }
+        return Theme.line
     }
 }
 

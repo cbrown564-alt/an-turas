@@ -158,7 +158,12 @@ struct GlossSheet: View {
                     .font(.system(size: 16))
                     .foregroundStyle(Theme.ink)
             }
-            if let s = gloss.s {
+            if SpeechService.shared.canSpeak(gloss.t) {
+                SoundRow(text: gloss.t,
+                         hint: gloss.s.map { "rough sound: “\($0)”" },
+                         label: gloss.s.map { "éist · “\($0)”" } ?? "éist — hear it")
+                    .padding(.top, 2)
+            } else if let s = gloss.s {
                 Text("rough sound: “\(s)” · real audio coming")
                     .font(.system(size: 13))
                     .foregroundStyle(Theme.inkFaint)

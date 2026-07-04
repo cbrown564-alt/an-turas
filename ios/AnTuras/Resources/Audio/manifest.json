@@ -1,0 +1,41 @@
+{
+  "_readme": [
+    "Every line of spoken Irish in Chapter 1, for the TTS bake-off",
+    "(ABAIR vs ElevenLabs vs gemini-3-flash — see docs/ABAIR.md for the",
+    "licensing constraints; ABAIR output must NOT be bundled before written",
+    "consent). A provider script should emit one clip per line into this",
+    "directory, named <slug>.mp3 (or .m4a/.wav/.caf). The app checks this",
+    "directory first for every sound affordance and hides the ear for any",
+    "line that has no clip, so partial drops are fine.",
+    "Slug rule (mirrors SpeechService.slug): lowercase; fada vowels double",
+    "(á→aa é→ee í→ii ó→oo ú→uu); any other non-letter is a word break;",
+    "breaks join with '-'."
+  ],
+  "speakers": {
+    "daire": "male, unhurried, west-of-Ireland (Conamara) — the stone-carver; also the neutral voice for single words",
+    "brid": "young female, quick and bright — Dáire's daughter"
+  },
+  "lines": [
+    { "slug": "dia-dhuit", "text": "Dia dhuit!", "speaker": "daire" },
+    { "slug": "dia-is-muire-dhuit", "text": "Dia is Muire dhuit.", "speaker": "daire", "note": "also used as Bríd's reaction line in the session-3 turn; one clip serves both until speakers split" },
+    { "slug": "is-mise-daaire", "text": "Is mise Dáire.", "speaker": "daire" },
+    { "slug": "cee-thusa", "text": "Cé thusa?", "speaker": "daire" },
+    { "slug": "ceen-t-ainm-ataa-ort", "text": "Cén t-ainm atá ort?", "speaker": "daire" },
+    { "slug": "slaan-go-fooill", "text": "Slán go fóill.", "speaker": "daire" },
+    { "slug": "cee-as-thuu", "text": "Cé as thú?", "speaker": "daire" },
+    { "slug": "is-as-maigh-eo-mee", "text": "Is as Maigh Eo mé.", "speaker": "daire" },
+    { "slug": "ceead-miile-faailte", "text": "Céad míle fáilte.", "speaker": "daire" },
+    { "slug": "seo-briid-miniion", "text": "Seo Bríd, m'iníon.", "speaker": "daire" },
+    { "slug": "colmaan-mac-roonaain", "text": "Colmán mac Rónáin.", "speaker": "daire" },
+    { "slug": "caol-le-caol-agus-leathan-le-leathan", "text": "Caol le caol agus leathan le leathan.", "speaker": "daire" },
+    { "slug": "is-buaine-focal-naa-toice-an-tsaoil", "text": "Is buaine focal ná toice an tsaoil.", "speaker": "daire" },
+    { "slug": "feear", "text": "féar", "speaker": "daire", "note": "listen exercise — the é must be audibly long vs 'fear'" },
+    { "slug": "seaan", "text": "Seán", "speaker": "daire", "note": "listen exercise — the á must be audibly long vs 'sean'" },
+    { "slug": "mac", "text": "mac", "speaker": "daire" },
+    { "slug": "dearthaair", "text": "deartháir", "speaker": "daire" },
+    { "slug": "deirfiuur", "text": "deirfiúr", "speaker": "daire" },
+    { "slug": "cill-ala", "text": "Cill Ala", "speaker": "daire" },
+    { "slug": "dia-dhuit-a-bhriid", "text": "Dia dhuit, a Bhríd.", "speaker": "daire", "note": "the learner's line in the session-3 turn — model reading" },
+    { "slug": "taa-a-fhios-agam", "text": "Tá a fhios agam.", "speaker": "brid" }
+  ]
+}

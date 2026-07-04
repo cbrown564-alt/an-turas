@@ -30,6 +30,11 @@
             { "txt": "Slán!", "ok": false, "why": "That's “goodbye” — a little early, you only just met him." }
           ]
         },
+        { "type": "echo",
+          "context": "He nods, pleased — then says it once more, slower, and waits. He wants to hear it in your mouth.",
+          "s": "Dia is Muire dhuit.", "who": "Dáire — then you",
+          "g": "God and Mary to you — the reply that raises the greeting",
+          "ph": "JEE-a iss MWIR-eh GWIT" },
         { "type": "scene",
           "beats": [
             { "n": "He sets down the chisel and puts a hand to his chest." },
@@ -282,6 +287,14 @@
             { "txt": "a man", "ok": false, "why": "That would be fear, no fada. féar — long é — is grass." }
           ]
         },
+        { "type": "listen",
+          "context": "Dáire turns his back so you can't watch his mouth — only listen.",
+          "prompt": "Éist — which word did he say?",
+          "say": "féar",
+          "opts": [
+            { "txt": "féar — grass", "ok": true, "why": "You heard the stretch — the é held long. That length is the fada doing its work." },
+            { "txt": "fear — man", "ok": false, "why": "Listen for the stretch: féar holds its vowel longer than fear does." }
+          ]},
         { "type": "choice",
           "prompt": "In “cáil” (fame), is the c broad or slender?",
           "opts": [
@@ -294,6 +307,14 @@
           "prompt": "Carve the name as it should be.",
           "placeholder": "Type the corrected name", "check": "exact", "answer": "Seán", "fada": true,
           "hint": "Use the fada keys below the box." },
+        { "type": "listen",
+          "context": "One more, back still turned.",
+          "prompt": "Which did he say?",
+          "say": "Seán",
+          "opts": [
+            { "txt": "Seán — the name", "ok": true, "why": "Both begin with the slender “sh” — the e is the signpost. The held á is what names the man." },
+            { "txt": "sean — old", "ok": false, "why": "Both start with “sh” here — the difference is the fada: Seán holds its á long." }
+          ]},
         { "type": "scene",
           "beats": [
             { "n": "He wipes the dust smooth and says the old spelling law aloud, half chant, half proverb — the rule every Irish writer since has obeyed:" },

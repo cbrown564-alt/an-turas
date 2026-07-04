@@ -117,6 +117,27 @@ struct MatchBlock: Decodable {
     let pairs: [[String]]
 }
 
+/// Ear before eye: the prompt is audio — the learner picks the written form
+/// they heard. Falls back to a skip affordance when the device has no voice.
+struct ListenBlock: Decodable {
+    let context: String?
+    let prompt: String
+    let say: String
+    let opts: [ChoiceOption]
+}
+
+/// Say it aloud, hear yourself beside the model. No grading — carvers learn
+/// by ear, and pronunciation scoring is deliberately punted (STRATEGY U8).
+struct EchoBlock: Decodable {
+    let context: String?
+    let s: String
+    let who: String?
+    let g: String
+    let ph: String?
+
+    var beat: SpeechBeat { SpeechBeat(s: s, who: who, g: g, ph: ph) }
+}
+
 struct InscriptionBlock: Decodable {
     let word: String
     let caption: String
@@ -148,6 +169,8 @@ enum Page: Decodable {
     case assemble(AssembleBlock)
     case typein(TypeInBlock)
     case match(MatchBlock)
+    case listen(ListenBlock)
+    case echo(EchoBlock)
     case inscription(InscriptionBlock)
     case seanfhocal(SeanfhocalBlock)
     case artifact
@@ -164,6 +187,8 @@ enum Page: Decodable {
         case "assemble":    self = .assemble(try AssembleBlock(from: decoder))
         case "typein":      self = .typein(try TypeInBlock(from: decoder))
         case "match":       self = .match(try MatchBlock(from: decoder))
+        case "listen":      self = .listen(try ListenBlock(from: decoder))
+        case "echo":        self = .echo(try EchoBlock(from: decoder))
         case "inscription": self = .inscription(try InscriptionBlock(from: decoder))
         case "seanfhocal":  self = .seanfhocal(try SeanfhocalBlock(from: decoder))
         case "artifact":    self = .artifact
@@ -177,7 +202,7 @@ enum Page: Decodable {
 
     var isExercise: Bool {
         switch self {
-        case .choice, .assemble, .typein, .match: return true
+        case .choice, .assemble, .typein, .match, .listen, .echo: return true
         default: return false
         }
     }
@@ -186,7 +211,7 @@ enum Page: Decodable {
         switch self {
         case .scene: return .scene
         case .note: return .note
-        case .choice, .assemble, .typein, .match: return .exercise
+        case .choice, .assemble, .typein, .match, .listen, .echo: return .exercise
         case .inscription, .seanfhocal, .artifact, .fin: return .feature
         }
     }

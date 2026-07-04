@@ -176,6 +176,12 @@ struct SessionView: View {
         case .match(let match):
             MatchView(block: match, onSolved: { solved(page) })
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .listen(let listen):
+            ListenView(block: listen, onSolved: { solved(page) })
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .echo(let echo):
+            EchoView(block: echo, activeGloss: $activeGloss, onSolved: { solved(page) })
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .inscription(let inscription):
             InscriptionPageView(block: inscription)
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
@@ -201,6 +207,8 @@ struct SessionView: View {
         case .note:         return "nóta gramadaí"
         case .choice, .assemble, .typein, .match:
                             return "cleachtadh"
+        case .listen:       return "éist"
+        case .echo:         return "abair é"
         case .inscription:  return "an chloch"
         case .seanfhocal:   return "seanfhocal"
         case .artifact:     return "déantán"
@@ -313,75 +321,8 @@ private struct ScenePageView: View {
     }
 }
 
-/// Slugline — where and when, set the way a carver would chalk a label:
-/// small, spaced, with a short rule underneath.
-private struct Slugline: View {
-    let text: String
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(text.uppercased())
-                .font(.system(size: 11, weight: .semibold))
-                .kerning(1.8)
-                .foregroundStyle(Theme.inkFaint)
-                .lineSpacing(4)
-            Rectangle()
-                .fill(Theme.stone)
-                .frame(width: 44, height: 1.5)
-        }
-    }
-}
-
-/// A line of spoken Irish — the reason the learner is here, so it gets the
-/// display type. The dotted moss underline is the same gloss affordance as in
-/// prose; tapping anywhere opens the meaning.
-private struct SpeechBeatView: View {
-    let beat: SpeechBeat
-    let onTap: () -> Void
-
-    var body: some View {
-        Button {
-            Haptics.tap()
-            onTap()
-        } label: {
-            VStack(alignment: .leading, spacing: 8) {
-                if let who = beat.who {
-                    Text(who.uppercased())
-                        .font(.system(size: 10.5, weight: .semibold))
-                        .kerning(1.5)
-                        .foregroundStyle(Theme.inkFaint)
-                }
-                (Text("“")
-                 + Text(beat.s).underline(true, pattern: .dot, color: Theme.moss.opacity(0.45))
-                 + Text("”"))
-                    .font(.system(size: 25, weight: .semibold, design: .serif))
-                    .foregroundStyle(Theme.ink)
-                    .lineSpacing(5)
-                    .multilineTextAlignment(.leading)
-                if let ph = beat.ph {
-                    Text(ph)
-                        .font(.system(size: 12.5, weight: .medium))
-                        .kerning(0.4)
-                        .foregroundStyle(Theme.inkFaint)
-                }
-            }
-            .padding(.leading, 17)
-            // The carved groove sizes to the words, like a stroke to its letter.
-            .overlay(alignment: .leading) {
-                RoundedRectangle(cornerRadius: 1.5)
-                    .fill(Theme.stone)
-                    .frame(width: 3)
-                    .padding(.vertical, 3)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(CarvePress())
-        .padding(.vertical, 4)
-        .accessibilityLabel("\(beat.who ?? "Spoken"): \(beat.s)")
-        .accessibilityHint("Shows the meaning")
-    }
-}
+// Slugline and SpeechBeatView live in Beats.swift — echo pages and dialogue
+// turns set the same type a scene does.
 
 // MARK: - Note pages
 // The manual register: a lichen-washed page (applied by the scaffold), title
@@ -469,6 +410,7 @@ private struct SeanfhocalPageView: View {
                 .italic()
                 .foregroundStyle(Theme.inkSoft)
                 .multilineTextAlignment(.center)
+            SoundRow(text: block.ga, hint: nil, label: "éist — hear it said")
             Rectangle()
                 .fill(Theme.lichen)
                 .frame(width: 44, height: 1.5)
