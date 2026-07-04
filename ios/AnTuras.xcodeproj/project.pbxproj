@@ -1,0 +1,350 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F1A60A93AE894AEED3BF0E5 /* AnTurasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FF4D8B7082E2477A6D5D83 /* AnTurasApp.swift */; };
+		2159FE1A69E55A351A572F02 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5DDA39E54C0E111ED23C9E /* SessionView.swift */; };
+		2261B462E25008FDEB3CCC31 /* ExerciseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45DFEE46F0BF3EB93A2CE2 /* ExerciseViews.swift */; };
+		3D4DC9F46D78F9E227C2FCDF /* ArtifactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8222FF923CA8EEAC43EBA19C /* ArtifactView.swift */; };
+		4B51ECDA2373D4D233BD210C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F0B9DF36A7A1A806DDFBC2 /* Models.swift */; };
+		67160852FC74F0B31872D8DE /* chapter1.json in Resources */ = {isa = PBXBuildFile; fileRef = FEED52D58CA52E7BC9EA4159 /* chapter1.json */; };
+		7701F0900B48CC0E9D5B154A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE14D49BCB22BF02EF8087A6 /* Theme.swift */; };
+		83F46CF664B0213C51C75027 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCEF1C9F6D2DD55218E5486 /* AppState.swift */; };
+		8506E382A60FBBFD25DED58E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52460D2F0305161BC3AF94A /* MapView.swift */; };
+		B30F060A8ABF321BB31F0A43 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D48D0E32F66600DB0CA46AA /* CoverView.swift */; };
+		E7AE1D983E54B31CDC1686CB /* Ogham.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A806D8C653B1FC0A245A1B5 /* Ogham.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0C5DDA39E54C0E111ED23C9E /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		11987CAE4054C1FC81E9E792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2D48D0E32F66600DB0CA46AA /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
+		3855760E1F84F5E302464F54 /* AnTuras.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AnTuras.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A806D8C653B1FC0A245A1B5 /* Ogham.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ogham.swift; sourceTree = "<group>"; };
+		8222FF923CA8EEAC43EBA19C /* ArtifactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactView.swift; sourceTree = "<group>"; };
+		8BCEF1C9F6D2DD55218E5486 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		98F0B9DF36A7A1A806DDFBC2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		C6FF4D8B7082E2477A6D5D83 /* AnTurasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnTurasApp.swift; sourceTree = "<group>"; };
+		CE14D49BCB22BF02EF8087A6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		D52460D2F0305161BC3AF94A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		EC45DFEE46F0BF3EB93A2CE2 /* ExerciseViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViews.swift; sourceTree = "<group>"; };
+		FEED52D58CA52E7BC9EA4159 /* chapter1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = chapter1.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1C598D92CAB754E3E9D294B3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FEED52D58CA52E7BC9EA4159 /* chapter1.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		528089DBCD40F3FB05F00F0F = {
+			isa = PBXGroup;
+			children = (
+				83AF27BBB51B5E9779A8FD94 /* AnTuras */,
+				A5B2612F851951AE42588066 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		83AF27BBB51B5E9779A8FD94 /* AnTuras */ = {
+			isa = PBXGroup;
+			children = (
+				C6FF4D8B7082E2477A6D5D83 /* AnTurasApp.swift */,
+				8BCEF1C9F6D2DD55218E5486 /* AppState.swift */,
+				8222FF923CA8EEAC43EBA19C /* ArtifactView.swift */,
+				2D48D0E32F66600DB0CA46AA /* CoverView.swift */,
+				EC45DFEE46F0BF3EB93A2CE2 /* ExerciseViews.swift */,
+				11987CAE4054C1FC81E9E792 /* Info.plist */,
+				D52460D2F0305161BC3AF94A /* MapView.swift */,
+				98F0B9DF36A7A1A806DDFBC2 /* Models.swift */,
+				4A806D8C653B1FC0A245A1B5 /* Ogham.swift */,
+				0C5DDA39E54C0E111ED23C9E /* SessionView.swift */,
+				CE14D49BCB22BF02EF8087A6 /* Theme.swift */,
+				1C598D92CAB754E3E9D294B3 /* Resources */,
+			);
+			path = AnTuras;
+			sourceTree = "<group>";
+		};
+		A5B2612F851951AE42588066 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3855760E1F84F5E302464F54 /* AnTuras.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3E2660E8833CD11BC9BCBCA6 /* AnTuras */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B321EDE80A563A2AC5DC9464 /* Build configuration list for PBXNativeTarget "AnTuras" */;
+			buildPhases = (
+				24ADAAED4E2FFD892D4245F5 /* Sources */,
+				C84557D087F36A179ED78E93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AnTuras;
+			packageProductDependencies = (
+			);
+			productName = AnTuras;
+			productReference = 3855760E1F84F5E302464F54 /* AnTuras.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		917BE851C7EB0537DB64410E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					3E2660E8833CD11BC9BCBCA6 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 76E477B8E7636CC34669F896 /* Build configuration list for PBXProject "AnTuras" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 528089DBCD40F3FB05F00F0F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A5B2612F851951AE42588066 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3E2660E8833CD11BC9BCBCA6 /* AnTuras */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C84557D087F36A179ED78E93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67160852FC74F0B31872D8DE /* chapter1.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24ADAAED4E2FFD892D4245F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F1A60A93AE894AEED3BF0E5 /* AnTurasApp.swift in Sources */,
+				83F46CF664B0213C51C75027 /* AppState.swift in Sources */,
+				3D4DC9F46D78F9E227C2FCDF /* ArtifactView.swift in Sources */,
+				B30F060A8ABF321BB31F0A43 /* CoverView.swift in Sources */,
+				2261B462E25008FDEB3CCC31 /* ExerciseViews.swift in Sources */,
+				8506E382A60FBBFD25DED58E /* MapView.swift in Sources */,
+				4B51ECDA2373D4D233BD210C /* Models.swift in Sources */,
+				E7AE1D983E54B31CDC1686CB /* Ogham.swift in Sources */,
+				2159FE1A69E55A351A572F02 /* SessionView.swift in Sources */,
+				7701F0900B48CC0E9D5B154A /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		276F892549B2523CC4180582 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AnTuras/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ie.anturas.AnTuras;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		810CC68ABD6A3FB32954D6A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8B65994F965615ADF8EDBA8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AnTuras/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ie.anturas.AnTuras;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		CDEADAACCD31B2CC024EF89C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		76E477B8E7636CC34669F896 /* Build configuration list for PBXProject "AnTuras" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDEADAACCD31B2CC024EF89C /* Debug */,
+				810CC68ABD6A3FB32954D6A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B321EDE80A563A2AC5DC9464 /* Build configuration list for PBXNativeTarget "AnTuras" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				276F892549B2523CC4180582 /* Debug */,
+				8B65994F965615ADF8EDBA8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 917BE851C7EB0537DB64410E /* Project object */;
+}

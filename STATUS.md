@@ -5,9 +5,9 @@ and visual narrative. English → Irish only. Updated 2026-07-04.*
 
 ## Where we are
 
-**Phase 1 — vertical slice.** Strategy is set, first content chapter is written, and
-the HTML playtest prototype validated the core ideas. Now porting the prototype to
-SwiftUI (in progress this session).
+**Phase 1 — vertical slice.** Strategy is set, first content chapter is written, the
+HTML prototype validated the core ideas, and the SwiftUI port is running on the iOS
+simulator. Next: playtesters.
 
 ## Work completed
 
@@ -20,13 +20,13 @@ SwiftUI (in progress this session).
 | 2026-07-04 | ABAIR licensing mapped: commercial use needs written TCD consent; bundling rights are the key ask; contact info@abair.ie; fallbacks ranked | `docs/ABAIR.md` |
 | 2026-07-04 | Chapter 1 vertical slice built and published as playable HTML prototype: 5 sessions, carve-progress mechanic, ogham name-carver artifact | `prototype/index.html` |
 | 2026-07-04 | HTML slice reviewed: **mechanics, design taste, and flow approved** → platform decision D3, port to SwiftUI | `docs/DECISIONS.md` D3 |
+| 2026-07-04 | SwiftUI prototype built and verified on iPhone 17 Pro simulator (iOS 26): all 5 sessions, content as bundled JSON, ogham Canvas renderer, carve-progress bar, gloss sheets, fada keys; debug deep-links (`--map`, `--session N`, `--reveal N`) for screenshots | `ios/` (xcodegen project) |
 
 ## Immediate next steps
 
-1. **SwiftUI prototype** (in progress) — native port of the Chapter 1 slice: content
-   as bundled JSON (proving the content-as-data pipeline), session player with all
-   block types, carve-progress bar, ogham renderer in Canvas, New York serif for
-   narrative. Target: runs on iOS simulator today, TestFlight-able soon after.
+1. **TestFlight build** — the SwiftUI prototype runs on simulator; next is a signed
+   device build + TestFlight distribution so playtesters hold the real thing.
+   (Needs an Apple Developer account/team set in `ios/project.yml`.)
 2. **Native-speaker review** of all Chapter 1 Irish (forms currently conservative
    Connacht-leaning drafts; specific open calls flagged, e.g. *Cé thusa?* vs *Cé
    tusa?*). Blocker for testing beyond friendly audiences.

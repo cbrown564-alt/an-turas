@@ -1,0 +1,25 @@
+name: AnTuras
+options:
+  bundleIdPrefix: ie.anturas
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+targets:
+  AnTuras:
+    type: application
+    platform: iOS
+    sources:
+      - path: AnTuras
+    info:
+      path: AnTuras/Info.plist
+      properties:
+        CFBundleDisplayName: An Turas
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.9"
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]: "NO"
