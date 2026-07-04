@@ -131,6 +131,53 @@ enum Block: Decodable {
     }
 }
 
+// MARK: - Page derivation
+// A session is read as pages, not one long scroll. Two groupings, toggleable in
+// DEBUG builds so both can be felt on-device:
+//   .scenes — film grammar: consecutive narrative blocks share a page (a page
+//             turn means the scene changed); everything else is its own page.
+//   .blocks — every block is its own page.
+
+enum PagingMode: String, CaseIterable {
+    case scenes
+    case blocks
+}
+
+extension Session {
+    /// Pages as groups of block indices.
+    func pageGroups(_ mode: PagingMode) -> [[Int]] {
+        switch mode {
+        case .blocks:
+            return blocks.indices.map { [$0] }
+        case .scenes:
+            var pages: [[Int]] = []
+            var run: [Int] = []
+            var runParas = 0
+            for (index, block) in blocks.enumerated() {
+                if case .scene(let scene) = block {
+                    // Merge consecutive scenes while the page stays readable.
+                    if !run.isEmpty && runParas + scene.paras.count > 5 {
+                        pages.append(run)
+                        run = []
+                        runParas = 0
+                    }
+                    run.append(index)
+                    runParas += scene.paras.count
+                } else {
+                    if !run.isEmpty {
+                        pages.append(run)
+                        run = []
+                        runParas = 0
+                    }
+                    pages.append([index])
+                }
+            }
+            if !run.isEmpty { pages.append(run) }
+            return pages
+        }
+    }
+}
+
 enum ContentLoader {
     static func chapter1() -> Chapter {
         guard let url = Bundle.main.url(forResource: "chapter1", withExtension: "json"),

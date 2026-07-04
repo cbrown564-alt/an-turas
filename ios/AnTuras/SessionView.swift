@@ -1,39 +1,61 @@
 import SwiftUI
 
-// MARK: - Session view model: beats reveal one at a time; exercises carve strokes.
+// MARK: - Session as pages
+// A session reads as a sequence of scene-pages, turned by swiping — the page
+// turn replaces "Ar aghaidh" everywhere in narrative. Exercises gate the turn:
+// pages beyond an unsolved exercise simply don't exist yet, so the swipe
+// rubber-bands off the wall (with a dull knock). Solving carves the stroke and
+// the page turns itself. The next page is trailed as faint chalk marks — the
+// carver chalks before he cuts.
 
 final class SessionVM: ObservableObject {
     let session: Session
     let sessionIndex: Int
 
-    @Published var visibleCount = 1
-    @Published var exercisesDone = 0
+    @Published var pages: [[Int]]
+    @Published var currentPage: Int?
+    @Published var solvedBlocks: Set<Int> = []
     @Published var finished = false
 
-    var exercisesTotal: Int { session.exerciseCount }
+    var initialPage = 0
 
-    init(session: Session, sessionIndex: Int) {
+    var exercisesTotal: Int { session.exerciseCount }
+    /// Index of the synthetic completion page, one past the content pages.
+    var completionIndex: Int { pages.count }
+
+    init(session: Session, sessionIndex: Int, mode: PagingMode) {
         self.session = session
         self.sessionIndex = sessionIndex
-        // Debug: --reveal N pre-reveals beats for screenshots/snapshot tests.
+        pages = session.pageGroups(mode)
+        // Debug: --reveal N jumps to page N, pre-solving exercises before it.
         let args = ProcessInfo.processInfo.arguments
         if let flagIndex = args.firstIndex(of: "--reveal"),
            args.indices.contains(flagIndex + 1),
-           let count = Int(args[flagIndex + 1]) {
-            visibleCount = min(max(count, 1), session.blocks.count)
+           let target = Int(args[flagIndex + 1]) {
+            for page in pages.prefix(min(target, pages.count)) {
+                for blockIndex in page where session.blocks[blockIndex].isExercise {
+                    solvedBlocks.insert(blockIndex)
+                }
+            }
+            initialPage = min(max(target, 0), completionIndex)
         }
     }
 
-    func advance() {
-        if visibleCount < session.blocks.count {
-            visibleCount += 1
-        } else {
-            finished = true
-        }
+    func isPageSolved(_ page: Int) -> Bool {
+        guard pages.indices.contains(page) else { return true }
+        return pages[page].allSatisfy { !session.blocks[$0].isExercise || solvedBlocks.contains($0) }
     }
 
-    func exerciseSolved() {
-        exercisesDone += 1
+    /// The furthest page that exists right now: everything up to (and including)
+    /// the first unsolved exercise page, or the completion page if none remain.
+    var furthestUnlocked: Int {
+        for page in pages.indices where !isPageSolved(page) { return page }
+        return completionIndex
+    }
+
+    func regroup(_ mode: PagingMode) {
+        pages = session.pageGroups(mode)
+        currentPage = min(currentPage ?? 0, furthestUnlocked)
     }
 }
 
@@ -42,59 +64,58 @@ struct SessionView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @StateObject private var vm: SessionVM
+    @AppStorage("turas_paging") private var pagingRaw = PagingMode.scenes.rawValue
     @State private var activeGloss: Gloss?
-    @State private var appeared = false
+    @State private var visited: Set<Int> = []
+    @State private var launched = false
 
     init(sessionIndex: Int) {
         // Content is loaded once by AppState; load again here only to seed the VM
         // before the environment object is available (prototype-grade shortcut).
         let session = ContentLoader.chapter1().sessions[sessionIndex]
-        _vm = StateObject(wrappedValue: SessionVM(session: session, sessionIndex: sessionIndex))
+        let mode = PagingMode(rawValue:
+            UserDefaults.standard.string(forKey: "turas_paging") ?? "") ?? .scenes
+        _vm = StateObject(wrappedValue:
+            SessionVM(session: session, sessionIndex: sessionIndex, mode: mode))
     }
 
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView {
-                VStack(alignment: .leading, spacing: 26) {
-                    ForEach(0..<vm.visibleCount, id: \.self) { index in
-                        beatRow(index)
-                    }
-                    if vm.finished {
-                        completionBanner
-                            .id("fin")
-                            .transition(beatTransition)
-                    }
-                }
-                .padding(.horizontal, 22)
-                .padding(.top, 18)
-                .padding(.bottom, 60)
-                .frame(maxWidth: 640)
-                .opacity(appeared ? 1 : 0)
-                .offset(y: appeared || reduceMotion ? 0 : 14)
-            }
-            .onAppear {
-                guard !appeared else { return }
-                withAnimation(reduceMotion ? .easeOut(duration: 0.2) : Motion.rise) {
-                    appeared = true
+        ScrollView(.horizontal) {
+            HStack(spacing: 0) {
+                ForEach(0...vm.furthestUnlocked, id: \.self) { page in
+                    pageView(page)
+                        .containerRelativeFrame(.horizontal)
                 }
             }
-            .onChange(of: vm.visibleCount) { _, newCount in
-                withAnimation(.easeOut(duration: 0.35)) {
-                    proxy.scrollTo(newCount - 1, anchor: .top)
-                }
+            .scrollTargetLayout()
+        }
+        .scrollTargetBehavior(.paging)
+        .scrollPosition(id: $vm.currentPage)
+        .scrollIndicators(.hidden)
+        .modifier(OverscrollKnock(active: vm.furthestUnlocked < vm.completionIndex))
+        .onAppear {
+            guard !launched else { return }
+            launched = true
+            visited.insert(vm.initialPage)
+            vm.currentPage = vm.initialPage
+        }
+        .onChange(of: vm.currentPage) { old, new in
+            guard let new else { return }
+            visited.insert(new)
+            if let old, old != new { Haptics.tick() }   // the page settles
+            if new == vm.completionIndex, !vm.finished {
+                vm.finished = true
+                if !state.done[vm.sessionIndex] { state.markDone(vm.sessionIndex) }
+                Haptics.flourish()
             }
-            .onChange(of: vm.finished) { _, isFinished in
-                if isFinished {
-                    if !state.done[vm.sessionIndex] { state.markDone(vm.sessionIndex) }
-                    Haptics.flourish()
-                    withAnimation { proxy.scrollTo("fin", anchor: .top) }
-                }
-            }
+        }
+        .onChange(of: pagingRaw) { _, raw in
+            vm.regroup(PagingMode(rawValue: raw) ?? .scenes)
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CarveBarView(total: vm.exercisesTotal, done: vm.exercisesDone)
+                CarveBarView(total: vm.exercisesTotal, done: vm.solvedBlocks.count)
                     .frame(width: 170)
             }
             ToolbarItem(placement: .topBarTrailing) {
@@ -103,70 +124,235 @@ struct SessionView: View {
                     .kerning(1.2)
                     .foregroundStyle(Theme.inkFaint)
             }
+            #if DEBUG
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    Picker("Grouping", selection: $pagingRaw) {
+                        Text("Scene pages").tag(PagingMode.scenes.rawValue)
+                        Text("Block pages").tag(PagingMode.blocks.rawValue)
+                    }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                        .font(.system(size: 14))
+                        .foregroundStyle(Theme.inkFaint)
+                }
+            }
+            #endif
         }
         .sheet(item: $activeGloss) { GlossSheet(gloss: $0) }
     }
 
-    private var beatTransition: AnyTransition {
-        reduceMotion
-            ? .opacity
-            : .asymmetric(
-                insertion: .offset(y: 26).combined(with: .opacity),
-                removal: .opacity)
-    }
+    // MARK: - Pages
 
-    private func beatRow(_ index: Int) -> some View {
-        let isLive = index == vm.visibleCount - 1 && !vm.finished
-        return BlockView(
-            block: vm.session.blocks[index],
-            isLast: isLive,
-            activeGloss: $activeGloss,
-            onContinue: {
-                Haptics.tap()
-                withAnimation(reduceMotion ? .easeOut(duration: 0.25) : Motion.rise) {
-                    vm.advance()
-                }
-            },
-            onSolved: {
-                Haptics.chisel()
-                withAnimation(Motion.pop) { vm.exerciseSolved() }
-            })
-            .id(index)
-            // The live beat holds full ink; the story already read settles back.
-            // When the session finishes everything returns for rereading.
-            .opacity(isLive || vm.finished ? 1 : 0.68)
-            .animation(.easeOut(duration: 0.45), value: vm.visibleCount)
-            .animation(.easeOut(duration: 0.45), value: vm.finished)
-            .transition(beatTransition)
-    }
-
-    private var completionBanner: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            VStack(alignment: .leading, spacing: 10) {
-                HStack(spacing: 4) {
-                    ForEach(0..<3, id: \.self) { i in
-                        TickMark(variant: 2)
-                            .stroke(Theme.moss, style: StrokeStyle(lineWidth: 3, lineCap: .round))
-                            .frame(width: 12, height: 22)
+    @ViewBuilder
+    private func pageView(_ page: Int) -> some View {
+        ZStack {
+            // Pages render on first visit, so a freshly turned page inks itself
+            // in — and inscriptions don't carve while offscreen.
+            if visited.contains(page) {
+                if page == vm.completionIndex {
+                    CompletionPage(sessionIndex: vm.sessionIndex) {
+                        Haptics.tap()
+                        dismiss()
                     }
+                } else {
+                    contentPage(page)
                 }
-                Text(vm.sessionIndex < 4
-                     ? "Seisiún \(vm.sessionIndex + 1) carved. The next stone on the path is waiting."
-                     : "Caibidil a hAon complete — do mhúsaem awaits on the map.")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundStyle(Theme.moss)
-            }
-            .padding(16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Theme.mossTint)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Theme.moss.opacity(0.45), lineWidth: 1))
-
-            PrimaryButton(title: "Ar ais chuig an léarscáil →", fullWidth: true) {
-                Haptics.tap()
-                dismiss()
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private func contentPage(_ page: Int) -> some View {
+        ScrollView(.vertical) {
+            VStack(alignment: .leading, spacing: 24) {
+                ForEach(Array(vm.pages[page].enumerated()), id: \.element) { row, blockIndex in
+                    BlockView(
+                        block: vm.session.blocks[blockIndex],
+                        isLast: false,
+                        activeGloss: $activeGloss,
+                        onContinue: {},
+                        onSolved: { solved(block: blockIndex, page: page) })
+                        .modifier(RiseIn(order: row, reduceMotion: reduceMotion))
+                }
+            }
+            .padding(.horizontal, 22)
+            .padding(.top, 18)
+            .padding(.bottom, 90)
+            .frame(maxWidth: 640, alignment: .leading)
+            .frame(maxWidth: .infinity)
+        }
+        .scrollBounceBehavior(.basedOnSize)
+        .overlay(alignment: .bottomTrailing) {
+            if let label = teaseLabel(after: page) {
+                ChalkTease(label: label)
+            }
+        }
+    }
+
+    /// What the chalk marks trail: the next page's nature, if it exists yet.
+    private func teaseLabel(after page: Int) -> String? {
+        let next = page + 1
+        guard next <= vm.furthestUnlocked else { return nil }
+        guard next < vm.completionIndex else { return "críoch" }
+        switch vm.session.blocks[vm.pages[next][0]] {
+        case .scene:        return "an scéal"
+        case .note:         return "nóta gramadaí"
+        case .choice, .assemble, .typein, .match:
+                            return "cleachtadh"
+        case .inscription:  return "an chloch"
+        case .seanfhocal:   return "seanfhocal"
+        case .artifact:     return "déantán"
+        case .fin:          return "críoch"
+        }
+    }
+
+    private func solved(block blockIndex: Int, page: Int) {
+        Haptics.chisel()
+        withAnimation(Motion.pop) {
+            _ = vm.solvedBlocks.insert(blockIndex)
+        }
+        // Let the verdict land, then the page turns itself.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak vm] in
+            guard let vm, vm.currentPage == page, vm.isPageSolved(page) else { return }
+            withAnimation(.easeInOut(duration: 0.5)) {
+                vm.currentPage = page + 1
+            }
+        }
+    }
+}
+
+// MARK: - Page furniture
+
+/// Staggered entrance for a freshly turned page: rows settle like dust.
+private struct RiseIn: ViewModifier {
+    let order: Int
+    let reduceMotion: Bool
+    @State private var shown = false
+
+    func body(content: Content) -> some View {
+        content
+            .opacity(shown ? 1 : 0)
+            .offset(y: shown || reduceMotion ? 0 : 14)
+            .onAppear {
+                withAnimation(reduceMotion
+                    ? .easeOut(duration: 0.2)
+                    : Motion.rise.delay(Double(order) * 0.12)) { shown = true }
+            }
+    }
+}
+
+/// Faint chalked stroke-guides at the turn edge — the carver chalks before he
+/// cuts. Appearing is the invitation: the next page already exists.
+private struct ChalkTease: View {
+    let label: String
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var breathing = false
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Text(label.uppercased())
+                .font(.system(size: 10, weight: .semibold))
+                .kerning(1.4)
+                .foregroundStyle(Theme.inkFaint)
+            HStack(spacing: 4) {
+                ForEach(0..<3, id: \.self) { _ in
+                    ChalkGuide()
+                        .stroke(Theme.stone, style: StrokeStyle(
+                            lineWidth: 2.5, lineCap: .round, dash: [3, 3]))
+                        .frame(width: 9, height: 15)
+                }
+            }
+        }
+        .padding(.trailing, 22)
+        .padding(.bottom, 20)
+        .opacity(breathing ? 0.95 : 0.5)
+        .onAppear {
+            if reduceMotion {
+                breathing = true
+            } else {
+                withAnimation(.easeInOut(duration: 1.6).repeatForever(autoreverses: true)) {
+                    breathing = true
+                }
+            }
+        }
+        .transition(.opacity.combined(with: .offset(x: 10)))
+        .allowsHitTesting(false)
+        .accessibilityLabel("Next: \(label). Swipe left to continue.")
+    }
+}
+
+/// One slanted chalk guide-mark, waiting for the chisel.
+private struct ChalkGuide: Shape {
+    func path(in rect: CGRect) -> Path {
+        var p = Path()
+        p.move(to: CGPoint(x: rect.minX, y: rect.maxY))
+        p.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+        return p
+    }
+}
+
+/// The dull knock of the chisel skipping: swiping at a gated page. iOS 18+
+/// (overscroll detection); iOS 17 still gets the visual rubber-band.
+private struct OverscrollKnock: ViewModifier {
+    let active: Bool
+    @State private var fired = false
+
+    func body(content: Content) -> some View {
+        if #available(iOS 18.0, *) {
+            content.onScrollGeometryChange(for: CGFloat.self) { geo in
+                geo.contentOffset.x + geo.containerSize.width - geo.contentSize.width
+            } action: { _, overshoot in
+                if overshoot > 28, active, !fired {
+                    fired = true
+                    Haptics.error()
+                } else if overshoot < 6, fired {
+                    fired = false
+                }
+            }
+        } else {
+            content
+        }
+    }
+}
+
+/// The final page: the session sets, the flourish has already sounded.
+private struct CompletionPage: View {
+    let sessionIndex: Int
+    let onExit: () -> Void
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    var body: some View {
+        VStack(spacing: 18) {
+            Spacer()
+            HStack(spacing: 6) {
+                ForEach(0..<3, id: \.self) { _ in
+                    TickMark(variant: 2)
+                        .stroke(Theme.moss, style: StrokeStyle(lineWidth: 3, lineCap: .round))
+                        .frame(width: 12, height: 22)
+                }
+            }
+            .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+            Text(sessionIndex < 4
+                 ? "Seisiún \(sessionIndex + 1) — snoite"
+                 : "Caibidil a hAon — críochnaithe")
+                .font(.system(size: 26, weight: .semibold, design: .serif))
+                .foregroundStyle(Theme.ink)
+                .modifier(RiseIn(order: 1, reduceMotion: reduceMotion))
+            Text(sessionIndex < 4
+                 ? "Carved. The next stone on the path is waiting."
+                 : "Complete. Do mhúsaem awaits on the map.")
+                .font(.system(size: 15))
+                .foregroundStyle(Theme.inkSoft)
+                .multilineTextAlignment(.center)
+                .modifier(RiseIn(order: 2, reduceMotion: reduceMotion))
+            Spacer()
+            PrimaryButton(title: "Ar ais chuig an léarscáil →", fullWidth: true, action: onExit)
+                .modifier(RiseIn(order: 3, reduceMotion: reduceMotion))
+        }
+        .padding(.horizontal, 22)
+        .padding(.bottom, 24)
+        .frame(maxWidth: 640)
     }
 }
 
