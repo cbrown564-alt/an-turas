@@ -5,6 +5,7 @@
     {
       "ga": "Dia Dhuit",
       "en": "The first greeting, and who you are",
+      "hook": "Dáire will ask where you come from. Have an answer ready — anywhere in the world counts.",
       "pages": [
         { "type": "scene", "place": "Maigh Eo · c. 480 AD",
           "beats": [
@@ -95,7 +96,14 @@
     {
       "ga": "Cé as Thú?",
       "en": "Where you're from — placenames are poems",
+      "hook": "A family walks in from the east tomorrow, bringing Dáire a stone's worth of work — and you a lesson in what your surname is made of.",
       "pages": [
+        { "type": "recarve",
+          "intro": "The path down to the strand passes yesterday's practice stone. Overnight the wind has been at the chalk marks — the softest strokes always go first.",
+          "items": [
+            { "answer": "Dia dhuit", "en": "hello — the first words he gave you", "from": "Seisiún 1" }
+          ]
+        },
         { "type": "scene", "place": "An trá — the strand, morning",
           "beats": [
             { "n": "The tide far out, oystercatchers crying over the flats. Dáire is already at the stone." },
@@ -164,7 +172,14 @@
     {
       "ga": "Mac agus Iníon",
       "en": "Son and daughter — your surname was carved first",
+      "hook": "Tomorrow Dáire makes you listen before he lets you near the chisel — ears first, hands after. Bríd finds this very funny.",
       "pages": [
+        { "type": "recarve",
+          "intro": "You come early — the family arrives today. On the way past the practice stone you see the wind has been busy again.",
+          "items": [
+            { "answer": "Cé as thú", "en": "where are you from? — yesterday's question", "from": "Seisiún 2" }
+          ]
+        },
         { "type": "scene", "place": "Clós an tsaoir — the carver's yard",
           "beats": [
             { "n": "They arrive mid-morning: a widow in a dark cloak, her grown son beside her, walking like a man carrying something heavier than the satchel on his back. They have come to order a stone." },
@@ -263,7 +278,14 @@
     {
       "ga": "Caol le Caol",
       "en": "Learning to hear — the secret of Irish spelling",
+      "hook": "Tomorrow you carve — for the widow, for Colmán son of Rónán. Everything this week was practice for that.",
       "pages": [
+        { "type": "recarve",
+          "intro": "No chisel today, Bríd warned. But the practice stone still keeps your account, and the welcome Dáire spread before you has softened overnight.",
+          "items": [
+            { "answer": "Céad míle fáilte", "en": "a hundred thousand welcomes — his, when you told him your county", "from": "Seisiún 2" }
+          ]
+        },
         { "type": "scene", "place": "An clós arís — the yard again",
           "beats": [
             { "n": "He will not let you near the chisel. Instead he smooths a patch of dust with his palm and scratches letters into it with a stick." },
@@ -349,6 +371,12 @@
       "ga": "An Chloch",
       "en": "The stone — carving day",
       "pages": [
+        { "type": "recarve",
+          "intro": "Carving day. You come down the path in the half-dark before dawn — and stop, the way you always do now, at the first stone. One last time before the real one.",
+          "items": [
+            { "answer": "Dia is Muire dhuit", "en": "the reply that raises the greeting — your very first phrase", "from": "Seisiún 1" }
+          ]
+        },
         { "type": "scene", "place": "Breacadh an lae — dawn, no wind",
           "beats": [
             { "n": "The pillar lies across two trestles, its edge chalked where the strokes will go. Bríd holds the line taut; Dáire holds the chisel out to you." },

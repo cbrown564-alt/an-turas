@@ -10,6 +10,10 @@ struct CoverView: View {
 
     @State private var appeared = false
 
+    /// A learner with strokes behind them is greeted as a returner, not a
+    /// stranger — the cover is the first breath of the retention loop.
+    private var returning: Bool { state.done.contains(true) }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 28) {
@@ -38,14 +42,27 @@ struct CoverView: View {
                     .lineSpacing(4)
                     .cascade(2, appeared: appeared, reduceMotion: reduceMotion)
 
+                if returning {
+                    Text(state.allDone
+                         ? "Tá tú ar ais — agus tá do chloch ag fanacht sa mhúsaem."
+                         : "Tá tú ar ais — you're back. Dáire is at the stone already; he kept your place.")
+                        .font(.system(size: 15, design: .serif))
+                        .italic()
+                        .foregroundStyle(Theme.ink)
+                        .lineSpacing(4)
+                        .cascade(2, appeared: appeared, reduceMotion: reduceMotion)
+                }
+
                 Button {
                     Haptics.tap()
                     onBegin()
                 } label: {
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Tosaigh an turas")
+                        Text(returning ? "Lean ort — continue" : "Tosaigh an turas")
                             .font(.system(size: 17, weight: .semibold))
-                        Text("Begin the journey · 5 sessions · ~10 min each")
+                        Text(returning
+                             ? "Back to the path · your strokes are safe"
+                             : "Begin the journey · 5 sessions · ~10 min each")
                             .font(.system(size: 11))
                             .opacity(0.75)
                     }

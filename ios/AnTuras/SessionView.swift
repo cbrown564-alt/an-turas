@@ -132,7 +132,8 @@ struct SessionView: View {
             // in — and inscriptions don't carve while offscreen.
             if visited.contains(page) {
                 if page == vm.completionIndex {
-                    CompletionPage(sessionIndex: vm.sessionIndex) {
+                    CompletionPage(sessionIndex: vm.sessionIndex,
+                                   hook: vm.session.hook) {
                         Haptics.tap()
                         dismiss()
                     }
@@ -187,6 +188,9 @@ struct SessionView: View {
             // is earned on speaking, but the page waits to be turned by hand.
             TurnView(block: turn, activeGloss: $activeGloss,
                      onSolved: { solved(page, autoTurn: false) })
+        case .recarve(let recarve):
+            RecarveView(block: recarve, onSolved: { solved(page) })
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .inscription(let inscription):
             InscriptionPageView(block: inscription)
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
@@ -215,6 +219,7 @@ struct SessionView: View {
         case .listen:       return "éist"
         case .echo:         return "abair é"
         case .turn:         return "do líne"
+        case .recarve:      return "athsnoí"
         case .inscription:  return "an chloch"
         case .seanfhocal:   return "seanfhocal"
         case .artifact:     return "déantán"
@@ -522,9 +527,11 @@ private struct OverscrollKnock: ViewModifier {
     }
 }
 
-/// The final page: the session sets, the flourish has already sounded.
+/// The final page: the session sets, the flourish has already sounded — and
+/// the hook names tomorrow's reason to come back before the door closes.
 private struct CompletionPage: View {
     let sessionIndex: Int
+    let hook: String?
     let onExit: () -> Void
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -552,9 +559,23 @@ private struct CompletionPage: View {
                 .foregroundStyle(Theme.inkSoft)
                 .multilineTextAlignment(.center)
                 .modifier(RiseIn(order: 2, reduceMotion: reduceMotion))
+            if let hook {
+                VStack(spacing: 10) {
+                    Eyebrow(text: "Amárach", color: Theme.lichen)
+                    Text(hook)
+                        .font(.system(size: 15.5, design: .serif))
+                        .italic()
+                        .foregroundStyle(Theme.ink)
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(4)
+                        .frame(maxWidth: 340)
+                }
+                .padding(.top, 18)
+                .modifier(RiseIn(order: 3, reduceMotion: reduceMotion))
+            }
             Spacer()
             PrimaryButton(title: "Ar ais chuig an léarscáil →", fullWidth: true, action: onExit)
-                .modifier(RiseIn(order: 3, reduceMotion: reduceMotion))
+                .modifier(RiseIn(order: 4, reduceMotion: reduceMotion))
         }
         .padding(.horizontal, 22)
         .padding(.bottom, 24)

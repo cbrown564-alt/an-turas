@@ -13,6 +13,9 @@ struct Chapter: Decodable {
 struct Session: Decodable {
     let ga: String
     let en: String
+    /// The amárach tease shown on this session's completion page — the
+    /// cliffhanger that names tomorrow's reason to return.
+    let hook: String?
     let pages: [Page]
 
     var exerciseCount: Int {
@@ -141,6 +144,24 @@ struct MatchBlock: Decodable {
     let pairs: [[String]]
 }
 
+/// One weathered phrase on the path back: the learner re-types it (fadas
+/// and all) to restore the groove. Vowels erode first — in ogham they are
+/// the smallest notches on the stemline — so the weathered display drops
+/// them and the English cue plus what remains carries the retrieval.
+struct RecarveItem: Decodable, Identifiable {
+    let answer: String
+    let en: String
+    let from: String?
+    var id: String { answer }
+}
+
+/// Review dressed as return, never as card debt (SPINE rule 6): sessions
+/// 2–5 open on the path back past earlier stones, weathered by the wind.
+struct RecarveBlock: Decodable {
+    let intro: String?
+    let items: [RecarveItem]
+}
+
 /// Ear before eye: the prompt is audio — the learner picks the written form
 /// they heard. Falls back to a skip affordance when the device has no voice.
 struct ListenBlock: Decodable {
@@ -196,6 +217,7 @@ enum Page: Decodable {
     case listen(ListenBlock)
     case echo(EchoBlock)
     case turn(TurnBlock)
+    case recarve(RecarveBlock)
     case inscription(InscriptionBlock)
     case seanfhocal(SeanfhocalBlock)
     case artifact
@@ -215,6 +237,7 @@ enum Page: Decodable {
         case "listen":      self = .listen(try ListenBlock(from: decoder))
         case "echo":        self = .echo(try EchoBlock(from: decoder))
         case "turn":        self = .turn(try TurnBlock(from: decoder))
+        case "recarve":     self = .recarve(try RecarveBlock(from: decoder))
         case "inscription": self = .inscription(try InscriptionBlock(from: decoder))
         case "seanfhocal":  self = .seanfhocal(try SeanfhocalBlock(from: decoder))
         case "artifact":    self = .artifact
@@ -228,8 +251,10 @@ enum Page: Decodable {
 
     var isExercise: Bool {
         switch self {
-        case .choice, .assemble, .typein, .match, .listen, .echo, .turn: return true
-        default: return false
+        case .choice, .assemble, .typein, .match, .listen, .echo, .turn, .recarve:
+            return true
+        default:
+            return false
         }
     }
 
@@ -238,7 +263,8 @@ enum Page: Decodable {
         // A turn reads as story, not drill — it composes like a scene.
         case .scene, .turn: return .scene
         case .note: return .note
-        case .choice, .assemble, .typein, .match, .listen, .echo: return .exercise
+        case .choice, .assemble, .typein, .match, .listen, .echo, .recarve:
+            return .exercise
         case .inscription, .seanfhocal, .artifact, .fin: return .feature
         }
     }

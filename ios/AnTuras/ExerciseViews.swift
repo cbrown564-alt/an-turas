@@ -298,23 +298,7 @@ struct TypeInView: View {
                 }
                 .shake(shakeCount)
                 if block.fada {
-                    HStack(spacing: 6) {
-                        ForEach(["á", "é", "í", "ó", "ú"], id: \.self) { fada in
-                            Button(fada) {
-                                guard !solved else { return }
-                                Haptics.tap()
-                                text.append(fada)
-                            }
-                            .font(.system(size: 16, design: .serif))
-                            .foregroundStyle(Theme.ink)
-                            .padding(.vertical, 7)
-                            .padding(.horizontal, 13)
-                            .background(Theme.raised)
-                            .clipShape(RoundedRectangle(cornerRadius: 6))
-                            .overlay(RoundedRectangle(cornerRadius: 6).stroke(Theme.line, lineWidth: 1))
-                            .buttonStyle(CarvePress())
-                        }
-                    }
+                    FadaKeyRow(text: $text, disabled: solved)
                 }
                 if let hint = block.hint, verdict == nil {
                     Text(hint)
@@ -520,6 +504,33 @@ struct MatchView: View {
                 if flash == item {
                     withAnimation(.easeOut(duration: 0.3)) { flash = nil }
                 }
+            }
+        }
+    }
+}
+
+/// The five long vowels, one tap each — Irish text entry without fighting
+/// the system keyboard. Shared by type-in and re-carve exercises.
+struct FadaKeyRow: View {
+    @Binding var text: String
+    var disabled = false
+
+    var body: some View {
+        HStack(spacing: 6) {
+            ForEach(["á", "é", "í", "ó", "ú"], id: \.self) { fada in
+                Button(fada) {
+                    guard !disabled else { return }
+                    Haptics.tap()
+                    text.append(fada)
+                }
+                .font(.system(size: 16, design: .serif))
+                .foregroundStyle(Theme.ink)
+                .padding(.vertical, 7)
+                .padding(.horizontal, 13)
+                .background(Theme.raised)
+                .clipShape(RoundedRectangle(cornerRadius: 6))
+                .overlay(RoundedRectangle(cornerRadius: 6).stroke(Theme.line, lineWidth: 1))
+                .buttonStyle(CarvePress())
             }
         }
     }
