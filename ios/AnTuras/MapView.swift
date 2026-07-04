@@ -77,6 +77,15 @@ struct MapView: View {
             Text("A stone-carver on the Mayo coast has work to finish, and you have a language to reclaim.")
                 .font(.system(size: 15))
                 .foregroundStyle(Theme.inkSoft)
+            // Returning learners land here, not on the cover — the map owns
+            // the welcome back.
+            if state.done.contains(true), !state.allDone {
+                Text("Tá tú ar ais — you're back. Dáire kept your place.")
+                    .font(.system(size: 14.5, design: .serif))
+                    .italic()
+                    .foregroundStyle(Theme.moss)
+                    .padding(.top, 2)
+            }
         }
     }
 

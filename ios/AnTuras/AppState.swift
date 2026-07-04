@@ -31,8 +31,26 @@ final class AppState: ObservableObject {
         if doneFlags.count != chapter.sessions.count {
             doneFlags = Array(repeating: false, count: chapter.sessions.count)
         }
+        var name = saved.name
+
+        // Debug seeding for screenshots/snapshot tests, alongside --map,
+        // --session and --reveal: `--name Niamh` sets the learner name,
+        // `--done N` marks the first N sessions carved.
+        #if DEBUG
+        let args = ProcessInfo.processInfo.arguments
+        if let flagIndex = args.firstIndex(of: "--name"),
+           args.indices.contains(flagIndex + 1) {
+            name = args[flagIndex + 1]
+        }
+        if let flagIndex = args.firstIndex(of: "--done"),
+           args.indices.contains(flagIndex + 1),
+           let count = Int(args[flagIndex + 1]) {
+            for index in doneFlags.indices { doneFlags[index] = index < count }
+        }
+        #endif
+
         done = doneFlags
-        learnerName = saved.name
+        learnerName = name
     }
 
     var allDone: Bool { done.allSatisfy { $0 } }

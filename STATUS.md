@@ -24,6 +24,7 @@ simulator. Next: playtesters.
 | 2026-07-04 | Native-feel overhaul ("the chisel"): NavigationStack with back-swipe + iOS 18 zoom transition; CoreHaptics vocabulary (chisel strike per correct answer, stroke ticks, completion flourish, error knock); ogham stones carve themselves stroke-by-stroke; map redesigned as an ogham stemline path with session numbers as strokes; story beats rise on springs, past beats dim; assemble tiles fly via matchedGeometryEffect; shake on wrong answers; Reduce Motion respected throughout; verified light + dark on simulator | `ios/AnTuras/` (`Haptics.swift` new) |
 | 2026-07-04 | Sessions re-architected as swiped pages ("chalk before carve"): horizontal scene-paging replaces the vertical click-to-reveal flow; consecutive narrative blocks share a page, exercises gate the turn (pages beyond an unsolved exercise don't exist — swipe rubber-bands with a dull knock, iOS 18+); solving auto-turns the page after the verdict lands; next page trailed as breathing chalk guide-marks naming what's coming; synthetic completion page per session (flourish on arrival); DEBUG toolbar toggle between scene-pages and block-pages groupings; `--reveal N` now jumps to page N with earlier exercises pre-solved | `ios/AnTuras/` (SessionView, Models) |
 | 2026-07-04 | Page redesign ("three registers") after review found pages monotonous and top-pinned. Block-pages toggle removed — scene pages won. Pages are now **authored in content, not derived**: chapter1.json restructured so each session is a list of typed pages; scene paras became beats, with spoken Irish as *data* (speaker, meaning, rough sound) rather than inline links; exercises carry an optional in-world context line. Spoken Irish is the hero primitive: display serif against a carved groove, pronunciation beneath, tap for meaning. Sluglines (place · time, small caps + short rule) mark scene changes. Notes are full-bleed lichen-washed manual pages with specimen pairs on a hanging rule. Exercises lost the grey card — register mark (three chalk strokes · CLEACHTADH), italic story beat, serif prompt, elements raised directly on the page. Register-specific composition: scenes/features sit at the optical centre, notes/exercises anchor at chapter-start depth. All registers verified light + dark on simulator | `ios/AnTuras/` (chapter1.json, Models, SessionView, ExerciseViews, ArtifactView) |
+| 2026-07-04 | **Six new primitives** (second experimental wave). (1) *Sound*: bundled-clip audio pipeline — clips first (`Resources/Audio/<slug>`, manifest for the provider bake-off), system ga-IE voice second (Apple ships none as of iOS 26 — confirmed), graceful per-line silence last; ears on speech beats, glosses, seanfhocal. New `listen` page (ear-before-eye minimal pairs: féar/fear, Seán/sean in S4) and `echo` page (record yourself beside the model, ungraded — U8 punt; mic permission; skip hatch). (2) *Turns*: `turn` page — the scene pauses on your line; two chalk-dashed replies, both acceptable Irish, no fail state; choosing carves it as TUSA and the scene answers each differently; {name} interpolation (S3: meeting Bríd). (3) *Weathering*: `recarve` pages open S2–5 — earlier phrases weathered (vowels erode to middots), re-typed fadas-and-all to restore the groove; doubles as return acknowledgment (tá tú ar ais), which also now greets returns on map + cover; sessions carry an authored `hook` shown under AMÁRACH on the completion page. (4) *Lens*: `lens` feature page — Killala peels to Cill Ala, morphemes step out (S2). (5) *The hand*: artifact stone is now carved by the learner's own finger, base→top past chalk guides, tick per stroke; finished stone exports via ShareLink as an image card ("my name in ogham"). (6) Exercise polish: all non-note registers at optical centre; match = stone (serif + groove, raised) vs chalk (flat sans) with a thread drawn across the gutter per locked pair. Debug seeding args `--name`, `--done`. All verified light + dark on simulator | `ios/AnTuras/` (Speech, Beats, EchoView, TurnView, RecarveView, LensView new; Models, SessionView, ExerciseViews, Ogham, ArtifactView, MapView, CoverView, AppState, chapter1.json, project.yml) |
 
 ## Immediate next steps
 
@@ -33,12 +34,18 @@ simulator. Next: playtesters.
 2. **Native-speaker review** of all Chapter 1 Irish (forms currently conservative
    Connacht-leaning drafts; specific open calls flagged, e.g. *Cé thusa?* vs *Cé
    tusa?*). Blocker for testing beyond friendly audiences.
-3. **ABAIR technical evaluation** — run the Chapter 1 script through their Conamara
-   voices (free, no permission needed), then send the one-page commercial enquiry
-   (`docs/ABAIR.md` steps 1–2).
+3. **TTS bake-off** — generate Chapter 1's 21 lines (manifest at
+   `ios/AnTuras/Resources/Audio/manifest.json`) with ABAIR Conamara voices (web
+   demo — evaluation only, output must not be bundled before written consent),
+   ElevenLabs (`.env` key present; Irish-accent voices + eleven_v3), and
+   gemini-3-flash (often beat ElevenLabs in CB's standard tests). Pick per-line
+   winners, drop clips into `Resources/Audio/` — every ear in the app opens
+   automatically. Note: **iOS has no ga-IE system voice**, so bundled clips are
+   the only real path. Then send the ABAIR commercial enquiry (`docs/ABAIR.md`).
 4. **Recruit 10–20 playtesters** from target personas (r/gaeilge, Irish-language
    Discords, a Conradh na Gaeilge branch, diaspora groups). The one question:
-   *did anything pull you back for session two?*
+   *did anything pull you back for session two?* (The slice now has three
+   return mechanics to measure: recarve pages, amárach hooks, tá-tú-ar-ais.)
 
 ## Long-term plan
 
@@ -60,8 +67,10 @@ simulator. Next: playtesters.
 ## Open questions being carried
 
 - Retention mechanic beyond narrative pull (STRATEGY.md U3) — the playtest exists to
-  answer this.
-- Audio: ABAIR terms unknown until they respond; hybrid human/TTS assumed.
+  answer this; recarve/hooks/return-greeting are now in the slice to be measured.
+- Audio: provider bake-off pending (ABAIR vs ElevenLabs vs gemini-3-flash) for
+  scratch clips; ABAIR terms unknown until they respond; hybrid human/TTS assumed
+  long-term. No iOS system voice exists for Irish — bundled clips are the path.
 - Frame device carrying the learner between eras (SPINE.md, open creative question).
 - Business model timing: freemium subscription assumed; grant-funding strings to be
   understood before accepting (U6).
