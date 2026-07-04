@@ -2,6 +2,19 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D3 — Prototype platform: SwiftUI (2026-07-04)
+
+**Decision:** The HTML vertical slice validated the basic mechanics, design taste,
+and flow. Further validation requires native feel — the prototype moves to SwiftUI.
+
+**Why:** Retention and "does it feel cared-for" judgments can't be trusted from a
+browser page; the product is an iOS app and testers should hold the real thing.
+
+**Consequences:** `ios/` hosts an xcodegen-managed SwiftUI app (An Turas). Chapter
+content moves to bundled JSON — the first real artifact of the content-as-data
+pipeline (STRATEGY.md Phase 2). The HTML prototype (`prototype/index.html`) is
+frozen as the design reference; design changes land in Swift from now on.
+
 ## D2 — Dialect policy (2026-07-04)
 
 **Decision:** Connacht Irish first. Expand to all three dialects over time. Ulster
