@@ -635,7 +635,7 @@ struct ListenView: View {
 
     private var silentFallback: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("This one needs a voice, and the chapter's audio hasn't been carved yet — the voices arrive with the TTS bake-off. The ear exercise steps aside for today.")
+            Text("This one needs a voice, and we don't have a clip for it yet. The ear steps aside until the line is recorded.")
                 .font(.system(size: 14))
                 .foregroundStyle(Theme.inkSoft)
                 .lineSpacing(4)

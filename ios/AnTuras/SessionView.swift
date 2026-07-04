@@ -445,7 +445,7 @@ private struct FinPageView: View {
                           font: .system(size: 15.5), lineSpacing: 5)
                     .foregroundStyle(Theme.inkSoft)
             }
-            Text("An Turas — prototype, Caibidil 1 vertical slice · Connacht Irish first · Draft content awaiting native-speaker review · Audio pending ABAIR licensing · Your progress lives only on this device.")
+            Text("An Turas — prototype, Caibidil 1 vertical slice · Connacht Irish first · Draft content awaiting native-speaker review · Draft TTS (Gemini 3.1) · Your progress lives only on this device.")
                 .font(.system(size: 11))
                 .foregroundStyle(Theme.inkFaint)
                 .lineSpacing(3)

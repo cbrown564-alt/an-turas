@@ -1,7 +1,7 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-04.*
+and visual narrative. English → Irish only. Updated 2026-07-05.*
 
 ## Where we are
 
@@ -26,23 +26,23 @@ simulator. Next: playtesters.
 | 2026-07-04 | Page redesign ("three registers") after review found pages monotonous and top-pinned. Block-pages toggle removed — scene pages won. Pages are now **authored in content, not derived**: chapter1.json restructured so each session is a list of typed pages; scene paras became beats, with spoken Irish as *data* (speaker, meaning, rough sound) rather than inline links; exercises carry an optional in-world context line. Spoken Irish is the hero primitive: display serif against a carved groove, pronunciation beneath, tap for meaning. Sluglines (place · time, small caps + short rule) mark scene changes. Notes are full-bleed lichen-washed manual pages with specimen pairs on a hanging rule. Exercises lost the grey card — register mark (three chalk strokes · CLEACHTADH), italic story beat, serif prompt, elements raised directly on the page. Register-specific composition: scenes/features sit at the optical centre, notes/exercises anchor at chapter-start depth. All registers verified light + dark on simulator | `ios/AnTuras/` (chapter1.json, Models, SessionView, ExerciseViews, ArtifactView) |
 | 2026-07-04 | **Six new primitives** (second experimental wave). (1) *Sound*: bundled-clip audio pipeline — clips first (`Resources/Audio/<slug>`, manifest for the provider bake-off), system ga-IE voice second (Apple ships none as of iOS 26 — confirmed), graceful per-line silence last; ears on speech beats, glosses, seanfhocal. New `listen` page (ear-before-eye minimal pairs: féar/fear, Seán/sean in S4) and `echo` page (record yourself beside the model, ungraded — U8 punt; mic permission; skip hatch). (2) *Turns*: `turn` page — the scene pauses on your line; two chalk-dashed replies, both acceptable Irish, no fail state; choosing carves it as TUSA and the scene answers each differently; {name} interpolation (S3: meeting Bríd). (3) *Weathering*: `recarve` pages open S2–5 — earlier phrases weathered (vowels erode to middots), re-typed fadas-and-all to restore the groove; doubles as return acknowledgment (tá tú ar ais), which also now greets returns on map + cover; sessions carry an authored `hook` shown under AMÁRACH on the completion page. (4) *Lens*: `lens` feature page — Killala peels to Cill Ala, morphemes step out (S2). (5) *The hand*: artifact stone is now carved by the learner's own finger, base→top past chalk guides, tick per stroke; finished stone exports via ShareLink as an image card ("my name in ogham"). (6) Exercise polish: all non-note registers at optical centre; match = stone (serif + groove, raised) vs chalk (flat sans) with a thread drawn across the gutter per locked pair. Debug seeding args `--name`, `--done`. All verified light + dark on simulator | `ios/AnTuras/` (Speech, Beats, EchoView, TurnView, RecarveView, LensView new; Models, SessionView, ExerciseViews, Ogham, ArtifactView, MapView, CoverView, AppState, chapter1.json, project.yml) |
 
+| 2026-07-04 | **TTS bake-off (round 2):** Gemini 3.1 Flash TTS (`gemini-3.1-flash-tts-preview`) regenerated 21/21; auto-jury removed — manual review via `tools/tts-bakeoff/review.html`; `winners.json` template for per-line picks; Irish TTS landscape researched (`docs/TTS-research.md`) | `tools/tts-bakeoff/`, `docs/TTS-research.md` |
+
+| 2026-07-05 | **TTS decision:** Gemini 3.1 Flash TTS selected for playtest clips (quite good); ElevenLabs + Gemini 2.5 rejected on pronunciation; Azure `ga-IE` scheduled as follow-up bake-off | `docs/TTS-research.md` |
+
 ## Immediate next steps
 
-1. **TestFlight build** — the SwiftUI prototype runs on simulator; next is a signed
-   device build + TestFlight distribution so playtesters hold the real thing.
-   (Needs an Apple Developer account/team set in `ios/project.yml`.)
-2. **Native-speaker review** of all Chapter 1 Irish (forms currently conservative
-   Connacht-leaning drafts; specific open calls flagged, e.g. *Cé thusa?* vs *Cé
-   tusa?*). Blocker for testing beyond friendly audiences.
-3. **TTS bake-off** — generate Chapter 1's 21 lines (manifest at
-   `ios/AnTuras/Resources/Audio/manifest.json`) with ABAIR Conamara voices (web
-   demo — evaluation only, output must not be bundled before written consent),
-   ElevenLabs (`.env` key present; Irish-accent voices + eleven_v3), and
-   gemini-3-flash (often beat ElevenLabs in CB's standard tests). Pick per-line
-   winners, drop clips into `Resources/Audio/` — every ear in the app opens
-   automatically. Note: **iOS has no ga-IE system voice**, so bundled clips are
-   the only real path. Then send the ABAIR commercial enquiry (`docs/ABAIR.md`).
-4. **Recruit 10–20 playtesters** from target personas (r/gaeilge, Irish-language
+1. **Install Gemini 3.1 TTS clips** — set `bundle_winner: gemini-3-flash` per line in
+   `tools/tts-bakeoff/winners.json`, run `python bakeoff.py install`, regenerate Xcode
+   project. Ears open across Chapter 1.
+2. **TestFlight build** — signed device build + TestFlight once audio is installed.
+   Needs Apple Developer account/team in `ios/project.yml`.
+3. **Azure `ga-IE` bake-off (follow-up)** — add Orla/Colm to the pipeline; compare
+   against Gemini 3.1 on fada pairs and full chapter (`docs/TTS-research.md`).
+4. **Native-speaker review** of Chapter 1 Irish text and TTS clips — blocker for
+   testing beyond friendly audiences.
+5. **Send ABAIR commercial enquiry** — draft at `docs/ABAIR-enquiry.md`.
+6. **Recruit 10–20 playtesters** from target personas (r/gaeilge, Irish-language
    Discords, a Conradh na Gaeilge branch, diaspora groups). The one question:
    *did anything pull you back for session two?* (The slice now has three
    return mechanics to measure: recarve pages, amárach hooks, tá-tú-ar-ais.)
@@ -68,9 +68,9 @@ simulator. Next: playtesters.
 
 - Retention mechanic beyond narrative pull (STRATEGY.md U3) — the playtest exists to
   answer this; recarve/hooks/return-greeting are now in the slice to be measured.
-- Audio: provider bake-off pending (ABAIR vs ElevenLabs vs gemini-3-flash) for
-  scratch clips; ABAIR terms unknown until they respond; hybrid human/TTS assumed
-  long-term. No iOS system voice exists for Irish — bundled clips are the path.
+- Audio: **Gemini 3.1 Flash TTS** for playtest clips; **Azure `ga-IE`** follow-up
+  bake-off; **ABAIR** licensing for long-term dialect fidelity. ElevenLabs and
+  Gemini 2.5 rejected on pronunciation (`docs/TTS-research.md`).
 - Frame device carrying the learner between eras (SPINE.md, open creative question).
 - Business model timing: freemium subscription assumed; grant-funding strings to be
   understood before accepting (U6).

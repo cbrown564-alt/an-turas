@@ -95,6 +95,8 @@ architecture is offline-first (audio bundled in chapter packs), we specifically 
 
 ## Immediate actions
 
-- [ ] Run the Chapter 1 script through ABAIR's Conamara voices (step 1).
-- [ ] Draft the one-page enquiry letter (step 2) — after the vertical slice exists,
-      so we can show, not tell.
+- [x] Run the Chapter 1 script through ABAIR's Conamara voices (step 1).
+      *Done 2026-07-04 via `synthesis.abair.ie` API (`ga_MU_cmg_piper` — Munster
+      voice; Connemara web voices not on public API). Bake-off results in
+      `tools/tts-bakeoff/winners.json`; ABAIR won quality on 19/21 lines.*
+- [x] Draft the one-page enquiry letter (step 2) — `docs/ABAIR-enquiry.md`.

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Chapter 1 TTS bake-off — listen &amp; pick</title>
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; margin: 2rem; max-width: 1400px; }
+    h1 { font-weight: 600; }
+    .lede { color: #444; max-width: 70ch; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1.5rem; }
+    th, td { border-bottom: 1px solid #ddd; padding: 0.6rem 0.5rem; vertical-align: top; }
+    th { text-align: left; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; color: #666; }
+    tr.priority { background: #fff8e6; }
+    td.irish { font-family: "Iowan Old Style", "Palatino Linotype", serif; font-size: 1.1rem; }
+    td.note { font-size: 0.85rem; color: #666; max-width: 16rem; }
+    td.missing { color: #bbb; }
+    audio { width: 180px; height: 32px; }
+    .providers { font-size: 0.9rem; color: #555; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Chapter 1 TTS bake-off</h1>
+  <p class="lede">Listen across providers. <strong>Pronunciation beats polish.</strong>
+  Priority rows are minimal-pair and fada-critical lines (*féar*/*fear*, *Seán*/*sean*).
+  ABAIR is evaluation-only until TCD grants bundling rights.</p>
+  <p class="providers">Providers: ABAIR (ga_MU_cmg_piper) · ElevenLabs (eleven_v3, gle) ·
+  Gemini 3 (gemini-3.1-flash-tts-preview) · Gemini 2.5 (gemini-2.5-flash-preview-tts)</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Slug</th><th>Irish</th><th>Speaker</th>
+        <th>ABAIR</th><th>ElevenLabs</th><th>Gemini 3</th><th>Gemini 2.5</th><th>Note</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr class="priority">
+<td class="slug">feear</td>
+<td class="irish">féar</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/feear.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/feear.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/feear.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/feear.mp3"></audio></td>
+<td class="note">listen exercise — the é must be audibly long vs 'fear'</td>
+</tr><tr class="priority">
+<td class="slug">seaan</td>
+<td class="irish">Seán</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/seaan.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/seaan.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/seaan.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/seaan.mp3"></audio></td>
+<td class="note">listen exercise — the á must be audibly long vs 'sean'</td>
+</tr><tr class="priority">
+<td class="slug">mac</td>
+<td class="irish">mac</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/mac.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/mac.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/mac.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/mac.mp3"></audio></td>
+<td></td>
+</tr><tr class="priority">
+<td class="slug">dearthaair</td>
+<td class="irish">deartháir</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/dearthaair.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/dearthaair.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/dearthaair.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/dearthaair.mp3"></audio></td>
+<td></td>
+</tr><tr class="priority">
+<td class="slug">deirfiuur</td>
+<td class="irish">deirfiúr</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/deirfiuur.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/deirfiuur.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/deirfiuur.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/deirfiuur.mp3"></audio></td>
+<td></td>
+</tr><tr class="priority">
+<td class="slug">cill-ala</td>
+<td class="irish">Cill Ala</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/cill-ala.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/cill-ala.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/cill-ala.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/cill-ala.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">dia-dhuit</td>
+<td class="irish">Dia dhuit!</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/dia-dhuit.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/dia-dhuit.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/dia-dhuit.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/dia-dhuit.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">dia-is-muire-dhuit</td>
+<td class="irish">Dia is Muire dhuit.</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/dia-is-muire-dhuit.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/dia-is-muire-dhuit.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/dia-is-muire-dhuit.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/dia-is-muire-dhuit.mp3"></audio></td>
+<td class="note">also used as Bríd's reaction line in the session-3 turn; one clip serves both until speakers split</td>
+</tr><tr class="">
+<td class="slug">is-mise-daaire</td>
+<td class="irish">Is mise Dáire.</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/is-mise-daaire.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/is-mise-daaire.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/is-mise-daaire.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/is-mise-daaire.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">cee-thusa</td>
+<td class="irish">Cé thusa?</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/cee-thusa.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/cee-thusa.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/cee-thusa.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/cee-thusa.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">ceen-t-ainm-ataa-ort</td>
+<td class="irish">Cén t-ainm atá ort?</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/ceen-t-ainm-ataa-ort.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/ceen-t-ainm-ataa-ort.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/ceen-t-ainm-ataa-ort.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/ceen-t-ainm-ataa-ort.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">slaan-go-fooill</td>
+<td class="irish">Slán go fóill.</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/slaan-go-fooill.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/slaan-go-fooill.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/slaan-go-fooill.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/slaan-go-fooill.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">cee-as-thuu</td>
+<td class="irish">Cé as thú?</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/cee-as-thuu.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/cee-as-thuu.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/cee-as-thuu.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/cee-as-thuu.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">is-as-maigh-eo-mee</td>
+<td class="irish">Is as Maigh Eo mé.</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/is-as-maigh-eo-mee.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/is-as-maigh-eo-mee.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/is-as-maigh-eo-mee.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/is-as-maigh-eo-mee.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">ceead-miile-faailte</td>
+<td class="irish">Céad míle fáilte.</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/ceead-miile-faailte.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/ceead-miile-faailte.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/ceead-miile-faailte.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/ceead-miile-faailte.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">seo-briid-miniion</td>
+<td class="irish">Seo Bríd, m'iníon.</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/seo-briid-miniion.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/seo-briid-miniion.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/seo-briid-miniion.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/seo-briid-miniion.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">colmaan-mac-roonaain</td>
+<td class="irish">Colmán mac Rónáin.</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/colmaan-mac-roonaain.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/colmaan-mac-roonaain.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/colmaan-mac-roonaain.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/colmaan-mac-roonaain.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">caol-le-caol-agus-leathan-le-leathan</td>
+<td class="irish">Caol le caol agus leathan le leathan.</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/caol-le-caol-agus-leathan-le-leathan.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/caol-le-caol-agus-leathan-le-leathan.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/caol-le-caol-agus-leathan-le-leathan.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/caol-le-caol-agus-leathan-le-leathan.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">is-buaine-focal-naa-toice-an-tsaoil</td>
+<td class="irish">Is buaine focal ná toice an tsaoil.</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/is-buaine-focal-naa-toice-an-tsaoil.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/is-buaine-focal-naa-toice-an-tsaoil.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/is-buaine-focal-naa-toice-an-tsaoil.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/is-buaine-focal-naa-toice-an-tsaoil.mp3"></audio></td>
+<td></td>
+</tr><tr class="">
+<td class="slug">dia-dhuit-a-bhriid</td>
+<td class="irish">Dia dhuit, a Bhríd.</td>
+<td class="speaker">daire</td>
+<td><audio controls preload="none" src="candidates/abair/dia-dhuit-a-bhriid.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/dia-dhuit-a-bhriid.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/dia-dhuit-a-bhriid.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/dia-dhuit-a-bhriid.mp3"></audio></td>
+<td class="note">the learner's line in the session-3 turn — model reading</td>
+</tr><tr class="">
+<td class="slug">taa-a-fhios-agam</td>
+<td class="irish">Tá a fhios agam.</td>
+<td class="speaker">brid</td>
+<td><audio controls preload="none" src="candidates/abair/taa-a-fhios-agam.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/elevenlabs/taa-a-fhios-agam.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-3-flash/taa-a-fhios-agam.mp3"></audio></td>
+<td><audio controls preload="none" src="candidates/gemini-2.5-flash/taa-a-fhios-agam.mp3"></audio></td>
+<td></td>
+</tr>
+    </tbody>
+  </table>
+  <p class="lede">When done, set <code>bundle_winner</code> in
+  <code>tools/tts-bakeoff/winners.json</code> and run <code>python bakeoff.py install</code>.</p>
+</body>
+</html>

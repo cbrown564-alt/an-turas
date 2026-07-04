@@ -2,9 +2,9 @@ import AVFoundation
 
 // MARK: - An Guth — the voice.
 // Audio sources, in order of preference:
-//   1. Bundled clips (Resources/Audio/<slug>.mp3|m4a|wav) — where the real
-//      voices land once the TTS bake-off (ABAIR / ElevenLabs / Gemini) and
-//      licensing settle. See Resources/Audio/manifest.json for the line list.
+//   1. Bundled clips (Resources/Audio/<slug>.mp3|m4a|wav) — Chapter 1 clips
+//      from the TTS bake-off. Playtest path: Gemini 3.1 Flash TTS; Azure ga-IE
+//      follow-up; ABAIR eval-only until TCD licence. See winners.json + manifest.
 //   2. A system Irish voice, if one ever exists — as of iOS 26 Apple ships
 //      no ga-IE voice, so this is future-proofing, not a real path.
 //   3. Silence: every listen affordance quietly steps aside per-line, and
