@@ -58,17 +58,37 @@ enum Ogham {
 }
 
 // MARK: - Standing stone with a carved inscription
+// With `carve: true` the strokes appear one at a time, bottom → top, the way the
+// carver would cut them; `ticks: true` adds a faint haptic per stroke.
 
 struct OghamStoneView: View {
     let word: String
     var width: CGFloat = 170
+    var carve = false
+    var ticks = false
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var start: Date?
+    @State private var carveDone = false
 
     private let strokeRow: CGFloat = 13
     private let letterGap: CGFloat = 9
     private let wordGap: CGFloat = 20
     private let tick: CGFloat = 26
 
+    // Carve timing: stem first, then strokes at a careful, human pace.
+    private let stemLeadIn = 0.35
+    private let firstStrokeAt = 0.5
+    private let strokeInterval = 0.085
+    private let strokeDuration = 0.14
+
     private var letters: [Character] { Ogham.letters(for: word).letters }
+
+    private var totalStrokes: Int {
+        letters.reduce(0) { $0 + (Ogham.alphabet[$1]?.strokes ?? 0) }
+    }
+
+    private var animating: Bool { carve && !reduceMotion && !carveDone }
 
     private var stemLength: CGFloat {
         letters.reduce(CGFloat(0)) { acc, ch in
@@ -81,6 +101,44 @@ struct OghamStoneView: View {
     private var height: CGFloat { max(stemLength + 80, 240) }
 
     var body: some View {
+        TimelineView(.animation(minimumInterval: 1 / 40, paused: !animating)) { timeline in
+            let elapsed = elapsedTime(at: timeline.date)
+            let started = strokesStarted(at: elapsed)
+            stoneCanvas(elapsed: elapsed)
+                .onChange(of: started) { _, n in
+                    guard animating else { return }
+                    if ticks, n > 0 { Haptics.tick() }
+                    if n >= totalStrokes {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + strokeDuration + 0.1) {
+                            carveDone = true
+                        }
+                    }
+                }
+        }
+        .onAppear { if start == nil { start = Date() } }
+        .frame(width: width, height: height * (width / 150))
+        .accessibilityLabel("Ogham inscription: \(word)")
+    }
+
+    private func elapsedTime(at date: Date) -> Double {
+        guard animating, let start else { return .greatestFiniteMagnitude }
+        return date.timeIntervalSince(start)
+    }
+
+    private func strokesStarted(at elapsed: Double) -> Int {
+        guard elapsed < .greatestFiniteMagnitude else { return totalStrokes }
+        guard elapsed > firstStrokeAt else { return 0 }
+        return min(totalStrokes, Int((elapsed - firstStrokeAt) / strokeInterval) + 1)
+    }
+
+    /// 0…1 progress of stroke `index`, given elapsed carve time.
+    private func strokeProgress(_ index: Int, elapsed: Double) -> Double {
+        guard elapsed < .greatestFiniteMagnitude else { return 1 }
+        let begins = firstStrokeAt + Double(index) * strokeInterval
+        return min(max((elapsed - begins) / strokeDuration, 0), 1)
+    }
+
+    private func stoneCanvas(elapsed: Double) -> some View {
         Canvas { ctx, size in
             let cx = size.width / 2
             let topY: CGFloat = 42
@@ -109,41 +167,52 @@ struct OghamStoneView: View {
             ctx.fill(Path(ellipseIn: CGRect(x: cx + 9, y: size.height * 0.62, width: 10, height: 10)),
                      with: .color(Theme.lichen.opacity(0.2)))
 
-            // Stemline.
-            var stem = Path()
-            stem.move(to: CGPoint(x: cx, y: botY))
-            stem.addLine(to: CGPoint(x: cx, y: topY))
-            ctx.stroke(stem, with: .color(Theme.ink.opacity(0.55)), lineWidth: 2)
+            // Stemline, drawn bottom → top ahead of the strokes.
+            let stemP = elapsed < .greatestFiniteMagnitude
+                ? min(max(elapsed / stemLeadIn, 0), 1) : 1
+            if stemP > 0 {
+                var stem = Path()
+                stem.move(to: CGPoint(x: cx, y: botY))
+                stem.addLine(to: CGPoint(x: cx, y: botY - (botY - topY) * stemP))
+                ctx.stroke(stem, with: .color(Theme.ink.opacity(0.55)), lineWidth: 2)
+            }
 
-            // Strokes, bottom → top.
+            // Strokes, bottom → top, each cut outward from the stem.
             var y = botY - 22
-            let ink = GraphicsContext.Shading.color(Theme.ink)
+            var strokeIndex = 0
             for ch in letters {
                 if ch == " " { y -= wordGap; continue }
                 let glyph = Ogham.alphabet[ch]!
                 for _ in 0..<glyph.strokes {
-                    var p = Path()
+                    let p = strokeProgress(strokeIndex, elapsed: elapsed)
+                    strokeIndex += 1
+                    defer { y -= strokeRow }
+                    guard p > 0 else { continue }
+                    let f = CGFloat(p)
+                    var path = Path()
                     switch glyph.group {
                     case .right:
-                        p.move(to: CGPoint(x: cx, y: y)); p.addLine(to: CGPoint(x: cx + tick, y: y))
+                        path.move(to: CGPoint(x: cx, y: y))
+                        path.addLine(to: CGPoint(x: cx + tick * f, y: y))
                     case .left:
-                        p.move(to: CGPoint(x: cx - tick, y: y)); p.addLine(to: CGPoint(x: cx, y: y))
+                        path.move(to: CGPoint(x: cx, y: y))
+                        path.addLine(to: CGPoint(x: cx - tick * f, y: y))
                     case .across:
-                        p.move(to: CGPoint(x: cx - tick, y: y + 5)); p.addLine(to: CGPoint(x: cx + tick, y: y - 5))
+                        path.move(to: CGPoint(x: cx - tick, y: y + 5))
+                        path.addLine(to: CGPoint(x: cx - tick + tick * 2 * f, y: y + 5 - 10 * f))
                     case .vowel:
-                        p.move(to: CGPoint(x: cx - 8, y: y)); p.addLine(to: CGPoint(x: cx + 8, y: y))
+                        path.move(to: CGPoint(x: cx - 8 * f, y: y))
+                        path.addLine(to: CGPoint(x: cx + 8 * f, y: y))
                     case .peith:
-                        p.move(to: CGPoint(x: cx, y: y + 5))
-                        p.addQuadCurve(to: CGPoint(x: cx, y: y - 5), control: CGPoint(x: cx + 14, y: y))
+                        path.move(to: CGPoint(x: cx, y: y + 5))
+                        path.addQuadCurve(to: CGPoint(x: cx, y: y - 5), control: CGPoint(x: cx + 14, y: y))
                     }
-                    ctx.stroke(p, with: ink, style: StrokeStyle(lineWidth: 3, lineCap: .round))
-                    y -= strokeRow
+                    ctx.stroke(path, with: .color(Theme.ink.opacity(0.4 + 0.6 * p)),
+                               style: StrokeStyle(lineWidth: 3, lineCap: .round))
                 }
                 y -= letterGap
             }
         }
-        .frame(width: width, height: height * (width / 150))
-        .accessibilityLabel("Ogham inscription: \(word)")
     }
 }
 
@@ -152,37 +221,49 @@ private extension UIColor {
 }
 
 // MARK: - Carving progress bar (one stroke per solved exercise)
+// Individual marks so each new stroke pops in with a spring.
 
 struct CarveBarView: View {
     let total: Int
     let done: Int
 
     var body: some View {
-        Canvas { ctx, size in
-            let y = size.height / 2
-            var base = Path()
-            base.move(to: CGPoint(x: 4, y: y))
-            base.addLine(to: CGPoint(x: size.width - 4, y: y))
-            ctx.stroke(base, with: .color(Theme.inkFaint.opacity(0.5)), lineWidth: 1.5)
-
-            guard total > 0 else { return }
-            let pad: CGFloat = 12
-            let span = (size.width - pad * 2) / CGFloat(total)
-            for i in 0..<total {
-                let x = pad + span * (CGFloat(i) + 0.5)
-                let on = i < done
-                let color = Theme.moss.opacity(on ? 1 : 0.18)
-                var p = Path()
-                switch i % 4 {
-                case 0: p.move(to: CGPoint(x: x, y: y)); p.addLine(to: CGPoint(x: x, y: y - 9))
-                case 1: p.move(to: CGPoint(x: x, y: y)); p.addLine(to: CGPoint(x: x, y: y + 9))
-                case 2: p.move(to: CGPoint(x: x - 4, y: y + 8)); p.addLine(to: CGPoint(x: x + 4, y: y - 8))
-                default: p.move(to: CGPoint(x: x, y: y - 5)); p.addLine(to: CGPoint(x: x, y: y + 5))
+        ZStack {
+            Rectangle()
+                .fill(Theme.inkFaint.opacity(0.5))
+                .frame(height: 1.5)
+            HStack(spacing: 0) {
+                ForEach(0..<max(total, 1), id: \.self) { index in
+                    TickMark(variant: index % 4)
+                        .stroke(Theme.moss.opacity(index < done ? 1 : 0.18),
+                                style: StrokeStyle(lineWidth: 3, lineCap: .round))
+                        .frame(width: 12, height: 22)
+                        .scaleEffect(index < done ? 1 : 0.8)
+                        .animation(Motion.pop, value: done)
+                        .frame(maxWidth: .infinity)
                 }
-                ctx.stroke(p, with: .color(color), style: StrokeStyle(lineWidth: 3, lineCap: .round))
             }
+            .padding(.horizontal, 8)
         }
-        .frame(height: 30)
+        .frame(height: 26)
         .accessibilityLabel("\(done) of \(total) strokes carved")
+    }
+}
+
+/// One ogham-flavoured tick; variants echo the four stroke families.
+struct TickMark: Shape {
+    let variant: Int
+
+    func path(in rect: CGRect) -> Path {
+        var p = Path()
+        let cx = rect.midX
+        let cy = rect.midY
+        switch variant {
+        case 0: p.move(to: CGPoint(x: cx, y: cy)); p.addLine(to: CGPoint(x: cx, y: cy - 9))
+        case 1: p.move(to: CGPoint(x: cx, y: cy)); p.addLine(to: CGPoint(x: cx, y: cy + 9))
+        case 2: p.move(to: CGPoint(x: cx - 4, y: cy + 8)); p.addLine(to: CGPoint(x: cx + 4, y: cy - 8))
+        default: p.move(to: CGPoint(x: cx, y: cy - 5)); p.addLine(to: CGPoint(x: cx, y: cy + 5))
+        }
+        return p
     }
 }

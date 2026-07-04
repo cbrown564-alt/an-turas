@@ -27,27 +27,33 @@ struct ArtifactView: View {
                         .font(.system(size: 17, design: .serif))
                         .textInputAutocapitalization(.words)
                         .autocorrectionDisabled()
+                        .submitLabel(.done)
                         .onSubmit { carve() }
-                        .padding(.vertical, 8)
+                        .padding(.vertical, 10)
                         .padding(.horizontal, 12)
                         .background(Theme.raised)
-                        .clipShape(RoundedRectangle(cornerRadius: 3))
-                        .overlay(RoundedRectangle(cornerRadius: 3).stroke(Theme.line, lineWidth: 1))
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                        .overlay(RoundedRectangle(cornerRadius: 6).stroke(Theme.line, lineWidth: 1))
                     Button("Snoigh é — carve it") { carve() }
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundStyle(Theme.bg)
-                        .padding(.vertical, 9)
+                        .padding(.vertical, 11)
                         .padding(.horizontal, 14)
                         .background(Theme.ink)
-                        .clipShape(RoundedRectangle(cornerRadius: 3))
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .buttonStyle(CarvePress())
                 }
 
                 if let carved = carvedName {
                     HStack {
                         Spacer()
-                        OghamStoneView(word: carved, width: 160)
+                        // The payoff of the chapter: your own name cut stroke by
+                        // stroke, each one a tick of the chisel under your thumb.
+                        OghamStoneView(word: carved, width: 160, carve: true, ticks: true)
+                            .id(carved)
                         Spacer()
                     }
+                    .transition(.offset(y: 14).combined(with: .opacity))
                     Text("\(carved.uppercased()) — read upward from the base")
                         .font(.system(size: 12))
                         .foregroundStyle(Theme.inkFaint)
@@ -76,7 +82,8 @@ struct ArtifactView: View {
     private func carve() {
         let trimmed = name.trimmingCharacters(in: .whitespaces)
         guard !trimmed.isEmpty else { return }
-        carvedName = trimmed
+        Haptics.chisel()
+        withAnimation(Motion.settle) { carvedName = trimmed }
     }
 
     private func notesText(for carved: String) -> String {

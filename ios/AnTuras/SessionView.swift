@@ -39,12 +39,13 @@ final class SessionVM: ObservableObject {
 
 struct SessionView: View {
     @EnvironmentObject var state: AppState
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @StateObject private var vm: SessionVM
     @State private var activeGloss: Gloss?
-    let onExit: () -> Void
+    @State private var appeared = false
 
-    init(sessionIndex: Int, onExit: @escaping () -> Void) {
-        self.onExit = onExit
+    init(sessionIndex: Int) {
         // Content is loaded once by AppState; load again here only to seed the VM
         // before the environment object is available (prototype-grade shortcut).
         let session = ContentLoader.chapter1().sessions[sessionIndex]
@@ -59,13 +60,23 @@ struct SessionView: View {
                         beatRow(index)
                     }
                     if vm.finished {
-                        completionBanner.id("fin")
+                        completionBanner
+                            .id("fin")
+                            .transition(beatTransition)
                     }
                 }
                 .padding(.horizontal, 22)
                 .padding(.top, 18)
                 .padding(.bottom, 60)
                 .frame(maxWidth: 640)
+                .opacity(appeared ? 1 : 0)
+                .offset(y: appeared || reduceMotion ? 0 : 14)
+            }
+            .onAppear {
+                guard !appeared else { return }
+                withAnimation(reduceMotion ? .easeOut(duration: 0.2) : Motion.rise) {
+                    appeared = true
+                }
             }
             .onChange(of: vm.visibleCount) { _, newCount in
                 withAnimation(.easeOut(duration: 0.35)) {
@@ -75,58 +86,86 @@ struct SessionView: View {
             .onChange(of: vm.finished) { _, isFinished in
                 if isFinished {
                     if !state.done[vm.sessionIndex] { state.markDone(vm.sessionIndex) }
+                    Haptics.flourish()
                     withAnimation { proxy.scrollTo("fin", anchor: .top) }
                 }
             }
         }
-        .safeAreaInset(edge: .top, spacing: 0) { topBar }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                CarveBarView(total: vm.exercisesTotal, done: vm.exercisesDone)
+                    .frame(width: 170)
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Text("Seisiún \(vm.sessionIndex + 1)")
+                    .font(.system(size: 11, weight: .semibold))
+                    .kerning(1.2)
+                    .foregroundStyle(Theme.inkFaint)
+            }
+        }
         .sheet(item: $activeGloss) { GlossSheet(gloss: $0) }
     }
 
-    private func beatRow(_ index: Int) -> some View {
-        BlockView(
-            block: vm.session.blocks[index],
-            isLast: index == vm.visibleCount - 1 && !vm.finished,
-            activeGloss: $activeGloss,
-            onContinue: { vm.advance() },
-            onSolved: { vm.exerciseSolved() })
-            .id(index)
+    private var beatTransition: AnyTransition {
+        reduceMotion
+            ? .opacity
+            : .asymmetric(
+                insertion: .offset(y: 26).combined(with: .opacity),
+                removal: .opacity)
     }
 
-    private var topBar: some View {
-        HStack(spacing: 14) {
-            Button(action: onExit) {
-                Text("← An léarscáil")
-                    .font(.system(size: 13))
-                    .foregroundStyle(Theme.inkSoft)
-            }
-            CarveBarView(total: vm.exercisesTotal, done: vm.exercisesDone)
-                .frame(maxWidth: 280)
-            Spacer(minLength: 0)
-            Text("Seisiún \(vm.sessionIndex + 1)")
-                .font(.system(size: 11, weight: .semibold))
-                .kerning(1.2)
-                .foregroundStyle(Theme.inkFaint)
-        }
-        .padding(.horizontal, 18)
-        .padding(.vertical, 10)
-        .background(Theme.bg.opacity(0.97))
-        .overlay(Rectangle().fill(Theme.line).frame(height: 1), alignment: .bottom)
+    private func beatRow(_ index: Int) -> some View {
+        let isLive = index == vm.visibleCount - 1 && !vm.finished
+        return BlockView(
+            block: vm.session.blocks[index],
+            isLast: isLive,
+            activeGloss: $activeGloss,
+            onContinue: {
+                Haptics.tap()
+                withAnimation(reduceMotion ? .easeOut(duration: 0.25) : Motion.rise) {
+                    vm.advance()
+                }
+            },
+            onSolved: {
+                Haptics.chisel()
+                withAnimation(Motion.pop) { vm.exerciseSolved() }
+            })
+            .id(index)
+            // The live beat holds full ink; the story already read settles back.
+            // When the session finishes everything returns for rereading.
+            .opacity(isLive || vm.finished ? 1 : 0.68)
+            .animation(.easeOut(duration: 0.45), value: vm.visibleCount)
+            .animation(.easeOut(duration: 0.45), value: vm.finished)
+            .transition(beatTransition)
     }
 
     private var completionBanner: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(vm.sessionIndex < 4
-                 ? "Seisiún \(vm.sessionIndex + 1) carved. The next stone on the path is waiting."
-                 : "Caibidil a hAon complete — do mhúsaem awaits on the map.")
-                .font(.system(size: 16, weight: .semibold))
-                .foregroundStyle(Theme.moss)
-                .padding(16)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Theme.mossTint)
-                .clipShape(RoundedRectangle(cornerRadius: 4))
-                .overlay(RoundedRectangle(cornerRadius: 4).stroke(Theme.moss.opacity(0.45), lineWidth: 1))
-            PrimaryButton(title: "Ar ais chuig an léarscáil →", action: onExit)
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(spacing: 4) {
+                    ForEach(0..<3, id: \.self) { i in
+                        TickMark(variant: 2)
+                            .stroke(Theme.moss, style: StrokeStyle(lineWidth: 3, lineCap: .round))
+                            .frame(width: 12, height: 22)
+                    }
+                }
+                Text(vm.sessionIndex < 4
+                     ? "Seisiún \(vm.sessionIndex + 1) carved. The next stone on the path is waiting."
+                     : "Caibidil a hAon complete — do mhúsaem awaits on the map.")
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(Theme.moss)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Theme.mossTint)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Theme.moss.opacity(0.45), lineWidth: 1))
+
+            PrimaryButton(title: "Ar ais chuig an léarscáil →", fullWidth: true) {
+                Haptics.tap()
+                dismiss()
+            }
         }
     }
 }
@@ -163,35 +202,6 @@ struct BlockView: View {
         case .fin(let fin):
             FinView(block: fin, isLast: isLast, onContinue: onContinue)
         }
-    }
-}
-
-// MARK: - Shared buttons
-
-struct PrimaryButton: View {
-    let title: String
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            Text(title)
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(Theme.bg)
-                .padding(.vertical, 10)
-                .padding(.horizontal, 20)
-                .background(Theme.ink)
-                .clipShape(RoundedRectangle(cornerRadius: 3))
-        }
-    }
-}
-
-struct ContinueButton: View {
-    var title = "Ar aghaidh →"
-    let action: () -> Void
-
-    var body: some View {
-        PrimaryButton(title: title, action: action)
-            .padding(.top, 4)
     }
 }
 
@@ -246,9 +256,13 @@ struct NoteBlockView: View {
             }
             .padding(18)
             .background(Theme.raised)
-            .clipShape(RoundedRectangle(cornerRadius: 4))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
             .overlay(
-                RoundedRectangle(cornerRadius: 4).stroke(Theme.line, lineWidth: 1))
+                RoundedRectangle(cornerRadius: 8).stroke(Theme.line, lineWidth: 1))
+            .overlay(
+                Rectangle().fill(Theme.lichen.opacity(0.7)).frame(width: 3),
+                alignment: .leading)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
             if isLast { ContinueButton(title: "Tuigim — got it →", action: onContinue) }
         }
     }
@@ -263,7 +277,9 @@ struct InscriptionView: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Spacer()
-                OghamStoneView(word: block.word, width: 160)
+                // The inscription carves itself in, stroke by stroke, with the
+                // faint tap-tap-tap of Dáire's chisel under your fingers.
+                OghamStoneView(word: block.word, width: 160, carve: true, ticks: true)
                 Spacer()
             }
             Text(block.caption)

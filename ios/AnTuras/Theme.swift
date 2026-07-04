@@ -34,6 +34,80 @@ enum Theme {
     static var rustTint: Color { rust.opacity(0.12) }
 }
 
+// MARK: - Motion tokens: everything settles like dust after a chisel strike.
+
+enum Motion {
+    /// Default settle for content arriving or changing state.
+    static let settle = Animation.spring(response: 0.42, dampingFraction: 0.86)
+    /// Snappy overshoot for small marks popping in (carve-bar strokes, locks).
+    static let pop = Animation.spring(response: 0.32, dampingFraction: 0.55)
+    /// Slower rise for story beats entering.
+    static let rise = Animation.spring(response: 0.52, dampingFraction: 0.88)
+}
+
+/// Press physics for every tappable surface: a slight give, like touching stone.
+struct CarvePress: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.965 : 1)
+            .opacity(configuration.isPressed ? 0.82 : 1)
+            .animation(.spring(response: 0.22, dampingFraction: 0.7), value: configuration.isPressed)
+    }
+}
+
+/// Horizontal shake for a mis-strike. Drive by incrementing an Int trigger.
+struct ShakeEffect: GeometryEffect {
+    var travel: CGFloat = 6
+    var animatableData: CGFloat
+
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(CGAffineTransform(
+            translationX: travel * sin(animatableData * .pi * 2 * 3), y: 0))
+    }
+}
+
+extension View {
+    func shake(_ trigger: Int) -> some View {
+        modifier(ShakeEffect(animatableData: CGFloat(trigger)))
+            .animation(.linear(duration: 0.38), value: trigger)
+    }
+}
+
+// MARK: - Shared buttons
+
+struct PrimaryButton: View {
+    let title: String
+    var fullWidth = false
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundStyle(Theme.bg)
+                .padding(.vertical, 13)
+                .padding(.horizontal, 22)
+                .frame(maxWidth: fullWidth ? .infinity : nil)
+                .background(Theme.ink)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+        }
+        .buttonStyle(CarvePress())
+    }
+}
+
+struct ContinueButton: View {
+    var title = "Ar aghaidh →"
+    let action: () -> Void
+
+    var body: some View {
+        PrimaryButton(title: title, fullWidth: true) {
+            Haptics.tap()
+            action()
+        }
+        .padding(.top, 6)
+    }
+}
+
 // MARK: - Reusable text styles
 
 struct Eyebrow: View {
@@ -62,6 +136,7 @@ struct GlossText: View {
                 if url.scheme == "turas",
                    let idx = Int(url.lastPathComponent),
                    glosses.indices.contains(idx) {
+                    Haptics.tap()
                     activeGloss = glosses[idx]
                     return .handled
                 }
@@ -103,8 +178,10 @@ struct GlossSheet: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(20)
-        .presentationDetents([.height(130)])
+        .presentationDetents([.height(140)])
         .presentationBackground(Theme.raised)
+        .presentationCornerRadius(20)
+        .presentationDragIndicator(.visible)
     }
 }
 

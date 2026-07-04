@@ -17,6 +17,7 @@
 		83F46CF664B0213C51C75027 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCEF1C9F6D2DD55218E5486 /* AppState.swift */; };
 		8506E382A60FBBFD25DED58E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52460D2F0305161BC3AF94A /* MapView.swift */; };
 		B30F060A8ABF321BB31F0A43 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D48D0E32F66600DB0CA46AA /* CoverView.swift */; };
+		DDB874BDFF1C9A0F2FA39541 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F137EF38F91C2C2AEE955 /* Haptics.swift */; };
 		E7AE1D983E54B31CDC1686CB /* Ogham.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A806D8C653B1FC0A245A1B5 /* Ogham.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,13 +25,14 @@
 		0C5DDA39E54C0E111ED23C9E /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
 		11987CAE4054C1FC81E9E792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2D48D0E32F66600DB0CA46AA /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
-		3855760E1F84F5E302464F54 /* AnTuras.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AnTuras.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3855760E1F84F5E302464F54 /* AnTuras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnTuras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A806D8C653B1FC0A245A1B5 /* Ogham.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ogham.swift; sourceTree = "<group>"; };
 		8222FF923CA8EEAC43EBA19C /* ArtifactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactView.swift; sourceTree = "<group>"; };
 		8BCEF1C9F6D2DD55218E5486 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		98F0B9DF36A7A1A806DDFBC2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		C6FF4D8B7082E2477A6D5D83 /* AnTurasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnTurasApp.swift; sourceTree = "<group>"; };
 		CE14D49BCB22BF02EF8087A6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		D26F137EF38F91C2C2AEE955 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		D52460D2F0305161BC3AF94A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		EC45DFEE46F0BF3EB93A2CE2 /* ExerciseViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViews.swift; sourceTree = "<group>"; };
 		FEED52D58CA52E7BC9EA4159 /* chapter1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = chapter1.json; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				8222FF923CA8EEAC43EBA19C /* ArtifactView.swift */,
 				2D48D0E32F66600DB0CA46AA /* CoverView.swift */,
 				EC45DFEE46F0BF3EB93A2CE2 /* ExerciseViews.swift */,
+				D26F137EF38F91C2C2AEE955 /* Haptics.swift */,
 				11987CAE4054C1FC81E9E792 /* Info.plist */,
 				D52460D2F0305161BC3AF94A /* MapView.swift */,
 				98F0B9DF36A7A1A806DDFBC2 /* Models.swift */,
@@ -155,6 +158,7 @@
 				3D4DC9F46D78F9E227C2FCDF /* ArtifactView.swift in Sources */,
 				B30F060A8ABF321BB31F0A43 /* CoverView.swift in Sources */,
 				2261B462E25008FDEB3CCC31 /* ExerciseViews.swift in Sources */,
+				DDB874BDFF1C9A0F2FA39541 /* Haptics.swift in Sources */,
 				8506E382A60FBBFD25DED58E /* MapView.swift in Sources */,
 				4B51ECDA2373D4D233BD210C /* Models.swift in Sources */,
 				E7AE1D983E54B31CDC1686CB /* Ogham.swift in Sources */,
@@ -173,6 +177,7 @@
 				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QCVP3CNMP6;
 				INFOPLIST_FILE = AnTuras/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -248,6 +253,7 @@
 				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QCVP3CNMP6;
 				INFOPLIST_FILE = AnTuras/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
