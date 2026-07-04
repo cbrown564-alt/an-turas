@@ -60,16 +60,25 @@ enum Ogham {
 // MARK: - Standing stone with a carved inscription
 // With `carve: true` the strokes appear one at a time, bottom → top, the way the
 // carver would cut them; `ticks: true` adds a faint haptic per stroke.
+// With `handCarve: true` time stops mattering: the strokes wait as faint chalk
+// guides and are cut by the learner's own finger travelling up the edge,
+// base to top, the direction ogham is read. Reduce Motion carves instantly.
 
 struct OghamStoneView: View {
     let word: String
     var width: CGFloat = 170
     var carve = false
     var ticks = false
+    var handCarve = false
+    var onCarved: (() -> Void)? = nil
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var start: Date?
     @State private var carveDone = false
+    /// Hand mode: how far up the stem the chisel has travelled, in points.
+    @State private var carvedLength: CGFloat = 0
+    @State private var handTicked = 0
+    @State private var handDone = false
 
     private let strokeRow: CGFloat = 13
     private let letterGap: CGFloat = 9
@@ -99,25 +108,83 @@ struct OghamStoneView: View {
     }
 
     private var height: CGFloat { max(stemLength + 80, 240) }
+    private var frameHeight: CGFloat { height * (width / 150) }
+
+    /// Each stroke's distance up the stem from the base, in canvas points —
+    /// the same accounting the canvas walks, so finger and drawing agree.
+    private var strokeOffsets: [CGFloat] {
+        var offsets: [CGFloat] = []
+        var off: CGFloat = 22
+        for ch in letters {
+            if ch == " " { off += wordGap; continue }
+            let glyph = Ogham.alphabet[ch]!
+            for _ in 0..<glyph.strokes {
+                offsets.append(off)
+                off += strokeRow
+            }
+            off += letterGap
+        }
+        return offsets
+    }
+
+    private var stemSpan: CGFloat { (frameHeight - 30) - 42 }
 
     var body: some View {
-        TimelineView(.animation(minimumInterval: 1 / 40, paused: !animating)) { timeline in
-            let elapsed = elapsedTime(at: timeline.date)
-            let started = strokesStarted(at: elapsed)
-            stoneCanvas(elapsed: elapsed)
-                .onChange(of: started) { _, n in
-                    guard animating else { return }
-                    if ticks, n > 0 { Haptics.tick() }
-                    if n >= totalStrokes {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + strokeDuration + 0.1) {
-                            carveDone = true
+        Group {
+            if handCarve && !reduceMotion {
+                stoneCanvas(elapsed: 0, handLen: carvedLength)
+                    .gesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { value in
+                                let botY = frameHeight - 30
+                                let reach = min(max(botY - value.location.y, 0), stemSpan)
+                                // The chisel only cuts upward; lifting loses nothing.
+                                if reach > carvedLength {
+                                    carvedLength = reach
+                                    handProgressed()
+                                }
+                            })
+            } else {
+                TimelineView(.animation(minimumInterval: 1 / 40, paused: !animating)) { timeline in
+                    let elapsed = elapsedTime(at: timeline.date)
+                    let started = strokesStarted(at: elapsed)
+                    stoneCanvas(elapsed: elapsed, handLen: nil)
+                        .onChange(of: started) { _, n in
+                            guard animating else { return }
+                            if ticks, n > 0 { Haptics.tick() }
+                            if n >= totalStrokes {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + strokeDuration + 0.1) {
+                                    carveDone = true
+                                }
+                            }
                         }
-                    }
                 }
+            }
         }
-        .onAppear { if start == nil { start = Date() } }
-        .frame(width: width, height: height * (width / 150))
+        .onAppear {
+            if start == nil { start = Date() }
+            // Reduce Motion: the stone is carved on arrival, no gesture owed.
+            if handCarve, reduceMotion, !handDone {
+                handDone = true
+                onCarved?()
+            }
+        }
+        .frame(width: width, height: frameHeight)
         .accessibilityLabel("Ogham inscription: \(word)")
+    }
+
+    private func handProgressed() {
+        let started = strokeOffsets.filter { carvedLength > $0 }.count
+        if started > handTicked {
+            handTicked = started
+            if ticks { Haptics.tick() }
+        }
+        if started >= totalStrokes, !handDone {
+            handDone = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                onCarved?()
+            }
+        }
     }
 
     private func elapsedTime(at date: Date) -> Double {
@@ -138,7 +205,7 @@ struct OghamStoneView: View {
         return min(max((elapsed - begins) / strokeDuration, 0), 1)
     }
 
-    private func stoneCanvas(elapsed: Double) -> some View {
+    private func stoneCanvas(elapsed: Double, handLen: CGFloat?) -> some View {
         Canvas { ctx, size in
             let cx = size.width / 2
             let topY: CGFloat = 42
@@ -168,8 +235,21 @@ struct OghamStoneView: View {
                      with: .color(Theme.lichen.opacity(0.2)))
 
             // Stemline, drawn bottom → top ahead of the strokes.
-            let stemP = elapsed < .greatestFiniteMagnitude
-                ? min(max(elapsed / stemLeadIn, 0), 1) : 1
+            let stemP: CGFloat
+            if let handLen {
+                stemP = min(max(handLen / (botY - topY), 0), 1)
+            } else {
+                stemP = elapsed < .greatestFiniteMagnitude
+                    ? min(max(elapsed / stemLeadIn, 0), 1) : 1
+            }
+            if handLen != nil {
+                // The un-carved stem waits as a chalk guide under the finger.
+                var guide = Path()
+                guide.move(to: CGPoint(x: cx, y: botY))
+                guide.addLine(to: CGPoint(x: cx, y: topY))
+                ctx.stroke(guide, with: .color(Theme.ink.opacity(0.14)),
+                           style: StrokeStyle(lineWidth: 2, dash: [3, 4]))
+            }
             if stemP > 0 {
                 var stem = Path()
                 stem.move(to: CGPoint(x: cx, y: botY))
@@ -184,35 +264,50 @@ struct OghamStoneView: View {
                 if ch == " " { y -= wordGap; continue }
                 let glyph = Ogham.alphabet[ch]!
                 for _ in 0..<glyph.strokes {
-                    let p = strokeProgress(strokeIndex, elapsed: elapsed)
+                    let p: Double
+                    if let handLen {
+                        p = Double(min(max((handLen - (botY - y)) / strokeRow, 0), 1))
+                    } else {
+                        p = strokeProgress(strokeIndex, elapsed: elapsed)
+                    }
                     strokeIndex += 1
                     defer { y -= strokeRow }
-                    guard p > 0 else { continue }
-                    let f = CGFloat(p)
-                    var path = Path()
-                    switch glyph.group {
-                    case .right:
-                        path.move(to: CGPoint(x: cx, y: y))
-                        path.addLine(to: CGPoint(x: cx + tick * f, y: y))
-                    case .left:
-                        path.move(to: CGPoint(x: cx, y: y))
-                        path.addLine(to: CGPoint(x: cx - tick * f, y: y))
-                    case .across:
-                        path.move(to: CGPoint(x: cx - tick, y: y + 5))
-                        path.addLine(to: CGPoint(x: cx - tick + tick * 2 * f, y: y + 5 - 10 * f))
-                    case .vowel:
-                        path.move(to: CGPoint(x: cx - 8 * f, y: y))
-                        path.addLine(to: CGPoint(x: cx + 8 * f, y: y))
-                    case .peith:
-                        path.move(to: CGPoint(x: cx, y: y + 5))
-                        path.addQuadCurve(to: CGPoint(x: cx, y: y - 5), control: CGPoint(x: cx + 14, y: y))
+                    if p > 0 {
+                        ctx.stroke(strokePath(glyph.group, y: y, cx: cx, f: CGFloat(p)),
+                                   with: .color(Theme.ink.opacity(0.4 + 0.6 * p)),
+                                   style: StrokeStyle(lineWidth: 3, lineCap: .round))
+                    } else if handLen != nil {
+                        // Chalked and waiting for the chisel.
+                        ctx.stroke(strokePath(glyph.group, y: y, cx: cx, f: 1),
+                                   with: .color(Theme.ink.opacity(0.16)),
+                                   style: StrokeStyle(lineWidth: 2, lineCap: .round, dash: [3, 3]))
                     }
-                    ctx.stroke(path, with: .color(Theme.ink.opacity(0.4 + 0.6 * p)),
-                               style: StrokeStyle(lineWidth: 3, lineCap: .round))
                 }
                 y -= letterGap
             }
         }
+    }
+
+    private func strokePath(_ group: OghamGroup, y: CGFloat, cx: CGFloat, f: CGFloat) -> Path {
+        var path = Path()
+        switch group {
+        case .right:
+            path.move(to: CGPoint(x: cx, y: y))
+            path.addLine(to: CGPoint(x: cx + tick * f, y: y))
+        case .left:
+            path.move(to: CGPoint(x: cx, y: y))
+            path.addLine(to: CGPoint(x: cx - tick * f, y: y))
+        case .across:
+            path.move(to: CGPoint(x: cx - tick, y: y + 5))
+            path.addLine(to: CGPoint(x: cx - tick + tick * 2 * f, y: y + 5 - 10 * f))
+        case .vowel:
+            path.move(to: CGPoint(x: cx - 8 * f, y: y))
+            path.addLine(to: CGPoint(x: cx + 8 * f, y: y))
+        case .peith:
+            path.move(to: CGPoint(x: cx, y: y + 5))
+            path.addQuadCurve(to: CGPoint(x: cx, y: y - 5), control: CGPoint(x: cx + 14, y: y))
+        }
+        return path
     }
 }
 
