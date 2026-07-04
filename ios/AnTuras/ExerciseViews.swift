@@ -373,6 +373,10 @@ struct TypeInView: View {
 }
 
 // MARK: - Match pairs
+// Two materials face each other: Irish is stone (serif, raised, a carved groove
+// down its leading edge), English is chalk (plain sans, flat on the page).
+// A locked pair is joined by a thread drawn across the gutter — the line the
+// carver snaps between a word and what it means.
 
 struct MatchView: View {
     let block: MatchBlock
@@ -383,6 +387,7 @@ struct MatchView: View {
     @State private var key: [String: String]
     @State private var selectedLeft: String?
     @State private var locked: Set<String> = []   // locked left + right values
+    @State private var threads: [MatchThread] = []
     @State private var flash: String?
     @State private var shakes: [String: Int] = [:]
     @State private var solved = false
@@ -397,7 +402,7 @@ struct MatchView: View {
 
     var body: some View {
         ExerciseFrame(context: block.context, prompt: block.prompt) {
-            HStack(alignment: .top, spacing: 10) {
+            HStack(alignment: .top, spacing: 20) {
                 VStack(spacing: 10) {
                     ForEach(left, id: \.self) { item in
                         pairButton(item, isLeft: true)
@@ -408,6 +413,19 @@ struct MatchView: View {
                         pairButton(item, isLeft: false)
                     }
                 }
+            }
+            .overlayPreferenceValue(MatchCardAnchorKey.self) { anchors in
+                GeometryReader { geo in
+                    ForEach(threads) { thread in
+                        if let l = anchors["L:\(thread.left)"],
+                           let r = anchors["R:\(thread.right)"] {
+                            ThreadView(
+                                from: CGPoint(x: geo[l].maxX + 1, y: geo[l].midY),
+                                to: CGPoint(x: geo[r].minX - 1, y: geo[r].midY))
+                        }
+                    }
+                }
+                .allowsHitTesting(false)
             }
             if solved {
                 Verdict(ok: true, headline: "Maith thú! All matched.")
@@ -420,19 +438,33 @@ struct MatchView: View {
             tap(item, isLeft: isLeft)
         } label: {
             Text(item)
-                .font(isLeft ? .system(size: 16.5, design: .serif) : .system(size: 14.5))
+                .font(isLeft ? .system(size: 16.5, design: .serif) : .system(size: 14))
                 .foregroundStyle(locked.contains(item) ? Theme.inkSoft : Theme.ink)
                 .lineSpacing(2)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.vertical, 13)
+                .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
                 .padding(.horizontal, 12)
+                .padding(.leading, isLeft ? 7 : 0)
                 .background(background(item))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay(alignment: .leading) {
+                    // The carved groove marks the stone side — Irish only.
+                    if isLeft {
+                        RoundedRectangle(cornerRadius: 1.5)
+                            .fill(locked.contains(item) ? Theme.moss.opacity(0.6) : Theme.stone)
+                            .frame(width: 3)
+                            .padding(.vertical, 9)
+                            .padding(.leading, 7)
+                    }
+                }
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(border(item), lineWidth: 1))
-                // The picked-up tile lifts off the stone, waiting for its mate.
+                // The picked-up stone lifts off the page, waiting for its mate.
                 .scaleEffect(selectedLeft == item ? 1.05 : 1)
-                .shadow(color: Theme.ink.opacity(selectedLeft == item ? 0.18 : 0),
-                        radius: 8, y: 3)
+                .shadow(color: Theme.ink.opacity(shadowStrength(item, isLeft: isLeft)),
+                        radius: selectedLeft == item ? 8 : 3,
+                        y: selectedLeft == item ? 3 : 2)
+                .anchorPreference(key: MatchCardAnchorKey.self, value: .bounds) {
+                    ["\(isLeft ? "L" : "R"):\(item)": $0]
+                }
         }
         .buttonStyle(CarvePress())
         .shake(shakes[item, default: 0])
@@ -441,15 +473,21 @@ struct MatchView: View {
         .disabled(locked.contains(item) || solved)
     }
 
+    private func shadowStrength(_ item: String, isLeft: Bool) -> Double {
+        if selectedLeft == item { return 0.18 }
+        // Stone tiles carry weight; chalk sits flat.
+        return isLeft && !locked.contains(item) ? 0.07 : 0
+    }
+
     private func background(_ item: String) -> Color {
         if locked.contains(item) { return Theme.mossTint }
         if flash == item { return Theme.rustTint }
-        if selectedLeft == item { return Theme.raised }
-        return Theme.raised
+        // Stone is raised; chalk lies flat on the page.
+        return left.contains(item) ? Theme.raised : .clear
     }
 
     private func border(_ item: String) -> Color {
-        if locked.contains(item) { return Theme.moss }
+        if locked.contains(item) { return Theme.moss.opacity(0.55) }
         if flash == item { return Theme.rust }
         if selectedLeft == item { return Theme.ink }
         return Theme.line
@@ -468,6 +506,7 @@ struct MatchView: View {
                 locked.insert(sel)
                 locked.insert(item)
             }
+            threads.append(MatchThread(left: sel, right: item))
             selectedLeft = nil
             if locked.count == block.pairs.count * 2 {
                 withAnimation(Motion.pop) { solved = true }
@@ -483,5 +522,57 @@ struct MatchView: View {
                 }
             }
         }
+    }
+}
+
+private struct MatchThread: Identifiable {
+    let left: String
+    let right: String
+    var id: String { left }
+}
+
+private struct MatchCardAnchorKey: PreferenceKey {
+    static var defaultValue: [String: Anchor<CGRect>] = [:]
+    static func reduce(value: inout [String: Anchor<CGRect>],
+                       nextValue: () -> [String: Anchor<CGRect>]) {
+        value.merge(nextValue()) { $1 }
+    }
+}
+
+/// The thread between a matched pair, drawn left → right like a snapped
+/// chalk line: it lands soft and stays.
+private struct ThreadView: View {
+    let from: CGPoint
+    let to: CGPoint
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var progress: CGFloat = 0
+
+    var body: some View {
+        ThreadLine(from: from, to: to)
+            .trim(from: 0, to: progress)
+            .stroke(Theme.moss.opacity(0.4),
+                    style: StrokeStyle(lineWidth: 1.5, lineCap: .round))
+            .onAppear {
+                if reduceMotion {
+                    progress = 1
+                } else {
+                    withAnimation(.easeOut(duration: 0.4)) { progress = 1 }
+                }
+            }
+    }
+}
+
+private struct ThreadLine: Shape {
+    let from: CGPoint
+    let to: CGPoint
+
+    func path(in rect: CGRect) -> Path {
+        var p = Path()
+        p.move(to: from)
+        let midX = (from.x + to.x) / 2
+        p.addCurve(to: to,
+                   control1: CGPoint(x: midX, y: from.y),
+                   control2: CGPoint(x: midX, y: to.y))
+        return p
     }
 }

@@ -233,7 +233,7 @@ private struct PageScaffold<Content: View>: View {
     let register: PageRegister
     @ViewBuilder var content: () -> Content
 
-    private var centred: Bool { register == .scene || register == .feature }
+    private var centred: Bool { register != .note }
 
     var body: some View {
         GeometryReader { geo in
