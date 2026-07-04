@@ -392,11 +392,13 @@ struct MatchView: View {
                         pairButton(item, isLeft: true)
                     }
                 }
+                .frame(maxWidth: .infinity)
                 VStack(spacing: 10) {
                     ForEach(right, id: \.self) { item in
                         pairButton(item, isLeft: false)
                     }
                 }
+                .frame(maxWidth: .infinity)
             }
             .overlayPreferenceValue(MatchCardAnchorKey.self) { anchors in
                 GeometryReader { geo in
@@ -428,7 +430,7 @@ struct MatchView: View {
                 .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
                 .padding(.horizontal, 12)
                 .padding(.leading, isLeft ? 7 : 0)
-                .background(background(item))
+                .background(background(item, isLeft: isLeft))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .overlay(alignment: .leading) {
                     // The carved groove marks the stone side — Irish only.
@@ -440,58 +442,60 @@ struct MatchView: View {
                             .padding(.leading, 7)
                     }
                 }
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke(border(item), lineWidth: 1))
-                // The picked-up stone lifts off the page, waiting for its mate.
-                .scaleEffect(selectedLeft == item ? 1.05 : 1)
-                .shadow(color: Theme.ink.opacity(shadowStrength(item, isLeft: isLeft)),
-                        radius: selectedLeft == item ? 8 : 3,
-                        y: selectedLeft == item ? 3 : 2)
+                .overlay(RoundedRectangle(cornerRadius: 8).stroke(border(item, isLeft: isLeft), lineWidth: 1))
+                .shadow(color: Theme.ink.opacity(isLeft && !locked.contains(item) ? 0.07 : 0),
+                        radius: 3, y: 2)
+                .contentShape(Rectangle())
                 .anchorPreference(key: MatchCardAnchorKey.self, value: .bounds) {
                     ["\(isLeft ? "L" : "R"):\(item)": $0]
                 }
         }
         .buttonStyle(CarvePress())
         .shake(shakes[item, default: 0])
-        .animation(Motion.pop, value: selectedLeft)
-        .animation(Motion.pop, value: locked)
         .disabled(locked.contains(item) || solved)
     }
 
-    private func shadowStrength(_ item: String, isLeft: Bool) -> Double {
-        if selectedLeft == item { return 0.18 }
-        // Stone tiles carry weight; chalk sits flat.
-        return isLeft && !locked.contains(item) ? 0.07 : 0
-    }
-
-    private func background(_ item: String) -> Color {
+    private func background(_ item: String, isLeft: Bool) -> Color {
         if locked.contains(item) { return Theme.mossTint }
         if flash == item { return Theme.rustTint }
+        if selectedLeft == item { return Theme.sunk }
+        if !isLeft && selectedLeft != nil { return Theme.raised.opacity(0.45) }
         // Stone is raised; chalk lies flat on the page.
-        return left.contains(item) ? Theme.raised : .clear
+        return isLeft ? Theme.raised : .clear
     }
 
-    private func border(_ item: String) -> Color {
+    private func border(_ item: String, isLeft: Bool) -> Color {
         if locked.contains(item) { return Theme.moss.opacity(0.55) }
         if flash == item { return Theme.rust }
         if selectedLeft == item { return Theme.ink }
+        if !isLeft && selectedLeft != nil { return Theme.stone }
         return Theme.line
     }
 
     private func tap(_ item: String, isLeft: Bool) {
+        guard !solved, !locked.contains(item) else { return }
+
         if isLeft {
             Haptics.tap()
-            selectedLeft = item
+            withAnimation(Motion.settle) {
+                selectedLeft = selectedLeft == item ? nil : item
+            }
             return
         }
-        guard let sel = selectedLeft else { return }
+
+        guard let sel = selectedLeft else {
+            Haptics.tap()
+            return
+        }
+
         if key[sel] == item {
             Haptics.tick()
             withAnimation(Motion.pop) {
                 locked.insert(sel)
                 locked.insert(item)
+                threads.append(MatchThread(left: sel, right: item))
+                selectedLeft = nil
             }
-            threads.append(MatchThread(left: sel, right: item))
-            selectedLeft = nil
             if locked.count == block.pairs.count * 2 {
                 withAnimation(Motion.pop) { solved = true }
                 onSolved()
@@ -499,10 +503,11 @@ struct MatchView: View {
         } else {
             Haptics.error()
             shakes[item, default: 0] += 1
-            withAnimation(.easeOut(duration: 0.2)) { flash = item }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(Motion.settle) { flash = item }
+            Task { @MainActor in
+                try? await Task.sleep(for: .milliseconds(350))
                 if flash == item {
-                    withAnimation(.easeOut(duration: 0.3)) { flash = nil }
+                    withAnimation(Motion.settle) { flash = nil }
                 }
             }
         }
@@ -708,7 +713,7 @@ private struct ThreadView: View {
                 if reduceMotion {
                     progress = 1
                 } else {
-                    withAnimation(.easeOut(duration: 0.4)) { progress = 1 }
+                    withAnimation(Motion.pop) { progress = 1 }
                 }
             }
     }
