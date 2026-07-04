@@ -59,7 +59,7 @@ struct MapView: View {
         }
         .sheet(isPresented: $showMuseum) {
             ScrollView {
-                ArtifactView(isLast: false, onContinue: {})
+                ArtifactView()
                     .padding(22)
             }
             .presentationBackground(Theme.bg)

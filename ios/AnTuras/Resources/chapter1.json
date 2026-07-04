@@ -5,14 +5,13 @@
     {
       "ga": "Dia Dhuit",
       "en": "The first greeting, and who you are",
-      "blocks": [
-        { "type": "scene", "paras": [
-          "Salt wind. A field above the grey Atlantic, County Mayo, around the year 480. A man kneels at a long pillar of stone, cutting notches into its edge with a chisel of iron. Wood smoke, wet grass, the tap-tap-tap of careful work.",
-          "He looks up, unhurried, and raises a hand."
-        ]},
-        { "type": "scene", "who": "An saor cloiche — the stone-carver",
-          "paras": ["“[Dia dhuit!](turas://g/0)”"],
-          "glosses": [{ "t": "Dia dhuit!", "g": "Hello — literally ‘God to you’", "s": "JEE-a GWIT" }]
+      "pages": [
+        { "type": "scene", "place": "Maigh Eo · c. 480 AD",
+          "beats": [
+            { "n": "Salt wind, a field above the grey Atlantic. A man kneels at a long pillar of stone, cutting notches into its edge with a chisel of iron. Wood smoke, wet grass, the tap-tap-tap of careful work." },
+            { "n": "He looks up, unhurried, and raises a hand." },
+            { "s": "Dia dhuit!", "who": "An saor cloiche — the stone-carver", "g": "Hello — literally ‘God to you’", "ph": "JEE-a GWIT" }
+          ]
         },
         { "type": "note", "title": "The greeting is younger than the stone",
           "paras": [
@@ -22,19 +21,21 @@
           ],
           "pairs": ["— Dia dhuit.  (God to you.)", "— Dia is Muire dhuit.  (God *and Mary* to you.)"]
         },
-        { "type": "choice", "prompt": "The carver said “Dia dhuit.” What do you say back?", "opts": [
-          { "txt": "Dia is Muire dhuit", "ok": true, "why": "You raised the greeting — God and Mary to you. Exactly the custom." },
-          { "txt": "Dia dhuit", "ok": false, "why": "Understandable — but Irish greetings escalate. The reply adds Mary: Dia is Muire dhuit." },
-          { "txt": "Slán!", "ok": false, "why": "That's “goodbye” — a little early, you only just met him." }
-        ]},
-        { "type": "scene", "who": "An saor cloiche",
-          "paras": [
-            "He sets down the chisel and puts a hand to his chest.",
-            "“[Is mise Dáire.](turas://g/0)” A pause. A nod at you. “[Cé thusa?](turas://g/1)”"
-          ],
-          "glosses": [
-            { "t": "Is mise Dáire.", "g": "I am Dáire — ‘is mise’ introduces who you are", "s": "iss MISH-eh DAW-ruh" },
-            { "t": "Cé thusa?", "g": "Who are you? (emphatic ‘you’)", "s": "kay HUSS-ah" }
+        { "type": "choice",
+          "context": "The carver waits, hand still raised.",
+          "prompt": "He said “Dia dhuit.” What do you say back?",
+          "opts": [
+            { "txt": "Dia is Muire dhuit", "ok": true, "why": "You raised the greeting — God and Mary to you. Exactly the custom." },
+            { "txt": "Dia dhuit", "ok": false, "why": "Understandable — but Irish greetings escalate. The reply adds Mary: Dia is Muire dhuit." },
+            { "txt": "Slán!", "ok": false, "why": "That's “goodbye” — a little early, you only just met him." }
+          ]
+        },
+        { "type": "scene",
+          "beats": [
+            { "n": "He sets down the chisel and puts a hand to his chest." },
+            { "s": "Is mise Dáire.", "who": "An saor cloiche", "g": "I am Dáire — ‘is mise’ introduces who you are", "ph": "iss MISH-eh DAW-ruh" },
+            { "n": "A pause. A nod at you." },
+            { "s": "Cé thusa?", "g": "Who are you? — the emphatic ‘you’", "ph": "kay HUSS-ah" }
           ]
         },
         { "type": "note", "title": "The two “to be”s — what school never explained",
@@ -46,22 +47,30 @@
           ],
           "pairs": ["Is mise Dáire. — I am Dáire.", "Tá mé fuar. — I am cold."]
         },
-        { "type": "choice", "prompt": "How would Bríd say “I am Bríd”?", "opts": [
-          { "txt": "Is mise Bríd", "ok": true, "why": "Identity → the copula. Is mise Bríd." },
-          { "txt": "Tá mé Bríd", "ok": false, "why": "Tá is for states — cold, tired, happy. Being Bríd isn't a passing condition; identity takes is." },
-          { "txt": "Bríd is mise tá", "ok": false, "why": "Irish word order is strict here: Is mise Bríd." }
-        ]},
-        { "type": "assemble", "prompt": "Build: “I am Áine.”", "tiles": ["mise", "Áine", "Is"], "answer": "Is mise Áine" },
-        { "type": "typein", "prompt": "Your turn. Answer the carver — introduce yourself.",
+        { "type": "choice",
+          "prompt": "How would Bríd say “I am Bríd”?",
+          "opts": [
+            { "txt": "Is mise Bríd", "ok": true, "why": "Identity → the copula. Is mise Bríd." },
+            { "txt": "Tá mé Bríd", "ok": false, "why": "Tá is for states — cold, tired, happy. Being Bríd isn't a passing condition; identity takes is." },
+            { "txt": "Bríd is mise tá", "ok": false, "why": "Irish word order is strict here: Is mise Bríd." }
+          ]
+        },
+        { "type": "assemble",
+          "context": "Practise the shape on someone else's name first.",
+          "prompt": "Build: “I am Áine.”",
+          "tiles": ["mise", "Áine", "Is"], "answer": "Is mise Áine" },
+        { "type": "typein",
+          "context": "Dáire is still waiting.",
+          "prompt": "Your turn — introduce yourself.",
           "placeholder": "Is mise …", "check": "ismise", "capture": true, "fada": false,
           "hint": "Type the whole phrase: Is mise + your name." },
-        { "type": "scene", "who": "Dáire",
-          "paras": [
-            "He repeats your name once, slowly, weighing it the way other people weigh coins — then glances at the pillar beside him, its edge already striped with strokes.",
-            "“Names are my trade,” he says. “I cut them so they outlive the breath that spoke them.”",
-            "“[Cén t-ainm atá ort?](turas://g/0)” he adds — and notice the shape of that: in Irish, a name is *on* you, like a cloak. The language keeps a small distance between you and what you're called. More on that another day."
-          ],
-          "glosses": [{ "t": "Cén t-ainm atá ort?", "g": "What's your name? — literally ‘what name is on you?’", "s": "kane TAN-yim ah-TAW ort" }]
+        { "type": "scene",
+          "beats": [
+            { "n": "He repeats your name once, slowly, weighing it the way other people weigh coins — then glances at the pillar beside him, its edge already striped with strokes." },
+            { "n": "“Names are my trade,” he says. “I cut them so they outlive the breath that spoke them.”" },
+            { "s": "Cén t-ainm atá ort?", "who": "Dáire", "g": "What's your name? — literally ‘what name is on you?’", "ph": "kane TAN-yim ah-TAW ort" },
+            { "n": "Notice the shape of that: in Irish, a name is *on* you, like a cloak. The language keeps a small distance between you and what you're called. More on that another day." }
+          ]
         },
         { "type": "match", "prompt": "Match the Irish to its meaning.", "pairs": [
           ["Dia dhuit", "Hello (God to you)"],
@@ -69,25 +78,25 @@
           ["Cé thusa?", "Who are you?"],
           ["ainm", "name"]
         ]},
-        { "type": "scene", "paras": [
-          "The light is going. Dáire covers his tools with a hide and lifts a hand.",
-          "“[Slán go fóill.](turas://g/0)” — goodbye *for now*. Tomorrow he'll want to know where you come from. Have an answer ready."
-        ], "glosses": [{ "t": "Slán go fóill.", "g": "Goodbye for now", "s": "slawn guh FOH-il" }]}
+        { "type": "scene",
+          "beats": [
+            { "n": "The light is going. Dáire covers his tools with a hide and lifts a hand." },
+            { "s": "Slán go fóill.", "who": "Dáire", "g": "Goodbye for now", "ph": "slawn guh FOH-il" },
+            { "n": "Tomorrow he'll want to know where you come from. Have an answer ready." }
+          ]
+        }
       ]
     },
     {
       "ga": "Cé as Thú?",
       "en": "Where you're from — placenames are poems",
-      "blocks": [
-        { "type": "scene", "who": "Dáire",
-          "paras": [
-            "Morning. The tide far out, oystercatchers crying over the flats. Dáire is already at the stone.",
-            "“[Cé as thú?](turas://g/0)”",
-            "He answers his own question first, the way a courteous man does: “[Is as Maigh Eo mé.](turas://g/1)”"
-          ],
-          "glosses": [
-            { "t": "Cé as thú?", "g": "Where are you from? — lit. ‘who from are you?’ (Connacht; you'll also see Cárb as thú?)", "s": "kay ASS hoo" },
-            { "t": "Is as Maigh Eo mé.", "g": "I am from Mayo — Maigh Eo, ‘plain of the yew trees’", "s": "iss ass my-OH may" }
+      "pages": [
+        { "type": "scene", "place": "An trá — the strand, morning",
+          "beats": [
+            { "n": "The tide far out, oystercatchers crying over the flats. Dáire is already at the stone." },
+            { "s": "Cé as thú?", "who": "Dáire", "g": "Where are you from? — literally ‘who from are you?’ (Connacht; you'll also see Cárb as thú?)", "ph": "kay ASS hoo" },
+            { "n": "He answers his own question first, the way a courteous man does:" },
+            { "s": "Is as Maigh Eo mé.", "g": "I am from Mayo — Maigh Eo, ‘plain of the yew trees’", "ph": "iss ass my-OH may" }
           ]
         },
         { "type": "note", "title": "Every placename is a tiny poem",
@@ -103,28 +112,35 @@
             "Cill Dara — church of the oak  (Kildare)"
           ]
         },
-        { "type": "choice", "prompt": "You want to ask someone where they're from. Which is it?", "opts": [
-          { "txt": "Cé as thú?", "ok": true, "why": "Literally “who from are you?” — the Connacht way to ask." },
-          { "txt": "Cé thusa?", "ok": false, "why": "Close — but that asks who they are, not where they're from." },
-          { "txt": "Dia dhuit?", "ok": false, "why": "That's hello. A fine start, but it won't get you a county." }
-        ]},
+        { "type": "choice",
+          "context": "Your turn to ask him.",
+          "prompt": "You want to ask someone where they're from. Which is it?",
+          "opts": [
+            { "txt": "Cé as thú?", "ok": true, "why": "Literally “who from are you?” — the Connacht way to ask." },
+            { "txt": "Cé thusa?", "ok": false, "why": "Close — but that asks who they are, not where they're from." },
+            { "txt": "Dia dhuit?", "ok": false, "why": "That's hello. A fine start, but it won't get you a county." }
+          ]
+        },
         { "type": "match", "prompt": "Match the place to the poem inside it.", "pairs": [
           ["Maigh Eo", "plain of the yew trees"],
           ["Doire", "oak grove"],
           ["Baile Átha Cliath", "town of the hurdle ford"],
           ["Cill Dara", "church of the oak"]
         ]},
-        { "type": "assemble", "prompt": "Build: “I am from Galway.”", "tiles": ["as", "mé", "Gaillimh", "Is"], "answer": "Is as Gaillimh mé" },
-        { "type": "typein", "prompt": "Now answer Dáire — where are you from? Anywhere in the world counts.",
+        { "type": "assemble",
+          "prompt": "Build: “I am from Galway.”",
+          "tiles": ["as", "mé", "Gaillimh", "Is"], "answer": "Is as Gaillimh mé" },
+        { "type": "typein",
+          "context": "Dáire waits, chisel idle.",
+          "prompt": "Answer him — where are you from? Anywhere in the world counts.",
           "placeholder": "Is as … mé", "check": "isas", "fada": true,
           "hint": "Is as ___ mé — put your county, city or country in the middle." },
-        { "type": "scene", "who": "Dáire",
-          "paras": [
-            "He nods at your answer as if adding it to a ledger, and spreads both hands wide:",
-            "“[Céad míle fáilte.](turas://g/0)”",
-            "A hundred thousand welcomes. People will still be saying it on this island fifteen centuries from now — to tourists, mostly, but they'll mean it."
-          ],
-          "glosses": [{ "t": "Céad míle fáilte.", "g": "A hundred thousand welcomes", "s": "kayd MEE-luh FAWL-chuh" }]
+        { "type": "scene",
+          "beats": [
+            { "n": "He nods at your answer as if adding it to a ledger, and spreads both hands wide:" },
+            { "s": "Céad míle fáilte.", "who": "Dáire", "g": "A hundred thousand welcomes", "ph": "kayd MEE-luh FAWL-chuh" },
+            { "n": "People will still be saying it on this island fifteen centuries from now — to tourists, mostly, but they'll mean it." }
+          ]
         },
         { "type": "match", "prompt": "Quick return to yesterday — and one new word.", "pairs": [
           ["Is mise…", "I am…"],
@@ -132,29 +148,34 @@
           ["fáilte", "welcome"],
           ["Slán go fóill", "Goodbye for now"]
         ]},
-        { "type": "scene", "paras": [
-          "As you leave, Dáire mentions that a family is walking in from the east tomorrow, bringing him work: a stone for a man who died in the spring.",
-          "“Come early,” he says. “You'll see what the stones are *for*.”"
-        ]}
+        { "type": "scene",
+          "beats": [
+            { "n": "As you leave, Dáire mentions that a family is walking in from the east tomorrow, bringing him work: a stone for a man who died in the spring." },
+            { "n": "“Come early,” he says. “You'll see what the stones are *for*.”" }
+          ]
+        }
       ]
     },
     {
       "ga": "Mac agus Iníon",
       "en": "Son and daughter — your surname was carved first",
-      "blocks": [
-        { "type": "scene", "paras": [
-          "They arrive mid-morning: a widow in a dark cloak, her grown son beside her, walking like a man carrying something heavier than the satchel on his back. They have come to order a stone.",
-          "A girl of about twelve slips out from behind the workshop wall and stands at Dáire's elbow, openly studying you."
-        ]},
-        { "type": "scene", "who": "Dáire",
-          "paras": [
-            "“[Seo Bríd, m'iníon.](turas://g/0)” He nods at the visiting young man. “And that is Colmán's [mac](turas://g/1) — his son. No [deartháir](turas://g/2), no [deirfiúr](turas://g/3) — the last of that house.”"
-          ],
-          "glosses": [
-            { "t": "Seo Bríd, m'iníon.", "g": "This is Bríd, my daughter — iníon = daughter", "s": "shuh BREEDJ, MIN-yeen" },
-            { "t": "mac", "g": "son", "s": "mock" },
-            { "t": "deartháir", "g": "brother", "s": "jar-HAWR" },
-            { "t": "deirfiúr", "g": "sister", "s": "jre-FOOR" }
+      "pages": [
+        { "type": "scene", "place": "Clós an tsaoir — the carver's yard",
+          "beats": [
+            { "n": "They arrive mid-morning: a widow in a dark cloak, her grown son beside her, walking like a man carrying something heavier than the satchel on his back. They have come to order a stone." },
+            { "n": "A girl of about twelve slips out from behind the workshop wall and stands at Dáire's elbow, openly studying you." }
+          ]
+        },
+        { "type": "scene",
+          "beats": [
+            { "s": "Seo Bríd, m'iníon.", "who": "Dáire", "g": "This is Bríd, my daughter — iníon = daughter", "ph": "shuh BREEDJ, MIN-yeen" },
+            { "n": "He nods at the visiting young man. “And that is Colmán's [mac](turas://g/0) — his son. No [deartháir](turas://g/1), no [deirfiúr](turas://g/2) — the last of that house.”",
+              "glosses": [
+                { "t": "mac", "g": "son", "s": "mock" },
+                { "t": "deartháir", "g": "brother", "s": "jar-HAWR" },
+                { "t": "deirfiúr", "g": "sister", "s": "jre-FOOR" }
+              ]
+            }
           ]
         },
         { "type": "note", "title": "MAQI — your surname is an ogham formula",
@@ -169,49 +190,59 @@
             "Kelly — Ó Ceallaigh — descendant of Ceallach"
           ]
         },
-        { "type": "choice", "prompt": "The ogham word MAQI survives today as…", "opts": [
-          { "txt": "mac — son", "ok": true, "why": "Fifteen centuries from stone to surname. Mc and Mac names all carry it." },
-          { "txt": "ainm — name", "ok": false, "why": "Ainm is “name” — but MAQI is the word for son, the one carved between names." },
-          { "txt": "fáilte — welcome", "ok": false, "why": "Fáilte is welcome. MAQI is the “son of” between two names on a stone." }
-        ]},
+        { "type": "choice",
+          "prompt": "The ogham word MAQI survives today as…",
+          "opts": [
+            { "txt": "mac — son", "ok": true, "why": "Fifteen centuries from stone to surname. Mc and Mac names all carry it." },
+            { "txt": "ainm — name", "ok": false, "why": "Ainm is “name” — but MAQI is the word for son, the one carved between names." },
+            { "txt": "fáilte — welcome", "ok": false, "why": "Fáilte is welcome. MAQI is the “son of” between two names on a stone." }
+          ]
+        },
         { "type": "match", "prompt": "The family, matched.", "pairs": [
           ["athair", "father"],
           ["máthair", "mother"],
           ["mac", "son"],
           ["iníon", "daughter"]
         ]},
-        { "type": "choice", "prompt": "How would “Mary Kelly” be written in Irish?", "opts": [
-          { "txt": "Máire Ní Cheallaigh", "ok": true, "why": "Ní for a woman of an Ó family — daughter of the Kellys." },
-          { "txt": "Máire Mac Cheallaigh", "ok": false, "why": "Mac marks a son. A woman takes Ní (for Ó names) or Nic (for Mac names)." },
-          { "txt": "Máire Ó Ceallaigh", "ok": false, "why": "Ó traditionally marks a male descendant — Mary takes Ní Cheallaigh." }
-        ]},
-        { "type": "scene", "who": "Dáire",
-          "paras": [
-            "The widow speaks quietly with Dáire, and it is settled. The stone will say who the dead man was in the only way that matters here — by whose son he was:",
-            "“[Colmán mac Rónáin.](turas://g/0)”"
-          ],
-          "glosses": [{ "t": "Colmán mac Rónáin.", "g": "Colmán, son of Rónán — Rónáin is the ‘of Rónán’ form", "s": "KUL-mawn mock ROH-nawn" }]
+        { "type": "choice",
+          "prompt": "How would “Mary Kelly” be written in Irish?",
+          "opts": [
+            { "txt": "Máire Ní Cheallaigh", "ok": true, "why": "Ní for a woman of an Ó family — daughter of the Kellys." },
+            { "txt": "Máire Mac Cheallaigh", "ok": false, "why": "Mac marks a son. A woman takes Ní (for Ó names) or Nic (for Mac names)." },
+            { "txt": "Máire Ó Ceallaigh", "ok": false, "why": "Ó traditionally marks a male descendant — Mary takes Ní Cheallaigh." }
+          ]
+        },
+        { "type": "scene",
+          "beats": [
+            { "n": "The widow speaks quietly with Dáire, and it is settled. The stone will say who the dead man was in the only way that matters here — by whose son he was:" },
+            { "s": "Colmán mac Rónáin.", "g": "Colmán, son of Rónán — Rónáin is the ‘of Rónán’ form", "ph": "KUL-mawn mock ROH-nawn" }
+          ]
         },
         { "type": "note", "title": "Why Rónán became Rónáin",
           "paras": [
             "Look closely: Rónán → mac **Rónáin**. Irish names bend their endings to mean *of* — the genitive case. You don't need to master it today; you only need to *recognise* it: when a name shifts shape, it usually means “of”."
           ]
         },
-        { "type": "assemble", "prompt": "Set the inscription: “Colmán, son of Rónán.”", "tiles": ["Rónáin", "Colmán", "mac"], "answer": "Colmán mac Rónáin" },
-        { "type": "scene", "paras": [
-          "The family leaves. Bríd runs her thumb along the blank edge of the pillar where the strokes will go, and looks up at her father, then at you.",
-          "“Tomorrow he'll make you *listen*,” she says, delighted. “He always makes them listen first.”"
-        ]}
+        { "type": "assemble",
+          "context": "Bríd chalks the guide-lines; you set the words.",
+          "prompt": "Set the inscription: “Colmán, son of Rónán.”",
+          "tiles": ["Rónáin", "Colmán", "mac"], "answer": "Colmán mac Rónáin" },
+        { "type": "scene",
+          "beats": [
+            { "n": "The family leaves. Bríd runs her thumb along the blank edge of the pillar where the strokes will go, and looks up at her father, then at you." },
+            { "n": "“Tomorrow he'll make you *listen*,” she says, delighted. “He always makes them listen first.”" }
+          ]
+        }
       ]
     },
     {
       "ga": "Caol le Caol",
       "en": "Learning to hear — the secret of Irish spelling",
-      "blocks": [
-        { "type": "scene", "who": "Dáire",
-          "paras": [
-            "He will not let you near the chisel. Instead he smooths a patch of dust with his palm and scratches letters into it with a stick.",
-            "“Before your hand cuts,” he says, “your ear must know what the marks are *for*. Stone doesn't forgive spelling.”"
+      "pages": [
+        { "type": "scene", "place": "An clós arís — the yard again",
+          "beats": [
+            { "n": "He will not let you near the chisel. Instead he smooths a patch of dust with his palm and scratches letters into it with a stick." },
+            { "n": "“Before your hand cuts,” he says, “your ear must know what the marks are *for*. Stone doesn't forgive spelling.”" }
           ]
         },
         { "type": "note", "title": "The big secret: every consonant comes in two flavours",
@@ -222,15 +253,21 @@
           ],
           "pairs": ["a, o, u — broad signposts", "e, i — slender signposts"]
         },
-        { "type": "choice", "prompt": "Which vowels are the broad signposts?", "opts": [
-          { "txt": "a, o, u", "ok": true, "why": "Broad: a, o, u. Slender: e, i. That's the whole sorting rule." },
-          { "txt": "e, i", "ok": false, "why": "Those are the slender pair. Broad is a, o, u." },
-          { "txt": "á, é, í", "ok": false, "why": "Fadas mark length, not breadth — the broad set is a, o, u." }
-        ]},
-        { "type": "choice", "prompt": "In the name “Seán”, is the s broad or slender?", "opts": [
-          { "txt": "Slender — the e beside it says so; it sounds like “sh”", "ok": true, "why": "Slender s = “sh”. That's why Seán is “Shawn” — the e was the instruction." },
-          { "txt": "Broad — it's just an s sound", "ok": false, "why": "The e beside it is a slender signpost: slender s sounds like “sh”. Seán = “Shawn”." }
-        ]},
+        { "type": "choice",
+          "prompt": "Which vowels are the broad signposts?",
+          "opts": [
+            { "txt": "a, o, u", "ok": true, "why": "Broad: a, o, u. Slender: e, i. That's the whole sorting rule." },
+            { "txt": "e, i", "ok": false, "why": "Those are the slender pair. Broad is a, o, u." },
+            { "txt": "á, é, í", "ok": false, "why": "Fadas mark length, not breadth — the broad set is a, o, u." }
+          ]
+        },
+        { "type": "choice",
+          "prompt": "In the name “Seán”, is the s broad or slender?",
+          "opts": [
+            { "txt": "Slender — the e beside it says so; it sounds like “sh”", "ok": true, "why": "Slender s = “sh”. That's why Seán is “Shawn” — the e was the instruction." },
+            { "txt": "Broad — it's just an s sound", "ok": false, "why": "The e beside it is a slender signpost: slender s sounds like “sh”. Seán = “Shawn”." }
+          ]
+        },
         { "type": "note", "title": "An síneadh fada — the long mark",
           "paras": [
             "The accent — **á é í ó ú** — is called the **síneadh fada**, “the long stretch”. It lengthens the vowel, and it is never optional, because it changes meaning:",
@@ -238,68 +275,98 @@
           ],
           "pairs": ["fear — man  ·  féar — grass", "sean — old  ·  Seán — the name"]
         },
-        { "type": "choice", "prompt": "“Tá féar ann” — there is ___ there.", "opts": [
-          { "txt": "grass", "ok": true, "why": "féar = grass. fear (no fada) would be a man. The mark does real work." },
-          { "txt": "a man", "ok": false, "why": "That would be fear, no fada. féar — long é — is grass." }
-        ]},
-        { "type": "choice", "prompt": "In “cáil” (fame), is the c broad or slender?", "opts": [
-          { "txt": "Broad — á is a broad signpost", "ok": true, "why": "a/o/u (with or without fada) mean broad. Broad c, like English “caw”." },
-          { "txt": "Slender — the i makes it slender", "ok": false, "why": "The signpost that matters is the one beside the consonant: c sits next to á. Broad." }
-        ]},
-        { "type": "typein", "prompt": "Dáire scratched a name in the dust: “Is mise Sean.” Something is missing — carve it correctly. Type the name as it should be.",
+        { "type": "choice",
+          "prompt": "“Tá féar ann” — there is ___ there.",
+          "opts": [
+            { "txt": "grass", "ok": true, "why": "féar = grass. fear (no fada) would be a man. The mark does real work." },
+            { "txt": "a man", "ok": false, "why": "That would be fear, no fada. féar — long é — is grass." }
+          ]
+        },
+        { "type": "choice",
+          "prompt": "In “cáil” (fame), is the c broad or slender?",
+          "opts": [
+            { "txt": "Broad — á is a broad signpost", "ok": true, "why": "a/o/u (with or without fada) mean broad. Broad c, like English “caw”." },
+            { "txt": "Slender — the i makes it slender", "ok": false, "why": "The signpost that matters is the one beside the consonant: c sits next to á. Broad." }
+          ]
+        },
+        { "type": "typein",
+          "context": "Dáire scratches a name in the dust: “Is mise Sean.” Something is missing.",
+          "prompt": "Carve the name as it should be.",
           "placeholder": "Type the corrected name", "check": "exact", "answer": "Seán", "fada": true,
           "hint": "Use the fada keys below the box." },
-        { "type": "scene", "who": "Dáire",
-          "paras": [
-            "He wipes the dust smooth and says the old spelling law aloud, half chant, half proverb — the rule every Irish writer since has obeyed:",
-            "“[Caol le caol agus leathan le leathan.](turas://g/0)”",
-            "Slender with slender, broad with broad. From now on, Irish words will look different to you — not like tangles of letters, but like signposted roads.",
-            "“Tomorrow,” he says, handing you the chisel to hold — just hold — “we carve.”"
-          ],
-          "glosses": [{ "t": "Caol le caol agus leathan le leathan.", "g": "Slender with slender and broad with broad — the vowels flanking a consonant must agree", "s": "kweel leh kweel AH-gus LAH-han leh LAH-han" }]
+        { "type": "scene",
+          "beats": [
+            { "n": "He wipes the dust smooth and says the old spelling law aloud, half chant, half proverb — the rule every Irish writer since has obeyed:" },
+            { "s": "Caol le caol agus leathan le leathan.", "who": "Dáire", "g": "Slender with slender and broad with broad — the vowels flanking a consonant must agree", "ph": "kweel leh kweel AH-gus LAH-han leh LAH-han" },
+            { "n": "From now on, Irish words will look different to you — not tangles of letters, but signposted roads." },
+            { "n": "“Tomorrow,” he says, handing you the chisel to hold — just hold — “we carve.”" }
+          ]
         }
       ]
     },
     {
       "ga": "An Chloch",
       "en": "The stone — carving day",
-      "blocks": [
-        { "type": "scene", "paras": [
-          "Dawn, and no wind for once. The pillar lies across two trestles, its edge chalked where the strokes will go. Bríd holds the line taut; Dáire holds the chisel out to you.",
-          "“Every stroke you earn,” he says, “you cut.”",
-          "Everything you've learned this week is in your hands now."
-        ]},
-        { "type": "choice", "prompt": "Bríd greets you: “Dia dhuit!” You reply —", "opts": [
-          { "txt": "Dia is Muire dhuit", "ok": true, "why": "Raised, not echoed. You've got it." },
-          { "txt": "Dia dhuit", "ok": false, "why": "Raise it: Dia is Muire dhuit." },
-          { "txt": "Céad míle fáilte", "ok": false, "why": "A lovely phrase — but it's the welcome you give at your own door, not the answer to hello." }
-        ]},
-        { "type": "assemble", "prompt": "The widow arrives to watch. Welcome her — build: “A hundred thousand welcomes.”", "tiles": ["míle", "fáilte", "Céad"], "answer": "Céad míle fáilte" },
-        { "type": "match", "prompt": "Dáire quizzes you as you work.", "pairs": [
-          ["iníon", "daughter"],
-          ["deartháir", "brother"],
-          ["Cé as thú?", "Where are you from?"],
-          ["Slán go fóill", "Goodbye for now"]
-        ]},
-        { "type": "choice", "prompt": "The widow's maiden name was Ní Bhriain. That tells you she was —", "opts": [
-          { "txt": "a daughter of the Ó Briain family", "ok": true, "why": "Ní marks a woman of an Ó family — descendant of Brian." },
-          { "txt": "a son of the Ó Briain family", "ok": false, "why": "Sons carry Ó (or Mac). Ní is the daughter's form." },
-          { "txt": "from the town of Briain", "ok": false, "why": "It's family, not geography — daughter of the descendants of Brian." }
-        ]},
-        { "type": "typein", "prompt": "Bríd chalks the farewell of the dead onto the trestle, but her fadas are missing: “Slan go foill.” Carve it correctly.",
+      "pages": [
+        { "type": "scene", "place": "Breacadh an lae — dawn, no wind",
+          "beats": [
+            { "n": "The pillar lies across two trestles, its edge chalked where the strokes will go. Bríd holds the line taut; Dáire holds the chisel out to you." },
+            { "n": "“Every stroke you earn,” he says, “you cut.”" },
+            { "n": "Everything you've learned this week is in your hands now." }
+          ]
+        },
+        { "type": "choice",
+          "context": "Bríd greets you first: “Dia dhuit!”",
+          "prompt": "You reply —",
+          "opts": [
+            { "txt": "Dia is Muire dhuit", "ok": true, "why": "Raised, not echoed. You've got it." },
+            { "txt": "Dia dhuit", "ok": false, "why": "Raise it: Dia is Muire dhuit." },
+            { "txt": "Céad míle fáilte", "ok": false, "why": "A lovely phrase — but it's the welcome you give at your own door, not the answer to hello." }
+          ]
+        },
+        { "type": "assemble",
+          "context": "The widow arrives to watch.",
+          "prompt": "Welcome her — build: “A hundred thousand welcomes.”",
+          "tiles": ["míle", "fáilte", "Céad"], "answer": "Céad míle fáilte" },
+        { "type": "match",
+          "context": "Dáire quizzes you as you work.",
+          "prompt": "Match the Irish to its meaning.",
+          "pairs": [
+            ["iníon", "daughter"],
+            ["deartháir", "brother"],
+            ["Cé as thú?", "Where are you from?"],
+            ["Slán go fóill", "Goodbye for now"]
+          ]
+        },
+        { "type": "choice",
+          "context": "Talk turns to the widow's people.",
+          "prompt": "Her maiden name was Ní Bhriain. That tells you she was —",
+          "opts": [
+            { "txt": "a daughter of the Ó Briain family", "ok": true, "why": "Ní marks a woman of an Ó family — descendant of Brian." },
+            { "txt": "a son of the Ó Briain family", "ok": false, "why": "Sons carry Ó (or Mac). Ní is the daughter's form." },
+            { "txt": "from the town of Briain", "ok": false, "why": "It's family, not geography — daughter of the descendants of Brian." }
+          ]
+        },
+        { "type": "typein",
+          "context": "Bríd chalks the farewell of the dead onto the trestle, but her fadas are missing: “Slan go foill.”",
+          "prompt": "Carve it correctly.",
           "placeholder": "Type the corrected phrase", "check": "exact", "answer": "Slán go fóill", "fada": true,
           "hint": "Two fadas are missing." },
-        { "type": "scene", "paras": [
-          "By late afternoon it is done. You cut four of the strokes yourself — Dáire guided the chisel but not the choice. The pillar stands; the family stands before it; nobody speaks for a long time.",
-          "Along the edge, reading from the bottom up, the way ogham is always read:"
-        ]},
+        { "type": "scene",
+          "beats": [
+            { "n": "By late afternoon it is done. You cut four of the strokes yourself — Dáire guided the chisel but not the choice. The pillar stands; the family stands before it; nobody speaks for a long time." },
+            { "n": "Along the edge, reading from the bottom up, the way ogham is always read:" }
+          ]
+        },
         { "type": "inscription", "word": "colman mac ronain", "caption": "COLMÁN MAC RÓNÁIN — read upward from the base, strokes cut along the stone's edge" },
         { "type": "seanfhocal", "ga": "Is buaine focal ná toice an tsaoil.", "en": "A word is more enduring than the world's wealth.",
           "note": "Your first seanfhocal — proverb. Dáire's whole trade, in eight words. Collected to your museum." },
-        { "type": "scene", "paras": [
-          "**Fifteen hundred years later**, a stone very like the one you helped carve is still standing in a field near Killala, County Mayo — the Breastagh ogham stone, leaning into the same salt wind. The farm around it has changed hands a hundred times. The strokes are still legible.",
-          "The wealth went. The words stayed. That is the whole story of this app, and you've just lived its first chapter."
-        ]},
+        { "type": "scene", "place": "Breastagh · fifteen centuries later",
+          "beats": [
+            { "n": "A stone very like the one you helped carve is still standing in a field near Killala — the Breastagh ogham stone, leaning into the same salt wind. The farm around it has changed hands a hundred times. The strokes are still legible." },
+            { "n": "The wealth went. The words stayed. That is the whole story of this app, and you've just lived its first chapter." }
+          ]
+        },
         { "type": "artifact" },
         { "type": "fin", "paras": [
           "**Caibidil a Dó — Oileán na Naomh** is next: a monastery scriptorium at dawn, a race to finish a great gospel book before winter, and a small white cat named Pangur Bán who will teach you the present tense.",

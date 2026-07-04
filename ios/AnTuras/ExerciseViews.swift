@@ -1,22 +1,45 @@
 import SwiftUI
 
 // MARK: - Shared exercise chrome
+// No container. The page itself is the working surface; the tappable elements
+// are the raised objects on it. Up top, a register mark — three chalk strokes
+// and the word — then an optional beat of story, then the prompt in the same
+// serif voice the story speaks in.
 
-private struct ExerciseCard<Content: View>: View {
+private struct ExerciseFrame<Content: View>: View {
+    let context: String?
     let prompt: String
     @ViewBuilder var content: Content
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack(spacing: 10) {
+                HStack(spacing: 3.5) {
+                    ForEach(0..<3, id: \.self) { _ in
+                        TickMark(variant: 2)
+                            .stroke(Theme.moss.opacity(0.7),
+                                    style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
+                            .frame(width: 8, height: 14)
+                    }
+                }
+                Eyebrow(text: "Cleachtadh", color: Theme.inkFaint)
+            }
+            .padding(.bottom, 2)
+            if let context {
+                Text(context)
+                    .font(.system(size: 16, design: .serif))
+                    .italic()
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(4)
+            }
             Text(prompt)
-                .font(.system(size: 15, weight: .semibold))
+                .font(.system(size: 21, weight: .medium, design: .serif))
                 .foregroundStyle(Theme.ink)
+                .lineSpacing(4)
+                .padding(.bottom, 4)
             content
         }
-        .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Theme.sunk)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
@@ -34,8 +57,10 @@ private struct Verdict: View {
                 Text(detail)
                     .font(.system(size: 13))
                     .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(3)
             }
         }
+        .padding(.top, 4)
         .transition(.offset(y: 8).combined(with: .opacity))
     }
 }
@@ -44,8 +69,6 @@ private struct Verdict: View {
 
 struct ChoiceView: View {
     let block: ChoiceBlock
-    let isLast: Bool
-    let onContinue: () -> Void
     let onSolved: () -> Void
 
     @State private var solved = false
@@ -54,20 +77,17 @@ struct ChoiceView: View {
     @State private var verdict: (ok: Bool, why: String)?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            ExerciseCard(prompt: block.prompt) {
-                VStack(spacing: 8) {
-                    ForEach(block.opts) { opt in
-                        optionRow(opt)
-                    }
-                }
-                if let verdict {
-                    Verdict(ok: verdict.ok,
-                            headline: verdict.ok ? "Maith thú!" : "Ní hea — try again.",
-                            detail: verdict.why)
+        ExerciseFrame(context: block.context, prompt: block.prompt) {
+            VStack(spacing: 10) {
+                ForEach(block.opts) { opt in
+                    optionRow(opt)
                 }
             }
-            if solved && isLast { ContinueButton(action: onContinue) }
+            if let verdict {
+                Verdict(ok: verdict.ok,
+                        headline: verdict.ok ? "Maith thú!" : "Ní hea — try again.",
+                        detail: verdict.why)
+            }
         }
     }
 
@@ -76,14 +96,15 @@ struct ChoiceView: View {
             pick(opt)
         } label: {
             Text(opt.txt)
-                .font(.system(size: 16, design: .serif))
+                .font(.system(size: 17, design: .serif))
                 .foregroundStyle(Theme.ink)
+                .lineSpacing(3)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.vertical, 12)
-                .padding(.horizontal, 14)
+                .padding(.vertical, 14)
+                .padding(.horizontal, 16)
                 .background(background(for: opt))
-                .clipShape(RoundedRectangle(cornerRadius: 6))
-                .overlay(RoundedRectangle(cornerRadius: 6)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay(RoundedRectangle(cornerRadius: 8)
                     .stroke(border(for: opt), lineWidth: 1))
                 .scaleEffect(solved && opt.ok ? 1.02 : 1)
         }
@@ -133,8 +154,6 @@ private struct TileItem: Identifiable, Equatable {
 
 struct AssembleView: View {
     let block: AssembleBlock
-    let isLast: Bool
-    let onContinue: () -> Void
     let onSolved: () -> Void
 
     @Namespace private var tileNS
@@ -144,53 +163,49 @@ struct AssembleView: View {
     @State private var shakeCount = 0
     @State private var verdict: (ok: Bool, text: String)?
 
-    init(block: AssembleBlock, isLast: Bool, onContinue: @escaping () -> Void, onSolved: @escaping () -> Void) {
+    init(block: AssembleBlock, onSolved: @escaping () -> Void) {
         self.block = block
-        self.isLast = isLast
-        self.onContinue = onContinue
         self.onSolved = onSolved
         _bank = State(initialValue:
             block.tiles.enumerated().map { TileItem(id: $0.offset, word: $0.element) }.shuffled())
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            ExerciseCard(prompt: block.prompt) {
-                VStack(alignment: .leading, spacing: 10) {
-                    FlowLayout(spacing: 8) {
-                        ForEach(chosen) { item in
-                            tile(item, inBank: false)
-                        }
-                    }
-                    .frame(minHeight: 44)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .overlay(Rectangle().fill(Theme.line).frame(height: 2), alignment: .bottom)
-                    .shake(shakeCount)
-
-                    FlowLayout(spacing: 8) {
-                        ForEach(bank) { item in
-                            tile(item, inBank: true)
-                        }
-                    }
-                    .frame(minHeight: 44)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                    Button("Seiceáil — check") { check() }
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(Theme.bg)
-                        .padding(.vertical, 10)
-                        .padding(.horizontal, 18)
-                        .background(Theme.ink)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .buttonStyle(CarvePress())
-                        .disabled(solved)
-
-                    if let verdict {
-                        Verdict(ok: verdict.ok, headline: verdict.text)
+        ExerciseFrame(context: block.context, prompt: block.prompt) {
+            VStack(alignment: .leading, spacing: 14) {
+                FlowLayout(spacing: 8) {
+                    ForEach(chosen) { item in
+                        tile(item, inBank: false)
                     }
                 }
+                .frame(minHeight: 46)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .overlay(Rectangle().fill(Theme.line).frame(height: 2), alignment: .bottom)
+                .shake(shakeCount)
+
+                FlowLayout(spacing: 8) {
+                    ForEach(bank) { item in
+                        tile(item, inBank: true)
+                    }
+                }
+                .frame(minHeight: 46)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                Button("Seiceáil — check") { check() }
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(Theme.bg)
+                    .padding(.vertical, 11)
+                    .padding(.horizontal, 20)
+                    .background(Theme.ink)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                    .buttonStyle(CarvePress())
+                    .disabled(solved)
+                    .padding(.top, 2)
+
+                if let verdict {
+                    Verdict(ok: verdict.ok, headline: verdict.text)
+                }
             }
-            if solved && isLast { ContinueButton(action: onContinue) }
         }
     }
 
@@ -211,11 +226,11 @@ struct AssembleView: View {
             Text(item.word)
                 .font(.system(size: 17, design: .serif))
                 .foregroundStyle(Theme.ink)
-                .padding(.vertical, 9)
-                .padding(.horizontal, 14)
+                .padding(.vertical, 10)
+                .padding(.horizontal, 15)
                 .background(Theme.raised)
-                .clipShape(RoundedRectangle(cornerRadius: 6))
-                .overlay(RoundedRectangle(cornerRadius: 6).stroke(Theme.line, lineWidth: 1))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Theme.line, lineWidth: 1))
                 .shadow(color: Theme.ink.opacity(inBank ? 0.06 : 0.1), radius: 3, y: 2)
         }
         .buttonStyle(CarvePress())
@@ -244,8 +259,6 @@ struct AssembleView: View {
 
 struct TypeInView: View {
     let block: TypeInBlock
-    let isLast: Bool
-    let onContinue: () -> Void
     let onSolved: () -> Void
 
     @EnvironmentObject var state: AppState
@@ -256,65 +269,63 @@ struct TypeInView: View {
     @FocusState private var focused: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            ExerciseCard(prompt: block.prompt) {
-                VStack(alignment: .leading, spacing: 10) {
-                    HStack(spacing: 8) {
-                        TextField(block.placeholder, text: $text)
-                            .font(.system(size: 17, design: .serif))
-                            .textInputAutocapitalization(.never)
-                            .autocorrectionDisabled()
-                            .submitLabel(.done)
-                            .focused($focused)
-                            .onSubmit { grade() }
-                            .padding(.vertical, 10)
-                            .padding(.horizontal, 12)
+        ExerciseFrame(context: block.context, prompt: block.prompt) {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 8) {
+                    TextField(block.placeholder, text: $text)
+                        .font(.system(size: 17, design: .serif))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        .submitLabel(.done)
+                        .focused($focused)
+                        .onSubmit { grade() }
+                        .padding(.vertical, 12)
+                        .padding(.horizontal, 14)
+                        .background(Theme.raised)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .overlay(RoundedRectangle(cornerRadius: 8)
+                            .stroke(focused ? Theme.moss.opacity(0.6) : Theme.line, lineWidth: 1))
+                        .disabled(solved)
+                    Button("Seiceáil") { grade() }
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(Theme.bg)
+                        .padding(.vertical, 13)
+                        .padding(.horizontal, 16)
+                        .background(Theme.ink)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                        .buttonStyle(CarvePress())
+                        .disabled(solved)
+                }
+                .shake(shakeCount)
+                if block.fada {
+                    HStack(spacing: 6) {
+                        ForEach(["á", "é", "í", "ó", "ú"], id: \.self) { fada in
+                            Button(fada) {
+                                guard !solved else { return }
+                                Haptics.tap()
+                                text.append(fada)
+                            }
+                            .font(.system(size: 16, design: .serif))
+                            .foregroundStyle(Theme.ink)
+                            .padding(.vertical, 7)
+                            .padding(.horizontal, 13)
                             .background(Theme.raised)
                             .clipShape(RoundedRectangle(cornerRadius: 6))
-                            .overlay(RoundedRectangle(cornerRadius: 6)
-                                .stroke(focused ? Theme.moss.opacity(0.6) : Theme.line, lineWidth: 1))
-                            .disabled(solved)
-                        Button("Seiceáil") { grade() }
-                            .font(.system(size: 14, weight: .semibold))
-                            .foregroundStyle(Theme.bg)
-                            .padding(.vertical, 11)
-                            .padding(.horizontal, 14)
-                            .background(Theme.ink)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .overlay(RoundedRectangle(cornerRadius: 6).stroke(Theme.line, lineWidth: 1))
                             .buttonStyle(CarvePress())
-                            .disabled(solved)
-                    }
-                    .shake(shakeCount)
-                    if block.fada {
-                        HStack(spacing: 6) {
-                            ForEach(["á", "é", "í", "ó", "ú"], id: \.self) { fada in
-                                Button(fada) {
-                                    guard !solved else { return }
-                                    Haptics.tap()
-                                    text.append(fada)
-                                }
-                                .font(.system(size: 16, design: .serif))
-                                .foregroundStyle(Theme.ink)
-                                .padding(.vertical, 6)
-                                .padding(.horizontal, 12)
-                                .background(Theme.raised)
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
-                                .overlay(RoundedRectangle(cornerRadius: 5).stroke(Theme.line, lineWidth: 1))
-                                .buttonStyle(CarvePress())
-                            }
                         }
                     }
-                    if let hint = block.hint, verdict == nil {
-                        Text(hint)
-                            .font(.system(size: 13))
-                            .foregroundStyle(Theme.inkFaint)
-                    }
-                    if let verdict {
-                        Verdict(ok: verdict.ok, headline: verdict.text)
-                    }
+                }
+                if let hint = block.hint, verdict == nil {
+                    Text(hint)
+                        .font(.system(size: 13))
+                        .foregroundStyle(Theme.inkFaint)
+                        .lineSpacing(3)
+                }
+                if let verdict {
+                    Verdict(ok: verdict.ok, headline: verdict.text)
                 }
             }
-            if solved && isLast { ContinueButton(action: onContinue) }
         }
     }
 
@@ -365,8 +376,6 @@ struct TypeInView: View {
 
 struct MatchView: View {
     let block: MatchBlock
-    let isLast: Bool
-    let onContinue: () -> Void
     let onSolved: () -> Void
 
     @State private var left: [String]
@@ -378,10 +387,8 @@ struct MatchView: View {
     @State private var shakes: [String: Int] = [:]
     @State private var solved = false
 
-    init(block: MatchBlock, isLast: Bool, onContinue: @escaping () -> Void, onSolved: @escaping () -> Void) {
+    init(block: MatchBlock, onSolved: @escaping () -> Void) {
         self.block = block
-        self.isLast = isLast
-        self.onContinue = onContinue
         self.onSolved = onSolved
         _left = State(initialValue: block.pairs.map { $0[0] }.shuffled())
         _right = State(initialValue: block.pairs.map { $0[1] }.shuffled())
@@ -389,25 +396,22 @@ struct MatchView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            ExerciseCard(prompt: block.prompt) {
-                HStack(alignment: .top, spacing: 8) {
-                    VStack(spacing: 8) {
-                        ForEach(left, id: \.self) { item in
-                            pairButton(item, isLeft: true)
-                        }
-                    }
-                    VStack(spacing: 8) {
-                        ForEach(right, id: \.self) { item in
-                            pairButton(item, isLeft: false)
-                        }
+        ExerciseFrame(context: block.context, prompt: block.prompt) {
+            HStack(alignment: .top, spacing: 10) {
+                VStack(spacing: 10) {
+                    ForEach(left, id: \.self) { item in
+                        pairButton(item, isLeft: true)
                     }
                 }
-                if solved {
-                    Verdict(ok: true, headline: "Maith thú! All matched.")
+                VStack(spacing: 10) {
+                    ForEach(right, id: \.self) { item in
+                        pairButton(item, isLeft: false)
+                    }
                 }
             }
-            if solved && isLast { ContinueButton(action: onContinue) }
+            if solved {
+                Verdict(ok: true, headline: "Maith thú! All matched.")
+            }
         }
     }
 
@@ -416,14 +420,15 @@ struct MatchView: View {
             tap(item, isLeft: isLeft)
         } label: {
             Text(item)
-                .font(isLeft ? .system(size: 16, design: .serif) : .system(size: 14))
+                .font(isLeft ? .system(size: 16.5, design: .serif) : .system(size: 14.5))
                 .foregroundStyle(locked.contains(item) ? Theme.inkSoft : Theme.ink)
+                .lineSpacing(2)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.vertical, 11)
-                .padding(.horizontal, 11)
+                .padding(.vertical, 13)
+                .padding(.horizontal, 12)
                 .background(background(item))
-                .clipShape(RoundedRectangle(cornerRadius: 6))
-                .overlay(RoundedRectangle(cornerRadius: 6).stroke(border(item), lineWidth: 1))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay(RoundedRectangle(cornerRadius: 8).stroke(border(item), lineWidth: 1))
                 // The picked-up tile lifts off the stone, waiting for its mate.
                 .scaleEffect(selectedLeft == item ? 1.05 : 1)
                 .shadow(color: Theme.ink.opacity(selectedLeft == item ? 0.18 : 0),

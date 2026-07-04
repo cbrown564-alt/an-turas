@@ -4,72 +4,67 @@ import SwiftUI
 // Also shown standalone from the map as "Do Mhúsaem".
 
 struct ArtifactView: View {
-    let isLast: Bool
-    let onContinue: () -> Void
-
     @EnvironmentObject var state: AppState
     @State private var name = ""
     @State private var carvedName: String?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 12) {
                 Eyebrow(text: "Déantán · Artifact", color: Theme.lichen)
                 Text("Do chloch féin — your own stone")
-                    .font(.system(size: 22, weight: .semibold, design: .serif))
+                    .font(.system(size: 23, weight: .semibold, design: .serif))
                     .foregroundStyle(Theme.ink)
-                Text("Dáire owes you a wage for the week. He takes a small slab of the same grey stone and asks what name he should cut. Carve your name the way the first Irish writers would have — read it from the bottom up.")
-                    .font(.system(size: 14))
-                    .foregroundStyle(Theme.inkSoft)
-
-                HStack(spacing: 8) {
-                    TextField("Your name", text: $name)
-                        .font(.system(size: 17, design: .serif))
-                        .textInputAutocapitalization(.words)
-                        .autocorrectionDisabled()
-                        .submitLabel(.done)
-                        .onSubmit { carve() }
-                        .padding(.vertical, 10)
-                        .padding(.horizontal, 12)
-                        .background(Theme.raised)
-                        .clipShape(RoundedRectangle(cornerRadius: 6))
-                        .overlay(RoundedRectangle(cornerRadius: 6).stroke(Theme.line, lineWidth: 1))
-                    Button("Snoigh é — carve it") { carve() }
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(Theme.bg)
-                        .padding(.vertical, 11)
-                        .padding(.horizontal, 14)
-                        .background(Theme.ink)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .buttonStyle(CarvePress())
-                }
-
-                if let carved = carvedName {
-                    HStack {
-                        Spacer()
-                        // The payoff of the chapter: your own name cut stroke by
-                        // stroke, each one a tick of the chisel under your thumb.
-                        OghamStoneView(word: carved, width: 160, carve: true, ticks: true)
-                            .id(carved)
-                        Spacer()
-                    }
-                    .transition(.offset(y: 14).combined(with: .opacity))
-                    Text("\(carved.uppercased()) — read upward from the base")
-                        .font(.system(size: 12))
-                        .foregroundStyle(Theme.inkFaint)
-                        .frame(maxWidth: .infinity)
-                        .multilineTextAlignment(.center)
-                    Text(notesText(for: carved))
-                        .font(.system(size: 13))
-                        .foregroundStyle(Theme.inkSoft)
-                }
             }
-            .padding(20)
-            .background(Theme.raised)
-            .clipShape(RoundedRectangle(cornerRadius: 5))
-            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Theme.line, lineWidth: 1))
+            .padding(.bottom, 2)
+            Text("Dáire owes you a wage for the week. He takes a small slab of the same grey stone and asks what name he should cut. Carve your name the way the first Irish writers would have — read it from the bottom up.")
+                .font(.system(size: 15))
+                .foregroundStyle(Theme.inkSoft)
+                .lineSpacing(4)
 
-            if isLast { ContinueButton(action: onContinue) }
+            HStack(spacing: 8) {
+                TextField("Your name", text: $name)
+                    .font(.system(size: 17, design: .serif))
+                    .textInputAutocapitalization(.words)
+                    .autocorrectionDisabled()
+                    .submitLabel(.done)
+                    .onSubmit { carve() }
+                    .padding(.vertical, 12)
+                    .padding(.horizontal, 14)
+                    .background(Theme.raised)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Theme.line, lineWidth: 1))
+                Button("Snoigh é — carve it") { carve() }
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(Theme.bg)
+                    .padding(.vertical, 13)
+                    .padding(.horizontal, 16)
+                    .background(Theme.ink)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                    .buttonStyle(CarvePress())
+            }
+            .padding(.top, 4)
+
+            if let carved = carvedName {
+                HStack {
+                    Spacer()
+                    // The payoff of the chapter: your own name cut stroke by
+                    // stroke, each one a tick of the chisel under your thumb.
+                    OghamStoneView(word: carved, width: 160, carve: true, ticks: true)
+                        .id(carved)
+                    Spacer()
+                }
+                .transition(.offset(y: 14).combined(with: .opacity))
+                Text("\(carved.uppercased()) — read upward from the base")
+                    .font(.system(size: 12))
+                    .foregroundStyle(Theme.inkFaint)
+                    .frame(maxWidth: .infinity)
+                    .multilineTextAlignment(.center)
+                Text(notesText(for: carved))
+                    .font(.system(size: 13))
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(3)
+            }
         }
         .onAppear {
             if name.isEmpty, !state.learnerName.isEmpty {

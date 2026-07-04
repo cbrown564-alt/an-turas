@@ -95,19 +95,6 @@ struct PrimaryButton: View {
     }
 }
 
-struct ContinueButton: View {
-    var title = "Ar aghaidh →"
-    let action: () -> Void
-
-    var body: some View {
-        PrimaryButton(title: title, fullWidth: true) {
-            Haptics.tap()
-            action()
-        }
-        .padding(.top, 6)
-    }
-}
-
 // MARK: - Reusable text styles
 
 struct Eyebrow: View {
@@ -127,11 +114,12 @@ struct GlossText: View {
     let glosses: [Gloss]
     @Binding var activeGloss: Gloss?
     var font: Font = .system(size: 19, design: .serif)
+    var lineSpacing: CGFloat = 5
 
     var body: some View {
         Text(attributed)
             .font(font)
-            .lineSpacing(5)
+            .lineSpacing(lineSpacing)
             .environment(\.openURL, OpenURLAction { url in
                 if url.scheme == "turas",
                    let idx = Int(url.lastPathComponent),

@@ -1,41 +1,47 @@
 import SwiftUI
 
 // MARK: - Session as pages
-// A session reads as a sequence of scene-pages, turned by swiping — the page
-// turn replaces "Ar aghaidh" everywhere in narrative. Exercises gate the turn:
-// pages beyond an unsolved exercise simply don't exist yet, so the swipe
+// A session reads as a sequence of authored pages, turned by swiping — the
+// page turn replaces "Ar aghaidh" everywhere in narrative. Exercises gate the
+// turn: pages beyond an unsolved exercise simply don't exist yet, so the swipe
 // rubber-bands off the wall (with a dull knock). Solving carves the stroke and
 // the page turns itself. The next page is trailed as faint chalk marks — the
 // carver chalks before he cuts.
+//
+// Each register composes its page differently:
+//   scene    — a book page: content sits at the optical centre; spoken Irish
+//              is the hero, set large against a carved groove.
+//   note     — a manual page: lichen-washed, top-anchored like a chapter start.
+//   exercise — the hand on the chisel: no container, the tappable elements are
+//              the raised objects; a register mark of chalk strokes up top.
+//   feature  — inscription, seanfhocal, artifact, fin: stand-alone moments.
 
 final class SessionVM: ObservableObject {
     let session: Session
     let sessionIndex: Int
 
-    @Published var pages: [[Int]]
     @Published var currentPage: Int?
-    @Published var solvedBlocks: Set<Int> = []
+    @Published var solved: Set<Int> = []
     @Published var finished = false
 
     var initialPage = 0
 
+    var pages: [Page] { session.pages }
     var exercisesTotal: Int { session.exerciseCount }
     /// Index of the synthetic completion page, one past the content pages.
     var completionIndex: Int { pages.count }
 
-    init(session: Session, sessionIndex: Int, mode: PagingMode) {
+    init(session: Session, sessionIndex: Int) {
         self.session = session
         self.sessionIndex = sessionIndex
-        pages = session.pageGroups(mode)
         // Debug: --reveal N jumps to page N, pre-solving exercises before it.
         let args = ProcessInfo.processInfo.arguments
         if let flagIndex = args.firstIndex(of: "--reveal"),
            args.indices.contains(flagIndex + 1),
            let target = Int(args[flagIndex + 1]) {
-            for page in pages.prefix(min(target, pages.count)) {
-                for blockIndex in page where session.blocks[blockIndex].isExercise {
-                    solvedBlocks.insert(blockIndex)
-                }
+            for index in pages.indices.prefix(min(target, pages.count))
+            where pages[index].isExercise {
+                solved.insert(index)
             }
             initialPage = min(max(target, 0), completionIndex)
         }
@@ -43,7 +49,7 @@ final class SessionVM: ObservableObject {
 
     func isPageSolved(_ page: Int) -> Bool {
         guard pages.indices.contains(page) else { return true }
-        return pages[page].allSatisfy { !session.blocks[$0].isExercise || solvedBlocks.contains($0) }
+        return !pages[page].isExercise || solved.contains(page)
     }
 
     /// The furthest page that exists right now: everything up to (and including)
@@ -52,11 +58,6 @@ final class SessionVM: ObservableObject {
         for page in pages.indices where !isPageSolved(page) { return page }
         return completionIndex
     }
-
-    func regroup(_ mode: PagingMode) {
-        pages = session.pageGroups(mode)
-        currentPage = min(currentPage ?? 0, furthestUnlocked)
-    }
 }
 
 struct SessionView: View {
@@ -64,7 +65,6 @@ struct SessionView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @StateObject private var vm: SessionVM
-    @AppStorage("turas_paging") private var pagingRaw = PagingMode.scenes.rawValue
     @State private var activeGloss: Gloss?
     @State private var visited: Set<Int> = []
     @State private var launched = false
@@ -73,10 +73,8 @@ struct SessionView: View {
         // Content is loaded once by AppState; load again here only to seed the VM
         // before the environment object is available (prototype-grade shortcut).
         let session = ContentLoader.chapter1().sessions[sessionIndex]
-        let mode = PagingMode(rawValue:
-            UserDefaults.standard.string(forKey: "turas_paging") ?? "") ?? .scenes
         _vm = StateObject(wrappedValue:
-            SessionVM(session: session, sessionIndex: sessionIndex, mode: mode))
+            SessionVM(session: session, sessionIndex: sessionIndex))
     }
 
     var body: some View {
@@ -109,13 +107,10 @@ struct SessionView: View {
                 Haptics.flourish()
             }
         }
-        .onChange(of: pagingRaw) { _, raw in
-            vm.regroup(PagingMode(rawValue: raw) ?? .scenes)
-        }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                CarveBarView(total: vm.exercisesTotal, done: vm.solvedBlocks.count)
+                CarveBarView(total: vm.exercisesTotal, done: vm.solved.count)
                     .frame(width: 170)
             }
             ToolbarItem(placement: .topBarTrailing) {
@@ -124,20 +119,6 @@ struct SessionView: View {
                     .kerning(1.2)
                     .foregroundStyle(Theme.inkFaint)
             }
-            #if DEBUG
-            ToolbarItem(placement: .topBarTrailing) {
-                Menu {
-                    Picker("Grouping", selection: $pagingRaw) {
-                        Text("Scene pages").tag(PagingMode.scenes.rawValue)
-                        Text("Block pages").tag(PagingMode.blocks.rawValue)
-                    }
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                        .font(.system(size: 14))
-                        .foregroundStyle(Theme.inkFaint)
-                }
-            }
-            #endif
         }
         .sheet(item: $activeGloss) { GlossSheet(gloss: $0) }
     }
@@ -164,29 +145,49 @@ struct SessionView: View {
     }
 
     private func contentPage(_ page: Int) -> some View {
-        ScrollView(.vertical) {
-            VStack(alignment: .leading, spacing: 24) {
-                ForEach(Array(vm.pages[page].enumerated()), id: \.element) { row, blockIndex in
-                    BlockView(
-                        block: vm.session.blocks[blockIndex],
-                        isLast: false,
-                        activeGloss: $activeGloss,
-                        onContinue: {},
-                        onSolved: { solved(block: blockIndex, page: page) })
-                        .modifier(RiseIn(order: row, reduceMotion: reduceMotion))
-                }
-            }
-            .padding(.horizontal, 22)
-            .padding(.top, 18)
-            .padding(.bottom, 90)
-            .frame(maxWidth: 640, alignment: .leading)
-            .frame(maxWidth: .infinity)
+        PageScaffold(register: vm.pages[page].register) {
+            pageBody(page)
         }
-        .scrollBounceBehavior(.basedOnSize)
         .overlay(alignment: .bottomTrailing) {
             if let label = teaseLabel(after: page) {
                 ChalkTease(label: label)
             }
+        }
+    }
+
+    @ViewBuilder
+    private func pageBody(_ page: Int) -> some View {
+        switch vm.pages[page] {
+        case .scene(let scene):
+            // Scene beats stagger in individually; other registers rise whole.
+            ScenePageView(page: scene, activeGloss: $activeGloss)
+        case .note(let note):
+            NotePageView(note: note)
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .choice(let choice):
+            ChoiceView(block: choice, onSolved: { solved(page) })
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .assemble(let assemble):
+            AssembleView(block: assemble, onSolved: { solved(page) })
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .typein(let typein):
+            TypeInView(block: typein, onSolved: { solved(page) })
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .match(let match):
+            MatchView(block: match, onSolved: { solved(page) })
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .inscription(let inscription):
+            InscriptionPageView(block: inscription)
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .seanfhocal(let seanfhocal):
+            SeanfhocalPageView(block: seanfhocal)
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .artifact:
+            ArtifactView()
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+        case .fin(let fin):
+            FinPageView(block: fin)
+                .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         }
     }
 
@@ -195,7 +196,7 @@ struct SessionView: View {
         let next = page + 1
         guard next <= vm.furthestUnlocked else { return nil }
         guard next < vm.completionIndex else { return "críoch" }
-        switch vm.session.blocks[vm.pages[next][0]] {
+        switch vm.pages[next] {
         case .scene:        return "an scéal"
         case .note:         return "nóta gramadaí"
         case .choice, .assemble, .typein, .match:
@@ -207,10 +208,10 @@ struct SessionView: View {
         }
     }
 
-    private func solved(block blockIndex: Int, page: Int) {
+    private func solved(_ page: Int) {
         Haptics.chisel()
         withAnimation(Motion.pop) {
-            _ = vm.solvedBlocks.insert(blockIndex)
+            _ = vm.solved.insert(page)
         }
         // Let the verdict land, then the page turns itself.
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak vm] in
@@ -222,10 +223,41 @@ struct SessionView: View {
     }
 }
 
-// MARK: - Page furniture
+// MARK: - Page scaffold
+// One composition engine for all pages: a readable column, register-specific
+// vertical placement, and room at the foot for the chalk tease. Centred
+// registers carry more padding below than above, so the content sits at the
+// optical centre — slightly high, like text on a well-set title page.
+
+private struct PageScaffold<Content: View>: View {
+    let register: PageRegister
+    @ViewBuilder var content: () -> Content
+
+    private var centred: Bool { register == .scene || register == .feature }
+
+    var body: some View {
+        GeometryReader { geo in
+            ScrollView(.vertical) {
+                VStack(alignment: .leading, spacing: 0) { content() }
+                    .frame(maxWidth: 560, alignment: .leading)
+                    .padding(.horizontal, 26)
+                    .padding(.top, centred ? 24 : max(geo.size.height * 0.08, 36))
+                    .padding(.bottom, centred ? 104 : 90)
+                    .frame(maxWidth: .infinity)
+                    .frame(minHeight: centred ? geo.size.height : nil)
+            }
+            .scrollBounceBehavior(.basedOnSize)
+        }
+        .background {
+            if register == .note {
+                Theme.lichen.opacity(0.05).ignoresSafeArea()
+            }
+        }
+    }
+}
 
 /// Staggered entrance for a freshly turned page: rows settle like dust.
-private struct RiseIn: ViewModifier {
+struct RiseIn: ViewModifier {
     let order: Int
     let reduceMotion: Bool
     @State private var shown = false
@@ -241,6 +273,239 @@ private struct RiseIn: ViewModifier {
             }
     }
 }
+
+// MARK: - Scene pages
+// Narration and speech are different materials: narration is set as quiet
+// serif prose; Irish said aloud is the hero — speaker, the line at display
+// size against a carved groove, the rough sound beneath. Tap for the meaning.
+
+private struct ScenePageView: View {
+    let page: ScenePage
+    @Binding var activeGloss: Gloss?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 22) {
+            if let place = page.place {
+                Slugline(text: place)
+                    .padding(.bottom, 6)
+                    .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
+            }
+            ForEach(Array(page.beats.enumerated()), id: \.offset) { index, beat in
+                beatView(beat)
+                    .modifier(RiseIn(order: index + (page.place == nil ? 0 : 1),
+                                     reduceMotion: reduceMotion))
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func beatView(_ beat: Beat) -> some View {
+        switch beat {
+        case .narration(let narration):
+            GlossText(markdown: narration.n, glosses: narration.glosses ?? [],
+                      activeGloss: $activeGloss,
+                      font: .system(size: 19, design: .serif), lineSpacing: 6.5)
+                .foregroundStyle(Theme.ink)
+        case .speech(let speech):
+            SpeechBeatView(beat: speech) { activeGloss = speech.gloss }
+        }
+    }
+}
+
+/// Slugline — where and when, set the way a carver would chalk a label:
+/// small, spaced, with a short rule underneath.
+private struct Slugline: View {
+    let text: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(text.uppercased())
+                .font(.system(size: 11, weight: .semibold))
+                .kerning(1.8)
+                .foregroundStyle(Theme.inkFaint)
+                .lineSpacing(4)
+            Rectangle()
+                .fill(Theme.stone)
+                .frame(width: 44, height: 1.5)
+        }
+    }
+}
+
+/// A line of spoken Irish — the reason the learner is here, so it gets the
+/// display type. The dotted moss underline is the same gloss affordance as in
+/// prose; tapping anywhere opens the meaning.
+private struct SpeechBeatView: View {
+    let beat: SpeechBeat
+    let onTap: () -> Void
+
+    var body: some View {
+        Button {
+            Haptics.tap()
+            onTap()
+        } label: {
+            VStack(alignment: .leading, spacing: 8) {
+                if let who = beat.who {
+                    Text(who.uppercased())
+                        .font(.system(size: 10.5, weight: .semibold))
+                        .kerning(1.5)
+                        .foregroundStyle(Theme.inkFaint)
+                }
+                (Text("“")
+                 + Text(beat.s).underline(true, pattern: .dot, color: Theme.moss.opacity(0.45))
+                 + Text("”"))
+                    .font(.system(size: 25, weight: .semibold, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                    .lineSpacing(5)
+                    .multilineTextAlignment(.leading)
+                if let ph = beat.ph {
+                    Text(ph)
+                        .font(.system(size: 12.5, weight: .medium))
+                        .kerning(0.4)
+                        .foregroundStyle(Theme.inkFaint)
+                }
+            }
+            .padding(.leading, 17)
+            // The carved groove sizes to the words, like a stroke to its letter.
+            .overlay(alignment: .leading) {
+                RoundedRectangle(cornerRadius: 1.5)
+                    .fill(Theme.stone)
+                    .frame(width: 3)
+                    .padding(.vertical, 3)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(CarvePress())
+        .padding(.vertical, 4)
+        .accessibilityLabel("\(beat.who ?? "Spoken"): \(beat.s)")
+        .accessibilityHint("Shows the meaning")
+    }
+}
+
+// MARK: - Note pages
+// The manual register: a lichen-washed page (applied by the scaffold), title
+// set as a proper heading, example pairs as a specimen block on a hanging rule.
+
+private struct NotePageView: View {
+    let note: NoteBlock
+    @State private var unusedGloss: Gloss?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 12) {
+                Eyebrow(text: "An Nóta Gramadaí", color: Theme.lichen)
+                Text(note.title)
+                    .font(.system(size: 23, weight: .semibold, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                    .lineSpacing(3)
+            }
+            .padding(.bottom, 8)
+            ForEach(Array(note.paras.enumerated()), id: \.offset) { index, para in
+                GlossText(markdown: para, glosses: [], activeGloss: $unusedGloss,
+                          font: .system(size: 15.5), lineSpacing: 5)
+                    .foregroundStyle(Theme.ink)
+                // Example pairs sit after the second-to-last paragraph: the
+                // last paragraph reads as a kicker under the specimens.
+                if index == max(note.paras.count - 2, 0), let pairs = note.pairs {
+                    specimenBlock(pairs)
+                }
+            }
+        }
+    }
+
+    private func specimenBlock(_ pairs: [String]) -> some View {
+        VStack(alignment: .leading, spacing: 9) {
+            ForEach(pairs, id: \.self) { line in
+                GlossText(markdown: line, glosses: [], activeGloss: $unusedGloss,
+                          font: .system(size: 17.5, design: .serif), lineSpacing: 4)
+                    .foregroundStyle(Theme.ink)
+            }
+        }
+        .padding(.leading, 14)
+        .padding(.vertical, 4)
+        .overlay(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 1)
+                .fill(Theme.lichen.opacity(0.55))
+                .frame(width: 2)
+        }
+        .padding(.vertical, 6)
+    }
+}
+
+// MARK: - Feature pages
+
+private struct InscriptionPageView: View {
+    let block: InscriptionBlock
+
+    var body: some View {
+        VStack(spacing: 18) {
+            // The inscription carves itself in, stroke by stroke, with the
+            // faint tap-tap-tap of Dáire's chisel under your fingers.
+            OghamStoneView(word: block.word, width: 160, carve: true, ticks: true)
+            Text(block.caption)
+                .font(.system(size: 12))
+                .foregroundStyle(Theme.inkFaint)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 320)
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+private struct SeanfhocalPageView: View {
+    let block: SeanfhocalBlock
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Eyebrow(text: "Seanfhocal · collected", color: Theme.lichen)
+            Text(block.ga)
+                .font(.system(size: 25, weight: .semibold, design: .serif))
+                .foregroundStyle(Theme.ink)
+                .multilineTextAlignment(.center)
+                .lineSpacing(6)
+            Text(block.en)
+                .font(.system(size: 17, design: .serif))
+                .italic()
+                .foregroundStyle(Theme.inkSoft)
+                .multilineTextAlignment(.center)
+            Rectangle()
+                .fill(Theme.lichen)
+                .frame(width: 44, height: 1.5)
+                .padding(.vertical, 4)
+            Text(block.note)
+                .font(.system(size: 13))
+                .foregroundStyle(Theme.inkFaint)
+                .multilineTextAlignment(.center)
+                .lineSpacing(3)
+                .frame(maxWidth: 340)
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+private struct FinPageView: View {
+    let block: FinBlock
+    @State private var unusedGloss: Gloss?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            ForEach(Array(block.paras.enumerated()), id: \.offset) { _, para in
+                GlossText(markdown: para, glosses: [], activeGloss: $unusedGloss,
+                          font: .system(size: 15.5), lineSpacing: 5)
+                    .foregroundStyle(Theme.inkSoft)
+            }
+            Text("An Turas — prototype, Caibidil 1 vertical slice · Connacht Irish first · Draft content awaiting native-speaker review · Audio pending ABAIR licensing · Your progress lives only on this device.")
+                .font(.system(size: 11))
+                .foregroundStyle(Theme.inkFaint)
+                .lineSpacing(3)
+                .padding(.top, 12)
+                .overlay(Rectangle().fill(Theme.line).frame(height: 1), alignment: .top)
+        }
+    }
+}
+
+// MARK: - Page furniture
 
 /// Faint chalked stroke-guides at the turn edge — the carver chalks before he
 /// cuts. Appearing is the invitation: the next page already exists.
@@ -353,179 +618,5 @@ private struct CompletionPage: View {
         .padding(.horizontal, 22)
         .padding(.bottom, 24)
         .frame(maxWidth: 640)
-    }
-}
-
-// MARK: - Block dispatch
-
-struct BlockView: View {
-    let block: Block
-    let isLast: Bool
-    @Binding var activeGloss: Gloss?
-    let onContinue: () -> Void
-    let onSolved: () -> Void
-
-    var body: some View {
-        switch block {
-        case .scene(let scene):
-            SceneBlockView(scene: scene, isLast: isLast, activeGloss: $activeGloss, onContinue: onContinue)
-        case .note(let note):
-            NoteBlockView(note: note, isLast: isLast, onContinue: onContinue)
-        case .choice(let choice):
-            ChoiceView(block: choice, isLast: isLast, onContinue: onContinue, onSolved: onSolved)
-        case .assemble(let assemble):
-            AssembleView(block: assemble, isLast: isLast, onContinue: onContinue, onSolved: onSolved)
-        case .typein(let typein):
-            TypeInView(block: typein, isLast: isLast, onContinue: onContinue, onSolved: onSolved)
-        case .match(let match):
-            MatchView(block: match, isLast: isLast, onContinue: onContinue, onSolved: onSolved)
-        case .inscription(let inscription):
-            InscriptionView(block: inscription, isLast: isLast, onContinue: onContinue)
-        case .seanfhocal(let seanfhocal):
-            SeanfhocalView(block: seanfhocal, isLast: isLast, onContinue: onContinue)
-        case .artifact:
-            ArtifactView(isLast: isLast, onContinue: onContinue)
-        case .fin(let fin):
-            FinView(block: fin, isLast: isLast, onContinue: onContinue)
-        }
-    }
-}
-
-// MARK: - Static blocks
-
-struct SceneBlockView: View {
-    let scene: SceneBlock
-    let isLast: Bool
-    @Binding var activeGloss: Gloss?
-    let onContinue: () -> Void
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            if let who = scene.who {
-                Eyebrow(text: who, color: Theme.inkFaint)
-            }
-            ForEach(Array(scene.paras.enumerated()), id: \.offset) { _, para in
-                GlossText(markdown: para, glosses: scene.glosses ?? [], activeGloss: $activeGloss)
-                    .foregroundStyle(Theme.ink)
-            }
-            if isLast { ContinueButton(action: onContinue) }
-        }
-    }
-}
-
-struct NoteBlockView: View {
-    let note: NoteBlock
-    let isLast: Bool
-    let onContinue: () -> Void
-    @State private var unusedGloss: Gloss?
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            VStack(alignment: .leading, spacing: 10) {
-                Eyebrow(text: "An Nóta Gramadaí · \(note.title)", color: Theme.lichen)
-                ForEach(Array(note.paras.enumerated()), id: \.offset) { index, para in
-                    GlossText(markdown: para, glosses: [], activeGloss: $unusedGloss,
-                              font: .system(size: 15))
-                        .foregroundStyle(Theme.ink)
-                    // Example pairs sit after the second-to-last paragraph, as in the design.
-                    if index == max(note.paras.count - 2, 0), let pairs = note.pairs {
-                        VStack(alignment: .leading, spacing: 4) {
-                            ForEach(pairs, id: \.self) { line in
-                                GlossText(markdown: line, glosses: [], activeGloss: $unusedGloss,
-                                          font: .system(size: 17, design: .serif))
-                                    .foregroundStyle(Theme.ink)
-                            }
-                        }
-                        .padding(.vertical, 2)
-                    }
-                }
-            }
-            .padding(18)
-            .background(Theme.raised)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .overlay(
-                RoundedRectangle(cornerRadius: 8).stroke(Theme.line, lineWidth: 1))
-            .overlay(
-                Rectangle().fill(Theme.lichen.opacity(0.7)).frame(width: 3),
-                alignment: .leading)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            if isLast { ContinueButton(title: "Tuigim — got it →", action: onContinue) }
-        }
-    }
-}
-
-struct InscriptionView: View {
-    let block: InscriptionBlock
-    let isLast: Bool
-    let onContinue: () -> Void
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Spacer()
-                // The inscription carves itself in, stroke by stroke, with the
-                // faint tap-tap-tap of Dáire's chisel under your fingers.
-                OghamStoneView(word: block.word, width: 160, carve: true, ticks: true)
-                Spacer()
-            }
-            Text(block.caption)
-                .font(.system(size: 12))
-                .foregroundStyle(Theme.inkFaint)
-                .frame(maxWidth: .infinity)
-                .multilineTextAlignment(.center)
-            if isLast { ContinueButton(action: onContinue) }
-        }
-    }
-}
-
-struct SeanfhocalView: View {
-    let block: SeanfhocalBlock
-    let isLast: Bool
-    let onContinue: () -> Void
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            VStack(alignment: .leading, spacing: 10) {
-                Eyebrow(text: "Seanfhocal · collected", color: Theme.lichen)
-                Text(block.ga)
-                    .font(.system(size: 24, weight: .semibold, design: .serif))
-                    .foregroundStyle(Theme.ink)
-                Text(block.en)
-                    .font(.system(size: 16, design: .serif))
-                    .foregroundStyle(Theme.inkSoft)
-                Text(block.note)
-                    .font(.system(size: 13))
-                    .foregroundStyle(Theme.inkFaint)
-            }
-            .padding(.vertical, 20)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .overlay(Rectangle().fill(Theme.lichen).frame(height: 2), alignment: .top)
-            .overlay(Rectangle().fill(Theme.line).frame(height: 1), alignment: .bottom)
-            if isLast { ContinueButton(action: onContinue) }
-        }
-    }
-}
-
-struct FinView: View {
-    let block: FinBlock
-    let isLast: Bool
-    let onContinue: () -> Void
-    @State private var unusedGloss: Gloss?
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            ForEach(Array(block.paras.enumerated()), id: \.offset) { _, para in
-                GlossText(markdown: para, glosses: [], activeGloss: $unusedGloss,
-                          font: .system(size: 15))
-                    .foregroundStyle(Theme.inkSoft)
-            }
-            Text("An Turas — prototype, Caibidil 1 vertical slice · Connacht Irish first · Draft content awaiting native-speaker review · Audio pending ABAIR licensing · Your progress lives only on this device.")
-                .font(.system(size: 11))
-                .foregroundStyle(Theme.inkFaint)
-                .padding(.top, 10)
-                .overlay(Rectangle().fill(Theme.line).frame(height: 1), alignment: .top)
-            if isLast { ContinueButton(title: "Críochnaigh — finish →", action: onContinue) }
-        }
-        .padding(.top, 6)
     }
 }
