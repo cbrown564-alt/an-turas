@@ -37,6 +37,13 @@ struct JourneyView: View {
                 .padding(.horizontal, 10)
                 .opacity(appeared ? 1 : 0)
 
+                TimeAxis(journey: state.journey, currentN: state.currentChapterN) { chapter in
+                    Haptics.tap()
+                    selected = chapter
+                }
+                .padding(.horizontal, 22)
+                .opacity(appeared ? 1 : 0)
+
                 VStack(spacing: 10) {
                     arAisRow
                     museumRow
@@ -196,6 +203,9 @@ private struct JourneyMap: View {
     /// without falling off the page.
     private let inset = CGSize(width: 44, height: 10)
 
+    /// How far a tap can land from a waypoint and still count as hitting it.
+    private let maxTapDistance: CGFloat = 24
+
     var body: some View {
         GeometryReader { geo in
             let rect = CGRect(origin: .zero, size: geo.size)
@@ -267,13 +277,36 @@ private struct JourneyMap: View {
                                  sessionCount: sessionCount,
                                  reduceMotion: reduceMotion)
                         .position(p)
-                        .onTapGesture { onTap(chapter) }
+                        .accessibilityAction(.default) { onTap(chapter) }
                 }
             }
+            // A handful of chapters (Dubhlinn/an lá inniu among them) land
+            // barely a dozen points apart, closer than any per-marker hit
+            // shape can separate. One tap gesture over the whole map,
+            // resolved by nearest waypoint, means the closest dot always
+            // wins regardless of which marker happens to be drawn on top.
+            .contentShape(Rectangle())
+            .gesture(tapGesture(in: rect))
         }
         .aspectRatio(0.93, contentMode: .fit)
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Map of Ireland showing the journey through \(journey.count) chapters.")
+    }
+
+    private func tapGesture(in rect: CGRect) -> some Gesture {
+        SpatialTapGesture().onEnded { value in
+            let nearest = journey.min { a, b in
+                distance(point(for: a, in: rect), value.location)
+                    < distance(point(for: b, in: rect), value.location)
+            }
+            if let nearest, distance(point(for: nearest, in: rect), value.location) <= maxTapDistance {
+                onTap(nearest)
+            }
+        }
+    }
+
+    private func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
+        hypot(a.x - b.x, a.y - b.y)
     }
 
     private func status(_ chapter: JourneyChapter) -> ChapterStatus {
@@ -306,6 +339,107 @@ private struct JourneyMap: View {
 }
 
 enum ChapterStatus { case done, current, ahead }
+
+// MARK: - The time axis: the spine the map's zigzag route can't show
+
+/// The map is chaotic in space (Mayo → Offaly → Dublin → Meath → Kerry →
+/// Donegal → Kerry → Galway…) but perfectly linear in time. This strip
+/// gives fifteen centuries a line of their own: the same three depths as
+/// the road above (moss walked, chalk ahead), evenly spaced by chapter
+/// rather than by calendar year — a true year-proportional axis would
+/// crowd chapters 8–13 into the last tenth of the strip, which trades one
+/// crowding problem for another. Endpoints and the current era are
+/// captioned; other eras are a tap away via the same chapter card.
+private struct TimeAxis: View {
+    let journey: [JourneyChapter]
+    let currentN: Int
+    let onTap: (JourneyChapter) -> Void
+
+    private let inset: CGFloat = 11
+    private let trackHeight: CGFloat = 22
+
+    var body: some View {
+        VStack(spacing: 5) {
+            GeometryReader { geo in
+                let count = journey.count
+                let span = max(geo.size.width - inset * 2, 1)
+                let y = trackHeight / 2
+                ZStack(alignment: .topLeading) {
+                    Canvas { ctx, _ in
+                        var walked = Path()
+                        var next = Path()
+                        var thread = Path()
+                        for i in 0..<(count - 1) {
+                            var seg = Path()
+                            seg.move(to: CGPoint(x: x(i, span), y: y))
+                            seg.addLine(to: CGPoint(x: x(i + 1, span), y: y))
+                            if journey[i].n < currentN {
+                                walked.addPath(seg)
+                            } else if journey[i].n == currentN {
+                                next.addPath(seg)
+                            } else {
+                                thread.addPath(seg)
+                            }
+                        }
+                        ctx.stroke(thread, with: .color(Theme.stone.opacity(0.55)),
+                                   style: StrokeStyle(lineWidth: 1.4, lineCap: .round, dash: [0.1, 5]))
+                        ctx.stroke(next, with: .color(Theme.stone),
+                                   style: StrokeStyle(lineWidth: 2, lineCap: .round, dash: [0.1, 6]))
+                        ctx.stroke(walked, with: .color(Theme.moss),
+                                   style: StrokeStyle(lineWidth: 2, lineCap: .round))
+                    }
+                    ForEach(Array(journey.enumerated()), id: \.element.id) { i, chapter in
+                        dot(for: chapter)
+                            .frame(width: 26, height: 26)
+                            .contentShape(Circle())
+                            .position(x: x(i, span), y: y)
+                            .onTapGesture { onTap(chapter) }
+                    }
+                }
+            }
+            .frame(height: trackHeight)
+            .accessibilityHidden(true)
+
+            HStack {
+                Text("c. 400").foregroundStyle(Theme.inkFaint)
+                Spacer(minLength: 8)
+                Text(currentEraLabel).foregroundStyle(Theme.moss).lineLimit(1)
+                Spacer(minLength: 8)
+                Text("inniu").foregroundStyle(Theme.inkFaint)
+            }
+            .font(.system(size: 9.5, weight: .semibold))
+            .kerning(0.4)
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Timeline, c. 400 to today, \(journey.count) chapters. \(currentEraLabel).")
+    }
+
+    private func x(_ i: Int, _ span: CGFloat) -> CGFloat {
+        inset + span * CGFloat(i) / CGFloat(journey.count - 1)
+    }
+
+    private var currentEraLabel: String {
+        guard let chapter = journey.first(where: { $0.n == currentN }) else { return "" }
+        return "tá tú anseo · \(chapter.era)"
+    }
+
+    @ViewBuilder
+    private func dot(for chapter: JourneyChapter) -> some View {
+        if chapter.n < currentN {
+            Circle().fill(Theme.moss).frame(width: 7, height: 7)
+        } else if chapter.n == currentN {
+            ZStack {
+                Circle().fill(Theme.ink).frame(width: 10, height: 10)
+                Circle().stroke(Theme.moss, lineWidth: 1.4).frame(width: 10, height: 10)
+            }
+        } else {
+            Circle()
+                .stroke(Theme.stone, style: StrokeStyle(lineWidth: 1.3, dash: [1.4, 2]))
+                .background(Circle().fill(Theme.bg))
+                .frame(width: 7, height: 7)
+        }
+    }
+}
 
 // MARK: - One waypoint: marker + label
 
