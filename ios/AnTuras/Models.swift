@@ -345,6 +345,10 @@ enum ContentLoader {
         decode(Chapter.self, from: "chapter2")
     }
 
+    static func chapter3() -> Chapter {
+        decode(Chapter.self, from: "chapter3")
+    }
+
     static func journey() -> [JourneyChapter] {
         struct Journey: Decodable { let chapters: [JourneyChapter] }
         return decode(Journey.self, from: "journey").chapters
