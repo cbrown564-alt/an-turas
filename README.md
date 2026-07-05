@@ -28,6 +28,8 @@ differences don't exist.
 
 - `docs/STRATEGY.md` — the strategic map: path to launch, major unknowns, biggest
   challenges, resource landscape, competitive landscape.
+- `docs/COMPETITIVE-RESEARCH.md` — competitive research: pedagogy, features,
+  positioning, failed experiments.
 
 ## Status
 

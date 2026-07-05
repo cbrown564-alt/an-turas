@@ -196,6 +196,9 @@ pedagogy is defensible).
 
 ## 6. Competitive landscape
 
+*Full report (pedagogy, features, positioning, failed experiments):
+`COMPETITIVE-RESEARCH.md`.*
+
 | Competitor | What it is | Threat level | What we learn |
 |---|---|---|---|
 | **Duolingo Irish** | Gamified generalist; 1M+ Irish learners historically | High (distribution), low (product depth) | The market exists; the drop-outs are our funnel |
