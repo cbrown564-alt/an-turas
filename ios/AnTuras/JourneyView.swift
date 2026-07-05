@@ -323,7 +323,12 @@ private struct WaypointMark: View {
             marker
             label
         }
-        .contentShape(Circle().scale(3.2))
+        // Sized to the marker, not the label: the label's 170pt-wide frame
+        // would otherwise inflate the ZStack's reported bounds and, scaled
+        // up, let one waypoint's tap target swallow a neighbour's marker
+        // when chapters sit close together (e.g. Dubhlinn/an lá inniu).
+        .frame(width: 40, height: 40)
+        .contentShape(Circle())
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(accessibilityText)
         .accessibilityAddTraits(.isButton)
