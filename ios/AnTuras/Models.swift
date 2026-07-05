@@ -290,14 +290,74 @@ enum Page: Decodable {
     }
 }
 
+// MARK: - The journey (journey.json — the 13-chapter spine as data)
+
+/// One chapter of the historical spine as it appears on the island map and
+/// in the museum: a place, an era, a promise, and the artifact it leaves.
+struct JourneyChapter: Decodable, Identifiable {
+    let n: Int
+    let ga: String
+    let en: String
+    let placeGa: String
+    let placeEn: String
+    let era: String
+    let lat: Double
+    let lon: Double
+    /// Which side of the waypoint its label sits on: above/below/left/right.
+    let side: String
+    let hook: String
+    let payload: String
+    let artifactGa: String
+    let artifactEn: String
+    let glyph: String
+
+    var id: Int { n }
+}
+
+// MARK: - Ar Ais visits (authored in chapter1.json beside the content they review)
+
+/// One person or place that will ask for the learner again. The scheduler
+/// underneath is plumbing; this is the clothing — review as visiting,
+/// never as card debt (SPINE rule 6).
+struct Visit: Decodable, Identifiable {
+    let id: String
+    /// Session index (0-based) whose completion puts this visit on the road.
+    let session: Int
+    let who: String
+    let `where`: String
+    let frame: String
+    let en: String
+    let answer: String
+    let check: TypeCheck
+    /// How the phrase is shown before weathering when the answer is a
+    /// pattern, not a fixed string ("Is mise …"). Defaults to the answer.
+    let display: String?
+
+    var displayPhrase: String { display ?? answer }
+}
+
 enum ContentLoader {
     static func chapter1() -> Chapter {
-        guard let url = Bundle.main.url(forResource: "chapter1", withExtension: "json"),
+        decode(Chapter.self, from: "chapter1")
+    }
+
+    static func journey() -> [JourneyChapter] {
+        struct Journey: Decodable { let chapters: [JourneyChapter] }
+        return decode(Journey.self, from: "journey").chapters
+    }
+
+    static func visits() -> [Visit] {
+        struct Visits: Decodable { let visits: [Visit] }
+        return decode(Visits.self, from: "chapter1").visits
+    }
+
+    private static func decode<T: Decodable>(_ type: T.Type, from resource: String) -> T {
+        guard let url = Bundle.main.url(forResource: resource, withExtension: "json"),
               let data = try? Data(contentsOf: url),
-              let chapter = try? JSONDecoder().decode(Chapter.self, from: data)
+              let value = try? JSONDecoder().decode(T.self, from: data)
         else {
-            fatalError("chapter1.json missing or malformed — content is the product; fail loudly.")
+            fatalError("\(resource).json missing or malformed — content is the product; fail loudly.")
         }
-        return chapter
+        return value
     }
 }

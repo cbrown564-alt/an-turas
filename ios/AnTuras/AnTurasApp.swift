@@ -13,8 +13,11 @@ struct AnTurasApp: App {
 }
 
 enum Route: Hashable {
+    case journey
     case map
     case session(Int)
+    case museum
+    case arAis
 }
 
 struct ContentView: View {
@@ -25,7 +28,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            CoverView { path.append(.map) }
+            CoverView { path.append(.journey) }
                 .background(Theme.bg.ignoresSafeArea())
                 .toolbar(.hidden, for: .navigationBar)
                 .navigationDestination(for: Route.self) { route in
@@ -37,17 +40,27 @@ struct ContentView: View {
             guard !booted else { return }
             booted = true
             Haptics.prepare()
-            // Debug deep-links for screenshots/snapshot tests: --map | --session N
+            // Debug deep-links for screenshots/snapshot tests:
+            // --journey | --map | --session N | --museum | --arais
             let args = ProcessInfo.processInfo.arguments
-            if args.contains("--map") {
-                path = [.map]
+            if args.contains("--journey") {
+                path = [.journey]
+            } else if args.contains("--museum") {
+                path = [.journey, .museum]
+            } else if args.contains("--arais") {
+                path = [.journey, .arAis]
+            } else if args.contains("--map") {
+                path = [.journey, .map]
             } else if let flagIndex = args.firstIndex(of: "--session"),
                       args.indices.contains(flagIndex + 1),
                       let sessionIndex = Int(args[flagIndex + 1]),
                       state.chapter.sessions.indices.contains(sessionIndex) {
-                path = [.map, .session(sessionIndex)]
+                path = [.journey, .map, .session(sessionIndex)]
             } else if state.done.contains(true) {
-                path = [.map]
+                // Returning learners land on the journey when someone is
+                // asking for them (Ar Ais owns the welcome), otherwise one
+                // step from the work, with the island a back-swipe away.
+                path = state.dueVisits().isEmpty ? [.journey, .map] : [.journey]
             }
         }
     }
@@ -55,8 +68,18 @@ struct ContentView: View {
     @ViewBuilder
     private func destination(for route: Route) -> some View {
         switch route {
+        case .journey:
+            JourneyView(
+                onOpenChapter: { path.append(.map) },
+                onOpenMuseum: { path.append(.museum) },
+                onOpenArAis: { path.append(.arAis) })
+                .background(Theme.bg.ignoresSafeArea())
+                .toolbarRole(.editor)
+                .toolbarBackground(Theme.bg, for: .navigationBar)
         case .map:
-            MapView(zoomNS: zoomNS) { index in path.append(.session(index)) }
+            MapView(zoomNS: zoomNS,
+                    onOpenSession: { index in path.append(.session(index)) },
+                    onOpenMuseum: { path.append(.museum) })
                 .background(Theme.bg.ignoresSafeArea())
                 .toolbarRole(.editor)
                 .toolbarBackground(Theme.bg, for: .navigationBar)
@@ -66,6 +89,17 @@ struct ContentView: View {
                 .toolbarRole(.editor)
                 .toolbarBackground(Theme.bg, for: .navigationBar)
                 .zoomDestination(id: index, ns: zoomNS)
+        case .museum:
+            MuseumView(onOpenArAis: { path.append(.arAis) },
+                       onOpenChapter: { path.append(.map) })
+                .background(Theme.bg.ignoresSafeArea())
+                .toolbarRole(.editor)
+                .toolbarBackground(Theme.bg, for: .navigationBar)
+        case .arAis:
+            ArAisView()
+                .background(Theme.bg.ignoresSafeArea())
+                .toolbarRole(.editor)
+                .toolbarBackground(Theme.bg, for: .navigationBar)
         }
     }
 }

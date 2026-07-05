@@ -9,8 +9,8 @@ struct MapView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let zoomNS: Namespace.ID
     let onOpenSession: (Int) -> Void
+    let onOpenMuseum: () -> Void
 
-    @State private var showMuseum = false
     @State private var appeared = false
 
     private var nextIndex: Int? { state.done.firstIndex(of: false) }
@@ -57,15 +57,6 @@ struct MapView: View {
                 withAnimation { appeared = true }
             }
         }
-        .sheet(isPresented: $showMuseum) {
-            ScrollView {
-                ArtifactView()
-                    .padding(22)
-            }
-            .presentationBackground(Theme.bg)
-            .presentationCornerRadius(20)
-            .presentationDragIndicator(.visible)
-        }
     }
 
     private var header: some View {
@@ -100,14 +91,14 @@ struct MapView: View {
 
             Button {
                 Haptics.tap()
-                showMuseum = true
+                onOpenMuseum()
             } label: {
                 VStack(alignment: .leading, spacing: 3) {
                     Eyebrow(text: "Déantán · unlocked", color: Theme.lichen)
-                    Text("Do Mhúsaem — your artifact")
+                    Text("An Músaem — your artifact is shelved")
                         .font(.system(size: 19, weight: .semibold, design: .serif))
                         .foregroundStyle(Theme.ink)
-                    Text("The stone Dáire cut for you, with your name in strokes.")
+                    Text("The stone Dáire cut for you stands first of thirteen.")
                         .font(.system(size: 13))
                         .foregroundStyle(Theme.inkSoft)
                 }
