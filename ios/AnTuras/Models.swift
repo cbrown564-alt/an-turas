@@ -337,6 +337,17 @@ struct Visit: Decodable, Identifiable {
 }
 
 enum ContentLoader {
+    /// Highest chapter number shipped in bundled JSON.
+    static let maxChapter = 3
+
+    static func chapter(_ n: Int) -> Chapter {
+        switch n {
+        case 3: return chapter3()
+        case 2: return chapter2()
+        default: return chapter1()
+        }
+    }
+
     static func chapter1() -> Chapter {
         decode(Chapter.self, from: "chapter1")
     }
@@ -354,9 +365,21 @@ enum ContentLoader {
         return decode(Journey.self, from: "journey").chapters
     }
 
-    static func visits() -> [Visit] {
+    /// Visits authored in one chapter's JSON (session indices are chapter-local).
+    static func visits(forChapter n: Int) -> [Visit] {
         struct Visits: Decodable { let visits: [Visit] }
-        return decode(Visits.self, from: "chapter1").visits
+        return decode(Visits.self, from: "chapter\(n)").visits
+    }
+
+    /// All visits from chapters 1…n — Ar Ais draws from every road walked so far.
+    static func visits(throughChapter n: Int) -> [Visit] {
+        guard n >= 1 else { return [] }
+        return (1...min(n, maxChapter)).flatMap { visits(forChapter: $0) }
+    }
+
+    /// Backward-compatible alias — chapter 1 visits only.
+    static func visits() -> [Visit] {
+        visits(forChapter: 1)
     }
 
     private static func decode<T: Decodable>(_ type: T.Type, from resource: String) -> T {

@@ -29,7 +29,7 @@ struct MapView: View {
                             done: state.done[index],
                             isNext: index == nextIndex,
                             isFirst: index == 0,
-                            isLast: index == state.chapter.sessions.count - 1 && !state.allDone)
+                            isLast: index == state.chapter.sessions.count - 1 && !state.isChapterComplete(state.activeChapterN))
                         {
                             Haptics.tap()
                             onOpenSession(index)
@@ -38,7 +38,7 @@ struct MapView: View {
                         .cascade(index, appeared: appeared, reduceMotion: reduceMotion)
                     }
 
-                    if state.allDone {
+                    if state.isChapterComplete(state.activeChapterN) {
                         museumRow
                             .cascade(state.chapter.sessions.count, appeared: appeared, reduceMotion: reduceMotion)
                     }
@@ -50,6 +50,7 @@ struct MapView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
+            state.advanceToNextChapterIfNeeded()
             guard !appeared else { return }
             if reduceMotion {
                 appeared = true
@@ -61,15 +62,13 @@ struct MapView: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Eyebrow(text: "Caibidil a hAon · Maigh Eo, c. 480 AD")
+            Eyebrow(text: mapEyebrow)
             Text("Cúig sheisiún — five sessions")
                 .font(.system(size: 26, weight: .semibold, design: .serif))
                 .foregroundStyle(Theme.ink)
-            Text("A stone-carver on the Mayo coast has work to finish, and you have a language to reclaim.")
+            Text(state.journey.first(where: { $0.n == state.activeChapterN })?.hook ?? "")
                 .font(.system(size: 15))
                 .foregroundStyle(Theme.inkSoft)
-            // Returning learners land here, not on the cover — the map owns
-            // the welcome back.
             if state.done.contains(true), !state.allDone {
                 Text("Tá tú ar ais — you're back. Dáire kept your place.")
                     .font(.system(size: 14.5, design: .serif))
@@ -80,9 +79,15 @@ struct MapView: View {
         }
     }
 
+    private var mapEyebrow: String {
+        if let jc = state.journey.first(where: { $0.n == state.activeChapterN }) {
+            return "\(jc.ga) · \(jc.placeGa), \(jc.era)"
+        }
+        return state.chapter.subtitle
+    }
+
     private var museumRow: some View {
         HStack(alignment: .top, spacing: 0) {
-            // Foot of the stem: the path ends at your museum.
             VStack(spacing: 0) {
                 Rectangle().fill(Theme.moss).frame(width: 2, height: 26)
                 Circle().fill(Theme.lichen).frame(width: 9, height: 9)
@@ -98,7 +103,7 @@ struct MapView: View {
                     Text("An Músaem — your artifact is shelved")
                         .font(.system(size: 19, weight: .semibold, design: .serif))
                         .foregroundStyle(Theme.ink)
-                    Text("The stone Dáire cut for you stands first of thirteen.")
+                    Text(museumTease)
                         .font(.system(size: 13))
                         .foregroundStyle(Theme.inkSoft)
                 }
@@ -111,6 +116,13 @@ struct MapView: View {
             }
             .buttonStyle(CarvePress())
         }
+    }
+
+    private var museumTease: String {
+        guard let jc = state.journey.first(where: { $0.n == state.activeChapterN }) else {
+            return "Your artifact stands first of thirteen."
+        }
+        return "The \(jc.artifactEn) earned at \(jc.placeEn) — first of thirteen niches filled."
     }
 }
 
