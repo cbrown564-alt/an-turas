@@ -303,10 +303,61 @@ struct RiseIn: ViewModifier {
 // serif prose; Irish said aloud is the hero — speaker, the line at display
 // size against a carved groove, the rough sound beneath. Tap for the meaning.
 
+struct IllustrationView: View {
+    let branch: String?
+    let name: String
+
+    var body: some View {
+        if let uiImage = loadImage() {
+            Image(uiImage: uiImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: .infinity)
+                .cornerRadius(8)
+                .shadow(color: Color.black.opacity(0.12), radius: 3, x: 0, y: 1.5)
+                .padding(.vertical, 4)
+        } else {
+            // Graceful fallback if image is missing
+            Text("Missing illustration: \(branch ?? "default")/\(name)")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.secondary.opacity(0.1))
+                .cornerRadius(8)
+        }
+    }
+
+    private func loadImage() -> UIImage? {
+        if let branch = branch {
+            let folder: String
+            switch branch.lowercased() {
+            case "b1", "b1-gearrtha": folder = "b1-gearrtha"
+            case "b2", "b2-cailc":     folder = "b2-cailc"
+            case "b3", "b3-clo":       folder = "b3-clo"
+            case "b4", "b4-solas":     folder = "b4-solas"
+            case "b5", "b5-scath":     folder = "b5-scath"
+            case "b6", "b6-lamh":      folder = "b6-lamh"
+            default:                   folder = branch
+            }
+            if let url = Bundle.main.url(forResource: name, withExtension: "png", subdirectory: "art-exploration/\(folder)") {
+                return UIImage(contentsOfFile: url.path)
+            }
+        } else {
+            // Load from canonical default art bundle
+            if let url = Bundle.main.url(forResource: name, withExtension: "png", subdirectory: "art") {
+                return UIImage(contentsOfFile: url.path)
+            }
+        }
+        return nil
+    }
+}
+
 private struct ScenePageView: View {
     let page: ScenePage
     @Binding var activeGloss: Gloss?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @EnvironmentObject var state: AppState
 
     var body: some View {
         VStack(alignment: .leading, spacing: 22) {
@@ -315,9 +366,15 @@ private struct ScenePageView: View {
                     .padding(.bottom, 6)
                     .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
             }
+            
+            if let imageName = activeImageName {
+                IllustrationView(branch: state.artBranch, name: imageName)
+                    .modifier(RiseIn(order: 1, reduceMotion: reduceMotion))
+            }
+
             ForEach(Array(page.beats.enumerated()), id: \.offset) { index, beat in
                 beatView(beat)
-                    .modifier(RiseIn(order: index + (page.place == nil ? 0 : 1),
+                    .modifier(RiseIn(order: index + (page.place == nil ? 0 : 1) + (activeImageName != nil ? 1 : 0),
                                      reduceMotion: reduceMotion))
             }
         }
@@ -326,6 +383,30 @@ private struct ScenePageView: View {
     @ViewBuilder
     private func beatView(_ beat: Beat) -> some View {
         BeatRow(beat: beat, activeGloss: $activeGloss)
+    }
+
+    private var activeImageName: String? {
+        if state.artBranch != nil {
+            // Revert to old debug lookup if a specific art override is requested
+            if page.place == "Maigh Eo · c. 480 AD" {
+                return "t1-pillar"
+            } else if page.beats.contains(where: {
+                switch $0 {
+                case .narration(let n): return n.n.contains("Bríd runs her thumb")
+                default: return false
+                }
+            }) {
+                return "t2-hands"
+            } else if page.place == "An trá — the strand, morning" {
+                return "t3-strand"
+            } else if page.place == "Breastagh · fifteen centuries later" {
+                return "t4-today"
+            }
+            return nil
+        } else {
+            // Default canonical behavior: read image directly from the page
+            return page.image
+        }
     }
 }
 

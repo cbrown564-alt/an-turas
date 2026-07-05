@@ -13,6 +13,7 @@ final class AppState: ObservableObject {
     @Published var learnerName: String {
         didSet { persist() }
     }
+    @Published var artBranch: String? = nil
 
     let chapter: Chapter
 
@@ -46,6 +47,10 @@ final class AppState: ObservableObject {
            args.indices.contains(flagIndex + 1),
            let count = Int(args[flagIndex + 1]) {
             for index in doneFlags.indices { doneFlags[index] = index < count }
+        }
+        if let flagIndex = args.firstIndex(of: "--art"),
+           args.indices.contains(flagIndex + 1) {
+            artBranch = args[flagIndex + 1]
         }
         #endif
 

@@ -68,6 +68,7 @@ struct SpeechBeat: Decodable {
 struct ScenePage: Decodable {
     /// Slugline — set when the scene's place or time changes.
     let place: String?
+    let image: String?
     let beats: [Beat]
 }
 

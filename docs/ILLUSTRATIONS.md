@@ -227,7 +227,32 @@ Mirrors the TTS bake-off pattern (`tools/tts-bakeoff/`):
 
 ## 10. Canonical view
 
-*Empty until the funnel closes. The winning direction's style bible lands here.*
+*The funnel closed on 2026-07-05. Solas an Atlantaigh (B4 — Atlantic Light) was selected as the winner (D4).*
+
+### Style Bible: Solas an Atlantaigh (Atlantic Light)
+
+1. **Medium & Aesthetics**:
+   - Gouache and watercolor painting on heavy cold-press watercolor paper.
+   - Textures must display organic pigment washes, granulating colors, and visible dry-brush strokes along edges.
+   - The focus is on *atmosphere and weather* as narrative elements—lowering clouds, wet beach reflections, sea spray, and dramatic West-of-Ireland light.
+   
+2. **Color Palette**:
+   - Dominant: Stormy slate blues, deep indigo, cold sea greens, and wet sand grays.
+   - Accents: Warm ochres, rust oranges, and muted peat browns to ground figures and human elements.
+   
+3. **Figuration & Human Representation**:
+   - Focus on hands, backs, and figures integrated into the landscape at medium-to-far distance (T1).
+   - Character close-ups (T2) are rendered with soft, atmospheric lighting and quiet, expressive focus (rather than generic facial expressions or sharp detail). 
+
+4. **Integration Rules**:
+   - **Scene Pages**: One hero illustration per setting change (slugline), placed below the slugline and before the narrative beats.
+   - **Grammar Notes & Feature Pages**: Kept purely typographic to preserve the app's clean "registers". No spot illustrations or clipart.
+   - **Chapter Cover**: Scenic landscape establishing the chapter's geography (e.g., Mayo cliffs).
+
+5. **Visual Generation Prompt Recipe**:
+   ```
+   A gouache and watercolor painting of [subject], west-of-Ireland. [Atmospheric elements like dramatic clouds, low tide, sea spray]. Soft atmospheric edges, expressive dry-brush strokes, visible paper texture. Style of Paul Henry and Jack B. Yeats.
+   ```
 
 ## Open questions carried into the exploration
 

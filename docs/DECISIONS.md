@@ -2,6 +2,18 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D4 — Canonical Illustration Style: Solas an Atlantaigh (2026-07-05)
+
+**Decision:** Solas an Atlantaigh (B4 — Atlantic Light, Gouache/Watercolor style) is selected as the winning style direction for Chapter 1 and the baseline for subsequent content production.
+
+**Why:** It scored exceptionally high in emotional and narrative pull. The gouache/watercolor medium captures the moody west-of-Ireland light and windy Atlantic atmosphere perfectly, creating an immersive scene window. The Jack B. Yeats-inspired character focus delivers high warmth without slipping into historical kitsch.
+
+**Consequences:** 
+1. The style bible is documented in Section 10 of `docs/ILLUSTRATIONS.md`.
+2. Scene assets are moved into the app's default resources under `art/`.
+3. `Models.swift` and `chapter1.json` are modified to support parsing and loading pages with custom image keys directly.
+4. Clean register styling is maintained—illustration is kept strictly as a window for story pages, with note and exercise views remaining clean and typographic.
+
 ## D3 — Prototype platform: SwiftUI (2026-07-04)
 
 **Decision:** The HTML vertical slice validated the basic mechanics, design taste,
