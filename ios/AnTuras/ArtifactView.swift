@@ -3,8 +3,9 @@ import UIKit
 
 // MARK: - Chapter artifact router
 // Each chapter closes with a collectible register. Chapter 1: ogham stone.
-// Chapter 3: Viking hack-silver arm-ring with a name notch. The JSON page
-// is chapter-blind — the app chooses the register from chapter number.
+// Chapter 3: Viking hack-silver arm-ring with a name notch. Chapter 2:
+// illuminated vellum initial. The JSON page is chapter-blind — the app
+// chooses the register from chapter number.
 
 struct ArtifactView: View {
     var chapterN: Int = 1
@@ -14,6 +15,8 @@ struct ArtifactView: View {
         switch ArtifactKind.forChapter(chapterN) {
         case .oghamStone:
             OghamArtifactView()
+        case .illuminatedInitial:
+            IlluminatedInitialArtifactView()
         case .hackSilver:
             HackSilverArtifactView()
         }
@@ -22,10 +25,12 @@ struct ArtifactView: View {
 
 private enum ArtifactKind {
     case oghamStone
+    case illuminatedInitial
     case hackSilver
 
     static func forChapter(_ n: Int) -> ArtifactKind {
         switch n {
+        case 2: return .illuminatedInitial
         case 3: return .hackSilver
         default: return .oghamStone
         }
@@ -121,6 +126,106 @@ private struct OghamArtifactView: View {
         handMode = false
         stoneFinished = true
         shareImage = renderOghamShareCard(for: state.learnerName)
+    }
+}
+
+// MARK: - Chapter 2: illuminated initial
+
+private struct IlluminatedInitialArtifactView: View {
+    @EnvironmentObject var state: AppState
+    @State private var name = ""
+    @State private var gildedName: String?
+    @State private var handMode = false
+    @State private var initialFinished = false
+    @State private var shareImage: UIImage?
+
+    private var initialLetter: String {
+        guard let gildedName else { return "?" }
+        guard let first = gildedName.trimmingCharacters(in: .whitespaces).first else { return "?" }
+        return String(first).uppercased()
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 12) {
+                Eyebrow(text: "Déantán · Artifact", color: Theme.lichen)
+                Text("Do litir féin — your own initial")
+                    .font(.system(size: 23, weight: .semibold, design: .serif))
+                    .foregroundStyle(Theme.ink)
+            }
+            .padding(.bottom, 2)
+            Text("Murchadh leaves one blank initial on the vellum — yours. Corcra vine, gorm interlace, the first letter of whatever name you give him. He hands you the gold; the first stroke is yours.")
+                .font(.system(size: 15))
+                .foregroundStyle(Theme.inkSoft)
+                .lineSpacing(4)
+
+            ArtifactNameRow(name: $name, actionLabel: "Leag an ór — lay the gold", action: gild)
+
+            if let gilded = gildedName {
+                ArtifactStage {
+                    IlluminatedInitialView(name: gilded, width: 200,
+                                           carve: !handMode, ticks: true,
+                                           handCarve: handMode,
+                                           onCarved: { finishedGilding(gilded) })
+                        .id("\(gilded)-\(handMode ? "hand" : "auto")")
+                }
+
+                if handMode && !initialFinished {
+                    Text("Tarraing an ór síos — drag the gold down the letter, stroke by stroke. Every chalk line you cross, you gild.")
+                        .font(.system(size: 13))
+                        .italic()
+                        .foregroundStyle(Theme.inkSoft)
+                        .lineSpacing(3)
+                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
+                } else {
+                    Text("\(initialLetter) — the first letter of \(gilded), glowing on vellum")
+                        .font(.system(size: 13, design: .serif))
+                        .italic()
+                        .foregroundStyle(Theme.inkSoft)
+                        .lineSpacing(3)
+                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
+                    Text("Ní neart go cur le chéile — many hands, one book · Cluain Mhic Nóis.")
+                        .font(.system(size: 12))
+                        .foregroundStyle(Theme.inkFaint)
+                        .lineSpacing(3)
+                }
+
+                ArtifactShareRow(image: shareImage,
+                                 preview: "\(initialLetter) — illuminated initial",
+                                 label: "Roinn do litir — share your initial",
+                                 visible: initialFinished)
+            }
+        }
+        .onAppear { restoreSavedName() }
+    }
+
+    private func gild() {
+        let trimmed = name.trimmingCharacters(in: .whitespaces)
+        guard !trimmed.isEmpty else { return }
+        Haptics.tap()
+        withAnimation(Motion.settle) {
+            gildedName = trimmed
+            handMode = true
+            initialFinished = false
+            shareImage = nil
+        }
+    }
+
+    private func finishedGilding(_ gilded: String) {
+        Haptics.flourish()
+        withAnimation(Motion.pop) { initialFinished = true }
+        shareImage = renderIlluminatedShareCard(for: gilded)
+    }
+
+    private func restoreSavedName() {
+        guard name.isEmpty, !state.learnerName.isEmpty else { return }
+        name = state.learnerName
+        gildedName = state.learnerName
+        handMode = false
+        initialFinished = true
+        shareImage = renderIlluminatedShareCard(for: state.learnerName)
     }
 }
 
@@ -323,6 +428,14 @@ private func renderHackSilverShareCard(for marked: String) -> UIImage? {
     return renderer.uiImage
 }
 
+private func renderIlluminatedShareCard(for gilded: String) -> UIImage? {
+    let renderer = ImageRenderer(content:
+        IlluminatedShareCard(name: gilded)
+            .environment(\.colorScheme, .light))
+    renderer.scale = 3
+    return renderer.uiImage
+}
+
 // MARK: - Share cards
 
 private struct OghamShareCard: View {
@@ -372,6 +485,40 @@ private struct HackSilverShareCard: View {
                     .foregroundStyle(Theme.inkSoft)
                     .multilineTextAlignment(.center)
                 Text("Dubhlinn · the black pool · c. 850 AD")
+                    .font(.system(size: 11))
+                    .foregroundStyle(Theme.inkFaint)
+            }
+        }
+        .padding(44)
+        .frame(width: 480)
+        .background(Theme.bg)
+    }
+}
+
+private struct IlluminatedShareCard: View {
+    let name: String
+
+    private var initialLetter: String {
+        guard let first = name.trimmingCharacters(in: .whitespaces).first else { return "?" }
+        return String(first).uppercased()
+    }
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("AN TURAS")
+                .font(.system(size: 12, weight: .semibold))
+                .kerning(2.2)
+                .foregroundStyle(Theme.inkFaint)
+            IlluminatedInitialView(name: name, width: 220)
+            VStack(spacing: 6) {
+                Text(initialLetter)
+                    .font(.system(size: 26, weight: .semibold, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                Text("my initial illuminated — the first letter of \(name)")
+                    .font(.system(size: 13))
+                    .foregroundStyle(Theme.inkSoft)
+                    .multilineTextAlignment(.center)
+                Text("Cluain Mhic Nóis · island of saints · c. 780 AD")
                     .font(.system(size: 11))
                     .foregroundStyle(Theme.inkFaint)
             }
