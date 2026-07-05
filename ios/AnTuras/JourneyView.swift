@@ -112,8 +112,8 @@ struct JourneyView: View {
                 action: { Haptics.tap(); onOpenArAis() })
         } else if let next = state.nextReturn() {
             JourneyRow(
-                title: "Ar Ais — éinne fós",
-                sub: "Fillfidh \(next.visit.who) \(Turas.until(next.due)) — \(next.visit.who) will come asking. Nobody says “37 cards due” here.",
+                title: "Ar Ais — níl éinne fós",
+                sub: "Fillfidh \(next.visit.who) \(Turas.until(next.due)) — \(next.visit.who) will come asking.",
                 accent: Theme.stone,
                 showDot: false,
                 glyph: { ArtifactGlyphView(glyph: "fainne", color: Theme.inkFaint) },
@@ -240,20 +240,24 @@ private struct JourneyMap: View {
                             thread.addPath(seg)
                         }
                     }
-                    ctx.stroke(thread, with: .color(Theme.stone.opacity(0.32)),
-                               style: StrokeStyle(lineWidth: 1.3, lineCap: .round, dash: [0.1, 7.5]))
+                    ctx.stroke(thread, with: .color(Theme.stone.opacity(0.55)),
+                               style: StrokeStyle(lineWidth: 1.4, lineCap: .round, dash: [0.1, 5]))
                     ctx.stroke(next, with: .color(Theme.stone),
                                style: StrokeStyle(lineWidth: 2.4, lineCap: .round, dash: [0.1, 6]))
                     ctx.stroke(walked, with: .color(Theme.moss),
                                style: StrokeStyle(lineWidth: 2.4, lineCap: .round))
                 }
 
-                // The Atlantic, named in the empty north-west sea.
-                Text("AN tAIGÉAN ATLANTACH")
+                // The Atlantic, named in the empty north-west sea. Two lines,
+                // because the sea pocket between Donegal and the frame edge
+                // is too narrow for the name set on one.
+                Text("AN tAIGÉAN\nATLANTACH")
                     .font(.system(size: 7.5, weight: .semibold))
                     .kerning(1.8)
+                    .lineSpacing(3)
+                    .multilineTextAlignment(.center)
                     .foregroundStyle(Theme.inkFaint.opacity(0.65))
-                    .position(sea(x: 0.09, y: 0.175, in: rect))
+                    .position(sea(x: 0.115, y: 0.165, in: rect))
 
                 ForEach(journey) { chapter in
                     let p = point(for: chapter, in: rect)
@@ -387,14 +391,17 @@ private struct WaypointMark: View {
 
     private var progressLine: String {
         if sessionsDone == 0 { return "tá tú anseo" }
-        return "tá tú anseo · \(sessionsDone) de \(sessionCount)"
+        return "tá tú anseo · \(sessionsDone) de \(sessionCount) snoite"
     }
 
+    /// Ahead labels stay readable (inkSoft, not inkFaint) — the chalk/moss
+    /// distinction lives in the markers; the place names have to be legible
+    /// at 10pt either way.
     private var labelColor: Color {
         switch status {
         case .done: return Theme.inkSoft
         case .current: return Theme.ink
-        case .ahead: return Theme.inkFaint
+        case .ahead: return Theme.inkSoft
         }
     }
 
