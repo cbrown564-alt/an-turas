@@ -1,0 +1,2652 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+<title>An Turas — The Seventh Way</title>
+<style>
+/* ============================================================
+   AN TURAS · FIELD REPORT — "The Seventh Way"
+   Identity: Solas an Atlantaigh — wet sand, indigo-slate ink,
+   cold sea-green accent, sparing rust. Serif is lapidary.
+   ============================================================ */
+
+:root {
+  --ground:   #e9e6dd;
+  --surface:  #f3f1ea;
+  --surface2: #ddd8ca;
+  --ink:      #1d2833;
+  --ink2:     #4e5b66;
+  --ink3:     #7d8791;
+  --line:     #cfc9bb;
+  --sea:      #0d5f68;
+  --sea-soft: rgba(13,95,104,.12);
+  --rust:     #b0502a;
+  --rust-soft:rgba(176,80,42,.10);
+  --chalk:    #8b97a1;
+  --groove:   rgba(29,40,51,.16);
+  /* chart series — validated light set */
+  --s-gam: #3f8b2e;  /* gamified habit */
+  --s-ai:  #c14f86;  /* AI conversation */
+  --s-rig: #b07300;  /* explicit rigour */
+  --s-com: #3a63c8;  /* community + live */
+  --s-aud: #00889c;  /* audio-first */
+  --s-ins: #7c53c4;  /* institutional */
+  /* feature map statuses — validated light set */
+  --f-built: #00889c;
+  --f-next:  #b0502a;
+  --f-imag:  #7c53c4;
+  --shadow: 0 18px 40px rgba(29,40,51,.16);
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --body:  Charter,"Bitstream Charter","Iowan Old Style",Georgia,serif;
+  --sans:  system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground:   #0c1218;
+    --surface:  #151d26;
+    --surface2: #1d2835;
+    --ink:      #e8e3d7;
+    --ink2:     #a6aeb5;
+    --ink3:     #78838c;
+    --line:     #2b3644;
+    --sea:      #6fb7bf;
+    --sea-soft: rgba(111,183,191,.14);
+    --rust:     #d9895c;
+    --rust-soft:rgba(217,137,92,.12);
+    --chalk:    #5c6a76;
+    --groove:   rgba(232,227,215,.18);
+    --s-gam: #55a03e; --s-ai: #ce6191; --s-rig: #c08211;
+    --s-com: #6e8fe8; --s-aud: #16a099; --s-ins: #9673d9;
+    --f-built: #17a3b2; --f-next: #d1784a; --f-imag: #9673d9;
+    --shadow: 0 18px 40px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="light"] {
+  --ground:#e9e6dd; --surface:#f3f1ea; --surface2:#ddd8ca;
+  --ink:#1d2833; --ink2:#4e5b66; --ink3:#7d8791; --line:#cfc9bb;
+  --sea:#0d5f68; --sea-soft:rgba(13,95,104,.12);
+  --rust:#b0502a; --rust-soft:rgba(176,80,42,.10);
+  --chalk:#8b97a1; --groove:rgba(29,40,51,.16);
+  --s-gam:#3f8b2e; --s-ai:#c14f86; --s-rig:#b07300;
+  --s-com:#3a63c8; --s-aud:#00889c; --s-ins:#7c53c4;
+  --f-built:#00889c; --f-next:#b0502a; --f-imag:#7c53c4;
+  --shadow:0 18px 40px rgba(29,40,51,.16);
+}
+:root[data-theme="dark"] {
+  --ground:#0c1218; --surface:#151d26; --surface2:#1d2835;
+  --ink:#e8e3d7; --ink2:#a6aeb5; --ink3:#78838c; --line:#2b3644;
+  --sea:#6fb7bf; --sea-soft:rgba(111,183,191,.14);
+  --rust:#d9895c; --rust-soft:rgba(217,137,92,.12);
+  --chalk:#5c6a76; --groove:rgba(232,227,215,.18);
+  --s-gam:#55a03e; --s-ai:#ce6191; --s-rig:#c08211;
+  --s-com:#6e8fe8; --s-aud:#16a099; --s-ins:#9673d9;
+  --f-built:#17a3b2; --f-next:#d1784a; --f-imag:#9673d9;
+  --shadow:0 18px 40px rgba(0,0,0,.5);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--ground); color: var(--ink);
+  font-family: var(--body); font-size: 17px; line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--sea); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--sea); outline-offset: 2px; border-radius: 2px; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* ---------- hero ---------- */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero canvas { display:block; width:100%; height: 440px; }
+.hero-veil { position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(10,14,19,.55) 100%); }
+.hero-text { position:absolute; left:0; right:0; bottom:0; padding: 0 24px 44px;
+  max-width: 880px; margin: 0 auto; color: #f2eee2; }
+.hero-text .eyebrow { color: #d8cfb8; }
+.hero-text h1 { font-family: var(--serif); font-weight: 500;
+  font-size: clamp(34px, 5.4vw, 58px); line-height: 1.08; margin: 10px 0 14px;
+  letter-spacing: -0.01em; text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(10,14,19,.6); }
+.hero-text p { max-width: 62ch; margin: 0; font-size: 18px; color: #e4ddca;
+  text-shadow: 0 1px 14px rgba(10,14,19,.7); }
+
+.eyebrow { font-family: var(--sans); font-size: 11.5px; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--ink3); }
+
+/* ---------- layout ---------- */
+main { max-width: 1160px; margin: 0 auto; padding: 0 24px 80px; }
+section { margin-top: 96px; }
+.prose { max-width: 68ch; }
+.prose p { margin: 0 0 1.1em; }
+.prose .lede { font-size: 20px; line-height: 1.55; color: var(--ink); }
+.aside-note { font-family: var(--sans); font-size: 13.5px; color: var(--ink3);
+  border-left: 2px solid var(--line); padding-left: 12px; max-width: 60ch; }
+
+/* slugline — small caps + short rule, the app's scene-change mark */
+.slug { display:flex; align-items:center; gap: 14px; margin-bottom: 26px; }
+.slug .tally { display:flex; align-items:flex-end; gap:3px; height: 20px; }
+.slug .tally i { display:block; width:2.5px; height: 16px; background: var(--chalk);
+  transform: skewX(-12deg); border-radius: 1px; }
+.slug .tally i:nth-child(even){ height: 20px; }
+.slug h2 { font-family: var(--sans); font-size: 13px; font-weight: 700;
+  letter-spacing: .24em; text-transform: uppercase; color: var(--ink2); margin: 0;
+  min-width: 0; }
+.slug h2 .ga { color: var(--rust); }
+.slug .rule { height: 1px; background: var(--line); flex: 0 0 72px; }
+.slug .rule.grow { flex: 1 1 auto; opacity: .5; }
+
+section > .prose > h3, .prose h3 {
+  font-family: var(--serif); font-weight: 500; font-size: 30px;
+  line-height: 1.2; margin: 0 0 .55em; letter-spacing: -0.005em; text-wrap: balance; }
+
+/* ---------- specimen shelf ---------- */
+.shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 44px 32px; margin-top: 44px; align-items: start; }
+.specimen { display: flex; flex-direction: column; gap: 16px; }
+.spec-cap { max-width: 40ch; }
+.spec-cap .fam { font-family: var(--sans); font-size: 11px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase; display: inline-flex;
+  align-items: center; gap: 7px; }
+.spec-cap .fam::before { content:""; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--dot, var(--ink3)); box-shadow: 0 0 0 2px var(--surface); }
+.spec-cap h4 { font-family: var(--serif); font-weight: 600; font-size: 20px;
+  margin: 6px 0 6px; }
+.spec-cap p { font-size: 14.5px; color: var(--ink2); margin: 0; line-height: 1.55; }
+.spec-cap .verdict { display:block; margin-top: 8px; font-family: var(--sans);
+  font-size: 13px; color: var(--ink3); font-style: normal; }
+.spec-cap .verdict b { color: var(--rust); font-weight: 600; }
+
+/* ---------- phone frame ---------- */
+.phone { width: 100%; max-width: 320px; aspect-ratio: 320 / 630;
+  border-radius: 42px; padding: 10px; background: #10151b;
+  box-shadow: var(--shadow), inset 0 0 0 1.5px rgba(255,255,255,.09);
+  justify-self: start; position: relative; }
+.screen { width: 100%; height: 100%; border-radius: 33px; overflow: hidden;
+  position: relative; display: flex; flex-direction: column;
+  font-family: var(--sans); }
+.notch { position:absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  width: 86px; height: 20px; border-radius: 12px; background: #10151b; z-index: 40; }
+
+/* every specimen screen is its own fixed world — a lit screen under glass */
+.screen { font-size: 14px; line-height: 1.4; }
+.screen button { font-family: inherit; }
+
+/* ============ SKIN: Duolingo-family (gamified habit) ============ */
+.sk-duo { background:#ffffff; color:#3c3c3c;
+  font-family: ui-rounded, "SF Pro Rounded", system-ui, sans-serif; }
+.duo-top { display:flex; align-items:center; justify-content:space-between;
+  padding: 40px 14px 8px; font-weight: 800; font-size: 15px; }
+.duo-top .flame { color:#ff9600; } .duo-top .gem { color:#1cb0f6; }
+.duo-top .heartsN { color:#ff4b4b; }
+.duo-bar { height: 14px; background:#e5e5e5; border-radius: 8px; margin: 4px 14px;
+  overflow: hidden; }
+.duo-bar i { display:block; height:100%; width: 40%; background:#58cc02;
+  border-radius: 8px; transition: width .4s ease; }
+.duo-q { padding: 14px 16px 4px; font-weight: 800; font-size: 16.5px; color:#3c3c3c; }
+.duo-sentence { padding: 2px 16px 10px; font-size: 15px; color:#3c3c3c; }
+.duo-answer { min-height: 74px; margin: 4px 14px; border-bottom: 2px solid #e5e5e5;
+  border-top: 2px solid #e5e5e5; padding: 8px 2px; display:flex; flex-wrap:wrap;
+  gap:6px; align-content: flex-start; }
+.duo-bank { display:flex; flex-wrap:wrap; gap:7px; padding: 10px 14px; }
+.duo-chip { border:2px solid #e5e5e5; border-bottom-width: 4px; background:#fff;
+  border-radius: 12px; padding: 7px 12px; font-weight: 700; font-size: 15px;
+  color:#3c3c3c; }
+.duo-chip:disabled { color:#e5e5e5; border-color:#e5e5e5; background:#fff; }
+.duo-check { margin: auto 14px 14px; padding: 12px; border-radius: 14px;
+  background:#58cc02; color:#fff; font-weight: 800; letter-spacing:.06em;
+  text-transform: uppercase; border: none; border-bottom: 4px solid #46a302; }
+.duo-check:disabled { background:#e5e5e5; color:#afafaf; border-bottom-color:#e5e5e5; }
+.duo-banner { position:absolute; left:0; right:0; bottom:0; padding: 16px 16px 22px;
+  font-weight: 800; display:none; z-index: 30; }
+.duo-banner.ok { display:block; background:#d7ffb8; color:#58a700; }
+.duo-banner.bad { display:block; background:#ffdfe0; color:#ea2b2b; }
+.duo-banner small { display:block; font-weight: 600; margin-top: 3px; }
+.duo-toast { position:absolute; top: 38px; left: 10px; right: 10px; z-index: 35;
+  background:#fff; border:2px solid #e5e5e5; border-radius: 14px; padding: 9px 12px;
+  font-size: 12.5px; font-weight: 700; color:#3c3c3c; display:none;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+.duo-toast.show { display:block; }
+
+/* ============ SKIN: blas.-family (explicit rigour) ============ */
+.sk-blas { background:#fbfbf9; color:#191919; font-family: var(--sans); }
+.blas-top { padding: 42px 16px 6px; }
+.blas-top .brand { font-weight: 700; font-size: 15px; letter-spacing: .01em; }
+.blas-top .brand::after { content:"."; color:#0f766e; }
+.blas-top .due { font-size: 12px; color:#666; margin-top: 2px; }
+.blas-note { margin: 10px 14px; padding: 12px 14px; background:#f1f0ec;
+  border-radius: 8px; font-size: 13px; line-height: 1.5; color:#333; }
+.blas-note b { color:#0f766e; }
+.blas-q { padding: 8px 16px 2px; font-size: 15px; font-weight: 600; }
+.blas-opts { display:flex; gap:8px; padding: 10px 16px; }
+.blas-opt { flex:1; padding: 10px 6px; border:1.5px solid #ddd; background:#fff;
+  border-radius: 8px; font-size: 15px; font-weight: 600; color:#191919; }
+.blas-opt[data-state="ok"] { border-color:#0f766e; background:#e5f4f2; color:#0f766e; }
+.blas-opt[data-state="bad"] { border-color:#b3402e; background:#faeae6; color:#b3402e; }
+.blas-why { margin: 2px 16px; font-size: 12.5px; color:#555; min-height: 34px; }
+.blas-grid-label { padding: 8px 16px 4px; font-size: 11px; font-weight: 700;
+  letter-spacing:.14em; text-transform: uppercase; color:#888; }
+.blas-grid { display:grid; grid-template-columns: repeat(6,1fr); gap: 5px;
+  padding: 0 16px; }
+.blas-cell { aspect-ratio: 1; border-radius: 4px; background:#ececea;
+  border: none; padding: 0; }
+.blas-cell[data-m="3"]{ background:#0f766e; }
+.blas-cell[data-m="2"]{ background:#5aa39d; }
+.blas-cell[data-m="1"]{ background:#b7d6d3; }
+.blas-cell[data-m="l"]{ background:#e5b13d; }
+.blas-foot { margin-top:auto; padding: 10px 16px 16px; font-size: 11.5px; color:#888;
+  border-top: 1px solid #e8e8e4; }
+
+/* ============ SKIN: SSi-family (audio-first) ============ */
+.sk-ssi { background:#faf6ef; color:#33302b; font-family: var(--sans);
+  align-items: center; text-align: center; }
+.ssi-top { padding: 46px 18px 6px; font-weight: 700; font-size: 14px;
+  letter-spacing: .04em; color:#8a6b4f; }
+.ssi-round { font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase;
+  color:#a89a86; margin-top: 2px; }
+.ssi-stage { flex: 1; display:flex; flex-direction: column; align-items:center;
+  justify-content:center; gap: 18px; padding: 0 22px; }
+.ssi-orb { width: 148px; height: 148px; border-radius: 50%; border: none;
+  background: radial-gradient(circle at 35% 30%, #f2795c, #d94f2f);
+  color: #fff; font-size: 17px; font-weight: 800; letter-spacing: .05em;
+  box-shadow: 0 14px 34px rgba(217,79,47,.35); }
+@media (prefers-reduced-motion: no-preference) {
+  .ssi-orb.pulse { animation: ssipulse 1.6s ease-in-out infinite; }
+  @keyframes ssipulse { 50% { transform: scale(1.06); } }
+}
+.ssi-line { font-size: 17px; line-height: 1.45; min-height: 76px; }
+.ssi-line .ga { font-weight: 800; font-size: 20px; color:#b3402e; }
+.ssi-dots { display:flex; gap: 10px; height: 12px; }
+.ssi-dots i { width: 12px; height: 12px; border-radius: 50%; background:#d8c9b4; }
+.ssi-dots i.on { background:#d94f2f; }
+.ssi-foot { padding: 0 22px 22px; font-size: 12px; color:#a89a86; }
+
+/* ============ SKIN: Bitesize-family (community ritual) ============ */
+.sk-bite { background:#f6f2e8; color:#31352c;
+  font-family: Georgia, "Times New Roman", serif; }
+.bite-head { background:#28503c; color:#f3eeda; padding: 44px 16px 12px; }
+.bite-head .from { font-size: 11px; letter-spacing:.14em; text-transform: uppercase;
+  opacity:.75; font-family: var(--sans); }
+.bite-head h5 { margin: 4px 0 0; font-size: 17px; font-weight: 600; line-height:1.3; }
+.bite-body { padding: 14px 16px; font-size: 14.5px; line-height: 1.6; }
+.bite-body .phrase { background:#fff; border:1px solid #ddd4bd; border-radius: 6px;
+  padding: 10px 12px; margin: 10px 0; }
+.bite-body .phrase b { font-size: 16px; color:#28503c; }
+.bite-body .phrase small { display:block; color:#7c7a6d; font-size: 12.5px;
+  margin-top: 2px; font-family: var(--sans); }
+.bite-task { display:flex; align-items:center; gap: 10px; margin: 12px 0 4px; }
+.bite-done { border: 1.5px solid #28503c; background: #fff; color:#28503c;
+  border-radius: 999px; padding: 7px 16px; font-weight: 700; font-size: 13px;
+  font-family: var(--sans); }
+.bite-done[data-done="1"] { background:#28503c; color:#f3eeda; }
+.bite-others { font-size: 12.5px; color:#7c7a6d; font-family: var(--sans); }
+.bite-tiers { margin-top: auto; display:flex; gap: 6px; padding: 10px 14px 16px;
+  font-family: var(--sans); }
+.bite-tiers span { flex:1; text-align:center; font-size: 10.5px; padding: 7px 4px;
+  border-radius: 6px; background:#ece5d2; color:#5d5c4e; letter-spacing:.04em; }
+.bite-tiers span.on { background:#28503c; color:#f3eeda; }
+
+/* ============ SKIN: Gaeilgeoir-family (AI conversation) ============ */
+.sk-gael { background:#101c17; color:#e8f2ec; font-family: var(--sans); }
+.gael-top { padding: 44px 16px 10px; border-bottom: 1px solid #23352c; }
+.gael-top .t { font-weight: 700; font-size: 15px; }
+.gael-top .s { font-size: 12px; color:#7fae94; }
+.gael-chat { flex:1; overflow-y:auto; padding: 12px 12px 4px; display:flex;
+  flex-direction: column; gap: 8px; }
+.gael-msg { max-width: 84%; padding: 9px 12px; border-radius: 14px;
+  font-size: 13.5px; line-height: 1.5; }
+.gael-msg.ai { background:#1c2f26; border-bottom-left-radius: 4px; }
+.gael-msg.me { background:#2e7d5b; color:#fff; align-self:flex-end;
+  border-bottom-right-radius: 4px; }
+.gael-msg small { display:block; color:#8fbc9f; font-size: 11.5px; margin-top:4px; }
+.gael-msg.me small { color:#cfe8d8; }
+.gael-fix { align-self:flex-start; font-size: 11.5px; background:#1c2f26;
+  border:1px solid #2e4a3b; color:#a5d3b5; padding: 6px 10px; border-radius: 8px; }
+.gael-quick { display:flex; gap:8px; padding: 10px 12px; }
+.gael-quick button { flex:1; background:#16241d; border:1px solid #2e4a3b;
+  color:#d7eade; border-radius: 999px; padding: 9px 8px;
+  font-size: 12.5px; }
+.gael-paywall { padding: 8px 12px 16px; font-size: 11px; color:#7fae94;
+  text-align:center; }
+
+/* ============ SKIN: Drops-family (vocab game) ============ */
+.sk-drops { background:#171a2b; color:#fff; font-family: var(--sans);
+  text-align:center; }
+.drops-timer { padding: 44px 0 4px; display:flex; justify-content:center; }
+.drops-timer svg { width: 54px; height: 54px; }
+.drops-word { font-size: 30px; font-weight: 800; letter-spacing:.02em;
+  margin: 8px 0 2px; }
+.drops-hint { font-size: 12px; color:#8f93b8; }
+.drops-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  padding: 18px 20px; }
+.drops-tile { aspect-ratio: 1; border-radius: 20px; border:none;
+  background: linear-gradient(160deg,#232849,#1b1f38);
+  display:flex; align-items:center; justify-content:center; }
+.drops-tile svg { width: 58%; height: 58%; }
+.drops-tile[data-state="ok"] { background: linear-gradient(160deg,#19b28a,#0e8e6c); }
+.drops-tile[data-state="bad"] { background: linear-gradient(160deg,#b23b55,#8e2e44); }
+.drops-combo { font-size: 12px; color:#8f93b8; padding-bottom: 18px; margin-top:auto; }
+
+/* ============ SKIN: institutional MOOC (browser card) ============ */
+.moocrow { margin-top: 56px; display: grid;
+  grid-template-columns: minmax(min(100%, 300px), 640px) 1fr;
+  gap: 32px; align-items: start; }
+@media (max-width: 780px){ .moocrow { grid-template-columns: 1fr; } }
+.moocwin { border-radius: 10px; overflow:hidden; border: 1px solid var(--line);
+  box-shadow: var(--shadow); background:#fff; color:#2a2a33;
+  font-family: var(--sans); max-width: 640px; }
+.mooc-bar { display:flex; align-items:center; gap:6px; background:#ececf1;
+  padding: 9px 12px; border-bottom: 1px solid #dcdce4; }
+.mooc-bar i { width: 10px; height: 10px; border-radius: 50%; background:#c9c9d4; }
+.mooc-bar .url { margin-left: 8px; background:#fff; border-radius: 6px;
+  font-size: 11.5px; color:#7a7a88; padding: 4px 10px; flex: 1; }
+.mooc-body { display:grid; grid-template-columns: 1.25fr 1fr; }
+.mooc-main { padding: 18px; }
+.mooc-main .kicker { font-size: 11px; font-weight: 700; letter-spacing:.14em;
+  color:#c94277; text-transform: uppercase; }
+.mooc-main h5 { margin: 6px 0 8px; font-size: 19px; line-height: 1.3; }
+.mooc-main p { font-size: 13px; color:#5c5c6b; margin: 0 0 12px; }
+.mooc-video { aspect-ratio: 16/9; border-radius: 8px;
+  background: linear-gradient(140deg,#2b2b3d,#454568); position: relative; }
+.mooc-video::after { content:""; position:absolute; inset:0; margin:auto;
+  width:0; height:0; border-left: 22px solid #fff; border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent; opacity:.9; }
+.mooc-side { border-left: 1px solid #ececf1; padding: 16px 14px; }
+.mooc-week { display:flex; align-items:center; gap: 8px; padding: 8px 6px;
+  font-size: 12.5px; border-bottom: 1px solid #f0f0f4; }
+.mooc-week i { width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid #c9c9d4; flex: none; }
+.mooc-week.done i { background:#26a269; border-color:#26a269; }
+.mooc-week.now { font-weight: 700; }
+.mooc-week.now i { border-color:#c94277; }
+@media (max-width: 620px){ .mooc-body { grid-template-columns: 1fr; } }
+</style>
+<style>
+/* ============ SKIN: An Turas — follows the page's own theme ============ */
+.sk-at { background: var(--surface); color: var(--ink); font-family: var(--sans); }
+.at-slug { display:flex; align-items:center; gap: 10px; padding: 46px 18px 0;
+  font-size: 10.5px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink3); }
+.at-slug::after { content:""; height:1px; background: var(--line); flex: 0 0 44px; }
+.at-scenecanvas { display:block; width: calc(100% - 24px); margin: 12px auto 0;
+  border-radius: 6px; height: 150px; }
+.at-beats { padding: 14px 20px 0; font-family: var(--body); font-size: 14.5px;
+  line-height: 1.6; color: var(--ink2); }
+.at-beats p { margin: 0 0 10px; }
+.at-speech { margin: 6px 18px 0; padding: 14px 16px 12px; border: none;
+  text-align: left; width: calc(100% - 36px); background: transparent;
+  border-radius: 8px; position: relative;
+  box-shadow: inset 0 2px 7px var(--groove), inset 0 -1px 0 rgba(255,255,255,.12); }
+.at-speech .ga { display:block; font-family: var(--serif); font-size: 21px;
+  color: var(--ink); }
+.at-speech .who { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--rust); font-weight: 700; }
+.at-speech .say { display:block; font-size: 12px; color: var(--ink3); margin-top: 3px; }
+.at-speech .earmark { position:absolute; right: 12px; top: 12px; color: var(--sea);
+  font-size: 13px; }
+.at-gloss { position:absolute; left:0; right:0; bottom:0; z-index: 30;
+  background: var(--surface2); border-top: 1px solid var(--line);
+  padding: 16px 18px 22px; transform: translateY(102%); transition: transform .35s ease; }
+@media (prefers-reduced-motion: reduce) { .at-gloss { transition: none; } }
+.at-gloss.open { transform: none; }
+.at-gloss .ga { font-family: var(--serif); font-size: 19px; }
+.at-gloss .lit { color: var(--rust); font-size: 12.5px; font-family: var(--sans);
+  letter-spacing:.04em; margin: 2px 0 8px; }
+.at-gloss p { font-family: var(--body); font-size: 13.5px; color: var(--ink2);
+  margin: 0; line-height: 1.55; }
+.at-foot { margin-top:auto; padding: 12px 18px 18px; font-size: 11px;
+  color: var(--ink3); display:flex; justify-content: space-between; }
+
+/* note register — lichen-washed manual page */
+.at-note { background:
+  radial-gradient(120% 90% at 80% -10%, var(--sea-soft), transparent 60%),
+  radial-gradient(100% 80% at -10% 110%, var(--rust-soft), transparent 55%),
+  var(--surface); }
+.at-note-head { padding: 52px 20px 0; }
+.at-note-head .k { font-size: 10.5px; font-weight: 700; letter-spacing:.22em;
+  text-transform: uppercase; color: var(--sea); }
+.at-note-head h5 { font-family: var(--serif); font-weight: 500; font-size: 21px;
+  line-height: 1.25; margin: 8px 0 0; }
+.at-note-body { padding: 12px 20px; font-family: var(--body); font-size: 14px;
+  line-height: 1.62; color: var(--ink2); }
+.at-note-body p { margin: 0 0 10px; }
+.at-spec { margin: 14px 0 0; padding-left: 14px; border-left: 2px solid var(--rust); }
+.at-spec .pair { font-family: var(--serif); font-size: 18px; color: var(--ink); }
+.at-spec .why { font-size: 12px; font-family: var(--sans); color: var(--ink3);
+  margin-top: 2px; }
+
+/* exercise register — chalk marks, no card */
+.at-exmark { display:flex; align-items:center; gap: 8px; padding: 50px 20px 0; }
+.at-exmark .strokes { display:flex; gap: 3px; }
+.at-exmark .strokes i { width: 2.5px; height: 14px; background: var(--chalk);
+  transform: skewX(-14deg); display:block; }
+.at-exmark span { font-size: 10.5px; font-weight: 700; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--chalk); }
+.at-context { padding: 14px 20px 0; font-family: var(--body); font-style: italic;
+  font-size: 14px; color: var(--ink3); }
+.at-prompt { padding: 8px 20px; font-family: var(--serif); font-size: 19px; }
+.at-tiles { display:flex; flex-wrap: wrap; gap: 9px; padding: 8px 20px; }
+.at-tile { border: 1px solid var(--line); background: var(--surface);
+  border-radius: 7px; padding: 8px 13px; font-family: var(--serif); font-size: 16px;
+  color: var(--ink); box-shadow: 0 2px 0 var(--line); }
+.at-tile:disabled { opacity: .28; box-shadow: none; }
+.at-built { min-height: 44px; margin: 4px 20px; padding: 6px 2px;
+  border-bottom: 1.5px dashed var(--chalk); font-family: var(--serif);
+  font-size: 18px; display:flex; gap: 8px; flex-wrap: wrap; }
+.at-verdict { padding: 6px 20px; min-height: 40px; font-family: var(--sans);
+  font-size: 12.5px; color: var(--sea); font-weight: 600; }
+.at-verdict.err { color: var(--rust); }
+
+/* recarve — weathered groove */
+.at-weathered { margin: 16px 18px 4px; padding: 16px; border-radius: 8px;
+  font-family: var(--serif); font-size: 24px; letter-spacing: .03em;
+  text-align: center; color: var(--ink);
+  box-shadow: inset 0 2px 8px var(--groove); }
+.at-weathered .gone { color: var(--ink3); opacity: .55; }
+.at-weathered .fresh { color: var(--sea); }
+.at-input { margin: 10px 18px 0; display: block; width: calc(100% - 36px);
+  padding: 10px 12px; font-family: var(--serif); font-size: 17px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
+  color: var(--ink); }
+.at-fadas { display:flex; gap: 7px; padding: 10px 18px 0; }
+.at-fadas button { flex:1; border: 1px solid var(--line); background: var(--surface2);
+  color: var(--ink); border-radius: 6px; padding: 7px 0; font-family: var(--serif);
+  font-size: 16px; }
+.at-back { text-align:center; font-family: var(--serif); font-style: italic;
+  font-size: 16px; color: var(--rust); padding: 14px 20px 0; min-height: 44px; }
+
+/* turn — your line */
+.at-turnopts { display:flex; flex-direction: column; gap: 10px; padding: 10px 20px; }
+.at-turnopt { text-align: left; border: 1.5px dashed var(--chalk);
+  background: transparent; color: var(--ink); border-radius: 8px;
+  padding: 11px 14px; font-family: var(--serif); font-size: 17px; }
+.at-turnopt small { display:block; font-family: var(--sans); font-size: 11px;
+  color: var(--ink3); margin-top: 2px; }
+.at-tusa { margin: 10px 20px 0; display: none; }
+.at-tusa.show { display: block; }
+.at-tusa .k { font-size: 10.5px; font-weight: 700; letter-spacing:.2em;
+  color: var(--rust); }
+.at-tusa .said { font-family: var(--serif); font-size: 20px; padding: 10px 14px;
+  margin-top: 4px; border-radius: 8px; box-shadow: inset 0 2px 6px var(--groove); }
+.at-reply { padding: 12px 20px; font-family: var(--body); font-size: 14px;
+  color: var(--ink2); line-height: 1.6; min-height: 84px; }
+.at-reset { background: none; border: none; color: var(--sea); font-size: 12.5px;
+  font-family: var(--sans); text-decoration: underline; text-underline-offset: 3px; }
+
+/* lens — placename peel */
+.at-lensword { margin: 18px 20px 6px; text-align: center; }
+.at-lensword .en { font-family: var(--serif); font-size: 30px; transition: opacity .4s; }
+.at-lensword .en.dim { opacity: .3; }
+.at-lensword .ga { font-family: var(--serif); font-size: 30px; color: var(--sea);
+  display: none; }
+.at-lensword .ga.show { display: block; }
+.at-morphs { display: flex; flex-direction: column; gap: 8px; padding: 6px 20px; }
+.at-morph { border-left: 2px solid var(--sea); padding: 6px 12px;
+  background: var(--sea-soft); border-radius: 0 8px 8px 0; opacity: 0;
+  transform: translateX(-8px); transition: all .45s ease; }
+@media (prefers-reduced-motion: reduce) { .at-morph { transition: opacity .2s; transform:none; } }
+.at-morph.in { opacity: 1; transform: none; }
+.at-morph b { font-family: var(--serif); font-size: 17px; font-weight: 600; }
+.at-morph span { display: block; font-size: 12px; color: var(--ink2);
+  font-family: var(--sans); margin-top: 1px; }
+.at-cta { margin: 12px 20px 0; align-self: flex-start; border: 1px solid var(--sea);
+  color: var(--sea); background: transparent; border-radius: 999px;
+  padding: 8px 18px; font-size: 13px; font-weight: 600; font-family: var(--sans); }
+
+/* ogham carver */
+.at-ogham-stage { display:flex; justify-content:center; padding: 6px 0 0; }
+.at-ogham-stage svg { height: 300px; }
+.at-stonebg { fill: var(--surface2); stroke: var(--line); }
+.at-stem { stroke: var(--ink3); stroke-width: 2.5; }
+.at-stroke { stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
+.at-namein { margin: 8px 18px 0; }
+
+/* músaem shelf */
+.at-shelfrow { display:grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  padding: 12px 18px; }
+.at-relic { border: 1px solid var(--line); border-radius: 10px; background: var(--surface);
+  padding: 12px 10px 10px; text-align:center; position: relative; }
+.at-relic svg { width: 46px; height: 46px; display:block; margin: 0 auto 6px; }
+.at-relic b { font-family: var(--serif); font-size: 13.5px; font-weight: 600;
+  display:block; }
+.at-relic span { font-size: 10.5px; color: var(--ink3); display:block; margin-top:2px; }
+.at-relic.locked { opacity: .45; border-style: dashed; }
+.at-relic .due { position:absolute; top: 7px; right: 8px; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--rust); }
+
+/* misc in-app */
+.at-h5 { padding: 12px 20px 0; font-family: var(--serif); font-size: 20px;
+  font-weight: 500; margin: 0; }
+.at-p { padding: 6px 20px 0; font-family: var(--body); font-size: 13.5px;
+  color: var(--ink2); line-height: 1.6; margin: 0; }
+.at-pin { display:flex; align-items:baseline; gap: 10px; padding: 9px 20px; }
+.at-pin button { border: 1px solid var(--line); background: var(--surface);
+  color: var(--sea); font-weight: 700; border-radius: 999px; font-size: 11px;
+  letter-spacing: .08em; padding: 5px 12px; font-family: var(--sans); flex: none; }
+.at-pin button[aria-pressed="true"] { background: var(--sea); color: var(--surface); border-color: var(--sea); }
+.at-pin .ga { font-family: var(--serif); font-size: 16.5px; }
+.at-pin .dial { font-size: 11px; color: var(--ink3); font-family: var(--sans); }
+.at-flag { margin: 12px 18px 0; border: 1.5px dashed var(--rust); color: var(--rust);
+  border-radius: 8px; padding: 8px 12px; font-size: 11.5px; font-family: var(--sans);
+  font-weight: 600; letter-spacing: .04em; }
+.at-letter { margin: 10px 14px 0; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 12px 14px; font-family: var(--body); font-size: 13px;
+  line-height: 1.6; color: var(--ink2); }
+.at-letter .from { font-family: var(--sans); font-size: 10.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--rust); margin-bottom: 6px; }
+.at-voices { display:flex; gap: 8px; padding: 12px 18px 0; }
+.at-voices button { flex: 1; border: 1px solid var(--line); background: var(--surface);
+  color: var(--ink2); border-radius: 999px; padding: 7px 4px; font-size: 12px;
+  font-family: var(--sans); font-weight: 600; }
+.at-voices button[aria-pressed="true"] { border-color: var(--rust); color: var(--rust); }
+
+/* ---------- maps ---------- */
+.mapwrap { margin-top: 40px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 10px; padding: 26px 26px 18px; }
+.map-title { font-family: var(--sans); font-size: 13px; font-weight: 700;
+  letter-spacing: .04em; margin: 0 0 2px; }
+.map-sub { font-family: var(--sans); font-size: 12.5px; color: var(--ink3);
+  margin: 0 0 18px; }
+.plotbox { position: relative; }
+.plot { position: relative; width: 100%; aspect-ratio: 1.35 / 1; }
+@media (max-width: 640px){ .plot { aspect-ratio: 1 / 1.1; } }
+.plot .gridline { position:absolute; background: var(--line); opacity: .55; }
+.plot .gridline.v { top:0; bottom:0; width:1px; }
+.plot .gridline.h { left:0; right:0; height:1px; }
+.plot .axis { position: absolute; background: var(--ink3); opacity:.6; }
+.quadrant { position: absolute; border: 1.5px dashed var(--rust);
+  background: var(--rust-soft); border-radius: 6px; }
+.quadrant label { position: absolute; top: 8px; left: 10px; font-family: var(--sans);
+  font-size: 10.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--rust); }
+.zone { position: absolute; border: 1px dashed var(--chalk); border-radius: 8px;
+  opacity: .8; }
+.zone label { position:absolute; bottom: 6px; left: 8px; right: 8px;
+  font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ink3); }
+.dot { position: absolute; transform: translate(-50%, -50%); border-radius: 50%;
+  border: 2px solid var(--surface); padding: 0; width: 14px; height: 14px;
+  background: var(--c, var(--ink3)); }
+.dot.target { width: 20px; height: 20px; background: transparent;
+  border: 3px solid var(--rust); box-shadow: 0 0 0 2px var(--surface); }
+.dot.sz-s { width: 11px; height: 11px; }
+.dot.sz-m { width: 16px; height: 16px; }
+.dot.sz-l { width: 24px; height: 24px; }
+.dotlabel { position: absolute; transform: translate(-50%, 0); top: 100%;
+  margin-top: 4px; font-family: var(--sans); font-size: 11px; color: var(--ink2);
+  white-space: nowrap; pointer-events: none; }
+.dotlabel.above { top: auto; bottom: 100%; margin: 0 0 4px; }
+.dotlabel.right { left: 100%; top: 50%; transform: translate(6px, -50%); }
+.dotlabel.left { left: auto; right: 100%; top: 50%; transform: translate(-6px, -50%); }
+.axlab { font-family: var(--sans); font-size: 11px; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink3); }
+.axlab.x { text-align: center; margin-top: 12px; }
+.axlab .lo, .axlab .hi { letter-spacing: .02em; text-transform: none; font-weight: 400; }
+.ax-row { display:flex; justify-content: space-between; align-items: baseline;
+  margin-top: 10px; font-family: var(--sans); font-size: 11px; color: var(--ink3); }
+.ylab { position: absolute; left: -14px; top: 50%;
+  transform: rotate(180deg) translateX(50%); writing-mode: vertical-rl;
+  transform-origin: left top; font-family: var(--sans); font-size: 11px;
+  font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink3); }
+.maplegend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 20px;
+  padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--sans);
+  font-size: 12px; color: var(--ink2); align-items: center; }
+.maplegend .li { display: inline-flex; align-items: center; gap: 7px; }
+.maplegend .sw { width: 10px; height: 10px; border-radius: 50%;
+  background: var(--c); }
+.maplegend .sw.ring { background: transparent; border: 2.5px solid var(--rust); }
+.maplegend .szsw { border-radius: 50%; background: var(--ink3); display:inline-block; }
+.tip { position: absolute; z-index: 60; max-width: 250px; background: var(--ink);
+  color: var(--ground); border-radius: 8px; padding: 10px 12px;
+  font-family: var(--sans); font-size: 12px; line-height: 1.5;
+  pointer-events: none; opacity: 0; transition: opacity .12s;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+.tip.show { opacity: 1; }
+.tip b { display:block; font-size: 13px; margin-bottom: 2px; }
+.tip .k { opacity: .65; }
+.tabletoggle { margin-top: 16px; font-family: var(--sans); font-size: 13px; }
+.tabletoggle summary { cursor: pointer; color: var(--sea); font-weight: 600; }
+.tabletoggle table { width: 100%; border-collapse: collapse; margin-top: 12px;
+  font-size: 12.5px; }
+.tabletoggle th { text-align: left; font-weight: 700; padding: 7px 10px;
+  border-bottom: 1.5px solid var(--line); white-space: nowrap; }
+.tabletoggle td { padding: 7px 10px; border-bottom: 1px solid var(--line);
+  vertical-align: top; }
+.tabletoggle .num { font-variant-numeric: tabular-nums; text-align: right; }
+.table-scroll { overflow-x: auto; }
+
+/* ---------- wrecks ---------- */
+.wrecks { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+  gap: 18px; margin-top: 36px; }
+.wreck { background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  padding: 18px 18px 16px; }
+.wreck .num { font-family: var(--serif); font-size: 15px; color: var(--rust);
+  font-style: italic; }
+.wreck h4 { font-family: var(--serif); font-weight: 600; font-size: 18px;
+  margin: 4px 0 8px; line-height: 1.3; }
+.wreck p { font-size: 13.5px; color: var(--ink2); margin: 0 0 10px; line-height: 1.55; }
+.wreck .lesson { font-family: var(--sans); font-size: 12.5px; color: var(--ink);
+  border-top: 1px dashed var(--line); padding-top: 10px; }
+.wreck .lesson b { color: var(--rust); letter-spacing: .1em; font-size: 10.5px;
+  text-transform: uppercase; display: block; margin-bottom: 3px; }
+
+/* ---------- tensions ---------- */
+.tension { margin-top: 42px; padding-top: 30px; border-top: 1px solid var(--line); }
+.tension:first-of-type { border-top: none; margin-top: 12px; }
+.tension .poles { display: flex; justify-content: space-between; gap: 20px;
+  align-items: baseline; }
+.tension .poles h4 { font-family: var(--serif); font-size: 21px; font-weight: 600;
+  margin: 0; }
+.tension .poles h4.far { text-align: right; color: var(--ink3); font-weight: 500; }
+.tension .track { position: relative; height: 3px; background: var(--line);
+  margin: 18px 0 14px; border-radius: 2px; }
+.tension .stone { position: absolute; top: 50%; transform: translate(-50%,-50%);
+  width: 17px; height: 17px; border-radius: 50%; background: var(--rust);
+  border: 3px solid var(--ground); box-shadow: 0 0 0 1px var(--rust); }
+.tension .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 680px){ .tension .cols { grid-template-columns: 1fr; } }
+.tension .cols p { font-size: 14.5px; color: var(--ink2); margin: 0; line-height: 1.6; }
+.tension .cols .k { font-family: var(--sans); font-size: 10.5px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--ink3);
+  display: block; margin-bottom: 6px; }
+.tension .cols .k.move { color: var(--sea); }
+
+/* ---------- closing ---------- */
+.closing { margin-top: 110px; text-align: center; padding: 70px 20px 30px;
+  border-top: 1px solid var(--line); }
+.closing .q { font-family: var(--serif); font-size: clamp(26px, 4vw, 40px);
+  font-weight: 500; line-height: 1.25; max-width: 22ch; margin: 18px auto 14px;
+  text-wrap: balance; }
+.closing .q em { color: var(--rust); font-style: italic; }
+.closing p { max-width: 58ch; margin: 0 auto; color: var(--ink2); }
+footer { max-width: 1160px; margin: 60px auto 0; padding: 26px 24px 60px;
+  border-top: 1px solid var(--line); font-family: var(--sans); font-size: 12.5px;
+  color: var(--ink3); line-height: 1.7; }
+footer b { color: var(--ink2); font-weight: 600; }
+
+/* status chips for future features */
+.statuschip { display:inline-block; font-family: var(--sans); font-size: 10px;
+  font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  border-radius: 999px; padding: 3px 10px; margin-left: 8px; vertical-align: 2px; }
+.statuschip.built { color: var(--f-built); border: 1.5px solid var(--f-built); }
+.statuschip.next  { color: var(--f-next);  border: 1.5px solid var(--f-next); }
+.statuschip.imag  { color: var(--f-imag);  border: 1.5px dashed var(--f-imag); }
+</style>
+<header class="hero">
+  <canvas id="heroSea" aria-hidden="true"></canvas>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="hero-text">
+    <div class="eyebrow">An Turas · Field report · Iúil 2026</div>
+    <h1>Six ways to learn Irish. The seventh is still an empty field.</h1>
+    <p>Working reconstructions of every rival's core loop, two maps of the territory,
+    prototypes of what we've built and what we could build — and the trade-offs that
+    decide what this experience should become.</p>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= SECTION 1 · THE SIX FAMILIES ================= -->
+<section id="families">
+  <div class="slug">
+    <span class="tally" aria-hidden="true"><i></i></span>
+    <h2>An Seisear — <span class="ga">the six families</span></h2>
+    <span class="rule grow"></span>
+  </div>
+  <div class="prose">
+    <h3>Every Irish app is a bet on why you'll come back.</h3>
+    <p class="lede">The market sorts into six pedagogical families, and each one is
+    really a theory of retention: streaks, mastery, the sound of your own voice,
+    a community that knows your name, a tutor on demand, or a certificate at the
+    end. Below, each family's core loop is rebuilt as a working specimen —
+    tap them, they answer back.</p>
+    <p>These are reconstructions from research, not screenshots. Each compresses a
+    real product's defining moment into one interactive screen, styled the way that
+    product actually feels — because the <em>feel</em> is the strategy. Notice what
+    each one is optimised to make you do, and what it quietly gives up to do it.</p>
+  </div>
+
+  <div class="shelf">
+
+    <!-- DUOLINGO -->
+    <figure class="specimen" style="--dot: var(--s-gam); margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-duo">
+          <div class="duo-top">
+            <span class="flame">🔥 247</span>
+            <span class="gem">💎 1,450</span>
+            <span class="heartsN" id="duoHearts">❤️ 5</span>
+          </div>
+          <div class="duo-bar"><i id="duoBar"></i></div>
+          <div class="duo-toast" id="duoToast">🔥 Reminder: your 247 day streak
+            expires in 4 hours!</div>
+          <div class="duo-q">Translate this sentence</div>
+          <div class="duo-sentence">The woman eats bread</div>
+          <div class="duo-answer" id="duoAnswer" aria-label="your answer"></div>
+          <div class="duo-bank" id="duoBank"></div>
+          <button class="duo-check" id="duoCheck" disabled>Check</button>
+          <div class="duo-banner" id="duoBanner"></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--s-gam);">Gamified habit</span>
+        <h4>Duolingo — the streak owns you</h4>
+        <p>Implicit pattern-exposure, behaviourist loop: XP, hearts, leagues, guilt.
+        1M+ Irish learners historically; native audio replaced by AI TTS, community
+        course team gone since 2024, no mutation system ever taught.</p>
+        <em class="verdict"><b>The tell:</b> finish the exercise and watch what it
+        celebrates. Not your Irish — the streak.</em>
+      </figcaption>
+    </figure>
+
+    <!-- BLAS -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-blas">
+          <div class="blas-top">
+            <div class="brand">blas</div>
+            <div class="due">FSRS queue · 37 reviews due today</div>
+          </div>
+          <div class="blas-note"><b>Séimhiú after the article.</b> Feminine nouns
+            lenite after <b>an</b>: the first consonant softens, an <i>h</i> is
+            written after it. <i>bean</i> → <i>an bhean</i>.</div>
+          <div class="blas-q">an + bean → an ____</div>
+          <div class="blas-opts" id="blasOpts">
+            <button class="blas-opt" data-ok="0">bean</button>
+            <button class="blas-opt" data-ok="1">bhean</button>
+            <button class="blas-opt" data-ok="0">mbean</button>
+          </div>
+          <div class="blas-why" id="blasWhy"></div>
+          <div class="blas-grid-label">Mastery · initial mutations</div>
+          <div class="blas-grid" id="blasGrid" aria-label="mastery grid"></div>
+          <div class="blas-foot">No mascots. No confetti. No streak guilt. ·
+            TEG-aligned · 3 dialects</div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--s-rig);">Explicit rigour</span>
+        <h4>blas. — the mastery grid</h4>
+        <p>Explain, then drill: grammar lessons feeding FSRS-scheduled exercises,
+        mutations as a first-class skill, placement tests that respect what you
+        already know. Built for adults returning to Irish. The highest direct
+        product threat.</p>
+        <em class="verdict"><b>The tell:</b> hover the grid — every cell is a
+        measurable skill. Culture appears only as reading passages.</em>
+      </figcaption>
+    </figure>
+
+    <!-- SSI -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-ssi">
+          <div class="ssi-top">SaySomethinginIrish
+            <div class="ssi-round" id="ssiRound">Round 3 of 30</div>
+          </div>
+          <div class="ssi-stage">
+            <div class="ssi-line" id="ssiLine">Say: <br><strong>“I want to speak
+              Irish”</strong></div>
+            <div class="ssi-dots" id="ssiDots" aria-hidden="true">
+              <i></i><i></i><i></i></div>
+            <button class="ssi-orb pulse" id="ssiOrb">SPEAK<br>NOW</button>
+          </div>
+          <div class="ssi-foot">No reading. No writing. No grammar. Out loud —
+            really out loud.</div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--s-aud);">Audio-first</span>
+        <h4>Say Something in Irish — the pause</h4>
+        <p>Listen, pause, produce — before you feel ready. Anti-grammar by design;
+        mistakes are the method. Their pitch lands the industry's best punch:
+        <em>“You've got a streak, but you can't speak.”</em></p>
+        <em class="verdict"><b>The tell:</b> the screen is nearly empty. Their own
+        forums admit the Irish course needed “acceptable enough” compromises.</em>
+      </figcaption>
+    </figure>
+
+    <!-- BITESIZE -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-bite">
+          <div class="bite-head">
+            <div class="from">Bitesize Irish · Gaeilge Gach Lá</div>
+            <h5>Lá 132 — Lúnasa is coming, a chara</h5>
+          </div>
+          <div class="bite-body">
+            <p style="margin:0 0 6px;">The old calendar turns toward harvest.
+            Wherever you are in the world, the language turns with it.</p>
+            <div class="phrase">
+              <b>Tá an samhradh linn.</b>
+              <small>“The summer is with us.” — say it out loud, once.</small>
+            </div>
+            <div class="bite-task">
+              <button class="bite-done" id="biteDone" data-done="0">Rinne mé é ✓</button>
+              <span class="bite-others" id="biteOthers">34 members did today's
+                small step</span>
+            </div>
+          </div>
+          <div class="bite-tiers">
+            <span>Leabharlann</span><span class="on">Tinteán</span>
+            <span>Ciorcal Beo</span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--s-com);">Community ritual</span>
+        <h4>Bitesize Irish — the daily letter</h4>
+        <p>“Irish every day, not perfectionism.” Fifteen years of diaspora trust,
+        an email list over ten thousand strong, tiers running from self-paced
+        library to live circle. Identity-integrated habit, gently done.</p>
+        <em class="verdict"><b>The tell:</b> culture seasons the method but never
+        gates progress. There is no world to walk through — just a very kind
+        letter.</em>
+      </figcaption>
+    </figure>
+
+    <!-- GAEILGEOIR -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-gael">
+          <div class="gael-top">
+            <div class="t">Gaeilgeoir</div>
+            <div class="s">Scenario: Ag ordú caife — ordering coffee</div>
+          </div>
+          <div class="gael-chat" id="gaelChat">
+            <div class="gael-msg ai">Dia dhuit! Fáilte go dtí an caifé. Céard a
+              bheas agat?<small>Hello! Welcome to the café. What will you
+              have?</small></div>
+          </div>
+          <div class="gael-quick" id="gaelQuick">
+            <button data-r="0">Ba mhaith liom caife…</button>
+            <button data-r="1">Cupán tae, le do thoil</button>
+          </div>
+          <div class="gael-paywall">Native speaker in your pocket · €9.99/mo after
+            trial</div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--s-ai);">AI conversation</span>
+        <h4>Gaeilgeoir — the tutor on demand</h4>
+        <p>Scenario chat with instant correction, 1000-word immersion, Leaving Cert
+        oral prep. Heritage runs through the marketing; the product is a chat
+        wrapper. Roughly a hundred Android downloads at launch.</p>
+        <em class="verdict"><b>The tell:</b> the culture lives in the copy, not the
+        content. One viral grammar error away from losing the room.</em>
+      </figcaption>
+    </figure>
+
+    <!-- DROPS -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-drops">
+          <div class="drops-timer">
+            <svg viewBox="0 0 60 60" aria-hidden="true">
+              <circle cx="30" cy="30" r="25" fill="none" stroke="#2b3050"
+                stroke-width="5"/>
+              <circle id="dropsRing" cx="30" cy="30" r="25" fill="none"
+                stroke="#19b28a" stroke-width="5" stroke-linecap="round"
+                stroke-dasharray="157" stroke-dashoffset="38"
+                transform="rotate(-90 30 30)"/>
+              <text x="30" y="35" text-anchor="middle" fill="#fff" font-size="13"
+                font-weight="700" font-family="system-ui">4:12</text>
+            </svg>
+          </div>
+          <div class="drops-word" id="dropsWord">bád</div>
+          <div class="drops-hint" id="dropsHint">tap the picture</div>
+          <div class="drops-grid" id="dropsGrid"></div>
+          <div class="drops-combo" id="dropsCombo">streak ×3 · 5 minutes a day</div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--s-gam);">Gamified habit</span>
+        <h4>Drops — vocabulary as candy</h4>
+        <p>Five minutes a day of visual word-matching with a hard timer. Honest
+        about its scope: vocabulary only, no grammar, no sentences. Irish culture
+        appears as word lists — GAA, trad music — never as story.</p>
+        <em class="verdict"><b>The tell:</b> the timer is the product. When it hits
+        zero, so does the session — and the learning.</em>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- MOOC window -->
+  <div class="moocrow">
+    <div class="moocwin">
+      <div class="mooc-bar"><i></i><i></i><i></i>
+        <span class="url">futurelearn.com/courses/irish-101</span></div>
+      <div class="mooc-body">
+        <div class="mooc-main">
+          <div class="kicker">Dublin City University · Fáilte ar Líne</div>
+          <h5>Irish 101: An Introduction to Irish Language and Culture</h5>
+          <p>Join 45,000+ learners across 140 countries. Language and culture
+          together, designed for the global diaspora. Free, forever.</p>
+          <div class="mooc-video" role="img" aria-label="video lecture placeholder"></div>
+        </div>
+        <div class="mooc-side">
+          <div class="mooc-week done"><i></i>Week 1 · Saying who you are</div>
+          <div class="mooc-week done"><i></i>Week 2 · Where you come from</div>
+          <div class="mooc-week now"><i></i>Week 3 · Songs &amp; seanfhocail</div>
+          <div class="mooc-week"><i></i>Week 4 · The living Gaeltacht</div>
+          <div class="mooc-week"><i></i>→ Irish 102–108 · degree pathway</div>
+        </div>
+      </div>
+    </div>
+    <figcaption class="spec-cap" style="margin:0;">
+      <span class="fam" style="--dot: var(--s-ins);">Institutional MOOC</span>
+      <h4>DCU Fáilte ar Líne — the free baseline</h4>
+      <p>Authoritative, research-backed, emotionally aware course design — and
+      free. Together with Ranganna.ie and Gaelchultúr's QQI-aligned courses, the
+      institutions anchor the price of “structured Irish” at zero.</p>
+      <em class="verdict"><b>The tell:</b> a paid product cannot sell structure.
+      It must sell what institutions don't make: pull, craft, a world.</em>
+    </figcaption>
+  </div>
+</section>
+<!-- ================= SECTION 2 · THE TERRITORY ================= -->
+<section id="territory">
+  <div class="slug">
+    <span class="tally" aria-hidden="true"><i></i><i></i></span>
+    <h2>An Léarscáil — <span class="ga">the territory</span></h2>
+    <span class="rule grow"></span>
+  </div>
+  <div class="prose">
+    <h3>The field everyone can see, and the corner nobody stands in.</h3>
+    <p class="lede">Plot every serious product on two axes — how explicitly it
+    teaches the machinery of Irish, and how deeply culture and history are woven
+    into the method — and the market's shape appears at once. The bottom-left is
+    crowded. The top-left is contested. The top-right is empty.</p>
+    <p>That empty corner is the bet: <strong>high structure and high culture at
+    once</strong> — explain the grammar school never explained, inside a story
+    worth returning to. blas. proves adults will pay for rigour. Bitesize proves
+    the diaspora responds to identity. Nobody has fused them, because fusing them
+    is an editorial project, not a software project — and editorial is expensive.
+    That cost is the moat, and the risk.</p>
+  </div>
+
+  <div class="mapwrap">
+    <p class="map-title">Positioning — every competitor placed by pedagogy</p>
+    <p class="map-sub">Horizontal: culture &amp; history in the method · Vertical:
+      explicit grammar &amp; structure. Placement synthesised from the July 2026
+      competitive research. Hover or focus any point.</p>
+    <div class="plotbox">
+      <div class="plot" id="plot1"></div>
+      <div class="tip" id="tip1" role="status"></div>
+    </div>
+    <div class="ax-row"><span>← culture as absent or decorative</span>
+      <span class="axlab">Culture / history in the method</span>
+      <span>culture as the spine →</span></div>
+    <div class="maplegend" id="legend1"></div>
+    <details class="tabletoggle">
+      <summary>View as table</summary>
+      <div class="table-scroll"><table id="table1">
+        <thead><tr><th>Product</th><th>Family</th><th>Retention engine</th>
+          <th class="num">Structure /10</th><th class="num">Culture /10</th>
+          <th>The gap</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= SECTION 3 · WRECKS ================= -->
+<section id="wrecks-s">
+  <div class="slug">
+    <span class="tally" aria-hidden="true"><i></i><i></i><i></i></span>
+    <h2>Longbhriseadh — <span class="ga">wrecks on the shore</span></h2>
+    <span class="rule grow"></span>
+  </div>
+  <div class="prose">
+    <h3>Irish tech keeps drowning in the same four places.</h3>
+    <p class="lede">Before imagining new features, walk the tideline. Every wreck
+    below is a real product decision that failed in public — and each one marks a
+    reef that An Turas will sail over too, unless we chart it now.</p>
+  </div>
+  <div class="wrecks">
+    <div class="wreck"><span class="num">i</span>
+      <h4>Duolingo replaced native voices with AI</h4>
+      <p>2022–23: native Irish recordings swapped for synthetic audio that blurs
+      the broad/slender distinction — the load-bearing wall of Irish phonology.
+      The community course team walked in August 2024. The Welsh course was
+      mothballed outright, stranding 675,000 learners.</p>
+      <div class="lesson"><b>Chart marking</b>Bad audio at scale is worse than
+      silence. Nothing ships without native-speaker review — and Duolingo's
+      drop-outs are our funnel only if we are visibly the anti-slop option.</div>
+    </div>
+    <div class="wreck"><span class="num">ii</span>
+      <h4>Gamification opened apps, not mouths</h4>
+      <p>A million-plus started Irish on streaks and XP; the mid-funnel collapsed
+      exactly where Irish gets Irish — mutations and the copula. Learners report
+      shame about broken streaks, not about unspoken Irish. Wrong emotion, wrong
+      language.</p>
+      <div class="lesson"><b>Chart marking</b>Extrinsic loops sustain app-opens,
+      not identity growth. But note the hard part: nobody has yet proven narrative
+      sustains a <em>daily</em> habit either. That's our experiment to run.</div>
+    </div>
+    <div class="wreck"><span class="num">iii</span>
+      <h4>Culture as marketing, not editorial</h4>
+      <p>“Heritage” in the Instagram copy, an AI chat wrapper in the product.
+      Indistinguishable from a hundred other wrappers; barely a hundred downloads.
+      Meanwhile Chineasy — the closest analogue to “beautiful visual world +
+      language” — drew complaints of story without testing, progression without
+      diagnosis.</p>
+      <div class="lesson"><b>Chart marking</b>The culture moat requires a historian
+      and a pedagogue signing every chapter — and narrative must stay coupled to
+      retrieval, or it becomes television.</div>
+    </div>
+    <div class="wreck"><span class="num">iv</span>
+      <h4>Pronunciation theatre &amp; platform dependency</h4>
+      <p>Irish speech recognition is research-grade; apps that score pronunciation
+      accept nonsense audio, and learners eventually notice. Memrise phased out
+      the community decks an ecosystem depended on. Academic tools (An Scéalaí,
+      WordBricks) never crossed into consumer retention.</p>
+      <div class="lesson"><b>Chart marking</b>Echo-ungraded is honest; fake scores
+      erode trust. Own the content as data, own the audio pipeline, depend on no
+      one's platform for the curriculum.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 4 · WHAT WE'VE BUILT ================= -->
+<section id="built">
+  <div class="slug">
+    <span class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <h2>An Rud atá Tógtha — <span class="ga">what the slice already does</span></h2>
+    <span class="rule grow"></span>
+  </div>
+  <div class="prose">
+    <h3>Three registers and a chisel: the vertical slice, working.</h3>
+    <p class="lede">Chapter 1 — <em>Clocha na nAinmneacha</em>, a stone-carver's
+    workshop on the Mayo coast, c. 480 AD — is running on the iOS simulator
+    today. Its design language has three registers: the <strong>scene</strong>
+    (illustrated story, spoken Irish as the hero primitive), the
+    <strong>note</strong> (what school never explained, purely typographic), and
+    the <strong>exercise</strong> (chalk on the same page, no grey card). The
+    mockups below reproduce the shipped mechanics — including the four primitives
+    no competitor has: recarve, the turn, the lens, and the learner's own hand.</p>
+  </div>
+
+  <div class="shelf">
+
+    <!-- SCENE REGISTER -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at" id="atScene">
+          <div class="at-slug">Maigh Eo · c. 480 AD</div>
+          <canvas class="at-scenecanvas" id="sceneCanvas" aria-hidden="true"></canvas>
+          <div class="at-beats">
+            <p>Salt wind, a field above the strand. A man kneels at a tall stone,
+            chisel in hand. He sees you, and raises the hand that isn't holding
+            the blade.</p>
+          </div>
+          <button class="at-speech" id="atSpeech" aria-expanded="false">
+            <span class="who">Dáire</span>
+            <span class="ga">Dia dhuit.</span>
+            <span class="say">JEE-uh GWIT · tap for meaning</span>
+            <span class="earmark" aria-hidden="true">◉))</span>
+          </button>
+          <div class="at-foot"><span>scene · leathanach 1</span><span>swipe →</span></div>
+          <div class="at-gloss" id="atGloss">
+            <div class="ga">Dia dhuit</div>
+            <div class="lit">literally: “God to you”</div>
+            <p>The greeting arrived with the new faith — younger than the stone
+            Dáire is carving. The reply raises it: <em>Dia is Muire dhuit</em>,
+            “God and Mary to you.” Call and response, like the tide.</p>
+          </div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-built);">Register one · scene
+          <span class="statuschip built">built</span></span>
+        <h4>Spoken Irish as the hero primitive</h4>
+        <p>A slugline, a painted window (Solas an Atlantaigh — the canvas above is
+        generated live in that palette), narrative beats, and speech set in serif
+        against a carved groove: speaker, sound, tap-for-meaning. Language sits
+        inside the story, never beside it.</p>
+      </figcaption>
+    </figure>
+
+    <!-- NOTE REGISTER -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at at-note">
+          <div class="at-note-head">
+            <div class="k">An Nóta Gramadaí</div>
+            <h5>The two “to be”s — what school never explained</h5>
+          </div>
+          <div class="at-note-body">
+            <p>Irish has two verbs where English has one. <strong>Is</strong> says
+            what something <em>is</em> — identity, permanent as stone.
+            <strong>Tá</strong> says how something <em>is</em> — state, weather,
+            passing things.</p>
+            <div class="at-spec">
+              <div class="pair">Is mise Dáire.</div>
+              <div class="why">identity — I <em>am</em> Dáire, carved once</div>
+            </div>
+            <div class="at-spec">
+              <div class="pair">Tá mé fuar.</div>
+              <div class="why">state — I am cold, until the wind turns</div>
+            </div>
+            <p style="margin-top:14px;">School drilled both and explained neither.
+            That's why it never stuck. It sticks when you know which one the
+            stone-carver would trust his name to.</p>
+          </div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-built);">Register two · note
+          <span class="statuschip built">built</span></span>
+        <h4>Explain-then-drill, written for re-learners</h4>
+        <p>Full-bleed, lichen-washed, purely typographic — no spot illustration, no
+        mascot. Specimen pairs hang on a rule. The voice assumes thirteen years of
+        school Irish and zero retained grammar, and resents neither.</p>
+      </figcaption>
+    </figure>
+
+    <!-- EXERCISE REGISTER -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-exmark"><span class="strokes" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>Cleachtadh</span></div>
+          <div class="at-context">Practise the shape on someone else's name first.</div>
+          <div class="at-prompt">Build: “I am Áine.”</div>
+          <div class="at-built" id="atBuilt" aria-label="your answer"></div>
+          <div class="at-tiles" id="atTiles"></div>
+          <div class="at-verdict" id="atVerdict"></div>
+          <div class="at-foot"><span>cleachtadh · 2 de 4</span>
+            <span id="atExReset"><button class="at-reset">tosaigh arís</button></span></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-built);">Register three · exercise
+          <span class="statuschip built">built</span></span>
+        <h4>Chalk on the page, not a grey card</h4>
+        <p>Three chalk strokes mark the register; an italic story line keeps the
+        scene warm; tiles fly to the dashed line. Exercises gate the page-turn —
+        pages beyond an unsolved exercise don't exist yet. Correct answers land
+        with a chisel-strike haptic on device.</p>
+      </figcaption>
+    </figure>
+
+    <!-- RECARVE -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-slug">An mhaidin dár gcionn · next morning</div>
+          <div class="at-context" style="padding-top:18px;">The path to the strand
+            passes yesterday's practice stone. Overnight the wind has been at it —
+            the softest cuts first.</div>
+          <div class="at-weathered" id="atWeathered" aria-label="weathered phrase"></div>
+          <input class="at-input" id="atRecarveIn" type="text"
+            placeholder="Re-carve it: Is mise …" autocomplete="off"
+            autocapitalize="off" spellcheck="false"
+            aria-label="retype the weathered phrase">
+          <div class="at-fadas" id="atFadas" aria-label="fada keys"></div>
+          <div class="at-back" id="atBack"></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-built);">Primitive · recarve
+          <span class="statuschip built">built</span></span>
+        <h4>Review as weathering, never as debt</h4>
+        <p>Yesterday's phrase erodes — vowels first, to middots — and you restore
+        it, fadas and all, with the app's own fada keys. This is spaced repetition
+        wearing the chapter's clothes: the schedule underneath is FSRS-family; the
+        <em>experience</em> is tending a stone. Try it: type the phrase.</p>
+      </figcaption>
+    </figure>
+
+    <!-- TURN -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-slug">Ag an gcloch · at the stone</div>
+          <div class="at-beats" style="padding-top:14px;">
+            <p>A woman crosses the field with bread wrapped in cloth — Bríd. She
+            looks from the stone to you, and waits. The scene pauses on
+            <strong>your line</strong>.</p>
+          </div>
+          <div class="at-turnopts" id="atTurnOpts">
+            <button class="at-turnopt" data-t="0">Dia dhuit. Is mise {name}.
+              <small>lead with the greeting — safe ground</small></button>
+            <button class="at-turnopt" data-t="1">Is mise {name}. Cé thusa?
+              <small>skip to names — bolder, still good Irish</small></button>
+          </div>
+          <div class="at-tusa" id="atTusa">
+            <span class="k">TUSA — you said</span>
+            <div class="said" id="atTusaSaid"></div>
+          </div>
+          <div class="at-reply" id="atTurnReply"></div>
+          <div style="padding: 0 20px 16px; margin-top:auto;">
+            <button class="at-reset" id="atTurnReset" hidden>take the other turn</button>
+          </div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-built);">Primitive · the turn
+          <span class="statuschip built">built</span></span>
+        <h4>No fail state — two right answers</h4>
+        <p>Both replies are acceptable Irish; the choice is carved into the scene
+        as <em>TUSA</em> and Bríd answers each differently. Agency without anxiety
+        — the opposite of hearts and red banners. Take both turns and compare.</p>
+      </figcaption>
+    </figure>
+
+    <!-- LENS -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-slug">Gné · An Lionsa</div>
+          <div class="at-p" style="padding-top:14px;">Every Irish placename is a
+            tiny poem in plain sight. Hold the lens over the anglicised spelling
+            and the older words step out.</div>
+          <div class="at-lensword">
+            <div class="en" id="lensEn">Killala</div>
+            <div class="ga" id="lensGa">Cill Ala</div>
+          </div>
+          <div class="at-morphs" id="lensMorphs">
+            <div class="at-morph"><b>cill</b><span>church — from Latin
+              <em>cella</em>; the same word hiding in Kildare, Kilkenny,
+              Killarney</span></div>
+            <div class="at-morph"><b>Ala</b><span>Saint Ala — a name otherwise lost;
+              the placename is his only memorial</span></div>
+          </div>
+          <button class="at-cta" id="lensBtn">Peel it back</button>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-built);">Primitive · the lens
+          <span class="statuschip built">built</span></span>
+        <h4>The map you already know, decoded</h4>
+        <p>Placenames are the strongest culture-to-language bridge in existence —
+        every learner's home town already means something in Irish. The lens makes
+        etymology a physical gesture. Shipped for Killala; the future version
+        points at <em>your</em> town (see the next shelf).</p>
+      </figcaption>
+    </figure>
+
+    <!-- OGHAM CARVER -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-slug">Deireadh na caibidle · the artifact</div>
+          <div class="at-p" style="padding-top:12px;">Dáire hands you the chisel.
+            The chapter's artifact is your own name, in the first written Irish.</div>
+          <div class="at-namein at-pin" style="padding: 6px 18px 0;">
+            <input class="at-input" id="oghamName" type="text" value="Ciara"
+              maxlength="12" style="margin:0; flex:1;"
+              aria-label="name to carve in ogham">
+            <button id="oghamGo" style="color:var(--rust); border-color:var(--rust);">CARVE</button>
+          </div>
+          <div class="at-ogham-stage">
+            <svg id="oghamSvg" viewBox="0 0 160 300" role="img"
+              aria-label="your name carved in ogham on a standing stone"></svg>
+          </div>
+          <div class="at-foot"><span id="oghamCap">᚛ your name in ogham ᚜</span>
+            <span>share as card →</span></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-built);">Primitive · the hand
+          <span class="statuschip built">built</span></span>
+        <h4>The artifact you carve yourself</h4>
+        <p>On device, the strokes follow the learner's own finger up the stem,
+        chalk guides first, a haptic tick per cut. The finished stone exports as a
+        share card — “my name in ogham” — the app's first organic-growth loop.
+        Type any name and carve it.</p>
+      </figcaption>
+    </figure>
+
+    <!-- AMÁRACH -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-slug">Seisiún críochnaithe · session done</div>
+          <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 0 22px;">
+            <div class="at-note-head" style="padding:0;">
+              <div class="k" style="color:var(--rust);">Amárach</div>
+              <h5 style="font-size:19px;">A family is walking in from the east.
+              One of them will ask your name — and this time you can answer.</h5>
+            </div>
+            <div class="at-back" style="text-align:left; padding: 18px 0 0;">
+              Tá tú ar ais — you're back. The stone remembered you.</div>
+          </div>
+          <div class="at-foot"><span>seanfhocal an lae</span>
+            <span style="font-style:italic;">Is buaine focal ná toice an tsaoil</span></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-built);">Primitive · the hook
+          <span class="statuschip built">built</span></span>
+        <h4>Cliffhangers instead of streak guilt</h4>
+        <p>Every session ends on an authored <em>amárach</em> (tomorrow) hook, and
+        every return is greeted — <em>tá tú ar ais</em> — on the cover and the
+        map. Three return mechanics (recarve, hooks, the greeting) are now in the
+        slice precisely so the playtest can measure which one actually pulls.</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+<!-- ================= SECTION 5 · WHAT COULD BE ================= -->
+<section id="futures">
+  <div class="slug">
+    <span class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+    <h2>An Rud a d'Fhéadfadh a Bheith — <span class="ga">what could be</span></h2>
+    <span class="rule grow"></span>
+  </div>
+  <div class="prose">
+    <h3>If the thesis holds, the app becomes a place.</h3>
+    <p class="lede">Everything below follows from one idea: the retention engine is
+    a <em>world</em> — people, places, artifacts, seasons — and every feature
+    either deepens the world or doesn't ship. Four of these are next-phase
+    candidates already implied by the spine; three are speculative, sketched here
+    precisely so we can argue about them before they cost anything.</p>
+  </div>
+
+  <div class="shelf">
+
+    <!-- MÚSAEM -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-slug">An Músaem · your museum of Ireland</div>
+          <div class="at-p" style="padding-top:12px;">One artifact per chapter,
+            personalised. Not points — possessions with memory attached.</div>
+          <div class="at-shelfrow">
+            <div class="at-relic">
+              <svg viewBox="0 0 46 46" aria-hidden="true"><path d="M18 42 L18 10 Q18 4 23 4 Q28 4 28 10 L28 42 Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 16 h-6 M18 22 h-6 M28 19 h6 M23 28 v0 M18 30 l10 4 M18 36 l10 4" stroke="currentColor" stroke-width="2"/></svg>
+              <b>Cloch oghaim</b><span>Ch.1 · your name in stone</span>
+            </div>
+            <div class="at-relic"><span class="due" title="Dáire has a question for you"></span>
+              <svg viewBox="0 0 46 46" aria-hidden="true"><rect x="8" y="6" width="30" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 14 q7 -6 14 0 q-7 6 -14 0 M23 17 v16 M16 33 q7 6 14 0" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+              <b>Litir mhaisithe</b><span>Ch.2 · your illuminated initial</span>
+            </div>
+            <div class="at-relic locked">
+              <svg viewBox="0 0 46 46" aria-hidden="true"><path d="M10 28 a13 13 0 1 1 26 0" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="30" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="36" cy="30" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+              <b>Fáinne airgid</b><span>Ch.3 · Viking hack-silver</span>
+            </div>
+            <div class="at-relic locked">
+              <svg viewBox="0 0 46 46" aria-hidden="true"><rect x="9" y="8" width="28" height="30" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 16 h18 M14 22 h18 M14 28 h12" stroke="currentColor" stroke-width="2"/></svg>
+              <b>Scláta scoile</b><span>Ch.7 · hedge-school slate</span>
+            </div>
+          </div>
+          <div class="at-p" style="font-size:12px; color:var(--ink3);">The rust dot
+            means an artifact's people are asking for you — review, dressed as a
+            visit. The final artifact of the course is the Fáinne.</div>
+          <div class="at-foot"><span>2 de 13 bailithe</span><span>músaem →</span></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-next);">Candidate · Phase 3
+          <span class="statuschip next">next</span></span>
+        <h4>An Músaem — the collection with a pulse</h4>
+        <p>The museum shelf is the long-term progress surface: every chapter leaves
+        an object, every object anchors its phrases, and due reviews surface as
+        life in the museum rather than a number badge. Trade-off: pure delight, low
+        direct yield — it must stay wired to retrieval or it's just a trophy room
+        (Chineasy's wreck, marked above).</p>
+      </figcaption>
+    </figure>
+
+    <!-- AR AIS QUEUE -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-slug">Ar Ais · returning</div>
+          <div class="at-h5" style="padding-top:16px;">The stone remembers.
+            Three people are asking for you.</div>
+          <div style="padding: 14px 18px; display:flex; flex-direction:column; gap:10px;">
+            <div class="at-letter" style="margin:0;"><div class="from">Dáire · ag an
+              gcloch · 2 lá ó shin</div>“Cé thusa?” — he's testing whether the
+              wind took your name. <em>One phrase to re-carve.</em></div>
+            <div class="at-letter" style="margin:0;"><div class="from">Bríd · ar an
+              trá · 4 lá ó shin</div>She wants to know where you're from — <em>Cé
+              as thú?</em> Two counties to place.</div>
+            <div class="at-letter" style="margin:0;"><div class="from">An chloch
+              féin · anocht</div>The evening light catches three weathered words.
+              <em>Recarve before dark keeps them sharp.</em></div>
+          </div>
+          <div class="at-foot"><span>FSRS faoin gcraiceann</span>
+            <span>never “37 cards due”</span></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-next);">Candidate · Phase 3
+          <span class="statuschip next">next</span></span>
+        <h4>Ar Ais — spaced repetition as visiting</h4>
+        <p>The scheduler is boring, solved technology — FSRS, same family as blas.
+        and Anki. The innovation is entirely the clothing: due items arrive as
+        people and places asking for you, batched by scene. Highest-yield feature
+        on the future map, and the one that makes the músaem honest.</p>
+      </figcaption>
+    </figure>
+
+    <!-- DO LOGAINM -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-slug">Gné · Do Logainm — your placename</div>
+          <div class="at-p" style="padding-top:12px;">The lens, pointed at
+            <em>your</em> map. Type a home town — Irish placenames survive
+            anglicisation almost everywhere English went.</div>
+          <div class="at-pin" style="padding: 10px 18px 0;">
+            <input class="at-input" id="logainmIn" type="text" value="Ballymore"
+              style="margin:0; flex:1;" aria-label="type an anglicised Irish placename">
+            <button id="logainmGo" style="color:var(--sea);">DECODE</button>
+          </div>
+          <div class="at-morphs" id="logainmOut" style="padding-top:12px;"></div>
+          <div class="at-p" id="logainmNote" style="font-size:12px; color:var(--ink3);"></div>
+          <div class="at-foot"><span>foinse: logainm.ie</span><span>try: Knockmore,
+            Dunbeg, Lisdoonvarna</span></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-next);">Candidate · Phase 3
+          <span class="statuschip next">next</span></span>
+        <h4>Do Logainm — the identity hook, personalised</h4>
+        <p>The single cheapest high-pull feature we could build: the learner's own
+        town, county, surname decoded through the same lens mechanic, backed by the
+        Logainm database. For the diaspora this is the moment the language stops
+        being abstract. (The demo above parses a small gazetteer — try the
+        suggestions.)</p>
+      </figcaption>
+    </figure>
+
+    <!-- FÉILIRE -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at at-note">
+          <div class="at-note-head">
+            <div class="k">An Féilire · the living calendar</div>
+            <h5>Dé Sathairn, 5 Iúil 2026</h5>
+          </div>
+          <div class="at-note-body">
+            <div class="at-spec" style="margin-top:4px;">
+              <div class="pair">Is buaine focal ná toice an tsaoil.</div>
+              <div class="why">seanfhocal an lae — a word outlasts the world's
+                riches</div>
+            </div>
+            <p style="margin-top:16px;"><strong>Ag teacht — coming up:</strong></p>
+            <p style="margin:0 0 8px;"><strong>Lúnasa</strong> · 1 Aug — the
+              harvest festival opens a seasonal scene in Chapter 11's Gaeltacht.</p>
+            <p style="margin:0 0 8px;"><strong>Samhain</strong> · 31 Oct — the old
+              new year; the Otherworld chapter unlocks its night pages.</p>
+            <p style="margin:0;"><strong>Seachtain na Gaeilge</strong> · March —
+              the whole island speaks; the app joins the real calendar, not an
+              invented one.</p>
+          </div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-next);">Candidate · Phase 3/4
+          <span class="statuschip next">next</span></span>
+        <h4>An Féilire — rituals borrowed from the real year</h4>
+        <p>The honest answer to “don't you need <em>some</em> daily structure?” —
+        yes, but Ireland already has one. A daily seanfhocal, seasonal content
+        keyed to Lúnasa and Samhain, launch moments on Seachtain na Gaeilge. Gentle
+        ritual without manufactured guilt: the calendar is real, so the pull is
+        real.</p>
+      </figcaption>
+    </figure>
+
+    <!-- DIALECT ATLAS -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-slug">An tAtlas Canúintí · the dialect atlas</div>
+          <div class="at-h5" style="padding-top:14px;">“How are you?” — three
+            coasts, three musics</div>
+          <div style="padding: 10px 0 0;">
+            <div class="at-pin"><button data-d="c" aria-pressed="true"
+                class="atlasBtn">CONNACHT</button>
+              <div><span class="ga">Cén chaoi a bhfuil tú?</span>
+                <div class="dial">kane KHEE uh WIL too — our default (D2)</div></div>
+            </div>
+            <div class="at-pin"><button data-d="u" aria-pressed="false"
+                class="atlasBtn">ULSTER</button>
+              <div><span class="ga">Cad é mar atá tú?</span>
+                <div class="dial">kuh-JAY mar uh-TAH too — required before any NI
+                  launch</div></div>
+            </div>
+            <div class="at-pin"><button data-d="m" aria-pressed="false"
+                class="atlasBtn">MUNSTER</button>
+              <div><span class="ga">Conas atá tú?</span>
+                <div class="dial">KUN-us uh-TAH too — the school-book form</div></div>
+            </div>
+          </div>
+          <div class="at-p" style="font-size:12.5px;">Chapter 11 makes the dialects
+            themselves the content: same sentence, three Gaeltachtaí, the learner's
+            ear as the instrument. Every dialect-variable line in the content
+            format has been tagged since day one for exactly this.</div>
+          <div class="at-foot"><span>caibidil 11</span><span>trí chanúint</span></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-imag);">Speculative
+          <span class="statuschip imag">imagined</span></span>
+        <h4>The atlas — dialect as feature, not apology</h4>
+        <p>Every competitor either ignores dialect or gets burned by it (Duolingo's
+        audio matched no dialect consistently). We can invert the problem: teach
+        one dialect honestly, then make the <em>differences</em> a destination.
+        Depends on the ABAIR partnership or native recording budget — the audio
+        trade-off in miniature.</p>
+      </figcaption>
+    </figure>
+
+    <!-- DHÁ LITIR -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-slug">Caibidil 10 · Saoirse agus Scoilt · 1921</div>
+          <div class="at-voices" role="group" aria-label="choose a voice">
+            <button id="litirA" aria-pressed="true">Máire · Béal Feirste</button>
+            <button id="litirB" aria-pressed="false">Seán · Baile Átha Cliath</button>
+          </div>
+          <div class="at-letter" id="litirBody"></div>
+          <div class="at-p" style="font-size:12px; color:var(--ink3);">Same week,
+            same family, two cities — the border drawn between their letters. The
+            learner reads both; the chapter endorses neither.</div>
+          <div class="at-foot"><span>dhá ghuth · two voices</span>
+            <span>foinsí príomha</span></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-imag);">Speculative
+          <span class="statuschip imag">imagined</span></span>
+        <h4>Dhá Litir — contested history, by design</h4>
+        <p>A history of Ireland cannot dodge partition, famine, the Troubles — and
+        our growth market is Northern Ireland. The two-letters mechanic bakes the
+        editorial principles (multiple voices, primary sources, warmth without
+        triumphalism) into the <em>page structure itself</em>. The most expensive
+        kind of content we could make, and the deepest moat if we make it well.</p>
+      </figcaption>
+    </figure>
+
+    <!-- AN DORAS -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-slug">An Doras · the door out</div>
+          <div class="at-h5" style="padding-top:14px;">The app's best ending is a
+            door, not a level cap.</div>
+          <div style="padding: 12px 18px; display:flex; flex-direction:column; gap:10px;">
+            <div class="at-letter" style="margin:0;"><div class="from">Do chonair ·
+              your path</div>Chapters 1–13 walked · TEG A2 syllabus covered ·
+              <em>ar do bhealach go B1</em> — exam prep track available.</div>
+            <div class="at-letter" style="margin:0;"><div class="from">Seachtain sa
+              Ghaeltacht</div>Oideas Gael, Gleann Cholm Cille — a real week of
+              Irish where Chapter 11 was set. Partner pathway, member rate.</div>
+            <div class="at-letter" style="margin:0;"><div class="from">Ciorcal
+              comhrá</div>Live weekly Comhrá with Let's Learn Irish — the “global
+              Gaeltacht.” Graduates get their first session guided.</div>
+          </div>
+          <div class="at-foot"><span>TEG · Maynooth</span><span>fíor-dhomhan →</span></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-imag);">Speculative
+          <span class="statuschip imag">imagined</span></span>
+        <h4>An Doras — graduating into the real world</h4>
+        <p>Progress that maps to something externally real: TEG levels instead of
+        XP, then a literal pathway — a Gaeltacht week, a live comhrá circle — that
+        no gamified app can offer because no gamified app wants you to leave.
+        Turns today's competitors (LLI, Oideas Gael, Gaelchultúr) into partners.
+        Distribution risk: we hand our best users to the offline world, on
+        purpose.</p>
+      </figcaption>
+    </figure>
+
+    <!-- COMHRÁ AI -->
+    <figure class="specimen" style="margin:0;">
+      <div class="phone"><div class="notch"></div>
+        <div class="screen sk-at">
+          <div class="at-flag">⚠ contested future — prototype to argue with</div>
+          <div class="at-slug" style="padding-top:14px;">Comhrá · ag an gcloch,
+            am ar bith</div>
+          <div class="at-beats" style="padding-top:10px;">
+            <p>Dáire straightens up from the stone. <em>“Bhuel — inis dom fút
+            féin.”</em> Tell me about yourself. He waits as long as you need. He
+            only uses words the chapter has given you.</p>
+          </div>
+          <button class="at-speech" style="cursor:default;">
+            <span class="who">Dáire · comhrá beo</span>
+            <span class="ga">Inis dom fút féin.</span>
+            <span class="say">an LLM behind a chapter-vocabulary fence</span>
+          </button>
+          <div class="at-p" style="font-size:12.5px;">In-world free conversation,
+            constrained to taught vocabulary, always in character, never scoring
+            pronunciation. The chapter's people become speakable.</div>
+          <div class="at-foot"><span>gaol: Gaeilgeoir AI</span>
+            <span>riosca: slop</span></div>
+        </div>
+      </div>
+      <figcaption class="spec-cap">
+        <span class="fam" style="--dot: var(--f-imag);">Speculative · contested
+          <span class="statuschip imag">imagined</span></span>
+        <h4>Comhrá — the feature we should argue about</h4>
+        <p>The strongest version of Gaeilgeoir's idea lives inside <em>our</em>
+        world: conversation with characters you already know, fenced to the
+        chapter's Irish. But it walks straight toward the anti-slop positioning
+        that funds everything else — generated Irish, at scale, in the voice of our
+        most-loved character. If it ships at all, it ships behind native-speaker
+        evaluation harnesses. Sketched here so the argument happens now, not after
+        a demo seduces us.</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= SECTION 6 · THE FEATURE MAP ================= -->
+<section id="featmap">
+  <div class="slug">
+    <span class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <h2>Léarscáil na <span style="text-transform:none">n</span>Gnéithe —
+      <span class="ga">the feature map</span></h2>
+    <span class="rule grow"></span>
+  </div>
+  <div class="prose">
+    <h3>Every feature earns its place on two axes — or pairs with one that does.</h3>
+    <p class="lede">Plot our own features the way we plotted the market: how hard
+    each one <strong>pulls a learner back</strong> (identity gravity, not
+    notification pressure) against how much <strong>Irish it actually teaches per
+    minute</strong>. Size is the cost to build well. Three regions matter.</p>
+    <p>The <strong>drill corner</strong> (top-left) teaches efficiently but pulls
+    weakly — blas. lives there, and our exercises visit it. The <strong>museum
+    corner</strong> (bottom-right) pulls hard but teaches little — Chineasy
+    drowned there. The <strong>spine</strong> is the diagonal where pull and yield
+    reinforce. The design rule that falls out: <em>a feature may sit off the
+    diagonal only if it's welded to a partner that completes it</em> — the músaem
+    is legitimate only because Ar Ais wires it to retrieval; the amárach hook is
+    legitimate only because it opens onto a scene with real language inside.</p>
+  </div>
+
+  <div class="mapwrap">
+    <p class="map-title">An Turas features — built, next, and imagined</p>
+    <p class="map-sub">Horizontal: pull (why you return) · Vertical: language yield
+      per minute · Mark size: cost to build well. Hover or focus any point.</p>
+    <div class="plotbox">
+      <div class="plot" id="plot2"></div>
+      <div class="tip" id="tip2" role="status"></div>
+    </div>
+    <div class="ax-row"><span>← comes back only if reminded</span>
+      <span class="axlab">Pull — identity &amp; story gravity</span>
+      <span>would return without any nudge →</span></div>
+    <div class="maplegend" id="legend2"></div>
+    <details class="tabletoggle">
+      <summary>View as table</summary>
+      <div class="table-scroll"><table id="table2">
+        <thead><tr><th>Feature</th><th>Status</th><th class="num">Pull /10</th>
+          <th class="num">Yield /10</th><th>Cost</th><th>The trade-off</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= SECTION 7 · THE TENSIONS ================= -->
+<section id="tensions">
+  <div class="slug">
+    <span class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <h2>Na Teannais — <span class="ga">the trade-offs that decide everything</span></h2>
+    <span class="rule grow"></span>
+  </div>
+  <div class="prose">
+    <h3>Where the stone sits on each line — and what would move it.</h3>
+    <p class="lede">Six tensions run under every decision in this document. For
+    each: where An Turas currently stands (the stone), why, and the concrete
+    evidence that would make us slide it. A position you can't imagine moving
+    isn't a position — it's a blind spot.</p>
+  </div>
+
+  <div class="tension">
+    <div class="poles"><h4>Meaning</h4><h4 class="far">Mechanism</h4></div>
+    <div class="track"><span class="stone" style="left: 26%;"></span></div>
+    <div class="cols">
+      <p><span class="k">Where we stand</span>Rituals, yes — recarve, amárach
+      hooks, <em>tá tú ar ais</em>, a real-calendar féilire. Guilt, never: no
+      streaks, no hearts, no expiring flames. The wager is that wanting to know
+      what happens beats fearing what breaks.</p>
+      <p><span class="k move">What would move the stone</span>If the playtest shows
+      strong session-one love but weak session-two return (&lt;⅓ coming back
+      unprompted), we add gentler structure — a daily seanfhocal notification,
+      opt-in — before we ever add a streak. Duolingo proves mechanism works on
+      opens; we only borrow from it downhill of meaning.</p>
+    </div>
+  </div>
+
+  <div class="tension">
+    <div class="poles"><h4>Depth</h4><h4 class="far">Burn</h4></div>
+    <div class="track"><span class="stone" style="left: 30%;"></span></div>
+    <div class="cols">
+      <p><span class="k">Where we stand</span>Authored everything: narrative by
+      writers, grammar by pedagogues, history signed by a historian, illustration
+      in one canonical style (Solas an Atlantaigh), audio native-reviewed. Cost
+      per learner-hour is orders of magnitude above Duolingo's templates — that
+      <em>is</em> the product.</p>
+      <p><span class="k move">What would move the stone</span>Chapter 2 through the
+      pipeline is the test: if a chapter costs more than ~6 weeks fully loaded,
+      we hybridise — generation for first drafts, humans for sign-off — and chase
+      the public money (Foras na Gaeilge, Údarás) that exists for exactly this.
+      Quality floor never moves; who does the first 80% can.</p>
+    </div>
+  </div>
+
+  <div class="tension">
+    <div class="poles"><h4>Story gates language</h4><h4 class="far">Parallel tracks</h4></div>
+    <div class="track"><span class="stone" style="left: 38%;"></span></div>
+    <div class="cols">
+      <p><span class="k">Where we stand</span>Language effort unlocks story —
+      pages beyond an unsolved exercise don't exist yet — but review is always
+      dressed as revisiting, never as debt. The story is the carrot; the carrot
+      must never become the paywall for people who came for the history.</p>
+      <p><span class="k move">What would move the stone</span>Playtest resentment
+      signals: if testers report skimming exercises to “get back to the story,”
+      the gate is working as pacing. If they report <em>quitting at</em> the gate,
+      we loosen it — story-only mode with language woven lighter — and accept the
+      drilling engine weakens.</p>
+    </div>
+  </div>
+
+  <div class="tension">
+    <div class="poles"><h4>The hand</h4><h4 class="far">The machine</h4></div>
+    <div class="track"><span class="stone" style="left: 42%;"></span></div>
+    <div class="cols">
+      <p><span class="k">Where we stand</span>Pragmatic hybrid, honestly labelled:
+      Gemini TTS for playtest clips (best of a weak field — ElevenLabs and others
+      rejected on pronunciation), ABAIR licensing in motion for dialect fidelity,
+      human narrative voice as the Phase 2+ goal. Illustration: one style bible,
+      generation inside it, human judgment over every frame. Echo stays ungraded
+      — no pronunciation theatre.</p>
+      <p><span class="k move">What would move the stone</span>Toward the hand: any
+      native-speaker reviewer flags phonology errors in shipped clips — we pull
+      audio that day (silence beats slop). Toward the machine: ABAIR bundling
+      rights land, or a TTS clears native review on the fada minimal pairs
+      (féar/fear, Seán/sean) at production scale.</p>
+    </div>
+  </div>
+
+  <div class="tension">
+    <div class="poles"><h4>Craft on one platform</h4><h4 class="far">Reach on every platform</h4></div>
+    <div class="track"><span class="stone" style="left: 18%;"></span></div>
+    <div class="cols">
+      <p><span class="k">Where we stand</span>iOS-native, offline-first, haptics as
+      vocabulary — the chisel strike is part of the pedagogy. The product's claim
+      is “cared-for,” and care shows fastest in native feel. Web and Android wait.</p>
+      <p><span class="k move">What would move the stone</span>Diaspora demand is
+      the counterweight: the largest paying segment skews global, and the
+      institutional funders (whose money comes with openness strings) will ask.
+      If waitlist data shows &gt;40% Android, Phase 4 re-plans around a second
+      platform — after the content pipeline, never instead of it.</p>
+    </div>
+  </div>
+
+  <div class="tension">
+    <div class="poles"><h4>A door</h4><h4 class="far">A flag</h4></div>
+    <div class="track"><span class="stone" style="left: 22%;"></span></div>
+    <div class="cols">
+      <p><span class="k">Where we stand</span>Identity is the engine, but the app
+      is a door anyone can walk through — the East Belfast Turas project proves
+      Irish can be cross-community, and Chapter 10's two-letters structure builds
+      that humility into the page. NI is the north star we take special care
+      over, not a market we posture toward.</p>
+      <p><span class="k move">What would move the stone</span>Nothing moves it
+      toward the flag — that end is where the plastic-shamrock wrecks are. What
+      deepens the door: Ulster audio landing (D2's hard prerequisite), advisory
+      voices from Turas and Glór na Móna, and editorial principles for contested
+      chapters written <em>before</em> the chapters need them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<section class="closing" id="closing">
+  <div class="eyebrow">An Cheist Amháin · the one question</div>
+  <div class="q">“Did anything pull you back for <em>session two</em>?”</div>
+  <p>Every map above is provisional until ten to twenty real learners answer that.
+  The slice now carries three return mechanics — the weathered stone, the amárach
+  hook, the greeting — precisely so the playtest can tell us which line on the
+  feature map is real. The territory map says the empty field exists. Only the
+  playtest says whether we can live in it.</p>
+</section>
+
+</main>
+
+<footer>
+  <b>Sources &amp; grounding.</b> Synthesised from the An Turas working documents:
+  <em>COMPETITIVE-RESEARCH.md</em> (competitor pedagogy, positioning, failed
+  experiments — July 2026), <em>STRATEGY.md</em>, <em>DECISIONS.md</em> (D1–D4),
+  <em>SPINE.md</em> (13 chapters, Ogham → Belfast), and <em>STATUS.md</em>.
+  Competitor screens are research-based reconstructions for internal strategy
+  work, not screenshots, and remain the trademarks of their owners. Placement on
+  maps is editorial judgment, marked to be argued with. · Iúil 2026
+</footer>
+<style>
+/* runtime-positioned chart points */
+.pt { position: absolute; transform: translate(-50%, -50%); }
+.pt .dot { position: static; transform: none; display: block; }
+.pt .dotlabel { z-index: 5; }
+.spinelab { position: absolute; font-family: var(--sans); font-size: 10.5px;
+  font-weight: 700; letter-spacing: .2em; color: var(--ink3); opacity: .75;
+  transform: rotate(-33deg); pointer-events: none; }
+</style>
+<script>
+(function(){
+"use strict";
+const $ = (id) => document.getElementById(id);
+const mq = matchMedia('(prefers-color-scheme: dark)');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function isDark(){
+  const t = document.documentElement.getAttribute('data-theme');
+  if (t === 'dark') return true;
+  if (t === 'light') return false;
+  return mq.matches;
+}
+
+/* ---------- gouache painter (Solas an Atlantaigh) ---------- */
+function paintSea(cv, seed){
+  if (!cv) return;
+  const dark = isDark();
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  const w = cv.clientWidth || 600, h = cv.clientHeight || 300;
+  cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
+  const x = cv.getContext('2d'); x.scale(dpr, dpr);
+  let s = seed;
+  const rnd = () => (s = (s*16807) % 2147483647) / 2147483647;
+  const horizon = h*0.58, sand = h*0.82;
+  let g = x.createLinearGradient(0,0,0,horizon);
+  if (dark){ g.addColorStop(0,'#0b1420'); g.addColorStop(.55,'#1c2d3e'); g.addColorStop(1,'#3c5162'); }
+  else { g.addColorStop(0,'#4d647a'); g.addColorStop(.5,'#7d93a3'); g.addColorStop(1,'#c6cbc0'); }
+  x.fillStyle = g; x.fillRect(0,0,w,horizon);
+  for (let i=0;i<9;i++){
+    const cx=rnd()*w, cy=rnd()*horizon*0.75, r=(0.12+rnd()*0.22)*w;
+    const rg = x.createRadialGradient(cx,cy,0,cx,cy,r);
+    const c = dark ? '10,18,30' : '50,68,84';
+    rg.addColorStop(0,'rgba('+c+','+(0.15+rnd()*0.18)+')');
+    rg.addColorStop(1,'rgba('+c+',0)');
+    x.fillStyle = rg; x.fillRect(0,0,w,horizon);
+  }
+  const lb = x.createRadialGradient(w*0.62,horizon*0.92,0,w*0.62,horizon*0.92,w*0.3);
+  lb.addColorStop(0, dark?'rgba(214,192,150,0.20)':'rgba(240,226,188,0.55)');
+  lb.addColorStop(1,'rgba(240,226,188,0)');
+  x.fillStyle = lb; x.fillRect(0,0,w,horizon+8);
+  g = x.createLinearGradient(0,horizon,0,sand);
+  if (dark){ g.addColorStop(0,'#2c4750'); g.addColorStop(1,'#152529'); }
+  else { g.addColorStop(0,'#587779'); g.addColorStop(1,'#3a575c'); }
+  x.fillStyle = g; x.fillRect(0,horizon,w,sand-horizon);
+  for (let i=0;i<26;i++){
+    const y = horizon + rnd()*(sand-horizon);
+    x.fillStyle = 'rgba('+(dark?'178,204,199':'226,235,226')+','+(0.04+rnd()*0.09)+')';
+    const sw = (0.1+rnd()*0.5)*w;
+    x.fillRect(rnd()*(w-sw), y, sw, 1+rnd()*2);
+  }
+  g = x.createLinearGradient(0,sand,0,h);
+  if (dark){ g.addColorStop(0,'#3b382f'); g.addColorStop(1,'#25231d'); }
+  else { g.addColorStop(0,'#c8bca1'); g.addColorStop(1,'#afa387'); }
+  x.fillStyle = g; x.fillRect(0,sand,w,h-sand);
+  x.fillStyle = dark?'rgba(120,152,160,0.10)':'rgba(212,222,216,0.35)';
+  x.fillRect(0,sand,w,(h-sand)*0.42);
+  // the standing stone and the carver
+  const sx = w*0.72, sy = sand + (h-sand)*0.30, sh = h*0.34;
+  x.fillStyle = dark ? '#0e141a' : '#2e3a41';
+  x.beginPath();
+  x.moveTo(sx-8, sy); x.lineTo(sx-5, sy-sh); x.lineTo(sx+4, sy-sh+4);
+  x.lineTo(sx+9, sy); x.closePath(); x.fill();
+  x.strokeStyle = dark ? 'rgba(232,227,215,0.4)' : 'rgba(240,238,230,0.5)';
+  x.lineWidth = 1.4;
+  for (let i=0;i<5;i++){
+    const oy = sy - sh*0.35 - i*7;
+    x.beginPath(); x.moveTo(sx-7, oy); x.lineTo(sx-1, oy+1); x.stroke();
+  }
+  x.fillStyle = dark ? '#9c5f34' : '#a05a30';
+  x.beginPath(); x.ellipse(sx-22, sy-7, 9, 12, -0.25, 0, 7); x.fill();
+  x.beginPath(); x.arc(sx-20, sy-22, 4.5, 0, 7); x.fill();
+  // pigment granulation
+  try {
+    const id = x.getImageData(0,0,cv.width,cv.height), d = id.data;
+    for (let i=0;i<d.length;i+=4){
+      const n = (Math.random()-0.5)*13;
+      d[i]+=n; d[i+1]+=n; d[i+2]+=n;
+    }
+    x.putImageData(id,0,0);
+  } catch(e){}
+}
+function repaint(){ paintSea($('heroSea'), 7); paintSea($('sceneCanvas'), 23); }
+let rT; window.addEventListener('resize', ()=>{ clearTimeout(rT); rT=setTimeout(repaint,180); });
+mq.addEventListener && mq.addEventListener('change', repaint);
+new MutationObserver(repaint).observe(document.documentElement,
+  {attributes:true, attributeFilter:['data-theme']});
+repaint();
+
+/* ---------- Duolingo specimen ---------- */
+(function(){
+  const bank = $('duoBank'), ans = $('duoAnswer'), chk = $('duoCheck'),
+        ban = $('duoBanner'), toast = $('duoToast'), hearts = $('duoHearts'),
+        bar = $('duoBar');
+  if (!bank) return;
+  const words = ['Itheann','úll','an','fear','bhean','arán','ólann'];
+  const target = 'Itheann an bhean arán';
+  let placed = [], hp = 5, done = false;
+  function chip(w, home){
+    const b = document.createElement('button');
+    b.className = 'duo-chip'; b.textContent = w;
+    b.addEventListener('click', ()=>{
+      if (done) return;
+      if (home){
+        b.disabled = true; placed.push(w);
+        const c = chip(w, false); c.dataset.src = words.indexOf(w); ans.appendChild(c);
+      } else {
+        placed.splice(placed.indexOf(w),1); b.remove();
+        bank.querySelectorAll('button').forEach(bb=>{
+          if (bb.textContent===w && bb.disabled) bb.disabled = false;
+        });
+      }
+      chk.disabled = placed.length===0;
+    });
+    return b;
+  }
+  words.forEach(w=> bank.appendChild(chip(w,true)));
+  chk.addEventListener('click', ()=>{
+    if (done) return;
+    if (placed.join(' ') === target){
+      done = true;
+      ban.className = 'duo-banner ok';
+      ban.innerHTML = 'Maith thú! <small>+10 XP · Emerald League</small>';
+      bar.style.width = '65%';
+      setTimeout(()=> toast.classList.add('show'), 1100);
+    } else {
+      hp = Math.max(0, hp-1);
+      hearts.textContent = '❤️ ' + hp;
+      ban.className = 'duo-banner bad';
+      ban.innerHTML = 'Correct answer: <small>Itheann an bhean arán</small>';
+      setTimeout(()=>{
+        ban.className = 'duo-banner';
+        placed = []; ans.innerHTML = '';
+        bank.querySelectorAll('button').forEach(b=> b.disabled = false);
+        chk.disabled = true;
+      }, 2000);
+    }
+  });
+})();
+
+/* ---------- blas specimen ---------- */
+(function(){
+  const opts = $('blasOpts'), why = $('blasWhy'), grid = $('blasGrid');
+  if (!opts) return;
+  opts.querySelectorAll('.blas-opt').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      opts.querySelectorAll('.blas-opt').forEach(x=> x.removeAttribute('data-state'));
+      if (b.dataset.ok === '1'){
+        b.dataset.state = 'ok';
+        why.textContent = 'Correct — bean is feminine, so it lenites after an: an bhean. FSRS interval grows: next review in 4 days.';
+      } else {
+        b.dataset.state = 'bad';
+        why.textContent = b.textContent === 'mbean'
+          ? 'That’s urú — the eclipsis that follows i or ár. After the article an, feminine nouns take séimhiú: an bhean.'
+          : 'Unmutated. After an, a feminine noun lenites: an bhean. Marked for review tonight.';
+      }
+    });
+  });
+  const skills = ['Séimhiú after an','Séimhiú past tense','Urú after i','Urú after ár',
+    'Séimhiú after mo/do','Vocative a + séimhiú'];
+  const m = [3,3,2,1,3,2,3,2,1,'l',2,3,1,2,3,3,2,1,2,3,1,1,2,3];
+  for (let i=0;i<24;i++){
+    const c = document.createElement('button');
+    c.className = 'blas-cell'; c.dataset.m = m[i];
+    const pct = m[i]==='l' ? 'leech · 6 lapses' : (m[i]===3?'94%':(m[i]===2?'71%':'38%'));
+    c.title = skills[i%6] + ' — ' + pct + (m[i]==='l' ? ' · needs relearning' : ' · due in ' + ((i%5)+1) + 'd');
+    c.setAttribute('aria-label', c.title);
+    grid.appendChild(c);
+  }
+})();
+
+/* ---------- SSi specimen ---------- */
+(function(){
+  const orb = $('ssiOrb'), line = $('ssiLine'), dots = $('ssiDots'), round = $('ssiRound');
+  if (!orb) return;
+  const prompts = [
+    {en:'I want to speak Irish', ga:'Ba mhaith liom Gaeilge a labhairt'},
+    {en:'I’m still learning', ga:'Tá mé ag foghlaim i gcónaí'},
+    {en:'Say it again, please', ga:'Abair arís é, le do thoil'}
+  ];
+  let i = 0, r = 3, state = 'prompt';
+  const ds = dots.querySelectorAll('i');
+  orb.addEventListener('click', ()=>{
+    if (state === 'prompt'){
+      state = 'revealing';
+      orb.textContent = '···'; orb.classList.remove('pulse');
+      ds.forEach((d,k)=> setTimeout(()=> d.classList.add('on'), reduced?0:350*(k+1)));
+      setTimeout(()=>{
+        line.innerHTML = 'He says it with you:<br><span class="ga">' +
+          prompts[i].ga + '</span>';
+        orb.innerHTML = 'NEXT';
+        state = 'reveal';
+      }, reduced?100:1500);
+    } else if (state === 'reveal'){
+      i = (i+1) % prompts.length; r++;
+      round.textContent = 'Round ' + r + ' of 30';
+      line.innerHTML = 'Say: <br><strong>“' + prompts[i].en + '”</strong>';
+      ds.forEach(d=> d.classList.remove('on'));
+      orb.innerHTML = 'SPEAK<br>NOW'; orb.classList.add('pulse');
+      state = 'prompt';
+    }
+  });
+})();
+
+/* ---------- Bitesize specimen ---------- */
+(function(){
+  const b = $('biteDone'), o = $('biteOthers');
+  if (!b) return;
+  b.addEventListener('click', ()=>{
+    const on = b.dataset.done === '1';
+    b.dataset.done = on ? '0' : '1';
+    b.textContent = on ? 'Rinne mé é ✓' : 'Rinne! ✓';
+    o.textContent = on ? '34 members did today’s small step'
+      : '35 members did today’s small step — you’re one of them';
+  });
+})();
+
+/* ---------- Gaeilgeoir specimen ---------- */
+(function(){
+  const chat = $('gaelChat'), quick = $('gaelQuick');
+  if (!chat) return;
+  const scripts = [
+    { me:'Ba mhaith liom caife, le do thoil.', meT:'I’d like a coffee, please.',
+      ai:'Caife amháin! Beidh sé réidh i nóiméad. Aon rud eile?',
+      aiT:'One coffee! Ready in a minute. Anything else?',
+      fix:'✓ Perfect — “ba mhaith liom” is exactly the polite conditional you want here.' },
+    { me:'Cupán tae, le do thoil.', meT:'A cup of tea, please.',
+      ai:'Tae — rogha maith! Bainne agus siúcra?',
+      aiT:'Tea — good choice! Milk and sugar?',
+      fix:'✓ Maith thú! Natural word order, natural request.' }
+  ];
+  quick.querySelectorAll('button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      const sc = scripts[+b.dataset.r];
+      quick.querySelectorAll('button').forEach(x=> x.disabled = true);
+      const me = document.createElement('div');
+      me.className = 'gael-msg me';
+      me.innerHTML = sc.me + '<small>' + sc.meT + '</small>';
+      chat.appendChild(me);
+      setTimeout(()=>{
+        const fx = document.createElement('div');
+        fx.className = 'gael-fix'; fx.textContent = sc.fix;
+        chat.appendChild(fx);
+        const ai = document.createElement('div');
+        ai.className = 'gael-msg ai';
+        ai.innerHTML = sc.ai + '<small>' + sc.aiT + '</small>';
+        chat.appendChild(ai);
+        chat.scrollTop = chat.scrollHeight;
+      }, reduced?100:700);
+      chat.scrollTop = chat.scrollHeight;
+    });
+  });
+})();
+
+/* ---------- Drops specimen ---------- */
+(function(){
+  const grid = $('dropsGrid'), word = $('dropsWord'), hint = $('dropsHint'),
+        combo = $('dropsCombo');
+  if (!grid) return;
+  const art = {
+    boat:  '<svg viewBox="0 0 60 60"><path d="M10 38 h40 l-7 10 h-26 z" fill="#f7b733"/><path d="M30 10 v26 M30 12 l14 14 h-14" fill="#e8618c" stroke="#e8618c" stroke-width="2.5" stroke-linejoin="round"/></svg>',
+    fish:  '<svg viewBox="0 0 60 60"><path d="M12 30 q14 -14 30 0 q-16 14 -30 0 z" fill="#4fc3f7"/><path d="M42 30 l10 -7 v14 z" fill="#4fc3f7"/><circle cx="21" cy="28" r="2.4" fill="#171a2b"/></svg>',
+    bread: '<svg viewBox="0 0 60 60"><rect x="10" y="22" width="40" height="22" rx="9" fill="#f0a35e"/><path d="M18 28 q3 5 0 10 M28 28 q3 5 0 10 M38 28 q3 5 0 10" stroke="#c77b35" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>',
+    house: '<svg viewBox="0 0 60 60"><path d="M12 30 L30 14 L48 30" fill="none" stroke="#9ccc65" stroke-width="4" stroke-linecap="round"/><rect x="18" y="30" width="24" height="16" fill="#9ccc65"/></svg>'
+  };
+  const rounds = [
+    {ga:'bád', ok:'boat'}, {ga:'arán', ok:'bread'}, {ga:'iasc', ok:'fish'}
+  ];
+  let r = 0, streak = 3;
+  function deal(){
+    grid.innerHTML = '';
+    const keys = Object.keys(art).sort(()=> Math.random()-0.5);
+    keys.forEach(k=>{
+      const t = document.createElement('button');
+      t.className = 'drops-tile'; t.innerHTML = art[k];
+      t.setAttribute('aria-label', k);
+      t.addEventListener('click', ()=>{
+        if (k === rounds[r].ok){
+          t.dataset.state = 'ok'; streak++;
+          combo.textContent = 'streak ×' + streak + ' · 5 minutes a day';
+          setTimeout(()=>{
+            r++;
+            if (r < rounds.length){ word.textContent = rounds[r].ga; deal(); }
+            else {
+              word.textContent = 'Ar fheabhas!';
+              hint.textContent = 'session complete — the timer decides when you’re done';
+              grid.innerHTML = '';
+            }
+          }, reduced?150:650);
+        } else {
+          t.dataset.state = 'bad'; streak = 0;
+          combo.textContent = 'streak ×0 · 5 minutes a day';
+          setTimeout(()=> t.removeAttribute('data-state'), 600);
+        }
+      });
+      grid.appendChild(t);
+    });
+  }
+  deal();
+})();
+
+/* ---------- An Turas: gloss sheet ---------- */
+(function(){
+  const sp = $('atSpeech'), gl = $('atGloss');
+  if (!sp) return;
+  sp.addEventListener('click', ()=>{
+    const open = gl.classList.toggle('open');
+    sp.setAttribute('aria-expanded', open);
+  });
+  gl.addEventListener('click', ()=>{ gl.classList.remove('open');
+    sp.setAttribute('aria-expanded','false'); });
+})();
+
+/* ---------- An Turas: assemble exercise ---------- */
+(function(){
+  const tiles = $('atTiles'), built = $('atBuilt'), verdict = $('atVerdict');
+  if (!tiles) return;
+  const words = ['mise','Tá','Áine','Is'];
+  const target = 'Is mise Áine';
+  let placed = [];
+  function make(w){
+    const b = document.createElement('button');
+    b.className = 'at-tile'; b.textContent = w;
+    b.addEventListener('click', ()=>{
+      if (b.disabled) return;
+      b.disabled = true; placed.push(w);
+      const c = document.createElement('button');
+      c.className = 'at-tile'; c.textContent = w;
+      c.addEventListener('click', ()=>{
+        placed.splice(placed.indexOf(w),1); c.remove();
+        tiles.querySelectorAll('button').forEach(t=>{
+          if (t.textContent===w && t.disabled) t.disabled=false; });
+        verdict.textContent=''; verdict.classList.remove('err');
+      });
+      built.appendChild(c);
+      if (placed.length === 3){
+        if (placed.join(' ') === target){
+          verdict.classList.remove('err');
+          verdict.textContent = '✓ Maith thú — carved. The chisel-strike lands here on device.';
+        } else {
+          verdict.classList.add('err');
+          verdict.textContent = 'Not that shape — Irish leads with the verb. Is · mise · Áine.';
+        }
+      }
+    });
+    return b;
+  }
+  words.forEach(w=> tiles.appendChild(make(w)));
+  $('atExReset').querySelector('button').addEventListener('click', ()=>{
+    placed = []; built.innerHTML = ''; verdict.textContent = '';
+    verdict.classList.remove('err');
+    tiles.querySelectorAll('button').forEach(t=> t.disabled=false);
+  });
+})();
+
+/* ---------- An Turas: recarve ---------- */
+(function(){
+  const box = $('atWeathered'), inp = $('atRecarveIn'), back = $('atBack'),
+        fadas = $('atFadas');
+  if (!box) return;
+  const target = 'Is mise Dáire';
+  const isVowel = (c)=> 'aeiouáéíóúAEIOUÁÉÍÓÚ'.includes(c);
+  function render(matched){
+    box.innerHTML = '';
+    for (let i=0;i<target.length;i++){
+      const s = document.createElement('span');
+      if (i < matched){ s.className = 'fresh'; s.textContent = target[i]; }
+      else if (isVowel(target[i])){ s.className = 'gone'; s.textContent = '·'; }
+      else { s.textContent = target[i]; }
+      box.appendChild(s);
+    }
+  }
+  function matchedLen(v){
+    let n = 0;
+    for (let i=0;i<Math.min(v.length,target.length);i++){
+      /* case-lenient; fadas required (á ≠ a even lowercased) */
+      if (v[i].toLowerCase() === target[i].toLowerCase()) n++;
+      else break;
+    }
+    return n;
+  }
+  render(0);
+  ['á','é','í','ó','ú'].forEach(f=>{
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = f;
+    b.addEventListener('click', ()=>{
+      inp.value += f; inp.dispatchEvent(new Event('input')); inp.focus();
+    });
+    fadas.appendChild(b);
+  });
+  inp.addEventListener('input', ()=>{
+    const n = matchedLen(inp.value);
+    render(n);
+    if (inp.value === target){
+      back.textContent = 'Tá tú ar ais — you’re back. The groove is sharp again.';
+    } else if (inp.value.length >= 8 && n < inp.value.length){
+      back.textContent = 'The stone resists — check the fada.';
+    } else {
+      back.textContent = '';
+    }
+  });
+})();
+
+/* ---------- An Turas: the turn ---------- */
+(function(){
+  const opts = $('atTurnOpts'), tusa = $('atTusa'), said = $('atTusaSaid'),
+        reply = $('atTurnReply'), reset = $('atTurnReset');
+  if (!opts) return;
+  const name = 'Ciara';
+  const lines = [
+    'Dia dhuit. Is mise ' + name + '.',
+    'Is mise ' + name + '. Cé thusa?'
+  ];
+  const replies = [
+    '“Dia is Muire dhuit,” Bríd answers — the reply that raises the greeting, Mary added to God. She sets the bread on the stone between you, pleased by the old courtesy.',
+    'Bríd laughs — no blessing first, straight to names. “Is mise Bríd.” Behind her, Dáire mutters that the young have no patience for God or ceremony, and keeps carving.'
+  ];
+  opts.querySelectorAll('.at-turnopt').forEach((b,idx)=>{
+    b.innerHTML = b.innerHTML.replace('{name}', name);
+    b.addEventListener('click', ()=>{
+      opts.style.display = 'none';
+      tusa.classList.add('show');
+      said.textContent = lines[idx];
+      reply.textContent = replies[idx];
+      reset.hidden = false;
+    });
+  });
+  reset.addEventListener('click', ()=>{
+    opts.style.display = ''; tusa.classList.remove('show');
+    reply.textContent = ''; reset.hidden = true;
+  });
+})();
+
+/* ---------- An Turas: the lens ---------- */
+(function(){
+  const btn = $('lensBtn'), en = $('lensEn'), ga = $('lensGa'),
+        morphs = $('lensMorphs');
+  if (!btn) return;
+  let open = false;
+  btn.addEventListener('click', ()=>{
+    open = !open;
+    en.classList.toggle('dim', open);
+    ga.classList.toggle('show', open);
+    morphs.querySelectorAll('.at-morph').forEach((m,i)=>{
+      setTimeout(()=> m.classList.toggle('in', open), reduced?0:i*180);
+    });
+    btn.textContent = open ? 'Fold it back' : 'Peel it back';
+  });
+})();
+
+/* ---------- An Turas: ogham carver ---------- */
+(function(){
+  const svg = $('oghamSvg'), inp = $('oghamName'), go = $('oghamGo'),
+        cap = $('oghamCap');
+  if (!svg) return;
+  const OG = { b:['r',1], l:['r',2], f:['r',3], s:['r',4], n:['r',5],
+    h:['l',1], d:['l',2], t:['l',3], c:['l',4], q:['l',5],
+    m:['d',1], g:['d',2], z:['d',4], r:['d',5],
+    a:['v',1], o:['v',2], u:['v',3], e:['v',4], i:['v',5] };
+  const norm = (ch)=>{
+    const map = {'á':'a','é':'e','í':'i','ó':'o','ú':'u','k':'c','v':'f',
+      'w':'f','p':'b','j':'s','y':'i','x':'c'};
+    return map[ch] || ch;
+  };
+  function carve(name){
+    const letters = name.toLowerCase().split('').map(norm).filter(c=> OG[c]);
+    svg.innerHTML = '';
+    const NS = 'http://www.w3.org/2000/svg';
+    const stone = document.createElementNS(NS,'path');
+    stone.setAttribute('d','M62 292 L57 30 Q57 12 80 10 Q103 12 103 30 L98 292 Z');
+    stone.setAttribute('class','at-stonebg');
+    svg.appendChild(stone);
+    const stem = document.createElementNS(NS,'line');
+    stem.setAttribute('x1',80); stem.setAttribute('y1',278);
+    stem.setAttribute('x2',80); stem.setAttribute('y2',26);
+    stem.setAttribute('class','at-stem');
+    svg.appendChild(stem);
+    const total = letters.reduce((a,l)=> a + OG[l][1], 0);
+    const gaps = Math.max(letters.length-1, 1);
+    const avail = 240;
+    let sp = 8, lg = 12;
+    if (total*sp + gaps*lg > avail){
+      const k = avail / (total*sp + gaps*lg); sp *= k; lg *= k;
+    }
+    let y = 272, delay = 0;
+    letters.forEach(l=>{
+      const [kind, n] = OG[l];
+      for (let i=0;i<n;i++){
+        const ln = document.createElementNS(NS,'line');
+        let x1=80, x2=80, y1=y, y2=y;
+        if (kind==='r'){ x2 = 80+21; }
+        else if (kind==='l'){ x2 = 80-21; }
+        else if (kind==='d'){ x1 = 80-18; x2 = 80+18; y1 = y+6; y2 = y-6; }
+        else { x1 = 80-9; x2 = 80+9; }
+        ln.setAttribute('x1',x1); ln.setAttribute('y1',y1);
+        ln.setAttribute('x2',x2); ln.setAttribute('y2',y2);
+        ln.setAttribute('class','at-stroke');
+        if (!reduced){
+          const len = Math.hypot(x2-x1, y2-y1);
+          ln.style.strokeDasharray = len;
+          ln.style.strokeDashoffset = len;
+          ln.style.transition = 'stroke-dashoffset .28s ease ' + delay + 's';
+          requestAnimationFrame(()=> requestAnimationFrame(()=>{
+            ln.style.strokeDashoffset = 0; }));
+          delay += 0.12;
+        }
+        svg.appendChild(ln);
+        y -= sp;
+      }
+      y -= lg;
+    });
+    cap.textContent = '᚛ ' + (name || 'do ainm') + ' ᚜';
+  }
+  go.addEventListener('click', ()=> carve(inp.value.trim() || 'Ciara'));
+  inp.addEventListener('keydown', (e)=>{ if (e.key==='Enter') carve(inp.value.trim()); });
+  carve('Ciara');
+})();
+
+/* ---------- Futures: logainm decoder ---------- */
+(function(){
+  const inp = $('logainmIn'), go = $('logainmGo'), out = $('logainmOut'),
+        note = $('logainmNote');
+  if (!inp) return;
+  const gaz = [
+    ['bally','Baile','town, homestead'], ['ballagh','Bealach','a way, a pass'],
+    ['carrick','Carraig','rock'], ['knock','Cnoc','hill'],
+    ['doon','Dún','fort'], ['dun','Dún','fort'], ['lis','Lios','ring-fort'],
+    ['rath','Ráth','earthen fort'], ['glen','Gleann','valley'],
+    ['slieve','Sliabh','mountain'], ['derry','Doire','oak-wood'],
+    ['clon','Cluain','meadow'], ['drum','Droim','ridge'],
+    ['tober','Tobar','well'], ['inch','Inis','island, river-meadow'],
+    ['kill','Cill','church'], ['kil','Cill','church'],
+    ['tra','Trá','strand, beach'], ['owen','Abhainn','river'],
+    ['varna','Bhearna','gap (lenited)'], ['barna','Bearna','gap'],
+    ['more','Mór','big, great'],
+    ['beg','Beag','small'], ['roe','Rua','red'],
+    ['bane','Bán','white'], ['duff','Dubh','black']
+  ];
+  function decode(){
+    const raw = (inp.value||'').toLowerCase().replace(/[^a-z]/g,'');
+    out.innerHTML = ''; note.textContent = '';
+    if (!raw){ return; }
+    let i = 0; const parts = []; let unknown = '';
+    const flushUnknown = ()=>{
+      if (unknown){ parts.push({en:unknown, ga:null}); unknown=''; }
+    };
+    while (i < raw.length){
+      let hit = null;
+      for (const [k,ga,mean] of gaz){
+        if (raw.startsWith(k, i)){ hit = [k,ga,mean]; break; }
+      }
+      if (hit){ flushUnknown(); parts.push({en:hit[0], ga:hit[1], mean:hit[2]});
+        i += hit[0].length; }
+      else { unknown += raw[i]; i++; }
+    }
+    flushUnknown();
+    let anyGa = false;
+    parts.forEach((p,idx)=>{
+      const d = document.createElement('div');
+      d.className = 'at-morph in';
+      if (p.ga){ anyGa = true;
+        d.innerHTML = '<b>' + p.ga + '</b><span>' + p.en + ' — ' + p.mean + '</span>';
+      } else {
+        d.innerHTML = '<b>' + p.en + '</b><span>likely a personal name or an older ' +
+          'word — the shipped version asks the full Logainm database</span>';
+      }
+      if (!reduced){ d.classList.remove('in');
+        setTimeout(()=> d.classList.add('in'), idx*160); }
+      out.appendChild(d);
+    });
+    if (anyGa){
+      const ga = parts.map(p=> p.ga || '…').join(' ');
+      note.textContent = 'Reconstruction: ' + ga + ' — your town was speaking Irish all along.';
+    }
+  }
+  go.addEventListener('click', decode);
+  inp.addEventListener('keydown', (e)=>{ if (e.key==='Enter') decode(); });
+  decode();
+})();
+
+/* ---------- Futures: atlas + letters ---------- */
+(function(){
+  document.querySelectorAll('.atlasBtn').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('.atlasBtn').forEach(x=>
+        x.setAttribute('aria-pressed', x===b ? 'true':'false'));
+    });
+  });
+  const A = $('litirA'), B = $('litirB'), body = $('litirBody');
+  if (!A) return;
+  const letters = [
+    '<div class="from">Béal Feirste · Meán Fómhair 1921</div>A Sheáin, a dheartháir — they say the border is only ink on a map. But the master must swear an oath now, and teaches no Irish after it; Máthair keeps her prayers quiet on the tram. Write to me in the old words. I don’t want to forget the sound of home.',
+    '<div class="from">Baile Átha Cliath · Meán Fómhair 1921</div>A Mháire — Dublin is all flags and speeches this month. They promise the language will rise with the new State; they promise a great many things. I teach the children “Is mise” the way Athair taught us, by the fire, one name at a time. Come south at Christmas. The words are waiting for you here.'
+  ];
+  function show(i){
+    body.innerHTML = letters[i];
+    A.setAttribute('aria-pressed', i===0 ? 'true':'false');
+    B.setAttribute('aria-pressed', i===1 ? 'true':'false');
+  }
+  A.addEventListener('click', ()=> show(0));
+  B.addEventListener('click', ()=> show(1));
+  show(0);
+})();
+
+/* ============================================================
+   MAPS
+   ============================================================ */
+const FAM = {
+  gam: {label:'Gamified habit', v:'--s-gam'},
+  ai:  {label:'AI conversation', v:'--s-ai'},
+  rig: {label:'Explicit rigour', v:'--s-rig'},
+  com: {label:'Community + live', v:'--s-com'},
+  aud: {label:'Audio-first', v:'--s-aud'},
+  ins: {label:'Institutional', v:'--s-ins'}
+};
+const MAP1 = [
+  {n:'Duolingo', f:'gam', x:1.2, y:2.0, side:'above',
+   e:'Streaks, XP, leagues, guilt', g:'No mutation system; AI audio; community course team gone since 2024.'},
+  {n:'Drops', f:'gam', x:2.0, y:1.2, side:'below',
+   e:'5-minute timer + visual SRS', g:'Vocabulary only — and honest about it.'},
+  {n:'SSi', f:'aud', x:0.8, y:0.9, side:'right',
+   e:'Daily speaking habit', g:'No literacy, no mutations, no culture; Irish course less mature than Welsh.'},
+  {n:'Pimsleur', f:'aud', x:1.5, y:2.8, side:'left',
+   e:'30-min graduated recall', g:'Munster audio only; no reading.'},
+  {n:'Michel Thomas', f:'aud', x:1.9, y:4.4, side:'right',
+   e:'Teacher-led audio intuition', g:'Good sentence logic; weak mutations, thin vocabulary.'},
+  {n:'blas.', f:'rig', x:3.0, y:9.3, side:'below',
+   e:'FSRS + mastery grids + mutation drills', g:'Culture appears as reading passages, never as the engine. Highest product threat.'},
+  {n:'All About Irish', f:'rig', x:3.9, y:8.3, side:'right',
+   e:'Structured sentences, live cohorts', g:'Structure without a world; instructor-led scale ceiling.'},
+  {n:'Gaelchultúr · Ranganna', f:'ins', x:3.3, y:7.5, side:'left',
+   e:'QQI-aligned courses + certs', g:'Functional professional Irish, not an identity journey.'},
+  {n:'Bitesize Irish', f:'com', x:6.6, y:4.5, side:'below',
+   e:'Daily ritual + 15 years of email trust', g:'Culture seasons the method but never gates progress.'},
+  {n:'Let’s Learn Irish', f:'com', x:6.1, y:5.7, side:'above',
+   e:'Live Comhrá community', g:'Not self-paced narrative; a partner more than a rival.'},
+  {n:'Gaeilgeoir AI', f:'ai', x:4.6, y:3.4, side:'below',
+   e:'AI chat scenarios', g:'Culture lives in the marketing copy, not the product.'},
+  {n:'DCU Fáilte ar Líne', f:'ins', x:6.9, y:5.9, side:'right',
+   e:'Free MOOC + degree pathway', g:'Academic UX; no daily narrative pull. Anchors free at zero.'},
+  {n:'An Turas', f:'target', x:8.8, y:8.4, side:'below',
+   e:'Narrative spine + artifacts + explain-then-drill', g:'The bet: the empty field is real — and reachable before blas. or Duolingo turn toward it.'}
+];
+const ST = {
+  built:{label:'Built — in the slice', v:'--f-built'},
+  next: {label:'Next — implied by the spine', v:'--f-next'},
+  imag: {label:'Imagined — to argue about', v:'--f-imag'}
+};
+const MAP2 = [
+  {n:'Scene pages', st:'built', x:7.8, y:4.2, c:'l', side:'left',
+   t:'The world itself. Costliest asset per page — prose, paint and audio at once.'},
+  {n:'Grammar notes', st:'built', x:5.0, y:8.0, c:'m', side:'left',
+   t:'The trust-builder for re-learners: what school never explained, finally explained.'},
+  {n:'Exercises', st:'built', x:3.0, y:8.5, c:'s', side:'below',
+   t:'The drill corner. Cheap and effective; zero pull alone — the story must carry them.'},
+  {n:'Recarve', st:'built', x:7.0, y:7.0, c:'s', side:'above',
+   t:'The sleeper. Spaced repetition that feels like tending a stone, not paying a debt.'},
+  {n:'The turn', st:'built', x:7.4, y:5.0, c:'m', side:'left',
+   t:'Agency without fail states; every branch costs an authored reaction.'},
+  {n:'The lens', st:'built', x:8.0, y:6.2, c:'s', side:'above',
+   t:'Etymology as gesture. High pull, real yield, tiny build — best ratio in the slice.'},
+  {n:'Ogham artifact', st:'built', x:8.6, y:2.9, c:'m', side:'below',
+   t:'Huge pull plus a share loop; teaches little alone — welded to the copula work around it.'},
+  {n:'Amárach hooks', st:'built', x:6.3, y:1.5, c:'s', side:'right',
+   t:'Pure return mechanic. Legitimate only as a door into a scene with real language behind it.'},
+  {n:'Echo (ungraded)', st:'built', x:4.0, y:5.0, c:'s', side:'below',
+   t:'Honest speaking practice — no pronunciation theatre. Pull limited until conversation exists.'},
+  {n:'An Músaem', st:'next', x:9.0, y:3.9, c:'m', side:'left',
+   t:'The trophy-room risk is real: legitimate only because Ar Ais wires it to retrieval.'},
+  {n:'Ar Ais (SRS visits)', st:'next', x:6.0, y:8.8, c:'m', side:'right',
+   t:'The yield engine of the future map. The clothing decides: visiting, or homework?'},
+  {n:'Do Logainm', st:'next', x:9.0, y:5.6, c:'s', side:'above',
+   t:'Cheapest high-pull feature we could build. Needs the Logainm.ie licensing conversation.'},
+  {n:'An Féilire', st:'next', x:7.0, y:3.1, c:'s', side:'left',
+   t:'Structure without guilt — the calendar is real. Seasonal content ages; budget for refresh.'},
+  {n:'Dialect atlas', st:'imag', x:6.7, y:6.4, c:'m', side:'below',
+   t:'Turns the market’s biggest liability into a destination. Gated on the audio strategy.'},
+  {n:'Dhá Litir', st:'imag', x:9.2, y:5.0, c:'l', side:'below',
+   t:'Deepest moat, highest editorial risk: historian, pedagogue and sensitivity review per page.'},
+  {n:'An Doras', st:'imag', x:9.5, y:1.8, c:'l', side:'left',
+   t:'The ending that builds the brand — and hands our best users to the offline world, on purpose.'},
+  {n:'Comhrá (in-world AI)', st:'imag', x:6.0, y:7.2, c:'l', side:'left',
+   t:'Highest yield of the futures — and one bad generated sentence from breaking the anti-slop promise.'}
+];
+
+function buildPlot(plotId, tipId, data, opts){
+  const plot = $(plotId), tip = $(tipId);
+  if (!plot) return;
+  const box = plot.parentElement;
+  [25,50,75].forEach(p=>{
+    const v = document.createElement('div');
+    v.className = 'gridline v'; v.style.left = p+'%'; plot.appendChild(v);
+    const h = document.createElement('div');
+    h.className = 'gridline h'; h.style.top = p+'%'; plot.appendChild(h);
+  });
+  const ax1 = document.createElement('div');
+  ax1.className = 'axis'; ax1.style.cssText = 'left:0;top:0;bottom:0;width:1.5px;';
+  plot.appendChild(ax1);
+  const ax2 = document.createElement('div');
+  ax2.className = 'axis'; ax2.style.cssText = 'left:0;right:0;bottom:0;height:1.5px;';
+  plot.appendChild(ax2);
+  (opts.zones||[]).forEach(z=>{
+    const d = document.createElement('div');
+    d.className = z.cls; d.style.cssText = z.css;
+    d.innerHTML = '<label>' + z.label + '</label>';
+    plot.appendChild(d);
+  });
+  if (opts.spine){
+    const s = document.createElement('div');
+    s.className = 'spinelab'; s.textContent = 'AN DROMLACH · THE SPINE';
+    s.style.cssText = 'left:12%;top:73%;';
+    plot.appendChild(s);
+  }
+  data.forEach(d=>{
+    const pt = document.createElement('div');
+    pt.className = 'pt';
+    pt.style.left = (d.x*10)+'%';
+    pt.style.top = (100 - d.y*10)+'%';
+    const b = document.createElement('button');
+    b.className = 'dot' + (d.f==='target' ? ' target' : '') +
+      (d.c ? ' sz-'+d.c : '');
+    if (d.f && d.f!=='target') b.style.setProperty('--c', 'var('+FAM[d.f].v+')');
+    if (d.st) b.style.setProperty('--c', 'var('+ST[d.st].v+')');
+    b.setAttribute('aria-label', d.n);
+    const lab = document.createElement('span');
+    lab.className = 'dotlabel ' + (d.side||'');
+    lab.textContent = d.n;
+    pt.appendChild(b); pt.appendChild(lab);
+    plot.appendChild(pt);
+    const show = ()=>{
+      tip.innerHTML = opts.tipHtml(d);
+      tip.classList.add('show');
+      const bx = box.getBoundingClientRect(), px = pt.getBoundingClientRect();
+      const cx = px.left - bx.left + px.width/2, cy = px.top - bx.top;
+      const tw = tip.offsetWidth, th = tip.offsetHeight;
+      let L = cx + 16;
+      if (L + tw > bx.width - 4) L = cx - tw - 16;
+      let T = cy - th/2;
+      T = Math.max(4, Math.min(T, bx.height - th - 4));
+      tip.style.left = L+'px'; tip.style.top = T+'px';
+    };
+    const hide = ()=> tip.classList.remove('show');
+    b.addEventListener('mouseenter', show);
+    b.addEventListener('mouseleave', hide);
+    b.addEventListener('focus', show);
+    b.addEventListener('blur', hide);
+  });
+}
+
+buildPlot('plot1','tip1', MAP1, {
+  zones: [{cls:'quadrant', css:'left:70%;top:0;right:0;bottom:32%;',
+    label:'An Pháirc Bhán — the empty field'}],
+  tipHtml: (d)=> '<b>' + d.n + '</b>' +
+    (d.f==='target' ? '<span class="k">target position — unbuilt</span><br>'
+      : '<span class="k">' + FAM[d.f].label + '</span><br>') +
+    '<span class="k">engine:</span> ' + d.e + '<br>' + d.g
+});
+(function(){
+  const box = $('plot1'); if (!box) return;
+  box.parentElement.insertAdjacentHTML('beforebegin',
+    '<div class="ax-row" style="margin:0 0 8px;"><span class="axlab">↑ Explicit grammar &amp; structure</span><span>top = teaches the machinery openly</span></div>');
+  const lg = $('legend1');
+  Object.values(FAM).forEach(f=>{
+    lg.insertAdjacentHTML('beforeend',
+      '<span class="li"><span class="sw" style="--c:var('+f.v+')"></span>'+f.label+'</span>');
+  });
+  lg.insertAdjacentHTML('beforeend',
+    '<span class="li"><span class="sw ring"></span>An Turas — target</span>');
+  const tb = $('table1').querySelector('tbody');
+  MAP1.forEach(d=>{
+    tb.insertAdjacentHTML('beforeend', '<tr><td><strong>'+d.n+'</strong></td><td>'+
+      (d.f==='target'?'—':FAM[d.f].label)+'</td><td>'+d.e+
+      '</td><td class="num">'+d.y.toFixed(1)+'</td><td class="num">'+d.x.toFixed(1)+
+      '</td><td>'+d.g+'</td></tr>');
+  });
+})();
+
+buildPlot('plot2','tip2', MAP2, {
+  spine: true,
+  zones: [
+    {cls:'zone', css:'left:2%;top:2%;width:36%;height:28%;',
+     label:'The drill corner — blas. lives here'},
+    {cls:'zone', css:'left:62%;bottom:2%;width:36%;height:30%;top:auto;',
+     label:'The museum corner — Chineasy drowned here'}
+  ],
+  tipHtml: (d)=> '<b>' + d.n + '</b><span class="k">' + ST[d.st].label +
+    ' · ' + (d.c==='s'?'low':(d.c==='m'?'medium':'high')) + ' cost</span><br>' + d.t
+});
+(function(){
+  const box = $('plot2'); if (!box) return;
+  box.parentElement.insertAdjacentHTML('beforebegin',
+    '<div class="ax-row" style="margin:0 0 8px;"><span class="axlab">↑ Language yield per minute</span><span>top = teaches the most Irish</span></div>');
+  const lg = $('legend2');
+  Object.values(ST).forEach(f=>{
+    lg.insertAdjacentHTML('beforeend',
+      '<span class="li"><span class="sw" style="--c:var('+f.v+')"></span>'+f.label+'</span>');
+  });
+  lg.insertAdjacentHTML('beforeend',
+    '<span class="li" style="margin-left:auto;">size = cost to build well&nbsp;' +
+    '<span class="szsw" style="width:8px;height:8px;"></span>&nbsp;' +
+    '<span class="szsw" style="width:12px;height:12px;"></span>&nbsp;' +
+    '<span class="szsw" style="width:17px;height:17px;"></span></span>');
+  const tb = $('table2').querySelector('tbody');
+  MAP2.forEach(d=>{
+    tb.insertAdjacentHTML('beforeend', '<tr><td><strong>'+d.n+'</strong></td><td>'+
+      ST[d.st].label+'</td><td class="num">'+d.x.toFixed(1)+'</td><td class="num">'+
+      d.y.toFixed(1)+'</td><td>'+(d.c==='s'?'low':(d.c==='m'?'medium':'high'))+
+      '</td><td>'+d.t+'</td></tr>');
+  });
+})();
+
+})();
+</script>
+
+</body>
+</html>
