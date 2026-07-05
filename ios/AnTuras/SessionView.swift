@@ -69,10 +69,8 @@ struct SessionView: View {
     @State private var visited: Set<Int> = []
     @State private var launched = false
 
-    init(sessionIndex: Int) {
-        // Content is loaded once by AppState; load again here only to seed the VM
-        // before the environment object is available (prototype-grade shortcut).
-        let session = ContentLoader.chapter1().sessions[sessionIndex]
+    init(chapter: Chapter, sessionIndex: Int) {
+        let session = chapter.sessions[sessionIndex]
         _vm = StateObject(wrappedValue:
             SessionVM(session: session, sessionIndex: sessionIndex))
     }
@@ -201,7 +199,7 @@ struct SessionView: View {
             SeanfhocalPageView(block: seanfhocal)
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .artifact:
-            ArtifactView()
+            ArtifactView(chapterN: state.chapterN)
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .fin(let fin):
             FinPageView(block: fin)

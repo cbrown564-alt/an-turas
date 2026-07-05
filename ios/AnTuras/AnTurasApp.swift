@@ -41,7 +41,7 @@ struct ContentView: View {
             booted = true
             Haptics.prepare()
             // Debug deep-links for screenshots/snapshot tests:
-            // --journey | --map | --session N | --museum | --arais
+            // --journey | --map | --session N | --museum | --arais | --chapter N
             let args = ProcessInfo.processInfo.arguments
             if args.contains("--journey") {
                 path = [.journey]
@@ -84,7 +84,7 @@ struct ContentView: View {
                 .toolbarRole(.editor)
                 .toolbarBackground(Theme.bg, for: .navigationBar)
         case .session(let index):
-            SessionView(sessionIndex: index)
+            SessionView(chapter: state.chapter, sessionIndex: index)
                 .background(Theme.bg.ignoresSafeArea())
                 .toolbarRole(.editor)
                 .toolbarBackground(Theme.bg, for: .navigationBar)

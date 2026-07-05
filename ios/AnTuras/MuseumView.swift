@@ -14,12 +14,25 @@ struct MuseumView: View {
     let onOpenArAis: () -> Void
     let onOpenChapter: () -> Void
 
-    @State private var showStone = false
+    @State private var showArtifact: ArtifactSheet?
     @State private var selected: JourneyChapter?
     @State private var appeared = false
 
     private var dueCount: Int { state.dueVisits().count }
-    private var collected: Int { state.allDone ? 1 : 0 }
+    private var collected: Int {
+        var count = 0
+        if state.chapterN > 1 || (state.chapterN == 1 && state.allDone) { count += 1 }
+        if state.chapterN >= 3 && state.allDone { count += 1 }
+        return count
+    }
+
+    private func nicheUnlocked(_ chapterN: Int) -> Bool {
+        switch chapterN {
+        case 1: return state.chapterN > 1 || (state.chapterN == 1 && state.allDone)
+        case 3: return state.chapterN >= 3 && state.allDone
+        default: return false
+        }
+    }
 
     var body: some View {
         ScrollView {
@@ -35,12 +48,12 @@ struct MuseumView: View {
                           spacing: 12) {
                     ForEach(state.journey) { chapter in
                         NicheView(chapter: chapter,
-                                  unlocked: chapter.n == 1 && state.allDone,
+                                  unlocked: nicheUnlocked(chapter.n),
                                   asking: chapter.n == 1 && dueCount > 0)
                         {
                             Haptics.tap()
-                            if chapter.n == 1 && state.allDone {
-                                showStone = true
+                            if nicheUnlocked(chapter.n) {
+                                showArtifact = ArtifactSheet(chapterN: chapter.n)
                             } else {
                                 selected = chapter
                             }
@@ -68,9 +81,9 @@ struct MuseumView: View {
                 withAnimation(.easeOut(duration: 0.4)) { appeared = true }
             }
         }
-        .sheet(isPresented: $showStone) {
+        .sheet(item: $showArtifact) { sheet in
             ScrollView {
-                ArtifactView()
+                ArtifactView(chapterN: sheet.chapterN)
                     .padding(22)
             }
             .presentationBackground(Theme.bg)
@@ -130,6 +143,11 @@ struct MuseumView: View {
 }
 
 // MARK: - One niche on the shelf
+
+private struct ArtifactSheet: Identifiable {
+    let chapterN: Int
+    var id: Int { chapterN }
+}
 
 private struct NicheView: View {
     let chapter: JourneyChapter

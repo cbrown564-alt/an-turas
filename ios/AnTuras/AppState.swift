@@ -39,6 +39,7 @@ final class AppState: ObservableObject {
     @Published var visitProgress: [String: VisitProgress]
     @Published var artBranch: String? = nil
 
+    let chapterN: Int
     let chapter: Chapter
     let journey: [JourneyChapter]
     let visits: [Visit]
@@ -46,7 +47,21 @@ final class AppState: ObservableObject {
     private static let key = "turas_c1"
 
     init() {
-        chapter = ContentLoader.chapter1()
+        var chapterN = 1
+        #if DEBUG
+        let args = ProcessInfo.processInfo.arguments
+        if let flagIndex = args.firstIndex(of: "--chapter"),
+           args.indices.contains(flagIndex + 1),
+           let n = Int(args[flagIndex + 1]) {
+            chapterN = n
+        }
+        #endif
+        self.chapterN = chapterN
+        switch chapterN {
+        case 3: chapter = ContentLoader.chapter3()
+        case 2: chapter = ContentLoader.chapter2()
+        default: chapter = ContentLoader.chapter1()
+        }
         journey = ContentLoader.journey()
         visits = ContentLoader.visits()
         let saved: Saved
