@@ -43,6 +43,8 @@ stand up the editorial workflow, and produce Chapter 2 through the pipeline.
 
 | 2026-07-05 | **Phase 1 playtest decisions logged; Phase 2 entered.** Retention: tá tú ar ais + journey map validated; An Féilire chosen as gentle ritual layer (D6). Audio: Gemini all-generated + native-speaker QA (D7). Illustration: scene pages only (D8). CMS review layer scoped (D9). Business: premium + grants on top, Ch 1–4 launch, bespoke (D10). Pedagogy: listening-first permanent (D11). Phase 1 exit (D5). | `docs/DECISIONS.md` D5–D11, `docs/STRATEGY.md`, `docs/TTS-research.md` |
 
+| 2026-07-05 | **Chapter 2 content pipeline run + process doc.** Three-stage pass (generator → adversarial reviewer → overall editor) produced `chapter2.json` (*Oileán na Naomh*, 5 sessions, 58 pages); repeatable workflow and good-enough gates written up | `content/chapter2/`, `ios/AnTuras/Resources/chapter2.json`, `docs/CONTENT-PIPELINE.md` |
+
 ## Immediate next steps (Phase 2)
 
 1. **Content review CMS** — purpose-built review UI for the chapter JSON schema (D9).
@@ -50,8 +52,8 @@ stand up the editorial workflow, and produce Chapter 2 through the pipeline.
    draft → linguist → historian → generate audio → native QA → sign-off → bundle.
 2. **Editorial board** — recruit at minimum one qualified Irish-language
    pedagogue/teacher and one historian for Chapter 2 review (STRATEGY.md Phase 2).
-3. **Chapter 2 through the pipeline** — *Oileán na Naomh* (monastic scriptorium) as
-   the proof that authoring format + CMS + audio + illustration scale together.
+3. **Chapter 2 through the pipeline** — *Oileán na Naomh* first draft merged; human
+   board sign-off, audio, and illustration still required (`docs/CONTENT-PIPELINE.md`).
 4. **Install Gemini 3.1 TTS clips** — set `bundle_winner: gemini-3-flash` per line in
    `tools/tts-bakeoff/winners.json`, run `python bakeoff.py install`, regenerate Xcode
    project. Production pipeline: generate → native QA → bundle.
