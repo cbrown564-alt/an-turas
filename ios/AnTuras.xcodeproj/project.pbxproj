@@ -17,6 +17,7 @@
 		2488609B4A7E0CB5FEB7567E /* IrelandShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD4129B3564B7CF12160B32 /* IrelandShape.swift */; };
 		3D4DC9F46D78F9E227C2FCDF /* ArtifactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8222FF923CA8EEAC43EBA19C /* ArtifactView.swift */; };
 		4B51ECDA2373D4D233BD210C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F0B9DF36A7A1A806DDFBC2 /* Models.swift */; };
+		60194909667A352C5ECEB591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37ADE78AC4C9EEC9EB1D7560 /* Assets.xcassets */; };
 		67160852FC74F0B31872D8DE /* chapter1.json in Resources */ = {isa = PBXBuildFile; fileRef = FEED52D58CA52E7BC9EA4159 /* chapter1.json */; };
 		6AF18E13D4AFF5158A4E53D5 /* t2-hands.png in Resources */ = {isa = PBXBuildFile; fileRef = B7648ACE885C7BE17D5D4A3F /* t2-hands.png */; };
 		76BEADF345A8313FE44E1115 /* s3-yard.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B57B920269D5BF5FF8822BA /* s3-yard.png */; };
@@ -47,7 +48,8 @@
 		11987CAE4054C1FC81E9E792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		21A7F77D9E848D6268AB988F /* journey.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = journey.json; sourceTree = "<group>"; };
 		2D48D0E32F66600DB0CA46AA /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
-		3855760E1F84F5E302464F54 /* AnTuras.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AnTuras.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37ADE78AC4C9EEC9EB1D7560 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3855760E1F84F5E302464F54 /* AnTuras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnTuras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		391BDD989CB3BCC6C00E0769 /* art */ = {isa = PBXFileReference; lastKnownFileType = folder; name = art; path = AnTuras/Resources/art; sourceTree = SOURCE_ROOT; };
 		45D090D9AEA3F40422F95385 /* t3-strand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "t3-strand.png"; sourceTree = "<group>"; };
 		4A806D8C653B1FC0A245A1B5 /* Ogham.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ogham.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				8BCEF1C9F6D2DD55218E5486 /* AppState.swift */,
 				D9C99CB183669A928C9309C9 /* ArAisView.swift */,
 				8222FF923CA8EEAC43EBA19C /* ArtifactView.swift */,
+				37ADE78AC4C9EEC9EB1D7560 /* Assets.xcassets */,
 				F25EBEF7FD82850E1E60107B /* Beats.swift */,
 				2D48D0E32F66600DB0CA46AA /* CoverView.swift */,
 				EC5B6E9378BE9BA2399E468B /* EchoView.swift */,
@@ -215,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60194909667A352C5ECEB591 /* Assets.xcassets in Resources */,
 				8A218656EDCA56F5CDA4C9F5 /* art in Resources */,
 				9E84CC9BED41BA710DD2DA83 /* art-exploration in Resources */,
 				67160852FC74F0B31872D8DE /* chapter1.json in Resources */,
@@ -269,6 +273,7 @@
 				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QCVP3CNMP6;
 				INFOPLIST_FILE = AnTuras/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -344,6 +349,7 @@
 				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QCVP3CNMP6;
 				INFOPLIST_FILE = AnTuras/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
