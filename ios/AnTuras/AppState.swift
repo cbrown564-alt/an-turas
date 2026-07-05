@@ -114,23 +114,23 @@ final class AppState: ObservableObject {
         }
         #endif
 
-        activeChapterN = min(max(activeChapter, 1), ContentLoader.maxChapter)
+        activeChapter = min(max(activeChapter, 1), ContentLoader.maxChapter)
 
         if !chapterOverride {
-            while activeChapterN < ContentLoader.maxChapter {
+            while activeChapter < ContentLoader.maxChapter {
                 let flags = Self.normalizedDone(
-                    progressByChapter[activeChapterN],
-                    sessionCount: ContentLoader.chapter(activeChapterN).sessions.count)
+                    progressByChapter[activeChapter],
+                    sessionCount: ContentLoader.chapter(activeChapter).sessions.count)
                 guard !flags.isEmpty, flags.allSatisfy({ $0 }) else { break }
-                activeChapterN += 1
+                activeChapter += 1
             }
         }
 
         doneByChapter = progressByChapter
 
         var doneFlags = Self.normalizedDone(
-            progressByChapter[activeChapterN],
-            sessionCount: ContentLoader.chapter(activeChapterN).sessions.count)
+            progressByChapter[activeChapter],
+            sessionCount: ContentLoader.chapter(activeChapter).sessions.count)
 
         #if DEBUG
         let debugArgs = ProcessInfo.processInfo.arguments
@@ -138,13 +138,13 @@ final class AppState: ObservableObject {
            debugArgs.indices.contains(flagIndex + 1),
            let count = Int(debugArgs[flagIndex + 1]) {
             for index in doneFlags.indices { doneFlags[index] = index < count }
-            progressByChapter[activeChapterN] = doneFlags
+            progressByChapter[activeChapter] = doneFlags
             doneByChapter = progressByChapter
         }
         if let flagIndex = debugArgs.firstIndex(of: "--due"),
            debugArgs.indices.contains(flagIndex + 1),
            let count = Int(debugArgs[flagIndex + 1]) {
-            let allVisits = ContentLoader.visits(throughChapter: activeChapterN)
+            let allVisits = ContentLoader.visits(throughChapter: activeChapter)
             for (offset, visit) in allVisits.prefix(count).enumerated() {
                 progress[visit.id] = VisitProgress(
                     due: Date().addingTimeInterval(-Double(offset) * 2 * 86400),
@@ -160,9 +160,9 @@ final class AppState: ObservableObject {
         // Migration: sessions finished before Ar Ais existed still owe their
         // people a visit — schedule across every chapter walked so far.
         var migrationAdded = false
-        for chapterNum in 1...activeChapterN {
+        for chapterNum in 1...activeChapter {
             let chapterDone = progressByChapter[chapterNum]
-                ?? (chapterNum == activeChapterN ? doneFlags : [])
+                ?? (chapterNum == activeChapter ? doneFlags : [])
             let chapterVisits = ContentLoader.visits(forChapter: chapterNum)
             for (index, isDone) in chapterDone.enumerated() where isDone {
                 for visit in chapterVisits where visit.session == index && progress[visit.id] == nil {
@@ -173,6 +173,7 @@ final class AppState: ObservableObject {
             }
         }
 
+        activeChapterN = activeChapter
         done = doneFlags
         learnerName = name
         visitProgress = progress

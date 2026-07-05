@@ -412,6 +412,7 @@ private func oghamNotes(for carved: String) -> String {
         + ". Ogham was cut for Primitive Irish — letters it never had borrow later signs."
 }
 
+@MainActor
 private func renderOghamShareCard(for carved: String) -> UIImage? {
     let renderer = ImageRenderer(content:
         OghamShareCard(name: carved)
@@ -420,6 +421,7 @@ private func renderOghamShareCard(for carved: String) -> UIImage? {
     return renderer.uiImage
 }
 
+@MainActor
 private func renderHackSilverShareCard(for marked: String) -> UIImage? {
     let renderer = ImageRenderer(content:
         HackSilverShareCard(name: marked)
@@ -428,6 +430,7 @@ private func renderHackSilverShareCard(for marked: String) -> UIImage? {
     return renderer.uiImage
 }
 
+@MainActor
 private func renderIlluminatedShareCard(for gilded: String) -> UIImage? {
     let renderer = ImageRenderer(content:
         IlluminatedShareCard(name: gilded)
