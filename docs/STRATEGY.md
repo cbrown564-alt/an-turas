@@ -27,7 +27,7 @@ These block everything else; see §3 (Unknowns).
 3. Sketch the **historical spine**: the ordered list of eras/chapters and, for each,
    the narrative hook and the language payload it naturally carries.
 
-### Phase 1 — The vertical slice
+### Phase 1 — The vertical slice ✓
 Build **one chapter end-to-end** before building any platform:
 - One historical era (candidate: early Christian Ireland / the monastic world — visually
   rich, politically safe, and full of loanword-era vocabulary; or start at Ogham for
@@ -39,91 +39,101 @@ Build **one chapter end-to-end** before building any platform:
 - Put it in front of 10–20 real target learners. Measure: do they come back without
   streaks? What do they say pulled them back?
 
-### Phase 2 — The content pipeline
+**Status (2026-07-05):** Complete. Chapter 1 shipped in SwiftUI; playtest validated
+return without streaks. Validated pull: *tá tú ar ais* greeting and journey map.
+An Féilire chosen as the gentle ritual layer for later phases. See D5–D6 in
+`DECISIONS.md`.
+
+### Phase 2 — The content pipeline ← *now*
 The uncomfortable truth: this is a **content company with an app attached**. The
 platform work (SwiftUI app, SRS engine, audio playback, progress model) is
 well-understood engineering. The differentiator is a repeatable pipeline:
-- Authoring format: lessons and narratives as structured data (likely JSON/Markdown
-  hybrid) so writers, linguists, and illustrators work in parallel with engineering.
+- Authoring format: lessons and narratives as structured data (JSON in bundled chapter
+  packs) so writers, linguists, and illustrators work in parallel with engineering —
+  **validated in Phase 1** (D3, D9).
+- **Content review CMS:** a purpose-built, low-key review layer with a beautiful UI so
+  all stakeholders can review, comment, and sign off efficiently (D9).
 - An editorial board: at minimum one qualified Irish-language linguist/teacher and one
   historian reviewing every chapter. Cultural legitimacy is the moat; one viral
   "this app got the tuiseal ginideach wrong" thread is expensive.
-- Audio strategy decided (recorded native speakers vs ABAIR synthesis vs hybrid).
+- Audio: **Gemini 3.1 Flash TTS, all-generated with native-speaker QA** per release
+  (D7). Illustration: **Solas an Atlantaigh on scene pages only** (D4, D8).
+- **Proof:** Chapter 2 (*Oileán na Naomh*) produced end-to-end through the pipeline.
 
 ### Phase 3 — Build out and launch
 - iOS app: SwiftUI, offline-first, content shipped as data + downloadable chapter packs.
 - SRS underneath everything (FSRS — same algorithm family blas and modern Anki use);
   the innovation is not the scheduler, it's the *clothing*: reviews framed as
   returning to places/characters, not as flashcard debt.
+- **An Féilire:** gentle daily rituals borrowed from the real Irish calendar
+  (seanfhocal, seasonal beats, launch moments) — the flywheel alongside narrative pull
+  (D6).
 - Pedagogical alignment with TEG (Teastas Eorpach na Gaeilge) CEFR levels so progress
   maps to something externally real — "you are on track for TEG A1" beats "you have
   4,200 XP".
+- **Launch scope: Chapters 1–4** at production quality (D10). **Premium subscription**
+  with grant funding pursued on top, not instead of revenue.
 - Launch moments that align with the real Irish calendar: Seachtain na Gaeilge
   (March), Samhain, St Patrick's Day diaspora spike.
 
-## 3. Major unknowns to discuss
+## 3. Major unknowns — status
 
-**U1. Who is the primary learner?** The candidates are very different products:
-- *The Irish adult with "school Irish" guilt* — 1.87M in RoI claim some Irish; most
-  had 13 years of school Irish and can't hold a conversation. Latent knowledge,
-  deep emotional stakes, largest addressable group.
-- *The Northern Ireland revival learner* — fastest-growing, most identity-motivated,
-  politically charged context, includes a remarkable cross-community strand
-  (e.g. Turas in East Belfast teaching Irish to Protestant/unionist learners).
-- *The diaspora* (US/UK/Australia) — biggest raw numbers, lowest baseline, most
-  romantic motivation, pays for subscriptions, drove Duolingo's million-plus Irish
-  learners.
-- *Complete-beginner hobbyists* — Duolingo's crowd; hardest to retain.
+### Resolved
 
-The history-narrative concept serves all four, but tone, assumed knowledge, and
-marketing differ enormously. **Recommendation to discuss: primary = school-Irish
-re-learners + diaspora (they overlap in content needs), with NI as the cultural
-north star we take special care over.**
+**U1. Primary learner → D1.** School-Irish re-learners + diaspora primary; NI as
+cultural north star.
 
-**U2. Dialect policy.** Ulster, Connacht, and Munster Irish differ audibly in
-pronunciation and noticeably in grammar/vocabulary. An Caighdeán Oifigiúil (the
-official standard) exists for writing but nobody *speaks* it natively. Duolingo was
-criticised for audio that matched no dialect consistently. Options: teach the
-Caighdeán with deliberate exposure to all three dialects (Teanglann's audio gives all
-three per word); or pick one (Ulster fits the NI story; Connacht is the "middle"
-choice). This is a real cultural-politics decision, not a technical one.
+**U2. Dialect policy → D2.** Connacht first; Ulster required before NI launch.
 
-**U3. What is the actual retention loop?** "Connection instead of streaks" is a
-thesis, not a mechanism. Candidate mechanics to test: story cliffhangers between
-sessions; a daily *seanfhocal* (proverb) ritual; chapter artifacts you collect
-(a personal "museum" of Ireland); alignment with the real calendar; progress framed
-as a physical journey across a map of Ireland. The vertical slice exists to find out
-which of these actually pulls people back.
+**U3. Retention loop → D5/D6.** Narrative pull validated: *tá tú ar ais* greeting and
+journey map pull testers back without streaks. Recarve, amárach hooks, and Ar Ais drew
+no negative feedback but went unmentioned — they remain authored chapter devices.
+Gentle ritual layer: **An Féilire** (real-calendar seanfhocal, seasonal beats,
+calendar-aligned launch moments). Meaning as engine, calendar as flywheel — not
+gamification.
+
+**U5. Audio → D7.** Gemini 3.1 Flash TTS, all-generated with native-speaker QA per
+release. Passed native-speaker review on Chapter 1. ABAIR remains optional upgrade if
+bundling rights granted.
+
+**U6. Business model → D10.** Premium subscription. Grant funding on top (Foras na
+Gaeilge, Údarás, NI streams). Bespoke content. Chapters 1–4 at launch.
+
+**U8. Pronunciation feedback → D11.** Listening-first permanent. Echo pages ungraded;
+no pronunciation scoring in the roadmap.
+
+### Still open
 
 **U4. Does history gate language, or run alongside it?** If narrative unlocks are
 the reward for language work, story becomes the carrot (motivating but risks
 resentment). If they're parallel tracks, drilling loses its engine. Probably:
 language effort unlocks story, but review is always dressed as revisiting, never as
-debt.
-
-**U5. Audio: humans, synthesis, or hybrid?** ABAIR (Trinity College Dublin) has
-dialect-specific Irish TTS built over 20 years — the obvious partner/licensing
-conversation to have early. Recorded native speakers are the gold standard but
-expensive at narrative scale. Likely hybrid: humans for narrative voice, ABAIR for
-generated/long-tail content — but ABAIR's licensing terms for commercial apps are an
-open question to investigate.
-
-**U6. Business model and funding.** Freemium subscription is the default. But note:
-Foras na Gaeilge and Údarás na Gaeltachta fund Irish-language technology; NI has
-Irish-language funding streams post-Identity and Language Act. Public money is
-genuinely available — with strings (possibly around openness and pricing) that need
-understanding before taking it.
+debt. Phase 1 mechanics suggest this holds; no explicit decision logged yet.
 
 **U7. Handling contested history.** A history-of-Ireland app cannot avoid
 plantation, famine, partition, and the Troubles — and our growth market is Northern
 Ireland. We need editorial principles written *before* we need them: multiple voices,
 primary sources, warmth without triumphalism. Turas proves Irish can be
-cross-community; the app should be a door, not a flag.
+cross-community; the app should be a door, not a flag. Required before Chapter 10
+production.
 
-**U8. Pronunciation feedback.** Learners want to know "am I saying it right?"
-Irish speech recognition is immature (ABAIR has research-grade ASR). Decide early
-whether v1 attempts pronunciation scoring or deliberately punts (listening-first
-pedagogy is defensible).
+### Reference — original framing (superseded where marked ✓)
+
+**U1. Who is the primary learner?** ✓ See D1.
+
+**U2. Dialect policy.** ✓ See D2.
+
+**U3. What is the actual retention loop?** ✓ See D5/D6.
+
+**U4. Does history gate language, or run alongside it?** (Still open — see above.)
+
+**U5. Audio: humans, synthesis, or hybrid?** ✓ See D7.
+
+**U6. Business model and funding.** ✓ See D10.
+
+**U7. Handling contested history.** (Still open — see above.)
+
+**U8. Pronunciation feedback.** ✓ See D11.
 
 ## 4. Largest challenges
 
@@ -218,9 +228,11 @@ now, not in two years.
 
 ## 7. Proposed next steps
 
-1. Decide U1 (persona) and U2 (dialect) — everything downstream depends on them.
-2. Draft the historical spine: ~10–14 chapters from Ogham to the Belfast revival,
-   each with its narrative hook and language payload.
-3. Open the ABAIR licensing conversation and map Foras na Gaeilge grant schemes.
-4. Design + build the Phase 1 vertical slice; recruit 10–20 test learners
-   (candidate pools: r/gaeilge, Irish language Discords, a Conradh na Gaeilge branch).
+1. ~~Decide U1 (persona) and U2 (dialect)~~ — D1, D2.
+2. ~~Draft the historical spine~~ — `SPINE.md` (needs historian/pedagogue review).
+3. ~~Build Phase 1 vertical slice; playtest~~ — D5 exit.
+4. **Phase 2 (now):** build content review CMS (D9); stand up editorial board; produce
+   Chapter 2 through the pipeline; document illustration and audio production recipes.
+5. Open grant-funding research (strings before accepting — D10).
+6. Write contested-history editorial principles before Chapter 10 (U7).
+7. ABAIR enquiry optional — quality ceiling / future upgrade, not Phase 2 blocker (D7).

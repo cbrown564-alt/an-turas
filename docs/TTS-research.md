@@ -4,18 +4,19 @@
 decisions. The bar is fada vowel length and dialect authenticity, not “sounds fine to
 an English speaker.”*
 
-## Decision (2026-07-05)
+## Decision (2026-07-05, updated)
 
 | Provider | Verdict |
 |---|---|
-| **Gemini 3.1 Flash TTS** | **Playtest path** — quite good after manual review; prompt-steered Connacht, commercially usable. Install via `tools/tts-bakeoff/` (`bundle_winner: gemini-3-flash`). |
-| **Azure Speech `ga-IE`** | **Follow-up bake-off** — next licensed native-Irish option to explore (`Orla`/`Colm`). |
-| **ABAIR** | **Quality ceiling** — evaluation-only until TCD grants bundling rights ([ABAIR.md](ABAIR.md)). |
+| **Gemini 3.1 Flash TTS** | **Production voice** — passed native-speaker review; all-generated with QA per release (D7). Prompt-steered Connacht, commercially usable. Install via `tools/tts-bakeoff/` (`bundle_winner: gemini-3-flash`). |
+| **ABAIR** | **Optional upgrade** — quality ceiling; evaluation-only until TCD grants bundling rights ([ABAIR.md](ABAIR.md)). Not a Phase 2 blocker. |
+| **Azure Speech `ga-IE`** | **Deprioritised** — superseded by Gemini passing native-speaker review; revisit only if quality regresses on later chapters. |
 | **ElevenLabs `eleven_v3`** | **Rejected** — not good enough on Irish pronunciation (e.g. *féar*/*fear*). |
 | **Gemini 2.5 Flash TTS** | **Rejected** — superseded by 3.1; not good enough. |
 
-**Near-term audio strategy:** ship Chapter 1 with Gemini 3.1 clips; run Azure `ga-IE`
-bake-off in parallel; pursue ABAIR licensing for long-term dialect fidelity.
+**Production audio strategy (D7):** every utterance generated via Gemini 3.1, then
+native-speaker QA'd before bundling in offline chapter packs. No hybrid human recording
+for v1.
 
 ## Tier 1 — purpose-built for Irish (Gaeilge)
 
@@ -80,12 +81,10 @@ bake-off in parallel; pursue ABAIR licensing for long-term dialect fidelity.
 
 1. **Install Gemini 3.1 picks** — set `bundle_winner: gemini-3-flash` in
    `tools/tts-bakeoff/winners.json`, run `python bakeoff.py install`.
-2. **Azure `ga-IE` bake-off** — add `ga-IE-ColmNeural` / `ga-IE-OrlaNeural` as a
-   provider column in `review.html`; compare on *féar*, *Seán*, and full Chapter 1.
-3. **ABAIR** remains the quality ceiling — use to calibrate licensed picks; send
-   commercial enquiry ([ABAIR-enquiry.md](ABAIR-enquiry.md)).
-4. **Long-term:** hybrid human narrative + ABAIR (if licensed) or Azure for exercises,
-   per [ABAIR.md](ABAIR.md) fallbacks.
+2. **Production pipeline** — script → generate → native-speaker QA → bundle per chapter
+   release (D7).
+3. **ABAIR** — optional upgrade if bundling rights granted; send commercial enquiry
+   ([ABAIR-enquiry.md](ABAIR-enquiry.md)) when convenient, not blocking Phase 2.
 
 ## Sources
 

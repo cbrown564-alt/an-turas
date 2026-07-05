@@ -1,7 +1,8 @@
 # ABAIR licensing map
 
-*Researched 2026-07-04 from abair.ie (home, terms, contact pages). ABAIR is the key
-audio partner candidate per STRATEGY.md U5.*
+*Researched 2026-07-04 from abair.ie (home, terms, contact pages). Production audio
+uses Gemini 3.1 with QA (D7); ABAIR is an optional upgrade if bundling rights are
+granted.*
 
 ## What ABAIR is
 

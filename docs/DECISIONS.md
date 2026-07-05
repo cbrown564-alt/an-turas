@@ -2,6 +2,118 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D11 — Pronunciation: listening-first, permanently (2026-07-05)
+
+**Decision:** No pronunciation scoring in the product roadmap. Listening-first
+pedagogy is permanent: model audio, minimal-pair listening exercises, and ungraded
+echo pages (record yourself beside the model, no pass/fail).
+
+**Why:** Irish speech recognition is immature; bad scoring would erode trust faster
+than no scoring. Playtesters did not ask for grades — they asked to hear Irish done
+right. Echo remains a mirror, not a judge.
+
+**Consequences:** U8 closed. ÉIST/ABAIR ASR stays a research watch, not a v1 feature.
+Product copy and onboarding should set the expectation: ears first, mouth second, no
+red X on your accent.
+
+## D10 — Business model and launch scope (2026-07-05)
+
+**Decision:** Premium subscription (paid product, not freemium-by-default). Pursue
+public grant funding (Foras na Gaeilge, Údarás na Gaeltachta, NI streams) *on top
+of* subscription revenue — grants accelerate content, they don't replace the business.
+Launch at **Chapters 1–4** at production quality. Content stays bespoke: narrative +
+illustration + expert-reviewed pedagogy per chapter, not templated exercises.
+
+**Why:** Playtest validated that re-learners and diaspora respond to depth and care;
+the moat is quality, not volume. Premium aligns price with bespoke production cost.
+Grants are mission-aligned and available, but strings (openness, pricing) must be
+understood before accepting — funding supplements, it doesn't dictate freemium.
+
+**Consequences:** U6 substantially closed. Phase 3 launch target is four chapters
+(Ogham → Normans, A1→A1/A2). Revenue model, grant applications, and content budget
+are planned together. No race to chapter count at the expense of editorial standards.
+
+## D9 — Content review CMS (2026-07-05)
+
+**Decision:** The bundled JSON content-as-data format (D3) is validated for adding
+new chapters. Phase 2 adds a **purpose-built content review layer** — low-key, not
+enterprise CMS — with a beautiful UI so writers, linguists, historians, and engineers
+can review and sign off on content cleanly and efficiently.
+
+**Why:** Playtest confirmed the format works for engineering; production at Chapter 2+
+scale needs a shared review surface. Stakeholders should comment, diff, and approve
+without touching Xcode or raw JSON in an editor.
+
+**Consequences:** Phase 2 engineering includes a review app (web or native-adjacent)
+that reads the same chapter schema the iOS app ships. Editorial workflow (draft →
+linguist review → historian review → audio QA → sign-off) is defined around this tool.
+Exact stack TBD; the requirement is stakeholder-first, not feature-rich.
+
+## D8 — Illustration scope: scene pages only (2026-07-05)
+
+**Decision:** Illustration applies to **scene pages only**. Notes, exercises, beats,
+and all other registers stay clean and typographic (per D4 register rules).
+
+**Why:** Playtest and production planning agree: Solas an Atlantaigh carries the
+narrative world; drilling registers stay readable. Scene-only scope keeps per-chapter
+illustration cost predictable at pipeline scale.
+
+**Consequences:** Content schema and art briefs tag `scene` pages as the only
+illustrated surface. Chapter 2 pipeline proves cost-per-scene at this scope.
+
+## D7 — Audio production model: all-generated with QA (2026-07-05)
+
+**Decision:** **Gemini 3.1 Flash TTS** is the production voice engine. Every utterance
+is generated, then human-QA'd (native-speaker review per release). No hybrid
+human-recorded narrative for v1; no runtime voice switching.
+
+**Why:** Gemini passed native-speaker review on Chapter 1 clips — fada pairs, full
+chapter fidelity, Connacht prompt-steering holds. All-generated scales with the content
+pipeline; QA catches drift. ABAIR remains the quality ceiling and a future upgrade
+if bundling rights are granted; Azure `ga-IE` is deprioritised unless Gemini quality
+regresses on later chapters.
+
+**Consequences:** U5 closed for Phase 2. Audio pipeline: script → generate → native
+speaker QA → bundle in chapter packs. `tools/tts-bakeoff/` is the generation/QA
+tooling path. ABAIR enquiry continues as optional long-term dialect fidelity, not a
+blocker.
+
+## D6 — Retention rituals: An Féilire (2026-07-05)
+
+**Decision:** The retention stack is **narrative pull + gentle ritual**, not
+gamification. Validated pull mechanisms: **tá tú ar ais** return greeting and the
+**journey map** (An Turas). Other Phase 1 mechanics — recarve pages, amárach hooks,
+Ar Ais visits — drew no negative feedback but went unmentioned; they stay in the
+product as authored chapter devices, not as the global retention engine. The missing
+flywheel is **An Féilire**: rituals borrowed from the real Irish calendar — daily
+seanfhocal, seasonal beats keyed to Lúnasa and Samhain, launch moments aligned with
+Seachtain na Gaeilge and the diaspora calendar. Gentle structure without manufactured
+guilt.
+
+**Why:** Playtest confirmed connection pulls people back; testers also need *some*
+daily reason to open the app that isn't a streak. Ireland already has a calendar;
+borrowing it keeps ritual authentic rather than manipulative.
+
+**Consequences:** U3 substantially closed. An Féilire is Phase 3/4 product work but
+Phase 2 content should tag calendar-tied material where natural. Recarve/Ar Ais remain
+per-chapter authored tools, not deprecated.
+
+## D5 — Phase 1 exit; enter Phase 2 (2026-07-05)
+
+**Decision:** Phase 1 vertical slice criteria are met. Move to **Phase 2 — the content
+pipeline**. Chapter 2 (*Oileán na Naomh*) is the pipeline proof.
+
+**Why:** Early playtest feedback is strongly positive on the core thesis:
+- Re-learners feel respected (D1 promise holds).
+- The grammar ladder feels intentional (SPINE.md payload reads as designed, not accidental).
+- The journey map answers "where is this going?"
+- Testers return without streaks; **tá tú ar ais** and the journey map are the
+  mechanisms they name.
+
+**Consequences:** Phase 2 work begins: editorial board, CMS review layer, Chapter 2
+authored through the pipeline, audio and illustration at production recipe. Phase 1
+experiments (HTML prototype, bake-offs, illustration funnel) are frozen as reference.
+
 ## D4 — Canonical Illustration Style: Solas an Atlantaigh (2026-07-05)
 
 **Decision:** Solas an Atlantaigh (B4 — Atlantic Light, Gouache/Watercolor style) is selected as the winning style direction for Chapter 1 and the baseline for subsequent content production.
@@ -12,7 +124,8 @@ Short records of decisions that shape everything downstream. Add new entries at 
 1. The style bible is documented in Section 10 of `docs/ILLUSTRATIONS.md`.
 2. Scene assets are moved into the app's default resources under `art/`.
 3. `Models.swift` and `chapter1.json` are modified to support parsing and loading pages with custom image keys directly.
-4. Clean register styling is maintained—illustration is kept strictly as a window for story pages, with note and exercise views remaining clean and typographic.
+4. Clean register styling is maintained—illustration is kept strictly as a window for
+   **scene pages** (D8); note and exercise views remain clean and typographic.
 
 ## D3 — Prototype platform: SwiftUI (2026-07-04)
 

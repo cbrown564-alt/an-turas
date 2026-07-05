@@ -26,13 +26,15 @@ differences don't exist.
 
 ## Repo map
 
-- `docs/STRATEGY.md` — the strategic map: path to launch, major unknowns, biggest
+- `STATUS.md` — where we are, work log, Phase 2 next steps.
+- `docs/DECISIONS.md` — decision log (D1–D11); everything downstream flows from here.
+- `docs/STRATEGY.md` — the strategic map: path to launch, unknowns, biggest
   challenges, resource landscape, competitive landscape.
 - `docs/COMPETITIVE-RESEARCH.md` — competitive research: pedagogy, features,
   positioning, failed experiments.
 
 ## Status
 
-Day one. Nothing built yet. The next milestones are: pick the target learner, decide
-the dialect policy, sketch the historical chapter spine, and build one vertical-slice
-chapter to test with real learners.
+**Phase 2 — content pipeline.** Phase 1 complete: Chapter 1 vertical slice playtested
+in SwiftUI; narrative pull validated. See `STATUS.md` for current work and
+`docs/DECISIONS.md` for the decision log (D1–D11).
