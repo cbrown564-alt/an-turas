@@ -133,6 +133,7 @@ struct SessionView: View {
                     CompletionPage(sessionIndex: vm.sessionIndex,
                                    hook: vm.session.hook) {
                         Haptics.tap()
+                        state.advanceToNextChapterIfNeeded()
                         dismiss()
                     }
                 } else {

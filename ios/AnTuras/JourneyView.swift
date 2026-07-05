@@ -138,7 +138,7 @@ struct JourneyView: View {
     private var museumRow: some View {
         JourneyRow(
             title: "An Músaem",
-            sub: "\(state.allDone ? 1 : 0) de 13 bailithe — one artifact per chapter, each with your name on it somewhere.",
+            sub: "\(state.completedChapterCount) de 13 bailithe — one artifact per chapter, each with your name on it somewhere.",
             accent: Theme.lichen,
             showDot: false,
             glyph: { ArtifactGlyphView(glyph: "stone", color: Theme.lichen) },

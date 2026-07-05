@@ -19,19 +19,10 @@ struct MuseumView: View {
     @State private var appeared = false
 
     private var dueCount: Int { state.dueVisits().count }
-    private var collected: Int {
-        var count = 0
-        if state.chapterN > 1 || (state.chapterN == 1 && state.allDone) { count += 1 }
-        if state.chapterN >= 3 && state.allDone { count += 1 }
-        return count
-    }
+    private var collected: Int { state.completedChapterCount }
 
     private func nicheUnlocked(_ chapterN: Int) -> Bool {
-        switch chapterN {
-        case 1: return state.chapterN > 1 || (state.chapterN == 1 && state.allDone)
-        case 3: return state.chapterN >= 3 && state.allDone
-        default: return false
-        }
+        state.isChapterComplete(chapterN)
     }
 
     var body: some View {

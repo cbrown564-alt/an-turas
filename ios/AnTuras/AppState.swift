@@ -16,22 +16,45 @@ final class AppState: ObservableObject {
     }
 
     struct Saved: Codable {
-        var done: [Bool] = [false, false, false, false, false]
+        var activeChapter: Int = 1
+        /// Session completion per chapter, keyed by chapter number.
+        var doneByChapter: [Int: [Bool]] = [:]
         var name: String = ""
         var visits: [String: VisitProgress] = [:]
 
         init() {}
 
-        // Custom decode so saves written before Ar Ais existed still load.
-        private enum Keys: String, CodingKey { case done, name, visits }
+        private enum Keys: String, CodingKey {
+            case activeChapter, doneByChapter, name, visits, done
+        }
+
+        // Custom decode: migrate single-chapter saves and pre-Ar-Ais writes.
         init(from decoder: Decoder) throws {
             let keys = try decoder.container(keyedBy: Keys.self)
-            done = try keys.decodeIfPresent([Bool].self, forKey: .done) ?? []
+            activeChapter = try keys.decodeIfPresent(Int.self, forKey: .activeChapter) ?? 1
+            doneByChapter = try keys.decodeIfPresent([Int: [Bool]].self, forKey: .doneByChapter) ?? [:]
             name = try keys.decodeIfPresent(String.self, forKey: .name) ?? ""
             visits = try keys.decodeIfPresent([String: VisitProgress].self, forKey: .visits) ?? [:]
+
+            if doneByChapter.isEmpty,
+               let legacyDone = try keys.decodeIfPresent([Bool].self, forKey: .done) {
+                doneByChapter[1] = legacyDone
+                if legacyDone.allSatisfy({ $0 }), activeChapter < 2 {
+                    activeChapter = 2
+                }
+            }
+        }
+
+        func encode(to encoder: Encoder) throws {
+            var keys = encoder.container(keyedBy: Keys.self)
+            try keys.encode(activeChapter, forKey: .activeChapter)
+            try keys.encode(doneByChapter, forKey: .doneByChapter)
+            try keys.encode(name, forKey: .name)
+            try keys.encode(visits, forKey: .visits)
         }
     }
 
+    @Published var activeChapterN: Int
     @Published var done: [Bool]
     @Published var learnerName: String {
         didSet { persist() }
@@ -39,86 +62,114 @@ final class AppState: ObservableObject {
     @Published var visitProgress: [String: VisitProgress]
     @Published var artBranch: String? = nil
 
-    let chapterN: Int
-    let chapter: Chapter
     let journey: [JourneyChapter]
-    let visits: [Visit]
 
-    private static let key = "turas_c1"
+    /// Per-chapter session flags — the road behind you, chapter by chapter.
+    private var doneByChapter: [Int: [Bool]]
+
+    private static let key = "turas_progress"
+    private static let legacyKey = "turas_c1"
+
+    /// The chapter the learner is working through (1-based).
+    var chapterN: Int { activeChapterN }
+
+    var chapter: Chapter { ContentLoader.chapter(activeChapterN) }
+
+    /// Visits from every chapter walked so far — session indices stay local.
+    var visits: [Visit] {
+        ContentLoader.visits(throughChapter: activeChapterN)
+    }
 
     init() {
-        var chapterN = 1
-        #if DEBUG
-        let args = ProcessInfo.processInfo.arguments
-        if let flagIndex = args.firstIndex(of: "--chapter"),
-           args.indices.contains(flagIndex + 1),
-           let n = Int(args[flagIndex + 1]) {
-            chapterN = n
-        }
-        #endif
-        self.chapterN = chapterN
-        switch chapterN {
-        case 3: chapter = ContentLoader.chapter3()
-        case 2: chapter = ContentLoader.chapter2()
-        default: chapter = ContentLoader.chapter1()
-        }
         journey = ContentLoader.journey()
-        visits = ContentLoader.visits()
+
         let saved: Saved
         if let data = UserDefaults.standard.data(forKey: Self.key),
            let decoded = try? JSONDecoder().decode(Saved.self, from: data) {
             saved = decoded
+        } else if let legacy = UserDefaults.standard.data(forKey: Self.legacyKey),
+                  let decoded = try? JSONDecoder().decode(LegacySaved.self, from: legacy) {
+            saved = Self.migrateLegacy(decoded)
         } else {
             saved = Saved()
         }
-        var doneFlags = saved.done
-        if doneFlags.count != chapter.sessions.count {
-            doneFlags = Array(repeating: false, count: chapter.sessions.count)
-        }
+
+        var activeChapter = saved.activeChapter
+        var progressByChapter = saved.doneByChapter
         var name = saved.name
         var progress = saved.visits
+        var chapterOverride = false
 
-        // Debug seeding for screenshots/snapshot tests, alongside --map,
-        // --session and --reveal: `--name Niamh` sets the learner name,
-        // `--done N` marks the first N sessions carved, `--due N` backdates
-        // N visits so the Ar Ais queue can be demoed without waiting a day.
         #if DEBUG
         let args = ProcessInfo.processInfo.arguments
+        chapterOverride = args.contains("--chapter")
+        if let flagIndex = args.firstIndex(of: "--chapter"),
+           args.indices.contains(flagIndex + 1),
+           let n = Int(args[flagIndex + 1]) {
+            activeChapter = min(max(n, 1), ContentLoader.maxChapter)
+        }
         if let flagIndex = args.firstIndex(of: "--name"),
            args.indices.contains(flagIndex + 1) {
             name = args[flagIndex + 1]
         }
-        if let flagIndex = args.firstIndex(of: "--done"),
-           args.indices.contains(flagIndex + 1),
-           let count = Int(args[flagIndex + 1]) {
-            for index in doneFlags.indices { doneFlags[index] = index < count }
+        #endif
+
+        activeChapterN = min(max(activeChapter, 1), ContentLoader.maxChapter)
+
+        if !chapterOverride {
+            while activeChapterN < ContentLoader.maxChapter {
+                let flags = Self.normalizedDone(
+                    progressByChapter[activeChapterN],
+                    sessionCount: ContentLoader.chapter(activeChapterN).sessions.count)
+                guard !flags.isEmpty, flags.allSatisfy({ $0 }) else { break }
+                activeChapterN += 1
+            }
         }
-        if let flagIndex = args.firstIndex(of: "--due"),
-           args.indices.contains(flagIndex + 1),
-           let count = Int(args[flagIndex + 1]) {
-            for (offset, visit) in visits.prefix(count).enumerated() {
-                // Staggered into the past so the queue reads lived-in:
-                // inniu, 2 lá ó shin, 4 lá ó shin…
+
+        doneByChapter = progressByChapter
+
+        var doneFlags = Self.normalizedDone(
+            progressByChapter[activeChapterN],
+            sessionCount: ContentLoader.chapter(activeChapterN).sessions.count)
+
+        #if DEBUG
+        let debugArgs = ProcessInfo.processInfo.arguments
+        if let flagIndex = debugArgs.firstIndex(of: "--done"),
+           debugArgs.indices.contains(flagIndex + 1),
+           let count = Int(debugArgs[flagIndex + 1]) {
+            for index in doneFlags.indices { doneFlags[index] = index < count }
+            progressByChapter[activeChapterN] = doneFlags
+            doneByChapter = progressByChapter
+        }
+        if let flagIndex = debugArgs.firstIndex(of: "--due"),
+           debugArgs.indices.contains(flagIndex + 1),
+           let count = Int(debugArgs[flagIndex + 1]) {
+            let allVisits = ContentLoader.visits(throughChapter: activeChapterN)
+            for (offset, visit) in allVisits.prefix(count).enumerated() {
                 progress[visit.id] = VisitProgress(
                     due: Date().addingTimeInterval(-Double(offset) * 2 * 86400),
                     interval: 1, reps: 0)
             }
         }
-        if let flagIndex = args.firstIndex(of: "--art"),
-           args.indices.contains(flagIndex + 1) {
-            artBranch = args[flagIndex + 1]
+        if let flagIndex = debugArgs.firstIndex(of: "--art"),
+           debugArgs.indices.contains(flagIndex + 1) {
+            artBranch = debugArgs[flagIndex + 1]
         }
         #endif
 
-        // Migration: sessions finished before Ar Ais existed (or seeded via
-        // --done) still owe the road their people. Schedule them as if the
-        // session ended today — they'll come asking tomorrow.
+        // Migration: sessions finished before Ar Ais existed still owe their
+        // people a visit — schedule across every chapter walked so far.
         var migrationAdded = false
-        for (index, isDone) in doneFlags.enumerated() where isDone {
-            for visit in visits where visit.session == index && progress[visit.id] == nil {
-                progress[visit.id] = VisitProgress(
-                    due: Date().addingTimeInterval(86400), interval: 1, reps: 0)
-                migrationAdded = true
+        for chapterNum in 1...activeChapterN {
+            let chapterDone = progressByChapter[chapterNum]
+                ?? (chapterNum == activeChapterN ? doneFlags : [])
+            let chapterVisits = ContentLoader.visits(forChapter: chapterNum)
+            for (index, isDone) in chapterDone.enumerated() where isDone {
+                for visit in chapterVisits where visit.session == index && progress[visit.id] == nil {
+                    progress[visit.id] = VisitProgress(
+                        due: Date().addingTimeInterval(86400), interval: 1, reps: 0)
+                    migrationAdded = true
+                }
             }
         }
 
@@ -126,33 +177,62 @@ final class AppState: ObservableObject {
         learnerName = name
         visitProgress = progress
 
-        // Write the migration through so the due dates stop sliding — but
-        // never persist state invented by debug seeding.
+        let migratedFromLegacy = UserDefaults.standard.data(forKey: Self.key) == nil
+            && UserDefaults.standard.data(forKey: Self.legacyKey) != nil
+
         var seeded = false
         #if DEBUG
         seeded = ProcessInfo.processInfo.arguments.contains("--done")
             || ProcessInfo.processInfo.arguments.contains("--due")
         #endif
-        if migrationAdded && !seeded {
+        if (migrationAdded || migratedFromLegacy) && !seeded {
             persist()
         }
     }
 
     var allDone: Bool { done.allSatisfy { $0 } }
 
-    /// The chapter the learner is standing in (1-based, as on the map).
-    /// Only chapter 1 has content; once it's carved the road points at 2.
-    var currentChapterN: Int { allDone ? 2 : 1 }
+    /// The chapter highlighted on the island map (1-based).
+    var currentChapterN: Int {
+        isChapterComplete(activeChapterN)
+            ? min(activeChapterN + 1, ContentLoader.maxChapter + 1)
+            : activeChapterN
+    }
+
+    /// Chapters whose five sessions are all carved.
+    var completedChapterCount: Int {
+        (1...ContentLoader.maxChapter).filter(isChapterComplete).count
+    }
+
+    func isChapterComplete(_ chapterN: Int) -> Bool {
+        guard let flags = doneByChapter[chapterN] else { return false }
+        return !flags.isEmpty && flags.allSatisfy { $0 }
+    }
 
     func markDone(_ index: Int) {
         guard done.indices.contains(index) else { return }
         done[index] = true
-        // Finishing a session puts its people on the road: they'll come
-        // asking tomorrow, not tonight — the amárach hook stays honest.
-        for visit in visits where visit.session == index && visitProgress[visit.id] == nil {
+        doneByChapter[activeChapterN] = done
+
+        let chapterVisits = ContentLoader.visits(forChapter: activeChapterN)
+        for visit in chapterVisits where visit.session == index && visitProgress[visit.id] == nil {
             visitProgress[visit.id] = VisitProgress(
                 due: Date().addingTimeInterval(86400), interval: 1, reps: 0)
         }
+
+        persist()
+    }
+
+    /// Move to the next chapter once the current one is fully carved — called
+    /// when leaving a session or opening the map so the completion page can
+    /// still read `allDone` on the chapter just finished.
+    func advanceToNextChapterIfNeeded() {
+        guard isChapterComplete(activeChapterN),
+              activeChapterN < ContentLoader.maxChapter else { return }
+        activeChapterN += 1
+        done = Self.normalizedDone(
+            doneByChapter[activeChapterN],
+            sessionCount: chapter.sessions.count)
         persist()
     }
 
@@ -190,17 +270,54 @@ final class AppState: ObservableObject {
     }
 
     private func persist() {
-        let saved = Saved(done: done, name: learnerName, visits: visitProgress)
+        doneByChapter[activeChapterN] = done
+        let saved = Saved(
+            activeChapter: activeChapterN,
+            doneByChapter: doneByChapter,
+            name: learnerName,
+            visits: visitProgress)
         if let data = try? JSONEncoder().encode(saved) {
             UserDefaults.standard.set(data, forKey: Self.key)
         }
     }
+
+    // MARK: - Save migration
+
+    /// Pre-multi-chapter save shape (`turas_c1`).
+    private struct LegacySaved: Codable {
+        var done: [Bool] = []
+        var name: String = ""
+        var visits: [String: VisitProgress] = [:]
+    }
+
+    private static func migrateLegacy(_ legacy: LegacySaved) -> Saved {
+        var saved = Saved()
+        saved.name = legacy.name
+        saved.visits = legacy.visits
+        saved.doneByChapter[1] = legacy.done
+        if legacy.done.allSatisfy({ $0 }) {
+            saved.activeChapter = 2
+        }
+        return saved
+    }
+
+    private static func normalizedDone(_ flags: [Bool]?, sessionCount: Int) -> [Bool] {
+        var out = flags ?? []
+        if out.count != sessionCount {
+            out = Array(repeating: false, count: sessionCount)
+        }
+        return out
+    }
 }
 
 extension AppState.Saved {
-    init(done: [Bool], name: String, visits: [String: AppState.VisitProgress]) {
+    init(activeChapter: Int,
+         doneByChapter: [Int: [Bool]],
+         name: String,
+         visits: [String: AppState.VisitProgress]) {
         self.init()
-        self.done = done
+        self.activeChapter = activeChapter
+        self.doneByChapter = doneByChapter
         self.name = name
         self.visits = visits
     }
