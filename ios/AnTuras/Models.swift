@@ -27,6 +27,10 @@ struct Gloss: Decodable, Identifiable, Equatable {
     let t: String
     let g: String
     let s: String?
+    /// Optional id into the shared lexicon (see DRILL.md). A gloss is a *view*
+    /// of a lexeme; this ties its appearances together. Defaulted so existing
+    /// content decodes unchanged.
+    var ref: String? = nil
     var id: String { t }
 }
 
@@ -61,8 +65,11 @@ struct SpeechBeat: Decodable {
     let who: String?
     let g: String
     let ph: String?
+    /// Optional id into the shared lexicon (see DRILL.md). Defaulted so existing
+    /// content decodes unchanged.
+    var ref: String? = nil
 
-    var gloss: Gloss { Gloss(t: s, g: g, s: ph) }
+    var gloss: Gloss { Gloss(t: s, g: g, s: ph, ref: ref) }
 }
 
 struct ScenePage: Decodable {
@@ -216,6 +223,32 @@ struct FinBlock: Decodable {
     let paras: [String]
 }
 
+// MARK: Discover — rules learned by induction (Brilliant model; see DRILL.md)
+
+/// One step of a discovery sequence. A step with `prompt` is a *produce* step —
+/// the learner completes the case before the rule is named. Otherwise it `show`s
+/// a worked case. Reveal, reveal, then withhold: the learner induces the rule.
+struct DiscoverStep: Decodable, Identifiable {
+    /// A worked transformation shown to the learner ("cat → mo chat").
+    let show: String?
+    /// A withheld case the learner completes ("garraí → mo ___").
+    let prompt: String?
+    /// Expected production for a `prompt` step.
+    let answer: String?
+    var id: String { show ?? prompt ?? answer ?? "" }
+}
+
+/// A guided-discovery page: the learner produces the pattern before it is
+/// stated. `teach` (the plain rule) is revealed only after the produce step.
+struct DiscoverBlock: Decodable {
+    /// Id into the pattern bank this sequence teaches (see DRILL.md).
+    let pattern: String?
+    /// Plain statement of the rule — shown only after the learner has produced it.
+    let teach: String
+    let context: String?
+    let steps: [DiscoverStep]
+}
+
 // MARK: The page
 
 /// Which of the app's registers a page belongs to. Each register has its own
@@ -236,6 +269,7 @@ enum Page: Decodable {
     case echo(EchoBlock)
     case turn(TurnBlock)
     case recarve(RecarveBlock)
+    case discover(DiscoverBlock)
     case lens(LensBlock)
     case inscription(InscriptionBlock)
     case seanfhocal(SeanfhocalBlock)
@@ -257,6 +291,7 @@ enum Page: Decodable {
         case "echo":        self = .echo(try EchoBlock(from: decoder))
         case "turn":        self = .turn(try TurnBlock(from: decoder))
         case "recarve":     self = .recarve(try RecarveBlock(from: decoder))
+        case "discover":    self = .discover(try DiscoverBlock(from: decoder))
         case "lens":        self = .lens(try LensBlock(from: decoder))
         case "inscription": self = .inscription(try InscriptionBlock(from: decoder))
         case "seanfhocal":  self = .seanfhocal(try SeanfhocalBlock(from: decoder))
@@ -271,7 +306,7 @@ enum Page: Decodable {
 
     var isExercise: Bool {
         switch self {
-        case .choice, .assemble, .typein, .match, .listen, .echo, .turn, .recarve:
+        case .choice, .assemble, .typein, .match, .listen, .echo, .turn, .recarve, .discover:
             return true
         default:
             return false
@@ -283,7 +318,7 @@ enum Page: Decodable {
         // A turn reads as story, not drill — it composes like a scene.
         case .scene, .turn: return .scene
         case .note: return .note
-        case .choice, .assemble, .typein, .match, .listen, .echo, .recarve:
+        case .choice, .assemble, .typein, .match, .listen, .echo, .recarve, .discover:
             return .exercise
         case .lens, .inscription, .seanfhocal, .artifact, .fin: return .feature
         }
@@ -336,6 +371,57 @@ struct Visit: Decodable, Identifiable {
     var displayPhrase: String { display ?? answer }
 }
 
+// MARK: - The shared item spine (lexicon + patterns — see DRILL.md)
+
+/// Where the story first earns an item — the backlink a drill card shows and the
+/// invariant that keeps drill downstream of story ("from Dáire's yard, s.3").
+struct ContentRef: Decodable, Equatable {
+    let chapter: Int
+    let session: Int?
+}
+
+/// A single vocabulary item with a stable id — the atom both surfaces share.
+/// Story beats reference these (via `Gloss.ref` / `SpeechBeat.ref`); the drill
+/// deck schedules them. Authored per chapter beside the scene that earns it and
+/// merged into one bank at load, mirroring how `Visit`s are handled.
+struct Lexeme: Decodable, Identifiable {
+    let id: String
+    let ga: String
+    let en: String
+    let ph: String?
+    /// word · phrase · pattern-instance — shapes how the deck drills it.
+    let kind: String?
+    let tags: [String]?
+    /// Dialect this form belongs to; variants share a `lemma`. Connacht ships
+    /// first (SPINE rule 5 / STRATEGY D2).
+    let dialect: String?
+    let lemma: String?
+    let earnedAt: ContentRef?
+}
+
+/// How a pattern slot is filled: an explicit list, or every lexeme carrying a
+/// given tag (so fills stay in sync with the lexicon).
+struct PatternSlot: Decodable {
+    let options: [String]?
+    let fromTag: String?
+}
+
+/// A grammatical rule with a fillable frame. The drill surface generates
+/// substitution items by rotating slot fills drawn from the lexicon, so grammar
+/// practice reinforces vocabulary. `note` is a forward reference to the
+/// An Nóta Gramadaí page that teaches it once notes carry ids (see DRILL.md).
+struct Pattern: Decodable, Identifiable {
+    let id: String
+    let note: String?
+    let teach: String
+    /// Template with {slot} placeholders, e.g. "Is mise {x}".
+    let frame: String
+    let slots: [String: PatternSlot]?
+    /// A minimal-pair frame that makes the rule click by contrast.
+    let contrast: String?
+    let earnedAt: ContentRef?
+}
+
 enum ContentLoader {
     /// Highest chapter number shipped in bundled JSON.
     static let maxChapter = 3
@@ -380,6 +466,35 @@ enum ContentLoader {
     /// Backward-compatible alias — chapter 1 visits only.
     static func visits() -> [Visit] {
         visits(forChapter: 1)
+    }
+
+    // MARK: The shared item spine
+
+    /// Lexemes authored in one chapter's JSON (co-located with the scenes that
+    /// earn them). A missing "lexicon" key decodes to empty, so already-shipped
+    /// chapters need no rewrite.
+    static func lexicon(forChapter n: Int) -> [Lexeme] {
+        struct Bank: Decodable { let lexicon: [Lexeme]? }
+        return decode(Bank.self, from: "chapter\(n)").lexicon ?? []
+    }
+
+    /// The whole lexicon earned across chapters 1…n — all the drill deck may draw
+    /// from. Drill can only ever schedule items the story has already earned.
+    static func lexicon(throughChapter n: Int) -> [Lexeme] {
+        guard n >= 1 else { return [] }
+        return (1...min(n, maxChapter)).flatMap { lexicon(forChapter: $0) }
+    }
+
+    /// Grammar patterns authored in one chapter's JSON. Missing key → empty.
+    static func patterns(forChapter n: Int) -> [Pattern] {
+        struct Bank: Decodable { let patterns: [Pattern]? }
+        return decode(Bank.self, from: "chapter\(n)").patterns ?? []
+    }
+
+    /// Every pattern earned across chapters 1…n.
+    static func patterns(throughChapter n: Int) -> [Pattern] {
+        guard n >= 1 else { return [] }
+        return (1...min(n, maxChapter)).flatMap { patterns(forChapter: $0) }
     }
 
     private static func decode<T: Decodable>(_ type: T.Type, from resource: String) -> T {
