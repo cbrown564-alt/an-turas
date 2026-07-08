@@ -106,6 +106,10 @@ struct TurnBlock: Decodable {
 // MARK: Other page payloads
 
 struct NoteBlock: Decodable {
+    /// Stable handle so a `Pattern.note` (and, later, a `discover`) can point at
+    /// the An Nóta Gramadaí page that teaches it in prose. Optional and absent on
+    /// most notes — only the ones a pattern references need one (see DRILL.md).
+    let id: String?
     let title: String
     let paras: [String]
     let pairs: [String]?

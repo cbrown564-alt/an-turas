@@ -191,10 +191,7 @@ struct SessionView: View {
             RecarveView(block: recarve, onSolved: { solved(page) })
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .discover(let discover):
-            // Schema-only: the discovery interaction is not built yet (DRILL.md).
-            // No authored content emits `discover`, so this stub never renders at
-            // runtime — it exists only to keep the switch exhaustive.
-            Text(discover.teach)
+            DiscoverView(block: discover, onSolved: { solved(page) })
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .lens(let lens):
             LensView(block: lens)

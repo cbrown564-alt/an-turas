@@ -2,8 +2,9 @@
 
 *Drafted 2026-07-08. How the app teaches vocabulary at volume, grammar across
 contexts, and rules by discovery — without rebuilding the extrinsic-reward
-machinery the whole product exists to reject. Companion to [SPINE.md](SPINE.md);
-schema-only first pass has landed in `ios/AnTuras/Models.swift`.*
+machinery the whole product exists to reject. Companion to [SPINE.md](SPINE.md).
+The shared item spine and the first drill projection — `discover` — have landed;
+chapter 1 is tagged and its `caol le caol` discovery page is playable.*
 
 ## The principle
 
@@ -127,10 +128,11 @@ Landed in `Models.swift`, non-breaking:
 - Optional `ref` on `Gloss` and `SpeechBeat`, threaded through — backward
   compatible.
 
-Deliberately **not** built yet: the scheduler, the deck assembly, any drill UI,
-the `discover` view, and note ids. The point of the schema-only pass is to tag
-chapter 1's items against real shapes and feel whether the spine holds before a
-line of it is wired up.
+Deliberately **not** built yet: the scheduler, the deck assembly, and the two
+*retrieval* projections (the due-lexeme deck and generated substitution drills).
+The point of the schema-only pass was to tag chapter 1's items against real
+shapes and feel whether the spine holds before a line of it is wired up. It held
+— and the first projection is now wired (see below).
 
 ## What tagging chapter 1 found
 
@@ -155,10 +157,41 @@ importance as the second grammar projection (not just the Brilliant flourish),
 and note ids remain the one small addition still owed (for `Pattern.note` and a
 future `discover`→note link).
 
+## What building the discover surface landed
+
+*2026-07-08.* The first of the three projections is wired end-to-end. `discover`
+was the right one to make real first: it is fully *authored*, so it leans on none
+of the deferred scheduler work, and the tagging pass had already promoted it from
+Brilliant-flourish to the home for classification rules `Pattern` can't hold.
+
+- **`DiscoverView`** (`ios/AnTuras/DiscoverView.swift`) renders a sequence as
+  *reveal → reveal → withhold*: worked cases land one at a time as the learner
+  taps through, the final `prompt` step makes them produce the next case, and
+  only then does `teach` — the rule — carve in, framed as *an riail a d'aimsigh
+  tú* (the rule you found). It replaces the old stub that rendered `teach`
+  immediately — the exact anti-pattern the surface exists to reject.
+- **Chapter 1's *caol le caol, leathan le leathan*** is the first real `discover`
+  page (session 3): inducted from names the learner already knows (Dáire, Áine,
+  Rónán) and applied to a fresh one (Ciara). It is the capstone of the
+  broad/slender arc the single-consonant `choice` pages set up — the positional
+  agreement rule none of them named.
+- **Note ids landed.** `NoteBlock` gained an optional `id`; both chapter-1
+  patterns' `note` references now resolve (`note.two-to-bes`,
+  `note.every-placename-poem`), and the broad/slender note carries
+  `note.two-flavours` for the discover→note link when it comes.
+
+Two small policy choices, recorded: produce grading is **case- and
+fada-insensitive** (grasping the rule counts even if a length mark slips), and
+produce steps stay **text entry** — honouring the schema's free production rather
+than collapsing to a tap-choice. Verified: chapter 1 still decodes, the app
+launches past its fail-loud content guard, and the grader accepts *Ciara* /
+*ciara* / *CIARA* while rejecting *Ciare* / *Ciar*.
+
 ## Open questions
 
-- **Note ids.** `NoteBlock` needs an optional `id` for `Pattern.note` to resolve.
-  Trivial and non-breaking; deferred so the first pass stays minimal.
+- **`discover` → note link.** `DiscoverBlock` has no `note` field yet;
+  `note.two-flavours` already exists to be pointed at once it does, so the learner
+  can read the nóta *after* the aha. Small and non-breaking.
 - **Scheduling policy.** Deck size, spacing, interleaving — folded into the
   existing SRS-under-review work, not invented here.
 - **Coverage definition.** Production vs recognition threshold for what counts as
