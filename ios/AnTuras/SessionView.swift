@@ -68,11 +68,13 @@ struct SessionView: View {
     @State private var activeGloss: Gloss?
     @State private var visited: Set<Int> = []
     @State private var launched = false
+    var onOpenVocabDeck: (() -> Void)?
 
-    init(chapter: Chapter, sessionIndex: Int) {
+    init(chapter: Chapter, sessionIndex: Int, onOpenVocabDeck: (() -> Void)? = nil) {
         let session = chapter.sessions[sessionIndex]
         _vm = StateObject(wrappedValue:
             SessionVM(session: session, sessionIndex: sessionIndex))
+        self.onOpenVocabDeck = onOpenVocabDeck
     }
 
     var body: some View {
@@ -131,7 +133,8 @@ struct SessionView: View {
             if visited.contains(page) {
                 if page == vm.completionIndex {
                     CompletionPage(sessionIndex: vm.sessionIndex,
-                                   hook: vm.session.hook) {
+                                   hook: vm.session.hook,
+                                   onOpenDeck: onOpenVocabDeck) {
                         Haptics.tap()
                         state.advanceToNextChapterIfNeeded()
                         dismiss()
@@ -618,10 +621,16 @@ private struct OverscrollKnock: ViewModifier {
 /// The final page: the session sets, the flourish has already sounded — and
 /// the hook names tomorrow's reason to come back before the door closes.
 private struct CompletionPage: View {
+    @EnvironmentObject var state: AppState
     let sessionIndex: Int
     let hook: String?
+    var onOpenDeck: (() -> Void)?
     let onExit: () -> Void
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    private var deckOfferCount: Int {
+        state.deckOfferLexemes(forSession: sessionIndex).count
+    }
 
     var body: some View {
         VStack(spacing: 18) {
@@ -661,9 +670,27 @@ private struct CompletionPage: View {
                 .padding(.top, 18)
                 .modifier(RiseIn(order: 3, reduceMotion: reduceMotion))
             }
+            if deckOfferCount >= 2, let onOpenDeck {
+                VStack(spacing: 10) {
+                    Eyebrow(text: "Ón gcosán · optional", color: Theme.lichen)
+                    Text("\(deckOfferCount) frása ón seisiún seo atá réidh le hathbhreithniú — phrases from this session, ready to revisit.")
+                        .font(.system(size: 14.5, design: .serif))
+                        .italic()
+                        .foregroundStyle(Theme.inkSoft)
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(4)
+                        .frame(maxWidth: 340)
+                    PrimaryButton(title: "Athbhreithniú na bhfocal →", fullWidth: true) {
+                        Haptics.tap()
+                        onOpenDeck()
+                    }
+                }
+                .padding(.top, 8)
+                .modifier(RiseIn(order: 4, reduceMotion: reduceMotion))
+            }
             Spacer()
             PrimaryButton(title: "Ar ais chuig an léarscáil →", fullWidth: true, action: onExit)
-                .modifier(RiseIn(order: 4, reduceMotion: reduceMotion))
+                .modifier(RiseIn(order: deckOfferCount >= 2 ? 5 : 4, reduceMotion: reduceMotion))
         }
         .padding(.horizontal, 22)
         .padding(.bottom, 24)

@@ -15,17 +15,22 @@ final class AppState: ObservableObject {
         var reps: Int
     }
 
+    /// Scheduling state for one lexeme in the vocab deck — same interval math
+    /// as Ar Ais visits, keyed by unified lexeme id (DRILL.md §1).
+    typealias LexemeProgress = VisitProgress
+
     struct Saved: Codable {
         var activeChapter: Int = 1
         /// Session completion per chapter, keyed by chapter number.
         var doneByChapter: [Int: [Bool]] = [:]
         var name: String = ""
         var visits: [String: VisitProgress] = [:]
+        var lexemes: [String: LexemeProgress] = [:]
 
         init() {}
 
         private enum Keys: String, CodingKey {
-            case activeChapter, doneByChapter, name, visits, done
+            case activeChapter, doneByChapter, name, visits, lexemes, done
         }
 
         // Custom decode: migrate single-chapter saves and pre-Ar-Ais writes.
@@ -35,6 +40,7 @@ final class AppState: ObservableObject {
             doneByChapter = try keys.decodeIfPresent([Int: [Bool]].self, forKey: .doneByChapter) ?? [:]
             name = try keys.decodeIfPresent(String.self, forKey: .name) ?? ""
             visits = try keys.decodeIfPresent([String: VisitProgress].self, forKey: .visits) ?? [:]
+            lexemes = try keys.decodeIfPresent([String: LexemeProgress].self, forKey: .lexemes) ?? [:]
 
             if doneByChapter.isEmpty,
                let legacyDone = try keys.decodeIfPresent([Bool].self, forKey: .done) {
@@ -51,6 +57,7 @@ final class AppState: ObservableObject {
             try keys.encode(doneByChapter, forKey: .doneByChapter)
             try keys.encode(name, forKey: .name)
             try keys.encode(visits, forKey: .visits)
+            try keys.encode(lexemes, forKey: .lexemes)
         }
     }
 
@@ -60,6 +67,7 @@ final class AppState: ObservableObject {
         didSet { persist() }
     }
     @Published var visitProgress: [String: VisitProgress]
+    @Published var lexemeProgress: [String: LexemeProgress]
     @Published var artBranch: String? = nil
 
     let journey: [JourneyChapter]
@@ -80,6 +88,12 @@ final class AppState: ObservableObject {
         ContentLoader.visits(throughChapter: activeChapterN)
     }
 
+    /// Earned lexemes from every chapter walked so far.
+    var lexicon: [Lexeme] {
+        ContentLoader.lexicon(throughChapter: activeChapterN)
+            .filter { hasEarned($0.earnedAt) }
+    }
+
     init() {
         journey = ContentLoader.journey()
 
@@ -98,6 +112,7 @@ final class AppState: ObservableObject {
         var progressByChapter = saved.doneByChapter
         var name = saved.name
         var progress = saved.visits
+        var lexProgress = saved.lexemes
         var chapterOverride = false
 
         #if DEBUG
@@ -150,6 +165,12 @@ final class AppState: ObservableObject {
                     due: Date().addingTimeInterval(-Double(offset) * 2 * 86400),
                     interval: 1, reps: 0)
             }
+            let allLexemes = ContentLoader.lexicon(throughChapter: activeChapter)
+            for (offset, lexeme) in allLexemes.prefix(count).enumerated() {
+                lexProgress[lexeme.id] = LexemeProgress(
+                    due: Date().addingTimeInterval(-Double(offset) * 86400),
+                    interval: 1, reps: 0)
+            }
         }
         if let flagIndex = debugArgs.firstIndex(of: "--art"),
            debugArgs.indices.contains(flagIndex + 1) {
@@ -170,6 +191,12 @@ final class AppState: ObservableObject {
                         due: Date().addingTimeInterval(86400), interval: 1, reps: 0)
                     migrationAdded = true
                 }
+                let chapterLexicon = ContentLoader.lexicon(forChapter: chapterNum)
+                for lexeme in chapterLexicon where lexeme.earnedAt?.session == index
+                    && lexProgress[lexeme.id] == nil {
+                    lexProgress[lexeme.id] = LexemeProgress(due: Date(), interval: 1, reps: 0)
+                    migrationAdded = true
+                }
             }
         }
 
@@ -177,6 +204,7 @@ final class AppState: ObservableObject {
         done = doneFlags
         learnerName = name
         visitProgress = progress
+        lexemeProgress = lexProgress
 
         let migratedFromLegacy = UserDefaults.standard.data(forKey: Self.key) == nil
             && UserDefaults.standard.data(forKey: Self.legacyKey) != nil
@@ -219,6 +247,14 @@ final class AppState: ObservableObject {
         for visit in chapterVisits where visit.session == index && visitProgress[visit.id] == nil {
             visitProgress[visit.id] = VisitProgress(
                 due: Date().addingTimeInterval(86400), interval: 1, reps: 0)
+        }
+
+        let chapterLexicon = ContentLoader.lexicon(forChapter: activeChapterN)
+        for lexeme in chapterLexicon where lexeme.earnedAt?.session == index
+            && lexemeProgress[lexeme.id] == nil {
+            // Available immediately for the optional first pass — the session
+            // hook and hub offer, never a gate (DRILL.md).
+            lexemeProgress[lexeme.id] = LexemeProgress(due: Date(), interval: 1, reps: 0)
         }
 
         persist()
@@ -280,13 +316,64 @@ final class AppState: ObservableObject {
         persist()
     }
 
+    // MARK: Vocab deck scheduling (DRILL.md §1)
+
+    func dueLexemes(now: Date = Date()) -> [Lexeme] {
+        lexicon
+            .filter { lexeme in
+                guard let p = lexemeProgress[lexeme.id] else { return false }
+                return p.due <= now
+            }
+            .sorted { (lexemeProgress[$0.id]?.due ?? now) < (lexemeProgress[$1.id]?.due ?? now) }
+    }
+
+    /// Lexemes from a session ready for the optional first-pass deck offer at
+    /// session close — due now and not yet produced in the deck.
+    func deckOfferLexemes(forSession session: Int) -> [Lexeme] {
+        dueLexemes()
+            .filter {
+                guard let earned = $0.earnedAt,
+                      earned.chapter == activeChapterN,
+                      earned.session == session else { return false }
+                return (lexemeProgress[$0.id]?.reps ?? 0) == 0
+            }
+    }
+
+    func nextLexemeReturn(now: Date = Date()) -> (lexeme: Lexeme, due: Date)? {
+        lexicon
+            .compactMap { lexeme -> (Lexeme, Date)? in
+                guard let p = lexemeProgress[lexeme.id], p.due > now else { return nil }
+                return (lexeme, p.due)
+            }
+            .min { $0.1 < $1.1 }
+    }
+
+    func completeLexeme(_ lexeme: Lexeme, struggled: Bool, now: Date = Date()) {
+        var p = lexemeProgress[lexeme.id]
+            ?? LexemeProgress(due: now, interval: 1, reps: 0)
+        p.interval = struggled ? 1 : max(p.interval * 2.5, 2.5)
+        p.due = now.addingTimeInterval(p.interval * 86400)
+        p.reps += 1
+        lexemeProgress[lexeme.id] = p
+        persist()
+    }
+
+    /// How many earned lexemes in a chapter have been produced in the deck at
+    /// least once — the honest coverage signal (DRILL.md).
+    func producedLexemes(inChapter chapterN: Int) -> Int {
+        ContentLoader.lexicon(forChapter: chapterN)
+            .filter { hasEarned($0.earnedAt) && (lexemeProgress[$0.id]?.reps ?? 0) > 0 }
+            .count
+    }
+
     private func persist() {
         doneByChapter[activeChapterN] = done
         let saved = Saved(
             activeChapter: activeChapterN,
             doneByChapter: doneByChapter,
             name: learnerName,
-            visits: visitProgress)
+            visits: visitProgress,
+            lexemes: lexemeProgress)
         if let data = try? JSONEncoder().encode(saved) {
             UserDefaults.standard.set(data, forKey: Self.key)
         }
@@ -325,12 +412,14 @@ extension AppState.Saved {
     init(activeChapter: Int,
          doneByChapter: [Int: [Bool]],
          name: String,
-         visits: [String: AppState.VisitProgress]) {
+         visits: [String: AppState.VisitProgress],
+         lexemes: [String: AppState.LexemeProgress] = [:]) {
         self.init()
         self.activeChapter = activeChapter
         self.doneByChapter = doneByChapter
         self.name = name
         self.visits = visits
+        self.lexemes = lexemes
     }
 }
 

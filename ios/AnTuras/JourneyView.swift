@@ -13,6 +13,7 @@ struct JourneyView: View {
     let onOpenChapter: () -> Void
     let onOpenMuseum: () -> Void
     let onOpenArAis: () -> Void
+    let onOpenVocabDeck: () -> Void
     let onOpenPatrun: () -> Void
 
     @State private var selected: JourneyChapter?
@@ -47,6 +48,7 @@ struct JourneyView: View {
 
                 VStack(spacing: 10) {
                     arAisRow
+                    vocabRow
                     patrunRow
                     museumRow
                 }
@@ -135,6 +137,31 @@ struct JourneyView: View {
         var seen: Set<String> = []
         let unique = names.filter { seen.insert($0).inserted }
         return unique.joined(separator: ", ")
+    }
+
+    private var dueLexemeCount: Int { state.dueLexemes().count }
+
+    /// The vocabulary-at-volume invitation — phrases the story has earned and
+    /// that are ready to revisit. Optional-but-invited, never a gate (DRILL.md).
+    @ViewBuilder
+    private var vocabRow: some View {
+        if dueLexemeCount > 0 {
+            JourneyRow(
+                title: "Na Focail — \(dueLexemeCount) frása réidh le hathbhreithniú",
+                sub: "Phrases from the path, ready to produce again — coverage, not points.",
+                accent: Theme.lichen,
+                showDot: true,
+                glyph: { ArtifactGlyphView(glyph: "hornbook", color: Theme.lichen) },
+                action: { Haptics.tap(); onOpenVocabDeck() })
+        } else if let next = state.nextLexemeReturn() {
+            JourneyRow(
+                title: "Na Focail — níl frása ar bith fós",
+                sub: "Fillfidh \(next.lexeme.ga) \(Turas.until(next.due)) — \(next.lexeme.en) will be ready to revisit.",
+                accent: Theme.stone,
+                showDot: false,
+                glyph: { ArtifactGlyphView(glyph: "hornbook", color: Theme.inkFaint) },
+                action: { Haptics.tap(); onOpenVocabDeck() })
+        }
     }
 
     /// Patterns whose earning session is behind the learner and that generate

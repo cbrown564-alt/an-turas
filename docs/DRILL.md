@@ -3,10 +3,11 @@
 *Drafted 2026-07-08. How the app teaches vocabulary at volume, grammar across
 contexts, and rules by discovery — without rebuilding the extrinsic-reward
 machinery the whole product exists to reject. Companion to [SPINE.md](SPINE.md).
-The shared item spine and two of the three drill projections — `discover` and
-grammar-at-volume (generated substitution drills) — have landed; chapter 1 is
-tagged, its `caol le caol` discovery page is playable, and its two copula
-patterns run at volume from the hub.*
+All three drill projections have landed for chapter 1: `discover`, grammar-at-
+volume (generated substitution drills), and vocabulary-at-volume (the scheduled
+retrieval deck). Chapter 1 is tagged; its `caol le caol` discovery page is
+playable; its copula patterns run at volume from the hub; and its lexemes review
+through Na Focail.*
 
 ## The principle
 
@@ -134,9 +135,9 @@ Deliberately **not** built in the schema-only pass: the scheduler, the deck
 assembly, and the two *retrieval* projections (the due-lexeme deck and generated
 substitution drills). The point was to tag chapter 1's items against real shapes
 and feel whether the spine holds before a line of it is wired up. It held — and
-both authored projections have since been wired: `discover`, then grammar-at-
-volume (the substitution drills, run unscheduled). Only the *vocabulary* deck and
-the shared scheduler under it remain (see the two build logs below).
+all three projections have since been wired: `discover`, grammar-at-volume (the
+substitution drills, run unscheduled), and vocabulary-at-volume (the scheduled
+retrieval deck over unified lexeme ids).
 
 ## What tagging chapter 1 found
 
@@ -234,13 +235,42 @@ is a natural second format); generation rotates a **single slot** (all shipped
 patterns have one); and **scheduling stays out** — this runs unscheduled, folded
 into the SRS-under-review work when it comes, exactly as the doc reserved.
 
+## What building vocabulary-at-volume landed
+
+*2026-07-08.* The third projection — vocabulary at volume as a scheduled retrieval
+deck — is wired end-to-end. Due earned lexemes assemble into cards; each runs
+through an existing format (`typein`, `listen`, or batched `match`), recall-first,
+with a backlink to the session that earned it.
+
+- **`LexemeDeck.items(due:in:)`** (`ios/AnTuras/LexemeDeck.swift`) is the
+  generator — the pure heart of the projection. Minimal-pair lemmas and fada-tagged
+  items prefer `listen`; tag groups of three or more batch into one `match`; everything
+  else is English→Irish `typein`. The deck caps at eight cards per run.
+- **`VocabDeckView`** (`ios/AnTuras/VocabDeckView.swift`) runs the queue: carve-bar
+  progress, existing exercise views unchanged, and a **coverage close** — every
+  phrase produced, plus how many of the chapter lexicon have been produced at least
+  once. Coverage, not points.
+- **Lexeme scheduling in `AppState`**: `lexemeProgress` mirrors visit scheduling
+  (same interval math, keyed by unified lexeme id). Session completion schedules
+  earned lexemes **due immediately** for the optional first pass; `completeLexeme`
+  spaces them out on success. Migration back-fills lexemes for sessions already carved.
+- **Hub invitation**: "Na Focail" row on the journey map when phrases are due —
+  optional-but-invited, never a gate, beside Ar Ais and Na Patrúin.
+- **Session hook**: completion page offers deck when ≥2 fresh phrases from the session
+  are ready ("frása ón seisiún seo atá réidh le hathbhreithniú") — the invitation
+  DRILL.md described, now wired.
+
+Verified: chapter 1 still decodes; `--vocab` and `--due N` debug flags reach the
+deck; earned lexemes only appear once their session is behind the learner.
+
 ## Open questions
 
 - **`discover` → note link.** `DiscoverBlock` has no `note` field yet;
   `note.two-flavours` already exists to be pointed at once it does, so the learner
   can read the nóta *after* the aha. Small and non-breaking.
-- **Scheduling policy.** Deck size, spacing, interleaving — folded into the
-  existing SRS-under-review work, not invented here.
+- **Scheduling policy.** Deck size (eight per run), spacing (same interval math
+  as Ar Ais), interleaving — a first pass, not the final FSRS review. Fold finer
+  policy into the existing SRS-under-review work.
 - **Coverage definition.** Production vs recognition threshold for what counts as
   "you can use this" on the museum signal.
 - **Lexeme authoring ergonomics.** Chapter-local JSON keeps items beside their

@@ -18,6 +18,7 @@ enum Route: Hashable {
     case session(Int)
     case museum
     case arAis
+    case vocabDeck
     case patrun
     case patrunDrill(String)
 }
@@ -63,6 +64,8 @@ struct ContentView: View {
                 }
             } else if args.contains("--patrun") {
                 path = [.journey, .patrun]
+            } else if args.contains("--vocab") {
+                path = [.journey, .vocabDeck]
             } else if args.contains("--map") {
                 path = [.journey, .map]
             } else if let flagIndex = args.firstIndex(of: "--session"),
@@ -87,6 +90,7 @@ struct ContentView: View {
                 onOpenChapter: { path.append(.map) },
                 onOpenMuseum: { path.append(.museum) },
                 onOpenArAis: { path.append(.arAis) },
+                onOpenVocabDeck: { path.append(.vocabDeck) },
                 onOpenPatrun: { path.append(.patrun) })
                 .background(Theme.bg.ignoresSafeArea())
                 .toolbarRole(.editor)
@@ -99,7 +103,8 @@ struct ContentView: View {
                 .toolbarRole(.editor)
                 .toolbarBackground(Theme.bg, for: .navigationBar)
         case .session(let index):
-            SessionView(chapter: state.chapter, sessionIndex: index)
+            SessionView(chapter: state.chapter, sessionIndex: index,
+                        onOpenVocabDeck: { path.append(.vocabDeck) })
                 .background(Theme.bg.ignoresSafeArea())
                 .toolbarRole(.editor)
                 .toolbarBackground(Theme.bg, for: .navigationBar)
@@ -112,6 +117,11 @@ struct ContentView: View {
                 .toolbarBackground(Theme.bg, for: .navigationBar)
         case .arAis:
             ArAisView()
+                .background(Theme.bg.ignoresSafeArea())
+                .toolbarRole(.editor)
+                .toolbarBackground(Theme.bg, for: .navigationBar)
+        case .vocabDeck:
+            VocabDeckView()
                 .background(Theme.bg.ignoresSafeArea())
                 .toolbarRole(.editor)
                 .toolbarBackground(Theme.bg, for: .navigationBar)
