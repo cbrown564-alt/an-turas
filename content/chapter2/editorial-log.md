@@ -89,4 +89,6 @@ The draft passed adversarial review on structure, tone, and SPINE grammar arc. T
 
 - `Models.swift`: added `ContentLoader.chapter2()`.
 - `chapter2.json` added to Xcode `Resources` group and build phase.
-- **Not done:** `ArtifactView` chapter-2 branch; `AppState` chapter selection; visits loader for ch. 2.
+- **Now done (commits `b6c6bb0`, `5992e13`):** illuminated-initial `ArtifactView`
+  branch; `AppState` multi-chapter selection + progress persistence; merged visits
+  loader now reads ch. 2. Remaining known gaps #2 (artifact) and #3 (visits) resolved.

@@ -1,18 +1,26 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-05.*
+and visual narrative. English → Irish only. Updated 2026-07-08.*
 
 ## Where we are
 
-**Phase 2 — content pipeline.** Phase 1 exit criteria met (D5): playtest feedback
-strongly positive; testers return without streaks and name **tá tú ar ais** and the
-**journey map** as pull mechanisms. Re-learners feel respected, the grammar ladder
-reads as intentional, and the journey map answers direction. Decisions locked on
-audio (Gemini, all-generated + QA), illustration scope (scene pages only), business
-model (premium + grants on top, Chapters 1–4 launch), listening-first pedagogy, and
-An Féilire as the gentle ritual layer. **Next:** build the content review CMS,
-stand up the editorial workflow, and produce Chapter 2 through the pipeline.
+**Phase 2 — content pipeline, proving repeatability.** Phase 1 exit criteria met (D5):
+playtest feedback strongly positive; testers return without streaks and name **tá tú
+ar ais** and the **journey map** as pull mechanisms. Re-learners feel respected, the
+grammar ladder reads as intentional, and the journey map answers direction. Decisions
+locked on audio (Gemini, all-generated + QA), illustration scope (scene pages only),
+business model (premium + grants on top, Chapters 1–4 launch), listening-first
+pedagogy, and An Féilire as the gentle ritual layer.
+
+**Since the last update, the pipeline ran twice more and the app went multi-chapter.**
+Chapters 2 (*Oileán na Naomh*) and 3 (*Na Lochlannaigh*) are both authored through the
+three-stage pipeline and wired into the app — each with its own artifact register
+(illuminated initial; hack-silver arm-ring) and cross-chapter progress/visits
+persistence. Both passed **adversarial (AI) review as "PASS WITH REVISIONS"** — the
+outstanding gate on both is **human board sign-off**, then audio and illustration.
+**Next:** stand up the content-review CMS + editorial board so Chapters 2–3 can clear
+human sign-off, install production audio, and author Chapter 4 to reach the launch set.
 
 ## Work completed
 
@@ -45,25 +53,38 @@ stand up the editorial workflow, and produce Chapter 2 through the pipeline.
 
 | 2026-07-05 | **Chapter 2 content pipeline run + process doc.** Three-stage pass (generator → adversarial reviewer → overall editor) produced `chapter2.json` (*Oileán na Naomh*, 5 sessions, 58 pages); repeatable workflow and good-enough gates written up | `content/chapter2/`, `ios/AnTuras/Resources/chapter2.json`, `docs/CONTENT-PIPELINE.md` |
 
+| 2026-07-06 | **Chapter 3 through the pipeline (*Na Lochlannaigh*, Vikings).** Second repeat of the three-stage pass produced `chapter3.json` (past tense + irregulars, directions, market/Norse-loanword payload, Dubhlinn lens); adversarial review returned **PASS WITH REVISIONS**, editor fixes logged. Human board sign-off, audio, and scene illustration still required | `content/chapter3/`, `ios/AnTuras/Resources/chapter3.json` |
+
+| 2026-07-07 | **App went multi-chapter.** `ContentLoader` now serves chapters 1–3; `AppState` gained multi-chapter selection with **per-chapter progress persistence**; visits loader **merges Ar Ais across chapters** (was chapter-1 only). Per-chapter artifact registers built: **illuminated initial** (ch. 2) and **hack-silver arm-ring** with `{name}` notch (ch. 3, `ArmRingView.swift`) | `ios/AnTuras/` (Models, AppState, ArtifactView, IlluminatedInitialView, ArmRingView) |
+
+| 2026-07-08 | **Build fixes.** Swift build errors in `AppState` init and share-card rendering resolved; tree building clean on simulator | `ios/AnTuras/` (AppState, ArtifactView) |
+
 ## Immediate next steps (Phase 2)
 
 1. **Content review CMS** — purpose-built review UI for the chapter JSON schema (D9).
    Stakeholders: writer, Irish-language pedagogue, historian, audio QA. Workflow:
    draft → linguist → historian → generate audio → native QA → sign-off → bundle.
 2. **Editorial board** — recruit at minimum one qualified Irish-language
-   pedagogue/teacher and one historian for Chapter 2 review (STRATEGY.md Phase 2).
-3. **Chapter 2 through the pipeline** — *Oileán na Naomh* first draft merged; human
-   board sign-off, audio, and illustration still required (`docs/CONTENT-PIPELINE.md`).
-4. **Install Gemini 3.1 TTS clips** — set `bundle_winner: gemini-3-flash` per line in
+   pedagogue/teacher and one historian to clear **Chapters 2 and 3** (both are
+   adversarial-reviewed "PASS WITH REVISIONS"; human sign-off is the gate — STRATEGY.md
+   Phase 2). This is now the top blocker: pipeline output is stacking up unsigned.
+3. **Human sign-off pass on Chapters 2 & 3** — apply the revisions the adversarial
+   reviews list (`content/chapter{2,3}/review.md`), then linguist → historian →
+   audio → sign-off. Drafts are merged and wired in-app; sign-off, audio, and
+   scene illustration remain (`docs/CONTENT-PIPELINE.md`).
+4. **Chapter 4 (*Na Normannaigh*) through the pipeline** — needed to reach the
+   Chapters 1–4 launch set (D10); third repeat proves the pipeline scales.
+5. **Install Gemini 3.1 TTS clips** — set `bundle_winner: gemini-3-flash` per line in
    `tools/tts-bakeoff/winners.json`, run `python bakeoff.py install`, regenerate Xcode
    project. Production pipeline: generate → native QA → bundle.
-5. **Illustration production recipe** — Solas an Atlantaigh on scene pages only (D8);
+6. **Illustration production recipe** — Solas an Atlantaigh on scene pages only (D8);
    document cost-per-scene and handoff from style bible (`docs/ILLUSTRATIONS.md` §10).
-6. **TestFlight build** — signed device build for wider playtest; needs Apple Developer
+   Ch. 2–3 scene images are still placeholders.
+7. **TestFlight build** — signed device build for wider playtest; needs Apple Developer
    account/team in `ios/project.yml`.
-7. **Send ABAIR commercial enquiry** — optional long-term dialect upgrade; not a
+8. **Send ABAIR commercial enquiry** — optional long-term dialect upgrade; not a
    Phase 2 blocker (D7). Draft at `docs/ABAIR-enquiry.md`.
-8. **Grant funding research** — map Foras na Gaeilge / Údarás schemes and strings
+9. **Grant funding research** — map Foras na Gaeilge / Údarás schemes and strings
    before accepting (D10: grants on top of premium, not instead of).
 
 ## Long-term plan
@@ -112,5 +133,7 @@ stand up the editorial workflow, and produce Chapter 2 through the pipeline.
 - Content accuracy: nothing ships publicly without native-speaker review.
 - Bespoke content cost per chapter remains the business-model risk; four chapters at
   launch is depth-over-breadth by design (D10).
-- CMS and editorial workflow are on the critical path — Chapter 2 cannot prove the
-  pipeline without them.
+- CMS and editorial workflow are on the critical path, and now the tightest
+  constraint: Chapters 2 and 3 are drafted, wired, and adversarial-reviewed but
+  **unsigned by humans** — content is being generated faster than it can be cleared,
+  and nothing ships publicly without native-speaker review.

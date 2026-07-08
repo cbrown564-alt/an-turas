@@ -68,4 +68,7 @@ The draft passed adversarial review on structure, SPINE payload, and Chapter 1â€
 
 - `Models.swift`: added `ContentLoader.chapter3()`.
 - `chapter3.json` added to Xcode Resources group and build phase.
-- **Not done:** `ArtifactView` arm-ring branch; `AppState` chapter selection; visits loader for ch. 3.
+- **Now done (commits `21b47e5`, `5992e13`, `3cf97a5`):** hack-silver arm-ring
+  `ArtifactView` branch (`ArmRingView.swift`) with `{name}` notch; `AppState`
+  multi-chapter selection + progress persistence; merged visits loader reads ch. 3;
+  Swift build errors in `AppState` init + share-card render fixed.
