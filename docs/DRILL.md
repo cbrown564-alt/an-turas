@@ -3,8 +3,10 @@
 *Drafted 2026-07-08. How the app teaches vocabulary at volume, grammar across
 contexts, and rules by discovery — without rebuilding the extrinsic-reward
 machinery the whole product exists to reject. Companion to [SPINE.md](SPINE.md).
-The shared item spine and the first drill projection — `discover` — have landed;
-chapter 1 is tagged and its `caol le caol` discovery page is playable.*
+The shared item spine and two of the three drill projections — `discover` and
+grammar-at-volume (generated substitution drills) — have landed; chapter 1 is
+tagged, its `caol le caol` discovery page is playable, and its two copula
+patterns run at volume from the hub.*
 
 ## The principle
 
@@ -128,11 +130,13 @@ Landed in `Models.swift`, non-breaking:
 - Optional `ref` on `Gloss` and `SpeechBeat`, threaded through — backward
   compatible.
 
-Deliberately **not** built yet: the scheduler, the deck assembly, and the two
-*retrieval* projections (the due-lexeme deck and generated substitution drills).
-The point of the schema-only pass was to tag chapter 1's items against real
-shapes and feel whether the spine holds before a line of it is wired up. It held
-— and the first projection is now wired (see below).
+Deliberately **not** built in the schema-only pass: the scheduler, the deck
+assembly, and the two *retrieval* projections (the due-lexeme deck and generated
+substitution drills). The point was to tag chapter 1's items against real shapes
+and feel whether the spine holds before a line of it is wired up. It held — and
+both authored projections have since been wired: `discover`, then grammar-at-
+volume (the substitution drills, run unscheduled). Only the *vocabulary* deck and
+the shared scheduler under it remain (see the two build logs below).
 
 ## What tagging chapter 1 found
 
@@ -186,6 +190,49 @@ produce steps stay **text entry** — honouring the schema's free production rat
 than collapsing to a tap-choice. Verified: chapter 1 still decodes, the app
 launches past its fail-loud content guard, and the grader accepts *Ciara* /
 *ciara* / *CIARA* while rejecting *Ciare* / *Ciar*.
+
+## What building grammar-at-volume landed
+
+*2026-07-08.* The second projection — grammar across contexts as *generated*
+substitution drills — is wired end-to-end. Unlike `discover` (authored), this
+one is produced from the spine: one earned `Pattern` × its slot fills becomes
+many items, "one core idea, slight variations," with nothing authored per item.
+
+- **`PatternDrill.items(for:in:)`** (`ios/AnTuras/PatternDrill.swift`) is the
+  generator — the pure heart of the projection. It splits the `frame`, rotates
+  the first slot's fills (explicit `options`, or every lexeme carrying the slot's
+  `fromTag`), and emits a `SubstitutionItem` per fill. The **fill is one atomic
+  tile**, so a multi-word placename ("Baile Átha Cliath") never turns ordering
+  into a spelling puzzle — the *frame order* is the retrieval, which is exactly
+  the grammar of the copula (`Is mise X`; `Is as X mé`, with *mé* trailing).
+- **No new format.** Each item is run through the existing `assemble` view
+  (DRILL.md said the retrieval projections reuse formats — taken literally). A
+  new `PatternDrillView` wraps it: a persistent **rule strip** on top (the
+  `teach` + the frame + the `contrast` struck through — the known groove kept in
+  sight, honouring SPINE rule 2's "explain, then drill"), a carve-bar of
+  progress, the current generated item, and a **coverage close** — every sentence
+  you produced, shown as chips. Coverage, not points (the anti-streak signal).
+- **`PatternsView`** lists the earned patterns as a peer surface reached from the
+  journey hub ("Na Patrúin"), beside Ar Ais and the museum — optional-but-invited,
+  never a gate. The invitation rides the hub rather than the session hook for now
+  (the hook wiring waits for the vocab deck).
+- **The spine's guarantee, enforced twice.** A new `AppState.hasEarned(_:)` gates
+  the surface on the *session* that earns each pattern (not just the chapter), so
+  a fresh chapter-1 learner sees nothing until they've walked to it. And every
+  fill is an earned lexeme or an authored option — the drill can only ever
+  schedule what the story has earned.
+
+One schema addition: `Pattern.cue` — the English *intent* a produced item shows
+("Say you're from {x}"), so the learner retrieves the frame rather than reading
+it back. Optional and non-breaking; both chapter-1 patterns carry one. Verified
+in-simulator end-to-end: the list is session-gated (Is mise · 4 focal, Is as ·
+5 focal), the runner renders rule strip + contrast + generated tiles with the
+cue substituted, and the close shows all four produced `Is mise …` sentences.
+
+Recorded, to revisit: the drill is **assemble-only** for now (a type-in variation
+is a natural second format); generation rotates a **single slot** (all shipped
+patterns have one); and **scheduling stays out** — this runs unscheduled, folded
+into the SRS-under-review work when it comes, exactly as the doc reserved.
 
 ## Open questions
 

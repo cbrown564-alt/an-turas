@@ -18,6 +18,8 @@ enum Route: Hashable {
     case session(Int)
     case museum
     case arAis
+    case patrun
+    case patrunDrill(String)
 }
 
 struct ContentView: View {
@@ -49,6 +51,18 @@ struct ContentView: View {
                 path = [.journey, .museum]
             } else if args.contains("--arais") {
                 path = [.journey, .arAis]
+            } else if args.contains("--patrundrill") {
+                // Jump straight into the first earned pattern's drill.
+                let lexicon = ContentLoader.lexicon(throughChapter: state.activeChapterN)
+                if let pattern = ContentLoader.patterns(throughChapter: state.activeChapterN)
+                    .first(where: { state.hasEarned($0.earnedAt)
+                        && PatternDrill.items(for: $0, in: lexicon).count >= 2 }) {
+                    path = [.journey, .patrun, .patrunDrill(pattern.id)]
+                } else {
+                    path = [.journey, .patrun]
+                }
+            } else if args.contains("--patrun") {
+                path = [.journey, .patrun]
             } else if args.contains("--map") {
                 path = [.journey, .map]
             } else if let flagIndex = args.firstIndex(of: "--session"),
@@ -72,7 +86,8 @@ struct ContentView: View {
             JourneyView(
                 onOpenChapter: { path.append(.map) },
                 onOpenMuseum: { path.append(.museum) },
-                onOpenArAis: { path.append(.arAis) })
+                onOpenArAis: { path.append(.arAis) },
+                onOpenPatrun: { path.append(.patrun) })
                 .background(Theme.bg.ignoresSafeArea())
                 .toolbarRole(.editor)
                 .toolbarBackground(Theme.bg, for: .navigationBar)
@@ -100,6 +115,29 @@ struct ContentView: View {
                 .background(Theme.bg.ignoresSafeArea())
                 .toolbarRole(.editor)
                 .toolbarBackground(Theme.bg, for: .navigationBar)
+        case .patrun:
+            PatternsView(onOpenPattern: { path.append(.patrunDrill($0)) })
+                .background(Theme.bg.ignoresSafeArea())
+                .toolbarRole(.editor)
+                .toolbarBackground(Theme.bg, for: .navigationBar)
+        case .patrunDrill(let id):
+            patternDrill(id)
+                .background(Theme.bg.ignoresSafeArea())
+                .toolbarRole(.editor)
+                .toolbarBackground(Theme.bg, for: .navigationBar)
+        }
+    }
+
+    /// Build a pattern's drill on demand: resolve the earned pattern and cast it
+    /// through the earned lexicon. Fails soft — an unknown id shows nothing
+    /// rather than crashing (the id only ever comes from the list above).
+    @ViewBuilder
+    private func patternDrill(_ id: String) -> some View {
+        let patterns = ContentLoader.patterns(throughChapter: state.activeChapterN)
+        let lexicon = ContentLoader.lexicon(throughChapter: state.activeChapterN)
+        if let pattern = patterns.first(where: { $0.id == id }) {
+            PatternDrillView(pattern: pattern,
+                             items: PatternDrill.items(for: pattern, in: lexicon))
         }
     }
 }

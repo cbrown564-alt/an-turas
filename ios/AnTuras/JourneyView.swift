@@ -13,6 +13,7 @@ struct JourneyView: View {
     let onOpenChapter: () -> Void
     let onOpenMuseum: () -> Void
     let onOpenArAis: () -> Void
+    let onOpenPatrun: () -> Void
 
     @State private var selected: JourneyChapter?
     @State private var appeared = false
@@ -46,6 +47,7 @@ struct JourneyView: View {
 
                 VStack(spacing: 10) {
                     arAisRow
+                    patrunRow
                     museumRow
                 }
                 .padding(.horizontal, 22)
@@ -133,6 +135,30 @@ struct JourneyView: View {
         var seen: Set<String> = []
         let unique = names.filter { seen.insert($0).inserted }
         return unique.joined(separator: ", ")
+    }
+
+    /// Patterns whose earning session is behind the learner and that generate
+    /// variations to run.
+    private var patternCount: Int {
+        let lexicon = ContentLoader.lexicon(throughChapter: state.activeChapterN)
+        return ContentLoader.patterns(throughChapter: state.activeChapterN)
+            .filter { state.hasEarned($0.earnedAt) && PatternDrill.items(for: $0, in: lexicon).count >= 2 }
+            .count
+    }
+
+    /// The grammar-at-volume invitation — only once a scene has earned a
+    /// pattern worth running. A groove to make sure, never a gate (DRILL.md).
+    @ViewBuilder
+    private var patrunRow: some View {
+        if patternCount > 0 {
+            JourneyRow(
+                title: "Na Patrúin",
+                sub: "\(patternCount) réidh le rith — run a rule with every word you've earned.",
+                accent: Theme.moss,
+                showDot: false,
+                glyph: { ArtifactGlyphView(glyph: "hornbook", color: Theme.moss) },
+                action: { Haptics.tap(); onOpenPatrun() })
+        }
     }
 
     private var museumRow: some View {

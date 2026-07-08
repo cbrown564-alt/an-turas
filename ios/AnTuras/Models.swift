@@ -423,6 +423,11 @@ struct Pattern: Decodable, Identifiable {
     let slots: [String: PatternSlot]?
     /// A minimal-pair frame that makes the rule click by contrast.
     let contrast: String?
+    /// The production prompt a generated drill item shows — the *intent* in
+    /// English (with the slot as `{…}`), so the learner retrieves the frame
+    /// rather than reading it back ("Say where you're from: {x}"). Optional;
+    /// the drill falls back to a bare assemble cue when absent (see DRILL.md).
+    let cue: String?
     let earnedAt: ContentRef?
 }
 

@@ -237,6 +237,16 @@ final class AppState: ObservableObject {
         persist()
     }
 
+    /// Whether the story has completed the session that earns an item — the
+    /// invariant that keeps the drill surface downstream of the narrative
+    /// (DRILL.md). A pattern is only offered once its scene is behind you.
+    func hasEarned(_ ref: ContentRef?) -> Bool {
+        guard let ref, ref.chapter <= activeChapterN else { return false }
+        if ref.chapter < activeChapterN { return true }
+        guard let session = ref.session else { return true }
+        return done.indices.contains(session) && done[session]
+    }
+
     // MARK: Ar Ais scheduling
 
     func dueVisits(now: Date = Date()) -> [Visit] {
