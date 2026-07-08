@@ -132,6 +132,29 @@ the `discover` view, and note ids. The point of the schema-only pass is to tag
 chapter 1's items against real shapes and feel whether the spine holds before a
 line of it is wired up.
 
+## What tagging chapter 1 found
+
+`chapter1.json` now carries 32 lexemes, two patterns, and 14 beat `ref`s
+(validated: the whole chapter still decodes, every ref resolves, and
+`pat.copula-origin`'s `fromTag: "county"` resolves to five real placename fills).
+The spine held — with one instructive push-back:
+
+- **The copula tagged cleanly** as two *production* patterns (`Is mise {x}`,
+  `Is as {x} mé`) — `frame` + `slots` fit it exactly.
+- **Broad/slender and surname gender did not.** They are *classification* rules
+  ("is this consonant broad or slender?", "Mac or Nic?") — the varied contexts
+  are the drill, but `frame` + `slots` has nowhere to hold the per-item answer
+  key. Forcing them into `Pattern` would corrupt the clean substitution model.
+  They belong to `discover` (guided induction), which is also their more
+  on-brand home. So `Pattern` is for *production* grammar only; classification
+  and phonics rules are `discover`. Recorded here rather than papered over —
+  this is exactly what the tagging pass was for.
+
+Consequence for the schema: no change needed to `Pattern`. `discover` gains
+importance as the second grammar projection (not just the Brilliant flourish),
+and note ids remain the one small addition still owed (for `Pattern.note` and a
+future `discover`→note link).
+
 ## Open questions
 
 - **Note ids.** `NoteBlock` needs an optional `id` for `Pattern.note` to resolve.

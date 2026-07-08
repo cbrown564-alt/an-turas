@@ -20,6 +20,7 @@
             },
             {
               "s": "Dia dhuit!",
+              "ref": "lex.dia-dhuit",
               "who": "An saor cloiche — the stone-carver",
               "g": "Hello — literally ‘God to you’",
               "ph": "JEE-a GWIT"
@@ -77,6 +78,7 @@
             },
             {
               "s": "Is mise Dáire.",
+              "ref": "lex.is-mise",
               "who": "An saor cloiche",
               "g": "I am Dáire — ‘is mise’ introduces who you are",
               "ph": "iss MISH-eh DAW-ruh"
@@ -86,6 +88,7 @@
             },
             {
               "s": "Cé thusa?",
+              "ref": "lex.ce-thusa",
               "g": "Who are you? — the emphatic ‘you’",
               "ph": "kay HUSS-ah"
             }
@@ -158,6 +161,7 @@
             },
             {
               "s": "Cén t-ainm atá ort?",
+              "ref": "lex.cen-t-ainm-ort",
               "who": "Dáire",
               "g": "What's your name? — literally ‘what name is on you?’",
               "ph": "kane TAN-yim ah-TAW ort"
@@ -197,6 +201,7 @@
             },
             {
               "s": "Slán go fóill.",
+              "ref": "lex.slan-go-foill",
               "who": "Dáire",
               "g": "Goodbye for now",
               "ph": "slawn guh FOH-il"
@@ -234,6 +239,7 @@
             },
             {
               "s": "Cé as thú?",
+              "ref": "lex.ce-as-thu",
               "who": "Dáire",
               "g": "Where are you from? — literally ‘who from are you?’ (Connacht; you'll also see Cárb as thú?)",
               "ph": "kay ASS hoo"
@@ -243,6 +249,7 @@
             },
             {
               "s": "Is as Maigh Eo mé.",
+              "ref": "lex.is-as-me",
               "g": "I am from Mayo — Maigh Eo, ‘plain of the yew trees’",
               "ph": "iss ass my-OH may"
             }
@@ -352,6 +359,7 @@
             },
             {
               "s": "Céad míle fáilte.",
+              "ref": "lex.cead-mile-failte",
               "who": "Dáire",
               "g": "A hundred thousand welcomes",
               "ph": "kayd MEE-luh FAWL-chuh"
@@ -430,6 +438,7 @@
           "beats": [
             {
               "s": "Seo Bríd, m'iníon.",
+              "ref": "lex.inion",
               "who": "Dáire",
               "g": "This is Bríd, my daughter — iníon = daughter",
               "ph": "shuh BREEDJ, MIN-yeen"
@@ -440,17 +449,20 @@
                 {
                   "t": "mac",
                   "g": "son",
-                  "s": "mock"
+                  "s": "mock",
+                  "ref": "lex.mac"
                 },
                 {
                   "t": "deartháir",
                   "g": "brother",
-                  "s": "jar-HAWR"
+                  "s": "jar-HAWR",
+                  "ref": "lex.dearthair"
                 },
                 {
                   "t": "deirfiúr",
                   "g": "sister",
-                  "s": "jre-FOOR"
+                  "s": "jre-FOOR",
+                  "ref": "lex.deirfiur"
                 }
               ]
             }
@@ -472,6 +484,7 @@
               "reaction": [
                 {
                   "s": "Dia is Muire dhuit!",
+                  "ref": "lex.dia-is-muire-dhuit",
                   "who": "Bríd",
                   "g": "God and Mary to you — she raises your greeting, quick as a bird",
                   "ph": "JEE-a iss MWIR-eh GWIT"
@@ -798,6 +811,7 @@
             },
             {
               "s": "Caol le caol agus leathan le leathan.",
+              "ref": "lex.caol-le-caol",
               "who": "Dáire",
               "g": "Slender with slender and broad with broad — the vowels flanking a consonant must agree",
               "ph": "kweel leh kweel AH-gus LAH-han leh LAH-han"
@@ -1052,5 +1066,47 @@
       "answer": "Slán go fóill",
       "check": "exact"
     }
+  ],
+  "lexicon": [
+    { "id": "lex.dia-dhuit", "ga": "Dia dhuit", "en": "hello (God to you)", "ph": "JEE-a GWIT", "kind": "phrase", "tags": ["greeting"], "earnedAt": { "chapter": 1, "session": 0 } },
+    { "id": "lex.dia-is-muire-dhuit", "ga": "Dia is Muire dhuit", "en": "God and Mary to you — the reply that raises the greeting", "ph": "JEE-a iss MWIR-eh GWIT", "kind": "phrase", "tags": ["greeting"], "earnedAt": { "chapter": 1, "session": 0 } },
+    { "id": "lex.is-mise", "ga": "Is mise", "en": "I am… (identity)", "ph": "iss MISH-eh", "kind": "phrase", "tags": ["copula", "introductions"], "earnedAt": { "chapter": 1, "session": 0 } },
+    { "id": "lex.ce-thusa", "ga": "Cé thusa?", "en": "Who are you?", "ph": "kay HUSS-ah", "kind": "phrase", "tags": ["question", "introductions"], "earnedAt": { "chapter": 1, "session": 0 } },
+    { "id": "lex.cen-t-ainm-ort", "ga": "Cén t-ainm atá ort?", "en": "What's your name? (what name is on you?)", "ph": "kane TAN-yim ah-TAW ort", "kind": "phrase", "tags": ["question", "introductions"], "earnedAt": { "chapter": 1, "session": 0 } },
+    { "id": "lex.ainm", "ga": "ainm", "en": "name", "kind": "word", "tags": ["introductions"], "earnedAt": { "chapter": 1, "session": 0 } },
+    { "id": "lex.slan-go-foill", "ga": "Slán go fóill", "en": "goodbye for now", "ph": "slawn guh FOH-il", "kind": "phrase", "tags": ["farewell"], "earnedAt": { "chapter": 1, "session": 0 } },
+
+    { "id": "lex.ce-as-thu", "ga": "Cé as thú?", "en": "where are you from?", "ph": "kay ASS hoo", "kind": "phrase", "tags": ["question", "origin"], "dialect": "connacht", "lemma": "ce-as-thu", "earnedAt": { "chapter": 1, "session": 1 } },
+    { "id": "lex.is-as-me", "ga": "Is as … mé", "en": "I am from …", "ph": "iss ass … may", "kind": "phrase", "tags": ["copula", "origin"], "earnedAt": { "chapter": 1, "session": 1 } },
+    { "id": "lex.cead-mile-failte", "ga": "Céad míle fáilte", "en": "a hundred thousand welcomes", "ph": "kayd MEE-luh FAWL-chuh", "kind": "phrase", "tags": ["welcome"], "earnedAt": { "chapter": 1, "session": 1 } },
+    { "id": "lex.failte", "ga": "fáilte", "en": "welcome", "kind": "word", "tags": ["welcome"], "earnedAt": { "chapter": 1, "session": 1 } },
+    { "id": "lex.maigh-eo", "ga": "Maigh Eo", "en": "Mayo (plain of the yew trees)", "ph": "my-OH", "kind": "placename", "tags": ["logainm", "county"], "earnedAt": { "chapter": 1, "session": 1 } },
+    { "id": "lex.doire", "ga": "Doire", "en": "Derry (oak grove)", "kind": "placename", "tags": ["logainm", "county"], "earnedAt": { "chapter": 1, "session": 1 } },
+    { "id": "lex.baile-atha-cliath", "ga": "Baile Átha Cliath", "en": "Dublin (town of the hurdle ford)", "kind": "placename", "tags": ["logainm", "county"], "earnedAt": { "chapter": 1, "session": 1 } },
+    { "id": "lex.cill-dara", "ga": "Cill Dara", "en": "Kildare (church of the oak)", "kind": "placename", "tags": ["logainm", "county"], "earnedAt": { "chapter": 1, "session": 1 } },
+    { "id": "lex.gaillimh", "ga": "Gaillimh", "en": "Galway", "kind": "placename", "tags": ["logainm", "county"], "earnedAt": { "chapter": 1, "session": 1 } },
+
+    { "id": "lex.mac", "ga": "mac", "en": "son", "ph": "mock", "kind": "word", "tags": ["family"], "earnedAt": { "chapter": 1, "session": 2 } },
+    { "id": "lex.inion", "ga": "iníon", "en": "daughter", "kind": "word", "tags": ["family"], "earnedAt": { "chapter": 1, "session": 2 } },
+    { "id": "lex.dearthair", "ga": "deartháir", "en": "brother", "ph": "jar-HAWR", "kind": "word", "tags": ["family"], "earnedAt": { "chapter": 1, "session": 2 } },
+    { "id": "lex.deirfiur", "ga": "deirfiúr", "en": "sister", "ph": "jre-FOOR", "kind": "word", "tags": ["family"], "earnedAt": { "chapter": 1, "session": 2 } },
+    { "id": "lex.athair", "ga": "athair", "en": "father", "kind": "word", "tags": ["family"], "earnedAt": { "chapter": 1, "session": 2 } },
+    { "id": "lex.mathair", "ga": "máthair", "en": "mother", "kind": "word", "tags": ["family"], "earnedAt": { "chapter": 1, "session": 2 } },
+    { "id": "lex.surname-o", "ga": "Ó", "en": "descendant of (male surname)", "kind": "particle", "tags": ["surname"], "earnedAt": { "chapter": 1, "session": 2 } },
+    { "id": "lex.surname-mac", "ga": "Mac", "en": "son of (male surname)", "kind": "particle", "tags": ["surname"], "earnedAt": { "chapter": 1, "session": 2 } },
+    { "id": "lex.surname-ni", "ga": "Ní", "en": "daughter of an Ó family (female surname)", "kind": "particle", "tags": ["surname"], "earnedAt": { "chapter": 1, "session": 2 } },
+    { "id": "lex.surname-nic", "ga": "Nic", "en": "daughter of a Mac family (female surname)", "kind": "particle", "tags": ["surname"], "earnedAt": { "chapter": 1, "session": 2 } },
+
+    { "id": "lex.caol-le-caol", "ga": "Caol le caol agus leathan le leathan", "en": "slender with slender and broad with broad — the spelling rule", "ph": "kweel leh kweel AH-gus LAH-han leh LAH-han", "kind": "phrase", "tags": ["spelling"], "earnedAt": { "chapter": 1, "session": 3 } },
+    { "id": "lex.fear-man", "ga": "fear", "en": "man", "ph": "far", "kind": "word", "tags": ["minimal-pair", "fada"], "lemma": "fear", "earnedAt": { "chapter": 1, "session": 3 } },
+    { "id": "lex.fear-grass", "ga": "féar", "en": "grass", "ph": "fayr", "kind": "word", "tags": ["minimal-pair", "fada"], "lemma": "fear", "earnedAt": { "chapter": 1, "session": 3 } },
+    { "id": "lex.sean-old", "ga": "sean", "en": "old", "kind": "word", "tags": ["minimal-pair", "fada"], "lemma": "sean", "earnedAt": { "chapter": 1, "session": 3 } },
+    { "id": "lex.sean-name", "ga": "Seán", "en": "the name Seán (\"Shawn\")", "ph": "shawn", "kind": "word", "tags": ["minimal-pair", "fada", "name"], "lemma": "sean", "earnedAt": { "chapter": 1, "session": 3 } },
+
+    { "id": "lex.buaine-focal", "ga": "Is buaine focal ná toice an tsaoil", "en": "a word is more enduring than the world's wealth", "kind": "seanfhocal", "tags": ["seanfhocal"], "earnedAt": { "chapter": 1, "session": 4 } }
+  ],
+  "patterns": [
+    { "id": "pat.copula-identity", "note": "note.two-to-bes", "teach": "identity → is, not tá", "frame": "Is mise {x}", "slots": { "x": { "options": ["Áine", "Bríd", "Seán", "Colmán"] } }, "contrast": "Tá mé {state}", "earnedAt": { "chapter": 1, "session": 0 } },
+    { "id": "pat.copula-origin", "note": "note.every-placename-poem", "teach": "state where you're from with the copula: Is as … mé", "frame": "Is as {x} mé", "slots": { "x": { "fromTag": "county" } }, "earnedAt": { "chapter": 1, "session": 1 } }
   ]
 }
