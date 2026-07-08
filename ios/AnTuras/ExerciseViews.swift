@@ -69,7 +69,7 @@ struct Verdict: View {
 
 struct ChoiceView: View {
     let block: ChoiceBlock
-    let onSolved: () -> Void
+    let onSolved: (_ struggled: Bool) -> Void
 
     @State private var solved = false
     @State private var wrongPicks: Set<String> = []
@@ -121,7 +121,7 @@ struct ChoiceView: View {
                 solved = true
                 verdict = (true, opt.why)
             }
-            onSolved()
+            onSolved(!wrongPicks.isEmpty)
         } else {
             Haptics.error()
             withAnimation(Motion.settle) {
@@ -154,16 +154,17 @@ private struct TileItem: Identifiable, Equatable {
 
 struct AssembleView: View {
     let block: AssembleBlock
-    let onSolved: () -> Void
+    let onSolved: (_ struggled: Bool) -> Void
 
     @Namespace private var tileNS
     @State private var bank: [TileItem]
     @State private var chosen: [TileItem] = []
     @State private var solved = false
     @State private var shakeCount = 0
+    @State private var misses = 0
     @State private var verdict: (ok: Bool, text: String)?
 
-    init(block: AssembleBlock, onSolved: @escaping () -> Void) {
+    init(block: AssembleBlock, onSolved: @escaping (_ struggled: Bool) -> Void) {
         self.block = block
         self.onSolved = onSolved
         _bank = State(initialValue:
@@ -244,10 +245,11 @@ struct AssembleView: View {
                 solved = true
                 verdict = (true, "Maith thú! \(block.answer).")
             }
-            onSolved()
+            onSolved(misses > 0)
         } else {
             Haptics.error()
             shakeCount += 1
+            misses += 1
             withAnimation(Motion.settle) {
                 verdict = (false, "Not quite — check the word order and try again.")
             }
@@ -259,12 +261,13 @@ struct AssembleView: View {
 
 struct TypeInView: View {
     let block: TypeInBlock
-    let onSolved: () -> Void
+    let onSolved: (_ struggled: Bool) -> Void
 
     @EnvironmentObject var state: AppState
     @State private var text = ""
     @State private var solved = false
     @State private var shakeCount = 0
+    @State private var misses = 0
     @State private var verdict: (ok: Bool, text: String)?
     @FocusState private var focused: Bool
 
@@ -343,10 +346,11 @@ struct TypeInView: View {
                 solved = true
                 verdict = (true, "Maith thú! \(echo)")
             }
-            onSolved()
+            onSolved(misses > 0)
         } else {
             Haptics.error()
             shakeCount += 1
+            misses += 1
             withAnimation(Motion.settle) {
                 verdict = (false, block.check == .exact
                     ? "Not quite — mind the fada. Use the accent keys and try again."
@@ -364,7 +368,7 @@ struct TypeInView: View {
 
 struct MatchView: View {
     let block: MatchBlock
-    let onSolved: () -> Void
+    let onSolved: (_ struggled: Bool) -> Void
 
     @State private var left: [String]
     @State private var right: [String]
@@ -374,9 +378,10 @@ struct MatchView: View {
     @State private var threads: [MatchThread] = []
     @State private var flash: String?
     @State private var shakes: [String: Int] = [:]
+    @State private var misses = 0
     @State private var solved = false
 
-    init(block: MatchBlock, onSolved: @escaping () -> Void) {
+    init(block: MatchBlock, onSolved: @escaping (_ struggled: Bool) -> Void) {
         self.block = block
         self.onSolved = onSolved
         _left = State(initialValue: block.pairs.map { $0[0] }.shuffled())
@@ -498,10 +503,11 @@ struct MatchView: View {
             }
             if locked.count == block.pairs.count * 2 {
                 withAnimation(Motion.pop) { solved = true }
-                onSolved()
+                onSolved(misses > 0)
             }
         } else {
             Haptics.error()
+            misses += 1
             shakes[item, default: 0] += 1
             withAnimation(Motion.settle) { flash = item }
             Task { @MainActor in
@@ -548,7 +554,7 @@ struct FadaKeyRow: View {
 
 struct ListenView: View {
     let block: ListenBlock
-    let onSolved: () -> Void
+    let onSolved: (_ struggled: Bool) -> Void
 
     @ObservedObject private var speech = SpeechService.shared
     @State private var solved = false
@@ -642,7 +648,7 @@ struct ListenView: View {
             PrimaryButton(title: "Lean ar aghaidh — continue") {
                 guard !solved else { return }
                 solved = true
-                onSolved()
+                onSolved(false)
             }
         }
     }
@@ -654,7 +660,7 @@ struct ListenView: View {
                 solved = true
                 verdict = (true, opt.why)
             }
-            onSolved()
+            onSolved(!wrongPicks.isEmpty)
         } else {
             Haptics.error()
             withAnimation(Motion.settle) {

@@ -27,6 +27,37 @@ struct SubstitutionItem: Identifiable {
 }
 
 enum PatternDrill {
+    /// Maximum generated items per scheduled pattern run.
+    static let runCap = 8
+
+    /// Composite scheduling key — `pat.copula-origin:lex.gaillimh` when the fill
+    /// is an earned lexeme; `pat.copula-identity:fill.Áine` for literal options.
+    static func scheduleKey(pattern: Pattern, item: SubstitutionItem) -> String {
+        if let id = item.source?.id { return "\(pattern.id):\(id)" }
+        return "\(pattern.id):fill.\(item.fill)"
+    }
+
+    /// Due generated items for one pattern, oldest first, capped per run.
+    static func dueItems(
+        for pattern: Pattern,
+        in lexicon: [Lexeme],
+        progress: [String: AppState.VisitProgress],
+        now: Date = Date(),
+        cap: Int = runCap
+    ) -> [SubstitutionItem] {
+        items(for: pattern, in: lexicon)
+            .filter { item in
+                guard let p = progress[scheduleKey(pattern: pattern, item: item)] else { return false }
+                return p.due <= now
+            }
+            .sorted {
+                (progress[scheduleKey(pattern: pattern, item: $0)]?.due ?? now)
+                    < (progress[scheduleKey(pattern: pattern, item: $1)]?.due ?? now)
+            }
+            .prefix(cap)
+            .map { $0 }
+    }
+
     /// Every substitution item a pattern generates against the earned lexicon —
     /// one per fill of its first slot. Fills come from an explicit `options`
     /// list, or from every lexeme carrying the slot's `fromTag` (in lexicon

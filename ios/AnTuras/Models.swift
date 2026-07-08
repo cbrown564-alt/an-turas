@@ -126,6 +126,8 @@ struct ChoiceBlock: Decodable {
     let context: String?
     let prompt: String
     let opts: [ChoiceOption]
+    /// Unified lexeme id this exercise schedules on success (DRILL.md).
+    let ref: String?
 }
 
 struct AssembleBlock: Decodable {
@@ -133,6 +135,7 @@ struct AssembleBlock: Decodable {
     let prompt: String
     let tiles: [String]
     let answer: String
+    let ref: String?
 }
 
 enum TypeCheck: String, Decodable {
@@ -148,12 +151,15 @@ struct TypeInBlock: Decodable {
     let fada: Bool
     let hint: String?
     let capture: Bool?
+    let ref: String?
 }
 
 struct MatchBlock: Decodable {
     let context: String?
     let prompt: String
     let pairs: [[String]]
+    /// Lexeme ids for the Irish side of each pair — credited on full solve.
+    let refs: [String]?
 }
 
 /// One weathered phrase on the path back: the learner re-types it (fadas
@@ -181,6 +187,7 @@ struct ListenBlock: Decodable {
     let prompt: String
     let say: String
     let opts: [ChoiceOption]
+    let ref: String?
 }
 
 /// Say it aloud, hear yourself beside the model. No grading — carvers learn

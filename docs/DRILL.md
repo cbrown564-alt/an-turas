@@ -32,7 +32,7 @@ retrieval formats (`choice`, `assemble`, `typein`, `match`, `listen`, `echo`,
 dressed in narrative clothes (SPINE rule 6). What was missing is not drill
 *mechanics* but a shared *item identity*: "Dia dhuit" appears in a scene, a
 `choice`, a `match`, and a `Visit`, and nothing tied those four appearances
-together as the same item. The lexicon fixes exactly that.
+together as the same item. The lexicon and shared scheduler fix exactly that.
 
 ## The spine
 
@@ -214,9 +214,8 @@ many items, "one core idea, slight variations," with nothing authored per item.
   progress, the current generated item, and a **coverage close** — every sentence
   you produced, shown as chips. Coverage, not points (the anti-streak signal).
 - **`PatternsView`** lists the earned patterns as a peer surface reached from the
-  journey hub ("Na Patrúin"), beside Ar Ais and the museum — optional-but-invited,
-  never a gate. The invitation rides the hub rather than the session hook for now
-  (the hook wiring waits for the vocab deck).
+  journey hub ("Na Patrúin"), beside Ar Ais, Na Focail, and the museum —
+  optional-but-invited, never a gate.
 - **The spine's guarantee, enforced twice.** A new `AppState.hasEarned(_:)` gates
   the surface on the *session* that earns each pattern (not just the chapter), so
   a fresh chapter-1 learner sees nothing until they've walked to it. And every
@@ -232,8 +231,7 @@ cue substituted, and the close shows all four produced `Is mise …` sentences.
 
 Recorded, to revisit: the drill is **assemble-only** for now (a type-in variation
 is a natural second format); generation rotates a **single slot** (all shipped
-patterns have one); and **scheduling stays out** — this runs unscheduled, folded
-into the SRS-under-review work when it comes, exactly as the doc reserved.
+patterns have one). Scheduling now runs over composite keys — see shared scheduler.
 
 ## What building vocabulary-at-volume landed
 
@@ -250,27 +248,120 @@ with a backlink to the session that earned it.
   progress, existing exercise views unchanged, and a **coverage close** — every
   phrase produced, plus how many of the chapter lexicon have been produced at least
   once. Coverage, not points.
-- **Lexeme scheduling in `AppState`**: `lexemeProgress` mirrors visit scheduling
-  (same interval math, keyed by unified lexeme id). Session completion schedules
-  earned lexemes **due immediately** for the optional first pass; `completeLexeme`
-  spaces them out on success. Migration back-fills lexemes for sessions already carved.
+- **Shared scheduler** (see below): lexeme ids carry scheduling state; the deck
+  draws from `dueLexemes()` and calls `completeLexeme` on each card.
 - **Hub invitation**: "Na Focail" row on the journey map when phrases are due —
   optional-but-invited, never a gate, beside Ar Ais and Na Patrúin.
 - **Session hook**: completion page offers deck when ≥2 fresh phrases from the session
-  are ready ("frása ón seisiún seo atá réidh le hathbhreithniú") — the invitation
+  are ready ("frása ón seisiún seo atá réidh le athbhreithniú") — the invitation
   DRILL.md described, now wired.
 
 Verified: chapter 1 still decodes; `--vocab` and `--due N` debug flags reach the
 deck; earned lexemes only appear once their session is behind the learner.
+
+## What building the shared scheduler landed
+
+*2026-07-08.* The problem the spine was written to fix: "Dia dhuit" could appear
+in a scene beat, a `choice`, a `match`, a session `recarve`, and an Ar Ais
+`Visit` — four unrelated strings, no shared memory. Unified lexeme ids (`lex.dia-dhuit`)
+are the handle; the scheduler is the boring interval math underneath, now operating
+over those ids for the vocab deck the way it already did for visits.
+
+### One progress struct, two keyed stores
+
+`AppState.VisitProgress` holds `{ due, interval, reps }` for each schedulable item.
+`LexemeProgress` is a **typealias** — not a second algorithm. `PatternItemProgress`
+is too. Three parallel dictionaries in `Saved`:
+
+| Store | Key | Surface | Clothing |
+|---|---|---|---|
+| `visitProgress` | `Visit.id` | Ar Ais | people asking at the stone |
+| `lexemeProgress` | `Lexeme.id` | Na Focail | phrases from the path |
+| `patternProgress` | `pat.*:lex.*` composite | Na Patrúin | grooves to run at volume |
+
+The learner never sees `interval` or `reps`. SPINE rule 6 holds: the schedule is
+solved technology; only the framing changes.
+
+### Interval math (FSRS-lite, first pass)
+
+Same rules in `completeVisit` and `completeLexeme`:
+
+- **Session earns an item** (`markDone`): visits schedule **due tomorrow** (+1 day);
+  lexemes schedule **due now** — available for the optional first-pass deck offer,
+  never a gate.
+- **Clean recall** (`struggled: false`): `interval = max(interval × 2.5, 2.5)`;
+  `due = now + interval days`.
+- **Struggled recall** (`struggled: true`): `interval` resets to 1; `due = tomorrow`.
+- **`reps`** increments on every completion — powers `producedLexemes(inChapter:)`
+  (coverage: "produced at least once") and the session hook (`reps == 0` = fresh).
+
+Ar Ais passes `struggled` from the recarve bench (any miss before the clean strike).
+The vocab deck always passes `struggled: false` for now — every format solves on
+first success without a miss counter. Revisit when listen/typein gain retry paths.
+
+### Due queues and deck assembly
+
+- `dueLexemes()` / `dueVisits()` filter to earned items with `due ≤ now`, sorted
+  oldest-first.
+- `hasEarned(_:)` gates both: nothing schedules until its earning session is carved.
+- `LexemeDeck.items(due:in:)` takes the due list, caps at **eight cards** per run
+  (`deckCap`), batches tag groups into one `match`, and emits `typein`/`listen` for
+  the rest. A match card calls `completeLexeme` for **every** lexeme in the batch.
+- Both `VocabDeckView` and `ArAisView` **freeze the queue on arrival** so cards
+  don't vanish mid-run as the scheduler pushes items into the future.
+
+### Persistence and migration
+
+`lexemeProgress` persists in `turas_progress` beside `visitProgress` (non-breaking:
+absent `lexemes` key decodes to `{}`). On init, a migration walks every carved
+session across chapters walked so far and back-fills any lexeme whose
+`earnedAt.session` matches but has no progress row yet — due now, same as visits
+owed before Ar Ais existed. Debug: `--due N` seeds both stores.
+
+### What unified ids buy — and what they don't yet
+
+**Today:** `Gloss.ref` and `SpeechBeat.ref` point at lexeme ids; inline exercises
+with `ref`/`refs` credit `lexemeProgress` on success via `SessionView`. Pattern
+items schedule under composite keys and credit their source lexeme when present.
+Classification drills (broad/slender, surname logic) stay untagged — no lexeme
+to credit.
+
+**Still deferred:**
+
+- **FSRS proper** — STRATEGY.md Phase 3; the ×2.5 ladder is prototype-grade.
+- **Interleaving** — visits and lexemes stay in separate surfaces; one mixed queue
+  is a product choice, not a schema one.
+
+**Landed 2026-07-08** (first three deferred items):
+
+- **Struggle in the deck** — `ChoiceView`, `AssembleView`, `TypeInView`,
+  `MatchView`, and `ListenView` now pass `struggled` (any miss before the clean
+  strike) through `onSolved(Bool)`; `VocabDeckView` and `PatternDrillView` forward
+  it to `completeLexeme` / `completePatternItem`. Ar Ais already did this.
+- **Cross-surface recall credit** — optional `ref` on `choice`/`assemble`/`typein`/
+  `listen` blocks, `refs` on `match`; `SessionView.creditScheduling` calls
+  `completeLexeme` on inline success. Chapter 1 exercises tagged where the
+  retrieval is a single earned lexeme (production drills, not classification).
+- **Pattern scheduling** — `patternProgress` keyed by composite id
+  (`pat.copula-origin:lex.gaillimh`; literal fills use `fill.Áine`). Session
+  completion seeds due items; `PatternDrillView` runs the due queue (cap 8);
+  completing an item also credits its source lexeme when present.
+
+Recorded as first-pass policy, not final: eight cards per run; same spacing as Ar
+Ais; lexemes due immediately on earn (visits due tomorrow); coverage = `reps > 0`.
+
+Verified: `VisitProgress` and `LexemeProgress` share one encode path; chapter 1
+lexemes schedule on session carve and space out after a deck run; migration fills
+gaps for saves carved before the deck existed.
 
 ## Open questions
 
 - **`discover` → note link.** `DiscoverBlock` has no `note` field yet;
   `note.two-flavours` already exists to be pointed at once it does, so the learner
   can read the nóta *after* the aha. Small and non-breaking.
-- **Scheduling policy.** Deck size (eight per run), spacing (same interval math
-  as Ar Ais), interleaving — a first pass, not the final FSRS review. Fold finer
-  policy into the existing SRS-under-review work.
+- **FSRS upgrade.** First-pass interval math is landed (see shared scheduler above);
+  Phase 3 swaps in FSRS proper without changing the clothing.
+- **Interleaving.** Visits, lexemes, and pattern items stay in separate surfaces.
 - **Coverage definition.** Production vs recognition threshold for what counts as
   "you can use this" on the museum signal.
 - **Lexeme authoring ergonomics.** Chapter-local JSON keeps items beside their

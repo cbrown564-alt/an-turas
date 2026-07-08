@@ -168,19 +168,19 @@ struct SessionView: View {
             NotePageView(note: note)
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .choice(let choice):
-            ChoiceView(block: choice, onSolved: { solved(page) })
+            ChoiceView(block: choice, onSolved: { solved(page, struggled: $0) })
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .assemble(let assemble):
-            AssembleView(block: assemble, onSolved: { solved(page) })
+            AssembleView(block: assemble, onSolved: { solved(page, struggled: $0) })
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .typein(let typein):
-            TypeInView(block: typein, onSolved: { solved(page) })
+            TypeInView(block: typein, onSolved: { solved(page, struggled: $0) })
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .match(let match):
-            MatchView(block: match, onSolved: { solved(page) })
+            MatchView(block: match, onSolved: { solved(page, struggled: $0) })
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .listen(let listen):
-            ListenView(block: listen, onSolved: { solved(page) })
+            ListenView(block: listen, onSolved: { solved(page, struggled: $0) })
                 .modifier(RiseIn(order: 0, reduceMotion: reduceMotion))
         case .echo(let echo):
             EchoView(block: echo, activeGloss: $activeGloss, onSolved: { solved(page) })
@@ -237,8 +237,9 @@ struct SessionView: View {
         }
     }
 
-    private func solved(_ page: Int, autoTurn: Bool = true) {
+    private func solved(_ page: Int, struggled: Bool = false, autoTurn: Bool = true) {
         Haptics.chisel()
+        creditScheduling(for: vm.pages[page], struggled: struggled)
         withAnimation(Motion.pop) {
             _ = vm.solved.insert(page)
         }
@@ -249,6 +250,24 @@ struct SessionView: View {
             withAnimation(.easeInOut(duration: 0.5)) {
                 vm.currentPage = page + 1
             }
+        }
+    }
+
+    /// Inline exercise success credits unified lexeme ids (DRILL.md).
+    private func creditScheduling(for page: Page, struggled: Bool) {
+        switch page {
+        case .choice(let block):
+            if let ref = block.ref { state.creditLexeme(id: ref, struggled: struggled, inSession: vm.sessionIndex) }
+        case .assemble(let block):
+            if let ref = block.ref { state.creditLexeme(id: ref, struggled: struggled, inSession: vm.sessionIndex) }
+        case .typein(let block):
+            if let ref = block.ref { state.creditLexeme(id: ref, struggled: struggled, inSession: vm.sessionIndex) }
+        case .listen(let block):
+            if let ref = block.ref { state.creditLexeme(id: ref, struggled: struggled, inSession: vm.sessionIndex) }
+        case .match(let block):
+            if let refs = block.refs { state.creditLexemes(ids: refs, struggled: struggled, inSession: vm.sessionIndex) }
+        default:
+            break
         }
     }
 }

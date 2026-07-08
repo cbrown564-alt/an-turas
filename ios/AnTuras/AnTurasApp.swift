@@ -146,8 +146,7 @@ struct ContentView: View {
         let patterns = ContentLoader.patterns(throughChapter: state.activeChapterN)
         let lexicon = ContentLoader.lexicon(throughChapter: state.activeChapterN)
         if let pattern = patterns.first(where: { $0.id == id }) {
-            PatternDrillView(pattern: pattern,
-                             items: PatternDrill.items(for: pattern, in: lexicon))
+            PatternDrillView(pattern: pattern)
         }
     }
 }

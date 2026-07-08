@@ -19,6 +19,10 @@ final class AppState: ObservableObject {
     /// as Ar Ais visits, keyed by unified lexeme id (DRILL.md §1).
     typealias LexemeProgress = VisitProgress
 
+    /// Scheduling state for one generated pattern item — composite key
+    /// `pat.copula-origin:lex.gaillimh` (DRILL.md).
+    typealias PatternItemProgress = VisitProgress
+
     struct Saved: Codable {
         var activeChapter: Int = 1
         /// Session completion per chapter, keyed by chapter number.
@@ -26,11 +30,12 @@ final class AppState: ObservableObject {
         var name: String = ""
         var visits: [String: VisitProgress] = [:]
         var lexemes: [String: LexemeProgress] = [:]
+        var patternItems: [String: PatternItemProgress] = [:]
 
         init() {}
 
         private enum Keys: String, CodingKey {
-            case activeChapter, doneByChapter, name, visits, lexemes, done
+            case activeChapter, doneByChapter, name, visits, lexemes, patternItems, done
         }
 
         // Custom decode: migrate single-chapter saves and pre-Ar-Ais writes.
@@ -41,6 +46,7 @@ final class AppState: ObservableObject {
             name = try keys.decodeIfPresent(String.self, forKey: .name) ?? ""
             visits = try keys.decodeIfPresent([String: VisitProgress].self, forKey: .visits) ?? [:]
             lexemes = try keys.decodeIfPresent([String: LexemeProgress].self, forKey: .lexemes) ?? [:]
+            patternItems = try keys.decodeIfPresent([String: PatternItemProgress].self, forKey: .patternItems) ?? [:]
 
             if doneByChapter.isEmpty,
                let legacyDone = try keys.decodeIfPresent([Bool].self, forKey: .done) {
@@ -58,6 +64,7 @@ final class AppState: ObservableObject {
             try keys.encode(name, forKey: .name)
             try keys.encode(visits, forKey: .visits)
             try keys.encode(lexemes, forKey: .lexemes)
+            try keys.encode(patternItems, forKey: .patternItems)
         }
     }
 
@@ -68,6 +75,7 @@ final class AppState: ObservableObject {
     }
     @Published var visitProgress: [String: VisitProgress]
     @Published var lexemeProgress: [String: LexemeProgress]
+    @Published var patternProgress: [String: PatternItemProgress]
     @Published var artBranch: String? = nil
 
     let journey: [JourneyChapter]
@@ -113,6 +121,7 @@ final class AppState: ObservableObject {
         var name = saved.name
         var progress = saved.visits
         var lexProgress = saved.lexemes
+        var patProgress = saved.patternItems
         var chapterOverride = false
 
         #if DEBUG
@@ -171,6 +180,18 @@ final class AppState: ObservableObject {
                     due: Date().addingTimeInterval(-Double(offset) * 86400),
                     interval: 1, reps: 0)
             }
+            let allPatterns = ContentLoader.patterns(throughChapter: activeChapter)
+            var patOffset = 0
+            for pattern in allPatterns {
+                let items = PatternDrill.items(for: pattern, in: allLexemes)
+                for item in items.prefix(max(1, count - patOffset)) {
+                    let key = PatternDrill.scheduleKey(pattern: pattern, item: item)
+                    patProgress[key] = PatternItemProgress(
+                        due: Date().addingTimeInterval(-Double(patOffset) * 86400),
+                        interval: 1, reps: 0)
+                    patOffset += 1
+                }
+            }
         }
         if let flagIndex = debugArgs.firstIndex(of: "--art"),
            debugArgs.indices.contains(flagIndex + 1) {
@@ -197,6 +218,17 @@ final class AppState: ObservableObject {
                     lexProgress[lexeme.id] = LexemeProgress(due: Date(), interval: 1, reps: 0)
                     migrationAdded = true
                 }
+                let chapterPatterns = ContentLoader.patterns(forChapter: chapterNum)
+                let chapterLex = ContentLoader.lexicon(forChapter: chapterNum)
+                for pattern in chapterPatterns where pattern.earnedAt?.session == index {
+                    for item in PatternDrill.items(for: pattern, in: chapterLex) {
+                        let key = PatternDrill.scheduleKey(pattern: pattern, item: item)
+                        if patProgress[key] == nil {
+                            patProgress[key] = PatternItemProgress(due: Date(), interval: 1, reps: 0)
+                            migrationAdded = true
+                        }
+                    }
+                }
             }
         }
 
@@ -205,6 +237,7 @@ final class AppState: ObservableObject {
         learnerName = name
         visitProgress = progress
         lexemeProgress = lexProgress
+        patternProgress = patProgress
 
         let migratedFromLegacy = UserDefaults.standard.data(forKey: Self.key) == nil
             && UserDefaults.standard.data(forKey: Self.legacyKey) != nil
@@ -255,6 +288,17 @@ final class AppState: ObservableObject {
             // Available immediately for the optional first pass — the session
             // hook and hub offer, never a gate (DRILL.md).
             lexemeProgress[lexeme.id] = LexemeProgress(due: Date(), interval: 1, reps: 0)
+        }
+
+        let earnedLexicon = ContentLoader.lexicon(forChapter: activeChapterN)
+        let chapterPatterns = ContentLoader.patterns(forChapter: activeChapterN)
+        for pattern in chapterPatterns where pattern.earnedAt?.session == index {
+            for item in PatternDrill.items(for: pattern, in: earnedLexicon) {
+                let key = PatternDrill.scheduleKey(pattern: pattern, item: item)
+                if patternProgress[key] == nil {
+                    patternProgress[key] = PatternItemProgress(due: Date(), interval: 1, reps: 0)
+                }
+            }
         }
 
         persist()
@@ -358,6 +402,59 @@ final class AppState: ObservableObject {
         persist()
     }
 
+    /// Cross-surface recall credit — inline exercise success advances the same
+    /// groove as the vocab deck when the block carries a lexeme `ref`.
+    func creditLexeme(id: String, struggled: Bool, inSession sessionIndex: Int, now: Date = Date()) {
+        guard let lexeme = ContentLoader.lexicon(throughChapter: activeChapterN)
+            .first(where: { $0.id == id }),
+              let earned = lexeme.earnedAt else { return }
+        if earned.chapter < activeChapterN {
+            completeLexeme(lexeme, struggled: struggled, now: now)
+        } else if earned.chapter == activeChapterN, let session = earned.session, session <= sessionIndex {
+            completeLexeme(lexeme, struggled: struggled, now: now)
+        }
+    }
+
+    func creditLexemes(ids: [String], struggled: Bool, inSession sessionIndex: Int, now: Date = Date()) {
+        for id in ids { creditLexeme(id: id, struggled: struggled, inSession: sessionIndex, now: now) }
+    }
+
+    // MARK: Pattern drill scheduling (DRILL.md — composite keys)
+
+    func duePatternItems(for pattern: Pattern, now: Date = Date()) -> [SubstitutionItem] {
+        let lexicon = ContentLoader.lexicon(throughChapter: activeChapterN)
+        return PatternDrill.dueItems(
+            for: pattern,
+            in: lexicon,
+            progress: patternProgress,
+            now: now)
+    }
+
+    func duePatternItemCount(now: Date = Date()) -> Int {
+        ContentLoader.patterns(throughChapter: activeChapterN)
+            .filter { hasEarned($0.earnedAt) }
+            .reduce(0) { $0 + duePatternItems(for: $1, now: now).count }
+    }
+
+    func completePatternItem(
+        pattern: Pattern,
+        item: SubstitutionItem,
+        struggled: Bool,
+        now: Date = Date()
+    ) {
+        let key = PatternDrill.scheduleKey(pattern: pattern, item: item)
+        var p = patternProgress[key]
+            ?? PatternItemProgress(due: now, interval: 1, reps: 0)
+        p.interval = struggled ? 1 : max(p.interval * 2.5, 2.5)
+        p.due = now.addingTimeInterval(p.interval * 86400)
+        p.reps += 1
+        patternProgress[key] = p
+        if let lexeme = item.source {
+            completeLexeme(lexeme, struggled: struggled, now: now)
+        }
+        persist()
+    }
+
     /// How many earned lexemes in a chapter have been produced in the deck at
     /// least once — the honest coverage signal (DRILL.md).
     func producedLexemes(inChapter chapterN: Int) -> Int {
@@ -373,7 +470,8 @@ final class AppState: ObservableObject {
             doneByChapter: doneByChapter,
             name: learnerName,
             visits: visitProgress,
-            lexemes: lexemeProgress)
+            lexemes: lexemeProgress,
+            patternItems: patternProgress)
         if let data = try? JSONEncoder().encode(saved) {
             UserDefaults.standard.set(data, forKey: Self.key)
         }
@@ -413,13 +511,15 @@ extension AppState.Saved {
          doneByChapter: [Int: [Bool]],
          name: String,
          visits: [String: AppState.VisitProgress],
-         lexemes: [String: AppState.LexemeProgress] = [:]) {
+         lexemes: [String: AppState.LexemeProgress] = [:],
+         patternItems: [String: AppState.PatternItemProgress] = [:]) {
         self.init()
         self.activeChapter = activeChapter
         self.doneByChapter = doneByChapter
         self.name = name
         self.visits = visits
         self.lexemes = lexemes
+        self.patternItems = patternItems
     }
 }
 

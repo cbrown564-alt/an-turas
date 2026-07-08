@@ -90,7 +90,8 @@ enum LexemeDeck {
             answer: lexeme.ga,
             fada: lexeme.ga.contains { "áéíóúÁÉÍÓÚ".contains($0) },
             hint: lexeme.ph.map { "Sounds like: \($0)" },
-            capture: nil)
+            capture: nil,
+            ref: nil)
     }
 
     private static func listenBlock(for lexeme: Lexeme, in lexicon: [Lexeme]) -> ListenBlock {
@@ -118,7 +119,8 @@ enum LexemeDeck {
             context: backlink(for: lexeme),
             prompt: "Éist — which word did you hear?",
             say: lexeme.ga,
-            opts: opts)
+            opts: opts,
+            ref: nil)
     }
 
     private static func matchBlock(for lexemes: [Lexeme]) -> MatchBlock {
@@ -127,7 +129,8 @@ enum LexemeDeck {
         return MatchBlock(
             context: context,
             prompt: "Match the Irish to its meaning.",
-            pairs: pairs)
+            pairs: pairs,
+            refs: nil)
     }
 
     /// Trim parenthetical glosses so match tiles stay scannable.

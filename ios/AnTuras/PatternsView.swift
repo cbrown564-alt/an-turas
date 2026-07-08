@@ -17,13 +17,17 @@ struct PatternsView: View {
 
     private var lexicon: [Lexeme] { ContentLoader.lexicon(throughChapter: state.activeChapterN) }
 
-    /// Patterns whose earning session is behind the learner and that actually
-    /// generate variations to run — the spine's guarantee made visible.
-    private var runnable: [(pattern: Pattern, count: Int)] {
+    /// Patterns whose earning session is behind the learner — show due counts
+    /// from the composite-key scheduler (DRILL.md).
+    private var runnable: [(pattern: Pattern, due: Int, total: Int)] {
         ContentLoader.patterns(throughChapter: state.activeChapterN)
             .filter { state.hasEarned($0.earnedAt) }
-            .map { ($0, PatternDrill.items(for: $0, in: lexicon).count) }
-            .filter { $0.count >= 2 }
+            .map { pattern in
+                let total = PatternDrill.items(for: pattern, in: lexicon).count
+                let due = state.duePatternItems(for: pattern).count
+                return (pattern, due, total)
+            }
+            .filter { $0.total >= 2 }
     }
 
     var body: some View {
@@ -36,7 +40,7 @@ struct PatternsView: View {
                     emptyState
                 } else {
                     ForEach(Array(runnable.enumerated()), id: \.element.pattern.id) { i, entry in
-                        PatternCard(pattern: entry.pattern, count: entry.count) {
+                        PatternCard(pattern: entry.pattern, due: entry.due, total: entry.total) {
                             Haptics.tap()
                             onOpenPattern(entry.pattern.id)
                         }
@@ -92,7 +96,8 @@ struct PatternsView: View {
 
 private struct PatternCard: View {
     let pattern: Pattern
-    let count: Int
+    let due: Int
+    let total: Int
     let action: () -> Void
 
     var body: some View {
@@ -105,7 +110,12 @@ private struct PatternCard: View {
                         .foregroundStyle(Theme.moss)
                         .textCase(.uppercase)
                     Spacer(minLength: 0)
-                    Text("\(count) focal")
+                    if due > 0 {
+                        Text("\(due) réidh")
+                            .font(.system(size: 11, weight: .semibold))
+                            .foregroundStyle(Theme.moss)
+                    }
+                    Text("\(total) focal")
                         .font(.system(size: 11, weight: .semibold))
                         .foregroundStyle(Theme.inkFaint)
                 }
@@ -142,7 +152,7 @@ private struct PatternCard: View {
                 .stroke(Theme.moss.opacity(0.3), lineWidth: 1))
         }
         .buttonStyle(CarvePress())
-        .accessibilityLabel("\(pattern.teach). \(count) words to run it with. \(backlink).")
+        .accessibilityLabel("\(pattern.teach). \(due > 0 ? "\(due) due. " : "")\(total) words to run it with. \(backlink).")
     }
 
     private var backlink: String {
@@ -158,39 +168,44 @@ private struct PatternCard: View {
 
 struct PatternDrillView: View {
     let pattern: Pattern
-    let items: [SubstitutionItem]
 
+    @EnvironmentObject var state: AppState
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var queue: [SubstitutionItem] = []
     @State private var index = 0
     @State private var solvedCount = 0
     @State private var done = false
 
-    private var current: SubstitutionItem? { items.indices.contains(index) ? items[index] : nil }
+    private var current: SubstitutionItem? { queue.indices.contains(index) ? queue[index] : nil }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 ruleStrip
 
-                CarveBarView(total: items.count, done: solvedCount)
-                    .frame(height: 20)
-                    .padding(.vertical, 2)
+                if queue.isEmpty {
+                    emptyState
+                } else {
+                    CarveBarView(total: queue.count, done: solvedCount)
+                        .frame(height: 20)
+                        .padding(.vertical, 2)
 
-                if done {
-                    closeCard
-                        .transition(.offset(y: 10).combined(with: .opacity))
-                } else if let item = current {
-                    VStack(alignment: .leading, spacing: 12) {
-                        AssembleView(block: block(for: item), onSolved: advance)
-                            .id(item.id)
-                        if let source = item.source, let gloss = glossLine(source) {
-                            Text(gloss)
-                                .font(.system(size: 12))
-                                .foregroundStyle(Theme.inkFaint)
+                    if done {
+                        closeCard
+                            .transition(.offset(y: 10).combined(with: .opacity))
+                    } else if let item = current {
+                        VStack(alignment: .leading, spacing: 12) {
+                            AssembleView(block: block(for: item), onSolved: { advance(struggled: $0) })
+                                .id(item.id)
+                            if let source = item.source, let gloss = glossLine(source) {
+                                Text(gloss)
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(Theme.inkFaint)
+                            }
                         }
+                        .id(item.id)
                     }
-                    .id(item.id)
                 }
             }
             .padding(.horizontal, 22)
@@ -199,6 +214,23 @@ struct PatternDrillView: View {
             .frame(maxWidth: 640)
         }
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            if queue.isEmpty {
+                queue = state.duePatternItems(for: pattern)
+            }
+        }
+    }
+
+    private var emptyState: some View {
+        Text("Nothing due for this groove right now — walk on, and it'll offer itself when the interval opens.")
+            .font(.system(size: 15, design: .serif))
+            .italic()
+            .foregroundStyle(Theme.inkSoft)
+            .lineSpacing(4)
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Theme.sunk.opacity(0.55))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 
     // MARK: The known groove, kept in view while you run it
@@ -257,7 +289,7 @@ struct PatternDrillView: View {
     private var closeCard: some View {
         VStack(alignment: .leading, spacing: 14) {
             Eyebrow(text: "Snoite · carved", color: Theme.moss)
-            Text("Rith tú an patrún seo le \(items.count) focal.")
+            Text("Rith tú an patrún seo le \(queue.count) focal.")
                 .font(.system(size: 19, weight: .semibold, design: .serif))
                 .foregroundStyle(Theme.ink)
             Text("You ran the groove through every word you've earned for it. That — how much of the pattern you can produce — is the only score here.")
@@ -265,7 +297,7 @@ struct PatternDrillView: View {
                 .foregroundStyle(Theme.inkSoft)
                 .lineSpacing(4)
             FlowLayout(spacing: 8) {
-                ForEach(items) { item in
+                ForEach(queue) { item in
                     Text(item.answer)
                         .font(.system(size: 14, design: .serif))
                         .foregroundStyle(Theme.ink)
@@ -295,7 +327,8 @@ struct PatternDrillView: View {
         AssembleBlock(context: item.source?.en,
                       prompt: PatternDrill.prompt(for: item, pattern: pattern),
                       tiles: item.tiles,
-                      answer: item.answer)
+                      answer: item.answer,
+                      ref: nil)
     }
 
     private func glossLine(_ lexeme: Lexeme) -> String? {
@@ -307,9 +340,12 @@ struct PatternDrillView: View {
     }
 
     /// Let the verdict land, then rotate the next word in — or carve the close.
-    private func advance() {
+    private func advance(struggled: Bool) {
+        if let item = current {
+            state.completePatternItem(pattern: pattern, item: item, struggled: struggled)
+        }
         solvedCount += 1
-        let isLast = index + 1 >= items.count
+        let isLast = index + 1 >= queue.count
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             withAnimation(Motion.pop) {
                 if isLast { done = true } else { index += 1 }

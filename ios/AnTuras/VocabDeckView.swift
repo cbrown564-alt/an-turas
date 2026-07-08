@@ -118,11 +118,11 @@ struct VocabDeckView: View {
     private func cardView(_ item: LexemeDeckItem) -> some View {
         switch item {
         case .typein(_, let block):
-            TypeInView(block: block, onSolved: { finish(item, struggled: false) })
+            TypeInView(block: block, onSolved: { finish(item, struggled: $0) })
         case .listen(_, let block):
-            ListenView(block: block, onSolved: { finish(item, struggled: false) })
+            ListenView(block: block, onSolved: { finish(item, struggled: $0) })
         case .match(_, let block):
-            MatchView(block: block, onSolved: { finish(item, struggled: false) })
+            MatchView(block: block, onSolved: { finish(item, struggled: $0) })
         }
     }
 

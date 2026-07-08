@@ -60,10 +60,9 @@
               "ok": false,
               "why": "That's “goodbye” — a little early, you only just met him."
             }
-          ]
+          ],
+          "ref": "lex.dia-is-muire-dhuit"
         },
-        {
-          "type": "echo",
           "context": "He nods, pleased — then says it once more, slower, and waits. He wants to hear it in your mouth.",
           "s": "Dia is Muire dhuit.",
           "who": "Dáire — then you",
@@ -128,7 +127,8 @@
               "ok": false,
               "why": "Irish word order is strict here: Is mise Bríd."
             }
-          ]
+          ],
+          "ref": "lex.is-mise"
         },
         {
           "type": "assemble",
@@ -139,7 +139,8 @@
             "Áine",
             "Is"
           ],
-          "answer": "Is mise Áine"
+          "answer": "Is mise Áine",
+          "ref": "lex.is-mise"
         },
         {
           "type": "typein",
@@ -149,7 +150,8 @@
           "check": "ismise",
           "capture": true,
           "fada": false,
-          "hint": "Type the whole phrase: Is mise + your name."
+          "hint": "Type the whole phrase: Is mise + your name.",
+          "ref": "lex.is-mise"
         },
         {
           "type": "scene",
@@ -192,14 +194,9 @@
               "ainm",
               "name"
             ]
-          ]
+          ],
+          "refs": ["lex.dia-dhuit", "lex.is-mise", "lex.ce-thusa", "lex.ainm"]
         },
-        {
-          "type": "scene",
-          "beats": [
-            {
-              "n": "The light is going. Dáire covers his tools with a hide and lifts a hand."
-            },
             {
               "s": "Slán go fóill.",
               "ref": "lex.slan-go-foill",
@@ -309,7 +306,8 @@
               "ok": false,
               "why": "That's hello. A fine start, but it won't get you a county."
             }
-          ]
+          ],
+          "ref": "lex.ce-as-thu"
         },
         {
           "type": "match",
@@ -331,7 +329,8 @@
               "Cill Dara",
               "church of the oak"
             ]
-          ]
+          ],
+          "refs": ["lex.maigh-eo", "lex.doire", "lex.baile-atha-cliath", "lex.cill-dara"]
         },
         {
           "type": "assemble",
@@ -342,7 +341,8 @@
             "Gaillimh",
             "Is"
           ],
-          "answer": "Is as Gaillimh mé"
+          "answer": "Is as Gaillimh mé",
+          "ref": "lex.is-as-me"
         },
         {
           "type": "typein",
@@ -351,7 +351,8 @@
           "placeholder": "Is as … mé",
           "check": "isas",
           "fada": true,
-          "hint": "Is as ___ mé — put your county, city or country in the middle."
+          "hint": "Is as ___ mé — put your county, city or country in the middle.",
+          "ref": "lex.is-as-me"
         },
         {
           "type": "scene",
@@ -391,13 +392,9 @@
               "Slán go fóill",
               "Goodbye for now"
             ]
-          ]
-        },
-        {
-          "type": "scene",
-          "beats": [
-            {
-              "n": "As you leave, Dáire mentions that a family is walking in from the east tomorrow, bringing him work: a stone for a man who died in the spring."
+          ],
+          "refs": ["lex.is-mise", "lex.ce-as-thu", "lex.failte", "lex.slan-go-foill"]
+        }, bringing him work: a stone for a man who died in the spring."
             },
             {
               "n": "“Come early,” he says. “You'll see what the stones are *for*.”"
@@ -546,7 +543,8 @@
               "ok": false,
               "why": "Fáilte is welcome. MAQI is the “son of” between two names on a stone."
             }
-          ]
+          ],
+          "ref": "lex.mac"
         },
         {
           "type": "match",
@@ -568,7 +566,8 @@
               "iníon",
               "daughter"
             ]
-          ]
+          ],
+          "refs": ["lex.athair", "lex.mathair", "lex.mac", "lex.inion"]
         },
         {
           "type": "choice",
@@ -780,7 +779,8 @@
               "ok": false,
               "why": "Listen for the stretch: féar holds its vowel longer than fear does."
             }
-          ]
+          ],
+          "ref": "lex.fear-grass"
         },
         {
           "type": "choice",
@@ -806,7 +806,8 @@
           "check": "exact",
           "answer": "Seán",
           "fada": true,
-          "hint": "Use the fada keys below the box."
+          "hint": "Use the fada keys below the box.",
+          "ref": "lex.sean-name"
         },
         {
           "type": "listen",
@@ -824,7 +825,8 @@
               "ok": false,
               "why": "Both start with “sh” here — the difference is the fada: Seán holds its á long."
             }
-          ]
+          ],
+          "ref": "lex.sean-name"
         },
         {
           "type": "scene",
@@ -900,7 +902,8 @@
               "ok": false,
               "why": "A lovely phrase — but it's the welcome you give at your own door, not the answer to hello."
             }
-          ]
+          ],
+          "ref": "lex.dia-is-muire-dhuit"
         },
         {
           "type": "assemble",
@@ -911,7 +914,8 @@
             "fáilte",
             "Céad"
           ],
-          "answer": "Céad míle fáilte"
+          "answer": "Céad míle fáilte",
+          "ref": "lex.cead-mile-failte"
         },
         {
           "type": "match",
@@ -934,7 +938,8 @@
               "Slán go fóill",
               "Goodbye for now"
             ]
-          ]
+          ],
+          "refs": ["lex.inion", "lex.dearthair", "lex.ce-as-thu", "lex.slan-go-foill"]
         },
         {
           "type": "choice",
@@ -966,7 +971,8 @@
           "check": "exact",
           "answer": "Slán go fóill",
           "fada": true,
-          "hint": "Two fadas are missing."
+          "hint": "Two fadas are missing.",
+          "ref": "lex.slan-go-foill"
         },
         {
           "type": "scene",
