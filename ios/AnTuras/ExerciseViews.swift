@@ -301,6 +301,10 @@ struct TypeInView: View {
                 }
                 .shake(shakeCount)
                 if block.fada {
+                    Text("Fadas matter: use these keys to add the long mark. A missing fada can change the word.")
+                        .font(.system(size: 12.5))
+                        .foregroundStyle(Theme.inkSoft)
+                        .lineSpacing(2)
                     FadaKeyRow(text: $text, disabled: solved)
                 }
                 if let hint = block.hint, verdict == nil {
@@ -527,21 +531,28 @@ struct FadaKeyRow: View {
     var disabled = false
 
     var body: some View {
-        HStack(spacing: 6) {
-            ForEach(["á", "é", "í", "ó", "ú"], id: \.self) { fada in
-                Button(fada) {
-                    guard !disabled else { return }
-                    Haptics.tap()
-                    text.append(fada)
+        VStack(alignment: .leading, spacing: 6) {
+            Text("SÍNEADH FADA · TAP TO INSERT")
+                .font(.system(size: 10, weight: .semibold))
+                .kerning(1)
+                .foregroundStyle(Theme.atlasGreen)
+            HStack(spacing: 6) {
+                ForEach(["á", "é", "í", "ó", "ú"], id: \.self) { fada in
+                    Button(fada) {
+                        guard !disabled else { return }
+                        Haptics.tap()
+                        text.append(fada)
+                    }
+                    .font(.system(size: 16, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                    .padding(.vertical, 7)
+                    .padding(.horizontal, 13)
+                    .background(Theme.raised)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                    .overlay(RoundedRectangle(cornerRadius: 6).stroke(Theme.atlasGreen.opacity(0.4), lineWidth: 1))
+                    .buttonStyle(CarvePress())
+                    .accessibilityLabel("Insert \(fada) with fada")
                 }
-                .font(.system(size: 16, design: .serif))
-                .foregroundStyle(Theme.ink)
-                .padding(.vertical, 7)
-                .padding(.horizontal, 13)
-                .background(Theme.raised)
-                .clipShape(RoundedRectangle(cornerRadius: 6))
-                .overlay(RoundedRectangle(cornerRadius: 6).stroke(Theme.line, lineWidth: 1))
-                .buttonStyle(CarvePress())
             }
         }
     }

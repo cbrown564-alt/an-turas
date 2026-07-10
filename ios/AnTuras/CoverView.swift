@@ -26,7 +26,7 @@ struct CoverView: View {
                 .padding(.top, 24)
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Eyebrow(text: "An Turas · Caibidil a hAon")
+                    Eyebrow(text: "An Turas · 32 contae")
                     Text(state.chapter.title)
                         .font(.system(size: 34, weight: .semibold, design: .serif))
                         .foregroundStyle(Theme.ink)
@@ -36,7 +36,7 @@ struct CoverView: View {
                 }
                 .cascade(1, appeared: appeared, reduceMotion: reduceMotion)
 
-                Text("Before Ireland wrote on vellum, she wrote on stone — names, carved in strokes along an edge, meant to outlast the people who spoke them. In this chapter you learn Irish the way it first survived: one name at a time. Five short sessions. Every correct answer carves a stroke.")
+                Text("Take a trip around all 32 counties of Ireland. At every stop, a real person, myth or monument opens the door to a place and time that matter. You will read its story, learn 20 useful Irish words, and carry them on to the next county.")
                     .font(.system(size: 15))
                     .foregroundStyle(Theme.inkSoft)
                     .lineSpacing(4)
@@ -62,7 +62,7 @@ struct CoverView: View {
                             .font(.system(size: 17, weight: .semibold))
                         Text(returning
                              ? "Back to the path · your strokes are safe"
-                             : "Begin the journey · 5 sessions · ~10 min each")
+                             : "Begin in Mayo · 20 words · 5 short sessions")
                             .font(.system(size: 11))
                             .opacity(0.75)
                     }

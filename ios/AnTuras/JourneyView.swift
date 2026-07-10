@@ -17,6 +17,7 @@ struct JourneyView: View {
     let onOpenPatrun: () -> Void
 
     @State private var selected: JourneyChapter?
+    @State private var selectedCounty: County?
     @State private var appeared = false
 
     var body: some View {
@@ -27,23 +28,15 @@ struct JourneyView: View {
                     .padding(.horizontal, 22)
 
                 JourneyMap(
+                    counties: ContentLoader.counties(),
+                    trail: ContentLoader.countyTrail(),
                     journey: state.journey,
-                    currentN: state.currentChapterN,
-                    sessionsDone: state.done.filter { $0 }.count,
-                    sessionCount: state.done.count,
-                    reduceMotion: reduceMotion
-                ) { chapter in
+                    currentN: state.currentChapterN
+                ) { county in
                     Haptics.tap()
-                    selected = chapter
+                    selectedCounty = county
                 }
                 .padding(.horizontal, 10)
-                .opacity(appeared ? 1 : 0)
-
-                TimeAxis(journey: state.journey, currentN: state.currentChapterN) { chapter in
-                    Haptics.tap()
-                    selected = chapter
-                }
-                .padding(.horizontal, 22)
                 .opacity(appeared ? 1 : 0)
 
                 VStack(spacing: 10) {
@@ -84,6 +77,18 @@ struct JourneyView: View {
                 onOpenChapter()
             }
         }
+        .sheet(item: $selectedCounty) { county in
+            CountyCard(county: county,
+                       chapter: state.journey.first(where: { $0.countyEn == county.en }),
+                       status: countyStatus(county)) {
+                selectedCounty = nil
+                if let chapter = state.journey.first(where: { $0.countyEn == county.en }),
+                   chapter.n == state.currentChapterN,
+                   chapter.n <= ContentLoader.maxChapter {
+                    onOpenChapter()
+                }
+            }
+        }
     }
 
     private func status(of chapter: JourneyChapter) -> ChapterStatus {
@@ -96,15 +101,25 @@ struct JourneyView: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Eyebrow(text: "Éire · c. 400 — inniu")
-            Text("An turas — the journey")
+            Eyebrow(text: "Éire · 32 contae · c. 400 — inniu")
+            Text("An turas — one county at a time")
                 .font(.system(size: 26, weight: .semibold, design: .serif))
                 .foregroundStyle(Theme.ink)
-            Text("Thirteen chapters, fifteen centuries, one language. The road behind you is carved in moss; the road ahead is chalk until you walk it.")
+            Text("Every county opens with a real person, myth or monument. Read a story rooted there, then take 20 useful words onward.")
                 .font(.system(size: 15))
                 .foregroundStyle(Theme.inkSoft)
                 .lineSpacing(4)
+            CountyLegend()
         }
+    }
+
+    private func countyStatus(_ county: County) -> CountyStatus {
+        let chapters = state.journey.filter { $0.countyEn == county.en }
+        let shipped = chapters.filter { $0.n <= ContentLoader.maxChapter }
+        if state.currentChapterN <= ContentLoader.maxChapter,
+           shipped.contains(where: { $0.n == state.currentChapterN }) { return .active }
+        if !shipped.isEmpty && shipped.allSatisfy({ $0.n < state.currentChapterN }) { return .complete }
+        return .waiting
     }
 
     // MARK: Rows beneath the map
@@ -245,12 +260,11 @@ private struct JourneyRow<Glyph: View>: View {
 // MARK: - The map itself
 
 private struct JourneyMap: View {
+    let counties: [County]
+    let trail: [String]
     let journey: [JourneyChapter]
     let currentN: Int
-    let sessionsDone: Int
-    let sessionCount: Int
-    let reduceMotion: Bool
-    let onTap: (JourneyChapter) -> Void
+    let onTap: (County) -> Void
 
     /// Margin inside the map frame so sea-side labels have room to breathe
     /// without falling off the page.
@@ -275,40 +289,46 @@ private struct JourneyMap: View {
                     ctx.fill(island, with: .color(Theme.ink.opacity(0.08)))
                     ctx.translateBy(x: -1.5, y: -2.5)
                     ctx.fill(island, with: .color(Theme.raised))
-                    ctx.stroke(island, with: .color(Theme.stone),
-                               style: StrokeStyle(lineWidth: 1.2, lineJoin: .round))
+                    ctx.drawLayer { layer in
+                        layer.clip(to: island)
 
-                    // The road, told at three depths so thirteen zig-zagging
-                    // centuries don't turn into a scribble: moss where you've
-                    // been, clear chalk for the one leg in front of you, and
-                    // the faintest thread beyond that — the future is mostly
-                    // waypoints, because the road doesn't exist until it's
-                    // walked.
-                    let pts = journey.map { point(for: $0, in: full) }
-                    var walked = Path()
-                    var next = Path()
-                    var thread = Path()
-                    for i in 0..<(pts.count - 1) {
-                        var seg = Path()
-                        seg.move(to: pts[i])
-                        seg.addQuadCurve(to: pts[i + 1],
-                                         control: control(pts[i], pts[i + 1], flip: i.isMultiple(of: 2)))
-                        // Segment i joins chapter i+1 to i+2 (1-based): it is
-                        // walked once chapter i+1 is finished.
-                        if journey[i].n < currentN {
-                            walked.addPath(seg)
-                        } else if journey[i].n == currentN {
-                            next.addPath(seg)
-                        } else {
-                            thread.addPath(seg)
+                        // Counties are the map now: no waypoint dots, only the
+                        // lined territories a learner is travelling through.
+                        for county in counties {
+                            guard let path = CountyBoundaryAtlas.path(for: county, in: full) else { continue }
+                            let state = status(county)
+                            layer.fill(path, with: .color(fill(for: state)))
+                            layer.stroke(path, with: .color(border(for: state)),
+                                         style: StrokeStyle(lineWidth: state == .active ? 1.7 : 0.72,
+                                                            lineJoin: .round))
+                        }
+
+                        // One road, 32 counties, no repeats. It is drawn over
+                        // the boundary map so movement reads as travel through
+                        // places rather than a second set of chapter markers.
+                        let route = trail.compactMap { name in counties.first(where: { $0.en == name }) }
+                        let active = activeTrailIndex(in: route)
+                        for index in 0..<max(route.count - 1, 0) {
+                            let from = point(for: route[index], in: full)
+                            let to = point(for: route[index + 1], in: full)
+                            var leg = Path()
+                            leg.move(to: from)
+                            leg.addQuadCurve(to: to,
+                                             control: control(from, to, flip: index.isMultiple(of: 2)))
+                            if index < active {
+                                layer.stroke(leg, with: .color(Theme.atlasGold),
+                                             style: StrokeStyle(lineWidth: 2.3, lineCap: .round))
+                            } else if index == active {
+                                layer.stroke(leg, with: .color(Theme.atlasGreen),
+                                             style: StrokeStyle(lineWidth: 2.3, lineCap: .round, dash: [0.1, 5]))
+                            } else {
+                                layer.stroke(leg, with: .color(Theme.stone.opacity(0.58)),
+                                             style: StrokeStyle(lineWidth: 1.15, lineCap: .round, dash: [0.1, 5]))
+                            }
                         }
                     }
-                    ctx.stroke(thread, with: .color(Theme.stone.opacity(0.55)),
-                               style: StrokeStyle(lineWidth: 1.4, lineCap: .round, dash: [0.1, 5]))
-                    ctx.stroke(next, with: .color(Theme.stone),
-                               style: StrokeStyle(lineWidth: 2.4, lineCap: .round, dash: [0.1, 6]))
-                    ctx.stroke(walked, with: .color(Theme.moss),
-                               style: StrokeStyle(lineWidth: 2.4, lineCap: .round))
+                    ctx.stroke(island, with: .color(Theme.stone),
+                               style: StrokeStyle(lineWidth: 1.2, lineJoin: .round))
                 }
 
                 // The Atlantic, named in the empty north-west sea. Two lines,
@@ -322,33 +342,26 @@ private struct JourneyMap: View {
                     .foregroundStyle(Theme.inkFaint.opacity(0.65))
                     .position(sea(x: 0.115, y: 0.165, in: rect))
 
-                ForEach(journey) { chapter in
-                    let p = point(for: chapter, in: rect)
-                    WaypointMark(chapter: chapter,
-                                 status: status(chapter),
-                                 sessionsDone: sessionsDone,
-                                 sessionCount: sessionCount,
-                                 reduceMotion: reduceMotion)
-                        .position(p)
-                        .accessibilityAction(.default) { onTap(chapter) }
-                }
             }
-            // A handful of chapters (Dubhlinn/an lá inniu among them) land
-            // barely a dozen points apart, closer than any per-marker hit
-            // shape can separate. One tap gesture over the whole map,
-            // resolved by nearest waypoint, means the closest dot always
-            // wins regardless of which marker happens to be drawn on top.
+            // Tap the territory itself; a nearest-centre fallback makes the
+            // small eastern counties practical to select on a phone.
             .contentShape(Rectangle())
             .gesture(tapGesture(in: rect))
         }
         .aspectRatio(0.93, contentMode: .fit)
         .accessibilityElement(children: .contain)
-        .accessibilityLabel("Map of Ireland showing the journey through \(journey.count) chapters.")
+        .accessibilityLabel("Map of Ireland divided into \(counties.count) counties. Gold is completed, green is active, white is waiting. The road connects the counties in journey order.")
     }
 
     private func tapGesture(in rect: CGRect) -> some Gesture {
         SpatialTapGesture().onEnded { value in
-            let nearest = journey.min { a, b in
+            if let selected = counties.first(where: {
+                CountyBoundaryAtlas.path(for: $0, in: rect)?.contains(value.location) == true
+            }) {
+                onTap(selected)
+                return
+            }
+            let nearest = counties.min { a, b in
                 distance(point(for: a, in: rect), value.location)
                     < distance(point(for: b, in: rect), value.location)
             }
@@ -362,21 +375,47 @@ private struct JourneyMap: View {
         hypot(a.x - b.x, a.y - b.y)
     }
 
-    private func status(_ chapter: JourneyChapter) -> ChapterStatus {
-        if chapter.n < currentN { return .done }
-        if chapter.n == currentN { return .current }
-        return .ahead
+    private func status(_ county: County) -> CountyStatus {
+        let chapters = journey.filter { $0.countyEn == county.en }
+        let shipped = chapters.filter { $0.n <= ContentLoader.maxChapter }
+        if currentN <= ContentLoader.maxChapter,
+           shipped.contains(where: { $0.n == currentN }) { return .active }
+        if !shipped.isEmpty && shipped.allSatisfy({ $0.n < currentN }) { return .complete }
+        return .waiting
     }
 
-    private func point(for chapter: JourneyChapter, in rect: CGRect) -> CGPoint {
+    private func activeTrailIndex(in route: [County]) -> Int {
+        guard let activeCounty = journey.first(where: { $0.n == currentN })?.countyEn,
+              let index = route.firstIndex(where: { $0.en == activeCounty })
+        else { return -1 }
+        return index
+    }
+
+    private func point(for county: County, in rect: CGRect) -> CGPoint {
         let box = Ireland.fit(in: rect)
-        let n = Ireland.point(lat: chapter.lat, lon: chapter.lon)
+        let n = Ireland.point(lat: county.lat, lon: county.lon)
         return CGPoint(x: box.minX + n.x * box.height, y: box.minY + n.y * box.height)
     }
 
     private func sea(x: CGFloat, y: CGFloat, in rect: CGRect) -> CGPoint {
         let box = Ireland.fit(in: rect)
         return CGPoint(x: box.minX + x * box.height, y: box.minY + y * box.height)
+    }
+
+    private func fill(for status: CountyStatus) -> Color {
+        switch status {
+        case .complete: return Theme.atlasGold.opacity(0.30)
+        case .active: return Theme.atlasGreen.opacity(0.34)
+        case .waiting: return Theme.atlasWhite.opacity(0.97)
+        }
+    }
+
+    private func border(for status: CountyStatus) -> Color {
+        switch status {
+        case .complete: return Theme.atlasGold.opacity(0.9)
+        case .active: return Theme.atlasGreen
+        case .waiting: return Theme.line.opacity(0.9)
+        }
     }
 
     /// Bow each leg of the road a little, alternating sides, so the route
@@ -392,6 +431,90 @@ private struct JourneyMap: View {
 }
 
 enum ChapterStatus { case done, current, ahead }
+enum CountyStatus { case complete, active, waiting }
+
+private struct CountyLegend: View {
+    var body: some View {
+        HStack(spacing: 14) {
+            key(Theme.atlasGold, "bailithe · completed")
+            key(Theme.atlasGreen, "anois · active")
+            key(Theme.atlasWhite, "ag fanacht · waiting", stroke: Theme.stone)
+        }
+        .font(.system(size: 10.5, weight: .semibold))
+        .foregroundStyle(Theme.inkSoft)
+        .padding(.top, 4)
+    }
+
+    private func key(_ color: Color, _ label: String, stroke: Color = .clear) -> some View {
+        HStack(spacing: 5) {
+            RoundedRectangle(cornerRadius: 2).fill(color).frame(width: 12, height: 8)
+                .overlay(RoundedRectangle(cornerRadius: 2).stroke(stroke, lineWidth: 1))
+            Text(label)
+        }
+    }
+}
+
+private struct CountyCard: View {
+    let county: County
+    let chapter: JourneyChapter?
+    let status: CountyStatus
+    let onOpen: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Eyebrow(text: "\(county.province) · \(county.ga)", color: color)
+            Text(county.en)
+                .font(.system(size: 28, weight: .semibold, design: .serif))
+                .foregroundStyle(Theme.ink)
+            if let chapter {
+                Text("\(chapter.anchorName) · \(chapter.anchorKind)")
+                    .font(.system(size: 16, weight: .semibold, design: .serif))
+                    .foregroundStyle(color)
+                Text(chapter.readingPromise)
+                    .font(.system(size: 15))
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(4)
+                Text("LEARN \(chapter.vocabularyTarget) WORDS · \(chapter.era)")
+                    .font(.system(size: 11, weight: .semibold))
+                    .kerning(1.1)
+                    .foregroundStyle(Theme.inkFaint)
+                if chapter.n <= ContentLoader.maxChapter, status == .active {
+                    PrimaryButton(title: "Oscail an scéal — open story",
+                                  fullWidth: true, action: onOpen)
+                } else if status == .complete {
+                    Text("Snoite · you have already carried this county’s story onward.")
+                        .font(.system(size: 13.5, design: .serif))
+                        .italic()
+                        .foregroundStyle(Theme.atlasGold)
+                } else {
+                    waitingCopy
+                }
+            } else {
+                waitingCopy
+            }
+        }
+        .padding(22)
+        .presentationDetents([.height(330)])
+        .presentationBackground(Theme.bg)
+        .presentationCornerRadius(20)
+        .presentationDragIndicator(.visible)
+    }
+
+    private var color: Color {
+        switch status {
+        case .complete: return Theme.atlasGold
+        case .active: return Theme.atlasGreen
+        case .waiting: return Theme.inkFaint
+        }
+    }
+
+    private var waitingCopy: some View {
+        Text("The story for this county is still being researched with Irish-language and historical reviewers. Its territory stays visible so the whole journey is clear.")
+            .font(.system(size: 14))
+            .foregroundStyle(Theme.inkSoft)
+            .lineSpacing(3)
+    }
+}
 
 // MARK: - The time axis: the spine the map's zigzag route can't show
 
@@ -494,129 +617,6 @@ private struct TimeAxis: View {
     }
 }
 
-// MARK: - One waypoint: marker + label
-
-private struct WaypointMark: View {
-    let chapter: JourneyChapter
-    let status: ChapterStatus
-    let sessionsDone: Int
-    let sessionCount: Int
-    let reduceMotion: Bool
-
-    @State private var pulsing = false
-
-    var body: some View {
-        ZStack {
-            marker
-            label
-        }
-        // Sized to the marker, not the label: the label's 170pt-wide frame
-        // would otherwise inflate the ZStack's reported bounds and, scaled
-        // up, let one waypoint's tap target swallow a neighbour's marker
-        // when chapters sit close together (e.g. Dubhlinn/an lá inniu).
-        .frame(width: 40, height: 40)
-        .contentShape(Circle())
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel(accessibilityText)
-        .accessibilityAddTraits(.isButton)
-    }
-
-    @ViewBuilder
-    private var marker: some View {
-        switch status {
-        case .done:
-            Circle().fill(Theme.moss).frame(width: 8, height: 8)
-        case .current:
-            ZStack {
-                if !reduceMotion {
-                    Circle()
-                        .stroke(Theme.moss, lineWidth: 1.4)
-                        .frame(width: 11, height: 11)
-                        .scaleEffect(pulsing ? 2.8 : 1)
-                        .opacity(pulsing ? 0 : 0.8)
-                        .onAppear {
-                            withAnimation(.easeOut(duration: 2.2).repeatForever(autoreverses: false)) {
-                                pulsing = true
-                            }
-                        }
-                } else {
-                    Circle().stroke(Theme.moss, lineWidth: 1.4)
-                        .frame(width: 17, height: 17)
-                }
-                Circle().fill(Theme.ink).frame(width: 11, height: 11)
-            }
-        case .ahead:
-            // Chalk: a guide-mark waiting for the chisel.
-            Circle()
-                .stroke(Theme.stone, style: StrokeStyle(lineWidth: 1.4, dash: [1.6, 2.2]))
-                .background(Circle().fill(Theme.bg))
-                .frame(width: 8, height: 8)
-        }
-    }
-
-    private var label: some View {
-        VStack(alignment: alignment.horizontal, spacing: 1) {
-            (Text("\(chapter.n) · ").foregroundStyle(Theme.inkFaint)
-             + Text(chapter.placeGa).foregroundStyle(labelColor))
-                .font(.system(size: 10, weight: status == .current ? .bold : .semibold))
-            if status == .current {
-                Text(progressLine)
-                    .font(.system(size: 8.5, weight: .semibold))
-                    .italic()
-                    .foregroundStyle(Theme.moss)
-            }
-        }
-        .fixedSize()
-        .frame(width: 170, alignment: Alignment(horizontal: alignment.horizontal, vertical: .center))
-        .offset(labelOffset)
-        .allowsHitTesting(false)
-    }
-
-    /// Sea-side labels hug the marker instead of centring 85pt away.
-    private var alignment: (horizontal: HorizontalAlignment, offset: CGFloat) {
-        switch chapter.side {
-        case "left":  return (.trailing, -85 - 11)
-        case "right": return (.leading, 85 + 11)
-        default:      return (.center, 0)
-        }
-    }
-
-    private var progressLine: String {
-        if sessionsDone == 0 { return "tá tú anseo" }
-        return "tá tú anseo · \(sessionsDone) de \(sessionCount) snoite"
-    }
-
-    /// Ahead labels stay readable (inkSoft, not inkFaint) — the chalk/moss
-    /// distinction lives in the markers; the place names have to be legible
-    /// at 10pt either way.
-    private var labelColor: Color {
-        switch status {
-        case .done: return Theme.inkSoft
-        case .current: return Theme.ink
-        case .ahead: return Theme.inkSoft
-        }
-    }
-
-    private var labelOffset: CGSize {
-        let lift: CGFloat = status == .current ? 9 : 0
-        switch chapter.side {
-        case "above": return CGSize(width: 0, height: -14 - lift)
-        case "below": return CGSize(width: 0, height: 14 + lift)
-        default:      return CGSize(width: alignment.offset, height: 0)
-        }
-    }
-
-    private var accessibilityText: String {
-        let state: String
-        switch status {
-        case .done: state = "Carved."
-        case .current: state = "You are here."
-        case .ahead: state = "Still ahead."
-        }
-        return "Caibidil \(chapter.n), \(chapter.ga), \(chapter.placeGa), \(chapter.era). \(state)"
-    }
-}
-
 // MARK: - The chapter card: what a waypoint promises
 
 struct ChapterCard: View {
@@ -651,6 +651,24 @@ struct ChapterCard: View {
                     .foregroundStyle(Theme.inkSoft)
                     .lineSpacing(4)
                     .padding(.top, 2)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Eyebrow(text: "An scéal fíor · the real story", color: Theme.atlasGreen)
+                    Text("\(chapter.anchorName) · \(chapter.anchorKind)")
+                        .font(.system(size: 16, weight: .semibold, design: .serif))
+                        .foregroundStyle(Theme.ink)
+                    Text(chapter.readingPromise)
+                        .font(.system(size: 14))
+                        .foregroundStyle(Theme.inkSoft)
+                        .lineSpacing(3)
+                    Text("\(chapter.vocabularyTarget) focal · \(chapter.vocabularyTarget) words to take with you")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundStyle(Theme.atlasGreen)
+                }
+                .padding(12)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Theme.mossTint)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
 
                 VStack(alignment: .leading, spacing: 5) {
                     Eyebrow(text: "Sa chaibidil seo", color: Theme.inkFaint)

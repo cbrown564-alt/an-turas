@@ -63,12 +63,18 @@ struct MapView: View {
     private var header: some View {
         VStack(alignment: .leading, spacing: 8) {
             Eyebrow(text: mapEyebrow)
-            Text("Cúig sheisiún — five sessions")
+            Text("20 focal — twenty words")
                 .font(.system(size: 26, weight: .semibold, design: .serif))
                 .foregroundStyle(Theme.ink)
             Text(state.journey.first(where: { $0.n == state.activeChapterN })?.hook ?? "")
                 .font(.system(size: 15))
                 .foregroundStyle(Theme.inkSoft)
+            if let chapter = state.journey.first(where: { $0.n == state.activeChapterN }) {
+                Text("Your story: \(chapter.anchorName) · read the place, then earn \(chapter.vocabularyTarget) words.")
+                    .font(.system(size: 13.5, design: .serif))
+                    .foregroundStyle(Theme.atlasGreen)
+                    .padding(.top, 2)
+            }
             if state.done.contains(true), !state.allDone {
                 Text("Tá tú ar ais — you're back. Dáire kept your place.")
                     .font(.system(size: 14.5, design: .serif))

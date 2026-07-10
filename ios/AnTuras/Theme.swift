@@ -28,6 +28,11 @@ enum Theme {
     static let stone    = Color(light: 0xAEB4A6, dark: 0x4A524A)
     static let moss     = Color(light: 0x4C6647, dark: 0x95B28B)
     static let lichen   = Color(light: 0x8F7414, dark: 0xD2A93C)
+    // Atlas progress deliberately uses the flag colours at higher contrast:
+    // green is the county in play, white is waiting, gold is a story carried.
+    static let atlasGreen = Color(light: 0x16803A, dark: 0x6CC98B)
+    static let atlasGold  = Color(light: 0xB8860B, dark: 0xF0C654)
+    static let atlasWhite = Color(light: 0xFFFDF6, dark: 0xE9ECE2)
     static let rust     = Color(light: 0xA34D3B, dark: 0xC97A66)
 
     static var mossTint: Color { moss.opacity(0.12) }

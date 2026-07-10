@@ -336,7 +336,7 @@ enum Page: Decodable {
     }
 }
 
-// MARK: - The journey (journey.json — the 13-chapter spine as data)
+// MARK: - The journey (journey.json — the 32-county atlas as data)
 
 /// One chapter of the historical spine as it appears on the island map and
 /// in the museum: a place, an era, a promise, and the artifact it leaves.
@@ -356,8 +356,30 @@ struct JourneyChapter: Decodable, Identifiable {
     let artifactGa: String
     let artifactEn: String
     let glyph: String
+    /// The county is the learner-facing unit of the atlas. A county may host
+    /// more than one era over time; its stories remain separate chapters.
+    let countyGa: String
+    let countyEn: String
+    /// The real person, myth, or monument which makes this stop worth taking.
+    /// Editorial sign-off is required before an entry can ship as playable.
+    let anchorName: String
+    let anchorKind: String
+    let readingPromise: String
+    let vocabularyTarget: Int
 
     var id: Int { n }
+}
+
+/// A county marker on the island atlas. Counties can be visible long before
+/// their full story is authored; that is an honest invitation, not a fake lock.
+struct County: Decodable, Identifiable {
+    let ga: String
+    let en: String
+    let province: String
+    let lat: Double
+    let lon: Double
+
+    var id: String { en }
 }
 
 // MARK: - Ar Ais visits (authored in chapter1.json beside the content they review)
@@ -465,6 +487,18 @@ enum ContentLoader {
     static func journey() -> [JourneyChapter] {
         struct Journey: Decodable { let chapters: [JourneyChapter] }
         return decode(Journey.self, from: "journey").chapters
+    }
+
+    static func counties() -> [County] {
+        struct Atlas: Decodable { let counties: [County] }
+        return decode(Atlas.self, from: "journey").counties
+    }
+
+    /// The one-pass journey through the island. Chapters may return to an era,
+    /// but the map's road moves county to county without duplicate waypoints.
+    static func countyTrail() -> [String] {
+        struct Atlas: Decodable { let trail: [String] }
+        return decode(Atlas.self, from: "journey").trail
     }
 
     /// Visits authored in one chapter's JSON (session indices are chapter-local).
