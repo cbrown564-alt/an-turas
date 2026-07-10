@@ -63,9 +63,15 @@ struct MapView: View {
     private var header: some View {
         VStack(alignment: .leading, spacing: 8) {
             Eyebrow(text: mapEyebrow)
-            Text("20 focal — twenty words")
+            Text(state.activeStory?.titleGa ?? "20 focal — twenty words")
                 .font(.system(size: 26, weight: .semibold, design: .serif))
                 .foregroundStyle(Theme.ink)
+            if let story = state.activeStory {
+                Text(story.titleEn)
+                    .font(.system(size: 15, design: .serif))
+                    .foregroundStyle(Theme.inkSoft)
+                StoryArcSummary(story: story)
+            }
             Text(state.journey.first(where: { $0.n == state.activeChapterN })?.hook ?? "")
                 .font(.system(size: 15))
                 .foregroundStyle(Theme.inkSoft)
@@ -129,6 +135,44 @@ struct MapView: View {
             return "Your artifact stands first of thirteen."
         }
         return "The \(jc.artifactEn) earned at \(jc.placeEn) — first of thirteen niches filled."
+    }
+}
+
+/// The compact county-story contract at the top of the path. It makes the
+/// encounter, the 20-word promise, and its editorial state visible before a
+/// learner enters the first session.
+private struct StoryArcSummary: View {
+    let story: CountyStory
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("LÉAMH · \(story.readingKind.uppercased())")
+                .font(.system(size: 10.5, weight: .semibold))
+                .kerning(1.3)
+                .foregroundStyle(Theme.lichen)
+            Text(story.readingPromise)
+                .font(.system(size: 14, design: .serif))
+                .foregroundStyle(Theme.ink)
+                .lineSpacing(3)
+            Text("\(story.vocabularyTarget) focal · four small groups to carry onward")
+                .font(.system(size: 12.5, weight: .semibold))
+                .foregroundStyle(Theme.moss)
+            ForEach(story.vocabularyPlan) { group in
+                Text("\(group.title): \(group.words.joined(separator: ", "))")
+                    .font(.system(size: 12.5))
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(2)
+            }
+            Text(story.reviewState)
+                .font(.system(size: 11.5, design: .serif))
+                .italic()
+                .foregroundStyle(Theme.rust)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Theme.raised)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .overlay(RoundedRectangle(cornerRadius: 8).stroke(Theme.lichen.opacity(0.35), lineWidth: 1))
     }
 }
 

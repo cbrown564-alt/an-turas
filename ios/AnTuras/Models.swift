@@ -382,6 +382,43 @@ struct County: Decodable, Identifiable {
     var id: String { en }
 }
 
+/// A county story is the learner-facing unit of the journey. `legacyChapter`
+/// deliberately keeps the first migration reversible: existing bundled chapter
+/// pages and their progress become a story without asking a learner to start
+/// again. New stories will use their own packs rather than a chapter number.
+struct CountyStory: Decodable, Identifiable {
+    let storyId: String
+    let legacyChapter: Int?
+    let countyGa: String
+    let countyEn: String
+    let titleGa: String
+    let titleEn: String
+    let era: String
+    let anchorName: String
+    let anchorKind: String
+    let readingKind: String
+    let readingPromise: String
+    let readingText: String
+    let sourceRegister: String
+    let rightsState: String
+    let reviewState: String
+    let vocabularyTarget: Int
+    let vocabularyPlan: [StoryVocabularyGroup]
+    let spineRefs: [Int]
+
+    var id: String { storyId }
+}
+
+/// Five words earned together from one part of the county encounter. Keeping
+/// the grouping in the pack lets the map and a future review CMS show the
+/// product promise without reverse-engineering it from lesson prose.
+struct StoryVocabularyGroup: Decodable, Identifiable {
+    let title: String
+    let words: [String]
+
+    var id: String { title }
+}
+
 // MARK: - Ar Ais visits (authored in chapter1.json beside the content they review)
 
 /// One person or place that will ask for the learner again. The scheduler
@@ -487,6 +524,17 @@ enum ContentLoader {
     static func journey() -> [JourneyChapter] {
         struct Journey: Decodable { let chapters: [JourneyChapter] }
         return decode(Journey.self, from: "journey").chapters
+    }
+
+    /// County-first story manifests. Only Mayo is fully migrated for now;
+    /// chapter-backed entries continue to work while their briefs graduate.
+    static func stories() -> [CountyStory] {
+        struct Atlas: Decodable { let stories: [CountyStory]? }
+        return decode(Atlas.self, from: "journey").stories ?? []
+    }
+
+    static func story(forLegacyChapter n: Int) -> CountyStory? {
+        stories().first { $0.legacyChapter == n }
     }
 
     static func counties() -> [County] {

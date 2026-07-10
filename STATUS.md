@@ -64,12 +64,13 @@ documented; no claim is made that the 32 stories are already production-ready.
 
 | 2026-07-08 | **Build fixes.** Swift build errors in `AppState` init and share-card rendering resolved; tree building clean on simulator | `ios/AnTuras/` (AppState, ArtifactView) |
 | 2026-07-10 | **County-led product architecture adopted (D12).** All 32 counties now have researched first-story leads, each requiring a named real anchor, substantial reading/encounter, 20-word plan, source/rights register, and expert review. The county map is the learner-facing structure; the historical spine remains the sequencing rail. Core documentation and the content-pipeline gates were updated; app/schema migration remains future work. | `docs/DECISIONS.md` D12, `docs/COUNTY-ATLAS.md`, `docs/COUNTY-STORY-SLATE.md`, `docs/SPINE.md`, `docs/CONTENT-PIPELINE.md` |
+| 2026-07-10 | **First full county-story arc implemented — Mayo / Breastagh.** Chapter 1 is now a story-first Mayo pack (`mayo.breastagh-stones`) with explicit anchor, inscription encounter, 20-word groups, source/rights/review metadata, and story-keyed progress migrated losslessly from Chapter 1 saves. The path and county card show the story contract; the lesson distinguishes the fictional practice inscription from the damaged Breastagh reading. It remains an editorial draft, blocked from public release pending historian, pedagogue, rights, and audio QA. | `ios/AnTuras/Resources/journey.json`, `chapter1.json`, `Models.swift`, `AppState.swift`, `JourneyView.swift`, `MapView.swift`, `content/mayo/source-register.md` |
 
 ## Immediate next steps (Phase 2)
 
-1. **County-story migration brief** — define the story-first schema and a migration
-   plan that preserves existing Chapter 1–3 progress, artifacts, and Ar Ais visits;
-   make Mayo, Offaly, Dublin, and Meath explicit map stops. No new generic chapter
+1. **Repeat the county-story migration for Offaly, Dublin, and Meath** — Mayo is the
+   reference implementation: make each story id, source register, 20-word plan,
+   rights/review state, and legacy-progress bridge explicit. No new generic chapter
    scene should enter production during this transition (D12, `COUNTY-ATLAS.md`).
 2. **Content review CMS** — purpose-built review UI for the county-story schema (D9,
    D12). Stakeholders: writer, Irish-language pedagogue, historian, audio QA. Workflow:

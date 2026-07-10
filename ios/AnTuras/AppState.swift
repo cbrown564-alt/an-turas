@@ -27,6 +27,8 @@ final class AppState: ObservableObject {
         var activeChapter: Int = 1
         /// Session completion per chapter, keyed by chapter number.
         var doneByChapter: [Int: [Bool]] = [:]
+        /// Story-keyed completion; chapter completion remains during migration.
+        var doneByStory: [String: [Bool]] = [:]
         var name: String = ""
         var visits: [String: VisitProgress] = [:]
         var lexemes: [String: LexemeProgress] = [:]
@@ -35,7 +37,7 @@ final class AppState: ObservableObject {
         init() {}
 
         private enum Keys: String, CodingKey {
-            case activeChapter, doneByChapter, name, visits, lexemes, patternItems, done
+            case activeChapter, doneByChapter, doneByStory, name, visits, lexemes, patternItems, done
         }
 
         // Custom decode: migrate single-chapter saves and pre-Ar-Ais writes.
@@ -43,6 +45,7 @@ final class AppState: ObservableObject {
             let keys = try decoder.container(keyedBy: Keys.self)
             activeChapter = try keys.decodeIfPresent(Int.self, forKey: .activeChapter) ?? 1
             doneByChapter = try keys.decodeIfPresent([Int: [Bool]].self, forKey: .doneByChapter) ?? [:]
+            doneByStory = try keys.decodeIfPresent([String: [Bool]].self, forKey: .doneByStory) ?? [:]
             name = try keys.decodeIfPresent(String.self, forKey: .name) ?? ""
             visits = try keys.decodeIfPresent([String: VisitProgress].self, forKey: .visits) ?? [:]
             lexemes = try keys.decodeIfPresent([String: LexemeProgress].self, forKey: .lexemes) ?? [:]
@@ -61,6 +64,7 @@ final class AppState: ObservableObject {
             var keys = encoder.container(keyedBy: Keys.self)
             try keys.encode(activeChapter, forKey: .activeChapter)
             try keys.encode(doneByChapter, forKey: .doneByChapter)
+            try keys.encode(doneByStory, forKey: .doneByStory)
             try keys.encode(name, forKey: .name)
             try keys.encode(visits, forKey: .visits)
             try keys.encode(lexemes, forKey: .lexemes)
@@ -82,6 +86,8 @@ final class AppState: ObservableObject {
 
     /// Per-chapter session flags — the road behind you, chapter by chapter.
     private var doneByChapter: [Int: [Bool]]
+    /// The county-story progress key introduced by the story-first migration.
+    private var doneByStory: [String: [Bool]]
 
     private static let key = "turas_progress"
     private static let legacyKey = "turas_c1"
@@ -90,6 +96,9 @@ final class AppState: ObservableObject {
     var chapterN: Int { activeChapterN }
 
     var chapter: Chapter { ContentLoader.chapter(activeChapterN) }
+
+    /// The migrated county story now in hand, if this chapter has one.
+    var activeStory: CountyStory? { ContentLoader.story(forLegacyChapter: activeChapterN) }
 
     /// Visits from every chapter walked so far — session indices stay local.
     var visits: [Visit] {
@@ -118,6 +127,7 @@ final class AppState: ObservableObject {
 
         var activeChapter = saved.activeChapter
         var progressByChapter = saved.doneByChapter
+        var progressByStory = saved.doneByStory
         var name = saved.name
         var progress = saved.visits
         var lexProgress = saved.lexemes
@@ -140,6 +150,18 @@ final class AppState: ObservableObject {
 
         activeChapter = min(max(activeChapter, 1), ContentLoader.maxChapter)
 
+        // Preserve every legacy Chapter 1 save by writing the same flags under
+        // Mayo's durable story id. This runs once and is safe to repeat.
+        var storyMigrationAdded = false
+        for story in ContentLoader.stories() {
+            guard let legacyChapter = story.legacyChapter,
+                  progressByStory[story.storyId] == nil,
+                  let legacyDone = progressByChapter[legacyChapter]
+            else { continue }
+            progressByStory[story.storyId] = legacyDone
+            storyMigrationAdded = true
+        }
+
         if !chapterOverride {
             while activeChapter < ContentLoader.maxChapter {
                 let flags = Self.normalizedDone(
@@ -151,9 +173,13 @@ final class AppState: ObservableObject {
         }
 
         doneByChapter = progressByChapter
+        doneByStory = progressByStory
 
+        let activeProgress = ContentLoader.story(forLegacyChapter: activeChapter)
+            .flatMap { progressByStory[$0.storyId] }
+            ?? progressByChapter[activeChapter]
         var doneFlags = Self.normalizedDone(
-            progressByChapter[activeChapter],
+            activeProgress,
             sessionCount: ContentLoader.chapter(activeChapter).sessions.count)
 
         #if DEBUG
@@ -163,7 +189,11 @@ final class AppState: ObservableObject {
            let count = Int(debugArgs[flagIndex + 1]) {
             for index in doneFlags.indices { doneFlags[index] = index < count }
             progressByChapter[activeChapter] = doneFlags
+            if let story = ContentLoader.story(forLegacyChapter: activeChapter) {
+                progressByStory[story.storyId] = doneFlags
+            }
             doneByChapter = progressByChapter
+            doneByStory = progressByStory
         }
         if let flagIndex = debugArgs.firstIndex(of: "--due"),
            debugArgs.indices.contains(flagIndex + 1),
@@ -247,7 +277,7 @@ final class AppState: ObservableObject {
         seeded = ProcessInfo.processInfo.arguments.contains("--done")
             || ProcessInfo.processInfo.arguments.contains("--due")
         #endif
-        if (migrationAdded || migratedFromLegacy) && !seeded {
+        if (migrationAdded || storyMigrationAdded || migratedFromLegacy) && !seeded {
             persist()
         }
     }
@@ -267,7 +297,16 @@ final class AppState: ObservableObject {
     }
 
     func isChapterComplete(_ chapterN: Int) -> Bool {
+        if let story = ContentLoader.story(forLegacyChapter: chapterN),
+           let flags = doneByStory[story.storyId] {
+            return !flags.isEmpty && flags.allSatisfy { $0 }
+        }
         guard let flags = doneByChapter[chapterN] else { return false }
+        return !flags.isEmpty && flags.allSatisfy { $0 }
+    }
+
+    func isStoryComplete(_ story: CountyStory) -> Bool {
+        guard let flags = doneByStory[story.storyId] else { return false }
         return !flags.isEmpty && flags.allSatisfy { $0 }
     }
 
@@ -275,6 +314,9 @@ final class AppState: ObservableObject {
         guard done.indices.contains(index) else { return }
         done[index] = true
         doneByChapter[activeChapterN] = done
+        if let story = activeStory {
+            doneByStory[story.storyId] = done
+        }
 
         let chapterVisits = ContentLoader.visits(forChapter: activeChapterN)
         for visit in chapterVisits where visit.session == index && visitProgress[visit.id] == nil {
@@ -311,8 +353,11 @@ final class AppState: ObservableObject {
         guard isChapterComplete(activeChapterN),
               activeChapterN < ContentLoader.maxChapter else { return }
         activeChapterN += 1
+        let nextProgress = ContentLoader.story(forLegacyChapter: activeChapterN)
+            .flatMap { doneByStory[$0.storyId] }
+            ?? doneByChapter[activeChapterN]
         done = Self.normalizedDone(
-            doneByChapter[activeChapterN],
+            nextProgress,
             sessionCount: chapter.sessions.count)
         persist()
     }
@@ -465,13 +510,17 @@ final class AppState: ObservableObject {
 
     private func persist() {
         doneByChapter[activeChapterN] = done
-        let saved = Saved(
-            activeChapter: activeChapterN,
-            doneByChapter: doneByChapter,
-            name: learnerName,
-            visits: visitProgress,
-            lexemes: lexemeProgress,
-            patternItems: patternProgress)
+        if let story = activeStory {
+            doneByStory[story.storyId] = done
+        }
+        var saved = Saved()
+        saved.activeChapter = activeChapterN
+        saved.doneByChapter = doneByChapter
+        saved.doneByStory = doneByStory
+        saved.name = learnerName
+        saved.visits = visitProgress
+        saved.lexemes = lexemeProgress
+        saved.patternItems = patternProgress
         if let data = try? JSONEncoder().encode(saved) {
             UserDefaults.standard.set(data, forKey: Self.key)
         }

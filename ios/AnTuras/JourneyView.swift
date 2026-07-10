@@ -80,6 +80,7 @@ struct JourneyView: View {
         .sheet(item: $selectedCounty) { county in
             CountyCard(county: county,
                        chapter: state.journey.first(where: { $0.countyEn == county.en }),
+                       story: ContentLoader.stories().first(where: { $0.countyEn == county.en }),
                        status: countyStatus(county)) {
                 selectedCounty = nil
                 if let chapter = state.journey.first(where: { $0.countyEn == county.en }),
@@ -457,6 +458,7 @@ private struct CountyLegend: View {
 private struct CountyCard: View {
     let county: County
     let chapter: JourneyChapter?
+    let story: CountyStory?
     let status: CountyStatus
     let onOpen: () -> Void
 
@@ -466,7 +468,33 @@ private struct CountyCard: View {
             Text(county.en)
                 .font(.system(size: 28, weight: .semibold, design: .serif))
                 .foregroundStyle(Theme.ink)
-            if let chapter {
+            if let story {
+                Text(story.titleGa)
+                    .font(.system(size: 20, weight: .semibold, design: .serif))
+                    .foregroundStyle(color)
+                Text("\(story.anchorName) · \(story.anchorKind)")
+                    .font(.system(size: 14.5, weight: .semibold, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                Text(story.readingPromise)
+                    .font(.system(size: 15))
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(4)
+                Text("READ THE INSCRIPTION · LEARN \(story.vocabularyTarget) WORDS")
+                    .font(.system(size: 11, weight: .semibold))
+                    .kerning(1.1)
+                    .foregroundStyle(Theme.inkFaint)
+                if story.legacyChapter != nil, status == .active {
+                    PrimaryButton(title: "Oscail an scéal — open story",
+                                  fullWidth: true, action: onOpen)
+                } else if status == .complete {
+                    Text("Snoite · you have already carried this county’s story onward.")
+                        .font(.system(size: 13.5, design: .serif))
+                        .italic()
+                        .foregroundStyle(Theme.atlasGold)
+                } else {
+                    waitingCopy
+                }
+            } else if let chapter {
                 Text("\(chapter.anchorName) · \(chapter.anchorKind)")
                     .font(.system(size: 16, weight: .semibold, design: .serif))
                     .foregroundStyle(color)
