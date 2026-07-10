@@ -14,9 +14,12 @@ is real and rising, and it is *identity-shaped* — which is exactly the motivat
 existing apps cannot serve, because their engagement model (streaks, XP, leagues) is
 language-agnostic by design.
 
-Our bet: **a narrative journey through Irish history, with the language woven through
-it, is a stronger retention engine for this audience than gamification** — and it is
-only buildable if you commit to a single language pair, which we have.
+Our bet: **a county-by-county narrative journey through Irish history and culture,
+with the language woven through real places and anchors, is a stronger retention engine
+for this audience than gamification** — and it is only buildable if you commit to a
+single language pair, which we have. The learner is taking a trip around Ireland, not
+merely moving through a history syllabus: 32 counties, 20 useful words per county,
+and a significant story at every stop.
 
 ## 2. How do we get there — the path
 
@@ -24,8 +27,10 @@ only buildable if you commit to a single language pair, which we have.
 These block everything else; see §3 (Unknowns).
 1. Pick the primary learner persona.
 2. Pick the dialect policy.
-3. Sketch the **historical spine**: the ordered list of eras/chapters and, for each,
-   the narrative hook and the language payload it naturally carries.
+3. Sketch the **historical spine**: the ordered list of eras and language payloads
+   that county stories naturally carry.
+4. Give every county its own real anchor, significant reading, 20-word plan, and
+   source/review path; see `COUNTY-ATLAS.md`.
 
 ### Phase 1 — The vertical slice ✓
 Build **one chapter end-to-end** before building any platform:
@@ -59,6 +64,9 @@ well-understood engineering. The differentiator is a repeatable pipeline:
 - Audio: **Gemini 3.1 Flash TTS, all-generated with native-speaker QA** per release
   (D7). Illustration: **Solas an Atlantaigh on scene pages only** (D4, D8).
 - **Proof:** Chapter 2 (*Oileán na Naomh*) produced end-to-end through the pipeline.
+- **County-led transformation (D12):** the historical spine now sequences learning
+  behind a 32-county journey. The researched slate exists; the next work is to make
+  the county-story brief and review gates first-class in authoring and the app.
 
 ### Phase 3 — Build out and launch
 - iOS app: SwiftUI, offline-first, content shipped as data + downloadable chapter packs.
@@ -71,8 +79,10 @@ well-understood engineering. The differentiator is a repeatable pipeline:
 - Pedagogical alignment with TEG (Teastas Eorpach na Gaeilge) CEFR levels so progress
   maps to something externally real — "you are on track for TEG A1" beats "you have
   4,200 XP".
-- **Launch scope: Chapters 1–4** at production quality (D10). **Premium subscription**
-  with grant funding pursued on top, not instead of revenue.
+- **Launch scope: Chapters 1–4 / county stories Mayo, Offaly, Dublin, and Meath** at
+  production quality (D10, D12). The full product promise is 32 counties, but white
+  counties remain explicitly in research until their stories pass review. **Premium
+  subscription** with grant funding pursued on top, not instead of revenue.
 - Launch moments that align with the real Irish calendar: Seachtain na Gaeilge
   (March), Samhain, St Patrick's Day diaspora spike.
 
@@ -101,6 +111,10 @@ Gaeilge, Údarás, NI streams). Bespoke content. Chapters 1–4 at launch.
 
 **U8. Pronunciation feedback → D11.** Listening-first permanent. Echo pages ungraded;
 no pronunciation scoring in the roadmap.
+
+**U9. What carries the learner around Ireland → D12.** Counties are the visible
+journey; a named real anchor and 20-word promise define each stop. The historical
+spine remains the behind-the-scenes learning sequence, not a competing map.
 
 ### Still open
 
@@ -137,11 +151,12 @@ production.
 
 ## 4. Largest challenges
 
-1. **Content cost is the business model risk.** Bespoke narrative + illustration +
-   expert-reviewed pedagogy per chapter is orders of magnitude more expensive per
-   learner-hour than Duolingo's templated exercises. The quality is the moat, but the
-   burn is real. Mitigation: vertical slice first; pipeline before volume; public
-   funding; and depth-over-breadth (one language pair forever is a feature).
+1. **Content cost is the business model risk.** Bespoke county stories + illustration
+   + expert-reviewed pedagogy are orders of magnitude more expensive per learner-hour
+   than Duolingo's templated exercises. Thirty-two counties sharpen this risk as well
+   as the promise. Mitigation: a strict story brief, source/rights register, launch
+   only reviewed stops, public funding, and depth-over-breadth (one language pair
+   forever is a feature).
 2. **Irish is legitimately hard for anglophones** — VSO order, initial mutations
    (séimhiú/urú), the copula vs *bí* distinction, prepositional pronouns (*agam*,
    *agat*…), and an orthography that looks unpronounceable until the broad/slender
@@ -229,10 +244,14 @@ now, not in two years.
 ## 7. Proposed next steps
 
 1. ~~Decide U1 (persona) and U2 (dialect)~~ — D1, D2.
-2. ~~Draft the historical spine~~ — `SPINE.md` (needs historian/pedagogue review).
+2. ~~Draft the historical spine and county research slate~~ — `SPINE.md`,
+   `COUNTY-STORY-SLATE.md` (both need historian/pedagogue review).
 3. ~~Build Phase 1 vertical slice; playtest~~ — D5 exit.
-4. **Phase 2 (now):** build content review CMS (D9); stand up editorial board; produce
-   Chapter 2 through the pipeline; document illustration and audio production recipes.
-5. Open grant-funding research (strings before accepting — D10).
-6. Write contested-history editorial principles before Chapter 10 (U7).
-7. ABAIR enquiry optional — quality ceiling / future upgrade, not Phase 2 blocker (D7).
+4. **Phase 2 (now):** migrate the content brief, review CMS, and map cards to the
+   D12 county-story contract; preserve progress for current chapter-backed content.
+5. Stand up the editorial board; turn the strongest county briefs into reviewed source
+   packets, starting with the launch counties and the next production stop.
+6. Open grant-funding research (strings before accepting — D10).
+7. Write contested-history editorial principles before any sensitive county packet
+   (and before Chapter 10 material).
+8. ABAIR enquiry optional — quality ceiling / future upgrade, not Phase 2 blocker (D7).

@@ -8,8 +8,15 @@ one inseparable thing — because for Irish, they are.
 Existing apps teach Irish as if it were Spanish with stranger spelling. Duolingo keeps
 people coming back with streaks and leagues; the language itself is interchangeable.
 We invert that: **the thing that pulls you back is a growing sense of connection to
-Ireland** — a journey through Irish history told in visual narratives, with the
-language woven through it. You learn the words *because the story needs them*.
+Ireland** — a journey through all 32 counties, where language is woven into the story
+of a real place.
+
+Every county stop is anchored in a named person, myth, monument, community, or primary
+record — never a generic historical stand-in. The learner spends most of the time with
+a significant reading or encounter, then practises the Irish that reading has earned.
+The concrete promise is **20 useful Irish words per county**, with progress visible on
+the island map: green for the current journey, gold for completed counties, white for
+places still ahead. You learn the words *because this county's story needs them*.
 
 Because we do exactly one language pair — English → Irish — we can go deep on what
 actually makes Irish hard for English speakers (VSO word order, initial mutations,
@@ -30,11 +37,17 @@ differences don't exist.
 - `docs/DECISIONS.md` — decision log (D1–D11); everything downstream flows from here.
 - `docs/STRATEGY.md` — the strategic map: path to launch, unknowns, biggest
   challenges, resource landscape, competitive landscape.
+- `docs/COUNTY-ATLAS.md` — the county-led product contract and map/progress rules.
+- `docs/COUNTY-STORY-SLATE.md` — researched first-story leads for all 32 counties;
+  a development slate, not publishable history.
+- `docs/SPINE.md` — the historical and language sequencing rail behind county stories.
 - `docs/COMPETITIVE-RESEARCH.md` — competitive research: pedagogy, features,
   positioning, failed experiments.
 
 ## Status
 
-**Phase 2 — content pipeline.** Phase 1 complete: Chapter 1 vertical slice playtested
-in SwiftUI; narrative pull validated. See `STATUS.md` for current work and
-`docs/DECISIONS.md` for the decision log (D1–D11).
+**Phase 2 — county-led content pipeline.** Phase 1 complete: Chapter 1 vertical slice
+playtested in SwiftUI; narrative pull validated. The next product transformation is to
+make the 32-county journey the primary learning structure, while retaining the
+historical spine as the language-sequencing rail. See `STATUS.md` for current work and
+`docs/DECISIONS.md` for the decision log.

@@ -2,6 +2,38 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D12 — County-led stories, real anchors, and a concrete learning promise (2026-07-10)
+
+**Decision:** The 32 counties are the product's primary visible journey and unit of
+progress. Every playable county story is headed by a real, named anchor — a person,
+myth, monument, community, or primary record — and gives the learner a substantial
+reading or encounter of significance. It teaches **20 useful words per county**.
+The historical spine remains the language-sequencing rail; it is no longer the sole
+information architecture presented to a learner.
+
+**Why:** Feedback was enthusiastic about learning Irish through history and culture,
+but asked for the journey to feel like a trip around real Ireland, not a sequence of
+generic scenes or eras. A county gives every story a place on the map, a clear unit of
+completion, and a promise a learner can repeat. Named anchors and source-led readings
+make the cultural claim earned rather than decorative.
+
+**Consequences:**
+
+- `COUNTY-ATLAS.md` is the product contract; `COUNTY-STORY-SLATE.md` is the researched
+  development slate for all 32 first stories.
+- Map semantics are fixed: **green** is the current county/story, **gold** means all
+  shipped stories in that county are complete, and **white** means still ahead. A
+  white county is an honest promise, not a disguised lock.
+- A chapter becomes a pedagogical/production grouping. Existing Chapters 1–4 remain
+  the launch-quality scope, but their shipped stories are explicitly Mayo, Offaly,
+  Dublin, and Meath stops in the county journey.
+- New content cannot be drafted from a generic role. It needs a county brief, named
+  anchor, reading plan, 20-word plan, source register, rights check, and historian +
+  Irish-language-pedagogue review.
+- The app schema, map cards, CMS, and content pipeline must migrate toward a
+  story-first/county-first model without breaking existing chapter progress. This is
+  Phase 2 product work, not a claim that all 32 stories are ready now.
+
 ## D11 — Pronunciation: listening-first, permanently (2026-07-05)
 
 **Decision:** No pronunciation scoring in the product roadmap. Listening-first

@@ -1,26 +1,44 @@
 # The Historical Spine
 
-*13 chapters. Each is ~2 weeks of daily sessions pairing one era of Irish history
-with the language it naturally carries. Drafted 2026-07-04 — needs review by a
-historian and an Irish-language pedagogue before production (see STRATEGY.md §4.5).*
+*The behind-the-scenes language and time sequence for the county journey. The learner
+travels through 32 counties; this spine makes sure each county story introduces Irish
+in an intentional order. The legacy 13-chapter outline remains a useful production and
+grammar rail, not the app's primary map. See `COUNTY-ATLAS.md` and D12. Drafted
+2026-07-04; reframed 2026-07-10 — needs historian and Irish-language-pedagogue review
+before production.*
+
+## How this relates to the county journey
+
+A **county story** is the learner-facing unit: one county, one named real anchor, one
+significant reading/encounter, and 20 useful words. A **spine chapter** is a
+behind-the-scenes sequencing group: it says which era, grammar, artifact pattern, and
+review needs a county story can draw on. It is valid for a county to receive a second
+story in a later era; completion means all shipped stories in that county are complete.
+
+The first four existing production chapters map cleanly to Mayo, Offaly, Dublin, and
+Meath. Their JSON and progress must be preserved through the story-first migration.
+Where an outline below still uses a generic learner-facing character, treat it as an
+obsolete drafting device: production copy must use the real anchor in `COUNTY-ATLAS.md`
+and `COUNTY-STORY-SLATE.md`.
 
 ## Design rules
 
-1. **The story needs the words.** Every grammar concept enters because a narrative
-   moment demands it, never as an abstract unit. The era is chosen to *fit the
-   grammar*, not decorated onto it.
+1. **The county story needs the words.** Every grammar concept enters because a real
+   place and its anchor demand it, never as an abstract unit. The era is chosen to
+   *fit the grammar*, not decorated onto it; a generic historical stand-in cannot be
+   the headline hook.
 2. **Explain, then drill.** Each chapter has 2–3 "An Nóta Gramadaí" moments that say
    plainly what school never explained (copula vs *bí*, why mutations exist, what the
    fada does) — written for re-learners, safe for true beginners.
-3. **Artifacts, not points.** Each chapter ends with a collectible artifact in the
+3. **Artifacts, not points.** Each county story ends with a collectible artifact in the
    learner's *músaem* — personalised where possible (your name, your county, your
    surname). The final artifact of the course is the Fáinne.
-4. **Past meets present.** Every chapter's closing beat connects its era to something
+4. **Past meets present.** Every county story's closing beat connects its era to something
    the learner can see or do today (a real stone in a Mayo field, a placename on a
    road sign, a Belfast mural).
 5. **Dialect-variable items are tagged** in content from day one (D2): Connacht
    forms ship first; Ulster/Munster variants slot in later without rewriting.
-6. **Review wears the chapter's clothes.** SRS runs underneath everything, but
+6. **Review wears the county's clothes.** SRS runs underneath everything, but
    returning material is framed as revisiting places and people, never as card debt.
 
 ## Overview
@@ -46,11 +64,13 @@ longer; TEG exam prep is a post-course track).
 
 ## The chapters
 
-### 1. Clocha na nAinmneacha — The Stones of Names (c. 400–550)
+### 1. Clocha na nAinmneacha — The Stones of Names (Mayo; c. 400–550)
 
-- **Hook:** You arrive at a stone-carver's workshop on the Mayo coast. Dáire, the
-  saor cloiche, is carving an ogham memorial — the first written Irish. To help him,
-  you must first tell him who you are.
+- **Anchor and reading:** the north Mayo ogham stones, especially Breastagh. Read the
+  marks, transliteration, and the names they carry; learn what can and cannot be
+  inferred from an inscription.
+- **Hook:** A stone on the Mayo coast preserves a person's name across fifteen
+  centuries. To understand what it says, you first learn how to say who you are.
 - **Language:** *Dia dhuit / Dia is Muire dhuit* (call-and-response), *Is mise…*,
   *Cé thusa?*, *Cé as thú?* [dialect-tagged], counties, *mac/iníon* and the shape of
   Irish surnames (Ó/Mac/Ní/Nic), broad/slender vowels and the fada.
@@ -61,11 +81,12 @@ longer; TEG exam prep is a post-course track).
 - **Present-day beat:** the Breastagh ogham stone still stands in a field near
   Killala. The words outlasted everyone who carved them.
 
-### 2. Oileán na Naomh — Island of Saints and Scholars (550–800)
+### 2. Oileán na Naomh — Island of Saints and Scholars (Offaly; 550–800)
 
-- **Hook:** A monastery at dawn. You join the daily round of a scriptorium —
-  grinding pigments, ruling vellum, feeding the cat (Pangur Bán, naturally) — as the
-  monks race to finish a great gospel book before winter.
+- **Anchor and reading:** St Ciarán and Clonmacnoise. Enter a real learning-place on
+  the Shannon through an early Life of Ciarán and the Cross of the Scriptures.
+- **Hook:** At dawn in Ciarán's monastery, the daily work of a great learning-place
+  begins: pigments, vellum, meals, prayer, and a page that still speaks across time.
 - **Language:** *tá* + VSO present tense, daily routine verbs, telling time by the
   monastic hours, numbers 1–10, colours (the inks: corcra from lichen, gorm from
   woad), food and *is maith liom / ní maith liom*.
@@ -75,11 +96,12 @@ longer; TEG exam prep is a post-course track).
   cur le chéile* — no strength without unity.
 - **Present-day beat:** the Book of Kells, and Pangur Bán's poem, survive.
 
-### 3. Na Lochlannaigh — The Vikings (795–1014)
+### 3. Na Lochlannaigh — The Vikings (Dublin; 795–1014)
 
-- **Hook:** Smoke on the horizon — then, a generation later, a market. You trade in
-  the muddy new town at the black pool (*Dubhlinn*), where Norse and Irish haggle in
-  a creole of both.
+- **Anchor and reading:** Sitric Silkbeard and Dubh Linn. Read an annal/object-led
+  account of a Norse-Gaelic king's town as it becomes a market, mint, and port.
+- **Hook:** At the black pool (*Dubhlinn*), a Norse-Gaelic town grows into a market
+  where Irish and Norse words travel with the goods.
 - **Language:** past tense (regular + the must-have irregulars: *chuaigh, tháinig,
   rinne, chonaic*), directions and movement, market vocabulary, money and numbers
   11–20, Norse loanwords in Irish (*margadh*, *pingin*, *bróg*…), founding of the
@@ -90,11 +112,12 @@ longer; TEG exam prep is a post-course track).
 - **Present-day beat:** Dublin, Waterford, Wexford, Limerick — you've been saying
   Viking words your whole life.
 
-### 4. Na Normannaigh — The Normans (1169–1350)
+### 4. Na Normannaigh — The Normans (Meath; 1169–1350)
 
-- **Hook:** A castle rises over the ford. The steward's daughter is more fluent in
-  Irish than her Norman grandfather would like — the invaders are becoming *níos
-  Gaelaí ná na Gaeil iad féin*.
+- **Anchor and reading:** Hugh de Lacy and Trim Castle. Read a charter or chronicle
+  excerpt alongside a plan of the castle at the ford.
+- **Hook:** A castle rises over the ford at Trim. Its new lord and the people around
+  him show how quickly conquest, settlement, and language become entangled.
 - **Language:** possession (*tá capall agam* + the prepositional pronouns *agam/agat/
   aige/aici…*), describing people and places, adjective agreement and lenition after
   feminine nouns, Norman surnames (Fitz-, de Búrca, Buitléir).

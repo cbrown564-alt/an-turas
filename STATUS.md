@@ -1,26 +1,31 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-08.*
+and visual narrative. English → Irish only. Updated 2026-07-10.*
 
 ## Where we are
 
-**Phase 2 — content pipeline, proving repeatability.** Phase 1 exit criteria met (D5):
-playtest feedback strongly positive; testers return without streaks and name **tá tú
-ar ais** and the **journey map** as pull mechanisms. Re-learners feel respected, the
-grammar ladder reads as intentional, and the journey map answers direction. Decisions
-locked on audio (Gemini, all-generated + QA), illustration scope (scene pages only),
-business model (premium + grants on top, Chapters 1–4 launch), listening-first
-pedagogy, and An Féilire as the gentle ritual layer.
+**Phase 2 — county-led content pipeline, proving repeatability.** Phase 1 exit
+criteria met (D5): playtest feedback strongly positive; testers return without streaks
+and name **tá tú ar ais** and the **journey map** as pull mechanisms. Re-learners feel
+respected, the grammar ladder reads as intentional, and the journey map answers
+direction. D12 now makes that direction concrete: the learner journeys through all
+**32 counties**, each rooted in a named person, myth, monument, community, or primary
+record, and earns **20 useful words per county** from a significant reading or
+encounter. The map's county colours are a product promise: current green, completed
+gold, still-ahead white.
 
-**Since the last update, the pipeline ran twice more and the app went multi-chapter.**
-Chapters 2 (*Oileán na Naomh*) and 3 (*Na Lochlannaigh*) are both authored through the
-three-stage pipeline and wired into the app — each with its own artifact register
-(illuminated initial; hack-silver arm-ring) and cross-chapter progress/visits
-persistence. Both passed **adversarial (AI) review as "PASS WITH REVISIONS"** — the
-outstanding gate on both is **human board sign-off**, then audio and illustration.
-**Next:** stand up the content-review CMS + editorial board so Chapters 2–3 can clear
-human sign-off, install production audio, and author Chapter 4 to reach the launch set.
+**The existing pipeline ran twice more and the app went multi-chapter.** Chapters 2
+(*Oileán na Naomh*) and 3 (*Na Lochlannaigh*) are both authored through the three-stage
+pipeline and wired into the app — each with its own artifact register (illuminated
+initial; hack-silver arm-ring) and cross-chapter progress/visits persistence. Both
+passed **adversarial (AI) review as "PASS WITH REVISIONS"** — the outstanding gate on
+both is **human board sign-off**, then audio and illustration.
+
+**The immediate transformation is now explicit.** The historical spine remains the
+grammar rail, but counties/stories become the product navigation, progress, content
+brief, and review unit. Research leads for every county and the migration contract are
+documented; no claim is made that the 32 stories are already production-ready.
 
 ## Work completed
 
@@ -46,7 +51,7 @@ human sign-off, install production audio, and author Chapter 4 to reach the laun
 | 2026-07-05 | **Competitive atlas built ("The Seventh Way"):** interactive HTML companion to `COMPETITIVE-RESEARCH.md` — working reconstructions of all six competitor families' core loops (Duolingo lesson, blas. mastery grid, SSi audio round, Bitesize daily letter, Gaeilgeoir chat, Drops match, DCU MOOC), the structure×culture territory map, wrecks-on-the-shore lessons, live mockups of the slice's registers + primitives (recarve/turn/lens/ogham carver), seven imagined-future prototypes (Músaem, Ar Ais, Do Logainm, Féilire, dialect atlas, Dhá Litir, An Doras, in-world Comhrá), a pull×yield feature map, and six trade-off stances with move-conditions. Light+dark, page-language in Solas an Atlantaigh | `docs/seventh-way.html` |
 
 | 2026-07-05 | **Illustration exploration framed:** principles → six style branches (incised, chalk, print, Atlantic wash, flat graphic, manuscript) → fixed test brief → two-day wide/deep funnel → canonical style bible (will log as D4); surfaces inventoried from chapter1.json | `docs/ILLUSTRATIONS.md` |
-| 2026-07-05 | **The big picture built** — three surfaces from the Seventh Way futures shelf, answering playtester feedback ("intrigued by ch. 1 but where is this going?"). (1) *An Turas, the journey map*: the island of Ireland drawn in the carved-limestone language (Natural Earth 50m coastline → 241-point Swift shape, whole island per D1), the 13 spine chapters as numbered waypoints through place *and* time — Cill Ala c. 480 → Béal Feirste inniu; chalk-before-carve extended to the course (road behind carved in moss, one clear chalk leg ahead, faintest thread beyond); *tá tú anseo* pulse; every waypoint opens an era card (hook, payload, artifact) from new `journey.json`; ch. 1's card opens the chonair. Cover → journey → chonair → session is the new spine of the app. (2) *An Músaem*: 13 niches, one line-drawn glyph per artifact, ch. 1's ogham stone unlocks on completion (opens the existing share flow); locked niches are chalk-dashed with era cards; a rust dot means an artifact's people are asking. (3) *Ar Ais*: authored visits in chapter1.json (Dáire, Bríd, an bhaintreach, an chloch féin — 7 across the 5 sessions), FSRS-lite scheduler faoin gcraiceann (due +1 day on session end, ×2.5 on clean recall, reset on struggle, persisted; migration schedules visits for sessions done before the feature existed), queue dressed as people asking (*Tá beirt ag fiafraí fút*, N lá ó shin), answered with the recarve mechanic incl. ismise/isas pattern checks; never a card count. Returning learners land on the journey when someone is asking, else on the chonair. Debug args: `--journey --museum --arais --due N --card N`. All verified light + dark on iPhone 17 Pro sim | `ios/AnTuras/` (JourneyView, MuseumView, ArAisView, IrelandShape, ChapterCard new; AppState, Models, AnTurasApp, MapView; Resources/journey.json; chapter1.json visits) |
+| 2026-07-05 | **The big picture built** — three surfaces from the Seventh Way futures shelf, answering playtester feedback ("intrigued by ch. 1 but where is this going?"). (1) *An Turas, the journey map*: the island of Ireland drawn in the carved-limestone language (Natural Earth 50m coastline → 241-point Swift shape, whole island per D1), the 13 spine chapters as numbered waypoints through place *and* time — Cill Ala c. 480 → Béal Feirste inniu; chalk-before-carve extended to the course (road behind carved in moss, one clear chalk leg ahead, faintest thread beyond); *tá tú anseo* pulse; every waypoint opens an era card (hook, payload, artifact) from new `journey.json`; ch. 1's card opens the chonair. Cover → journey → chonair → session is the new spine of the app. (2) *An Músaem*: 13 niches, one line-drawn glyph per artifact, ch. 1's ogham stone unlocks on completion (opens the existing share flow); locked niches are chalk-dashed with era cards; a rust dot means an artifact's people are asking. (3) *Ar Ais*: authored visits in chapter1.json (Dáire, Bríd, an bhaintreach, an chloch féin — 7 across the 5 sessions), FSRS-lite scheduler faoin gcraiceann (due +1 day on session end, ×2.5 on clean recall, reset on struggle, persisted; migration schedules visits for sessions done before the feature existed), queue dressed as people asking (*Tá beirt ag fiafraí fút*, N lá ó shin), answered with the recarve mechanic incl. ismise/isas pattern checks; never a card count. Returning learners land on the journey when someone is asking, else on the chonair. Debug args: `--journey --museum --arais --due N --card N`. All verified light + dark on iPhone 17 Pro sim. **The 13-waypoint navigation described here is superseded by D12's 32-county map; its chapter progress and mechanics remain migration inputs.** | `ios/AnTuras/` (JourneyView, MuseumView, ArAisView, IrelandShape, ChapterCard new; AppState, Models, AnTurasApp, MapView; Resources/journey.json; chapter1.json visits) |
 | 2026-07-05 | **Journey map review pass:** thread visibility, label placement, and copy quick wins, then two follow-ups. (1) Chapter 9's place name carried a stray year ("Baile Átha Cliath, 1893") no other chapter has — dropped, era range already covers it. (2) Waypoint tap targets were sized off the label's 170pt frame rather than the marker, scaled 3.2×, giving each waypoint a ~500pt-wide invisible hit region that could steal taps meant for a neighbour; replaced per-marker tap gestures with one nearest-waypoint gesture over the whole map, so density (Dubhlinn and an lá inniu render ~14pt apart) can no longer mis-resolve a tap. (3) Added a time axis strip below the map — the route is chaotic in space but linear in time, and the map alone couldn't carry that; 13 evenly-spaced ticks (not calendar-proportional — chapters 8–13 would crowd the last tenth of a real timeline) in the same moss/chalk depths as the road, endpoints and current era captioned, each tap-through to its chapter card | `ios/AnTuras/JourneyView.swift`, `Resources/journey.json` |
 
 | 2026-07-05 | **Phase 1 playtest decisions logged; Phase 2 entered.** Retention: tá tú ar ais + journey map validated; An Féilire chosen as gentle ritual layer (D6). Audio: Gemini all-generated + native-speaker QA (D7). Illustration: scene pages only (D8). CMS review layer scoped (D9). Business: premium + grants on top, Ch 1–4 launch, bespoke (D10). Pedagogy: listening-first permanent (D11). Phase 1 exit (D5). | `docs/DECISIONS.md` D5–D11, `docs/STRATEGY.md`, `docs/TTS-research.md` |
@@ -58,33 +63,41 @@ human sign-off, install production audio, and author Chapter 4 to reach the laun
 | 2026-07-07 | **App went multi-chapter.** `ContentLoader` now serves chapters 1–3; `AppState` gained multi-chapter selection with **per-chapter progress persistence**; visits loader **merges Ar Ais across chapters** (was chapter-1 only). Per-chapter artifact registers built: **illuminated initial** (ch. 2) and **hack-silver arm-ring** with `{name}` notch (ch. 3, `ArmRingView.swift`) | `ios/AnTuras/` (Models, AppState, ArtifactView, IlluminatedInitialView, ArmRingView) |
 
 | 2026-07-08 | **Build fixes.** Swift build errors in `AppState` init and share-card rendering resolved; tree building clean on simulator | `ios/AnTuras/` (AppState, ArtifactView) |
+| 2026-07-10 | **County-led product architecture adopted (D12).** All 32 counties now have researched first-story leads, each requiring a named real anchor, substantial reading/encounter, 20-word plan, source/rights register, and expert review. The county map is the learner-facing structure; the historical spine remains the sequencing rail. Core documentation and the content-pipeline gates were updated; app/schema migration remains future work. | `docs/DECISIONS.md` D12, `docs/COUNTY-ATLAS.md`, `docs/COUNTY-STORY-SLATE.md`, `docs/SPINE.md`, `docs/CONTENT-PIPELINE.md` |
 
 ## Immediate next steps (Phase 2)
 
-1. **Content review CMS** — purpose-built review UI for the chapter JSON schema (D9).
-   Stakeholders: writer, Irish-language pedagogue, historian, audio QA. Workflow:
-   draft → linguist → historian → generate audio → native QA → sign-off → bundle.
-2. **Editorial board** — recruit at minimum one qualified Irish-language
+1. **County-story migration brief** — define the story-first schema and a migration
+   plan that preserves existing Chapter 1–3 progress, artifacts, and Ar Ais visits;
+   make Mayo, Offaly, Dublin, and Meath explicit map stops. No new generic chapter
+   scene should enter production during this transition (D12, `COUNTY-ATLAS.md`).
+2. **Content review CMS** — purpose-built review UI for the county-story schema (D9,
+   D12). Stakeholders: writer, Irish-language pedagogue, historian, audio QA. Workflow:
+   county/source brief → draft → linguist → historian → generate audio → native QA →
+   sign-off → bundle.
+3. **Editorial board** — recruit at minimum one qualified Irish-language
    pedagogue/teacher and one historian to clear **Chapters 2 and 3** (both are
    adversarial-reviewed "PASS WITH REVISIONS"; human sign-off is the gate — STRATEGY.md
    Phase 2). This is now the top blocker: pipeline output is stacking up unsigned.
-3. **Human sign-off pass on Chapters 2 & 3** — apply the revisions the adversarial
+4. **Human sign-off pass on Chapters 2 & 3** — apply the revisions the adversarial
    reviews list (`content/chapter{2,3}/review.md`), then linguist → historian →
    audio → sign-off. Drafts are merged and wired in-app; sign-off, audio, and
    scene illustration remain (`docs/CONTENT-PIPELINE.md`).
-4. **Chapter 4 (*Na Normannaigh*) through the pipeline** — needed to reach the
-   Chapters 1–4 launch set (D10); third repeat proves the pipeline scales.
-5. **Install Gemini 3.1 TTS clips** — set `bundle_winner: gemini-3-flash` per line in
+5. **Meath / Trim source packet and Chapter 4 county brief** — make Hugh de Lacy and
+   Trim Castle the real-anchor reading, 20-word plan, source register, and rights
+   record before drafting the Norman story. It is the fourth launch stop, not merely
+   the next chronological chapter (D12).
+6. **Install Gemini 3.1 TTS clips** — set `bundle_winner: gemini-3-flash` per line in
    `tools/tts-bakeoff/winners.json`, run `python bakeoff.py install`, regenerate Xcode
    project. Production pipeline: generate → native QA → bundle.
-6. **Illustration production recipe** — Solas an Atlantaigh on scene pages only (D8);
+7. **Illustration production recipe** — Solas an Atlantaigh on scene pages only (D8);
    document cost-per-scene and handoff from style bible (`docs/ILLUSTRATIONS.md` §10).
    Ch. 2–3 scene images are still placeholders.
-7. **TestFlight build** — signed device build for wider playtest; needs Apple Developer
+8. **TestFlight build** — signed device build for wider playtest; needs Apple Developer
    account/team in `ios/project.yml`.
-8. **Send ABAIR commercial enquiry** — optional long-term dialect upgrade; not a
+9. **Send ABAIR commercial enquiry** — optional long-term dialect upgrade; not a
    Phase 2 blocker (D7). Draft at `docs/ABAIR-enquiry.md`.
-9. **Grant funding research** — map Foras na Gaeilge / Údarás schemes and strings
+10. **Grant funding research** — map Foras na Gaeilge / Údarás schemes and strings
    before accepting (D10: grants on top of premium, not instead of).
 
 ## Long-term plan
@@ -92,10 +105,11 @@ human sign-off, install production audio, and author Chapter 4 to reach the laun
 - **Phase 1 — Vertical slice (complete):** Chapter 1 SwiftUI app with writing, audio,
   and illustrations. Playtest validated narrative pull without streaks; tá tú ar ais and
   the journey map named as return mechanisms. Exit criterion met (D5).
-- **Phase 2 — Content pipeline (now):** authoring format + CMS review layer + editorial
-  board; Gemini all-generated audio with QA; scene-only illustration at production
-  recipe; **Chapter 2 produced through the pipeline as proof**. Grant conversations
-  begin in parallel.
+- **Phase 2 — County-led content pipeline (now):** migrate chapter-backed content to
+  county stories while preserving progress; authoring format + CMS review layer +
+  editorial board; Gemini all-generated audio with QA; scene-only illustration at
+  production recipe; **Chapters 2–3 produced through the legacy pipeline as proof**.
+  Grant conversations begin in parallel.
 - **Phase 3 — Product build:** full iOS app (offline-first chapter packs, FSRS dressed
   as revisiting, músaem/artifact collection, TEG-aligned progress, **An Féilire**
   gentle rituals). **Chapters 1–4 at launch quality** (D10).
@@ -110,7 +124,9 @@ human sign-off, install production audio, and author Chapter 4 to reach the laun
   tagging for calendar-tied material is Phase 3/4 work.
 - **Contested history editorial principles** (STRATEGY.md U7) — write before Chapter 10
   production; advisory board scope TBD.
-- **Frame device carrying the learner between eras** (SPINE.md, open creative question).
+- **Frame device carrying the learner between county stops and eras** (SPINE.md, open
+  creative question). D12 fixes the map structure; it does not yet select the recurring
+  narrative device.
 - **Grant-funding strings** — understand before accepting public money (D10).
 - **ABAIR upgrade path** — pursue if bundling rights granted; Gemini is production
   baseline (D7).

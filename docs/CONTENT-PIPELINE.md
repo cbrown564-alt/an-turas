@@ -1,13 +1,16 @@
 # Content Pipeline
 
-*Repeatable process for authoring An Turas chapters as bundled JSON. Distilled from
-Chapter 2 (*Oileán na Naomh*), July 2026. Complements `SPINE.md` (what to teach),
-`Models.swift` (schema), and `DECISIONS.md` D7–D9 (audio, illustration, CMS).*
+*Repeatable process for authoring An Turas county stories as bundled JSON. Distilled
+from Chapter 2 (*Oileán na Naomh*), July 2026; reframed for the county-led model on
+2026-07-10. Complements `COUNTY-ATLAS.md` (the learner-facing contract), `SPINE.md`
+(sequencing), `Models.swift` (schema), and D7–D9/D12 (audio, illustration, CMS,
+county stories).*
 
 ## What this is
 
 An Turas is a **content company with an app attached**. Each chapter is structured
-data (`chapterN.json`) that must pass three editorial passes before it ships:
+data (currently `chapterN.json`, migrating toward story-first county packs) that must
+pass three editorial passes before it ships:
 
 1. **Content generator** — draft the chapter from the spine
 2. **Adversarial reviewer** — stress-test the draft; assume it has errors
@@ -23,7 +26,9 @@ replace native-speaker and expert review.
 
 ### 1. Content generator
 
-**Job:** Turn `SPINE.md` + `journey.json` into a complete first draft.
+**Job:** Turn a county-story brief + `SPINE.md` + `journey.json` into a complete first
+draft. The county brief is not optional: it prevents an era from being decorated with
+a generic scene rather than rooted in a real place.
 
 **Must read before writing:**
 
@@ -32,6 +37,8 @@ replace native-speaker and expert review.
 | `ios/AnTuras/Resources/chapter1.json` | Tone, pacing, page-type mix |
 | `ios/AnTuras/Models.swift` | Valid page types and fields |
 | `docs/SPINE.md` | Language payload, grammar notes, artifact, seanfhocal |
+| `docs/COUNTY-ATLAS.md` | Required anchor, reading, vocabulary, source, and review contract |
+| `docs/COUNTY-STORY-SLATE.md` | Research lead only; identify the row's gaps before treating it as a brief |
 | `ios/AnTuras/Resources/journey.json` | Place, era, hook, artifact metadata |
 
 **Outputs:**
@@ -40,10 +47,21 @@ replace native-speaker and expert review.
 |------|---------|
 | `content/chapterN/draft.json` | First full draft |
 | `content/chapterN/outline.md` | Session map, payload distribution, flagged gaps |
+| `content/chapterN/source-register.md` | Anchor, source provenance, reading/rights status, historical uncertainties, reviewer names |
 
 **Generator constraints:**
 
 - **5 sessions** per chapter (planning number; tune after playtest)
+- One named county anchor is visible in the title, hook, and map card; do not lead
+  with an invented worker, child, or guide.
+- A substantial reading/encounter is central to the sessions. Mark myth, hagiography,
+  partisan sources, and archaeological inference accurately rather than smoothing them
+  into historical fact.
+- Build exactly **20 target words** in four visible groups of five; prove each is
+  introduced in context and retrieved later. The story earns the words; drills do not
+  introduce a disconnected vocabulary list.
+- Start `source-register.md` before drafting. Do not use a modern translation, image,
+  poem, or archive item whose rights status is unknown.
 - Session 1: no `recarve`. Sessions 2–5: open with `recarve` reviewing prior material
 - Scene pages only get `"image"` slugs (D8)
 - Speech beats: `s`, `who`, `g`, `ph`
@@ -65,11 +83,11 @@ and exact Irish phrases.
 |-----------|------------------|
 | Irish language | Grammar, mutations, fadas, word order, Connacht forms, calques |
 | Pedagogy | TEG level, grammar-when-story-needs-it, exercise progression, orphaned vocab |
-| History | Anachronisms, false attribution, placename etymology, present-day claims |
+| History | Anachronisms, false attribution, placename etymology, present-day claims, anchor/source fit, fact-versus-legend framing |
 | Schema | Valid types/fields, images only on scenes, visits decode against `Models.swift` |
 | Narrative | Chapter 1 warmth, hooks, present-day beat, seanfhocal earned |
 | Exercises | Plausible wrong answers, listen/echo/turn used meaningfully |
-| Pipeline | Full SPINE payload, artifact concept, fin tease, app wiring gaps |
+| Pipeline | Full SPINE payload, 20-word proof, source register, artifact concept, fin tease, app wiring gaps |
 
 **Output:** `content/chapterN/review.md` with this structure:
 
@@ -123,7 +141,8 @@ without board debate. Preserve strengths flagged in review.
 
 ```mermaid
 flowchart LR
-  SPINE[SPINE.md + journey.json] --> GEN[Content generator]
+  COUNTY[County brief + source register] --> GEN[Content generator]
+  SPINE[SPINE.md + journey.json] --> GEN
   GEN --> DRAFT[draft.json + outline.md]
   DRAFT --> ADV[Adversarial reviewer]
   ADV --> REV[review.md]
@@ -152,6 +171,8 @@ merging chapter JSON into the repo and handing it to the human board.
 - [ ] Valid JSON; all page types decode per `Models.swift`
 - [ ] 5 sessions with hooks (sessions 1–4 minimum; session 5 may tease via `fin`)
 - [ ] Every SPINE headline payload item appears somewhere in the chapter
+- [ ] Named county, real anchor, significant reading/encounter, and 20-word plan meet
+  `COUNTY-ATLAS.md`; source/rights uncertainties are logged
 - [ ] 2–3 grammar notes (`note` pages) explaining what school never did
 - [ ] Artifact, seanfhocal, present-day beat, fin tease to next chapter present
 - [ ] 5–7 visits authored
@@ -175,6 +196,7 @@ human sign-off.
 
 - [ ] **Zero unresolved Critical content issues** (app-only Criticals documented and deferred)
 - [ ] **Zero unresolved High content issues**
+- [ ] Source register records the reviewed reading, factual caveats, and rights state
 - [ ] `editorial-log.md` lists resolved vs deferred items with reasons
 - [ ] JSON validates: `python3 -c "import json; json.load(open('chapterN.json'))"`
 - [ ] `ContentLoader.chapterN()` added; JSON in Xcode project
@@ -187,6 +209,8 @@ artifact UI for new chapter type, AppState loading the new chapter.
 
 - [ ] Qualified Irish-language pedagogue sign-off on all speech and exercises
 - [ ] Historian sign-off on era, attribution, present-day beat
+- [ ] Historian confirms the anchor/reading framing and any myth, hagiography, or
+  contested-history labels
 - [ ] Audio: Gemini generate → native QA → bundle (D7)
 - [ ] Scene illustrations at production recipe where briefed (D8)
 - [ ] Integrated app QA: chapter loads, visits work, artifact renders correctly
@@ -202,8 +226,15 @@ Copy into every `review.md`. Mark each item:
 - `[~]` — present but under-drilled or partially deferred
 - `[ ]` — missing
 
-Derive items from the chapter row in `SPINE.md` (language payload + grammar notes +
-artifact + seanfhocal + present-day beat). Chapter 2 example:
+Derive items from the county brief plus its `SPINE.md` rail (language payload + grammar
+notes + artifact + seanfhocal + present-day beat). Add the 20-word grid and reading
+verification before the Chapter 2-style payload list:
+
+- [ ] county and map identity named
+- [ ] named real anchor is in title/hook/reading
+- [ ] reading kind and source are recorded; factual caveats visible
+- [ ] target vocabulary = 20, grouped 5 / 5 / 5 / 5
+- [ ] all 20 words introduced in the story and retrieved in practice
 
 - [ ] tá + VSO present tense
 - [ ] daily routine verbs
