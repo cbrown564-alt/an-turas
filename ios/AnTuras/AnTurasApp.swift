@@ -6,8 +6,14 @@ struct AnTurasApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(state)
+            Group {
+                if ProcessInfo.processInfo.arguments.contains("--legacy") {
+                    ContentView()
+                } else {
+                    AtlasPrototypeView()
+                }
+            }
+            .environmentObject(state)
         }
     }
 }
@@ -144,7 +150,6 @@ struct ContentView: View {
     @ViewBuilder
     private func patternDrill(_ id: String) -> some View {
         let patterns = ContentLoader.patterns(throughChapter: state.activeChapterN)
-        let lexicon = ContentLoader.lexicon(throughChapter: state.activeChapterN)
         if let pattern = patterns.first(where: { $0.id == id }) {
             PatternDrillView(pattern: pattern)
         }
