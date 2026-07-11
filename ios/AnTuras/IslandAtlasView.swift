@@ -1,5 +1,70 @@
 import SwiftUI
 
+// MARK: - First encounter
+
+struct FirstRunIslandView: View {
+    let onBegin: () -> Void
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                AtlasScreenHeader(
+                    "AN tOILEÁN · THE ISLAND",
+                    "Every place has something to tell you.",
+                    detail: "In 1593, a woman from the Mayo coast went directly to the English queen. Begin where she began."
+                )
+
+                IslandMapSurface(
+                    mode: .journey,
+                    time: 1593,
+                    theme: "Power",
+                    storyComplete: false,
+                    showsFutureSignals: false,
+                    onSelect: { county in
+                        guard county == "Mayo" else { return }
+                        Haptics.tap()
+                        onBegin()
+                    }
+                )
+                .frame(height: 500)
+                .accessibilityHidden(true)
+
+                Button {
+                    Haptics.tap()
+                    onBegin()
+                } label: {
+                    AtlasCard(accent: Theme.atlasGreen) {
+                        HStack(spacing: 14) {
+                            GrainnePortraitMark()
+                                .frame(width: 76, height: 96)
+                            VStack(alignment: .leading, spacing: 5) {
+                                Eyebrow(text: "MAYO · 1593", color: Theme.atlasGreen)
+                                Text("Begin at Rockfleet")
+                                    .font(.system(size: 22, weight: .semibold, design: .serif))
+                                    .foregroundStyle(Theme.ink)
+                                Text("Why did Gráinne leave Mayo?")
+                                    .font(.system(size: 14.5))
+                                    .foregroundStyle(Theme.inkSoft)
+                            }
+                            Spacer(minLength: 0)
+                            Image(systemName: "arrow.right")
+                                .foregroundStyle(Theme.atlasGreen)
+                        }
+                    }
+                }
+                .buttonStyle(CarvePress())
+                .accessibilityLabel("Begin the story of Gráinne Ní Mháille in Mayo")
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 14)
+            .padding(.bottom, 36)
+            .frame(maxWidth: 680)
+            .frame(maxWidth: .infinity)
+        }
+        .background(Theme.bg.ignoresSafeArea())
+    }
+}
+
 enum IslandMode: String, CaseIterable, Identifiable {
     case journey = "Journey"
     case time = "Time"
@@ -41,6 +106,7 @@ struct IslandAtlasView: View {
                     time: Int(time),
                     theme: theme,
                     storyComplete: atlas.storyCompleted,
+                    showsFutureSignals: true,
                     onSelect: { county in
                         Haptics.tap()
                         if county == "Mayo" { onOpenMayo() } else { onOpenCounty(county) }
@@ -243,6 +309,7 @@ private struct IslandMapSurface: View {
     let time: Int
     let theme: String
     let storyComplete: Bool
+    let showsFutureSignals: Bool
     let onSelect: (String) -> Void
 
     private let counties = ContentLoader.counties()
@@ -275,7 +342,7 @@ private struct IslandMapSurface: View {
                                          style: StrokeStyle(lineWidth: isMayo ? 1.7 : 0.65, lineJoin: .round))
                         }
 
-                        if mode == .journey {
+                        if mode == .journey && showsFutureSignals {
                             let road = [
                                 Ireland.point(lat: 53.90, lon: -9.25),
                                 Ireland.point(lat: 53.33, lon: -7.99),
@@ -314,8 +381,10 @@ private struct IslandMapSurface: View {
     private var signals: [MapSignal] {
         switch mode {
         case .journey:
+            let grainne = MapSignal(title: "Gráinne", detail: "1593 · document", icon: "person.crop.circle", lat: 53.88, lon: -9.58, active: true)
+            guard showsFutureSignals else { return [grainne] }
             return [
-                MapSignal(title: "Gráinne", detail: "1593 · document", icon: "person.crop.circle", lat: 53.88, lon: -9.58, active: true),
+                grainne,
                 MapSignal(title: "A cross", detail: "c. 900", icon: "plus", lat: 53.33, lon: -7.99, active: false),
                 MapSignal(title: "A penny", detail: "c. 997", icon: "circle", lat: 53.34, lon: -6.27, active: false)
             ]
@@ -595,4 +664,3 @@ struct ClewBayMiniature: View {
         }
     }
 }
-

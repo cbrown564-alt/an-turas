@@ -2,6 +2,197 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D15 — Gráinne's broader life, organised around the 1593 crisis (2026-07-11)
+
+**Decision:** Stress-test Gráinne's broader life as the candidate flagship for Mayo's
+entire county arc. The 1593 crisis, journey to London, documentary exchange, and
+negotiation are its organising centre, not its complete chronological boundary.
+Selected earlier and later episodes may establish the world that made her power
+possible, what she built, what she stood to lose, what changed, and how she was
+remembered.
+
+**Why:** The 1593 material offers unusually strong surviving evidence and a dramatic
+decision, but the crisis alone may not sustain Mayo's full narrative and language
+journey without padding. Her wider life can supply human stakes, change over time,
+places, relationships, and meaningful language contexts.
+
+**Consequences:**
+
+- The storyboard may range beyond 1593 but every selected episode must serve the
+  central dramatic movement rather than completeness for its own sake.
+- A cradle-to-grave chronology and catalogue of famous incidents are explicit
+  non-goals.
+- The source brief must test which earlier and later claims are strong enough to carry
+  learner-facing narrative, not assume that a familiar biography is well evidenced.
+- Gráinne still must pass D14's narrative-depth and 20-word language-platform tests;
+  this scope decision does not predetermine that she can carry Mayo alone.
+
+**Dramatic spine:**
+
+> Can Gráinne preserve her family, authority, and way of life as Tudor power closes
+> around Clew Bay?
+
+An episode belongs only if it materially changes the learner's answer to that
+question. “Way of life” means the specific Gaelic maritime, kinship, economic, and
+political order in which Gráinne acted; it must not be shorthand for an innocent or
+romanticised past. The arc must leave room for her raiding, coercion, wealth, and
+pragmatic alliances as well as the pressure exerted by Tudor expansion.
+
+**Episode model:** Mayo's core arc should comprise four to six short episodes, each
+targeting roughly 8–12 minutes. Every episode needs a satisfying local movement, a
+deliberate exit, and a narrative hook into what changes next. This is not one long
+30–45 minute experience with incidental save points. The next episode is available
+immediately: the arc is bingeable, with strong authored return points. The product
+must not impose a timer or artificial wait to manufacture retention.
+
+If the learner stops, return recognition and light contextual recall should restore
+their place in the dramatic question. If they continue, the hook should flow directly
+into the next episode without forcing a return ritual between episodes.
+
+**Learner-action floor:** Every core episode must contain at least:
+
+1. one meaningful act of historical discovery, such as finding, tracing, comparing,
+   listening to, or closely inspecting something that changes understanding; and
+2. one meaningful use of Irish connected to that episode's dramatic stakes.
+
+The rest of an episode may ask only for attention. Decorative tapping and questions
+that merely confirm the learner read the preceding sentence do not satisfy this floor.
+An entirely observational core episode is not permitted.
+
+**Twenty-word accounting:** The public promise means exactly 20 distinct lexical
+headwords per county. Raw tokens, multiword expressions, grammatical constructions,
+and inflected or emphatic variants cannot inflate the count. For example, *Is mise…*
+is taught as a useful construction, but it is not itself counted as one “word,” and
+related forms cannot be split into extra items merely to reach 20. The headwords must
+be taught through reusable phrases and constructions rather than as an isolated list.
+
+**Earned-word lifecycle:** Every countable word must pass three authored stages within
+the county arc:
+
+1. it first appears at a dramatic or practical need;
+2. the learner uses it meaningfully, not merely by revealing or immediately parroting
+   a translation; and
+3. it returns in a later encounter or episode, preferably in a changed context.
+
+All three stages are required in the content plan. They create a real opportunity to
+learn without making demonstrated mastery a prerequisite for turning the county gold.
+
+**Evidence ladder:** Every source carrying a material historical claim must support
+three depths:
+
+1. **Story view** — the source appears when it changes the narrative, and the learner
+   finds, hears, or compares only what matters to that movement.
+2. **Closer look** — optional transcription, translation, document or object context,
+   and a concise account of what the source supports and leaves uncertain.
+3. **Editorial record** — full citations, rights state, claim ledger, scholarly notes,
+   and review history outside the story flow.
+
+The story must remain coherent using only the first level. Progressive disclosure is
+not permission for weak or inaccessible sourcing: the third level is mandatory even
+when most learners never open it.
+
+**Collection hierarchy:** Do not present evidence, language, and learner-made objects
+as three equal collectible currencies. Evidence meaningfully handled in an episode
+quietly accumulates in the county record. Earned Irish accumulates in the learner's
+usable language. One personal artifact is awarded or completed only when the whole
+county arc is complete. This hierarchy must remain progressively disclosed and must
+not recreate the rejected dossier-first interface.
+
+Mayo's personal artifact is a **learner-authored voyage chart** assembled across the
+arc and completed when Mayo turns gold. It traces the story's Clew Bay–London–Mayo
+movement, carries Gráinne's name and the learner's name, includes a short Irish
+self-identification made from earned language, and bears restrained visual marks tied
+to evidence the learner actually handled. It is explicitly a record of the learner's
+journey through the story, not a replica or fabricated historical document.
+
+**Post-county transition:** When the core arc is complete, reveal the personal
+artifact, return to the island, turn the county gold, and make one designated next
+county green with a clear narrative invitation. The historical and language spine
+selects that next county. The learner does not encounter a county picker, tab
+dashboard, or open-ended “what next?” menu. Completed counties remain revisitable;
+collection browsing and review remain secondary actions.
+
+**Grammar contract:** Irish is first encountered through sound, meaning, and dramatic
+use. Give a short explicit explanation only when it helps the learner perform the
+next meaningful action or understand a contrast they have already noticed; offer
+deeper explanation optionally. No core episode may require opening a grammar note to
+continue. The TEG-aligned grammar spine still governs sequencing behind the story.
+
+## D14 — Complete one county arc at a time (2026-07-11)
+
+**Decision:** The learner completes one county at a time. Each county has a designated
+core story arc made of several encounters. That overall arc introduces and uses all
+20 promised words; no single constituent story or encounter must contain all 20.
+Mayo turns gold when the learner finishes its designated core encounters, then the
+journey advances to the next county.
+
+The preferred shape is for one flagship story, divided into several episodes, to
+carry the entire county arc. This is a hypothesis that must be stress-tested for
+narrative depth and its ability to provide meaningful dramatic uses for all 20 words.
+If it fails either test, one or more side stories may complete the arc. This rule
+applies to Gráinne and Mayo and to every later county; Gráinne has not yet passed the
+test merely by being selected as the flagship.
+
+**Why:** Requiring Gráinne's story to carry an arbitrary vocabulary quota would make
+history serve a lesson container and would undermine the approved story-first
+foundation. A coherent county arc preserves the simple one-county-at-a-time journey
+and the concrete 20-word promise without forcing every word into Gráinne's material.
+
+**Consequences:**
+
+- The content model must distinguish a county arc, its constituent stories, and its
+  core encounters.
+- County briefs begin with a single-flagship hypothesis and record whether it passes
+  the narrative-depth and language-platform tests before side stories are added.
+- Side stories are an allowed editorial response to a demonstrated gap, not a quota
+  or a default requirement for variety.
+- A constituent story records only language that arises from its dramatic and
+  evidentiary needs; the county arc accounts for coverage of the full 20-word promise.
+- County completion is deterministic: every designated core encounter is complete.
+- Green means the county currently in progress; gold means its core arc is complete;
+  the learner then proceeds to the next county.
+- D12's phrase “20 useful words per county” stands, but any wording that assigns all
+  20 words to every playable story is superseded.
+
+## D13 — Reset the first three stories around people and evidence (2026-07-11)
+
+**Decision:** The existing first three content packs are prototypes and migration
+inputs, not protected editorial choices. Mayo's flagship becomes **Gráinne Ní Mháille
+and the 1593 petition**; Breastagh becomes a shorter, clearly labelled field note.
+Offaly remains at Clonmacnoise but moves from an imagined late-eighth-century
+scriptorium to the **Cross of the Scriptures, Flann Sinna, and the settlement c. 900**.
+Dublin retains Sihtric but centres on the **first Irish silver penny c. 997**, rather
+than a composite 795–900 raid-to-market story.
+
+The opening story is allowed to break chronology to provide the strongest possible
+hook. Mayo 1593 acts as a cold open; Offaly c. 900 visibly rewinds before the route
+moves mostly forward. Main stories establish the secure account and surviving
+evidence before any reconstruction. Reconstructed experiences are infrequent,
+explicitly labelled, and do not carry county completion.
+
+**Why:** The county reframing exposed continued anchoring to work created for the old
+chapter spine. Breastagh has a beautiful interaction but too little recoverable human
+story to represent Mayo or open the product. Clonmacnoise and Sihtric are strong
+choices whose real objects and dates are richer than the fictional composites built
+around them. The first encounter must prove the product's full emotional and
+historical ambition while still earning foundational Irish naturally.
+
+**Consequences:**
+
+- `STORY-RESET.md` is the editorial brief and source starting point.
+- Do not commission release audio or final illustration for the inherited Chapter
+  1–3 narratives.
+- Do not mechanically migrate Offaly and Dublin to story ids before their replacement
+  source briefs and content shapes are agreed.
+- Preserve story-keyed progress and reusable interactions; plan an explicit legacy
+  migration once replacement story ids and completion semantics exist.
+- Extend the content model to distinguish main county stories, field notes, evidence
+  types, certainty, and reconstruction status.
+- Meath must pass the same clean-slate test before the four-story launch sequence is
+  treated as fixed.
+- `EXPANSIVE-INTERFACE-VISION.md` explores the broader product vessel implied by this
+  decision; its detailed interface proposals are not yet locked decisions.
+
 ## D12 — County-led stories, real anchors, and a concrete learning promise (2026-07-10)
 
 **Decision:** The 32 counties are the product's primary visible journey and unit of
@@ -21,8 +212,8 @@ make the cultural claim earned rather than decorative.
 
 - `COUNTY-ATLAS.md` is the product contract; `COUNTY-STORY-SLATE.md` is the researched
   development slate for all 32 first stories.
-- Map semantics are fixed: **green** is the current county/story, **gold** means all
-  shipped stories in that county are complete, and **white** means still ahead. A
+- Map semantics are fixed: **green** is the current county arc, **gold** means its
+  designated core encounters are complete, and **white** means still ahead. A
   white county is an honest promise, not a disguised lock.
 - A chapter becomes a pedagogical/production grouping. Existing Chapters 1–4 remain
   the launch-quality scope, but their shipped stories are explicitly Mayo, Offaly,

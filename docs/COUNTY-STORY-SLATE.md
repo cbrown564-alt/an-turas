@@ -1,9 +1,9 @@
 # The 32-county story slate
 
-*Research sketch — 10 July 2026. This is a development slate, not publishable
-history or finished lesson copy. Every row needs a historian's source note, a
-rights check for the reading, and an Irish-language pedagogue's approval before
-it enters `journey.json`.*
+*Research sketch — 10 July 2026; first-story reset applied 11 July 2026. This is a
+development slate, not publishable history or finished lesson copy. Every row needs a
+historian's source note, a rights check for the reading, and an Irish-language
+pedagogue's approval before it enters `journey.json`.*
 
 ## The editorial move
 
@@ -36,9 +36,9 @@ event, and the source selection needs an especially careful review.
 | **Doire / Derry** | **The city walls and the siege of 1688–89** | The gates close; people inside and outside the walls experience the crisis differently. Read short, attributed contemporary voices and use the walls themselves as the map of the story. | Wall, gate, town, hunger, shelter; **sensitive**—commission a multi-perspective local history treatment. |
 | **Dún na nGall / Donegal** | **Aodh (Hugh) Ó Néill at Rathmullan**; 1607 | The ship waits at Rathmullan and the Flight of the Earls changes the political world. Read a short contemporary account/annal entry and a place-based source on the departure. | Ship, shore, leave, grief, letter; retain the existing Chapter 6 but replace any generic witness as headline. |
 | **an Dún / Down** | **St Patrick at Saul**; fifth-century tradition | A place-name and an early church carry the story of a mission and its later remembrance. Read a plainly labelled excerpt from a medieval Patrick Life and contrast tradition with evidence. | Field, church, give, arrive, return; avoid claiming certainty where the sources cannot provide it. |
-| **Baile Átha Cliath / Dublin** | **Sitric Silkbeard and Dubh Linn**; c. 1000 | A Norse-Gaelic king's town becomes a trading port, mint and religious centre. Read an annal entry and a short object-led account of Hiberno-Norse Dublin. | Market, coin, boat, buy, direction; preserves the existing Viking chapter with a named focal figure. |
+| **Baile Átha Cliath / Dublin** | **Sihtric Silkbeard and the first Irish penny**; c. 997 | A silver penny reading SITRIC REX DUBLIN opens the story of a Norse-Gaelic king, mint, market, and port. Read the coin before widening to the city and its trade. | Market, coin, boat, buy, direction; replace the 795–900 composite with one dated object-led story. |
 | **Fear Manach / Fermanagh** | **the Maguires and Enniskillen Castle**; fifteenth–sixteenth century | A river stronghold changes hands and becomes both a Maguire seat and an English garrison. Read a documented castle timeline or annal extracts. | Castle, island, river, guard, rule; retain both Gaelic and later settler histories. |
-| **na Gaillimhe / Galway** | **Gráinne Ní Mháille (Grace O'Malley)**; sixteenth century | A maritime leader petitions Elizabeth I while defending her power on the western coast. Read the Elizabethan correspondence/account with source context, not a romanticised pirate tale. | Boat, harbour, sea, leader, ask; exceptionally strong person/place/document combination. |
+| **na Gaillimhe / Galway** | **Joe Heaney and Carna's sean-nós tradition**; twentieth century | A singer from Carna carries an Irish-language oral tradition onto recordings and stages far from home. Hear a rights-cleared archival performance and examine how song, place, memory, and transmission meet. | Voice, song, listen, remember, place; audio rights and local cultural review are mandatory. |
 | **Ciarraí / Kerry** | **Piaras Feiritéar**; seventeenth century | A Corca Dhuibhne poet makes language, landscape and loyalty inseparable under enormous pressure. Read a short public-domain poem in Irish with a supported gloss. | Poet, land, word, memory, opinion; retains the existing Chapter 5 anchor. |
 | **Cill Dara / Kildare** | **Brigid and Kildare's perpetual fire**; early-medieval tradition | A woman saint's reputation for hospitality and power turns Kildare into a lasting cultural centre. Read a labelled extract from a Life of Brigid plus the story of the fire's modern commemoration. | Fire, food, home, share, kind; distinguish saintly tradition from recoverable history. |
 | **Cill Chainnigh / Kilkenny** | **Alice Kyteler's trial**; 1324 | A powerful woman, a bishop and a court produce Ireland's best-known medieval witchcraft case. Read a tightly selected, age-appropriate translated court record. | Court, accusation, house, witness, say; **sensitive**—never make persecution a puzzle or a game. |
@@ -47,10 +47,10 @@ event, and the source selection needs an especially careful review.
 | **Luimneach / Limerick** | **Patrick Sarsfield and the Treaty of Limerick**; 1691 | After siege and negotiation, a treaty promises one future and opens another. Read a short clause from the treaty and a civilian-aware contextual account. | Treaty, city, promise, soldier, peace; **sensitive**, with consequences and contested memory included. |
 | **an Longfort / Longford** | **the Corlea Trackway**; 148 BC | An enormous oak road is laid across bog, then vanishes beneath it for two millennia. Read the archaeological evidence and competing explanations of its ceremonial route. | Road, wood, bog, carry, across; ideal monument-led episode—no fictional road-builder is needed. |
 | **Lú / Louth** | **Cú Chulainn and the Cooley peninsula**; mythic Ulster Cycle | A young warrior takes the ford while an army seeks the brown bull. Read a short Irish/English excerpt from *Táin Bó Cúailnge* as literature rooted in the Cooley landscape. | Bull, ford, warrior, wait, strong; label myth; pair later with Medb in Roscommon rather than duplicating it. |
-| **Maigh Eo / Mayo** | **the Ogham stones of the north Mayo coast**; c. 400–550 | Marks on stone preserve names long after their speakers are gone. Read the inscriptions, their transliteration, and what scholars can infer from them. | Name, stone, carve, family, here; retains Chapter 1, but the named inscribed monument—not a generic carver—is the hook. |
+| **Maigh Eo / Mayo** | **Gráinne Ní Mháille and the 1593 petition**; sixteenth century | A maritime leader from Mayo petitions Elizabeth I for action concerning herself, her family, and her position. Read the surviving correspondence and separate the record from later “pirate queen” legend. | Name, family, sea, leader, ask; the strongest opening hook and a natural home for identity and origin language. Breastagh moves to a short reconstruction field note. |
 | **an Mhí / Meath** | **Hugh de Lacy and Trim Castle**; twelfth century | A new lord builds the largest Anglo-Norman castle in Ireland at a strategic ford. Read a charter/chronicle excerpt with a plan of the castle. | Castle, ford, have, family, describe; retains the existing Norman grammar payload. |
 | **Muineachán / Monaghan** | **Patrick Kavanagh at Iniskeen**; twentieth century | A poet turns a small village and remembered childhood into a world. Read a short, rights-cleared extract or commissioned Irish adaptation with biographical context. | Road, field, neighbour, remember, compare; secure permissions—Kavanagh is not public domain. |
-| **Uíbh Fhailí / Offaly** | **St Ciarán and Clonmacnoise**; sixth century onwards | A founder's settlement at a crossroads becomes a school, market and pilgrimage place. Read an early life of Ciarán and the Cross of the Scriptures as a visual text. | Book, colour, day, learn, like; retains Chapter 2 and its exceptionally good language fit. |
+| **Uíbh Fhailí / Offaly** | **Flann Sinna, the Cross of the Scriptures, and Clonmacnoise**; c. 900, with Ciarán's foundation as context | A cross naming royal patronage reveals a large settlement at Ireland's river-and-road crossroads. Read the inscription and sculpture alongside archaeology, annals, and the site's earlier foundation. | Work, colour, day, learn, like; retain the strong language field but replace the imagined gospel-book race with evidence from the real settlement. |
 | **Ros Comáin / Roscommon** | **Medb and Rathcroghan**; mythic / archaeological landscape | A queen's claim on a bull sends the story westward. Read a short *Táin* or *Dindshenchas* passage beside the archaeology of Rathcroghan. | Queen, cattle, cave, want, command; label myth and create a deliberate two-county epic with Louth. |
 | **Sligeach / Sligo** | **W. B. Yeats and Ben Bulben**; late nineteenth–twentieth century | A poet makes a mountain and a county part of the imaginative map of Ireland. Read a brief public-domain poem or prose passage with a credited Irish translation. | Mountain, grave, dream, see, describe; avoid suggesting Yeats “speaks for” all of Sligo. |
 | **Tiobraid Árann / Tipperary** | **Cormac Mac Cárthaigh and Cormac's Chapel, Rock of Cashel**; twelfth century | A king commissions an extraordinary chapel where Romanesque art, power and devotion meet. Read an architectural inscription/site account and make the building legible. | Rock, chapel, king, stone, beautiful; a monument with an unusually clear named patron. |
@@ -65,17 +65,19 @@ event, and the source selection needs an especially careful review.
 The best early production candidates are the rows with a real place, a named
 anchor, an accessible substantial source, and a natural A1–A2 language field:
 
-1. **Waterford — Reginald's Tower:** movement, trade, river, town; a clean
-   companion to Dublin's Vikings.
-2. **Galway — Gráinne Ní Mháille:** named person, coast, and correspondence;
-   exceptionally legible on a map.
-3. **Meath — Hugh de Lacy / Trim:** retain and deepen the current Norman unit
-   with a real historical agent and a document.
-4. **Longford — Corlea:** a compelling artefact and evidence story without
+1. **Mayo — Gráinne Ní Mháille:** build the opening story around the 1593 record,
+   Mayo's maritime geography, and identity language.
+2. **Offaly — the Cross of the Scriptures:** replace the inherited fictional
+   scriptorium before investing further in Chapter 2 production assets.
+3. **Dublin — Sihtric's penny:** rebuild the existing language payload around the
+   dated c. 997 object rather than a two-century composite.
+4. **Meath — Hugh de Lacy / Trim:** perform the same clean-slate test before
+   confirming the fourth launch story.
+5. **Longford — Corlea:** a compelling artefact and evidence story without
    fabricated characters.
-5. **Cork — Nano Nagle:** a warm story of education that gives beginners a
+6. **Cork — Nano Nagle:** a warm story of education that gives beginners a
    strong everyday language field.
-6. **Roscommon + Louth:** develop as paired, explicitly myth-labelled *Táin*
+7. **Roscommon + Louth:** develop as paired, explicitly myth-labelled *Táin*
    stories—Medb's and Cú Chulainn's viewpoints must each add language, not
    repeat the plot.
 

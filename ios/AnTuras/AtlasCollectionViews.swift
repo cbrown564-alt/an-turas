@@ -1,5 +1,60 @@
 import SwiftUI
 
+// MARK: - First encounter takeaway
+
+struct FirstEncounterTakeawayView: View {
+    @EnvironmentObject private var atlas: AtlasPrototypeModel
+    let onContinue: () -> Void
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 24) {
+                AtlasScreenHeader(
+                    "THE ISLAND OPENS",
+                    "You began with a name.",
+                    detail: "Gráinne’s name crossed the sea and entered the record. Yours has entered Irish."
+                )
+
+                AtlasCard(accent: Theme.moss) {
+                    VStack(alignment: .leading, spacing: 13) {
+                        Image(systemName: "quote.opening")
+                            .font(.system(size: 25, weight: .light))
+                            .foregroundStyle(Theme.moss)
+                        Text("Is mise \(atlas.learnerName).")
+                            .font(.system(size: 36, weight: .semibold, design: .serif))
+                            .foregroundStyle(Theme.moss)
+                        Text("I am \(atlas.learnerName).")
+                            .font(.system(size: 16, design: .serif))
+                            .foregroundStyle(Theme.inkSoft)
+                    }
+                    .padding(.vertical, 8)
+                }
+
+                HStack(alignment: .top, spacing: 12) {
+                    Image(systemName: "doc.text")
+                        .foregroundStyle(Theme.atlasGreen)
+                        .frame(width: 24)
+                    Text("From a castle at the edge of Clew Bay, Gráinne turned loss into a journey to the centre of English power — and made the state answer her.")
+                        .font(.system(size: 16, design: .serif))
+                        .foregroundStyle(Theme.ink)
+                        .lineSpacing(4)
+                }
+
+                PrimaryButton(title: "Return to Ireland", fullWidth: true) {
+                    Haptics.tap()
+                    onContinue()
+                }
+            }
+            .padding(20)
+            .padding(.bottom, 36)
+            .frame(maxWidth: 680)
+            .frame(maxWidth: .infinity)
+        }
+        .background(Theme.bg.ignoresSafeArea())
+        .navigationBarBackButtonHidden(true)
+    }
+}
+
 // MARK: - An Cnuasach
 
 private enum CollectionShelf: String, CaseIterable, Identifiable {
@@ -348,4 +403,3 @@ struct AtlasReturnView: View {
         }
     }
 }
-

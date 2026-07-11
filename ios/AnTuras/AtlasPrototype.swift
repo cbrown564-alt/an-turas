@@ -2,9 +2,9 @@ import SwiftUI
 
 // MARK: - Living atlas prototype shell
 
-/// The new product vessel. The legacy lesson path remains available with
-/// `--legacy`; the default launch now proves the island -> dossier -> evidence ->
-/// Irish -> collection loop described in EXPANSIVE-INTERFACE-VISION.md.
+/// The new product vessel. A first-time learner gets one authored encounter before
+/// the wider atlas navigation is revealed. The legacy lesson path remains available
+/// with `--legacy`.
 struct AtlasPrototypeView: View {
     @EnvironmentObject private var appState: AppState
     @StateObject private var atlas = AtlasPrototypeModel()
@@ -12,35 +12,13 @@ struct AtlasPrototypeView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            TabView(selection: $atlas.tab) {
-                IslandAtlasView(
-                    onOpenMayo: { path.append(.mayoDossier) },
-                    onOpenCounty: { path.append(.county($0)) },
-                    onOpenFieldNote: { path.append(.fieldNote) }
-                )
-                .tag(AtlasTab.island)
-                .tabItem { Label("An tOileán", systemImage: "map") }
-
-                CurrentStoryView(
-                    onOpenStory: { path.append(.grainneStory) },
-                    onOpenDossier: { path.append(.mayoDossier) }
-                )
-                .tag(AtlasTab.story)
-                .tabItem { Label("An Scéal", systemImage: "book.pages") }
-
-                AtlasCollectionView(
-                    onOpenEvidence: { path.append(.evidence) },
-                    onOpenFieldNote: { path.append(.fieldNote) }
-                )
-                .tag(AtlasTab.collection)
-                .tabItem { Label("An Cnuasach", systemImage: "square.grid.2x2") }
-
-                AtlasReturnView(onOpenEvidence: { path.append(.evidence) })
-                    .tag(AtlasTab.returning)
-                    .tabItem { Label("Ar Ais", systemImage: "arrow.uturn.backward") }
+            Group {
+                if atlas.hasOpenedAtlas {
+                    atlasTabs
+                } else {
+                    FirstRunIslandView(onBegin: { path.append(.grainneStory) })
+                }
             }
-            .tint(Theme.moss)
-            .toolbarBackground(Theme.bg, for: .tabBar)
             .navigationDestination(for: AtlasRoute.self) { route in
                 destination(route)
             }
@@ -58,6 +36,38 @@ struct AtlasPrototypeView: View {
         }
     }
 
+    private var atlasTabs: some View {
+        TabView(selection: $atlas.tab) {
+            IslandAtlasView(
+                onOpenMayo: { path.append(.mayoDossier) },
+                onOpenCounty: { path.append(.county($0)) },
+                onOpenFieldNote: { path.append(.fieldNote) }
+            )
+            .tag(AtlasTab.island)
+            .tabItem { Label("An tOileán", systemImage: "map") }
+
+            CurrentStoryView(
+                onOpenStory: { path.append(.grainneStory) },
+                onOpenDossier: { path.append(.mayoDossier) }
+            )
+            .tag(AtlasTab.story)
+            .tabItem { Label("An Scéal", systemImage: "book.pages") }
+
+            AtlasCollectionView(
+                onOpenEvidence: { path.append(.evidence) },
+                onOpenFieldNote: { path.append(.fieldNote) }
+            )
+            .tag(AtlasTab.collection)
+            .tabItem { Label("An Cnuasach", systemImage: "square.grid.2x2") }
+
+            AtlasReturnView(onOpenEvidence: { path.append(.evidence) })
+                .tag(AtlasTab.returning)
+                .tabItem { Label("Ar Ais", systemImage: "arrow.uturn.backward") }
+        }
+        .tint(Theme.moss)
+        .toolbarBackground(Theme.bg, for: .tabBar)
+    }
+
     @ViewBuilder
     private func destination(_ route: AtlasRoute) -> some View {
         switch route {
@@ -71,13 +81,17 @@ struct AtlasPrototypeView: View {
             GrainnePersonView(onBegin: { path.append(.grainneStory) })
         case .grainneStory:
             GrainneStoryView(
-                onInspectEvidence: { path.append(.evidence) },
                 onComplete: {
                     atlas.completeStory()
-                    path.removeAll()
-                    atlas.tab = .collection
+                    path = [.firstTakeaway]
                 }
             )
+        case .firstTakeaway:
+            FirstEncounterTakeawayView {
+                atlas.hasOpenedAtlas = true
+                atlas.tab = .island
+                path.removeAll()
+            }
         case .evidence:
             PetitionEvidenceView()
         case .fieldNote:
@@ -96,6 +110,7 @@ enum AtlasRoute: Hashable {
     case mayoDossier
     case grainnePerson
     case grainneStory
+    case firstTakeaway
     case evidence
     case fieldNote
     case county(String)
@@ -104,6 +119,7 @@ enum AtlasRoute: Hashable {
 @MainActor
 final class AtlasPrototypeModel: ObservableObject {
     @Published var tab: AtlasTab = .island
+    @Published var hasOpenedAtlas = false
     @Published var learnerName = ""
     @Published var evidenceInspected = false
     @Published var storyCompleted = false
@@ -252,7 +268,7 @@ struct AtlasAudioLine: View {
                     .font(.system(size: 15, design: .serif))
                     .foregroundStyle(Theme.inkSoft)
                 if !canPlay {
-                    Text("native-speaker audio pending review")
+                    Text("Audio coming soon")
                         .font(.system(size: 10.5, weight: .semibold))
                         .foregroundStyle(Theme.rust)
                 }
@@ -278,8 +294,8 @@ struct SourceFooter: View {
             Image(systemName: "building.columns")
                 .foregroundStyle(Theme.inkFaint)
             Text(compact
-                 ? "Source starting point: NLI record MS_UR_010761. Prototype copy; historian and rights review pending."
-                 : "Source starting point · National Library of Ireland record MS_UR_010761. This explanatory prototype does not reproduce the manuscript. Final selection, transcription and context require historian and rights review.")
+                 ? "Source: National Library of Ireland record MS_UR_010761."
+                 : "Source · National Library of Ireland record MS_UR_010761.")
                 .font(.system(size: compact ? 11.5 : 12.5))
                 .foregroundStyle(Theme.inkSoft)
                 .lineSpacing(3)

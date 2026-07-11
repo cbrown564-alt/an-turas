@@ -238,7 +238,7 @@ struct GrainnePersonView: View {
     }
 }
 
-private struct GrainnePortraitMark: View {
+struct GrainnePortraitMark: View {
     var body: some View {
         Canvas { ctx, size in
             let bg = Path(roundedRect: CGRect(origin: .zero, size: size), cornerRadius: 8)
@@ -303,15 +303,12 @@ private struct ClaimBoundary: View {
 struct GrainneStoryView: View {
     @EnvironmentObject private var atlas: AtlasPrototypeModel
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    let onInspectEvidence: () -> Void
     let onComplete: () -> Void
 
     @State private var step = 0
-    @State private var documentZoom: Double = 1
-    @State private var showAnnotations = true
-    @State private var chosenClaim: String?
+    @State private var foundName = false
 
-    private let stepNames = ["Cold open", "Person", "Place", "Evidence", "Source reading", "Certainty", "Language", "Afterlife"]
+    private let stepNames = ["Rockfleet", "Gráinne", "The letter", "Your name"]
 
     var body: some View {
         VStack(spacing: 0) {
@@ -319,14 +316,10 @@ struct GrainneStoryView: View {
             ScrollView {
                 Group {
                     switch step {
-                    case 0: coldOpen
-                    case 1: personRegister
-                    case 2: placeRegister
-                    case 3: evidenceRegister
-                    case 4: sourceReading
-                    case 5: certaintyRegister
-                    case 6: languageRegister
-                    default: afterlifeRegister
+                    case 0: rockfleet
+                    case 1: meetGrainne
+                    case 2: whatSurvives
+                    default: yourIrish
                     }
                 }
                 .id(step)
@@ -379,12 +372,12 @@ struct GrainneStoryView: View {
                 }
                 .buttonStyle(CarvePress())
             }
-            PrimaryButton(title: step == stepNames.count - 1 ? "Carry it into the collection" : nextTitle, fullWidth: true) {
+            PrimaryButton(title: step == stepNames.count - 1 ? "Keep this phrase" : nextTitle, fullWidth: true) {
                 if step == stepNames.count - 1 { onComplete() }
                 else { move(to: step + 1) }
             }
-            .disabled(step == 6 && atlas.learnerName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-            .opacity(step == 6 && atlas.learnerName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 0.45 : 1)
+            .disabled((step == 2 && !foundName) || (step == 3 && atlas.learnerName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty))
+            .opacity((step == 2 && !foundName) || (step == 3 && atlas.learnerName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) ? 0.45 : 1)
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 12)
@@ -394,12 +387,8 @@ struct GrainneStoryView: View {
     private var nextTitle: String {
         switch step {
         case 0: return "Meet Gráinne"
-        case 1: return "Follow the coast"
-        case 2: return "Open the evidence"
-        case 3: return "Read the record"
-        case 4: return "Test the claims"
-        case 5: return "Use your first Irish"
-        default: return "See what survives now"
+        case 1: return "Follow her to London"
+        default: return "Use your first Irish"
         }
     }
 
@@ -408,7 +397,7 @@ struct GrainneStoryView: View {
         withAnimation(reduceMotion ? .linear(duration: 0.15) : Motion.settle) { step = newStep }
     }
 
-    private var coldOpen: some View {
+    private var rockfleet: some View {
         VStack(alignment: .leading, spacing: 22) {
             ZStack(alignment: .bottomLeading) {
                 ClewBayMiniature().frame(height: 350)
@@ -416,9 +405,9 @@ struct GrainneStoryView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("MAYO · 1593")
                         .font(.system(size: 11, weight: .bold)).kerning(1.7)
-                    Text("The invitation")
+                    Text("Rockfleet")
                         .font(.system(size: 34, weight: .semibold, design: .serif))
-                    Text("A leader leaves the western coast for the centre of English power.")
+                    Text("At high tide, Clew Bay reaches the castle walls.")
                         .font(.system(size: 14.5)).lineSpacing(3)
                 }
                 .foregroundStyle(.white)
@@ -426,23 +415,28 @@ struct GrainneStoryView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 14))
 
-            Text("What did she ask for?")
+            Text("Her fleet was gone. Her lands had been taken. Her youngest son was a prisoner.")
+                .font(.system(size: 22, weight: .semibold, design: .serif))
+                .foregroundStyle(Theme.ink)
+                .lineSpacing(6)
+
+            Text("So she went to the queen.")
                 .font(.system(size: 33, weight: .semibold, design: .serif))
                 .foregroundStyle(Theme.ink)
-            Text("Not what later storytellers wanted her to have asked. Not what a dramatic reconstruction might put in her mouth. Begin with the thing that survives.")
+            Text("From this western inlet, Gráinne Ní Mháille sought an audience with Elizabeth I — and secured one.")
                 .font(.system(size: 17, design: .serif))
                 .foregroundStyle(Theme.inkSoft)
                 .lineSpacing(5)
-            CertaintyPill(certainty: .documented)
+
         }
     }
 
-    private var personRegister: some View {
-        VStack(alignment: .leading, spacing: 20) {
+    private var meetGrainne: some View {
+        VStack(alignment: .leading, spacing: 22) {
             HStack(alignment: .bottom, spacing: 18) {
                 GrainnePortraitMark().frame(width: 145, height: 190)
-                VStack(alignment: .leading, spacing: 6) {
-                    Eyebrow(text: "A NAMED PERSON")
+                VStack(alignment: .leading, spacing: 7) {
+                    Eyebrow(text: "A LIFE SHAPED BY THE SEA")
                     Text("Gráinne\nNí Mháille")
                         .font(.system(size: 34, weight: .semibold, design: .serif))
                         .foregroundStyle(Theme.ink)
@@ -451,100 +445,70 @@ struct GrainneStoryView: View {
                         .foregroundStyle(Theme.inkFaint)
                 }
             }
+
             AtlasAudioLine(ga: "Gráinne Ní Mháille", en: "Her name in Irish", sound: "grawn-ya nee wawl-ya")
-            Text("Her consequences reach beyond biography: family power, coastal lordship and negotiations with a state extending its control into Connacht.")
-                .font(.system(size: 17, design: .serif))
+
+            Text("She grew up in the O’Malley world of Clare Island and Clew Bay, where boats connected castles, families and trade. She became a leader in her own right — at sea and on land.")
+                .font(.system(size: 19, design: .serif))
                 .foregroundStyle(Theme.ink)
-                .lineSpacing(5)
-            HStack { CertaintyPill(certainty: .documented); CertaintyPill(certainty: .later) }
-            Text("This is an interpretive mark, not a surviving portrait. The interface names that boundary instead of letting atmosphere impersonate evidence.")
-                .font(.system(size: 12.5))
-                .foregroundStyle(Theme.inkFaint)
-        }
-    }
+                .lineSpacing(6)
 
-    private var placeRegister: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            AtlasScreenHeader("PLACE · CAUSAL GEOGRAPHY", "Power had a coastline.", detail: "Clew Bay was not scenery behind Gráinne’s story. Islands, water and strongholds shaped movement and authority.")
-            ClewBayMiniature().frame(height: 360).clipShape(RoundedRectangle(cornerRadius: 14))
-            AtlasCard(accent: Theme.atlasGold) {
-                VStack(alignment: .leading, spacing: 9) {
-                    Text("Trace the route with your finger.")
-                        .font(.system(size: 17, weight: .semibold, design: .serif))
-                    Text("Clare Island → Kildavnet → Rockfleet")
-                        .font(.system(size: 14, weight: .medium, design: .monospaced))
-                        .foregroundStyle(Theme.atlasGold)
-                    Text("The line connects story places; it does not claim one documented journey in this exact sequence.")
-                        .font(.system(size: 12.5)).foregroundStyle(Theme.inkSoft)
-                }
-            }
-        }
-    }
+            ClewBayMiniature()
+                .frame(height: 290)
+                .clipShape(RoundedRectangle(cornerRadius: 14))
 
-    private var evidenceRegister: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            AtlasScreenHeader("EVIDENCE · WHAT SURVIVES", "A state paper, not a legend.", detail: "Zoom the explanatory facsimile and reveal the editorial annotations. The final product would use a cleared image or historian-approved transcription.")
-            PetitionInspectionPanel(zoom: $documentZoom, showAnnotations: $showAnnotations)
-            SourceFooter(compact: true)
-            Button {
-                atlas.evidenceInspected = true
-                onInspectEvidence()
-            } label: {
-                Label("Open the full evidence inspector", systemImage: "viewfinder")
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(Theme.moss)
-            }
-            .buttonStyle(CarvePress())
-            .onAppear { atlas.evidenceInspected = true }
-        }
-    }
-
-    private var sourceReading: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            AtlasScreenHeader("SOURCE READING", "Read what the record can carry.", detail: "This prototype paraphrases the source packet rather than presenting an uncleared transcription.")
-            VStack(alignment: .leading, spacing: 0) {
-                SourceLine(number: "01", text: "The record identifies Gráinne Ní Mháille and members of her family.", certainty: .documented)
-                SourceLine(number: "02", text: "It concerns requests for state action affecting her and those family members.", certainty: .documented)
-                SourceLine(number: "03", text: "The exact learner-facing wording and list of requests must follow historian review of the selected document.", certainty: .unknown)
-            }
-            .background(Theme.raised)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            Text("The important change is methodological: the learner sees the limits of the current packet instead of receiving invented precision.")
+            Text("Clare Island. Kildavnet. Rockfleet. The castles associated with her still hold the edges of the bay.")
                 .font(.system(size: 16, design: .serif))
                 .foregroundStyle(Theme.inkSoft)
                 .lineSpacing(5)
-        }
-    }
 
-    private var certaintyRegister: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            AtlasScreenHeader("CERTAINTY · CLAIM BY CLAIM", "Which account are you looking at?", detail: "Choose a claim. The interface responds with its evidence register, not a generic disclaimer.")
-            ClaimChoice(text: "A 1593 record concerns Gráinne and her family.", selected: chosenClaim == "record", certainty: .documented) { chosenClaim = "record" }
-            ClaimChoice(text: "She was known simply as Ireland’s ‘pirate queen.’", selected: chosenClaim == "queen", certainty: .later) { chosenClaim = "queen" }
-            ClaimChoice(text: "She refused to bow before Elizabeth I.", selected: chosenClaim == "bow", certainty: .disputed) { chosenClaim = "bow" }
-            if let chosenClaim {
-                AtlasCard(accent: chosenClaim == "record" ? Theme.atlasGreen : Theme.rust) {
-                    Text(explanation(for: chosenClaim))
-                        .font(.system(size: 15, design: .serif))
+            AtlasCard(accent: Theme.atlasGold) {
+                VStack(alignment: .leading, spacing: 7) {
+                    Text("“She thinketh herself to be no small lady.”")
+                        .font(.system(size: 20, weight: .semibold, design: .serif))
                         .foregroundStyle(Theme.ink)
                         .lineSpacing(4)
+                    Text("Sir Nicholas Malby, Governor of Connaught")
+                        .font(.system(size: 11.5, weight: .medium))
+                        .foregroundStyle(Theme.inkFaint)
                 }
-                .transition(.opacity.combined(with: .scale(scale: 0.98)))
             }
         }
     }
 
-    private func explanation(for id: String) -> String {
-        switch id {
-        case "record": return "Documented: the state-paper record is the secure centre of this encounter. Final copy still needs a historian-approved document selection."
-        case "queen": return "Later account: the famous image can be studied as an afterlife, but it is not the same thing as the language or categories of the 1593 record."
-        default: return "Disputed / unsupported here: this prototype deliberately does not narrate the bowing story as fact without source-specific support."
+    private var whatSurvives: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            AtlasScreenHeader("LONDON · 6 SEPTEMBER 1593", "Her name enters the record.", detail: "A draft letter leaves the queen’s government. Gráinne is in London, and the people named with her reveal what this journey is really about.")
+            FamilyRecordReveal(foundName: $foundName)
+
+            if foundName {
+                Text("Her requests were not hers alone. The letter reaches back across the sea to her sons, her brother and the struggle for her family’s future.")
+                    .font(.system(size: 19, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                    .lineSpacing(6)
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
+
+                AtlasCard(accent: Theme.rust) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("What later stories remember")
+                            .font(.system(size: 16, weight: .semibold, design: .serif))
+                            .foregroundStyle(Theme.ink)
+                        Text("Later stories tell of Gráinne refusing to bow to Elizabeth. The letter holds its own act of defiance: she crossed from Clew Bay to the heart of English power and made the state answer her.")
+                            .font(.system(size: 14.5, design: .serif))
+                            .foregroundStyle(Theme.inkSoft)
+                            .lineSpacing(4)
+                    }
+                }
+                .transition(.opacity)
+            }
+            SourceFooter(compact: true)
         }
+        .onAppear { atlas.evidenceInspected = true }
     }
 
-    private var languageRegister: some View {
+    private var yourIrish: some View {
         VStack(alignment: .leading, spacing: 20) {
-            AtlasScreenHeader("LANGUAGE LENS", "The story turns toward you.", detail: "You do not become a historical character. You use Irish now, as yourself, to answer the first question any dossier asks: who are you?")
+            AtlasScreenHeader("YOUR NAME", "A name can cross centuries.", detail: "The letter wrote hers as “Grany ne Maly.” In Irish, she is Gráinne Ní Mháille. Now make the first Irish sentence about yourself.")
             AtlasAudioLine(ga: "Is mise…", en: "I am… / I’m…", sound: "iss mish-eh")
             VStack(alignment: .leading, spacing: 9) {
                 Text("Cén t-ainm atá ort?")
@@ -566,7 +530,7 @@ struct GrainneStoryView: View {
                     Text("Is mise \(atlas.learnerName).")
                         .font(.system(size: 32, weight: .semibold, design: .serif))
                         .foregroundStyle(Theme.moss)
-                    Text("This phrase leaves the story with you. It belongs in introductions anywhere, not only in Mayo.")
+                    Text("This is yours to use in any introduction.")
                         .font(.system(size: 13.5)).foregroundStyle(Theme.inkSoft)
                 }
                 .padding(18)
@@ -577,63 +541,63 @@ struct GrainneStoryView: View {
         }
     }
 
-    private var afterlifeRegister: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            AtlasScreenHeader("AFTERLIFE · MAYO NOW", "The coast remains.", detail: "The story returns to real places, surviving records and the language you can carry beyond them.")
-            ClewBayMiniature().frame(height: 280).clipShape(RoundedRectangle(cornerRadius: 14))
-            VStack(alignment: .leading, spacing: 12) {
-                OutcomeRow(icon: "person.crop.circle", title: "Who you met", text: "Gráinne Ní Mháille, a maritime leader from Mayo.")
-                OutcomeRow(icon: "doc.text", title: "What you examined", text: "An explanatory prototype for a 1593 state-paper record.")
-                OutcomeRow(icon: "checkmark.seal", title: "What remains uncertain", text: "The exact final document reading and several famous later claims.")
-                OutcomeRow(icon: "quote.bubble", title: "What you can use", text: "Is mise \(atlas.learnerName.isEmpty ? "…" : atlas.learnerName).")
-            }
-            Text("Next, the road rewinds to Offaly, c. 900 — so the long chronological journey can begin.")
-                .font(.system(size: 17, weight: .semibold, design: .serif))
-                .foregroundStyle(Theme.atlasGreen)
-                .lineSpacing(4)
-        }
-    }
 }
 
-private struct SourceLine: View {
-    let number: String
-    let text: String
-    let certainty: EvidenceCertainty
-    var body: some View {
-        HStack(alignment: .top, spacing: 12) {
-            Text(number).font(.system(size: 11, design: .monospaced)).foregroundStyle(Theme.inkFaint)
-            VStack(alignment: .leading, spacing: 8) {
-                Text(text).font(.system(size: 16, design: .serif)).foregroundStyle(Theme.ink).lineSpacing(4)
-                CertaintyPill(certainty: certainty)
-            }
-        }
-        .padding(16)
-        .overlay(alignment: .bottom) { AtlasRule() }
-    }
-}
+private struct FamilyRecordReveal: View {
+    @Binding var foundName: Bool
 
-private struct ClaimChoice: View {
-    let text: String
-    let selected: Bool
-    let certainty: EvidenceCertainty
-    let action: () -> Void
     var body: some View {
-        Button(action: action) {
-            HStack(alignment: .top, spacing: 12) {
-                Image(systemName: selected ? "checkmark.circle.fill" : "circle")
-                    .foregroundStyle(selected ? certainty.color : Theme.inkFaint)
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(text).font(.system(size: 15, design: .serif)).foregroundStyle(Theme.ink).multilineTextAlignment(.leading)
-                    CertaintyPill(certainty: certainty)
+        VStack(alignment: .leading, spacing: 16) {
+            ZStack {
+                Color(light: 0xE4D7B2, dark: 0xA4936C)
+                Canvas { ctx, size in
+                    for i in 0..<16 {
+                        let y = size.height * (0.13 + CGFloat(i) * 0.047)
+                        let inset = size.width * (0.09 + CGFloat((i * 11) % 6) * 0.009)
+                        var line = Path()
+                        line.move(to: CGPoint(x: inset, y: y))
+                        line.addLine(to: CGPoint(x: size.width * (0.72 + CGFloat((i * 7) % 16) / 100), y: y))
+                        ctx.stroke(line, with: .color(Color.black.opacity(0.34)), style: StrokeStyle(lineWidth: 1.1, lineCap: .round, dash: [3, 1.5]))
+                    }
                 }
-                Spacer(minLength: 0)
+                if foundName {
+                    VStack(spacing: 7) {
+                        Text("Grany ne Maly")
+                            .font(.system(size: 26, weight: .semibold, design: .serif))
+                            .foregroundStyle(Color.black.opacity(0.74))
+                        Image(systemName: "arrow.down")
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(Theme.atlasGreen)
+                        Text("Gráinne Ní Mháille")
+                            .font(.system(size: 22, weight: .semibold, design: .serif))
+                            .foregroundStyle(Theme.atlasGreen)
+                    }
+                    .padding(18)
+                    .background(Theme.bg.opacity(0.94))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .transition(.scale(scale: 0.96).combined(with: .opacity))
+                }
             }
-            .padding(15)
-            .background(selected ? certainty.color.opacity(0.10) : Theme.raised)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(selected ? certainty.color : Theme.line, lineWidth: 0.8))
+            .frame(height: 300)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+
+            if foundName {
+                VStack(alignment: .leading, spacing: 8) {
+                    Eyebrow(text: "HER FAMILY")
+                    Text("Her sons Morogh O’Flaherty and Tibbut Burke, and her brother Donell O’Piper, are named too.")
+                        .font(.system(size: 16, design: .serif))
+                        .foregroundStyle(Theme.ink)
+                        .lineSpacing(4)
+                    SoundRow(text: "Gráinne Ní Mháille", hint: "grawn-ya nee wawl-ya")
+                }
+                .transition(.opacity)
+            } else {
+                PrimaryButton(title: "Find Gráinne’s name", fullWidth: true) {
+                    Haptics.chisel()
+                    withAnimation(Motion.settle) { foundName = true }
+                }
+            }
         }
-        .buttonStyle(CarvePress())
     }
 }
 
@@ -735,7 +699,7 @@ struct PetitionInspectionPanel: View {
                 Slider(value: $zoom, in: 1...2.4).tint(Theme.moss)
                 Image(systemName: "plus.magnifyingglass").foregroundStyle(Theme.inkFaint)
             }
-            Toggle("Show editorial annotations", isOn: $showAnnotations)
+            Toggle("Show what the record tells us", isOn: $showAnnotations)
                 .font(.system(size: 13, weight: .semibold))
                 .tint(Theme.moss)
         }
@@ -760,24 +724,24 @@ private struct PetitionFacsimileView: View {
                 ctx.stroke(Path(margin), with: .color(Color.black.opacity(0.18)), lineWidth: 0.7)
             }
             VStack {
-                Text("1593 · EXPLANATORY FACSIMILE")
+                Text("1593 · STATE RECORD")
                     .font(.system(size: 10, weight: .bold, design: .serif)).kerning(1.5).foregroundStyle(Color.black.opacity(0.58))
                     .padding(.top, 24)
                 Spacer()
-                Text("No source image reproduced")
+                Text("Gráinne · family · requests")
                     .font(.system(size: 9, weight: .medium)).foregroundStyle(Color.black.opacity(0.48)).padding(.bottom, 20)
             }
             if showAnnotations {
                 VStack {
                     HStack {
-                        AnnotationFlag(text: "NAME / IDENTITY", certainty: .documented)
+                        AnnotationFlag(text: "GRÁINNE IS NAMED", certainty: .documented)
                         Spacer()
                     }
                     .padding(.top, 80)
                     Spacer()
                     HStack {
                         Spacer()
-                        AnnotationFlag(text: "REQUESTS / FAMILY", certainty: .documented)
+                        AnnotationFlag(text: "REQUESTS FOR HER FAMILY", certainty: .documented)
                     }
                     .padding(.bottom, 110)
                 }

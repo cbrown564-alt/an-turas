@@ -34,20 +34,27 @@ differences don't exist.
 ## Repo map
 
 - `STATUS.md` — where we are, work log, Phase 2 next steps.
-- `docs/DECISIONS.md` — decision log (D1–D11); everything downstream flows from here.
+- `docs/DECISIONS.md` — decision log (D1–D13); everything downstream flows from here.
 - `docs/STRATEGY.md` — the strategic map: path to launch, unknowns, biggest
   challenges, resource landscape, competitive landscape.
 - `docs/COUNTY-ATLAS.md` — the county-led product contract and map/progress rules.
 - `docs/COUNTY-STORY-SLATE.md` — researched first-story leads for all 32 counties;
   a development slate, not publishable history.
+- `docs/STORY-RESET.md` — the clean-slate review of Mayo, Offaly, and Dublin and the
+  proposed opening road.
+- `docs/EXPANSIVE-INTERFACE-VISION.md` — the living-historical-atlas direction for
+  the next product redesign.
+- `docs/GRAINNE-PROTOTYPE-REPORT.md` — tester findings, approved first-encounter
+  foundation, open product questions, and the full-story planning sequence.
 - `docs/SPINE.md` — the historical and language sequencing rail behind county stories.
 - `docs/COMPETITIVE-RESEARCH.md` — competitive research: pedagogy, features,
   positioning, failed experiments.
 
 ## Status
 
-**Phase 2 — county-led content pipeline.** Phase 1 complete: Chapter 1 vertical slice
-playtested in SwiftUI; narrative pull validated. The next product transformation is to
-make the 32-county journey the primary learning structure, while retaining the
-historical spine as the language-sequencing rail. See `STATUS.md` for current work and
-`docs/DECISIONS.md` for the decision log.
+**Phase 2 — story reset and living-atlas proof.** Phase 1 validated narrative pull and
+the app now contains three legacy content packs. D13 replaces their inherited
+editorial centres before public-release production and widens the interface direction
+from a lesson path on a map to a living historical atlas. The next proof is the island
+→ Mayo dossier → Gráinne → evidence → first Irish → collection loop. See `STATUS.md`
+for current work and `docs/DECISIONS.md` for the decision log.

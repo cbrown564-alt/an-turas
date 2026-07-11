@@ -67,6 +67,11 @@ well-understood engineering. The differentiator is a repeatable pipeline:
 - **County-led transformation (D12):** the historical spine now sequences learning
   behind a 32-county journey. The researched slate exists; the next work is to make
   the county-story brief and review gates first-class in authoring and the app.
+- **Story and interface reset (D13):** the three inherited subjects are no longer
+  protected by prior production. Mayo moves to Gráinne's 1593 petition; Offaly to the
+  Cross of the Scriptures c. 900; Dublin to Sihtric's penny c. 997. Before rewriting
+  full packs, prototype the living-historical-atlas loop described in
+  `EXPANSIVE-INTERFACE-VISION.md`.
 
 ### Phase 3 — Build out and launch
 - iOS app: SwiftUI, offline-first, content shipped as data + downloadable chapter packs.
@@ -79,10 +84,12 @@ well-understood engineering. The differentiator is a repeatable pipeline:
 - Pedagogical alignment with TEG (Teastas Eorpach na Gaeilge) CEFR levels so progress
   maps to something externally real — "you are on track for TEG A1" beats "you have
   4,200 XP".
-- **Launch scope: Chapters 1–4 / county stories Mayo, Offaly, Dublin, and Meath** at
-  production quality (D10, D12). The full product promise is 32 counties, but white
-  counties remain explicitly in research until their stories pass review. **Premium
-  subscription** with grant funding pursued on top, not instead of revenue.
+- **Launch scope: four county stories at production quality** (D10), currently
+  targeted as Gráinne's Mayo, the Cross of the Scriptures in Offaly, Sihtric's Dublin,
+  and a Meath story still subject to clean-slate review (D13). The full product promise
+  is 32 counties, but white counties remain explicitly in research until their stories
+  pass review. **Premium subscription** with grant funding pursued on top, not instead
+  of revenue.
 - Launch moments that align with the real Irish calendar: Seachtain na Gaeilge
   (March), Samhain, St Patrick's Day diaspora spike.
 

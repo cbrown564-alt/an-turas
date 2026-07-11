@@ -3,9 +3,9 @@
 *The behind-the-scenes language and time sequence for the county journey. The learner
 travels through 32 counties; this spine makes sure each county story introduces Irish
 in an intentional order. The legacy 13-chapter outline remains a useful production and
-grammar rail, not the app's primary map. See `COUNTY-ATLAS.md` and D12. Drafted
-2026-07-04; reframed 2026-07-10 — needs historian and Irish-language-pedagogue review
-before production.*
+grammar rail, not the app's primary map. See `COUNTY-ATLAS.md`, `STORY-RESET.md`, and
+D13. Drafted 2026-07-04; county-reframed 2026-07-10; first stories reset 2026-07-11 —
+needs historian and Irish-language-pedagogue review before production.*
 
 ## How this relates to the county journey
 
@@ -15,11 +15,12 @@ behind-the-scenes sequencing group: it says which era, grammar, artifact pattern
 review needs a county story can draw on. It is valid for a county to receive a second
 story in a later era; completion means all shipped stories in that county are complete.
 
-The first four existing production chapters map cleanly to Mayo, Offaly, Dublin, and
-Meath. Their JSON and progress must be preserved through the story-first migration.
-Where an outline below still uses a generic learner-facing character, treat it as an
-obsolete drafting device: production copy must use the real anchor in `COUNTY-ATLAS.md`
-and `COUNTY-STORY-SLATE.md`.
+The first three existing production chapters no longer map cleanly to the approved
+editorial targets. D13 preserves their JSON, interactions, and progress as migration
+inputs while replacing their story centres: Gráinne in Mayo; the Cross of the
+Scriptures in Offaly; Sihtric's penny in Dublin. See `STORY-RESET.md`. Where an outline
+below still uses a generic learner-facing character, treat it as an obsolete drafting
+device rather than production copy.
 
 ## Design rules
 
@@ -45,9 +46,9 @@ and `COUNTY-STORY-SLATE.md`.
 
 | # | Chapter (GA / EN) | Era | Language payload (headline) | TEG target |
 |---|---|---|---|---|
-| 1 | Clocha na nAinmneacha / The Stones of Names | c. 400–550 | Copula identity (*Is mise*), greetings, names, broad/slender | A1 |
-| 2 | Oileán na Naomh / Island of Saints & Scholars | 550–800 | *Tá* + present tense VSO, daily routine, time, numbers, colours, likes (*is maith liom*) | A1 |
-| 3 | Na Lochlannaigh / The Vikings | 795–1014 | Past tense, movement & directions, trade/money, Norse loanwords | A1 |
+| 1 | Gráinne Ní Mháille / The Petition | 1593 cold open | Copula identity (*Is mise*), greetings, names, origin | A1 |
+| 2 | Crois na Scrioptúr / The Cross of the Scriptures | c. 900 | *Tá* + present tense VSO, daily activity, time, numbers, colours, likes (*is maith liom*) | A1 |
+| 3 | Pingin Shihtric / Sihtric's Penny | c. 997 | Past tense, movement & directions, trade/money, Norse loanwords | A1 |
 | 4 | Na Normannaigh / The Normans | 1169–1350 | Possession (*tá … ag*), descriptions & adjective agreement, surnames | A1/A2 |
 | 5 | Scoil na bhFilí / The Bardic World | 1350–1600 | Copula classification (*Is file é*), comparatives, opinion, seanfhocail | A2 |
 | 6 | Imeacht na nIarlaí / The Flight of the Earls | 1550–1650 | Past habitual (*bhíodh*), emotion, leaving & journeys, the caoineadh | A2 |
@@ -64,53 +65,61 @@ longer; TEG exam prep is a post-course track).
 
 ## The chapters
 
-### 1. Clocha na nAinmneacha — The Stones of Names (Mayo; c. 400–550)
+### 1. Gráinne Ní Mháille — The Petition (Mayo; 1593 cold open)
 
-- **Anchor and reading:** the north Mayo ogham stones, especially Breastagh. Read the
-  marks, transliteration, and the names they carry; learn what can and cannot be
-  inferred from an inscription.
-- **Hook:** A stone on the Mayo coast preserves a person's name across fifteen
-  centuries. To understand what it says, you first learn how to say who you are.
-- **Language:** *Dia dhuit / Dia is Muire dhuit* (call-and-response), *Is mise…*,
-  *Cé thusa?*, *Cé as thú?* [dialect-tagged], counties, *mac/iníon* and the shape of
-  Irish surnames (Ó/Mac/Ní/Nic), broad/slender vowels and the fada.
-- **Grammar notes:** the two "to be"s (identity *is* vs state *tá*), preview only;
-  *caol le caol, leathan le leathan*; why MAQI on stones became Mac in your surname.
-- **Artifact:** your name carved in ogham. **Seanfhocal:** *Is buaine focal ná toice
-  an tsaoil* — a word outlasts the world's riches.
-- **Present-day beat:** the Breastagh ogham stone still stands in a field near
-  Killala. The words outlasted everyone who carved them.
+- **Anchor and reading:** Gráinne Ní Mháille's 1593 petition and the state
+  correspondence concerning her family, set across Clare Island, Kildavnet, Clew Bay,
+  and Rockfleet. Separate the documentary record from later “pirate queen” legend.
+- **Hook:** A maritime leader from Mayo goes to Elizabeth I's court to demand action.
+  Before the learner can follow what she asks, the app asks the learner to name
+  themselves and where they come from.
+- **Language:** *Dia dhuit*, *Is mise…*, *Cé thusa?*, *Cé as thú?*
+  [dialect-tagged], Mayo and other origins, names, family, sea and place, asking and
+  answering.
+- **Grammar notes:** the two “to be”s (identity *is* versus state *tá*) previewed
+  through real introductions; name forms and the fada; no unattested dialogue is put
+  into Gráinne's mouth.
+- **Artifact direction:** a personal introduction or petition page carrying the
+  learner's name and place; final form awaits the source and interface prototype.
+- **Afterlife:** Gráinne's Mayo monuments and 1593 records survive alongside a much
+  larger popular legend. The learner can distinguish the two.
+- **Field note:** Breastagh later preserves the Ogham reading and name-carving
+  interaction as a short, explicitly reconstructed evidence encounter.
 
-### 2. Oileán na Naomh — Island of Saints and Scholars (Offaly; 550–800)
+### 2. Crois na Scrioptúr — The Cross of the Scriptures (Offaly; c. 900)
 
-- **Anchor and reading:** St Ciarán and Clonmacnoise. Enter a real learning-place on
-  the Shannon through an early Life of Ciarán and the Cross of the Scriptures.
-- **Hook:** At dawn in Ciarán's monastery, the daily work of a great learning-place
-  begins: pigments, vellum, meals, prayer, and a page that still speaks across time.
-- **Language:** *tá* + VSO present tense, daily routine verbs, telling time by the
-  monastic hours, numbers 1–10, colours (the inks: corcra from lichen, gorm from
-  woad), food and *is maith liom / ní maith liom*.
-- **Grammar notes:** VSO — why the verb comes first and why that's freeing, not
-  weird; the difference between *tá mé* and *is mise* now made explicit.
-- **Artifact:** your initial as an illuminated letter. **Seanfhocal:** *Ní neart go
-  cur le chéile* — no strength without unity.
-- **Present-day beat:** the Book of Kells, and Pangur Bán's poem, survive.
+- **Anchor and reading:** the Cross of the Scriptures, its royal patron Flann Sinna,
+  and the large settlement at Clonmacnoise; Ciarán's sixth-century foundation is the
+  first historical layer rather than the dramatic present.
+- **Hook:** A cross at Ireland's river-and-road crossroads asks for a prayer for a
+  king. Its carving opens the work, movement, learning, worship, trade, and daily life
+  of the town around it.
+- **Language:** *tá* + VSO present tense, daily activity, time, numbers 1–10,
+  materials and colours, food, and *is maith liom / ní maith liom*.
+- **Grammar notes:** VSO — why the verb comes first; the difference between *tá mé*
+  and *is mise* now made explicit.
+- **Artifact direction:** a learner-made decorated initial or carved panel can survive
+  if the evidence story earns it; it is displayed separately from the real cross.
+- **Afterlife:** the site, high crosses, graveslabs, archaeology, and route geography
+  make Clonmacnoise legible without claiming that an imagined gospel became the Book
+  of Kells.
 
-### 3. Na Lochlannaigh — The Vikings (Dublin; 795–1014)
+### 3. Pingin Shihtric — Sihtric's Penny (Dublin; c. 997)
 
-- **Anchor and reading:** Sitric Silkbeard and Dubh Linn. Read an annal/object-led
-  account of a Norse-Gaelic king's town as it becomes a market, mint, and port.
-- **Hook:** At the black pool (*Dubhlinn*), a Norse-Gaelic town grows into a market
-  where Irish and Norse words travel with the goods.
-- **Language:** past tense (regular + the must-have irregulars: *chuaigh, tháinig,
-  rinne, chonaic*), directions and movement, market vocabulary, money and numbers
-  11–20, Norse loanwords in Irish (*margadh*, *pingin*, *bróg*…), founding of the
-  port towns.
-- **Grammar notes:** the séimhiú as past-tense marker — the first mutation taught as
-  *system*, not exception.
-- **Artifact:** a silver arm-ring (hack-silver) + your nearest town's name decoded.
-- **Present-day beat:** Dublin, Waterford, Wexford, Limerick — you've been saying
-  Viking words your whole life.
+- **Anchor and reading:** a silver penny reading SITRIC REX DUBLIN, supported by an
+  object-led account of Sihtric's mint, market, port, and Norse-Gaelic city.
+- **Hook:** The first coins struck in Ireland carry the name of Dublin's king. One
+  small object reveals a city connected to goods, silver, models, words, and people
+  arriving from far beyond the black pool.
+- **Language:** past tense (regular + *chuaigh, tháinig, rinne, chonaic*), directions
+  and movement, market vocabulary, money and numbers 11–20, Norse loanwords in Irish
+  (*margadh*, *pingin*, *bróg*…).
+- **Grammar notes:** séimhiú as a past-tense marker—the first mutation taught as a
+  system rather than an exception.
+- **Artifact:** a learner-made silver arm-ring can remain, explicitly separate from
+  the real penny in the evidence collection.
+- **Afterlife:** Dublin, Waterford, Wexford, and Limerick retain Viking histories and
+  words; the 795 raids remain bounded context, not the enacted headline scene.
 
 ### 4. Na Normannaigh — The Normans (Meath; 1169–1350)
 
