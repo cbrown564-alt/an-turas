@@ -1,7 +1,9 @@
 # Mayo — Breastagh Ogham Stone source register
 
-Status: **editorial draft; not cleared for public release**. This register makes the
-first county arc reviewable. It is not a substitute for historian, Irish-language
+Status: **editorial draft; not cleared for public release**. D13 moves Breastagh off
+the Mayo flagship path to a short reconstruction **field note**. The replacement
+flagship packet is `content/mayo/grainne-1593-source-brief.md`. This register remains
+for the field-note path only. It is not a substitute for historian, Irish-language
 pedagogue, audio, or rights sign-off.
 
 ## The learner-facing anchor

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-12T00:00:00Z",
+  "title": "Design System: An Turas",
+  "extensions": {
+    "colorMeta": {
+      "limestone": { "role": "neutral", "displayName": "Limestone Day", "canonical": "#ECEDE7", "tonalRamp": ["#20221E", "#3A3C37", "#555851", "#71756C", "#8F9389", "#AEB1A8", "#CED0C9", "#ECEDE7"] },
+      "shore-night": { "role": "neutral", "displayName": "Night on the Shore", "canonical": "#131714", "tonalRamp": ["#0B0E0C", "#131714", "#273029", "#414D43", "#5E6C60", "#7D8C80", "#A3AEA5", "#D9DCD1"] },
+      "moss": { "role": "primary", "displayName": "Living Moss", "canonical": "#4C6647", "tonalRamp": ["#152012", "#263520", "#384D33", "#4C6647", "#64805E", "#80A078", "#A8C2A2", "#E4EEE1"] },
+      "lichen": { "role": "secondary", "displayName": "Archive Lichen", "canonical": "#8F7414", "tonalRamp": ["#251D03", "#453606", "#67500B", "#8F7414", "#B5962D", "#D2B957", "#E8D891", "#F8F1D6"] },
+      "rust": { "role": "secondary", "displayName": "Worked Rust", "canonical": "#A34D3B", "tonalRamp": ["#2C100B", "#512117", "#783326", "#A34D3B", "#C36C59", "#DB9181", "#EBB9AE", "#F8E5E0"] },
+      "atlas-green": { "role": "tertiary", "displayName": "County in Play", "canonical": "#16803A", "tonalRamp": ["#04200D", "#073C19", "#0D5C28", "#16803A", "#32A557", "#63C77D", "#9BE0AE", "#E2F6E7"] },
+      "atlas-gold": { "role": "tertiary", "displayName": "Story Carried", "canonical": "#B8860B", "tonalRamp": ["#2E2001", "#513A03", "#775707", "#B8860B", "#D8A72B", "#EBC75F", "#F5DFA0", "#FCF4D9"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Story Display", "purpose": "County openings and singular story turns; implemented with scalable semantic styles." },
+      "headline": { "displayName": "Editorial Headline", "purpose": "Dossiers, evidence headings, and story registers." },
+      "body": { "displayName": "Native Body", "purpose": "Readable exposition, instructions, and interface copy." },
+      "label": { "displayName": "Context Label", "purpose": "Sparse place, date, evidence, and register metadata." }
+    },
+    "shadows": [
+      { "name": "map-label-lift", "value": "0 2pt 4pt rgba(35, 40, 31, 0.08)", "purpose": "Separates small labels from complex cartography; not for ordinary containers." }
+    ],
+    "motion": [
+      { "name": "settle", "value": "spring(response: 0.42, dampingFraction: 0.86)", "purpose": "Default content arrival and state change." },
+      { "name": "pop", "value": "spring(response: 0.32, dampingFraction: 0.55)", "purpose": "Small carving marks and locks only." },
+      { "name": "rise", "value": "spring(response: 0.52, dampingFraction: 0.88)", "purpose": "Reserved for meaningful story beats." }
+    ],
+    "breakpoints": []
+  },
+  "components": [],
+  "narrative": {
+    "northStar": "The Living Field Journal",
+    "overview": "An Turas feels like opening a field journal beside an artifact: intimate, tactile, and precise, with the whole island just beyond the page. Mineral surfaces and evidence-led accents support serif storytelling inside a native iOS interaction shell.",
+    "keyCharacteristics": [
+      "Mineral, adaptive surfaces with high-contrast botanical accents.",
+      "Serif-led editorial moments inside a system-native interaction shell.",
+      "Evidence, uncertainty, and provenance made visible without production jargon.",
+      "Tactile feedback that is brief, physical, and optional under Reduce Motion.",
+      "Spacious reading views balanced by compact atlas and practice controls."
+    ],
+    "rules": [
+      { "name": "The Evidence-Mark Rule", "body": "Accent colors identify action, evidence type, learning state, or atlas progress. They never decorate empty space.", "section": "colors" },
+      { "name": "The Two-Voice Rule", "body": "Serif speaks for story, names, quoted language, and evidence; sans serif speaks for the interface.", "section": "typography" },
+      { "name": "The Flat-Field Rule", "body": "Surfaces sit in the same physical world until hierarchy or interaction requires separation.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do make the real person, place, object, document, or surviving trace the visual center of each encounter.",
+      "Do use limestone/shore tonal layering before adding borders or shadows.",
+      "Do preserve native iOS navigation, controls, safe areas, touch targets, VoiceOver, Dynamic Type, Dark Mode, Increased Contrast, and Reduce Motion."
+    ],
+    "donts": [
+      "Don't use generic language-app gamification or plastic-shamrock Irishness.",
+      "Don't cast the learner as a fictional guide, witness, or assistant in undocumented history.",
+      "Don't break trusted iOS behavior for interface novelty."
+    ]
+  }
+}
