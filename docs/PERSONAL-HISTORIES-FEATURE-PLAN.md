@@ -40,10 +40,13 @@ This boundary is foundational.
 | A user's family | research routes and records that may help a person investigate | a family tree, relationship, migration path, or genetic ancestry not established by user-supplied evidence |
 | A place-name | official forms, recorded variants, scholarly derivation, language components, landscape context, and local traditions | that a neat modern translation is necessarily the historical origin, or that folklore is documentary fact |
 
-The result page should use plain evidence labels already compatible with the living
-atlas: **recorded**, **supported interpretation**, **possible**, **local tradition**,
-**disputed**, and **unknown**. Folk etymology can be delightful content when it is
-labelled as folk etymology.
+The content graph retains the evidence states **recorded**, **supported
+interpretation**, **possible**, **local tradition**, **disputed**, and **unknown**.
+The result page does not repeat that taxonomy as badges. A quiet, tappable evidence
+mark sits beside a material claim and opens its status, sources, competing readings,
+and review history. Persistent text labels are reserved for disputed, traditional,
+reconstructed, unknown, or otherwise consequential boundaries. Folk etymology can be
+delightful content when it is clearly introduced as folk etymology.
 
 ## The experience
 
@@ -62,7 +65,8 @@ The two hooks should be visible before a user has committed to a course.
 4. **The Collection:** saved names and places sit together under “What matters to
    you,” separate from historical evidence and learner-made objects.
 5. **A share link:** a carefully framed excerpt can open on the web or in the app. It
-   should carry the source and uncertainty label, not just a decorative quote card.
+   should carry a source path and accessible evidence state, not just a decorative
+   quote card.
 
 ### Behind a name: the ideal sequence
 
@@ -96,9 +100,10 @@ The two hooks should be visible before a user has committed to a course.
    map context before selection.
 2. **Let it be heard.** Show Irish and English forms without treating one as a
    subtitle. Offer pronunciation in the relevant dialect where verified audio exists.
-3. **Reveal the name beneath the name.** A concise account explains the best-supported
-   derivation, with word components that can be heard and opened. Literal gloss and
-   historical derivation remain separate fields.
+3. **Reveal the name beneath the name.** A concise account explains the leading
+   derivation once, with word components that can be heard and opened. Literal gloss
+   and historical derivation remain separate in the content graph, but the interface
+   must not repeat identical prose to demonstrate that distinction.
 4. **Show its older shapes.** Historical spellings appear against dated source marks.
    The learner sees scribal, administrative, and anglicising change without a lecture.
 5. **Return the words to the ground.** A local map or landscape view makes the river,
@@ -124,10 +129,13 @@ Apply the named design rules directly:
 - **Two voices:** New York/system serif carries names, place forms, story, quotation,
   and evidence; SF Pro carries search, navigation, controls, metadata, filters, and
   source actions. Both use semantic Dynamic Type styles rather than fixed geometry.
-- **Evidence marks:** moss identifies action and current language/evidence focus;
-  lichen distinguishes archival or language notes; rust is reserved for correction,
-  friction, or materially relevant emphasis. Atlas green/gold/white retain their
-  county-progress meaning and do not decorate this feature.
+- **Evidence marks:** one small, familiar SF Symbol gives a material claim a quiet
+  path to its evidence detail. The visual mark has a 44-point hit target and complete
+  VoiceOver label; the opened detail carries status text, sources, competing readings,
+  and review history. Moss/lichen/rust may reinforce meaning but never replace the
+  symbol or accessible text. Repeated certainty pills and production labels are not
+  part of the public interface. The exact symbol mapping remains provisional until
+  usability and expert review lock it in `DESIGN.md`.
 - **Flat field:** prefer full-width editorial sections, source-led layouts, tonal
   limestone/raised/sunk layers, and separators. Do not turn etymology branches,
   historical forms, people, and sources into an identical card grid.
@@ -531,6 +539,13 @@ The feature is wonderful when:
 (25/25/30), local saves, collection shelf, and Mayo handoffs are in the iOS atlas.
 Treat name packs as pilot syntheses until specialist review and licensing land.
 
+**Phase 1b hardening (active after adversarial review):** the shell is implemented but
+the feature has not passed its exit gate. Keep the wider pack as a transparent
+foundation index and promote only a small, named-review showcase. Remove public
+production labels, replace repeated certainty badges with inspectable evidence marks,
+deduplicate the leading account, suppress unsupported audio surfaces, complete native
+accessibility, and record the hard-case comprehension/recall results before Phase 2.
+
 1. Appoint an onomastics/placenames editorial adviser before hardening production copy.
 2. Open rights and API conversations with Logainm/Gaois, OUP, Dúchas/UCD, Ainm.ie,
    Tailte Éireann, and the Northern Ireland source owners.
@@ -539,7 +554,8 @@ Treat name packs as pilot syntheses until specialist review and licensing land.
 4. Replace pilot surname syntheses once a modern authority is licensed; enrich
    Logainm ids via monthly ingest.
 5. Extend the content-review CMS with assertion-level claim review for personal atlas
-   subjects.
+   subjects and a distinct `showcase candidate → specialist reviewed → showcase`
+   progression. Internal `authored` depth is not public evidence authority.
 6. Gate public launch on the Phase 1 scorecard in this document — not on pack count
    alone.
 

@@ -50,6 +50,33 @@ enum PersonalCertainty: String, Codable, CaseIterable, Hashable {
         case .unknown: return Theme.stone
         }
     }
+
+    var symbolName: String {
+        switch self {
+        case .recorded: return "doc.text"
+        case .supportedInterpretation: return "info.circle"
+        case .possible, .unknown: return "questionmark.circle"
+        case .localTradition: return "quote.bubble"
+        case .disputed: return "arrow.triangle.branch"
+        }
+    }
+
+    var detail: String {
+        switch self {
+        case .recorded:
+            return "The cited source records this directly."
+        case .supportedInterpretation:
+            return "This is an editorial reading of the cited evidence."
+        case .possible:
+            return "The evidence allows this reading, but does not settle it."
+        case .localTradition:
+            return "This comes from a named tradition rather than a direct historical record."
+        case .disputed:
+            return "More than one consequential reading remains in use."
+        case .unknown:
+            return "The available evidence does not support a settled reading."
+        }
+    }
 }
 
 enum PersonalAudioState: String, Codable, Hashable {
@@ -266,13 +293,33 @@ enum PersonalSearch {
 // MARK: - Loader
 
 enum PersonalAtlasLoader {
-    private static var cached: PersonalAtlasPack?
+    private static let loaded: Result<PersonalAtlasPack, PersonalAtlasLoadError> = {
+        guard let url = Bundle.main.url(forResource: "personal-atlas-subjects", withExtension: "json") else {
+            return .failure(.missingResource)
+        }
+        do {
+            let data = try Data(contentsOf: url)
+            let pack = try decode(data)
+            let issues = validate(pack)
+            guard issues.isEmpty else { return .failure(.invalidContent(issues)) }
+            return .success(pack)
+        } catch let error as PersonalAtlasLoadError {
+            return .failure(error)
+        } catch {
+            return .failure(.malformedContent(error.localizedDescription))
+        }
+    }()
 
     static func pack() -> PersonalAtlasPack {
-        if let cached { return cached }
-        let loaded: PersonalAtlasPack = decode("personal-atlas-subjects")
-        cached = loaded
-        return loaded
+        switch loaded {
+        case .success(let pack): return pack
+        case .failure: return fallbackPack
+        }
+    }
+
+    static var loadErrorMessage: String? {
+        guard case .failure(let error) = loaded else { return nil }
+        return error.errorDescription
     }
 
     static func subject(id: String) -> OriginSubject? {
@@ -283,13 +330,63 @@ enum PersonalAtlasLoader {
         pack().index.first { $0.id == id }
     }
 
-    private static func decode<T: Decodable>(_ resource: String) -> T {
-        guard let url = Bundle.main.url(forResource: resource, withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let value = try? JSONDecoder().decode(T.self, from: data)
-        else {
-            fatalError("\(resource).json missing or malformed — personal atlas content is the product; fail loudly.")
+    static func decode(_ data: Data) throws -> PersonalAtlasPack {
+        do {
+            return try JSONDecoder().decode(PersonalAtlasPack.self, from: data)
+        } catch {
+            throw PersonalAtlasLoadError.malformedContent(error.localizedDescription)
         }
-        return value
+    }
+
+    static func validate(_ pack: PersonalAtlasPack) -> [String] {
+        var issues: [String] = []
+        let indexIds = pack.index.map(\.id)
+        let subjectIds = pack.subjects.map(\.id)
+        let indexSet = Set(indexIds)
+        let subjectSet = Set(subjectIds)
+
+        if indexSet.count != indexIds.count { issues.append("The search index contains duplicate ids.") }
+        if subjectSet.count != subjectIds.count { issues.append("The subject pack contains duplicate ids.") }
+        if indexSet != subjectSet { issues.append("The search index and subject pack do not contain the same ids.") }
+
+        for subject in pack.subjects {
+            let evidenceIds = Set(subject.evidence.map(\.id))
+            if evidenceIds.count != subject.evidence.count {
+                issues.append("\(subject.id) contains duplicate evidence ids.")
+            }
+            for assertion in subject.assertions {
+                let missing = assertion.evidenceIds.filter { !evidenceIds.contains($0) }
+                if !missing.isEmpty {
+                    issues.append("\(subject.id) references missing evidence: \(missing.joined(separator: ", ")).")
+                }
+            }
+        }
+        return issues
+    }
+
+    private static let fallbackPack = PersonalAtlasPack(
+        version: "unavailable",
+        contentDate: "",
+        attribution: "",
+        coverageNote: "The personal atlas could not be opened.",
+        index: [],
+        subjects: []
+    )
+}
+
+enum PersonalAtlasLoadError: Error, LocalizedError {
+    case missingResource
+    case malformedContent(String)
+    case invalidContent([String])
+
+    var errorDescription: String? {
+        switch self {
+        case .missingResource:
+            return "The personal atlas is not included in this build."
+        case .malformedContent:
+            return "The personal atlas could not be read."
+        case .invalidContent:
+            return "The personal atlas did not pass its content checks."
+        }
     }
 }

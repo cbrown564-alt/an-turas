@@ -98,14 +98,16 @@ not a new atlas expansion or tester round.
    grant-copy citation, rights for images.
 6. **Evolve content-review CMS** — claim-ledger panels, draft diff, exportable review
    log (`docs/CONTENT-REVIEW-CMS.md`); personal-atlas assertion review.
-7. **Personal atlas editorial gates** — onomastics adviser, Logainm/Gaois account,
-   licensed surname source; replace pilot syntheses before Phase 1 exit scorecard.
+7. **Personal atlas Phase 1b hardening** — keep Phase 1 open after adversarial review;
+   establish the small specialist-reviewed showcase over the transparent foundation
+   index; replace pilot syntheses, secure the onomastics adviser / Logainm/Gaois account
+   / licensed surname source, and pass the exit scorecard.
 8. **Progress migration design** — follow `docs/LEGACY-SALVAGE-MAP.md` before
    `mayo.grainne-1593` replaces playable ids.
 9. ~~Stress-test / storyboard / weave / lo-fi / Mayo brief start / Offaly·Dublin·Meath
    packets / CMS foundation / board pack / salvage map~~ — **done (12 July).**
-10. ~~Personal atlas Phase 1 app shell + pilot packs~~ — **done (12 July); editorial
-    hardening open.**
+10. ~~Personal atlas Phase 1 app shell + pilot packs~~ — **implemented (12 July);
+    Phase 1b trust, accessibility, and validation gates remain open.**
 
 ### Lower priority (unchanged)
 

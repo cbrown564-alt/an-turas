@@ -8,6 +8,8 @@
 - Counts: 25 given names, 25 surnames, 30 places
 - Depths: `authored` (full short answer + forms + branches) and `foundation` (honest shell + “deeper story still being researched”)
 - Content date and attribution ship inside the pack
+- The 80-subject pack is a **foundation index**, not 80 showcase experiences. See
+  `SHOWCASE-CANDIDATES.md` for the deliberately small Phase 1b promotion queue.
 
 ## Editorial posture
 
@@ -15,7 +17,10 @@ Pilot name packs are **editorial syntheses** pending specialist review and a lic
 
 ## Regeneration
 
-The corpus was generated for the pilot. Prefer editing the JSON for small fixes; regenerate only when expanding the subject set in bulk.
+The corpus was generated for the pilot. Its repeated `storyBeats` are scaffolding and
+must not appear in the public result flow or qualify an entry as showcase-authored.
+Prefer editing the JSON for small fixes; regenerate only when expanding the subject
+set in bulk.
 
 ## CMS
 

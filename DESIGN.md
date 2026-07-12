@@ -134,7 +134,9 @@ The palette is drawn from limestone, vegetation, oxidized metal, and the shoreli
 
 ### Named Rules
 
-**The Evidence-Mark Rule.** Accent colors identify action, evidence type, learning state, or atlas progress. They never decorate empty space.
+**The Evidence-Mark Rule.** Evidence state is a quiet, inspectable primitive—not a badge system. In the main reading flow, place one small, familiar SF Symbol beside a material claim; give it a 44 pt hit target, a complete accessibility label, and a tap path to the claim's status, sources, competing readings, and review history. Do not print “recorded,” “supported interpretation,” or similar taxonomy repeatedly beside ordinary prose. Persistent text labels are reserved for disputed, traditional, reconstructed, unknown, or otherwise consequential boundaries. Accent color may reinforce the mark but never carries its meaning alone.
+
+**Evidence-mark symbols (provisional; lock after usability and expert review):** `doc.text` for a recorded source, `info.circle` for an interpretation, `questionmark.circle` for a possibility or unknown, `quote.bubble` for tradition, and `arrow.triangle.branch` for competing or disputed readings. These are implementation candidates, not yet immutable brand assets; test recognition, VoiceOver language, and cross-cultural meaning before freezing them.
 
 **The Flag-without-a-Flag Rule.** Atlas green, gold, and white communicate progress, not nationalism; never spread the trio across unrelated controls or ornamental backgrounds.
 
@@ -214,7 +216,7 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 ### Atlas and Evidence
 
 - The island map is a progress instrument and editorial table of contents, not a decorative hero. Every mark must encode county, route, time, status, or selection.
-- Evidence views lead with the surviving object or source, then expose provenance, certainty, interpretation, and language earned from it. Reconstruction must have visibly different entry and exit treatment.
+- Evidence views lead with the surviving object or source, then expose provenance, interpretation, and language earned from it. The full evidence taxonomy belongs in the opened detail, not repeated through the story surface. Reconstruction and consequential dispute still require visibly different entry and exit treatment.
 
 ### Motion and Haptics
 
@@ -229,7 +231,7 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 - **Do** make the real person, place, object, document, or surviving trace the visual center of each encounter.
 - **Do** use limestone/shore tonal layering before adding borders or shadows.
 - **Do** preserve native iOS navigation, controls, safe areas, 44 pt touch targets, VoiceOver order, Dynamic Type, Dark Mode, Increased Contrast, and Reduce Motion.
-- **Do** label documented fact, inference, uncertainty, and reconstruction with distinct text and accessible semantics.
+- **Do** distinguish documented fact, inference, uncertainty, and reconstruction with restrained symbols, accessible semantics, and complete on-demand detail. Use persistent text when misunderstanding would materially change the account.
 - **Do** let Irish appear early, audibly, and in context; pronunciation controls and glosses must be easy to find without interrupting reading.
 - **Do** separate “What survives,” “What you made,” and “Words you carry” in the collection.
 
@@ -242,4 +244,5 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 - **Don't** break trusted iOS navigation, controls, accessibility, or reading behavior for interface novelty.
 - **Don't** use decorative card grids, side-stripe accents, gradient text, glassmorphism, oversized corner radii, or border-plus-wide-shadow ghost cards.
 - **Don't** communicate county progress, certainty, correctness, or error by color alone.
+- **Don't** turn evidence status into repeated pills, uppercase labels, or prose that restates the claim. One claim gets one primary reading and one quiet path to its evidence.
 - **Don't** hard-code type in production components where Dynamic Type can express the intended hierarchy.

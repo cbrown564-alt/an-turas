@@ -45,7 +45,7 @@ Its emotional movement is from uncertainty to recognition. It should evoke curio
 ## Design Principles
 
 1. **Meaning is the engine.** Language is introduced because a real place, person, object, or source makes it necessary; retention follows significance rather than manufactured pressure.
-2. **Evidence before reconstruction.** Establish the question, secure account, surviving evidence, inference, and uncertainty before offering an explicitly bounded imaginative bridge.
+2. **Evidence before reconstruction, without making evidence taxonomy the story.** Establish the question, secure account, surviving evidence, inference, and uncertainty before offering an explicitly bounded imaginative bridge. In the main reading flow, let the account read naturally: use a quiet, familiar symbol to signal that a claim can be inspected, and reveal the full status, sources, competing readings, and editorial history on request. Persistent labels are reserved for genuinely disputed, traditional, reconstructed, or safety-critical material.
 3. **The learner remains themselves.** Participation means examining, listening, tracing, reading, naming, and responding—not being cast into invented history.
 4. **Progress should feel carried.** Counties, words, evidence, and learner-made artifacts accumulate into a coherent personal journey, never a pile of points or chores.
 5. **Depth earns trust.** One language pair, expert review, dialect honesty, source transparency, and careful treatment of contested history are product features, not production footnotes.
@@ -54,6 +54,6 @@ Its emotional movement is from uncertainty to recognition. It should evoke curio
 
 The app must support Dynamic Type, VoiceOver, sufficient contrast in light and dark appearances, 44 × 44 pt minimum touch targets, and safe-area-aware layouts. Reading and learning flows must remain usable at accessibility text sizes without clipping, truncation, or loss of meaning.
 
-Reduce Motion must replace large movement and staggered choreography with immediate state changes or gentle crossfades. Color may reinforce county and progress state but must never carry that meaning alone. Irish text, pronunciation controls, translations, uncertainty labels, and evidence provenance need clear accessible names and reading order.
+Reduce Motion must replace large movement and staggered choreography with immediate state changes or gentle crossfades. Color may reinforce county and progress state but must never carry that meaning alone. Irish text, pronunciation controls, translations, evidence marks, and provenance details need clear accessible names and reading order. A subtle visual mark may replace a visible certainty label only when its accessible name states the status and its control opens the complete explanation.
 
 The product must welcome learners across community and political identities. Contested history requires multiple voices, primary-source discipline, and warmth without triumphalism; the Irish language belongs to nobody's flag.

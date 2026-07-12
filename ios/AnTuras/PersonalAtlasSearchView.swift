@@ -1,18 +1,26 @@
 import SwiftUI
+import UIKit
 
 // MARK: - Personal atlas search
 
 struct PersonalAtlasSearchView: View {
     @EnvironmentObject private var appState: AppState
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     var initialQuery: String = ""
     var focus: PersonalSearchFocus = .either
     var onOpenSubject: (String) -> Void
 
     @State private var query = ""
     @State private var results: [PersonalIndexEntry] = []
+    @State private var announcementTask: Task<Void, Never>?
     @FocusState private var fieldFocused: Bool
 
     private let pack = PersonalAtlasLoader.pack()
+    private let resultLimit = 12
+
+    private var visibleResults: [PersonalIndexEntry] {
+        Array(results.prefix(resultLimit))
+    }
 
     var body: some View {
         ScrollView {
@@ -23,22 +31,21 @@ struct PersonalAtlasSearchView: View {
                     detail: pack.coverageNote
                 )
 
-                searchField
+                if let message = PersonalAtlasLoader.loadErrorMessage {
+                    contentError(message)
+                } else {
+                    searchField
 
-                if query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                    invitation
-                } else if results.isEmpty {
-                    emptyState
-                } else if results.count > 1 {
-                    ambiguityList
-                } else if let only = results.first {
-                    singleMatch(only)
+                    if query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        invitation
+                    } else if results.isEmpty {
+                        emptyState
+                    } else if results.count > 1 {
+                        ambiguityList
+                    } else if let only = results.first {
+                        singleMatch(only)
+                    }
                 }
-
-                Text("Content dated \(pack.contentDate) · \(pack.attribution)")
-                    .font(.system(size: 11.5))
-                    .foregroundStyle(Theme.inkFaint)
-                    .padding(.top, 8)
             }
             .padding(.horizontal, 20)
             .padding(.top, 14)
@@ -59,6 +66,7 @@ struct PersonalAtlasSearchView: View {
         .onChange(of: query) { _, _ in
             runSearch()
         }
+        .onDisappear { announcementTask?.cancel() }
     }
 
     private var searchField: some View {
@@ -69,7 +77,7 @@ struct PersonalAtlasSearchView: View {
                 .textInputAutocapitalization(.words)
                 .autocorrectionDisabled()
                 .focused($fieldFocused)
-                .font(.system(size: 17))
+                .font(.body)
                 .foregroundStyle(Theme.ink)
                 .submitLabel(.search)
             if !query.isEmpty {
@@ -79,6 +87,7 @@ struct PersonalAtlasSearchView: View {
                 } label: {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundStyle(Theme.inkFaint)
+                        .frame(minWidth: 44, minHeight: 44)
                 }
                 .accessibilityLabel("Clear search")
             }
@@ -95,8 +104,8 @@ struct PersonalAtlasSearchView: View {
 
     private var invitation: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Give us a name or a place that matters to you. We will take you as far back as the evidence allows.")
-                .font(.system(size: 16, design: .serif))
+            Text("Give us a name or a place that matters to you. We’ll follow its forms through time.")
+                .font(.system(.body, design: .serif))
                 .foregroundStyle(Theme.ink)
                 .lineSpacing(4)
 
@@ -112,7 +121,7 @@ struct PersonalAtlasSearchView: View {
     private func suggestionRow(title: String, examples: [String]) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
-                .font(.system(size: 12, weight: .semibold))
+                .font(.caption.weight(.semibold))
                 .foregroundStyle(Theme.inkSoft)
             FlowWrap(items: examples) { example in
                 Button {
@@ -120,12 +129,13 @@ struct PersonalAtlasSearchView: View {
                     Haptics.tap()
                 } label: {
                     Text(example)
-                        .font(.system(size: 14, weight: .medium, design: .serif))
+                        .font(.system(.callout, design: .serif, weight: .medium))
                         .foregroundStyle(Theme.moss)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
                         .background(Theme.mossTint)
                         .clipShape(RoundedRectangle(cornerRadius: 6))
+                        .frame(minHeight: 44)
                 }
                 .buttonStyle(CarvePress())
             }
@@ -134,16 +144,16 @@ struct PersonalAtlasSearchView: View {
 
     private var emptyState: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Nothing in the pilot index matches that spelling.")
-                .font(.system(size: 17, weight: .semibold, design: .serif))
+            Text("No match yet.")
+                .font(.system(.headline, design: .serif, weight: .semibold))
                 .foregroundStyle(Theme.ink)
-            Text("Check fadas and prefixes, or try another form. If the place is outside Ireland, this atlas does not cover it yet. Unresolved searches stay on your device.")
-                .font(.system(size: 14.5))
+            Text("Try another spelling, or add or remove a fada or prefix. Places outside Ireland are not covered yet. Your search stays on this device.")
+                .font(.callout)
                 .foregroundStyle(Theme.inkSoft)
                 .lineSpacing(3)
-            Text("We do not invent an Irish derivation to fill the gap.")
-                .font(.system(size: 13.5, design: .serif))
-                .foregroundStyle(Theme.rust)
+            Text("We won’t guess at an origin.")
+                .font(.system(.callout, design: .serif))
+                .foregroundStyle(Theme.inkSoft)
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -153,11 +163,12 @@ struct PersonalAtlasSearchView: View {
 
     private var ambiguityList: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Several matches — choose by the evidence that distinguishes them.")
-                .font(.system(size: 14.5))
+            Text(resultSummary)
+                .font(.callout)
                 .foregroundStyle(Theme.inkSoft)
+                .accessibilityAddTraits(.isHeader)
 
-            ForEach(results) { entry in
+            ForEach(visibleResults) { entry in
                 Button {
                     open(entry)
                 } label: {
@@ -181,24 +192,20 @@ struct PersonalAtlasSearchView: View {
         HStack(alignment: .top, spacing: 12) {
             VStack(alignment: .leading, spacing: 5) {
                 Text(entry.canonicalDisplay)
-                    .font(.system(size: 20, weight: .semibold, design: .serif))
+                    .font(.system(.title3, design: .serif, weight: .semibold))
                     .foregroundStyle(Theme.ink)
                 Text(entry.subtitle)
-                    .font(.system(size: 13))
+                    .font(.footnote)
                     .foregroundStyle(Theme.inkSoft)
                 if let alt = entry.variants.first(where: { $0 != entry.canonicalDisplay }) {
                     Text(alt)
-                        .font(.system(size: 13, design: .serif))
+                        .font(.system(.footnote, design: .serif))
                         .foregroundStyle(Theme.lichen)
                 }
-                HStack(spacing: 8) {
-                    DepthChip(depth: entry.depth)
-                    if entry.kind == .name, let nk = entry.nameKind {
-                        Text(nk == .given ? "GIVEN" : "SURNAME")
-                            .font(.system(size: 9.5, weight: .bold))
-                            .kerning(1.0)
-                            .foregroundStyle(Theme.inkFaint)
-                    }
+                if let context = resultContext(entry) {
+                    Text(context)
+                        .font(.caption)
+                        .foregroundStyle(Theme.inkFaint)
                 }
             }
             Spacer(minLength: 0)
@@ -215,7 +222,7 @@ struct PersonalAtlasSearchView: View {
                 .stroke(Theme.line.opacity(0.8), lineWidth: 0.8)
         )
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(entry.canonicalDisplay), \(entry.subtitle)")
+        .accessibilityLabel(accessibilityResultLabel(entry))
     }
 
     private func open(_ entry: PersonalIndexEntry) {
@@ -234,9 +241,67 @@ struct PersonalAtlasSearchView: View {
             case .place: return entry.kind == .place
             }
         }
-        withAnimation(Motion.settle) {
-            results = Array(filtered.prefix(12))
+        if reduceMotion {
+            results = filtered
+        } else {
+            withAnimation(Motion.settle) { results = filtered }
         }
+        scheduleResultAnnouncement(count: filtered.count)
+    }
+
+    private var resultSummary: String {
+        if results.count > resultLimit {
+            return "Showing the first \(resultLimit) of \(results.count) matches. Add more letters to narrow them."
+        }
+        return "\(results.count) matches. Use the place or name details to choose."
+    }
+
+    private func resultContext(_ entry: PersonalIndexEntry) -> String? {
+        if entry.kind == .place { return nil }
+        guard let nameKind = entry.nameKind else { return nil }
+        return nameKind == .given ? "Given name" : "Surname"
+    }
+
+    private func accessibilityResultLabel(_ entry: PersonalIndexEntry) -> String {
+        let variants = entry.variants
+            .filter { $0 != entry.canonicalDisplay }
+            .prefix(2)
+            .joined(separator: ", ")
+        return [entry.canonicalDisplay, entry.subtitle, resultContext(entry), variants.isEmpty ? nil : "Also \(variants)"]
+            .compactMap { $0 }
+            .joined(separator: ". ")
+    }
+
+    private func scheduleResultAnnouncement(count: Int) {
+        announcementTask?.cancel()
+        guard UIAccessibility.isVoiceOverRunning,
+              !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+        announcementTask = Task {
+            try? await Task.sleep(for: .milliseconds(450))
+            guard !Task.isCancelled else { return }
+            let message = count == 0 ? "No matches" : "\(count) matches"
+            await MainActor.run {
+                UIAccessibility.post(notification: .announcement, argument: message)
+            }
+        }
+    }
+
+    private func contentError(_ message: String) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Label("The personal atlas is unavailable", systemImage: "exclamationmark.triangle")
+                .font(.headline)
+                .foregroundStyle(Theme.rust)
+            Text(message)
+                .font(.body)
+                .foregroundStyle(Theme.inkSoft)
+            Text("The rest of An Turas is still available. Try again after updating or reinstalling this build.")
+                .font(.callout)
+                .foregroundStyle(Theme.inkSoft)
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Theme.sunk)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 
@@ -276,20 +341,6 @@ enum PersonalSearchFocus: Hashable {
     }
 }
 
-struct DepthChip: View {
-    let depth: PersonalContentDepth
-    var body: some View {
-        Text(depth == .authored ? "AUTHORED" : "FOUNDATION")
-            .font(.system(size: 9.5, weight: .bold))
-            .kerning(1.0)
-            .foregroundStyle(depth == .authored ? Theme.moss : Theme.inkFaint)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 5)
-            .background((depth == .authored ? Theme.moss : Theme.inkFaint).opacity(0.12))
-            .clipShape(Capsule())
-    }
-}
-
 /// Simple wrapping chip row without a third-party layout dependency.
 struct FlowWrap<Item: Hashable, Content: View>: View {
     let items: [Item]
@@ -302,20 +353,5 @@ struct FlowWrap<Item: Hashable, Content: View>: View {
                 content(item)
             }
         }
-    }
-}
-
-struct PersonalCertaintyPill: View {
-    let certainty: PersonalCertainty
-    var body: some View {
-        Text(certainty.label)
-            .font(.system(size: 9.5, weight: .bold))
-            .kerning(1.05)
-            .foregroundStyle(certainty.color)
-            .padding(.horizontal, 9)
-            .padding(.vertical, 6)
-            .background(certainty.color.opacity(0.11))
-            .clipShape(Capsule())
-            .overlay(Capsule().stroke(certainty.color.opacity(0.45), lineWidth: 0.8))
     }
 }
