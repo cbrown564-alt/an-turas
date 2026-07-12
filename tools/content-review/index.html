@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>An Turas — Content review</title>
+  <style>
+    :root {
+      --ink: #1c2418;
+      --paper: #f3efe4;
+      --moss: #3f5a3a;
+      --chalk: #d8d2c2;
+      --gold: #b08a3c;
+      --warn: #8a4b2e;
+      --line: rgba(28, 36, 24, 0.14);
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --sans: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at top left, rgba(63, 90, 58, 0.12), transparent 50%),
+        linear-gradient(180deg, #ebe5d6 0%, var(--paper) 40%, #e7e1d2 100%);
+      font-family: var(--sans);
+    }
+    header {
+      padding: 2rem 1.5rem 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header h1 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin: 0 0 0.35rem;
+      letter-spacing: -0.02em;
+    }
+    header p {
+      margin: 0;
+      max-width: 38rem;
+      color: rgba(28, 36, 24, 0.72);
+      line-height: 1.45;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 860px) {
+      main { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: rgba(255, 252, 245, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: 1rem;
+      backdrop-filter: blur(6px);
+    }
+    .list button {
+      width: 100%;
+      text-align: left;
+      border: 0;
+      background: transparent;
+      border-bottom: 1px solid var(--line);
+      padding: 0.85rem 0.4rem;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+    }
+    .list button:last-child { border-bottom: 0; }
+    .list button.active {
+      background: rgba(63, 90, 58, 0.1);
+    }
+    .list .county {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 0.2rem;
+    }
+    .list .title { font-family: var(--serif); font-size: 1.05rem; }
+    .stage {
+      display: inline-block;
+      margin-top: 0.35rem;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.45rem;
+      border: 1px solid var(--line);
+      color: rgba(28, 36, 24, 0.7);
+    }
+    h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      margin: 0 0 0.5rem;
+    }
+    .meta {
+      display: grid;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+      font-size: 0.92rem;
+    }
+    .meta code {
+      font-size: 0.85em;
+      background: rgba(28, 36, 24, 0.06);
+      padding: 0.1rem 0.3rem;
+    }
+    .workflow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin: 1rem 0 1.25rem;
+    }
+    .workflow span {
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.55rem;
+      border: 1px solid var(--line);
+      color: rgba(28, 36, 24, 0.55);
+    }
+    .workflow span.current {
+      border-color: var(--moss);
+      color: var(--moss);
+      background: rgba(63, 90, 58, 0.08);
+    }
+    .workflow span.done {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .signoffs {
+      display: grid;
+      gap: 0.55rem;
+      margin: 1rem 0;
+    }
+    .signoffs label {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      padding: 0.55rem 0.65rem;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.35);
+    }
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.5);
+      padding: 0.75rem;
+      font: inherit;
+      resize: vertical;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .actions button, .actions a {
+      appearance: none;
+      border: 1px solid var(--moss);
+      background: var(--moss);
+      color: #f7f3ea;
+      padding: 0.55rem 0.9rem;
+      font: inherit;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .actions button.secondary, .actions a.secondary {
+      background: transparent;
+      color: var(--moss);
+    }
+    .hint {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: rgba(28, 36, 24, 0.62);
+      line-height: 1.4;
+    }
+    .empty { color: rgba(28, 36, 24, 0.55); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Content review</h1>
+    <p>Low-key review surface for county briefs and sign-off (D9). Reads
+      <code>manifest.json</code>; stores reviewer state in this browser only.</p>
+  </header>
+  <main>
+    <section class="panel list" id="list"></section>
+    <section class="panel" id="detail">
+      <p class="empty">Select a story.</p>
+    </section>
+  </main>
+  <script>
+    const STORAGE_KEY = "anturas-content-review-v1";
+    const workflow = ["brief","draft","linguist","historian","audio","native_qa","signoff","bundle"];
+    let manifest = null;
+    let selectedId = null;
+
+    function loadState() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); }
+      catch { return {}; }
+    }
+    function saveState(state) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+    function storyState(id) {
+      const all = loadState();
+      return all[id] || { signoffs: {}, note: "", stage: null };
+    }
+    function setStoryState(id, next) {
+      const all = loadState();
+      all[id] = next;
+      saveState(all);
+    }
+
+    function renderList() {
+      const el = document.getElementById("list");
+      el.innerHTML = manifest.stories.map(s => {
+        const st = storyState(s.id);
+        const stage = st.stage || s.stage;
+        return `<button data-id="${s.id}" class="${s.id === selectedId ? "active" : ""}">
+          <span class="county">${s.county}</span>
+          <span class="title">${s.title}</span>
+          <span class="stage">${stage}</span>
+        </button>`;
+      }).join("");
+      el.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("click", () => {
+          selectedId = btn.dataset.id;
+          renderList();
+          renderDetail();
+        });
+      });
+    }
+
+    function renderDetail() {
+      const s = manifest.stories.find(x => x.id === selectedId);
+      const el = document.getElementById("detail");
+      if (!s) {
+        el.innerHTML = `<p class="empty">Select a story.</p>`;
+        return;
+      }
+      const st = storyState(s.id);
+      const stage = st.stage || s.stage;
+      const signoffs = { ...s.signoffs, ...st.signoffs };
+      const stageIdx = workflow.indexOf(stage);
+      el.innerHTML = `
+        <h2>${s.title}</h2>
+        <div class="meta">
+          <div><strong>ID</strong> <code>${s.id}</code></div>
+          <div><strong>Brief</strong> <code>${s.briefPath}</code></div>
+          ${s.storyboardPath ? `<div><strong>Storyboard</strong> <code>${s.storyboardPath}</code></div>` : ""}
+          ${s.languagePath ? `<div><strong>Language</strong> <code>${s.languagePath}</code></div>` : ""}
+          <div>${s.notes || ""}</div>
+        </div>
+        <div class="workflow">
+          ${workflow.map((w, i) => {
+            const cls = i < stageIdx ? "done" : i === stageIdx ? "current" : "";
+            return `<span class="${cls}">${w.replace("_", " ")}</span>`;
+          }).join("")}
+        </div>
+        <div class="signoffs">
+          ${Object.keys(signoffs).map(role => `
+            <label>
+              <input type="checkbox" data-role="${role}" ${signoffs[role] ? "checked" : ""} />
+              ${role.replace("_", " ")} sign-off
+            </label>`).join("")}
+        </div>
+        <label for="note"><strong>Reviewer note</strong></label>
+        <textarea id="note">${st.note || ""}</textarea>
+        <div class="actions">
+          <button type="button" id="save">Save local review</button>
+          <button type="button" class="secondary" id="advance">Advance stage</button>
+          <button type="button" class="secondary" id="reset">Reset local state</button>
+        </div>
+        <p class="hint">This UI does not write to git. Export notes into the story brief or CMS later.
+          Open repo files in the editor using the paths above.</p>
+      `;
+      el.querySelector("#save").onclick = () => {
+        const nextSignoffs = { ...signoffs };
+        el.querySelectorAll("input[data-role]").forEach(input => {
+          nextSignoffs[input.dataset.role] = input.checked;
+        });
+        setStoryState(s.id, {
+          signoffs: nextSignoffs,
+          note: el.querySelector("#note").value,
+          stage
+        });
+        renderList();
+        renderDetail();
+      };
+      el.querySelector("#advance").onclick = () => {
+        const i = workflow.indexOf(stage);
+        const nextStage = workflow[Math.min(i + 1, workflow.length - 1)];
+        const nextSignoffs = { ...signoffs };
+        el.querySelectorAll("input[data-role]").forEach(input => {
+          nextSignoffs[input.dataset.role] = input.checked;
+        });
+        setStoryState(s.id, {
+          signoffs: nextSignoffs,
+          note: el.querySelector("#note").value,
+          stage: nextStage
+        });
+        renderList();
+        renderDetail();
+      };
+      el.querySelector("#reset").onclick = () => {
+        const all = loadState();
+        delete all[s.id];
+        saveState(all);
+        renderList();
+        renderDetail();
+      };
+    }
+
+    fetch("./manifest.json")
+      .then(r => r.json())
+      .then(data => {
+        manifest = data;
+        selectedId = data.stories[0]?.id || null;
+        renderList();
+        renderDetail();
+      })
+      .catch(err => {
+        document.getElementById("detail").innerHTML =
+          `<p class="empty">Could not load manifest.json (${err.message}). Serve this folder over HTTP.</p>`;
+      });
+  </script>
+</body>
+</html>

@@ -58,22 +58,35 @@ struct FirstEncounterTakeawayView: View {
 // MARK: - An Cnuasach
 
 private enum CollectionShelf: String, CaseIterable, Identifiable {
-    case survives = "What survives"
-    case made = "What you made"
-    case words = "Words you carry"
+    case matters = "Matters"
+    case survives = "Survives"
+    case made = "Made"
+    case words = "Words"
     var id: String { rawValue }
+
+    var fullTitle: String {
+        switch self {
+        case .matters: return "What matters to you"
+        case .survives: return "What survives"
+        case .made: return "What you made"
+        case .words: return "Words you carry"
+        }
+    }
 }
 
 struct AtlasCollectionView: View {
     @EnvironmentObject private var atlas: AtlasPrototypeModel
+    @EnvironmentObject private var appState: AppState
     let onOpenEvidence: () -> Void
     let onOpenFieldNote: () -> Void
+    var onOpenPersonalSubject: (String) -> Void = { _ in }
+    var onOpenPersonalSearch: () -> Void = {}
     @State private var shelf: CollectionShelf = .survives
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
-                AtlasScreenHeader("AN CNUASACH · THE COLLECTION", "Evidence, making, language.", detail: "What survived is never confused with what you made. Every word keeps the place where it first mattered.")
+                AtlasScreenHeader("AN CNUASACH · THE COLLECTION", "Evidence, making, language.", detail: "What survived is never confused with what you made. Saved names and places sit apart under what matters to you.")
 
                 Picker("Collection shelf", selection: $shelf) {
                     ForEach(CollectionShelf.allCases) { Text($0.rawValue).tag($0) }
@@ -82,6 +95,7 @@ struct AtlasCollectionView: View {
 
                 Group {
                     switch shelf {
+                    case .matters: mattersShelf
                     case .survives: survivesShelf
                     case .made: madeShelf
                     case .words: wordsShelf
@@ -94,6 +108,57 @@ struct AtlasCollectionView: View {
             .frame(maxWidth: .infinity)
         }
         .background(Theme.bg.ignoresSafeArea())
+    }
+
+    private var mattersShelf: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            ShelfIntroduction(
+                number: appState.savedPersonalSubjects.isEmpty ? "WAITING" : "\(appState.savedPersonalSubjects.count) SAVED",
+                text: "Names and places you chose to keep. Separate from historical evidence and from learner-made objects."
+            )
+
+            if appState.savedPersonalSubjects.isEmpty {
+                Button(action: onOpenPersonalSearch) {
+                    AtlasCard(accent: Theme.moss) {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Nothing saved yet")
+                                .font(.system(size: 18, weight: .semibold, design: .serif))
+                                .foregroundStyle(Theme.ink)
+                            Text("Open the personal atlas and save a name or place that matters.")
+                                .font(.system(size: 13.5))
+                                .foregroundStyle(Theme.inkSoft)
+                        }
+                    }
+                }
+                .buttonStyle(CarvePress())
+            } else {
+                ForEach(appState.savedPersonalSubjects, id: \.self) { id in
+                    if let subject = PersonalAtlasLoader.subject(id: id) {
+                        Button {
+                            onOpenPersonalSubject(id)
+                        } label: {
+                            HStack(spacing: 12) {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(subject.canonicalDisplay)
+                                        .font(.system(size: 17, weight: .semibold, design: .serif))
+                                        .foregroundStyle(Theme.ink)
+                                    Text(subject.subtitle)
+                                        .font(.system(size: 12.5))
+                                        .foregroundStyle(Theme.inkSoft)
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundStyle(Theme.inkFaint)
+                            }
+                            .padding(14)
+                            .background(Theme.raised)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
+                        .buttonStyle(CarvePress())
+                    }
+                }
+            }
+        }
     }
 
     private var survivesShelf: some View {

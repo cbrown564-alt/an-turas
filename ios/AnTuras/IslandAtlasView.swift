@@ -4,6 +4,8 @@ import SwiftUI
 
 struct FirstRunIslandView: View {
     let onBegin: () -> Void
+    var onOpenName: () -> Void = {}
+    var onOpenPlace: () -> Void = {}
 
     var body: some View {
         ScrollView {
@@ -11,8 +13,10 @@ struct FirstRunIslandView: View {
                 AtlasScreenHeader(
                     "AN tOILEÁN · THE ISLAND",
                     "Every place has something to tell you.",
-                    detail: "In 1593, a woman from the Mayo coast went directly to the English queen. Begin where she began."
+                    detail: "In 1593, a woman from the Mayo coast went directly to the English queen. Begin where she began — or open a name or place that matters to you."
                 )
+
+                personalHooks
 
                 IslandMapSurface(
                     mode: .journey,
@@ -63,6 +67,57 @@ struct FirstRunIslandView: View {
         }
         .background(Theme.bg.ignoresSafeArea())
     }
+
+    private var personalHooks: some View {
+        HStack(spacing: 10) {
+            Button {
+                Haptics.tap()
+                onOpenName()
+            } label: {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("A name you carry")
+                        .font(.system(size: 15, weight: .semibold, design: .serif))
+                        .foregroundStyle(Theme.ink)
+                    Text("Behind a name")
+                        .font(.system(size: 12))
+                        .foregroundStyle(Theme.inkSoft)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(14)
+                .background(Theme.raised)
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .stroke(Theme.moss.opacity(0.4), lineWidth: 0.8)
+                )
+            }
+            .buttonStyle(CarvePress())
+
+            Button {
+                Haptics.tap()
+                onOpenPlace()
+            } label: {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("A place you know")
+                        .font(.system(size: 15, weight: .semibold, design: .serif))
+                        .foregroundStyle(Theme.ink)
+                    Text("Behind a place")
+                        .font(.system(size: 12))
+                        .foregroundStyle(Theme.inkSoft)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(14)
+                .background(Theme.raised)
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .stroke(Theme.moss.opacity(0.4), lineWidth: 0.8)
+                )
+            }
+            .buttonStyle(CarvePress())
+        }
+        .accessibilityElement(children: .contain)
+    }
 }
 
 enum IslandMode: String, CaseIterable, Identifiable {
@@ -77,6 +132,9 @@ struct IslandAtlasView: View {
     let onOpenMayo: () -> Void
     let onOpenCounty: (String) -> Void
     let onOpenFieldNote: () -> Void
+    var onOpenPersonalSearch: () -> Void = {}
+    var onOpenName: () -> Void = {}
+    var onOpenPlace: () -> Void = {}
 
     @State private var mode: IslandMode = .journey
     @State private var time: Double = 1593
@@ -93,6 +151,8 @@ struct IslandAtlasView: View {
                     "Every place has something to tell you.",
                     detail: "Look around before you choose a road. Irish brings the names, evidence and people closer."
                 )
+
+                personalAtlasEntry
 
                 Picker("Map mode", selection: $mode) {
                     ForEach(IslandMode.allCases) { Text($0.rawValue).tag($0) }
@@ -144,6 +204,60 @@ struct IslandAtlasView: View {
                 showCountyList = false
                 if county.en == "Mayo" { onOpenMayo() } else { onOpenCounty(county.en) }
             })
+        }
+    }
+
+    private var personalAtlasEntry: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Button {
+                Haptics.tap()
+                onOpenPersonalSearch()
+            } label: {
+                HStack(spacing: 12) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(Theme.moss)
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text("Search a name or place")
+                            .font(.system(size: 16, weight: .semibold, design: .serif))
+                            .foregroundStyle(Theme.ink)
+                        Text("The personal atlas — evidence-led, not trivia")
+                            .font(.system(size: 12.5))
+                            .foregroundStyle(Theme.inkSoft)
+                    }
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(Theme.inkFaint)
+                }
+                .padding(14)
+                .background(Theme.raised)
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .stroke(Theme.moss.opacity(0.35), lineWidth: 0.8)
+                )
+            }
+            .buttonStyle(CarvePress())
+            .accessibilityLabel("Search a name or place in the personal atlas")
+
+            HStack(spacing: 8) {
+                Button("A name you carry") {
+                    Haptics.tap()
+                    onOpenName()
+                }
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(Theme.moss)
+
+                Text("·")
+                    .foregroundStyle(Theme.inkFaint)
+
+                Button("A place you know") {
+                    Haptics.tap()
+                    onOpenPlace()
+                }
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(Theme.moss)
+            }
+            .padding(.horizontal, 4)
         }
     }
 

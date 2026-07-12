@@ -1,7 +1,7 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-11.*
+and visual narrative. English → Irish only. Updated 2026-07-12.*
 
 ## Where we are
 
@@ -29,8 +29,15 @@ c. 997; Breastagh becomes a labelled field note. The approved first design proof
 restrained island → Rockfleet → Gráinne → 1593 letter → first Irish → island loop.
 It validates the foundation, not the full story or broader atlas architecture. The
 first product grilling has now fixed the county, episode, learner-action, 20-word,
-evidence, collection, artifact, grammar, and post-county contracts. The next phase
-stress-tests Gráinne's broader life against that contract before more tester rounds.
+evidence, collection, artifact, grammar, and post-county contracts.
+
+**12 July research pass (docs only):** Gráinne provisionally passes both flagship
+tests without a side story. Paper walkthrough locked a **six-episode** spine (Ep3
+compressed; answer/coast split). Language weave, evidence ladder, and Mayo 1593
+board-ready draft exist. Offaly, Dublin, and Meath packets started; content-review UI
+scaffolded; editorial recruitment pack and legacy salvage map written. Next product
+gate: implement the Gráinne full-arc prototype after historian/pedagogue first pass —
+not a new atlas expansion or tester round.
 
 ## Work completed
 
@@ -73,69 +80,49 @@ stress-tests Gráinne's broader life against that contract before more tester ro
 | 2026-07-11 | **First-story reset and expansive interface vision.** Clean-slate review replaced Breastagh as Mayo's flagship with Gráinne Ní Mháille's 1593 petition; retained Clonmacnoise but recentered Offaly on Flann Sinna and the Cross of the Scriptures c. 900; retained Sihtric but recentered Dublin on the first Irish penny c. 997. Breastagh becomes the prototype for short, labelled reconstruction field notes. A living-historical-atlas direction now expands the app around the island, people, evidence, time, county dossiers, source certainty, and a collection separating real evidence from learner-made artifacts. This row records the design direction; the implementation and test result follow below. | `docs/STORY-RESET.md`, `docs/EXPANSIVE-INTERFACE-VISION.md`, `docs/DECISIONS.md` D13 |
 | 2026-07-11 | **Gráinne first encounter iterated and tester-approved.** The first atlas build exposed too much product and editorial architecture; a first simplification became trustworthy but dry. The approved revision restores narrative craft through Rockfleet, Gráinne's losses and agency, a dedicated person beat, an interactive 1593 family-letter reveal, and Irish earned through her name before the learner's. Later storytelling is surfaced affirmatively rather than as a warning. Approval applies to this simple foundation; the next milestone is resolving the full-story product contract before wider testing. | `ios/AnTuras/AtlasPrototype.swift`, `IslandAtlasView.swift`, `MayoStoryPrototype.swift`, `AtlasCollectionViews.swift`, `docs/GRAINNE-PROTOTYPE-REPORT.md` |
 | 2026-07-11 | **Gráinne / Mayo product contract resolved for storyboarding.** One county at a time; four to six bingeable 8–12 minute episodes; flagship-first stress test with side stories only for demonstrated gaps; broader Gráinne life organised around 1593; binding discovery + Irish action per episode; exactly 20 lexical headwords with need/use/later-reuse lifecycle; three-level evidence ladder; quiet county record + usable language + one completion artifact; Mayo voyage chart; authored next county rather than a picker; just-in-time optional grammar. Remaining research and design questions are explicitly carried. | `docs/GRAINNE-PRODUCT-CONTRACT.md`, `docs/DECISIONS.md` D14–D15, `docs/PRODUCT-GLOSSARY.md` |
+| 2026-07-12 | **Gráinne flagship stress-test + storyboard + weave + lo-fi review; Mayo source brief started.** Provisional pass: she can carry Mayo alone for narrative depth and the 20-word lifecycle; no side story yet. Five-episode spine organised around 1593; language weave and three-level evidence ladder drafted; lo-fi review passes with revisions (tighten Ep3, watch Ep5 overload) and blocks implementation/tester round until paper walkthrough. Historian-ready Mayo 1593 packet begun with claim ledger and rights plan; Breastagh register retargeted as field-note only. | `docs/GRAINNE-SOURCE-STRESS-TEST.md`, `docs/GRAINNE-STORYBOARD.md`, `docs/GRAINNE-LANGUAGE-WEAVE.md`, `docs/GRAINNE-LOFI-REVIEW.md`, `content/mayo/grainne-1593-source-brief.md` |
+| 2026-07-12 | **Walkthrough revisions + parallel launch packets.** Storyboard revised to six episodes; Mayo brief advanced with L1 paraphrases and transcription-first rights default. Offaly Cross, Dublin penny, and Meath/Trim briefs (plus Meath clean-slate confirm) opened. Content-review HTML CMS foundation + manifest; editorial board recruitment pack; Chapters 1–3 legacy salvage map. | `docs/GRAINNE-STORYBOARD.md`, `content/mayo/grainne-1593-source-brief.md`, `content/offaly/`, `content/dublin/`, `content/meath/`, `tools/content-review/`, `docs/CONTENT-REVIEW-CMS.md`, `docs/editorial/BOARD-RECRUITMENT.md`, `docs/LEGACY-SALVAGE-MAP.md` |
+| 2026-07-12 | **Personal atlas Phase 1 pilot shipped in-app.** Behind-a-name / behind-a-place search and result shell on the living atlas: 25 given + 25 surname + 30 place packs, certainty labels, historical-form travel, local saves under “What matters to you,” Mayo story handoffs, first-encounter hooks. Bundled JSON; no genealogy matching; foundation vs authored depth. Specialist review and licensed surname authority still required before public hardening. | `docs/PERSONAL-HISTORIES-FEATURE-PLAN.md`, `ios/AnTuras/PersonalAtlas*.swift`, `Resources/personal-atlas-subjects.json`, `content/personal-atlas/` |
 
 ## Immediate next steps (Phase 2)
 
-1. **Stress-test Gráinne as Mayo's complete flagship** — research and storyboard her
-   broader life around the 1593 organising centre; test for sufficient sourced
-   narrative depth and meaningful ground for the exact 20-word lifecycle. Add a side
-   story only for a demonstrated gap (`docs/GRAINNE-PRODUCT-CONTRACT.md`).
-2. **Build the full-story narrative spine** — create a source-backed storyboard of
-   four to six movements, each mapping historical change, human stake, evidence,
-   Irish earned, and learner action. D15 fixes 1593 as the organising centre of a
-   broader life story.
-3. **Design the language weave and evidence ladder** — place each Irish item at a
-   dramatic need and later reuse; give each source a learner view, optional close
-   reading, and editorial depth. Keep caveats, rights state, and taxonomies off the
-   narrative surface.
-4. **Low-fidelity product review before implementation** — storyboard pacing,
-   interactions, episode exits, and return moments. Gate on emotional pull, clear
-   understanding of Gráinne, meaningful Irish, and learner orientation before
-   extending the approved prototype.
-5. **Next tester round: the complete story arc** — test depth and continuity, not
-   additional atlas breadth. Do not return to testers until the product questions,
-   source spine, and internal gates above are resolved.
-6. **Replacement source briefs for Mayo, Offaly, and Dublin** — build historian-ready
-   packets for Gráinne's 1593 petition, the Cross of the Scriptures c. 900, and
-   Sihtric's first penny c. 997. Each needs a claim ledger, rights plan, significant
-   reading/object encounter, and 20-word language plan before new JSON is drafted.
-7. **Clean-slate review of Meath / Trim** — test Hugh de Lacy and Trim against the
-   same county claim, significance, narrative, evidence, language-yield, and afterlife
-   criteria before confirming the fourth launch story.
-8. **Content review CMS** — purpose-built review UI for the county-story schema (D9,
-   D12). Stakeholders: writer, Irish-language pedagogue, historian, audio QA. Workflow:
-   county/source brief → draft → linguist → historian → generate audio → native QA →
-   sign-off → bundle.
-9. **Editorial board** — recruit at minimum one qualified Irish-language pedagogue
-   and one historian. Their immediate work shifts from clearing inherited composites
-   to delimiting the replacement source briefs and deciding what can be reused.
-10. **Legacy-content salvage map** — inventory interactions, exercises, artifacts,
-   vocabulary, illustrations, and progress state from Chapters 1–3 as retain, adapt,
-   field-note, or retire before replacement content changes story ids.
-11. **Install Gemini 3.1 TTS clips only for cleared text** — set `bundle_winner: gemini-3-flash` per line in
-   `tools/tts-bakeoff/winners.json`, run `python bakeoff.py install`, regenerate Xcode
-   project. Do not spend release QA on narrative copy D13 has superseded.
-12. **Illustration production recipe** — evolve Solas an Atlantaigh into one layer of
-   the atlas beside maps, portraits, documentary sources, object drawings, and
-   present-day landscapes. Do not commission final Chapter 1–3 scene sets until the
-   new registers are prototyped.
-13. **TestFlight build** — signed device build for wider playtest; needs Apple Developer
-   account/team in `ios/project.yml`.
-14. **Send ABAIR commercial enquiry** — optional long-term dialect upgrade; not a
-   Phase 2 blocker (D7). Draft at `docs/ABAIR-enquiry.md`.
-15. **Grant funding research** — map Foras na Gaeilge / Údarás schemes and strings
-   before accepting (D10: grants on top of premium, not instead of).
+1. **Recruit editorial board (outreach)** — send `docs/editorial/BOARD-RECRUITMENT.md`
+   messages; land pedagogue + historian for Mayo first pass.
+2. **Historian + pedagogue first pass on Mayo** — approve L1 paraphrases, claim ledger,
+   and the 20-word weave (`content/mayo/grainne-1593-source-brief.md`,
+   `docs/GRAINNE-LANGUAGE-WEAVE.md`).
+3. **Implement the Gráinne full-story prototype** — Episodes 1–6 from the locked
+   storyboard; extend the approved first encounter; no rejected atlas chrome.
+4. **Next tester round: the complete story arc** — gated on (2) and a playable (3).
+5. **Deepen Offaly / Dublin / Meath briefs** — inscription reading, coin type choice,
+   grant-copy citation, rights for images.
+6. **Evolve content-review CMS** — claim-ledger panels, draft diff, exportable review
+   log (`docs/CONTENT-REVIEW-CMS.md`); personal-atlas assertion review.
+7. **Personal atlas editorial gates** — onomastics adviser, Logainm/Gaois account,
+   licensed surname source; replace pilot syntheses before Phase 1 exit scorecard.
+8. **Progress migration design** — follow `docs/LEGACY-SALVAGE-MAP.md` before
+   `mayo.grainne-1593` replaces playable ids.
+9. ~~Stress-test / storyboard / weave / lo-fi / Mayo brief start / Offaly·Dublin·Meath
+   packets / CMS foundation / board pack / salvage map~~ — **done (12 July).**
+10. ~~Personal atlas Phase 1 app shell + pilot packs~~ — **done (12 July); editorial
+    hardening open.**
+
+### Lower priority (unchanged)
+
+9. **Install Gemini 3.1 TTS clips only for cleared text** — do not QA superseded D13 copy.
+10. **Illustration production recipe** — atlas registers before Chapter 1–3 scene sets.
+11. **TestFlight build** — needs Apple Developer team in `ios/project.yml`.
+12. **Send ABAIR commercial enquiry** — optional; draft at `docs/ABAIR-enquiry.md`.
+13. **Grant funding research** — Foras na Gaeilge / Údarás strings before accepting (D10).
 
 ## Long-term plan
 
 - **Phase 1 — Vertical slice (complete):** Chapter 1 SwiftUI app with writing, audio,
   and illustrations. Playtest validated narrative pull without streaks; tá tú ar ais and
   the journey map named as return mechanisms. Exit criterion met (D5).
-- **Phase 2 — Story contract + atlas proof (now):** approved Gráinne first-encounter
-  foundation; resolve the full-story product questions; build the source-backed
-  narrative spine, language weave, and evidence ladder; then extend the prototype and
-  return to testers. Replacement source briefs, clean-slate Meath review, and legacy
-  progress preservation continue behind that gate.
+- **Phase 2 — Story contract + atlas proof (now):** Gráinne foundation approved; six-
+  episode storyboard locked; Mayo board-ready draft + Offaly/Dublin/Meath packets and
+  review tooling in place. Next: board first pass → full-arc prototype → tester round.
 - **Phase 3 — Product build:** living historical atlas, county dossiers, documentary
   story registers, evidence collection, personal artifacts, FSRS dressed as revisiting,
   TEG-aligned progress, and **An Féilire** rituals. Target the first four replacement

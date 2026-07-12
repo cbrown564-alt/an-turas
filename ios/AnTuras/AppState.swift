@@ -33,11 +33,17 @@ final class AppState: ObservableObject {
         var visits: [String: VisitProgress] = [:]
         var lexemes: [String: LexemeProgress] = [:]
         var patternItems: [String: PatternItemProgress] = [:]
+        /// Device-local personal atlas saves — published subject IDs only.
+        var savedPersonalSubjects: [String] = []
+        /// Opt-in recent personal-atlas subject IDs (never raw query text).
+        var recentPersonalSubjects: [String] = []
+        var savePersonalSearchHistory: Bool = false
 
         init() {}
 
         private enum Keys: String, CodingKey {
             case activeChapter, doneByChapter, doneByStory, name, visits, lexemes, patternItems, done
+            case savedPersonalSubjects, recentPersonalSubjects, savePersonalSearchHistory
         }
 
         // Custom decode: migrate single-chapter saves and pre-Ar-Ais writes.
@@ -50,6 +56,9 @@ final class AppState: ObservableObject {
             visits = try keys.decodeIfPresent([String: VisitProgress].self, forKey: .visits) ?? [:]
             lexemes = try keys.decodeIfPresent([String: LexemeProgress].self, forKey: .lexemes) ?? [:]
             patternItems = try keys.decodeIfPresent([String: PatternItemProgress].self, forKey: .patternItems) ?? [:]
+            savedPersonalSubjects = try keys.decodeIfPresent([String].self, forKey: .savedPersonalSubjects) ?? []
+            recentPersonalSubjects = try keys.decodeIfPresent([String].self, forKey: .recentPersonalSubjects) ?? []
+            savePersonalSearchHistory = try keys.decodeIfPresent(Bool.self, forKey: .savePersonalSearchHistory) ?? false
 
             if doneByChapter.isEmpty,
                let legacyDone = try keys.decodeIfPresent([Bool].self, forKey: .done) {
@@ -69,6 +78,9 @@ final class AppState: ObservableObject {
             try keys.encode(visits, forKey: .visits)
             try keys.encode(lexemes, forKey: .lexemes)
             try keys.encode(patternItems, forKey: .patternItems)
+            try keys.encode(savedPersonalSubjects, forKey: .savedPersonalSubjects)
+            try keys.encode(recentPersonalSubjects, forKey: .recentPersonalSubjects)
+            try keys.encode(savePersonalSearchHistory, forKey: .savePersonalSearchHistory)
         }
     }
 
@@ -81,6 +93,15 @@ final class AppState: ObservableObject {
     @Published var lexemeProgress: [String: LexemeProgress]
     @Published var patternProgress: [String: PatternItemProgress]
     @Published var artBranch: String? = nil
+    @Published var savedPersonalSubjects: [String] {
+        didSet { persist() }
+    }
+    @Published var recentPersonalSubjects: [String] {
+        didSet { persist() }
+    }
+    @Published var savePersonalSearchHistory: Bool {
+        didSet { persist() }
+    }
 
     let journey: [JourneyChapter]
 
@@ -268,6 +289,9 @@ final class AppState: ObservableObject {
         visitProgress = progress
         lexemeProgress = lexProgress
         patternProgress = patProgress
+        savedPersonalSubjects = saved.savedPersonalSubjects
+        recentPersonalSubjects = saved.recentPersonalSubjects
+        savePersonalSearchHistory = saved.savePersonalSearchHistory
 
         let migratedFromLegacy = UserDefaults.standard.data(forKey: Self.key) == nil
             && UserDefaults.standard.data(forKey: Self.legacyKey) != nil
@@ -521,8 +545,35 @@ final class AppState: ObservableObject {
         saved.visits = visitProgress
         saved.lexemes = lexemeProgress
         saved.patternItems = patternProgress
+        saved.savedPersonalSubjects = savedPersonalSubjects
+        saved.recentPersonalSubjects = recentPersonalSubjects
+        saved.savePersonalSearchHistory = savePersonalSearchHistory
         if let data = try? JSONEncoder().encode(saved) {
             UserDefaults.standard.set(data, forKey: Self.key)
+        }
+    }
+
+    // MARK: Personal atlas (device-local)
+
+    func isPersonalSubjectSaved(_ id: String) -> Bool {
+        savedPersonalSubjects.contains(id)
+    }
+
+    func togglePersonalSubject(_ id: String) {
+        if let idx = savedPersonalSubjects.firstIndex(of: id) {
+            savedPersonalSubjects.remove(at: idx)
+        } else {
+            savedPersonalSubjects.insert(id, at: 0)
+        }
+    }
+
+    /// Records a published subject ID only — never the raw query string.
+    func recordPersonalQuery(subjectId: String) {
+        guard savePersonalSearchHistory else { return }
+        recentPersonalSubjects.removeAll { $0 == subjectId }
+        recentPersonalSubjects.insert(subjectId, at: 0)
+        if recentPersonalSubjects.count > 12 {
+            recentPersonalSubjects = Array(recentPersonalSubjects.prefix(12))
         }
     }
 

@@ -16,7 +16,11 @@ struct AtlasPrototypeView: View {
                 if atlas.hasOpenedAtlas {
                     atlasTabs
                 } else {
-                    FirstRunIslandView(onBegin: { path.append(.grainneStory) })
+                    FirstRunIslandView(
+                        onBegin: { path.append(.grainneStory) },
+                        onOpenName: { path.append(.personalSearch(.name)) },
+                        onOpenPlace: { path.append(.personalSearch(.place)) }
+                    )
                 }
             }
             .navigationDestination(for: AtlasRoute.self) { route in
@@ -41,7 +45,10 @@ struct AtlasPrototypeView: View {
             IslandAtlasView(
                 onOpenMayo: { path.append(.mayoDossier) },
                 onOpenCounty: { path.append(.county($0)) },
-                onOpenFieldNote: { path.append(.fieldNote) }
+                onOpenFieldNote: { path.append(.fieldNote) },
+                onOpenPersonalSearch: { path.append(.personalSearch(.either)) },
+                onOpenName: { path.append(.personalSearch(.name)) },
+                onOpenPlace: { path.append(.personalSearch(.place)) }
             )
             .tag(AtlasTab.island)
             .tabItem { Label("An tOileán", systemImage: "map") }
@@ -55,7 +62,9 @@ struct AtlasPrototypeView: View {
 
             AtlasCollectionView(
                 onOpenEvidence: { path.append(.evidence) },
-                onOpenFieldNote: { path.append(.fieldNote) }
+                onOpenFieldNote: { path.append(.fieldNote) },
+                onOpenPersonalSubject: { path.append(.personalSubject($0)) },
+                onOpenPersonalSearch: { path.append(.personalSearch(.either)) }
             )
             .tag(AtlasTab.collection)
             .tabItem { Label("An Cnuasach", systemImage: "square.grid.2x2") }
@@ -98,6 +107,27 @@ struct AtlasPrototypeView: View {
             BreastaghFieldNoteView()
         case .county(let name):
             AtlasCountyPreviewView(countyName: name)
+        case .personalSearch(let focus):
+            PersonalAtlasSearchView(focus: focus) { subjectId in
+                path.append(.personalSubject(subjectId))
+            }
+        case .personalSubject(let id):
+            PersonalSubjectResultView(subjectId: id) { handoff in
+                appendHandoff(handoff)
+            }
+        }
+    }
+
+    private func appendHandoff(_ routeName: String) {
+        switch routeName {
+        case "mayoDossier":
+            path.append(.mayoDossier)
+        case "grainnePerson":
+            path.append(.grainnePerson)
+        case "grainneStory":
+            path.append(.grainneStory)
+        default:
+            break
         }
     }
 }
@@ -114,6 +144,8 @@ enum AtlasRoute: Hashable {
     case evidence
     case fieldNote
     case county(String)
+    case personalSearch(PersonalSearchFocus)
+    case personalSubject(String)
 }
 
 @MainActor
