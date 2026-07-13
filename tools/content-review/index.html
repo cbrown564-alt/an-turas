@@ -7,7 +7,7 @@
   <style>
     :root {
       --ink: #1c2418;
-      --paper: #f3efe4;
+      --paper: #ecede7;
       --moss: #3f5a3a;
       --chalk: #d8d2c2;
       --gold: #b08a3c;
@@ -21,9 +21,7 @@
       margin: 0;
       min-height: 100vh;
       color: var(--ink);
-      background:
-        radial-gradient(ellipse at top left, rgba(63, 90, 58, 0.12), transparent 50%),
-        linear-gradient(180deg, #ebe5d6 0%, var(--paper) 40%, #e7e1d2 100%);
+      background: var(--paper);
       font-family: var(--sans);
     }
     header {
@@ -56,11 +54,10 @@
       main { grid-template-columns: 1fr; }
     }
     .panel {
-      background: rgba(255, 252, 245, 0.72);
+      background: #f7f7f2;
       border: 1px solid var(--line);
       border-radius: 2px;
       padding: 1rem;
-      backdrop-filter: blur(6px);
     }
     .list button {
       width: 100%;
@@ -182,13 +179,33 @@
       line-height: 1.4;
     }
     .empty { color: rgba(28, 36, 24, 0.55); }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
+    .toolbar input, .toolbar select {
+      min-height: 44px; border: 1px solid var(--line); background: white;
+      color: var(--ink); padding: 0.55rem 0.7rem; font: inherit;
+    }
+    .toolbar input { flex: 1 1 220px; }
+    .claim { padding: 1rem 0; border-top: 1px solid var(--line); }
+    .claim:first-of-type { border-top: 0; }
+    .claim h3 { font-family: var(--serif); font-weight: 600; margin: 0 0 0.5rem; }
+    .claim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.55rem; }
+    .claim-grid label { display: grid; gap: 0.25rem; font-size: 0.78rem; color: rgba(28,36,24,.72); }
+    .claim-grid input, .claim-grid select {
+      width: 100%; min-height: 42px; border: 1px solid var(--line); background: white;
+      color: var(--ink); padding: 0.5rem; font: inherit;
+    }
+    .gate { display: inline-flex; align-items: center; gap: 0.35rem; margin: 0.2rem 0.4rem 0.2rem 0; }
+    .gate.fail { color: var(--warn); }
+    .gate.pass { color: var(--moss); }
+    .preview { max-width: 42rem; padding: 1rem; background: white; border-top: 3px solid var(--moss); }
+    .preview strong { font-family: var(--serif); font-size: 1.3rem; }
   </style>
 </head>
 <body>
   <header>
     <h1>Content review</h1>
-    <p>Low-key review surface for county briefs and sign-off (D9). Reads
-      <code>manifest.json</code>; stores reviewer state in this browser only.</p>
+    <p>Review county stories and personal-atlas claims, rights, audio, accessibility,
+      competing readings, and release gates. State remains in this browser until exported.</p>
   </header>
   <main>
     <section class="panel list" id="list"></section>
@@ -197,140 +214,218 @@
     </section>
   </main>
   <script>
-    const STORAGE_KEY = "anturas-content-review-v1";
+    const STORAGE_KEY = "anturas-content-review-v2";
     const workflow = ["brief","draft","linguist","historian","audio","native_qa","signoff","bundle"];
+    const personalWorkflow = ["showcase-candidate", "specialist-reviewed", "showcase"];
     let manifest = null;
-    let selectedId = null;
+    let pack = null;
+    let selectedKey = null;
+    let filter = "";
+    let surface = "personal";
 
-    function loadState() {
-      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); }
-      catch { return {}; }
-    }
-    function saveState(state) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    }
-    function storyState(id) {
-      const all = loadState();
-      return all[id] || { signoffs: {}, note: "", stage: null };
-    }
-    function setStoryState(id, next) {
-      const all = loadState();
-      all[id] = next;
-      saveState(all);
-    }
+    const esc = value => String(value ?? "").replace(/[&<>'"]/g, c => ({
+      "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;"
+    })[c]);
+    const loadState = () => { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch { return {}; } };
+    const saveState = state => localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    const itemState = key => loadState()[key] || {};
+    function setItemState(key, next) { const all = loadState(); all[key] = next; saveState(all); }
 
     function renderList() {
       const el = document.getElementById("list");
-      el.innerHTML = manifest.stories.map(s => {
-        const st = storyState(s.id);
-        const stage = st.stage || s.stage;
-        return `<button data-id="${s.id}" class="${s.id === selectedId ? "active" : ""}">
-          <span class="county">${s.county}</span>
-          <span class="title">${s.title}</span>
-          <span class="stage">${stage}</span>
-        </button>`;
-      }).join("");
-      el.querySelectorAll("button").forEach(btn => {
-        btn.addEventListener("click", () => {
-          selectedId = btn.dataset.id;
-          renderList();
-          renderDetail();
-        });
+      const subjects = pack.subjects.filter(s => {
+        const haystack = [s.canonicalDisplay, s.subtitle, s.id, ...s.variants].join(" ").toLowerCase();
+        return haystack.includes(filter.toLowerCase());
+      });
+      el.innerHTML = `
+        <div class="toolbar">
+          <select id="surface" aria-label="Review surface">
+            <option value="personal" ${surface === "personal" ? "selected" : ""}>Personal atlas</option>
+            <option value="stories" ${surface === "stories" ? "selected" : ""}>County stories</option>
+          </select>
+          ${surface === "personal" ? `<input id="filter" type="search" value="${esc(filter)}" placeholder="Find a name, place, or id" />` : ""}
+          <button id="export" type="button">Export review log</button>
+        </div>
+        ${surface === "personal" ? subjects.map(s => {
+          const key = `subject:${s.id}`;
+          const st = itemState(key);
+          const stage = st.stage || "showcase-candidate";
+          return `<button data-key="${esc(key)}" class="${key === selectedKey ? "active" : ""}">
+            <span class="county">${esc(s.kind)} · ${esc(s.depth)}</span>
+            <span class="title">${esc(s.canonicalDisplay)}</span>
+            <span class="stage">${esc(stage)}</span>
+          </button>`;
+        }).join("") : manifest.stories.map(s => {
+          const key = `story:${s.id}`;
+          const st = itemState(key);
+          return `<button data-key="${esc(key)}" class="${key === selectedKey ? "active" : ""}">
+            <span class="county">${esc(s.county)}</span>
+            <span class="title">${esc(s.title)}</span>
+            <span class="stage">${esc(st.stage || s.stage)}</span>
+          </button>`;
+        }).join("")}`;
+      el.querySelector("#surface").onchange = event => {
+        surface = event.target.value;
+        selectedKey = surface === "personal" ? `subject:${pack.subjects[0]?.id}` : `story:${manifest.stories[0]?.id}`;
+        renderList(); renderDetail();
+      };
+      el.querySelector("#filter")?.addEventListener("input", event => { filter = event.target.value; renderList(); });
+      el.querySelector("#export").onclick = exportReviewLog;
+      el.querySelectorAll("button[data-key]").forEach(btn => btn.onclick = () => {
+        selectedKey = btn.dataset.key; renderList(); renderDetail();
       });
     }
 
     function renderDetail() {
-      const s = manifest.stories.find(x => x.id === selectedId);
+      if (!selectedKey) return;
+      if (selectedKey.startsWith("subject:")) renderPersonal(selectedKey.slice(8));
+      else renderStory(selectedKey.slice(6));
+    }
+
+    function renderStory(id) {
+      const story = manifest.stories.find(x => x.id === id);
       const el = document.getElementById("detail");
-      if (!s) {
-        el.innerHTML = `<p class="empty">Select a story.</p>`;
-        return;
-      }
-      const st = storyState(s.id);
-      const stage = st.stage || s.stage;
-      const signoffs = { ...s.signoffs, ...st.signoffs };
+      if (!story) { el.innerHTML = `<p class="empty">Select a story.</p>`; return; }
+      const key = `story:${id}`;
+      const st = itemState(key);
+      const stage = st.stage || story.stage;
+      const signoffs = { ...story.signoffs, ...st.signoffs };
       const stageIdx = workflow.indexOf(stage);
       el.innerHTML = `
-        <h2>${s.title}</h2>
-        <div class="meta">
-          <div><strong>ID</strong> <code>${s.id}</code></div>
-          <div><strong>Brief</strong> <code>${s.briefPath}</code></div>
-          ${s.storyboardPath ? `<div><strong>Storyboard</strong> <code>${s.storyboardPath}</code></div>` : ""}
-          ${s.languagePath ? `<div><strong>Language</strong> <code>${s.languagePath}</code></div>` : ""}
-          <div>${s.notes || ""}</div>
-        </div>
-        <div class="workflow">
-          ${workflow.map((w, i) => {
-            const cls = i < stageIdx ? "done" : i === stageIdx ? "current" : "";
-            return `<span class="${cls}">${w.replace("_", " ")}</span>`;
-          }).join("")}
-        </div>
-        <div class="signoffs">
-          ${Object.keys(signoffs).map(role => `
-            <label>
-              <input type="checkbox" data-role="${role}" ${signoffs[role] ? "checked" : ""} />
-              ${role.replace("_", " ")} sign-off
-            </label>`).join("")}
-        </div>
-        <label for="note"><strong>Reviewer note</strong></label>
-        <textarea id="note">${st.note || ""}</textarea>
-        <div class="actions">
-          <button type="button" id="save">Save local review</button>
-          <button type="button" class="secondary" id="advance">Advance stage</button>
-          <button type="button" class="secondary" id="reset">Reset local state</button>
-        </div>
-        <p class="hint">This UI does not write to git. Export notes into the story brief or CMS later.
-          Open repo files in the editor using the paths above.</p>
-      `;
-      el.querySelector("#save").onclick = () => {
-        const nextSignoffs = { ...signoffs };
-        el.querySelectorAll("input[data-role]").forEach(input => {
-          nextSignoffs[input.dataset.role] = input.checked;
-        });
-        setStoryState(s.id, {
-          signoffs: nextSignoffs,
-          note: el.querySelector("#note").value,
-          stage
-        });
-        renderList();
-        renderDetail();
-      };
+        <h2>${esc(story.title)}</h2>
+        <div class="meta"><div><strong>ID</strong> <code>${esc(story.id)}</code></div>
+          <div><strong>Brief</strong> <code>${esc(story.briefPath)}</code></div><div>${esc(story.notes)}</div></div>
+        <div class="workflow">${workflow.map((w, i) => `<span class="${i < stageIdx ? "done" : i === stageIdx ? "current" : ""}">${esc(w.replace("_", " "))}</span>`).join("")}</div>
+        <div class="signoffs">${Object.keys(signoffs).map(role => `<label><input type="checkbox" data-role="${esc(role)}" ${signoffs[role] ? "checked" : ""} /> ${esc(role.replace("_", " "))} sign-off</label>`).join("")}</div>
+        <label for="note"><strong>Reviewer note</strong></label><textarea id="note">${esc(st.note)}</textarea>
+        <div class="actions"><button id="save">Save local review</button><button class="secondary" id="advance">Advance stage</button><button class="secondary" id="reset">Reset</button></div>`;
+      el.querySelector("#save").onclick = () => saveStory(story, stage, signoffs);
       el.querySelector("#advance").onclick = () => {
-        const i = workflow.indexOf(stage);
-        const nextStage = workflow[Math.min(i + 1, workflow.length - 1)];
-        const nextSignoffs = { ...signoffs };
-        el.querySelectorAll("input[data-role]").forEach(input => {
-          nextSignoffs[input.dataset.role] = input.checked;
-        });
-        setStoryState(s.id, {
-          signoffs: nextSignoffs,
-          note: el.querySelector("#note").value,
-          stage: nextStage
-        });
-        renderList();
-        renderDetail();
+        saveStory(story, workflow[Math.min(workflow.indexOf(stage) + 1, workflow.length - 1)], signoffs);
       };
-      el.querySelector("#reset").onclick = () => {
-        const all = loadState();
-        delete all[s.id];
-        saveState(all);
-        renderList();
-        renderDetail();
+      el.querySelector("#reset").onclick = () => resetKey(key);
+    }
+
+    function saveStory(story, stage, signoffs) {
+      const el = document.getElementById("detail");
+      const next = { ...signoffs };
+      el.querySelectorAll("input[data-role]").forEach(input => next[input.dataset.role] = input.checked);
+      setItemState(`story:${story.id}`, { stage, signoffs: next, note: el.querySelector("#note").value });
+      renderList(); renderDetail();
+    }
+
+    function renderPersonal(id) {
+      const subject = pack.subjects.find(x => x.id === id);
+      const el = document.getElementById("detail");
+      if (!subject) { el.innerHTML = `<p class="empty">Select a personal-atlas subject.</p>`; return; }
+      const key = `subject:${id}`;
+      const st = itemState(key);
+      const stage = st.stage || "showcase-candidate";
+      const signoffs = { onomastics:false, placenames:false, historian:false, nativeSpeaker:false, rights:false, accessibility:false, ...st.signoffs };
+      const claimReviews = st.claims || {};
+      const gates = personalGates(subject, signoffs, claimReviews);
+      const stageIndex = personalWorkflow.indexOf(stage);
+      el.innerHTML = `
+        <h2>${esc(subject.canonicalDisplay)}</h2>
+        <div class="meta">
+          <div><strong>ID</strong> <code>${esc(subject.id)}</code></div>
+          <div><strong>Shape</strong> ${esc(subject.kind)} · ${esc(subject.depth)} · ${esc(subject.editorial.releaseState)}</div>
+          <div><strong>Pack</strong> ${esc(pack.version)} · ${esc(pack.contentDate)}</div>
+        </div>
+        <div class="workflow">${personalWorkflow.map((w, i) => `<span class="${i < stageIndex ? "done" : i === stageIndex ? "current" : ""}">${esc(w.replaceAll("-", " "))}</span>`).join("")}</div>
+        <div>${Object.entries(gates).map(([name, pass]) => `<span class="gate ${pass ? "pass" : "fail"}">${pass ? "✓" : "○"} ${esc(name)}</span>`).join("")}</div>
+        <div class="preview"><strong>${esc(subject.canonicalDisplay)}</strong><p>${esc(subject.editorial.shortAnswer)}</p><small>${esc(subject.subtitle)}</small></div>
+        <h3>Release sign-offs</h3>
+        <div class="signoffs">${Object.keys(signoffs).map(role => `<label><input type="checkbox" data-role="${esc(role)}" ${signoffs[role] ? "checked" : ""} /> ${esc(role)} sign-off</label>`).join("")}</div>
+        <label><strong>Query demand (published ids or coarse unresolved counts only)</strong><input id="demand" type="number" min="0" value="${esc(st.queryDemand || 0)}" /></label>
+        <h3>Claim ledger</h3>
+        ${subject.assertions.map((claim, index) => renderClaim(subject, claim, index, claimReviews[index] || {})).join("")}
+        <label for="note"><strong>Subject review note</strong></label><textarea id="note">${esc(st.note)}</textarea>
+        <div class="actions"><button id="save">Save review</button><button class="secondary" id="advance" ${Object.values(gates).every(Boolean) ? "" : "disabled"}>Advance when gates pass</button><button class="secondary" id="reset">Reset</button></div>
+        <p class="hint">Advancement is deliberately gated. Pack depth and row count never confer evidence authority.</p>`;
+      el.querySelector("#save").onclick = () => savePersonal(subject, stage, signoffs, claimReviews);
+      el.querySelector("#advance").onclick = () => {
+        const next = personalWorkflow[Math.min(stageIndex + 1, personalWorkflow.length - 1)];
+        savePersonal(subject, next, signoffs, claimReviews);
+      };
+      el.querySelector("#reset").onclick = () => resetKey(key);
+    }
+
+    function renderClaim(subject, claim, index, review) {
+      const evidence = subject.evidence.filter(item => claim.evidenceIds.includes(item.id));
+      return `<section class="claim" data-claim="${index}">
+        <h3>${esc(claim.statement)}</h3>
+        <div class="meta"><div>${esc(claim.certainty)} · ${esc(claim.scope)}</div>
+          <div>Sources: ${evidence.map(e => esc(e.citation)).join("; ") || "None"}</div>
+          <div>Competing readings: ${esc(claim.competingAssertionIds.join(", ") || "none recorded")}</div></div>
+        <div class="claim-grid">
+          <label>Named reviewer<input data-field="reviewer" value="${esc(review.reviewer || (claim.reviewer === "pilot-editorial" ? "" : claim.reviewer))}" /></label>
+          <label>Rights state<select data-field="rights"><option value="pending">pending</option><option value="cleared" ${(review.rights || claim.rightsState) === "cleared" ? "selected" : ""}>cleared</option><option value="link-only" ${(review.rights || claim.rightsState) === "link-only" ? "selected" : ""}>link only</option><option value="blocked" ${(review.rights || claim.rightsState) === "blocked" ? "selected" : ""}>blocked</option></select></label>
+          <label>Review decision<select data-field="decision"><option value="pending">pending</option><option value="accept" ${review.decision === "accept" ? "selected" : ""}>accept</option><option value="revise" ${review.decision === "revise" ? "selected" : ""}>revise</option><option value="reject" ${review.decision === "reject" ? "selected" : ""}>reject</option></select></label>
+          <label>Audio state<select data-field="audio"><option value="not-reviewed">not reviewed</option><option value="verified" ${review.audio === "verified" ? "selected" : ""}>verified</option><option value="intentionally-unavailable" ${review.audio === "intentionally-unavailable" ? "selected" : ""}>intentionally unavailable</option></select></label>
+        </div>
+      </section>`;
+    }
+
+    function collectPersonalReview(el) {
+      const claims = {};
+      el.querySelectorAll("[data-claim]").forEach(section => {
+        const record = {};
+        section.querySelectorAll("[data-field]").forEach(input => record[input.dataset.field] = input.value);
+        claims[section.dataset.claim] = record;
+      });
+      return claims;
+    }
+
+    function savePersonal(subject, stage, signoffs) {
+      const el = document.getElementById("detail");
+      const nextSignoffs = { ...signoffs };
+      el.querySelectorAll("input[data-role]").forEach(input => nextSignoffs[input.dataset.role] = input.checked);
+      setItemState(`subject:${subject.id}`, {
+        stage, signoffs: nextSignoffs, claims: collectPersonalReview(el),
+        queryDemand: Number(el.querySelector("#demand").value || 0), note: el.querySelector("#note").value,
+        reviewedAt: new Date().toISOString()
+      });
+      renderList(); renderDetail();
+    }
+
+    function personalGates(subject, signoffs, reviews) {
+      const claimRows = subject.assertions.map((claim, index) => ({ claim, review: reviews[index] || {} }));
+      const assertionIds = new Set(subject.assertions.map(claim => claim.assertionId).filter(Boolean));
+      const branches = subject.nameProfile?.etymologyBranches || subject.placeProfile?.derivationBranches || [];
+      const typedVariants = new Set((subject.variantRelationships || []).map(item => item.display));
+      return {
+        "durable assertion ids": assertionIds.size === subject.assertions.length,
+        "short answer mapped": assertionIds.has(subject.editorial.shortAnswerAssertionId),
+        "branches mapped": branches.every(branch => assertionIds.has(branch.assertionId)),
+        "variants typed": subject.variants.filter(item => item !== subject.canonicalDisplay).every(item => typedVariants.has(item)),
+        "claim sources": claimRows.every(x => x.claim.evidenceIds.length > 0),
+        "named specialist": claimRows.every(x => (x.review.reviewer || "").trim().length > 1),
+        "rights cleared": claimRows.every(x => ["cleared", "link-only"].includes(x.review.rights)),
+        "claims accepted": claimRows.every(x => x.review.decision === "accept"),
+        "audio resolved": claimRows.every(x => ["verified", "intentionally-unavailable"].includes(x.review.audio)),
+        "discipline sign-off": subject.kind === "name" ? signoffs.onomastics : signoffs.placenames,
+        "history and language": signoffs.historian && signoffs.nativeSpeaker,
+        "rights and accessibility": signoffs.rights && signoffs.accessibility
       };
     }
 
-    fetch("./manifest.json")
-      .then(r => r.json())
-      .then(data => {
-        manifest = data;
-        selectedId = data.stories[0]?.id || null;
-        renderList();
-        renderDetail();
-      })
-      .catch(err => {
-        document.getElementById("detail").innerHTML =
-          `<p class="empty">Could not load manifest.json (${err.message}). Serve this folder over HTTP.</p>`;
-      });
+    function resetKey(key) { const all = loadState(); delete all[key]; saveState(all); renderList(); renderDetail(); }
+    function exportReviewLog() {
+      const blob = new Blob([JSON.stringify({ exportedAt:new Date().toISOString(), packVersion:pack.version, reviews:loadState() }, null, 2)], { type:"application/json" });
+      const link = document.createElement("a"); link.href = URL.createObjectURL(blob); link.download = "anturas-review-log.json"; link.click(); URL.revokeObjectURL(link.href);
+    }
+
+    Promise.all([
+      fetch("/tools/content-review/manifest.json").then(r => { if (!r.ok) throw new Error("manifest"); return r.json(); }),
+      fetch("/ios/AnTuras/Resources/personal-atlas-subjects.json").then(r => { if (!r.ok) throw new Error("personal pack"); return r.json(); })
+    ]).then(([manifestData, packData]) => {
+      manifest = manifestData; pack = packData;
+      selectedKey = `subject:${pack.subjects[0]?.id}`;
+      renderList(); renderDetail();
+    }).catch(err => {
+      document.getElementById("detail").innerHTML = `<p class="empty">Could not load ${esc(err.message)}. Serve the repository root over HTTP.</p>`;
+    });
   </script>
 </body>
 </html>

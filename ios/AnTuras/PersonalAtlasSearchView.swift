@@ -13,9 +13,11 @@ struct PersonalAtlasSearchView: View {
     @State private var query = ""
     @State private var results: [PersonalIndexEntry] = []
     @State private var announcementTask: Task<Void, Never>?
+    @State private var searchStartedAt: Date?
     @FocusState private var fieldFocused: Bool
 
     private let pack = PersonalAtlasLoader.pack()
+    private let searchEngine = PersonalSearchEngine(pack: PersonalAtlasLoader.pack())
     private let resultLimit = 12
 
     private var visibleResults: [PersonalIndexEntry] {
@@ -63,7 +65,11 @@ struct PersonalAtlasSearchView: View {
             }
             fieldFocused = true
         }
-        .onChange(of: query) { _, _ in
+        .onChange(of: query) { oldValue, newValue in
+            if oldValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+               !newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                searchStartedAt = Date()
+            }
             runSearch()
         }
         .onDisappear { announcementTask?.cancel() }
@@ -80,6 +86,7 @@ struct PersonalAtlasSearchView: View {
                 .font(.body)
                 .foregroundStyle(Theme.ink)
                 .submitLabel(.search)
+                .onSubmit { recordSearchOutcome() }
             if !query.isEmpty {
                 Button {
                     query = ""
@@ -114,7 +121,50 @@ struct PersonalAtlasSearchView: View {
             }
             if focus == .either || focus == .place {
                 suggestionRow(title: "A place you know", examples: ["Killala", "Doire", "Baile Átha Cliath", "Trim"])
+                NavigationLink {
+                    NearbyPersonalPlacesView(onOpenSubject: onOpenSubject)
+                } label: {
+                    Label("Find a place near me", systemImage: "location")
+                        .font(.callout.weight(.semibold))
+                        .foregroundStyle(Theme.moss)
+                        .frame(minHeight: 44)
+                }
             }
+
+            if appState.savePersonalSearchHistory {
+                let recent = appState.recentPersonalSubjects.compactMap(PersonalAtlasLoader.indexEntry)
+                if !recent.isEmpty {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Recent pages")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(Theme.inkSoft)
+                        ForEach(recent.prefix(5)) { entry in
+                            Button {
+                                open(entry)
+                            } label: {
+                                HStack {
+                                    Text(entry.canonicalDisplay)
+                                        .font(.system(.callout, design: .serif, weight: .medium))
+                                        .foregroundStyle(Theme.ink)
+                                    Spacer()
+                                    Text(entry.kind == .name ? "Name" : "Place")
+                                        .font(.caption)
+                                        .foregroundStyle(Theme.inkFaint)
+                                }
+                                .frame(minHeight: 44)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+            }
+
+            Toggle("Remember opened atlas pages on this device", isOn: $appState.savePersonalSearchHistory)
+                .font(.footnote)
+                .tint(Theme.moss)
+                .onChange(of: appState.savePersonalSearchHistory) { _, enabled in
+                    if !enabled { appState.recentPersonalSubjects.removeAll() }
+                }
         }
     }
 
@@ -227,14 +277,38 @@ struct PersonalAtlasSearchView: View {
 
     private func open(_ entry: PersonalIndexEntry) {
         Haptics.tap()
+        let analyticsId = PersonalAtlasLoader.subject(id: entry.id)?.editorial.releaseState == "public"
+            ? entry.id
+            : nil
+        let elapsed = searchStartedAt.map {
+            max(0, Int(Date().timeIntervalSince($0) * 1_000))
+        }
+        appState.recordPersonalAtlasEvent(
+            subjectId: analyticsId,
+            outcome: .openedSubject,
+            selectedAmbiguityBranchId: results.count > 1 ? analyticsId : nil,
+            timeToAnswerMilliseconds: elapsed
+        )
         if appState.savePersonalSearchHistory {
             appState.recordPersonalQuery(subjectId: entry.id)
         }
         onOpenSubject(entry.id)
     }
 
+    private func recordSearchOutcome() {
+        if results.isEmpty {
+            appState.recordPersonalAtlasEvent(
+                subjectId: nil,
+                outcome: .unresolved,
+                unresolvedReason: "no-published-match"
+            )
+        } else if results.count > 1 {
+            appState.recordPersonalAtlasEvent(subjectId: nil, outcome: .ambiguityShown)
+        }
+    }
+
     private func runSearch() {
-        let filtered = PersonalSearch.matches(query: query, in: pack).filter { entry in
+        let filtered = searchEngine.matches(query: query).filter { entry in
             switch focus {
             case .either: return true
             case .name: return entry.kind == .name

@@ -20,7 +20,12 @@ targets:
       path: AnTuras/Info.plist
       properties:
         CFBundleDisplayName: An Turas
+        CFBundleURLTypes:
+          - CFBundleURLName: ie.anturas.personal-atlas
+            CFBundleURLSchemes:
+              - anturas
         NSMicrophoneUsageDescription: "An Turas records your voice only so you can hear yourself beside the model line. Recordings never leave this device."
+        NSLocationWhenInUseUsageDescription: "An Turas uses a coarse, one-time location only after you ask for nearby Irish place-names. It is not retained."
         UILaunchScreen: {}
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait

@@ -60,6 +60,18 @@ final class SpeechService: NSObject, ObservableObject {
         speaking && currentText == text
     }
 
+    /// Personal names and local voices use this explicit bundled-asset path only.
+    /// It never falls through to system or synthetic speech.
+    func playVerifiedAsset(named assetName: String, displayText: String) {
+        stop()
+        guard let url = Self.bundledURL(named: assetName) else { return }
+        playClip(url: url, text: displayText)
+    }
+
+    func canPlayVerifiedAsset(named assetName: String) -> Bool {
+        Self.bundledURL(named: assetName) != nil
+    }
+
     // MARK: Sources
 
     private func playClip(url: URL, text: String) {
@@ -121,6 +133,15 @@ final class SpeechService: NSObject, ObservableObject {
             }
         }
         return nil
+    }
+
+    nonisolated static func bundledURL(named assetName: String) -> URL? {
+        let safeName = URL(fileURLWithPath: assetName).lastPathComponent
+        let file = (safeName as NSString).deletingPathExtension
+        let ext = (safeName as NSString).pathExtension
+        guard !file.isEmpty, !ext.isEmpty else { return nil }
+        return Bundle.main.url(forResource: file, withExtension: ext, subdirectory: "Audio")
+            ?? Bundle.main.url(forResource: file, withExtension: ext)
     }
 }
 

@@ -1,7 +1,7 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-12.*
+and visual narrative. English → Irish only. Updated 2026-07-13.*
 
 ## Where we are
 
@@ -83,6 +83,7 @@ not a new atlas expansion or tester round.
 | 2026-07-12 | **Gráinne flagship stress-test + storyboard + weave + lo-fi review; Mayo source brief started.** Provisional pass: she can carry Mayo alone for narrative depth and the 20-word lifecycle; no side story yet. Five-episode spine organised around 1593; language weave and three-level evidence ladder drafted; lo-fi review passes with revisions (tighten Ep3, watch Ep5 overload) and blocks implementation/tester round until paper walkthrough. Historian-ready Mayo 1593 packet begun with claim ledger and rights plan; Breastagh register retargeted as field-note only. | `docs/GRAINNE-SOURCE-STRESS-TEST.md`, `docs/GRAINNE-STORYBOARD.md`, `docs/GRAINNE-LANGUAGE-WEAVE.md`, `docs/GRAINNE-LOFI-REVIEW.md`, `content/mayo/grainne-1593-source-brief.md` |
 | 2026-07-12 | **Walkthrough revisions + parallel launch packets.** Storyboard revised to six episodes; Mayo brief advanced with L1 paraphrases and transcription-first rights default. Offaly Cross, Dublin penny, and Meath/Trim briefs (plus Meath clean-slate confirm) opened. Content-review HTML CMS foundation + manifest; editorial board recruitment pack; Chapters 1–3 legacy salvage map. | `docs/GRAINNE-STORYBOARD.md`, `content/mayo/grainne-1593-source-brief.md`, `content/offaly/`, `content/dublin/`, `content/meath/`, `tools/content-review/`, `docs/CONTENT-REVIEW-CMS.md`, `docs/editorial/BOARD-RECRUITMENT.md`, `docs/LEGACY-SALVAGE-MAP.md` |
 | 2026-07-12 | **Personal atlas Phase 1 pilot shipped in-app.** Behind-a-name / behind-a-place search and result shell on the living atlas: 25 given + 25 surname + 30 place packs, certainty labels, historical-form travel, local saves under “What matters to you,” Mayo story handoffs, first-encounter hooks. Bundled JSON; no genealogy matching; foundation vs authored depth. Specialist review and licensed surname authority still required before public hardening. | `docs/PERSONAL-HISTORIES-FEATURE-PLAN.md`, `ios/AnTuras/PersonalAtlas*.swift`, `Resources/personal-atlas-subjects.json`, `content/personal-atlas/` |
+| 2026-07-13 | **Personal atlas Phase 0–4 engineering delivered behind evidence gates.** Added the hard-case research protocol; assertion-level CMS and deny-by-default public exporter; signed/versioned detail cache and deep links; monthly Logainm ingestion and broad foundation builder; private corrections and privacy-safe query ledger; aggregate distribution pipeline; coarse opt-in nearby places; source-visible static previews; map/time, voices, keepsake, field mode, family worksheet, and community-edition gates. Simulator build and 12 Swift plus 10 Python tests pass. No pilot subject was promoted: specialist, rights, audio, accessibility, community, hosting, and user-validation work remains external release work. | `docs/PERSONAL-ATLAS-*.md`, `ios/AnTuras/PersonalAtlas*.swift`, `tools/content-review/`, `tools/*personal*`, `.github/workflows/logainm-monthly.yml`, `web/personal-atlas/` |
 
 ## Immediate next steps (Phase 2)
 
@@ -96,18 +97,18 @@ not a new atlas expansion or tester round.
 4. **Next tester round: the complete story arc** — gated on (2) and a playable (3).
 5. **Deepen Offaly / Dublin / Meath briefs** — inscription reading, coin type choice,
    grant-copy citation, rights for images.
-6. **Evolve content-review CMS** — claim-ledger panels, draft diff, exportable review
-   log (`docs/CONTENT-REVIEW-CMS.md`); personal-atlas assertion review.
-7. **Personal atlas Phase 1b hardening** — keep Phase 1 open after adversarial review;
-   establish the small specialist-reviewed showcase over the transparent foundation
-   index; replace pilot syntheses, secure the onomastics adviser / Logainm/Gaois account
-   / licensed surname source, and pass the exit scorecard.
+6. ~~**Personal-atlas CMS, release exporter, and Phase 0–4 product infrastructure**~~
+   — **implemented (13 July); authenticated durable review remains later platform work.**
+7. **Personal atlas external release gates** — run the 12–18 person hard-case protocol;
+   establish the small specialist-reviewed showcase; replace pilot syntheses; secure
+   the onomastics adviser, Logainm/Gaois account, licensed surname source, historic-map
+   and community/voice agreements; then pass the scorecard and exporter gates.
 8. **Progress migration design** — follow `docs/LEGACY-SALVAGE-MAP.md` before
    `mayo.grainne-1593` replaces playable ids.
 9. ~~Stress-test / storyboard / weave / lo-fi / Mayo brief start / Offaly·Dublin·Meath
    packets / CMS foundation / board pack / salvage map~~ — **done (12 July).**
-10. ~~Personal atlas Phase 1 app shell + pilot packs~~ — **implemented (12 July);
-    Phase 1b trust, accessibility, and validation gates remain open.**
+10. ~~Personal atlas Phase 1 app shell + Phase 0–4 engineering infrastructure~~ —
+    **implemented (12–13 July); named human/content release gates remain open.**
 
 ### Lower priority (unchanged)
 

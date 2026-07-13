@@ -24,4 +24,15 @@ set in bulk.
 
 ## CMS
 
-`tools/content-review/manifest.json` lists the personal-atlas pack as a review surface alongside county stories.
+`tools/content-review/manifest.json` lists the personal-atlas pack as a review surface
+alongside county stories. The UI now reviews each assertion, its named reviewer,
+rights, audio state, accessibility, competing readings, query demand, and the gated
+`candidate → specialist reviewed → showcase` progression. Public preview export is
+deny-by-default through `tools/publish_personal_atlas.py`.
+
+## Phase-spanning engineering
+
+See `docs/PERSONAL-ATLAS-DELIVERY.md`. Native surfaces include coarse opt-in nearby
+suggestions, private corrections, a privacy-safe query ledger, sourced sharing,
+method/limits, a learning keepsake, offline field mode, and a user-controlled family
+research worksheet. These capabilities do not promote the pilot corpus.

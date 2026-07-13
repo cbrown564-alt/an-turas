@@ -1,0 +1,37 @@
+name: Logainm monthly snapshot
+
+on:
+  schedule:
+    - cron: "17 5 2 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch incremental Logainm changes
+        env:
+          LOGAINM_API_KEY: ${{ secrets.LOGAINM_API_KEY }}
+        run: python3 tools/logainm_monthly_ingest.py content/personal-atlas/logainm-snapshot.json
+      - name: Build broad offline foundation index
+        run: >-
+          python3 tools/build_logainm_foundation_index.py
+          content/personal-atlas/logainm-snapshot.json
+          ios/AnTuras/Resources/personal-atlas-foundation-index.json
+      - name: Validate ingestion and release tools
+        run: python3 -m unittest discover -s tools/tests -v
+      - name: Upload snapshot for editorial review
+        uses: actions/upload-artifact@v4
+        with:
+          name: logainm-snapshot-${{ github.run_id }}
+          path: |
+            content/personal-atlas/logainm-snapshot.json
+            ios/AnTuras/Resources/personal-atlas-foundation-index.json
+          retention-days: 30

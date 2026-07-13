@@ -535,6 +535,15 @@ The feature is wonderful when:
 
 ## Immediate next actions
 
+**Phase-spanning engineering delivery (13 July 2026):** the native and editorial
+infrastructure for Phases 0–4 is implemented and audited in
+`PERSONAL-ATLAS-DELIVERY.md`. This includes the research protocol, claim-level CMS and
+release exporter, corrections and privacy-safe query ledger, coarse opt-in nearby
+places, public-preview shell, sourced sharing, method/limits, membership framing,
+learning keepsake, offline field mode, and family research worksheet. The exporter is
+deny-by-default: no pilot subject is public while specialist, rights, audio,
+accessibility, community, and user-validation gates remain open.
+
 **Phase 1 app shell (12 July 2026):** search, result views, bundled pilot packs
 (25/25/30), local saves, collection shelf, and Mayo handoffs are in the iOS atlas.
 Treat name packs as pilot syntheses until specialist review and licensing land.

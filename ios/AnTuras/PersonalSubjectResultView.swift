@@ -1,10 +1,12 @@
 import SwiftUI
+import MapKit
 
 // MARK: - Personal subject result shell
 
 struct PersonalSubjectResultView: View {
     @EnvironmentObject private var appState: AppState
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @ObservedObject private var speech = SpeechService.shared
 
     let subjectId: String
     var onHandoff: (String) -> Void
@@ -65,14 +67,20 @@ struct PersonalSubjectResultView: View {
                 pronunciations(subject)
                 historicalForms(subject)
                 branches(subject)
+                historicalDistribution(subject)
+                nameTravelling(subject)
                 if let place = subject.placeProfile {
-                    placeGround(place)
+                    placeGround(place, subject: subject)
+                    historicMapLayers(place, subject: subject)
                 }
                 languageMoment(subject)
                 familyBoundary(subject)
                 deeperOrHandoff(subject)
                 people(subject)
                 saveRow(subject)
+                advancedActions(subject)
+                membershipInvitation
+                communityEdition(subject)
                 footer(subject)
             }
             .padding(.horizontal, 20)
@@ -95,7 +103,19 @@ struct PersonalSubjectResultView: View {
             Text(subject.subtitle)
                 .font(.callout)
                 .foregroundStyle(Theme.inkSoft)
-            if !subject.variants.isEmpty {
+            if let typedVariants = subject.variantRelationships, !typedVariants.isEmpty {
+                ForEach(Array(typedVariants.prefix(4).enumerated()), id: \.offset) { _, variant in
+                    HStack(alignment: .firstTextBaseline, spacing: 8) {
+                        Text(variant.display)
+                            .font(.system(.callout, design: .serif))
+                            .foregroundStyle(Theme.lichen)
+                        Text(variant.relationship.label)
+                            .font(.caption)
+                            .foregroundStyle(Theme.inkFaint)
+                    }
+                    .accessibilityElement(children: .combine)
+                }
+            } else if !subject.variants.isEmpty {
                 Text(subject.variants.filter { $0 != subject.canonicalDisplay }.prefix(4).joined(separator: " · "))
                     .font(.system(.callout, design: .serif))
                     .foregroundStyle(Theme.lichen)
@@ -109,7 +129,7 @@ struct PersonalSubjectResultView: View {
                 .font(.system(.title3, design: .serif))
                 .foregroundStyle(Theme.ink)
                 .lineSpacing(5)
-            if let first = subject.assertions.first {
+            if let first = shortAnswerAssertion(for: subject) {
                 PersonalEvidenceMark(certainty: first.certainty) {
                     openEvidence(first)
                 }
@@ -121,6 +141,7 @@ struct PersonalSubjectResultView: View {
     private func pronunciations(_ subject: OriginSubject) -> some View {
         let items = subject.nameProfile?.pronunciations ?? subject.placeProfile?.pronunciations ?? []
         let guides = items.filter { item in
+            if item.audioState == .verified, item.audio != nil { return true }
             guard let phonetic = item.phonetic else { return false }
             return !phonetic.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         }
@@ -147,13 +168,35 @@ struct PersonalSubjectResultView: View {
             Text(audioCaption(item))
                 .font(.caption)
                 .foregroundStyle(Theme.inkSoft)
+            if item.audioState == .verified,
+               let audio = item.audio,
+               speech.canPlayVerifiedAsset(named: audio.assetName) {
+                Button {
+                    if speech.isSpeaking(item.text) {
+                        speech.stop()
+                    } else {
+                        speech.playVerifiedAsset(named: audio.assetName, displayText: item.text)
+                    }
+                } label: {
+                    Label(
+                        speech.isSpeaking(item.text) ? "Stop" : "Hear \(audio.speaker)",
+                        systemImage: speech.isSpeaking(item.text) ? "stop.fill" : "speaker.wave.2"
+                    )
+                    .font(.callout.weight(.semibold))
+                    .frame(minHeight: 44)
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(Theme.moss)
+                Text("\(audio.dialect) · recorded \(audio.recordedAt) · \(audio.permissionState)")
+                    .font(.caption)
+                    .foregroundStyle(Theme.inkFaint)
+            }
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Theme.mossTint)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(item.text). \(audioCaption(item))")
+        .accessibilityElement(children: .contain)
     }
 
     private func audioCaption(_ item: PersonalPronunciation) -> String {
@@ -292,7 +335,7 @@ struct PersonalSubjectResultView: View {
         }
     }
 
-    private func placeGround(_ place: PlaceProfile) -> some View {
+    private func placeGround(_ place: PlaceProfile, subject: OriginSubject) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             sectionLabel("On the ground")
             Text(place.hierarchy)
@@ -302,6 +345,25 @@ struct PersonalSubjectResultView: View {
                 .font(.footnote)
                 .foregroundStyle(Theme.inkSoft)
             if let coords = place.coordinates {
+                Map(
+                    initialPosition: .region(
+                        MKCoordinateRegion(
+                            center: CLLocationCoordinate2D(latitude: coords.lat, longitude: coords.lon),
+                            span: MKCoordinateSpan(latitudeDelta: 0.08, longitudeDelta: 0.08)
+                        )
+                    ),
+                    interactionModes: [.pan, .zoom]
+                ) {
+                    Marker(
+                        subject.canonicalDisplay,
+                        coordinate: CLLocationCoordinate2D(latitude: coords.lat, longitude: coords.lon)
+                    )
+                    .tint(Theme.moss)
+                }
+                .frame(minHeight: 220)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .accessibilityHidden(true)
+
                 Text(String(format: "%.3f, %.3f", coords.lat, coords.lon))
                     .font(.system(.caption, design: .monospaced))
                     .foregroundStyle(Theme.inkFaint)
@@ -322,6 +384,107 @@ struct PersonalSubjectResultView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Theme.sunk)
         .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+
+    @ViewBuilder
+    private func historicalDistribution(_ subject: OriginSubject) -> some View {
+        if let distributions = subject.nameProfile?.distributions, !distributions.isEmpty {
+            VStack(alignment: .leading, spacing: 12) {
+                sectionLabel("In surviving records")
+                ForEach(Array(distributions.enumerated()), id: \.offset) { _, item in
+                    VStack(alignment: .leading, spacing: 6) {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text(item.dataset)
+                                .font(.callout.weight(.semibold))
+                                .foregroundStyle(Theme.ink)
+                            Spacer(minLength: 12)
+                            if let year = item.year {
+                                Text(String(year))
+                                    .font(.system(.caption, design: .monospaced, weight: .semibold))
+                                    .foregroundStyle(Theme.lichen)
+                            }
+                        }
+                        if let geography = item.geography {
+                            Text(geography)
+                                .font(.caption)
+                                .foregroundStyle(Theme.inkFaint)
+                        }
+                        if item.suppressed == true {
+                            Label("Value suppressed by the source dataset", systemImage: "eye.slash")
+                                .font(.callout)
+                                .foregroundStyle(Theme.inkSoft)
+                        } else if let count = item.count {
+                            Text("\(count.formatted()) records in this dataset and geography")
+                                .font(.system(.title3, design: .serif, weight: .semibold))
+                                .foregroundStyle(Theme.moss)
+                        }
+                        Text(item.note)
+                            .font(.callout)
+                            .foregroundStyle(Theme.inkSoft)
+                        if let rawURL = item.sourceURL, let url = URL(string: rawURL) {
+                            Link("Open distribution source", destination: url)
+                                .font(.callout.weight(.semibold))
+                                .foregroundStyle(Theme.moss)
+                                .frame(minHeight: 44)
+                        }
+                    }
+                    .padding(.vertical, 4)
+                    AtlasRule()
+                }
+
+                Text("These are patterns in a named record set, not evidence that your family came from a place.")
+                    .font(.footnote)
+                    .foregroundStyle(Theme.inkSoft)
+                    .padding(12)
+                    .background(Theme.sunk)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func historicMapLayers(_ place: PlaceProfile, subject: OriginSubject) -> some View {
+        if let layers = place.historicMapLayers, !layers.isEmpty {
+            VStack(alignment: .leading, spacing: 12) {
+                sectionLabel("The same ground, another time")
+                ForEach(layers) { layer in
+                    PersonalHistoricMapAlignmentView(subject: subject, layer: layer)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func nameTravelling(_ subject: OriginSubject) -> some View {
+        if let moments = subject.nameProfile?.travelMoments, !moments.isEmpty {
+            VStack(alignment: .leading, spacing: 12) {
+                sectionLabel("A name travelling")
+                ForEach(moments) { moment in
+                    HStack(alignment: .top, spacing: 14) {
+                        Text(moment.year.map(String.init) ?? "—")
+                            .font(.system(.caption, design: .monospaced, weight: .semibold))
+                            .foregroundStyle(Theme.lichen)
+                            .frame(minWidth: 48, alignment: .leading)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(moment.form)
+                                .font(.system(.headline, design: .serif))
+                                .foregroundStyle(Theme.ink)
+                            Text("\(moment.place) · \(moment.sourceLabel)")
+                                .font(.caption)
+                                .foregroundStyle(Theme.inkFaint)
+                            Text(moment.note)
+                                .font(.callout)
+                                .foregroundStyle(Theme.inkSoft)
+                        }
+                    }
+                    .accessibilityElement(children: .combine)
+                    AtlasRule()
+                }
+                Text("This follows forms in named records. It does not describe your ancestry or a personal migration route.")
+                    .font(.footnote)
+                    .foregroundStyle(Theme.inkSoft)
+            }
+        }
     }
 
     @ViewBuilder
@@ -376,6 +539,8 @@ struct PersonalSubjectResultView: View {
         if let handoff = subject.editorial.storyHandoff {
             PrimaryButton(title: handoff.label, fullWidth: true) {
                 Haptics.tap()
+                let analyticsId = subject.editorial.releaseState == "public" ? subject.id : nil
+                appState.recordPersonalAtlasEvent(subjectId: analyticsId, outcome: .continued)
                 onHandoff(handoff.route)
             }
         }
@@ -430,6 +595,85 @@ struct PersonalSubjectResultView: View {
         .buttonStyle(CarvePress())
     }
 
+    private func advancedActions(_ subject: OriginSubject) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            NavigationLink {
+                PersonalKeepsakeView(subject: subject)
+            } label: {
+                actionRow("Make a learning keepsake", systemImage: "rectangle.and.pencil.and.ellipsis")
+            }
+
+            if subject.kind == .place {
+                NavigationLink {
+                    PersonalFieldModeView(subject: subject)
+                } label: {
+                    actionRow("Take this place offline", systemImage: "figure.walk")
+                }
+            }
+
+            if subject.nameProfile?.nameKind == .surname {
+                NavigationLink {
+                    FamilyResearchWorksheetView(subject: subject)
+                } label: {
+                    actionRow("Begin a private research worksheet", systemImage: "list.clipboard")
+                }
+            }
+
+            if subject.editorial.releaseState == "public",
+               let url = PersonalAtlasDeepLink.webURL(for: subject.id) {
+                ShareLink(item: url, subject: Text(subject.canonicalDisplay), message: Text(shareText(for: subject))) {
+                    actionRow("Share a sourced excerpt", systemImage: "square.and.arrow.up")
+                }
+            } else {
+                ShareLink(item: shareText(for: subject)) {
+                    actionRow("Share this pilot excerpt", systemImage: "square.and.arrow.up")
+                }
+            }
+        }
+        .background(Theme.raised)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+
+    private var membershipInvitation: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Keep travelling through the island")
+                .font(.system(.headline, design: .serif))
+                .foregroundStyle(Theme.ink)
+            Text("This personal answer stays complete and free. Membership supports deeper authored stories, county journeys, voices, and offline field seasons.")
+                .font(.callout)
+                .foregroundStyle(Theme.inkSoft)
+                .lineSpacing(3)
+        }
+        .padding(16)
+        .background(Theme.sunk)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+
+    @ViewBuilder
+    private func communityEdition(_ subject: OriginSubject) -> some View {
+        if let edition = subject.editorial.communityEdition,
+           edition.consentState == "agreed" {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(edition.title)
+                    .font(.system(.headline, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                Text(edition.credit)
+                    .font(.callout)
+                    .foregroundStyle(Theme.inkSoft)
+                Text("Edited by \(edition.editor) · reviewed by \(edition.reviewer)")
+                    .font(.caption)
+                    .foregroundStyle(Theme.inkFaint)
+                if let url = URL(string: edition.correctionURL) {
+                    Link("Edition corrections policy", destination: url)
+                        .font(.callout.weight(.semibold))
+                        .foregroundStyle(Theme.moss)
+                        .frame(minHeight: 44)
+                }
+            }
+            .padding(.vertical, 4)
+        }
+    }
+
     private func footer(_ subject: OriginSubject) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Button {
@@ -440,7 +684,47 @@ struct PersonalSubjectResultView: View {
                     .foregroundStyle(Theme.inkSoft)
             }
             .frame(minHeight: 44)
+
+            NavigationLink {
+                PersonalAtlasFeedbackView(subject: subject, assertionId: focusedAssertionId)
+            } label: {
+                Label("Suggest a correction or local form", systemImage: "text.bubble")
+                    .font(.callout.weight(.semibold))
+                    .foregroundStyle(Theme.inkSoft)
+                    .frame(minHeight: 44)
+            }
+
+            NavigationLink {
+                PersonalAtlasMethodologyView()
+            } label: {
+                Label("Method, privacy, and limits", systemImage: "info.circle")
+                    .font(.callout.weight(.semibold))
+                    .foregroundStyle(Theme.inkSoft)
+                    .frame(minHeight: 44)
+            }
         }
+    }
+
+    private func actionRow(_ title: String, systemImage: String) -> some View {
+        HStack(spacing: 12) {
+            Image(systemName: systemImage)
+                .foregroundStyle(Theme.moss)
+                .frame(width: 24)
+            Text(title)
+                .font(.callout.weight(.semibold))
+                .foregroundStyle(Theme.ink)
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Theme.inkFaint)
+        }
+        .padding(.horizontal, 14)
+        .frame(minHeight: 52)
+        .contentShape(Rectangle())
+    }
+
+    private func shareText(for subject: OriginSubject) -> String {
+        "\(subject.canonicalDisplay) — \(subject.editorial.saveExcerpt) Source path and evidence are available in An Turas. Pilot content, version \(subject.editorial.contentVersion)."
     }
 
     private func sectionLabel(_ text: String) -> some View {
@@ -462,7 +746,19 @@ struct PersonalSubjectResultView: View {
     }
 
     private func matchingAssertion(for branch: EtymologyBranch, in subject: OriginSubject) -> Assertion? {
-        subject.assertions.first { $0.certainty == branch.certainty } ?? subject.assertions.first
+        if let assertionId = branch.assertionId,
+           let exact = subject.assertions.first(where: { $0.id == assertionId }) {
+            return exact
+        }
+        return subject.assertions.first { $0.certainty == branch.certainty } ?? subject.assertions.first
+    }
+
+    private func shortAnswerAssertion(for subject: OriginSubject) -> Assertion? {
+        if let assertionId = subject.editorial.shortAnswerAssertionId,
+           let exact = subject.assertions.first(where: { $0.id == assertionId }) {
+            return exact
+        }
+        return subject.assertions.first
     }
 
     private func shouldShowBranchLabel(_ branch: EtymologyBranch, total: Int) -> Bool {
@@ -500,9 +796,23 @@ struct PersonalSourcesSheet: View {
                         Text("Scope · \(assertion.scope)")
                             .font(.caption)
                             .foregroundStyle(Theme.inkFaint)
-                        Text(reviewLine(assertion))
-                            .font(.caption)
-                            .foregroundStyle(Theme.inkFaint)
+                        reviewHistory(assertion)
+                        let competitors = competingAssertions(for: assertion)
+                        if !competitors.isEmpty {
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text("Competing readings")
+                                    .font(.caption.weight(.semibold))
+                                    .foregroundStyle(Theme.rust)
+                                ForEach(competitors) { competitor in
+                                    Text(competitor.statement)
+                                        .font(.callout)
+                                        .foregroundStyle(Theme.inkSoft)
+                                }
+                            }
+                            .padding(12)
+                            .background(Theme.sunk)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                        }
                         ForEach(supportingEvidence(for: assertion)) { item in
                             evidenceRow(item)
                         }
@@ -564,6 +874,31 @@ struct PersonalSourcesSheet: View {
             return "Pilot editorial note · specialist and rights review pending"
         }
         return "Reviewed \(assertion.reviewedAt) · \(assertion.reviewer) · \(assertion.rightsState)"
+    }
+
+    @ViewBuilder
+    private func reviewHistory(_ assertion: Assertion) -> some View {
+        if let history = assertion.reviewHistory, !history.isEmpty {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Review history")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.inkSoft)
+                ForEach(history) { review in
+                    Text("\(review.reviewedAt) · \(review.reviewer) · \(review.decision)")
+                        .font(.caption)
+                        .foregroundStyle(Theme.inkFaint)
+                }
+            }
+        } else {
+            Text(reviewLine(assertion))
+                .font(.caption)
+                .foregroundStyle(Theme.inkFaint)
+        }
+    }
+
+    private func competingAssertions(for assertion: Assertion) -> [Assertion] {
+        let ids = Set(assertion.competingAssertionIds)
+        return subject.assertions.filter { ids.contains($0.id) }
     }
 
     private func evidenceRow(_ item: Evidence) -> some View {

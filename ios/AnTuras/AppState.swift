@@ -1,6 +1,57 @@
 import Foundation
 import Combine
 
+struct PersonalAtlasFeedback: Codable, Identifiable, Hashable {
+    enum Kind: String, Codable, CaseIterable {
+        case localForm
+        case wrongPlace
+        case correction
+    }
+
+    let id: UUID
+    let subjectId: String
+    let assertionId: String?
+    let kind: Kind
+    let context: String
+    let sourceURL: String?
+    let createdAt: Date
+}
+
+struct PersonalAtlasQueryEvent: Codable, Identifiable, Hashable {
+    enum Outcome: String, Codable {
+        case openedSubject
+        case unresolved
+        case ambiguityShown
+        case continued
+    }
+
+    let id: UUID
+    let subjectId: String?
+    let outcome: Outcome
+    let unresolvedReason: String?
+    let selectedAmbiguityBranchId: String?
+    let timeToAnswerMilliseconds: Int?
+    let createdAt: Date
+
+    init(
+        id: UUID = UUID(),
+        subjectId: String?,
+        outcome: Outcome,
+        unresolvedReason: String? = nil,
+        selectedAmbiguityBranchId: String? = nil,
+        timeToAnswerMilliseconds: Int? = nil,
+        createdAt: Date = Date()
+    ) {
+        self.id = id
+        self.subjectId = subjectId
+        self.outcome = outcome
+        self.unresolvedReason = unresolvedReason
+        self.selectedAmbiguityBranchId = selectedAmbiguityBranchId
+        self.timeToAnswerMilliseconds = timeToAnswerMilliseconds
+        self.createdAt = createdAt
+    }
+}
+
 // MARK: - Progress persistence (prototype-grade: UserDefaults JSON)
 
 final class AppState: ObservableObject {
@@ -38,12 +89,17 @@ final class AppState: ObservableObject {
         /// Opt-in recent personal-atlas subject IDs (never raw query text).
         var recentPersonalSubjects: [String] = []
         var savePersonalSearchHistory: Bool = false
+        /// Private, device-local correction leads. Never public without review.
+        var personalAtlasFeedback: [PersonalAtlasFeedback] = []
+        /// Privacy-safe product events: published ids and coarse outcomes only.
+        var personalAtlasQueryLedger: [PersonalAtlasQueryEvent] = []
 
         init() {}
 
         private enum Keys: String, CodingKey {
             case activeChapter, doneByChapter, doneByStory, name, visits, lexemes, patternItems, done
             case savedPersonalSubjects, recentPersonalSubjects, savePersonalSearchHistory
+            case personalAtlasFeedback, personalAtlasQueryLedger
         }
 
         // Custom decode: migrate single-chapter saves and pre-Ar-Ais writes.
@@ -59,6 +115,8 @@ final class AppState: ObservableObject {
             savedPersonalSubjects = try keys.decodeIfPresent([String].self, forKey: .savedPersonalSubjects) ?? []
             recentPersonalSubjects = try keys.decodeIfPresent([String].self, forKey: .recentPersonalSubjects) ?? []
             savePersonalSearchHistory = try keys.decodeIfPresent(Bool.self, forKey: .savePersonalSearchHistory) ?? false
+            personalAtlasFeedback = try keys.decodeIfPresent([PersonalAtlasFeedback].self, forKey: .personalAtlasFeedback) ?? []
+            personalAtlasQueryLedger = try keys.decodeIfPresent([PersonalAtlasQueryEvent].self, forKey: .personalAtlasQueryLedger) ?? []
 
             if doneByChapter.isEmpty,
                let legacyDone = try keys.decodeIfPresent([Bool].self, forKey: .done) {
@@ -81,6 +139,8 @@ final class AppState: ObservableObject {
             try keys.encode(savedPersonalSubjects, forKey: .savedPersonalSubjects)
             try keys.encode(recentPersonalSubjects, forKey: .recentPersonalSubjects)
             try keys.encode(savePersonalSearchHistory, forKey: .savePersonalSearchHistory)
+            try keys.encode(personalAtlasFeedback, forKey: .personalAtlasFeedback)
+            try keys.encode(personalAtlasQueryLedger, forKey: .personalAtlasQueryLedger)
         }
     }
 
@@ -100,6 +160,12 @@ final class AppState: ObservableObject {
         didSet { persist() }
     }
     @Published var savePersonalSearchHistory: Bool {
+        didSet { persist() }
+    }
+    @Published var personalAtlasFeedback: [PersonalAtlasFeedback] {
+        didSet { persist() }
+    }
+    @Published var personalAtlasQueryLedger: [PersonalAtlasQueryEvent] {
         didSet { persist() }
     }
 
@@ -292,6 +358,8 @@ final class AppState: ObservableObject {
         savedPersonalSubjects = saved.savedPersonalSubjects
         recentPersonalSubjects = saved.recentPersonalSubjects
         savePersonalSearchHistory = saved.savePersonalSearchHistory
+        personalAtlasFeedback = saved.personalAtlasFeedback
+        personalAtlasQueryLedger = saved.personalAtlasQueryLedger
 
         let migratedFromLegacy = UserDefaults.standard.data(forKey: Self.key) == nil
             && UserDefaults.standard.data(forKey: Self.legacyKey) != nil
@@ -548,6 +616,8 @@ final class AppState: ObservableObject {
         saved.savedPersonalSubjects = savedPersonalSubjects
         saved.recentPersonalSubjects = recentPersonalSubjects
         saved.savePersonalSearchHistory = savePersonalSearchHistory
+        saved.personalAtlasFeedback = personalAtlasFeedback
+        saved.personalAtlasQueryLedger = personalAtlasQueryLedger
         if let data = try? JSONEncoder().encode(saved) {
             UserDefaults.standard.set(data, forKey: Self.key)
         }
@@ -575,6 +645,49 @@ final class AppState: ObservableObject {
         if recentPersonalSubjects.count > 12 {
             recentPersonalSubjects = Array(recentPersonalSubjects.prefix(12))
         }
+    }
+
+    func submitPersonalAtlasFeedback(
+        subjectId: String,
+        assertionId: String?,
+        kind: PersonalAtlasFeedback.Kind,
+        context: String,
+        sourceURL: String?
+    ) {
+        personalAtlasFeedback.insert(
+            PersonalAtlasFeedback(
+                id: UUID(),
+                subjectId: subjectId,
+                assertionId: assertionId,
+                kind: kind,
+                context: context.trimmingCharacters(in: .whitespacesAndNewlines),
+                sourceURL: sourceURL?.trimmingCharacters(in: .whitespacesAndNewlines),
+                createdAt: Date()
+            ),
+            at: 0
+        )
+    }
+
+    /// Deliberately accepts no raw query or coordinates. This API makes the privacy
+    /// boundary enforceable at the call site rather than relying on convention.
+    func recordPersonalAtlasEvent(
+        subjectId: String?,
+        outcome: PersonalAtlasQueryEvent.Outcome,
+        unresolvedReason: String? = nil,
+        selectedAmbiguityBranchId: String? = nil,
+        timeToAnswerMilliseconds: Int? = nil
+    ) {
+        personalAtlasQueryLedger.insert(
+            PersonalAtlasQueryEvent(
+                subjectId: subjectId,
+                outcome: outcome,
+                unresolvedReason: unresolvedReason,
+                selectedAmbiguityBranchId: selectedAmbiguityBranchId,
+                timeToAnswerMilliseconds: timeToAnswerMilliseconds
+            ),
+            at: 0
+        )
+        personalAtlasQueryLedger = Array(personalAtlasQueryLedger.prefix(200))
     }
 
     // MARK: - Save migration

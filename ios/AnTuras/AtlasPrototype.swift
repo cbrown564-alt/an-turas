@@ -37,6 +37,24 @@ struct AtlasPrototypeView: View {
         }
         .onAppear {
             if atlas.learnerName.isEmpty { atlas.learnerName = appState.learnerName }
+            #if DEBUG
+            let args = ProcessInfo.processInfo.arguments
+            if let flag = args.firstIndex(of: "--personal"),
+               args.indices.contains(flag + 1),
+               PersonalAtlasLoader.subject(id: args[flag + 1]) != nil {
+                atlas.hasOpenedAtlas = true
+                path = [.personalSubject(args[flag + 1])]
+            } else if args.contains("--personal-search") {
+                atlas.hasOpenedAtlas = true
+                path = [.personalSearch(.either)]
+            }
+            #endif
+        }
+        .onOpenURL { url in
+            guard let id = PersonalAtlasDeepLink.subjectID(from: url),
+                  PersonalAtlasLoader.subject(id: id) != nil else { return }
+            atlas.hasOpenedAtlas = true
+            path = [.personalSubject(id)]
         }
     }
 

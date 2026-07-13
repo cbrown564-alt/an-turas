@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>An Turas — Personal atlas</title>
+  <style>
+    :root { color-scheme: light dark; --bg:#ecede7; --raised:#f7f7f2; --ink:#23281f; --soft:#5a6153; --moss:#4c6647; --line:#cbcec1; }
+    @media (prefers-color-scheme:dark) { :root { --bg:#131714; --raised:#1c211c; --ink:#d9dcd1; --soft:#aeb5a8; --moss:#95b28b; --line:#3d453d; } }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(100% - 40px,680px); margin:0 auto; padding:56px 0 72px; }
+    h1,h2 { font-family:"New York",Georgia,serif; text-wrap:balance; }
+    h1 { font-size:clamp(2rem,8vw,3.8rem); line-height:1.08; letter-spacing:-.025em; margin:.2rem 0 1rem; }
+    h2 { font-size:1.35rem; margin:2.2rem 0 .6rem; }
+    p { max-width:68ch; text-wrap:pretty; }
+    .context { color:var(--moss); font-weight:650; }
+    .soft { color:var(--soft); }
+    .claim { padding:18px 0; border-top:1px solid var(--line); }
+    .claim button { min-height:44px; padding:0; border:0; background:none; color:var(--moss); font:inherit; font-weight:650; cursor:pointer; }
+    .evidence { padding:14px; background:var(--raised); border-radius:10px; }
+    a { color:var(--moss); min-height:44px; display:inline-flex; align-items:center; }
+    .missing { margin-top:48px; padding:18px; background:var(--raised); border-radius:10px; }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; transition:none !important; } }
+  </style>
+</head>
+<body>
+  <main id="app" aria-live="polite"><p class="soft">Opening the source-backed preview…</p></main>
+  <script>
+    const esc = value => String(value ?? "").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"})[c]);
+    const id = new URLSearchParams(location.search).get("subject") || location.hash.slice(1);
+    fetch("./public-subjects.json").then(r=>r.json()).then(pack=>{
+      const subject=pack.subjects.find(item=>item.id===id);
+      if(!subject){
+        document.getElementById("app").innerHTML=`<p class="context">The personal atlas</p><h1>This preview is not published.</h1><div class="missing"><p>It may still be in specialist, rights, or accessibility review. An Turas does not publish a plausible-looking answer while those gates are open.</p></div><p class="soft">${esc(pack.attribution)}</p>`;
+        return;
+      }
+      document.title=`${subject.canonicalDisplay} — An Turas`;
+      document.querySelector('meta[name="robots"]').content="index,follow";
+      document.getElementById("app").innerHTML=`<p class="context">${subject.kind==="name"?"A name you carry":"A place you know"}</p><h1>${esc(subject.canonicalDisplay)}</h1><p class="soft">${esc(subject.subtitle)}</p><p>${esc(subject.editorial.shortAnswer)}</p><h2>Why we say this</h2>${subject.assertions.map((claim,index)=>`<section class="claim"><p>${esc(claim.statement)}</p><button aria-expanded="false" aria-controls="e${index}" onclick="const e=document.getElementById('e${index}');const open=e.hidden;e.hidden=!open;this.setAttribute('aria-expanded',open)">Show evidence and review state</button><div class="evidence" id="e${index}" hidden><p><strong>${esc(claim.certainty.replaceAll(/([A-Z])/g,' $1'))}</strong> · ${esc(claim.scope)}</p>${subject.evidence.filter(e=>claim.evidenceIds.includes(e.id)).map(e=>`<p>${esc(e.citation)} ${e.stableURL?`<a href="${esc(e.stableURL)}" rel="noreferrer">Open source</a>`:""}</p>`).join('')}</div></section>`).join('')}<p class="soft">Content version ${esc(subject.editorial.contentVersion)} · ${esc(pack.attribution)}</p>`;
+    }).catch(()=>{ document.getElementById("app").innerHTML='<h1>The preview is unavailable.</h1><p>Try again later. The app keeps saved reviewed packs available offline.</p>'; });
+  </script>
+</body>
+</html>
