@@ -40,7 +40,7 @@ struct FirstEncounterTakeawayView: View {
                         .lineSpacing(4)
                 }
 
-                PrimaryButton(title: "Return to Ireland", fullWidth: true) {
+                PrimaryButton(title: "Continue the authored road", fullWidth: true) {
                     Haptics.tap()
                     onContinue()
                 }
@@ -233,7 +233,7 @@ struct AtlasCollectionView: View {
                 HStack(spacing: 12) {
                     Text("20")
                         .font(.system(size: 31, weight: .semibold, design: .serif)).foregroundStyle(Theme.inkFaint)
-                    Text("The county promise remains visible without becoming a spreadsheet. The production story would earn and retrieve all twenty useful items.")
+                    Text("Each completed county road carries twenty useful words here for later return.")
                         .font(.system(size: 13)).foregroundStyle(Theme.inkSoft).lineSpacing(3)
                 }
             }
@@ -283,7 +283,7 @@ private struct EvidenceCollectionCard: View {
                     HStack { CertaintyPill(certainty: .documented); Spacer() }
                     Text("1593 state-paper record")
                         .font(.system(size: 19, weight: .semibold, design: .serif)).foregroundStyle(Theme.ink)
-                    Text(unlocked ? "Mayo · Gráinne Ní Mháille · explanatory facsimile inspected" : "Encounter it inside the Mayo documentary")
+                    Text(unlocked ? "Mayo · Gráinne Ní Mháille · annotated transcription inspected" : "Encounter it inside the Mayo documentary")
                         .font(.system(size: 12.5)).foregroundStyle(Theme.inkSoft).lineSpacing(3)
                     Text("Question · What did she ask for?")
                         .font(.system(size: 11.5, weight: .semibold)).foregroundStyle(Theme.lichen)

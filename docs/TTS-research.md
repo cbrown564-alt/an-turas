@@ -4,19 +4,37 @@
 decisions. The bar is fada vowel length and dialect authenticity, not “sounds fine to
 an English speaker.”*
 
-## Decision (2026-07-05, updated)
+## Current voice decision — 2026-07-13
+
+For the full initial launch, the project voice is the ElevenLabs generated voice
+**Irish Cultural Guide** (`NPWroowF4phQhaPWjXPj`). It has an `en-irish` accent label
+and was preferred in browser review for its Irish-English documentary character. It is
+not perfect, and preview generations show some variability, but it is mostly accurate
+and good enough to use throughout the launch. The Gaeilge-first Voice Design
+alternatives tested on 2026-07-13 were worse at Irish pronunciation. Every generated
+clip still requires Irish-language and editorial QA before bundling, especially for
+Gaeilge headwords, fadas, mutations, and short phrases.
+
+This is a pragmatic launch selection, not a claim that English-with-an-Irish-accent is
+equivalent to a native Gaeilge TTS voice. After launch, pursue partnerships with
+Trinity College Dublin, ABAIR, or other established Irish-language speech/data
+organisations to improve dialect fidelity and pronunciation coverage.
+
+## Historical Chapter 1 bake-off decision (2026-07-05, superseded for Gráinne by D16)
 
 | Provider | Verdict |
 |---|---|
-| **Gemini 3.1 Flash TTS** | **Production voice** — passed native-speaker review; all-generated with QA per release (D7). Prompt-steered Connacht, commercially usable. Install via `tools/tts-bakeoff/` (`bundle_winner: gemini-3-flash`). |
+| **Gemini 3.1 Flash TTS** | **Prior Chapter 1 production/playtest voice** — passed native-speaker review; retained as a fallback/comparator for Gráinne. |
 | **ABAIR** | **Optional upgrade** — quality ceiling; evaluation-only until TCD grants bundling rights ([ABAIR.md](ABAIR.md)). Not a Phase 2 blocker. |
 | **Azure Speech `ga-IE`** | **Deprioritised** — superseded by Gemini passing native-speaker review; revisit only if quality regresses on later chapters. |
-| **ElevenLabs `eleven_v3`** | **Rejected** — not good enough on Irish pronunciation (e.g. *féar*/*fear*). |
+| **ElevenLabs `eleven_v3`** | **Rejected for direct Gaeilge accuracy** — the generic voice bake-off was not good enough on Irish pronunciation (e.g. *féar*/*fear*). The Irish Cultural Guide voice is selected separately for Irish-English narrative (D16). |
 | **Gemini 2.5 Flash TTS** | **Rejected** — superseded by 3.1; not good enough. |
 
-**Production audio strategy (D7):** every utterance generated via Gemini 3.1, then
-native-speaker QA'd before bundling in offline chapter packs. No hybrid human recording
-for v1.
+**Current production audio strategy (D17):** initial-launch story and teaching audio
+uses Irish Cultural Guide;
+Irish teaching audio is generated with the selected voice only where pronunciation QA
+passes. Every utterance is reviewed before bundling in offline chapter packs. No hybrid
+human recording for v1.
 
 ## Tier 1 — purpose-built for Irish (Gaeilge)
 
@@ -79,10 +97,10 @@ for v1.
 
 ## Next steps
 
-1. **Install Gemini 3.1 picks** — set `bundle_winner: gemini-3-flash` in
-   `tools/tts-bakeoff/winners.json`, run `python bakeoff.py install`.
+1. **Generate the Irish Cultural Guide set** for all cleared initial-launch story and
+   language lines; keep approved clips under `tools/tts-bakeoff/` until bundle integration.
 2. **Production pipeline** — script → generate → native-speaker QA → bundle per chapter
-   release (D7).
+   release (D17).
 3. **ABAIR** — optional upgrade if bundling rights granted; send commercial enquiry
    ([ABAIR-enquiry.md](ABAIR-enquiry.md)) when convenient, not blocking Phase 2.
 

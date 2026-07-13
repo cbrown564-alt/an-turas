@@ -3,9 +3,11 @@ import SwiftUI
 // MARK: - Mayo editorial dossier
 
 struct MayoDossierView: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let onMeetGrainne: () -> Void
     let onBegin: () -> Void
     let onFieldNote: () -> Void
+    let onOpenEvidence: () -> Void
 
     var body: some View {
         ScrollView {
@@ -17,29 +19,28 @@ struct MayoDossierView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 14))
                     .overlay(RoundedRectangle(cornerRadius: 14).stroke(Theme.line, lineWidth: 0.8))
 
-                HStack(spacing: 8) {
-                    CertaintyPill(certainty: .documented)
-                    Text("1593 · document · person · sea route")
-                        .font(.system(size: 11.5, weight: .medium))
-                        .foregroundStyle(Theme.inkFaint)
-                }
+                Label("1593 · state paper · person · sea route", systemImage: "doc.text")
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(Theme.inkFaint)
 
                 Button(action: onMeetGrainne) {
-                    HStack(spacing: 16) {
-                        GrainnePortraitMark()
-                            .frame(width: 86, height: 104)
-                        VStack(alignment: .leading, spacing: 5) {
-                            Eyebrow(text: "THE HEADLINE PERSON", color: Theme.atlasGreen)
-                            Text("Gráinne Ní Mháille")
-                                .font(.system(size: 24, weight: .semibold, design: .serif))
-                                .foregroundStyle(Theme.ink)
-                            Text("A maritime leader from Mayo whose dealings with the English state left a documentary record.")
-                                .font(.system(size: 13.5))
-                                .foregroundStyle(Theme.inkSoft)
-                                .lineSpacing(3)
+                    Group {
+                        if dynamicTypeSize.isAccessibilitySize {
+                            VStack(alignment: .leading, spacing: 12) {
+                                GrainnePortraitMark()
+                                    .frame(width: 110, height: 132)
+                                headlinePersonText
+                                Image(systemName: "chevron.right").foregroundStyle(Theme.inkFaint)
+                            }
+                        } else {
+                            HStack(spacing: 16) {
+                                GrainnePortraitMark()
+                                    .frame(width: 86, height: 104)
+                                headlinePersonText
+                                Spacer(minLength: 0)
+                                Image(systemName: "chevron.right").foregroundStyle(Theme.inkFaint)
+                            }
                         }
-                        Spacer(minLength: 0)
-                        Image(systemName: "chevron.right").foregroundStyle(Theme.inkFaint)
                     }
                     .padding(15)
                     .background(Theme.raised)
@@ -50,23 +51,26 @@ struct MayoDossierView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Eyebrow(text: "THE HISTORICAL QUESTION")
                     Text("What did Gráinne actually ask for?")
-                        .font(.system(size: 30, weight: .semibold, design: .serif))
+                        .font(.system(.largeTitle, design: .serif, weight: .semibold))
                         .foregroundStyle(Theme.ink)
                     Text("Begin with the state record. Only then compare the famous image of the ‘pirate queen’ with what can be supported.")
-                        .font(.system(size: 15.5))
+                        .font(.body)
                         .foregroundStyle(Theme.inkSoft)
                         .lineSpacing(4)
                 }
                 .padding(.vertical, 4)
 
-                HStack(alignment: .top, spacing: 12) {
-                    DossierPromise(icon: "doc.text.magnifyingglass", eyebrow: "WHAT SURVIVES", text: "A 1593 state-paper trail concerning Gráinne and members of her family.", accent: Theme.lichen)
-                    DossierPromise(icon: "quote.bubble", eyebrow: "WHAT YOU CAN SAY", text: "Identify yourself: Is mise… Then say your name and where you are from.", accent: Theme.moss)
+                Group {
+                    if dynamicTypeSize.isAccessibilitySize {
+                        VStack(spacing: 12) { dossierPromises }
+                    } else {
+                        HStack(alignment: .top, spacing: 12) { dossierPromises }
+                    }
                 }
 
                 routeSection
 
-                SourceFooter()
+                SourceFooter(onOpen: onOpenEvidence)
 
                 PrimaryButton(title: "Begin · What did she ask for?", fullWidth: true, action: onBegin)
 
@@ -105,6 +109,26 @@ struct MayoDossierView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
+    private var headlinePersonText: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Eyebrow(text: "THE HEADLINE PERSON", color: Theme.atlasGreen)
+            Text("Gráinne Ní Mháille")
+                .font(.system(.title2, design: .serif, weight: .semibold))
+                .foregroundStyle(Theme.ink)
+                .fixedSize(horizontal: false, vertical: true)
+            Text("A maritime leader from Mayo whose dealings with the English state left a documentary record.")
+                .font(.subheadline)
+                .foregroundStyle(Theme.inkSoft)
+                .lineSpacing(3)
+        }
+    }
+
+    @ViewBuilder
+    private var dossierPromises: some View {
+        DossierPromise(icon: "doc.text.magnifyingglass", eyebrow: "WHAT SURVIVES", text: "A 1593 state-paper trail concerning Gráinne and members of her family.", accent: Theme.lichen)
+        DossierPromise(icon: "quote.bubble", eyebrow: "WHAT YOU CAN SAY", text: "Identify yourself: Is mise… Then say your name and where you are from.", accent: Theme.moss)
+    }
+
     private var routeSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Eyebrow(text: "THE STORY GEOGRAPHY")
@@ -116,17 +140,20 @@ struct MayoDossierView: View {
                 RoutePlace(name: "Carraig an Chabhlaigh", en: "Rockfleet")
             }
             Text("These places locate a Mayo life. The route is editorial and not a claim that every movement shown is documented.")
-                .font(.system(size: 11.5))
+                .font(.caption)
                 .foregroundStyle(Theme.inkFaint)
                 .lineSpacing(3)
         }
         .padding(15)
         .background(Theme.sunk)
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Story geography: Oileán Chliara, Clare Island; Cill Damhnait, Kildavnet; Carraig an Chabhlaigh, Rockfleet. This is an editorial route, not a documented movement map.")
     }
 }
 
 private struct DossierPromise: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let icon: String
     let eyebrow: String
     let text: String
@@ -136,12 +163,12 @@ private struct DossierPromise: View {
             Image(systemName: icon).font(.system(size: 23, weight: .light)).foregroundStyle(accent)
             Eyebrow(text: eyebrow, color: accent)
             Text(text)
-                .font(.system(size: 13.5, design: .serif))
+                .font(.system(.body, design: .serif))
                 .foregroundStyle(Theme.ink)
                 .lineSpacing(3)
         }
         .padding(14)
-        .frame(maxWidth: .infinity, minHeight: 170, alignment: .topLeading)
+        .frame(maxWidth: .infinity, minHeight: dynamicTypeSize.isAccessibilitySize ? nil : 170, alignment: .topLeading)
         .background(Theme.raised)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .overlay(RoundedRectangle(cornerRadius: 10).stroke(accent.opacity(0.35), lineWidth: 0.8))
@@ -171,24 +198,24 @@ private struct RouteLine: View {
 // MARK: - Person layer
 
 struct GrainnePersonView: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let onBegin: () -> Void
+    let onOpenEvidence: () -> Void
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                HStack(alignment: .bottom, spacing: 18) {
-                    GrainnePortraitMark().frame(width: 130, height: 170)
-                    VStack(alignment: .leading, spacing: 6) {
-                        Eyebrow(text: "PERSON · MAYO · 16TH CENTURY")
-                        Text("Gráinne Ní Mháille")
-                            .font(.system(size: 31, weight: .semibold, design: .serif))
-                            .foregroundStyle(Theme.ink)
-                        Text("Grace O’Malley")
-                            .font(.system(size: 16, design: .serif))
-                            .foregroundStyle(Theme.inkSoft)
-                        Text("c. 1530 – c. 1603")
-                            .font(.system(size: 12.5, weight: .medium, design: .monospaced))
-                            .foregroundStyle(Theme.inkFaint)
+                Group {
+                    if dynamicTypeSize.isAccessibilitySize {
+                        VStack(alignment: .leading, spacing: 14) {
+                            GrainnePortraitMark().frame(width: 130, height: 170)
+                            personHeading
+                        }
+                    } else {
+                        HStack(alignment: .bottom, spacing: 18) {
+                            GrainnePortraitMark().frame(width: 130, height: 170)
+                            personHeading
+                        }
                     }
                 }
 
@@ -196,9 +223,9 @@ struct GrainnePersonView: View {
 
                 AtlasCard(accent: Theme.atlasGreen) {
                     VStack(alignment: .leading, spacing: 9) {
-                        CertaintyPill(certainty: .documented)
+                        Eyebrow(text: "FROM THE 1593 RECORD", color: Theme.atlasGreen)
                         Text("A maritime leader with power rooted around the Mayo coast; English administrative records preserve dealings concerning her and her family.")
-                            .font(.system(size: 15.5, design: .serif))
+                            .font(.system(.body, design: .serif))
                             .foregroundStyle(Theme.ink)
                             .lineSpacing(4)
                     }
@@ -212,19 +239,26 @@ struct GrainnePersonView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 10) {
-                    Eyebrow(text: "CLAIMS THIS PROTOTYPE DOES NOT MAKE", color: Theme.rust)
-                    ClaimBoundary(text: "That she refused to bow to Elizabeth I.")
-                    ClaimBoundary(text: "That Latin was certainly the language of their meeting.")
-                    ClaimBoundary(text: "That the familiar hair-cutting story is a documented origin for her name.")
-                    Text("These popular claims require source-specific support before they can enter factual narration.")
-                        .font(.system(size: 12.5))
+                    Eyebrow(text: "RECORD AND AFTERLIFE", color: Theme.rust)
+                    ClaimBoundary(icon: "doc.text", text: "The 1593 record names Gráinne and members of her family.")
+                    ClaimBoundary(icon: "book.closed", text: "Later stories remember a refusal to bow to Elizabeth I.")
+                    ClaimBoundary(icon: "questionmark.circle", text: "The meeting language and the hair-cutting origin story are not established by this record.")
+                    Text("The source guide keeps those different kinds of claim apart.")
+                        .font(.caption)
                         .foregroundStyle(Theme.inkSoft)
+                    Button(action: onOpenEvidence) {
+                        Label("Open the 1593 source guide", systemImage: "building.columns")
+                            .font(.callout.weight(.semibold))
+                            .foregroundStyle(Theme.rust)
+                            .frame(minHeight: 44)
+                    }
+                    .buttonStyle(CarvePress())
                 }
                 .padding(16)
                 .background(Theme.rustTint)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
 
-                SourceFooter()
+                SourceFooter(onOpen: onOpenEvidence)
                 PrimaryButton(title: "Enter the 1593 story", fullWidth: true, action: onBegin)
             }
             .padding(20)
@@ -235,6 +269,22 @@ struct GrainnePersonView: View {
         .background(Theme.bg.ignoresSafeArea())
         .navigationTitle("Gráinne Ní Mháille")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private var personHeading: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Eyebrow(text: "PERSON · MAYO · 16TH CENTURY")
+            Text("Gráinne Ní Mháille")
+                .font(.system(.largeTitle, design: .serif, weight: .semibold))
+                .foregroundStyle(Theme.ink)
+                .fixedSize(horizontal: false, vertical: true)
+            Text("Grace O’Malley")
+                .font(.system(.body, design: .serif))
+                .foregroundStyle(Theme.inkSoft)
+            Text("c. 1530 – c. 1603")
+                .font(.caption.monospaced().weight(.medium))
+                .foregroundStyle(Theme.inkFaint)
+        }
     }
 }
 
@@ -289,11 +339,12 @@ private struct PersonLink: View {
 }
 
 private struct ClaimBoundary: View {
+    let icon: String
     let text: String
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            Image(systemName: "xmark.circle").font(.system(size: 12)).foregroundStyle(Theme.rust).padding(.top, 2)
-            Text(text).font(.system(size: 13.5, design: .serif)).foregroundStyle(Theme.ink)
+            Image(systemName: icon).font(.caption).foregroundStyle(Theme.rust).padding(.top, 2)
+            Text(text).font(.system(.body, design: .serif)).foregroundStyle(Theme.ink)
         }
     }
 }
@@ -303,37 +354,64 @@ private struct ClaimBoundary: View {
 struct GrainneStoryView: View {
     @EnvironmentObject private var atlas: AtlasPrototypeModel
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    let onOpenEvidence: () -> Void
     let onComplete: () -> Void
 
-    @State private var step = 0
-    @State private var foundName = false
+    @State private var learnerNameDraft = ""
 
     private let stepNames = ["Rockfleet", "Gráinne", "The letter", "Your name"]
+    private let storyTop = "grainne-story-top"
+    private var step: Int { atlas.storyStep }
+    private var foundName: Bool { atlas.storyFoundName }
 
     var body: some View {
         VStack(spacing: 0) {
             storyChrome
-            ScrollView {
-                Group {
-                    switch step {
-                    case 0: rockfleet
-                    case 1: meetGrainne
-                    case 2: whatSurvives
-                    default: yourIrish
+            ScrollViewReader { proxy in
+                ScrollView {
+                    Color.clear
+                        .frame(height: 0)
+                        .id(storyTop)
+                    Group {
+                        switch step {
+                        case 0: rockfleet
+                        case 1: meetGrainne
+                        case 2: whatSurvives
+                        default: yourIrish
+                        }
+                    }
+                    .id(step)
+                    .transition(reduceMotion ? .identity : .asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity), removal: .move(edge: .leading).combined(with: .opacity)))
+                    .padding(20)
+                    .padding(.bottom, 100)
+                    .frame(maxWidth: 700)
+                    .frame(maxWidth: .infinity)
+                }
+                .scrollDismissesKeyboard(.interactively)
+                .onChange(of: step) { _, _ in
+                    Task { @MainActor in
+                        await Task.yield()
+                        proxy.scrollTo(storyTop, anchor: .top)
                     }
                 }
-                .id(step)
-                .transition(reduceMotion ? .opacity : .asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity), removal: .move(edge: .leading).combined(with: .opacity)))
-                .padding(20)
-                .padding(.bottom, 100)
-                .frame(maxWidth: 700)
-                .frame(maxWidth: .infinity)
             }
-            .scrollDismissesKeyboard(.interactively)
         }
         .background(Theme.bg.ignoresSafeArea())
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaInset(edge: .bottom) { storyControls }
+        .onAppear {
+            if learnerNameDraft.isEmpty {
+                learnerNameDraft = atlas.learnerName
+            }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase != .active { commitLearnerName() }
+        }
+        .onChange(of: foundName) { _, found in
+            if found { atlas.evidenceInspected = true }
+        }
     }
 
     private var storyChrome: some View {
@@ -343,7 +421,7 @@ struct GrainneStoryView: View {
                 Spacer()
                 Text(stepNames[step].uppercased())
             }
-            .font(.system(size: 9.5, weight: .bold))
+            .font(.caption2.weight(.bold))
             .kerning(1.25)
             .foregroundStyle(Theme.inkFaint)
             GeometryReader { geo in
@@ -357,31 +435,51 @@ struct GrainneStoryView: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 10)
         .background(Theme.bg)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Story step \(step + 1) of \(stepNames.count): \(stepNames[step])")
     }
 
     private var storyControls: some View {
-        HStack(spacing: 12) {
-            if step > 0 {
-                Button { move(to: step - 1) } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(Theme.ink)
-                        .frame(width: 44, height: 44)
-                        .background(Theme.raised)
-                        .clipShape(RoundedRectangle(cornerRadius: 7))
+        VStack(alignment: .leading, spacing: 6) {
+            if let blockedReason {
+                Text(blockedReason)
+                    .font(.caption)
+                    .foregroundStyle(Theme.inkSoft)
+                    .accessibilityLabel("To continue: \(blockedReason)")
+            }
+            HStack(spacing: 12) {
+                if step > 0 {
+                    Button { move(to: step - 1) } label: {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundStyle(Theme.ink)
+                            .frame(width: 44, height: 44)
+                            .background(Theme.raised)
+                            .clipShape(RoundedRectangle(cornerRadius: 7))
+                    }
+                    .buttonStyle(CarvePress())
+                    .accessibilityLabel("Previous story step")
                 }
-                .buttonStyle(CarvePress())
+                PrimaryButton(title: step == stepNames.count - 1 ? "Keep this phrase" : nextTitle, fullWidth: true) {
+                    if step == stepNames.count - 1 { completeStory() }
+                    else { move(to: step + 1) }
+                }
+                .disabled(blockedReason != nil)
+                .opacity(blockedReason == nil ? 1 : 0.45)
+                .accessibilityHint(blockedReason ?? "Continues to the next story step")
             }
-            PrimaryButton(title: step == stepNames.count - 1 ? "Keep this phrase" : nextTitle, fullWidth: true) {
-                if step == stepNames.count - 1 { onComplete() }
-                else { move(to: step + 1) }
-            }
-            .disabled((step == 2 && !foundName) || (step == 3 && atlas.learnerName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty))
-            .opacity((step == 2 && !foundName) || (step == 3 && atlas.learnerName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) ? 0.45 : 1)
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 12)
         .background(.ultraThinMaterial)
+    }
+
+    private var blockedReason: String? {
+        if step == 2, !foundName { return "Find Gráinne’s name in the record." }
+        if step == 3, learnerNameDraft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return "Enter your name."
+        }
+        return nil
     }
 
     private var nextTitle: String {
@@ -394,7 +492,21 @@ struct GrainneStoryView: View {
 
     private func move(to newStep: Int) {
         Haptics.tap()
-        withAnimation(reduceMotion ? .linear(duration: 0.15) : Motion.settle) { step = newStep }
+        withAnimation(reduceMotion ? nil : Motion.settle) {
+            atlas.storyStep = newStep
+        }
+    }
+
+    private func completeStory() {
+        commitLearnerName()
+        onComplete()
+    }
+
+    private func commitLearnerName() {
+        let name = learnerNameDraft.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !name.isEmpty, atlas.learnerName != name {
+            atlas.learnerName = name
+        }
     }
 
     private var rockfleet: some View {
@@ -404,11 +516,11 @@ struct GrainneStoryView: View {
                 LinearGradient(colors: [.clear, Color.black.opacity(0.72)], startPoint: .center, endPoint: .bottom)
                 VStack(alignment: .leading, spacing: 4) {
                     Text("MAYO · 1593")
-                        .font(.system(size: 11, weight: .bold)).kerning(1.7)
+                        .font(.caption.weight(.bold)).kerning(1.7)
                     Text("Rockfleet")
-                        .font(.system(size: 34, weight: .semibold, design: .serif))
+                        .font(.system(.largeTitle, design: .serif, weight: .semibold))
                     Text("At high tide, Clew Bay reaches the castle walls.")
-                        .font(.system(size: 14.5)).lineSpacing(3)
+                        .font(.body).lineSpacing(3)
                 }
                 .foregroundStyle(.white)
                 .padding(20)
@@ -416,15 +528,15 @@ struct GrainneStoryView: View {
             .clipShape(RoundedRectangle(cornerRadius: 14))
 
             Text("Her fleet was gone. Her lands had been taken. Her youngest son was a prisoner.")
-                .font(.system(size: 22, weight: .semibold, design: .serif))
+                .font(.system(.title3, design: .serif, weight: .semibold))
                 .foregroundStyle(Theme.ink)
                 .lineSpacing(6)
 
             Text("So she went to the queen.")
-                .font(.system(size: 33, weight: .semibold, design: .serif))
+                .font(.system(.largeTitle, design: .serif, weight: .semibold))
                 .foregroundStyle(Theme.ink)
             Text("From this western inlet, Gráinne Ní Mháille sought an audience with Elizabeth I — and secured one.")
-                .font(.system(size: 17, design: .serif))
+                .font(.system(.body, design: .serif))
                 .foregroundStyle(Theme.inkSoft)
                 .lineSpacing(5)
 
@@ -433,23 +545,24 @@ struct GrainneStoryView: View {
 
     private var meetGrainne: some View {
         VStack(alignment: .leading, spacing: 22) {
-            HStack(alignment: .bottom, spacing: 18) {
-                GrainnePortraitMark().frame(width: 145, height: 190)
-                VStack(alignment: .leading, spacing: 7) {
-                    Eyebrow(text: "A LIFE SHAPED BY THE SEA")
-                    Text("Gráinne\nNí Mháille")
-                        .font(.system(size: 34, weight: .semibold, design: .serif))
-                        .foregroundStyle(Theme.ink)
-                    Text("c. 1530 – c. 1603")
-                        .font(.system(size: 12.5, design: .monospaced))
-                        .foregroundStyle(Theme.inkFaint)
+            Group {
+                if dynamicTypeSize.isAccessibilitySize {
+                    VStack(alignment: .leading, spacing: 14) {
+                        GrainnePortraitMark().frame(width: 145, height: 190)
+                        storyPersonHeading
+                    }
+                } else {
+                    HStack(alignment: .bottom, spacing: 18) {
+                        GrainnePortraitMark().frame(width: 145, height: 190)
+                        storyPersonHeading
+                    }
                 }
             }
 
             AtlasAudioLine(ga: "Gráinne Ní Mháille", en: "Her name in Irish", sound: "grawn-ya nee wawl-ya")
 
             Text("She grew up in the O’Malley world of Clare Island and Clew Bay, where boats connected castles, families and trade. She became a leader in her own right — at sea and on land.")
-                .font(.system(size: 19, design: .serif))
+                .font(.system(.title3, design: .serif))
                 .foregroundStyle(Theme.ink)
                 .lineSpacing(6)
 
@@ -458,32 +571,48 @@ struct GrainneStoryView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 14))
 
             Text("Clare Island. Kildavnet. Rockfleet. The castles associated with her still hold the edges of the bay.")
-                .font(.system(size: 16, design: .serif))
+                .font(.system(.body, design: .serif))
                 .foregroundStyle(Theme.inkSoft)
                 .lineSpacing(5)
 
             AtlasCard(accent: Theme.atlasGold) {
                 VStack(alignment: .leading, spacing: 7) {
                     Text("“She thinketh herself to be no small lady.”")
-                        .font(.system(size: 20, weight: .semibold, design: .serif))
+                        .font(.system(.title3, design: .serif, weight: .semibold))
                         .foregroundStyle(Theme.ink)
                         .lineSpacing(4)
                     Text("Sir Nicholas Malby, Governor of Connaught")
-                        .font(.system(size: 11.5, weight: .medium))
+                        .font(.caption.weight(.medium))
                         .foregroundStyle(Theme.inkFaint)
                 }
             }
         }
     }
 
+    private var storyPersonHeading: some View {
+        VStack(alignment: .leading, spacing: 7) {
+            Eyebrow(text: "A LIFE SHAPED BY THE SEA")
+            Text("Gráinne Ní Mháille")
+                .font(.system(.largeTitle, design: .serif, weight: .semibold))
+                .foregroundStyle(Theme.ink)
+                .fixedSize(horizontal: false, vertical: true)
+            Text("c. 1530 – c. 1603")
+                .font(.caption.monospaced())
+                .foregroundStyle(Theme.inkFaint)
+        }
+    }
+
     private var whatSurvives: some View {
         VStack(alignment: .leading, spacing: 18) {
             AtlasScreenHeader("LONDON · 6 SEPTEMBER 1593", "Her name enters the record.", detail: "A draft letter leaves the queen’s government. Gráinne is in London, and the people named with her reveal what this journey is really about.")
-            FamilyRecordReveal(foundName: $foundName)
+            FamilyRecordReveal(
+                foundName: $atlas.storyFoundName,
+                onOpenEvidence: onOpenEvidence
+            )
 
             if foundName {
                 Text("Her requests were not hers alone. The letter reaches back across the sea to her sons, her brother and the struggle for her family’s future.")
-                    .font(.system(size: 19, design: .serif))
+                    .font(.system(.title3, design: .serif))
                     .foregroundStyle(Theme.ink)
                     .lineSpacing(6)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))
@@ -491,19 +620,18 @@ struct GrainneStoryView: View {
                 AtlasCard(accent: Theme.rust) {
                     VStack(alignment: .leading, spacing: 6) {
                         Text("What later stories remember")
-                            .font(.system(size: 16, weight: .semibold, design: .serif))
+                            .font(.system(.headline, design: .serif, weight: .semibold))
                             .foregroundStyle(Theme.ink)
                         Text("Later stories tell of Gráinne refusing to bow to Elizabeth. The letter holds its own act of defiance: she crossed from Clew Bay to the heart of English power and made the state answer her.")
-                            .font(.system(size: 14.5, design: .serif))
+                            .font(.system(.body, design: .serif))
                             .foregroundStyle(Theme.inkSoft)
                             .lineSpacing(4)
                     }
                 }
                 .transition(.opacity)
             }
-            SourceFooter(compact: true)
+            SourceFooter(compact: true, onOpen: onOpenEvidence)
         }
-        .onAppear { atlas.evidenceInspected = true }
     }
 
     private var yourIrish: some View {
@@ -512,26 +640,31 @@ struct GrainneStoryView: View {
             AtlasAudioLine(ga: "Is mise…", en: "I am… / I’m…", sound: "iss mish-eh")
             VStack(alignment: .leading, spacing: 9) {
                 Text("Cén t-ainm atá ort?")
-                    .font(.system(size: 17, weight: .semibold, design: .serif))
+                    .font(.system(.headline, design: .serif, weight: .semibold))
                     .foregroundStyle(Theme.ink)
                 Text("What is your name?")
-                    .font(.system(size: 12.5)).foregroundStyle(Theme.inkFaint)
-                TextField("Your name", text: $atlas.learnerName)
+                    .font(.caption).foregroundStyle(Theme.inkFaint)
+                TextField("Your name", text: $learnerNameDraft)
                     .textInputAutocapitalization(.words)
-                    .font(.system(size: 21, design: .serif))
+                    .autocorrectionDisabled()
+                    .submitLabel(.done)
+                    .onSubmit { commitLearnerName() }
+                    .accessibilityLabel("What is your name?")
+                    .accessibilityHint("Enter your name to make the Irish phrase Is mise")
+                    .font(.system(.title3, design: .serif))
                     .padding(14)
                     .background(Theme.raised)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(Theme.line, lineWidth: 0.8))
             }
-            if !atlas.learnerName.trimmingCharacters(in: .whitespaces).isEmpty {
+            if !learnerNameDraft.trimmingCharacters(in: .whitespaces).isEmpty {
                 VStack(alignment: .leading, spacing: 6) {
                     Eyebrow(text: "TUSA · YOU")
-                    Text("Is mise \(atlas.learnerName).")
-                        .font(.system(size: 32, weight: .semibold, design: .serif))
+                    Text("Is mise \(learnerNameDraft).")
+                        .font(.system(.largeTitle, design: .serif, weight: .semibold))
                         .foregroundStyle(Theme.moss)
                     Text("This is yours to use in any introduction.")
-                        .font(.system(size: 13.5)).foregroundStyle(Theme.inkSoft)
+                        .font(.subheadline).foregroundStyle(Theme.inkSoft)
                 }
                 .padding(18)
                 .background(Theme.mossTint)
@@ -544,10 +677,14 @@ struct GrainneStoryView: View {
 }
 
 private struct FamilyRecordReveal: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Binding var foundName: Bool
+    let onOpenEvidence: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
+            Eyebrow(text: "ANNOTATED TRANSCRIPTION · ORIGINAL MANUSCRIPT NOT SHOWN", color: Theme.lichen)
             ZStack {
                 Color(light: 0xE4D7B2, dark: 0xA4936C)
                 Canvas { ctx, size in
@@ -563,13 +700,13 @@ private struct FamilyRecordReveal: View {
                 if foundName {
                     VStack(spacing: 7) {
                         Text("Grany ne Maly")
-                            .font(.system(size: 26, weight: .semibold, design: .serif))
+                            .font(.system(.title2, design: .serif, weight: .semibold))
                             .foregroundStyle(Color.black.opacity(0.74))
                         Image(systemName: "arrow.down")
                             .font(.system(size: 13, weight: .semibold))
                             .foregroundStyle(Theme.atlasGreen)
                         Text("Gráinne Ní Mháille")
-                            .font(.system(size: 22, weight: .semibold, design: .serif))
+                            .font(.system(.title3, design: .serif, weight: .semibold))
                             .foregroundStyle(Theme.atlasGreen)
                     }
                     .padding(18)
@@ -578,14 +715,25 @@ private struct FamilyRecordReveal: View {
                     .transition(.scale(scale: 0.96).combined(with: .opacity))
                 }
             }
-            .frame(height: 300)
+            .frame(minHeight: dynamicTypeSize.isAccessibilitySize ? 420 : 300)
             .clipShape(RoundedRectangle(cornerRadius: 12))
+            .accessibilityLabel(foundName
+                ? "Annotated transcription view. The record writes Gráinne's name as Grany ne Maly and also names members of her family. This is not the manuscript image."
+                : "Annotated transcription view, not the manuscript image. Find Gráinne's name to continue.")
+
+            Button(action: onOpenEvidence) {
+                Label("About this transcription and source", systemImage: "doc.text.magnifyingglass")
+                    .font(.callout.weight(.semibold))
+                    .foregroundStyle(Theme.moss)
+                    .frame(minHeight: 44)
+            }
+            .buttonStyle(CarvePress())
 
             if foundName {
                 VStack(alignment: .leading, spacing: 8) {
                     Eyebrow(text: "HER FAMILY")
                     Text("Her sons Morogh O’Flaherty and Tibbut Burke, and her brother Donell O’Piper, are named too.")
-                        .font(.system(size: 16, design: .serif))
+                        .font(.system(.body, design: .serif))
                         .foregroundStyle(Theme.ink)
                         .lineSpacing(4)
                     SoundRow(text: "Gráinne Ní Mháille", hint: "grawn-ya nee wawl-ya")
@@ -594,7 +742,7 @@ private struct FamilyRecordReveal: View {
             } else {
                 PrimaryButton(title: "Find Gráinne’s name", fullWidth: true) {
                     Haptics.chisel()
-                    withAnimation(Motion.settle) { foundName = true }
+                    withAnimation(reduceMotion ? nil : Motion.settle) { foundName = true }
                 }
             }
         }
@@ -627,8 +775,14 @@ struct PetitionEvidenceView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                AtlasScreenHeader("WHAT SURVIVES · DOCUMENT", "The 1593 record", detail: "An evidence object keeps provenance, rights state, certainty and the question it helped answer.")
-                HStack { CertaintyPill(certainty: .documented); Text("EXPLANATORY FACSIMILE · NOT THE SOURCE IMAGE").font(.system(size: 9, weight: .bold)).kerning(1).foregroundStyle(Theme.inkFaint) }
+                AtlasScreenHeader("WHAT SURVIVES · DOCUMENT", "The 1593 record", detail: "This annotated transcription helps you read what the state paper records. The original manuscript image is not shown here.")
+                HStack {
+                    CertaintyPill(certainty: .documented)
+                    Text("ANNOTATED TRANSCRIPTION · ORIGINAL MANUSCRIPT NOT SHOWN")
+                        .font(.caption2.weight(.bold))
+                        .kerning(1)
+                        .foregroundStyle(Theme.inkFaint)
+                }
                 PetitionInspectionPanel(zoom: $zoom, showAnnotations: $annotations)
 
                 Toggle(isOn: $compareAfterlife) {
@@ -656,8 +810,8 @@ struct PetitionEvidenceView: View {
                     Eyebrow(text: "PROVENANCE AND REVIEW")
                     MetadataRow(label: "Repository", value: "National Library of Ireland · starting-point record")
                     MetadataRow(label: "Reference", value: "MS_UR_010761")
-                    MetadataRow(label: "Rights", value: "No manuscript image bundled; clearance pending")
-                    MetadataRow(label: "Historical review", value: "Required before public-release copy")
+                    MetadataRow(label: "Image status", value: "No manuscript image is included; this is a transcription-based guide")
+                    MetadataRow(label: "Reading rule", value: "Archival record and later storytelling remain separate")
                     MetadataRow(label: "Question answered", value: "What did Gráinne put before the state?")
                 }
                 .padding(16)
@@ -672,7 +826,7 @@ struct PetitionEvidenceView: View {
             .frame(maxWidth: .infinity)
         }
         .background(Theme.bg.ignoresSafeArea())
-        .navigationTitle("Evidence inspector")
+        .navigationTitle("Source guide")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear { atlas.evidenceInspected = true }
     }

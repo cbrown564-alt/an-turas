@@ -452,7 +452,7 @@ struct NearbyPersonalPlacesView: View {
             }
 
             if !nearby.isEmpty {
-                Section("Nearby in the offline pilot index") {
+                Section("Nearby in the offline place index") {
                     ForEach(nearby) { subject in
                         Button {
                             onOpenSubject(subject.id)

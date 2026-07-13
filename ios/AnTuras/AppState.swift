@@ -55,6 +55,20 @@ struct PersonalAtlasQueryEvent: Codable, Identifiable, Hashable {
 // MARK: - Progress persistence (prototype-grade: UserDefaults JSON)
 
 final class AppState: ObservableObject {
+    /// Durable state for the living-atlas prototype. This is intentionally
+    /// separate from the legacy chapter/session progress so an interrupted
+    /// documentary encounter can resume without inventing chapter completion.
+    struct AtlasProgress: Codable, Equatable {
+        var hasOpenedAtlas = false
+        var evidenceInspected = false
+        var storyCompleted = false
+        var fieldNoteVisited = false
+        var returnAnswered = false
+        var storyInProgress = false
+        var storyStep = 0
+        var storyFoundName = false
+    }
+
     /// Scheduling state for one Ar Ais visit. FSRS faoin gcraiceann — the
     /// scheduler is boring, solved technology; the learner only ever sees
     /// people asking for them, never these numbers.
@@ -93,6 +107,8 @@ final class AppState: ObservableObject {
         var personalAtlasFeedback: [PersonalAtlasFeedback] = []
         /// Privacy-safe product events: published ids and coarse outcomes only.
         var personalAtlasQueryLedger: [PersonalAtlasQueryEvent] = []
+        /// Resume state for the current living-atlas encounter.
+        var atlasProgress = AtlasProgress()
 
         init() {}
 
@@ -100,6 +116,7 @@ final class AppState: ObservableObject {
             case activeChapter, doneByChapter, doneByStory, name, visits, lexemes, patternItems, done
             case savedPersonalSubjects, recentPersonalSubjects, savePersonalSearchHistory
             case personalAtlasFeedback, personalAtlasQueryLedger
+            case atlasProgress
         }
 
         // Custom decode: migrate single-chapter saves and pre-Ar-Ais writes.
@@ -117,6 +134,7 @@ final class AppState: ObservableObject {
             savePersonalSearchHistory = try keys.decodeIfPresent(Bool.self, forKey: .savePersonalSearchHistory) ?? false
             personalAtlasFeedback = try keys.decodeIfPresent([PersonalAtlasFeedback].self, forKey: .personalAtlasFeedback) ?? []
             personalAtlasQueryLedger = try keys.decodeIfPresent([PersonalAtlasQueryEvent].self, forKey: .personalAtlasQueryLedger) ?? []
+            atlasProgress = try keys.decodeIfPresent(AtlasProgress.self, forKey: .atlasProgress) ?? AtlasProgress()
 
             if doneByChapter.isEmpty,
                let legacyDone = try keys.decodeIfPresent([Bool].self, forKey: .done) {
@@ -141,6 +159,7 @@ final class AppState: ObservableObject {
             try keys.encode(savePersonalSearchHistory, forKey: .savePersonalSearchHistory)
             try keys.encode(personalAtlasFeedback, forKey: .personalAtlasFeedback)
             try keys.encode(personalAtlasQueryLedger, forKey: .personalAtlasQueryLedger)
+            try keys.encode(atlasProgress, forKey: .atlasProgress)
         }
     }
 
@@ -166,6 +185,9 @@ final class AppState: ObservableObject {
         didSet { persist() }
     }
     @Published var personalAtlasQueryLedger: [PersonalAtlasQueryEvent] {
+        didSet { persist() }
+    }
+    @Published var atlasProgress: AtlasProgress {
         didSet { persist() }
     }
 
@@ -360,6 +382,7 @@ final class AppState: ObservableObject {
         savePersonalSearchHistory = saved.savePersonalSearchHistory
         personalAtlasFeedback = saved.personalAtlasFeedback
         personalAtlasQueryLedger = saved.personalAtlasQueryLedger
+        atlasProgress = saved.atlasProgress
 
         let migratedFromLegacy = UserDefaults.standard.data(forKey: Self.key) == nil
             && UserDefaults.standard.data(forKey: Self.legacyKey) != nil
@@ -618,6 +641,7 @@ final class AppState: ObservableObject {
         saved.savePersonalSearchHistory = savePersonalSearchHistory
         saved.personalAtlasFeedback = personalAtlasFeedback
         saved.personalAtlasQueryLedger = personalAtlasQueryLedger
+        saved.atlasProgress = atlasProgress
         if let data = try? JSONEncoder().encode(saved) {
             UserDefaults.standard.set(data, forKey: Self.key)
         }

@@ -318,6 +318,14 @@ struct TypeInView: View {
                 }
             }
         }
+        .task {
+            // Begin the system keyboard's cold-start work as the exercise
+            // arrives, while the learner reads the prompt. Otherwise that
+            // startup cost lands on their tap and first character instead.
+            guard !solved else { return }
+            await Task.yield()
+            focused = true
+        }
     }
 
     private func grade() {

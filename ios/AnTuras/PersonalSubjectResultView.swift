@@ -23,7 +23,7 @@ struct PersonalSubjectResultView: View {
             if let subject {
                 resultBody(subject)
             } else {
-                Text("This subject is missing from the pilot pack.")
+                Text("This subject is not available in this content pack.")
                     .font(.system(.body, design: .serif))
                     .foregroundStyle(Theme.rust)
                     .padding(20)
@@ -607,7 +607,7 @@ struct PersonalSubjectResultView: View {
                 NavigationLink {
                     PersonalFieldModeView(subject: subject)
                 } label: {
-                    actionRow("Take this place offline", systemImage: "figure.walk")
+                    actionRow("Open field mode", systemImage: "figure.walk")
                 }
             }
 
@@ -626,7 +626,7 @@ struct PersonalSubjectResultView: View {
                 }
             } else {
                 ShareLink(item: shareText(for: subject)) {
-                    actionRow("Share this pilot excerpt", systemImage: "square.and.arrow.up")
+                    actionRow("Share a sourced excerpt", systemImage: "square.and.arrow.up")
                 }
             }
         }
@@ -724,7 +724,8 @@ struct PersonalSubjectResultView: View {
     }
 
     private func shareText(for subject: OriginSubject) -> String {
-        "\(subject.canonicalDisplay) — \(subject.editorial.saveExcerpt) Source path and evidence are available in An Turas. Pilot content, version \(subject.editorial.contentVersion)."
+        let status = subject.editorial.releaseState == "public" ? "Published" : "Editorial draft"
+        return "\(subject.canonicalDisplay) — \(subject.editorial.saveExcerpt) Source path and evidence are available in An Turas. \(status), content version \(subject.editorial.contentVersion)."
     }
 
     private func sectionLabel(_ text: String) -> some View {
@@ -871,7 +872,7 @@ struct PersonalSourcesSheet: View {
 
     private func reviewLine(_ assertion: Assertion) -> String {
         if assertion.reviewer == "pilot-editorial" {
-            return "Pilot editorial note · specialist and rights review pending"
+            return "Editorial note · specialist and rights review pending"
         }
         return "Reviewed \(assertion.reviewedAt) · \(assertion.reviewer) · \(assertion.rightsState)"
     }

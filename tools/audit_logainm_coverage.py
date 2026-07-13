@@ -201,7 +201,7 @@ The unit of analysis is one Logainm API record from the production snapshot. A r
 
 ## Limitations and next steps
 
-This audit establishes technical coverage and measurable source completeness; it is not linguistic, onomastic, community, or political approval. Commission independent review of the six Northern Ireland counties, inspect the 229 countyless and 312 multi-county records, and agree whether entries without valid coordinates should remain searchable but mapless. Re-run this audit after every monthly ingest and block artifact promotion when `releaseGate` is `fail`.
+This audit establishes technical coverage and measurable source completeness; it is not linguistic, onomastic, community, or political approval. The independent source and hierarchy review is recorded in `docs/LOGAINM-NORTHERN-IRELAND-REVIEW.md`; its specialist, licensing, and upstream-data actions remain open. Re-run both audits after every monthly ingest and block artifact promotion when `releaseGate` is `fail`.
 """
 
 

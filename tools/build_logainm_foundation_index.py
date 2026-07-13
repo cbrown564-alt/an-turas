@@ -39,7 +39,118 @@ def valid_irish_coordinates(latitude, longitude) -> bool:
     )
 
 
-def build_entry(place: dict, attribution: str) -> dict | None:
+def category_id(value: dict) -> str | None:
+    return field(value, "ID", "id")
+
+
+def record_id(value: dict) -> int | None:
+    value = field(value, "ID", "id")
+    return int(value) if isinstance(value, (int, str)) and str(value).isdigit() else None
+
+
+def direct_county_paths(place: dict) -> dict[str, set[str]]:
+    paths: dict[str, set[str]] = {}
+    for parent in field(place, "IncludedIn", "includedIn") or []:
+        parent_category = field(parent, "Category", "category") or {}
+        if category_id(parent_category) != "CON":
+            continue
+        name = first_text(parent, "NameEN", "nameEN", "NameGA", "nameGA")
+        if not name:
+            continue
+        parent_id = record_id(parent)
+        paths.setdefault(name, set())
+        if parent_id is not None:
+            paths[name].add(f"logainm:{parent_id}")
+    return paths
+
+
+def inferred_county_paths(
+    place_id: int,
+    records_by_id: dict[int, dict],
+    seen: set[int] | None = None,
+) -> dict[str, set[str]]:
+    """Return counties reachable through existing Logainm parents or clusters."""
+    seen = set() if seen is None else seen
+    if place_id in seen or place_id not in records_by_id:
+        return {}
+    seen.add(place_id)
+    place = records_by_id[place_id]
+    result = direct_county_paths(place)
+    links: list[int] = []
+    for parent in field(place, "IncludedIn", "includedIn") or []:
+        parent_id = record_id(parent)
+        if parent_id is not None:
+            links.append(parent_id)
+    cluster = field(place, "Cluster", "cluster") or {}
+    for member in field(cluster, "Members", "members") or []:
+        member_id = field(member, "PlaceID", "placeID")
+        if isinstance(member_id, int):
+            links.append(member_id)
+    for linked_id in links:
+        for county, sources in inferred_county_paths(linked_id, records_by_id, seen).items():
+            result.setdefault(county, set()).update(sources | {f"logainm:{linked_id}"})
+    return result
+
+
+def english_form(place: dict) -> str | None:
+    placenames = field(place, "Placenames", "placenames") or []
+    english = [
+        item for item in placenames
+        if (field(item, "Language", "language") or "").lower() == "en"
+    ]
+    main = next((item for item in english if field(item, "Main", "main")), english[0] if english else {})
+    return first_text(main, "Wording", "wording")
+
+
+def county_assignments(
+    place: dict,
+    records_by_id: dict[int, dict],
+    repairs: dict,
+) -> list[dict]:
+    place_id = int(field(place, "ID", "id"))
+    repair = (repairs.get("records") or {}).get(str(place_id))
+    if repair is not None:
+        expected = repair.get("expectedEnglish")
+        if expected and english_form(place) != expected:
+            raise ValueError(
+                f"Hierarchy repair {place_id} expected English form {expected!r}, "
+                f"found {english_form(place)!r}"
+            )
+        return [
+            {
+                "county": county,
+                "method": repair["method"],
+                "sources": list(repair.get("sources") or []),
+            }
+            for county in repair["counties"]
+        ]
+
+    direct = direct_county_paths(place)
+    if direct:
+        return [
+            {"county": county, "method": "source_direct", "sources": sorted(sources)}
+            for county, sources in sorted(direct.items())
+        ]
+    categories = field(place, "Categories", "categories") or []
+    if categories and category_id(categories[0]) == "CON":
+        return []
+    inferred = inferred_county_paths(place_id, records_by_id)
+    return [
+        {
+            "county": county,
+            "method": "inferred_existing_hierarchy",
+            "sources": sorted(sources),
+        }
+        for county, sources in sorted(inferred.items())
+    ]
+
+
+def build_entry(
+    place: dict,
+    attribution: str,
+    records_by_id: dict[int, dict] | None = None,
+    repairs: dict | None = None,
+) -> dict | None:
     placenames = field(place, "Placenames", "placenames") or []
     irish = [item for item in placenames if (field(item, "Language", "language") or "").lower() == "ga"]
     english = [item for item in placenames if (field(item, "Language", "language") or "").lower() == "en"]
@@ -59,6 +170,10 @@ def build_entry(place: dict, attribution: str) -> dict | None:
         name = first_text(parent, "NameGA", "nameGA", "NameEN", "nameEN")
         if name and name not in hierarchy_parts:
             hierarchy_parts.append(name)
+    assignments = county_assignments(place, records_by_id or {}, repairs or {})
+    for assignment in assignments:
+        if assignment["county"] not in hierarchy_parts:
+            hierarchy_parts.append(assignment["county"])
     hierarchy = " / ".join(hierarchy_parts) or "Ireland"
 
     coordinates = None
@@ -110,14 +225,22 @@ def build_entry(place: dict, attribution: str) -> dict | None:
             "permalink": field(place, "Permalink", "permalink") or f"https://www.logainm.ie/en/{place_id}",
             "modifiedAt": field(place, "DateModified", "dateModified"),
             "attribution": attribution,
+            "hierarchyRepairs": [
+                assignment for assignment in assignments
+                if assignment["method"] != "source_direct"
+            ],
         },
     }
 
 
-def build(snapshot: dict) -> dict:
+def build(snapshot: dict, repairs: dict | None = None) -> dict:
+    records = snapshot.get("records", [])
+    records_by_id = {int(field(place, "ID", "id")): place for place in records}
     entries = [
-        entry for place in snapshot.get("records", [])
-        if (entry := build_entry(place, snapshot["attribution"])) is not None
+        entry for place in records
+        if (entry := build_entry(
+            place, snapshot["attribution"], records_by_id, repairs or {}
+        )) is not None
     ]
     entries.sort(key=lambda item: (item["canonicalDisplay"].casefold(), item["id"]))
     return {
@@ -134,7 +257,7 @@ def normalize(value: str) -> str:
     return " ".join("".join(character if character.isalnum() or character == " " else " " for character in plain).split())
 
 
-def build_database(snapshot: dict, output: Path) -> int:
+def build_database(snapshot: dict, output: Path, repairs: dict | None = None) -> int:
     """Build a compact, queryable offline index without decoding the corpus into RAM."""
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(output.suffix + ".tmp")
@@ -149,7 +272,8 @@ def build_database(snapshot: dict, output: Path) -> int:
                 id INTEGER PRIMARY KEY, canonical TEXT NOT NULL, subtitle TEXT NOT NULL,
                 variants TEXT NOT NULL, hierarchy TEXT NOT NULL, place_kind TEXT NOT NULL,
                 irish TEXT, english TEXT, latitude REAL, longitude REAL,
-                permalink TEXT NOT NULL, modified_at TEXT
+                permalink TEXT NOT NULL, modified_at TEXT,
+                hierarchy_repairs TEXT
             );
             CREATE TABLE aliases (
                 place_id INTEGER NOT NULL, search_key TEXT NOT NULL,
@@ -164,20 +288,30 @@ def build_database(snapshot: dict, output: Path) -> int:
         }
         connection.executemany("INSERT INTO metadata VALUES (?, ?)", metadata.items())
         count = 0
-        for place in snapshot.get("records", []):
-            entry = build_entry(place, snapshot["attribution"])
+        records = snapshot.get("records", [])
+        records_by_id = {int(field(place, "ID", "id")): place for place in records}
+        for place in records:
+            entry = build_entry(place, snapshot["attribution"], records_by_id, repairs or {})
             if entry is None:
                 continue
             foundation = entry["foundation"]
             coordinates = foundation["coordinates"] or {}
             connection.execute(
-                "INSERT INTO places VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                "INSERT INTO places VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     foundation["logainmId"], entry["canonicalDisplay"], entry["subtitle"],
                     json.dumps(entry["variants"], ensure_ascii=False, separators=(",", ":")),
                     foundation["hierarchy"], foundation["placeKind"], foundation["irishForm"],
                     foundation["englishForm"], coordinates.get("lat"), coordinates.get("lon"),
                     foundation["permalink"], foundation["modifiedAt"],
+                    (
+                        json.dumps(
+                            foundation["hierarchyRepairs"],
+                            ensure_ascii=False,
+                            separators=(",", ":"),
+                        )
+                        if foundation["hierarchyRepairs"] else None
+                    ),
                 ),
             )
             keys = {normalize(value) for value in entry["searchKeys"] if normalize(value)}
@@ -199,12 +333,17 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("snapshot", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--hierarchy-repairs", type=Path)
     args = parser.parse_args()
     snapshot = json.loads(args.snapshot.read_text(encoding="utf-8"))
+    repairs = (
+        json.loads(args.hierarchy_repairs.read_text(encoding="utf-8"))
+        if args.hierarchy_repairs else {}
+    )
     if args.output.suffix == ".sqlite":
-        count = build_database(snapshot, args.output)
+        count = build_database(snapshot, args.output, repairs)
     else:
-        index = build(snapshot)
+        index = build(snapshot, repairs)
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(
             json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"

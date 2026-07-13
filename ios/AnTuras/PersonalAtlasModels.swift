@@ -132,6 +132,13 @@ struct PersonalFoundationPlace: Decodable, Hashable {
     let permalink: String
     let modifiedAt: String?
     let attribution: String
+    let hierarchyRepairs: [PersonalHierarchyRepair]?
+}
+
+struct PersonalHierarchyRepair: Decodable, Hashable {
+    let county: String
+    let method: String
+    let sources: [String]
 }
 
 struct PersonalIndexEntry: Decodable, Identifiable, Hashable {

@@ -61,8 +61,10 @@ well-understood engineering. The differentiator is a repeatable pipeline:
 - An editorial board: at minimum one qualified Irish-language linguist/teacher and one
   historian reviewing every chapter. Cultural legitimacy is the moat; one viral
   "this app got the tuiseal ginideach wrong" thread is expensive.
-- Audio: **Gemini 3.1 Flash TTS, all-generated with native-speaker QA** per release
-  (D7). Illustration: **Solas an Atlantaigh on scene pages only** (D4, D8).
+- Audio: **Irish Cultural Guide for initial-launch story and teaching narration,
+  all-generated with native-speaker QA** per release (D17); Gemini remains a fallback.
+  Illustration:
+  **Solas an Atlantaigh on scene pages only** (D4, D8).
 - **Proof:** Chapter 2 (*Oileán na Naomh*) produced end-to-end through the pipeline.
 - **County-led transformation (D12):** the historical spine now sequences learning
   behind a 32-county journey. The researched slate exists; the next work is to make
@@ -109,9 +111,10 @@ Gentle ritual layer: **An Féilire** (real-calendar seanfhocal, seasonal beats,
 calendar-aligned launch moments). Meaning as engine, calendar as flywheel — not
 gamification.
 
-**U5. Audio → D7.** Gemini 3.1 Flash TTS, all-generated with native-speaker QA per
-release. Passed native-speaker review on Chapter 1. ABAIR remains optional upgrade if
-bundling rights granted.
+**U5. Audio → D17.** Initial-launch story and Irish teaching audio uses Irish Cultural
+Guide, all-generated with native-speaker QA per release. D7 records the historical
+Chapter 1 baseline. Trinity College Dublin, ABAIR, and other established Irish-language
+speech/data partnerships are post-launch upgrade paths.
 
 **U6. Business model → D10.** Premium subscription. Grant funding on top (Foras na
 Gaeilge, Údarás, NI streams). Bespoke content. Chapters 1–4 at launch.
@@ -148,7 +151,8 @@ production.
 
 **U4. Does history gate language, or run alongside it?** (Still open — see above.)
 
-**U5. Audio: humans, synthesis, or hybrid?** ✓ See D7.
+**U5. Audio: humans, synthesis, or hybrid?** ✓ See D17 for the initial-launch voice;
+D7 records the historical Chapter 1 baseline.
 
 **U6. Business model and funding.** ✓ See D10.
 
@@ -261,4 +265,4 @@ now, not in two years.
 6. Open grant-funding research (strings before accepting — D10).
 7. Write contested-history editorial principles before any sensitive county packet
    (and before Chapter 10 material).
-8. ABAIR enquiry optional — quality ceiling / future upgrade, not Phase 2 blocker (D7).
+8. ABAIR enquiry optional — quality ceiling / future upgrade, not Phase 2 blocker (D17).

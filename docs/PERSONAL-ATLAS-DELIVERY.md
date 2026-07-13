@@ -24,7 +24,7 @@ public authority, and the exporter fails closed.
 | **0: three interaction grammars and hard cases** | Research protocol contains answer-first, evidence-first, and map/time-first prototypes, a 24-case matrix, session script, comprehension prompts, and 24-hour recall method. | **Prepared, not passed:** run 12–18 target-user sessions and obtain reviews from the named disciplines. Record the winning grammar and results in `docs/DECISIONS.md`. |
 | **0: claim schema survives expert review** | Typed assertions, evidence references, certainty, competing claims, review history, rights, and durable assertion IDs are enforced for release. | **Open:** named onomastic, Irish-language, placename, archival, and community sign-off. |
 | **1: 25 given, 25 surnames, 30 places** | The offline pilot pack contains 25/25/30 authored entries with source-linked assertions and honest pilot authority. | **Pilot only:** modern surname licensing, named review, and rights clearance are not complete. |
-| **1: broad place foundation** | Monthly Logainm v1.1 ingestion, provenance snapshots, replacement handling, broad foundation-index builder, official forms/hierarchy/coordinates/permalink, safe fallback result, and monthly CI artifact workflow. First production ingest on 13 July 2026 fetched 126,798 records and built 126,712 entries spanning all 32 counties; 99,000 entries are bilingual and 119,141 have valid island-bounded coordinates. The projection converts 7,571 sentinel/out-of-scope points to unavailable. The app uses a 49 MB indexed SQLite resource with 305,638 aliases and lazy search/detail reads instead of decoding the former 160.7 MB JSON corpus into memory. | **Production ingest and app packaging complete:** attribution, API contract, database integrity, diacritic-insensitive lookup, generated detail, coordinate bounds, and source-to-database reconciliation are tested. [Automated coverage audit](LOGAINM-COVERAGE-AUDIT.md) passes its projection gates; independent all-island review remains required because Northern Ireland bilingual completeness is materially lower. |
+| **1: broad place foundation** | Monthly Logainm v1.1 ingestion, provenance snapshots, replacement handling, broad foundation-index builder, official forms/hierarchy/coordinates/permalink, safe fallback result, and monthly CI artifact workflow. First production ingest on 13 July 2026 fetched 126,798 records and built 126,712 entries spanning all 32 counties; 99,000 entries are bilingual and 119,141 have valid island-bounded coordinates. The projection converts 7,571 sentinel/out-of-scope points to unavailable. The app uses a 51 MB indexed SQLite resource with 305,638 aliases and lazy search/detail reads instead of decoding the former 160.7 MB JSON corpus into memory. | **Production ingest and app packaging complete:** attribution, API contract, database integrity, diacritic-insensitive lookup, generated detail, coordinate bounds, and source-to-database reconciliation are tested. [Automated coverage audit](LOGAINM-COVERAGE-AUDIT.md) passes its projection gates. The [independent Northern Ireland review](LOGAINM-NORTHERN-IRELAND-REVIEW.md) is complete; 22 existing-link recoveries and four reviewed Northern repairs are applied with provenance. External specialist approval, reuse terms, and upstream enrichment remain open. |
 | **1: complete native journey** | Pre-commitment atlas entry, normalized search, ambiguity paths, concise result, evidence sheets, native map plus list equivalent, local save/collection, Mayo story handoff, recent pages only after opt-in, and custom/web deep links. | **Implemented:** independent VoiceOver, Dynamic Type, contrast, and device QA remain release gates. |
 | **1: signed/versioned offline delivery** | SHA-256 plus Ed25519 detail artifacts, pinned-key verification, authenticated cache, tamper eviction, last-good-cache behavior during network failure, manifest/index builder, and tests using real signatures. | **Implemented:** production key custody, rotation procedure, CDN base URL, and release ceremony remain operational work. |
 | **1: scorecard** | Query ledger stores published subject ID, unresolved category, selected branch, time to answer, and continuation without raw input or exact coordinates. | **Open:** resolve ≥90% hard cases honestly; measure comprehension, next-day recall, care, engagement, and median answer time with real participants. |
@@ -32,7 +32,7 @@ public authority, and the exporter fails closed.
 | **2: 100/100/100 reviewed catalogue** | Schema and batch tooling support the catalogue without app releases. | **Open:** commission, author, license, review, and accessibility-check 100 surnames, 100 given names, and 100 places. Pilot rows do not count. |
 | **2: verified human pronunciation** | Only explicit bundled audio with speaker, dialect, recording date, permission, transcript, and translation can be presented as verified; synthetic personal-name speech is excluded. | **Open:** record, clear, review, and bundle native-speaker audio for the pilot. |
 | **2: reproducible historic distribution** | Aggregate-only builder requires dataset/year/geography/source, suppression-safe rows, and cleared or link-only rights. UI explicitly says distribution is not family origin. | **Pipeline complete; data open:** agree source terms and publish reviewed CSO/archive aggregates. |
-| **2: safe corrections and all-island audit** | Assertion/form feedback is a private lead with context and source field; it cannot mutate public data. Rights register and protocol identify NI terminology and source work. | **Open:** prove handling with real submissions; commission PRONI/GRONI/OSNI/NI Place-Name Project coverage and community review. |
+| **2: safe corrections and all-island audit** | Assertion/form feedback is a private lead with context and source field; it cannot mutate public data. Rights register and protocol identify NI terminology and source work. The six-county source audit and record-level countyless/multi-county queues are complete. | **Open:** prove handling with real submissions; obtain licensed NIPNP/Logainm enrichment, named onomastic review, and community review. |
 | **3: public/search/share foundation** | Explicit coverage and method limits, static crawlable pages, canonical/meta/robots/sitemap, visible sources and reviewer/rights, web/app subject links, and public-only sourced sharing. | **Software complete; launch open:** production host, universal-link association, privacy/security review, analytics endpoint decision, SEO QA, and public approval. |
 | **3: contextual nearby and graph connections** | Location is requested in context, rounded to coarse coordinates, used for local suggestions, and not retained; results connect to collection and genuine story handoffs. | **Implemented:** device permission and field testing remain. |
 | **3: membership and public policy** | First answer remains free; membership follows the meaningful reveal. Methodology, correction route, credits, and “what a name cannot tell” are available in app and docs. | **Implemented:** product/legal approval of final subscription and policy language remains. |
@@ -73,7 +73,7 @@ sqlite3 ios/AnTuras/Resources/personal-atlas-foundation.sqlite 'PRAGMA integrity
 plutil -lint ios/AnTuras/Info.plist
 ```
 
-Audited result on 13 July 2026: 13 Swift tests and 15 Python tests pass. JSON, SQLite,
+Audited result on 13 July 2026: 14 Swift tests and 22 Python tests pass. JSON, SQLite,
 and plist validation, CMS JavaScript syntax, GitHub workflow YAML parsing, empty static
 preview generation, and empty signed-release generation also pass.
 
@@ -109,6 +109,25 @@ preview generation, and empty signed-release generation also pass.
    rate-limit guidance from [Logainm open data](https://www.logainm.ie/en/about/open-data),
    the [API guide](https://docs.gaois.ie/ga/data/logainm/v1.1/api), and the
    [data dictionary](https://docs.gaois.ie/ga/data/logainm/v1.1/data).
+
+5. Regenerate the Northern Ireland hierarchy queues from the retained snapshot:
+
+   ```bash
+   python3 tools/review_logainm_hierarchy.py \
+     content/personal-atlas/logainm-snapshot.json \
+     --json-output content/personal-atlas/logainm-ni-review.json \
+     --countyless-csv content/personal-atlas/logainm-countyless-review.csv \
+     --multi-county-csv content/personal-atlas/logainm-multi-county-review.csv
+   ```
+
+   Rebuild the app database with the reviewed hierarchy overlay:
+
+   ```bash
+   python3 tools/build_logainm_foundation_index.py \
+     content/personal-atlas/logainm-snapshot.json \
+     ios/AnTuras/Resources/personal-atlas-foundation.sqlite \
+     --hierarchy-repairs content/personal-atlas/logainm-hierarchy-repairs.json
+   ```
 
 ## External completion checklist
 

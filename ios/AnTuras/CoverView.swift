@@ -76,7 +76,7 @@ struct CoverView: View {
                 .buttonStyle(CarvePress())
                 .cascade(3, appeared: appeared, reduceMotion: reduceMotion)
 
-                Text("Prototype for playtesting. Draft content awaiting native-speaker review. Draft TTS: Gemini 3.1 Flash (Azure ga-IE follow-up).")
+                Text("Irish Cultural Guide audio · Generated Irish clips await language review · Your progress stays on this device.")
                     .font(.system(size: 12))
                     .foregroundStyle(Theme.inkFaint)
                     .padding(.top, 12)

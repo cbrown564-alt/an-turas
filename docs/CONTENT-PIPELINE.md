@@ -3,7 +3,7 @@
 *Repeatable process for authoring An Turas county stories as bundled JSON. Distilled
 from Chapter 2 (*Oileán na Naomh*), July 2026; reframed for the county-led model on
 2026-07-10. Complements `COUNTY-ATLAS.md` (the learner-facing contract), `SPINE.md`
-(sequencing), `Models.swift` (schema), and D7–D9/D12 (audio, illustration, CMS,
+(sequencing), `Models.swift` (schema), and D7/D9/D12/D17 (audio, illustration, CMS,
 county stories).*
 
 ## What this is
@@ -150,7 +150,7 @@ flowchart LR
   REV --> EDIT
   EDIT --> FINAL[chapterN.json + editorial-log.md]
   FINAL --> BOARD[Human editorial board]
-  BOARD --> AUDIO[Audio pipeline D7]
+  BOARD --> AUDIO[Audio pipeline D17]
   BOARD --> ART[Illustration D8]
   AUDIO --> SHIP[Bundle + sign-off]
   ART --> SHIP
@@ -211,7 +211,7 @@ artifact UI for new chapter type, AppState loading the new chapter.
 - [ ] Historian sign-off on era, attribution, present-day beat
 - [ ] Historian confirms the anchor/reading framing and any myth, hagiography, or
   contested-history labels
-- [ ] Audio: Gemini generate → native QA → bundle (D7)
+- [ ] Audio: selected project voice generate → native QA → bundle (D17)
 - [ ] Scene illustrations at production recipe where briefed (D8)
 - [ ] Integrated app QA: chapter loads, visits work, artifact renders correctly
 - [ ] No open Critical or High items in review doc
@@ -343,7 +343,7 @@ Do not combine roles in one pass — the reviewer must not have written the draf
 |-------|-------|-----------|
 | Pedagogue + historian sign-off | Editorial board | `STRATEGY.md` §4.5 |
 | Content review CMS | Phase 2 engineering | `DECISIONS.md` D9 |
-| TTS generate → QA → bundle | Audio pipeline | `docs/TTS-research.md`, D7 |
+| TTS generate → QA → bundle | Audio pipeline | `docs/TTS-research.md`, D17 |
 | Scene illustration | Art pipeline | `docs/ILLUSTRATIONS.md`, D8 |
 | App integration | Engineering | `Models.swift`, `AppState.swift` |
 | Public ship | Product | Zero Critical/High; board signed |
@@ -353,7 +353,9 @@ Do not combine roles in one pass — the reviewer must not have written the draf
 ## Related decisions
 
 - **D2** — Connacht first; tag dialect-variable items in glosses
-- **D7** — Gemini all-generated audio + native QA
+- **D7** — Gemini all-generated audio + native QA (historical Chapter 1 baseline)
+- **D16** — Irish Cultural Guide story narration + native QA
+- **D17** — Irish Cultural Guide for all initial-launch audio; partnerships are post-launch upgrades
 - **D8** — Scene pages only illustrated
 - **D9** — CMS wraps this workflow for human stakeholders
 - **D11** — Listening-first; echo ungraded

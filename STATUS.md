@@ -83,7 +83,9 @@ not a new atlas expansion or tester round.
 | 2026-07-12 | **Gráinne flagship stress-test + storyboard + weave + lo-fi review; Mayo source brief started.** Provisional pass: she can carry Mayo alone for narrative depth and the 20-word lifecycle; no side story yet. Five-episode spine organised around 1593; language weave and three-level evidence ladder drafted; lo-fi review passes with revisions (tighten Ep3, watch Ep5 overload) and blocks implementation/tester round until paper walkthrough. Historian-ready Mayo 1593 packet begun with claim ledger and rights plan; Breastagh register retargeted as field-note only. | `docs/GRAINNE-SOURCE-STRESS-TEST.md`, `docs/GRAINNE-STORYBOARD.md`, `docs/GRAINNE-LANGUAGE-WEAVE.md`, `docs/GRAINNE-LOFI-REVIEW.md`, `content/mayo/grainne-1593-source-brief.md` |
 | 2026-07-12 | **Walkthrough revisions + parallel launch packets.** Storyboard revised to six episodes; Mayo brief advanced with L1 paraphrases and transcription-first rights default. Offaly Cross, Dublin penny, and Meath/Trim briefs (plus Meath clean-slate confirm) opened. Content-review HTML CMS foundation + manifest; editorial board recruitment pack; Chapters 1–3 legacy salvage map. | `docs/GRAINNE-STORYBOARD.md`, `content/mayo/grainne-1593-source-brief.md`, `content/offaly/`, `content/dublin/`, `content/meath/`, `tools/content-review/`, `docs/CONTENT-REVIEW-CMS.md`, `docs/editorial/BOARD-RECRUITMENT.md`, `docs/LEGACY-SALVAGE-MAP.md` |
 | 2026-07-12 | **Personal atlas Phase 1 pilot shipped in-app.** Behind-a-name / behind-a-place search and result shell on the living atlas: 25 given + 25 surname + 30 place packs, certainty labels, historical-form travel, local saves under “What matters to you,” Mayo story handoffs, first-encounter hooks. Bundled JSON; no genealogy matching; foundation vs authored depth. Specialist review and licensed surname authority still required before public hardening. | `docs/PERSONAL-HISTORIES-FEATURE-PLAN.md`, `ios/AnTuras/PersonalAtlas*.swift`, `Resources/personal-atlas-subjects.json`, `content/personal-atlas/` |
-| 2026-07-13 | **Personal atlas Phase 0–4 engineering delivered behind evidence gates.** Added the hard-case research protocol; assertion-level CMS and deny-by-default public exporter; signed/versioned detail cache and deep links; production Logainm ingestion and a lazy 49 MB SQLite foundation containing 126,712 places and 305,638 aliases; automated all-island quality audit and safe nulling of 7,571 invalid source coordinates; private corrections and privacy-safe query ledger; aggregate distribution pipeline; coarse opt-in nearby places; source-visible static previews; map/time, voices, keepsake, field mode, family worksheet, and community-edition gates. Simulator build and 13 Swift plus 15 Python tests pass. No pilot subject was promoted: specialist, rights, audio, accessibility, community, hosting, and user-validation work remains external release work. | `docs/PERSONAL-ATLAS-*.md`, `ios/AnTuras/PersonalAtlas*.swift`, `tools/content-review/`, `tools/*personal*`, `.github/workflows/logainm-monthly.yml`, `web/personal-atlas/` |
+| 2026-07-13 | **Personal atlas Phase 0–4 engineering delivered behind evidence gates.** Added the hard-case research protocol; assertion-level CMS and deny-by-default public exporter; signed/versioned detail cache and deep links; production Logainm ingestion and a lazy 51 MB SQLite foundation containing 126,712 places and 305,638 aliases; automated all-island quality audit and safe nulling of 7,571 invalid source coordinates; applied 22 existing-link hierarchy recoveries plus four reviewed Northern repairs with provenance; private corrections and privacy-safe query ledger; aggregate distribution pipeline; coarse opt-in nearby places; source-visible static previews; map/time, voices, keepsake, field mode, family worksheet, and community-edition gates. Simulator build and 14 Swift plus 22 Python tests pass. No pilot subject was promoted: specialist, rights, audio, accessibility, community, hosting, and user-validation work remains external release work. | `docs/PERSONAL-ATLAS-*.md`, `ios/AnTuras/PersonalAtlas*.swift`, `tools/content-review/`, `tools/*personal*`, `.github/workflows/logainm-monthly.yml`, `web/personal-atlas/` |
+| 2026-07-13 | **House story voice selected.** ElevenLabs generated voice *Irish Cultural Guide* (`NPWroowF4phQhaPWjXPj`) is the default voice for Gráinne / Mayo narrative audio and the next story-audio tests. Browser review accepted the character despite generation variability; two of three samples were good enough. Irish headwords and phrases remain subject to focused language QA before bundling. | `docs/DECISIONS.md` D16, `docs/TTS-research.md` |
+| 2026-07-13 | **Initial-launch voice locked.** Irish Cultural Guide is now the default voice for all initial-launch narrative and Irish teaching audio. It is not perfect, but is mostly accurate and good enough to carry launch; the Gaeilge-first alternatives tested worse. Trinity College Dublin, ABAIR, and other established Irish-language speech/data partnerships are post-launch upgrade paths. | `docs/DECISIONS.md` D17, `docs/TTS-research.md` |
 
 ## Immediate next steps (Phase 2)
 
@@ -102,7 +104,8 @@ not a new atlas expansion or tester round.
 7. **Personal atlas external release gates** — run the 12–18 person hard-case protocol;
    establish the small specialist-reviewed showcase; replace pilot syntheses; secure
    the onomastics adviser, Logainm/Gaois account, licensed surname source, historic-map
-   and community/voice agreements; then pass the scorecard and exporter gates.
+   and community/voice agreements; pursue the reviewed Logainm/NIPNP Northern
+   townland-enrichment path; then pass the scorecard and exporter gates.
 8. **Progress migration design** — follow `docs/LEGACY-SALVAGE-MAP.md` before
    `mayo.grainne-1593` replaces playable ids.
 9. ~~Stress-test / storyboard / weave / lo-fi / Mayo brief start / Offaly·Dublin·Meath
@@ -112,7 +115,9 @@ not a new atlas expansion or tester round.
 
 ### Lower priority (unchanged)
 
-9. **Install Gemini 3.1 TTS clips only for cleared text** — do not QA superseded D13 copy.
+9. **Generate Irish Cultural Guide clips only for cleared text** — do not QA superseded
+   D13 copy; native-speaker review remains required for Irish teaching audio. Treat
+   Trinity/ABAIR partnership work as a post-launch upgrade.
 10. **Illustration production recipe** — atlas registers before Chapter 1–3 scene sets.
 11. **TestFlight build** — needs Apple Developer team in `ios/project.yml`.
 12. **Send ABAIR commercial enquiry** — optional; draft at `docs/ABAIR-enquiry.md`.
@@ -145,8 +150,8 @@ not a new atlas expansion or tester round.
   creative question). D12 fixes the map structure; it does not yet select the recurring
   narrative device.
 - **Grant-funding strings** — understand before accepting public money (D10).
-- **ABAIR upgrade path** — pursue if bundling rights granted; Gemini is production
-  baseline (D7).
+- **Irish-language audio upgrade path** — pursue Trinity/ABAIR/established speech-data
+  partnerships after launch; Irish Cultural Guide is the initial-launch baseline (D17).
 
 ## Resolved (Phase 1 → 2)
 
@@ -155,7 +160,7 @@ not a new atlas expansion or tester round.
 | U1 Persona | D1 — re-learners + diaspora; NI north star |
 | U2 Dialect | D2 — Connacht first |
 | U3 Retention loop | D5/D6 — narrative pull (tá tú ar ais, journey map) + An Féilire rituals |
-| U5 Audio strategy | D7 — Gemini all-generated with native-speaker QA |
+| U5 Audio strategy | D17 — Irish Cultural Guide for all initial-launch audio, all-generated with native-speaker QA; D7 is the historical Chapter 1 baseline |
 | U6 Business model | D10 — premium + grants on top; Ch 1–4 launch; bespoke |
 | U8 Pronunciation | D11 — listening-first permanent; echo ungraded |
 

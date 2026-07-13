@@ -25,6 +25,7 @@ final class SessionVM: ObservableObject {
     @Published var finished = false
 
     var initialPage = 0
+    var revealsPriorPages = false
 
     var pages: [Page] { session.pages }
     var exercisesTotal: Int { session.exerciseCount }
@@ -44,6 +45,7 @@ final class SessionVM: ObservableObject {
                 solved.insert(index)
             }
             initialPage = min(max(target, 0), completionIndex)
+            revealsPriorPages = true
         }
     }
 
@@ -79,7 +81,12 @@ struct SessionView: View {
 
     var body: some View {
         ScrollView(.horizontal) {
-            HStack(spacing: 0) {
+            // A session may contain a dozen visually rich pages. Keeping them in
+            // an eager HStack made every keyboard safe-area change lay out the
+            // entire visited session. Lazy mounting keeps the current page and
+            // its paging neighbours ready without retaining every prior page's
+            // nested ScrollView, image, and animation tree.
+            LazyHStack(spacing: 0) {
                 ForEach(0...vm.furthestUnlocked, id: \.self) { page in
                     pageView(page)
                         .containerRelativeFrame(.horizontal)
@@ -90,11 +97,19 @@ struct SessionView: View {
         .scrollTargetBehavior(.paging)
         .scrollPosition(id: $vm.currentPage)
         .scrollIndicators(.hidden)
+        // The exercise's own vertical scroller can keep the focused field in
+        // view. Resizing the horizontal lesson pager for the keyboard made all
+        // of its page geometry and scroll targets recalculate on first input.
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .modifier(OverscrollKnock(active: vm.furthestUnlocked < vm.completionIndex))
         .onAppear {
             guard !launched else { return }
             launched = true
-            visited.insert(vm.initialPage)
+            if vm.revealsPriorPages {
+                visited.formUnion(0...vm.initialPage)
+            } else {
+                visited.insert(vm.initialPage)
+            }
             vm.currentPage = vm.initialPage
         }
         .onChange(of: vm.currentPage) { old, new in
@@ -365,13 +380,26 @@ struct IllustrationView: View {
             case "b6", "b6-lamh":      folder = "b6-lamh"
             default:                   folder = branch
             }
-            if let url = Bundle.main.url(forResource: name, withExtension: "png", subdirectory: "art-exploration/\(folder)") {
+            if let url = bundledIllustration(named: name, subdirectory: "art-exploration/\(folder)") {
                 return UIImage(contentsOfFile: url.path)
             }
         } else {
             // Load from canonical default art bundle
-            if let url = Bundle.main.url(forResource: name, withExtension: "png", subdirectory: "art") {
+            if let url = bundledIllustration(named: name, subdirectory: "art") {
                 return UIImage(contentsOfFile: url.path)
+            }
+        }
+        return nil
+    }
+
+    private func bundledIllustration(named name: String, subdirectory: String) -> URL? {
+        for fileExtension in ["png", "jpg", "jpeg"] {
+            if let url = Bundle.main.url(
+                forResource: name,
+                withExtension: fileExtension,
+                subdirectory: subdirectory
+            ) {
+                return url
             }
         }
         return nil
@@ -551,7 +579,7 @@ private struct FinPageView: View {
                           font: .system(size: 15.5), lineSpacing: 5)
                     .foregroundStyle(Theme.inkSoft)
             }
-            Text("An Turas — prototype, Caibidil 1 vertical slice · Connacht Irish first · Draft content awaiting native-speaker review · Draft TTS (Gemini 3.1) · Your progress lives only on this device.")
+            Text("An Turas · Connacht Irish first · Irish Cultural Guide audio awaiting language review · Your progress stays on this device.")
                 .font(.system(size: 11))
                 .foregroundStyle(Theme.inkFaint)
                 .lineSpacing(3)
@@ -567,8 +595,6 @@ private struct FinPageView: View {
 /// cuts. Appearing is the invitation: the next page already exists.
 private struct ChalkTease: View {
     let label: String
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @State private var breathing = false
 
     var body: some View {
         HStack(spacing: 10) {
@@ -587,16 +613,10 @@ private struct ChalkTease: View {
         }
         .padding(.trailing, 22)
         .padding(.bottom, 20)
-        .opacity(breathing ? 0.95 : 0.5)
-        .onAppear {
-            if reduceMotion {
-                breathing = true
-            } else {
-                withAnimation(.easeInOut(duration: 1.6).repeatForever(autoreverses: true)) {
-                    breathing = true
-                }
-            }
-        }
+        // This affordance used to run a repeat-forever animation on every
+        // visited page. A static chalk mark communicates the same invitation
+        // without keeping off-screen page render trees continuously active.
+        .opacity(0.72)
         .transition(.opacity.combined(with: .offset(x: 10)))
         .allowsHitTesting(false)
         .accessibilityLabel("Next: \(label). Swipe left to continue.")

@@ -11,17 +11,15 @@ struct PersonalAtlasSearchView: View {
     var onOpenSubject: (String) -> Void
 
     @State private var query = ""
-    @State private var results: [PersonalIndexEntry] = []
     @State private var announcementTask: Task<Void, Never>?
     @State private var searchStartedAt: Date?
+    @StateObject private var searchModel = PersonalAtlasSearchModel()
     @FocusState private var fieldFocused: Bool
 
-    private let pack = PersonalAtlasLoader.pack()
-    private let searchEngine = PersonalSearchEngine(pack: PersonalAtlasLoader.pack())
     private let resultLimit = 12
 
     private var visibleResults: [PersonalIndexEntry] {
-        Array(results.prefix(resultLimit))
+        Array(searchModel.results.prefix(resultLimit))
     }
 
     var body: some View {
@@ -30,21 +28,23 @@ struct PersonalAtlasSearchView: View {
                 AtlasScreenHeader(
                     focus.eyebrow,
                     focus.title,
-                    detail: pack.coverageNote
+                    detail: searchModel.coverageNote
                 )
 
-                if let message = PersonalAtlasLoader.loadErrorMessage {
+                if let message = searchModel.loadErrorMessage {
                     contentError(message)
                 } else {
                     searchField
 
                     if query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                         invitation
-                    } else if results.isEmpty {
+                    } else if searchModel.isSearching {
+                        searchingState
+                    } else if searchModel.results.isEmpty {
                         emptyState
-                    } else if results.count > 1 {
+                    } else if searchModel.results.count > 1 {
                         ambiguityList
-                    } else if let only = results.first {
+                    } else if let only = searchModel.results.first {
                         singleMatch(only)
                     }
                 }
@@ -59,20 +59,31 @@ struct PersonalAtlasSearchView: View {
         .navigationTitle(focus.navTitle)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
+            searchModel.prepare()
             if query.isEmpty, !initialQuery.isEmpty {
                 query = initialQuery
-                runSearch()
             }
-            fieldFocused = true
+            // Let navigation and the first layout commit before asking UIKit to
+            // present the keyboard. Atlas resources are loaded off the main actor.
+            Task { @MainActor in
+                await Task.yield()
+                fieldFocused = true
+            }
         }
         .onChange(of: query) { oldValue, newValue in
             if oldValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
                !newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 searchStartedAt = Date()
             }
-            runSearch()
+            runSearch(query: newValue)
         }
-        .onDisappear { announcementTask?.cancel() }
+        .onChange(of: searchModel.results) { _, results in
+            scheduleResultAnnouncement(count: results.count)
+        }
+        .onDisappear {
+            announcementTask?.cancel()
+            searchModel.cancel()
+        }
     }
 
     private var searchField: some View {
@@ -90,7 +101,7 @@ struct PersonalAtlasSearchView: View {
             if !query.isEmpty {
                 Button {
                     query = ""
-                    results = []
+                    searchModel.clear()
                 } label: {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundStyle(Theme.inkFaint)
@@ -131,7 +142,7 @@ struct PersonalAtlasSearchView: View {
                 }
             }
 
-            if appState.savePersonalSearchHistory {
+            if searchModel.isReady, appState.savePersonalSearchHistory {
                 let recent = appState.recentPersonalSubjects.compactMap(PersonalAtlasLoader.indexEntry)
                 if !recent.isEmpty {
                     VStack(alignment: .leading, spacing: 8) {
@@ -211,6 +222,18 @@ struct PersonalAtlasSearchView: View {
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 
+    private var searchingState: some View {
+        HStack(spacing: 10) {
+            ProgressView()
+                .tint(Theme.moss)
+            Text("Searching the offline atlas…")
+                .font(.callout)
+                .foregroundStyle(Theme.inkSoft)
+        }
+        .padding(.vertical, 8)
+        .accessibilityElement(children: .combine)
+    }
+
     private var ambiguityList: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(resultSummary)
@@ -286,7 +309,7 @@ struct PersonalAtlasSearchView: View {
         appState.recordPersonalAtlasEvent(
             subjectId: analyticsId,
             outcome: .openedSubject,
-            selectedAmbiguityBranchId: results.count > 1 ? analyticsId : nil,
+            selectedAmbiguityBranchId: searchModel.results.count > 1 ? analyticsId : nil,
             timeToAnswerMilliseconds: elapsed
         )
         if appState.savePersonalSearchHistory {
@@ -296,38 +319,30 @@ struct PersonalAtlasSearchView: View {
     }
 
     private func recordSearchOutcome() {
-        if results.isEmpty {
+        if searchModel.results.isEmpty {
             appState.recordPersonalAtlasEvent(
                 subjectId: nil,
                 outcome: .unresolved,
                 unresolvedReason: "no-published-match"
             )
-        } else if results.count > 1 {
+        } else if searchModel.results.count > 1 {
             appState.recordPersonalAtlasEvent(subjectId: nil, outcome: .ambiguityShown)
         }
     }
 
-    private func runSearch() {
-        let filtered = searchEngine.matches(query: query, includeFoundation: focus != .name).filter { entry in
-            switch focus {
-            case .either: return true
-            case .name: return entry.kind == .name
-            case .place: return entry.kind == .place
-            }
-        }
-        if reduceMotion {
-            results = filtered
-        } else {
-            withAnimation(Motion.settle) { results = filtered }
-        }
-        scheduleResultAnnouncement(count: filtered.count)
+    private func runSearch(query: String) {
+        searchModel.search(
+            query: query,
+            focus: focus,
+            animateResults: !reduceMotion
+        )
     }
 
     private var resultSummary: String {
-        if results.count > resultLimit {
-            return "Showing the first \(resultLimit) of \(results.count) matches. Add more letters to narrow them."
+        if searchModel.results.count > resultLimit {
+            return "Showing the first \(resultLimit) of \(searchModel.results.count) matches. Add more letters to narrow them."
         }
-        return "\(results.count) matches. Use the place or name details to choose."
+        return "\(searchModel.results.count) matches. Use the place or name details to choose."
     }
 
     private func resultContext(_ entry: PersonalIndexEntry) -> String? {
@@ -376,6 +391,121 @@ struct PersonalAtlasSearchView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Theme.sunk)
         .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+}
+
+// Search owns a 49 MB on-disk index. Keeping its initialization and SQLite work
+// behind an actor prevents either operation from blocking keyboard presentation or
+// the TextField's first binding update.
+private actor PersonalAtlasSearchWorker {
+    struct LoadState {
+        let coverageNote: String
+        let errorMessage: String?
+    }
+
+    private var searchEngine: PersonalSearchEngine?
+
+    func prepare() -> LoadState {
+        let pack = PersonalAtlasLoader.pack()
+        searchEngine = PersonalSearchEngine(pack: pack)
+        return LoadState(
+            coverageNote: pack.coverageNote,
+            errorMessage: PersonalAtlasLoader.loadErrorMessage
+        )
+    }
+
+    func matches(query: String, includeFoundation: Bool) -> [PersonalIndexEntry] {
+        searchEngine?.matches(query: query, includeFoundation: includeFoundation) ?? []
+    }
+}
+
+@MainActor
+private final class PersonalAtlasSearchModel: ObservableObject {
+    @Published private(set) var results: [PersonalIndexEntry] = []
+    @Published private(set) var coverageNote = "Search names and places held in the offline atlas."
+    @Published private(set) var loadErrorMessage: String?
+    @Published private(set) var isReady = false
+    @Published private(set) var isSearching = false
+
+    private let worker = PersonalAtlasSearchWorker()
+    private var prepareTask: Task<Void, Never>?
+    private var searchTask: Task<Void, Never>?
+    private var generation = 0
+
+    func prepare() {
+        guard prepareTask == nil, !isReady else { return }
+        prepareTask = Task { [weak self] in
+            guard let self else { return }
+            let state = await worker.prepare()
+            guard !Task.isCancelled else { return }
+            coverageNote = state.coverageNote
+            loadErrorMessage = state.errorMessage
+            isReady = true
+        }
+    }
+
+    func search(query: String, focus: PersonalSearchFocus, animateResults: Bool) {
+        generation += 1
+        let requestedGeneration = generation
+        searchTask?.cancel()
+
+        guard !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            isSearching = false
+            setResults([], animated: false)
+            return
+        }
+
+        isSearching = true
+        prepare()
+        searchTask = Task { [weak self] in
+            guard let self else { return }
+            // Coalesce normal typing bursts while letting the TextField paint the
+            // character immediately. Initial resource loading continues in parallel.
+            try? await Task.sleep(for: .milliseconds(140))
+            guard !Task.isCancelled else { return }
+            await prepareTask?.value
+            guard !Task.isCancelled else { return }
+            guard loadErrorMessage == nil else {
+                isSearching = false
+                return
+            }
+
+            let matches = await worker.matches(
+                query: query,
+                includeFoundation: focus != .name
+            )
+            guard !Task.isCancelled, requestedGeneration == generation else { return }
+            let filtered = matches.filter { entry in
+                switch focus {
+                case .either: return true
+                case .name: return entry.kind == .name
+                case .place: return entry.kind == .place
+                }
+            }
+            isSearching = false
+            setResults(filtered, animated: animateResults)
+        }
+    }
+
+    func clear() {
+        generation += 1
+        searchTask?.cancel()
+        isSearching = false
+        setResults([], animated: false)
+    }
+
+    func cancel() {
+        generation += 1
+        searchTask?.cancel()
+        isSearching = false
+    }
+
+    private func setResults(_ newResults: [PersonalIndexEntry], animated: Bool) {
+        if animated {
+            withAnimation(Motion.settle) { results = newResults }
+        } else {
+            results = newResults
+        }
     }
 }
 

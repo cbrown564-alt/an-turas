@@ -1,14 +1,11 @@
 import AVFoundation
 
 // MARK: - An Guth — the voice.
-// Audio sources, in order of preference:
-//   1. Bundled clips (Resources/Audio/<slug>.mp3|m4a|wav) — Chapter 1 clips
-//      from the TTS bake-off. Playtest path: Gemini 3.1 Flash TTS; Azure ga-IE
-//      follow-up; ABAIR eval-only until TCD licence. See winners.json + manifest.
-//   2. A system Irish voice, if one ever exists — as of iOS 26 Apple ships
-//      no ga-IE voice, so this is future-proofing, not a real path.
-//   3. Silence: every listen affordance quietly steps aside per-line, and
-//      the app remains fully usable without sound.
+// All release-path speech uses reviewed, bundled clips generated with the
+// ElevenLabs Irish Cultural Guide house voice. We deliberately do not fall
+// through to a device voice: that would change accent and quality by device.
+// Missing or personalized lines remain visibly usable without pretending a
+// different voice belongs to the same recording set.
 
 @MainActor
 final class SpeechService: NSObject, ObservableObject {
@@ -19,41 +16,44 @@ final class SpeechService: NSObject, ObservableObject {
     /// light its own ear and no one else's.
     @Published private(set) var currentText: String?
 
-    private let synth = AVSpeechSynthesizer()
     private var player: AVAudioPlayer?
-    private let voice: AVSpeechSynthesisVoice?
-
-    /// Learner rate: unhurried, the way Dáire says a line for you to keep.
-    nonisolated static let learnerRate: Float = 0.42
 
     override private init() {
-        let irish = AVSpeechSynthesisVoice.speechVoices()
-            .filter { $0.language == "ga-IE" }
-        voice = irish.first { $0.quality != .default } ?? irish.first
         super.init()
-        synth.delegate = self
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleAudioInterruption(_:)),
+            name: AVAudioSession.interruptionNotification,
+            object: AVAudioSession.sharedInstance()
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleMediaServicesReset(_:)),
+            name: AVAudioSession.mediaServicesWereResetNotification,
+            object: AVAudioSession.sharedInstance()
+        )
     }
+
+    deinit { NotificationCenter.default.removeObserver(self) }
 
     /// Whether this exact line can be heard on this device.
     func canSpeak(_ text: String) -> Bool {
-        voice != nil || Self.bundledURL(for: text) != nil
+        Self.bundledURL(for: text) != nil
     }
 
-    func speak(_ text: String, rate: Float = SpeechService.learnerRate) {
+    func speak(_ text: String) {
         stop()
         if let url = Self.bundledURL(for: text) {
             playClip(url: url, text: text)
-        } else if voice != nil {
-            speakSynthesized(text, rate: rate)
         }
     }
 
     func stop() {
-        synth.stopSpeaking(at: .immediate)
         player?.stop()
         player = nil
         speaking = false
         currentText = nil
+        deactivateSession()
     }
 
     func isSpeaking(_ text: String) -> Bool {
@@ -79,26 +79,42 @@ final class SpeechService: NSObject, ObservableObject {
         activateSession()
         player = p
         p.delegate = self
+        p.prepareToPlay()
         speaking = true
         currentText = text
-        p.play()
-    }
-
-    private func speakSynthesized(_ text: String, rate: Float) {
-        guard let voice else { return }
-        activateSession()
-        let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = voice
-        utterance.rate = rate
-        speaking = true
-        currentText = text
-        synth.speak(utterance)
+        if !p.play() { finishPlayback() }
     }
 
     private func activateSession() {
         let session = AVAudioSession.sharedInstance()
         try? session.setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
         try? session.setActive(true)
+    }
+
+    private func deactivateSession() {
+        try? AVAudioSession.sharedInstance().setActive(
+            false,
+            options: .notifyOthersOnDeactivation
+        )
+    }
+
+    private func finishPlayback() {
+        player = nil
+        speaking = false
+        currentText = nil
+        deactivateSession()
+    }
+
+    @objc private func handleAudioInterruption(_ notification: Notification) {
+        guard
+            let rawValue = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
+            AVAudioSession.InterruptionType(rawValue: rawValue) == .began
+        else { return }
+        stop()
+    }
+
+    @objc private func handleMediaServicesReset(_ notification: Notification) {
+        stop()
     }
 
     // MARK: Clip naming
@@ -145,21 +161,9 @@ final class SpeechService: NSObject, ObservableObject {
     }
 }
 
-extension SpeechService: AVSpeechSynthesizerDelegate {
-    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
-                                       didFinish utterance: AVSpeechUtterance) {
-        Task { @MainActor in speaking = false; currentText = nil }
-    }
-
-    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
-                                       didCancel utterance: AVSpeechUtterance) {
-        Task { @MainActor in speaking = false; currentText = nil }
-    }
-}
-
 extension SpeechService: AVAudioPlayerDelegate {
     nonisolated func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer,
                                                  successfully flag: Bool) {
-        Task { @MainActor in speaking = false; currentText = nil }
+        Task { @MainActor in finishPlayback() }
     }
 }

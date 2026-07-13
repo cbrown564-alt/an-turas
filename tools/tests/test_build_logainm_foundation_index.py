@@ -15,6 +15,105 @@ SPEC.loader.exec_module(module)
 
 
 class LogainmFoundationIndexTests(unittest.TestCase):
+    def test_repairs_countyless_records_with_provenance(self):
+        snapshot = {
+            "fetchedAt": "2026-07-13T00:00:00+00:00", "attribution": "Required",
+            "records": [
+                {
+                    "id": 1,
+                    "placenames": [{"language": "en", "wording": "Down", "main": True}],
+                    "categories": [{"id": "CON", "nameEN": "county"}],
+                },
+                {
+                    "id": 2,
+                    "placenames": [{"language": "en", "wording": "Parish", "main": True}],
+                    "categories": [{"id": "PAR", "nameEN": "civil parish"}],
+                    "includedIn": [
+                        {"id": 1, "nameEN": "Down", "category": {"id": "CON"}}
+                    ],
+                },
+                {
+                    "id": 3,
+                    "placenames": [{"language": "en", "wording": "Townland", "main": True}],
+                    "categories": [{"id": "BF", "nameEN": "townland"}],
+                    "includedIn": [
+                        {"id": 2, "nameEN": "Parish", "category": {"id": "PAR"}}
+                    ],
+                },
+            ],
+        }
+        entry = module.build(snapshot)["entries"][2]
+        self.assertEqual(entry["foundation"]["hierarchy"], "Parish / Down")
+        self.assertEqual(entry["foundation"]["hierarchyRepairs"], [{
+            "county": "Down", "method": "inferred_existing_hierarchy",
+            "sources": ["logainm:1", "logainm:2"],
+        }])
+
+    def test_county_root_does_not_infer_itself_through_a_cluster(self):
+        snapshot = {
+            "fetchedAt": "2026-07-13T00:00:00+00:00", "attribution": "Required",
+            "records": [{
+                "id": 100001,
+                "placenames": [{"language": "en", "wording": "Armagh", "main": True}],
+                "categories": [{"id": "CON", "nameEN": "county"}],
+                "cluster": {"members": [{"placeID": 2}]},
+            }, {
+                "id": 2,
+                "placenames": [{"language": "en", "wording": "Historic Armagh", "main": True}],
+                "categories": [{"id": "CONH", "nameEN": "historic county"}],
+                "includedIn": [
+                    {"id": 100001, "nameEN": "Armagh", "category": {"id": "CON"}}
+                ],
+            }],
+        }
+        county = next(
+            item for item in module.build(snapshot)["entries"]
+            if item["foundation"]["logainmId"] == 100001
+        )
+        self.assertEqual(county["foundation"]["hierarchy"], "Ireland")
+        self.assertEqual(county["foundation"]["hierarchyRepairs"], [])
+
+    def test_reviewed_repair_overrides_ambiguous_parent_inference(self):
+        snapshot = {
+            "fetchedAt": "2026-07-13T00:00:00+00:00", "attribution": "Required",
+            "records": [{
+                "id": 56408,
+                "placenames": [{"language": "en", "wording": "Clankilvoragh", "main": True}],
+                "categories": [{"id": "BF", "nameEN": "townland"}],
+                "includedIn": [
+                    {"id": 2737, "nameEN": "Magheralin", "category": {"id": "PAR"}}
+                ],
+            }],
+        }
+        repairs = {"records": {"56408": {
+            "expectedEnglish": "Clankilvoragh", "counties": ["Armagh"],
+            "method": "reviewed_external_evidence",
+            "sources": ["osni:50k-townlands", "cso:census-1851-armagh"],
+        }}}
+        entry = module.build(snapshot, repairs)["entries"][0]
+        self.assertEqual(entry["foundation"]["hierarchy"], "Magheralin / Armagh")
+        self.assertEqual(entry["foundation"]["hierarchyRepairs"][0]["county"], "Armagh")
+        self.assertEqual(
+            entry["foundation"]["hierarchyRepairs"][0]["method"],
+            "reviewed_external_evidence",
+        )
+
+    def test_repair_rejects_a_stale_identity_match(self):
+        snapshot = {
+            "fetchedAt": "2026-07-13T00:00:00+00:00", "attribution": "Required",
+            "records": [{
+                "id": 56408,
+                "placenames": [{"language": "en", "wording": "Different", "main": True}],
+                "categories": [{"id": "BF", "nameEN": "townland"}],
+            }],
+        }
+        repairs = {"records": {"56408": {
+            "expectedEnglish": "Clankilvoragh", "counties": ["Armagh"],
+            "method": "reviewed_external_evidence", "sources": [],
+        }}}
+        with self.assertRaisesRegex(ValueError, "expected English form"):
+            module.build(snapshot, repairs)
+
     def test_preserves_forms_hierarchy_coordinates_and_attribution(self):
         snapshot = {
             "fetchedAt": "2026-07-13T00:00:00+00:00",
@@ -74,6 +173,10 @@ class LogainmFoundationIndexTests(unittest.TestCase):
             self.assertEqual(database.execute(
                 "SELECT canonical, latitude FROM places WHERE id = 1"
             ).fetchone(), ("Ráth Bhile", 52.84))
+            repairs = database.execute(
+                "SELECT hierarchy_repairs FROM places WHERE id = 1"
+            ).fetchone()[0]
+            self.assertIsNone(repairs)
 
     def test_out_of_bounds_and_sentinel_coordinates_are_not_shipped(self):
         base = {

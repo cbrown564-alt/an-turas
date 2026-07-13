@@ -42,6 +42,7 @@ final class PersonalFoundationStore {
         let sql = """
             SELECT p.id, p.canonical, p.subtitle, p.variants, p.hierarchy, p.place_kind,
                    p.irish, p.english, p.latitude, p.longitude, p.permalink, p.modified_at,
+                   p.hierarchy_repairs,
                    MIN(CASE WHEN a.search_key = ?1 THEN 0
                             WHEN a.search_key LIKE ?2 THEN 1 ELSE 2 END) AS match_rank
             FROM aliases a JOIN places p ON p.id = a.place_id
@@ -65,7 +66,7 @@ final class PersonalFoundationStore {
         }
         let sql = """
             SELECT id, canonical, subtitle, variants, hierarchy, place_kind, irish, english,
-                   latitude, longitude, permalink, modified_at
+                   latitude, longitude, permalink, modified_at, hierarchy_repairs
             FROM places WHERE id = ?1
             """
         guard let statement = prepare(sql) else { return nil }
@@ -96,6 +97,10 @@ final class PersonalFoundationStore {
             let latitude = optionalDouble(statement, 8)
             let longitude = optionalDouble(statement, 9)
             let coordinates = latitude.flatMap { lat in longitude.map { PersonalCoordinates(lat: lat, lon: $0) } }
+            let assignmentsData = (text(statement, 12) ?? "[]").data(using: .utf8) ?? Data()
+            let hierarchyRepairs = (
+                try? JSONDecoder().decode([PersonalHierarchyRepair].self, from: assignmentsData)
+            ) ?? []
             let foundation = PersonalFoundationPlace(
                 logainmId: placeID,
                 irishForm: text(statement, 6),
@@ -105,7 +110,8 @@ final class PersonalFoundationStore {
                 coordinates: coordinates,
                 permalink: text(statement, 10) ?? "https://www.logainm.ie/en/\(placeID)",
                 modifiedAt: text(statement, 11),
-                attribution: metadata.attribution
+                attribution: metadata.attribution,
+                hierarchyRepairs: hierarchyRepairs
             )
             entries.append(PersonalIndexEntry(
                 id: "logainm.\(placeID)", kind: .place, canonicalDisplay: canonical,

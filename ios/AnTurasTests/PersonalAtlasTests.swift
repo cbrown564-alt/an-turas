@@ -204,6 +204,22 @@ final class PersonalAtlasTests: XCTestCase {
         XCTAssertEqual(PersonalAtlasLoader.subject(id: match.id)?.placeProfile?.logainmId, 1)
     }
 
+    func testBundledFoundationCarriesReviewedHierarchyRepairs() throws {
+        let store = try XCTUnwrap(PersonalAtlasLoader.foundationStore)
+        let townland = try XCTUnwrap(store.entry(id: "logainm.56408"))
+        let townlandPlace = try XCTUnwrap(townland.foundation)
+        XCTAssertEqual(townlandPlace.hierarchy, "Machaire Lainne / Armagh")
+        XCTAssertEqual(townlandPlace.hierarchyRepairs?.map(\.county), ["Armagh"])
+        XCTAssertEqual(
+            townlandPlace.hierarchyRepairs?.first?.method,
+            "reviewed_external_evidence"
+        )
+
+        let parish = try XCTUnwrap(store.entry(id: "logainm.2737")?.foundation)
+        XCTAssertEqual(parish.hierarchy, "Armagh / Down")
+        XCTAssertEqual(parish.hierarchyRepairs?.map(\.county), ["Armagh", "Down"])
+    }
+
     private func bundledPack() throws -> PersonalAtlasPack {
         let bundle = Bundle(for: type(of: self))
         let url = try XCTUnwrap(

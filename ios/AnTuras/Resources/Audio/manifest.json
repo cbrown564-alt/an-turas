@@ -1,41 +1,1225 @@
 {
-  "_readme": [
-    "Every line of spoken Irish in Chapter 1, for the TTS bake-off",
-    "(ABAIR vs ElevenLabs vs gemini-3-flash — see docs/ABAIR.md for the",
-    "licensing constraints; ABAIR output must NOT be bundled before written",
-    "consent). A provider script should emit one clip per line into this",
-    "directory, named <slug>.mp3 (or .m4a/.wav/.caf). The app checks this",
-    "directory first for every sound affordance and hides the ear for any",
-    "line that has no clip, so partial drops are fine.",
-    "Slug rule (mirrors SpeechService.slug): lowercase; fada vowels double",
-    "(á→aa é→ee í→ii ó→oo ú→uu); any other non-letter is a word break;",
-    "breaks join with '-'."
-  ],
-  "speakers": {
-    "daire": "male, unhurried, west-of-Ireland (Conamara) — the stone-carver; also the neutral voice for single words",
-    "brid": "young female, quick and bright — Dáire's daughter"
+  "schema_version": 2,
+  "generated_at": "2026-07-13T12:37:25.267966+00:00",
+  "provider": "ElevenLabs",
+  "voice": {
+    "name": "Irish Cultural Guide",
+    "id": "NPWroowF4phQhaPWjXPj"
   },
+  "model_id": "eleven_v3",
+  "language_code": "ga",
+  "output_format": "mp3_44100_192",
+  "slug_rule": "lowercase; fada vowels double; non-ASCII letters become word breaks",
+  "qa_policy": "Generated clips require Irish-language and editorial listening review before release sign-off.",
   "lines": [
-    { "slug": "dia-dhuit", "text": "Dia dhuit!", "speaker": "daire" },
-    { "slug": "dia-is-muire-dhuit", "text": "Dia is Muire dhuit.", "speaker": "daire", "note": "also used as Bríd's reaction line in the session-3 turn; one clip serves both until speakers split" },
-    { "slug": "is-mise-daaire", "text": "Is mise Dáire.", "speaker": "daire" },
-    { "slug": "cee-thusa", "text": "Cé thusa?", "speaker": "daire" },
-    { "slug": "ceen-t-ainm-ataa-ort", "text": "Cén t-ainm atá ort?", "speaker": "daire" },
-    { "slug": "slaan-go-fooill", "text": "Slán go fóill.", "speaker": "daire" },
-    { "slug": "cee-as-thuu", "text": "Cé as thú?", "speaker": "daire" },
-    { "slug": "is-as-maigh-eo-mee", "text": "Is as Maigh Eo mé.", "speaker": "daire" },
-    { "slug": "ceead-miile-faailte", "text": "Céad míle fáilte.", "speaker": "daire" },
-    { "slug": "seo-briid-miniion", "text": "Seo Bríd, m'iníon.", "speaker": "daire" },
-    { "slug": "colmaan-mac-roonaain", "text": "Colmán mac Rónáin.", "speaker": "daire" },
-    { "slug": "caol-le-caol-agus-leathan-le-leathan", "text": "Caol le caol agus leathan le leathan.", "speaker": "daire" },
-    { "slug": "is-buaine-focal-naa-toice-an-tsaoil", "text": "Is buaine focal ná toice an tsaoil.", "speaker": "daire" },
-    { "slug": "feear", "text": "féar", "speaker": "daire", "note": "listen exercise — the é must be audibly long vs 'fear'" },
-    { "slug": "seaan", "text": "Seán", "speaker": "daire", "note": "listen exercise — the á must be audibly long vs 'sean'" },
-    { "slug": "mac", "text": "mac", "speaker": "daire" },
-    { "slug": "dearthaair", "text": "deartháir", "speaker": "daire" },
-    { "slug": "deirfiuur", "text": "deirfiúr", "speaker": "daire" },
-    { "slug": "cill-ala", "text": "Cill Ala", "speaker": "daire" },
-    { "slug": "dia-dhuit-a-bhriid", "text": "Dia dhuit, a Bhríd.", "speaker": "daire", "note": "the learner's line in the session-3 turn — model reading" },
-    { "slug": "taa-a-fhios-agam", "text": "Tá a fhios agam.", "speaker": "brid" }
+    {
+      "slug": "an-maith-leat-an-t-iasc",
+      "text": "An maith leat an t-iasc?",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "an-maith-leat-an-t-iasc.mp3",
+      "bytes": 45810,
+      "sha256": "69dd3d3d27de5a18c102460db850e7ac3fb15344a9a39161ec5b39b37da4b66f",
+      "duration_seconds": 1.84,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "aon-doo-trii-ceithre-cuuig",
+      "text": "Aon, dó, trí, ceithre, cúig.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "aon-doo-trii-ceithre-cuuig.mp3",
+      "bytes": 85934,
+      "sha256": "f960fd2ee3d2fd1179d6fd6f163813e02311e6450289123f5380a1351f8a7403",
+      "duration_seconds": 3.52,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "ar-scaath-a-cheeile-a-mhaireann-na-daoine",
+      "text": "Ar scáth a chéile a mhaireann na daoine.",
+      "sources": [
+        "chapter3.json:listen",
+        "chapter3.json:seanfhocal",
+        "chapter3.json:speech"
+      ],
+      "file": "ar-scaath-a-cheeile-a-mhaireann-na-daoine.mp3",
+      "bytes": 74649,
+      "sha256": "52abcbf45111783ff506dec900dfe1bff8a06756c3d965e35c1cd8f1be02d8da",
+      "duration_seconds": 3.04,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "baile-aatha-cliath",
+      "text": "Baile Átha Cliath",
+      "sources": [
+        "chapter3.json:lens"
+      ],
+      "file": "baile-aatha-cliath.mp3",
+      "bytes": 34525,
+      "sha256": "a1db0734f85f4dbf59522f1fa9108edf542a78954ed86ecf063610db9955c188",
+      "duration_seconds": 1.36,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "caa-bhfuil-tuu-ag-teacht",
+      "text": "Cá bhfuil tú ag teacht?",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "caa-bhfuil-tuu-ag-teacht.mp3",
+      "bytes": 40168,
+      "sha256": "433ff974be820dd72309f6de50a3bc0e1d464ea4b53c68ded612b3cd1c283d9a",
+      "duration_seconds": 1.6,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "cad-a-chonaic-tuu",
+      "text": "Cad a chonaic tú?",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "cad-a-chonaic-tuu.mp3",
+      "bytes": 34525,
+      "sha256": "0254e72581376f6ee007fc9cc19299f2d4e836dffc40a846cba9d5315284c9a1",
+      "duration_seconds": 1.36,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "caol-le-caol-agus-leathan-le-leathan",
+      "text": "Caol le caol agus leathan le leathan.",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "caol-le-caol-agus-leathan-le-leathan.mp3",
+      "bytes": 62737,
+      "sha256": "c27febb693d1df6a05b7afa647068d8cf3cecfa9c627024ae6bc0fb22e6dfcab",
+      "duration_seconds": 2.56,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "cee-as-thuu",
+      "text": "Cé as thú?",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "cee-as-thuu.mp3",
+      "bytes": 30137,
+      "sha256": "7b228f730877a58dcb1b7cec6cf382d22ed472bb744cccdc58a42a3f55c18409",
+      "duration_seconds": 1.2,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "cee-thusa",
+      "text": "Cé thusa?",
+      "sources": [
+        "chapter1.json:speech",
+        "chapter2.json:speech"
+      ],
+      "file": "cee-thusa.mp3",
+      "bytes": 24494,
+      "sha256": "bbafc06afc280c4cd5a71c4fe55ab67afdb167c5390790d95f386ef66db5639d",
+      "duration_seconds": 0.96,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "ceead-miile-faailte",
+      "text": "Céad míle fáilte.",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "ceead-miile-faailte.mp3",
+      "bytes": 42049,
+      "sha256": "a9d86b153e792b0b6100f889fe90a5f32260990a57099e9b60d1e556a9d4b189",
+      "duration_seconds": 1.68,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "ceen-t-ainm-ataa-ort",
+      "text": "Cén t-ainm atá ort?",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "ceen-t-ainm-ataa-ort.mp3",
+      "bytes": 45810,
+      "sha256": "0659cd743c13766554c3cf05dfafec451c9c8c808f48b4d142f0627031beba2d",
+      "duration_seconds": 1.84,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "ceithre-deeag-pingin",
+      "text": "ceithre déag pingin",
+      "sources": [
+        "chapter3.json:listen"
+      ],
+      "file": "ceithre-deeag-pingin.mp3",
+      "bytes": 43929,
+      "sha256": "37c891c8278bd8c9c4e185322a95ec55ff31073ce244c61f1bb869beb87c35d4",
+      "duration_seconds": 1.76,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "cheannaigh-mee-brooga-anseo-innee",
+      "text": "Cheannaigh mé bróga anseo inné.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "cheannaigh-mee-brooga-anseo-innee.mp3",
+      "bytes": 62737,
+      "sha256": "db0674d1f3576bc7263ef54247a3ef8cc4b420375e9c269d5fde7adaba6a0d86",
+      "duration_seconds": 2.56,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "chonaic-mee-an-t-airgead-ar-an-scaala",
+      "text": "Chonaic mé an t-airgead ar an scála.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "chonaic-mee-an-t-airgead-ar-an-scaala.mp3",
+      "bytes": 67126,
+      "sha256": "d06ef5589b1465bbec7cccb14fc9a7a86ad8a5b1baed18e904c9a6dc38c9c53b",
+      "duration_seconds": 2.72,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "chonaic-mee-deatach-ar-an-bhfaanaii",
+      "text": "Chonaic mé deatach ar an bhfánaí.",
+      "sources": [
+        "chapter3.json:listen",
+        "chapter3.json:speech"
+      ],
+      "file": "chonaic-mee-deatach-ar-an-bhfaanaii.mp3",
+      "bytes": 58976,
+      "sha256": "b5196677a1c51dcb41bf21e2a8d0bee834235ba0d22b35e9b3facfad3c5472be",
+      "duration_seconds": 2.4,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "chonaic-tuu-an-t-airgead",
+      "text": "Chonaic tú an t-airgead?",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "chonaic-tuu-an-t-airgead.mp3",
+      "bytes": 40168,
+      "sha256": "24d96e64c43286694cec57317edc3d86c5e2f9bebbcfe54148ba5bc36e07c780",
+      "duration_seconds": 1.6,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "chuaigh-mee-an-bealach-seo-cheana",
+      "text": "Chuaigh mé an bealach seo cheana.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "chuaigh-mee-an-bealach-seo-cheana.mp3",
+      "bytes": 57095,
+      "sha256": "aacf22a6c50785ca672af1effcc3e54205c6e42d68be3c3569c333cc8b3ef0e6",
+      "duration_seconds": 2.32,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "chuaigh-mee-go-dtii-an-linn-dubh",
+      "text": "Chuaigh mé go dtí an linn dubh.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "chuaigh-mee-go-dtii-an-linn-dubh.mp3",
+      "bytes": 58976,
+      "sha256": "4e1f32d2f2173e98c95d696fe03dbc7f2d6552d9269b36c66624202c10aa61bb",
+      "duration_seconds": 2.4,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "cill-ala",
+      "text": "Cill Ala",
+      "sources": [
+        "chapter1.json:lens"
+      ],
+      "file": "cill-ala.mp3",
+      "bytes": 45810,
+      "sha256": "fd30cc318fc8c595878db05d368350dfd8ef3253e7f0d027bf97042baf777b5a",
+      "duration_seconds": 1.84,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "cluain-mhic-noois",
+      "text": "Cluain Mhic Nóis",
+      "sources": [
+        "chapter2.json:lens"
+      ],
+      "file": "cluain-mhic-noois.mp3",
+      "bytes": 40168,
+      "sha256": "5052e2bee77e49343cf7c686306838a33641d4198aa440e13466ad476543f875",
+      "duration_seconds": 1.6,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "colmaan-mac-roonaain",
+      "text": "Colmán mac Rónáin.",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "colmaan-mac-roonaain.mp3",
+      "bytes": 45810,
+      "sha256": "b477a09a168725c1846f847133801a7e21f1c2891a8b6ae6cf96173a2a7673c7",
+      "duration_seconds": 1.84,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "corcra-gorm-dearg-buii-dubh-baan",
+      "text": "Corcra. Gorm. Dearg. Buí. Dubh. Bán.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "corcra-gorm-dearg-buii-dubh-baan.mp3",
+      "bytes": 188125,
+      "sha256": "4611bfc7acb319775cdcac10506ecbc1583d97ae265e8580c3b30f7fa8da4f36",
+      "duration_seconds": 7.76,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "cuuig",
+      "text": "cúig",
+      "sources": [
+        "chapter2.json:listen"
+      ],
+      "file": "cuuig.mp3",
+      "bytes": 38287,
+      "sha256": "1dacd6c33000d2636694079e37d17d88823e270ffb0255c157c2b222e6528819",
+      "duration_seconds": 1.52,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "dearg",
+      "text": "dearg",
+      "sources": [
+        "chapter2.json:listen"
+      ],
+      "file": "dearg.mp3",
+      "bytes": 36406,
+      "sha256": "ae99cc3db9dbdb4e52b0c26e47175c58b6f7b119cd0d112daf53b72f21c4cdf4",
+      "duration_seconds": 1.44,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "dearthaair",
+      "text": "deartháir",
+      "sources": [
+        "chapter1.json:gloss"
+      ],
+      "file": "dearthaair.mp3",
+      "bytes": 40168,
+      "sha256": "a80f370b707140781c7e801cde4163efaf870c1e4fb9d8b72391983d989db644",
+      "duration_seconds": 1.6,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "deirfiuur",
+      "text": "deirfiúr",
+      "sources": [
+        "chapter1.json:gloss"
+      ],
+      "file": "deirfiuur.mp3",
+      "bytes": 22613,
+      "sha256": "d65eb8553bbaa74dc1f6af88299f17b41b09e02ca1989a388a1d75bbe1e4f254",
+      "duration_seconds": 0.88,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "dhiiol-mee-an-t-iasc",
+      "text": "Dhíol mé an t-iasc",
+      "sources": [
+        "chapter3.json:listen"
+      ],
+      "file": "dhiiol-mee-an-t-iasc.mp3",
+      "bytes": 43929,
+      "sha256": "63028fd4229f79f63fa0654adefaaaef779be2e9f0a634520ee4d2ec4f43d52b",
+      "duration_seconds": 1.76,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "dia-dhuit",
+      "text": "Dia dhuit!",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "dia-dhuit.mp3",
+      "bytes": 42049,
+      "sha256": "49e0e76291aafae52a914913736d4870c72330ac1c46bfca54786998eb988dfa",
+      "duration_seconds": 1.68,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "dia-dhuit-a-bhriid",
+      "text": "Dia dhuit, a Bhríd.",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "dia-dhuit-a-bhriid.mp3",
+      "bytes": 45810,
+      "sha256": "c0b71ff78138750236050e594d56c3e67a7607d7d6c0143100b991e395c57ca7",
+      "duration_seconds": 1.84,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "dia-is-muire-dhuit",
+      "text": "Dia is Muire dhuit.",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "dia-is-muire-dhuit.mp3",
+      "bytes": 49572,
+      "sha256": "28ea95f796b36431d82f39b0ff0fcc74da734f3fe43f0492e6c383cef39e23af",
+      "duration_seconds": 2.0,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "dubhlinn",
+      "text": "Dubhlinn",
+      "sources": [
+        "chapter3.json:lens"
+      ],
+      "file": "dubhlinn.mp3",
+      "bytes": 40168,
+      "sha256": "b6a88ea08c79441924dca8d29f7687f2705e5fcfa6442b220ee5ab7dc163c962",
+      "duration_seconds": 1.6,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "feear",
+      "text": "féar",
+      "sources": [
+        "chapter1.json:listen"
+      ],
+      "file": "feear.mp3",
+      "bytes": 36406,
+      "sha256": "8bdf51eb707d8a7805371c672849f8be2c133140cd6910d7d757c04f2010dc30",
+      "duration_seconds": 1.44,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "fiche-pingin",
+      "text": "fiche pingin",
+      "sources": [
+        "chapter3.json:listen"
+      ],
+      "file": "fiche-pingin.mp3",
+      "bytes": 28256,
+      "sha256": "9bb2640ad6a1d86cd998e9e66619b82370e186387991a28b53c22770a14791e8",
+      "duration_seconds": 1.12,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "ghearr-see-an-faainne-dom",
+      "text": "Ghearr sé an fáinne dom.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "ghearr-see-an-faainne-dom.mp3",
+      "bytes": 53333,
+      "sha256": "a316810a47518b14d7a8fae0e38e9a246cdb293bef520ce8ca6dba13e9f02cb8",
+      "duration_seconds": 2.16,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "graainne-nii-mhaaille",
+      "text": "Gráinne Ní Mháille",
+      "sources": [
+        "MayoStoryPrototype.swift:literal"
+      ],
+      "file": "graainne-nii-mhaaille.mp3",
+      "bytes": 43929,
+      "sha256": "1e87b83e519e891d9121c28b98f02836f58285f666e4544bc0d208984a208bce",
+      "duration_seconds": 1.76,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "innee-caa-bhfuair-tuu-na-brooga",
+      "text": "Inné — cá bhfuair tú na bróga?",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "innee-caa-bhfuair-tuu-na-brooga.mp3",
+      "bytes": 65245,
+      "sha256": "a8eeceaf0dfdd935e9653115e16e621e8b24ce7cb04529a103f84f2515f6228b",
+      "duration_seconds": 2.64,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "is-as-maigh-eo-mee",
+      "text": "Is as Maigh Eo mé.",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "is-as-maigh-eo-mee.mp3",
+      "bytes": 38287,
+      "sha256": "d3c9bed7ec99d0995808d036976d071e1a32a01b7a9b490a547f336b46fa294d",
+      "duration_seconds": 1.52,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "is-buaine-focal-naa-toice-an-tsaoil",
+      "text": "Is buaine focal ná toice an tsaoil.",
+      "sources": [
+        "chapter1.json:seanfhocal"
+      ],
+      "file": "is-buaine-focal-naa-toice-an-tsaoil.mp3",
+      "bytes": 80292,
+      "sha256": "f0425f59bc12c9f26684eee83ea5b8669d7599e21e381732ebfbfdd09903f235",
+      "duration_seconds": 3.28,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "is-corcra-ee",
+      "text": "Is corcra é.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "is-corcra-ee.mp3",
+      "bytes": 32017,
+      "sha256": "673751ff846b23375a497e2deabd20d763aa003d92b865a2a1174ce5caaf245a",
+      "duration_seconds": 1.28,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "is-maith-liom-an-t-araan",
+      "text": "Is maith liom an t-arán.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "is-maith-liom-an-t-araan.mp3",
+      "bytes": 51453,
+      "sha256": "5ba67c189b984a5d808800326bf658156051059d8f2a5e3bf51f349f75db1af9",
+      "duration_seconds": 2.08,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "is-maith-liom-an-t-iasc",
+      "text": "Is maith liom an t-iasc.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "is-maith-liom-an-t-iasc.mp3",
+      "bytes": 49572,
+      "sha256": "ec176932461ec06c7dfb113447ffd67c4d9af5e97ab5419234347fa82a9bd352",
+      "duration_seconds": 2.0,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "is-margadh-moor-ee-seo",
+      "text": "Is margadh mór é seo.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "is-margadh-moor-ee-seo.mp3",
+      "bytes": 51453,
+      "sha256": "e969305a8e5c4f2c7bad11c8a08db00a18b4983a6dfa889f0a6cdfcf93c4ff3d",
+      "duration_seconds": 2.08,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "is-mise",
+      "text": "Is mise…",
+      "sources": [
+        "MayoStoryPrototype.swift:literal"
+      ],
+      "file": "is-mise.mp3",
+      "bytes": 26375,
+      "sha256": "9da023d0aab2dbe2bac6242bf30f948557a7ab25c3e8272fd22c6b16139509d6",
+      "duration_seconds": 1.04,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "is-mise-daaire",
+      "text": "Is mise Dáire.",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "is-mise-daaire.mp3",
+      "bytes": 36406,
+      "sha256": "fc9e10a7dae9c27af4e8eead567469e5493868e969e99c95c1b89489a5e3053d",
+      "duration_seconds": 1.44,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "is-mise-murchadh",
+      "text": "Is mise Murchadh.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "is-mise-murchadh.mp3",
+      "bytes": 38287,
+      "sha256": "cfac8031c10af58501106b3fd817fe7a5827b13148ab8a628582c9a157251494",
+      "duration_seconds": 1.52,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "mac",
+      "text": "mac",
+      "sources": [
+        "chapter1.json:gloss"
+      ],
+      "file": "mac.mp3",
+      "bytes": 40168,
+      "sha256": "4bdb1a215eb1f5b289e8dcaace856187cc8ab1cad1e547669138bcf2d259bd1b",
+      "duration_seconds": 1.6,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "maith",
+      "text": "Maith.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "maith.mp3",
+      "bytes": 28256,
+      "sha256": "75f4edcbdfb8ca9bca265193ccb9f406c41342756b74856f90d5bfcb939fa414",
+      "duration_seconds": 1.12,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "maith-an-fear-thuu",
+      "text": "Maith an fear thú!",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "maith-an-fear-thuu.mp3",
+      "bytes": 40168,
+      "sha256": "f4e47a16811cb7faaa1b20931783ade459112b404d2a535248e18a7fef6e0cb3",
+      "duration_seconds": 1.6,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "maith-an-margadh",
+      "text": "Maith an margadh.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "maith-an-margadh.mp3",
+      "bytes": 30137,
+      "sha256": "4bf27870bc372908cca9feb11f3a5b56c9bdf4660dbbd1be6e85d82633ef9469",
+      "duration_seconds": 1.2,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "nii-maith-liom-an-t-iasc",
+      "text": "Ní maith liom an t-iasc.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "nii-maith-liom-an-t-iasc.mp3",
+      "bytes": 43929,
+      "sha256": "c7052978e5f1a8a9128bea853fdac8b6c228c7ea399dcda83a84b9efb802d36f",
+      "duration_seconds": 1.76,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "nii-neart-go-cur-le-cheeile",
+      "text": "Ní neart go cur le chéile.",
+      "sources": [
+        "chapter2.json:listen",
+        "chapter2.json:seanfhocal",
+        "chapter2.json:speech"
+      ],
+      "file": "nii-neart-go-cur-le-cheeile.mp3",
+      "bytes": 57095,
+      "sha256": "3cc1e6c720c712ce3f384f84b5b5433cb191bf9621f916c166affe4c028433ef",
+      "duration_seconds": 2.32,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "rinne-mee-margadh-le-sigur",
+      "text": "Rinne mé margadh le Sigur.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "rinne-mee-margadh-le-sigur.mp3",
+      "bytes": 47691,
+      "sha256": "79a41cd0520adf70118437166761f125e6090fe369f841885ca63740a8f6ceea",
+      "duration_seconds": 1.92,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "rinne-siad-damaaiste",
+      "text": "Rinne siad damáiste.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "rinne-siad-damaaiste.mp3",
+      "bytes": 45810,
+      "sha256": "81f152b8396cfc3692cccb82729bf48abeb2d05236bfb5e819e2bbf1e0d176cb",
+      "duration_seconds": 1.84,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "scriiobh-leeigh-meil-ith-codail",
+      "text": "Scríobh. Léigh. Meil. Ith. Codail.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "scriiobh-leeigh-meil-ith-codail.mp3",
+      "bytes": 136089,
+      "sha256": "3248b2f19e9d3cb9de15a69e72c1953478be5429b8980150ed50b45a310c836a",
+      "duration_seconds": 5.6,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "seaan",
+      "text": "Seán",
+      "sources": [
+        "chapter1.json:listen"
+      ],
+      "file": "seaan.mp3",
+      "bytes": 16971,
+      "sha256": "1137e9dbd4d1a0c29116aecf92a37e6e252ecfc46fe9644ae54e04d8edb4ba24",
+      "duration_seconds": 0.64,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "see-seacht-ocht-naoi-deich",
+      "text": "Sé, seacht, ocht, naoi, deich.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "see-seacht-ocht-naoi-deich.mp3",
+      "bytes": 62737,
+      "sha256": "79b35c3f0887c0d5b4c1cb48853db99ec308eb560cd04594f929af46f7394d6d",
+      "duration_seconds": 2.56,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "seo-briid-m-iniion",
+      "text": "Seo Bríd, m'iníon.",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "seo-briid-m-iniion.mp3",
+      "bytes": 47691,
+      "sha256": "94106fae1b11d3b37ab0ce99a2d1afdf1858f6f2d959daffb50052cd7071557d",
+      "duration_seconds": 1.92,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "slaan-go-fooill",
+      "text": "Slán go fóill.",
+      "sources": [
+        "chapter1.json:speech"
+      ],
+      "file": "slaan-go-fooill.mp3",
+      "bytes": 34525,
+      "sha256": "c0e7d886af026d50e3ab0b09549f1336742d3391932c9b5c79e1091beaafcc52",
+      "duration_seconds": 1.36,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-a-fhios-agam",
+      "text": "Tá a fhios agam.",
+      "sources": [
+        "chapter1.json:speech",
+        "chapter3.json:speech"
+      ],
+      "file": "taa-a-fhios-agam.mp3",
+      "bytes": 30137,
+      "sha256": "1ac9bb72bdaf2ea0ee5bd2afaa8467b0713601f11105b37384a625886ec6e5e0",
+      "duration_seconds": 1.2,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-a-fhios-agam-anois",
+      "text": "Tá a fhios agam anois.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-a-fhios-agam-anois.mp3",
+      "bytes": 47691,
+      "sha256": "d12310b7561b29d86513a76ab51583b7478bdc5cda1fb50e7deb711e67eeb085",
+      "duration_seconds": 1.92,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-a-fhios-agam-taa-see-salach-uaireanta",
+      "text": "Tá a fhios agam. Tá sé salach uaireanta.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-a-fhios-agam-taa-see-salach-uaireanta.mp3",
+      "bytes": 82173,
+      "sha256": "817e33e5f8ecc2f6018df105a3a0411a1811d8cd2d929d620c34d0b0f2f5d35a",
+      "duration_seconds": 3.36,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-araan-ar-an-mbord",
+      "text": "Tá arán ar an mbord.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-araan-ar-an-mbord.mp3",
+      "bytes": 49572,
+      "sha256": "a1641c69a2ec55692d6d8d03922485bf85c426977ef0668348633b46f6a1e0e3",
+      "duration_seconds": 2.0,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-bainne-ann-freisin",
+      "text": "Tá bainne ann freisin.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-bainne-ann-freisin.mp3",
+      "bytes": 47691,
+      "sha256": "5183d560d9a55d8d6061f141983f7a403041c98a1502d8cb253f1d4336a22bb0",
+      "duration_seconds": 1.92,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-mee-ag-codladh",
+      "text": "Tá mé ag codladh.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-mee-ag-codladh.mp3",
+      "bytes": 36406,
+      "sha256": "120b902d5c00ba86f7295888b889364b8c76256b1220c2327ffb34f96a2795ed",
+      "duration_seconds": 1.44,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-mee-ag-leeamh",
+      "text": "Tá mé ag léamh.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-mee-ag-leeamh.mp3",
+      "bytes": 32017,
+      "sha256": "d59dde0bcfa252ef49031a2bc7c9097a9c8962c90ec56c663c9bb30b26749ad7",
+      "duration_seconds": 1.28,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-mee-ag-lorg-rudaii-agus-taa-pangur-baan-ag-lorg-luch",
+      "text": "Tá mé ag lorg rudaí — agus tá Pangur Bán ag lorg luch.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-mee-ag-lorg-rudaii-agus-taa-pangur-baan-ag-lorg-luch.mp3",
+      "bytes": 109131,
+      "sha256": "d40894c8eba35c1fd6c14873ab820ffaf0ca918f799d063d25da785d9308949b",
+      "duration_seconds": 4.48,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-mee-ag-meilt",
+      "text": "Tá mé ag meilt.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-mee-ag-meilt.mp3",
+      "bytes": 32017,
+      "sha256": "1756089f58493fc95e55bc98df7fbdc56559faf70a2ad3038a10578d4e421833",
+      "duration_seconds": 1.28,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-mee-ag-meilt-an-corcra",
+      "text": "Tá mé ag meilt an corcra.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-mee-ag-meilt-an-corcra.mp3",
+      "bytes": 53333,
+      "sha256": "fb6ba91c085ef3b34552a9abba72dc0be19f42e69cc513cc436d147ce0cc0894",
+      "duration_seconds": 2.16,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-mee-ag-obair-anseo",
+      "text": "Tá mé ag obair anseo.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-mee-ag-obair-anseo.mp3",
+      "bytes": 40168,
+      "sha256": "285d9358b5ebe08b0096683107fc5cc62608bac28eaf4053f4bc0867cbe291b6",
+      "duration_seconds": 1.6,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-mee-ag-scriiobh",
+      "text": "Tá mé ag scríobh.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-mee-ag-scriiobh.mp3",
+      "bytes": 38287,
+      "sha256": "3512ca6caf5632c20f9fd591bb775a5d62bcf470c1561323748064c8011a3908",
+      "duration_seconds": 1.52,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-muid-ag-criiochnuu-an-leabhair",
+      "text": "Tá muid ag críochnú an leabhair.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-muid-ag-criiochnuu-an-leabhair.mp3",
+      "bytes": 57095,
+      "sha256": "3018b16fa49aa3335085c37bb8029c28728f0f162005e22ec2b7ed274c5f16d1",
+      "duration_seconds": 2.32,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-muid-ag-obair-anseo-gach-laa",
+      "text": "Tá muid ag obair anseo gach lá.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-muid-ag-obair-anseo-gach-laa.mp3",
+      "bytes": 69007,
+      "sha256": "a1bffa9d4d344ee81a4836d4cf42e560e74cce29775c542f8f628f026559ee1e",
+      "duration_seconds": 2.8,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-muid-go-leeir",
+      "text": "Tá muid go léir!",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-muid-go-leeir.mp3",
+      "bytes": 32017,
+      "sha256": "fca2303aafe6b42b92c8772c9136c1f9eac6a11b23950ba05110341b711ca665",
+      "duration_seconds": 1.28,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-pangur-baan-ag-ithe",
+      "text": "Tá Pangur Bán ag ithe.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-pangur-baan-ag-ithe.mp3",
+      "bytes": 51453,
+      "sha256": "a7727302a74f07da07c7d17169240b659e4a35d88732da4a3f5496546f2c11d7",
+      "duration_seconds": 2.08,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-see-a-see-a-chlog",
+      "text": "Tá sé a sé a chlog.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-see-a-see-a-chlog.mp3",
+      "bytes": 40168,
+      "sha256": "1aede71b73a303c6cb5f9bd9fd556b8e55318700bf1347e187399873ac283b7a",
+      "duration_seconds": 1.6,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "taa-see-ag-eeirii-go-mall",
+      "text": "Tá sé ag éirí go mall.",
+      "sources": [
+        "chapter2.json:speech"
+      ],
+      "file": "taa-see-ag-eeirii-go-mall.mp3",
+      "bytes": 51453,
+      "sha256": "44c87f268bb191a893adbc57c584abd7096770f382d0cfc5e1b54041c280d55d",
+      "duration_seconds": 2.08,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "teeigh-diireach-ar-aghaidh",
+      "text": "Téigh díreach ar aghaidh.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "teeigh-diireach-ar-aghaidh.mp3",
+      "bytes": 45810,
+      "sha256": "77c60c240b8cc20b2fbc09e34939bf444ecf8ae73fb0c46bb3f2456af3590a83",
+      "duration_seconds": 1.84,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "thaainig-na-longa-oo-thuaidh",
+      "text": "Tháinig na longa ó thuaidh.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "file": "thaainig-na-longa-oo-thuaidh.mp3",
+      "bytes": 49572,
+      "sha256": "8de00ddf09a93c6f787e1d9361626114a728433b96203dd67477fccedefec96f",
+      "duration_seconds": 2.0,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "slug": "trii-deeag",
+      "text": "trí déag",
+      "sources": [
+        "chapter3.json:listen"
+      ],
+      "file": "trii-deeag.mp3",
+      "bytes": 28256,
+      "sha256": "9f573447339b07443a6355ac16e52a6928ce4432dbf2c89d43a53f41a4c4e300",
+      "duration_seconds": 1.12,
+      "codec": "mp3",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "dynamic_exclusions": [
+    {
+      "text": "Is le {name} an fáinne seo.",
+      "sources": [
+        "chapter3.json:speech"
+      ],
+      "reason": "Personalized learner names require a reviewed recording strategy."
+    },
+    {
+      "text": "Is mise {name}.",
+      "sources": [
+        "chapter1.json:speech",
+        "chapter2.json:speech"
+      ],
+      "reason": "Personalized learner names require a reviewed recording strategy."
+    }
   ]
 }

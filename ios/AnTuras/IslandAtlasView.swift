@@ -3,6 +3,7 @@ import SwiftUI
 // MARK: - First encounter
 
 struct FirstRunIslandView: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let onBegin: () -> Void
     var onOpenName: () -> Void = {}
     var onOpenPlace: () -> Void = {}
@@ -44,10 +45,10 @@ struct FirstRunIslandView: View {
                             VStack(alignment: .leading, spacing: 5) {
                                 Eyebrow(text: "MAYO · 1593", color: Theme.atlasGreen)
                                 Text("Begin at Rockfleet")
-                                    .font(.system(size: 22, weight: .semibold, design: .serif))
+                                    .font(.system(.title3, design: .serif, weight: .semibold))
                                     .foregroundStyle(Theme.ink)
                                 Text("Why did Gráinne leave Mayo?")
-                                    .font(.system(size: 14.5))
+                                    .font(.subheadline)
                                     .foregroundStyle(Theme.inkSoft)
                             }
                             Spacer(minLength: 0)
@@ -69,54 +70,45 @@ struct FirstRunIslandView: View {
     }
 
     private var personalHooks: some View {
-        HStack(spacing: 10) {
-            Button {
-                Haptics.tap()
-                onOpenName()
-            } label: {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("A name you carry")
-                        .font(.system(size: 15, weight: .semibold, design: .serif))
-                        .foregroundStyle(Theme.ink)
-                    Text("Behind a name")
-                        .font(.system(size: 12))
-                        .foregroundStyle(Theme.inkSoft)
+        Group {
+            if dynamicTypeSize.isAccessibilitySize {
+                VStack(spacing: 10) {
+                    personalHook("A name you carry", detail: "Behind a name", action: onOpenName)
+                    personalHook("A place you know", detail: "Behind a place", action: onOpenPlace)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(14)
-                .background(Theme.raised)
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .stroke(Theme.moss.opacity(0.4), lineWidth: 0.8)
-                )
-            }
-            .buttonStyle(CarvePress())
-
-            Button {
-                Haptics.tap()
-                onOpenPlace()
-            } label: {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("A place you know")
-                        .font(.system(size: 15, weight: .semibold, design: .serif))
-                        .foregroundStyle(Theme.ink)
-                    Text("Behind a place")
-                        .font(.system(size: 12))
-                        .foregroundStyle(Theme.inkSoft)
+            } else {
+                HStack(spacing: 10) {
+                    personalHook("A name you carry", detail: "Behind a name", action: onOpenName)
+                    personalHook("A place you know", detail: "Behind a place", action: onOpenPlace)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(14)
-                .background(Theme.raised)
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .stroke(Theme.moss.opacity(0.4), lineWidth: 0.8)
-                )
             }
-            .buttonStyle(CarvePress())
         }
         .accessibilityElement(children: .contain)
+    }
+
+    private func personalHook(_ title: String, detail: String, action: @escaping () -> Void) -> some View {
+        Button {
+            Haptics.tap()
+            action()
+        } label: {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.system(.body, design: .serif, weight: .semibold))
+                    .foregroundStyle(Theme.ink)
+                Text(detail)
+                    .font(.caption)
+                    .foregroundStyle(Theme.inkSoft)
+            }
+            .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+            .padding(14)
+            .background(Theme.raised)
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .stroke(Theme.moss.opacity(0.4), lineWidth: 0.8)
+            )
+        }
+        .buttonStyle(CarvePress())
     }
 }
 
@@ -129,6 +121,8 @@ enum IslandMode: String, CaseIterable, Identifiable {
 
 struct IslandAtlasView: View {
     @EnvironmentObject private var atlas: AtlasPrototypeModel
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let onOpenMayo: () -> Void
     let onOpenCounty: (String) -> Void
     let onOpenFieldNote: () -> Void
@@ -142,61 +136,69 @@ struct IslandAtlasView: View {
     @State private var showCountyList = false
 
     private let themes = ["Power", "Sea routes", "Writing", "Women’s lives", "Language"]
+    private let openingRoadAnchor = "opening-road"
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 18) {
-                AtlasScreenHeader(
-                    "AN tOILEÁN · THE ISLAND",
-                    "Every place has something to tell you.",
-                    detail: "Look around before you choose a road. Irish brings the names, evidence and people closer."
-                )
+        ScrollViewReader { proxy in
+            ScrollView {
+                VStack(alignment: .leading, spacing: 18) {
+                    AtlasScreenHeader(
+                        "AN tOILEÁN · THE ISLAND",
+                        "Every place has something to tell you.",
+                        detail: "Look around before you choose a road. Irish brings the names, evidence and people closer."
+                    )
 
-                personalAtlasEntry
+                    personalAtlasEntry
 
-                Picker("Map mode", selection: $mode) {
-                    ForEach(IslandMode.allCases) { Text($0.rawValue).tag($0) }
-                }
-                .pickerStyle(.segmented)
-
-                modeControl
-
-                IslandMapSurface(
-                    mode: mode,
-                    time: Int(time),
-                    theme: theme,
-                    storyComplete: atlas.storyCompleted,
-                    showsFutureSignals: true,
-                    onSelect: { county in
-                        Haptics.tap()
-                        if county == "Mayo" { onOpenMayo() } else { onOpenCounty(county) }
+                    Picker("Map mode", selection: $mode) {
+                        ForEach(IslandMode.allCases) { Text($0.rawValue).tag($0) }
                     }
-                )
-                .frame(height: 430)
-                .accessibilityHidden(true)
+                    .pickerStyle(.segmented)
 
-                Button {
-                    showCountyList = true
-                } label: {
-                    Label("Open the accessible county list", systemImage: "list.bullet")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(Theme.ink)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12)
-                        .background(Theme.raised)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                    modeControl
+
+                    IslandMapSurface(
+                        mode: mode,
+                        time: Int(time),
+                        theme: theme,
+                        storyComplete: atlas.storyCompleted,
+                        showsFutureSignals: true,
+                        onSelect: { county in
+                            Haptics.tap()
+                            if county == "Mayo" { onOpenMayo() } else { onOpenCounty(county) }
+                        }
+                    )
+                    .frame(height: 430)
+                    .accessibilityHidden(true)
+
+                    Button {
+                        showCountyList = true
+                    } label: {
+                        Label("View counties as a list", systemImage: "list.bullet")
+                            .font(.headline)
+                            .foregroundStyle(Theme.ink)
+                            .frame(maxWidth: .infinity, minHeight: 44)
+                            .padding(.vertical, 12)
+                            .background(Theme.raised)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                    .buttonStyle(CarvePress())
+
+                    openingRoad
+                        .id(openingRoadAnchor)
+
+                    fieldNoteInvitation
                 }
-                .buttonStyle(CarvePress())
-
-                openingRoad
-
-                fieldNoteInvitation
+                .padding(.horizontal, 20)
+                .padding(.top, 14)
+                .padding(.bottom, 36)
+                .frame(maxWidth: 680)
+                .frame(maxWidth: .infinity)
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 14)
-            .padding(.bottom, 36)
-            .frame(maxWidth: 680)
-            .frame(maxWidth: .infinity)
+            .onAppear { focusOpeningRoadIfNeeded(proxy) }
+            .onChange(of: atlas.shouldFocusOpeningRoad) { _, _ in
+                focusOpeningRoadIfNeeded(proxy)
+            }
         }
         .background(Theme.bg.ignoresSafeArea())
         .sheet(isPresented: $showCountyList) {
@@ -204,6 +206,21 @@ struct IslandAtlasView: View {
                 showCountyList = false
                 if county.en == "Mayo" { onOpenMayo() } else { onOpenCounty(county.en) }
             })
+        }
+    }
+
+    private func focusOpeningRoadIfNeeded(_ proxy: ScrollViewProxy) {
+        guard atlas.shouldFocusOpeningRoad else { return }
+        atlas.shouldFocusOpeningRoad = false
+        Task { @MainActor in
+            await Task.yield()
+            if reduceMotion {
+                proxy.scrollTo(openingRoadAnchor, anchor: .top)
+            } else {
+                withAnimation(Motion.settle) {
+                    proxy.scrollTo(openingRoadAnchor, anchor: .top)
+                }
+            }
         }
     }
 
@@ -218,10 +235,10 @@ struct IslandAtlasView: View {
                         .foregroundStyle(Theme.moss)
                     VStack(alignment: .leading, spacing: 3) {
                         Text("Search a name or place")
-                            .font(.system(size: 16, weight: .semibold, design: .serif))
+                            .font(.system(.body, design: .serif, weight: .semibold))
                             .foregroundStyle(Theme.ink)
                         Text("The personal atlas — evidence-led, not trivia")
-                            .font(.system(size: 12.5))
+                            .font(.caption)
                             .foregroundStyle(Theme.inkSoft)
                     }
                     Spacer()
@@ -239,26 +256,32 @@ struct IslandAtlasView: View {
             .buttonStyle(CarvePress())
             .accessibilityLabel("Search a name or place in the personal atlas")
 
-            HStack(spacing: 8) {
-                Button("A name you carry") {
-                    Haptics.tap()
-                    onOpenName()
+            Group {
+                if dynamicTypeSize.isAccessibilitySize {
+                    VStack(alignment: .leading, spacing: 0) {
+                        personalQuickLink("A name you carry", action: onOpenName)
+                        personalQuickLink("A place you know", action: onOpenPlace)
+                    }
+                } else {
+                    HStack(spacing: 8) {
+                        personalQuickLink("A name you carry", action: onOpenName)
+                        Text("·").foregroundStyle(Theme.inkFaint)
+                        personalQuickLink("A place you know", action: onOpenPlace)
+                    }
                 }
-                .font(.system(size: 13, weight: .semibold))
-                .foregroundStyle(Theme.moss)
-
-                Text("·")
-                    .foregroundStyle(Theme.inkFaint)
-
-                Button("A place you know") {
-                    Haptics.tap()
-                    onOpenPlace()
-                }
-                .font(.system(size: 13, weight: .semibold))
-                .foregroundStyle(Theme.moss)
             }
             .padding(.horizontal, 4)
         }
+    }
+
+    private func personalQuickLink(_ title: String, action: @escaping () -> Void) -> some View {
+        Button(title) {
+            Haptics.tap()
+            action()
+        }
+        .font(.subheadline.weight(.semibold))
+        .foregroundStyle(Theme.moss)
+        .frame(minHeight: 44)
     }
 
     @ViewBuilder
@@ -306,14 +329,15 @@ struct IslandAtlasView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
                     ForEach(themes, id: \.self) { item in
-                        Button(item) { withAnimation(Motion.settle) { theme = item } }
-                            .font(.system(size: 12.5, weight: .semibold))
+                        Button(item) { withAnimation(reduceMotion ? nil : Motion.settle) { theme = item } }
+                            .font(.subheadline.weight(.semibold))
                             .foregroundStyle(theme == item ? Theme.bg : Theme.inkSoft)
                             .padding(.horizontal, 13)
-                            .padding(.vertical, 9)
+                            .frame(minHeight: 44)
                             .background(theme == item ? Theme.ink : Theme.raised)
                             .clipShape(Capsule())
                             .buttonStyle(CarvePress())
+                            .accessibilityAddTraits(theme == item ? .isSelected : [])
                     }
                 }
             }
@@ -373,6 +397,7 @@ struct IslandAtlasView: View {
 private enum RoadState { case complete, active, ahead }
 
 private struct RoadStop: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let number: Int
     let county: String
     let title: String
@@ -388,31 +413,48 @@ private struct RoadStop: View {
     }
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(alignment: .top, spacing: 12) {
             ZStack {
                 Circle().fill(color.opacity(state == .ahead ? 0.12 : 0.22))
                 Circle().stroke(color, lineWidth: 1.4)
                 Text("\(number)")
-                    .font(.system(size: 12, weight: .bold, design: .serif))
+                    .font(.system(.caption, design: .serif, weight: .bold))
                     .foregroundStyle(color)
             }
             .frame(width: 34, height: 34)
             VStack(alignment: .leading, spacing: 2) {
                 Text(county)
-                    .font(.system(size: 11, weight: .semibold))
+                    .font(.caption.weight(.semibold))
                     .foregroundStyle(Theme.inkFaint)
                 Text(title)
-                    .font(.system(size: 16, weight: .semibold, design: .serif))
+                    .font(.system(.body, design: .serif, weight: .semibold))
                     .foregroundStyle(Theme.ink)
+                if dynamicTypeSize.isAccessibilitySize {
+                    Text(era)
+                        .font(.caption.monospaced())
+                        .foregroundStyle(color)
+                }
             }
             Spacer()
-            Text(era)
-                .font(.system(size: 11.5, weight: .medium, design: .monospaced))
-                .foregroundStyle(color)
+            if !dynamicTypeSize.isAccessibilitySize {
+                Text(era)
+                    .font(.caption.monospaced().weight(.medium))
+                    .foregroundStyle(color)
+            }
         }
         .padding(12)
         .background(Theme.raised)
         .clipShape(RoundedRectangle(cornerRadius: 9))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Stop \(number), \(county), \(title), \(era), \(stateLabel)")
+    }
+
+    private var stateLabel: String {
+        switch state {
+        case .complete: return "complete"
+        case .active: return "current"
+        case .ahead: return "ahead"
+        }
     }
 }
 
@@ -664,11 +706,19 @@ struct CurrentStoryView: View {
 
                 AtlasCard(accent: atlas.storyCompleted ? Theme.atlasGold : Theme.atlasGreen) {
                     VStack(alignment: .leading, spacing: 12) {
-                        HStack { CertaintyPill(certainty: .documented); Spacer(); Text("1593").font(.system(size: 13, design: .monospaced)).foregroundStyle(Theme.inkFaint) }
+                        HStack {
+                            Label("State paper", systemImage: "doc.text")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(Theme.atlasGreen)
+                            Spacer()
+                            Text("1593")
+                                .font(.caption.monospaced())
+                                .foregroundStyle(Theme.inkFaint)
+                        }
                         Text("What did she actually ask for?")
                             .font(.system(size: 26, weight: .semibold, design: .serif))
                             .foregroundStyle(Theme.ink)
-                        Text("Meet the person, follow the Mayo coastline, inspect an explanatory facsimile, separate record from afterlife, then use your first Irish to identify yourself.")
+                        Text("Meet the person, follow the Mayo coastline, inspect an annotated transcription, separate record from afterlife, then use your first Irish to identify yourself.")
                             .font(.system(size: 14.5))
                             .foregroundStyle(Theme.inkSoft)
                             .lineSpacing(4)
@@ -765,14 +815,14 @@ struct ClewBayMiniature: View {
             Text("CLEW BAY · MAYO")
                 .font(.system(size: 9, weight: .bold))
                 .kerning(1.5)
-                .foregroundStyle(Theme.bg.opacity(0.9))
+                .foregroundStyle(Theme.mapInk)
                 .padding(12)
         }
         .overlay(alignment: .bottom) {
             if showRoute {
                 HStack { Text("Clare Island"); Spacer(); Text("Kildavnet"); Spacer(); Text("Rockfleet") }
                     .font(.system(size: 9, weight: .semibold))
-                    .foregroundStyle(Theme.bg)
+                    .foregroundStyle(Theme.mapInk)
                     .padding(12)
             }
         }

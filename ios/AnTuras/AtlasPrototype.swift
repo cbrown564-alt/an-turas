@@ -9,6 +9,7 @@ struct AtlasPrototypeView: View {
     @EnvironmentObject private var appState: AppState
     @StateObject private var atlas = AtlasPrototypeModel()
     @State private var path: [AtlasRoute] = []
+    @State private var restoredProgress = false
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -17,7 +18,7 @@ struct AtlasPrototypeView: View {
                     atlasTabs
                 } else {
                     FirstRunIslandView(
-                        onBegin: { path.append(.grainneStory) },
+                        onBegin: beginStory,
                         onOpenName: { path.append(.personalSearch(.name)) },
                         onOpenPlace: { path.append(.personalSearch(.place)) }
                     )
@@ -33,13 +34,36 @@ struct AtlasPrototypeView: View {
             if !path.isEmpty { path.removeAll() }
         }
         .onChange(of: atlas.learnerName) { _, name in
-            if !name.isEmpty { appState.learnerName = name }
+            if !name.isEmpty, appState.learnerName != name {
+                appState.learnerName = name
+            }
+        }
+        .onChange(of: atlas.progressSnapshot) { _, progress in
+            guard restoredProgress, appState.atlasProgress != progress else { return }
+            appState.atlasProgress = progress
         }
         .onAppear {
+            guard !restoredProgress else { return }
+            atlas.restore(appState.atlasProgress)
+            restoredProgress = true
             if atlas.learnerName.isEmpty { atlas.learnerName = appState.learnerName }
             #if DEBUG
             let args = ProcessInfo.processInfo.arguments
-            if let flag = args.firstIndex(of: "--personal"),
+            if let flag = args.firstIndex(of: "--grainne-story-step"),
+               args.indices.contains(flag + 1),
+               let step = Int(args[flag + 1]) {
+                atlas.storyInProgress = true
+                atlas.storyStep = min(max(step, 0), 3)
+                path = [.grainneStory]
+            } else if args.contains("--mayo-dossier") {
+                atlas.hasOpenedAtlas = true
+                path = [.mayoDossier]
+            } else if args.contains("--first-takeaway") {
+                atlas.storyCompleted = true
+                path = [.firstTakeaway]
+            } else if args.contains("--atlas-open") {
+                atlas.hasOpenedAtlas = true
+            } else if let flag = args.firstIndex(of: "--personal"),
                args.indices.contains(flag + 1),
                PersonalAtlasLoader.subject(id: args[flag + 1]) != nil {
                 atlas.hasOpenedAtlas = true
@@ -49,6 +73,11 @@ struct AtlasPrototypeView: View {
                 path = [.personalSearch(.either)]
             }
             #endif
+            if path.isEmpty, atlas.storyCompleted, !atlas.hasOpenedAtlas {
+                path = [.firstTakeaway]
+            } else if path.isEmpty, atlas.storyInProgress {
+                path = [.grainneStory]
+            }
         }
         .onOpenURL { url in
             guard let id = PersonalAtlasDeepLink.subjectID(from: url),
@@ -72,7 +101,7 @@ struct AtlasPrototypeView: View {
             .tabItem { Label("An tOileán", systemImage: "map") }
 
             CurrentStoryView(
-                onOpenStory: { path.append(.grainneStory) },
+                onOpenStory: beginStory,
                 onOpenDossier: { path.append(.mayoDossier) }
             )
             .tag(AtlasTab.story)
@@ -101,22 +130,30 @@ struct AtlasPrototypeView: View {
         case .mayoDossier:
             MayoDossierView(
                 onMeetGrainne: { path.append(.grainnePerson) },
-                onBegin: { path.append(.grainneStory) },
-                onFieldNote: { path.append(.fieldNote) }
+                onBegin: beginStory,
+                onFieldNote: { path.append(.fieldNote) },
+                onOpenEvidence: { path.append(.evidence) }
             )
         case .grainnePerson:
-            GrainnePersonView(onBegin: { path.append(.grainneStory) })
+            GrainnePersonView(
+                onBegin: beginStory,
+                onOpenEvidence: { path.append(.evidence) }
+            )
         case .grainneStory:
             GrainneStoryView(
+                onOpenEvidence: { path.append(.evidence) },
                 onComplete: {
+                    let atlasWasOpen = atlas.hasOpenedAtlas
                     atlas.completeStory()
-                    path = [.firstTakeaway]
+                    path = atlasWasOpen ? [] : [.firstTakeaway]
                 }
             )
         case .firstTakeaway:
             FirstEncounterTakeawayView {
                 atlas.hasOpenedAtlas = true
+                atlas.storyInProgress = false
                 atlas.tab = .island
+                atlas.shouldFocusOpeningRoad = true
                 path.removeAll()
             }
         case .evidence:
@@ -143,10 +180,15 @@ struct AtlasPrototypeView: View {
         case "grainnePerson":
             path.append(.grainnePerson)
         case "grainneStory":
-            path.append(.grainneStory)
+            beginStory()
         default:
             break
         }
+    }
+
+    private func beginStory() {
+        atlas.storyInProgress = true
+        path.append(.grainneStory)
     }
 }
 
@@ -175,6 +217,10 @@ final class AtlasPrototypeModel: ObservableObject {
     @Published var storyCompleted = false
     @Published var fieldNoteVisited = false
     @Published var returnAnswered = false
+    @Published var storyInProgress = false
+    @Published var storyStep = 0
+    @Published var storyFoundName = false
+    @Published var shouldFocusOpeningRoad = false
 
     let carriedWords = [
         AtlasWord(ga: "Is mise…", en: "I am…", sound: "iss mish-eh", anchor: "The first response in Gráinne’s Mayo story"),
@@ -187,7 +233,34 @@ final class AtlasPrototypeModel: ObservableObject {
     func completeStory() {
         evidenceInspected = true
         storyCompleted = true
+        storyInProgress = false
+        storyStep = 0
+        storyFoundName = false
         Haptics.flourish()
+    }
+
+    var progressSnapshot: AppState.AtlasProgress {
+        AppState.AtlasProgress(
+            hasOpenedAtlas: hasOpenedAtlas,
+            evidenceInspected: evidenceInspected,
+            storyCompleted: storyCompleted,
+            fieldNoteVisited: fieldNoteVisited,
+            returnAnswered: returnAnswered,
+            storyInProgress: storyInProgress,
+            storyStep: storyStep,
+            storyFoundName: storyFoundName
+        )
+    }
+
+    func restore(_ progress: AppState.AtlasProgress) {
+        hasOpenedAtlas = progress.hasOpenedAtlas
+        evidenceInspected = progress.evidenceInspected
+        storyCompleted = progress.storyCompleted
+        fieldNoteVisited = progress.fieldNoteVisited
+        returnAnswered = progress.returnAnswered
+        storyInProgress = progress.storyInProgress
+        storyStep = min(max(progress.storyStep, 0), 3)
+        storyFoundName = progress.storyFoundName
     }
 }
 
@@ -227,7 +300,7 @@ struct CertaintyPill: View {
     let certainty: EvidenceCertainty
     var body: some View {
         Text(certainty.rawValue)
-            .font(.system(size: 9.5, weight: .bold))
+            .font(.caption2.weight(.bold))
             .kerning(1.05)
             .foregroundStyle(certainty.color)
             .padding(.horizontal, 9)
@@ -235,6 +308,7 @@ struct CertaintyPill: View {
             .background(certainty.color.opacity(0.11))
             .clipShape(Capsule())
             .overlay(Capsule().stroke(certainty.color.opacity(0.45), lineWidth: 0.8))
+            .accessibilityLabel("Evidence status: \(certainty.rawValue.lowercased())")
     }
 }
 
@@ -253,11 +327,12 @@ struct AtlasScreenHeader: View {
         VStack(alignment: .leading, spacing: 7) {
             Eyebrow(text: eyebrow)
             Text(title)
-                .font(.system(size: 31, weight: .semibold, design: .serif))
+                .font(.system(.largeTitle, design: .serif, weight: .semibold))
                 .foregroundStyle(Theme.ink)
+                .fixedSize(horizontal: false, vertical: true)
             if let detail {
                 Text(detail)
-                    .font(.system(size: 15.5))
+                    .font(.body)
                     .foregroundStyle(Theme.inkSoft)
                     .lineSpacing(4)
             }
@@ -288,6 +363,7 @@ struct AtlasRule: View {
 }
 
 struct AtlasAudioLine: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let ga: String
     let en: String
     let sound: String
@@ -300,26 +376,27 @@ struct AtlasAudioLine: View {
             guard canPlay else { return }
             Haptics.tap()
             SpeechService.shared.speak(ga)
-            withAnimation(Motion.pop) { heard = true }
+            withAnimation(reduceMotion ? nil : Motion.pop) { heard = true }
         } label: {
             VStack(alignment: .leading, spacing: 7) {
                 HStack(alignment: .firstTextBaseline) {
                     Text(ga)
-                        .font(.system(size: 31, weight: .semibold, design: .serif))
+                        .font(.system(.largeTitle, design: .serif, weight: .semibold))
                         .foregroundStyle(Theme.moss)
+                        .fixedSize(horizontal: false, vertical: true)
                     Spacer()
                     Image(systemName: canPlay ? (heard ? "speaker.wave.2.fill" : "speaker.wave.2") : "waveform.slash")
                         .foregroundStyle(canPlay ? Theme.moss : Theme.inkFaint)
                 }
                 Text(sound)
-                    .font(.system(size: 12.5, weight: .medium))
+                    .font(.caption.weight(.medium))
                     .foregroundStyle(Theme.inkFaint)
                 Text(en)
-                    .font(.system(size: 15, design: .serif))
+                    .font(.system(.body, design: .serif))
                     .foregroundStyle(Theme.inkSoft)
                 if !canPlay {
                     Text("Audio coming soon")
-                        .font(.system(size: 10.5, weight: .semibold))
+                        .font(.caption2.weight(.semibold))
                         .foregroundStyle(Theme.rust)
                 }
             }
@@ -333,25 +410,41 @@ struct AtlasAudioLine: View {
         }
         .buttonStyle(CarvePress())
         .disabled(!canPlay)
-        .accessibilityLabel("Hear \(ga), meaning \(en)")
+        .accessibilityLabel(canPlay ? "Hear \(ga), meaning \(en)" : "Audio unavailable for \(ga), meaning \(en)")
+        .accessibilityHint(canPlay ? "Plays the Irish Cultural Guide recording" : "The written form and meaning remain available")
     }
 }
 
 struct SourceFooter: View {
     var compact = false
+    var onOpen: (() -> Void)?
+
     var body: some View {
+        Group {
+            if let onOpen {
+                Button(action: onOpen) { content }
+                    .buttonStyle(CarvePress())
+                    .accessibilityHint("Opens the source guide and provenance")
+            } else {
+                content
+            }
+        }
+    }
+
+    private var content: some View {
         HStack(alignment: .top, spacing: 9) {
             Image(systemName: "building.columns")
                 .foregroundStyle(Theme.inkFaint)
             Text(compact
                  ? "Source: National Library of Ireland record MS_UR_010761."
                  : "Source · National Library of Ireland record MS_UR_010761.")
-                .font(.system(size: compact ? 11.5 : 12.5))
+                .font(.caption)
                 .foregroundStyle(Theme.inkSoft)
                 .lineSpacing(3)
         }
         .padding(13)
         .background(Theme.sunk)
         .clipShape(RoundedRectangle(cornerRadius: 8))
+        .accessibilityElement(children: .combine)
     }
 }

@@ -2,6 +2,40 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D17 — Irish Cultural Guide for the initial launch (2026-07-13)
+
+**Decision:** Use ElevenLabs **Irish Cultural Guide** (`NPWroowF4phQhaPWjXPj`) as the
+default voice for all initial-launch narrative and Irish teaching audio. The voice is
+not perfect, but it is mostly accurate and materially better than the Gaeilge-first
+alternatives tested in the current bake-off.
+
+**Why:** The selected voice is good enough to carry a coherent first launch now. The
+new Irish-language Voice Design alternatives were unexpectedly worse at Irish
+pronunciation, so replacing the selected voice would reduce quality rather than
+improve it.
+
+**Consequences:** Generate all launch clips with Irish Cultural Guide and keep focused
+audio QA for headwords, fadas, mutations, names, and phrases. Treat partnerships with
+Trinity College Dublin, ABAIR, and other established Irish-language speech/data
+organisations as a post-launch improvement path, not a launch blocker. Revisit the
+voice after a partnership or stronger native Gaeilge resource is secured.
+
+## D16 — Irish Cultural Guide as house voice for story audio (2026-07-13)
+
+**Decision:** Use the ElevenLabs generated voice **Irish Cultural Guide**
+(`NPWroowF4phQhaPWjXPj`) for Gráinne / Mayo narrative audio and as the default voice
+for the next story-audio tests. Do not runtime-switch voices within a story.
+
+**Why:** Browser review found the voice's Irish-English documentary character good
+enough to move forward, despite some generation-to-generation variability. The decision
+unblocks story prototyping while preserving a QA gate for Irish-language teaching audio.
+
+**Consequences:** Generate → listen/review → approve → bundle remains the audio path.
+No clip is considered release-ready solely because it came from the selected voice;
+headwords, fadas, mutations, names, and short Irish phrases require focused QA. Gemini
+3.1 remains a fallback for comparison, and ABAIR/Azure remain pronunciation benchmarks
+or upgrade paths where the selected voice is not accurate enough.
+
 ## D15 — Gráinne's broader life, organised around the 1593 crisis (2026-07-11)
 
 **Decision:** Stress-test Gráinne's broader life as the candidate flagship for Mayo's
@@ -286,9 +320,10 @@ illustrated surface. Chapter 2 pipeline proves cost-per-scene at this scope.
 
 ## D7 — Audio production model: all-generated with QA (2026-07-05)
 
-**Decision:** **Gemini 3.1 Flash TTS** is the production voice engine. Every utterance
-is generated, then human-QA'd (native-speaker review per release). No hybrid
-human-recorded narrative for v1; no runtime voice switching.
+**Decision (historical Chapter 1 baseline):** **Gemini 3.1 Flash TTS** was the production
+voice engine for the Chapter 1 playtest. D16 supersedes this choice for Gráinne / Mayo
+story audio. Every utterance remains generated, then human-QA'd (native-speaker review
+per release). No hybrid human-recorded narrative for v1; no runtime voice switching.
 
 **Why:** Gemini passed native-speaker review on Chapter 1 clips — fada pairs, full
 chapter fidelity, Connacht prompt-steering holds. All-generated scales with the content
@@ -296,10 +331,10 @@ pipeline; QA catches drift. ABAIR remains the quality ceiling and a future upgra
 if bundling rights are granted; Azure `ga-IE` is deprioritised unless Gemini quality
 regresses on later chapters.
 
-**Consequences:** U5 closed for Phase 2. Audio pipeline: script → generate → native
-speaker QA → bundle in chapter packs. `tools/tts-bakeoff/` is the generation/QA
-tooling path. ABAIR enquiry continues as optional long-term dialect fidelity, not a
-blocker.
+**Consequences:** The audio pipeline remains script → generate → native-speaker QA →
+bundle in chapter packs. `tools/tts-bakeoff/` is the generation/QA tooling path. For
+Gráinne, use D16's selected voice; Gemini remains a fallback. ABAIR enquiry continues
+as optional long-term dialect fidelity, not a blocker.
 
 ## D6 — Retention rituals: An Féilire (2026-07-05)
 
