@@ -16,7 +16,7 @@ collection taxonomies.
 | --- | --- | --- |
 | Emotionally compelling without invented history | Pass with revisions | **Pass** |
 | Gráinne understood as a person, not a source subject | Pass with revisions | **Pass** |
-| Irish memorable because it matters | Pass (provisional) | **Pass (provisional)** — pedagogue still clears forms |
+| Irish memorable because it matters | Pass | **Approved 13 July** — preserve native-speaker audio QA as a separate release gate |
 | Learner always knows why they look, act, or continue | Pass with revisions | **Pass** |
 
 Overall: **storyboard cleared for implementation planning and board source work.
@@ -55,7 +55,7 @@ binged episodes.
 | --- | --- |
 | Advance Mayo source brief + parallel Offaly/Dublin/Meath docs | Yes |
 | Implement full-story SwiftUI across Ep1–6 | **Yes to plan/scaffold**; production copy still needs historian L1 paraphrases |
-| External tester round on complete arc | **Not yet** — after minimum source/rights package on 1593 sequence + pedagogue OK on 20 words |
+| External tester round on complete arc | **Ready to schedule** — six-episode playable prototype and pedagogue approval now exist; production media rights remain a release gate, not a prototype-session blocker |
 | Restore four-tab atlas for Mayo arc | No |
 
 ## Open product questions still carried

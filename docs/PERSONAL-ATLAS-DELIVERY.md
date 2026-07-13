@@ -73,7 +73,8 @@ sqlite3 ios/AnTuras/Resources/personal-atlas-foundation.sqlite 'PRAGMA integrity
 plutil -lint ios/AnTuras/Info.plist
 ```
 
-Audited result on 13 July 2026: 14 Swift tests and 22 Python tests pass. JSON, SQLite,
+Audited result on 13 July 2026: 22 Swift unit tests, 5 Swift UI tests, and 22 Python
+tests pass. JSON, SQLite,
 and plist validation, CMS JavaScript syntax, GitHub workflow YAML parsing, empty static
 preview generation, and empty signed-release generation also pass.
 

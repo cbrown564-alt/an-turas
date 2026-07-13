@@ -49,15 +49,24 @@ struct AtlasPrototypeView: View {
             if atlas.learnerName.isEmpty { atlas.learnerName = appState.learnerName }
             #if DEBUG
             let args = ProcessInfo.processInfo.arguments
+            if let flag = args.firstIndex(of: "--completed-story-beat"),
+               args.indices.contains(flag + 1),
+               let completedBeat = Int(args[flag + 1]),
+               (0..<18).contains(completedBeat) {
+                atlas.completedStoryBeats = [completedBeat]
+            }
             if let flag = args.firstIndex(of: "--grainne-story-step"),
                args.indices.contains(flag + 1),
                let step = Int(args[flag + 1]) {
                 atlas.storyInProgress = true
-                atlas.storyStep = min(max(step, 0), 3)
+                atlas.storyStep = min(max(step, 0), 17)
                 path = [.grainneStory]
             } else if args.contains("--mayo-dossier") {
                 atlas.hasOpenedAtlas = true
                 path = [.mayoDossier]
+            } else if args.contains("--grainne-person") {
+                atlas.hasOpenedAtlas = true
+                path = [.grainnePerson]
             } else if args.contains("--first-takeaway") {
                 atlas.storyCompleted = true
                 path = [.firstTakeaway]
@@ -220,22 +229,36 @@ final class AtlasPrototypeModel: ObservableObject {
     @Published var storyInProgress = false
     @Published var storyStep = 0
     @Published var storyFoundName = false
+    @Published var completedStoryBeats: [Int] = []
     @Published var shouldFocusOpeningRoad = false
 
     let carriedWords = [
-        AtlasWord(ga: "Is mise…", en: "I am…", sound: "iss mish-eh", anchor: "The first response in Gráinne’s Mayo story"),
-        AtlasWord(ga: "mé", en: "me / I", sound: "may", anchor: "Naming yourself beside the petition"),
-        AtlasWord(ga: "ainm", en: "name", sound: "an-im", anchor: "Names in the state record"),
-        AtlasWord(ga: "as", en: "from", sound: "ass", anchor: "Saying where you are from"),
-        AtlasWord(ga: "fiafraigh", en: "ask", sound: "fee-ah-ree", anchor: "The question at the heart of the petition")
+        AtlasWord(ga: "farraige", en: "sea", sound: "far-ig-eh", anchor: "Clew Bay as a maritime world"),
+        AtlasWord(ga: "bá", en: "bay", sound: "baw", anchor: "The geography that opens Mayo"),
+        AtlasWord(ga: "long", en: "ship", sound: "lung", anchor: "The fleet as livelihood and reach"),
+        AtlasWord(ga: "áit", en: "place", sound: "awtch", anchor: "A place that matters"),
+        AtlasWord(ga: "as", en: "from", sound: "ass", anchor: "Origin on the Mayo coast"),
+        AtlasWord(ga: "caisleán", en: "castle", sound: "kash-lawn", anchor: "Rockfleet at the tide line"),
+        AtlasWord(ga: "teaghlach", en: "family", sound: "chai-lukh", anchor: "Household as authority"),
+        AtlasWord(ga: "mac", en: "son", sound: "mock", anchor: "Tibbott held as part of the crisis"),
+        AtlasWord(ga: "bean", en: "woman", sound: "ban", anchor: "A woman recognised as a leader"),
+        AtlasWord(ga: "caill", en: "lose", sound: "kyle", anchor: "Livelihood and safety under pressure"),
+        AtlasWord(ga: "deartháir", en: "brother", sound: "djar-hawr", anchor: "Donal named among the stakes"),
+        AtlasWord(ga: "iarr", en: "ask", sound: "eer", anchor: "The petition as remaining action"),
+        AtlasWord(ga: "téigh", en: "go", sound: "tay", anchor: "The decision to go to London"),
+        AtlasWord(ga: "ainm", en: "name", sound: "an-im", anchor: "Her name in the September draft"),
+        AtlasWord(ga: "mise", en: "me / I", sound: "mish-eh", anchor: "Identifying yourself without borrowing her story"),
+        AtlasWord(ga: "tar", en: "come", sound: "tar", anchor: "Arrival into the court record"),
+        AtlasWord(ga: "freagair", en: "answer", sound: "frag-ir", anchor: "The royal answer"),
+        AtlasWord(ga: "tabhair", en: "give", sound: "toor", anchor: "Relief ordered and withheld"),
+        AtlasWord(ga: "arís", en: "again", sound: "uh-reesh", anchor: "The unfinished second asking"),
+        AtlasWord(ga: "cósta", en: "coast", sound: "koh-sta", anchor: "The present shore that closes Mayo")
     ]
 
     func completeStory() {
         evidenceInspected = true
         storyCompleted = true
         storyInProgress = false
-        storyStep = 0
-        storyFoundName = false
         Haptics.flourish()
     }
 
@@ -248,7 +271,9 @@ final class AtlasPrototypeModel: ObservableObject {
             returnAnswered: returnAnswered,
             storyInProgress: storyInProgress,
             storyStep: storyStep,
-            storyFoundName: storyFoundName
+            storyFoundName: storyFoundName,
+            storyArcVersion: 2,
+            completedStoryBeats: completedStoryBeats
         )
     }
 
@@ -259,8 +284,25 @@ final class AtlasPrototypeModel: ObservableObject {
         fieldNoteVisited = progress.fieldNoteVisited
         returnAnswered = progress.returnAnswered
         storyInProgress = progress.storyInProgress
-        storyStep = min(max(progress.storyStep, 0), 3)
+        if progress.storyArcVersion < 2, progress.storyInProgress {
+            // The approved four-step encounter became Episode 4. Resume old
+            // in-flight saves at the corresponding beat instead of restarting.
+            storyStep = min(max(9 + min(max(progress.storyStep, 0), 2), 0), 17)
+        } else {
+            storyStep = min(max(progress.storyStep, 0), 17)
+        }
         storyFoundName = progress.storyFoundName
+        completedStoryBeats = progress.completedStoryBeats
+            .filter { (0..<18).contains($0) }
+            .uniqued()
+            .sorted()
+    }
+}
+
+private extension Array where Element: Hashable {
+    func uniqued() -> [Element] {
+        var seen = Set<Element>()
+        return filter { seen.insert($0).inserted }
     }
 }
 
@@ -324,20 +366,7 @@ struct AtlasScreenHeader: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 7) {
-            Eyebrow(text: eyebrow)
-            Text(title)
-                .font(.system(.largeTitle, design: .serif, weight: .semibold))
-                .foregroundStyle(Theme.ink)
-                .fixedSize(horizontal: false, vertical: true)
-            if let detail {
-                Text(detail)
-                    .font(.body)
-                    .foregroundStyle(Theme.inkSoft)
-                    .lineSpacing(4)
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        EditorialScreenHeader(context: eyebrow, title: title, detail: detail)
     }
 }
 
@@ -358,7 +387,7 @@ struct AtlasCard<Content: View>: View {
 
 struct AtlasRule: View {
     var body: some View {
-        Rectangle().fill(Theme.line).frame(height: 0.7)
+        EditorialRule()
     }
 }
 

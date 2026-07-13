@@ -353,9 +353,8 @@ struct IllustrationView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity)
-                .cornerRadius(8)
-                .shadow(color: Color.black.opacity(0.12), radius: 3, x: 0, y: 1.5)
-                .padding(.vertical, 4)
+                .padding(.vertical, 10)
+                .accessibilityLabel("Editorial illustration for this story scene")
         } else {
             // Graceful fallback if image is missing
             Text("Missing illustration: \(branch ?? "default")/\(name)")
@@ -442,18 +441,18 @@ private struct ScenePageView: View {
         if state.artBranch != nil {
             // Revert to old debug lookup if a specific art override is requested
             if page.place == "Maigh Eo · c. 480 AD" {
-                return "t1-pillar"
+                return "t1-pillar-v2"
             } else if page.beats.contains(where: {
                 switch $0 {
                 case .narration(let n): return n.n.contains("Bríd runs her thumb")
                 default: return false
                 }
             }) {
-                return "t2-hands"
+                return "t2-hands-v2"
             } else if page.place == "An trá — the strand, morning" {
                 return "t3-strand"
             } else if page.place == "Breastagh · fifteen centuries later" {
-                return "t4-today"
+                return "t4-today-v2"
             }
             return nil
         } else {
@@ -477,7 +476,7 @@ private struct NotePageView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             VStack(alignment: .leading, spacing: 12) {
-                Eyebrow(text: "An Nóta Gramadaí", color: Theme.lichen)
+                EditorialContextLabel(text: "An Nóta Gramadaí", color: Theme.lichen)
                 Text(note.title)
                     .font(.system(size: 23, weight: .semibold, design: .serif))
                     .foregroundStyle(Theme.ink)
@@ -541,7 +540,7 @@ private struct SeanfhocalPageView: View {
 
     var body: some View {
         VStack(spacing: 16) {
-            Eyebrow(text: "Seanfhocal · collected", color: Theme.lichen)
+            EditorialContextLabel(text: "Seanfhocal · collected", color: Theme.lichen)
             Text(block.ga)
                 .font(.system(size: 25, weight: .semibold, design: .serif))
                 .foregroundStyle(Theme.ink)
@@ -697,7 +696,7 @@ private struct CompletionPage: View {
                 .modifier(RiseIn(order: 2, reduceMotion: reduceMotion))
             if let hook {
                 VStack(spacing: 10) {
-                    Eyebrow(text: "Amárach", color: Theme.lichen)
+                    EditorialContextLabel(text: "Amárach", color: Theme.lichen)
                     Text(hook)
                         .font(.system(size: 15.5, design: .serif))
                         .italic()
@@ -711,7 +710,7 @@ private struct CompletionPage: View {
             }
             if deckOfferCount >= 2, let onOpenDeck {
                 VStack(spacing: 10) {
-                    Eyebrow(text: "Ón gcosán · optional", color: Theme.lichen)
+                    EditorialContextLabel(text: "Ón gcosán · optional", color: Theme.lichen)
                     Text("\(deckOfferCount) frása ón seisiún seo atá réidh le hathbhreithniú — phrases from this session, ready to revisit.")
                         .font(.system(size: 14.5, design: .serif))
                         .italic()

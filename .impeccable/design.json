@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-12T00:00:00Z",
+  "generatedAt": "2026-07-13T18:00:00Z",
   "title": "Design System: An Turas",
   "extensions": {
     "colorMeta": {
@@ -10,7 +10,11 @@
       "lichen": { "role": "secondary", "displayName": "Archive Lichen", "canonical": "#8F7414", "tonalRamp": ["#251D03", "#453606", "#67500B", "#8F7414", "#B5962D", "#D2B957", "#E8D891", "#F8F1D6"] },
       "rust": { "role": "secondary", "displayName": "Worked Rust", "canonical": "#A34D3B", "tonalRamp": ["#2C100B", "#512117", "#783326", "#A34D3B", "#C36C59", "#DB9181", "#EBB9AE", "#F8E5E0"] },
       "atlas-green": { "role": "tertiary", "displayName": "County in Play", "canonical": "#16803A", "tonalRamp": ["#04200D", "#073C19", "#0D5C28", "#16803A", "#32A557", "#63C77D", "#9BE0AE", "#E2F6E7"] },
-      "atlas-gold": { "role": "tertiary", "displayName": "Story Carried", "canonical": "#B8860B", "tonalRamp": ["#2E2001", "#513A03", "#775707", "#B8860B", "#D8A72B", "#EBC75F", "#F5DFA0", "#FCF4D9"] }
+      "atlas-gold": { "role": "tertiary", "displayName": "Story Carried", "canonical": "#B8860B", "tonalRamp": ["#2E2001", "#513A03", "#775707", "#B8860B", "#D8A72B", "#EBC75F", "#F5DFA0", "#FCF4D9"] },
+      "atlantic": { "role": "narrative", "displayName": "Atlantic Field", "canonical": "#111C22", "tonalRamp": ["#080E10", "#111C22", "#24333A", "#3B4D55", "#586B73", "#7B8F97", "#AABCC1", "#E3ECEE"] },
+      "storm": { "role": "narrative", "displayName": "Storm Slate", "canonical": "#33464C", "tonalRamp": ["#101719", "#202E32", "#33464C", "#4C6269", "#698087", "#8A9FA5", "#B4C2C5", "#E5ECEE"] },
+      "weathered-gold": { "role": "narrative-accent", "displayName": "Weathered Gold", "canonical": "#9A7618", "tonalRamp": ["#2A1F03", "#4B3807", "#70560D", "#9A7618", "#BB962F", "#D2B85D", "#E7D694", "#F7F0D5"] },
+      "salt": { "role": "narrative-neutral", "displayName": "Salt White", "canonical": "#F2F3EC", "tonalRamp": ["#24251F", "#45463F", "#686960", "#8B8D83", "#AFB0A7", "#CFD1C8", "#E4E6DE", "#F2F3EC"] }
     },
     "typographyMeta": {
       "display": { "displayName": "Story Display", "purpose": "County openings and singular story turns; implemented with scalable semantic styles." },
@@ -28,29 +32,70 @@
     ],
     "breakpoints": []
   },
-  "components": [],
+  "components": [
+    {
+      "name": "Editorial image hero",
+      "description": "A full-width, text-free image field with live copy composed into safe negative space. Accessibility sizes reflow the copy into a full-width band.",
+      "preview": "<section class=\"image-hero\"><div class=\"hero-copy\"><p class=\"context\">Person · Mayo · 16th century</p><h2>Gráinne<br>Ní Mháille</h2><p>c. 1530 – c. 1603</p></div></section>",
+      "styles": ".image-hero{min-height:330px;padding:24px;display:flex;align-items:flex-end;justify-content:flex-end;background:linear-gradient(90deg,#111C22 0 38%,#33464C 72%);color:#F2F3EC}.hero-copy{width:48%;max-width:320px}.hero-copy h2{font:600 46px/1.02 Georgia,serif;margin:8px 0}.hero-copy p{font:500 13px/1.35 -apple-system,sans-serif}.context{letter-spacing:.08em}"
+    },
+    {
+      "name": "Text-led editorial opening",
+      "description": "The image-free equivalent of a hero: contextual label, decisive serif title, short orientation, and deliberate open space.",
+      "preview": "<header class=\"editorial-opening\"><p class=\"context\">Your island · 32 counties</p><h2>Where will the language take root?</h2><p>The map holds the stories, words, and evidence you carry.</p></header>",
+      "styles": ".editorial-opening{padding:12px 20px 30px;background:#ECEDE7;color:#23281F}.editorial-opening h2{max-width:560px;margin:8px 0;font:600 40px/1.08 Georgia,serif}.editorial-opening>p:last-child{max-width:540px;margin:0;font:400 17px/1.4 -apple-system,sans-serif;color:#5A6153}.context{font:600 12px/1.2 -apple-system,sans-serif;letter-spacing:.08em}"
+    },
+    {
+      "name": "Evidence field",
+      "description": "A boundary earned by a discrete source or interpretation, using tonal hierarchy rather than shadow.",
+      "preview": "<article class=\"evidence-field\"><p class=\"context\">From the 1593 record</p><h3>A demand enters another system</h3><p>The complete source, reading, and uncertainty remain inspectable from this field.</p></article>",
+      "styles": ".evidence-field{padding:18px;background:#F7F7F2;border:1px solid #CBCEC1;border-radius:10px;color:#23281F}.evidence-field h3{margin:8px 0;font:600 23px/1.2 Georgia,serif}.evidence-field>p:last-child{margin:0;font:400 16px/1.4 -apple-system,sans-serif;color:#5A6153}"
+    },
+    {
+      "name": "Spoken Irish line",
+      "description": "Irish is the editorial voice; pronunciation remains an unmistakable native control.",
+      "preview": "<div class=\"spoken-line\"><div><strong>Gráinne Ní Mháille</strong><span>grawn-ya nee wawl-ya</span></div><button aria-label=\"Play pronunciation\">▶</button></div>",
+      "styles": ".spoken-line{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid #CBCEC1;color:#23281F}.spoken-line strong{display:block;font:600 26px/1.2 Georgia,serif;color:#4C6647}.spoken-line span{display:block;margin-top:5px;font:400 13px/1.3 -apple-system,sans-serif;color:#5A6153}.spoken-line button{min-width:44px;min-height:44px;border:0;background:transparent;color:#4C6647}"
+    },
+    {
+      "name": "Primary action",
+      "description": "One grounded, native-feeling action at the end of the reading sequence.",
+      "preview": "<button class=\"primary-action\">Begin the encounter</button>",
+      "styles": ".primary-action{min-height:44px;padding:13px 22px;border:0;border-radius:4px;background:#23281F;color:#ECEDE7;font:600 17px/1.2 -apple-system,sans-serif}"
+    }
+  ],
   "narrative": {
     "northStar": "The Living Field Journal",
-    "overview": "An Turas feels like opening a field journal beside an artifact: intimate, tactile, and precise, with the whole island just beyond the page. Mineral surfaces and evidence-led accents support serif storytelling inside a native iOS interaction shell.",
+    "overview": "An Turas feels like opening a field journal beside an artifact: intimate, tactile, and precise, with the whole island just beyond the page. Every surface has one authored anchor. Image-led and text-led openings share the same editorial sequence, with live accessible copy, deliberate open space, and a native iOS interaction shell.",
     "keyCharacteristics": [
       "Mineral, adaptive surfaces with high-contrast botanical accents.",
       "Serif-led editorial moments inside a system-native interaction shell.",
       "Evidence, uncertainty, and provenance made visible without production jargon.",
       "Tactile feedback that is brief, physical, and optional under Reduce Motion.",
-      "Spacious reading views balanced by compact atlas and practice controls."
+      "Spacious reading views balanced by compact atlas and practice controls.",
+      "One dominant visual or typographic anchor with copy composed around it."
     ],
     "rules": [
       { "name": "The Evidence-Mark Rule", "body": "Accent colors identify action, evidence type, learning state, or atlas progress. They never decorate empty space.", "section": "colors" },
+      { "name": "The One-Anchor Rule", "body": "Each surface gives priority to one person, place, object, map, phrase, document, or typographic proposition.", "section": "components" },
+      { "name": "The Image-Is-Source-Material Rule", "body": "Image assets contain no copy. Live text is composed into safe negative space or a full-width editorial band and never covers evidence-bearing detail.", "section": "components" },
+      { "name": "The Text-Led Equivalence Rule", "body": "An image-free surface earns the same authorship through type, measure, rhythm, open space, and one clear proposition.", "section": "components" },
+      { "name": "The Pressure-Follows-Story Rule", "body": "Cinematic Atlantic and Storm treatments appear only as historical pressure rises; utility surfaces stay calm and native.", "section": "colors" },
       { "name": "The Two-Voice Rule", "body": "Serif speaks for story, names, quoted language, and evidence; sans serif speaks for the interface.", "section": "typography" },
       { "name": "The Flat-Field Rule", "body": "Surfaces sit in the same physical world until hierarchy or interaction requires separation.", "section": "elevation" }
     ],
     "dos": [
       "Do make the real person, place, object, document, or surviving trace the visual center of each encounter.",
+      "Do keep image assets text-free and compose all copy as live, accessible interface text.",
+      "Do give image-free surfaces a deliberate text-led opening and one typographic anchor.",
+      "Do reserve cards for discrete interaction, evidence, or objects that need a real boundary.",
       "Do use limestone/shore tonal layering before adding borders or shadows.",
       "Do preserve native iOS navigation, controls, safe areas, touch targets, VoiceOver, Dynamic Type, Dark Mode, Increased Contrast, and Reduce Motion."
     ],
     "donts": [
       "Don't use generic language-app gamification or plastic-shamrock Irishness.",
+      "Don't use sticker portraits, decorative leader lines, burned-in labels, or copy squeezed beside an image.",
+      "Don't cover faces, objects, inscriptions, or other evidence-bearing detail with text.",
       "Don't cast the learner as a fictional guide, witness, or assistant in undocumented history.",
       "Don't break trusted iOS behavior for interface novelty."
     ]

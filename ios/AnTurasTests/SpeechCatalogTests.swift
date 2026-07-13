@@ -17,7 +17,7 @@ final class SpeechCatalogTests: XCTestCase {
         XCTAssertEqual(object["language_code"] as? String, "ga")
 
         let lines = try XCTUnwrap(object["lines"] as? [[String: Any]])
-        XCTAssertEqual(lines.count, 79)
+        XCTAssertEqual(lines.count, 95)
         for line in lines {
             let text = try XCTUnwrap(line["text"] as? String)
             let file = try XCTUnwrap(line["file"] as? String)

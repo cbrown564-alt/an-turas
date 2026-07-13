@@ -72,7 +72,7 @@ struct DiscoverView: View {
                         .frame(width: 8, height: 14)
                 }
             }
-            Eyebrow(text: "Faigh amach · discover", color: Theme.inkFaint)
+            EditorialContextLabel(text: "Faigh amach · discover", color: Theme.inkFaint)
         }
         .padding(.bottom, 2)
     }

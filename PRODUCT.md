@@ -26,6 +26,22 @@ Success means learners return without manipulative gamification, retain and reco
 
 Learn Irish by falling in love with the real stories of Ireland: one county, one significant encounter, and 20 useful words at a time.
 
+## Experience Architecture
+
+Every surface should make one thing worth attending to. That anchor may be a person, landscape, object, map, phrase, document, or—when no image is warranted—a strong piece of typography. The learner should be able to feel what the screen is about before they read every word.
+
+The core encounter moves through a consistent editorial sequence:
+
+1. **Arrival:** a singular image or text-led opening establishes place, person, question, or pressure.
+2. **Meaning:** a concise account explains why the encounter matters.
+3. **Attention:** the learner listens, examines, traces, reads, names, or responds.
+4. **Evidence:** the surviving source and the limits of the account remain inspectable.
+5. **Carry:** language, evidence, place, and learner-made work return to the atlas and collection.
+
+Image-led and text-led screens are equal expressions of this system. An image is used only when it contributes historical, geographical, emotional, or conceptual meaning. When imagery is present it is treated as a field for composition—not as a sticker, thumbnail, or card illustration—and all interface copy remains live, accessible app text. When imagery is absent, scale, measure, rhythm, tonal contrast, and a clear editorial hierarchy must provide the same sense of intention; placeholder decoration is not a substitute.
+
+Narrative intensity can change across a story. Early episodes may be observational and spacious; later episodes may become darker, closer, and more cinematic as historical pressure rises. This progression must follow the account rather than impose one dramatic treatment on the whole product. Navigation, evidence access, and learning controls remain calm and native throughout.
+
 ## Brand Personality
 
 Grounded, intimate, and exacting. The product should feel quietly alive: generous enough to welcome a hesitant learner, rigorous enough to earn the trust of native speakers and historians, and tactile enough to make language feel carried rather than scored.
@@ -49,6 +65,9 @@ Its emotional movement is from uncertainty to recognition. It should evoke curio
 3. **The learner remains themselves.** Participation means examining, listening, tracing, reading, naming, and responding—not being cast into invented history.
 4. **Progress should feel carried.** Counties, words, evidence, and learner-made artifacts accumulate into a coherent personal journey, never a pile of points or chores.
 5. **Depth earns trust.** One language pair, expert review, dialect honesty, source transparency, and careful treatment of contested history are product features, not production footnotes.
+6. **One surface, one anchor.** Each screen gives visual priority to one person, place, object, map, phrase, document, or typographic idea. Supporting material establishes sequence rather than competing for attention.
+7. **Composition carries meaning.** Images, text, and open space are authored together. Generated art contains no names, captions, labels, or interface copy; the app owns that content and places it responsively.
+8. **Containers must earn their boundary.** Cards are for discrete interaction, evidence, or a genuinely separate object. Narrative and explanatory material should normally read as editorial sections, lists, rules, and tonal fields.
 
 ## Accessibility & Inclusion
 

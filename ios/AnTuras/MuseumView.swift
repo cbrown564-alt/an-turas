@@ -92,16 +92,12 @@ struct MuseumView: View {
     }
 
     private var header: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Eyebrow(text: "An Músaem · do mhúsaem féin", color: Theme.lichen)
-            Text("Músaem na hÉireann — yours")
-                .font(.system(size: 26, weight: .semibold, design: .serif))
-                .foregroundStyle(Theme.ink)
-            Text("\(collected) de 13 bailithe. One artifact per chapter, personalised — your name, your county, your surname.")
-                .font(.system(size: 15))
-                .foregroundStyle(Theme.inkSoft)
-                .lineSpacing(4)
-        }
+        EditorialScreenHeader(
+            context: "An Músaem · do mhúsaem féin",
+            title: "Músaem na hÉireann — yours",
+            detail: "\(collected) de 13 bailithe. One artifact per chapter, personalised — your name, your county, your surname.",
+            accent: Theme.lichen
+        )
     }
 
     /// Life in the museum: the artifact's people are asking for you.

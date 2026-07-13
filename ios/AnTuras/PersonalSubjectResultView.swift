@@ -14,6 +14,8 @@ struct PersonalSubjectResultView: View {
     @State private var revealedFormIndex = 0
     @State private var showSources = false
     @State private var focusedAssertionId: String?
+    @State private var showsDeeperRecord = false
+    @State private var showsUtilities = false
 
     private var subject: OriginSubject? { PersonalAtlasLoader.subject(id: subjectId) }
     private var pack: PersonalAtlasPack { PersonalAtlasLoader.pack() }
@@ -61,34 +63,82 @@ struct PersonalSubjectResultView: View {
     @ViewBuilder
     private func resultBody(_ subject: OriginSubject) -> some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 22) {
-                header(subject)
-                shortAnswer(subject)
-                pronunciations(subject)
-                historicalForms(subject)
-                branches(subject)
-                historicalDistribution(subject)
-                nameTravelling(subject)
+            VStack(alignment: .leading, spacing: 0) {
+                openingFolio(subject)
+
+                learningChapter(subject)
+
+                etymologyChapter(subject)
+
                 if let place = subject.placeProfile {
                     placeGround(place, subject: subject)
-                    historicMapLayers(place, subject: subject)
                 }
-                languageMoment(subject)
-                familyBoundary(subject)
-                deeperOrHandoff(subject)
-                people(subject)
-                saveRow(subject)
-                advancedActions(subject)
-                membershipInvitation
-                communityEdition(subject)
-                footer(subject)
+
+                closingChapter(subject)
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 12)
-            .padding(.bottom, 40)
             .frame(maxWidth: 680)
             .frame(maxWidth: .infinity)
         }
+    }
+
+    private func openingFolio(_ subject: OriginSubject) -> some View {
+        VStack(alignment: .leading, spacing: 24) {
+            header(subject)
+            shortAnswer(subject)
+        }
+        .padding(.horizontal, 20)
+        .padding(.top, 18)
+        .padding(.bottom, 34)
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    @ViewBuilder
+    private func learningChapter(_ subject: OriginSubject) -> some View {
+        if hasPronunciationGuides(subject) || hasHistoricalForms(subject) {
+            VStack(alignment: .leading, spacing: 28) {
+                pronunciations(subject)
+                historicalForms(subject)
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 28)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Theme.mossTint)
+        }
+    }
+
+    @ViewBuilder
+    private func etymologyChapter(_ subject: OriginSubject) -> some View {
+        if hasEtymologyBranches(subject) {
+            branches(subject)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 32)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Theme.raised)
+        }
+    }
+
+    private func closingChapter(_ subject: OriginSubject) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            languageMoment(subject)
+                .padding(.bottom, 30)
+            familyBoundary(subject)
+                .padding(.bottom, 24)
+            deeperOrHandoff(subject)
+                .padding(.bottom, 26)
+            people(subject)
+                .padding(.bottom, 32)
+
+            deeperRecord(subject)
+
+            AtlasRule()
+                .padding(.top, 28)
+
+            utilities(subject)
+        }
+        .padding(.horizontal, 20)
+        .padding(.top, 34)
+        .padding(.bottom, 48)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private func header(_ subject: OriginSubject) -> some View {
@@ -103,7 +153,9 @@ struct PersonalSubjectResultView: View {
             Text(subject.subtitle)
                 .font(.callout)
                 .foregroundStyle(Theme.inkSoft)
-            if let typedVariants = subject.variantRelationships, !typedVariants.isEmpty {
+            if !hasHistoricalForms(subject),
+               let typedVariants = subject.variantRelationships,
+               !typedVariants.isEmpty {
                 ForEach(Array(typedVariants.prefix(4).enumerated()), id: \.offset) { _, variant in
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
                         Text(variant.display)
@@ -115,7 +167,7 @@ struct PersonalSubjectResultView: View {
                     }
                     .accessibilityElement(children: .combine)
                 }
-            } else if !subject.variants.isEmpty {
+            } else if !hasHistoricalForms(subject), !subject.variants.isEmpty {
                 Text(subject.variants.filter { $0 != subject.canonicalDisplay }.prefix(4).joined(separator: " · "))
                     .font(.system(.callout, design: .serif))
                     .foregroundStyle(Theme.lichen)
@@ -165,9 +217,6 @@ struct PersonalSubjectResultView: View {
                     .font(.callout.weight(.medium))
                     .foregroundStyle(Theme.inkFaint)
             }
-            Text(audioCaption(item))
-                .font(.caption)
-                .foregroundStyle(Theme.inkSoft)
             if item.audioState == .verified,
                let audio = item.audio,
                speech.canPlayVerifiedAsset(named: audio.assetName) {
@@ -190,24 +239,14 @@ struct PersonalSubjectResultView: View {
                 Text("\(audio.dialect) · recorded \(audio.recordedAt) · \(audio.permissionState)")
                     .font(.caption)
                     .foregroundStyle(Theme.inkFaint)
+            } else if item.audioState == .unverified {
+                Text("Approximate pronunciation · awaiting speaker review")
+                    .font(.caption)
+                    .foregroundStyle(Theme.inkSoft)
             }
         }
-        .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Theme.mossTint)
-        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         .accessibilityElement(children: .contain)
-    }
-
-    private func audioCaption(_ item: PersonalPronunciation) -> String {
-        switch item.audioState {
-        case .verified:
-            return "\(item.dialect.capitalized) guide"
-        case .unverified:
-            return "\(item.dialect.capitalized) guide · awaiting speaker review"
-        case .unavailable:
-            return "Approximate guide · recording in preparation"
-        }
     }
 
     @ViewBuilder
@@ -236,7 +275,8 @@ struct PersonalSubjectResultView: View {
                     }
                     .padding(.vertical, 2)
                 }
-                if forms.indices.contains(revealedFormIndex) {
+                if forms.indices.contains(revealedFormIndex),
+                   shouldShowFormDetail(forms[revealedFormIndex], subject: subject) {
                     let form = forms[revealedFormIndex]
                     VStack(alignment: .leading, spacing: 4) {
                         Text(form.display)
@@ -274,11 +314,11 @@ struct PersonalSubjectResultView: View {
         .padding(.horizontal, 12)
         .padding(.vertical, 10)
         .frame(minHeight: 44)
-        .background(selected ? Theme.raised : Theme.sunk)
+        .background(selected ? Theme.raised : Color.clear)
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(selected ? Theme.moss.opacity(0.55) : Theme.line.opacity(0.5), lineWidth: 0.8)
+                .stroke(selected ? Theme.moss.opacity(0.55) : Color.clear, lineWidth: 0.8)
         )
     }
 
@@ -336,14 +376,20 @@ struct PersonalSubjectResultView: View {
     }
 
     private func placeGround(_ place: PlaceProfile, subject: OriginSubject) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            sectionLabel("On the ground")
-            Text(place.hierarchy)
-                .font(.system(.body, design: .serif))
-                .foregroundStyle(Theme.ink)
-            Text(place.placeKind.capitalized)
-                .font(.footnote)
-                .foregroundStyle(Theme.inkSoft)
+        VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 8) {
+                sectionLabel("On the ground")
+                Text(place.hierarchy)
+                    .font(.system(.title2, design: .serif, weight: .semibold))
+                    .foregroundStyle(Theme.ink)
+                Text(place.placeKind.capitalized)
+                    .font(.footnote)
+                    .foregroundStyle(Theme.inkSoft)
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 30)
+            .padding(.bottom, 16)
+
             if let coords = place.coordinates {
                 Map(
                     initialPosition: .region(
@@ -360,30 +406,34 @@ struct PersonalSubjectResultView: View {
                     )
                     .tint(Theme.moss)
                 }
-                .frame(minHeight: 220)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .frame(minHeight: 250)
                 .accessibilityHidden(true)
+            }
 
-                Text(String(format: "%.3f, %.3f", coords.lat, coords.lon))
-                    .font(.system(.caption, design: .monospaced))
-                    .foregroundStyle(Theme.inkFaint)
-                    .accessibilityLabel("Coordinates \(coords.lat), \(coords.lon)")
+            VStack(alignment: .leading, spacing: 10) {
+                if let coords = place.coordinates {
+                    Text(String(format: "%.3f, %.3f", coords.lat, coords.lon))
+                        .font(.system(.caption, design: .monospaced))
+                        .foregroundStyle(Theme.inkFaint)
+                        .accessibilityLabel("Coordinates \(coords.lat), \(coords.lon)")
+                }
+                ForEach(place.featureLinks) { feature in
+                    Text(feature.label + (feature.note.map { " — \($0)" } ?? ""))
+                        .font(.callout)
+                        .foregroundStyle(Theme.lichen)
+                }
+                if let logainm = place.logainmId {
+                    Link("Open Logainm record \(logainm)", destination: URL(string: "https://www.logainm.ie/en/\(logainm)")!)
+                        .font(.callout.weight(.semibold))
+                        .foregroundStyle(Theme.moss)
+                }
             }
-            ForEach(place.featureLinks) { feature in
-                Text(feature.label + (feature.note.map { " — \($0)" } ?? ""))
-                    .font(.callout)
-                    .foregroundStyle(Theme.lichen)
-            }
-            if let logainm = place.logainmId {
-                Link("Open Logainm record \(logainm)", destination: URL(string: "https://www.logainm.ie/en/\(logainm)")!)
-                    .font(.callout.weight(.semibold))
-                    .foregroundStyle(Theme.moss)
-            }
+            .padding(.horizontal, 20)
+            .padding(.top, 12)
+            .padding(.bottom, 24)
         }
-        .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Theme.sunk)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 
     @ViewBuilder
@@ -577,22 +627,32 @@ struct PersonalSubjectResultView: View {
         }
     }
 
-    private func saveRow(_ subject: OriginSubject) -> some View {
-        Button {
-            toggleSave(subject.id)
-        } label: {
-            HStack {
-                Image(systemName: appState.isPersonalSubjectSaved(subject.id) ? "bookmark.fill" : "bookmark")
-                Text(appState.isPersonalSubjectSaved(subject.id) ? "Saved under What matters to you" : "Save to What matters to you")
-                    .font(.callout.weight(.semibold))
+    @ViewBuilder
+    private func deeperRecord(_ subject: OriginSubject) -> some View {
+        if hasDeeperRecord(subject) {
+            DisclosureGroup(isExpanded: $showsDeeperRecord) {
+                VStack(alignment: .leading, spacing: 34) {
+                    historicalDistribution(subject)
+                    nameTravelling(subject)
+                    if let place = subject.placeProfile {
+                        historicMapLayers(place, subject: subject)
+                    }
+                    communityEdition(subject)
+                }
+                .padding(.top, 24)
+            } label: {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("Explore the record")
+                        .font(.system(.headline, design: .serif))
+                        .foregroundStyle(Theme.ink)
+                    Text(subject.kind == .name ? "Records, journeys, and editorial context" : "Older maps and editorial context")
+                        .font(.footnote)
+                        .foregroundStyle(Theme.inkSoft)
+                }
             }
-            .foregroundStyle(Theme.moss)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 12)
-            .background(Theme.mossTint)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .tint(Theme.moss)
+            .animation(reduceMotion ? nil : Motion.settle, value: showsDeeperRecord)
         }
-        .buttonStyle(CarvePress())
     }
 
     private func advancedActions(_ subject: OriginSubject) -> some View {
@@ -631,21 +691,6 @@ struct PersonalSubjectResultView: View {
             }
         }
         .background(Theme.raised)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-    }
-
-    private var membershipInvitation: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Keep travelling through the island")
-                .font(.system(.headline, design: .serif))
-                .foregroundStyle(Theme.ink)
-            Text("This personal answer stays complete and free. Membership supports deeper authored stories, county journeys, voices, and offline field seasons.")
-                .font(.callout)
-                .foregroundStyle(Theme.inkSoft)
-                .lineSpacing(3)
-        }
-        .padding(16)
-        .background(Theme.sunk)
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 
@@ -705,6 +750,23 @@ struct PersonalSubjectResultView: View {
         }
     }
 
+    private func utilities(_ subject: OriginSubject) -> some View {
+        DisclosureGroup(isExpanded: $showsUtilities) {
+            VStack(alignment: .leading, spacing: 18) {
+                advancedActions(subject)
+                footer(subject)
+            }
+            .padding(.top, 18)
+        } label: {
+            Text("More")
+                .font(.callout.weight(.semibold))
+                .foregroundStyle(Theme.inkSoft)
+                .frame(minHeight: 44, alignment: .leading)
+        }
+        .tint(Theme.moss)
+        .animation(reduceMotion ? nil : Motion.settle, value: showsUtilities)
+    }
+
     private func actionRow(_ title: String, systemImage: String) -> some View {
         HStack(spacing: 12) {
             Image(systemName: systemImage)
@@ -729,10 +791,40 @@ struct PersonalSubjectResultView: View {
     }
 
     private func sectionLabel(_ text: String) -> some View {
-        Text(text.uppercased())
-            .font(.caption.weight(.semibold))
-            .kerning(1.3)
-            .foregroundStyle(Theme.inkFaint)
+        Text(text)
+            .font(.system(.headline, design: .serif, weight: .semibold))
+            .foregroundStyle(Theme.moss)
+    }
+
+    private func hasHistoricalForms(_ subject: OriginSubject) -> Bool {
+        let forms = subject.nameProfile?.historicalForms ?? subject.placeProfile?.historicalForms ?? []
+        return !forms.isEmpty
+    }
+
+    private func shouldShowFormDetail(_ form: HistoricalForm, subject: OriginSubject) -> Bool {
+        form.display != subject.canonicalDisplay || form.year != nil
+    }
+
+    private func hasPronunciationGuides(_ subject: OriginSubject) -> Bool {
+        let items = subject.nameProfile?.pronunciations ?? subject.placeProfile?.pronunciations ?? []
+        return items.contains { item in
+            if item.audioState == .verified, item.audio != nil { return true }
+            guard let phonetic = item.phonetic else { return false }
+            return !phonetic.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        }
+    }
+
+    private func hasEtymologyBranches(_ subject: OriginSubject) -> Bool {
+        let branches = subject.nameProfile?.etymologyBranches ?? subject.placeProfile?.derivationBranches ?? []
+        return !branches.isEmpty
+    }
+
+    private func hasDeeperRecord(_ subject: OriginSubject) -> Bool {
+        let distributions = subject.nameProfile?.distributions ?? []
+        let travelMoments = subject.nameProfile?.travelMoments ?? []
+        let mapLayers = subject.placeProfile?.historicMapLayers ?? []
+        let hasCommunityEdition = subject.editorial.communityEdition?.consentState == "agreed"
+        return !distributions.isEmpty || !travelMoments.isEmpty || !mapLayers.isEmpty || hasCommunityEdition
     }
 
     private func toggleSave(_ id: String) {

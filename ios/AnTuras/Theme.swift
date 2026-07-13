@@ -58,6 +58,10 @@ enum Theme {
         highContrastDark: 0xFFFFFF
     )
     static let rust     = Color(light: 0xA34D3B, dark: 0xC97A66)
+    static let atlantic = Color(light: 0x111C22, dark: 0x0B1419)
+    static let storm    = Color(light: 0x33464C, dark: 0x81969B)
+    static let weatheredGold = Color(light: 0x9A7618, dark: 0xD7B64D)
+    static let salt     = Color(light: 0xF2F3EC, dark: 0xF2F3EC)
 
     static var mossTint: Color { moss.opacity(0.12) }
     static var rustTint: Color { rust.opacity(0.12) }
@@ -155,6 +159,102 @@ struct Eyebrow: View {
             .kerning(1.6)
             .foregroundStyle(color)
             .fixedSize(horizontal: false, vertical: true)
+    }
+}
+
+// MARK: - Editorial composition
+
+/// Shared page rhythm for image-led and text-led surfaces. Individual story
+/// heroes may break out to full width; readable prose returns to this column.
+enum EditorialLayout {
+    static let pageInset: CGFloat = 20
+    static let readingWidth: CGFloat = 680
+    static let groupGap: CGFloat = 10
+    static let sectionGap: CGFloat = 30
+}
+
+/// Context is written as supplied. Uppercase remains available for genuinely
+/// archival or cartographic labels without turning every heading into a badge.
+struct EditorialContextLabel: View {
+    let text: String
+    var color: Color = Theme.inkSoft
+
+    var body: some View {
+        Text(text)
+            .font(.caption.weight(.semibold))
+            .kerning(0.9)
+            .foregroundStyle(color)
+            .fixedSize(horizontal: false, vertical: true)
+    }
+}
+
+/// The image-free equivalent of an editorial hero: one contextual line, one
+/// typographic anchor, and a short orientation. Uses semantic type throughout.
+struct EditorialScreenHeader: View {
+    let context: String
+    let title: String
+    var detail: String?
+    var accent: Color = Theme.inkSoft
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: EditorialLayout.groupGap) {
+            if !context.isEmpty {
+                EditorialContextLabel(text: context, color: accent)
+            }
+            Text(title)
+                .font(.system(.largeTitle, design: .serif, weight: .semibold))
+                .foregroundStyle(Theme.ink)
+                .fixedSize(horizontal: false, vertical: true)
+                .accessibilityAddTraits(.isHeader)
+            if let detail, !detail.isEmpty {
+                Text(detail)
+                    .font(.body)
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(4)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+/// A lighter section transition for narrative sequence. It avoids introducing
+/// a card simply to separate a label, title, and supporting sentence.
+struct EditorialSectionHeader: View {
+    let context: String?
+    let title: String
+    var detail: String?
+    var accent: Color = Theme.inkSoft
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            if let context, !context.isEmpty {
+                EditorialContextLabel(text: context, color: accent)
+            }
+            Text(title)
+                .font(.system(.title2, design: .serif, weight: .semibold))
+                .foregroundStyle(Theme.ink)
+                .fixedSize(horizontal: false, vertical: true)
+                .accessibilityAddTraits(.isHeader)
+            if let detail, !detail.isEmpty {
+                Text(detail)
+                    .font(.body)
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(4)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+struct EditorialRule: View {
+    var color: Color = Theme.line
+
+    var body: some View {
+        Rectangle()
+            .fill(color)
+            .frame(height: 0.7)
+            .accessibilityHidden(true)
     }
 }
 

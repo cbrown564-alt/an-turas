@@ -22,7 +22,7 @@ struct ExerciseFrame<Content: View>: View {
                             .frame(width: 8, height: 14)
                     }
                 }
-                Eyebrow(text: "Cleachtadh", color: Theme.inkFaint)
+                EditorialContextLabel(text: "Cleachtadh", color: Theme.inkFaint)
             }
             .padding(.bottom, 2)
             if let context {
@@ -33,7 +33,7 @@ struct ExerciseFrame<Content: View>: View {
                     .lineSpacing(4)
             }
             Text(prompt)
-                .font(.system(size: 21, weight: .medium, design: .serif))
+                .font(.system(.title3, design: .serif, weight: .medium))
                 .foregroundStyle(Theme.ink)
                 .lineSpacing(4)
                 .padding(.bottom, 4)

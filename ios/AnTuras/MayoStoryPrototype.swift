@@ -11,96 +11,78 @@ struct MayoDossierView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                AtlasScreenHeader("CONNACHT · MAIGH EO", "Mayo", detail: "Listen: Maigh Eo · ‘plain of the yew trees’")
+            VStack(alignment: .leading, spacing: 0) {
+                MayoDossierHero()
 
-                ClewBayMiniature()
-                    .frame(height: 270)
-                    .clipShape(RoundedRectangle(cornerRadius: 14))
-                    .overlay(RoundedRectangle(cornerRadius: 14).stroke(Theme.line, lineWidth: 0.8))
+                VStack(alignment: .leading, spacing: 24) {
+                    Label("1593 · state paper · person · sea route", systemImage: "doc.text")
+                        .font(.caption.weight(.medium))
+                        .foregroundStyle(Theme.inkFaint)
 
-                Label("1593 · state paper · person · sea route", systemImage: "doc.text")
-                    .font(.caption.weight(.medium))
-                    .foregroundStyle(Theme.inkFaint)
-
-                Button(action: onMeetGrainne) {
-                    Group {
-                        if dynamicTypeSize.isAccessibilitySize {
-                            VStack(alignment: .leading, spacing: 12) {
-                                GrainnePortraitMark()
-                                    .frame(width: 110, height: 132)
-                                headlinePersonText
-                                Image(systemName: "chevron.right").foregroundStyle(Theme.inkFaint)
-                            }
-                        } else {
-                            HStack(spacing: 16) {
-                                GrainnePortraitMark()
-                                    .frame(width: 86, height: 104)
-                                headlinePersonText
-                                Spacer(minLength: 0)
-                                Image(systemName: "chevron.right").foregroundStyle(Theme.inkFaint)
-                            }
+                    Button(action: onMeetGrainne) {
+                        HStack(alignment: .center, spacing: 16) {
+                            headlinePersonText
+                            Spacer(minLength: 0)
+                            Image(systemName: "chevron.right")
+                                .foregroundStyle(Theme.atlasGreen)
+                                .frame(minWidth: 44, minHeight: 44)
                         }
-                    }
-                    .padding(15)
-                    .background(Theme.raised)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                }
-                .buttonStyle(CarvePress())
-
-                VStack(alignment: .leading, spacing: 8) {
-                    Eyebrow(text: "THE HISTORICAL QUESTION")
-                    Text("What did Gráinne actually ask for?")
-                        .font(.system(.largeTitle, design: .serif, weight: .semibold))
-                        .foregroundStyle(Theme.ink)
-                    Text("Begin with the state record. Only then compare the famous image of the ‘pirate queen’ with what can be supported.")
-                        .font(.body)
-                        .foregroundStyle(Theme.inkSoft)
-                        .lineSpacing(4)
-                }
-                .padding(.vertical, 4)
-
-                Group {
-                    if dynamicTypeSize.isAccessibilitySize {
-                        VStack(spacing: 12) { dossierPromises }
-                    } else {
-                        HStack(alignment: .top, spacing: 12) { dossierPromises }
-                    }
-                }
-
-                routeSection
-
-                SourceFooter(onOpen: onOpenEvidence)
-
-                PrimaryButton(title: "Begin · What did she ask for?", fullWidth: true, action: onBegin)
-
-                AtlasRule()
-
-                VStack(alignment: .leading, spacing: 12) {
-                    Eyebrow(text: "ANOTHER MAYO ENCOUNTER")
-                    Button(action: onFieldNote) {
-                        HStack(spacing: 13) {
-                            Image(systemName: "line.3.horizontal.decrease")
-                                .font(.system(size: 24, weight: .light))
-                                .foregroundStyle(Theme.inkFaint)
-                            VStack(alignment: .leading, spacing: 3) {
-                                Text("Breastagh · a damaged name")
-                                    .font(.system(size: 17, weight: .semibold, design: .serif))
-                                    .foregroundStyle(Theme.ink)
-                                Text("A short field note. Reconstruction is entered through a visible boundary and earns no county completion.")
-                                    .font(.system(size: 12.5))
-                                    .foregroundStyle(Theme.inkSoft)
-                                    .lineSpacing(3)
-                            }
-                            Spacer()
-                            CertaintyPill(certainty: .reconstruction)
-                        }
+                        .padding(.vertical, 18)
+                        .contentShape(Rectangle())
+                        .overlay(alignment: .top) { EditorialRule() }
+                        .overlay(alignment: .bottom) { EditorialRule() }
                     }
                     .buttonStyle(CarvePress())
+
+                    EditorialSectionHeader(
+                        context: "The historical question",
+                        title: "What did Gráinne actually ask for?",
+                        detail: "Begin with the state record. Only then compare the famous image of the ‘pirate queen’ with what can be supported."
+                    )
+
+                    Group {
+                        if dynamicTypeSize.isAccessibilitySize {
+                            VStack(spacing: 12) { dossierPromises }
+                        } else {
+                            HStack(alignment: .top, spacing: 12) { dossierPromises }
+                        }
+                    }
+
+                    routeSection
+
+                    SourceFooter(onOpen: onOpenEvidence)
+
+                    PrimaryButton(title: "Begin · What did she ask for?", fullWidth: true, action: onBegin)
+
+                    AtlasRule()
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        EditorialContextLabel(text: "Another Mayo encounter")
+                        Button(action: onFieldNote) {
+                            HStack(spacing: 13) {
+                                Image(systemName: "line.3.horizontal.decrease")
+                                    .font(.system(size: 24, weight: .light))
+                                    .foregroundStyle(Theme.inkFaint)
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text("Breastagh · a damaged name")
+                                        .font(.system(.headline, design: .serif))
+                                        .foregroundStyle(Theme.ink)
+                                    Text("A short field note. Reconstruction is entered through a visible boundary and earns no county completion.")
+                                        .font(.caption)
+                                        .foregroundStyle(Theme.inkSoft)
+                                        .lineSpacing(3)
+                                }
+                                Spacer()
+                                CertaintyPill(certainty: .reconstruction)
+                            }
+                        }
+                        .buttonStyle(CarvePress())
+                    }
                 }
+                .padding(.horizontal, EditorialLayout.pageInset)
+                .padding(.top, 22)
+                .padding(.bottom, 36)
             }
-            .padding(20)
-            .padding(.bottom, 36)
             .frame(maxWidth: 700)
             .frame(maxWidth: .infinity)
         }
@@ -110,17 +92,12 @@ struct MayoDossierView: View {
     }
 
     private var headlinePersonText: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Eyebrow(text: "THE HEADLINE PERSON", color: Theme.atlasGreen)
-            Text("Gráinne Ní Mháille")
-                .font(.system(.title2, design: .serif, weight: .semibold))
-                .foregroundStyle(Theme.ink)
-                .fixedSize(horizontal: false, vertical: true)
-            Text("A maritime leader from Mayo whose dealings with the English state left a documentary record.")
-                .font(.subheadline)
-                .foregroundStyle(Theme.inkSoft)
-                .lineSpacing(3)
-        }
+        EditorialSectionHeader(
+            context: "The headline person",
+            title: "Gráinne Ní Mháille",
+            detail: "A maritime leader from Mayo whose dealings with the English state left a documentary record.",
+            accent: Theme.atlasGreen
+        )
     }
 
     @ViewBuilder
@@ -149,6 +126,68 @@ struct MayoDossierView: View {
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Story geography: Oileán Chliara, Clare Island; Cill Damhnait, Kildavnet; Carraig an Chabhlaigh, Rockfleet. This is an editorial route, not a documented movement map.")
+    }
+}
+
+private struct MayoDossierHero: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    /// The image opening stays a light composition in both appearances. Using
+    /// Theme.ink here made the text turn pale in Dark Mode over a pale cloud.
+    private let imageInk = Color(light: 0x172019, dark: 0x172019)
+
+    var body: some View {
+        Group {
+            if dynamicTypeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: 0) {
+                    coast(height: 230)
+                    copy
+                        .padding(.horizontal, EditorialLayout.pageInset)
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Theme.atlantic)
+                }
+            } else {
+                ZStack(alignment: .topLeading) {
+                    coast(height: 330)
+                    LinearGradient(
+                        colors: [Theme.salt.opacity(0.92), Theme.salt.opacity(0.48), .clear],
+                        startPoint: .top,
+                        endPoint: .center
+                    )
+                    copy
+                        .padding(.horizontal, 24)
+                        .padding(.top, 24)
+                }
+                .frame(height: 330)
+            }
+        }
+        .clipped()
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Mayo, Maigh Eo, in Connacht. Clew Bay editorial landscape. Listen: Maigh Eo, plain of the yew trees.")
+    }
+
+    private func coast(height: CGFloat) -> some View {
+        GeometryReader { geometry in
+            StoryArtImage(name: "grainne-clew-bay")
+                .scaledToFill()
+                .frame(width: geometry.size.width, height: height)
+                .clipped()
+        }
+        .frame(height: height)
+    }
+
+    private var copy: some View {
+        VStack(alignment: .leading, spacing: 7) {
+            Text("CONNACHT · MAIGH EO")
+                .font(.caption.weight(.semibold))
+                .kerning(1.05)
+            Text("Mayo")
+                .font(.system(.largeTitle, design: .serif, weight: .semibold))
+            Text("Listen: Maigh Eo · ‘plain of the yew trees’")
+                .font(.body)
+        }
+        .foregroundStyle(dynamicTypeSize.isAccessibilitySize ? Theme.salt : imageInk)
     }
 }
 
@@ -198,71 +237,28 @@ private struct RouteLine: View {
 // MARK: - Person layer
 
 struct GrainnePersonView: View {
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let onBegin: () -> Void
     let onOpenEvidence: () -> Void
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Group {
-                    if dynamicTypeSize.isAccessibilitySize {
-                        VStack(alignment: .leading, spacing: 14) {
-                            GrainnePortraitMark().frame(width: 130, height: 170)
-                            personHeading
-                        }
-                    } else {
-                        HStack(alignment: .bottom, spacing: 18) {
-                            GrainnePortraitMark().frame(width: 130, height: 170)
-                            personHeading
-                        }
-                    }
+            VStack(alignment: .leading, spacing: 0) {
+                GrainnePersonHero()
+
+                VStack(alignment: .leading, spacing: 32) {
+                    AtlasAudioLine(ga: "Gráinne Ní Mháille", en: "A Connacht Irish name form", sound: "grawn-ya nee wawl-ya")
+
+                    recordSection
+                    placesSection
+                    afterlifeSection
+
+                    SourceFooter(onOpen: onOpenEvidence)
+                    PrimaryButton(title: "Enter the 1593 story", fullWidth: true, action: onBegin)
                 }
-
-                AtlasAudioLine(ga: "Gráinne Ní Mháille", en: "A Connacht Irish name form", sound: "grawn-ya nee wawl-ya")
-
-                AtlasCard(accent: Theme.atlasGreen) {
-                    VStack(alignment: .leading, spacing: 9) {
-                        Eyebrow(text: "FROM THE 1593 RECORD", color: Theme.atlasGreen)
-                        Text("A maritime leader with power rooted around the Mayo coast; English administrative records preserve dealings concerning her and her family.")
-                            .font(.system(.body, design: .serif))
-                            .foregroundStyle(Theme.ink)
-                            .lineSpacing(4)
-                    }
-                }
-
-                VStack(alignment: .leading, spacing: 12) {
-                    Eyebrow(text: "PLACES AND CONSEQUENCES")
-                    PersonLink(icon: "water.waves", title: "Clew Bay and Clare Island", detail: "The geography that makes the story a Mayo story.")
-                    PersonLink(icon: "person.2", title: "Her family", detail: "The 1593 record concerns more than one individual and makes family power part of the question.")
-                    PersonLink(icon: "building.columns", title: "The English state", detail: "The record survives because her demands entered an administrative system.")
-                }
-
-                VStack(alignment: .leading, spacing: 10) {
-                    Eyebrow(text: "RECORD AND AFTERLIFE", color: Theme.rust)
-                    ClaimBoundary(icon: "doc.text", text: "The 1593 record names Gráinne and members of her family.")
-                    ClaimBoundary(icon: "book.closed", text: "Later stories remember a refusal to bow to Elizabeth I.")
-                    ClaimBoundary(icon: "questionmark.circle", text: "The meeting language and the hair-cutting origin story are not established by this record.")
-                    Text("The source guide keeps those different kinds of claim apart.")
-                        .font(.caption)
-                        .foregroundStyle(Theme.inkSoft)
-                    Button(action: onOpenEvidence) {
-                        Label("Open the 1593 source guide", systemImage: "building.columns")
-                            .font(.callout.weight(.semibold))
-                            .foregroundStyle(Theme.rust)
-                            .frame(minHeight: 44)
-                    }
-                    .buttonStyle(CarvePress())
-                }
-                .padding(16)
-                .background(Theme.rustTint)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-
-                SourceFooter(onOpen: onOpenEvidence)
-                PrimaryButton(title: "Enter the 1593 story", fullWidth: true, action: onBegin)
+                .padding(.horizontal, 20)
+                .padding(.top, 24)
+                .padding(.bottom, 36)
             }
-            .padding(20)
-            .padding(.bottom, 36)
             .frame(maxWidth: 700)
             .frame(maxWidth: .infinity)
         }
@@ -271,55 +267,131 @@ struct GrainnePersonView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private var personHeading: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Eyebrow(text: "PERSON · MAYO · 16TH CENTURY")
+    private var recordSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            PersonSectionHeading(context: "The 1593 record", title: "What survives", color: Theme.atlasGreen)
+            HStack(alignment: .top, spacing: 14) {
+                Image(systemName: "doc.text")
+                    .font(.title3)
+                    .foregroundStyle(Theme.atlasGreen)
+                    .frame(width: 28)
+                Text("A maritime leader with power rooted around the Mayo coast; English administrative records preserve dealings concerning her and her family.")
+                    .font(.system(.body, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                    .lineSpacing(4)
+            }
+        }
+        .padding(.vertical, 18)
+        .overlay(alignment: .top) { Divider().overlay(Theme.line) }
+        .overlay(alignment: .bottom) { Divider().overlay(Theme.line) }
+    }
+
+    private var placesSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            PersonSectionHeading(context: "Mayo and the state", title: "Places and consequences", color: Theme.moss)
+            VStack(alignment: .leading, spacing: 14) {
+                PersonLink(icon: "water.waves", title: "Clew Bay and Clare Island", detail: "The geography that makes the story a Mayo story.")
+                PersonLink(icon: "person.2", title: "Her family", detail: "The 1593 record concerns more than one individual and makes family power part of the question.")
+                PersonLink(icon: "building.columns", title: "The English state", detail: "The record survives because her demands entered an administrative system.")
+            }
+        }
+    }
+
+    private var afterlifeSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            PersonSectionHeading(context: "Evidence and memory", title: "Record and afterlife", color: Theme.rust)
+            ClaimBoundary(icon: "doc.text", text: "The 1593 record names Gráinne and members of her family.")
+            ClaimBoundary(icon: "book.closed", text: "Later stories remember a refusal to bow to Elizabeth I.")
+            ClaimBoundary(icon: "questionmark.circle", text: "The meeting language and the hair-cutting origin story are not established by this record.")
+            Text("The source guide keeps those different kinds of claim apart.")
+                .font(.caption)
+                .foregroundStyle(Theme.inkSoft)
+            Button(action: onOpenEvidence) {
+                Label("Open the 1593 source guide", systemImage: "building.columns")
+                    .font(.callout.weight(.semibold))
+                    .foregroundStyle(Theme.rust)
+                    .frame(minHeight: 44)
+            }
+            .buttonStyle(CarvePress())
+        }
+        .padding(18)
+        .background(Theme.rustTint)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+}
+
+private struct GrainnePersonHero: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+    var body: some View {
+        Group {
+            if dynamicTypeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: 0) {
+                    portrait(height: 250)
+                    identity
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Theme.atlantic)
+                }
+            } else {
+                ZStack(alignment: .topTrailing) {
+                    portrait(height: 340)
+                    LinearGradient(
+                        colors: [.clear, Theme.atlantic.opacity(0.22), Theme.atlantic.opacity(0.94)],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                    identity
+                        .frame(maxWidth: 205, alignment: .leading)
+                        .padding(.horizontal, 22)
+                        .padding(.top, 26)
+                }
+                .frame(height: 340)
+            }
+        }
+        .clipped()
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Gráinne Ní Mháille, also known as Grace O’Malley, circa 1530 to circa 1603. Interpretive generated portrait; no historical portrait from life is known.")
+    }
+
+    private func portrait(height: CGFloat) -> some View {
+        GeometryReader { geometry in
+            StoryArtImage(name: "grainne-crossing")
+                .scaledToFill()
+                .frame(width: geometry.size.width, height: height)
+                .clipped()
+        }
+        .frame(height: height)
+    }
+
+    private var identity: some View {
+        VStack(alignment: .leading, spacing: 7) {
+            Text("PERSON · MAYO · 16TH CENTURY")
+                .font(.caption.weight(.semibold))
+                .kerning(1.15)
+                .foregroundStyle(Theme.salt.opacity(0.76))
             Text("Gráinne Ní Mháille")
                 .font(.system(.largeTitle, design: .serif, weight: .semibold))
-                .foregroundStyle(Theme.ink)
+                .foregroundStyle(Theme.salt)
                 .fixedSize(horizontal: false, vertical: true)
             Text("Grace O’Malley")
                 .font(.system(.body, design: .serif))
-                .foregroundStyle(Theme.inkSoft)
+                .foregroundStyle(Theme.salt.opacity(0.82))
             Text("c. 1530 – c. 1603")
                 .font(.caption.monospaced().weight(.medium))
-                .foregroundStyle(Theme.inkFaint)
+                .foregroundStyle(Theme.salt.opacity(0.68))
         }
     }
 }
 
-struct GrainnePortraitMark: View {
+private struct PersonSectionHeading: View {
+    let context: String
+    let title: String
+    let color: Color
+
     var body: some View {
-        Canvas { ctx, size in
-            let bg = Path(roundedRect: CGRect(origin: .zero, size: size), cornerRadius: 8)
-            ctx.fill(bg, with: .linearGradient(Gradient(colors: [Theme.moss.opacity(0.28), Theme.sunk]), startPoint: .zero, endPoint: CGPoint(x: size.width, y: size.height)))
-
-            var sea = Path()
-            sea.move(to: CGPoint(x: 0, y: size.height * 0.75))
-            sea.addCurve(to: CGPoint(x: size.width, y: size.height * 0.68), control1: CGPoint(x: size.width * 0.3, y: size.height * 0.62), control2: CGPoint(x: size.width * 0.7, y: size.height * 0.84))
-            ctx.stroke(sea, with: .color(Theme.moss.opacity(0.55)), lineWidth: 1)
-
-            let head = CGRect(x: size.width * 0.36, y: size.height * 0.22, width: size.width * 0.29, height: size.height * 0.25)
-            ctx.fill(Path(ellipseIn: head), with: .color(Theme.ink.opacity(0.83)))
-            var shoulders = Path()
-            shoulders.move(to: CGPoint(x: size.width * 0.18, y: size.height * 0.85))
-            shoulders.addQuadCurve(to: CGPoint(x: size.width * 0.82, y: size.height * 0.85), control: CGPoint(x: size.width * 0.5, y: size.height * 0.46))
-            shoulders.closeSubpath()
-            ctx.fill(shoulders, with: .color(Theme.ink.opacity(0.83)))
-
-            var hair = Path()
-            hair.move(to: CGPoint(x: size.width * 0.38, y: size.height * 0.32))
-            hair.addCurve(to: CGPoint(x: size.width * 0.26, y: size.height * 0.69), control1: CGPoint(x: size.width * 0.25, y: size.height * 0.37), control2: CGPoint(x: size.width * 0.37, y: size.height * 0.57))
-            ctx.stroke(hair, with: .color(Theme.lichen), style: StrokeStyle(lineWidth: max(size.width * 0.035, 2), lineCap: .round))
-        }
-        .overlay(alignment: .bottomLeading) {
-            Text("INTERPRETIVE MARK")
-                .font(.system(size: 6.5, weight: .bold))
-                .kerning(0.8)
-                .foregroundStyle(Theme.bg.opacity(0.8))
-                .padding(7)
-        }
-        .accessibilityLabel("An interpretive silhouette representing Gráinne Ní Mháille, not a historical portrait")
+        EditorialSectionHeader(context: context, title: title, accent: color)
     }
 }
 
@@ -331,10 +403,11 @@ private struct PersonLink: View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: icon).foregroundStyle(Theme.moss).frame(width: 24)
             VStack(alignment: .leading, spacing: 2) {
-                Text(title).font(.system(size: 15, weight: .semibold, design: .serif)).foregroundStyle(Theme.ink)
-                Text(detail).font(.system(size: 12.5)).foregroundStyle(Theme.inkSoft).lineSpacing(3)
+                Text(title).font(.system(.headline, design: .serif)).foregroundStyle(Theme.ink)
+                Text(detail).font(.subheadline).foregroundStyle(Theme.inkSoft).lineSpacing(3)
             }
         }
+        .frame(minHeight: 44, alignment: .top)
     }
 }
 
@@ -351,11 +424,10 @@ private struct ClaimBoundary: View {
 
 // MARK: - Documentary story registers
 
-struct GrainneStoryView: View {
+struct LegacyGrainneStoryView: View {
     @EnvironmentObject private var atlas: AtlasPrototypeModel
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let onOpenEvidence: () -> Void
     let onComplete: () -> Void
 
@@ -545,19 +617,7 @@ struct GrainneStoryView: View {
 
     private var meetGrainne: some View {
         VStack(alignment: .leading, spacing: 22) {
-            Group {
-                if dynamicTypeSize.isAccessibilitySize {
-                    VStack(alignment: .leading, spacing: 14) {
-                        GrainnePortraitMark().frame(width: 145, height: 190)
-                        storyPersonHeading
-                    }
-                } else {
-                    HStack(alignment: .bottom, spacing: 18) {
-                        GrainnePortraitMark().frame(width: 145, height: 190)
-                        storyPersonHeading
-                    }
-                }
-            }
+            GrainnePersonHero()
 
             AtlasAudioLine(ga: "Gráinne Ní Mháille", en: "Her name in Irish", sound: "grawn-ya nee wawl-ya")
 
@@ -586,19 +646,6 @@ struct GrainneStoryView: View {
                         .foregroundStyle(Theme.inkFaint)
                 }
             }
-        }
-    }
-
-    private var storyPersonHeading: some View {
-        VStack(alignment: .leading, spacing: 7) {
-            Eyebrow(text: "A LIFE SHAPED BY THE SEA")
-            Text("Gráinne Ní Mháille")
-                .font(.system(.largeTitle, design: .serif, weight: .semibold))
-                .foregroundStyle(Theme.ink)
-                .fixedSize(horizontal: false, vertical: true)
-            Text("c. 1530 – c. 1603")
-                .font(.caption.monospaced())
-                .foregroundStyle(Theme.inkFaint)
         }
     }
 

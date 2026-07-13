@@ -35,7 +35,7 @@ LANGUAGE_CODE = "ga"
 OUTPUT_FORMAT = "mp3_44100_192"
 CHAPTERS = ("chapter1.json", "chapter2.json", "chapter3.json")
 SWIFT_LITERAL_AUDIO = re.compile(
-    r'(?:AtlasAudioLine\(ga:|SoundRow\(text:)\s*"([^"\\]+)"'
+    r'(?:AtlasAudioLine\(ga:|SoundRow\(text:|Self\(ga:)\s*"([^"\\]+)"'
 )
 
 

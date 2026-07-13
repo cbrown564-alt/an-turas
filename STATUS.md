@@ -31,13 +31,11 @@ It validates the foundation, not the full story or broader atlas architecture. T
 first product grilling has now fixed the county, episode, learner-action, 20-word,
 evidence, collection, artifact, grammar, and post-county contracts.
 
-**12 July research pass (docs only):** Gráinne provisionally passes both flagship
-tests without a side story. Paper walkthrough locked a **six-episode** spine (Ep3
-compressed; answer/coast split). Language weave, evidence ladder, and Mayo 1593
-board-ready draft exist. Offaly, Dublin, and Meath packets started; content-review UI
-scaffolded; editorial recruitment pack and legacy salvage map written. Next product
-gate: implement the Gráinne full-arc prototype after historian/pedagogue first pass —
-not a new atlas expansion or tester round.
+**13 July Mayo gate:** Gráinne passes both flagship tests without a side story.
+Historian and Irish-language pedagogue approval of the claims and 20-word weave has
+been reported, and the locked six-episode spine is now playable as 18 resumable beats.
+The next product gate is a moderated complete-arc tester round—not a new atlas
+expansion.
 
 ## Work completed
 
@@ -83,20 +81,23 @@ not a new atlas expansion or tester round.
 | 2026-07-12 | **Gráinne flagship stress-test + storyboard + weave + lo-fi review; Mayo source brief started.** Provisional pass: she can carry Mayo alone for narrative depth and the 20-word lifecycle; no side story yet. Five-episode spine organised around 1593; language weave and three-level evidence ladder drafted; lo-fi review passes with revisions (tighten Ep3, watch Ep5 overload) and blocks implementation/tester round until paper walkthrough. Historian-ready Mayo 1593 packet begun with claim ledger and rights plan; Breastagh register retargeted as field-note only. | `docs/GRAINNE-SOURCE-STRESS-TEST.md`, `docs/GRAINNE-STORYBOARD.md`, `docs/GRAINNE-LANGUAGE-WEAVE.md`, `docs/GRAINNE-LOFI-REVIEW.md`, `content/mayo/grainne-1593-source-brief.md` |
 | 2026-07-12 | **Walkthrough revisions + parallel launch packets.** Storyboard revised to six episodes; Mayo brief advanced with L1 paraphrases and transcription-first rights default. Offaly Cross, Dublin penny, and Meath/Trim briefs (plus Meath clean-slate confirm) opened. Content-review HTML CMS foundation + manifest; editorial board recruitment pack; Chapters 1–3 legacy salvage map. | `docs/GRAINNE-STORYBOARD.md`, `content/mayo/grainne-1593-source-brief.md`, `content/offaly/`, `content/dublin/`, `content/meath/`, `tools/content-review/`, `docs/CONTENT-REVIEW-CMS.md`, `docs/editorial/BOARD-RECRUITMENT.md`, `docs/LEGACY-SALVAGE-MAP.md` |
 | 2026-07-12 | **Personal atlas Phase 1 pilot shipped in-app.** Behind-a-name / behind-a-place search and result shell on the living atlas: 25 given + 25 surname + 30 place packs, certainty labels, historical-form travel, local saves under “What matters to you,” Mayo story handoffs, first-encounter hooks. Bundled JSON; no genealogy matching; foundation vs authored depth. Specialist review and licensed surname authority still required before public hardening. | `docs/PERSONAL-HISTORIES-FEATURE-PLAN.md`, `ios/AnTuras/PersonalAtlas*.swift`, `Resources/personal-atlas-subjects.json`, `content/personal-atlas/` |
-| 2026-07-13 | **Personal atlas Phase 0–4 engineering delivered behind evidence gates.** Added the hard-case research protocol; assertion-level CMS and deny-by-default public exporter; signed/versioned detail cache and deep links; production Logainm ingestion and a lazy 51 MB SQLite foundation containing 126,712 places and 305,638 aliases; automated all-island quality audit and safe nulling of 7,571 invalid source coordinates; applied 22 existing-link hierarchy recoveries plus four reviewed Northern repairs with provenance; private corrections and privacy-safe query ledger; aggregate distribution pipeline; coarse opt-in nearby places; source-visible static previews; map/time, voices, keepsake, field mode, family worksheet, and community-edition gates. Simulator build and 14 Swift plus 22 Python tests pass. No pilot subject was promoted: specialist, rights, audio, accessibility, community, hosting, and user-validation work remains external release work. | `docs/PERSONAL-ATLAS-*.md`, `ios/AnTuras/PersonalAtlas*.swift`, `tools/content-review/`, `tools/*personal*`, `.github/workflows/logainm-monthly.yml`, `web/personal-atlas/` |
+| 2026-07-13 | **Personal atlas Phase 0–4 engineering delivered behind evidence gates.** Added the hard-case research protocol; assertion-level CMS and deny-by-default public exporter; signed/versioned detail cache and deep links; production Logainm ingestion and a lazy 51 MB SQLite foundation containing 126,712 places and 305,638 aliases; automated all-island quality audit and safe nulling of 7,571 invalid source coordinates; applied 22 existing-link hierarchy recoveries plus four reviewed Northern repairs with provenance; private corrections and privacy-safe query ledger; aggregate distribution pipeline; coarse opt-in nearby places; source-visible static previews; map/time, voices, keepsake, field mode, family worksheet, and community-edition gates. Simulator build and 22 Swift unit plus 5 UI and 22 Python tests pass. No pilot subject was promoted: specialist, rights, audio, accessibility, community, hosting, and user-validation work remains external release work. | `docs/PERSONAL-ATLAS-*.md`, `ios/AnTuras/PersonalAtlas*.swift`, `tools/content-review/`, `tools/*personal*`, `.github/workflows/logainm-monthly.yml`, `web/personal-atlas/` |
 | 2026-07-13 | **House story voice selected.** ElevenLabs generated voice *Irish Cultural Guide* (`NPWroowF4phQhaPWjXPj`) is the default voice for Gráinne / Mayo narrative audio and the next story-audio tests. Browser review accepted the character despite generation variability; two of three samples were good enough. Irish headwords and phrases remain subject to focused language QA before bundling. | `docs/DECISIONS.md` D16, `docs/TTS-research.md` |
 | 2026-07-13 | **Initial-launch voice locked.** Irish Cultural Guide is now the default voice for all initial-launch narrative and Irish teaching audio. It is not perfect, but is mostly accurate and good enough to carry launch; the Gaeilge-first alternatives tested worse. Trinity College Dublin, ABAIR, and other established Irish-language speech/data partnerships are post-launch upgrade paths. | `docs/DECISIONS.md` D17, `docs/TTS-research.md` |
+| 2026-07-13 | **Gráinne historian/pedagogue gate passed; full six-episode prototype implemented.** Historian and Irish-language pedagogue approval of the Mayo claims and 20-word weave was reported, with very positive tester feedback on the direction. The app now carries the complete Clew Bay → Rockfleet → squeeze → crossing/record → partial answer → return arc as 18 resumable beats, one dramatic/language action per episode, the full 20-word lifecycle, a progressive voyage chart, versioned migration from the approved four-step encounter, and a cinematic palette/illustration progression. Generated interpretive portraiture replaces the former abstract mark; the person page now uses the same full-width editorial composition and evidence rhythm. The final simulator run passes 22 Swift unit and 5 UI tests, including XXXL accessibility text, person-page evidence reachability, and route persistence; all 22 Python content/tooling tests also pass. Public release still requires final native-speaker audio QA, rights clearance for production imagery, accessibility/device QA, and a moderated complete-arc tester round. | `ios/AnTuras/GrainneFullStory.swift`, `ios/AnTuras/MayoStoryPrototype.swift`, `docs/GRAINNE-ART-DIRECTION.md`, `docs/GRAINNE-STORYBOARD.md`, `docs/GRAINNE-LANGUAGE-WEAVE.md` |
+| 2026-07-13 | **Editorial composition system documented and rolled across the app.** `PRODUCT.md` and `DESIGN.md` now make image-led and text-led surfaces equal expressions of one system: one anchor, live accessible copy, intentional negative space, accessibility recomposition, story-led cinematic pressure, and containers that earn their boundary. Shared semantic SwiftUI headers now carry that grammar through the living atlas, personal atlas, legacy journey/map, review, practice, lesson, and artifact surfaces. The Mayo dossier is a full-width landscape hero; the obsolete portrait-sticker treatment is gone from active surfaces. Chapter 1 scene art is full-width and four text-bearing generated assets have clean, text-free v2 replacements. Normal and accessibility-size simulator compositions were inspected on iPhone 17 Pro. | `PRODUCT.md`, `DESIGN.md`, `.impeccable/design.json`, `ios/AnTuras/Theme.swift`, `ios/AnTuras/MayoStoryPrototype.swift`, `ios/AnTuras/SessionView.swift`, `ios/AnTuras/Resources/art/*-v2.png` |
 
 ## Immediate next steps (Phase 2)
 
-1. **Recruit editorial board (outreach)** — send `docs/editorial/BOARD-RECRUITMENT.md`
-   messages; land pedagogue + historian for Mayo first pass.
-2. **Historian + pedagogue first pass on Mayo** — approve L1 paraphrases, claim ledger,
-   and the 20-word weave (`content/mayo/grainne-1593-source-brief.md`,
-   `docs/GRAINNE-LANGUAGE-WEAVE.md`).
-3. **Implement the Gráinne full-story prototype** — Episodes 1–6 from the locked
-   storyboard; extend the approved first encounter; no rejected atlas chrome.
-4. **Next tester round: the complete story arc** — gated on (2) and a playable (3).
+1. ~~**Recruit editorial board / land Mayo historian and pedagogue.**~~ — **first-pass
+   approval reported 13 July.** Continue the wider board build for later counties.
+2. ~~**Historian + pedagogue first pass on Mayo claims and 20-word weave.**~~ —
+   **approved 13 July.** Preserve final native-speaker audio QA as a separate gate.
+3. ~~**Implement the Gráinne full-story prototype.**~~ — **six episodes / 18 beats
+   implemented 13 July**, including migration, voyage chart, and visual escalation.
+4. **Next tester round: the complete playable arc** — run the moderated end-to-end
+   session on the new six-episode build; record comprehension, recall, pacing, and the
+   Episode 3–5 pressure curve.
 5. **Deepen Offaly / Dublin / Meath briefs** — inscription reading, coin type choice,
    grant-copy citation, rights for images.
 6. ~~**Personal-atlas CMS, release exporter, and Phase 0–4 product infrastructure**~~
@@ -128,9 +129,10 @@ not a new atlas expansion or tester round.
 - **Phase 1 — Vertical slice (complete):** Chapter 1 SwiftUI app with writing, audio,
   and illustrations. Playtest validated narrative pull without streaks; tá tú ar ais and
   the journey map named as return mechanisms. Exit criterion met (D5).
-- **Phase 2 — Story contract + atlas proof (now):** Gráinne foundation approved; six-
-  episode storyboard locked; Mayo board-ready draft + Offaly/Dublin/Meath packets and
-  review tooling in place. Next: board first pass → full-arc prototype → tester round.
+- **Phase 2 — Story contract + atlas proof (now):** Gráinne claims and weave approved;
+  six-episode playable prototype delivered; Mayo packet + Offaly/Dublin/Meath packets
+  and review tooling in place. Next: complete-arc tester round → revisions and
+  production rights/audio/accessibility gates.
 - **Phase 3 — Product build:** living historical atlas, county dossiers, documentary
   story registers, evidence collection, personal artifacts, FSRS dressed as revisiting,
   TEG-aligned progress, and **An Féilire** rituals. Target the first four replacement

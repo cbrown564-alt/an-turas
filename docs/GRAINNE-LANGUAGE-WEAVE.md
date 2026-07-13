@@ -1,7 +1,8 @@
 # Gráinne language weave & evidence ladder
 
-*12 July 2026 · Connacht-first draft for pedagogue review. Implements the 20-word
-lifecycle and three-level evidence contract. Not cleared Irish or historian copy.*
+*12–13 July 2026 · Connacht-first 20-word lifecycle and three-level evidence
+contract. Historian and Irish-language pedagogue approval reported 13 July. Audio
+still requires native-speaker QA before public release.*
 
 ## Promise
 

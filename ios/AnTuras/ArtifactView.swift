@@ -49,12 +49,11 @@ private struct OghamArtifactView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            VStack(alignment: .leading, spacing: 12) {
-                Eyebrow(text: "Déantán · Artifact", color: Theme.lichen)
-                Text("Do chloch féin — your own stone")
-                    .font(.system(size: 23, weight: .semibold, design: .serif))
-                    .foregroundStyle(Theme.ink)
-            }
+            EditorialSectionHeader(
+                context: "Déantán · Artifact",
+                title: "Do chloch féin — your own stone",
+                accent: Theme.lichen
+            )
             .padding(.bottom, 2)
             Text("Dáire owes you a wage for the week. He takes a small slab of the same grey stone, chalks the guide-marks for whatever name you give him — and hands you the chisel. Your name, your strokes.")
                 .font(.system(size: 15))
@@ -147,12 +146,11 @@ private struct IlluminatedInitialArtifactView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            VStack(alignment: .leading, spacing: 12) {
-                Eyebrow(text: "Déantán · Artifact", color: Theme.lichen)
-                Text("Do litir féin — your own initial")
-                    .font(.system(size: 23, weight: .semibold, design: .serif))
-                    .foregroundStyle(Theme.ink)
-            }
+            EditorialSectionHeader(
+                context: "Déantán · Artifact",
+                title: "Do litir féin — your own initial",
+                accent: Theme.lichen
+            )
             .padding(.bottom, 2)
             Text("Murchadh leaves one blank initial on the vellum — yours. Corcra vine, gorm interlace, the first letter of whatever name you give him. He hands you the gold; the first stroke is yours.")
                 .font(.system(size: 15))
@@ -241,12 +239,11 @@ private struct HackSilverArtifactView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            VStack(alignment: .leading, spacing: 12) {
-                Eyebrow(text: "Déantán · Artifact", color: Theme.lichen)
-                Text("Do fháinne féin — your own ring")
-                    .font(.system(size: 23, weight: .semibold, design: .serif))
-                    .foregroundStyle(Theme.ink)
-            }
+            EditorialSectionHeader(
+                context: "Déantán · Artifact",
+                title: "Do fháinne féin — your own ring",
+                accent: Theme.lichen
+            )
             .padding(.bottom, 2)
             Text("Sigur cuts the ring by weight, not as a gift — silver measured on the scales, trust sealed by handshake. He hands you the shears for one mark: a tiny notch bearing your name, your deal, your weight in **airgead**.")
                 .font(.system(size: 15))

@@ -63,16 +63,12 @@ struct VocabDeckView: View {
     // MARK: Header
 
     private var header: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Eyebrow(text: "Cleachtadh · na focail", color: Theme.lichen)
-            Text(headline)
-                .font(.system(size: 26, weight: .semibold, design: .serif))
-                .foregroundStyle(Theme.ink)
-            Text(subline)
-                .font(.system(size: 15))
-                .foregroundStyle(Theme.inkSoft)
-                .lineSpacing(4)
-        }
+        EditorialScreenHeader(
+            context: "Cleachtadh · na focail",
+            title: headline,
+            detail: subline,
+            accent: Theme.lichen
+        )
     }
 
     private var headline: String {

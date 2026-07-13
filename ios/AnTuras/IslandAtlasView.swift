@@ -39,11 +39,9 @@ struct FirstRunIslandView: View {
                     onBegin()
                 } label: {
                     AtlasCard(accent: Theme.atlasGreen) {
-                        HStack(spacing: 14) {
-                            GrainnePortraitMark()
-                                .frame(width: 76, height: 96)
+                        HStack(alignment: .center, spacing: 16) {
                             VStack(alignment: .leading, spacing: 5) {
-                                Eyebrow(text: "MAYO · 1593", color: Theme.atlasGreen)
+                                EditorialContextLabel(text: "Mayo · 1593", color: Theme.atlasGreen)
                                 Text("Begin at Rockfleet")
                                     .font(.system(.title3, design: .serif, weight: .semibold))
                                     .foregroundStyle(Theme.ink)

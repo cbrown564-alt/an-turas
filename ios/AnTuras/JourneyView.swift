@@ -101,15 +101,12 @@ struct JourneyView: View {
     private var dueCount: Int { state.dueVisits().count }
 
     private var header: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Eyebrow(text: "Éire · 32 contae · c. 400 — inniu")
-            Text("An turas — one county at a time")
-                .font(.system(size: 26, weight: .semibold, design: .serif))
-                .foregroundStyle(Theme.ink)
-            Text("Every county opens with a real person, myth or monument. Read a story rooted there, then take 20 useful words onward.")
-                .font(.system(size: 15))
-                .foregroundStyle(Theme.inkSoft)
-                .lineSpacing(4)
+        VStack(alignment: .leading, spacing: 18) {
+            EditorialScreenHeader(
+                context: "Éire · 32 contae · c. 400 — inniu",
+                title: "An turas — one county at a time",
+                detail: "Every county opens with a real person, myth or monument. Read a story rooted there, then take 20 useful words onward."
+            )
             CountyLegend()
         }
     }

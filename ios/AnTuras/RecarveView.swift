@@ -34,7 +34,7 @@ struct RecarveView: View {
                             .frame(width: 8, height: 14)
                     }
                 }
-                Eyebrow(text: "Tá tú ar ais · athsnoí", color: Theme.inkFaint)
+                EditorialContextLabel(text: "Tá tú ar ais · athsnoí", color: Theme.inkFaint)
             }
             .padding(.bottom, 2)
 

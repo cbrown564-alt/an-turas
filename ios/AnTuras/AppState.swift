@@ -67,6 +67,55 @@ final class AppState: ObservableObject {
         var storyInProgress = false
         var storyStep = 0
         var storyFoundName = false
+        /// Version 1 was the four-step first encounter. Version 2 is the
+        /// six-episode / three-beat arc. The model migrates an interrupted v1
+        /// encounter into Episode 4, where the approved first encounter lives.
+        var storyArcVersion = 2
+        var completedStoryBeats: [Int] = []
+
+        init(
+            hasOpenedAtlas: Bool = false,
+            evidenceInspected: Bool = false,
+            storyCompleted: Bool = false,
+            fieldNoteVisited: Bool = false,
+            returnAnswered: Bool = false,
+            storyInProgress: Bool = false,
+            storyStep: Int = 0,
+            storyFoundName: Bool = false,
+            storyArcVersion: Int = 2,
+            completedStoryBeats: [Int] = []
+        ) {
+            self.hasOpenedAtlas = hasOpenedAtlas
+            self.evidenceInspected = evidenceInspected
+            self.storyCompleted = storyCompleted
+            self.fieldNoteVisited = fieldNoteVisited
+            self.returnAnswered = returnAnswered
+            self.storyInProgress = storyInProgress
+            self.storyStep = storyStep
+            self.storyFoundName = storyFoundName
+            self.storyArcVersion = storyArcVersion
+            self.completedStoryBeats = completedStoryBeats
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case hasOpenedAtlas, evidenceInspected, storyCompleted, fieldNoteVisited
+            case returnAnswered, storyInProgress, storyStep, storyFoundName
+            case storyArcVersion, completedStoryBeats
+        }
+
+        init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            hasOpenedAtlas = try values.decodeIfPresent(Bool.self, forKey: .hasOpenedAtlas) ?? false
+            evidenceInspected = try values.decodeIfPresent(Bool.self, forKey: .evidenceInspected) ?? false
+            storyCompleted = try values.decodeIfPresent(Bool.self, forKey: .storyCompleted) ?? false
+            fieldNoteVisited = try values.decodeIfPresent(Bool.self, forKey: .fieldNoteVisited) ?? false
+            returnAnswered = try values.decodeIfPresent(Bool.self, forKey: .returnAnswered) ?? false
+            storyInProgress = try values.decodeIfPresent(Bool.self, forKey: .storyInProgress) ?? false
+            storyStep = try values.decodeIfPresent(Int.self, forKey: .storyStep) ?? 0
+            storyFoundName = try values.decodeIfPresent(Bool.self, forKey: .storyFoundName) ?? false
+            storyArcVersion = try values.decodeIfPresent(Int.self, forKey: .storyArcVersion) ?? 1
+            completedStoryBeats = try values.decodeIfPresent([Int].self, forKey: .completedStoryBeats) ?? []
+        }
     }
 
     /// Scheduling state for one Ar Ais visit. FSRS faoin gcraiceann — the

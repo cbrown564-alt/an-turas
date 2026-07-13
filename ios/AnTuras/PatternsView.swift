@@ -67,16 +67,12 @@ struct PatternsView: View {
     }
 
     private var header: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Eyebrow(text: "Cleachtadh · na patrúin", color: Theme.moss)
-            Text("Na patrúin — the grooves you know")
-                .font(.system(size: 26, weight: .semibold, design: .serif))
-                .foregroundStyle(Theme.ink)
-            Text("Rules you've already met, each one to run with every word you've earned. One idea, many words — until the frame comes without thinking.")
-                .font(.system(size: 15))
-                .foregroundStyle(Theme.inkSoft)
-                .lineSpacing(4)
-        }
+        EditorialScreenHeader(
+            context: "Cleachtadh · na patrúin",
+            title: "Na patrúin — the grooves you know",
+            detail: "Rules you've already met, each one to run with every word you've earned. One idea, many words — until the frame comes without thinking.",
+            accent: Theme.moss
+        )
     }
 
     private var emptyState: some View {

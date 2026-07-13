@@ -14,7 +14,7 @@ struct LensView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Eyebrow(text: "Logainm · placename", color: Theme.lichen)
+            EditorialContextLabel(text: "Logainm · placename", color: Theme.lichen)
 
             Button {
                 Haptics.tap()

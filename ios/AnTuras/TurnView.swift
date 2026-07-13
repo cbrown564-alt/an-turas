@@ -55,7 +55,7 @@ struct TurnView: View {
                     .lineSpacing(4)
                     .padding(.bottom, 2)
             }
-            Eyebrow(text: "Do líne — your line", color: Theme.moss)
+            EditorialContextLabel(text: "Do líne — your line", color: Theme.moss)
             ForEach(block.replies) { reply in
                 replyChip(reply)
             }

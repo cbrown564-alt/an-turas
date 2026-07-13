@@ -22,6 +22,10 @@ colors:
   atlas-green: "#16803A"
   atlas-gold: "#B8860B"
   atlas-white: "#FFFDF6"
+  atlantic: "#111C22"
+  storm: "#33464C"
+  weathered-gold: "#9A7618"
+  salt: "#F2F3EC"
 typography:
   display:
     fontFamily: "New York, Georgia, serif"
@@ -54,6 +58,7 @@ typography:
     lineHeight: 1.2
     letterSpacing: "1.6pt"
 rounded:
+  none: "0pt"
   control: "4pt"
   compact: "7pt"
   container: "10pt"
@@ -85,6 +90,18 @@ components:
     typography: "{typography.label}"
     rounded: "{rounded.compact}"
     padding: "9pt 13pt"
+  editorial-opening:
+    backgroundColor: "{colors.limestone}"
+    textColor: "{colors.ink}"
+    typography: "{typography.display}"
+    rounded: "{rounded.none}"
+    padding: "8pt 20pt 28pt"
+  editorial-image-hero:
+    backgroundColor: "{colors.atlantic}"
+    textColor: "{colors.salt}"
+    typography: "{typography.display}"
+    rounded: "{rounded.none}"
+    padding: "24pt"
 ---
 
 # Design System: An Turas
@@ -97,6 +114,8 @@ An Turas should feel like opening a field journal beside an artifact: intimate, 
 
 The interface alternates registers—map, person, place, evidence, source, language, practice, and collection—so depth comes from changing the learner's mode of attention rather than adding card stacks or exposition. Calm negative space and a narrow reading measure let words and objects carry the screen. Dark Mode is a true shore-at-night counterpart, never a neon reskin.
 
+Every surface has one authored anchor. It can be a real person, landscape, object, map, phrase, document, or a typographic proposition. Image-led and text-led surfaces share the same editorial grammar: an intentional opening, a clear reading sequence, restrained supporting detail, and one evident next action. The approved Gráinne person page is the reference composition for image-led identity surfaces: wide atmospheric image, live text composed into available space, and a full-width editorial reflow at accessibility sizes.
+
 This system rejects generic language-app gamification, “plastic shamrock” Irishness, solemn digital-museum distance, fictional-history role-play, and interface novelty that breaks trusted iOS behavior.
 
 **Key Characteristics:**
@@ -106,6 +125,7 @@ This system rejects generic language-app gamification, “plastic shamrock” Ir
 - Evidence, uncertainty, and provenance made visible without production jargon.
 - Tactile feedback that is brief, physical, and optional under Reduce Motion.
 - Spacious reading views balanced by compact atlas and practice controls.
+- One dominant anchor with copy composed around it, never attached as an afterthought.
 
 ## Colors
 
@@ -131,6 +151,8 @@ The palette is drawn from limestone, vegetation, oxidized metal, and the shoreli
 - **Ink Soft:** Supporting prose and explanatory labels that must remain comfortably readable.
 - **Ink Faint:** Metadata only; never use it for essential instructions or long body copy.
 - **Raised, Sunk, Boundary, and Stone:** Establish surface hierarchy, separators, disabled state, and cartographic structure without relying on shadows.
+- **Atlantic and Storm:** Deep blue-green narrative fields for exposed coast, crossing, pressure, and later-story cinematic passages. These are authored story surfaces, not a second generic dark theme.
+- **Weathered Gold and Salt:** Warm, legible partners for archival detail and primary text over Atlantic or Storm imagery. Salt is preferred to stark white in narrative heroes.
 
 ### Named Rules
 
@@ -141,6 +163,8 @@ The palette is drawn from limestone, vegetation, oxidized metal, and the shoreli
 **The Flag-without-a-Flag Rule.** Atlas green, gold, and white communicate progress, not nationalism; never spread the trio across unrelated controls or ornamental backgrounds.
 
 **The Adaptive Pair Rule.** Every custom color must ship as a tested light/dark pair and remain distinguishable with Increased Contrast and without color alone.
+
+**The Pressure-Follows-Story Rule.** Darker, tighter, and more cinematic treatments appear only when the historical account gains pressure. Early encounters remain open and observational; later Gráinne episodes may move through Atlantic into Storm as the 1593 journey closes around her. Never use dramatic color merely to make an ordinary utility screen feel important.
 
 ## Typography
 
@@ -165,6 +189,8 @@ The palette is drawn from limestone, vegetation, oxidized metal, and the shoreli
 **The Living Type Rule.** The point sizes above describe the current hierarchy, not fixed geometry. Production components must migrate to Dynamic Type styles and survive accessibility sizes without clipping.
 
 **The Sparse Label Rule.** Do not place a tracked uppercase eyebrow above every heading. Use a contextual label only when it conveys real place, time, evidence, or language-register information.
+
+**The Open-Space Rule.** Text belongs in an image only when the composition provides a calm, legible field for it. Place live text in sky, sea, wall, paper, shadow, or other low-detail negative space; preserve the face, object, handwriting, coastline, and other evidence-bearing detail. If no viable field exists, move the copy into a full-width editorial band rather than squeezing it beside the image.
 
 ## Elevation
 
@@ -202,6 +228,28 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 - **Internal Padding:** 16 pt default, 20–22 pt for dossier-scale containers.
 - **Structure:** Prefer editorial sections, lists, maps, and full-bleed evidence over grids of identical cards.
 
+### Editorial Openings
+
+- Every screen begins with one visual proposition: an image-led hero, a text-led editorial opening, or a functional instrument such as the island map. Do not stack a generic title block above a second competing hero.
+- A text-led opening uses a meaningful contextual label when available, one serif title, and no more than one short orientation paragraph. Give the group tight internal spacing (8–12 pt), then 24–32 pt before the next section.
+- Keep explanatory prose to a comfortable reading measure while allowing the opening itself to use the full available width. The empty space is part of the composition.
+- On compact screens use roughly 20–22 pt horizontal page insets. Use a consistent centered reading column on wide layouts rather than letting prose stretch edge to edge.
+
+### Image-led Heroes
+
+- Generated and commissioned image assets are entirely text-free. Names, translations, dates, evidence status, portrait interpretation, routes, and calls to action are live SwiftUI text and controls.
+- The hero spans the complete content width. Prefer a purposeful wide or full-bleed crop with one clear subject and usable negative space; never present a portrait as a small rounded sticker beside a title.
+- Compose text into the open field of the image with tested contrast and a restrained scrim only where necessary. Do not draw decorative leader lines from an image to adjacent copy.
+- Faces, artifacts, documents, inscriptions, and mapped coastlines must not be covered by copy. Treat them as evidence-bearing detail, even when the image is interpretive.
+- At accessibility text sizes, recompose instead of shrinking: keep the image wide and move all copy into a full-width editorial band directly below or over a safe tonal field. Preserve reading order and meaning.
+- Portraiture must be identified as interpretive in accessible and nearby editorial context, but that qualification must not be burned into the image or repeated as a decorative badge.
+
+### Text-led Equivalence
+
+- A surface does not need an image to feel authored. Let a decisive phrase, person name, question, place, or record excerpt become the anchor through serif scale, asymmetry, a deliberate reading measure, and open space.
+- Do not invent decorative illustration to fill a gap. Use imagery only when it adds place, person, object, evidence, atmosphere, or a necessary abstract/literary idea.
+- Text-led surfaces use rules, lists, tonal changes, or semantic spacing to establish sequence. They do not compensate with nested cards, oversized icons, or repeated eyebrow labels.
+
 ### Inputs / Fields
 
 - **Style:** Use native SwiftUI fields, text editors, toggles, pickers, and segmented controls with moss tint and semantic backgrounds.
@@ -229,6 +277,9 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 ### Do:
 
 - **Do** make the real person, place, object, document, or surviving trace the visual center of each encounter.
+- **Do** make every image asset text-free and compose live, accessible text into its negative space or a full-width editorial band.
+- **Do** give screens without imagery an equally deliberate text-led opening and one typographic anchor.
+- **Do** reserve cards for discrete interaction, evidence, or objects that need a true boundary; use spacing and rules for narrative sequence.
 - **Do** use limestone/shore tonal layering before adding borders or shadows.
 - **Do** preserve native iOS navigation, controls, safe areas, 44 pt touch targets, VoiceOver order, Dynamic Type, Dark Mode, Increased Contrast, and Reduce Motion.
 - **Do** distinguish documented fact, inference, uncertainty, and reconstruction with restrained symbols, accessible semantics, and complete on-demand detail. Use persistent text when misunderstanding would materially change the account.
@@ -243,6 +294,9 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 - **Don't** cast the learner as a fictional guide, witness, or assistant in undocumented history.
 - **Don't** break trusted iOS navigation, controls, accessibility, or reading behavior for interface novelty.
 - **Don't** use decorative card grids, side-stripe accents, gradient text, glassmorphism, oversized corner radii, or border-plus-wide-shadow ghost cards.
+- **Don't** use thumbnail portraits, sticker-like crops, decorative leader lines, or copy crammed into a narrow column beside an image.
+- **Don't** burn names, captions, provenance, or interface labels into generated art.
+- **Don't** place text over faces, artifacts, inscriptions, or visually busy evidence-bearing detail.
 - **Don't** communicate county progress, certainty, correctness, or error by color alone.
 - **Don't** turn evidence status into repeated pills, uppercase labels, or prose that restates the claim. One claim gets one primary reading and one quiet path to its evidence.
 - **Don't** hard-code type in production components where Dynamic Type can express the intended hierarchy.

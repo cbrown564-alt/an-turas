@@ -25,19 +25,15 @@ struct CoverView: View {
                 }
                 .padding(.top, 24)
 
-                VStack(alignment: .leading, spacing: 8) {
-                    Eyebrow(text: "An Turas · 32 contae")
-                    Text(state.chapter.title)
-                        .font(.system(size: 34, weight: .semibold, design: .serif))
-                        .foregroundStyle(Theme.ink)
-                    Text(state.chapter.subtitle)
-                        .font(.system(size: 17, design: .serif))
-                        .foregroundStyle(Theme.inkSoft)
-                }
+                EditorialScreenHeader(
+                    context: "An Turas · 32 contae",
+                    title: state.chapter.title,
+                    detail: state.chapter.subtitle
+                )
                 .cascade(1, appeared: appeared, reduceMotion: reduceMotion)
 
                 Text("Take a trip around all 32 counties of Ireland. At every stop, a real person, myth or monument opens the door to a place and time that matter. You will read its story, learn 20 useful Irish words, and carry them on to the next county.")
-                    .font(.system(size: 15))
+                    .font(.body)
                     .foregroundStyle(Theme.inkSoft)
                     .lineSpacing(4)
                     .cascade(2, appeared: appeared, reduceMotion: reduceMotion)
@@ -46,7 +42,7 @@ struct CoverView: View {
                     Text(state.allDone
                          ? "Tá tú ar ais — agus tá do chloch ag fanacht sa mhúsaem."
                          : "Tá tú ar ais — you're back. Dáire is at the stone already; he kept your place.")
-                        .font(.system(size: 15, design: .serif))
+                        .font(.system(.body, design: .serif))
                         .italic()
                         .foregroundStyle(Theme.ink)
                         .lineSpacing(4)
@@ -59,11 +55,11 @@ struct CoverView: View {
                 } label: {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(returning ? "Lean ort — continue" : "Tosaigh an turas")
-                            .font(.system(size: 17, weight: .semibold))
+                            .font(.headline)
                         Text(returning
                              ? "Back to the path · your strokes are safe"
                              : "Begin in Mayo · 20 words · 5 short sessions")
-                            .font(.system(size: 11))
+                            .font(.caption)
                             .opacity(0.75)
                     }
                     .foregroundStyle(Theme.bg)
@@ -77,7 +73,7 @@ struct CoverView: View {
                 .cascade(3, appeared: appeared, reduceMotion: reduceMotion)
 
                 Text("Irish Cultural Guide audio · Generated Irish clips await language review · Your progress stays on this device.")
-                    .font(.system(size: 12))
+                    .font(.caption)
                     .foregroundStyle(Theme.inkFaint)
                     .padding(.top, 12)
                     .overlay(Rectangle().fill(Theme.line).frame(height: 1), alignment: .top)

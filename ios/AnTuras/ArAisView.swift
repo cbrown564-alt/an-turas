@@ -95,16 +95,12 @@ struct ArAisView: View {
     // MARK: Pieces
 
     private var header: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Eyebrow(text: "Ar Ais · athchuairt", color: Theme.rust)
-            Text(headline)
-                .font(.system(size: 26, weight: .semibold, design: .serif))
-                .foregroundStyle(Theme.ink)
-            Text(subline)
-                .font(.system(size: 15))
-                .foregroundStyle(Theme.inkSoft)
-                .lineSpacing(4)
-        }
+        EditorialScreenHeader(
+            context: "Ar Ais · athchuairt",
+            title: headline,
+            detail: subline,
+            accent: Theme.rust
+        )
     }
 
     private var headline: String {
