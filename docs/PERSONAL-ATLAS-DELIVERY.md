@@ -24,7 +24,7 @@ public authority, and the exporter fails closed.
 | **0: three interaction grammars and hard cases** | Research protocol contains answer-first, evidence-first, and map/time-first prototypes, a 24-case matrix, session script, comprehension prompts, and 24-hour recall method. | **Prepared, not passed:** run 12–18 target-user sessions and obtain reviews from the named disciplines. Record the winning grammar and results in `docs/DECISIONS.md`. |
 | **0: claim schema survives expert review** | Typed assertions, evidence references, certainty, competing claims, review history, rights, and durable assertion IDs are enforced for release. | **Open:** named onomastic, Irish-language, placename, archival, and community sign-off. |
 | **1: 25 given, 25 surnames, 30 places** | The offline pilot pack contains 25/25/30 authored entries with source-linked assertions and honest pilot authority. | **Pilot only:** modern surname licensing, named review, and rights clearance are not complete. |
-| **1: broad place foundation** | Monthly Logainm v1.1 ingestion, provenance snapshots, replacement handling, broad foundation-index builder, official forms/hierarchy/coordinates/permalink, safe fallback result, and monthly CI artifact workflow. | **Operationally ready:** provide `LOGAINM_API_KEY`, run the first production ingest, inspect attribution, and approve the generated index. |
+| **1: broad place foundation** | Monthly Logainm v1.1 ingestion, provenance snapshots, replacement handling, broad foundation-index builder, official forms/hierarchy/coordinates/permalink, safe fallback result, and monthly CI artifact workflow. First production ingest on 13 July 2026 fetched 126,798 records and built 126,712 entries spanning all 32 counties; 99,000 entries are bilingual and 119,141 have valid island-bounded coordinates. The projection converts 7,571 sentinel/out-of-scope points to unavailable. The app uses a 49 MB indexed SQLite resource with 305,638 aliases and lazy search/detail reads instead of decoding the former 160.7 MB JSON corpus into memory. | **Production ingest and app packaging complete:** attribution, API contract, database integrity, diacritic-insensitive lookup, generated detail, coordinate bounds, and source-to-database reconciliation are tested. [Automated coverage audit](LOGAINM-COVERAGE-AUDIT.md) passes its projection gates; independent all-island review remains required because Northern Ireland bilingual completeness is materially lower. |
 | **1: complete native journey** | Pre-commitment atlas entry, normalized search, ambiguity paths, concise result, evidence sheets, native map plus list equivalent, local save/collection, Mayo story handoff, recent pages only after opt-in, and custom/web deep links. | **Implemented:** independent VoiceOver, Dynamic Type, contrast, and device QA remain release gates. |
 | **1: signed/versioned offline delivery** | SHA-256 plus Ed25519 detail artifacts, pinned-key verification, authenticated cache, tamper eviction, last-good-cache behavior during network failure, manifest/index builder, and tests using real signatures. | **Implemented:** production key custody, rotation procedure, CDN base URL, and release ceremony remain operational work. |
 | **1: scorecard** | Query ledger stores published subject ID, unresolved category, selected branch, time to answer, and continuation without raw input or exact coordinates. | **Open:** resolve ≥90% hard cases honestly; measure comprehension, next-day recall, care, engagement, and median answer time with real participants. |
@@ -69,12 +69,12 @@ xcodebuild -project AnTuras.xcodeproj -scheme AnTuras \
 cd ..
 python3 -m unittest discover -s tools/tests -v
 python3 -m json.tool ios/AnTuras/Resources/personal-atlas-subjects.json >/dev/null
-python3 -m json.tool ios/AnTuras/Resources/personal-atlas-foundation-index.json >/dev/null
+sqlite3 ios/AnTuras/Resources/personal-atlas-foundation.sqlite 'PRAGMA integrity_check;'
 plutil -lint ios/AnTuras/Info.plist
 ```
 
-Audited result on 13 July 2026: 12 Swift tests and 10 Python tests pass. JSON and
-plist validation, CMS JavaScript syntax, GitHub workflow YAML parsing, empty static
+Audited result on 13 July 2026: 13 Swift tests and 15 Python tests pass. JSON, SQLite,
+and plist validation, CMS JavaScript syntax, GitHub workflow YAML parsing, empty static
 preview generation, and empty signed-release generation also pass.
 
 ## Release operations

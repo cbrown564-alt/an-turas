@@ -25,6 +25,14 @@ ATTRIBUTION = "Irish-language placename data by Logainm © Government of Ireland
 FetchPage = Callable[[int, str | None], dict]
 
 
+def field(value: dict, *names: str):
+    """Read both the documented PascalCase and live camelCase API fields."""
+    for name in names:
+        if name in value:
+            return value[name]
+    return None
+
+
 def api_fetcher(api_key: str, delay: float) -> FetchPage:
     last_request = 0.0
 
@@ -57,18 +65,19 @@ def api_fetcher(api_key: str, delay: float) -> FetchPage:
 
 def update_snapshot(existing: dict | None, modified_since: str | None, fetch: FetchPage) -> dict:
     records = {
-        str(item["ID"]): item for item in (existing or {}).get("records", [])
+        str(field(item, "ID", "id")): item for item in (existing or {}).get("records", [])
     }
     page = 1
     total_pages = 1
     while page <= total_pages:
         payload = fetch(page, modified_since)
-        total_pages = int(payload.get("TotalPages", 1))
-        if int(payload.get("CurrentPage", page)) != page:
-            raise ValueError(f"Logainm returned page {payload.get('CurrentPage')} while page {page} was requested")
-        for item in payload.get("Results", []):
-            place_id = str(item["ID"])
-            replacement = item.get("ReplacementID")
+        total_pages = int(field(payload, "TotalPages", "totalPages") or 1)
+        current_page = field(payload, "CurrentPage", "currentPage")
+        if int(current_page or page) != page:
+            raise ValueError(f"Logainm returned page {current_page} while page {page} was requested")
+        for item in field(payload, "Results", "results") or []:
+            place_id = str(field(item, "ID", "id"))
+            replacement = field(item, "ReplacementID", "replacementID", "replacementId")
             if replacement:
                 records.pop(place_id, None)
             else:
@@ -84,7 +93,7 @@ def update_snapshot(existing: dict | None, modified_since: str | None, fetch: Fe
         "attribution": ATTRIBUTION,
         "licence": "CC BY 4.0",
         "source": API_ROOT,
-        "records": sorted(records.values(), key=lambda item: int(item["ID"])),
+        "records": sorted(records.values(), key=lambda item: int(field(item, "ID", "id"))),
     }
 
 

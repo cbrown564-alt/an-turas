@@ -36,6 +36,13 @@ class LogainmIngestTests(unittest.TestCase):
                 "CurrentPage": 2, "TotalPages": 2, "Results": []
             })
 
+    def test_accepts_live_camel_case_response(self):
+        result = module.update_snapshot(None, None, lambda page, since: {
+            "currentPage": 1, "totalPages": 1,
+            "results": [{"id": 7, "placenames": []}],
+        })
+        self.assertEqual(result["records"][0]["id"], 7)
+
 
 if __name__ == "__main__":
     unittest.main()

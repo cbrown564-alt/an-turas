@@ -5,7 +5,7 @@ Nothing marked **open** may be republished beyond the source’s confirmed terms
 
 | Source / owner | Intended use | Current posture | Release action |
 |---|---|---|---|
-| Logainm / Gaois | official place index, forms, hierarchy, coordinates | CC BY 4.0 API posture documented; account, rate limit, and attribution implementation open | obtain developer access; record API terms; test monthly ingest and attribution |
+| Logainm / Gaois | official place index, forms, hierarchy, coordinates | CC BY 4.0; authenticated production ingest completed 13 July 2026; required attribution is embedded in the snapshot and foundation index | approve the generated bundle after size/runtime and independent all-island coverage review; retain monthly provenance artifacts |
 | Oxford DAFNBI / OUP | modern surname authority and multiple origins | commercial licence open | agree licence before replacing pilot syntheses or copying entries |
 | Patrick Woulfe (1923) | page-level historic surname forms | public-domain-age source; scholarship requires modern review | retain page citation; never use alone where revised |
 | Teanglann, Foclóir.ie, eDIL | components, grammar, historic language checks | reference only unless reuse terms confirmed | commission final prose/audio; store reference scope |

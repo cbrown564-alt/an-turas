@@ -24,7 +24,14 @@ jobs:
         run: >-
           python3 tools/build_logainm_foundation_index.py
           content/personal-atlas/logainm-snapshot.json
-          ios/AnTuras/Resources/personal-atlas-foundation-index.json
+          ios/AnTuras/Resources/personal-atlas-foundation.sqlite
+      - name: Audit all-island coverage and projection quality
+        run: >-
+          python3 tools/audit_logainm_coverage.py
+          content/personal-atlas/logainm-snapshot.json
+          ios/AnTuras/Resources/personal-atlas-foundation.sqlite
+          --json-output build/logainm-audit.json
+          --markdown-output build/logainm-audit.md
       - name: Validate ingestion and release tools
         run: python3 -m unittest discover -s tools/tests -v
       - name: Upload snapshot for editorial review
@@ -33,5 +40,7 @@ jobs:
           name: logainm-snapshot-${{ github.run_id }}
           path: |
             content/personal-atlas/logainm-snapshot.json
-            ios/AnTuras/Resources/personal-atlas-foundation-index.json
+            ios/AnTuras/Resources/personal-atlas-foundation.sqlite
+            build/logainm-audit.json
+            build/logainm-audit.md
           retention-days: 30

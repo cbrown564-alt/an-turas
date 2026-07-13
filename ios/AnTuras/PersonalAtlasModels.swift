@@ -122,13 +122,6 @@ struct PersonalAtlasPack: Decodable {
     let subjects: [OriginSubject]
 }
 
-struct PersonalFoundationIndex: Decodable {
-    let version: String
-    let contentDate: String
-    let attribution: String
-    let entries: [PersonalIndexEntry]
-}
-
 struct PersonalFoundationPlace: Decodable, Hashable {
     let logainmId: Int
     let irishForm: String?
@@ -392,8 +385,9 @@ struct PersonalSearchEngine {
 
     private let documents: [Document]
     private let exact: [String: [PersonalIndexEntry]]
+    private let foundationStore: PersonalFoundationStore?
 
-    init(pack: PersonalAtlasPack) {
+    init(pack: PersonalAtlasPack, foundationStore: PersonalFoundationStore? = PersonalAtlasLoader.foundationStore) {
         let builtDocuments = pack.index.map { entry in
             let values = entry.searchKeys + entry.variants + [entry.canonicalDisplay]
             return Document(entry: entry, keys: Set(values.map(PersonalSearch.normalize)))
@@ -406,9 +400,10 @@ struct PersonalSearchEngine {
         }
         self.documents = builtDocuments
         self.exact = exact
+        self.foundationStore = foundationStore
     }
 
-    func matches(query: String) -> [PersonalIndexEntry] {
+    func matches(query: String, includeFoundation: Bool = true) -> [PersonalIndexEntry] {
         let key = PersonalSearch.normalize(query)
         guard !key.isEmpty else { return [] }
         let exactIds = Set((exact[key] ?? []).map(\.id))
@@ -418,10 +413,13 @@ struct PersonalSearchEngine {
             if document.keys.contains(where: { $0.contains(key) }) { return (document.entry, 2) }
             return nil
         }
-        return scored.sorted { lhs, rhs in
+        let core = scored.sorted { lhs, rhs in
             if lhs.1 != rhs.1 { return lhs.1 < rhs.1 }
             return lhs.0.canonicalDisplay.localizedCaseInsensitiveCompare(rhs.0.canonicalDisplay) == .orderedAscending
         }.map(\.0)
+        let coreIds = Set(core.map(\.id))
+        guard includeFoundation else { return core }
+        return core + (foundationStore?.matches(query: query) ?? []).filter { !coreIds.contains($0.id) }
     }
 }
 
@@ -454,6 +452,8 @@ enum PersonalAtlasDeepLink {
 // MARK: - Loader
 
 enum PersonalAtlasLoader {
+    static let foundationStore = PersonalFoundationStore.bundled()
+
     private static let loaded: Result<PersonalAtlasPack, PersonalAtlasLoadError> = {
         guard let url = Bundle.main.url(forResource: "personal-atlas-subjects", withExtension: "json") else {
             return .failure(.missingResource)
@@ -461,19 +461,13 @@ enum PersonalAtlasLoader {
         do {
             let data = try Data(contentsOf: url)
             var pack = try decode(data)
-            if let foundationURL = Bundle.main.url(
-                forResource: "personal-atlas-foundation-index",
-                withExtension: "json"
-            ),
-               let foundationData = try? Data(contentsOf: foundationURL),
-               let foundation = try? JSONDecoder().decode(PersonalFoundationIndex.self, from: foundationData) {
-                let coreIds = Set(pack.index.map(\.id))
+            if let foundation = foundationStore?.metadata {
                 pack = PersonalAtlasPack(
                     version: pack.version,
                     contentDate: max(pack.contentDate, foundation.contentDate),
                     attribution: pack.attribution + " " + foundation.attribution,
                     coverageNote: pack.coverageNote,
-                    index: pack.index + foundation.entries.filter { !coreIds.contains($0.id) },
+                    index: pack.index,
                     subjects: pack.subjects
                 )
             }
@@ -510,7 +504,7 @@ enum PersonalAtlasLoader {
     }
 
     static func indexEntry(id: String) -> PersonalIndexEntry? {
-        pack().index.first { $0.id == id }
+        pack().index.first { $0.id == id } ?? foundationStore?.entry(id: id)
     }
 
     static func decode(_ data: Data) throws -> PersonalAtlasPack {

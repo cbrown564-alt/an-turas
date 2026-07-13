@@ -194,6 +194,16 @@ final class PersonalAtlasTests: XCTestCase {
         XCTAssertEqual(subject.evidence.first?.stableURL, "https://www.logainm.ie/en/45008")
     }
 
+    func testBundledLogainmDatabaseSearchesLazilyAndBuildsDetail() throws {
+        let store = try XCTUnwrap(PersonalAtlasLoader.foundationStore)
+        let match = try XCTUnwrap(store.matches(query: "Rath Bhile", limit: 10).first)
+
+        XCTAssertEqual(match.id, "logainm.1")
+        XCTAssertEqual(match.canonicalDisplay, "Ráth Bhile")
+        XCTAssertEqual(match.foundation?.englishForm, "Rathvilly")
+        XCTAssertEqual(PersonalAtlasLoader.subject(id: match.id)?.placeProfile?.logainmId, 1)
+    }
+
     private func bundledPack() throws -> PersonalAtlasPack {
         let bundle = Bundle(for: type(of: self))
         let url = try XCTUnwrap(

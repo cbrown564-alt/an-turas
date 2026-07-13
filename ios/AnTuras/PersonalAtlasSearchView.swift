@@ -308,7 +308,7 @@ struct PersonalAtlasSearchView: View {
     }
 
     private func runSearch() {
-        let filtered = searchEngine.matches(query: query).filter { entry in
+        let filtered = searchEngine.matches(query: query, includeFoundation: focus != .name).filter { entry in
             switch focus {
             case .either: return true
             case .name: return entry.kind == .name
