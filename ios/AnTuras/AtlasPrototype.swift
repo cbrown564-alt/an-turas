@@ -49,6 +49,36 @@ struct AtlasPrototypeView: View {
             if atlas.learnerName.isEmpty { atlas.learnerName = appState.learnerName }
             #if DEBUG
             let args = ProcessInfo.processInfo.arguments
+            if args.contains("--launch-road-complete") {
+                atlas.storyCompleted = true
+                atlas.storyInProgress = false
+                if !atlas.completedCountyStoryIDs.contains("mayo.grainne-1593") {
+                    atlas.completedCountyStoryIDs.append("mayo.grainne-1593")
+                }
+                for story in LaunchCountyCatalog.stories where !atlas.completedCountyStoryIDs.contains(story.id) {
+                    atlas.completedCountyStoryIDs.append(story.id)
+                    atlas.inspectedEvidenceIDs.append(story.id)
+                    atlas.madeArtifactIDs.append(story.id)
+                }
+            }
+            if let flag = args.firstIndex(of: "--county-story"),
+               args.indices.contains(flag + 1),
+               let story = LaunchCountyCatalog.story(id: args[flag + 1]),
+               let beatFlag = args.firstIndex(of: "--county-story-beat"),
+               args.indices.contains(beatFlag + 1),
+               let beat = Int(args[beatFlag + 1]) {
+                let clampedBeat = min(max(beat, 0), max(story.beats.count - 1, 0))
+                atlas.setCountyStep(story.id, step: clampedBeat)
+                if !args.contains("--completed-county-beat") {
+                    atlas.completedCountyStoryBeats[story.id, default: []].removeAll { $0 == clampedBeat }
+                }
+            }
+            if args.contains("--atlas-due") {
+                if !atlas.storyCompleted { atlas.completeStory() }
+                if let candidate = atlas.reviewCandidates().first {
+                    atlas.atlasReviews[candidate.id] = .init(due: Date().addingTimeInterval(-60))
+                }
+            }
             if let flag = args.firstIndex(of: "--completed-story-beat"),
                args.indices.contains(flag + 1),
                let completedBeat = Int(args[flag + 1]),
@@ -72,6 +102,22 @@ struct AtlasPrototypeView: View {
                 path = [.firstTakeaway]
             } else if args.contains("--atlas-open") {
                 atlas.hasOpenedAtlas = true
+                atlas.storyInProgress = false
+            } else if let flag = args.firstIndex(of: "--county-story"),
+                      args.indices.contains(flag + 1),
+                      let story = LaunchCountyCatalog.story(id: args[flag + 1]) {
+                atlas.hasOpenedAtlas = true
+                path = [.launchCountyStory(story.id)]
+            } else if let flag = args.firstIndex(of: "--county-dossier"),
+                      args.indices.contains(flag + 1),
+                      let story = LaunchCountyCatalog.story(id: args[flag + 1]) {
+                atlas.hasOpenedAtlas = true
+                path = [.launchCountyDossier(story.id)]
+            } else if let flag = args.firstIndex(of: "--county-evidence"),
+                      args.indices.contains(flag + 1),
+                      let story = LaunchCountyCatalog.story(id: args[flag + 1]) {
+                atlas.hasOpenedAtlas = true
+                path = [.launchEvidence(story.id)]
             } else if let flag = args.firstIndex(of: "--personal"),
                args.indices.contains(flag + 1),
                PersonalAtlasLoader.subject(id: args[flag + 1]) != nil {
@@ -110,14 +156,17 @@ struct AtlasPrototypeView: View {
             .tabItem { Label("An tOileán", systemImage: "map") }
 
             CurrentStoryView(
-                onOpenStory: beginStory,
-                onOpenDossier: { path.append(.mayoDossier) }
+                onOpenMayoStory: beginStory,
+                onOpenMayoDossier: { path.append(.mayoDossier) },
+                onOpenCountyStory: { path.append(.launchCountyStory($0)) },
+                onOpenCountyDossier: { path.append(.launchCountyDossier($0)) }
             )
             .tag(AtlasTab.story)
             .tabItem { Label("An Scéal", systemImage: "book.pages") }
 
             AtlasCollectionView(
                 onOpenEvidence: { path.append(.evidence) },
+                onOpenLaunchEvidence: { path.append(.launchEvidence($0)) },
                 onOpenFieldNote: { path.append(.fieldNote) },
                 onOpenPersonalSubject: { path.append(.personalSubject($0)) },
                 onOpenPersonalSearch: { path.append(.personalSearch(.either)) }
@@ -128,6 +177,10 @@ struct AtlasPrototypeView: View {
             AtlasReturnView(onOpenEvidence: { path.append(.evidence) })
                 .tag(AtlasTab.returning)
                 .tabItem { Label("Ar Ais", systemImage: "arrow.uturn.backward") }
+
+            AtlasCalendarView()
+                .tag(AtlasTab.calendar)
+                .tabItem { Label("An Féilire", systemImage: "calendar") }
         }
         .tint(Theme.moss)
         .toolbarBackground(Theme.bg, for: .tabBar)
@@ -170,7 +223,39 @@ struct AtlasPrototypeView: View {
         case .fieldNote:
             BreastaghFieldNoteView()
         case .county(let name):
-            AtlasCountyPreviewView(countyName: name)
+            if let story = LaunchCountyCatalog.story(county: name) {
+                LaunchCountyDossierView(
+                    story: story,
+                    onBegin: { path.append(.launchCountyStory(story.id)) },
+                    onEvidence: { path.append(.launchEvidence(story.id)) }
+                )
+            } else {
+                AtlasCountyPreviewView(countyName: name)
+            }
+        case .launchCountyDossier(let id):
+            if let story = LaunchCountyCatalog.story(id: id) {
+                LaunchCountyDossierView(
+                    story: story,
+                    onBegin: { path.append(.launchCountyStory(story.id)) },
+                    onEvidence: { path.append(.launchEvidence(story.id)) }
+                )
+            }
+        case .launchCountyStory(let id):
+            if let story = LaunchCountyCatalog.story(id: id) {
+                LaunchCountyStoryView(
+                    story: story,
+                    onOpenEvidence: { path.append(.launchEvidence(story.id)) },
+                    onComplete: {
+                        atlas.tab = .island
+                        atlas.shouldFocusOpeningRoad = true
+                        path.removeAll()
+                    }
+                )
+            }
+        case .launchEvidence(let id):
+            if let story = LaunchCountyCatalog.story(id: id) {
+                LaunchEvidenceView(story: story)
+            }
         case .personalSearch(let focus):
             PersonalAtlasSearchView(focus: focus) { subjectId in
                 path.append(.personalSubject(subjectId))
@@ -202,7 +287,7 @@ struct AtlasPrototypeView: View {
 }
 
 enum AtlasTab: Hashable {
-    case island, story, collection, returning
+    case island, story, collection, returning, calendar
 }
 
 enum AtlasRoute: Hashable {
@@ -213,6 +298,9 @@ enum AtlasRoute: Hashable {
     case evidence
     case fieldNote
     case county(String)
+    case launchCountyDossier(String)
+    case launchCountyStory(String)
+    case launchEvidence(String)
     case personalSearch(PersonalSearchFocus)
     case personalSubject(String)
 }
@@ -231,6 +319,14 @@ final class AtlasPrototypeModel: ObservableObject {
     @Published var storyFoundName = false
     @Published var completedStoryBeats: [Int] = []
     @Published var shouldFocusOpeningRoad = false
+    @Published var activeCountyStoryID: String?
+    @Published var completedCountyStoryIDs: [String] = []
+    @Published var countyStorySteps: [String: Int] = [:]
+    @Published var completedCountyStoryBeats: [String: [Int]] = [:]
+    @Published var inspectedEvidenceIDs: [String] = []
+    @Published var madeArtifactIDs: [String] = []
+    @Published var atlasReviews: [String: AppState.AtlasReviewProgress] = [:]
+    @Published var calendarDaysVisited: [String] = []
 
     let carriedWords = [
         AtlasWord(ga: "farraige", en: "sea", sound: "far-ig-eh", anchor: "Clew Bay as a maritime world"),
@@ -246,7 +342,7 @@ final class AtlasPrototypeModel: ObservableObject {
         AtlasWord(ga: "deartháir", en: "brother", sound: "djar-hawr", anchor: "Donal named among the stakes"),
         AtlasWord(ga: "iarr", en: "ask", sound: "eer", anchor: "The petition as remaining action"),
         AtlasWord(ga: "téigh", en: "go", sound: "tay", anchor: "The decision to go to London"),
-        AtlasWord(ga: "ainm", en: "name", sound: "an-im", anchor: "Her name in the September draft"),
+        AtlasWord(ga: "ainm", en: "name", sound: "an-im", anchor: "Her name at the head of the July questions"),
         AtlasWord(ga: "mise", en: "me / I", sound: "mish-eh", anchor: "Identifying yourself without borrowing her story"),
         AtlasWord(ga: "tar", en: "come", sound: "tar", anchor: "Arrival into the court record"),
         AtlasWord(ga: "freagair", en: "answer", sound: "frag-ir", anchor: "The royal answer"),
@@ -259,7 +355,164 @@ final class AtlasPrototypeModel: ObservableObject {
         evidenceInspected = true
         storyCompleted = true
         storyInProgress = false
+        if !completedCountyStoryIDs.contains("mayo.grainne-1593") {
+            completedCountyStoryIDs.append("mayo.grainne-1593")
+        }
+        seedReviews(storyID: "mayo.grainne-1593", words: carriedWords)
         Haptics.flourish()
+    }
+
+    var completedCountyNames: Set<String> {
+        var names = Set<String>()
+        if storyCompleted || completedCountyStoryIDs.contains("mayo.grainne-1593") {
+            names.insert("Mayo")
+        }
+        for story in LaunchCountyCatalog.stories where completedCountyStoryIDs.contains(story.id) {
+            names.insert(story.countyEn)
+        }
+        return names
+    }
+
+    var currentCountyName: String {
+        if !storyCompleted { return "Mayo" }
+        return LaunchCountyCatalog.stories.first(where: { !isCountyComplete($0.id) })?.countyEn ?? "Meath"
+    }
+
+    var completedLaunchCountyCount: Int { completedCountyNames.count }
+
+    func isCountyComplete(_ storyID: String) -> Bool {
+        completedCountyStoryIDs.contains(storyID)
+    }
+
+    func countyStep(for storyID: String) -> Int {
+        countyStorySteps[storyID] ?? 0
+    }
+
+    func setCountyStep(_ storyID: String, step: Int) {
+        countyStorySteps[storyID] = max(step, 0)
+        activeCountyStoryID = storyID
+    }
+
+    func isCountyBeatComplete(_ storyID: String, step: Int) -> Bool {
+        completedCountyStoryBeats[storyID, default: []].contains(step)
+    }
+
+    func markCountyBeatComplete(_ storyID: String, step: Int) {
+        var beats = completedCountyStoryBeats[storyID, default: []]
+        if !beats.contains(step) {
+            beats.append(step)
+            completedCountyStoryBeats[storyID] = beats.sorted()
+        }
+    }
+
+    func markEvidenceInspected(_ storyID: String) {
+        if !inspectedEvidenceIDs.contains(storyID) {
+            inspectedEvidenceIDs.append(storyID)
+        }
+    }
+
+    func hasInspectedEvidence(_ storyID: String) -> Bool {
+        inspectedEvidenceIDs.contains(storyID)
+    }
+
+    func markArtifactMade(_ storyID: String) {
+        if !madeArtifactIDs.contains(storyID) {
+            madeArtifactIDs.append(storyID)
+        }
+    }
+
+    func completeCountyStory(_ story: LaunchCountyStory) {
+        for step in story.beats.indices { markCountyBeatComplete(story.id, step: step) }
+        countyStorySteps[story.id] = max(story.beats.count - 1, 0)
+        markEvidenceInspected(story.id)
+        markArtifactMade(story.id)
+        if !completedCountyStoryIDs.contains(story.id) {
+            completedCountyStoryIDs.append(story.id)
+        }
+        activeCountyStoryID = LaunchCountyCatalog.stories
+            .first(where: { !completedCountyStoryIDs.contains($0.id) })?.id
+        seedReviews(storyID: story.id, words: story.words)
+        Haptics.flourish()
+    }
+
+    func carriedWordsByCounty() -> [(county: String, words: [AtlasWord])] {
+        var result: [(String, [AtlasWord])] = []
+        if storyCompleted { result.append(("Mayo", carriedWords)) }
+        for story in LaunchCountyCatalog.stories where isCountyComplete(story.id) {
+            result.append((story.countyEn, story.words))
+        }
+        return result
+    }
+
+    func evidenceStories() -> [LaunchCountyStory] {
+        LaunchCountyCatalog.stories.filter { hasInspectedEvidence($0.id) || isCountyComplete($0.id) }
+    }
+
+    func reviewCandidates() -> [AtlasReviewCandidate] {
+        var candidates: [AtlasReviewCandidate] = []
+        if storyCompleted {
+            candidates += carriedWords.map { .init(storyID: "mayo.grainne-1593", county: "Mayo", word: $0) }
+        }
+        for story in LaunchCountyCatalog.stories where isCountyComplete(story.id) {
+            candidates += story.words.map { .init(storyID: story.id, county: story.countyEn, word: $0) }
+        }
+        return candidates
+    }
+
+    func dueReviewCandidates(now: Date = Date()) -> [AtlasReviewCandidate] {
+        reviewCandidates()
+            .filter { atlasReviews[$0.id]?.due ?? .distantPast <= now }
+            .sorted { (atlasReviews[$0.id]?.due ?? .distantPast) < (atlasReviews[$1.id]?.due ?? .distantPast) }
+    }
+
+    func nextReviewCandidate(now: Date = Date()) -> AtlasReviewCandidate? {
+        let candidates = reviewCandidates()
+        return candidates.min { (atlasReviews[$0.id]?.due ?? now) < (atlasReviews[$1.id]?.due ?? now) }
+    }
+
+    /// A compact, deterministic scheduler using the FSRS memory variables
+    /// (stability and difficulty). The interface presents place and meaning;
+    /// these values remain entirely underneath that experience.
+    func completeReview(_ candidate: AtlasReviewCandidate, struggled: Bool, now: Date = Date()) {
+        var progress = atlasReviews[candidate.id] ?? .init(due: now)
+        progress.reps += 1
+        if struggled {
+            progress.lapses += 1
+            progress.difficulty = min(10, progress.difficulty + 0.8)
+            progress.stability = max(0.6, progress.stability * 0.55)
+        } else {
+            progress.difficulty = max(1, progress.difficulty - 0.25)
+            let growth = progress.reps == 1 ? 2.5 : max(1.35, 2.15 - progress.difficulty * 0.06)
+            progress.stability = max(1, progress.stability * growth)
+        }
+        let intervalDays = struggled ? 1 : max(1, min(180, Int(progress.stability.rounded())))
+        progress.due = Calendar.current.date(byAdding: .day, value: intervalDays, to: now)
+            ?? now.addingTimeInterval(Double(intervalDays) * 86_400)
+        atlasReviews[candidate.id] = progress
+    }
+
+    func markCalendarDayVisited(_ key: String) {
+        if !calendarDaysVisited.contains(key) {
+            calendarDaysVisited.append(key)
+        }
+    }
+
+    func hasVisitedCalendarDay(_ key: String) -> Bool {
+        calendarDaysVisited.contains(key)
+    }
+
+    private func seedReviews(storyID: String, words: [AtlasWord], now: Date = Date()) {
+        for (index, word) in words.enumerated() {
+            let key = "\(storyID)|\(word.ga)"
+            guard atlasReviews[key] == nil else { continue }
+            atlasReviews[key] = .init(
+                due: now.addingTimeInterval(86_400 + Double(index) * 90),
+                stability: 1,
+                difficulty: 5,
+                reps: 0,
+                lapses: 0
+            )
+        }
     }
 
     var progressSnapshot: AppState.AtlasProgress {
@@ -273,7 +526,15 @@ final class AtlasPrototypeModel: ObservableObject {
             storyStep: storyStep,
             storyFoundName: storyFoundName,
             storyArcVersion: 2,
-            completedStoryBeats: completedStoryBeats
+            completedStoryBeats: completedStoryBeats,
+            activeCountyStoryID: activeCountyStoryID,
+            completedCountyStoryIDs: completedCountyStoryIDs,
+            countyStorySteps: countyStorySteps,
+            completedCountyStoryBeats: completedCountyStoryBeats,
+            inspectedEvidenceIDs: inspectedEvidenceIDs,
+            madeArtifactIDs: madeArtifactIDs,
+            atlasReviews: atlasReviews,
+            calendarDaysVisited: calendarDaysVisited
         )
     }
 
@@ -296,6 +557,21 @@ final class AtlasPrototypeModel: ObservableObject {
             .filter { (0..<18).contains($0) }
             .uniqued()
             .sorted()
+        activeCountyStoryID = progress.activeCountyStoryID
+        completedCountyStoryIDs = progress.completedCountyStoryIDs.uniqued()
+        if storyCompleted, !completedCountyStoryIDs.contains("mayo.grainne-1593") {
+            completedCountyStoryIDs.append("mayo.grainne-1593")
+        }
+        countyStorySteps = progress.countyStorySteps
+        completedCountyStoryBeats = progress.completedCountyStoryBeats
+        inspectedEvidenceIDs = progress.inspectedEvidenceIDs.uniqued()
+        madeArtifactIDs = progress.madeArtifactIDs.uniqued()
+        atlasReviews = progress.atlasReviews
+        calendarDaysVisited = progress.calendarDaysVisited.uniqued()
+        if storyCompleted { seedReviews(storyID: "mayo.grainne-1593", words: carriedWords) }
+        for story in LaunchCountyCatalog.stories where completedCountyStoryIDs.contains(story.id) {
+            seedReviews(storyID: story.id, words: story.words)
+        }
     }
 }
 
@@ -306,7 +582,7 @@ private extension Array where Element: Hashable {
     }
 }
 
-struct AtlasWord: Identifiable {
+struct AtlasWord: Identifiable, Codable {
     let ga: String
     let en: String
     let sound: String
@@ -316,7 +592,7 @@ struct AtlasWord: Identifiable {
 
 // MARK: - Shared atlas language
 
-enum EvidenceCertainty: String, CaseIterable {
+enum EvidenceCertainty: String, CaseIterable, Codable {
     case documented = "DOCUMENTED"
     case material = "MATERIAL EVIDENCE"
     case later = "LATER ACCOUNT"
@@ -417,7 +693,7 @@ struct AtlasAudioLine: View {
                     Image(systemName: canPlay ? (heard ? "speaker.wave.2.fill" : "speaker.wave.2") : "waveform.slash")
                         .foregroundStyle(canPlay ? Theme.moss : Theme.inkFaint)
                 }
-                Text(sound)
+                Text("Say it like · \(sound)")
                     .font(.caption.weight(.medium))
                     .foregroundStyle(Theme.inkFaint)
                 Text(en)

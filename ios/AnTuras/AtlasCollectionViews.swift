@@ -78,6 +78,7 @@ struct AtlasCollectionView: View {
     @EnvironmentObject private var atlas: AtlasPrototypeModel
     @EnvironmentObject private var appState: AppState
     let onOpenEvidence: () -> Void
+    var onOpenLaunchEvidence: (String) -> Void = { _ in }
     let onOpenFieldNote: () -> Void
     var onOpenPersonalSubject: (String) -> Void = { _ in }
     var onOpenPersonalSearch: () -> Void = {}
@@ -163,12 +164,36 @@ struct AtlasCollectionView: View {
 
     private var survivesShelf: some View {
         VStack(alignment: .leading, spacing: 14) {
-            ShelfIntroduction(number: atlas.evidenceInspected ? "1 ENCOUNTERED" : "A SHELF WAITING", text: "Documents, objects, places and recordings retain provenance, certainty and the question they answered.")
+            let evidenceCount = (atlas.evidenceInspected ? 1 : 0) + atlas.evidenceStories().count
+            ShelfIntroduction(number: evidenceCount > 0 ? "\(evidenceCount) ENCOUNTERED" : "A SHELF WAITING", text: "Documents, objects, places and recordings retain provenance, certainty and the question they answered.")
 
             Button(action: onOpenEvidence) {
                 EvidenceCollectionCard(unlocked: atlas.evidenceInspected)
             }
             .buttonStyle(CarvePress())
+
+            ForEach(atlas.evidenceStories()) { story in
+                Button { onOpenLaunchEvidence(story.id) } label: {
+                    HStack(spacing: 14) {
+                        LaunchObjectMark(kind: story.objectKind, compact: true)
+                            .frame(width: 52, height: 52)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(story.sourceTitle)
+                                .font(.system(.headline, design: .serif))
+                                .foregroundStyle(Theme.ink)
+                            Text("\(story.countyEn) · \(story.sourceDetail)")
+                                .font(.caption)
+                                .foregroundStyle(Theme.inkSoft)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right").foregroundStyle(Theme.inkFaint)
+                    }
+                    .frame(minHeight: 64)
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(CarvePress())
+                EditorialRule()
+            }
 
             Button(action: onOpenFieldNote) {
                 AtlasCard(accent: Theme.stone) {
@@ -220,14 +245,52 @@ struct AtlasCollectionView: View {
                     }
                 }
             }
+            ForEach(LaunchCountyCatalog.stories.filter { atlas.madeArtifactIDs.contains($0.id) }) { story in
+                HStack(spacing: 14) {
+                    LaunchObjectMark(kind: story.objectKind, compact: true)
+                        .frame(width: 54, height: 54)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(story.artifactTitle)
+                            .font(.system(.headline, design: .serif))
+                            .foregroundStyle(Theme.ink)
+                        Text("Made during the \(story.countyEn) story · learner work, not historical evidence")
+                            .font(.caption)
+                            .foregroundStyle(Theme.inkSoft)
+                    }
+                }
+                .padding(.vertical, 8)
+                .accessibilityElement(children: .combine)
+            }
         }
     }
 
     private var wordsShelf: some View {
         VStack(alignment: .leading, spacing: 14) {
-            ShelfIntroduction(number: atlas.storyCompleted ? "5 OF 20 · MAYO" : "WORDS BEGIN IN STORIES", text: "Vocabulary is a growing personal map: first encounter, later uses, pronunciation and return state.")
-            ForEach(atlas.carriedWords) { word in
-                WordCarryCard(word: word, unlocked: atlas.storyCompleted || word.ga == "Is mise…")
+            let countyWords = atlas.carriedWordsByCounty()
+            let wordCount = countyWords.reduce(0) { $0 + $1.words.count }
+            ShelfIntroduction(number: wordCount > 0 ? "\(wordCount) WORDS · \(countyWords.count) COUNTIES" : "WORDS BEGIN IN STORIES", text: "Vocabulary is a growing personal map: first encounter, later uses, pronunciation and return state.")
+
+            tegProgress(countyCount: countyWords.count)
+
+            ForEach(Array(countyWords.enumerated()), id: \.offset) { _, group in
+                DisclosureGroup {
+                    VStack(alignment: .leading, spacing: 10) {
+                        ForEach(group.words) { word in
+                            WordCarryCard(word: word, unlocked: true)
+                        }
+                    }
+                    .padding(.top, 10)
+                } label: {
+                    HStack {
+                        Text(group.county)
+                            .font(.system(.title3, design: .serif, weight: .semibold))
+                            .foregroundStyle(Theme.ink)
+                        Spacer()
+                        Text("20").font(.caption.monospacedDigit()).foregroundStyle(Theme.inkFaint)
+                    }
+                    .frame(minHeight: 44)
+                }
+                .tint(Theme.moss)
             }
             AtlasCard(accent: Theme.inkFaint) {
                 HStack(spacing: 12) {
@@ -240,13 +303,55 @@ struct AtlasCollectionView: View {
         }
     }
 
+    private func tegProgress(countyCount: Int) -> some View {
+        VStack(alignment: .leading, spacing: 9) {
+            EditorialContextLabel(text: "TEG-aligned progress", color: Theme.moss)
+            Text(countyCount >= 4 ? "A1 foundations carried into an A2 bridge" : "Building the A1 foundation")
+                .font(.system(.title3, design: .serif, weight: .semibold))
+                .foregroundStyle(Theme.ink)
+            ProgressView(value: Double(countyCount), total: 4)
+                .tint(Theme.moss)
+                .accessibilityLabel("Launch-path TEG progress")
+                .accessibilityValue("\(countyCount) of 4 county can-do groups carried")
+            Text(tegDetail(countyCount))
+                .font(.subheadline)
+                .foregroundStyle(Theme.inkSoft)
+                .lineSpacing(3)
+        }
+        .padding(16)
+        .background(Theme.mossTint)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+
+    private func tegDetail(_ countyCount: Int) -> String {
+        switch countyCount {
+        case 0: return "Complete Mayo to begin identifying yourself, your origin and familiar people."
+        case 1: return "You have practised identity, origin, family and a supported request."
+        case 2: return "You have added place, size, work and simple attention language."
+        case 3: return "You have added movement, exchange and supported past actions."
+        default: return "You have added possession, location and old/new description. This is product guidance, not an awarded TEG qualification."
+        }
+    }
+
     private var futureEvidence: some View {
         VStack(alignment: .leading, spacing: 10) {
+            let pending = LaunchCountyCatalog.stories.filter { !atlas.isCountyComplete($0.id) }
             Eyebrow(text: "STILL AHEAD")
-            HStack(spacing: 10) {
-                FutureObject(icon: "plus", title: "Cross", place: "Offaly · c. 900")
-                FutureObject(icon: "circle", title: "Penny", place: "Dublin · c. 997")
-                FutureObject(icon: "envelope", title: "Letter", place: "Galway · 1840s")
+            if pending.isEmpty {
+                Text("The four launch-road evidence records are in hand. The remaining counties stay white while their stories are researched and reviewed.")
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(3)
+            } else {
+                HStack(spacing: 10) {
+                    ForEach(pending) { story in
+                        FutureObject(
+                            icon: story.objectKind == .cross ? "plus" : (story.objectKind == .penny ? "circle" : "building.columns"),
+                            title: story.sourceTitle,
+                            place: "\(story.countyEn) · \(story.era)"
+                        )
+                    }
+                }
             }
         }
         .padding(.top, 8)
@@ -283,7 +388,7 @@ private struct EvidenceCollectionCard: View {
                     HStack { CertaintyPill(certainty: .documented); Spacer() }
                     Text("1593 state-paper record")
                         .font(.system(size: 19, weight: .semibold, design: .serif)).foregroundStyle(Theme.ink)
-                    Text(unlocked ? "Mayo · Gráinne Ní Mháille · annotated transcription inspected" : "Encounter it inside the Mayo documentary")
+                    Text(unlocked ? "Mayo · Gráinne Ní Mháille · original State Paper inspected" : "Encounter it inside the Mayo documentary")
                         .font(.system(size: 12.5)).foregroundStyle(Theme.inkSoft).lineSpacing(3)
                     Text("Question · What did she ask for?")
                         .font(.system(size: 11.5, weight: .semibold)).foregroundStyle(Theme.lichen)
@@ -334,7 +439,7 @@ private struct WordCarryCard: View {
                 }
                 if expanded && unlocked {
                     AtlasRule()
-                    Text("rough sound · \(word.sound)").font(.system(size: 11.5, weight: .medium)).foregroundStyle(Theme.inkFaint)
+                    Text("Say it like · \(word.sound)").font(.system(size: 11.5, weight: .medium)).foregroundStyle(Theme.inkFaint)
                     Label(word.anchor, systemImage: "mappin.and.ellipse")
                         .font(.system(size: 12.5)).foregroundStyle(Theme.inkSoft)
                 }
@@ -355,11 +460,16 @@ struct AtlasReturnView: View {
     let onOpenEvidence: () -> Void
     @State private var answer = ""
     @State private var pennyRestored = false
+    @State private var reviewCandidate: AtlasReviewCandidate?
+    @State private var reviewComplete = false
+    @State private var reviewStruggled = false
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 AtlasScreenHeader("AR AIS · RETURN", atlas.returnAnswered ? "The groove is clear again." : "Return to meaning, not task debt.", detail: "People, places, phrases and sources reappear when a new connection can make them sharper.")
+
+                reviewReturn
 
                 if atlas.storyCompleted {
                     phraseReturn
@@ -383,6 +493,113 @@ struct AtlasReturnView: View {
             .frame(maxWidth: .infinity)
         }
         .background(Theme.bg.ignoresSafeArea())
+        .onAppear { chooseReview() }
+    }
+
+    @ViewBuilder
+    private var reviewReturn: some View {
+        if let candidate = reviewCandidate {
+            AtlasCard(accent: Theme.moss) {
+                VStack(alignment: .leading, spacing: 13) {
+                    HStack {
+                        EditorialContextLabel(text: "A word asks from \(candidate.county)", color: Theme.moss)
+                        Spacer()
+                        Text(reviewDueLabel(candidate)).font(.caption).foregroundStyle(Theme.inkFaint)
+                    }
+                    Text(candidate.word.anchor)
+                        .font(.system(.title3, design: .serif, weight: .semibold))
+                        .foregroundStyle(Theme.ink)
+                    AtlasAudioLine(ga: candidate.word.ga, en: candidate.word.en, sound: candidate.word.sound)
+
+                    if reviewComplete {
+                        Label(
+                            reviewStruggled ? "Restored. This word will return tomorrow." : "Clear again. The next return will wait longer.",
+                            systemImage: "checkmark"
+                        )
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Theme.moss)
+                        Button("Visit the next word") { chooseReview(excluding: candidate.id) }
+                            .font(.headline)
+                            .foregroundStyle(Theme.moss)
+                            .frame(minHeight: 44)
+                            .buttonStyle(CarvePress())
+                    } else {
+                        Text("What does \(candidate.word.ga) mean here?")
+                            .font(.headline)
+                            .foregroundStyle(Theme.ink)
+                        ForEach(reviewOptions(for: candidate), id: \.self) { option in
+                            Button {
+                                if option == candidate.word.en {
+                                    atlas.completeReview(candidate, struggled: reviewStruggled)
+                                    reviewComplete = true
+                                    Haptics.chisel()
+                                } else {
+                                    reviewStruggled = true
+                                    Haptics.error()
+                                }
+                            } label: {
+                                Text(option)
+                                    .font(.body.weight(.semibold))
+                                    .foregroundStyle(Theme.ink)
+                                    .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                                    .padding(.horizontal, 14)
+                                    .background(Theme.bg)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                            }
+                            .buttonStyle(CarvePress())
+                        }
+                        if reviewStruggled {
+                            Label("Not that meaning here. Listen or read once more, then recover it.", systemImage: "arrow.counterclockwise")
+                                .font(.subheadline)
+                                .foregroundStyle(Theme.rust)
+                        }
+                    }
+                }
+            }
+        } else {
+            AtlasCard(accent: Theme.stone) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("No word is asking yet.")
+                        .font(.system(.title3, design: .serif, weight: .semibold))
+                        .foregroundStyle(Theme.ink)
+                    Text(atlas.completedLaunchCountyCount == 0
+                         ? "Complete the Mayo documentary and its language will return through place and meaning."
+                         : "The words already carried are resting. There is no overdue count and nothing to clear.")
+                        .font(.body)
+                        .foregroundStyle(Theme.inkSoft)
+                }
+            }
+        }
+    }
+
+    private func chooseReview(excluding excludedID: String? = nil) {
+        let due = atlas.dueReviewCandidates().first { $0.id != excludedID }
+        reviewCandidate = due
+        reviewComplete = false
+        reviewStruggled = false
+    }
+
+    private func reviewOptions(for candidate: AtlasReviewCandidate) -> [String] {
+        let distractors = atlas.reviewCandidates()
+            .map(\.word.en)
+            .filter { $0 != candidate.word.en }
+        let uniqueDistractors = uniqueStrings(distractors)
+        let seed = candidate.id.utf8.reduce(0) { ($0 &* 31 &+ Int($1)) & 0x7fffffff }
+        let chosen = uniqueDistractors.isEmpty ? ["another meaning"] : uniqueStrings([
+            uniqueDistractors[seed % uniqueDistractors.count],
+            uniqueDistractors[(seed / 7 + 1) % uniqueDistractors.count],
+        ])
+        return ([candidate.word.en] + chosen).sorted()
+    }
+
+    private func uniqueStrings(_ values: [String]) -> [String] {
+        var seen = Set<String>()
+        return values.filter { seen.insert($0).inserted }
+    }
+
+    private func reviewDueLabel(_ candidate: AtlasReviewCandidate) -> String {
+        guard let due = atlas.atlasReviews[candidate.id]?.due else { return "ready" }
+        return due <= Date() ? "ready now" : "rests until \(due.formatted(date: .abbreviated, time: .omitted))"
     }
 
     private var phraseReturn: some View {

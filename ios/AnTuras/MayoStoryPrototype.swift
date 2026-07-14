@@ -15,7 +15,7 @@ struct MayoDossierView: View {
                 MayoDossierHero()
 
                 VStack(alignment: .leading, spacing: 24) {
-                    Label("1593 · state paper · person · sea route", systemImage: "doc.text")
+                    Label("A Mayo leader · a family in danger · a case carried to London", systemImage: "doc.text")
                         .font(.caption.weight(.medium))
                         .foregroundStyle(Theme.inkFaint)
 
@@ -95,7 +95,7 @@ struct MayoDossierView: View {
         EditorialSectionHeader(
             context: "The headline person",
             title: "Gráinne Ní Mháille",
-            detail: "A maritime leader from Mayo whose dealings with the English state left a documentary record.",
+            detail: "A Mayo leader whose family, livelihood and authority were under pressure in 1593.",
             accent: Theme.atlasGreen
         )
     }
@@ -275,7 +275,7 @@ struct GrainnePersonView: View {
                     .font(.title3)
                     .foregroundStyle(Theme.atlasGreen)
                     .frame(width: 28)
-                Text("A maritime leader with power rooted around the Mayo coast; English administrative records preserve dealings concerning her and her family.")
+                Text("Her boats, followers, lands and family formed one source of power. In 1593, the papers show what was at stake when that whole household came under pressure.")
                     .font(.system(.body, design: .serif))
                     .foregroundStyle(Theme.ink)
                     .lineSpacing(4)
@@ -683,7 +683,7 @@ struct LegacyGrainneStoryView: View {
 
     private var yourIrish: some View {
         VStack(alignment: .leading, spacing: 20) {
-            AtlasScreenHeader("YOUR NAME", "A name can cross centuries.", detail: "The letter wrote hers as “Grany ne Maly.” In Irish, she is Gráinne Ní Mháille. Now make the first Irish sentence about yourself.")
+            AtlasScreenHeader("YOUR NAME", "A name can cross centuries.", detail: "The State Papers calendar renders the July heading as “Grany Ne Malley.” In Irish, she is Gráinne Ní Mháille. Now make the first Irish sentence about yourself.")
             AtlasAudioLine(ga: "Is mise…", en: "I am… / I’m…", sound: "iss mish-eh")
             VStack(alignment: .leading, spacing: 9) {
                 Text("Cén t-ainm atá ort?")
@@ -724,29 +724,18 @@ struct LegacyGrainneStoryView: View {
 }
 
 private struct FamilyRecordReveal: View {
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Binding var foundName: Bool
     let onOpenEvidence: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Eyebrow(text: "ANNOTATED TRANSCRIPTION · ORIGINAL MANUSCRIPT NOT SHOWN", color: Theme.lichen)
+            Eyebrow(text: "ORIGINAL MANUSCRIPT · TNA SP 63/170 F. 201", color: Theme.lichen)
             ZStack {
-                Color(light: 0xE4D7B2, dark: 0xA4936C)
-                Canvas { ctx, size in
-                    for i in 0..<16 {
-                        let y = size.height * (0.13 + CGFloat(i) * 0.047)
-                        let inset = size.width * (0.09 + CGFloat((i * 11) % 6) * 0.009)
-                        var line = Path()
-                        line.move(to: CGPoint(x: inset, y: y))
-                        line.addLine(to: CGPoint(x: size.width * (0.72 + CGFloat((i * 7) % 16) / 100), y: y))
-                        ctx.stroke(line, with: .color(Color.black.opacity(0.34)), style: StrokeStyle(lineWidth: 1.1, lineCap: .round, dash: [3, 1.5]))
-                    }
-                }
+                TNAInterrogatoryFolio(highlightName: foundName)
                 if foundName {
                     VStack(spacing: 7) {
-                        Text("Grany ne Maly")
+                        Text("Grany Ne Malley")
                             .font(.system(.title2, design: .serif, weight: .semibold))
                             .foregroundStyle(Color.black.opacity(0.74))
                         Image(systemName: "arrow.down")
@@ -759,14 +748,15 @@ private struct FamilyRecordReveal: View {
                     .padding(18)
                     .background(Theme.bg.opacity(0.94))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .padding(.bottom, 22)
+                    .frame(maxHeight: .infinity, alignment: .bottom)
                     .transition(.scale(scale: 0.96).combined(with: .opacity))
                 }
             }
-            .frame(minHeight: dynamicTypeSize.isAccessibilitySize ? 420 : 300)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .accessibilityLabel(foundName
-                ? "Annotated transcription view. The record writes Gráinne's name as Grany ne Maly and also names members of her family. This is not the manuscript image."
-                : "Annotated transcription view, not the manuscript image. Find Gráinne's name to continue.")
+                ? "Original manuscript page with Gráinne's name highlighted. The State Papers calendar renders the heading as Grany Ne Malley."
+                : "Original first page of the July 1593 interrogatory. Find Gráinne's name to continue.")
 
             Button(action: onOpenEvidence) {
                 Label("About this transcription and source", systemImage: "doc.text.magnifyingglass")
@@ -778,8 +768,8 @@ private struct FamilyRecordReveal: View {
 
             if foundName {
                 VStack(alignment: .leading, spacing: 8) {
-                    Eyebrow(text: "HER FAMILY")
-                    Text("Her sons Morogh O’Flaherty and Tibbut Burke, and her brother Donell O’Piper, are named too.")
+                    Eyebrow(text: "HER ANSWERS")
+                    Text("The answers name her parents, marriages and children, then describe the lands and maintenance that sustained her people.")
                         .font(.system(.body, design: .serif))
                         .foregroundStyle(Theme.ink)
                         .lineSpacing(4)
@@ -822,10 +812,10 @@ struct PetitionEvidenceView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                AtlasScreenHeader("WHAT SURVIVES · DOCUMENT", "The 1593 record", detail: "This annotated transcription helps you read what the state paper records. The original manuscript image is not shown here.")
+                AtlasScreenHeader("WHAT SURVIVES · DOCUMENT", "The July 1593 questions and answers", detail: "The original first page shows how the English state questioned Gráinne. The accompanying transcription helps read what her answers preserve.")
                 HStack {
                     CertaintyPill(certainty: .documented)
-                    Text("ANNOTATED TRANSCRIPTION · ORIGINAL MANUSCRIPT NOT SHOWN")
+                    Text("ORIGINAL MANUSCRIPT · EDUCATIONAL USE")
                         .font(.caption2.weight(.bold))
                         .kerning(1)
                         .foregroundStyle(Theme.inkFaint)
@@ -855,9 +845,9 @@ struct PetitionEvidenceView: View {
 
                 VStack(alignment: .leading, spacing: 10) {
                     Eyebrow(text: "PROVENANCE AND REVIEW")
-                    MetadataRow(label: "Repository", value: "National Library of Ireland · starting-point record")
-                    MetadataRow(label: "Reference", value: "MS_UR_010761")
-                    MetadataRow(label: "Image status", value: "No manuscript image is included; this is a transcription-based guide")
+                    MetadataRow(label: "Repository", value: "The National Archives, Kew")
+                    MetadataRow(label: "Reference", value: "SP 63/170, f. 201 questions · f. 202 answers")
+                    MetadataRow(label: "Image status", value: "TNA web-resolution f. 201 bundled for free, exclusively educational use")
                     MetadataRow(label: "Reading rule", value: "Archival record and later storytelling remain separate")
                     MetadataRow(label: "Question answered", value: "What did Gráinne put before the state?")
                 }
@@ -911,40 +901,20 @@ private struct PetitionFacsimileView: View {
     let showAnnotations: Bool
     var body: some View {
         ZStack {
-            Color(light: 0xE4D7B2, dark: 0xA4936C)
-            Canvas { ctx, size in
-                for i in 0..<26 {
-                    let y = size.height * (0.12 + CGFloat(i) * 0.028)
-                    let inset = size.width * (0.10 + CGFloat((i * 17) % 8) * 0.006)
-                    var line = Path()
-                    line.move(to: CGPoint(x: inset, y: y))
-                    line.addCurve(to: CGPoint(x: size.width * (0.74 + CGFloat((i * 13) % 18) / 100), y: y + CGFloat((i % 3) - 1) * 2), control1: CGPoint(x: size.width * 0.32, y: y - 3), control2: CGPoint(x: size.width * 0.57, y: y + 3))
-                    ctx.stroke(line, with: .color(Color.black.opacity(0.44)), style: StrokeStyle(lineWidth: 1.2, lineCap: .round, dash: [CGFloat(2 + i % 5), 1.3]))
-                }
-                let margin = CGRect(x: size.width * 0.075, y: size.height * 0.07, width: size.width * 0.85, height: size.height * 0.82)
-                ctx.stroke(Path(margin), with: .color(Color.black.opacity(0.18)), lineWidth: 0.7)
-            }
-            VStack {
-                Text("1593 · STATE RECORD")
-                    .font(.system(size: 10, weight: .bold, design: .serif)).kerning(1.5).foregroundStyle(Color.black.opacity(0.58))
-                    .padding(.top, 24)
-                Spacer()
-                Text("Gráinne · family · requests")
-                    .font(.system(size: 9, weight: .medium)).foregroundStyle(Color.black.opacity(0.48)).padding(.bottom, 20)
-            }
+            TNAInterrogatoryFolio(highlightName: showAnnotations)
             if showAnnotations {
                 VStack {
                     HStack {
-                        AnnotationFlag(text: "GRÁINNE IS NAMED", certainty: .documented)
+                        AnnotationFlag(text: "HER NAME HEADS THE QUESTIONS", certainty: .documented)
                         Spacer()
                     }
-                    .padding(.top, 80)
+                    .padding(.top, 64)
                     Spacer()
                     HStack {
                         Spacer()
-                        AnnotationFlag(text: "REQUESTS FOR HER FAMILY", certainty: .documented)
+                        AnnotationFlag(text: "18 QUESTIONS SHAPE THE RECORD", certainty: .documented)
                     }
-                    .padding(.bottom, 110)
+                    .padding(.bottom, 72)
                 }
                 .padding(.horizontal, 18)
             }

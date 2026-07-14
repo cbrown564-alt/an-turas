@@ -96,9 +96,9 @@ level 1 alone.
 | Sidney “feminine sea captain” | One overheard official recognition beat | Who Sidney was; paraphrase vs quotation; date of letter vs later copy | Full citation; transcription policy; quote length/rights |
 | Rockfleet Castle | Enter the tower on the tide-line | Irish name Carraig a Chabhlaigh; ownership/marriage context; conservation access | OPW/Heritage facts; image rights; what walls cannot prove |
 | Bingham letter(s) | Hostile voice naming her as perennial trouble | Bias: governor defending severity; useful as pressure, not neutral fact | TNA refs; excerpt limits; claim ledger links |
-| 1593 petition | Her plea for maintenance and leave to serve against enemies | Scribal English; petition as crafted self-presentation | SP 63/170 f. 204 (verify); rights for folio image |
-| 18 articles + answers | Family, marriages, maintenance, Bingham ordeal in her answers | Burghley's marginalia; what questions force; silence of Irish annals | SP 63/170 ff. 201–202+; Chambers/O'Dowd notes; review log |
-| Queen → Bingham draft, 6 Sept 1593 | Find kin names; sense of royal instruction | Draft status; names of companions; what “relief” meant | Salisbury/NLI MS_UR_010761; HMC publication path; rights |
+| 1593 petition | Her plea for maintenance and leave to serve against enemies | Scribal English; petition as crafted self-presentation | SP 63/170 f. 204; rights for folio image |
+| 18 articles + answers, July 1593 | Find the calendar-rendered “Grany Ne Malley”; read family and maintenance through the state’s questions | Burghley's framing; what questions force; how her answers present the case | TNA SP 63/170 f. 201 bundled for free educational use; f. 202 is the answer-page target |
+| Queen → Bingham draft, 6 Sept 1593 | Sense of royal instruction and what “relief” meant | Draft status; names of companions; the difference between order and effect | Hatfield House Cecil Papers; NLI Sources/HMC catalogue path; transcription sufficient for Ep5 |
 | 1595 petitions | She must ask again | Nine Years' War context without derailing Mayo | SP 63/179 trail; claim bounds |
 | Present coast / sites | Stand on the *cósta* today | What survives vs what tradition adds | Photo rights; heritage copy review |
 | Later storytelling (bowing etc.) | One affirmative afterlife screen | “Later stories tell…” vs what the letter holds | Folklore/reception bibliography; never in claim ledger as 1593 fact |

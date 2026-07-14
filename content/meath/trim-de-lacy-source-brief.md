@@ -3,6 +3,20 @@
 *Historian-ready packet · started 12 July 2026 · status: **research draft, not
 cleared**. Intake from `trim-clean-slate-review.md` (candidate confirmed).*
 
+## Phase 3 prototype binding — 14 July 2026
+
+The app now contains a four-episode / twelve-beat editorial preview under
+`meath.trim-de-lacy`. It proves the county-story format's conquest-sensitivity and
+evidence-limit handling; the learner must distinguish route-and-river explanation
+from consent or empty-land claims. It does **not** change this packet's research-draft
+status.
+
+The prototype carries twenty provisional headwords: *agam, agat, talamh, caisleán,
+áth, abhainn, balla, cloch, baile, tóg, cónaí, mór, sean, nua, anseo, ansiúd, féach,
+seas, ainm,* and *teach*. A pedagogue must approve or replace the set, pronunciation
+guides and A1→A2 possession sequence. The app uses a rights-safe castle/ford diagram
+until the grant-copy, castle-phasing, sensitivity and imagery gates below pass.
+
 ## Identity
 
 | Field | Value |

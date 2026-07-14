@@ -38,7 +38,7 @@ and Episodes 5–6 after it. Do not rebuild atlas chrome to tell this arc.
 | **1. Clew Bay** | Learner sees Umhaill as a maritime polity: islands, tolls/raids, trade, shore castles—not a romantic free sea | If this order falls, Mayo's Atlantic edge becomes someone else's coast | Coast/island geography + Sidney's “feminine sea captain” recognition (story-view paraphrase); closer look: period map territory | *farraige, bá, long, áit, as* | Trace the bay mouth and islands; hear place-names; place *as* with a Mayo origin line |
 | **2. Rockfleet** | Gráinne's authority becomes concrete: castle, fleet, marriages, children, followers | Family and harbour are the same survival system | Rockfleet as place; household/kin framed from later 1593 naming without spoiling the crisis | *caisleán, teaghlach, mac, bean, long* (reuse) | Enter Rockfleet; match kin roles; say who belongs to the *teaghlach* |
 | **3. The squeeze** | One pressure movement: Bingham closes; Tibbott and Donal held; livelihood broken; London becomes the remaining path | Tibbott's life and Donal's freedom; her remaining authority | Hostile Bingham framing vs her maintenance plea (paired discovery); imprisonment as the tipping fact. **No 1584–92 timeline tour.** Owen's death only in closer look | *caill, mac* (reuse), *deartháir, iarr, téigh* | Compare two voices on the same coast; decide the dramatic need to *iarr* |
-| **4. Crossing & record** | She reaches court process: petition, eighteen articles, anglicised name and family in the papers | To be heard she must become legible to Burghley/Elizabeth | Petition + interrogatory prepare; **September draft** is the name-find climax | *ainm, mise, as* (reuse), *tar, deartháir/mac* (reuse) | Find “Grany ne Maly” / kin names; answer *Is mise…*; *as Maigh Eo mé* |
+| **4. Crossing & record** | She reaches court process: petition, eighteen articles, anglicised name and family in the papers | To be heard she must become legible to Burghley/Elizabeth | **SP 63/170 f. 201 interrogatory and f. 202 answers** are the name-find climax | *ainm, mise, as* (reuse), *tar, deartháir/mac* (reuse) | Find the calendar-rendered “Grany Ne Malley”; read what the questions demand and her answers preserve; answer *Is mise…*; *as Maigh Eo mé* |
 | **5. The answer** | Queen orders relief over Bingham; he resists giving effect | Partial preservation on paper | Sept 1593 instructions as handled order; Bingham delay as immediate consequence | *freagair, tabhair, arís* | Handle the Queen's order; mark what Bingham withholds |
 | **6. Return & coast** | She presses again; the coast today still holds the story; later tales remember defiance beside the documentary act | The dramatic question stays live in place and memory | Condensed 1595 pressure beat; present Rockfleet/Clew Bay; one affirmative afterlife screen | *cósta, caisleán/áit/bá* (reuse), *arís* (reuse) | Stand on the *cósta*; afterlife compare; complete voyage chart |
 
@@ -76,7 +76,7 @@ and Episodes 5–6 after it. Do not rebuild atlas chrome to tell this arc.
 
 - **Discovery:** the surviving papers hold her name and family in English hands; finding them changes who she is to the learner.
 - **Irish action:** *ainm* → *Is mise…*; reuse *as* for self-origin; *tar* for arrival into the record/court process.
-- **Source sequence (learner-facing):** petition plea → interrogatory family/maintenance answers → **September draft kin names as the single interactive climax**.
+- **Source sequence (learner-facing):** petition plea → **SP 63/170 interrogatory and family/maintenance answers as the single interactive climax** → September draft as the royal-response source.
 - **Attention-only ok:** Ormond introduction as door-opening; Thames/Greenwich as arrival image without fake dialogue.
 - **Do not:** invent the audience conversation; lead with caveats; teach evidence taxonomy; run three scavenger hunts.
 - **Quiet collection:** handled letter/folio mark.
@@ -141,6 +141,6 @@ without padding. Field notes remain a separate product type.
 ## Walkthrough revisions locked (12 July 2026)
 
 1. Ep3 = one pressure movement; no decade tour.
-2. Ep4 climax = September draft name-find; petition/articles prepare only.
+2. Ep4 climax = `SP 63/170` interrogatory-and-answers name-find; September draft moves to the royal-response evidence.
 3. Former Ep5 split → Ep5 answer / Ep6 coast+afterlife+chart.
 4. Mid-episode resume uses a quiet slugline.

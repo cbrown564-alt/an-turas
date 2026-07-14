@@ -111,10 +111,12 @@ struct GrainneStoryView: View {
                 .font(.system(.largeTitle, design: .serif, weight: .semibold))
                 .foregroundStyle(palette.ink)
                 .fixedSize(horizontal: false, vertical: true)
-            Text(beat.question)
-                .font(.system(.title3, design: .serif))
-                .foregroundStyle(palette.secondaryInk)
-                .lineSpacing(5)
+            if let question = beat.question {
+                Text(question)
+                    .font(.system(.title3, design: .serif))
+                    .foregroundStyle(palette.secondaryInk)
+                    .lineSpacing(5)
+            }
         }
     }
 
@@ -136,7 +138,7 @@ struct GrainneStoryView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("CARRAIG A CHABHLAIGH")
                         .font(.caption.weight(.semibold)).kerning(1.2)
-                    Text("Castle, fleet, household.")
+                    Text("Harbour, household, stronghold.")
                         .font(.system(.title2, design: .serif, weight: .semibold))
                 }
                 .foregroundStyle(Theme.salt)
@@ -156,8 +158,8 @@ struct GrainneStoryView: View {
 
     private var storyCopy: some View {
         VStack(alignment: .leading, spacing: 14) {
-            if hasGeneratedHero {
-                Text(beat.question)
+            if hasGeneratedHero, let question = beat.question {
+                Text(question)
                     .font(.system(.title3, design: .serif))
                     .foregroundStyle(palette.secondaryInk)
                     .lineSpacing(5)
@@ -200,10 +202,11 @@ struct GrainneStoryView: View {
         switch beat.action {
         case .none:
             EmptyView()
-        case .words(let words, let prompt):
+        case .words(let words, let prompt, let recordedLine):
             WordCarryAction(
                 words: words,
                 prompt: prompt,
+                recordedLine: recordedLine,
                 palette: palette,
                 completed: completed,
                 onComplete: { markCurrentBeatComplete() }
@@ -281,13 +284,13 @@ struct GrainneStoryView: View {
         case .answer: return "Mark what the order does not finish."
         case .finishChart: return "Complete the return line on the voyage chart."
         case .words: return "Listen to each word and find its meaning."
-        default: return "Complete this story action."
+        case .pairedVoices: return "Compare what each account needs from the state."
+        case .none: return nil
         }
     }
 
     private var nextTitle: String {
         if step == GrainneStoryBeat.all.count - 1 { return "Carry Mayo with you" }
-        if beat.beatInEpisode == 3 { return "Begin Episode \(beat.episode + 1)" }
         return beat.nextTitle
     }
 
@@ -319,7 +322,7 @@ private struct GrainneStoryBeat {
 
     enum Action {
         case none
-        case words([GrainneWord], String)
+        case words([GrainneWord], String, GrainneRecordedLine? = nil)
         case pairedVoices, findName, identity, answer, finishChart
 
         var requiresCompletion: Bool {
@@ -333,7 +336,7 @@ private struct GrainneStoryBeat {
     let beatInEpisode: Int
     let location: String
     let title: String
-    let question: String
+    let question: String?
     let body: String
     let detail: String?
     let hero: Hero
@@ -348,35 +351,41 @@ private struct GrainneStoryBeat {
     }
 
     static let all: [Self] = [
-        .init(episode: 1, episodeTitle: "An Bá · Clew Bay", beatInEpisode: 1, location: "Clew Bay · before 1593", title: "A coast that works like a road", question: "What kind of power lives on this coast?", body: "Clew Bay is not a backdrop. Its islands, inlets and landing places connect households, boats, trade and authority.", detail: "To hold power here is to know what the water joins—and what weather can cut off.", hero: .generated("grainne-clew-bay", "Generated editorial interpretation of Clew Bay"), source: nil, action: .none, nextTitle: "Trace the bay"),
-        .init(episode: 1, episodeTitle: "An Bá · Clew Bay", beatInEpisode: 2, location: "Umhaill · the maritime world", title: "The bay makes leaders who live by boats", question: "What survives of that reputation?", body: "English officials recognised Gráinne as a sea captain. Their descriptions are interested and hostile at once: evidence of her standing, not a neutral portrait.", detail: "The coast supported maintenance, movement and force. Calling it simply piracy hides the political world around it.", hero: .none, source: .init(title: "Sidney’s official recognition", detail: "A period English description, read with its political bias visible."), action: .none, nextTitle: "Hear the coast"),
-        .init(episode: 1, episodeTitle: "An Bá · Clew Bay", beatInEpisode: 3, location: "The words of the bay", title: "Farraige. Bá. Long. Áit.", question: "Say where this story begins.", body: "The first words are not a list. They name the system beneath the story: sea, bay, ship and place.", detail: "Use as for origin now; the same construction returns when Gráinne’s name reaches London.", hero: .none, source: nil, action: .words([.farraige, .ba, .long, .ait, .asWord], "Listen to the bay. Match each Irish word to what it names."), nextTitle: "Enter Rockfleet"),
+        .init(episode: 1, episodeTitle: "An Bá · Clew Bay", beatInEpisode: 1, location: "Clew Bay · before 1593", title: "Where the road is water", question: "How do you hold a coast made of islands?", body: "Clew Bay breaks the Mayo shore into water, islands and narrow landings. Here, a boat can join places that a road cannot.", detail: "To know this bay is to know where people, news and force can move—and where weather can stop them.", hero: .generated("grainne-clew-bay", "Generated editorial interpretation of Clew Bay"), source: nil, action: .none, nextTitle: "Follow the water"),
+        .init(episode: 1, episodeTitle: "An Bá · Clew Bay", beatInEpisode: 2, location: "Umhaill · the maritime world", title: "They knew her as a captain", question: nil, body: "English officials wrote of Gráinne as a woman who led at sea. Their words are hostile, but the hostility gives something away: they took her power seriously.", detail: "“Pirate queen” is the later legend. The older record shows boats, followers, wealth and force on a contested coast.", hero: .none, source: .init(title: "An English official describes Gráinne at sea", detail: "A period English description, read with its political bias visible."), action: .none, nextTitle: "Hear the bay in Irish"),
+        .init(episode: 1, episodeTitle: "An Bá · Clew Bay", beatInEpisode: 3, location: "The words of the bay", title: "Farraige. Bá. Long. Áit.", question: nil, body: "Sea. Bay. Ship. Place. Four words draw the world beneath her story.", detail: nil, hero: .none, source: nil, action: .words([.farraige, .ba, .long, .ait], "Listen first. Then match each sound to the coast in front of you.", .init(ga: "Is as Maigh Eo mé.", en: "I am from Mayo.", sound: "iss ass my-oh may")), nextTitle: "Enter Rockfleet"),
 
-        .init(episode: 2, episodeTitle: "Carraig a Chabhlaigh · Rockfleet", beatInEpisode: 1, location: "Rockfleet · the tide line", title: "Power has walls, boats and names", question: "What does Gráinne actually hold?", body: "Rockfleet makes authority spatial. The castle stands where the tide can reach it; the fleet extends that household across the bay.", detail: "This is not a romantic ruin. It is a harbour, a defended place and part of a family system.", hero: .rockfleet, source: nil, action: .none, nextTitle: "Meet the household"),
-        .init(episode: 2, episodeTitle: "Carraig a Chabhlaigh · Rockfleet", beatInEpisode: 2, location: "Castle · fleet · kin", title: "A household you can lose", question: "Why do the names in 1593 matter?", body: "Her children, brother, followers, lands and boats are not separate stakes. Together they are the working structure of her authority.", detail: "The later state papers name this family because the petition concerns survival, not personal legend.", hero: .none, source: .init(title: "Family named in the 1593 papers", detail: "The record gives the household political weight without telling every private story."), action: .none, nextTitle: "Name what is held"),
-        .init(episode: 2, episodeTitle: "Carraig a Chabhlaigh · Rockfleet", beatInEpisode: 3, location: "Inside Rockfleet", title: "Caisleán. Teaghlach. Mac. Bean.", question: "What belongs to this held place?", body: "Castle, family, son, woman. These words turn a stone tower into the human structure the next episode will place under pressure.", detail: nil, hero: .none, source: nil, action: .words([.caislean, .teaghlach, .mac, .bean], "Listen for stone and household. Find what each word holds."), nextTitle: "Feel the pressure"),
+        .init(episode: 2, episodeTitle: "Carraig a Chabhlaigh · Rockfleet", beatInEpisode: 1, location: "Rockfleet · the tide line", title: "A castle at the tide line", question: "What can be held from here?", body: "At Rockfleet, the tide comes close to the walls. Boats extend the castle across the bay; the castle gives those boats a defended home.", detail: "This is not a lonely ruin in Gráinne’s story. It is harbour, household and stronghold together.", hero: .rockfleet, source: nil, action: .none, nextTitle: "Meet the household"),
+        .init(episode: 2, episodeTitle: "Carraig a Chabhlaigh · Rockfleet", beatInEpisode: 2, location: "Castle · fleet · kin", title: "Her power had family names", question: nil, body: "Children, brother, followers, land and boats appear together in the crisis of 1593. Harm one part and the whole household feels it.", detail: "The state papers do not give us a private family portrait. They show why these people mattered politically.", hero: .none, source: .init(title: "The 1593 papers name the family in the case", detail: "The record gives the household political weight without telling every private story."), action: .none, nextTitle: "Name what is held"),
+        .init(episode: 2, episodeTitle: "Carraig a Chabhlaigh · Rockfleet", beatInEpisode: 3, location: "Inside Rockfleet", title: "Caisleán. Teaghlach. Mac. Bean.", question: nil, body: "The castle is stone. The household is people. The record will put both under pressure.", detail: nil, hero: .none, source: nil, action: .words([.caislean, .teaghlach, .mac, .bean], "Hear each word, then find the person or place it names."), nextTitle: "See what closes in"),
 
-        .init(episode: 3, episodeTitle: "An Brú · The squeeze", beatInEpisode: 1, location: "Clew Bay · pressure closing", title: "Kin held. Livelihood broken.", question: "What forces her hand?", body: "Bingham’s administration closes around the coast. Tibbott and Donal are held; boats, maintenance and authority are put at risk.", detail: "The story does not tour every year of conflict. It stays with the tipping point: the remaining path runs toward a petition.", hero: .pressure, source: nil, action: .none, nextTitle: "Hear both voices"),
-        .init(episode: 3, episodeTitle: "An Brú · The squeeze", beatInEpisode: 2, location: "Two accounts · one coast", title: "Troublemaker or maintained leader?", question: "What changes when power describes the same shore?", body: "Bingham presents severity as necessary. Gráinne presents the loss of maintenance and the confinement of her family as wrongs requiring relief.", detail: "Neither voice is scenery. Their purposes help us read what each account can and cannot settle.", hero: .none, source: .init(title: "Hostile letters and petition pleas", detail: "Compare purpose, audience and what each speaker needs the state to believe."), action: .pairedVoices, nextTitle: "Choose the remaining path"),
-        .init(episode: 3, episodeTitle: "An Brú · The squeeze", beatInEpisode: 3, location: "The decision", title: "Caill. Deartháir. Iarr. Téigh.", question: "When loss closes one road, what action remains?", body: "Lose. Brother. Ask. Go. The verbs are attached to the decision: she will take the case across the sea.", detail: "The learner examines that choice; they do not defeat Bingham or enter invented history.", hero: .none, source: nil, action: .words([.caill, .dearthair, .iarr, .teigh], "Hear the chain of action: loss, family, asking, departure."), nextTitle: "Cross to London"),
+        .init(episode: 3, episodeTitle: "An Brú · The pressure", beatInEpisode: 1, location: "Clew Bay · pressure closing", title: "Her sons are held. Her living is cut away.", question: "What road remains when power closes the others?", body: "Richard Bingham’s government bears down on Gráinne’s family and livelihood. Tibbott and Donal are held. The boats and maintenance that sustain her authority are at risk.", detail: "This is the turn in the story: staying on the coast will not free them.", hero: .pressure, source: nil, action: .none, nextTitle: "Read the two accounts"),
+        .init(episode: 3, episodeTitle: "An Brú · The pressure", beatInEpisode: 2, location: "Two accounts · one coast", title: "The same coast, told two ways", question: nil, body: "Bingham writes as a governor defending severity. Gráinne petitions as a leader seeking release and maintenance. Each account wants the state to act.", detail: "Purpose does not make either source useless. It tells us how to read what each one can prove.", hero: .none, source: .init(title: "Hostile letters and petition pleas", detail: "Compare purpose, audience and what each speaker needs the state to believe."), action: .pairedVoices, nextTitle: "Choose the road that remains"),
+        .init(episode: 3, episodeTitle: "An Brú · The pressure", beatInEpisode: 3, location: "The decision", title: "Caill. Deartháir. Iarr. Téigh.", question: nil, body: "Lose. Brother. Ask. Go. The words now form a chain: loss makes the asking necessary; asking means going.", detail: nil, hero: .none, source: nil, action: .words([.caill, .dearthair, .iarr, .teigh], "Listen for the action that turns the story toward London."), nextTitle: "Cross to London"),
 
-        .init(episode: 4, episodeTitle: "An Litir · The crossing & record", beatInEpisode: 1, location: "Clew Bay → London · 1593", title: "To be heard, she must enter another system", question: "What does the English record reveal?", body: "Gráinne reaches the machinery of petition, articles, answers and draft instructions. The crossing is geographical—and administrative.", detail: "No conversation with Elizabeth is invented. The surviving papers carry the encounter.", hero: .generated("grainne-crossing", "Generated interpretive portrait of Gráinne on the Atlantic crossing"), source: nil, action: .none, nextTitle: "Open the September draft"),
-        .init(episode: 4, episodeTitle: "An Litir · The crossing & record", beatInEpisode: 2, location: "London · 6 September 1593", title: "Her name enters the record", question: "Can you find the person inside the state spelling?", body: "The draft writes her name in English administrative form and names members of her family. Finding it is the climax because the record suddenly becomes personal.", detail: nil, hero: .none, source: .init(title: "September 1593 draft instruction", detail: "Annotated transcription for the prototype; the manuscript image is not represented here."), action: .findName, nextTitle: "Say who you are"),
-        .init(episode: 4, episodeTitle: "An Litir · The crossing & record", beatInEpisode: 3, location: "A name across languages", title: "Ainm. Mise. Tar.", question: "Now make the first full line about yourself.", body: "The record writes hers as “Grany ne Maly.” In Irish, she is Gráinne Ní Mháille. Use Is mise… and as … mé without borrowing her identity.", detail: nil, hero: .none, source: nil, action: .identity, nextTitle: "Receive the answer"),
+        .init(episode: 4, episodeTitle: "An Litir · Crossing and record", beatInEpisode: 1, location: "Clew Bay → London · 1593", title: "The sea road ends in rooms of paper", question: "How does a Mayo leader make the English state hear her?", body: "Gráinne crosses to London with a case to press. There, claims become petitions, questions, answers and draft instructions.", detail: "No surviving source gives us her conversation with Elizabeth. The papers show the case moving through government.", hero: .generated("grainne-crossing", "Generated interpretive portrait of Gráinne on the Atlantic crossing"), source: nil, action: .none, nextTitle: "Open the July questions"),
+        .init(episode: 4, episodeTitle: "An Litir · Crossing and record", beatInEpisode: 2, location: "London · July 1593", title: "There she is: “Grany Ne Malley”", question: nil, body: "Her name stands at the head of eighteen questions. An English clerk bends it into another spelling, but the person is not lost.", detail: "Her answers name parents, marriages, children, lands and how she maintained her people. The voyage becomes visible in a record shaped by the questions of the state.", hero: .none, source: .init(title: "Interrogatory and answers, July 1593", detail: "The National Archives, SP 63/170, ff. 201–202. Folio 201 is shown under the app’s free, exclusively educational use policy."), action: .findName, nextTitle: "Hear her name restored"),
+        .init(episode: 4, episodeTitle: "An Litir · Crossing and record", beatInEpisode: 3, location: "A name across languages", title: "Ainm. Mise. Tar.", question: nil, body: "The calendar renders the heading as “Grany Ne Malley.” Hear the name she carries in Irish: Gráinne Ní Mháille.", detail: "Keep the pattern. Make the lines yours.", hero: .none, source: nil, action: .identity, nextTitle: "See what answer returns"),
 
-        .init(episode: 5, episodeTitle: "An Freagra · The answer", beatInEpisode: 1, location: "The court · September 1593", title: "An answer takes physical form", question: "What does the Queen give?", body: "Instructions go toward Bingham: release and relief are ordered in response to the case Gráinne has put before the state.", detail: "Paper can redirect power. It cannot guarantee that power will obey.", hero: .document, source: .init(title: "Royal instructions to Bingham", detail: "A draft order supports the answer; its implementation remains a separate question."), action: .none, nextTitle: "Follow the order home"),
-        .init(episode: 5, episodeTitle: "An Freagra · The answer", beatInEpisode: 2, location: "London → Connacht", title: "Relief on paper. Compliance unfinished.", question: "What does Bingham withhold?", body: "The instruction travels, but full effect does not arrive with it. The dramatic answer is partial: the state has spoken, and the coast is still under pressure.", detail: nil, hero: .none, source: nil, action: .answer, nextTitle: "Name the unfinished action"),
-        .init(episode: 5, episodeTitle: "An Freagra · The answer", beatInEpisode: 3, location: "The unfinished verb", title: "Freagair. Tabhair. Arís.", question: "Answer, give, again.", body: "These are not abstract exercise verbs. They distinguish the response from the relief still withheld—and prepare the second asking.", detail: nil, hero: .none, source: nil, action: .words([.freagair, .tabhair, .aris], "Listen for what the court did, what was withheld and what must happen again."), nextTitle: "Return to the coast"),
+        .init(episode: 5, episodeTitle: "An Freagra · The answer", beatInEpisode: 1, location: "The court · September 1593", title: "The answer becomes an order", question: "Can paper change what happens on the Mayo coast?", body: "Instructions leave the court for Bingham. They order release and relief in response to the case Gráinne has brought.", detail: "The state has answered. That is not the same as saying the order will be obeyed.", hero: .document, source: .init(title: "Draft instructions to Bingham, September 1593", detail: "A draft order supports the answer; its implementation remains a separate question."), action: .none, nextTitle: "Follow the paper home"),
+        .init(episode: 5, episodeTitle: "An Freagra · The answer", beatInEpisode: 2, location: "London → Connacht", title: "The order travels. Relief does not fully follow.", question: nil, body: "Bingham does not give the instruction full effect. Gráinne has forced an answer from the centre of power, but the pressure on the coast is not over.", detail: nil, hero: .none, source: nil, action: .answer, nextTitle: "Name what remains unfinished"),
+        .init(episode: 5, episodeTitle: "An Freagra · The answer", beatInEpisode: 3, location: "The unfinished verb", title: "Freagair. Tabhair. Arís.", question: nil, body: "Answer. Give. Again. One verb names what the court did; another names what was withheld; the last opens the road back.", detail: nil, hero: .none, source: nil, action: .words([.freagair, .tabhair, .aris], "Listen, then place each action on the right side of the order."), nextTitle: "Return to the coast"),
 
-        .init(episode: 6, episodeTitle: "Ar Ais · Return and coast", beatInEpisode: 1, location: "Mayo · the return line", title: "She must ask again", question: "What remains on the shore?", body: "Later pressure brings further petitions. The coast has not become a solved ending; it remains the place from which the claim must be renewed.", detail: "The chart’s return line is still open.", hero: .generated("grainne-return", "Generated editorial interpretation of the Mayo coast and the return route"), source: .init(title: "The later petition trail", detail: "The 1595 pressure beat is kept short so it does not turn Mayo into a chronology tour."), action: .none, nextTitle: "Stand on the present shore"),
-        .init(episode: 6, episodeTitle: "Ar Ais · Return and coast", beatInEpisode: 2, location: "Clew Bay · today", title: "The place carries more than one kind of memory", question: "What can the coast hold honestly?", body: "Rockfleet and Clew Bay hold material place. Later stories hold an image of refusal. The 1593 papers hold the documentary act: she crossed and made the state answer.", detail: "Those registers can sit together without becoming the same claim.", hero: .none, source: nil, action: .words([.costa], "Hear cósta for the present shore. Let the sound bring you back to the bay."), nextTitle: "Complete the voyage"),
-        .init(episode: 6, episodeTitle: "Ar Ais · Return and coast", beatInEpisode: 3, location: "Clew Bay → London → Mayo", title: "The voyage completes. The story continues.", question: "What do you carry from Mayo?", body: "Twenty words now belong to one remembered route: coast, family, loss, asking, answer and return.", detail: "Mayo turns gold quietly. The next county is authored by the journey, not chosen from a reward picker.", hero: .none, source: nil, action: .finishChart, nextTitle: "Carry Mayo with you")
+        .init(episode: 6, episodeTitle: "Ar Ais · Return and coast", beatInEpisode: 1, location: "Mayo · the return line", title: "The line home does not close", question: "What remains when the royal answer is not enough?", body: "Further pressure brings further petitions. Gráinne’s journey to London has changed the record, but it has not made the Mayo coast safe or settled.", detail: "The surviving trail asks us to hold achievement and incompletion together.", hero: .generated("grainne-return", "Generated editorial interpretation of the Mayo coast and the return route"), source: .init(title: "The later petition trail", detail: "Further petitions show that the answer did not settle the pressure on the coast."), action: .none, nextTitle: "Stand on the shore today"),
+        .init(episode: 6, episodeTitle: "Ar Ais · Return and coast", beatInEpisode: 2, location: "Clew Bay · today", title: "The coast remembers in different ways", question: nil, body: "Rockfleet still stands beside Clew Bay. The state papers preserve a journey and a demand. Later stories preserve an image of defiance.", detail: "Place, document and legend can all matter without being treated as the same kind of evidence.", hero: .none, source: nil, action: .words([.costa, .ba, .ait, .caislean], "Hear cósta—coast—then find the earlier words that still belong here: bá, áit, caisleán."), nextTitle: "Complete the return line"),
+        .init(episode: 6, episodeTitle: "Ar Ais · Return and coast", beatInEpisode: 3, location: "Clew Bay → London → Mayo", title: "Back to Mayo, carrying an answer", question: "What will make this story return to you?", body: "The route now joins Clew Bay, London and Mayo again. Along it sit twenty Irish words for sea, family, loss, asking, answer and return.", detail: "The chart records a documented crossing. Your two Irish lines sit beside it as something you made here.", hero: .none, source: nil, action: .finishChart, nextTitle: "Carry Mayo with you")
     ]
 }
 
 private struct GrainneSource {
     let title: String
     let detail: String
+}
+
+private struct GrainneRecordedLine {
+    let ga: String
+    let en: String
+    let sound: String
 }
 
 private struct GrainneWord: Identifiable {
@@ -389,7 +398,6 @@ private struct GrainneWord: Identifiable {
     static let ba = Self(ga: "bá", en: "bay", sound: "baw")
     static let long = Self(ga: "long", en: "ship", sound: "lung")
     static let ait = Self(ga: "áit", en: "place", sound: "awtch")
-    static let asWord = Self(ga: "as", en: "from", sound: "ass")
     static let caislean = Self(ga: "caisleán", en: "castle", sound: "kash-lawn")
     static let teaghlach = Self(ga: "teaghlach", en: "family", sound: "chai-lukh")
     static let mac = Self(ga: "mac", en: "son", sound: "mock")
@@ -430,6 +438,7 @@ private struct GrainneEpisodePalette {
 private struct WordCarryAction: View {
     let words: [GrainneWord]
     let prompt: String
+    let recordedLine: GrainneRecordedLine?
     let palette: GrainneEpisodePalette
     let completed: Bool
     let onComplete: () -> Void
@@ -437,6 +446,7 @@ private struct WordCarryAction: View {
     @State private var currentIndex = 0
     @State private var heardWords: Set<String> = []
     @State private var wrongMeaning: String?
+    @State private var understoodWord: String?
 
     private var currentWord: GrainneWord {
         words[min(currentIndex, max(words.count - 1, 0))]
@@ -458,6 +468,9 @@ private struct WordCarryAction: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
+            if let recordedLine {
+                AtlasAudioLine(ga: recordedLine.ga, en: recordedLine.en, sound: recordedLine.sound)
+            }
             Text(prompt)
                 .font(.body)
                 .foregroundStyle(palette.secondaryInk)
@@ -485,11 +498,11 @@ private struct WordCarryAction: View {
                 .buttonStyle(CarvePress())
                 .disabled(!SpeechService.shared.canSpeak(currentWord.ga))
                 .accessibilityLabel("Hear \(currentWord.ga)")
-                .accessibilityHint("Plays the approved Irish Cultural Guide recording")
+                .accessibilityHint("Plays the bundled Irish recording")
             }
 
             if hasHeardCurrentWord {
-                Text("rough sound · \(currentWord.sound)")
+                Text("Say it like · \(currentWord.sound)")
                     .font(.caption)
                     .foregroundStyle(palette.secondaryInk)
                 Text("Which meaning belongs to what you heard?")
@@ -514,6 +527,14 @@ private struct WordCarryAction: View {
                         .clipShape(RoundedRectangle(cornerRadius: 7))
                     }
                     .buttonStyle(CarvePress())
+                    .disabled(understoodWord != nil)
+                }
+                if understoodWord != nil {
+                    Label("Heard and understood", systemImage: "checkmark")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(palette.accent)
+                        .transition(.opacity)
+                        .accessibilityAddTraits(.isStaticText)
                 }
                 if wrongMeaning != nil {
                     Text("Listen once more. The sound is the clue.")
@@ -545,10 +566,16 @@ private struct WordCarryAction: View {
 
         wrongMeaning = nil
         Haptics.chisel()
-        if currentIndex == words.count - 1 {
-            onComplete()
-        } else {
-            withAnimation(Motion.settle) { currentIndex += 1 }
+        understoodWord = currentWord.id
+        let isLastWord = currentIndex == words.count - 1
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 450_000_000)
+            if isLastWord {
+                onComplete()
+            } else {
+                withAnimation(Motion.settle) { currentIndex += 1 }
+            }
+            understoodWord = nil
         }
     }
 }
@@ -559,9 +586,9 @@ private struct PairedVoicesAction: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
-            voice("Bingham’s purpose", "To justify severity and present resistance as disorder.", "exclamationmark.bubble")
+            voice("Bingham needs to justify", "Severity and the treatment of resistance as disorder.", "exclamationmark.bubble")
             Divider()
-            voice("Gráinne’s purpose", "To secure maintenance, release and a path for her family.", "quote.bubble")
+            voice("Gráinne needs to obtain", "Release, maintenance and a path for her family.", "quote.bubble")
             Button(action: onComplete) {
                 Label(completed ? "Purposes marked" : "Keep both purposes visible", systemImage: completed ? "checkmark" : "arrow.triangle.branch")
                     .frame(maxWidth: .infinity, minHeight: 44)
@@ -586,6 +613,37 @@ private struct PairedVoicesAction: View {
     }
 }
 
+struct TNAInterrogatoryFolio: View {
+    let highlightName: Bool
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 7) {
+            Image("SP63170F201")
+                .resizable()
+                .scaledToFit()
+                .overlay {
+                    GeometryReader { geometry in
+                        if highlightName {
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Theme.rust, lineWidth: 3)
+                                .background(Theme.rust.opacity(0.10))
+                                .frame(width: geometry.size.width * 0.58, height: geometry.size.height * 0.065)
+                                .offset(x: geometry.size.width * 0.33, y: geometry.size.height * 0.025)
+                                .transition(.opacity)
+                                .accessibilityHidden(true)
+                        }
+                    }
+                }
+                .background(Color.black.opacity(0.12))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .accessibilityLabel("Original manuscript page. The first page of the July 1593 interrogatory, The National Archives, SP 63/170, folio 201.")
+            Text("The National Archives, SP 63/170, f. 201 · Crown copyright · educational use")
+                .font(.caption2)
+                .foregroundStyle(Theme.inkSoft)
+        }
+    }
+}
+
 private struct FullArcNameFind: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Binding var found: Bool
@@ -594,26 +652,24 @@ private struct FullArcNameFind: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
-            Text("ANNOTATED TRANSCRIPTION · MANUSCRIPT IMAGE NOT SHOWN")
+            Text("ORIGINAL MANUSCRIPT · TNA SP 63/170 F. 201")
                 .font(.caption2.weight(.semibold)).kerning(1.1)
                 .foregroundStyle(Color.white.opacity(0.72))
-            ZStack {
-                Color(light: 0xD8CBA7, dark: 0x8E7E59)
-                VStack(spacing: 18) {
-                    Text(found ? "Grany ne Maly" : "Gr—  ne  M—")
-                        .font(.system(.largeTitle, design: .serif, weight: .semibold))
-                        .foregroundStyle(Color.black.opacity(0.72))
-                    if found {
-                        Text("Gráinne Ní Mháille")
-                            .font(.system(.title2, design: .serif, weight: .semibold))
-                            .foregroundStyle(Theme.atlasGreen)
-                            .transition(.opacity)
-                    }
+            TNAInterrogatoryFolio(highlightName: found)
+            if found {
+                VStack(spacing: 7) {
+                    Text("Grany Ne Malley")
+                        .font(.system(.title2, design: .serif, weight: .semibold))
+                    Text("Gráinne Ní Mháille")
+                        .font(.system(.title3, design: .serif, weight: .semibold))
+                        .foregroundStyle(Theme.atlasGreen)
                 }
+                .frame(maxWidth: .infinity)
+                .padding(14)
+                .background(Theme.raised)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .transition(.opacity)
             }
-            .frame(minHeight: 230)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .accessibilityLabel(found ? "The transcription writes Gráinne's name as Grany ne Maly" : "An obscured name in the annotated transcription")
             if !found {
                 Button {
                     withAnimation(reduceMotion ? nil : Motion.settle) { found = true }
@@ -662,7 +718,7 @@ private struct IdentityAction: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 13) {
             AtlasAudioLine(ga: "Is mise Gráinne.", en: "I am Gráinne.", sound: "iss mish-eh grawn-ya")
-            Text("Now keep the pattern and change the person.")
+            Text("Keep the pattern. Change only the name.")
                 .font(.body)
                 .foregroundStyle(Color.white.opacity(0.76))
             TextField("Your name", text: $name)
@@ -678,7 +734,7 @@ private struct IdentityAction: View {
                 .submitLabel(.next)
                 .onSubmit { focusedField = .place }
             AtlasAudioLine(ga: "Is as Maigh Eo mé.", en: "I am from Mayo.", sound: "iss ass my-oh may")
-            Text("Keep as and mé; change only the place.")
+            Text("Keep the pattern. Change only the place.")
                 .font(.body)
                 .foregroundStyle(Color.white.opacity(0.76))
             TextField("The place you are from", text: $place)
@@ -700,6 +756,11 @@ private struct IdentityAction: View {
                 .font(.system(.title2, design: .serif, weight: .semibold))
                 .foregroundStyle(Theme.salt)
             }
+            if completed {
+                Text("Your name has entered Irish; it has not entered Gráinne’s story.")
+                    .font(.caption)
+                    .foregroundStyle(Color.white.opacity(0.76))
+            }
             Button {
                 focusedField = nil
                 onComplete(
@@ -707,7 +768,7 @@ private struct IdentityAction: View {
                     place.trimmingCharacters(in: .whitespacesAndNewlines)
                 )
             } label: {
-                Label(completed ? "Identity carried" : "Carry these lines", systemImage: completed ? "checkmark" : "person.text.rectangle")
+                Label(completed ? "Lines made" : "Make the lines yours", systemImage: completed ? "checkmark" : "person.text.rectangle")
                     .frame(maxWidth: .infinity, minHeight: 44)
             }
             .buttonStyle(.bordered)
@@ -723,21 +784,73 @@ private struct IdentityAction: View {
 private struct AnswerAction: View {
     let completed: Bool
     let onComplete: () -> Void
+
+    @State private var supportedClaimSelected = false
+
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            OutcomeLine(icon: "doc.text", title: "The answer", text: "The Queen’s government orders relief.", color: Theme.weatheredGold)
-            OutcomeLine(icon: "pause.circle", title: "What remains open", text: "Bingham does not give the order full effect.", color: Theme.rust)
-            Button(action: onComplete) {
-                Label(completed ? "Distinction carried" : "Mark the unfinished effect", systemImage: completed ? "checkmark" : "line.diagonal.arrow")
-                    .frame(maxWidth: .infinity, minHeight: 44)
+            Text("Which claim goes beyond the surviving evidence?")
+                .font(.headline)
+                .foregroundStyle(Theme.salt)
+
+            if completed {
+                OutcomeLine(
+                    icon: "doc.text",
+                    title: "The government ordered relief",
+                    text: "The draft instruction supports this claim.",
+                    color: Theme.weatheredGold
+                )
+                OutcomeLine(
+                    icon: "questionmark.circle",
+                    title: "The order ended the conflict",
+                    text: "The surviving evidence cannot support this claim.",
+                    color: Theme.rust
+                )
+                Label("Difference marked", systemImage: "checkmark")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.weatheredGold)
+            } else {
+                claimButton("The government ordered relief") {
+                    supportedClaimSelected = true
+                    Haptics.error()
+                }
+                claimButton("The order ended the conflict") {
+                    supportedClaimSelected = false
+                    onComplete()
+                }
             }
-            .buttonStyle(.bordered)
-            .tint(Theme.rust)
-            .disabled(completed)
+
+            if supportedClaimSelected && !completed {
+                Label(
+                    "The draft supports that claim. Look for what the paper cannot prove.",
+                    systemImage: "arrow.uturn.left"
+                )
+                .font(.caption)
+                .foregroundStyle(Color.white.opacity(0.76))
+            }
         }
         .padding(16)
         .background(Color.white.opacity(0.07))
         .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+
+    private func claimButton(_ title: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 10) {
+                Text(title)
+                    .multilineTextAlignment(.leading)
+                Spacer(minLength: 0)
+                Image(systemName: "chevron.right")
+                    .font(.caption.weight(.semibold))
+            }
+            .font(.body.weight(.medium))
+            .foregroundStyle(Theme.salt)
+            .padding(.horizontal, 14)
+            .frame(maxWidth: .infinity, minHeight: 48)
+            .background(Color.white.opacity(0.08))
+            .clipShape(RoundedRectangle(cornerRadius: 7))
+        }
+        .buttonStyle(CarvePress())
     }
 }
 
@@ -750,10 +863,10 @@ private struct FinishChartAction: View {
             Text(learnerName.isEmpty ? "Gráinne Ní Mháille · Mayo · 1593" : "Gráinne Ní Mháille · Is mise \(learnerName)")
                 .font(.system(.title3, design: .serif, weight: .semibold))
                 .foregroundStyle(Theme.ink)
-            Text("The chart keeps the documented journey and your own language act together without making them the same story.")
+            Text("The chart records a documented crossing. Your two Irish lines sit beside it as something you made here.")
                 .font(.body).foregroundStyle(Theme.inkSoft).lineSpacing(4)
             Button(action: onComplete) {
-                Label(completed ? "Return line complete" : "Complete the return line", systemImage: completed ? "checkmark" : "pencil.and.scribble")
+                Label(completed ? "Final line drawn" : "Draw the final line home", systemImage: completed ? "checkmark" : "pencil.and.scribble")
                     .frame(maxWidth: .infinity, minHeight: 44)
             }
             .buttonStyle(.borderedProminent)
@@ -941,7 +1054,7 @@ private struct VoyageChartView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text("Your voyage chart").font(.headline)
+                Text(completedEpisode == 6 ? "Your Mayo chart" : "The route so far").font(.headline)
                 Spacer()
                 Text("\(completedEpisode) / 6").font(.caption.monospacedDigit()).foregroundStyle(Theme.inkSoft)
             }

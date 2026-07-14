@@ -55,6 +55,31 @@ struct PersonalAtlasQueryEvent: Codable, Identifiable, Hashable {
 // MARK: - Progress persistence (prototype-grade: UserDefaults JSON)
 
 final class AppState: ObservableObject {
+    /// Durable review state for one word carried out of a county story. The
+    /// learner never sees these scheduling values; Ar Ais presents the return
+    /// as another encounter with a place, object or phrase.
+    struct AtlasReviewProgress: Codable, Equatable {
+        var due: Date
+        var stability: Double
+        var difficulty: Double
+        var reps: Int
+        var lapses: Int
+
+        init(
+            due: Date = Date(),
+            stability: Double = 1,
+            difficulty: Double = 5,
+            reps: Int = 0,
+            lapses: Int = 0
+        ) {
+            self.due = due
+            self.stability = stability
+            self.difficulty = difficulty
+            self.reps = reps
+            self.lapses = lapses
+        }
+    }
+
     /// Durable state for the living-atlas prototype. This is intentionally
     /// separate from the legacy chapter/session progress so an interrupted
     /// documentary encounter can resume without inventing chapter completion.
@@ -72,6 +97,16 @@ final class AppState: ObservableObject {
         /// encounter into Episode 4, where the approved first encounter lives.
         var storyArcVersion = 2
         var completedStoryBeats: [Int] = []
+        /// Phase 3 county stories use durable story ids. Mayo's historical
+        /// booleans remain above for a lossless migration from the prototype.
+        var activeCountyStoryID: String?
+        var completedCountyStoryIDs: [String] = []
+        var countyStorySteps: [String: Int] = [:]
+        var completedCountyStoryBeats: [String: [Int]] = [:]
+        var inspectedEvidenceIDs: [String] = []
+        var madeArtifactIDs: [String] = []
+        var atlasReviews: [String: AtlasReviewProgress] = [:]
+        var calendarDaysVisited: [String] = []
 
         init(
             hasOpenedAtlas: Bool = false,
@@ -83,7 +118,15 @@ final class AppState: ObservableObject {
             storyStep: Int = 0,
             storyFoundName: Bool = false,
             storyArcVersion: Int = 2,
-            completedStoryBeats: [Int] = []
+            completedStoryBeats: [Int] = [],
+            activeCountyStoryID: String? = nil,
+            completedCountyStoryIDs: [String] = [],
+            countyStorySteps: [String: Int] = [:],
+            completedCountyStoryBeats: [String: [Int]] = [:],
+            inspectedEvidenceIDs: [String] = [],
+            madeArtifactIDs: [String] = [],
+            atlasReviews: [String: AtlasReviewProgress] = [:],
+            calendarDaysVisited: [String] = []
         ) {
             self.hasOpenedAtlas = hasOpenedAtlas
             self.evidenceInspected = evidenceInspected
@@ -95,12 +138,23 @@ final class AppState: ObservableObject {
             self.storyFoundName = storyFoundName
             self.storyArcVersion = storyArcVersion
             self.completedStoryBeats = completedStoryBeats
+            self.activeCountyStoryID = activeCountyStoryID
+            self.completedCountyStoryIDs = completedCountyStoryIDs
+            self.countyStorySteps = countyStorySteps
+            self.completedCountyStoryBeats = completedCountyStoryBeats
+            self.inspectedEvidenceIDs = inspectedEvidenceIDs
+            self.madeArtifactIDs = madeArtifactIDs
+            self.atlasReviews = atlasReviews
+            self.calendarDaysVisited = calendarDaysVisited
         }
 
         private enum CodingKeys: String, CodingKey {
             case hasOpenedAtlas, evidenceInspected, storyCompleted, fieldNoteVisited
             case returnAnswered, storyInProgress, storyStep, storyFoundName
             case storyArcVersion, completedStoryBeats
+            case activeCountyStoryID, completedCountyStoryIDs, countyStorySteps
+            case completedCountyStoryBeats, inspectedEvidenceIDs, madeArtifactIDs
+            case atlasReviews, calendarDaysVisited
         }
 
         init(from decoder: Decoder) throws {
@@ -115,6 +169,14 @@ final class AppState: ObservableObject {
             storyFoundName = try values.decodeIfPresent(Bool.self, forKey: .storyFoundName) ?? false
             storyArcVersion = try values.decodeIfPresent(Int.self, forKey: .storyArcVersion) ?? 1
             completedStoryBeats = try values.decodeIfPresent([Int].self, forKey: .completedStoryBeats) ?? []
+            activeCountyStoryID = try values.decodeIfPresent(String.self, forKey: .activeCountyStoryID)
+            completedCountyStoryIDs = try values.decodeIfPresent([String].self, forKey: .completedCountyStoryIDs) ?? []
+            countyStorySteps = try values.decodeIfPresent([String: Int].self, forKey: .countyStorySteps) ?? [:]
+            completedCountyStoryBeats = try values.decodeIfPresent([String: [Int]].self, forKey: .completedCountyStoryBeats) ?? [:]
+            inspectedEvidenceIDs = try values.decodeIfPresent([String].self, forKey: .inspectedEvidenceIDs) ?? []
+            madeArtifactIDs = try values.decodeIfPresent([String].self, forKey: .madeArtifactIDs) ?? []
+            atlasReviews = try values.decodeIfPresent([String: AtlasReviewProgress].self, forKey: .atlasReviews) ?? [:]
+            calendarDaysVisited = try values.decodeIfPresent([String].self, forKey: .calendarDaysVisited) ?? []
         }
     }
 

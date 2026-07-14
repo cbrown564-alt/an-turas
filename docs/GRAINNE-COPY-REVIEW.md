@@ -1,8 +1,10 @@
 # Gráinne full-prototype copy review
 
-*13 July 2026 · editorial review of the six-episode Mayo prototype in
-`GrainneFullStory.swift`. This document proposes a replacement voice and a complete
-screen-by-screen pass. It does not silently treat draft copy as approved history.*
+*13–14 July 2026 · editorial review of the six-episode Mayo prototype in
+`GrainneFullStory.swift`. The replacement voice and screen-by-screen pass were signed
+off for implementation on 14 July after the reported historian and Irish-language
+pedagogue review. Native-speaker audio QA and the moderated complete-arc test remain
+separate gates.*
 
 ## Verdict
 
@@ -54,12 +56,13 @@ larger historical claim.
 | `Begin Episode 5` | Clear, but generic after an authored cliff edge. | Use the next episode's dramatic hook, e.g. `See what the order changes`. |
 | `Your voyage chart` | Valuable only when the route changes. | `The route so far`; show only at authored route turns. Reserve `Your Mayo chart` for completion. |
 | `Carry Mayo with you` | Earned at the final exit. | Keep. |
-| `rough sound` | Useful but visually apologetic. | `Say it like` pending pedagogue approval of every guide. Audio remains primary. |
+| `rough sound` | Useful but visually apologetic. | `Say it like`; the guides are cleared for the prototype, audio remains primary, and final listening QA remains a release gate. |
 
 ## Screen-by-screen replacement pass
 
-The following is a proposed story read, not final source sign-off. Source-bearing
-sentences must still be checked against the Mayo claim ledger before release.
+The following is the signed-off story read. Where the later source review fixed a more
+precise object or rendering—most notably the July `SP 63/170` interrogatory in Episode
+4—the source decision takes precedence over the earlier draft wording below.
 
 ### Episode 1 — An Bá / Clew Bay
 
@@ -234,6 +237,12 @@ that precision without speaking in its register all the time.
 
 ## Editorial acceptance checklist
 
+**Approval state:** the story and interface copy is approved and implemented. The
+historical claims, 20-word weave, complete spoken lines, guides and distractors have
+the reported first-pass specialist approval recorded in `STATUS.md`. The final two
+learner-memory checks belong to the moderated complete-arc round. Generated clips
+remain blocked from release sign-off until native-speaker and editorial listening QA.
+
 - Read all 18 beats aloud as one sitting; remove any sentence that merely explains the
   job of the previous sentence.
 - Verify every sentence involving Sidney, Bingham, imprisonment, maintenance, the
@@ -246,4 +255,3 @@ that precision without speaking in its register all the time.
   moment that needed it.
 - Do not ship generated clips merely because they exist in the bundle; retain the
   native-speaker and editorial listening gate in the audio manifest.
-

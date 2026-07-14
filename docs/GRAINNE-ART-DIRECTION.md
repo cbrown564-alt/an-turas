@@ -102,8 +102,9 @@ shrink an illustration into a card merely to make room for adjacent copy.
   rise/settle motion.
 - Episode 3 compresses the frame and introduces interruption, paired voices, and a
   visibly broken route without turning the learner into a combatant.
-- Episode 4 opens spatially for the crossing, then narrows decisively onto the name in
-  the September draft. The name-find remains the single interactive climax.
+- Episode 4 opens spatially for the crossing, then narrows decisively onto the name at
+  the head of the `SP 63/170` interrogatory. The name-find remains the single
+  interactive climax.
 - Episode 5 uses the strongest contrast and the most controlled withholding: the order
   is physically present, while the return line remains incomplete.
 - Episode 6 restores breadth and air. Completion is the coast and voyage chart settling

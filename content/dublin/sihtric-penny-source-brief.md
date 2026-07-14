@@ -3,6 +3,19 @@
 *Historian-ready packet · started 12 July 2026 · status: **research draft, not
 cleared**. Replaces the inherited Chapter 3 795–900 raid-to-market composite (D13).*
 
+## Phase 3 prototype binding — 14 July 2026
+
+The app now contains a four-episode / twelve-beat editorial preview under
+`dublin.sihtric-penny`. It proves the reusable county-story flow while keeping the
+learner-facing specimen, legend and mint motive explicitly provisional. It does
+**not** change this packet's research-draft status.
+
+The prototype carries twenty provisional headwords: *airgead, pingin, rí, baile,
+linn, dubh, long, margadh, ceannaigh, díol, tabhair, tóg, téigh, tar, chuaigh,
+tháinig, ainm, cathair, abhainn,* and *trádáil*. A pedagogue and native-speaker audio
+reviewer must approve or replace the set and pronunciation guides. The app uses a
+rights-safe coin diagram until a numismatist selects the exact specimen and reading.
+
 ## Identity
 
 | Field | Value |

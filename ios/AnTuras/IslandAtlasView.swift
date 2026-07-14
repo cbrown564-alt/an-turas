@@ -23,7 +23,8 @@ struct FirstRunIslandView: View {
                     mode: .journey,
                     time: 1593,
                     theme: "Power",
-                    storyComplete: false,
+                    completedCounties: [],
+                    currentCounty: "Mayo",
                     showsFutureSignals: false,
                     onSelect: { county in
                         guard county == "Mayo" else { return }
@@ -159,7 +160,8 @@ struct IslandAtlasView: View {
                         mode: mode,
                         time: Int(time),
                         theme: theme,
-                        storyComplete: atlas.storyCompleted,
+                        completedCounties: atlas.completedCountyNames,
+                        currentCounty: atlas.currentCountyName,
                         showsFutureSignals: true,
                         onSelect: { county in
                             Haptics.tap()
@@ -352,10 +354,29 @@ struct IslandAtlasView: View {
     private var openingRoad: some View {
         VStack(alignment: .leading, spacing: 12) {
             Eyebrow(text: "THE OPENING ROAD")
-            RoadStop(number: 1, county: "Maigh Eo · Mayo", title: "Gráinne’s petition", era: "1593", state: atlas.storyCompleted ? .complete : .active)
-            RoadStop(number: 2, county: "Uíbh Fhailí · Offaly", title: "Cross of the Scriptures", era: "c. 900 · rewind", state: .ahead)
-            RoadStop(number: 3, county: "Baile Átha Cliath · Dublin", title: "Sihtric’s penny", era: "c. 997", state: .ahead)
+            roadButton(number: 1, county: "Maigh Eo · Mayo", countyEn: "Mayo", title: "Gráinne’s petition", era: "1593")
+            roadButton(number: 2, county: "Uíbh Fhailí · Offaly", countyEn: "Offaly", title: "Cross of the Scriptures", era: "c. 900 · rewind")
+            roadButton(number: 3, county: "Baile Átha Cliath · Dublin", countyEn: "Dublin", title: "Sihtric’s penny", era: "c. 995–997")
+            roadButton(number: 4, county: "An Mhí · Meath", countyEn: "Meath", title: "Trim: grant and castle", era: "from 1172")
         }
+    }
+
+    private func roadButton(number: Int, county: String, countyEn: String, title: String, era: String) -> some View {
+        Button {
+            Haptics.tap()
+            if countyEn == "Mayo" { onOpenMayo() } else { onOpenCounty(countyEn) }
+        } label: {
+            RoadStop(
+                number: number,
+                county: county,
+                title: title,
+                era: era,
+                state: atlas.completedCountyNames.contains(countyEn)
+                    ? .complete
+                    : (atlas.currentCountyName == countyEn ? .active : .ahead)
+            )
+        }
+        .buttonStyle(CarvePress())
     }
 
     private var fieldNoteInvitation: some View {
@@ -462,7 +483,8 @@ private struct IslandMapSurface: View {
     let mode: IslandMode
     let time: Int
     let theme: String
-    let storyComplete: Bool
+    let completedCounties: Set<String>
+    let currentCounty: String
     let showsFutureSignals: Bool
     let onSelect: (String) -> Void
 
@@ -487,20 +509,22 @@ private struct IslandMapSurface: View {
                         for county in counties {
                             guard let path = CountyBoundaryAtlas.path(for: county, in: rect) else { continue }
                             let selected = highlighted(county.en)
-                            let isMayo = county.en == "Mayo"
-                            let fill = isMayo
-                                ? (storyComplete ? Theme.atlasGold.opacity(0.32) : Theme.atlasGreen.opacity(0.34))
-                                : (selected ? Theme.moss.opacity(0.20) : Theme.atlasWhite.opacity(0.95))
+                            let isComplete = completedCounties.contains(county.en)
+                            let isCurrent = county.en == currentCounty
+                            let fill = isComplete
+                                ? Theme.atlasGold.opacity(0.32)
+                                : (isCurrent ? Theme.atlasGreen.opacity(0.34) : (selected ? Theme.moss.opacity(0.20) : Theme.atlasWhite.opacity(0.95)))
                             layer.fill(path, with: .color(fill))
-                            layer.stroke(path, with: .color(isMayo ? Theme.atlasGreen : Theme.line),
-                                         style: StrokeStyle(lineWidth: isMayo ? 1.7 : 0.65, lineJoin: .round))
+                            layer.stroke(path, with: .color(isComplete ? Theme.atlasGold : (isCurrent ? Theme.atlasGreen : Theme.line)),
+                                         style: StrokeStyle(lineWidth: (isComplete || isCurrent) ? 1.7 : 0.65, lineJoin: .round))
                         }
 
                         if mode == .journey && showsFutureSignals {
                             let road = [
                                 Ireland.point(lat: 53.90, lon: -9.25),
                                 Ireland.point(lat: 53.33, lon: -7.99),
-                                Ireland.point(lat: 53.34, lon: -6.27)
+                                Ireland.point(lat: 53.34, lon: -6.27),
+                                Ireland.point(lat: 53.55, lon: -6.79)
                             ].map { point($0, in: rect) }
                             var p = Path()
                             if let first = road.first { p.move(to: first) }
@@ -517,7 +541,7 @@ private struct IslandMapSurface: View {
                         .position(mapPoint(lat: signal.lat, lon: signal.lon, in: full))
                 }
 
-                Text(mode == .time ? timeCaption : mode == .theme ? theme.uppercased() : "MAYO, 1593")
+                Text(mode == .time ? timeCaption : mode == .theme ? theme.uppercased() : "\(currentCounty.uppercased()) · CURRENT")
                     .font(.system(size: 9, weight: .bold))
                     .kerning(1.4)
                     .foregroundStyle(Theme.inkFaint)
@@ -535,12 +559,13 @@ private struct IslandMapSurface: View {
     private var signals: [MapSignal] {
         switch mode {
         case .journey:
-            let grainne = MapSignal(title: "Gráinne", detail: "1593 · document", icon: "person.crop.circle", lat: 53.88, lon: -9.58, active: true)
+            let grainne = MapSignal(title: "Gráinne", detail: "1593 · document", icon: "person.crop.circle", lat: 53.88, lon: -9.58, active: currentCounty == "Mayo")
             guard showsFutureSignals else { return [grainne] }
             return [
                 grainne,
-                MapSignal(title: "A cross", detail: "c. 900", icon: "plus", lat: 53.33, lon: -7.99, active: false),
-                MapSignal(title: "A penny", detail: "c. 997", icon: "circle", lat: 53.34, lon: -6.27, active: false)
+                MapSignal(title: "A cross", detail: "c. 900", icon: "plus", lat: 53.33, lon: -7.99, active: currentCounty == "Offaly"),
+                MapSignal(title: "A penny", detail: "c. 997", icon: "circle", lat: 53.34, lon: -6.27, active: currentCounty == "Dublin"),
+                MapSignal(title: "A castle", detail: "from 1172", icon: "building.columns", lat: 53.55, lon: -6.79, active: currentCounty == "Meath")
             ]
         case .time:
             if time < 1000 {
@@ -649,6 +674,7 @@ private struct StorySignal: View {
 
 private struct CountyListSheet: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var atlas: AtlasPrototypeModel
     let onSelect: (County) -> Void
     private let counties = ContentLoader.counties().sorted { $0.en < $1.en }
 
@@ -666,9 +692,9 @@ private struct CountyListSheet: View {
                                 .foregroundStyle(Theme.inkSoft)
                         }
                         Spacer()
-                        Text(county.en == "Mayo" ? "ACTIVE STORY" : "OPEN TO INSPECT")
+                        Text(status(for: county.en))
                             .font(.system(size: 9, weight: .bold))
-                            .foregroundStyle(county.en == "Mayo" ? Theme.atlasGreen : Theme.inkFaint)
+                            .foregroundStyle(statusColor(for: county.en))
                     }
                 }
                 .listRowBackground(Theme.bg)
@@ -684,52 +710,45 @@ private struct CountyListSheet: View {
         }
         .presentationBackground(Theme.bg)
     }
+
+    private func status(for county: String) -> String {
+        if atlas.completedCountyNames.contains(county) { return "STORY CARRIED" }
+        if atlas.currentCountyName == county { return "CURRENT STORY" }
+        if LaunchCountyCatalog.story(county: county) != nil { return "EDITORIAL PREVIEW" }
+        return "OPEN TO INSPECT"
+    }
+
+    private func statusColor(for county: String) -> Color {
+        if atlas.completedCountyNames.contains(county) { return Theme.atlasGold }
+        if atlas.currentCountyName == county { return Theme.atlasGreen }
+        return Theme.inkFaint
+    }
 }
 
 // MARK: - Story tab and unresearched county state
 
 struct CurrentStoryView: View {
     @EnvironmentObject private var atlas: AtlasPrototypeModel
-    let onOpenStory: () -> Void
-    let onOpenDossier: () -> Void
+    let onOpenMayoStory: () -> Void
+    let onOpenMayoDossier: () -> Void
+    let onOpenCountyStory: (String) -> Void
+    let onOpenCountyDossier: (String) -> Void
+
+    private var nextStory: LaunchCountyStory? {
+        guard atlas.storyCompleted else { return nil }
+        return LaunchCountyCatalog.stories.first { !atlas.isCountyComplete($0.id) }
+    }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
-                AtlasScreenHeader("AN SCÉAL · THE STORY", atlas.storyCompleted ? "The invitation, carried." : "Mayo, 1593 — the invitation", detail: atlas.storyCompleted ? "Return to the evidence, language and places from the documentary journey." : "A document survives. Before legend takes over, ask what Gráinne Ní Mháille put before the English state.")
-
-                ClewBayMiniature()
-                    .frame(height: 220)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-
-                AtlasCard(accent: atlas.storyCompleted ? Theme.atlasGold : Theme.atlasGreen) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        HStack {
-                            Label("State paper", systemImage: "doc.text")
-                                .font(.caption.weight(.semibold))
-                                .foregroundStyle(Theme.atlasGreen)
-                            Spacer()
-                            Text("1593")
-                                .font(.caption.monospaced())
-                                .foregroundStyle(Theme.inkFaint)
-                        }
-                        Text("What did she actually ask for?")
-                            .font(.system(size: 26, weight: .semibold, design: .serif))
-                            .foregroundStyle(Theme.ink)
-                        Text("Meet the person, follow the Mayo coastline, inspect an annotated transcription, separate record from afterlife, then use your first Irish to identify yourself.")
-                            .font(.system(size: 14.5))
-                            .foregroundStyle(Theme.inkSoft)
-                            .lineSpacing(4)
-                        PrimaryButton(title: atlas.storyCompleted ? "Return to the story" : "Begin the documentary", fullWidth: true, action: onOpenStory)
-                    }
+                if !atlas.storyCompleted {
+                    mayoCurrent
+                } else if let nextStory {
+                    launchCurrent(nextStory)
+                } else {
+                    completedRoad
                 }
-
-                Button(action: onOpenDossier) {
-                    Label("Open the full Mayo dossier", systemImage: "map")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(Theme.moss)
-                }
-                .buttonStyle(CarvePress())
             }
             .padding(20)
             .padding(.bottom, 28)
@@ -737,6 +756,95 @@ struct CurrentStoryView: View {
             .frame(maxWidth: .infinity)
         }
         .background(Theme.bg.ignoresSafeArea())
+    }
+
+    private var mayoCurrent: some View {
+        Group {
+            AtlasScreenHeader("AN SCÉAL · THE STORY", "Mayo, 1593 — the invitation", detail: "A document survives. Before legend takes over, ask what Gráinne Ní Mháille put before the English state.")
+            ClewBayMiniature()
+                .frame(height: 220)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            AtlasCard(accent: Theme.atlasGreen) {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Label("State paper", systemImage: "doc.text").font(.caption.weight(.semibold)).foregroundStyle(Theme.atlasGreen)
+                        Spacer()
+                        Text("1593").font(.caption.monospaced()).foregroundStyle(Theme.inkFaint)
+                    }
+                    Text("What did she actually ask for?").font(.system(.title, design: .serif, weight: .semibold)).foregroundStyle(Theme.ink)
+                    Text("Meet the person, follow the Mayo coastline, inspect the original State Paper, separate record from afterlife, then use your first Irish to identify yourself.").font(.body).foregroundStyle(Theme.inkSoft).lineSpacing(4)
+                    PrimaryButton(title: "Begin the documentary", fullWidth: true, action: onOpenMayoStory)
+                }
+            }
+            Button(action: onOpenMayoDossier) {
+                Label("Open the full Mayo dossier", systemImage: "map").font(.headline).foregroundStyle(Theme.moss).frame(minHeight: 44)
+            }
+            .buttonStyle(CarvePress())
+        }
+    }
+
+    private func launchCurrent(_ story: LaunchCountyStory) -> some View {
+        Group {
+            AtlasScreenHeader(
+                "AN SCÉAL · \(story.countyEn.uppercased())",
+                story.title,
+                detail: story.question
+            )
+            LaunchObjectMark(kind: story.objectKind)
+                .frame(height: 220)
+                .frame(maxWidth: .infinity)
+                .accessibilityHidden(true)
+            AtlasCard(accent: Theme.atlasGreen) {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Label(story.sourceTitle, systemImage: "doc.text.magnifyingglass")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(Theme.atlasGreen)
+                        Spacer()
+                        Text(story.era).font(.caption.monospaced()).foregroundStyle(Theme.inkFaint)
+                    }
+                    Text(story.anchor).font(.system(.title2, design: .serif, weight: .semibold)).foregroundStyle(Theme.ink)
+                    Text("Four episodes carry twenty words into the atlas. This build remains an editorial preview until the named external checks pass.")
+                        .font(.body).foregroundStyle(Theme.inkSoft).lineSpacing(4)
+                    PrimaryButton(title: "Continue to \(story.countyEn)", fullWidth: true) { onOpenCountyStory(story.id) }
+                }
+            }
+            Button { onOpenCountyDossier(story.id) } label: {
+                Label("Open the full \(story.countyEn) dossier", systemImage: "map").font(.headline).foregroundStyle(Theme.moss).frame(minHeight: 44)
+            }
+            .buttonStyle(CarvePress())
+        }
+    }
+
+    private var completedRoad: some View {
+        Group {
+            AtlasScreenHeader(
+                "THE OPENING ROAD · FOUR COUNTIES",
+                "Four stories, carried.",
+                detail: "Mayo, Offaly, Dublin and Meath now live together as one county journey. Return to any story, evidence record, word or made object without losing your place."
+            )
+            ForEach(LaunchCountyCatalog.stories) { story in
+                Button { onOpenCountyStory(story.id) } label: {
+                    HStack(spacing: 14) {
+                        LaunchObjectMark(kind: story.objectKind, compact: true).frame(width: 58, height: 58)
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(story.countyEn).font(.headline).foregroundStyle(Theme.ink)
+                            Text(story.title).font(.subheadline).foregroundStyle(Theme.inkSoft)
+                        }
+                        Spacer()
+                        Image(systemName: "checkmark.circle.fill").foregroundStyle(Theme.atlasGold)
+                    }
+                    .frame(minHeight: 64)
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(CarvePress())
+                EditorialRule()
+            }
+            Button(action: onOpenMayoStory) {
+                Label("Return to Gráinne’s Mayo story", systemImage: "arrow.uturn.backward").font(.headline).foregroundStyle(Theme.moss).frame(minHeight: 44)
+            }
+            .buttonStyle(CarvePress())
+        }
     }
 }
 

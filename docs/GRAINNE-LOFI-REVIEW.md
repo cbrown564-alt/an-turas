@@ -19,14 +19,14 @@ collection taxonomies.
 | Irish memorable because it matters | Pass | **Approved 13 July** — preserve native-speaker audio QA as a separate release gate |
 | Learner always knows why they look, act, or continue | Pass with revisions | **Pass** |
 
-Overall: **storyboard cleared for implementation planning and board source work.
-Not yet cleared for external tester round** (needs minimum 1593 source/rights package
-and pedagogue glance at the 20).
+Overall: **storyboard, minimum 1593 source package and 20-word weave are cleared for
+the moderated complete-arc tester round.** Production media rights remain a release
+gate, not a prototype-session blocker.
 
 ## Walkthrough findings → locks
 
 1. **Ep3 compression** — one pressure movement; no 1584–92 tour. Owen only in closer look.
-2. **Ep4 climax** — September draft name-find; petition + articles prepare only.
+2. **Ep4 climax** — `SP 63/170` interrogatory-and-answers name-find; the September draft supports the royal response.
 3. **Ep5 overload** — split: Ep5 = royal answer + Bingham withhold; Ep6 = return, coast, afterlife, chart.
 4. **Resume** — mid-episode slugline required (*Clew Bay · the squeeze*).
 5. **Side story** — still not required.
@@ -54,7 +54,7 @@ binged episodes.
 | Next step | Allowed now? |
 | --- | --- |
 | Advance Mayo source brief + parallel Offaly/Dublin/Meath docs | Yes |
-| Implement full-story SwiftUI across Ep1–6 | **Yes to plan/scaffold**; production copy still needs historian L1 paraphrases |
+| Implement full-story SwiftUI across Ep1–6 | **Implemented 14 July** with the signed-off story/interface copy and source-specific Episode 4 revision |
 | External tester round on complete arc | **Ready to schedule** — six-episode playable prototype and pedagogue approval now exist; production media rights remain a release gate, not a prototype-session blocker |
 | Restore four-tab atlas for Mayo arc | No |
 

@@ -68,7 +68,7 @@ should not dominate the learner-facing voice.
 The approved version begins at Rockfleet with concrete stakes: Gráinne's fleet,
 property, and imprisoned son. It then gives her a dedicated beat as a leader shaped by
 Clew Bay before the 1593 letter appears as the consequence of her decision to go to
-court. Finding “Grany ne Maly” makes the source active and connects naturally to her
+court. Finding the calendar-rendered “Grany Ne Malley” at the head of the July interrogatory makes the source active and connects naturally to her
 Irish name and the learner's *Is mise…*.
 
 The last tonal correction treats later storytelling affirmatively:

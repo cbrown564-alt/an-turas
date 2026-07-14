@@ -1,8 +1,9 @@
 # Mayo source brief — Gráinne Ní Mháille & the 1593 petition
 
-*Historian-ready packet · started 12 July 2026 · status: **research draft, not
-cleared**. Replaces Breastagh as Mayo flagship centre (D13). Breastagh register
-remains at `content/mayo/source-register.md` for the field-note path.*
+*Historian-ready packet · started 12 July 2026 · status: **prototype claims and copy
+approved; release gates remain open**. Replaces Breastagh as Mayo flagship centre
+(D13). Breastagh register remains at `content/mayo/source-register.md` for the
+field-note path.*
 
 ## Packet purpose
 
@@ -21,7 +22,7 @@ Mayo production JSON. Implements the claim ledger + rights plan + significant re
 | Broader life scope | Selective beats that change the dramatic answer (D15) |
 | Significant encounter | Handled reading of the 1593 documentary sequence + Rockfleet/Clew Bay place |
 | Completion artifact | Learner voyage chart (not a historical replica) |
-| Review state | Editorial research draft |
+| Review state | Historian and pedagogue first pass reported approved; native-speaker audio, remaining rights and moderated testing still open |
 
 ## Dramatic spine
 
@@ -46,9 +47,11 @@ Island as supporting shore geography.
 **Recognition source (pre-crisis):** Sidney's description of the feminine / famous sea
 captain with galleys and fighting men.
 
-The approved prototype's interactive name-find should bind to the document that best
-reveals kin names in English hand (September draft), with petition/articles preparing
-voice and stakes—not three equal scavenger hunts.
+The approved prototype's interactive name-find binds to the July interrogatory and
+answers in `SP 63/170`. The published State Papers calendar renders the heading as
+“Grany Ne Malley”; the answers then reveal
+family, marriages, lands and maintenance. The September draft supports the later royal
+answer rather than serving as the handled manuscript.
 
 ## Claim ledger
 
@@ -70,7 +73,7 @@ Certainty: **story** = safe for narrative surface if wording stays bounded;
 | C10 | In 1593 Tibbott imprisoned (treason charge) and brother Donal held | story | Petition trail; Queen draft letter naming them | Tipping stake for London |
 | C11 | She petitioned Elizabeth and answered Burghley's 18 articles in 1593 | story | TNA SP 63/170 ff. 201–204 (catalogue path in public writing) | Core documentary encounter |
 | C12 | She was at court / in London process summer–autumn 1593; audience tradition at Greenwich | story/close | State paper trail; audience richly embroidered later | L1: she reaches the Queen's process; L2: later scenes |
-| C13 | 6 Sept 1593 draft instructs Bingham regarding her and named kin | story | Salisbury MSS / NLI MS_UR_010761; HMC calendar | Primary kin-name reveal |
+| C13 | 6 Sept 1593 draft instructs Bingham regarding her and named kin | story | Salisbury MSS / NLI MS_UR_010761; HMC calendar | Royal-response evidence; not the handled manuscript |
 | C14 | Elizabeth ordered release/provision; Bingham resisted; she pressed again by 1595 | story | Queen’s instructions; 1595 petitions (SP 63/179 path) | Unfinished preservation |
 | C15 | Still associated with a Connacht galley into early 1600s; death c. 1603 | close | 1601 ship report tradition; death date/place soft | Soften L1 |
 | C16 | Refused to bow; dagger; handkerchief; Latin conversation | afterlife | Later storytelling; Chambers flags fanciful court tales | Affirmative afterlife only |
@@ -81,8 +84,8 @@ Certainty: **story** = safe for narrative surface if wording stays bounded;
 
 | Source | Repo / catalogue hint | Rights hypothesis | Action |
 | --- | --- | --- | --- |
-| TNA SP 63/170 petition + interrogatory images | The National Archives, Kew | Crown copyright / OGL pathways often apply to older SP images when published by TNA; **verify per asset** | Request or download published images; record exact f. numbers; log licence |
-| Salisbury draft 6 Sept 1593 | NLI catalogue MS_UR_010761; HMC Salisbury calendar print | Manuscript reproduction needs repository permission; calendar text may be clearer for L2 | Decide: transcription-first vs image; contact NLI/Hatfield path as needed |
+| TNA SP 63/170 petition + interrogatory images | The National Archives, Kew | Cleared for the free, exclusively educational product posture; commercial involvement requires a TNA licence or image removal | Bundle the web-resolution f. 201 with credit; pursue f. 202/high-resolution files if needed |
+| Salisbury draft 6 Sept 1593 | Hatfield House Cecil Papers; NLI Sources record MS_UR_010761 points to the HMC calendar | Manuscript reproduction requires Hatfield permission | Use the calendar/transcription to support Ep5; no image required for the handled-source interaction |
 | Calendar of State Papers Ireland 1592–1596 | Printed calendar | Public domain text likely; confirm edition | Use for L3 citations; do not treat calendar paraphrases as verbatim without check |
 | Heritage Ireland Rockfleet page + site photos | OPW | Text facts OK with attribution; photos need OPW/rights clearance or original photography | Commission or clear photos; conservation access currently restricted |
 | Anne Chambers, *Granuaile* / later editions | Secondary synthesis | Fair quotation limits; no wholesale lift | Board reading; cite, don't scrape narrative |
@@ -92,12 +95,16 @@ Certainty: **story** = safe for narrative surface if wording stays bounded;
 | Period maps (e.g. TNA MPF map citations in public articles) | TNA | Per-asset rights | Optional Ep1 closer look |
 
 **Rule:** no folio image, modern translation, or site photograph enters the app bundle
-until this table's row is marked cleared.
+until this table's row is marked cleared for the product's current funding and distribution
+model. A later commercial model triggers a new rights review.
 
-## Rights plan (minimum before implementation)
+## Rights plan (current prototype and release conditions)
 
-1. **v1 default: transcription-first** for petition, articles, and September draft.
-   Folio images are desirable but not blocking if rights lag.
+1. **v1 educational default:** bundle TNA's web-resolution `SP 63/170 f. 201` for the
+   name-find with adjacent repository/reference credit and a readable transcription.
+   The answer page with Burghley's marginal notes is `f. 202`; add it when an adequate
+   source file is obtained. If commercial involvement is introduced, license or remove
+   all TNA imagery before release.
 2. Clear or replace Rockfleet visuals (photo or original drawing).
 3. Record attribution strings for every L1 paraphrase that leans on a single letter.
 4. Keep afterlife art clearly non-documentary in metadata.
@@ -124,12 +131,13 @@ until this table's row is marked cleared.
 > [when she tried to move under his command]. The answers are her voice shaped for
 > English paperwork—not a private diary.
 
-### September draft / kin names (Ep4 climax)
+### Interrogatory and answers (Ep4 climax)
 
-> A draft of the Queen's letter to Bingham, dated 6 September 1593, places Gráinne in
-> London with companions and names the kin at stake: her sons Morogh O'Flaherty and
-> Tibbott Bourke, and her brother Donell O'Piper. The English hand writes her as
-> Grany Ne Maly. Finding those names is how the learner meets the record.
+> Eighteen questions place the name calendar-rendered as “Grany Ne Malley” at their
+> head. Her answers name her
+> parents, marriages and children, then describe the lands and maintenance that
+> sustained her and her people. The answers are her case shaped by the questions of
+> the English state—not a private account.
 
 ### Royal answer (Ep5)
 
@@ -156,18 +164,21 @@ Pedagogue owns Connacht forms, mutations, and any swaps from the reserve list.
 ## Episode fit (pointer)
 
 Six-episode spine in `docs/GRAINNE-STORYBOARD.md` (walkthrough-revised). Stress-test
-pass in `docs/GRAINNE-SOURCE-STRESS-TEST.md`. Lo-fi gates cleared for implementation
-planning in `docs/GRAINNE-LOFI-REVIEW.md`.
+pass in `docs/GRAINNE-SOURCE-STRESS-TEST.md`. The lo-fi gates in
+`docs/GRAINNE-LOFI-REVIEW.md` cleared the signed-off implementation now in the app.
 
 ## Board checklist
 
-- [ ] Historian: verify C01–C15 wording; decide C09 on-surface policy (**recommend: close only**)
-- [ ] Historian: confirm SP folio numbers and September draft citation path
-- [ ] Historian: approve L1 paraphrases above
-- [ ] Pedagogue: clear 20 headwords + constructions; Connacht audio script
-- [x] Rights: transcription-first default for v1; images when cleared
+- [x] Historian: verify C01–C15 wording; keep C09 in closer look only
+- [x] Research: identify `SP 63/170 f. 201` as the questions/name-find and `f. 202` as an answer page with Burghley's notes
+- [ ] Historian: verify a diplomatic transcription of the compact on-page name form; use the calendar's “Grany Ne Malley” until then
+- [x] Rights: bundle `SP 63/170 f. 201` under the free, exclusively educational product posture
+- [x] Historian: approve L1 paraphrases above
+- [x] Pedagogue: clear 20 headwords, constructions, guides and distractors
+- [ ] Native speaker + editor: listen to and clear the generated Connacht audio set
+- [x] Rights: commercialisation gate requires a TNA licence or removal of TNA imagery
 - [ ] Rights: Rockfleet visual plan (commission drawing if OPW photo blocked)
-- [ ] Editor: afterlife screen matches affirmative prototype tone (draft above)
+- [x] Editor: afterlife screen matches the signed-off affirmative prototype tone
 - [x] Product: six-episode split locked after walkthrough
 
 ## Explicit non-goals for this packet
@@ -188,5 +199,7 @@ planning in `docs/GRAINNE-LOFI-REVIEW.md`.
 
 ## Status
 
-**Board-ready draft** for first historian/pedagogue pass. Not cleared for production JSON
-or release audio.
+**Approved for the moderated prototype round.** The story copy and first-pass claim and
+language review are complete. This is not release clearance: final audio listening QA,
+remaining visual rights, accessibility/device QA and the complete-arc learner test are
+still required.

@@ -2,6 +2,63 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D20 — Phase 2 passes; enter the four-county product build (2026-07-14)
+
+**Decision:** Accept the owner's report that the moderated complete-arc Mayo round
+passes and leave Phase 2. Build the Phase 3 opening road as Mayo → Offaly → Dublin →
+Meath, using Mayo as the proven pattern and preserving the county, evidence, language,
+collection and return requirements already fixed in D12–D15.
+
+**Evidence boundary:** The pass was reported directly on 14 July. The repository does
+not yet contain a session record with participant count, observations or measured
+recall, so documents must describe the transition as **owner-reported validation**
+rather than reconstructing details that were not supplied.
+
+**Consequences:** Phase 3 engineering may proceed. Offaly, Dublin and Meath can be
+implemented as complete editorial-preview loops so their shared product behavior can
+be tested, but they do not become production-cleared history or Irish. Each remains
+behind the named historian/specialist, pedagogue, rights, native-speaker audio and
+accessibility/device gates in its source brief. Public launch remains Phase 4 and is
+not implied by completing the product build.
+
+## D19 — TNA imagery is bundled only under the free educational model (2026-07-13)
+
+**Decision:** Bundle the web-resolution image of The National Archives `SP 63/170
+f. 201` while An Turas is entirely free, exclusively educational and has no commercial
+involvement. Anticipated Irish-government funding does not change that educational,
+non-commercial product posture.
+
+**Why:** TNA permits copies of Crown copyright records to be used for education. The
+real folio materially improves the central source encounter and is more honest than a
+synthetic facsimile. The source remains credited beside every presentation.
+
+**Consequences:** Commercialisation is a rights gate, not an automatic extension of
+this decision. Before any paid access, advertising, commercial sponsorship, private
+commercial distribution or other commercial involvement, release owners must either
+obtain an appropriate TNA Image Library licence or remove all TNA document imagery from
+the product. Transcriptions may remain subject to the applicable Open Government
+Licence terms. Keep the unaltered source image and its provenance record; learner
+highlights are interface overlays rather than edits to the archival file.
+
+## D18 — SP 63/170 is Gráinne’s handled manuscript (2026-07-13)
+
+**Decision:** Bind Episode 4’s name-find and source inspection to the July 1593
+interrogatory and answers in The National Archives series `SP 63/170`: `f. 201` for
+the questions and name-find, and `f. 202` for the answers and Burghley's notes. The September
+draft in the Salisbury/Cecil Papers remains evidence for the royal response, but it is
+not the manuscript image the learner handles.
+
+**Why:** The interrogatory places Gráinne’s name at the head of eighteen questions and
+preserves answers about her family, marriages, lands, maintenance and conflict. It is
+closer to her presented case, aligns the interaction with the episode’s human stakes,
+and has a clearer institutional route for obtaining and licensing a real reproduction.
+
+**Consequences:** Story and source-guide copy must identify `SP 63/170`, July 1593,
+and the calendar rendering “Grany Ne Malley”; it must not describe the inspected
+object as the 6 September draft. Image handling follows the product-model gate recorded
+in D19. The
+September draft continues to support Episode 5’s order and incomplete relief.
+
 ## D17 — Irish Cultural Guide for the initial launch (2026-07-13)
 
 **Decision:** Use ElevenLabs **Irish Cultural Guide** (`NPWroowF4phQhaPWjXPj`) as the

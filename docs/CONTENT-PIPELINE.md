@@ -339,6 +339,22 @@ Do not combine roles in one pass — the reviewer must not have written the draf
 
 ## What comes after the pipeline
 
+### Phase 3 county-pack boundary
+
+`LaunchCountyPackEnvelope` is the install boundary for reviewed county stories. A pack
+has schema version 1 plus one `LaunchCountyStory`; installation rejects a missing or
+unstable story id, anything other than 20 unique headwords, fewer than four or more
+than six episodes, episodes without three beats, duplicate beat ids, or a missing
+evidence/review boundary. Valid JSON is written atomically under Application Support
+and replaces the matching bundled story on the next launch. The bundled story remains
+the offline fallback.
+
+The current Offaly, Dublin and Meath fallbacks in `LaunchCountyStories.swift` are
+explicit editorial previews, not board-cleared production packs. Their source briefs
+remain the claim owners. Transport, entitlement and a public download service sit
+outside the pack store; do not describe local pack validation as a released content
+service.
+
 | Stage | Owner | Reference |
 |-------|-------|-----------|
 | Pedagogue + historian sign-off | Editorial board | `STRATEGY.md` §4.5 |

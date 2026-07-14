@@ -3,6 +3,19 @@
 *Historian-ready packet · started 12 July 2026 · status: **research draft, not
 cleared**. Replaces the inherited Chapter 2 scriptorium composite (D13).*
 
+## Phase 3 prototype binding — 14 July 2026
+
+The app now contains a four-episode / twelve-beat editorial preview under
+`offaly.cross-of-the-scriptures`. It proves the shared county-story format, evidence
+inspection, recovery path, collection handoff, TEG can-do display and return
+scheduling. It does **not** change this packet's research-draft status.
+
+The prototype carries twenty provisional headwords: *abhainn, cloch, cros, rí,
+mainistir, baile, obair, lá, anseo, anois, mór, beag, féach, seas, déan, foghlaim,
+léigh, guí, bád,* and *bóthar*. A pedagogue must approve or replace the complete set,
+pronunciation guides and lifecycle before release. The cross and inscription remain
+rights-safe diagrams until the specialist reading and image route below are cleared.
+
 ## Identity
 
 | Field | Value |

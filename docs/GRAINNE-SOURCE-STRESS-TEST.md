@@ -41,7 +41,7 @@ Primary catalogue anchors for the brief:
 | Source | Role in arc | Strength |
 | --- | --- | --- |
 | Petition of Gráinne, July 1593 (TNA SP 63/170 f. 204 and related) | States maintenance plea, enemies-of-the-Queen offer, pressure framing | High for crisis voice |
-| 18 articles + answers, July 1593 (TNA SP 63/170 ff. 201–202+) | Family, marriages, maintenance by land and sea, Bingham conflict in her words | Highest for self-account |
+| 18 articles + answers, July 1593 (TNA SP 63/170 f. 201 questions; f. 202 answers) | Family, marriages, maintenance by land and sea, Bingham conflict in her words | Highest for self-account |
 | Draft Queen → Bingham, 6 Sept 1593 (Salisbury / NLI MS_UR_010761) | Names sons, brother, companions in London; orders investigation/relief | High for family-in-the-record beat |
 | Sidney on “Grany Imallye”, 1570s (state papers; later recapitulation) | Contemporary recognition as feminine sea captain with galleys and men | High for pre-1593 authority |
 | Bingham correspondence, 1593 | “Nurse to all rebellions”; enough matter “to hang them”; resistance to Queen's order | High for antagonist pressure (hostile bias) |
@@ -113,8 +113,8 @@ former answer/return episode.
 
 Open risks for the board:
 
-- rights and readable images for SP 63 folios and the Salisbury draft;
+- licensed, publication-quality images of `SP 63/170 ff. 201–202`;
 - Connacht pedagogy on the exact 20 headwords;
 - how firmly to narrate Owen's killing given conflicting accounts;
-- whether the approved first-encounter letter interaction should bind to the
-  interrogatory, the petition, the September draft, or a small authored sequence.
+- historian verification of the selected `SP 63/170` on-page name form and the
+  boundary between the interrogatory’s framing and Gráinne’s answers.
