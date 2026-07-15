@@ -1,0 +1,431 @@
+import SwiftUI
+
+struct CountyStoryExperienceView: View {
+    @EnvironmentObject private var atlas: AtlasPrototypeModel
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    let pack: CountyStoryPack
+    let onOpenEvidence: () -> Void
+    let onExit: () -> Void
+
+    @State private var showingChapterMenu = false
+    @State private var finishedMode: CountyStoryMode?
+
+    private var mode: CountyStoryMode? { atlas.mode(for: pack.id) }
+
+    var body: some View {
+        Group {
+            if let finishedMode {
+                completionView(finishedMode)
+            } else if let mode, let page = activePage(for: mode) {
+                pageExperience(page, mode: mode)
+            } else {
+                CountyModeOpeningView(pack: pack) { selected in
+                    withAnimation(reduceMotion ? nil : Motion.settle) {
+                        _ = atlas.begin(pack, mode: selected)
+                    }
+                }
+            }
+        }
+        .background(Theme.bg.ignoresSafeArea())
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if mode != nil, finishedMode == nil {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showingChapterMenu = true
+                    } label: {
+                        Label("Chapter menu", systemImage: "list.bullet")
+                    }
+                }
+            }
+        }
+        .sheet(isPresented: $showingChapterMenu) {
+            CountyChapterMenuView(pack: pack) { selectedMode in
+                _ = atlas.switchMode(in: pack, to: selectedMode)
+                finishedMode = nil
+                showingChapterMenu = false
+            } onSelectPage: { pageID in
+                atlas.setActivePage(pageID, in: pack)
+                showingChapterMenu = false
+            }
+            .environmentObject(atlas)
+        }
+        .onAppear {
+            if let mode { _ = atlas.begin(pack, mode: mode) }
+        }
+    }
+
+    private func activePage(for mode: CountyStoryMode) -> CountyStoryPage? {
+        guard let pageID = atlas.resumePageID(for: pack, mode: mode) else { return nil }
+        return pack.page(id: pageID)
+    }
+
+    private func pageExperience(_ page: CountyStoryPage, mode: CountyStoryMode) -> some View {
+        let visible = pack.pages(for: mode)
+        let index = visible.firstIndex(where: { $0.id == page.id }) ?? 0
+        let isComplete = atlas.isPageComplete(page.id, in: pack.id)
+
+        return VStack(spacing: 0) {
+            CountyStoryChrome(
+                pack: pack,
+                mode: mode,
+                chapter: pack.chapter(containing: page.id),
+                current: index + 1,
+                total: visible.count
+            )
+
+            ScrollViewReader { proxy in
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 24) {
+                        Color.clear.frame(height: 0).id("county-page-top")
+                        if page.kind == .exercise, page.exercise != nil {
+                            CountyExerciseView(page: page, alreadyComplete: isComplete) {
+                                atlas.markPageComplete(page.id, in: pack)
+                            }
+                        } else {
+                            CountyNarrativePage(
+                                page: page,
+                                hasEvidence: page.resourceIDs.contains { resourceID in
+                                    pack.resources.contains { $0.id == resourceID && ($0.kind == .evidence || $0.kind == .source) }
+                                },
+                                onOpenEvidence: onOpenEvidence
+                            )
+                        }
+                    }
+                    .padding(.horizontal, EditorialLayout.pageInset)
+                    .padding(.top, 22)
+                    .padding(.bottom, 124)
+                    .frame(maxWidth: EditorialLayout.readingWidth)
+                    .frame(maxWidth: .infinity)
+                    .id(page.id)
+                }
+                .scrollDismissesKeyboard(.interactively)
+                .onChange(of: page.id) { _, _ in
+                    Task { @MainActor in
+                        await Task.yield()
+                        proxy.scrollTo("county-page-top", anchor: .top)
+                    }
+                }
+            }
+        }
+        .safeAreaInset(edge: .bottom) {
+            CountyPageControls(
+                canGoBack: index > 0,
+                canContinue: page.kind == .narrative || isComplete,
+                continueTitle: index == visible.count - 1 ? "Complete this chapter path" : "Continue",
+                onBack: {
+                    guard index > 0 else { return }
+                    move(to: visible[index - 1])
+                },
+                onContinue: {
+                    if page.kind == .narrative { atlas.markPageComplete(page.id, in: pack) }
+                    if index == visible.count - 1 {
+                        atlas.finish(pack, mode: mode)
+                        withAnimation(reduceMotion ? nil : Motion.settle) { finishedMode = mode }
+                    } else {
+                        move(to: visible[index + 1])
+                    }
+                }
+            )
+        }
+        .transition(reduceMotion ? .opacity : .asymmetric(
+            insertion: .move(edge: .trailing).combined(with: .opacity),
+            removal: .move(edge: .leading).combined(with: .opacity)
+        ))
+    }
+
+    private func move(to page: CountyStoryPage) {
+        Haptics.tap()
+        withAnimation(reduceMotion ? nil : Motion.settle) {
+            atlas.setActivePage(page.id, in: pack)
+        }
+    }
+
+    private func completionView(_ mode: CountyStoryMode) -> some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 28) {
+                EditorialScreenHeader(
+                    context: "\(pack.presentation.countyGa) · \(mode.title) mode",
+                    title: "Rockfleet chapter proof complete",
+                    detail: mode == .story
+                        ? "You followed the complete chapter account without a language gate."
+                        : "You followed the shorter causal account and completed all twelve exercise families in their authored positions.",
+                    accent: Theme.moss
+                )
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Label("Your page progress is saved by stable id.", systemImage: "bookmark")
+                    Label("Switching modes keeps shared pages complete.", systemImage: "arrow.triangle.2.circlepath")
+                    Label("Mayo is not gold and its words are not scheduled yet.", systemImage: "circle.dashed")
+                }
+                .font(.body)
+                .foregroundStyle(Theme.ink)
+
+                Text("This is the representative Rockfleet chapter required before the rest of Mayo is authored. County completion remains locked until the complete story and 20-word lifecycle exist.")
+                    .font(.body)
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(4)
+
+                PrimaryButton(title: "Open the other mode", fullWidth: true) {
+                    let other: CountyStoryMode = mode == .story ? .learning : .story
+                    _ = atlas.switchMode(in: pack, to: other)
+                    finishedMode = nil
+                }
+                Button("Return to the atlas", action: onExit)
+                    .buttonStyle(.bordered)
+                    .tint(Theme.moss)
+                    .frame(maxWidth: .infinity, minHeight: 44)
+            }
+            .padding(.horizontal, EditorialLayout.pageInset)
+            .padding(.vertical, 30)
+            .frame(maxWidth: EditorialLayout.readingWidth)
+            .frame(maxWidth: .infinity)
+        }
+    }
+}
+
+private struct CountyModeOpeningView: View {
+    let pack: CountyStoryPack
+    let onSelect: (CountyStoryMode) -> Void
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 30) {
+                EditorialScreenHeader(
+                    context: "\(pack.presentation.countyGa) · representative chapter",
+                    title: pack.title,
+                    detail: pack.presentation.question,
+                    accent: Theme.atlasGreen
+                )
+
+                Text(pack.presentation.opening)
+                    .font(.system(.title3, design: .serif))
+                    .foregroundStyle(Theme.ink)
+                    .lineSpacing(5)
+
+                modeOption(
+                    mode: .story,
+                    title: "Read the complete chapter",
+                    detail: "Ten narrative pages, including the deeper place, kin and evidence account. No Irish answer gates progress.",
+                    symbol: "book.pages"
+                )
+                modeOption(
+                    mode: .learning,
+                    title: "Learn through the shorter chapter",
+                    detail: "The causal story remains, with twelve varied full-screen exercises and explicit recovery.",
+                    symbol: "text.book.closed"
+                )
+
+                Text("You can change mode from the chapter menu. This proof does not complete Mayo or move words into Words you carry.")
+                    .font(.footnote)
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(3)
+            }
+            .padding(.horizontal, EditorialLayout.pageInset)
+            .padding(.vertical, 28)
+            .frame(maxWidth: EditorialLayout.readingWidth)
+            .frame(maxWidth: .infinity)
+        }
+        .navigationTitle("Choose a mode")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func modeOption(mode: CountyStoryMode, title: String, detail: String, symbol: String) -> some View {
+        Button { onSelect(mode) } label: {
+            HStack(alignment: .top, spacing: 15) {
+                Image(systemName: symbol)
+                    .font(.title2)
+                    .foregroundStyle(Theme.moss)
+                    .frame(width: 44, height: 44)
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(title).font(.headline).foregroundStyle(Theme.ink)
+                    Text(detail).font(.body).foregroundStyle(Theme.inkSoft).lineSpacing(3)
+                }
+                Spacer(minLength: 4)
+                Image(systemName: "chevron.right").font(.caption.weight(.bold)).foregroundStyle(Theme.inkFaint)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, minHeight: 72, alignment: .leading)
+            .background(Theme.raised)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+        .buttonStyle(CarvePress())
+        .accessibilityLabel("\(mode.title) mode. \(title). \(detail)")
+    }
+}
+
+private struct CountyStoryChrome: View {
+    let pack: CountyStoryPack
+    let mode: CountyStoryMode
+    let chapter: CountyStoryChapter?
+    let current: Int
+    let total: Int
+
+    var body: some View {
+        VStack(spacing: 8) {
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                Text(mode.title)
+                Spacer()
+                Text(chapter?.title ?? pack.title).lineLimit(1)
+                Text("\(current)/\(total)").monospacedDigit()
+            }
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(Theme.inkSoft)
+
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    Capsule().fill(Theme.line).frame(height: 3)
+                    Capsule().fill(Theme.moss)
+                        .frame(width: geometry.size.width * CGFloat(current) / CGFloat(max(total, 1)), height: 3)
+                }
+            }
+            .frame(height: 3)
+        }
+        .padding(.horizontal, EditorialLayout.pageInset)
+        .padding(.vertical, 11)
+        .background(Theme.bg)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(mode.title) mode, \(chapter?.title ?? pack.title), page \(current) of \(total)")
+    }
+}
+
+private struct CountyNarrativePage: View {
+    let page: CountyStoryPage
+    let hasEvidence: Bool
+    let onOpenEvidence: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 22) {
+            EditorialScreenHeader(context: page.context, title: page.title, detail: nil, accent: Theme.moss)
+            Text(page.body)
+                .font(.system(.title3, design: .serif))
+                .foregroundStyle(Theme.ink)
+                .lineSpacing(6)
+                .fixedSize(horizontal: false, vertical: true)
+            if let detail = page.detail {
+                Text(detail)
+                    .font(.system(.body, design: .serif))
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(5)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            if hasEvidence {
+                Button(action: onOpenEvidence) {
+                    HStack(alignment: .top, spacing: 12) {
+                        Image(systemName: "doc.text")
+                            .frame(width: 28, height: 28)
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text("Inspect the supporting record").font(.headline)
+                            Text("Open the claim, source and evidence limit without leaving your saved page.")
+                                .font(.subheadline)
+                                .foregroundStyle(Theme.inkSoft)
+                        }
+                        Spacer(minLength: 4)
+                        Image(systemName: "chevron.right").font(.caption.weight(.bold))
+                    }
+                    .foregroundStyle(Theme.ink)
+                    .padding(16)
+                    .frame(maxWidth: .infinity, minHeight: 60, alignment: .leading)
+                    .background(Theme.raised)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
+                .buttonStyle(CarvePress())
+                .accessibilityHint("Opens the existing Mayo evidence guide")
+            }
+        }
+    }
+}
+
+private struct CountyPageControls: View {
+    let canGoBack: Bool
+    let canContinue: Bool
+    let continueTitle: String
+    let onBack: () -> Void
+    let onContinue: () -> Void
+
+    var body: some View {
+        HStack(spacing: 12) {
+            if canGoBack {
+                Button(action: onBack) {
+                    Image(systemName: "chevron.left")
+                        .font(.headline)
+                        .foregroundStyle(Theme.ink)
+                        .frame(width: 44, height: 44)
+                        .background(Theme.raised)
+                        .clipShape(RoundedRectangle(cornerRadius: 7))
+                }
+                .buttonStyle(CarvePress())
+                .accessibilityLabel("Previous page")
+            }
+            PrimaryButton(title: continueTitle, fullWidth: true, action: onContinue)
+                .disabled(!canContinue)
+                .opacity(canContinue ? 1 : 0.45)
+        }
+        .padding(.horizontal, EditorialLayout.pageInset)
+        .padding(.vertical, 12)
+        .background(Theme.bg.opacity(0.98))
+    }
+}
+
+private struct CountyChapterMenuView: View {
+    @EnvironmentObject private var atlas: AtlasPrototypeModel
+    @Environment(\.dismiss) private var dismiss
+    let pack: CountyStoryPack
+    let onSelectMode: (CountyStoryMode) -> Void
+    let onSelectPage: (String) -> Void
+
+    private var mode: CountyStoryMode { atlas.mode(for: pack.id) ?? .story }
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section("Mode") {
+                    ForEach(CountyStoryMode.allCases) { candidate in
+                        Button { onSelectMode(candidate) } label: {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text("\(candidate.title) mode").foregroundStyle(Theme.ink)
+                                    Text(modeDetail(candidate)).font(.caption).foregroundStyle(Theme.inkSoft)
+                                }
+                                Spacer()
+                                if candidate == mode { Image(systemName: "checkmark").foregroundStyle(Theme.moss) }
+                            }
+                            .frame(minHeight: 44)
+                        }
+                    }
+                }
+
+                ForEach(pack.chapters) { chapter in
+                    Section(chapter.title) {
+                        ForEach(chapter.pages.filter { $0.visibility.includes(mode) }) { page in
+                            Button { onSelectPage(page.id) } label: {
+                                HStack(alignment: .firstTextBaseline, spacing: 10) {
+                                    Image(systemName: atlas.isPageComplete(page.id, in: pack.id) ? "checkmark.circle.fill" : "circle")
+                                        .foregroundStyle(atlas.isPageComplete(page.id, in: pack.id) ? Theme.moss : Theme.inkFaint)
+                                    Text(page.title).foregroundStyle(Theme.ink)
+                                    Spacer()
+                                    if page.kind == .exercise { Image(systemName: "text.book.closed").foregroundStyle(Theme.inkFaint) }
+                                }
+                                .frame(minHeight: 44)
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Chapter menu")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Done") { dismiss() }
+                }
+            }
+        }
+    }
+
+    private func modeDetail(_ mode: CountyStoryMode) -> String {
+        let completed = atlas.completedRequiredPages(in: pack, mode: mode)
+        let total = pack.requiredPageIDs(for: mode).count
+        return "\(completed) of \(total) required pages complete"
+    }
+}

@@ -13,7 +13,9 @@ A **county story** is the learner-facing unit: one county, one named real anchor
 significant reading/encounter, and 20 useful words. A **spine chapter** is a
 behind-the-scenes sequencing group: it says which era, grammar, artifact pattern, and
 review needs a county story can draw on. It is valid for a county to receive a second
-story in a later era; completion means all shipped stories in that county are complete.
+story in a later era. Story-mode completion records that the account was read;
+Learning-mode completion owns the 20-word promise and turns the county gold. A later
+optional story never silently revokes either state.
 
 The first three existing production chapters no longer map cleanly to the approved
 editorial targets. D13 preserves their JSON, interactions, and progress as migration
@@ -28,12 +30,14 @@ device rather than production copy.
    place and its anchor demand it, never as an abstract unit. The era is chosen to
    *fit the grammar*, not decorated onto it; a generic historical stand-in cannot be
    the headline hook.
-2. **Explain, then drill.** Each chapter has 2–3 "An Nóta Gramadaí" moments that say
-   plainly what school never explained (copula vs *bí*, why mutations exist, what the
-   fada does) — written for re-learners, safe for true beginners.
-3. **Artifacts, not points.** Each county story ends with a collectible artifact in the
-   learner's *músaem* — personalised where possible (your name, your county, your
-   surname). The final artifact of the course is the Fáinne.
+2. **Meaning, then practice.** Learning mode uses full-screen exercises only after the
+   story has made their language necessary. Grammar explanation appears when it
+   enables the next action or clarifies a contrast already encountered; it never
+   becomes a fixed note quota or a Story-mode gate.
+3. **Artifacts, not points.** Each county's Learning path ends with one learner-made
+   artifact, personalised where possible (your name, your county, your surname). It
+   remains separate from historical evidence and is awarded with Learning completion,
+   not merely for reading Story mode. The final artifact of the course is the Fáinne.
 4. **Past meets present.** Every county story's closing beat connects its era to something
    the learner can see or do today (a real stone in a Mayo field, a placename on a
    road sign, a Belfast mural).
@@ -41,6 +45,10 @@ device rather than production copy.
    forms ship first; Ulster/Munster variants slot in later without rewriting.
 6. **Review wears the county's clothes.** SRS runs underneath everything, but
    returning material is framed as revisiting places and people, never as card debt.
+7. **One sequence serves two modes.** Story mode carries the complete account without
+   language assessment. Learning mode keeps the causal account and inserts varied
+   exercises in the same authored sequence. Shared pages and progress never fork into
+   contradictory content.
 
 ## Overview
 

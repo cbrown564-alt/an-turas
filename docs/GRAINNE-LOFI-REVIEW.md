@@ -1,8 +1,9 @@
 # Gráinne lo-fi product review
 
-*12 July 2026 · internal review of the storyboard, language weave, and evidence
-ladder. Paper walkthrough completed the same day; storyboard revised to six
-episodes.*
+*Historical 12 July 2026 review of the six-episode storyboard, language weave, and
+evidence ladder. D22 supersedes its depth and tester-readiness conclusion after the
+15 July feedback. Preserve the findings as evidence about that prototype; do not use
+this document to schedule the next tester round.*
 
 ## Review method
 
@@ -19,9 +20,10 @@ collection taxonomies.
 | Irish memorable because it matters | Pass | **Approved 13 July** — preserve native-speaker audio QA as a separate release gate |
 | Learner always knows why they look, act, or continue | Pass with revisions | **Pass** |
 
-Overall: **storyboard, minimum 1593 source package and 20-word weave are cleared for
-the moderated complete-arc tester round.** Production media rights remain a release
-gate, not a prototype-session blocker.
+At the time of this review, the **storyboard, minimum 1593 source package and 20-word
+weave were cleared for the compact moderated prototype round.** D22 supersedes that
+tester-readiness conclusion for the expanded product. Production media rights remain
+a release gate.
 
 ## Walkthrough findings → locks
 
@@ -55,7 +57,7 @@ binged episodes.
 | --- | --- |
 | Advance Mayo source brief + parallel Offaly/Dublin/Meath docs | Yes |
 | Implement full-story SwiftUI across Ep1–6 | **Implemented 14 July** with the signed-off story/interface copy and source-specific Episode 4 revision |
-| External tester round on complete arc | **Ready to schedule** — six-episode playable prototype and pedagogue approval now exist; production media rights remain a release gate, not a prototype-session blocker |
+| External tester round on complete arc | **Superseded by D22** — no external build until the expanded Mayo story, both modes, and all four counties pass the new internal gate |
 | Restore four-tab atlas for Mayo arc | No |
 
 ## Open product questions still carried

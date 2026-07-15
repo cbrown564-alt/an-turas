@@ -1,21 +1,20 @@
-# The Drill Surface — one spine, two surfaces
+# Scheduled review — one language item layer
 
-*Drafted 2026-07-08. How the app teaches vocabulary at volume, grammar across
-contexts, and rules by discovery — without rebuilding the extrinsic-reward
-machinery the whole product exists to reject. Companion to [SPINE.md](SPINE.md).
-All three drill projections have landed for chapter 1: `discover`, grammar-at-
-volume (generated substitution drills), and vocabulary-at-volume (the scheduled
-retrieval deck). Chapter 1 is tagged; its `caol le caol` discovery page is
-playable; its copula patterns run at volume from the hub; and its lexemes review
-through Na Focail.*
+*Drafted 2026-07-08; scope clarified after D21 on 15 July 2026. This document owns
+scheduled vocabulary and grammar review after language has been earned. Inline
+Learning-mode exercises and Story-mode filtering are owned by `PRODUCT.md`,
+`COUNTY-ATLAS.md`, and `STORY-LEARNING-REBUILD-PLAN.md`. All three scheduled-review
+projections have landed for legacy Chapter 1: `discover`, grammar-at-volume
+(generated substitution drills), and vocabulary-at-volume (the scheduled retrieval
+deck).*
 
 ## The principle
 
-Story mode and drill mode are **not two content sets**. They are two surfaces on
-one spine. The spine is a shared *item layer*: a **lexicon** of vocabulary atoms
-and a **bank** of grammar patterns. Story pages *earn* items; the drill surface
-only ever *schedules* items already earned. Neither surface owns content the
-other cannot see.
+D21 adds Story and Learning modes as two projections of one county page sequence.
+Scheduled review is a later projection of the same language item layer: a **lexicon**
+of vocabulary atoms and a **bank** of grammar patterns. Story context earns items;
+Learning-mode exercises complete their authored lifecycle; scheduled review may only
+schedule items whose learning path is complete. No surface owns a disconnected corpus.
 
 This is what keeps drill honest. The anti-Duolingo thesis fails the moment drill
 becomes a context-free grind of decontextualised words. Here that is
@@ -113,7 +112,9 @@ ids. That single rule is the whole guarantee.
 
 ## Optional-but-invited
 
-Decided 2026-07-08: drills never gate the narrative. The invitation rides the
+Decided 2026-07-08 and preserved by D21: scheduled reviews never gate Story mode or
+county advancement. Required inline exercises do gate Learning-mode completion. The
+later review invitation rides the
 session-completion `hook` already authored on each session ("3 phrases from the
 yard are ready to revisit" → opens the deck) — an offer framed as returning to
 people, never a gate, never a nag (SPINE rule 6). The museum/map becomes the

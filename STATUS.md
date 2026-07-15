@@ -1,55 +1,45 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-14.*
+and visual narrative. English → Irish only. Updated 2026-07-15.*
 
 ## Where we are
 
-**Phase 3 — four-county product build.** The owner reports that the moderated complete
-Mayo arc passes, so D20 closes Phase 2 and authorises the build. The repository does
-not contain the underlying session record, participant count or recall observations;
-the phase transition is therefore recorded as owner-reported validation. The learner
-journeys through all **32 counties**, each rooted in a named person, myth, monument,
-community, or primary record, and earns **20 useful words per completed county**. The
-map's county colours remain a product promise: current green, completed gold,
-still-ahead white.
+**Phase 3 — Story and Learning rebuild.** The four-county road is implemented and was
+simulator-verified on 14 July, but it is not ready for another external tester round.
+Feedback reported on 15 July found Mayo worthwhile but too short and found Offaly,
+Dublin, and Meath too light to count as substantial stories. The learning path had
+also regressed toward repetitive listen-and-pick exercises. Repository inspection
+supports that diagnosis: each new county is a twelve-beat editorial preview with four
+required interactions for 20 provisional words, and completion schedules words whose
+full learning lifecycle was never authored.
 
-**The existing pipeline ran twice more and the app went multi-chapter.** Chapters 2
-(*Oileán na Naomh*) and 3 (*Na Lochlannaigh*) are both authored through the three-stage
-pipeline and wired into the app — each with its own artifact register (illuminated
-initial; hack-silver arm-ring) and cross-chapter progress/visits persistence. Both
-passed adversarial review as engineering and pipeline proofs. D13 now supersedes their
-editorial centres before human sign-off, release audio, or final illustration.
+**Current implemented evidence:** the island route, dossiers, evidence views,
+collection, learner-made objects, review scheduling, TEG summary, An Féilire, offline
+pack installation, and durable progress work across four counties. The complete 14
+July iPhone 17 Pro simulator suite passed 28 unit and 14 UI tests, and 22 Python
+content/tooling tests passed. Those checks verify the working implementation; they do
+not validate narrative depth, exercise quality, audio, rights, physical-device
+behavior, or learning outcomes after the 15 July product reset.
 
-**The immediate transformation is now explicit.** The next product is a living
-historical atlas, not the inherited lesson path placed on a county map. Mayo opens
-with Gráinne's 1593 petition; Offaly and Dublin centre real evidence from c. 900 and
-c. 997; Breastagh becomes a labelled field note. The approved first design proof is a
-restrained island → Rockfleet → Gráinne → 1593 letter → first Irish → island loop.
-It validates the foundation, not the full story or broader atlas architecture. The
-first product grilling has now fixed the county, episode, learner-action, 20-word,
-evidence, collection, artifact, grammar, and post-county contracts.
+**Current product decision:** D21 defines one county page sequence filtered into Story
+and Learning modes. Story mode carries the complete account, opens the next county,
+and does not claim the 20 words. Learning mode keeps a shorter causal account, inserts
+varied full-screen exercises, and is the only path that turns the county gold and
+schedules its words. Speaking remains ungraded record-and-compare.
 
-**13 July Mayo gate:** Gráinne passes both flagship tests without a side story.
-Historian and Irish-language pedagogue approval of the claims and 20-word weave has
-been reported, and the locked six-episode spine is now playable as 18 resumable beats.
-The moderated complete-arc tester round was subsequently reported passed on 14 July
-(D20).
+**Current target:** D22 expands Mayo to eight to ten chapters and 60–90 minutes in
+Story mode. One complete Rockfleet chapter must prove the new page model, both mode
+projections, full-screen exercise system, recovery, accessibility, and progress
+migration before the pattern spreads. Offaly, Dublin, and Meath then require
+substantial reauthoring, not clearance of their present preview copy.
 
-**14 July copy gate:** the full story and interface rewrite is signed off and now
-implemented across the dossier, person page, all 18 beats and the collection. Episode
-5 now asks the learner to distinguish an ordered relief from an unsupported claim that
-the conflict ended; completed Mayo correctly carries all 20 approved headwords.
-
-**14 July Phase 3 implementation:** the opening road now works as a four-county product
-loop. Mayo remains the cleared reference; Offaly, Dublin and Meath each have a
-four-episode / twelve-beat editorial preview, exactly 20 provisional headwords, a
-source-limit encounter, recovery, a learner-made artifact and durable progress. The
-island, story tab, evidence collection, 80-word collection, TEG can-do summary,
-stability/difficulty return scheduler, An Féilire and verified offline pack-install
-boundary now operate together. The three new stories are implemented and testable,
-not production-cleared: their named specialist, pedagogue, rights, audio and final
-device/accessibility gates remain real Phase 3 dependencies.
+**Tester gate:** no external learner build until all four counties pass the narrative,
+20-word lifecycle, exercise-distribution, specialist review, native-speaker audio,
+rights, accessibility, physical-device, migration, offline, and automated checks in
+`docs/STORY-LEARNING-REBUILD-PLAN.md`. The prior Mayo test remains owner-reported
+evidence with no session record in the repository; it does not validate the expanded
+story or new Learning mode.
 
 ## Work completed
 
@@ -102,28 +92,36 @@ device/accessibility gates remain real Phase 3 dependencies.
 | 2026-07-13 | **Editorial composition system documented and rolled across the app.** `PRODUCT.md` and `DESIGN.md` now make image-led and text-led surfaces equal expressions of one system: one anchor, live accessible copy, intentional negative space, accessibility recomposition, story-led cinematic pressure, and containers that earn their boundary. Shared semantic SwiftUI headers now carry that grammar through the living atlas, personal atlas, legacy journey/map, review, practice, lesson, and artifact surfaces. The Mayo dossier is a full-width landscape hero; the obsolete portrait-sticker treatment is gone from active surfaces. Chapter 1 scene art is full-width and four text-bearing generated assets have clean, text-free v2 replacements. Normal and accessibility-size simulator compositions were inspected on iPhone 17 Pro. | `PRODUCT.md`, `DESIGN.md`, `.impeccable/design.json`, `ios/AnTuras/Theme.swift`, `ios/AnTuras/MayoStoryPrototype.swift`, `ios/AnTuras/SessionView.swift`, `ios/AnTuras/Resources/art/*-v2.png` |
 | 2026-07-14 | **Signed-off Gráinne copy implemented.** The warmer, concrete replacement voice now carries all 18 beats; route-turn chart labels, authored episode exits, dossier promise, person-page separation, listening-first prompts and `Say it like` labels match the review. Episode 4 handles the July `SP 63/170` interrogatory under D18/D19, Episode 5 now tests the unsupported conclusion instead of revealing it, and the collection reports all 20 approved Mayo headwords. XcodeGen regeneration and the complete iPhone 17 Pro simulator suite pass: 23 unit tests and 10 UI tests, including XXXL Dynamic Type, evidence reachability, audio-first recall, completed-beat replay, source identity and the new Episode 5 recovery path. The affected Episode 5 screen was also directly inspected in the simulator. | `docs/GRAINNE-COPY-REVIEW.md`, `ios/AnTuras/GrainneFullStory.swift`, `ios/AnTuras/MayoStoryPrototype.swift`, `ios/AnTuras/AtlasCollectionViews.swift`, `ios/AnTurasTests/AtlasProgressTests.swift`, `ios/AnTurasUITests/AtlasFlowUITests.swift` |
 | 2026-07-14 | **Phase 3 four-county working product implemented and simulator-verified.** D20 records the owner-reported Phase 2 pass. A reusable county-story engine now carries Offaly's Cross of the Scriptures, Sihtric's Dublin penny and Trim's grant/castle as visibly provisional four-episode loops; map progression, evidence and made-object shelves, 80-word accumulation, TEG can-do context, stability/difficulty review scheduling, daily calendar ritual and atomic offline pack validation share one durable state model. After XcodeGen regeneration, the complete iPhone 17 Pro simulator suite passes **28 unit and 14 UI tests**; all **22 Python content/tooling tests** pass. UI coverage includes the Offaly dossier at XXXL Dynamic Type and the shared recovery interaction; direct simulator inspection covers the Offaly dossier/listen beat, Dublin in dark appearance and Meath evidence in light appearance. | `ios/AnTuras/LaunchCountyStories.swift`, `AtlasCalendarView.swift`, `AtlasPrototype.swift`, `IslandAtlasView.swift`, `AtlasCollectionViews.swift`, `AppState.swift`, `ios/AnTurasTests/AtlasProgressTests.swift`, `ios/AnTurasUITests/AtlasFlowUITests.swift`, `content/{offaly,dublin,meath}/` |
+| 2026-07-15 | **Story and Learning rebuild confirmed.** New feedback rejects the four-county previews as the next tester build. D21–D22 lock one page sequence with two modes, separate story-read and language-complete progress, an eight-to-ten chapter / 60–90 minute Mayo target, varied full-screen exercises, and a four-county internal gate before external testing. This is a confirmed plan and product decision, not an implemented app change. | `docs/STORY-LEARNING-REBUILD-PLAN.md`, `docs/DECISIONS.md` D21–D22, canonical product/status documents |
 
 ## Immediate next steps (Phase 3)
 
-1. **Clear Offaly for production** — medieval historian/art-historian inscription and
-   panel reading, pedagogue approval of the 20-word lifecycle, image rights and native-
-   speaker audio QA; then replace the installed editorial-preview pack.
-2. **Clear Dublin for production** — numismatist selects the exact penny and legend;
-   historian and pedagogue approve the story/weave; clear imagery and native-speaker
-   audio; then replace the preview pack.
-3. **Clear Meath for production** — lock the grant-copy citation and castle phasing,
-   run the conquest-sensitivity review, approve the possession weave, rights and audio;
-   then replace the preview pack.
-4. **Complete release-device QA** — full VoiceOver reading order, Increase Contrast,
-   Reduce Motion, light/dark and physical-iPhone checks across all four county loops.
-5. **Preserve the Phase 2 test record** — add participant count and moderated-session
+1. **Replace the fixed county-pack model** — stable page ids, page-level mode
+   visibility, separate completion requirements, content-owned copy, and lossless
+   migration from current beat indices.
+2. **Build the shared full-screen exercise system** — standard task, verdict, hint,
+   retry, completion, fada, audio, ungraded speaking, accessibility, and offline
+   behavior across the existing and missing mechanic families.
+3. **Prove Rockfleet end to end** — one complete, materially richer chapter in both
+   modes with at least five mechanics, later language reuse, recovery, exact resume,
+   simulator inspection, and physical-device QA.
+4. **Rebuild Mayo** — approve the broader storyboard, author eight to ten chapters,
+   complete the 20-word lifecycle and 30–45 exercise path, then close history,
+   pedagogy, audio, rights, accessibility, and engineering gates.
+5. **Reauthor Offaly, Dublin, and Meath** — progress their specialist research in
+   parallel, but do not promote or integrate another preview-shaped story before the
+   Mayo pattern passes.
+6. **Run the four-county internal gate** — automated validators, full tests, timed
+   walkthroughs, physical-device and accessibility checks. Schedule external testing
+   only after every item passes.
+7. **Preserve the Phase 2 test record** — add participant count and moderated-session
    notes if they exist; D20 deliberately does not invent them.
-6. **Personal atlas external release gates** — run the 12–18 person hard-case protocol;
-   establish the specialist-reviewed showcase, licensed surname source and community/
-   voice agreements before public promotion.
 
 ### Lower priority (unchanged)
 
+8. **Personal atlas external release gates** — run the 12–18 person hard-case protocol;
+   establish the specialist-reviewed showcase, licensed surname source and community/
+   voice agreements before public promotion.
 9. **Generate Irish Cultural Guide clips only for cleared text** — do not QA superseded
    D13 copy; native-speaker review remains required for Irish teaching audio. Treat
    Trinity/ABAIR partnership work as a post-launch upgrade.
@@ -140,11 +138,11 @@ device/accessibility gates remain real Phase 3 dependencies.
 - **Phase 2 — Story contract + atlas proof (complete by owner report):** Gráinne claims,
   weave and copy are approved; the six-episode prototype was delivered and its complete
   moderated arc was reported passed on 14 July (D20). Session details are not in-repo.
-- **Phase 3 — Product build (now):** the four-county atlas, dossiers, documentary
-  registers, evidence collection, personal artifacts, review scheduling, TEG-aligned
-  progress, An Féilire and offline pack boundary are implemented as a working product.
-  Mayo is cleared at the recorded level; Offaly/Dublin/Meath remain editorial previews
-  until the named content, rights, audio and release-device gates above pass.
+- **Phase 3 — Story and Learning rebuild (now):** preserve the implemented atlas,
+  evidence, collection, review, calendar, offline, and progress foundations while
+  replacing the preview-shaped county content and repetitive learning path. Mayo proves
+  one authored sequence with two modes before Offaly, Dublin, and Meath are rebuilt.
+  The phase exits only when all four counties pass the internal tester-readiness gate.
 - **Phase 4 — Launch:** premium subscription to diaspora + re-learners; calendar-aligned
   moments (Seachtain na Gaeilge, St Patrick's Day); grant funding layered on top.
 - **Phase 5 — NI expansion:** gated on Ulster dialect audio (D2) and community
@@ -170,6 +168,7 @@ device/accessibility gates remain real Phase 3 dependencies.
 | U1 Persona | D1 — re-learners + diaspora; NI north star |
 | U2 Dialect | D2 — Connacht first |
 | U3 Retention loop | D5/D6 — narrative pull (tá tú ar ais, journey map) + An Féilire rituals |
+| U4 Story and language relationship | D21 — one page sequence, Story mode without language gates, Learning mode with the shorter causal story and required exercises |
 | U5 Audio strategy | D17 — Irish Cultural Guide for all initial-launch audio, all-generated with native-speaker QA; D7 is the historical Chapter 1 baseline |
 | U6 Business model | D10 — premium + grants on top; Ch 1–4 launch; bespoke |
 | U8 Pronunciation | D11 — listening-first permanent; echo ungraded |
@@ -181,6 +180,9 @@ device/accessibility gates remain real Phase 3 dependencies.
 - Content accuracy: nothing ships publicly without native-speaker review.
 - Bespoke content cost per chapter remains the business-model risk; four chapters at
   launch is depth-over-breadth by design (D10).
+- Fixed schemas can create the appearance of a complete county while rewarding short
+  outlines and repeated mechanics. D22 requires representative-slice proof and
+  outcome-based validators before the pattern spreads again.
 - The new interface could become an attractive historical browser that weakens the
   language journey. Every prototype must prove that real evidence makes the Irish
   more memorable and usable, not merely that the atlas is enjoyable to browse.

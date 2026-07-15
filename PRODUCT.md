@@ -16,11 +16,11 @@ Learners arrive with mixed confidence and often with memories of Irish as diffic
 
 ## Product Purpose
 
-An Turas teaches Irish through a county-by-county journey across all 32 counties, treating language, culture, geography, and history as inseparable. Every county is anchored in a named real person, community, object, place, event, or primary record. The learner encounters a significant story, earns 20 useful Irish words through it, practises the language the story has made meaningful, and carries both words and evidence forward.
+An Turas teaches Irish through a county-by-county journey across all 32 counties, treating language, culture, geography, and history as inseparable. Every county is anchored in a named real person, community, object, place, event, or primary record. The learner may read the complete account in Story mode or learn through a shorter version of the same account in Learning mode. Completing the learning path earns 20 useful Irish words through the story, practises the language the story has made meaningful, and carries both words and evidence forward.
 
 The product exists to solve two linked problems: Irish is genuinely difficult for anglophones, and the strongest motivation to learn it is identity rather than utility. An Turas explains the hard parts instead of hiding them, and replaces generic streaks, leagues, and task debt with narrative pull, visible progress around the island, real-calendar rituals, and the pleasure of returning to meaningful places.
 
-Success means learners return without manipulative gamification, retain and recombine useful Irish, understand why the language works as it does, and feel a growing, evidence-grounded connection to Ireland. The near-term product proof is the island → Mayo dossier → Gráinne Ní Mháille → evidence → first Irish → collection loop. The launch promise is four production-quality county stories; the durable promise is all 32 counties.
+Success means learners return without manipulative gamification, retain and recombine useful Irish, understand why the language works as it does, and feel a growing, evidence-grounded connection to Ireland. Story-first visitors should also be able to follow substantial county accounts without being forced through language assessment. The near-term product proof is the island → Mayo dossier → Gráinne Ní Mháille → evidence → first Irish → collection loop in both modes. The launch promise is four production-quality county stories; the durable promise is all 32 counties.
 
 ## Positioning
 
@@ -37,6 +37,17 @@ The core encounter moves through a consistent editorial sequence:
 3. **Attention:** the learner listens, examines, traces, reads, names, or responds.
 4. **Evidence:** the surviving source and the limits of the account remain inspectable.
 5. **Carry:** language, evidence, place, and learner-made work return to the atlas and collection.
+
+### Story and Learning modes
+
+Each county is authored as one ordered sequence of stable pages, then filtered into two experiences. These are not separate stories and must never drift into contradictory copy.
+
+- **Story mode** includes the complete narrative, maps, evidence, and story-essential interaction. Language exercises are absent and no correct Irish answer gates progress. Mayo targets eight to ten chapters and 60–90 minutes in this mode; other launch counties normally contain at least six chapters and 45 minutes of story.
+- **Learning mode** keeps every chapter's setup, stakes, turn, consequence, and evidence limit, omits optional narrative depth, and inserts all required full-screen exercises where the story has made their language meaningful.
+
+The learner chooses a mode at the county opening and may change it without restarting. Shared pages preserve one completion record. Finishing Story mode records that the account was read and opens the next county. Only completing Learning mode turns the county gold, moves its 20 words into **Words you carry**, and makes them eligible for later review.
+
+Exercises are calm, full-screen tasks interspersed with story pages. They use listening, sentence building, fill-in-the-blank, matching, typing, dialogue, comprehension, sequencing, discovery, delayed recall, and ungraded record-and-compare speaking. The product borrows the interaction quality and variety of the strongest language apps without adopting their points, hearts, streaks, leagues, confetti, or reward economies.
 
 Image-led and text-led screens are equal expressions of this system. An image is used only when it contributes historical, geographical, emotional, or conceptual meaning. When imagery is present it is treated as a field for composition—not as a sticker, thumbnail, or card illustration—and all interface copy remains live, accessible app text. When imagery is absent, scale, measure, rhythm, tonal contrast, and a clear editorial hierarchy must provide the same sense of intention; placeholder decoration is not a substitute.
 
@@ -64,15 +75,18 @@ Its emotional movement is from uncertainty to recognition. It should evoke curio
 2. **Evidence before reconstruction, without making evidence taxonomy the story.** Establish the question, secure account, surviving evidence, inference, and uncertainty before offering an explicitly bounded imaginative bridge. In the main reading flow, let the account read naturally: use a quiet, familiar symbol to signal that a claim can be inspected, and reveal the full status, sources, competing readings, and editorial history on request. Persistent labels are reserved for genuinely disputed, traditional, reconstructed, or safety-critical material.
 3. **The learner remains themselves.** Participation means examining, listening, tracing, reading, naming, and responding—not being cast into invented history.
 4. **Progress should feel carried.** Counties, words, evidence, and learner-made artifacts accumulate into a coherent personal journey, never a pile of points or chores.
-5. **Depth earns trust.** One language pair, expert review, dialect honesty, source transparency, and careful treatment of contested history are product features, not production footnotes.
+5. **Depth earns trust.** One language pair, substantial stories, expert review, dialect honesty, source transparency, and careful treatment of contested history are product features, not production footnotes. A short outline with exercises does not satisfy the county promise.
 6. **One surface, one anchor.** Each screen gives visual priority to one person, place, object, map, phrase, document, or typographic idea. Supporting material establishes sequence rather than competing for attention.
 7. **Composition carries meaning.** Images, text, and open space are authored together. Generated art contains no names, captions, labels, or interface copy; the app owns that content and places it responsively.
 8. **Containers must earn their boundary.** Cards are for discrete interaction, evidence, or a genuinely separate object. Narrative and explanatory material should normally read as editorial sections, lists, rules, and tonal fields.
+9. **Practice must change what the learner can do.** Every target word is heard in meaningful context, retrieved, used in a phrase or sentence, and reused later. Recognition alone is not a complete learning path.
 
 ## Accessibility & Inclusion
 
 The app must support Dynamic Type, VoiceOver, sufficient contrast in light and dark appearances, 44 × 44 pt minimum touch targets, and safe-area-aware layouts. Reading and learning flows must remain usable at accessibility text sizes without clipping, truncation, or loss of meaning.
 
 Reduce Motion must replace large movement and staggered choreography with immediate state changes or gentle crossfades. Color may reinforce county and progress state but must never carry that meaning alone. Irish text, pronunciation controls, translations, evidence marks, and provenance details need clear accessible names and reading order. A subtle visual mark may replace a visible certainty label only when its accessible name states the status and its control opens the complete explanation.
+
+Every exercise mechanic must remain usable with VoiceOver and at accessibility text sizes. Dragging cannot be the only way to answer. Audio tasks require a visible text or replay path, and microphone denial cannot trap progress. Speaking exercises remain ungraded; recordings stay on-device and are not retained by default.
 
 The product must welcome learners across community and political identities. Contested history requires multiple voices, primary-source discipline, and warmth without triumphalism; the Irish language belongs to nobody's flag.

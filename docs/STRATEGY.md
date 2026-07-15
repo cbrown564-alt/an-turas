@@ -49,7 +49,7 @@ return without streaks. Validated pull: *tá tú ar ais* greeting and journey ma
 An Féilire chosen as the gentle ritual layer for later phases. See D5–D6 in
 `DECISIONS.md`.
 
-### Phase 2 — The content pipeline ← *now*
+### Phase 2 — The content pipeline ✓
 The uncomfortable truth: this is a **content company with an app attached**. The
 platform work (SwiftUI app, SRS engine, audio playback, progress model) is
 well-understood engineering. The differentiator is a repeatable pipeline:
@@ -75,8 +75,24 @@ well-understood engineering. The differentiator is a repeatable pipeline:
   full packs, prototype the living-historical-atlas loop described in
   `EXPANSIVE-INTERFACE-VISION.md`.
 
-### Phase 3 — Build out and launch
+**Status (2026-07-14):** Complete by the boundary recorded in D20. The county atlas,
+Mayo proof, shared product foundations, and three editorial-preview county loops were
+implemented. D22 records that the previews do not meet the narrative and learning bar
+for another tester build; that is Phase 3 work, not a reopening of the Phase 2 proof.
+
+### Phase 3 — Story and Learning rebuild ← *now*
 - iOS app: SwiftUI, offline-first, content shipped as data + downloadable chapter packs.
+- **One sequence, two modes (D21):** Story mode carries the complete account without
+  language gates. Learning mode keeps a shorter causal account and inserts all
+  full-screen exercises. Story completion advances the route; only Learning
+  completion turns the county gold and schedules its 20 words.
+- **Representative rebuild (D22):** prove one complete Rockfleet chapter, then expand
+  Mayo to eight to ten chapters and 60–90 minutes in Story mode. Reauthor Offaly,
+  Dublin, and Meath only after the Mayo pattern passes.
+- **Learning-quality floor:** every word needs dramatic context, retrieval,
+  phrase/sentence production, and later reuse. Each county must pass mechanic-variety,
+  recognition, production, recovery, audio, accessibility, and specialist-review
+  gates in `STORY-LEARNING-REBUILD-PLAN.md`.
 - SRS underneath everything (FSRS — same algorithm family blas and modern Anki use);
   the innovation is not the scheduler, it's the *clothing*: reviews framed as
   returning to places/characters, not as flashcard debt.
@@ -94,6 +110,8 @@ well-understood engineering. The differentiator is a repeatable pipeline:
   of revenue.
 - Launch moments that align with the real Irish calendar: Seachtain na Gaeilge
   (March), Samhain, St Patrick's Day diaspora spike.
+- Do not schedule another external learner round until all four launch counties pass
+  the internal tester-readiness gate.
 
 ## 3. Major unknowns — status
 
@@ -126,13 +144,12 @@ no pronunciation scoring in the roadmap.
 journey; a named real anchor and 20-word promise define each stop. The historical
 spine remains the behind-the-scenes learning sequence, not a competing map.
 
-### Still open
+**U4. Does history gate language, or run alongside it? → D21.** One authored sequence
+supports two modes. Story mode has no language gate. Learning mode keeps enough story
+for meaning and gates only its own learning completion. Later review remains
+downstream of earned language.
 
-**U4. Does history gate language, or run alongside it?** If narrative unlocks are
-the reward for language work, story becomes the carrot (motivating but risks
-resentment). If they're parallel tracks, drilling loses its engine. Probably:
-language effort unlocks story, but review is always dressed as revisiting, never as
-debt. Phase 1 mechanics suggest this holds; no explicit decision logged yet.
+### Still open
 
 **U7. Handling contested history.** A history-of-Ireland app cannot avoid
 plantation, famine, partition, and the Troubles — and our growth market is Northern
@@ -149,7 +166,7 @@ production.
 
 **U3. What is the actual retention loop?** ✓ See D5/D6.
 
-**U4. Does history gate language, or run alongside it?** (Still open — see above.)
+**U4. Does history gate language, or run alongside it?** ✓ See D21.
 
 **U5. Audio: humans, synthesis, or hybrid?** ✓ See D17 for the initial-launch voice;
 D7 records the historical Chapter 1 baseline.
@@ -258,11 +275,16 @@ now, not in two years.
 2. ~~Draft the historical spine and county research slate~~ — `SPINE.md`,
    `COUNTY-STORY-SLATE.md` (both need historian/pedagogue review).
 3. ~~Build Phase 1 vertical slice; playtest~~ — D5 exit.
-4. **Phase 2 (now):** migrate the content brief, review CMS, and map cards to the
-   D12 county-story contract; preserve progress for current chapter-backed content.
-5. Stand up the editorial board; turn the strongest county briefs into reviewed source
-   packets, starting with the launch counties and the next production stop.
-6. Open grant-funding research (strings before accepting — D10).
-7. Write contested-history editorial principles before any sensitive county packet
+4. **Phase 3 (now):** replace the fixed county-pack shape with stable pages, two mode
+   projections, separate completion, and lossless progress migration.
+5. Build the full-screen exercise system and prove one complete Rockfleet chapter in
+   both modes before spreading the pattern.
+6. Rebuild Mayo to the D22 depth and learning-quality bar; then reauthor Offaly,
+   Dublin, and Meath against their specialist source packets.
+7. Run the four-county internal tester gate before scheduling external learners.
+8. Stand up the editorial board and close the named historian, pedagogue, rights,
+   audio, and sensitivity gates for each launch county.
+9. Open grant-funding research (strings before accepting — D10).
+10. Write contested-history editorial principles before any sensitive county packet
    (and before Chapter 10 material).
-8. ABAIR enquiry optional — quality ceiling / future upgrade, not Phase 2 blocker (D17).
+11. ABAIR enquiry optional — quality ceiling / future upgrade, not Phase 3 blocker (D17).

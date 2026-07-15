@@ -1,8 +1,9 @@
 # Gráinne / Mayo product contract
 
-*Decisions from the 11 July 2026 product grilling. This sharpens D12–D15 and is the
-input to source research and low-fidelity storyboarding; it is not yet a finding that
-Gráinne can carry Mayo alone.*
+*Historical contract from the 11 July 2026 product grilling. D21–D22 supersede its
+single-path completion, four-to-six episode range, and tester-readiness assumptions.
+Its dramatic spine, flagship test, evidence rules, and 20-word discipline remain
+inputs to the eight-to-ten chapter rebuild in `STORY-LEARNING-REBUILD-PLAN.md`.*
 
 ## County journey
 

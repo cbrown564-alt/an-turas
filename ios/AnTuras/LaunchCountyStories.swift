@@ -334,7 +334,7 @@ enum LaunchCountyPackError: LocalizedError {
         case .unsupportedSchema: return "This county pack uses an unsupported schema."
         case .invalidStoryID: return "The county pack has no stable story id."
         case .invalidWordContract: return "A county pack must contain exactly twenty unique Irish headwords."
-        case .invalidEpisodeContract: return "A county pack must contain four to six episodes with three beats apiece."
+        case .invalidEpisodeContract: return "A legacy county pack needs non-empty chapters and unique page ids."
         case .missingEvidenceContract: return "The county pack is missing its evidence or review boundary."
         }
     }
@@ -356,8 +356,8 @@ enum LaunchCountyPackStore {
               Set(story.words.map(\.ga)).count == 20 else {
             throw LaunchCountyPackError.invalidWordContract
         }
-        guard (4...6).contains(story.episodes.count),
-              story.episodes.allSatisfy({ $0.beats.count == 3 }),
+        guard !story.episodes.isEmpty,
+              story.episodes.allSatisfy({ !$0.beats.isEmpty }),
               Set(story.beats.map(\.id)).count == story.beats.count else {
             throw LaunchCountyPackError.invalidEpisodeContract
         }

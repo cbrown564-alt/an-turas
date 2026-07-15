@@ -216,4 +216,104 @@ final class AtlasFlowUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["No missed days"].exists)
         XCTAssertTrue(app.staticTexts["The calendar opens again whenever you do."].exists)
     }
+
+    func testRockfleetModeOpeningSurvivesLargestAccessibilityText() throws {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--county-pack", "mayo.grainne-1593",
+            "--mode-opening",
+            "-UIPreferredContentSizeCategoryName",
+            "UICTContentSizeCategoryAccessibilityExtraExtraExtraLarge",
+        ]
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["Rockfleet: harbour, household, stronghold"].waitForExistence(timeout: 5))
+        let story = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Story mode'")).firstMatch
+        XCTAssertTrue(story.waitForExistence(timeout: 3))
+        for _ in 0..<4 where !story.isHittable { app.swipeUp() }
+        XCTAssertTrue(story.isHittable)
+    }
+
+    func testRockfleetStoryModeHasNoLanguageGate() throws {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--county-pack", "mayo.grainne-1593",
+            "--mode", "story",
+            "--page", "mayo.rockfleet.arrival",
+        ]
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["A castle where the road is water"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["Continue"].isEnabled)
+        XCTAssertFalse(app.buttons["Hear the Irish"].exists)
+        XCTAssertTrue(app.staticTexts["Story"].exists)
+    }
+
+    func testRockfleetWrongAnswerRequiresExplicitRecovery() throws {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--county-pack", "mayo.grainne-1593",
+            "--mode", "learning",
+            "--page", "mayo.rockfleet.listen-caislean",
+        ]
+        app.launch()
+
+        let hear = app.buttons["Hear the Irish"]
+        XCTAssertTrue(hear.waitForExistence(timeout: 5))
+        hear.tap()
+        for _ in 0..<3 where !app.buttons["ship"].exists { app.swipeUp() }
+        app.buttons["ship"].tap()
+
+        XCTAssertTrue(app.staticTexts["Try again"].waitForExistence(timeout: 2))
+        XCTAssertFalse(app.buttons["Continue"].isEnabled)
+        for _ in 0..<3 where !app.buttons["Retry"].isHittable { app.swipeUp() }
+        app.buttons["Retry"].tap()
+        for _ in 0..<3 where !app.buttons["Hear the Irish"].isHittable { app.swipeDown() }
+        app.buttons["Hear the Irish"].tap()
+        for _ in 0..<3 where !app.buttons["castle"].exists { app.swipeUp() }
+        app.buttons["castle"].tap()
+
+        XCTAssertTrue(app.staticTexts["Corrected"].waitForExistence(timeout: 2))
+        XCTAssertFalse(app.buttons["Continue"].isEnabled)
+        for _ in 0..<3 where !app.buttons["Keep this answer"].isHittable { app.swipeUp() }
+        app.buttons["Keep this answer"].tap()
+        XCTAssertTrue(app.buttons["Continue"].isEnabled)
+    }
+
+    func testRockfleetDeniedMicrophoneNeverTrapsProgress() throws {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--county-pack", "mayo.grainne-1593",
+            "--mode", "learning",
+            "--page", "mayo.rockfleet.speaking",
+            "--microphone-denied",
+        ]
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["Put the household in your own voice"].waitForExistence(timeout: 5))
+        for _ in 0..<4 where !app.staticTexts["Microphone access is off. You can keep listening and continue without recording."].exists { app.swipeUp() }
+        XCTAssertTrue(app.staticTexts["Microphone access is off. You can keep listening and continue without recording."].exists)
+        let continueWithout = app.buttons["Continue without recording"]
+        XCTAssertTrue(continueWithout.exists)
+        for _ in 0..<3 where !continueWithout.isHittable { app.swipeUp() }
+        XCTAssertTrue(continueWithout.isEnabled)
+        continueWithout.tap()
+        XCTAssertTrue(app.buttons["Continue"].isEnabled)
+    }
+
+    func testExerciseGalleryCoversTwelveFamiliesAndFailureStates() throws {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--exercise-gallery",
+            "-UIPreferredContentSizeCategoryName",
+            "UICTContentSizeCategoryAccessibilityExtraExtraExtraLarge",
+        ]
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["One feedback model, twelve mechanics"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Listen and identify"].exists)
+        for _ in 0..<10 where !app.staticTexts["Failure and edge states"].exists { app.swipeUp() }
+        XCTAssertTrue(app.staticTexts["Failure and edge states"].exists)
+        XCTAssertTrue(app.staticTexts["Long copy accessibility size state"].exists)
+    }
 }

@@ -1,14 +1,19 @@
 # Gráinne language weave & evidence ladder
 
-*12–13 July 2026 · Connacht-first 20-word lifecycle and three-level evidence
-contract. Historian and Irish-language pedagogue approval reported 13 July. Audio
-still requires native-speaker QA before public release.*
+*12–13 July 2026 · Connacht-first 20-word plan and three-level evidence contract for
+the six-episode prototype. Historian and Irish-language pedagogue approval was
+reported 13 July. D22 retains the approved headword set but requires a new lifecycle
+pass across the expanded chapters: meaningful listening context, later retrieval,
+phrase/sentence production, and delayed reuse must be recorded separately. Audio still
+requires native-speaker QA before public release.*
 
 ## Promise
 
 Exactly **20 lexical headwords**. Constructions (*Is mise…*, *as … mé*) are vehicles.
 Inflections and emphatic variants do not inflate the count. Every word needs dramatic
-need → learner use → later reuse inside the Mayo arc.
+need and listening context → later retrieval → phrase/sentence production → delayed
+reuse inside the Mayo arc. The table below is the approved prototype mapping; it must
+gain separate retrieval and production evidence during the rebuild.
 
 ## The twenty
 
@@ -71,9 +76,10 @@ need → learner use → later reuse inside the Mayo arc.
 | Early *as* too weak | Ep1 scaffolds; Ep4 pays off with full self-line |
 | Quota pressure on Ep5 | Three new words in Ep5 (*freagair, tabhair, arís*); *cósta* moves to Ep6 |
 
-**Finding:** the twenty fit the five-episode spine without a side story. If pedagogue
-cuts *bean* or *tar*, replace from a reserve list—*fan* (stay), *saor* (free),
-*cabhair* (help)—only with a new need/use/reuse row.
+**Historical finding:** the twenty fit the compact prototype without a side story.
+That does not establish adequate teaching depth under D22. If the pedagogue cuts
+*bean* or *tar*, replace from a reserve list—*fan* (stay), *saor* (free), *cabhair*
+(help)—only with a complete need/listen/retrieve/produce/reuse row.
 
 ## Evidence ladder
 

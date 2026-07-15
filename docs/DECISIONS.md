@@ -2,6 +2,64 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D22 — Rebuild story depth and learning quality before further testing (2026-07-15)
+
+**Decision:** Enter a bounded Story and Learning rebuild before inviting another
+external tester round. Mayo becomes the representative implementation: expand
+Gráinne's account to eight to ten chapters and 60–90 minutes in Story mode, prove the
+new page and exercise system on one complete Rockfleet chapter, then complete Mayo
+before applying the pattern to Offaly, Dublin, and Meath. The other launch counties
+normally require at least six chapters and 45 minutes of Story-mode content.
+
+The learning path uses varied full-screen exercises interspersed between story pages.
+Every county must prove the complete lifecycle of its 20 words, meaningful phrase and
+sentence work, exercise variety, diagnostic recovery, reviewed audio, accessibility,
+and source quality. The detailed gates live in `STORY-LEARNING-REBUILD-PLAN.md` and
+`CONTENT-PIPELINE.md`.
+
+**Why:** Feedback on the four-county road found Mayo worthwhile but too short, while
+the three new counties barely counted as stories and repeated listen-and-pick
+exercises. Repository inspection supports that judgment: each new county is a
+twelve-beat editorial preview with four required interactions for 20 provisional
+words, and completion schedules all 20 without proving that they were taught or
+retrieved. The pack validator enforces a shape rather than a learning or narrative
+outcome.
+
+**Consequences:** D20 remains the historical record of an owner-reported Mayo pass and
+an implemented four-county engineering proof. Its instruction to use that Mayo build
+as the Phase 3 product pattern is superseded. D14–D15's four-to-six episode planning
+range and the schema's three-beat episode rule are not production requirements. Do not
+schedule the next external learner round until all four counties pass the internal
+tester-readiness gate.
+
+## D21 — One county sequence, with Story and Learning modes (2026-07-15)
+
+**Decision:** Author each county once as an ordered sequence of stable pages and
+filter it into two experiences.
+
+- **Story mode** includes the complete narrative, evidence, and story-essential
+  interaction, with no language-assessment gate.
+- **Learning mode** keeps the causal story needed for meaning, omits optional
+  narrative depth, and includes every required language exercise in its authored
+  position.
+
+The learner may switch mode without restarting. Finishing Story mode records that the
+account was read and opens the next county. Only finishing Learning mode turns the
+county gold, moves its 20 words into **Words you carry**, and makes them eligible for
+later review. Speaking exercises remain ungraded record-and-compare experiences under
+D11; microphone denial never traps progress.
+
+**Why:** Two separate content sets would drift and double editorial cost. A single
+sequence keeps story, evidence, and language context aligned while serving people who
+want the full account and people who want a shorter learning path. Separate completion
+states prevent Story mode from making a false 20-word claim.
+
+**Consequences:** County packs need page-level mode visibility and separate Story- and
+Learning-mode completion requirements. Progress migrates from beat indices to stable
+page ids. The atlas gains a quiet read state distinct from gold. Story mode can advance
+the route; scheduled language review remains downstream of Learning-mode completion.
+`DRILL.md` continues to own scheduled return practice, not inline Learning mode.
+
 ## D20 — Phase 2 passes; enter the four-county product build (2026-07-14)
 
 **Decision:** Accept the owner's report that the moderated complete-arc Mayo round

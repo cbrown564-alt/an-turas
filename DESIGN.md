@@ -260,6 +260,18 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 
 - Use `NavigationStack` for hierarchy, native back behavior, sheets for self-contained tasks, and a tab bar only if the product stabilizes around two to five true top-level destinations.
 - Preserve edge-swipe back, safe areas, large-title conventions where appropriate, and native sheet dismissal. Full-screen covers are reserved for genuinely immersive story encounters.
+- Choose Story or Learning mode at the county opening. Allow changes from the chapter menu rather than adding a persistent segmented control to every page. Switching mode preserves shared progress and continues at the next incomplete visible page.
+
+### Full-screen exercises
+
+- Every exercise occupies its own page between story pages. Do not embed a sequence of answer buttons inside a narrative card and call it a learning flow.
+- Keep one clear task, one dominant response area, and one primary action. At standard text sizes the primary action sits above the safe-area inset; at accessibility sizes the page may scroll without hiding the task or verdict.
+- Use a shared state sequence: unanswered → incorrect and retry → corrected → complete. Feedback appears beside the response area, states what was wrong in plain language, and never relies on color, shake, or haptics alone.
+- Listening may begin with a word, but phrase and sentence work becomes the default after introduction. Sentence building, cloze, matching, typing, dialogue, comprehension, sequencing, discovery, delayed recall, and ungraded speaking use the same calm shell.
+- Word tiles, match targets, audio buttons, fada keys, record controls, and answer rows have 44 pt minimum targets. Drag interactions always have a tap or selection alternative.
+- Speaking presents the model, record, playback, and compare actions without a score. If microphone permission is denied, explain the limitation and offer a non-recording continuation.
+- Exercise chrome uses SF Pro, semantic surfaces, and the project tint. Story serif may appear inside quoted Irish or source material, never in instructions, verdicts, or controls.
+- Correctness is restrained: a checkmark, concise verdict, and optional light haptic are sufficient. Do not add hearts, XP, streaks, confetti, mascot reactions, or artificial delays.
 
 ### Atlas and Evidence
 
@@ -284,6 +296,8 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 - **Do** preserve native iOS navigation, controls, safe areas, 44 pt touch targets, VoiceOver order, Dynamic Type, Dark Mode, Increased Contrast, and Reduce Motion.
 - **Do** distinguish documented fact, inference, uncertainty, and reconstruction with restrained symbols, accessible semantics, and complete on-demand detail. Use persistent text when misunderstanding would materially change the account.
 - **Do** let Irish appear early, audibly, and in context; pronunciation controls and glosses must be easy to find without interrupting reading.
+- **Do** give every language exercise a full-screen task, diagnostic recovery, and later reuse of what it teaches.
+- **Do** keep mode switching out of the reading surface while preserving exact progress when the learner changes mode.
 - **Do** separate “What survives,” “What you made,” and “Words you carry” in the collection.
 
 ### Don't:
@@ -298,5 +312,7 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 - **Don't** burn names, captions, provenance, or interface labels into generated art.
 - **Don't** place text over faces, artifacts, inscriptions, or visually busy evidence-bearing detail.
 - **Don't** communicate county progress, certainty, correctness, or error by color alone.
+- **Don't** place several unrelated mini-exercises in one narrative card or repeat listen-and-pick as the default learning interaction.
+- **Don't** grade pronunciation until Irish speech assessment has been proven trustworthy; record-and-compare remains ungraded.
 - **Don't** turn evidence status into repeated pills, uppercase labels, or prose that restates the claim. One claim gets one primary reading and one quiet path to its evidence.
 - **Don't** hard-code type in production components where Dynamic Type can express the intended hierarchy.

@@ -1,9 +1,9 @@
 # Mayo source brief — Gráinne Ní Mháille & the 1593 petition
 
-*Historian-ready packet · started 12 July 2026 · status: **prototype claims and copy
-approved; release gates remain open**. Replaces Breastagh as Mayo flagship centre
-(D13). Breastagh register remains at `content/mayo/source-register.md` for the
-field-note path.*
+*Historian-ready packet · started 12 July 2026 · status: **six-episode prototype
+claims approved; expanded-story review required**. D22 retains the 1593 organising
+centre but requires an eight-to-ten chapter, 60–90 minute Story-mode rebuild. Replaces
+Breastagh as Mayo flagship centre (D13). Breastagh remains a field-note source.*
 
 ## Packet purpose
 
@@ -199,7 +199,8 @@ pass in `docs/GRAINNE-SOURCE-STRESS-TEST.md`. The lo-fi gates in
 
 ## Status
 
-**Approved for the moderated prototype round.** The story copy and first-pass claim and
-language review are complete. This is not release clearance: final audio listening QA,
-remaining visual rights, accessibility/device QA and the complete-arc learner test are
-still required.
+**Historical prototype approval only.** The compact story copy and first-pass claim
+and language review are complete. Before the next external round, expand the claim
+and source mapping for the D22 chapter hypothesis, approve the new storyboard and both
+mode projections, complete the four-stage 20-word lifecycle, and close audio, visual
+rights, accessibility, device, and four-county tester-readiness gates.

@@ -224,8 +224,19 @@ final class EchoRecorder: NSObject, ObservableObject {
         playing = false
     }
 
+    /// Speaking practice is intentionally ephemeral. Leaving or completing a
+    /// task removes the temporary recording rather than building a voice log.
+    func discard() {
+        stopPlayback()
+        recorder?.stop()
+        recorder = nil
+        state = .idle
+        try? FileManager.default.removeItem(at: url)
+    }
+
     private func startRecording() {
         stopPlayback()
+        try? FileManager.default.removeItem(at: url)
         let session = AVAudioSession.sharedInstance()
         try? session.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
         try? session.setActive(true)

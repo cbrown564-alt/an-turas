@@ -16,6 +16,9 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
 
 ## Working and reference documents
 
+- [`STORY-LEARNING-REBUILD-PLAN.md`](STORY-LEARNING-REBUILD-PLAN.md) is the confirmed
+  Phase 3 implementation plan. Canonical owners above remain authoritative for current
+  behavior, design, decisions, status, and strategy.
 - [`GRAINNE-PROTOTYPE-REPORT.md`](GRAINNE-PROTOTYPE-REPORT.md) records evidence and open questions from the Gráinne prototype.
 - [`STORY-RESET.md`](STORY-RESET.md) explains the current story reset.
 - [`EXPANSIVE-INTERFACE-VISION.md`](EXPANSIVE-INTERFACE-VISION.md) explores the living-atlas direction.

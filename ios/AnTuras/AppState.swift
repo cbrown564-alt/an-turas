@@ -103,6 +103,13 @@ final class AppState: ObservableObject {
         var completedCountyStoryIDs: [String] = []
         var countyStorySteps: [String: Int] = [:]
         var completedCountyStoryBeats: [String: [Int]] = [:]
+        /// Versioned page-pack progress. `completedCountyStoryIDs` remains the
+        /// durable gold/language-complete list for backwards compatibility.
+        var countyStoryModes: [String: String] = [:]
+        var activeCountyPageIDs: [String: String] = [:]
+        var completedCountyPageIDs: [String: [String]] = [:]
+        var storyReadCountyIDs: [String] = []
+        var countyPackVersions: [String: Int] = [:]
         var inspectedEvidenceIDs: [String] = []
         var madeArtifactIDs: [String] = []
         var atlasReviews: [String: AtlasReviewProgress] = [:]
@@ -123,6 +130,11 @@ final class AppState: ObservableObject {
             completedCountyStoryIDs: [String] = [],
             countyStorySteps: [String: Int] = [:],
             completedCountyStoryBeats: [String: [Int]] = [:],
+            countyStoryModes: [String: String] = [:],
+            activeCountyPageIDs: [String: String] = [:],
+            completedCountyPageIDs: [String: [String]] = [:],
+            storyReadCountyIDs: [String] = [],
+            countyPackVersions: [String: Int] = [:],
             inspectedEvidenceIDs: [String] = [],
             madeArtifactIDs: [String] = [],
             atlasReviews: [String: AtlasReviewProgress] = [:],
@@ -142,6 +154,11 @@ final class AppState: ObservableObject {
             self.completedCountyStoryIDs = completedCountyStoryIDs
             self.countyStorySteps = countyStorySteps
             self.completedCountyStoryBeats = completedCountyStoryBeats
+            self.countyStoryModes = countyStoryModes
+            self.activeCountyPageIDs = activeCountyPageIDs
+            self.completedCountyPageIDs = completedCountyPageIDs
+            self.storyReadCountyIDs = storyReadCountyIDs
+            self.countyPackVersions = countyPackVersions
             self.inspectedEvidenceIDs = inspectedEvidenceIDs
             self.madeArtifactIDs = madeArtifactIDs
             self.atlasReviews = atlasReviews
@@ -154,6 +171,8 @@ final class AppState: ObservableObject {
             case storyArcVersion, completedStoryBeats
             case activeCountyStoryID, completedCountyStoryIDs, countyStorySteps
             case completedCountyStoryBeats, inspectedEvidenceIDs, madeArtifactIDs
+            case countyStoryModes, activeCountyPageIDs, completedCountyPageIDs
+            case storyReadCountyIDs, countyPackVersions
             case atlasReviews, calendarDaysVisited
         }
 
@@ -173,6 +192,11 @@ final class AppState: ObservableObject {
             completedCountyStoryIDs = try values.decodeIfPresent([String].self, forKey: .completedCountyStoryIDs) ?? []
             countyStorySteps = try values.decodeIfPresent([String: Int].self, forKey: .countyStorySteps) ?? [:]
             completedCountyStoryBeats = try values.decodeIfPresent([String: [Int]].self, forKey: .completedCountyStoryBeats) ?? [:]
+            countyStoryModes = try values.decodeIfPresent([String: String].self, forKey: .countyStoryModes) ?? [:]
+            activeCountyPageIDs = try values.decodeIfPresent([String: String].self, forKey: .activeCountyPageIDs) ?? [:]
+            completedCountyPageIDs = try values.decodeIfPresent([String: [String]].self, forKey: .completedCountyPageIDs) ?? [:]
+            storyReadCountyIDs = try values.decodeIfPresent([String].self, forKey: .storyReadCountyIDs) ?? []
+            countyPackVersions = try values.decodeIfPresent([String: Int].self, forKey: .countyPackVersions) ?? [:]
             inspectedEvidenceIDs = try values.decodeIfPresent([String].self, forKey: .inspectedEvidenceIDs) ?? []
             madeArtifactIDs = try values.decodeIfPresent([String].self, forKey: .madeArtifactIDs) ?? []
             atlasReviews = try values.decodeIfPresent([String: AtlasReviewProgress].self, forKey: .atlasReviews) ?? [:]

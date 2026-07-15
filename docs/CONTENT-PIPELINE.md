@@ -1,16 +1,17 @@
 # Content Pipeline
 
-*Repeatable process for authoring An Turas county stories as bundled JSON. Distilled
-from Chapter 2 (*Oileán na Naomh*), July 2026; reframed for the county-led model on
-2026-07-10. Complements `COUNTY-ATLAS.md` (the learner-facing contract), `SPINE.md`
-(sequencing), `Models.swift` (schema), and D7/D9/D12/D17 (audio, illustration, CMS,
-county stories).*
+*Repeatable process for authoring An Turas county stories as versioned packs.
+Distilled from Chapter 2 (*Oileán na Naomh*), July 2026; reframed for the county-led
+model on 10 July and for Story and Learning modes on 15 July. Complements
+`COUNTY-ATLAS.md` (the learner-facing contract), `SPINE.md` (sequencing),
+`STORY-LEARNING-REBUILD-PLAN.md` (active implementation), `Models.swift` (schema),
+and D7/D9/D12/D17/D21/D22.*
 
 ## What this is
 
-An Turas is a **content company with an app attached**. Each chapter is structured
-data (currently `chapterN.json`, migrating toward story-first county packs) that must
-pass three editorial passes before it ships:
+An Turas is a **content company with an app attached**. Each county is structured data
+(currently split between legacy `chapterN.json` and hard-coded Swift, migrating to one
+versioned county pack) that must pass three editorial passes before it ships:
 
 1. **Content generator** — draft the chapter from the spine
 2. **Adversarial reviewer** — stress-test the draft; assume it has errors
@@ -26,9 +27,10 @@ replace native-speaker and expert review.
 
 ### 1. Content generator
 
-**Job:** Turn a county-story brief + `SPINE.md` + `journey.json` into a complete first
-draft. The county brief is not optional: it prevents an era from being decorated with
-a generic scene rather than rooted in a real place.
+**Job:** Turn a county-story brief, source register, `SPINE.md`, and the current county
+pack schema into a complete first draft for both modes. The county brief is not
+optional: it prevents an era from being decorated with a generic scene rather than
+rooted in a real place.
 
 **Must read before writing:**
 
@@ -38,6 +40,7 @@ a generic scene rather than rooted in a real place.
 | `ios/AnTuras/Models.swift` | Valid page types and fields |
 | `docs/SPINE.md` | Language payload, grammar notes, artifact, seanfhocal |
 | `docs/COUNTY-ATLAS.md` | Required anchor, reading, vocabulary, source, and review contract |
+| `docs/STORY-LEARNING-REBUILD-PLAN.md` | Mode behavior, representative-slice sequence, quality gates |
 | `docs/COUNTY-STORY-SLATE.md` | Research lead only; identify the row's gaps before treating it as a brief |
 | `ios/AnTuras/Resources/journey.json` | Place, era, hook, artifact metadata |
 
@@ -45,36 +48,53 @@ a generic scene rather than rooted in a real place.
 
 | File | Purpose |
 |------|---------|
-| `content/chapterN/draft.json` | First full draft |
-| `content/chapterN/outline.md` | Session map, payload distribution, flagged gaps |
-| `content/chapterN/source-register.md` | Anchor, source provenance, reading/rights status, historical uncertainties, reviewer names |
+| `content/<county>/draft.json` | First full county-pack draft |
+| `content/<county>/storyboard.md` | Chapter map, both mode projections, dramatic changes, timing |
+| `content/<county>/language-weave.md` | 20-word need, first use, production, and delayed reuse |
+| `content/<county>/source-register.md` | Anchor, source provenance, reading/rights status, historical uncertainties, reviewer names |
 
 **Generator constraints:**
 
-- **5 sessions** per chapter (planning number; tune after playtest)
+- Variable chapter and page counts determined by the story. Mayo targets eight to ten
+  chapters and 60–90 minutes in Story mode; other launch counties normally require at
+  least six chapters and 45 minutes. Fixed three-beat chapters are not permitted as a
+  production shortcut.
+- Author one stable page sequence with `storyOnly`, `learningOnly`, and `both`
+  visibility. Story mode carries the complete account; Learning mode retains every
+  chapter's causal chain and all required exercises.
 - One named county anchor is visible in the title, hook, and map card; do not lead
   with an invented worker, child, or guide.
-- A substantial reading/encounter is central to the sessions. Mark myth, hagiography,
+- A substantial reading/encounter is central to the chapters. Mark myth, hagiography,
   partisan sources, and archaeological inference accurately rather than smoothing them
   into historical fact.
-- Build exactly **20 target words** in four visible groups of five; prove each is
-  introduced in context and retrieved later. The story earns the words; drills do not
-  introduce a disconnected vocabulary list.
+- Build exactly **20 target words**; prove that each is heard in meaningful context,
+  retrieved, used in a phrase or sentence, and reused in a later chapter. The story
+  earns the words; exercises do not introduce a disconnected vocabulary list.
 - Start `source-register.md` before drafting. Do not use a modern translation, image,
   poem, or archive item whose rights status is unknown.
-- Session 1: no `recarve`. Sessions 2–5: open with `recarve` reviewing prior material
+- Delayed retrieval begins only after the story has introduced the language. Do not
+  force every later chapter to open with the same mechanic.
 - Scene pages only get `"image"` slugs (D8)
 - Speech beats: `s`, `who`, `g`, `ph`
-- Final session closes: scene → seanfhocal → present-day → artifact → fin
+- The final chapter closes the historical and language movement, returns to the
+  present where appropriate, completes the learner-made artifact, and hands back to
+  the atlas.
 - Include `"visits"` array (5–7 items) for Ar Ais
 - Connacht forms first; tag dialect variants in glosses (D2)
 - Do not invent continuity from prior chapters unless established in content
+- Author 30–45 exercises for Mayo and an equivalent learning load for each county's
+  scope. Each county uses at least seven mechanic families; no family exceeds 25% or
+  repeats consecutively. At least half of exercises use phrases or sentences, at least
+  40% require active production, recognition multiple choice is at most 25%, and
+  single-word listen-and-pick is at most 10%.
+- Every exercise records its learning objective, answer, distractor rationale,
+  diagnostic feedback, recovery, and required audio or input resources.
 
 ---
 
 ### 2. Adversarial reviewer
 
-**Job:** Attack the draft. Be specific, not polite. Cite session numbers, page types,
+**Job:** Attack the draft. Be specific, not polite. Cite chapter and page ids/types,
 and exact Irish phrases.
 
 **Review dimensions:**
@@ -85,11 +105,12 @@ and exact Irish phrases.
 | Pedagogy | TEG level, grammar-when-story-needs-it, exercise progression, orphaned vocab |
 | History | Anachronisms, false attribution, placename etymology, present-day claims, anchor/source fit, fact-versus-legend framing |
 | Schema | Valid types/fields, images only on scenes, visits decode against `Models.swift` |
-| Narrative | Chapter 1 warmth, hooks, present-day beat, seanfhocal earned |
-| Exercises | Plausible wrong answers, listen/echo/turn used meaningfully |
+| Narrative | Substantial duration, causal chapters, hooks and consequences, no vocabulary filler |
+| Modes | Story projection complete; Learning projection coherent; no orphaned or premature exercise |
+| Exercises | Lifecycle coverage, varied mechanics, phrase/sentence depth, plausible errors, diagnostic recovery |
 | Pipeline | Full SPINE payload, 20-word proof, source register, artifact concept, fin tease, app wiring gaps |
 
-**Output:** `content/chapterN/review.md` with this structure:
+**Output:** `content/<county>/review.md` with this structure:
 
 ```markdown
 ## Verdict
@@ -116,7 +137,7 @@ and exact Irish phrases.
 
 ### 3. Overall editor
 
-**Job:** Synthesise draft + review into production chapter JSON.
+**Job:** Synthesise draft + review into a production county pack.
 
 **Must fix:** all Critical and High issues. Address Medium where the fix is clear
 without board debate. Preserve strengths flagged in review.
@@ -125,15 +146,15 @@ without board debate. Preserve strengths flagged in review.
 
 | File | Purpose |
 |------|---------|
-| `ios/AnTuras/Resources/chapterN.json` | Production chapter |
-| `content/chapterN/editorial-log.md` | Draft → final changes; deferred items |
+| `ios/AnTuras/Resources/CountyStories/<story-id>.json` | Production county pack; exact migration path may change with the schema implementation |
+| `content/<county>/editorial-log.md` | Draft → final changes; deferred items |
 
-**App wiring (minimal per chapter):**
+**App wiring (required per county):**
 
-- Add `ContentLoader.chapterN()` in `Models.swift`
-- Add JSON to Xcode Resources build phase
-- Document deferred app work (artifact UI, AppState chapter selection, visits loader)
-  in editorial log — do not block content merge on full app integration
+- Validate the county pack and include it in the Xcode resources boundary.
+- Register the story id and explicit migration from any legacy chapter or beat ids.
+- Exercise both mode projections in the app. A content pack is not ready for the next
+  tester build merely because it decodes.
 
 ---
 
@@ -141,14 +162,14 @@ without board debate. Preserve strengths flagged in review.
 
 ```mermaid
 flowchart LR
-  COUNTY[County brief + source register] --> GEN[Content generator]
-  SPINE[SPINE.md + journey.json] --> GEN
-  GEN --> DRAFT[draft.json + outline.md]
+COUNTY[County brief + source register] --> GEN[Content generator]
+SPINE[SPINE.md + county pack schema] --> GEN
+GEN --> DRAFT[draft.json + storyboard + language weave]
   DRAFT --> ADV[Adversarial reviewer]
   ADV --> REV[review.md]
   DRAFT --> EDIT[Overall editor]
   REV --> EDIT
-  EDIT --> FINAL[chapterN.json + editorial-log.md]
+  EDIT --> FINAL[county pack + editorial-log.md]
   FINAL --> BOARD[Human editorial board]
   BOARD --> AUDIO[Audio pipeline D17]
   BOARD --> ART[Illustration D8]
@@ -169,15 +190,24 @@ merging chapter JSON into the repo and handing it to the human board.
 ### Generator draft — good enough to review
 
 - [ ] Valid JSON; all page types decode per `Models.swift`
-- [ ] 5 sessions with hooks (sessions 1–4 minimum; session 5 may tease via `fin`)
+- [ ] Every chapter changes the dramatic answer, has a consequence, and has an
+      authored exit
+- [ ] Story mode is complete; Learning mode retains every chapter's causal chain
+- [ ] Internal timing meets the county target without relying on exercise delay
 - [ ] Every SPINE headline payload item appears somewhere in the chapter
 - [ ] Named county, real anchor, significant reading/encounter, and 20-word plan meet
   `COUNTY-ATLAS.md`; source/rights uncertainties are logged
-- [ ] 2–3 grammar notes (`note` pages) explaining what school never did
+- [ ] Grammar explanation appears only where it enables the next action or clarifies a
+      contrast the learner has met
 - [ ] Artifact, seanfhocal, present-day beat, fin tease to next chapter present
 - [ ] 5–7 visits authored
 - [ ] Scene image slugs are placeholders, clearly named (`chN-*`)
 - [ ] Irish is *plausible* Connacht — flagged as pending pedagogue review
+- [ ] The 20-word lifecycle table has no missing need, first use, production, or later
+      reuse cell
+- [ ] Exercise distribution meets the mechanic, sentence, production, and recognition
+      limits
+- [ ] Every required exercise has a plausible wrong answer and recovery
 
 **Not required in draft:** illustration assets, TTS clips, app integration beyond schema,
 human sign-off.
@@ -185,7 +215,7 @@ human sign-off.
 ### Adversarial review — good enough to edit
 
 - [ ] Verdict stated
-- [ ] Every Critical issue has session + page type + exact phrase cited
+- [ ] Every Critical issue has chapter + page id/type + exact phrase cited
 - [ ] Payload checklist completed (use `[x]`, `[~]`, `[ ]`)
 - [ ] Strengths listed (so editor preserves them)
 - [ ] App/pipeline gaps called out separately from content issues
@@ -197,13 +227,18 @@ human sign-off.
 - [ ] **Zero unresolved Critical content issues** (app-only Criticals documented and deferred)
 - [ ] **Zero unresolved High content issues**
 - [ ] Source register records the reviewed reading, factual caveats, and rights state
+- [ ] Story and Learning projections are causally complete and contain no duplicate or
+      unreachable required page
+- [ ] The generated quality report passes narrative timing, 20-word lifecycle,
+      exercise distribution, audio-reference, and evidence-reference checks
 - [ ] `editorial-log.md` lists resolved vs deferred items with reasons
-- [ ] JSON validates: `python3 -c "import json; json.load(open('chapterN.json'))"`
-- [ ] `ContentLoader.chapterN()` added; JSON in Xcode project
-- [ ] Chapter 1 tone and register preserved
+- [ ] The county-pack validator passes and the JSON is valid
+- [ ] Story registration, resource inclusion, and legacy migration are implemented
+- [ ] The approved editorial tone and register are preserved
 
-**Not required to merge:** pedagogue/historian sign-off, audio generation, scene art,
-artifact UI for new chapter type, AppState loading the new chapter.
+**Not required for an internal content merge:** final audio generation or production
+scene art. Both remain required for tester readiness. Missing app integration,
+migration, or a complete mode projection cannot be deferred into a tester build.
 
 ### Human board — good enough to ship publicly
 
@@ -213,7 +248,9 @@ artifact UI for new chapter type, AppState loading the new chapter.
   contested-history labels
 - [ ] Audio: selected project voice generate → native QA → bundle (D17)
 - [ ] Scene illustrations at production recipe where briefed (D8)
-- [ ] Integrated app QA: chapter loads, visits work, artifact renders correctly
+- [ ] Integrated app QA: both modes load and switch without lost progress; Story
+      completion advances without gold; Learning completion awards gold and review
+- [ ] Direct accessibility and physical-device inspection covers every exercise family
 - [ ] No open Critical or High items in review doc
 
 ---
@@ -233,8 +270,16 @@ verification before the Chapter 2-style payload list:
 - [ ] county and map identity named
 - [ ] named real anchor is in title/hook/reading
 - [ ] reading kind and source are recorded; factual caveats visible
-- [ ] target vocabulary = 20, grouped 5 / 5 / 5 / 5
-- [ ] all 20 words introduced in the story and retrieved in practice
+- [ ] target vocabulary = exactly 20 distinct headwords
+- [ ] all 20 words have dramatic need, meaningful first use, phrase/sentence
+      production, and delayed reuse
+- [ ] Story-mode timing meets the county target
+- [ ] Learning mode retains every chapter's setup, turn, consequence, and evidence
+      limit
+- [ ] at least seven exercise families; none over 25% or repeated consecutively
+- [ ] at least half of exercises use phrases/sentences and at least 40% require active
+      production
+- [ ] recognition multiple choice ≤25%; single-word listen-and-pick ≤10%
 
 - [ ] tá + VSO present tense
 - [ ] daily routine verbs
@@ -255,17 +300,19 @@ monastic hour names this way.
 
 ---
 
-## File layout per chapter
+## File layout per county
 
 ```
-content/chapterN/
-  outline.md          # Generator: session map
+content/<county>/
+  storyboard.md       # Generator/editor: chapter map and both mode projections
+  language-weave.md   # Generator/pedagogue: 20-word lifecycle
+  source-register.md  # Research/editor: claims, sources, rights, review state
   draft.json          # Generator: first draft (immutable after review starts)
   review.md           # Reviewer: adversarial pass
   editorial-log.md    # Editor: draft → final changelog
 
-ios/AnTuras/Resources/
-  chapterN.json       # Editor: production chapter
+ios/AnTuras/Resources/CountyStories/
+  <story-id>.json     # Editor: production county pack
 ```
 
 Keep pipeline artifacts. They are the audit trail for the human board and for
@@ -341,19 +388,37 @@ Do not combine roles in one pass — the reviewer must not have written the draf
 
 ### Phase 3 county-pack boundary
 
-`LaunchCountyPackEnvelope` is the install boundary for reviewed county stories. A pack
-has schema version 1 plus one `LaunchCountyStory`; installation rejects a missing or
-unstable story id, anything other than 20 unique headwords, fewer than four or more
-than six episodes, episodes without three beats, duplicate beat ids, or a missing
-evidence/review boundary. Valid JSON is written atomically under Application Support
-and replaces the matching bundled story on the next launch. The bundled story remains
-the offline fallback.
+The current schema-version-1 `LaunchCountyPackEnvelope` remains an engineering proof
+and migration input. It is not the production content contract: its four-to-six
+episode and three-beat validation rewarded the preview shape rejected in D22.
+
+The replacement versioned county pack must reject:
+
+- a missing or unstable story, chapter, or page id;
+- anything other than 20 unique target headwords;
+- a word without dramatic need, first use, phrase/sentence production, and delayed
+  reuse;
+- a mode with an empty or causally broken chapter;
+- an exercise that precedes the story context or references unknown language;
+- exercise distribution outside the approved variety, sentence, production, and
+  recognition limits;
+- a missing answer, distractor rationale, feedback, recovery, audio, evidence, or
+  review reference;
+- a required page that cannot be reached;
+- completion rules that let Story mode award words or let Learning mode finish without
+  its required pages;
+- missing migration metadata for an existing story id.
+
+Valid JSON is written atomically under Application Support and replaces the matching
+bundled story on the next launch. The bundled story remains the offline fallback. The
+validator produces a human-readable county report covering narrative timing, mode
+integrity, word lifecycle, exercise distribution, audio, evidence, and review gates.
 
 The current Offaly, Dublin and Meath fallbacks in `LaunchCountyStories.swift` are
-explicit editorial previews, not board-cleared production packs. Their source briefs
-remain the claim owners. Transport, entitlement and a public download service sit
-outside the pack store; do not describe local pack validation as a released content
-service.
+explicit editorial previews and must be reauthored, not merely cleared. Their source
+briefs remain the claim owners. Transport, entitlement and a public download service
+sit outside the pack store; do not describe local pack validation as a released
+content service.
 
 | Stage | Owner | Reference |
 |-------|-------|-----------|
@@ -375,5 +440,7 @@ service.
 - **D8** — Scene pages only illustrated
 - **D9** — CMS wraps this workflow for human stakeholders
 - **D11** — Listening-first; echo ungraded
+- **D21** — One county sequence filtered into Story and Learning modes
+- **D22** — Rebuild narrative depth and learning quality before further testing
 
 *First proof: Chapter 2 — see `content/chapter2/` for a complete worked example.*

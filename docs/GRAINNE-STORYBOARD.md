@@ -1,10 +1,9 @@
 # Gráinne full-story storyboard
 
-*12–13 July 2026 · source-backed spine for Mayo's flagship. Implements D15 and the
-product contract. Historian and Irish-language pedagogue approval reported 13 July;
-the playable six-episode prototype now implements this spine. Revised after internal
-paper walkthrough (`GRAINNE-LOFI-REVIEW.md`): Ep3 compressed; former Ep5 split into
-Ep5–6.*
+*Historical storyboard for the six-episode prototype implemented 13–14 July 2026.
+D22 records that this version is too short and supersedes it as the production
+storyboard. Preserve it as source and migration evidence; replace it with the approved
+eight-to-ten chapter storyboard during Phase 4 of `STORY-LEARNING-REBUILD-PLAN.md`.*
 
 ## Arc contract
 

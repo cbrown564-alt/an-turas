@@ -91,6 +91,33 @@ struct AtlasPrototypeView: View {
                 atlas.storyInProgress = true
                 atlas.storyStep = min(max(step, 0), 17)
                 path = [.grainneStory]
+            } else if args.contains("--exercise-gallery") {
+                atlas.hasOpenedAtlas = true
+                path = [.exerciseGallery]
+            } else if let flag = args.firstIndex(of: "--county-pack"),
+                      args.indices.contains(flag + 1),
+                      let pack = CountyStoryPackCatalog.pack(id: args[flag + 1]) {
+                atlas.hasOpenedAtlas = true
+                atlas.storyInProgress = true
+                if args.contains("--mode-opening") {
+                    atlas.countyStoryModes.removeValue(forKey: pack.id)
+                    atlas.activeCountyPageIDs.removeValue(forKey: pack.id)
+                }
+                let modeFlag = args.firstIndex(of: "--mode")
+                let requestedMode = modeFlag.flatMap { index in
+                    args.indices.contains(index + 1) ? CountyStoryMode(rawValue: args[index + 1]) : nil
+                }
+                if let requestedMode { _ = atlas.begin(pack, mode: requestedMode) }
+                if let pageFlag = args.firstIndex(of: "--page"),
+                   args.indices.contains(pageFlag + 1),
+                   pack.page(id: args[pageFlag + 1]) != nil {
+                    let pageID = args[pageFlag + 1]
+                    atlas.setActivePage(pageID, in: pack)
+                    if !args.contains("--completed-page") {
+                        atlas.completedCountyPageIDs[pack.id, default: []].removeAll { $0 == pageID }
+                    }
+                }
+                path = [.countyPack(pack.id)]
             } else if args.contains("--mayo-dossier") {
                 atlas.hasOpenedAtlas = true
                 path = [.mayoDossier]
@@ -131,7 +158,7 @@ struct AtlasPrototypeView: View {
             if path.isEmpty, atlas.storyCompleted, !atlas.hasOpenedAtlas {
                 path = [.firstTakeaway]
             } else if path.isEmpty, atlas.storyInProgress {
-                path = [.grainneStory]
+                path = [.countyPack("mayo.grainne-1593")]
             }
         }
         .onOpenURL { url in
@@ -210,6 +237,22 @@ struct AtlasPrototypeView: View {
                     path = atlasWasOpen ? [] : [.firstTakeaway]
                 }
             )
+        case .countyPack(let id):
+            if let pack = CountyStoryPackCatalog.pack(id: id) {
+                CountyStoryExperienceView(
+                    pack: pack,
+                    onOpenEvidence: { path.append(.evidence) },
+                    onExit: {
+                        atlas.hasOpenedAtlas = true
+                        atlas.storyInProgress = false
+                        atlas.tab = .island
+                        atlas.shouldFocusOpeningRoad = true
+                        path.removeAll()
+                    }
+                )
+            }
+        case .exerciseGallery:
+            CountyExerciseGalleryView()
         case .firstTakeaway:
             FirstEncounterTakeawayView {
                 atlas.hasOpenedAtlas = true
@@ -282,7 +325,7 @@ struct AtlasPrototypeView: View {
 
     private func beginStory() {
         atlas.storyInProgress = true
-        path.append(.grainneStory)
+        path.append(.countyPack("mayo.grainne-1593"))
     }
 }
 
@@ -294,6 +337,8 @@ enum AtlasRoute: Hashable {
     case mayoDossier
     case grainnePerson
     case grainneStory
+    case countyPack(String)
+    case exerciseGallery
     case firstTakeaway
     case evidence
     case fieldNote
@@ -323,6 +368,11 @@ final class AtlasPrototypeModel: ObservableObject {
     @Published var completedCountyStoryIDs: [String] = []
     @Published var countyStorySteps: [String: Int] = [:]
     @Published var completedCountyStoryBeats: [String: [Int]] = [:]
+    @Published var countyStoryModes: [String: String] = [:]
+    @Published var activeCountyPageIDs: [String: String] = [:]
+    @Published var completedCountyPageIDs: [String: [String]] = [:]
+    @Published var storyReadCountyIDs: [String] = []
+    @Published var countyPackVersions: [String: Int] = [:]
     @Published var inspectedEvidenceIDs: [String] = []
     @Published var madeArtifactIDs: [String] = []
     @Published var atlasReviews: [String: AppState.AtlasReviewProgress] = [:]
@@ -403,6 +453,91 @@ final class AtlasPrototypeModel: ObservableObject {
             beats.append(step)
             completedCountyStoryBeats[storyID] = beats.sorted()
         }
+    }
+
+    // MARK: Stable county-pack progress
+
+    func mode(for packID: String) -> CountyStoryMode? {
+        countyStoryModes[packID].flatMap(CountyStoryMode.init(rawValue:))
+    }
+
+    @discardableResult
+    func begin(_ pack: CountyStoryPack, mode: CountyStoryMode) -> String? {
+        countyStoryModes[pack.id] = mode.rawValue
+        activeCountyStoryID = pack.id
+        let pageID = resumePageID(for: pack, mode: mode)
+        if let pageID { activeCountyPageIDs[pack.id] = pageID }
+        return pageID
+    }
+
+    @discardableResult
+    func switchMode(in pack: CountyStoryPack, to mode: CountyStoryMode) -> String? {
+        countyStoryModes[pack.id] = mode.rawValue
+        let pageID = nextIncompleteVisiblePageID(in: pack, mode: mode)
+            ?? pack.pages(for: mode).last?.id
+        if let pageID { activeCountyPageIDs[pack.id] = pageID }
+        return pageID
+    }
+
+    func setActivePage(_ pageID: String, in pack: CountyStoryPack) {
+        guard pack.page(id: pageID) != nil else { return }
+        activeCountyStoryID = pack.id
+        activeCountyPageIDs[pack.id] = pageID
+    }
+
+    func isPageComplete(_ pageID: String, in packID: String) -> Bool {
+        completedCountyPageIDs[packID, default: []].contains(pageID)
+    }
+
+    func markPageComplete(_ pageID: String, in pack: CountyStoryPack) {
+        guard pack.page(id: pageID) != nil else { return }
+        var pages = completedCountyPageIDs[pack.id, default: []]
+        if !pages.contains(pageID) {
+            pages.append(pageID)
+            completedCountyPageIDs[pack.id] = pages
+        }
+    }
+
+    func nextIncompleteVisiblePageID(in pack: CountyStoryPack, mode: CountyStoryMode) -> String? {
+        let completed = Set(completedCountyPageIDs[pack.id, default: []])
+        return pack.pages(for: mode).first { !completed.contains($0.id) }?.id
+    }
+
+    func resumePageID(for pack: CountyStoryPack, mode: CountyStoryMode) -> String? {
+        let visible = pack.pages(for: mode)
+        if let current = activeCountyPageIDs[pack.id], visible.contains(where: { $0.id == current }) {
+            return current
+        }
+        return nextIncompleteVisiblePageID(in: pack, mode: mode) ?? visible.last?.id
+    }
+
+    func completedRequiredPages(in pack: CountyStoryPack, mode: CountyStoryMode) -> Int {
+        let completed = Set(completedCountyPageIDs[pack.id, default: []])
+        return pack.requiredPageIDs(for: mode).filter { completed.contains($0) }.count
+    }
+
+    func hasCompleted(_ pack: CountyStoryPack, mode: CountyStoryMode) -> Bool {
+        let completed = Set(completedCountyPageIDs[pack.id, default: []])
+        return Set(pack.requiredPageIDs(for: mode)).isSubset(of: completed)
+    }
+
+    /// Completion semantics are intentionally dormant for a representative
+    /// chapter. Only a complete county pack can open the route or award gold.
+    func finish(_ pack: CountyStoryPack, mode: CountyStoryMode) {
+        guard hasCompleted(pack, mode: mode), pack.scope == .completeCounty else { return }
+        if mode == .story {
+            if !storyReadCountyIDs.contains(pack.id) { storyReadCountyIDs.append(pack.id) }
+            markEvidenceInspected(pack.id)
+        } else {
+            if !completedCountyStoryIDs.contains(pack.id) { completedCountyStoryIDs.append(pack.id) }
+            markEvidenceInspected(pack.id)
+            markArtifactMade(pack.id)
+            seedReviews(storyID: pack.id, words: pack.targetWords)
+        }
+    }
+
+    func hasReadStory(_ packID: String) -> Bool {
+        storyReadCountyIDs.contains(packID)
     }
 
     func markEvidenceInspected(_ storyID: String) {
@@ -531,6 +666,11 @@ final class AtlasPrototypeModel: ObservableObject {
             completedCountyStoryIDs: completedCountyStoryIDs,
             countyStorySteps: countyStorySteps,
             completedCountyStoryBeats: completedCountyStoryBeats,
+            countyStoryModes: countyStoryModes,
+            activeCountyPageIDs: activeCountyPageIDs,
+            completedCountyPageIDs: completedCountyPageIDs,
+            storyReadCountyIDs: storyReadCountyIDs,
+            countyPackVersions: countyPackVersions,
             inspectedEvidenceIDs: inspectedEvidenceIDs,
             madeArtifactIDs: madeArtifactIDs,
             atlasReviews: atlasReviews,
@@ -564,6 +704,11 @@ final class AtlasPrototypeModel: ObservableObject {
         }
         countyStorySteps = progress.countyStorySteps
         completedCountyStoryBeats = progress.completedCountyStoryBeats
+        countyStoryModes = progress.countyStoryModes
+        activeCountyPageIDs = progress.activeCountyPageIDs
+        completedCountyPageIDs = progress.completedCountyPageIDs
+        storyReadCountyIDs = progress.storyReadCountyIDs.uniqued()
+        countyPackVersions = progress.countyPackVersions
         inspectedEvidenceIDs = progress.inspectedEvidenceIDs.uniqued()
         madeArtifactIDs = progress.madeArtifactIDs.uniqued()
         atlasReviews = progress.atlasReviews
@@ -572,6 +717,51 @@ final class AtlasPrototypeModel: ObservableObject {
         for story in LaunchCountyCatalog.stories where completedCountyStoryIDs.contains(story.id) {
             seedReviews(storyID: story.id, words: story.words)
         }
+        for pack in CountyStoryPackCatalog.packs {
+            migrateLegacyProgress(into: pack)
+        }
+    }
+
+    /// Maps old flat beat indexes to stable page ids once. Legacy progress,
+    /// evidence, artifacts and review schedules remain untouched alongside it.
+    private func migrateLegacyProgress(into pack: CountyStoryPack) {
+        guard countyPackVersions[pack.id, default: 0] < pack.revision else { return }
+        var completed = completedCountyPageIDs[pack.id, default: []]
+
+        let legacyCompleted: [Int]
+        let legacyCurrent: Int?
+        if pack.id == "mayo.grainne-1593" {
+            legacyCompleted = completedStoryBeats
+            legacyCurrent = storyInProgress ? storyStep : nil
+        } else {
+            legacyCompleted = completedCountyStoryBeats[pack.id, default: []]
+            legacyCurrent = countyStorySteps[pack.id]
+        }
+
+        for page in pack.pages {
+            if let legacy = page.legacyBeatIndex,
+               legacyCompleted.contains(legacy),
+               !completed.contains(page.id) {
+                completed.append(page.id)
+            }
+        }
+
+        // The old contract awarded gold after its whole beat path. Preserve
+        // that earned state through the reset without awarding it to new saves.
+        if completedCountyStoryIDs.contains(pack.id) || (pack.id == "mayo.grainne-1593" && storyCompleted) {
+            for id in pack.completion.learningPageIDs where !completed.contains(id) {
+                completed.append(id)
+            }
+            if !storyReadCountyIDs.contains(pack.id) { storyReadCountyIDs.append(pack.id) }
+        }
+
+        completedCountyPageIDs[pack.id] = completed
+        if activeCountyPageIDs[pack.id] == nil,
+           let legacyCurrent,
+           let mapped = pack.pages.first(where: { $0.legacyBeatIndex == legacyCurrent }) {
+            activeCountyPageIDs[pack.id] = mapped.id
+        }
+        countyPackVersions[pack.id] = pack.revision
     }
 }
 
@@ -582,7 +772,7 @@ private extension Array where Element: Hashable {
     }
 }
 
-struct AtlasWord: Identifiable, Codable {
+struct AtlasWord: Identifiable, Codable, Equatable {
     let ga: String
     let en: String
     let sound: String
