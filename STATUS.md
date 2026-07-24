@@ -71,16 +71,35 @@ broader Mayo and four-county work in phases 4–6 for another external tester ro
 **24 July Phase 4 authoring update:** the nine-chapter production storyboard is
 approved under D23, with every open choice D-A–D-F resolved as recommended. The
 offline county-pack validator now mirrors the Swift runtime rules and adds complete
-20-word lifecycle and lexeme-contract checks. The non-bundled review draft now contains
-all nine chapters and 99 pages, including 38 exercises across all 12 families. Its
-estimated Story path is 84.8 minutes; all 20 words have one introduction and a complete
-ordered lifecycle. Rockfleet now introduces only *caisleán* and carries eight
-exercises. The draft passes the validator with `completeCounty` scope and learning
-quality enforcement enabled; all **36 Python content/tooling tests** pass. Twenty
-referenced audio resources are accurately marked unbundled. Historian re-clearance for
-Chapters 2 and 4 and C04, pedagogue review, native-speaker audio QA, and Rockfleet
-imagery rights remain open external gates, so the draft has not replaced the bundled
-representative chapter.
+20-word lifecycle and lexeme-contract checks. The non-bundled revision-6 pre-clearance
+draft now contains all nine chapters and 100 pages, including 38 exercises across all
+12 families. Its estimated Story path is 86.2 minutes; all 20 words have one
+introduction and a complete ordered lifecycle. Rockfleet introduces only *caisleán*
+and carries eight exercises. The July historical review's reversible fixes are
+applied: C02 now surfaces, C04 has a candidate Carew/SP 12 trail but stays Story-only,
+and mismatched evidence statuses and stale prototype copy are corrected. The draft
+passes the validator with `completeCounty` scope and learning-quality enforcement
+enabled; all **36 Python content/tooling tests** pass. Twenty referenced audio
+resources are accurately marked unbundled. Historian re-clearance for Chapters 2 and
+4 and C04, pedagogue review, native-speaker audio QA, and Rockfleet imagery rights
+remain open external gates, so the draft has not replaced the bundled representative
+chapter. D24 allows a newly named historian to close `history.expanded`; the review
+must identify its revision and scope. C04 confirmation may be supplied separately by
+an archival specialist, but both dispositions are required to close the gate. D24
+uses evidence-based reviewer qualification: relevant work and source competence
+rather than academic title or institutional affiliation. Paid review is allowed with
+internal disclosure, but a contributor cannot solely approve material they authored;
+overlap requires a second qualified independent disposition. With consent, public
+provenance may show reviewer name, scope, and completion date; private operational and
+conflict records remain internal. A reviewer who declines public naming may still
+close the gate when the internal record is complete; public provenance then shows
+qualified role, scope, and date. Meaning-bearing historical edits after approval
+reopen only the affected disposition; non-semantic production changes do not.
+Historical approval has no calendar expiry, but material new evidence, scholarship,
+or a credible challenge reopens the affected scope.
+Qualified-reviewer disagreement keeps the affected disposition open until conservative
+shared wording or a third qualified disposition resolves it; the owner cannot promote
+an unresolved dispute as settled fact.
 
 **Tester gate:** no external learner build until all four counties pass the narrative,
 20-word lifecycle, exercise-distribution, specialist review, native-speaker audio,
@@ -144,6 +163,9 @@ story or new Learning mode.
 | 2026-07-24 | **Story/Learning rebuild phases 0–3 complete; Rockfleet proof passes on simulator and physical iPhone.** Versioned page packs, stable ids, dual mode projections, separate progress/completion, deterministic legacy migration, a shared twelve-family full-screen exercise system, and the representative Rockfleet chapter are working. The first uniform narrative renderer was rejected as visually monotonous; Rockfleet now changes composition with the account and varies its forward action labels while preserving native navigation. The legacy Gráinne renderer and hardcoded launch-county copy are removed in favour of pack-backed routes. XcodeGen regeneration and the complete iPhone 17 Pro Max simulator scheme pass 52 tests; 22 Python content/tooling tests pass. Light, dark, accessibility-size, Increased Contrast and Reduce Motion states were directly inspected. On the physical iPhone 15 Pro Max, the complete dark Story path, complete light Learning path, and largest accessibility-text opening pass with no failures. | `ios/AnTuras/CountyStoryPack.swift`, `CountyStoryExperienceView.swift`, `CountyNarrativePacing.swift`, `CountyExerciseSystem.swift`, `StoryEvidenceComponents.swift`, `Resources/CountyStories/`, `ios/AnTurasTests/AtlasProgressTests.swift`, `ios/AnTurasUITests/AtlasFlowUITests.swift` |
 | 2026-07-24 | **Mayo Phase 4 production plan approved; authoring pipeline proved.** D23 records the approved nine-chapter storyboard and recommended D-A–D-F choices. The offline validator prints per-county timing, exercise, lifecycle, audio, evidence, and gate state while matching the runtime rules and adding complete-lifecycle and lexeme-contract enforcement. Chapter 1, *Clew Bay and Umhaill*, is authored in a non-bundled county draft so the proven Rockfleet pack stays intact during assembly. All 35 Python content/tooling tests pass. Expanded history, pedagogy, audio, and image-rights gates remain open. | `docs/GRAINNE-STORYBOARD-V2.md`, `docs/DECISIONS.md` D23, `tools/validate_county_pack.py`, `tools/tests/test_validate_county_pack.py`, `content/mayo/` |
 | 2026-07-24 | **Nine-chapter Mayo review draft completed and machine-checked.** Chapters 2 and 4–9 are authored; Rockfleet now introduces only *caisleán* and is trimmed to eight exercises. The non-bundled revision-5 draft contains 99 pages, an 84.8-minute estimated Story path, 38 exercises across all 12 families, and complete ordered lifecycles for all 20 headwords. Strict county-pack validation and all 36 Python tests pass. The structurally complete draft remains outside the app because expanded specialist review, 20 teaching-audio resources, Rockfleet image rights, integration, and device/accessibility checks are still open. | `content/mayo/grainne-1593.pack.draft.json`, `content/mayo/DRAFT-STATUS.md`, `docs/GRAINNE-STORYBOARD-V2.md` |
+| 2026-07-24 | **Mayo revision-6 historian candidate prepared.** The accepted pre-clearance workflow applies the July historical review's reversible fixes before external review: C04 now carries a candidate Carew MS 601 / SP 12/159 trail but remains Story-only and behind `history.expanded`; C02's archive bias appears in Story mode; Chapter 2/4 wording, C06/C10/C14/C15 evidence statuses, names, and stale prototype copy are corrected. The non-bundled pack now contains 100 pages with an 86.2-minute Story path and 104.1-minute Learning path. Strict validation and all 36 Python tests pass. No external gate is closed and the bundled app remains unchanged. | `content/mayo/grainne-1593.pack.draft.json`, `content/mayo/grainne-1593-source-brief.md`, `content/mayo/DRAFT-STATUS.md`, `docs/mayo-historical-review/` |
+| 2026-07-24 | **Expanded-history reviewer continuity requirement removed.** D24 records that a newly named historian may close the revision-6 `history.expanded` gate. The new review must identify revision, scope, date, requested changes and final disposition, and must explicitly confirm the candidate C04 folio and diplomatic wording. No gate is closed by this governance decision. | `docs/DECISIONS.md` D24, `content/mayo/grainne-1593-source-brief.md`, `content/mayo/DRAFT-STATUS.md` |
+| 2026-07-24 | **Split historical review permitted.** D24 now permits a narrative historian to own the Chapter 2/4 disposition and an archival specialist to own C04 folio and diplomatic-wording confirmation. One qualified person may perform both, but `history.expanded` requires both recorded dispositions. | `docs/DECISIONS.md` D24, `content/mayo/grainne-1593-source-brief.md`, `content/mayo/DRAFT-STATUS.md` |
 
 ## Immediate next steps (rebuild-plan Phase 4)
 

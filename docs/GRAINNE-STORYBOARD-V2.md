@@ -399,12 +399,15 @@ These choices were approved on 24 July 2026 with the recommended option in each 
 
 ## Authoring result and remaining gates
 
-The non-bundled revision-5 review draft now contains all nine chapters, 38 exercises,
-and the complete 20-word machine lifecycle. Rockfleet is revised under D-B/D-C, the
-validator passes with full-county and learning-quality enforcement enabled, and the
-estimated Story path is 84.8 minutes. Historian and pedagogue re-clearance, native-
-speaker audio QA, imagery rights, app integration, and the complete device,
-accessibility, migration, offline, and tester-readiness checks remain.
+The non-bundled revision-6 pre-clearance draft now contains all nine chapters, 100
+pages, 38 exercises, and the complete 20-word machine lifecycle. Rockfleet is revised
+under D-B/D-C. The July historical review's reversible fixes are applied without
+closing `history.expanded`; C04 carries a candidate citation trail but remains
+Story-only pending historian confirmation. The validator passes with full-county and
+learning-quality enforcement enabled, and the estimated Story path is 86.2 minutes.
+Historian and pedagogue re-clearance, native-speaker audio QA, imagery rights, app
+integration, and the complete device, accessibility, migration, offline, and
+tester-readiness checks remain.
 
 ## Explicit non-goals for this storyboard
 

@@ -2,6 +2,78 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D24 — Allow a new historian to close the expanded Mayo review (2026-07-24)
+
+**Decision:** The historian who approved the six-episode Mayo prototype does not have
+exclusive authority over the nine-chapter production review. A newly named historian
+may close `history.expanded` by reviewing revision 6 at chapter weight, including
+Chapters 2 and 4. The review may be split: an archival specialist may separately
+confirm the candidate C04 folio and diplomatic wording.
+
+**Evidence boundary:** A change of reviewer does not inherit or imply approval. The
+new reviewer must explicitly record the reviewed revision, scope, date, requested
+changes, and final disposition. The historian owns the Chapter 2 and Chapter 4
+disposition. When C04 is split out, the archival specialist owns the folio and
+diplomatic-wording disposition. General chapter approval is not a substitute for the
+archival confirmation.
+
+**Reviewer qualification:** Qualification is evidence-based, not credential-based.
+The historian must show relevant work on sixteenth-century Irish history, Tudor
+administration, or closely related primary-source research sufficient to judge the
+chapter claims. The archival specialist must show experience reading early-modern
+manuscripts, State Papers, diplomatic transcriptions, or equivalent records sufficient
+to verify C04. A university post, degree, or institutional affiliation is not required.
+The review record must state the evidence used to establish the reviewer's fit for
+their assigned scope.
+
+**Payment and conflicts:** Paid review is permitted and must be disclosed in the
+internal review record. Prior contribution to the project does not disqualify a
+reviewer from unrelated scope, but no person may be the sole approver of claims, copy,
+interpretations, or transcriptions they authored. Any overlap between contribution and
+assigned review scope requires a second qualified reviewer to record an independent
+disposition. The record must identify the overlap and the independent reviewer.
+
+**Public provenance:** With the reviewer's explicit consent, the public evidence
+record may name the reviewer and show their review scope and completion date. Payment
+details, contact information, working notes, qualification evidence, and conflict
+documentation remain internal. Public credit must not imply that the reviewer approved
+later revisions or scopes outside the recorded disposition.
+
+Declining public naming does not prevent gate closure. The internal review record must
+still identify the reviewer and preserve the qualification and conflict evidence. The
+public evidence record may instead identify the role—qualified historian or archival
+specialist—together with scope and completion date, without naming the person.
+
+**Changes after approval:** A later change to a historical claim, source attribution,
+certainty boundary, personal name, quotation, transcription, or evidence explanation
+reopens the disposition covering that material. Re-review is scoped to the affected
+claim, page, chapter, or archival finding unless the change alters the wider account.
+Spelling, punctuation, layout, accessibility labels that preserve meaning, and
+unrelated language exercises do not reopen historical review. The internal record
+must link the approved content revision and any later re-review.
+
+**Duration:** Historical approval has no automatic calendar expiry. Re-review is
+triggered when material new primary evidence, a significant scholarly correction, or
+a credible challenge affects an approved claim or evidence boundary. A trigger
+reopens only the affected disposition unless its consequences change the wider
+account. The trigger and resulting decision must be added to the internal review
+record.
+
+**Reviewer disagreement:** When qualified reviewers disagree on a claim, source,
+transcription, certainty boundary, or wording, the affected disposition remains open.
+The editor may adopt a more conservative formulation that every assigned reviewer
+accepts, or obtain a third qualified disposition. The product owner may choose among
+supported presentation options, but may not override the disagreement by presenting
+the disputed point as settled fact. The review record must preserve the disagreement
+and its resolution.
+
+**Consequences:** The source brief and draft status may name a new reviewer when one is
+engaged. The gate remains open until the chapter-weight review and C04 archival
+confirmation are both recorded and any required changes are approved in the resulting
+candidate. The same qualified person may supply both dispositions, but neither scope
+may be omitted. Pedagogy, audio, rights, accessibility, device, and promotion gates
+remain separate.
+
 ## D23 — Approve the nine-chapter Mayo production storyboard (2026-07-24)
 
 **Decision:** Approve `GRAINNE-STORYBOARD-V2.md` as the production storyboard for the

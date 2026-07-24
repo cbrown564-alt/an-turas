@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "pack": {
     "id": "mayo.grainne-1593",
-    "revision": 5,
+    "revision": 6,
     "scope": "completeCounty",
     "title": "Gráinne Ní Mháille: Clew Bay, London, and return",
     "presentation": {
@@ -15,7 +15,7 @@
       "opening": "Nine chapters follow the system that formed Gráinne's power, the pressure that broke its local answers, the 1593 journey into English administration, and the unfinished return to Mayo.",
       "evidenceLimit": "The county account joins coast, place records, petitions, interrogatory answers, official correspondence, and later reception. It does not invent private scenes, a Greenwich conversation, or certainty where the surviving accounts conflict.",
       "sourceTitle": "The 1593 petition, SP 63/170 interrogatory and answers, and the September royal draft",
-      "sourceDetail": "Claims C01–C16 · targeted expanded-story review remains open for Chapters 2 and 4 and the C04 citation",
+      "sourceDetail": "Claims C01–C16 · C17 remains excluded or reception-only and C18 is excluded as a period title · targeted expanded-story review remains open for Chapters 2 and 4 and historian confirmation of the C04 citation",
       "artifactTitle": "Mayo voyage chart",
       "artifactPrompt": "Trace Clew Bay to London and back, keeping the documentary record beside the later stories.",
       "tegLevel": "TEG A1 bridge",
@@ -253,6 +253,18 @@
         "status": "historian-review-open"
       },
       {
+        "id": "source.sidney-memoir",
+        "kind": "source",
+        "value": "Sir Henry Sidney to Sir Francis Walsingham, 1 March 1582/3 · Carew MS 601 / TNA SP 12/159 · candidate folio 27d",
+        "status": "candidate-citation-historian-confirmation-open"
+      },
+      {
+        "id": "evidence.annal-silence-c02",
+        "kind": "evidence",
+        "value": "C02",
+        "status": "historian-review-open"
+      },
+      {
         "id": "pattern.as-me",
         "kind": "grammarPattern",
         "value": "as … mé",
@@ -370,7 +382,7 @@
         "id": "evidence.children-c06",
         "kind": "evidence",
         "value": "C06",
-        "status": "historian-review-open"
+        "status": "historian-approved-prototype"
       },
       {
         "id": "evidence.power-c03-c04",
@@ -382,7 +394,7 @@
         "id": "evidence.kin-held-c10",
         "kind": "evidence",
         "value": "C10",
-        "status": "historian-review-open"
+        "status": "historian-approved-prototype"
       },
       {
         "id": "evidence.owen-c09",
@@ -409,9 +421,15 @@
         "status": "historian-approved-prototype"
       },
       {
-        "id": "evidence.return-c14-c15",
+        "id": "evidence.return-c14",
         "kind": "evidence",
-        "value": "C14–C15",
+        "value": "C14",
+        "status": "historian-approved-prototype"
+      },
+      {
+        "id": "evidence.later-life-c15",
+        "kind": "evidence",
+        "value": "C15",
         "status": "expanded-review-open"
       },
       {
@@ -828,15 +846,16 @@
             "legacyBeatIndex": null,
             "title": "An outsider names her power",
             "context": "Sir Henry Sidney · a recognition",
-            "body": "Years before the 1593 crisis, the Lord Deputy Sir Henry Sidney recorded meeting a notable sea captain from this coast — a woman with galleys and fighting men. The recognition comes from an English official, in his words, but it tells us her maritime power was real enough for the state to notice.",
-            "detail": "This is one overheard official beat, not a full portrait. The exact wording and citation are being confirmed for review; the recognition itself is well attested.",
+            "body": "Years before the 1593 crisis, the Lord Deputy Sir Henry Sidney later wrote that he had met a notable sea captain from this coast — a woman with galleys and fighting men. The recognition comes from an English official, in his words, but it tells us her maritime power was real enough for the state to notice.",
+            "detail": "Sidney wrote the memoir for Sir Francis Walsingham on 1 March 1582/3, recalling a Galway meeting during his 1576 deputyship. Carew MS 601 and TNA SP 12/159 preserve the candidate citation trail; the folio and diplomatic wording still require historian confirmation.",
             "visibility": "storyOnly",
             "requirement": "storyRequired",
             "kind": "narrative",
             "estimatedSeconds": 90,
             "introducedLexemeIDs": [],
             "resourceIDs": [
-              "evidence.sidney-recognition"
+              "evidence.sidney-recognition",
+              "source.sidney-memoir"
             ],
             "exercise": null,
             "presentation": "archive",
@@ -1021,7 +1040,7 @@
             "legacyBeatIndex": null,
             "title": "Marriage joined houses and territories",
             "context": "Two marriages · chronology kept bounded",
-            "body": "The 1593 answers name Gráinne's marriages to Dónal an Chogaidh Ó Flaithbheartaigh and later to Risdeárd an Iarainn Bourke. Those marriages connected her to two powerful Connacht families. The broad sequence is supportable; exact dates and the later stories attached to the marriages are not equally secure.",
+            "body": "The 1593 answers record Gráinne's marriages — first to an O'Flaherty leader the papers call Donall Ichoggy (modern Irish: Dónal an Chogaidh Ó Flaithbheartaigh), and later to Risdeárd an Iarainn Bourke. Those marriages connected her to two powerful Connacht families. The broad sequence is supportable; exact wedding years and the later stories attached to the marriages are not equally secure.",
             "detail": "This chapter does not stage a battlement divorce or repeat the one-year-marriage tale as fact.",
             "visibility": "storyOnly",
             "requirement": "storyRequired",
@@ -1667,7 +1686,7 @@
             ],
             "exercise": {
               "family": "matching",
-              "objective": "Connect the four Rockfleet headwords to their meanings.",
+              "objective": "Connect one new Rockfleet place word and three reused kin words to their meanings.",
               "prompt": "Choose an Irish word, then the meaning that belongs with it.",
               "answer": "all pairs",
               "options": [],
@@ -2150,7 +2169,7 @@
             "title": "Carry the whole connection forward",
             "context": "Before the pressure closes in",
             "body": "You can now hear and use caisleán and teaghlach inside more than one task. The language carries the chapter's central relationship: a defended place and the people whose lives and authority gathered around it.",
-            "detail": "The complete Mayo path will reuse these words again. This chapter proof does not yet turn the county gold.",
+            "detail": "The complete Mayo path reuses these words again before Learning mode can turn the county gold.",
             "visibility": "learningOnly",
             "requirement": "learningRequired",
             "kind": "narrative",
@@ -2228,7 +2247,7 @@
             "legacyBeatIndex": null,
             "title": "A ship made the coast larger",
             "context": "Long · ship",
-            "body": "Long means ship. From Rockfleet, a ship could cross the bay, reach another harbour, carry goods, collect tolls, or bring force where it was needed. Maritime authority was not a title held still on land. It moved.",
+            "body": "Long means ship. From Rockfleet, a ship could cross the bay, reach another harbour, carry goods, enforce a local claim on the water, or bring force where it was needed. Maritime authority was not a title held still on land. It moved.",
             "detail": "This chapter keeps long as its only new headword and puts the earlier sea, bay and place words back to work.",
             "visibility": "both",
             "requirement": "bothRequired",
@@ -2385,8 +2404,8 @@
             "legacyBeatIndex": null,
             "title": "Trade and tolls were parts of the same livelihood",
             "context": "Routes through Clew Bay",
-            "body": "Goods moved through the bay and along the Atlantic coast. Control of those routes could support trade and the taking of tolls from vessels that passed. Neither activity was neutral: each depended on recognised local authority and on the ability to enforce it.",
-            "detail": "Calling the whole system trade would make it cleaner than the evidence allows.",
+            "body": "Goods moved through the bay and along the Atlantic coast. English observers and later historians describe trade and the taking of tolls on these routes; her own papers speak instead of maintenance by force, by land and sea. Neither activity was neutral: each depended on recognised local authority and on the ability to enforce it.",
+            "detail": "Calling the whole system trade would make it cleaner than the evidence allows; calling tolling her own self-description would blur unlike sources.",
             "visibility": "storyOnly",
             "requirement": "storyRequired",
             "kind": "narrative",
@@ -2478,16 +2497,17 @@
             "legacyBeatIndex": null,
             "title": "Officials noticed a working force",
             "context": "Sidney and later state papers",
-            "body": "Sidney's earlier recognition links Gráinne to galleys and fighting men; later papers treat her maritime reach as something the state had to bargain with or suppress. The exact Sidney citation and wording remain under targeted review, so this draft does not turn a remembered figure into false precision.",
-            "detail": "What is secure enough for the chapter draft is the official recognition of material sea power. The final citation must be pinned before release copy is cleared.",
-            "visibility": "both",
-            "requirement": "bothRequired",
+            "body": "In a memoir written for Walsingham in 1582/3, Sidney recalled meeting Gráinne during his 1576 deputyship and linked her to galleys and fighting men. Later papers treat her maritime reach as something the state had to bargain with or suppress. This page keeps Sidney's reported numbers in the evidence detail rather than turning them into a counted muster.",
+            "detail": "Sidney reported her offer of three galleys and 200 fighting men. The candidate trail is Carew MS 601 and TNA SP 12/159, publicly cited at f. 27d; a historian must confirm that folio and the diplomatic wording before this beat joins the Learning spine or becomes release copy.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
             "kind": "narrative",
             "estimatedSeconds": 85,
             "introducedLexemeIDs": [],
             "resourceIDs": [
               "evidence.sidney-recognition",
-              "evidence.power-c03-c04"
+              "evidence.power-c03-c04",
+              "source.sidney-memoir"
             ],
             "exercise": null,
             "presentation": "archive",
@@ -2900,7 +2920,7 @@
             "legacyBeatIndex": null,
             "title": "One death remains a disputed edge",
             "context": "Eóghan / Owen · closer look",
-            "body": "Gráinne blamed Bingham's side for the death of her son Owen; the surviving accounts conflict over the circumstances. That accusation belongs in closer view because it deepens the stakes, but the main story does not pronounce a settled murder where the record does not support one.",
+            "body": "Gráinne blamed Bingham's side for the death of her son Eóghan, recorded in English as Owen; the surviving accounts conflict over the circumstances. That accusation belongs in closer view because it deepens the stakes, but the main story does not pronounce a settled murder where the record does not support one.",
             "detail": "The disagreement is consequential, so the uncertainty remains visible rather than being buried or dramatized.",
             "visibility": "storyOnly",
             "requirement": "storyRequired",
@@ -3342,6 +3362,29 @@
             "advanceLabel": "Read what follows the name",
             "visualResourceID": "image.sp63-170",
             "visualCaption": "Source image with live interface highlighting · not an edited facsimile",
+            "displayItems": null
+          },
+          {
+            "id": "mayo.in-the-record.archive-limit",
+            "legacyBeatIndex": null,
+            "title": "The archive preserves one side of the encounter",
+            "context": "English administration · silence in the Irish annals",
+            "body": "Gráinne does not appear in the surviving Irish annals. Most of the written record used here comes from English administration: petitions, questions, answers and official correspondence made for government business. That record is substantial, but its survival gives the state unusual power over what can now be told.",
+            "detail": "Absence from the annals does not make the administrative papers false or complete. It tells us to read their evidence together with the purposes that produced and preserved it.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 85,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "source.sp63-170",
+              "evidence.annal-silence-c02"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Read the archive with care",
+            "visualResourceID": null,
+            "visualCaption": null,
             "displayItems": null
           },
           {
@@ -4024,7 +4067,7 @@
             ],
             "resourceIDs": [
               "audio.aris",
-              "evidence.return-c14-c15"
+              "evidence.return-c14"
             ],
             "exercise": null,
             "presentation": "pressureField",
@@ -4180,7 +4223,7 @@
             "estimatedSeconds": 85,
             "introducedLexemeIDs": [],
             "resourceIDs": [
-              "evidence.return-c14-c15"
+              "evidence.later-life-c15"
             ],
             "exercise": null,
             "presentation": "evidenceBoundary",
@@ -4202,7 +4245,7 @@
             "estimatedSeconds": 85,
             "introducedLexemeIDs": [],
             "resourceIDs": [
-              "evidence.return-c14-c15",
+              "evidence.return-c14",
               "source.sp63-170"
             ],
             "exercise": null,
@@ -4346,6 +4389,7 @@
         "mayo.road-to-london.consequence",
         "mayo.in-the-record.opening",
         "mayo.in-the-record.name-find",
+        "mayo.in-the-record.archive-limit",
         "mayo.in-the-record.family-answers",
         "mayo.in-the-record.shaped-voice",
         "mayo.in-the-record.royal-question",
@@ -4399,7 +4443,6 @@
         "mayo.power-at-sea.maintenance",
         "mayo.power-at-sea.build-ship-bay",
         "mayo.power-at-sea.sequence-livelihood",
-        "mayo.power-at-sea.official-recognition",
         "mayo.power-at-sea.type-sea",
         "mayo.power-at-sea.consequence",
         "mayo.bingham-pressure.opening",

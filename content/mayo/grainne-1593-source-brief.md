@@ -65,7 +65,7 @@ Certainty: **story** = safe for narrative surface if wording stays bounded;
 | C01 | Flourished as a Connacht maritime leader mid–late 16th c., linked to Clew Bay / Umhaill | story | Interrogatory answers; Sidney; state papers generally | Birth c. 1530 traditional |
 | C02 | Absent from Irish annals; English admin sources dominate | close | Scholarly consensus (Chambers, O'Dowd, Murray) | Say affirmatively in L2 |
 | C03 | Maintained herself/people by land and sea, including opportunistic seizure/tolling | story | Her 1593 self-account; hostile official descriptions | Do not sanitize into pure “trade” |
-| C04 | Recognised by Sidney as sea captain with galleys and ~200 men | story | Sidney letter tradition / SP citations in literature | Verify exact cite + wording in L3 |
+| C04 | Recognised by Sidney as a sea captain who offered three galleys and 200 fighting men | story | Sidney memoir to Walsingham, 1 Mar 1582/3; Carew MS 601; TNA SP 12/159 (publicly cited f. 27d); Carew calendar II no. 501 | Candidate citation pinned for the review draft; historian must confirm folio and diplomatic wording before release |
 | C05 | Married Dónal an Chogaidh Ó Flaithbheartaigh; later Risdeárd an Iarainn Bourke | story | Interrogatory / biographies | Dates vary slightly in secondary lit |
 | C06 | Children include sons Owen/Eóghan, Murrough/Murchadh, Tibbott/Tibbot; daughter Méadhbh | story/close | 1593 papers + genealogical synthesis | On-surface: sons/brother who matter to 1593 |
 | C07 | Rockfleet associated with Bourke marriage household and her later base | story | Heritage Ireland; local/historical synthesis | Exact move dates vary in popular copy |
@@ -85,6 +85,7 @@ Certainty: **story** = safe for narrative surface if wording stays bounded;
 
 | Source | Repo / catalogue hint | Rights hypothesis | Action |
 | --- | --- | --- | --- |
+| Sidney memoir to Walsingham, 1 Mar 1582/3 | Lambeth Carew MS 601 p. 89; TNA SP 12/159, Gráinne passage publicly cited at f. 27d; Carew calendar vol. II no. 501; Brady (ed.), *A Viceroy’s Vindication?* | Calendar text and bibliographic citation may support the account; manuscript reproduction would require a separate rights check | Use as the candidate C04 L3 trail; historian to confirm f. 27d and diplomatic wording before release |
 | TNA SP 63/170 petition + interrogatory images | The National Archives, Kew | Cleared for the free, exclusively educational product posture; commercial involvement requires a TNA licence or image removal | Bundle the web-resolution f. 201 with credit; pursue f. 202/high-resolution files if needed |
 | Salisbury draft 6 Sept 1593 | Hatfield House Cecil Papers; NLI Sources record MS_UR_010761 points to the HMC calendar | Manuscript reproduction requires Hatfield permission | Use the calendar/transcription to support Ep5; no image required for the handled-source interaction |
 | Calendar of State Papers Ireland 1592–1596 | Printed calendar | Public domain text likely; confirm edition | Use for L3 citations; do not treat calendar paraphrases as verbatim without check |
@@ -184,7 +185,33 @@ expanded chapters.
 - [ ] Rights: Rockfleet visual plan (commission drawing if OPW photo blocked)
 - [x] Editor: afterlife screen matches the signed-off affirmative prototype tone
 - [x] Product: nine-chapter production storyboard approved (D23)
-- [ ] Historian: re-clear Chapter 2 and Chapter 4 at chapter weight and pin the C04 citation
+- [ ] Named historian, who may be new under D24: re-clear Chapter 2 and Chapter 4
+      at chapter weight; record reviewed revision, scope, date, requested changes, and
+      final disposition; link or describe relevant sixteenth-century Irish, Tudor
+      administrative, or equivalent primary-source work
+- [ ] Named archival specialist, who may be the same qualified person: confirm the
+      candidate C04 folio and diplomatic wording; record sources inspected, date,
+      requested changes, and final disposition; link or describe relevant
+      early-modern manuscript, State Paper, or diplomatic-transcription work
+- [ ] Review governance: disclose payment and prior contribution internally; where a
+      reviewer authored material inside their assigned scope, record a second
+      qualified reviewer's independent disposition
+- [ ] Public provenance: obtain explicit consent before publishing reviewer name;
+      publish only name, reviewed scope, and completion date; keep payment, contact,
+      working notes, qualification evidence, and conflict records internal. If naming
+      consent is withheld, publish qualified role, scope, and completion date while
+      retaining identity and qualification evidence internally
+- [ ] Post-review change control: link each disposition to the approved pack revision;
+      reopen only the affected disposition after changes to claims, attribution,
+      certainty, names, quotations, transcriptions, or evidence explanations. Do not
+      reopen for non-semantic spelling, punctuation, layout, accessibility-label, or
+      unrelated exercise changes
+- [ ] Re-review trigger: do not expire approval by date; reopen the affected
+      disposition when material new primary evidence, a significant scholarly
+      correction, or a credible challenge changes its basis
+- [ ] Reviewer disagreement: keep the affected disposition open; use a conservative
+      formulation all assigned reviewers accept or obtain a third qualified
+      disposition; preserve the disagreement and resolution in the review record
 
 ## Explicit non-goals for this packet
 
@@ -204,9 +231,13 @@ expanded chapters.
 
 ## Status
 
-**Approved production plan; expanded review still open.** The compact prototype copy
+**Approved production plan; revision-6 pre-clearance candidate; expanded review still
+open.** The compact prototype copy
 and first-pass claim and language review are complete. The broader claim map and
-nine-chapter storyboard are approved, and the non-bundled review draft now contains
-both mode projections and the complete four-stage 20-word lifecycle. Before the next
-external round, review that draft and close the targeted historian, pedagogue, audio,
-visual-rights, accessibility, device, and four-county tester-readiness gates.
+nine-chapter storyboard are approved. The non-bundled review draft now contains both
+mode projections and the complete four-stage 20-word lifecycle. Revision 6 applies
+the July research packet's reversible copy, citation, and evidence-status corrections
+before historian review; it does not close `history.expanded` or approve release copy.
+Before the next external round, review that draft and close the targeted historian,
+pedagogue, audio, visual-rights, accessibility, device, and four-county
+tester-readiness gates.
