@@ -19,6 +19,12 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
 - [`STORY-LEARNING-REBUILD-PLAN.md`](STORY-LEARNING-REBUILD-PLAN.md) is the confirmed
   Phase 3 implementation plan. Canonical owners above remain authoritative for current
   behavior, design, decisions, status, and strategy.
+- [`GRAINNE-STORYBOARD-V2.md`](GRAINNE-STORYBOARD-V2.md) is the approved nine-chapter
+  Mayo production storyboard for rebuild Phase 4. The earlier
+  [`GRAINNE-STORYBOARD.md`](GRAINNE-STORYBOARD.md) records the superseded six-episode
+  prototype.
+- [`../content/mayo/DRAFT-STATUS.md`](../content/mayo/DRAFT-STATUS.md) records the
+  assembly state and open external gates for the nine-chapter Mayo pack.
 - [`GRAINNE-PROTOTYPE-REPORT.md`](GRAINNE-PROTOTYPE-REPORT.md) records evidence and open questions from the Gráinne prototype.
 - [`STORY-RESET.md`](STORY-RESET.md) explains the current story reset.
 - [`EXPANSIVE-INTERFACE-VISION.md`](EXPANSIVE-INTERFACE-VISION.md) explores the living-atlas direction.

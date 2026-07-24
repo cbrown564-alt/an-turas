@@ -1,22 +1,23 @@
 # Mayo source brief — Gráinne Ní Mháille & the 1593 petition
 
 *Historian-ready packet · started 12 July 2026 · status: **six-episode prototype
-claims approved; expanded-story review required**. D22 retains the 1593 organising
-centre but requires an eight-to-ten chapter, 60–90 minute Story-mode rebuild. Replaces
-Breastagh as Mayo flagship centre (D13). Breastagh remains a field-note source.*
+claims approved; nine-chapter production storyboard approved; targeted expanded-story
+review required**. D22 retains the 1593 organising centre and D23 fixes the current
+nine-chapter, 60–90 minute Story-mode production plan. Replaces Breastagh as Mayo
+flagship centre (D13). Breastagh remains a field-note source.*
 
 ## Packet purpose
 
-Support storyboard, language weave, rights planning, and board review before any new
-Mayo production JSON. Implements the claim ledger + rights plan + significant reading
-+ 20-word plan required by STATUS / COUNTY-ATLAS.
+Support the storyboard, language weave, rights planning, and board review of the Mayo
+production draft. Own the claim ledger, rights plan, significant reading, and
+20-word plan required by STATUS / COUNTY-ATLAS.
 
 ## Identity
 
 | Field | Value |
 | --- | --- |
 | County | Maigh Eo / Mayo |
-| Proposed story id | `mayo.grainne-1593` |
+| Story id | `mayo.grainne-1593` |
 | Named anchor | Gráinne Ní Mháille (period English: Grany / Grany ne Maly / Grany O'Maille, etc.) |
 | Organising centre | 1593 petition, interrogatory, London process, royal response |
 | Broader life scope | Selective beats that change the dramatic answer (D15) |
@@ -161,11 +162,14 @@ téigh, ainm, mise, tar, freagair, tabhair, arís, cósta.*
 
 Pedagogue owns Connacht forms, mutations, and any swaps from the reserve list.
 
-## Episode fit (pointer)
+## Chapter fit (pointer)
 
-Six-episode spine in `docs/GRAINNE-STORYBOARD.md` (walkthrough-revised). Stress-test
-pass in `docs/GRAINNE-SOURCE-STRESS-TEST.md`. The lo-fi gates in
-`docs/GRAINNE-LOFI-REVIEW.md` cleared the signed-off implementation now in the app.
+The approved nine-chapter production spine is in
+`docs/GRAINNE-STORYBOARD-V2.md`. The six-episode
+`docs/GRAINNE-STORYBOARD.md` remains the predecessor for the signed-off prototype.
+The stress test is in `docs/GRAINNE-SOURCE-STRESS-TEST.md`; the earlier lo-fi review
+in `docs/GRAINNE-LOFI-REVIEW.md` applies to that prototype, not automatically to the
+expanded chapters.
 
 ## Board checklist
 
@@ -179,13 +183,14 @@ pass in `docs/GRAINNE-SOURCE-STRESS-TEST.md`. The lo-fi gates in
 - [x] Rights: commercialisation gate requires a TNA licence or removal of TNA imagery
 - [ ] Rights: Rockfleet visual plan (commission drawing if OPW photo blocked)
 - [x] Editor: afterlife screen matches the signed-off affirmative prototype tone
-- [x] Product: six-episode split locked after walkthrough
+- [x] Product: nine-chapter production storyboard approved (D23)
+- [ ] Historian: re-clear Chapter 2 and Chapter 4 at chapter weight and pin the C04 citation
 
 ## Explicit non-goals for this packet
 
 - Exhaustive biography
 - Clearing Breastagh for flagship release
-- Production JSON
+- Final specialist approval of the production draft
 - Invented dialogue for Greenwich
 
 ## Reading list for the first historian pass
@@ -199,8 +204,9 @@ pass in `docs/GRAINNE-SOURCE-STRESS-TEST.md`. The lo-fi gates in
 
 ## Status
 
-**Historical prototype approval only.** The compact story copy and first-pass claim
-and language review are complete. Before the next external round, expand the claim
-and source mapping for the D22 chapter hypothesis, approve the new storyboard and both
-mode projections, complete the four-stage 20-word lifecycle, and close audio, visual
-rights, accessibility, device, and four-county tester-readiness gates.
+**Approved production plan; expanded review still open.** The compact prototype copy
+and first-pass claim and language review are complete. The broader claim map and
+nine-chapter storyboard are approved, and the non-bundled review draft now contains
+both mode projections and the complete four-stage 20-word lifecycle. Before the next
+external round, review that draft and close the targeted historian, pedagogue, audio,
+visual-rights, accessibility, device, and four-county tester-readiness gates.

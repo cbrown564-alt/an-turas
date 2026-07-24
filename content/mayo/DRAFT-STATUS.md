@@ -1,10 +1,11 @@
 # Mayo county pack — draft status
 
-*Working draft of the nine-chapter Mayo pack, authored against the approved
-storyboard (`docs/GRAINNE-STORYBOARD-V2.md`). The draft lives here in `content/mayo/`
-so the shipping pack in `ios/AnTuras/Resources/CountyStories/mayo.grainne-1593.json`
-(the proven representative Rockfleet chapter) stays correct and enforced while the
-county is assembled. The draft is swapped into `Resources` only when complete.*
+*Structurally complete review draft of the nine-chapter Mayo pack, authored against
+the approved storyboard (`docs/GRAINNE-STORYBOARD-V2.md`). The draft lives here in
+`content/mayo/` so the shipping pack in
+`ios/AnTuras/Resources/CountyStories/mayo.grainne-1593.json` (the proven
+representative Rockfleet chapter) stays correct and enforced until the external
+history, pedagogy, audio, and rights gates close.*
 
 Draft file: `content/mayo/grainne-1593.pack.draft.json`
 Validate with: `python3 tools/validate_county_pack.py content/mayo/grainne-1593.pack.draft.json`
@@ -14,35 +15,32 @@ Validate with: `python3 tools/validate_county_pack.py content/mayo/grainne-1593.
 | # | Chapter | Status |
 | --- | --- | --- |
 | 1 | Clew Bay and Umhaill (`mayo.clew-bay`) | **draft authored** — introduces *farraige, bá, áit, as* |
-| 2 | Marriage, kin, and alliances | not started |
-| 3 | Rockfleet (`mayo.rockfleet`) | proven chapter carried in from the shipping pack; D-B/D-C not yet applied |
-| 4 | Power at sea | not started |
-| 5 | Bingham closes in | not started |
-| 6 | The road to London | not started |
-| 7 | Gráinne in the record | not started |
-| 8 | The royal answer | not started |
-| 9 | Return and afterlife | not started |
+| 2 | Marriage, kin, and alliances (`mayo.kin-alliances`) | **review draft authored** — introduces *teaghlach, mac, deartháir, bean* |
+| 3 | Rockfleet (`mayo.rockfleet`) | **revised** — introduces only *caisleán*; eight-exercise consolidation chapter |
+| 4 | Power at sea (`mayo.power-at-sea`) | **review draft authored** — introduces *long* and reuses the coast words |
+| 5 | Bingham closes in (`mayo.bingham-pressure`) | **review draft authored** — introduces *caill* |
+| 6 | The road to London (`mayo.road-to-london`) | **review draft authored** — introduces *iarr, téigh, tar* |
+| 7 | Gráinne in the record (`mayo.in-the-record`) | **review draft authored** — introduces *ainm, mise* |
+| 8 | The royal answer (`mayo.royal-answer`) | **review draft authored** — introduces *freagair, tabhair* |
+| 9 | Return and afterlife (`mayo.return-afterlife`) | **review draft authored** — introduces *arís, cósta* and completes the chart |
 
-## Deliberately deferred until the county is complete
+## Internal assembly result
 
-These are correct-to-defer, not oversights:
+The draft now records the complete authoring shape:
 
-- **`enforceLearningQuality` is `false`** in the draft. A partial pack cannot meet the
-  full-county exercise-distribution ratios (e.g. single-word listen-and-pick reads 13%
-  with only 15 exercises but must land ≤10% across the finished ~38). Re-enable at
-  assembly.
-- **D-B (Rockfleet word reassignment)** is not yet applied. Chapter 3 still *introduces*
-  *teaghlach/mac/bean*; once Chapter 2 introduces them, Chapter 3 becomes their reuse
-  site and its `introducedLexemeIDs` + lifecycle change.
-- **D-C (Rockfleet exercise trim 12→~8)** happens during distribution rebalancing so the
-  county lands in the 30–45 band with legal ratios.
-- **The 20-word lifecycle table** still holds only the 2 proven entries. It is filled to
-  all 20 at the end, when every reuse chapter exists (cross-chapter reuse for Ch1–6
-  words; delayed retrieval + chart/review for Ch7–9 words, per D-E).
-- **`scope` stays `representativeChapter`** until all nine chapters and 20 lifecycles
-  exist, then flips to `completeCounty` (which turns on the all-20 lifecycle check).
-- **Audio** for new chapters is marked `pending-native-qa` and shows as unbundled in the
-  validator report — accurate; native-speaker QA is an open external gate.
+- nine chapters and 99 authored pages;
+- 84.8 estimated Story-mode minutes and 105.5 estimated Learning-mode minutes;
+- 38 exercises across all 12 mechanic families, with every enforced distribution
+  ratio passing;
+- one introduction and a complete ordered lifecycle for each of the 20 headwords;
+- D-B and D-C applied to Rockfleet;
+- `scope: completeCounty` and `enforceLearningQuality: true`;
+- revision 5; and
+- a passing offline validator report.
+
+`completeCounty` means the authored data is structurally complete. It does not mean
+the copy is specialist-approved, the audio is ready, or the pack is promoted into the
+app.
 
 ## Open external gates (cannot be closed in-repo)
 
@@ -51,13 +49,20 @@ C04 (Sidney) citation; Irish-language pedagogue review of the expanded exercises
 native-speaker audio QA on every teaching clip; Rockfleet imagery rights. See
 `docs/GRAINNE-STORYBOARD-V2.md` (D-F) and the source brief.
 
-## Assembly checklist (final step before swap)
+The validator currently reports 20 referenced audio resources as not yet bundled.
+That is intentional and keeps the native-speaker audio gate visible.
 
-1. All nine chapters authored; narrative + exercises complete.
-2. Apply D-B and D-C to Chapter 3.
-3. Rebalance exercises to 30–45 with legal distribution; re-enable `enforceLearningQuality`.
-4. Author the full 20-word lifecycle table.
-5. Flip `scope` to `completeCounty`; validator must pass with all rules on.
-6. Bump `revision`; swap draft into `ios/AnTuras/Resources/CountyStories/`.
-7. Run the full simulator + Python suites; verify on a physical device and at
-   accessibility sizes.
+## Promotion checklist (after external review)
+
+1. Apply historian and pedagogue revisions to the review draft.
+2. Generate, bundle, and clear every required teaching clip.
+3. Clear or replace the Rockfleet imagery.
+4. Update the app's representative-chapter opening and completion copy for a complete
+   county.
+5. Replace the bundled Rockfleet pack with the reviewed county pack and regenerate
+   the Xcode project if resources change.
+6. Run the full Swift and Python suites, timed walkthroughs, migration and offline
+   checks.
+7. Inspect both modes on a simulator and physical device in both appearances, at
+   accessibility text sizes, with VoiceOver labels, Increased Contrast, and Reduce
+   Motion.

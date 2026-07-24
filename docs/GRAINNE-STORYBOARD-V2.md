@@ -37,8 +37,9 @@ C01–C18, rights), `docs/GRAINNE-LANGUAGE-WEAVE.md` (the cleared 20 headwords),
 - **Next county:** authored by spine after Mayo gold (not chosen here)
 
 The proven Rockfleet chapter (`mayo.rockfleet`, 24 pages) is **Chapter 3** of this arc.
-It is the exercise-rich consolidation anchor and the only chapter already implemented.
-See the open decision on its word introductions below.
+It is the exercise-rich consolidation anchor and remains the only chapter implemented
+in the bundled app. The non-bundled review draft applies the approved word
+reassignment and exercise trim described below.
 
 ---
 
@@ -61,8 +62,7 @@ recommendation here. It splits the old six-episode crossing/record episode (Ep4)
 its two genuine turns — deciding to cross (Ch6) and being fixed in the record (Ch7) —
 and promotes two beats that were previously "attention-only" background into chapters
 the surviving evidence can actually carry: kin/alliances (Ch2, from C05–C07) and power
-at sea (Ch4, from C03–C04–C08). See open decision **D-A** if a leaner 8-chapter cut is
-preferred (merge Ch1+Ch2 or Ch2 into Ch3).
+at sea (Ch4, from C03–C04–C08). D23 approves this nine-chapter shape.
 
 ---
 
@@ -100,18 +100,20 @@ reference the ledger in the source brief.
 - **Do not:** stage the battlement "divorce" as fact *(C17 afterlife/exclude)*; assert
   a fixed marriage chronology the secondary literature disputes.
 
-### Chapter 3 — Rockfleet *(proven — already implemented)*
+### Chapter 3 — Rockfleet *(proven app baseline; revised in the review draft)*
 - **Historical change:** castle, inlet, boats and household read as one connected
   system; the record's limits kept visible. *(C07 place; C06 household; C08 pressure seed)*
 - **Human stake:** family and harbour are the same survival system; pressure on one
   point reaches all of them.
 - **Evidence:** Rockfleet as place *(C07)*; household framed from 1593 naming *(C06)*;
   `SP 63/170` as a state paper shown as evidence.
-- **Irish:** **I** *caisleán*; **R** *teaghlach, mac, bean* (see open decision **D-B**).
+- **Irish:** **I** *caisleán*; **R** *teaghlach, mac, bean* (approved D-B).
 - **Learner action:** enter Rockfleet; keep people and place distinct; build and type
   the *Tá … anseo* location frame; ungraded speaking; delayed retrieval.
-- **Status:** implemented as `mayo.rockfleet` (10 Story pages, 18 Learning pages, 12
-  exercises). Treat as the exercise-rich anchor; trim per open decision **D-C**.
+- **Status:** the bundled representative pack remains the proven 10-Story-page,
+  18-Learning-page baseline. The assembled review draft keeps its 10 Story pages,
+  reassigns the kin words to Chapter 2, and trims the Learning projection to 14 pages
+  with eight exercises under approved D-B/D-C.
 
 ### Chapter 4 — Power at sea
 - **Historical change:** she maintained herself and her people by land and sea,
@@ -127,9 +129,8 @@ reference the ledger in the source brief.
 - **Learner action:** build sentences that put the fleet to work across reused place
   words; sequence how sea power actually functioned.
 - **Note:** this chapter is a **reuse-and-consolidation** chapter for vocabulary (only
-  *long* is new). That is deliberate — no chapter exists primarily to teach words — but
-  see open decision **D-D** on whether a reserve headword (*saor*, *fan*, *cabhair*)
-  should replace a weaker slot to give Ch4 its own new word.
+  *long* is new). That is deliberate — no chapter exists primarily to teach words.
+  D23 approves this choice without adding a reserve headword.
 
 ### Chapter 5 — Bingham closes in
 - **Historical change:** one continuous pressure movement — Bingham's presidency
@@ -213,10 +214,10 @@ reference the ledger in the source brief.
 
 Every headword is introduced in meaningful context, retrieved after intervening tasks,
 produced in a phrase or sentence, and reused later. "Reuse" chapters listed are the
-cross-chapter returns; the machine lifecycle table (built during authoring) also needs
-an in-pack `reusedPageID` per word, which for Chapters 1–6 words is a later chapter and
-for Chapters 7–9 words is a later-page delayed retrieval plus the chart/review
-consolidation (see open decision **D-E**).
+cross-chapter returns; the machine lifecycle table also has an in-pack `reusedPageID`
+per word. For Chapters 1–6 words it points into a later chapter; for Chapters 7–9
+words it uses a later-page delayed retrieval plus the chart/review consolidation,
+as approved under D-E.
 
 | # | Word | Gloss | Introduced (ch) | Produced (phrase/sentence) | Cross-chapter reuse |
 | --- | --- | --- | --- | --- | --- |
@@ -251,43 +252,37 @@ gates.
 
 ---
 
-## Exercise distribution plan
+## Authored exercise distribution
 
-Target **38 exercises** across the county (inside the plan's 30–45 band), averaging ~4
-per chapter, with the proven Rockfleet chapter carrying more as the consolidation
-anchor. Every exercise is a full-screen page in Learning mode; Story mode omits them.
+The assembled review draft contains **38 exercises** across the county (inside the
+plan's 30–45 band), averaging about four per chapter, with Rockfleet carrying more as
+the consolidation anchor. Every exercise is a full-screen page in Learning mode;
+Story mode omits them.
 
-| Chapter | Planned exercises | Families used |
+| Chapter | Exercises | Families used |
 | --- | --- | --- |
 | 1 | 3 | listenIdentify, sentenceConstruction, matching |
 | 2 | 4 | listenIdentify, matching, sentenceConstruction, fillGap |
-| 3 (proven) | 8 (trim from 12) | listenIdentify, matching, listenBuildSentence, sentenceConstruction, typing, dialogue, comprehension, delayedRetrieval |
-| 4 | 4 | sentenceConstruction, sequencing, typing, speaking |
-| 5 | 4 | listenIdentify, fillGap, comprehension, sentenceConstruction |
-| 6 | 4 | dialogue, sentenceConstruction, sequencing, typing |
+| 3 (revised proof) | 8 (trimmed from 12) | listenIdentify, matching, listenBuildSentence, typing, dialogue, comprehension, speaking, delayedRetrieval |
+| 4 | 4 | speaking, sentenceConstruction, sequencing, typing |
+| 5 | 4 | listenBuildSentence, fillGap, comprehension, sentenceConstruction |
+| 6 | 4 | listenBuildSentence, dialogue, sequencing, typing |
 | 7 | 5 | comprehension, sentenceConstruction (*Is mise*), typing, matching, delayedRetrieval |
-| 8 | 3 | fillGap, comprehension, sentenceConstruction |
-| 9 | 3 | speaking, sentenceConstruction (*iarr arís*), delayedRetrieval |
+| 8 | 3 | grammarDiscovery, sentenceConstruction, comprehension |
+| 9 | 3 | sentenceConstruction (*iarr arís*), speaking, delayedRetrieval |
 | **Total** | **38** | all 12 families used across the county |
 
-**Distribution checks against the good-enough standards** (targets, to be re-verified by
-the validator on the authored packs):
+**Machine-checked distribution:**
 
 - **≥7 families:** all 12 used. ✓
-- **No family > 25% (≤9 of 38):** largest is sentenceConstruction at ~8 (21%) — keep at
-  or below 9; never place two of the same family consecutively within a chapter.
-- **Recognition MC ≤ 25% (≤9):** listenIdentify (4) + comprehension MC (4) + dialogue MC
-  (1) ≈ 9. At the ceiling — hold there; prefer non-MC comprehension where possible.
-- **Single-word listen-and-pick ≤ 10% (≤3–4):** listenIdentify used only at
-  introductions, ~4. At ceiling — cap at 4.
-- **≥ 50% operate on phrases/sentences (≥19):** all except the four single-word
-  listenIdentify items operate on phrases/sentences → ~34. ✓
-- **≥ 40% active production (≥16):** sentenceConstruction + typing + speaking +
-  sequencing + delayedRetrieval + fillGap ≈ 24. ✓
+- **No family > 25%:** sentenceConstruction is largest at 7/38 (18%). ✓
+- **Recognition MC ≤ 25%:** 7/38 (18%). ✓
+- **Single-word listen-and-pick ≤ 10%:** 3/38 (8%). ✓
+- **≥ 50% operate on phrases/sentences:** 31/38 (82%). ✓
+- **≥ 40% active production:** 24/38 (63%). ✓
 - **Full-sentence work by Chapter 2:** begins in Chapter 1. ✓
 
-These are planning targets. The authored packs must pass the machine validator, which
-is the binding check.
+The binding validator passes with `enforceLearningQuality: true`.
 
 ---
 
@@ -354,17 +349,17 @@ marks only for handled sources.
 
 ---
 
-## Open decisions for the approval gate
+## Approved production decisions (D23)
 
-These are the choices that change what gets authored. Recommended option first.
+These choices were approved on 24 July 2026 with the recommended option in each row.
 
-- **D-A · Chapter count (9 vs 8 vs 10).** *Recommend 9.* Nine gives each genuine turn
+- **D-A · Chapter count (9 vs 8 vs 10).** *Approved: 9.* Nine gives each genuine turn
   its own chapter and keeps Story mode in the 60–90 min band without padding. An
   8-chapter cut would merge Ch1+Ch2 (sea + kin) or fold Ch2 into Ch3; a 10th could split
   Ch7 (interrogatory) from a dedicated name-claim chapter. Timing is only provable by
   walkthrough, so the final count may shift ±1 after the first packs are built.
 
-- **D-B · Rockfleet word introductions.** *Recommend reassigning.* The proven pack
+- **D-B · Rockfleet word introductions.** *Approved: reassign.* The proven pack
   currently *introduces* `caisleán, teaghlach, mac, bean`. In the nine-chapter arc, the
   kin words belong to Chapter 2, so Chapter 3 should introduce only `caisleán` and
   **reuse** `teaghlach, mac, bean`. This is a small edit to the proven pack
@@ -373,20 +368,20 @@ These are the choices that change what gets authored. Recommended option first.
   the proven pack frozen instead would force Ch2 to reuse words the learner has not yet
   met — not viable.
 
-- **D-C · Rockfleet exercise density.** *Recommend trimming 12 → ~8.* As a standalone
+- **D-C · Rockfleet exercise density.** *Approved: trim 12 → 8.* As a standalone
   proof it carries every mechanic; as Chapter 3 of nine it should stay the richest but
   not blow the county's 30–45 budget. Trim the most redundant items (e.g. one of the two
   location-frame typing/fill exercises) while keeping listen, match, build, type,
   dialogue, comprehension, speaking, and one delayed retrieval.
 
-- **D-D · Chapter 4's new word.** *Recommend keeping `long` as the only new Ch4 word and
+- **D-D · Chapter 4's new word.** *Approved: keep `long` as the only new Ch4 word and
   running Ch4 on reuse.* The cleared 20 are place/kin/record-weighted and thin on
   trade/power vocabulary. Alternative: swap a weak slot for a reserve headword (*saor*
   = free, *fan* = stay, *cabhair* = help) to give Ch4 its own new word — but that changes
   the pedagogue-cleared set and needs a fresh lifecycle row, so only if the pedagogue
   prefers it.
 
-- **D-E · Lifecycle "reuse" for final-chapter words.** *Recommend accepting delayed
+- **D-E · Lifecycle "reuse" for final-chapter words.** *Approved: accept delayed
   retrieval + chart/review as the reuse site for Ch7–9 words.* `freagair, tabhair, arís,
   cósta` (and to a degree `ainm, mise`) are introduced too late to reappear in a *later
   chapter*. The proven pack already operationalises "reuse" as a later-page delayed
@@ -402,19 +397,18 @@ These are the choices that change what gets authored. Recommended option first.
 
 ---
 
-## What this unblocks
+## Authoring result and remaining gates
 
-On approval (with D-A–D-F resolved), Phase 4 proceeds to: build the in-pack machine
-lifecycle table (step 3), author Chapter 1 and Chapter 2 Story-mode prose and derive
-their Learning projections (steps 4–5), author their exercises (step 6), then run the
-validator and continue chapter by chapter. Chapter 3 (Rockfleet) is revised per D-B/D-C
-rather than re-authored. Historian/pedagogue re-clearance (step 7), native-speaker audio
-QA (step 8), imagery rights (step 9), and the chart/collection/progress handoff (step 10)
-close per chapter, gated by the tester-readiness checklist.
+The non-bundled revision-5 review draft now contains all nine chapters, 38 exercises,
+and the complete 20-word machine lifecycle. Rockfleet is revised under D-B/D-C, the
+validator passes with full-county and learning-quality enforcement enabled, and the
+estimated Story path is 84.8 minutes. Historian and pedagogue re-clearance, native-
+speaker audio QA, imagery rights, app integration, and the complete device,
+accessibility, migration, offline, and tester-readiness checks remain.
 
 ## Explicit non-goals for this storyboard
 
-- Final app copy or pack JSON (authored after approval)
+- Specialist-approved release copy or promotion of the review draft into the app
 - New historical claims beyond the ledger (this only re-shapes approved material)
 - Clearing Breastagh or any side story (the side-story gate is unchanged)
 - Inventing dialogue for Greenwich or the household

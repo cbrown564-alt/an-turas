@@ -64,8 +64,8 @@ incomplete visible page without restarting the county or granting unearned progr
 
 ### Narrative scope
 
-Mayo targets eight to ten chapters and 60–90 minutes in Story mode. Nine chapters are
-the working editorial hypothesis:
+Mayo targets eight to ten chapters and 60–90 minutes in Story mode. D23 approves this
+nine-chapter production shape:
 
 1. **Clew Bay and Umhaill** — coast, islands, routes, and the political world in which
    maritime authority was possible.
@@ -201,6 +201,11 @@ mechanics before authoring the remaining chapters if it does not.
 8. Generate and run native-speaker QA on every Irish teaching clip.
 9. Add only source-cleared or clearly interpretive imagery.
 10. Complete the voyage chart, collection handoff, and both progress states.
+
+**Current progress (24 July):** steps 1–6 are complete in the non-bundled revision-5
+review draft, including the nine chapters, 38 exercises, 20 lifecycles, and an
+84.8-minute estimated Story path. Steps 7–10 remain open; `STATUS.md` and
+`content/mayo/DRAFT-STATUS.md` own the current gate state.
 
 **Exit:** Mayo is complete in both modes, takes the intended time, and passes the
 content, learning, engineering, audio, and accessibility gates.

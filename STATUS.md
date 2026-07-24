@@ -18,7 +18,7 @@ full learning lifecycle was never authored.
 collection, learner-made objects, review scheduling, TEG summary, An Féilire, offline
 pack installation, durable progress across four counties, and the rebuilt Rockfleet
 representative chapter. The complete 24 July iPhone 17 Pro Max simulator suite passes
-36 unit and 16 UI tests, and all 22 Python content/tooling tests pass. Those checks
+36 unit and 16 UI tests, and all 36 Python content/tooling tests pass. Those checks
 verify the working implementation; they do not validate the broader Mayo narrative,
 learning outcomes, specialist review, audio, or rights after the 15 July product
 reset.
@@ -32,9 +32,12 @@ schedules its words. Speaking remains ungraded record-and-compare.
 **Current target:** rebuild-plan phases 0–3 are complete. The representative
 Rockfleet chapter has proved the page model, both mode projections, full-screen
 exercise system, recovery, accessibility, progress migration, and varied narrative
-composition. Phase 4 now expands Mayo to eight to ten chapters and 60–90 minutes in
-Story mode. Offaly, Dublin, and Meath then require substantial reauthoring, not
-clearance of their present preview copy.
+composition. Phase 4 now follows the approved nine-chapter Mayo storyboard. The
+non-bundled review draft now contains all nine chapters, the revised Rockfleet
+sequence, 38 exercises, and all 20 lifecycles. Its strict structural and learning
+checks pass. Targeted history and pedagogy review, audio, image rights, app integration,
+and device/accessibility verification remain. Offaly, Dublin, and Meath then require
+substantial reauthoring, not clearance of their present preview copy.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
@@ -45,7 +48,7 @@ ephemeral speaking, denied-microphone recovery and the internal failure-state
 gallery. The Phase 3 Rockfleet proof now contains ten Story pages with ten authored
 compositions—landscape, tide, route, language, relationships, system, archive,
 evidence boundary, pressure and consequence—plus an eighteen-page Learning path.
-The complete iPhone 17 Pro Max simulator scheme passes **52 tests**, and all **22 Python
+The complete iPhone 17 Pro Max simulator scheme passes **52 tests**, and all **36 Python
 content/tooling tests** pass. Direct simulator inspection covers light and dark
 appearances, accessibility text reflow, Increased Contrast and Reduce Motion. Both
 full paths now have end-to-end UI coverage, including the keyboard fada toolbar and
@@ -64,6 +67,20 @@ device-specific defect was found.
 This closes the rebuild plan's Phase 3 representative exit criterion. It verifies the
 implemented Rockfleet pattern; it does not validate learning outcomes or clear the
 broader Mayo and four-county work in phases 4–6 for another external tester round.
+
+**24 July Phase 4 authoring update:** the nine-chapter production storyboard is
+approved under D23, with every open choice D-A–D-F resolved as recommended. The
+offline county-pack validator now mirrors the Swift runtime rules and adds complete
+20-word lifecycle and lexeme-contract checks. The non-bundled review draft now contains
+all nine chapters and 99 pages, including 38 exercises across all 12 families. Its
+estimated Story path is 84.8 minutes; all 20 words have one introduction and a complete
+ordered lifecycle. Rockfleet now introduces only *caisleán* and carries eight
+exercises. The draft passes the validator with `completeCounty` scope and learning
+quality enforcement enabled; all **36 Python content/tooling tests** pass. Twenty
+referenced audio resources are accurately marked unbundled. Historian re-clearance for
+Chapters 2 and 4 and C04, pedagogue review, native-speaker audio QA, and Rockfleet
+imagery rights remain open external gates, so the draft has not replaced the bundled
+representative chapter.
 
 **Tester gate:** no external learner build until all four counties pass the narrative,
 20-word lifecycle, exercise-distribution, specialist review, native-speaker audio,
@@ -125,12 +142,15 @@ story or new Learning mode.
 | 2026-07-14 | **Phase 3 four-county working product implemented and simulator-verified.** D20 records the owner-reported Phase 2 pass. A reusable county-story engine now carries Offaly's Cross of the Scriptures, Sihtric's Dublin penny and Trim's grant/castle as visibly provisional four-episode loops; map progression, evidence and made-object shelves, 80-word accumulation, TEG can-do context, stability/difficulty review scheduling, daily calendar ritual and atomic offline pack validation share one durable state model. After XcodeGen regeneration, the complete iPhone 17 Pro simulator suite passes **28 unit and 14 UI tests**; all **22 Python content/tooling tests** pass. UI coverage includes the Offaly dossier at XXXL Dynamic Type and the shared recovery interaction; direct simulator inspection covers the Offaly dossier/listen beat, Dublin in dark appearance and Meath evidence in light appearance. | `ios/AnTuras/LaunchCountyStories.swift`, `AtlasCalendarView.swift`, `AtlasPrototype.swift`, `IslandAtlasView.swift`, `AtlasCollectionViews.swift`, `AppState.swift`, `ios/AnTurasTests/AtlasProgressTests.swift`, `ios/AnTurasUITests/AtlasFlowUITests.swift`, `content/{offaly,dublin,meath}/` |
 | 2026-07-15 | **Story and Learning rebuild confirmed.** New feedback rejects the four-county previews as the next tester build. D21–D22 lock one page sequence with two modes, separate story-read and language-complete progress, an eight-to-ten chapter / 60–90 minute Mayo target, varied full-screen exercises, and a four-county internal gate before external testing. This is a confirmed plan and product decision, not an implemented app change. | `docs/STORY-LEARNING-REBUILD-PLAN.md`, `docs/DECISIONS.md` D21–D22, canonical product/status documents |
 | 2026-07-24 | **Story/Learning rebuild phases 0–3 complete; Rockfleet proof passes on simulator and physical iPhone.** Versioned page packs, stable ids, dual mode projections, separate progress/completion, deterministic legacy migration, a shared twelve-family full-screen exercise system, and the representative Rockfleet chapter are working. The first uniform narrative renderer was rejected as visually monotonous; Rockfleet now changes composition with the account and varies its forward action labels while preserving native navigation. The legacy Gráinne renderer and hardcoded launch-county copy are removed in favour of pack-backed routes. XcodeGen regeneration and the complete iPhone 17 Pro Max simulator scheme pass 52 tests; 22 Python content/tooling tests pass. Light, dark, accessibility-size, Increased Contrast and Reduce Motion states were directly inspected. On the physical iPhone 15 Pro Max, the complete dark Story path, complete light Learning path, and largest accessibility-text opening pass with no failures. | `ios/AnTuras/CountyStoryPack.swift`, `CountyStoryExperienceView.swift`, `CountyNarrativePacing.swift`, `CountyExerciseSystem.swift`, `StoryEvidenceComponents.swift`, `Resources/CountyStories/`, `ios/AnTurasTests/AtlasProgressTests.swift`, `ios/AnTurasUITests/AtlasFlowUITests.swift` |
+| 2026-07-24 | **Mayo Phase 4 production plan approved; authoring pipeline proved.** D23 records the approved nine-chapter storyboard and recommended D-A–D-F choices. The offline validator prints per-county timing, exercise, lifecycle, audio, evidence, and gate state while matching the runtime rules and adding complete-lifecycle and lexeme-contract enforcement. Chapter 1, *Clew Bay and Umhaill*, is authored in a non-bundled county draft so the proven Rockfleet pack stays intact during assembly. All 35 Python content/tooling tests pass. Expanded history, pedagogy, audio, and image-rights gates remain open. | `docs/GRAINNE-STORYBOARD-V2.md`, `docs/DECISIONS.md` D23, `tools/validate_county_pack.py`, `tools/tests/test_validate_county_pack.py`, `content/mayo/` |
+| 2026-07-24 | **Nine-chapter Mayo review draft completed and machine-checked.** Chapters 2 and 4–9 are authored; Rockfleet now introduces only *caisleán* and is trimmed to eight exercises. The non-bundled revision-5 draft contains 99 pages, an 84.8-minute estimated Story path, 38 exercises across all 12 families, and complete ordered lifecycles for all 20 headwords. Strict county-pack validation and all 36 Python tests pass. The structurally complete draft remains outside the app because expanded specialist review, 20 teaching-audio resources, Rockfleet image rights, integration, and device/accessibility checks are still open. | `content/mayo/grainne-1593.pack.draft.json`, `content/mayo/DRAFT-STATUS.md`, `docs/GRAINNE-STORYBOARD-V2.md` |
 
 ## Immediate next steps (rebuild-plan Phase 4)
 
-1. **Rebuild Mayo** — approve the broader storyboard, author eight to ten chapters,
-   complete the 20-word lifecycle and 30–45 exercise path, then close history,
-   pedagogy, audio, rights, accessibility, and engineering gates.
+1. **Review and integrate Mayo** — clear the targeted history and pedagogy passes,
+   bundle and QA the 20 outstanding audio resources, clear or replace Rockfleet
+   imagery, then update the complete-county app copy, integrate the reviewed pack, and
+   close accessibility, device, migration, offline, and automated gates.
 2. **Reauthor Offaly, Dublin, and Meath** — progress their specialist research in
    parallel, but do not promote or integrate another preview-shaped story before the
    Mayo pattern passes.

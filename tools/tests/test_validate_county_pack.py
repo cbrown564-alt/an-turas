@@ -19,6 +19,7 @@ import validate_county_pack as v  # noqa: E402
 PACKS_DIR = REPO_ROOT / "ios/AnTuras/Resources/CountyStories"
 BUNDLED_PACKS = sorted(PACKS_DIR.glob("*.json"))
 MAYO_PACK = PACKS_DIR / "mayo.grainne-1593.json"
+MAYO_REVIEW_DRAFT = REPO_ROOT / "content/mayo/grainne-1593.pack.draft.json"
 
 
 def load(path):
@@ -40,6 +41,60 @@ class BundledPacksValidate(unittest.TestCase):
         # The representative chapter fully stages its two proven lexemes.
         self.assertEqual(report.lifecycle_covered, 2)
         self.assertIn("Native-speaker audio QA", report.open_review_gates)
+
+
+class MayoReviewDraftValidates(unittest.TestCase):
+    def test_complete_nine_chapter_draft_passes_strict_rules(self):
+        envelope = load(MAYO_REVIEW_DRAFT)
+        report = v.validate(envelope)
+
+        self.assertEqual(report.scope, "completeCounty")
+        self.assertEqual(len(envelope["pack"]["chapters"]), 9)
+        self.assertEqual(sum(report.exercise_distribution.values()), 38)
+        self.assertEqual(len(report.exercise_distribution), 12)
+        self.assertEqual(report.lifecycle_covered, 20)
+        self.assertGreaterEqual(report.story_minutes, 60)
+        self.assertLessEqual(report.story_minutes, 90)
+
+        pages = {
+            page["id"]: page
+            for chapter in envelope["pack"]["chapters"]
+            for page in chapter["pages"]
+        }
+        resources = {resource["id"]: resource for resource in envelope["pack"]["resources"]}
+        for lifecycle in envelope["pack"]["lifecycle"]:
+            with self.subTest(lexeme=lifecycle["id"]):
+                stage_pages = [
+                    pages[lifecycle[key]]
+                    for key in (
+                        "introducedPageID",
+                        "heardPageID",
+                        "producedPageID",
+                        "reusedPageID",
+                    )
+                ]
+                self.assertTrue(
+                    all(page["visibility"] != "storyOnly" for page in stage_pages),
+                    "every lifecycle stage must appear in Learning mode",
+                )
+                self.assertIn(
+                    lifecycle["id"],
+                    stage_pages[0]["introducedLexemeIDs"],
+                    "the lifecycle introduction must introduce its own lexeme",
+                )
+                heard_page = stage_pages[1]
+                self.assertTrue(
+                    any(
+                        resources[resource_id]["kind"] == "audio"
+                        for resource_id in heard_page["resourceIDs"]
+                    ),
+                    "the heard stage must reference an audio resource",
+                )
+                self.assertIn(
+                    lifecycle["id"],
+                    stage_pages[2]["exercise"]["lexemeIDs"],
+                    "the production exercise must operate on its own lexeme",
+                )
 
 
 class LexemeConvention(unittest.TestCase):

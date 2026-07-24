@@ -2,6 +2,29 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D23 — Approve the nine-chapter Mayo production storyboard (2026-07-24)
+
+**Decision:** Approve `GRAINNE-STORYBOARD-V2.md` as the production storyboard for the
+Phase 4 Mayo rebuild. The county uses nine chapters. Chapter 2 introduces
+*teaghlach, mac, deartháir,* and *bean*; Rockfleet becomes their reuse site and
+introduces only *caisleán*. Rockfleet is reduced from twelve exercises to eight.
+Chapter 4 keeps *long* as its only new word and relies on earlier place language.
+For words introduced in Chapters 7–9, delayed retrieval plus the voyage-chart and
+review handoff satisfy the final reuse stage.
+
+**Evidence boundary:** Approval authorises production drafting from the existing claim
+ledger; it does not clear new history. Chapter 2 and Chapter 4 need targeted historian
+review at chapter weight, and the exact citation and wording behind C04 must be pinned
+before release copy is approved. Expanded exercises, teaching audio, and Rockfleet
+imagery remain behind their named external gates.
+
+**Consequences:** The six-episode storyboard remains a prototype record rather than an
+active production plan. Authoring proceeds in `content/mayo/grainne-1593.pack.draft.json`
+while the proven Rockfleet pack remains bundled. The draft may become a structurally
+complete county pack with open review gates, but it must not replace the bundled pack
+or enter an external tester build until the Phase 4 specialist, audio, rights,
+accessibility, and device gates pass.
+
 ## D22 — Rebuild story depth and learning quality before further testing (2026-07-15)
 
 **Decision:** Enter a bounded Story and Learning rebuild before inviting another
