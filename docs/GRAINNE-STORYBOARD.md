@@ -3,7 +3,9 @@
 *Historical storyboard for the six-episode prototype implemented 13–14 July 2026.
 D22 records that this version is too short and supersedes it as the production
 storyboard. Preserve it as source and migration evidence; replace it with the approved
-eight-to-ten chapter storyboard during Phase 4 of `STORY-LEARNING-REBUILD-PLAN.md`.*
+eight-to-ten chapter storyboard during Phase 4 of `STORY-LEARNING-REBUILD-PLAN.md`.
+The nine-chapter production storyboard now lives in draft at
+`docs/GRAINNE-STORYBOARD-V2.md`, awaiting the Phase 4 approval gate.*
 
 ## Arc contract
 
