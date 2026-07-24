@@ -2,9 +2,14 @@
 
 *Drafted 24 July 2026 for the Phase 4 rebuild in `STORY-LEARNING-REBUILD-PLAN.md`.
 This is the **production storyboard** that D22 requires to supersede the six-episode
-version in `GRAINNE-STORYBOARD.md`. **Status: DRAFT awaiting the storyboard-approval
-gate (Phase 4 step 2).** No production prose or pack JSON is authored until this is
-approved. Grounded entirely in the existing claim ledger and language weave — it
+version in `GRAINNE-STORYBOARD.md`. **Status: APPROVED 24 July 2026** at the Phase 4
+step-2 gate, with the recommended option taken for every open decision D-A–D-F: nine
+chapters (D-A); Rockfleet reassigns kin words to Chapter 2 and introduces only
+*caisleán* (D-B); Rockfleet exercises trim 12 → ~8 (D-C); Chapter 4 keeps *long* as its
+only new word and runs on reuse (D-D); the validator accepts delayed retrieval +
+chart/review as the reuse stage for Chapters 7–9 words (D-E); a targeted historian pass
+clears the Chapter 2 and Chapter 4 chapter-weight claims and the C04 citation before
+final prose (D-F, external gate). Grounded entirely in the existing claim ledger and language weave — it
 re-shapes approved material across nine chapters; it does not introduce new historical
 claims.*
 
