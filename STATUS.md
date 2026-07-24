@@ -32,12 +32,11 @@ schedules its words. Speaking remains ungraded record-and-compare.
 **Current target:** rebuild-plan phases 0–3 are complete. The representative
 Rockfleet chapter has proved the page model, both mode projections, full-screen
 exercise system, recovery, accessibility, progress migration, and varied narrative
-composition. Phase 4 now follows the approved nine-chapter Mayo storyboard. The
-non-bundled review draft now contains all nine chapters, the revised Rockfleet
-sequence, 38 exercises, and all 20 lifecycles. Its strict structural and learning
-checks pass. Targeted history and pedagogy review, audio, image rights, app integration,
-and device/accessibility verification remain. Offaly, Dublin, and Meath then require
-substantial reauthoring, not clearance of their present preview copy.
+composition. The Phase 4 Mayo review draft and three Phase 5 launch-county review
+drafts are now structurally complete and pass the strict content checks. They remain
+non-bundled pre-clearance work. The next target is specialist and pedagogy review,
+native-speaker audio, rights, app integration, and full accessibility/device
+verification without replacing the currently proven packs early.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
@@ -100,6 +99,30 @@ or a credible challenge reopens the affected scope.
 Qualified-reviewer disagreement keeps the affected disposition open until conservative
 shared wording or a third qualified disposition resolves it; the owner cannot promote
 an unresolved dispute as settled fact.
+
+**24 July Phase 5 authoring update:** the working Mayo pattern has been applied to
+Offaly, Dublin, and Meath as three non-bundled pre-clearance packs. Each has six
+variable-length chapters, 68 pages, a 49.4-minute estimated Story path, a causally
+complete Learning projection, 30 exercises across all 12 families, and one complete
+ordered lifecycle for each of its 20 provisional headwords. The exercise compositions
+follow their objects: cross and inscription attention in Offaly, coin handling and
+legend reading in Dublin, and possession, grant, site sequence and fabric inspection
+in Meath. All three pass the strict county validator and their generator output is
+covered by regression tests; all **38 Python content/tooling tests** pass. A temporary
+iPhone 17 Pro substitution build decoded and rendered every draft. Story and Learning
+pages were inspected for all three counties, including the explicit missing-audio
+recovery state; the Story openings also remain scrollable at the largest accessibility
+text size, with Dublin sampled in dark appearance. The untouched shipping bundle still
+passes all 36 unit tests and the two preview UI tests affected by the substitution.
+Their source briefs now name the expanded chapter maps, official starting sources and
+open gates.
+
+This is implemented authoring structure, not specialist validation or app promotion.
+Offaly still needs medieval history and art/inscription review; Dublin needs a
+numismatist to select and transcribe the learner-facing penny; Meath needs the grant
+copy pinned, castle phasing reviewed, and conquest-sensitivity review. All three also
+need pedagogy, native-speaker audio QA, rights, integration, accessibility and device
+checks. The shipping app therefore retains the five-page editorial previews.
 
 **Tester gate:** no external learner build until all four counties pass the narrative,
 20-word lifecycle, exercise-distribution, specialist review, native-speaker audio,
@@ -166,16 +189,18 @@ story or new Learning mode.
 | 2026-07-24 | **Mayo revision-6 historian candidate prepared.** The accepted pre-clearance workflow applies the July historical review's reversible fixes before external review: C04 now carries a candidate Carew MS 601 / SP 12/159 trail but remains Story-only and behind `history.expanded`; C02's archive bias appears in Story mode; Chapter 2/4 wording, C06/C10/C14/C15 evidence statuses, names, and stale prototype copy are corrected. The non-bundled pack now contains 100 pages with an 86.2-minute Story path and 104.1-minute Learning path. Strict validation and all 36 Python tests pass. No external gate is closed and the bundled app remains unchanged. | `content/mayo/grainne-1593.pack.draft.json`, `content/mayo/grainne-1593-source-brief.md`, `content/mayo/DRAFT-STATUS.md`, `docs/mayo-historical-review/` |
 | 2026-07-24 | **Expanded-history reviewer continuity requirement removed.** D24 records that a newly named historian may close the revision-6 `history.expanded` gate. The new review must identify revision, scope, date, requested changes and final disposition, and must explicitly confirm the candidate C04 folio and diplomatic wording. No gate is closed by this governance decision. | `docs/DECISIONS.md` D24, `content/mayo/grainne-1593-source-brief.md`, `content/mayo/DRAFT-STATUS.md` |
 | 2026-07-24 | **Split historical review permitted.** D24 now permits a narrative historian to own the Chapter 2/4 disposition and an archival specialist to own C04 folio and diplomatic-wording confirmation. One qualified person may perform both, but `history.expanded` requires both recorded dispositions. | `docs/DECISIONS.md` D24, `content/mayo/grainne-1593-source-brief.md`, `content/mayo/DRAFT-STATUS.md` |
+| 2026-07-24 | **Offaly, Dublin, and Meath full Story/Learning drafts assembled and simulator-smoke-tested.** The Mayo pattern now produces three non-bundled, six-chapter pre-clearance packs with variable page counts, estimated 49.4-minute Story paths, 30 exercises across all 12 mechanic families, complete 20-word lifecycles, object-specific evidence boundaries, and explicit open review gates. A repeatable builder and regression tests keep the generated drafts current; strict validation and all 38 Python tests pass. A temporary iPhone 17 Pro substitution build rendered representative Story and Learning pages for all three, the visible missing-audio recovery state, largest accessibility text, and a dark-appearance sample. The shipping bundle remains unchanged and passes 36 unit plus the two preview UI tests affected by substitution. This smoke test does not close specialist, full accessibility, device, or promotion gates. | `tools/build_phase5_county_drafts.py`, `tools/tests/test_validate_county_pack.py`, `content/{offaly,dublin,meath}/` |
 
-## Immediate next steps (rebuild-plan Phase 4)
+## Immediate next steps (rebuild-plan Phases 4–6)
 
 1. **Review and integrate Mayo** — clear the targeted history and pedagogy passes,
    bundle and QA the 20 outstanding audio resources, clear or replace Rockfleet
    imagery, then update the complete-county app copy, integrate the reviewed pack, and
    close accessibility, device, migration, offline, and automated gates.
-2. **Reauthor Offaly, Dublin, and Meath** — progress their specialist research in
-   parallel, but do not promote or integrate another preview-shaped story before the
-   Mayo pattern passes.
+2. **Review the three Phase 5 drafts independently** — Offaly needs the cross
+   inscription and panels settled; Dublin needs the production penny and both-face
+   legend selected; Meath needs the grant copy, castle phases and conquest framing
+   cleared. Apply pedagogue revisions before producing final audio.
 3. **Run the four-county internal gate** — automated validators, full tests, timed
    walkthroughs, physical-device and accessibility checks. Schedule external testing
    only after every item passes.

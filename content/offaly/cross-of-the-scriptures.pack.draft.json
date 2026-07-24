@@ -1,0 +1,3486 @@
+{
+  "schemaVersion": 2,
+  "pack": {
+    "id": "offaly.cross-of-the-scriptures",
+    "revision": 1,
+    "scope": "completeCounty",
+    "title": "The Cross of the Scriptures: river, king and carved prayer",
+    "presentation": {
+      "countyGa": "Uíbh Fhailí",
+      "countyEn": "Offaly",
+      "province": "Leinster",
+      "era": "sixth to early tenth century, with a modern conservation afterlife",
+      "anchor": "Clonmacnoise · Flann Sinna · Abbot Colmán · Cross of the Scriptures",
+      "question": "How did a river-road settlement turn royal patronage into a carved request that can still be read?",
+      "opening": "Six chapters move from the Shannon crossing through the working settlement, king and abbot, carved panels, damaged inscription, and the modern separation of original and replica.",
+      "evidenceLimit": "The pack uses geography, surviving buildings and stones, annal notices, official interpretation and the damaged inscription. It does not invent a commissioning scene, a named worker's day, or certainty where panel and inscription readings remain disputed.",
+      "sourceTitle": "Cross of the Scriptures, Clonmacnoise settlement evidence and Flann–Colmán records",
+      "sourceDetail": "Claims O01–O08 · inscription expansion and panel list remain behind medievalist and art-historian review",
+      "artifactTitle": "Cross reading folio",
+      "artifactPrompt": "Carry the river-road map, three panel readings and the damaged inscription boundary together.",
+      "tegLevel": "TEG A1 bridge",
+      "tegCanDo": "Recognise and produce supported Irish for place, work, scale, attention, reading and prayer inside an evidence-led object encounter."
+    },
+    "targetWords": [
+      {
+        "ga": "abhainn",
+        "en": "river",
+        "sound": "ow-in",
+        "anchor": "The Shannon route"
+      },
+      {
+        "ga": "cloch",
+        "en": "stone",
+        "sound": "klukh",
+        "anchor": "The carved cross"
+      },
+      {
+        "ga": "cros",
+        "en": "cross",
+        "sound": "kruss",
+        "anchor": "The Cross of the Scriptures"
+      },
+      {
+        "ga": "rí",
+        "en": "king",
+        "sound": "ree",
+        "anchor": "Flann Sinna"
+      },
+      {
+        "ga": "mainistir",
+        "en": "monastery",
+        "sound": "man-ish-tir",
+        "anchor": "The ecclesiastical settlement"
+      },
+      {
+        "ga": "baile",
+        "en": "settlement / town",
+        "sound": "bal-ya",
+        "anchor": "Life gathered at Clonmacnoise"
+      },
+      {
+        "ga": "obair",
+        "en": "work",
+        "sound": "ub-ir",
+        "anchor": "Craft and daily activity"
+      },
+      {
+        "ga": "lá",
+        "en": "day",
+        "sound": "law",
+        "anchor": "Time at the settlement"
+      },
+      {
+        "ga": "anseo",
+        "en": "here",
+        "sound": "un-shuh",
+        "anchor": "Standing at the crossroads"
+      },
+      {
+        "ga": "anois",
+        "en": "now",
+        "sound": "uh-nish",
+        "anchor": "The surviving place today"
+      },
+      {
+        "ga": "mór",
+        "en": "big",
+        "sound": "more",
+        "anchor": "Scale without exaggeration"
+      },
+      {
+        "ga": "beag",
+        "en": "small",
+        "sound": "byug",
+        "anchor": "A detail in the carving"
+      },
+      {
+        "ga": "féach",
+        "en": "look",
+        "sound": "faykh",
+        "anchor": "Attending to the object"
+      },
+      {
+        "ga": "seas",
+        "en": "stand",
+        "sound": "shass",
+        "anchor": "The cross standing in place"
+      },
+      {
+        "ga": "déan",
+        "en": "make / do",
+        "sound": "djayn",
+        "anchor": "Making and patronage"
+      },
+      {
+        "ga": "foghlaim",
+        "en": "learn",
+        "sound": "foh-lim",
+        "anchor": "Learning at the settlement"
+      },
+      {
+        "ga": "léigh",
+        "en": "read",
+        "sound": "lay",
+        "anchor": "Reading damaged letters"
+      },
+      {
+        "ga": "guí",
+        "en": "pray",
+        "sound": "gwee",
+        "anchor": "The inscription's request"
+      },
+      {
+        "ga": "bád",
+        "en": "boat",
+        "sound": "bawd",
+        "anchor": "Movement on the Shannon"
+      },
+      {
+        "ga": "bóthar",
+        "en": "road",
+        "sound": "boh-hur",
+        "anchor": "The east-west route"
+      }
+    ],
+    "resources": [
+      {
+        "id": "evidence.offaly.o01",
+        "kind": "evidence",
+        "value": "O01 · Shannon and east–west route junction",
+        "status": "specialist-review-open"
+      },
+      {
+        "id": "evidence.offaly.o02",
+        "kind": "evidence",
+        "value": "O02 · sixth-century foundation tradition",
+        "status": "specialist-review-open"
+      },
+      {
+        "id": "evidence.offaly.o03",
+        "kind": "evidence",
+        "value": "O03 · major ecclesiastical settlement by c. 900",
+        "status": "specialist-review-open"
+      },
+      {
+        "id": "evidence.offaly.o04",
+        "kind": "evidence",
+        "value": "O04 · early-tenth-century scripture cross",
+        "status": "specialist-review-open"
+      },
+      {
+        "id": "evidence.offaly.o05",
+        "kind": "evidence",
+        "value": "O05 · damaged inscription linking Colmán and Flann",
+        "status": "specialist-review-open"
+      },
+      {
+        "id": "evidence.offaly.o06",
+        "kind": "evidence",
+        "value": "O06 · Flann Sinna patronage",
+        "status": "specialist-review-open"
+      },
+      {
+        "id": "evidence.offaly.o07",
+        "kind": "evidence",
+        "value": "O07 · selected scriptural panels",
+        "status": "specialist-review-open"
+      },
+      {
+        "id": "evidence.offaly.o08",
+        "kind": "evidence",
+        "value": "O08 · original indoors and replica outside",
+        "status": "specialist-review-open"
+      },
+      {
+        "id": "source.offaly.heritage-guide",
+        "kind": "source",
+        "value": "Heritage Ireland · Clonmacnoise visitor guide · https://heritageireland.ie/assets/uploads/2026/04/7565-OPW-Clonmacnoise-A5-visitor-guide_ENG_LR.pdf",
+        "status": "official-source-specialist-review-open"
+      },
+      {
+        "id": "source.offaly.highlights",
+        "kind": "source",
+        "value": "Heritage Ireland · Clonmacnoise highlights · https://heritageireland.ie/visit/places-to-visit/clonmacnoise-monastic-site/highlights/",
+        "status": "official-source-specialist-review-open"
+      },
+      {
+        "id": "source.offaly.high-crosses",
+        "kind": "source",
+        "value": "Heritage Ireland · High Crosses · https://heritageireland.ie/articles/high-crosses/",
+        "status": "official-source-specialist-review-open"
+      },
+      {
+        "id": "source.offaly.cross-inscription",
+        "kind": "source",
+        "value": "Cross of the Scriptures inscription · Henry/Stalley conventional reading with Harbison alternative · specialist packet required",
+        "status": "specialist-review-open"
+      },
+      {
+        "id": "audio.word.abhainn",
+        "kind": "audio",
+        "value": "abhainn",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.cloch",
+        "kind": "audio",
+        "value": "cloch",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.cros",
+        "kind": "audio",
+        "value": "cros",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.ri",
+        "kind": "audio",
+        "value": "rí",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.mainistir",
+        "kind": "audio",
+        "value": "mainistir",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.baile",
+        "kind": "audio",
+        "value": "baile",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.obair",
+        "kind": "audio",
+        "value": "obair",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.la",
+        "kind": "audio",
+        "value": "lá",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.anseo",
+        "kind": "audio",
+        "value": "anseo",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.anois",
+        "kind": "audio",
+        "value": "anois",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.mor",
+        "kind": "audio",
+        "value": "mór",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.beag",
+        "kind": "audio",
+        "value": "beag",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.feach",
+        "kind": "audio",
+        "value": "féach",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.seas",
+        "kind": "audio",
+        "value": "seas",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.dean",
+        "kind": "audio",
+        "value": "déan",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.foghlaim",
+        "kind": "audio",
+        "value": "foghlaim",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.leigh",
+        "kind": "audio",
+        "value": "léigh",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.gui",
+        "kind": "audio",
+        "value": "guí",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.bad",
+        "kind": "audio",
+        "value": "bád",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.bothar",
+        "kind": "audio",
+        "value": "bóthar",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.offaly-river-road-hear-river",
+        "kind": "audio",
+        "value": "Tá abhainn, bád agus bóthar anseo.",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.offaly-settlement-hear-working-place",
+        "kind": "audio",
+        "value": "Tá obair sa mhainistir agus tá mé ag foghlaim sa bhaile gach lá.",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.offaly-king-and-abbot-hear-king",
+        "kind": "audio",
+        "value": "Déan cros mhór don rí le sonraí beaga.",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.offaly-carved-cross-hear-looking",
+        "kind": "audio",
+        "value": "Seas anseo agus féach ar an gcros chloiche.",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.offaly-inscription-hear-reading",
+        "kind": "audio",
+        "value": "Léigh an t-inscríbhinn anois agus guí.",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.offaly-original-and-replica-speak-whole-place",
+        "kind": "audio",
+        "value": "Tá an chloch agus an chros anseo anois.",
+        "status": "pending-native-qa"
+      }
+    ],
+    "reviewGates": [
+      {
+        "id": "history.expanded",
+        "title": "Expanded Clonmacnoise history review",
+        "status": "open"
+      },
+      {
+        "id": "medieval-art.cross",
+        "title": "Cross inscription and panel review",
+        "status": "open"
+      },
+      {
+        "id": "irish.expanded",
+        "title": "Offaly exercise and construction review",
+        "status": "open"
+      },
+      {
+        "id": "audio.native",
+        "title": "Native-speaker audio QA",
+        "status": "open"
+      },
+      {
+        "id": "rights.cross",
+        "title": "Cross imagery and diagram rights",
+        "status": "open"
+      }
+    ],
+    "chapters": [
+      {
+        "id": "offaly.river-road",
+        "title": "Abhainn is Bóthar · River and road",
+        "place": "Clonmacnoise · Shannon crossing",
+        "pages": [
+          {
+            "id": "offaly.river-road.opening",
+            "legacyBeatIndex": null,
+            "title": "A river running through the middle",
+            "context": "Cluain Mhic Nóis · the Shannon",
+            "body": "Clonmacnoise stands beside the abhainn — the River Shannon. In the early medieval world this water was a route rather than a boundary. A bád could carry people, food, stone and news north or south, while a raised east–west bóthar crossed the bog country nearby.",
+            "detail": "The story begins with movement. River and road explain why people kept arriving at this particular bank.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.abhainn",
+              "lex.bad",
+              "lex.bothar"
+            ],
+            "resourceIDs": [
+              "evidence.offaly.o01",
+              "source.offaly.heritage-guide",
+              "audio.word.abhainn",
+              "audio.word.bad",
+              "audio.word.bothar"
+            ],
+            "exercise": null,
+            "presentation": "coastalOpening",
+            "advanceLabel": "Follow the water",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "river",
+                "title": "abhainn",
+                "detail": "A north–south water route",
+                "symbol": "water.waves"
+              },
+              {
+                "id": "boat",
+                "title": "bád",
+                "detail": "People and goods on the Shannon",
+                "symbol": "sailboat"
+              },
+              {
+                "id": "road",
+                "title": "bóthar",
+                "detail": "A raised route across the wetlands",
+                "symbol": "road.lanes"
+              }
+            ]
+          },
+          {
+            "id": "offaly.river-road.crossing-detail",
+            "legacyBeatIndex": null,
+            "title": "The crossing was the first advantage",
+            "context": "Shannon bank · route and landing",
+            "body": "The river offered transport, fish and access to distant communities. The dry ridges east and west offered another kind of movement. Their meeting made this bank useful before any great stone monument stood here.",
+            "detail": "A crossroads does not guarantee a town. It creates the conditions in which a religious community, patrons and workers can gather.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o01"
+            ],
+            "exercise": null,
+            "presentation": "movementLine",
+            "advanceLabel": "Find the landing",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "north-south",
+                "title": "Shannon",
+                "detail": "Movement along the river",
+                "symbol": "arrow.up.and.down"
+              },
+              {
+                "id": "east-west",
+                "title": "Esker routes",
+                "detail": "Movement across the bogs",
+                "symbol": "arrow.left.and.right"
+              }
+            ]
+          },
+          {
+            "id": "offaly.river-road.foundation",
+            "legacyBeatIndex": null,
+            "title": "A community begins here",
+            "context": "Sixth century · foundation tradition",
+            "body": "Tradition associates the foundation with Ciarán in the sixth century. The place-name Cluain Mhic Nóis points to a meadow setting; the surviving site shows how a small foundation could become a long-lived ecclesiastical centre. Anseo means here: not a timeless nowhere, but this bank and this crossing.",
+            "detail": "The foundation story comes through hagiography and later memory. The landscape and archaeology support the place, not every detail of a saint's life.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.anseo"
+            ],
+            "resourceIDs": [
+              "evidence.offaly.o02",
+              "source.offaly.heritage-guide",
+              "audio.word.anseo"
+            ],
+            "exercise": null,
+            "presentation": "languageField",
+            "advanceLabel": "Name the place",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "place",
+                "title": "anseo",
+                "detail": "here · this Shannon bank",
+                "symbol": "mappin"
+              },
+              {
+                "id": "name",
+                "title": "Cluain Mhic Nóis",
+                "detail": "The meadow in the place-name",
+                "symbol": "textformat"
+              }
+            ]
+          },
+          {
+            "id": "offaly.river-road.hear-river",
+            "legacyBeatIndex": null,
+            "title": "Hear the whole crossing",
+            "context": "Tá abhainn, bád agus bóthar anseo",
+            "body": "Listen to river, boat, road and here in one line.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.offaly-river-road-hear-river"
+            ],
+            "exercise": {
+              "family": "listenIdentify",
+              "objective": "Recognise the four opening words inside a complete place sentence.",
+              "prompt": "Which meaning matches the whole line?",
+              "answer": "A river, boat and road are here.",
+              "options": [
+                {
+                  "id": "crossing",
+                  "text": "A river, boat and road are here.",
+                  "isCorrect": true,
+                  "rationale": "This carries all four words."
+                },
+                {
+                  "id": "stone",
+                  "text": "A stone cross is here.",
+                  "isCorrect": false,
+                  "rationale": "Those words belong to the later monument."
+                },
+                {
+                  "id": "king",
+                  "text": "A king works here.",
+                  "isCorrect": false,
+                  "rationale": "The king has not entered the account yet."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "A river, boat and road are here.",
+              "audioText": "Tá abhainn, bád agus bóthar anseo.",
+              "modelText": null,
+              "feedback": "The sentence gathers the river, a boat, the road and this place.",
+              "hint": "Listen for abhainn, bád, bóthar and anseo.",
+              "recovery": "That answer leaves out part of the crossing. Replay the full line.",
+              "lexemeIDs": [
+                "lex.abhainn",
+                "lex.bad",
+                "lex.bothar",
+                "lex.anseo"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.river-road.no-empty-map",
+            "legacyBeatIndex": null,
+            "title": "The map was already full of movement",
+            "context": "Early medieval Ireland · connected places",
+            "body": "People approached this bank from kingdoms, farms, churches and landing places that already had names and obligations. Calling the site remote makes sense only from a modern road map. On its own routes, Clonmacnoise was connected.",
+            "detail": "The river-road composition must not turn the monastery into a miraculous settlement appearing in empty country.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o01"
+            ],
+            "exercise": null,
+            "presentation": "connectedSystem",
+            "advanceLabel": "See the connections",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "water",
+                "title": "Water",
+                "detail": "Boats and river landings",
+                "symbol": "water.waves"
+              },
+              {
+                "id": "land",
+                "title": "Land",
+                "detail": "Ridges, farms and kingdoms",
+                "symbol": "leaf"
+              },
+              {
+                "id": "people",
+                "title": "People",
+                "detail": "Pilgrims, workers and patrons",
+                "symbol": "person.2"
+              }
+            ]
+          },
+          {
+            "id": "offaly.river-road.build-location",
+            "legacyBeatIndex": null,
+            "title": "Build the location",
+            "context": "Tá abhainn anseo · A river is here",
+            "body": "Put the place into one complete Irish line.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "sentenceConstruction",
+              "objective": "Produce a complete here-sentence with abhainn and anseo.",
+              "prompt": "Build: A river is here.",
+              "answer": "Tá abhainn anseo.",
+              "options": [],
+              "tokens": [
+                "anseo.",
+                "abhainn",
+                "Tá"
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "A river is here.",
+              "audioText": null,
+              "modelText": "Tá abhainn anseo.",
+              "feedback": "Tá abhainn anseo — the river is placed on this bank.",
+              "hint": "Start with Tá, then the thing, then anseo.",
+              "recovery": "Keep all three parts in the order Tá · abhainn · anseo.",
+              "lexemeIDs": [
+                "lex.abhainn",
+                "lex.anseo"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.river-road.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "What the place can prove",
+            "context": "Landscape, ruins and foundation tradition",
+            "body": "The Shannon, the route lines and the surviving enclosure make the location legible. They do not preserve a sixth-century day as a scene. The app can show why this place worked without inventing a conversation at its foundation.",
+            "detail": "Place evidence is strong; a detailed founding scene would be reconstruction. The distinction stays inspectable.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o01",
+              "evidence.offaly.o02"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Keep the limit",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.river-road.match-routes",
+            "legacyBeatIndex": null,
+            "title": "Keep the routes distinct",
+            "context": "abhainn · bád · bóthar",
+            "body": "Match each Irish word to the part of the crossing it names.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "matching",
+              "objective": "Connect the opening route words to their meanings.",
+              "prompt": "Choose an Irish word, then its meaning.",
+              "answer": "all pairs",
+              "options": [],
+              "tokens": [],
+              "pairs": [
+                {
+                  "id": "river",
+                  "left": "abhainn",
+                  "right": "river"
+                },
+                {
+                  "id": "boat",
+                  "left": "bád",
+                  "right": "boat"
+                },
+                {
+                  "id": "road",
+                  "left": "bóthar",
+                  "right": "road"
+                }
+              ],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "River, boat and road now describe three different kinds of movement.",
+              "hint": "The bád travels on the abhainn; the bóthar crosses the land.",
+              "recovery": "Those two do not belong together. Keep the Irish word selected and try another meaning.",
+              "lexemeIDs": [
+                "lex.abhainn",
+                "lex.bad",
+                "lex.bothar"
+              ],
+              "operatesOnSentence": false,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.river-road.read-crossing",
+            "legacyBeatIndex": null,
+            "title": "Read the crossing, not a legend",
+            "context": "Source comprehension · place",
+            "body": "Use the account's evidence boundary.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "comprehension",
+              "objective": "Identify the supported reason Clonmacnoise's location mattered.",
+              "prompt": "What does the surviving geography support?",
+              "answer": "River and land routes met near the site.",
+              "options": [
+                {
+                  "id": "routes",
+                  "text": "River and land routes met near the site.",
+                  "isCorrect": true,
+                  "rationale": "The geography supports this."
+                },
+                {
+                  "id": "speech",
+                  "text": "Ciarán chose the bank after a recorded speech.",
+                  "isCorrect": false,
+                  "rationale": "No such speech survives."
+                },
+                {
+                  "id": "empty",
+                  "text": "The bank was empty until the monastery arrived.",
+                  "isCorrect": false,
+                  "rationale": "The wider landscape was already inhabited and connected."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "The crossing is the secure claim: water and land routes met here.",
+              "hint": "Choose the answer visible in geography rather than a private scene.",
+              "recovery": "That answer goes beyond what the landscape preserves. Return to the river and route.",
+              "lexemeIDs": [
+                "lex.abhainn",
+                "lex.bothar"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.river-road.consequence",
+            "legacyBeatIndex": null,
+            "title": "A crossing can gather a settlement",
+            "context": "Chapter turn · from route to community",
+            "body": "The site begins as a precise answer to a practical question: where can people meet? Once a community endures at the crossing, river traffic, burial, patronage and work can reinforce one another. The next chapter follows that growth.",
+            "detail": "The place changes from a useful bank into a community with enough continuity to leave material traces.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o01"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Enter the settlement",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.river-road.type-boat",
+            "legacyBeatIndex": null,
+            "title": "Put a boat on the river",
+            "context": "Tá bád ar an abhainn · A boat is on the river",
+            "body": "Type the complete line, including the fada.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "typing",
+              "objective": "Produce a complete sentence using bád and abhainn.",
+              "prompt": "Type: A boat is on the river, beside the road.",
+              "answer": "Tá bád ar an abhainn, in aice leis an mbóthar.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "A boat is on the river, beside the road.",
+              "audioText": null,
+              "modelText": "Tá bád ar an abhainn, in aice leis an mbóthar.",
+              "feedback": "The boat, river and road now occupy one connected place.",
+              "hint": "Bád needs its fada. Add the road with in aice leis an mbóthar.",
+              "recovery": "Check the fada in bád and keep leis an mbóthar together.",
+              "lexemeIDs": [
+                "lex.bad",
+                "lex.abhainn",
+                "lex.bothar"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      },
+      {
+        "id": "offaly.settlement",
+        "title": "Baile Oibre · A working settlement",
+        "place": "Clonmacnoise · early tenth century",
+        "pages": [
+          {
+            "id": "offaly.settlement.opening",
+            "legacyBeatIndex": null,
+            "title": "The crossing becomes a working place",
+            "context": "Clonmacnoise · by the early tenth century",
+            "body": "Over generations the mainistir became the centre of a much larger baile. Churches and burials sat beside craft, hospitality, farming, movement and obair. Abhainn, bád and bóthar return because the settlement depended on the traffic introduced in the first chapter.",
+            "detail": "Mainistir names the ecclesiastical centre; baile keeps the wider inhabited settlement in view.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.mainistir",
+              "lex.baile",
+              "lex.obair"
+            ],
+            "resourceIDs": [
+              "evidence.offaly.o03",
+              "source.offaly.heritage-guide",
+              "audio.word.mainistir",
+              "audio.word.baile",
+              "audio.word.obair"
+            ],
+            "exercise": null,
+            "presentation": "connectedSystem",
+            "advanceLabel": "Enter the working place",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "church",
+                "title": "mainistir",
+                "detail": "The ecclesiastical centre",
+                "symbol": "building.columns"
+              },
+              {
+                "id": "settlement",
+                "title": "baile",
+                "detail": "Homes, graves and gathering",
+                "symbol": "house"
+              },
+              {
+                "id": "work",
+                "title": "obair",
+                "detail": "Craft, food and maintenance",
+                "symbol": "hammer"
+              }
+            ]
+          },
+          {
+            "id": "offaly.settlement.graveslabs",
+            "legacyBeatIndex": null,
+            "title": "Hundreds of names and marks survive",
+            "context": "The enclosure · graveslabs",
+            "body": "Clonmacnoise preserves an exceptional collection of early medieval graveslabs. Many are modest stones rather than royal monuments. Together they keep ordinary belonging visible beside the great crosses and churches.",
+            "detail": "The learner should meet a populated place, not only a catalogue of famous buildings.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o03",
+              "source.offaly.heritage-guide"
+            ],
+            "exercise": null,
+            "presentation": "archive",
+            "advanceLabel": "Look among the stones",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.settlement.daily-life",
+            "legacyBeatIndex": null,
+            "title": "A day is made from repeated work",
+            "context": "gach lá · every day",
+            "body": "A lá — a day — at the settlement required food, repair, writing, teaching, prayer and care for visitors and the dead. Foghlaim means learn. It belongs here because learning depended on people maintaining a place where texts, memory and skilled practice could continue.",
+            "detail": "No named worker's diary survives for this chapter. The account stays with activities supported by objects, buildings and the settlement's record.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.la",
+              "lex.foghlaim"
+            ],
+            "resourceIDs": [
+              "evidence.offaly.o03",
+              "audio.word.la",
+              "audio.word.foghlaim"
+            ],
+            "exercise": null,
+            "presentation": "languageField",
+            "advanceLabel": "Follow a day",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "day",
+                "title": "lá",
+                "detail": "A day held together by repeated work",
+                "symbol": "sun.max"
+              },
+              {
+                "id": "work",
+                "title": "obair",
+                "detail": "The labour that keeps a place alive",
+                "symbol": "hammer"
+              },
+              {
+                "id": "learn",
+                "title": "foghlaim",
+                "detail": "Knowledge carried through practice",
+                "symbol": "book"
+              }
+            ]
+          },
+          {
+            "id": "offaly.settlement.hear-working-place",
+            "legacyBeatIndex": null,
+            "title": "Hear the settlement at work",
+            "context": "Tá obair sa mhainistir gach lá",
+            "body": "Listen to the whole line, then rebuild it.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.offaly-settlement-hear-working-place"
+            ],
+            "exercise": {
+              "family": "listenBuildSentence",
+              "objective": "Hear mainistir, obair and lá inside a complete sentence.",
+              "prompt": "Listen, then build: There is work in the monastery every day.",
+              "answer": "Tá obair sa mhainistir agus tá mé ag foghlaim sa bhaile gach lá.",
+              "options": [],
+              "tokens": [
+                "gach",
+                "lá.",
+                "sa",
+                "Tá",
+                "mhainistir",
+                "obair",
+                "agus",
+                "tá",
+                "mé",
+                "ag",
+                "foghlaim",
+                "sa",
+                "bhaile"
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "There is work in the monastery and I am learning in the settlement every day.",
+              "audioText": "Tá obair sa mhainistir agus tá mé ag foghlaim sa bhaile gach lá.",
+              "modelText": "Tá obair sa mhainistir agus tá mé ag foghlaim sa bhaile gach lá.",
+              "feedback": "Work, learning, monastery, settlement and day now sit in one complete line.",
+              "hint": "Build the work clause first, then the learning clause and gach lá.",
+              "recovery": "Keep sa mhainistir with obair and sa bhaile with foghlaim.",
+              "lexemeIDs": [
+                "lex.mainistir",
+                "lex.baile",
+                "lex.obair",
+                "lex.la",
+                "lex.foghlaim"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.settlement.not-university",
+            "legacyBeatIndex": null,
+            "title": "Learning without a modern campus",
+            "context": "Texts, memory and skilled practice",
+            "body": "Later descriptions sometimes call Clonmacnoise a university. That comparison can communicate reach, but it imports a modern institution into an early medieval settlement. What the evidence supports is a major centre of learning, manuscript culture, commemoration and ecclesiastical life.",
+            "detail": "Use the familiar comparison only as a bridge, never as a literal institutional claim.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o03"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Keep the period clear",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.settlement.notice-place-words",
+            "legacyBeatIndex": null,
+            "title": "Notice the place inside the sentence",
+            "context": "sa mhainistir · sa bhaile",
+            "body": "Choose the example that places learning in the settlement.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "grammarDiscovery",
+              "objective": "Notice how sa places an activity inside a named place.",
+              "prompt": "Which line means: I am learning in the settlement?",
+              "answer": "Tá mé ag foghlaim sa bhaile.",
+              "options": [
+                {
+                  "id": "learning",
+                  "text": "Tá mé ag foghlaim sa bhaile.",
+                  "isCorrect": true,
+                  "rationale": "This is the learning line."
+                },
+                {
+                  "id": "work",
+                  "text": "Tá obair sa bhaile.",
+                  "isCorrect": false,
+                  "rationale": "This says there is work in the settlement."
+                },
+                {
+                  "id": "day",
+                  "text": "Tá lá sa bhaile.",
+                  "isCorrect": false,
+                  "rationale": "This does not express learning."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "I am learning in the settlement.",
+              "audioText": null,
+              "modelText": "Tá mé ag foghlaim sa bhaile.",
+              "feedback": "Tá mé ag foghlaim sa bhaile places the learning in the settlement.",
+              "hint": "Look for foghlaim and the place phrase sa bhaile.",
+              "recovery": "The other lines name work or a day. Choose the one that contains learning and the settlement.",
+              "lexemeIDs": [
+                "lex.foghlaim",
+                "lex.baile"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.settlement.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "Objects show activity, not a single scripted day",
+            "context": "Archaeology · graveslabs · buildings",
+            "body": "Stone, metalwork, buildings, burials and written notices support a complex settlement. They do not let us follow one invented scribe, cook or pilgrim from dawn to dusk. The chapter stays plural: many people, many kinds of work.",
+            "detail": "This limit removes the inherited fictional scriptorium race while preserving the real human density of the place.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o03"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Read the settlement honestly",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.settlement.build-learning",
+            "legacyBeatIndex": null,
+            "title": "Build a line about learning",
+            "context": "Tá mé ag foghlaim anseo",
+            "body": "Place the action in the site you have just entered.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "dialogue",
+              "objective": "Produce a supported learning sentence in response to a place question.",
+              "prompt": "A guide asks: Cad atá tú a dhéanamh anseo? Choose the answer: I am learning here.",
+              "answer": "Tá mé ag foghlaim anseo.",
+              "options": [
+                {
+                  "id": "learning",
+                  "text": "Tá mé ag foghlaim anseo.",
+                  "isCorrect": true,
+                  "rationale": "This answers with learning here."
+                },
+                {
+                  "id": "working",
+                  "text": "Tá obair anseo.",
+                  "isCorrect": false,
+                  "rationale": "This says work is here, not what you are doing."
+                },
+                {
+                  "id": "boat",
+                  "text": "Tá bád anseo.",
+                  "isCorrect": false,
+                  "rationale": "This places a boat here."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "I am learning here.",
+              "audioText": null,
+              "modelText": "Tá mé ag foghlaim anseo.",
+              "feedback": "Tá mé ag foghlaim anseo — the activity and the place stay together.",
+              "hint": "Choose the answer with ag foghlaim and anseo.",
+              "recovery": "That line names work or travel. Choose the one that says you are learning here.",
+              "lexemeIDs": [
+                "lex.foghlaim",
+                "lex.anseo"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.settlement.sequence-settlement",
+            "legacyBeatIndex": null,
+            "title": "Put the supported sequence in order",
+            "context": "Route · community · work · learning",
+            "body": "Arrange the causal account without inventing a single founding day.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "sequencing",
+              "objective": "Reconstruct the chapter's causal sequence.",
+              "prompt": "Put the movements in story order.",
+              "answer": "Routes meet → community endures → work gathers → learning continues",
+              "options": [],
+              "tokens": [
+                "learning continues",
+                "routes meet",
+                "work gathers",
+                "community endures"
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Routes meet; community endures; work gathers; learning continues.",
+              "audioText": null,
+              "modelText": "Routes meet → community endures → work gathers → learning continues",
+              "feedback": "The settlement grows through continuity: route, community, work and learning.",
+              "hint": "Start with the landscape from the previous chapter.",
+              "recovery": "A centre of learning depends on a place and its repeated work. Move the routes to the beginning.",
+              "lexemeIDs": [
+                "lex.obair",
+                "lex.foghlaim"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.settlement.consequence",
+            "legacyBeatIndex": null,
+            "title": "A great monument needs a great settlement",
+            "context": "Chapter turn · from community to patronage",
+            "body": "By the early tenth century Clonmacnoise could support ambitious building and carving because it was already a network of people, resources and obligations. A king's patronage could now become stone, image and public prayer.",
+            "detail": "The chapter moves from daily continuity to the political scale of Flann Sinna and Abbot Colmán.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o03"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Meet king and abbot",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.settlement.retrieve-crossing",
+            "legacyBeatIndex": null,
+            "title": "Bring the crossing back",
+            "context": "Tá baile anseo, idir abhainn agus bóthar",
+            "body": "Retrieve the place logic after learning about the settlement.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "delayedRetrieval",
+              "objective": "Reuse the route and place words in a complete line.",
+              "prompt": "Type: A settlement is here, between river and road.",
+              "answer": "Tá baile agus mainistir anseo; tá obair agus foghlaim ann gach lá.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "A settlement and monastery are here; work and learning happen there every day.",
+              "audioText": null,
+              "modelText": "Tá baile agus mainistir anseo; tá obair agus foghlaim ann gach lá.",
+              "feedback": "The complete sentence retrieves the inhabited and ecclesiastical place together.",
+              "hint": "Name baile and mainistir first; work and learning follow.",
+              "recovery": "Keep obair agus foghlaim together before ann gach lá.",
+              "lexemeIDs": [
+                "lex.baile",
+                "lex.mainistir",
+                "lex.anseo",
+                "lex.obair",
+                "lex.foghlaim",
+                "lex.la"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      },
+      {
+        "id": "offaly.king-and-abbot",
+        "title": "Rí agus Ab · King and abbot",
+        "place": "Clonmacnoise · Flann and Colmán",
+        "pages": [
+          {
+            "id": "offaly.king-and-abbot.opening",
+            "legacyBeatIndex": null,
+            "title": "A king enters the stone record",
+            "context": "Flann Sinna · King of Tara",
+            "body": "Flann Sinna was a rí whose power depended on alliances, rivals and visible patronage. The mainistir, baile, obair and foghlaim of Clonmacnoise made royal attention useful; royal support made large work possible.",
+            "detail": "Rí is introduced through a named person, not as a generic medieval title.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.ri"
+            ],
+            "resourceIDs": [
+              "evidence.offaly.o06",
+              "source.offaly.high-crosses",
+              "audio.word.ri"
+            ],
+            "exercise": null,
+            "presentation": "relationshipField",
+            "advanceLabel": "Place the king",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "king",
+                "title": "Flann Sinna",
+                "detail": "A powerful king seeking durable patronage",
+                "symbol": "crown"
+              },
+              {
+                "id": "community",
+                "title": "Clonmacnoise",
+                "detail": "A major ecclesiastical settlement",
+                "symbol": "building.columns"
+              }
+            ]
+          },
+          {
+            "id": "offaly.king-and-abbot.cathedral",
+            "legacyBeatIndex": null,
+            "title": "The annals record another shared work",
+            "context": "909 · Flann and Colmán",
+            "body": "The annals associate Flann Sinna and Abbot Colmán with the building of the great church at Clonmacnoise in 909. That notice belongs beside the cross, not inside its damaged lettering. Together they show a relationship expressed through building and memory.",
+            "detail": "The church notice and cross inscription are two pieces of evidence. They must not be collapsed into one quotation.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o06",
+              "source.offaly.heritage-guide"
+            ],
+            "exercise": null,
+            "presentation": "archive",
+            "advanceLabel": "Separate the records",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.king-and-abbot.make-scale",
+            "legacyBeatIndex": null,
+            "title": "Making turns authority into a public object",
+            "context": "déan · make",
+            "body": "Déan means make or do. A cros this mór — big — required planning, skilled labour and material. Its small details, beag by comparison, still mattered because hands, faces, clothes and gestures carried the stories a viewer was meant to recognise.",
+            "detail": "Scale works in two directions: the cross commands attention from a distance, while its panels reward close looking.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.dean",
+              "lex.mor",
+              "lex.beag",
+              "lex.cros"
+            ],
+            "resourceIDs": [
+              "evidence.offaly.o04",
+              "evidence.offaly.o07",
+              "audio.word.dean",
+              "audio.word.mor",
+              "audio.word.beag",
+              "audio.word.cros"
+            ],
+            "exercise": null,
+            "presentation": "languageField",
+            "advanceLabel": "Measure the work",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "large",
+                "title": "mór",
+                "detail": "The monument at public scale",
+                "symbol": "arrow.up.left.and.arrow.down.right"
+              },
+              {
+                "id": "small",
+                "title": "beag",
+                "detail": "The carved detail seen up close",
+                "symbol": "viewfinder"
+              },
+              {
+                "id": "make",
+                "title": "déan",
+                "detail": "The labour that joins both scales",
+                "symbol": "hammer"
+              }
+            ]
+          },
+          {
+            "id": "offaly.king-and-abbot.hear-king",
+            "legacyBeatIndex": null,
+            "title": "Say role, action and scale",
+            "context": "Déan cros mhór don rí le sonraí beaga",
+            "body": "Record the model, then compare without a score.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.offaly-king-and-abbot-hear-king"
+            ],
+            "exercise": {
+              "family": "speaking",
+              "objective": "Hear and produce rí, déan, cros, mór and beag in a complete instruction.",
+              "prompt": "Record: Déan cros mhór don rí le sonraí beaga.",
+              "answer": "Déan cros mhór don rí le sonraí beaga.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Make a big cross for the king and look at the small details.",
+              "audioText": "Déan cros mhór don rí le sonraí beaga.",
+              "modelText": "Déan cros mhór don rí le sonraí beaga.",
+              "feedback": "The line joins patron, making, monumental scale and close detail.",
+              "hint": "Keep rí long and clear; beaga closes the line.",
+              "recovery": "If recording is unavailable, listen once more and continue with the model line.",
+              "lexemeIDs": [
+                "lex.ri",
+                "lex.dean",
+                "lex.cros",
+                "lex.mor",
+                "lex.beag"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.king-and-abbot.patronage-not-command",
+            "legacyBeatIndex": null,
+            "title": "Patronage is a relationship, not a work order",
+            "context": "King, abbot and community",
+            "body": "The surviving sources connect Flann, Colmán and the monument, but they do not preserve a meeting in which the king dictates a panel programme. The cross emerged from a community of carvers, patrons and interpreters whose exact negotiations are lost.",
+            "detail": "The story can make patronage legible without inventing a commission scene.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o05",
+              "evidence.offaly.o06"
+            ],
+            "exercise": null,
+            "presentation": "pressureField",
+            "advanceLabel": "Leave the private scene open",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.king-and-abbot.public-prayer",
+            "legacyBeatIndex": null,
+            "title": "The patron's name enters a repeated public act",
+            "context": "Royal visibility · communal prayer",
+            "body": "A monument can magnify a king without becoming a secular advertisement. The prayer request places Flann's name inside worship and memory, while the scale and position of the cross make that relationship publicly visible.",
+            "detail": "Political and devotional meanings reinforce one another here; the account should not force the cross into only one category.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o05",
+              "evidence.offaly.o06"
+            ],
+            "exercise": null,
+            "presentation": "relationshipField",
+            "advanceLabel": "Hold power and prayer together",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.king-and-abbot.complete-making",
+            "legacyBeatIndex": null,
+            "title": "Complete the making line",
+            "context": "Déan cros mhór · Make a big cross",
+            "body": "Choose the word that turns material into action.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "fillGap",
+              "objective": "Use déan in a complete imperative phrase.",
+              "prompt": "Complete: ___ cros mhór.",
+              "answer": "Déan",
+              "options": [
+                {
+                  "id": "make",
+                  "text": "Déan",
+                  "isCorrect": true,
+                  "rationale": "Déan means make or do."
+                },
+                {
+                  "id": "king",
+                  "text": "Rí",
+                  "isCorrect": false,
+                  "rationale": "Rí is king."
+                },
+                {
+                  "id": "small",
+                  "text": "Beag",
+                  "isCorrect": false,
+                  "rationale": "Beag means small."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": "___ cros mhór.",
+              "translation": "Make a big cross.",
+              "audioText": null,
+              "modelText": "Déan cros mhór.",
+              "feedback": "Déan cros mhór — make a big cross.",
+              "hint": "Choose the verb meaning make or do.",
+              "recovery": "Mór describes scale and rí names the patron. The missing word is the action.",
+              "lexemeIDs": [
+                "lex.dean",
+                "lex.cros",
+                "lex.mor"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.king-and-abbot.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "Two records, one careful relationship",
+            "context": "Annals and damaged inscription",
+            "body": "The annal notice supports Flann and Colmán building together at the church. The cross inscription, in its conventional reading, links Colmán, the making of the cross and King Flann. Exact letters and grammar remain a specialist question for the next chapter.",
+            "detail": "The relationship is the learner-facing claim; the disputed expansion stays available in the evidence detail.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o05",
+              "source.offaly.cross-inscription"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Approach the inscription",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.king-and-abbot.match-scale",
+            "legacyBeatIndex": null,
+            "title": "Match role, action and scale",
+            "context": "rí · déan · mór · beag",
+            "body": "Keep the four jobs distinct.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "matching",
+              "objective": "Connect the chapter's political and making words to their meanings.",
+              "prompt": "Match each Irish word to its meaning.",
+              "answer": "all pairs",
+              "options": [],
+              "tokens": [],
+              "pairs": [
+                {
+                  "id": "king",
+                  "left": "rí",
+                  "right": "king"
+                },
+                {
+                  "id": "make",
+                  "left": "déan",
+                  "right": "make / do"
+                },
+                {
+                  "id": "big",
+                  "left": "mór",
+                  "right": "big"
+                },
+                {
+                  "id": "small",
+                  "left": "beag",
+                  "right": "small"
+                }
+              ],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "King, make, big and small now describe different parts of the commission.",
+              "hint": "Rí is a person; déan is an action.",
+              "recovery": "Those two roles do not match. Try the remaining meaning.",
+              "lexemeIDs": [
+                "lex.ri",
+                "lex.dean",
+                "lex.mor",
+                "lex.beag"
+              ],
+              "operatesOnSentence": false,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.king-and-abbot.read-patronage",
+            "legacyBeatIndex": null,
+            "title": "Read what the evidence links",
+            "context": "Source comprehension · patronage",
+            "body": "Choose the claim held by both the wider record and the conventional inscription reading.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "comprehension",
+              "objective": "Identify the supported relationship among Flann, Colmán and monumental work.",
+              "prompt": "What is the secure chapter-level claim?",
+              "answer": "Flann and Colmán are connected to major building and the cross.",
+              "options": [
+                {
+                  "id": "relationship",
+                  "text": "Flann and Colmán are connected to major building and the cross.",
+                  "isCorrect": true,
+                  "rationale": "This is the bounded relationship."
+                },
+                {
+                  "id": "meeting",
+                  "text": "A transcript records Flann choosing every panel.",
+                  "isCorrect": false,
+                  "rationale": "No such transcript survives."
+                },
+                {
+                  "id": "single-carver",
+                  "text": "Colmán carved every figure himself.",
+                  "isCorrect": false,
+                  "rationale": "The inscription does not establish that."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "The evidence supports a patronage relationship, not a preserved private briefing.",
+              "hint": "Choose the relationship that does not require invented dialogue.",
+              "recovery": "The sources do not preserve a design meeting or a single named carver.",
+              "lexemeIDs": [
+                "lex.ri",
+                "lex.dean"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.king-and-abbot.consequence",
+            "legacyBeatIndex": null,
+            "title": "The commission becomes a public question",
+            "context": "Chapter turn · from patronage to object",
+            "body": "The king and abbot now recede behind the thing they helped bring into being. The next task is physical: stand before the surviving cross, move from its large silhouette to its small panels, and ask how stone was made to speak.",
+            "detail": "Authority has become an object that later viewers can still inspect and challenge.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o04",
+              "evidence.offaly.o05"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Stand before the cross",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.king-and-abbot.build-patronage",
+            "legacyBeatIndex": null,
+            "title": "Build the chapter's bounded line",
+            "context": "Déanann Colmán cros don rí",
+            "body": "Use a complete sentence without inventing the design meeting.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "sentenceConstruction",
+              "objective": "Produce a supported sentence joining Colmán, the cross and the king.",
+              "prompt": "Build: Colmán makes a cross for the king.",
+              "answer": "Déanann Colmán cros mhór don rí, le sonraí beaga.",
+              "options": [],
+              "tokens": [
+                "rí,",
+                "cros",
+                "Déanann",
+                "don",
+                "Colmán",
+                "mhór",
+                "le",
+                "sonraí",
+                "beaga."
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Colmán makes a big cross for the king, with small details.",
+              "audioText": null,
+              "modelText": "Déanann Colmán cros mhór don rí, le sonraí beaga.",
+              "feedback": "The line carries the conventional relationship while practising large form and small detail.",
+              "hint": "Begin with Déanann Colmán; le sonraí beaga closes the line.",
+              "recovery": "Keep don rí before the detail phrase.",
+              "lexemeIDs": [
+                "lex.dean",
+                "lex.cros",
+                "lex.ri",
+                "lex.mor",
+                "lex.beag"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      },
+      {
+        "id": "offaly.carved-cross",
+        "title": "An Chros Chloiche · The stone cross",
+        "place": "Cross of the Scriptures · panels",
+        "pages": [
+          {
+            "id": "offaly.carved-cross.opening",
+            "legacyBeatIndex": null,
+            "title": "Stone becomes a reading surface",
+            "context": "Cross of the Scriptures · early tenth century",
+            "body": "The cros returns, now as a form carved in cloch. The rí, the action déan and the mór/beag change of scale remain inside the object. Seas means stand; féach means look. The learner moves from the large ringed form to small scriptural scenes.",
+            "detail": "This chapter treats the cross as an object with scale, surface and a required way of looking.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.cloch",
+              "lex.seas",
+              "lex.feach"
+            ],
+            "resourceIDs": [
+              "evidence.offaly.o04",
+              "evidence.offaly.o07",
+              "source.offaly.highlights",
+              "audio.word.cloch",
+              "audio.word.seas",
+              "audio.word.feach"
+            ],
+            "exercise": null,
+            "presentation": "coastalOpening",
+            "advanceLabel": "Stand before the stone",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "stone",
+                "title": "cloch",
+                "detail": "The material that carries the carving",
+                "symbol": "square.fill"
+              },
+              {
+                "id": "cross",
+                "title": "cros",
+                "detail": "The public form",
+                "symbol": "plus"
+              },
+              {
+                "id": "look",
+                "title": "féach",
+                "detail": "The close attention the panels need",
+                "symbol": "eye"
+              }
+            ]
+          },
+          {
+            "id": "offaly.carved-cross.original-replica",
+            "legacyBeatIndex": null,
+            "title": "Two crosses occupy the modern site",
+            "context": "Visitor centre and enclosure",
+            "body": "The original high cross is protected indoors. A replica stands outside in the historical enclosure. A visitor can therefore meet the form in its landscape and the worn carving under shelter, but those encounters belong to two different objects.",
+            "detail": "The interface must always say which object is being shown. Replica is not a lesser truth; it is a different evidential role.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o08",
+              "source.offaly.heritage-guide"
+            ],
+            "exercise": null,
+            "presentation": "relationshipField",
+            "advanceLabel": "Keep original and replica apart",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "original",
+                "title": "Original",
+                "detail": "Protected indoors for close inspection",
+                "symbol": "building.columns"
+              },
+              {
+                "id": "replica",
+                "title": "Replica",
+                "detail": "Standing in the enclosure outside",
+                "symbol": "sun.max"
+              }
+            ]
+          },
+          {
+            "id": "offaly.carved-cross.panels",
+            "legacyBeatIndex": null,
+            "title": "Images organise the shaft",
+            "context": "Crucifixion · judgement · tomb",
+            "body": "The surviving carving is arranged in panels. Official interpretation identifies scenes including the Crucifixion, the Last Judgement and Christ in the Tomb. Their order and exact reading are art-historical work, not a picture-book certainty.",
+            "detail": "The learner can recognise named scenes while keeping room for specialist correction of individual figures and sequences.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o07",
+              "source.offaly.highlights"
+            ],
+            "exercise": null,
+            "presentation": "movementLine",
+            "advanceLabel": "Move panel by panel",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "crucifixion",
+                "title": "Crucifixion",
+                "detail": "A major scriptural scene",
+                "symbol": "cross"
+              },
+              {
+                "id": "judgement",
+                "title": "Last Judgement",
+                "detail": "Figures gathered around judgement",
+                "symbol": "person.3"
+              },
+              {
+                "id": "tomb",
+                "title": "Christ in the Tomb",
+                "detail": "A scene read through worn carving",
+                "symbol": "rectangle.inset.filled"
+              }
+            ]
+          },
+          {
+            "id": "offaly.carved-cross.hear-looking",
+            "legacyBeatIndex": null,
+            "title": "Hear the instruction at the object",
+            "context": "Seas anseo agus féach ar an gcros chloiche",
+            "body": "Listen to a complete instruction before choosing its meaning.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.offaly-carved-cross-hear-looking"
+            ],
+            "exercise": {
+              "family": "listenIdentify",
+              "objective": "Recognise seas, féach, cros and cloch in a complete instruction.",
+              "prompt": "What does the full line ask you to do?",
+              "answer": "Stand here and look at the stone cross.",
+              "options": [
+                {
+                  "id": "look",
+                  "text": "Stand here and look at the stone cross.",
+                  "isCorrect": true,
+                  "rationale": "This matches the whole phrase."
+                },
+                {
+                  "id": "stand",
+                  "text": "Stand beside the river.",
+                  "isCorrect": false,
+                  "rationale": "That would use seas and abhainn."
+                },
+                {
+                  "id": "pray",
+                  "text": "Pray for the king.",
+                  "isCorrect": false,
+                  "rationale": "That belongs to the inscription chapter."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Stand here and look at the stone cross.",
+              "audioText": "Seas anseo agus féach ar an gcros chloiche.",
+              "modelText": null,
+              "feedback": "The line positions the learner before asking for close looking.",
+              "hint": "Seas is the first action; féach is the second.",
+              "recovery": "The phrase asks you to stand and look, not to pray yet.",
+              "lexemeIDs": [
+                "lex.seas",
+                "lex.feach",
+                "lex.cros",
+                "lex.cloch"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.carved-cross.colour",
+            "legacyBeatIndex": null,
+            "title": "The bare stone may not be the whole appearance",
+            "context": "Surface · weathering · interpretation",
+            "body": "Experts have suggested that high crosses were originally painted. Weathering leaves the modern viewer with carved form and traces rather than the full early medieval visual field. The app must not colour the object as if a particular scheme were known.",
+            "detail": "Potential colour is a bounded interpretive note, not licence for decorative reconstruction.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o07",
+              "source.offaly.highlights"
+            ],
+            "exercise": null,
+            "presentation": "pressureField",
+            "advanceLabel": "Leave lost colour open",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.carved-cross.type-attention",
+            "legacyBeatIndex": null,
+            "title": "Type the viewing instruction",
+            "context": "Seas anseo agus féach",
+            "body": "Use both attention verbs in one short line.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "typing",
+              "objective": "Produce a complete instruction using seas, anseo and féach.",
+              "prompt": "Type: Stand here and look.",
+              "answer": "Seas anseo agus féach ar an gcros chloiche.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Stand here and look at the stone cross.",
+              "audioText": null,
+              "modelText": "Seas anseo agus féach ar an gcros chloiche.",
+              "feedback": "Position, attention, object and material now sit in one instruction.",
+              "hint": "Begin with Seas anseo; ar an gcros chloiche completes the line.",
+              "recovery": "Check that anseo comes before agus féach.",
+              "lexemeIDs": [
+                "lex.seas",
+                "lex.anseo",
+                "lex.feach",
+                "lex.cros",
+                "lex.cloch"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.carved-cross.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "A panel can be visible and still uncertain",
+            "context": "Art-historical reading",
+            "body": "A worn figure, gesture or object may support more than one identification. For the learning path, the named major scenes remain provisional until the art-historian review closes. The image itself should stay available beside the interpretation.",
+            "detail": "Seeing and naming are separate acts. The interface must let the learner inspect what prompted the label.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o07"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Hold image and reading together",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.carved-cross.sequence-looking",
+            "legacyBeatIndex": null,
+            "title": "Use the object in the right order",
+            "context": "Stand · see the form · inspect a panel · read the limit",
+            "body": "Arrange the encounter from distance to detail.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "sequencing",
+              "objective": "Sequence the cross encounter without treating interpretation as immediate certainty.",
+              "prompt": "Put the acts of attention in order.",
+              "answer": "Stand before the cross → see the whole form → inspect a panel → read its evidence note",
+              "options": [],
+              "tokens": [
+                "inspect a panel",
+                "read its evidence note",
+                "stand before the cross",
+                "see the whole form"
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Stand, see, inspect, then read the evidence limit.",
+              "audioText": null,
+              "modelText": "Stand before the cross → see the whole form → inspect a panel → read its evidence note",
+              "feedback": "The encounter moves from the large form to small detail and then to its interpretation.",
+              "hint": "Begin with where your body is, not with the panel label.",
+              "recovery": "The evidence note follows inspection. Move standing and whole-form seeing earlier.",
+              "lexemeIDs": [
+                "lex.seas",
+                "lex.cros",
+                "lex.feach",
+                "lex.beag"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.carved-cross.dialogue-object",
+            "legacyBeatIndex": null,
+            "title": "Answer what you see",
+            "context": "Cad a fheiceann tú? · What do you see?",
+            "body": "Choose the answer that names the material object.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "dialogue",
+              "objective": "Respond with a complete sentence naming the stone cross.",
+              "prompt": "Cad a fheiceann tú?",
+              "answer": "Feicim cros chloiche.",
+              "options": [
+                {
+                  "id": "cross",
+                  "text": "Feicim cros chloiche.",
+                  "isCorrect": true,
+                  "rationale": "This names the stone cross."
+                },
+                {
+                  "id": "river",
+                  "text": "Feicim abhainn.",
+                  "isCorrect": false,
+                  "rationale": "This names the river."
+                },
+                {
+                  "id": "king",
+                  "text": "Feicim rí.",
+                  "isCorrect": false,
+                  "rationale": "This names a king."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "I see a stone cross.",
+              "audioText": null,
+              "modelText": "Feicim cros chloiche.",
+              "feedback": "Feicim cros chloiche — I see a stone cross.",
+              "hint": "Choose the answer with both the object and its material.",
+              "recovery": "The other answers name only a route or a person.",
+              "lexemeIDs": [
+                "lex.feach",
+                "lex.cros",
+                "lex.cloch"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.carved-cross.consequence",
+            "legacyBeatIndex": null,
+            "title": "The image leads down to letters",
+            "context": "Chapter turn · from panel to inscription",
+            "body": "Looking establishes what the cross asks of the body: stand, move closer, compare. The surviving letters ask for another kind of attention. They are damaged, distributed around the base and entangled with competing scholarly readings.",
+            "detail": "The next chapter moves from seeing figures to reading an incomplete text.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o05"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Read the damaged letters",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.carved-cross.retrieve-cross",
+            "legacyBeatIndex": null,
+            "title": "Bring the full object back",
+            "context": "Tá cros mhór chloiche anseo",
+            "body": "Retrieve material, scale and place in one sentence.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "delayedRetrieval",
+              "objective": "Reuse cros, mór, cloch and anseo after the panel encounter.",
+              "prompt": "Type: A big stone cross is here.",
+              "answer": "Tá cros mhór chloiche anseo.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "A big stone cross is here.",
+              "audioText": null,
+              "modelText": "Tá cros mhór chloiche anseo.",
+              "feedback": "The sentence carries the whole monument before the next close reading.",
+              "hint": "Begin Tá cros, then describe it before adding anseo.",
+              "recovery": "Keep mhór chloiche together between cros and anseo.",
+              "lexemeIDs": [
+                "lex.cros",
+                "lex.mor",
+                "lex.cloch",
+                "lex.anseo"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      },
+      {
+        "id": "offaly.inscription",
+        "title": "Na Litreacha Damáistithe · Damaged letters",
+        "place": "Cross base · inscription",
+        "pages": [
+          {
+            "id": "offaly.inscription.opening",
+            "legacyBeatIndex": null,
+            "title": "Damaged letters still ask for action",
+            "context": "Cross base · conventional reading",
+            "body": "Seas and féach brought the learner to the cros chloiche. Léigh now means read; guí means pray. The conventional reading connects Colmán with making the cross for King Flann and includes a prayer for Flann. Reading it anois means following visible letters and scholarly reconstruction.",
+            "detail": "The Irish is useful because the object's surviving text is itself an instruction to remember and pray.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.leigh",
+              "lex.gui",
+              "lex.anois"
+            ],
+            "resourceIDs": [
+              "evidence.offaly.o05",
+              "source.offaly.cross-inscription",
+              "audio.word.leigh",
+              "audio.word.gui",
+              "audio.word.anois"
+            ],
+            "exercise": null,
+            "presentation": "archive",
+            "advanceLabel": "Follow the letters",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.inscription.two-faces",
+            "legacyBeatIndex": null,
+            "title": "The text runs across more than one face",
+            "context": "West and east · broken sequence",
+            "body": "Published readings join fragments from the cross's faces. One portion asks for a prayer for Flann; another associates Colmán, the making of the cross and King Flann. Gaps and worn letters make punctuation and expansion part of the interpretation.",
+            "detail": "A clean modern sentence is an editorial bridge. It must never masquerade as an undamaged line visible on the stone.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o05",
+              "source.offaly.cross-inscription"
+            ],
+            "exercise": null,
+            "presentation": "movementLine",
+            "advanceLabel": "Move around the base",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "west",
+                "title": "West face",
+                "detail": "Prayer fragment for Flann",
+                "symbol": "arrow.left"
+              },
+              {
+                "id": "east",
+                "title": "East face",
+                "detail": "Colmán, making and the king",
+                "symbol": "arrow.right"
+              },
+              {
+                "id": "gaps",
+                "title": "Gaps",
+                "detail": "Letters and grammar reconstructed by editors",
+                "symbol": "ellipsis"
+              }
+            ]
+          },
+          {
+            "id": "offaly.inscription.prayer",
+            "legacyBeatIndex": null,
+            "title": "A king's name enters communal memory",
+            "context": "oróit · prayer request",
+            "body": "A request for prayer makes the viewer part of a continuing act of memory. It does not simply label the donor. The inscription places royal patronage inside a religious practice that outlasts the king's life.",
+            "detail": "The cross is political and devotional at once; neither register cancels the other.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o05",
+              "evidence.offaly.o06"
+            ],
+            "exercise": null,
+            "presentation": "relationshipField",
+            "advanceLabel": "Read the request",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "name",
+                "title": "Flann",
+                "detail": "The named king",
+                "symbol": "crown"
+              },
+              {
+                "id": "prayer",
+                "title": "Prayer",
+                "detail": "The action requested from viewers",
+                "symbol": "hands.sparkles"
+              },
+              {
+                "id": "memory",
+                "title": "Memory",
+                "detail": "A name carried beyond a reign",
+                "symbol": "clock.arrow.circlepath"
+              }
+            ]
+          },
+          {
+            "id": "offaly.inscription.hear-reading",
+            "legacyBeatIndex": null,
+            "title": "Hear the action the letters request",
+            "context": "Léigh an t-inscríbhinn anois agus guí",
+            "body": "Listen, then rebuild the complete instruction.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.offaly-inscription-hear-reading"
+            ],
+            "exercise": {
+              "family": "listenBuildSentence",
+              "objective": "Hear léigh and guí together in a phrase about the inscription.",
+              "prompt": "Listen, then build: Read the inscription now and pray.",
+              "answer": "Léigh an t-inscríbhinn anois agus guí.",
+              "options": [],
+              "tokens": [
+                "guí.",
+                "agus",
+                "Léigh",
+                "an",
+                "t-inscríbhinn",
+                "anois"
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Read the inscription now and pray.",
+              "audioText": "Léigh an t-inscríbhinn anois agus guí.",
+              "modelText": "Léigh an t-inscríbhinn anois agus guí.",
+              "feedback": "Reading, present time and the requested action stay together.",
+              "hint": "Begin with Léigh; anois sits before agus guí.",
+              "recovery": "Keep an t-inscríbhinn before anois.",
+              "lexemeIDs": [
+                "lex.leigh",
+                "lex.gui",
+                "lex.anois"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.inscription.reading-history",
+            "legacyBeatIndex": null,
+            "title": "Scholars disagree at the damaged edge",
+            "context": "Inscription history · competing readings",
+            "body": "Different scholars have proposed different expansions and relationships among the words. The current draft follows the reading supported by Françoise Henry and Roger Stalley, while keeping Peter Harbison's alternative in the specialist packet.",
+            "detail": "This is not a dispute to flatten into a quiz answer. The art-historian and inscription review must choose the learner-facing wording.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "source.offaly.cross-inscription"
+            ],
+            "exercise": null,
+            "presentation": "pressureField",
+            "advanceLabel": "Keep the disagreement visible",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.inscription.transcription-tool",
+            "legacyBeatIndex": null,
+            "title": "A transcription is a viewing tool",
+            "context": "Stone surface · drawn letters · editorial choices",
+            "body": "A diplomatic transcription can preserve gaps, uncertain letters and line breaks that a smooth translation hides. Placed beside the cross, it helps the learner return from modern type to the damaged surface instead of replacing the stone with a clean sentence.",
+            "detail": "The final inscription view needs both the object and a review-approved transcription; neither is sufficient alone.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "source.offaly.cross-inscription"
+            ],
+            "exercise": null,
+            "presentation": "archive",
+            "advanceLabel": "Return type to stone",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.inscription.match-actions",
+            "legacyBeatIndex": null,
+            "title": "Match the inscription actions",
+            "context": "léigh · guí · anois",
+            "body": "Keep reading, praying and present time distinct.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "matching",
+              "objective": "Connect the final chapter words to their meanings.",
+              "prompt": "Match each Irish word to its meaning.",
+              "answer": "all pairs",
+              "options": [],
+              "tokens": [],
+              "pairs": [
+                {
+                  "id": "read",
+                  "left": "léigh",
+                  "right": "read"
+                },
+                {
+                  "id": "pray",
+                  "left": "guí",
+                  "right": "pray"
+                },
+                {
+                  "id": "now",
+                  "left": "anois",
+                  "right": "now"
+                }
+              ],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "Read, pray, now: three words that describe the modern encounter.",
+              "hint": "Léigh acts on text; guí is the devotional action.",
+              "recovery": "Those do not match. Try the remaining meaning.",
+              "lexemeIDs": [
+                "lex.leigh",
+                "lex.gui",
+                "lex.anois"
+              ],
+              "operatesOnSentence": false,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.inscription.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "Translation is an argument with the surface",
+            "context": "Visible letters · editorial expansion",
+            "body": "The cross supports the presence of Flann's name, prayer language and a making relationship involving Colmán. A fully punctuated English translation depends on editorial choices. The app therefore shows a bounded paraphrase first and the transcription history on request.",
+            "detail": "The exact letter-by-letter reading remains an open specialist gate in this draft.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o05",
+              "source.offaly.cross-inscription"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Hold the paraphrase lightly",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.inscription.fill-now",
+            "legacyBeatIndex": null,
+            "title": "Complete the present encounter",
+            "context": "Léigh anois · Read now",
+            "body": "Choose the time word that brings the old inscription into the present.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "fillGap",
+              "objective": "Use anois in a complete instruction.",
+              "prompt": "Complete: Léigh ___.",
+              "answer": "anois",
+              "options": [
+                {
+                  "id": "now",
+                  "text": "anois",
+                  "isCorrect": true,
+                  "rationale": "Anois means now."
+                },
+                {
+                  "id": "king",
+                  "text": "rí",
+                  "isCorrect": false,
+                  "rationale": "Rí means king."
+                },
+                {
+                  "id": "stone",
+                  "text": "cloch",
+                  "isCorrect": false,
+                  "rationale": "Cloch means stone."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": "Léigh ___.",
+              "translation": "Read now.",
+              "audioText": null,
+              "modelText": "Léigh anois.",
+              "feedback": "Léigh anois — read now.",
+              "hint": "Choose the word meaning now.",
+              "recovery": "The missing word is time, not an object or person.",
+              "lexemeIDs": [
+                "lex.leigh",
+                "lex.anois"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.inscription.read-limit",
+            "legacyBeatIndex": null,
+            "title": "Choose the honest inscription claim",
+            "context": "Source comprehension · damaged text",
+            "body": "Apply the evidence boundary before the county closes.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "comprehension",
+              "objective": "Distinguish a bounded conventional reading from false certainty.",
+              "prompt": "Which statement fits the surviving inscription?",
+              "answer": "It links prayer, Flann, Colmán and the making of the cross, but damaged letters affect the exact reading.",
+              "options": [
+                {
+                  "id": "bounded",
+                  "text": "It links prayer, Flann, Colmán and the making of the cross, but damaged letters affect the exact reading.",
+                  "isCorrect": true,
+                  "rationale": "This preserves the evidence and limit."
+                },
+                {
+                  "id": "perfect",
+                  "text": "Every letter survives clearly and scholars agree on one translation.",
+                  "isCorrect": false,
+                  "rationale": "The inscription is damaged and debated."
+                },
+                {
+                  "id": "speech",
+                  "text": "It records Flann's spoken instructions to the carvers.",
+                  "isCorrect": false,
+                  "rationale": "No speech is preserved."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "The relationship is readable; the exact expansion remains specialist work.",
+              "hint": "Choose the answer that keeps both meaning and damage visible.",
+              "recovery": "A perfect transcript or a recorded speech would exceed the evidence.",
+              "lexemeIDs": [
+                "lex.leigh",
+                "lex.gui",
+                "lex.ri",
+                "lex.dean"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.inscription.consequence",
+            "legacyBeatIndex": null,
+            "title": "The reading changes how the cross is carried",
+            "context": "Chapter turn · object, request and memory",
+            "body": "The cross is no longer only a large carved object. It is a damaged text that names power, asks for prayer and reveals the labour of later editors. The final chapter follows what happened when preservation separated the original from its outdoor place.",
+            "detail": "The learner leaves with a method: inspect the object, read the claim and keep the damaged edge visible.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o05",
+              "evidence.offaly.o08"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Follow the original indoors",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.inscription.type-prayer",
+            "legacyBeatIndex": null,
+            "title": "Carry the request in Irish",
+            "context": "Guí ar son Flann · Pray for Flann",
+            "body": "Type the short line the inscription's conventional reading makes meaningful.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "typing",
+              "objective": "Produce guí in a phrase linked to the named king.",
+              "prompt": "Type: Pray for Flann.",
+              "answer": "Léigh anois agus guí ar son Flann.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Read now and pray for Flann.",
+              "audioText": null,
+              "modelText": "Léigh anois agus guí ar son Flann.",
+              "feedback": "The line carries reading, present time and prayer for the named king.",
+              "hint": "Begin Léigh anois; guí carries a fada.",
+              "recovery": "Keep ar son Flann together at the end.",
+              "lexemeIDs": [
+                "lex.leigh",
+                "lex.anois",
+                "lex.gui",
+                "lex.ri"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      },
+      {
+        "id": "offaly.original-and-replica",
+        "title": "Bunaidh agus Macasamhail · Original and replica",
+        "place": "Clonmacnoise · present encounter",
+        "pages": [
+          {
+            "id": "offaly.original-and-replica.opening",
+            "legacyBeatIndex": null,
+            "title": "The original now stands under shelter",
+            "context": "Clonmacnoise · modern preservation",
+            "body": "The original cross is indoors anois; the outdoor figure is a replica. The move protects the carved cloch and inscription from further exposure. The actions léigh and guí still belong to the encounter, but the relationship among object, sky, churches and river has changed.",
+            "detail": "Preservation solves one problem by creating another kind of distance.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o08",
+              "source.offaly.heritage-guide"
+            ],
+            "exercise": null,
+            "presentation": "relationshipField",
+            "advanceLabel": "Hold both encounters",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "inside",
+                "title": "Original indoors",
+                "detail": "Close surface, controlled conditions",
+                "symbol": "building.columns"
+              },
+              {
+                "id": "outside",
+                "title": "Replica outside",
+                "detail": "Historical position and landscape",
+                "symbol": "sun.max"
+              }
+            ]
+          },
+          {
+            "id": "offaly.original-and-replica.move",
+            "legacyBeatIndex": null,
+            "title": "1991 marks a change in the encounter",
+            "context": "Original moved indoors",
+            "body": "The original high crosses were moved into the visitor centre in 1991 and replicas placed outside. That date belongs to the object's modern biography. It should not be hidden behind an image that makes every view look ancient and uninterrupted.",
+            "detail": "Conservation history is part of provenance, not administrative trivia.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o08"
+            ],
+            "exercise": null,
+            "presentation": "movementLine",
+            "advanceLabel": "Mark the move",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "before",
+                "title": "Before 1991",
+                "detail": "Original exposed in the enclosure",
+                "symbol": "cloud.rain"
+              },
+              {
+                "id": "after",
+                "title": "After 1991",
+                "detail": "Original protected; replica outside",
+                "symbol": "shield"
+              }
+            ]
+          },
+          {
+            "id": "offaly.original-and-replica.whole-place",
+            "legacyBeatIndex": null,
+            "title": "The cross belongs to a larger surviving field",
+            "context": "Churches · towers · graveslabs · Shannon",
+            "body": "The cross gains meaning from the settlement around it: churches, round towers, hundreds of graveslabs and the Shannon bank. Returning to the whole place prevents one royal monument from swallowing the lives that made and used the community.",
+            "detail": "The closing composition widens from inscription detail back to the inhabited crossroads.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o03",
+              "evidence.offaly.o08"
+            ],
+            "exercise": null,
+            "presentation": "connectedSystem",
+            "advanceLabel": "Widen the field",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "cross",
+                "title": "Cross",
+                "detail": "Royal patronage and public prayer",
+                "symbol": "plus"
+              },
+              {
+                "id": "graves",
+                "title": "Graveslabs",
+                "detail": "Many names and ordinary belonging",
+                "symbol": "square.stack"
+              },
+              {
+                "id": "river",
+                "title": "River",
+                "detail": "The route that keeps the place connected",
+                "symbol": "water.waves"
+              }
+            ]
+          },
+          {
+            "id": "offaly.original-and-replica.notice-now",
+            "legacyBeatIndex": null,
+            "title": "Notice here and now",
+            "context": "anseo · here · anois · now",
+            "body": "Choose the sentence that places the protected original in the present.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "grammarDiscovery",
+              "objective": "Distinguish place from present time in a complete sentence.",
+              "prompt": "Which line means: The original cross is here now?",
+              "answer": "Tá an chros bhunaidh anseo anois.",
+              "options": [
+                {
+                  "id": "both",
+                  "text": "Tá an chros bhunaidh anseo anois.",
+                  "isCorrect": true,
+                  "rationale": "This includes here and now."
+                },
+                {
+                  "id": "here",
+                  "text": "Tá an chros bhunaidh anseo.",
+                  "isCorrect": false,
+                  "rationale": "This says here but not now."
+                },
+                {
+                  "id": "now",
+                  "text": "Tá an chros bhunaidh anois.",
+                  "isCorrect": false,
+                  "rationale": "This does not give the place clearly."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "The original cross is here now.",
+              "audioText": null,
+              "modelText": "Tá an chros bhunaidh anseo anois.",
+              "feedback": "Anseo locates the cross; anois locates the encounter in time.",
+              "hint": "Look for both anseo and anois.",
+              "recovery": "One word answers where; the other answers when. Choose the line with both.",
+              "lexemeIDs": [
+                "lex.cros",
+                "lex.anseo",
+                "lex.anois"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.original-and-replica.no-finished-reading",
+            "legacyBeatIndex": null,
+            "title": "A protected object is not a finished argument",
+            "context": "Research and review continue",
+            "body": "Moving the cross indoors slows weathering; it does not close debate about its panels or inscription. New imaging, comparison and scholarship can change how worn details are read. The public account should name its review scope and revision.",
+            "detail": "The draft remains behind the medieval art, inscription and rights gates recorded in its source brief.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "source.offaly.cross-inscription"
+            ],
+            "exercise": null,
+            "presentation": "pressureField",
+            "advanceLabel": "Leave revision possible",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.original-and-replica.speak-whole-place",
+            "legacyBeatIndex": null,
+            "title": "Speak the present encounter",
+            "context": "Tá an chloch agus an chros anseo anois",
+            "body": "Record and compare the line without a pronunciation score.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.offaly-original-and-replica-speak-whole-place"
+            ],
+            "exercise": {
+              "family": "speaking",
+              "objective": "Produce cloch, cros, anseo and anois in a complete sentence.",
+              "prompt": "Record: Tá an chloch agus an chros anseo anois.",
+              "answer": "Tá an chloch agus an chros anseo anois.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "The stone and the cross are here now.",
+              "audioText": "Tá an chloch agus an chros anseo anois.",
+              "modelText": "Tá an chloch agus an chros anseo anois.",
+              "feedback": "You carried material, object, place and time in one line.",
+              "hint": "Keep anseo and anois distinct at the end.",
+              "recovery": "If recording is unavailable, replay the model and continue without saving audio.",
+              "lexemeIDs": [
+                "lex.cloch",
+                "lex.cros",
+                "lex.anseo",
+                "lex.anois"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.original-and-replica.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "What this county account can claim",
+            "context": "Crossroads · settlement · patronage · object",
+            "body": "The account can show why the site mattered, how a large settlement supported monumental work, how Flann and Colmán enter the record, what survives on the cross and where interpretation remains contested. It cannot recover a private commissioning scene or an uncontested perfect inscription.",
+            "detail": "The closing evidence page gathers the county's claims without flattening their different certainties.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o01",
+              "evidence.offaly.o03",
+              "evidence.offaly.o05",
+              "evidence.offaly.o08"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Carry the evidence",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.original-and-replica.sequence-afterlife",
+            "legacyBeatIndex": null,
+            "title": "Put the object's modern biography in order",
+            "context": "Outdoor original · conservation move · indoor original · outdoor replica",
+            "body": "Sequence preservation without confusing the two objects.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "sequencing",
+              "objective": "Reconstruct the original-and-replica change.",
+              "prompt": "Put the stages in order.",
+              "answer": "Original outdoors → conservation move → original indoors → replica outdoors",
+              "options": [],
+              "tokens": [
+                "replica outdoors",
+                "original indoors",
+                "conservation move",
+                "original outdoors"
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Original outdoors; move; original indoors; replica outdoors.",
+              "audioText": null,
+              "modelText": "Original outdoors → conservation move → original indoors → replica outdoors",
+              "feedback": "The protected original and outdoor replica now occupy different parts of the encounter.",
+              "hint": "The original must move before the replica can take its outdoor place.",
+              "recovery": "Do not put the replica before the conservation move.",
+              "lexemeIDs": [
+                "lex.cros",
+                "lex.seas",
+                "lex.anois"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.original-and-replica.read-county-limit",
+            "legacyBeatIndex": null,
+            "title": "Choose the complete county claim",
+            "context": "Final source comprehension",
+            "body": "Distinguish the supported story from the attractive invented one.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "comprehension",
+              "objective": "Identify the county account that keeps its evidence limits.",
+              "prompt": "Which summary can this pack support?",
+              "answer": "A river-road settlement, royal patronage and a surviving cross can be followed, while panel and inscription readings retain open limits.",
+              "options": [
+                {
+                  "id": "bounded",
+                  "text": "A river-road settlement, royal patronage and a surviving cross can be followed, while panel and inscription readings retain open limits.",
+                  "isCorrect": true,
+                  "rationale": "This is the pack's evidence-grounded account."
+                },
+                {
+                  "id": "fiction",
+                  "text": "A named scribe records every event in a diary.",
+                  "isCorrect": false,
+                  "rationale": "No such diary anchors the story."
+                },
+                {
+                  "id": "certainty",
+                  "text": "Every panel and letter has one uncontested reading.",
+                  "isCorrect": false,
+                  "rationale": "Specialist disputes remain."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "The complete account joins place, people, object and uncertainty.",
+              "hint": "Choose the account that includes both what survives and what remains open.",
+              "recovery": "The other answers invent a founding scene or claim perfect certainty.",
+              "lexemeIDs": [
+                "lex.abhainn",
+                "lex.bothar",
+                "lex.ri",
+                "lex.cros",
+                "lex.leigh"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.original-and-replica.consequence",
+            "legacyBeatIndex": null,
+            "title": "Carry a method, not a trophy",
+            "context": "County close · Uíbh Fhailí",
+            "body": "Offaly closes with a practice of attention: follow the route, see the settlement, stand before the object, read the letters and keep the damaged edge. The cross enters the collection as surviving evidence; the twenty words enter review only after Learning mode is complete.",
+            "detail": "Story completion can open the next county without claiming that its language has been learned.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.offaly.o08"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Carry the cross forward",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "offaly.original-and-replica.retrieve-inscription",
+            "legacyBeatIndex": null,
+            "title": "Bring the request back one last time",
+            "context": "Léigh an chloch anois agus guí",
+            "body": "Retrieve reading, stone, time and prayer after the full account.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "delayedRetrieval",
+              "objective": "Produce a closing sentence that reuses the inscription language.",
+              "prompt": "Type: Read the stone now and pray.",
+              "answer": "Léigh an chloch anois agus guí.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Read the stone now and pray.",
+              "audioText": null,
+              "modelText": "Léigh an chloch anois agus guí.",
+              "feedback": "The closing line carries object, action and present encounter together.",
+              "hint": "Begin Léigh an chloch; anois agus guí completes the line.",
+              "recovery": "Check the order: object before time, prayer at the end.",
+              "lexemeIDs": [
+                "lex.leigh",
+                "lex.cloch",
+                "lex.anois",
+                "lex.gui"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      }
+    ],
+    "completion": {
+      "storyPageIDs": [
+        "offaly.river-road.opening",
+        "offaly.river-road.crossing-detail",
+        "offaly.river-road.foundation",
+        "offaly.river-road.no-empty-map",
+        "offaly.river-road.evidence-limit",
+        "offaly.river-road.consequence",
+        "offaly.settlement.opening",
+        "offaly.settlement.graveslabs",
+        "offaly.settlement.daily-life",
+        "offaly.settlement.not-university",
+        "offaly.settlement.evidence-limit",
+        "offaly.settlement.consequence",
+        "offaly.king-and-abbot.opening",
+        "offaly.king-and-abbot.cathedral",
+        "offaly.king-and-abbot.make-scale",
+        "offaly.king-and-abbot.patronage-not-command",
+        "offaly.king-and-abbot.public-prayer",
+        "offaly.king-and-abbot.evidence-limit",
+        "offaly.king-and-abbot.consequence",
+        "offaly.carved-cross.opening",
+        "offaly.carved-cross.original-replica",
+        "offaly.carved-cross.panels",
+        "offaly.carved-cross.colour",
+        "offaly.carved-cross.evidence-limit",
+        "offaly.carved-cross.consequence",
+        "offaly.inscription.opening",
+        "offaly.inscription.two-faces",
+        "offaly.inscription.prayer",
+        "offaly.inscription.reading-history",
+        "offaly.inscription.transcription-tool",
+        "offaly.inscription.evidence-limit",
+        "offaly.inscription.consequence",
+        "offaly.original-and-replica.opening",
+        "offaly.original-and-replica.move",
+        "offaly.original-and-replica.whole-place",
+        "offaly.original-and-replica.no-finished-reading",
+        "offaly.original-and-replica.evidence-limit",
+        "offaly.original-and-replica.consequence"
+      ],
+      "learningPageIDs": [
+        "offaly.river-road.opening",
+        "offaly.river-road.foundation",
+        "offaly.river-road.hear-river",
+        "offaly.river-road.build-location",
+        "offaly.river-road.evidence-limit",
+        "offaly.river-road.match-routes",
+        "offaly.river-road.read-crossing",
+        "offaly.river-road.consequence",
+        "offaly.river-road.type-boat",
+        "offaly.settlement.opening",
+        "offaly.settlement.daily-life",
+        "offaly.settlement.hear-working-place",
+        "offaly.settlement.notice-place-words",
+        "offaly.settlement.evidence-limit",
+        "offaly.settlement.build-learning",
+        "offaly.settlement.sequence-settlement",
+        "offaly.settlement.consequence",
+        "offaly.settlement.retrieve-crossing",
+        "offaly.king-and-abbot.opening",
+        "offaly.king-and-abbot.make-scale",
+        "offaly.king-and-abbot.hear-king",
+        "offaly.king-and-abbot.complete-making",
+        "offaly.king-and-abbot.evidence-limit",
+        "offaly.king-and-abbot.match-scale",
+        "offaly.king-and-abbot.read-patronage",
+        "offaly.king-and-abbot.consequence",
+        "offaly.king-and-abbot.build-patronage",
+        "offaly.carved-cross.opening",
+        "offaly.carved-cross.panels",
+        "offaly.carved-cross.hear-looking",
+        "offaly.carved-cross.type-attention",
+        "offaly.carved-cross.evidence-limit",
+        "offaly.carved-cross.sequence-looking",
+        "offaly.carved-cross.dialogue-object",
+        "offaly.carved-cross.consequence",
+        "offaly.carved-cross.retrieve-cross",
+        "offaly.inscription.opening",
+        "offaly.inscription.prayer",
+        "offaly.inscription.hear-reading",
+        "offaly.inscription.match-actions",
+        "offaly.inscription.evidence-limit",
+        "offaly.inscription.fill-now",
+        "offaly.inscription.read-limit",
+        "offaly.inscription.consequence",
+        "offaly.inscription.type-prayer",
+        "offaly.original-and-replica.opening",
+        "offaly.original-and-replica.whole-place",
+        "offaly.original-and-replica.notice-now",
+        "offaly.original-and-replica.speak-whole-place",
+        "offaly.original-and-replica.evidence-limit",
+        "offaly.original-and-replica.sequence-afterlife",
+        "offaly.original-and-replica.read-county-limit",
+        "offaly.original-and-replica.consequence",
+        "offaly.original-and-replica.retrieve-inscription"
+      ]
+    },
+    "lifecycle": [
+      {
+        "id": "lex.abhainn",
+        "introducedPageID": "offaly.river-road.opening",
+        "heardPageID": "offaly.river-road.hear-river",
+        "producedPageID": "offaly.river-road.build-location",
+        "reusedPageID": "offaly.settlement.opening"
+      },
+      {
+        "id": "lex.bad",
+        "introducedPageID": "offaly.river-road.opening",
+        "heardPageID": "offaly.river-road.hear-river",
+        "producedPageID": "offaly.river-road.type-boat",
+        "reusedPageID": "offaly.settlement.opening"
+      },
+      {
+        "id": "lex.bothar",
+        "introducedPageID": "offaly.river-road.opening",
+        "heardPageID": "offaly.river-road.hear-river",
+        "producedPageID": "offaly.river-road.type-boat",
+        "reusedPageID": "offaly.settlement.opening"
+      },
+      {
+        "id": "lex.anseo",
+        "introducedPageID": "offaly.river-road.foundation",
+        "heardPageID": "offaly.river-road.hear-river",
+        "producedPageID": "offaly.river-road.build-location",
+        "reusedPageID": "offaly.settlement.retrieve-crossing"
+      },
+      {
+        "id": "lex.mainistir",
+        "introducedPageID": "offaly.settlement.opening",
+        "heardPageID": "offaly.settlement.hear-working-place",
+        "producedPageID": "offaly.settlement.retrieve-crossing",
+        "reusedPageID": "offaly.king-and-abbot.opening"
+      },
+      {
+        "id": "lex.baile",
+        "introducedPageID": "offaly.settlement.opening",
+        "heardPageID": "offaly.settlement.hear-working-place",
+        "producedPageID": "offaly.settlement.retrieve-crossing",
+        "reusedPageID": "offaly.king-and-abbot.opening"
+      },
+      {
+        "id": "lex.obair",
+        "introducedPageID": "offaly.settlement.opening",
+        "heardPageID": "offaly.settlement.hear-working-place",
+        "producedPageID": "offaly.settlement.retrieve-crossing",
+        "reusedPageID": "offaly.king-and-abbot.opening"
+      },
+      {
+        "id": "lex.la",
+        "introducedPageID": "offaly.settlement.daily-life",
+        "heardPageID": "offaly.settlement.hear-working-place",
+        "producedPageID": "offaly.settlement.retrieve-crossing",
+        "reusedPageID": "offaly.king-and-abbot.opening"
+      },
+      {
+        "id": "lex.foghlaim",
+        "introducedPageID": "offaly.settlement.daily-life",
+        "heardPageID": "offaly.settlement.hear-working-place",
+        "producedPageID": "offaly.settlement.retrieve-crossing",
+        "reusedPageID": "offaly.king-and-abbot.opening"
+      },
+      {
+        "id": "lex.ri",
+        "introducedPageID": "offaly.king-and-abbot.opening",
+        "heardPageID": "offaly.king-and-abbot.hear-king",
+        "producedPageID": "offaly.king-and-abbot.build-patronage",
+        "reusedPageID": "offaly.carved-cross.opening"
+      },
+      {
+        "id": "lex.dean",
+        "introducedPageID": "offaly.king-and-abbot.make-scale",
+        "heardPageID": "offaly.king-and-abbot.hear-king",
+        "producedPageID": "offaly.king-and-abbot.build-patronage",
+        "reusedPageID": "offaly.carved-cross.opening"
+      },
+      {
+        "id": "lex.mor",
+        "introducedPageID": "offaly.king-and-abbot.make-scale",
+        "heardPageID": "offaly.king-and-abbot.hear-king",
+        "producedPageID": "offaly.king-and-abbot.build-patronage",
+        "reusedPageID": "offaly.carved-cross.opening"
+      },
+      {
+        "id": "lex.beag",
+        "introducedPageID": "offaly.king-and-abbot.make-scale",
+        "heardPageID": "offaly.king-and-abbot.hear-king",
+        "producedPageID": "offaly.king-and-abbot.build-patronage",
+        "reusedPageID": "offaly.carved-cross.opening"
+      },
+      {
+        "id": "lex.cros",
+        "introducedPageID": "offaly.king-and-abbot.make-scale",
+        "heardPageID": "offaly.king-and-abbot.hear-king",
+        "producedPageID": "offaly.king-and-abbot.build-patronage",
+        "reusedPageID": "offaly.carved-cross.opening"
+      },
+      {
+        "id": "lex.cloch",
+        "introducedPageID": "offaly.carved-cross.opening",
+        "heardPageID": "offaly.carved-cross.hear-looking",
+        "producedPageID": "offaly.carved-cross.dialogue-object",
+        "reusedPageID": "offaly.inscription.opening"
+      },
+      {
+        "id": "lex.seas",
+        "introducedPageID": "offaly.carved-cross.opening",
+        "heardPageID": "offaly.carved-cross.hear-looking",
+        "producedPageID": "offaly.carved-cross.type-attention",
+        "reusedPageID": "offaly.inscription.opening"
+      },
+      {
+        "id": "lex.feach",
+        "introducedPageID": "offaly.carved-cross.opening",
+        "heardPageID": "offaly.carved-cross.hear-looking",
+        "producedPageID": "offaly.carved-cross.type-attention",
+        "reusedPageID": "offaly.inscription.opening"
+      },
+      {
+        "id": "lex.leigh",
+        "introducedPageID": "offaly.inscription.opening",
+        "heardPageID": "offaly.inscription.hear-reading",
+        "producedPageID": "offaly.inscription.type-prayer",
+        "reusedPageID": "offaly.original-and-replica.opening"
+      },
+      {
+        "id": "lex.gui",
+        "introducedPageID": "offaly.inscription.opening",
+        "heardPageID": "offaly.inscription.hear-reading",
+        "producedPageID": "offaly.inscription.type-prayer",
+        "reusedPageID": "offaly.original-and-replica.opening"
+      },
+      {
+        "id": "lex.anois",
+        "introducedPageID": "offaly.inscription.opening",
+        "heardPageID": "offaly.inscription.hear-reading",
+        "producedPageID": "offaly.inscription.type-prayer",
+        "reusedPageID": "offaly.original-and-replica.opening"
+      }
+    ],
+    "enforceLearningQuality": true
+  }
+}

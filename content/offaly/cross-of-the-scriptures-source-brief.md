@@ -3,6 +3,43 @@
 *Historian-ready packet · started 12 July 2026 · status: **research draft, not
 cleared**. Replaces the inherited Chapter 2 scriptorium composite (D13).*
 
+## Phase 5 pre-clearance draft — 24 July 2026
+
+`cross-of-the-scriptures.pack.draft.json` now applies the complete Mayo authoring
+pattern without promoting this research draft into the app:
+
+- six chapters and 68 stable pages, with variable chapter lengths;
+- a 49.4-minute estimated Story path and a causally complete 67.2-minute Learning
+  path projected from the same pages;
+- 30 exercises across all 12 mechanic families;
+- one introduction, heard use, active production and later reuse for each of the 20
+  provisional headwords; and
+- explicit evidence pages for the river-road site, settlement, Flann–Colmán
+  patronage, panels, damaged inscription, and original/replica afterlife.
+
+The draft passes `tools/validate_county_pack.py` with `scope: completeCounty` and
+learning-quality enforcement enabled. `completeCounty` describes the authored data,
+not its review state. The shipping app keeps the five-page editorial preview until
+the historian, medieval art/inscription, pedagogy, native-speaker audio and rights
+gates below close.
+
+The six chapters are:
+
+1. *River and road*
+2. *A working settlement*
+3. *King and abbot*
+4. *The stone cross*
+5. *Damaged letters*
+6. *Original and replica*
+
+The expanded draft uses the current [Heritage Ireland Clonmacnoise guide](https://heritageireland.ie/assets/uploads/2026/04/7565-OPW-Clonmacnoise-A5-visitor-guide_ENG_LR.pdf),
+[site highlights](https://heritageireland.ie/visit/places-to-visit/clonmacnoise-monastic-site/highlights/),
+and [High Crosses overview](https://heritageireland.ie/articles/high-crosses/) as
+official starting sources. They support the tenth-century object, selected major
+scenes, royal patronage, and the modern original/replica encounter. They do not close
+the specialist dispute over the inscription expansion or approve the final panel
+list.
+
 ## Phase 3 prototype binding — 14 July 2026
 
 The app now contains a four-episode / twelve-beat editorial preview under

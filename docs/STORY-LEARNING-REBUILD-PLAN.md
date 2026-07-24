@@ -202,9 +202,9 @@ mechanics before authoring the remaining chapters if it does not.
 9. Add only source-cleared or clearly interpretive imagery.
 10. Complete the voyage chart, collection handoff, and both progress states.
 
-**Current progress (24 July):** steps 1–6 are complete in the non-bundled revision-5
+**Current progress (24 July):** steps 1–6 are complete in the non-bundled revision-6
 review draft, including the nine chapters, 38 exercises, 20 lifecycles, and an
-84.8-minute estimated Story path. Steps 7–10 remain open; `STATUS.md` and
+86.2-minute estimated Story path. Steps 7–10 remain open; `STATUS.md` and
 `content/mayo/DRAFT-STATUS.md` own the current gate state.
 
 **Exit:** Mayo is complete in both modes, takes the intended time, and passes the
@@ -224,6 +224,15 @@ Research may run in parallel, but integration follows the Mayo proof.
 Each county needs a substantial causal story, a complete 20-word lifecycle, and a
 county-specific exercise composition. Each passes independently; three previews
 completed together do not constitute a quality gate.
+
+**Current progress (24 July):** structurally complete, non-bundled pre-clearance
+drafts now exist for all three counties. Each contains six variable-length chapters,
+68 pages, a 49.4-minute estimated Story path, 30 exercises across all 12 families,
+and complete ordered lifecycles for 20 provisional headwords. All three pass the
+strict county-pack validator. This completes authoring assembly, not the Phase 5 exit:
+the named historian, object specialist, pedagogy, native-speaker audio, rights,
+integration, accessibility and device gates remain open. The app therefore continues
+to ship the five-page editorial previews.
 
 **Exit:** all three counties pass the same internal gates as Mayo, with their own
 specialist and rights requirements closed.

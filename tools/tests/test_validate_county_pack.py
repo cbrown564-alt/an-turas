@@ -15,11 +15,20 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT / "tools"))
 
 import validate_county_pack as v  # noqa: E402
+import build_phase5_county_drafts as phase5  # noqa: E402
 
 PACKS_DIR = REPO_ROOT / "ios/AnTuras/Resources/CountyStories"
 BUNDLED_PACKS = sorted(PACKS_DIR.glob("*.json"))
 MAYO_PACK = PACKS_DIR / "mayo.grainne-1593.json"
 MAYO_REVIEW_DRAFT = REPO_ROOT / "content/mayo/grainne-1593.pack.draft.json"
+PHASE5_DRAFTS = {
+    "offaly.cross-of-the-scriptures": REPO_ROOT
+    / "content/offaly/cross-of-the-scriptures.pack.draft.json",
+    "dublin.sihtric-penny": REPO_ROOT
+    / "content/dublin/sihtric-penny.pack.draft.json",
+    "meath.trim-de-lacy": REPO_ROOT
+    / "content/meath/trim-de-lacy.pack.draft.json",
+}
 
 
 def load(path):
@@ -94,6 +103,76 @@ class MayoReviewDraftValidates(unittest.TestCase):
                     lifecycle["id"],
                     stage_pages[2]["exercise"]["lexemeIDs"],
                     "the production exercise must operate on its own lexeme",
+                )
+
+
+class Phase5ReviewDraftsValidate(unittest.TestCase):
+    def test_three_complete_county_drafts_pass_strict_rules(self):
+        for pack_id, path in PHASE5_DRAFTS.items():
+            with self.subTest(pack=pack_id):
+                envelope = load(path)
+                report = v.validate(envelope)
+
+                self.assertEqual(report.pack_id, pack_id)
+                self.assertEqual(report.scope, "completeCounty")
+                self.assertEqual(len(envelope["pack"]["chapters"]), 6)
+                self.assertGreaterEqual(report.story_minutes, 45)
+                self.assertEqual(sum(report.exercise_distribution.values()), 30)
+                self.assertEqual(len(report.exercise_distribution), 12)
+                self.assertEqual(report.lifecycle_covered, 20)
+                self.assertTrue(report.open_review_gates)
+
+                pages = {
+                    page["id"]: page
+                    for chapter in envelope["pack"]["chapters"]
+                    for page in chapter["pages"]
+                }
+                resources = {
+                    resource["id"]: resource
+                    for resource in envelope["pack"]["resources"]
+                }
+                for word_lifecycle in envelope["pack"]["lifecycle"]:
+                    stage_pages = [
+                        pages[word_lifecycle[key]]
+                        for key in (
+                            "introducedPageID",
+                            "heardPageID",
+                            "producedPageID",
+                            "reusedPageID",
+                        )
+                    ]
+                    self.assertIn(
+                        word_lifecycle["id"],
+                        stage_pages[0]["introducedLexemeIDs"],
+                    )
+                    self.assertTrue(
+                        any(
+                            resources[resource_id]["kind"] == "audio"
+                            for resource_id in stage_pages[1]["resourceIDs"]
+                        )
+                    )
+                    self.assertIn(
+                        word_lifecycle["id"],
+                        stage_pages[1]["exercise"]["lexemeIDs"],
+                        "the heard exercise must operate on its own lexeme",
+                    )
+                    self.assertIn(
+                        word_lifecycle["id"],
+                        stage_pages[2]["exercise"]["lexemeIDs"],
+                    )
+                    self.assertIn(
+                        stage_pages[2]["exercise"]["family"],
+                        v.ACTIVE_PRODUCTION_FAMILIES,
+                        "the production stage must use an active mechanic",
+                    )
+
+    def test_generated_drafts_are_current(self):
+        specs = [phase5.offaly_spec(), phase5.dublin_spec(), phase5.meath_spec()]
+        for spec in specs:
+            with self.subTest(pack=spec["id"]):
+                self.assertEqual(
+                    phase5.assemble(spec),
+                    load(PHASE5_DRAFTS[spec["id"]]),
                 )
 
 

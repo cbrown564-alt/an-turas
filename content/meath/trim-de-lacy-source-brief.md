@@ -3,6 +3,43 @@
 *Historian-ready packet · started 12 July 2026 · status: **research draft, not
 cleared**. Intake from `trim-clean-slate-review.md` (candidate confirmed).*
 
+## Phase 5 pre-clearance draft — 24 July 2026
+
+`trim-de-lacy.pack.draft.json` now applies the complete Mayo authoring pattern while
+keeping the grant, phasing and conquest review gates visible:
+
+- six chapters and 68 stable pages, with variable chapter lengths;
+- a 49.4-minute estimated Story path and a causally complete 67.2-minute Learning
+  path projected from the same pages;
+- 30 exercises across all 12 mechanic families;
+- one introduction, heard use, active production and later reuse for each of the 20
+  provisional headwords; and
+- county-specific learning work on possession, grant language, ford/site position,
+  fortification sequence, stone fabric and old/new afterlife.
+
+The draft passes `tools/validate_county_pack.py` with `scope: completeCounty` and
+learning-quality enforcement enabled. `completeCounty` describes the authored data,
+not historical or sensitivity clearance. The shipping app keeps the five-page
+editorial preview until the grant-copy, castle-phasing, conquest-sensitivity,
+pedagogy, native-speaker audio and rights gates below close.
+
+The six chapters are:
+
+1. *The land before the grant*
+2. *A claim on paper*
+3. *The ford of Trim*
+4. *The first fortification*
+5. *The stone castle*
+6. *A living town*
+
+The expanded draft uses the [Heritage Ireland Trim Castle record](https://heritageireland.ie/places-to-visit/trim-castle/)
+for the surviving keep and multi-decade build, and the CELT edition of the
+[*Song of Dermot and the Earl*](https://celt.ucc.ie/published/T250001-001.html)
+for the fortified house, trench, stockade, attack, abandonment and refortification
+sequence. The 1172 grant still needs a pinned later-copy citation and transcription;
+the Song's conquest rhetoric is treated as source voice rather than neutral
+narration.
+
 ## Phase 3 prototype binding — 14 July 2026
 
 The app now contains a four-episode / twelve-beat editorial preview under
