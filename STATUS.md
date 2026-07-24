@@ -1,7 +1,7 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-15.*
+and visual narrative. English → Irish only. Updated 2026-07-24.*
 
 ## Where we are
 
@@ -16,11 +16,12 @@ full learning lifecycle was never authored.
 
 **Current implemented evidence:** the island route, dossiers, evidence views,
 collection, learner-made objects, review scheduling, TEG summary, An Féilire, offline
-pack installation, and durable progress work across four counties. The complete 14
-July iPhone 17 Pro simulator suite passed 28 unit and 14 UI tests, and 22 Python
-content/tooling tests passed. Those checks verify the working implementation; they do
-not validate narrative depth, exercise quality, audio, rights, physical-device
-behavior, or learning outcomes after the 15 July product reset.
+pack installation, durable progress across four counties, and the rebuilt Rockfleet
+representative chapter. The complete 24 July iPhone 17 Pro Max simulator suite passes
+36 unit and 16 UI tests, and all 22 Python content/tooling tests pass. Those checks
+verify the working implementation; they do not validate the broader Mayo narrative,
+learning outcomes, specialist review, audio, or rights after the 15 July product
+reset.
 
 **Current product decision:** D21 defines one county page sequence filtered into Story
 and Learning modes. Story mode carries the complete account, opens the next county,
@@ -28,11 +29,41 @@ and does not claim the 20 words. Learning mode keeps a shorter causal account, i
 varied full-screen exercises, and is the only path that turns the county gold and
 schedules its words. Speaking remains ungraded record-and-compare.
 
-**Current target:** D22 expands Mayo to eight to ten chapters and 60–90 minutes in
-Story mode. One complete Rockfleet chapter must prove the new page model, both mode
-projections, full-screen exercise system, recovery, accessibility, and progress
-migration before the pattern spreads. Offaly, Dublin, and Meath then require
-substantial reauthoring, not clearance of their present preview copy.
+**Current target:** rebuild-plan phases 0–3 are complete. The representative
+Rockfleet chapter has proved the page model, both mode projections, full-screen
+exercise system, recovery, accessibility, progress migration, and varied narrative
+composition. Phase 4 now expands Mayo to eight to ten chapters and 60–90 minutes in
+Story mode. Offaly, Dublin, and Meath then require substantial reauthoring, not
+clearance of their present preview copy.
+
+**24 July rebuild update:** Phase 0's product contract is complete. The Phase
+1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
+projection and separate completion state are implemented and verified for the
+representative Rockfleet slice. Phase 2's shared exercise shell covers all twelve
+mechanic families, including explicit correction, fada-aware typing, bundled audio,
+ephemeral speaking, denied-microphone recovery and the internal failure-state
+gallery. The Phase 3 Rockfleet proof now contains ten Story pages with ten authored
+compositions—landscape, tide, route, language, relationships, system, archive,
+evidence boundary, pressure and consequence—plus an eighteen-page Learning path.
+The complete iPhone 17 Pro Max simulator scheme passes **52 tests**, and all **22 Python
+content/tooling tests** pass. Direct simulator inspection covers light and dark
+appearances, accessibility text reflow, Increased Contrast and Reduce Motion. Both
+full paths now have end-to-end UI coverage, including the keyboard fada toolbar and
+delayed retrieval. County routes use version-two packs; the duplicate legacy Gráinne
+renderer and embedded launch-county copy have been removed.
+
+The latest signed app builds, installs and launches on the physical iPhone 15 Pro Max.
+Three on-device UI checks pass with no failures: the complete ten-page Story path in
+dark appearance, the complete eighteen-page Learning path in light appearance, and
+the mode opening at the largest accessibility text size. The Learning walkthrough
+exercises bundled audio, matching, sentence construction, the keyboard fada toolbar,
+denied-microphone recovery, delayed retrieval, and completion. Direct device
+screenshots also verify the coastal opening and following tide diagram. No
+device-specific defect was found.
+
+This closes the rebuild plan's Phase 3 representative exit criterion. It verifies the
+implemented Rockfleet pattern; it does not validate learning outcomes or clear the
+broader Mayo and four-county work in phases 4–6 for another external tester round.
 
 **Tester gate:** no external learner build until all four counties pass the narrative,
 20-word lifecycle, exercise-distribution, specialist review, native-speaker audio,
@@ -93,42 +124,34 @@ story or new Learning mode.
 | 2026-07-14 | **Signed-off Gráinne copy implemented.** The warmer, concrete replacement voice now carries all 18 beats; route-turn chart labels, authored episode exits, dossier promise, person-page separation, listening-first prompts and `Say it like` labels match the review. Episode 4 handles the July `SP 63/170` interrogatory under D18/D19, Episode 5 now tests the unsupported conclusion instead of revealing it, and the collection reports all 20 approved Mayo headwords. XcodeGen regeneration and the complete iPhone 17 Pro simulator suite pass: 23 unit tests and 10 UI tests, including XXXL Dynamic Type, evidence reachability, audio-first recall, completed-beat replay, source identity and the new Episode 5 recovery path. The affected Episode 5 screen was also directly inspected in the simulator. | `docs/GRAINNE-COPY-REVIEW.md`, `ios/AnTuras/GrainneFullStory.swift`, `ios/AnTuras/MayoStoryPrototype.swift`, `ios/AnTuras/AtlasCollectionViews.swift`, `ios/AnTurasTests/AtlasProgressTests.swift`, `ios/AnTurasUITests/AtlasFlowUITests.swift` |
 | 2026-07-14 | **Phase 3 four-county working product implemented and simulator-verified.** D20 records the owner-reported Phase 2 pass. A reusable county-story engine now carries Offaly's Cross of the Scriptures, Sihtric's Dublin penny and Trim's grant/castle as visibly provisional four-episode loops; map progression, evidence and made-object shelves, 80-word accumulation, TEG can-do context, stability/difficulty review scheduling, daily calendar ritual and atomic offline pack validation share one durable state model. After XcodeGen regeneration, the complete iPhone 17 Pro simulator suite passes **28 unit and 14 UI tests**; all **22 Python content/tooling tests** pass. UI coverage includes the Offaly dossier at XXXL Dynamic Type and the shared recovery interaction; direct simulator inspection covers the Offaly dossier/listen beat, Dublin in dark appearance and Meath evidence in light appearance. | `ios/AnTuras/LaunchCountyStories.swift`, `AtlasCalendarView.swift`, `AtlasPrototype.swift`, `IslandAtlasView.swift`, `AtlasCollectionViews.swift`, `AppState.swift`, `ios/AnTurasTests/AtlasProgressTests.swift`, `ios/AnTurasUITests/AtlasFlowUITests.swift`, `content/{offaly,dublin,meath}/` |
 | 2026-07-15 | **Story and Learning rebuild confirmed.** New feedback rejects the four-county previews as the next tester build. D21–D22 lock one page sequence with two modes, separate story-read and language-complete progress, an eight-to-ten chapter / 60–90 minute Mayo target, varied full-screen exercises, and a four-county internal gate before external testing. This is a confirmed plan and product decision, not an implemented app change. | `docs/STORY-LEARNING-REBUILD-PLAN.md`, `docs/DECISIONS.md` D21–D22, canonical product/status documents |
+| 2026-07-24 | **Story/Learning rebuild phases 0–3 complete; Rockfleet proof passes on simulator and physical iPhone.** Versioned page packs, stable ids, dual mode projections, separate progress/completion, deterministic legacy migration, a shared twelve-family full-screen exercise system, and the representative Rockfleet chapter are working. The first uniform narrative renderer was rejected as visually monotonous; Rockfleet now changes composition with the account and varies its forward action labels while preserving native navigation. The legacy Gráinne renderer and hardcoded launch-county copy are removed in favour of pack-backed routes. XcodeGen regeneration and the complete iPhone 17 Pro Max simulator scheme pass 52 tests; 22 Python content/tooling tests pass. Light, dark, accessibility-size, Increased Contrast and Reduce Motion states were directly inspected. On the physical iPhone 15 Pro Max, the complete dark Story path, complete light Learning path, and largest accessibility-text opening pass with no failures. | `ios/AnTuras/CountyStoryPack.swift`, `CountyStoryExperienceView.swift`, `CountyNarrativePacing.swift`, `CountyExerciseSystem.swift`, `StoryEvidenceComponents.swift`, `Resources/CountyStories/`, `ios/AnTurasTests/AtlasProgressTests.swift`, `ios/AnTurasUITests/AtlasFlowUITests.swift` |
 
-## Immediate next steps (Phase 3)
+## Immediate next steps (rebuild-plan Phase 4)
 
-1. **Replace the fixed county-pack model** — stable page ids, page-level mode
-   visibility, separate completion requirements, content-owned copy, and lossless
-   migration from current beat indices.
-2. **Build the shared full-screen exercise system** — standard task, verdict, hint,
-   retry, completion, fada, audio, ungraded speaking, accessibility, and offline
-   behavior across the existing and missing mechanic families.
-3. **Prove Rockfleet end to end** — one complete, materially richer chapter in both
-   modes with at least five mechanics, later language reuse, recovery, exact resume,
-   simulator inspection, and physical-device QA.
-4. **Rebuild Mayo** — approve the broader storyboard, author eight to ten chapters,
+1. **Rebuild Mayo** — approve the broader storyboard, author eight to ten chapters,
    complete the 20-word lifecycle and 30–45 exercise path, then close history,
    pedagogy, audio, rights, accessibility, and engineering gates.
-5. **Reauthor Offaly, Dublin, and Meath** — progress their specialist research in
+2. **Reauthor Offaly, Dublin, and Meath** — progress their specialist research in
    parallel, but do not promote or integrate another preview-shaped story before the
    Mayo pattern passes.
-6. **Run the four-county internal gate** — automated validators, full tests, timed
+3. **Run the four-county internal gate** — automated validators, full tests, timed
    walkthroughs, physical-device and accessibility checks. Schedule external testing
    only after every item passes.
-7. **Preserve the Phase 2 test record** — add participant count and moderated-session
+4. **Preserve the Phase 2 test record** — add participant count and moderated-session
    notes if they exist; D20 deliberately does not invent them.
 
 ### Lower priority (unchanged)
 
-8. **Personal atlas external release gates** — run the 12–18 person hard-case protocol;
+5. **Personal atlas external release gates** — run the 12–18 person hard-case protocol;
    establish the specialist-reviewed showcase, licensed surname source and community/
    voice agreements before public promotion.
-9. **Generate Irish Cultural Guide clips only for cleared text** — do not QA superseded
+6. **Generate Irish Cultural Guide clips only for cleared text** — do not QA superseded
    D13 copy; native-speaker review remains required for Irish teaching audio. Treat
    Trinity/ABAIR partnership work as a post-launch upgrade.
-10. **Illustration production recipe** — atlas registers before Chapter 1–3 scene sets.
-11. **TestFlight build** — needs Apple Developer team in `ios/project.yml`.
-12. **Send ABAIR commercial enquiry** — optional; draft at `docs/ABAIR-enquiry.md`.
-13. **Grant funding research** — Foras na Gaeilge / Údarás strings before accepting (D10).
+7. **Illustration production recipe** — atlas registers before Chapter 1–3 scene sets.
+8. **TestFlight build** — needs Apple Developer team in `ios/project.yml`.
+9. **Send ABAIR commercial enquiry** — optional; draft at `docs/ABAIR-enquiry.md`.
+10. **Grant funding research** — Foras na Gaeilge / Údarás strings before accepting (D10).
 
 ## Long-term plan
 

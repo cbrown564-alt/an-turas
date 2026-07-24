@@ -10,6 +10,7 @@ struct CountyStoryExperienceView: View {
 
     @State private var showingChapterMenu = false
     @State private var finishedMode: CountyStoryMode?
+    @State private var locallyCompletedPageIDs: Set<String> = []
 
     private var mode: CountyStoryMode? { atlas.mode(for: pack.id) }
 
@@ -64,7 +65,8 @@ struct CountyStoryExperienceView: View {
     private func pageExperience(_ page: CountyStoryPage, mode: CountyStoryMode) -> some View {
         let visible = pack.pages(for: mode)
         let index = visible.firstIndex(where: { $0.id == page.id }) ?? 0
-        let isComplete = atlas.isPageComplete(page.id, in: pack.id)
+        let isComplete = locallyCompletedPageIDs.contains(page.id)
+            || atlas.isPageComplete(page.id, in: pack.id)
 
         return VStack(spacing: 0) {
             CountyStoryChrome(
@@ -81,11 +83,17 @@ struct CountyStoryExperienceView: View {
                         Color.clear.frame(height: 0).id("county-page-top")
                         if page.kind == .exercise, page.exercise != nil {
                             CountyExerciseView(page: page, alreadyComplete: isComplete) {
+                                locallyCompletedPageIDs.insert(page.id)
                                 atlas.markPageComplete(page.id, in: pack)
                             }
+                            .padding(.horizontal, EditorialLayout.pageInset)
+                            .padding(.top, 24)
+                            .frame(maxWidth: EditorialLayout.readingWidth)
+                            .frame(maxWidth: .infinity)
                         } else {
                             CountyNarrativePage(
                                 page: page,
+                                pack: pack,
                                 hasEvidence: page.resourceIDs.contains { resourceID in
                                     pack.resources.contains { $0.id == resourceID && ($0.kind == .evidence || $0.kind == .source) }
                                 },
@@ -93,10 +101,7 @@ struct CountyStoryExperienceView: View {
                             )
                         }
                     }
-                    .padding(.horizontal, EditorialLayout.pageInset)
-                    .padding(.top, 22)
                     .padding(.bottom, 124)
-                    .frame(maxWidth: EditorialLayout.readingWidth)
                     .frame(maxWidth: .infinity)
                     .id(page.id)
                 }
@@ -113,7 +118,7 @@ struct CountyStoryExperienceView: View {
             CountyPageControls(
                 canGoBack: index > 0,
                 canContinue: page.kind == .narrative || isComplete,
-                continueTitle: index == visible.count - 1 ? "Complete this chapter path" : "Continue",
+                continueTitle: page.advanceLabel ?? (index == visible.count - 1 ? "Complete this chapter path" : "Continue"),
                 onBack: {
                     guard index > 0 else { return }
                     move(to: visible[index - 1])
@@ -290,59 +295,19 @@ private struct CountyStoryChrome: View {
     }
 }
 
-private struct CountyNarrativePage: View {
-    let page: CountyStoryPage
-    let hasEvidence: Bool
-    let onOpenEvidence: () -> Void
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 22) {
-            EditorialScreenHeader(context: page.context, title: page.title, detail: nil, accent: Theme.moss)
-            Text(page.body)
-                .font(.system(.title3, design: .serif))
-                .foregroundStyle(Theme.ink)
-                .lineSpacing(6)
-                .fixedSize(horizontal: false, vertical: true)
-            if let detail = page.detail {
-                Text(detail)
-                    .font(.system(.body, design: .serif))
-                    .foregroundStyle(Theme.inkSoft)
-                    .lineSpacing(5)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            if hasEvidence {
-                Button(action: onOpenEvidence) {
-                    HStack(alignment: .top, spacing: 12) {
-                        Image(systemName: "doc.text")
-                            .frame(width: 28, height: 28)
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text("Inspect the supporting record").font(.headline)
-                            Text("Open the claim, source and evidence limit without leaving your saved page.")
-                                .font(.subheadline)
-                                .foregroundStyle(Theme.inkSoft)
-                        }
-                        Spacer(minLength: 4)
-                        Image(systemName: "chevron.right").font(.caption.weight(.bold))
-                    }
-                    .foregroundStyle(Theme.ink)
-                    .padding(16)
-                    .frame(maxWidth: .infinity, minHeight: 60, alignment: .leading)
-                    .background(Theme.raised)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                }
-                .buttonStyle(CarvePress())
-                .accessibilityHint("Opens the existing Mayo evidence guide")
-            }
-        }
-    }
-}
-
 private struct CountyPageControls: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
     let canGoBack: Bool
     let canContinue: Bool
     let continueTitle: String
     let onBack: () -> Void
     let onContinue: () -> Void
+
+    private var visibleContinueTitle: String {
+        guard dynamicTypeSize.isAccessibilitySize else { return continueTitle }
+        return continueTitle.contains("Complete") ? "Complete" : "Continue"
+    }
 
     var body: some View {
         HStack(spacing: 12) {
@@ -358,9 +323,10 @@ private struct CountyPageControls: View {
                 .buttonStyle(CarvePress())
                 .accessibilityLabel("Previous page")
             }
-            PrimaryButton(title: continueTitle, fullWidth: true, action: onContinue)
+            PrimaryButton(title: visibleContinueTitle, fullWidth: true, action: onContinue)
                 .disabled(!canContinue)
                 .opacity(canContinue ? 1 : 0.45)
+                .accessibilityLabel(continueTitle)
         }
         .padding(.horizontal, EditorialLayout.pageInset)
         .padding(.vertical, 12)

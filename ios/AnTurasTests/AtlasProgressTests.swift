@@ -111,15 +111,15 @@ final class AtlasProgressTests: XCTestCase {
         XCTAssertEqual(Set(model.carriedWords.map(\.ga)).count, 20)
     }
 
-    func testLegacyCountyCatalogRemainsReadableDuringPagePackMigration() {
+    func testAtlasPresentationCatalogIsProjectedFromVersionTwoPacks() {
         XCTAssertEqual(LaunchCountyCatalog.stories.map(\.countyEn), ["Offaly", "Dublin", "Meath"])
 
         for story in LaunchCountyCatalog.stories {
             XCTAssertEqual(story.words.count, 20, "\(story.countyEn) must carry exactly twenty words")
             XCTAssertEqual(Set(story.words.map(\.ga)).count, 20, "\(story.countyEn) headwords must be unique")
             XCTAssertFalse(story.episodes.isEmpty)
-            XCTAssertTrue(story.episodes.allSatisfy { !$0.beats.isEmpty })
-            XCTAssertEqual(Set(story.beats.map(\.id)).count, story.beats.count)
+            XCTAssertEqual(story.title, story.pack.title)
+            XCTAssertEqual(story.sourceTitle, story.pack.presentation.sourceTitle)
             XCTAssertFalse(story.sourceFacts.isEmpty)
             XCTAssertEqual(story.clearance, .editorialPreview)
             XCTAssertFalse(story.reviewGate.isEmpty)
@@ -161,6 +161,25 @@ final class AtlasProgressTests: XCTestCase {
         XCTAssertGreaterThan(report.learningMinutes, 20)
         XCTAssertEqual(report.lifecycleComplete, 2)
         XCTAssertTrue(report.missingAudioIDs.isEmpty)
+    }
+
+    func testRockfleetStoryCarriesAuthoredVisualPacingInThePack() throws {
+        let pack = try XCTUnwrap(CountyStoryPackCatalog.pack(id: "mayo.grainne-1593"))
+        let storyPages = pack.pages(for: .story)
+        let presentations = storyPages.compactMap(\.presentation)
+
+        XCTAssertEqual(storyPages.count, 10)
+        XCTAssertEqual(presentations.count, storyPages.count)
+        XCTAssertEqual(Set(presentations).count, storyPages.count, "Every Rockfleet story beat should change composition")
+        XCTAssertTrue(storyPages.allSatisfy { !($0.advanceLabel ?? "").isEmpty })
+        XCTAssertFalse(storyPages.contains { $0.id == "mayo.rockfleet.learning-consequence" })
+
+        for page in storyPages where page.visualResourceID != nil {
+            let resource = pack.resources.first { $0.id == page.visualResourceID }
+            XCTAssertEqual(resource?.kind, .image)
+            XCTAssertTrue(page.resourceIDs.contains(page.visualResourceID!))
+            XCTAssertFalse((page.visualCaption ?? "").isEmpty)
+        }
     }
 
     func testRockfleetBundledAudioReferencesExist() throws {
@@ -242,17 +261,18 @@ final class AtlasProgressTests: XCTestCase {
     }
 
     func testCountyPackEnvelopeRoundTripsAndPassesOfflineValidation() throws {
-        let envelope = LaunchCountyPackEnvelope(
-            schemaVersion: LaunchCountyPackStore.schemaVersion,
-            story: LaunchCountyCatalog.offaly
+        let envelope = try XCTUnwrap(
+            CountyStoryPackCatalog.envelopes.first {
+                $0.pack.id == "offaly.cross-of-the-scriptures"
+            }
         )
         let data = try JSONEncoder().encode(envelope)
-        let decoded = try JSONDecoder().decode(LaunchCountyPackEnvelope.self, from: data)
+        let decoded = try JSONDecoder().decode(CountyStoryPackEnvelope.self, from: data)
 
-        XCTAssertNoThrow(try LaunchCountyPackStore.validate(decoded))
-        XCTAssertEqual(decoded.story.id, LaunchCountyCatalog.offaly.id)
-        XCTAssertEqual(decoded.story.words.count, 20)
-        XCTAssertEqual(decoded.story.beats.count, 12)
+        XCTAssertNoThrow(try CountyStoryPackStore.validate(data: data))
+        XCTAssertEqual(decoded.pack.id, envelope.pack.id)
+        XCTAssertEqual(decoded.pack.targetWords.count, 20)
+        XCTAssertEqual(decoded.pack.pages.count, 5)
     }
 
     func testPhaseThreeProgressRoundTripsWithoutLosingCountyState() throws {
@@ -287,26 +307,30 @@ final class AtlasProgressTests: XCTestCase {
     }
 
     @MainActor
-    func testCompletingCountyCarriesWordsEvidenceArtifactAndReviews() {
+    func testEditorialPreviewCannotAwardGoldArtifactOrReviews() throws {
         let model = AtlasPrototypeModel()
-        let story = LaunchCountyCatalog.offaly
+        let story = try XCTUnwrap(
+            LaunchCountyCatalog.story(id: "offaly.cross-of-the-scriptures")
+        )
 
         model.completeCountyStory(story)
 
-        XCTAssertTrue(model.isCountyComplete(story.id))
-        XCTAssertTrue(model.hasInspectedEvidence(story.id))
-        XCTAssertTrue(model.madeArtifactIDs.contains(story.id))
-        XCTAssertEqual(model.completedCountyStoryBeats[story.id], Array(0..<12))
-        XCTAssertEqual(model.reviewCandidates().filter { $0.storyID == story.id }.count, 20)
-        XCTAssertEqual(model.atlasReviews.keys.filter { $0.hasPrefix(story.id) }.count, 20)
+        XCTAssertFalse(model.isCountyComplete(story.id))
+        XCTAssertFalse(model.hasInspectedEvidence(story.id))
+        XCTAssertFalse(model.madeArtifactIDs.contains(story.id))
+        XCTAssertTrue(model.reviewCandidates().filter { $0.storyID == story.id }.isEmpty)
+        XCTAssertTrue(model.atlasReviews.keys.filter { $0.hasPrefix(story.id) }.isEmpty)
     }
 
     @MainActor
     func testReviewRecoveryReturnsSoonerThanCleanRecall() throws {
         let model = AtlasPrototypeModel()
-        let story = LaunchCountyCatalog.dublin
-        model.completeCountyStory(story)
-        let candidate = try XCTUnwrap(model.reviewCandidates().first { $0.storyID == story.id })
+        let story = try XCTUnwrap(LaunchCountyCatalog.story(id: "dublin.sihtric-penny"))
+        let candidate = AtlasReviewCandidate(
+            storyID: story.id,
+            county: story.countyEn,
+            word: try XCTUnwrap(story.words.first)
+        )
         let now = Date(timeIntervalSince1970: 1_800_000_000)
 
         model.completeReview(candidate, struggled: true, now: now)

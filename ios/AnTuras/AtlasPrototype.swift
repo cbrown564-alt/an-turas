@@ -39,6 +39,9 @@ struct AtlasPrototypeView: View {
             }
         }
         .onChange(of: atlas.progressSnapshot) { _, progress in
+            #if DEBUG
+            guard !ProcessInfo.processInfo.arguments.contains("--transient-test-state") else { return }
+            #endif
             guard restoredProgress, appState.atlasProgress != progress else { return }
             appState.atlasProgress = progress
         }
@@ -63,14 +66,17 @@ struct AtlasPrototypeView: View {
             }
             if let flag = args.firstIndex(of: "--county-story"),
                args.indices.contains(flag + 1),
-               let story = LaunchCountyCatalog.story(id: args[flag + 1]),
+               let pack = CountyStoryPackCatalog.pack(id: args[flag + 1]),
                let beatFlag = args.firstIndex(of: "--county-story-beat"),
                args.indices.contains(beatFlag + 1),
                let beat = Int(args[beatFlag + 1]) {
-                let clampedBeat = min(max(beat, 0), max(story.beats.count - 1, 0))
-                atlas.setCountyStep(story.id, step: clampedBeat)
-                if !args.contains("--completed-county-beat") {
-                    atlas.completedCountyStoryBeats[story.id, default: []].removeAll { $0 == clampedBeat }
+                _ = atlas.begin(pack, mode: .learning)
+                if let page = pack.pages(for: .learning)
+                    .first(where: { $0.legacyBeatIndex == beat }) {
+                    atlas.setActivePage(page.id, in: pack)
+                    if !args.contains("--completed-county-beat") {
+                        atlas.completedCountyPageIDs[pack.id, default: []].removeAll { $0 == page.id }
+                    }
                 }
             }
             if args.contains("--atlas-due") {
@@ -79,19 +85,7 @@ struct AtlasPrototypeView: View {
                     atlas.atlasReviews[candidate.id] = .init(due: Date().addingTimeInterval(-60))
                 }
             }
-            if let flag = args.firstIndex(of: "--completed-story-beat"),
-               args.indices.contains(flag + 1),
-               let completedBeat = Int(args[flag + 1]),
-               (0..<18).contains(completedBeat) {
-                atlas.completedStoryBeats = [completedBeat]
-            }
-            if let flag = args.firstIndex(of: "--grainne-story-step"),
-               args.indices.contains(flag + 1),
-               let step = Int(args[flag + 1]) {
-                atlas.storyInProgress = true
-                atlas.storyStep = min(max(step, 0), 17)
-                path = [.grainneStory]
-            } else if args.contains("--exercise-gallery") {
+            if args.contains("--exercise-gallery") {
                 atlas.hasOpenedAtlas = true
                 path = [.exerciseGallery]
             } else if let flag = args.firstIndex(of: "--county-pack"),
@@ -99,6 +93,13 @@ struct AtlasPrototypeView: View {
                       let pack = CountyStoryPackCatalog.pack(id: args[flag + 1]) {
                 atlas.hasOpenedAtlas = true
                 atlas.storyInProgress = true
+                if args.contains("--fresh-county-pack") {
+                    atlas.countyStoryModes.removeValue(forKey: pack.id)
+                    atlas.activeCountyPageIDs.removeValue(forKey: pack.id)
+                    atlas.completedCountyPageIDs.removeValue(forKey: pack.id)
+                    atlas.storyReadCountyIDs.removeAll { $0 == pack.id }
+                    atlas.completedCountyStoryIDs.removeAll { $0 == pack.id }
+                }
                 if args.contains("--mode-opening") {
                     atlas.countyStoryModes.removeValue(forKey: pack.id)
                     atlas.activeCountyPageIDs.removeValue(forKey: pack.id)
@@ -132,9 +133,9 @@ struct AtlasPrototypeView: View {
                 atlas.storyInProgress = false
             } else if let flag = args.firstIndex(of: "--county-story"),
                       args.indices.contains(flag + 1),
-                      let story = LaunchCountyCatalog.story(id: args[flag + 1]) {
+                      let pack = CountyStoryPackCatalog.pack(id: args[flag + 1]) {
                 atlas.hasOpenedAtlas = true
-                path = [.launchCountyStory(story.id)]
+                path = [.countyPack(pack.id)]
             } else if let flag = args.firstIndex(of: "--county-dossier"),
                       args.indices.contains(flag + 1),
                       let story = LaunchCountyCatalog.story(id: args[flag + 1]) {
@@ -228,15 +229,6 @@ struct AtlasPrototypeView: View {
                 onBegin: beginStory,
                 onOpenEvidence: { path.append(.evidence) }
             )
-        case .grainneStory:
-            GrainneStoryView(
-                onOpenEvidence: { path.append(.evidence) },
-                onComplete: {
-                    let atlasWasOpen = atlas.hasOpenedAtlas
-                    atlas.completeStory()
-                    path = atlasWasOpen ? [] : [.firstTakeaway]
-                }
-            )
         case .countyPack(let id):
             if let pack = CountyStoryPackCatalog.pack(id: id) {
                 CountyStoryExperienceView(
@@ -284,11 +276,11 @@ struct AtlasPrototypeView: View {
                 )
             }
         case .launchCountyStory(let id):
-            if let story = LaunchCountyCatalog.story(id: id) {
-                LaunchCountyStoryView(
-                    story: story,
-                    onOpenEvidence: { path.append(.launchEvidence(story.id)) },
-                    onComplete: {
+            if let pack = CountyStoryPackCatalog.pack(id: id) {
+                CountyStoryExperienceView(
+                    pack: pack,
+                    onOpenEvidence: { path.append(.launchEvidence(pack.id)) },
+                    onExit: {
                         atlas.tab = .island
                         atlas.shouldFocusOpeningRoad = true
                         path.removeAll()
@@ -336,7 +328,6 @@ enum AtlasTab: Hashable {
 enum AtlasRoute: Hashable {
     case mayoDossier
     case grainnePerson
-    case grainneStory
     case countyPack(String)
     case exerciseGallery
     case firstTakeaway
@@ -378,28 +369,9 @@ final class AtlasPrototypeModel: ObservableObject {
     @Published var atlasReviews: [String: AppState.AtlasReviewProgress] = [:]
     @Published var calendarDaysVisited: [String] = []
 
-    let carriedWords = [
-        AtlasWord(ga: "farraige", en: "sea", sound: "far-ig-eh", anchor: "Clew Bay as a maritime world"),
-        AtlasWord(ga: "bá", en: "bay", sound: "baw", anchor: "The geography that opens Mayo"),
-        AtlasWord(ga: "long", en: "ship", sound: "lung", anchor: "The fleet as livelihood and reach"),
-        AtlasWord(ga: "áit", en: "place", sound: "awtch", anchor: "A place that matters"),
-        AtlasWord(ga: "as", en: "from", sound: "ass", anchor: "Origin on the Mayo coast"),
-        AtlasWord(ga: "caisleán", en: "castle", sound: "kash-lawn", anchor: "Rockfleet at the tide line"),
-        AtlasWord(ga: "teaghlach", en: "family", sound: "chai-lukh", anchor: "Household as authority"),
-        AtlasWord(ga: "mac", en: "son", sound: "mock", anchor: "Tibbott held as part of the crisis"),
-        AtlasWord(ga: "bean", en: "woman", sound: "ban", anchor: "A woman recognised as a leader"),
-        AtlasWord(ga: "caill", en: "lose", sound: "kyle", anchor: "Livelihood and safety under pressure"),
-        AtlasWord(ga: "deartháir", en: "brother", sound: "djar-hawr", anchor: "Donal named among the stakes"),
-        AtlasWord(ga: "iarr", en: "ask", sound: "eer", anchor: "The petition as remaining action"),
-        AtlasWord(ga: "téigh", en: "go", sound: "tay", anchor: "The decision to go to London"),
-        AtlasWord(ga: "ainm", en: "name", sound: "an-im", anchor: "Her name at the head of the July questions"),
-        AtlasWord(ga: "mise", en: "me / I", sound: "mish-eh", anchor: "Identifying yourself without borrowing her story"),
-        AtlasWord(ga: "tar", en: "come", sound: "tar", anchor: "Arrival into the court record"),
-        AtlasWord(ga: "freagair", en: "answer", sound: "frag-ir", anchor: "The royal answer"),
-        AtlasWord(ga: "tabhair", en: "give", sound: "toor", anchor: "Relief ordered and withheld"),
-        AtlasWord(ga: "arís", en: "again", sound: "uh-reesh", anchor: "The unfinished second asking"),
-        AtlasWord(ga: "cósta", en: "coast", sound: "koh-sta", anchor: "The present shore that closes Mayo")
-    ]
+    var carriedWords: [AtlasWord] {
+        CountyStoryPackCatalog.pack(id: "mayo.grainne-1593")?.targetWords ?? []
+    }
 
     func completeStory() {
         evidenceInspected = true
@@ -557,17 +529,13 @@ final class AtlasPrototypeModel: ObservableObject {
     }
 
     func completeCountyStory(_ story: LaunchCountyStory) {
-        for step in story.beats.indices { markCountyBeatComplete(story.id, step: step) }
-        countyStorySteps[story.id] = max(story.beats.count - 1, 0)
-        markEvidenceInspected(story.id)
-        markArtifactMade(story.id)
-        if !completedCountyStoryIDs.contains(story.id) {
-            completedCountyStoryIDs.append(story.id)
+        let pack = story.pack
+        for pageID in pack.completion.learningPageIDs {
+            markPageComplete(pageID, in: pack)
         }
+        finish(pack, mode: .learning)
         activeCountyStoryID = LaunchCountyCatalog.stories
             .first(where: { !completedCountyStoryIDs.contains($0.id) })?.id
-        seedReviews(storyID: story.id, words: story.words)
-        Haptics.flourish()
     }
 
     func carriedWordsByCounty() -> [(county: String, words: [AtlasWord])] {

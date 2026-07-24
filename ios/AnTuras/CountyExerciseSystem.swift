@@ -23,23 +23,26 @@ private struct CountyExerciseFeedbackState {
 /// One calm task shell for every county-pack mechanic. Correctness, retry,
 /// hints and completion live here rather than being reinvented by each task.
 struct CountyExerciseView: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     let page: CountyStoryPage
     let alreadyComplete: Bool
     let onComplete: () -> Void
 
     @State private var feedback: CountyExerciseFeedbackState
-    @State private var retryToken = 0
+    @State private var responseLocked: Bool
 
     init(page: CountyStoryPage, alreadyComplete: Bool, onComplete: @escaping () -> Void) {
         self.page = page
         self.alreadyComplete = alreadyComplete
         self.onComplete = onComplete
         _feedback = State(initialValue: CountyExerciseFeedbackState(alreadyComplete: alreadyComplete))
+        _responseLocked = State(initialValue: alreadyComplete)
     }
 
     private var exercise: CountyExercise { page.exercise! }
     private var locksResponse: Bool {
-        [.incorrect, .corrected, .complete].contains(feedback.phase)
+        responseLocked
     }
 
     var body: some View {
@@ -63,7 +66,6 @@ struct CountyExerciseView: View {
             }
 
             responseSurface
-                .id(retryToken)
 
             feedbackPanel
         }
@@ -95,7 +97,7 @@ struct CountyExerciseView: View {
         switch feedback.phase {
         case .unanswered:
             Button("Show a hint") {
-                withAnimation(Motion.settle) {
+                withAnimation(feedbackAnimation) {
                     feedback.phase = .hint
                     feedback.message = exercise.hint
                 }
@@ -153,7 +155,8 @@ struct CountyExerciseView: View {
 
     private func markWrong(_ message: String) {
         Haptics.error()
-        withAnimation(Motion.settle) {
+        responseLocked = true
+        withAnimation(feedbackAnimation) {
             feedback.misses += 1
             feedback.phase = .incorrect
             feedback.message = message
@@ -162,7 +165,8 @@ struct CountyExerciseView: View {
 
     private func markCorrect(_ message: String? = nil) {
         Haptics.chisel()
-        withAnimation(Motion.settle) {
+        responseLocked = true
+        withAnimation(feedbackAnimation) {
             feedback.message = message ?? exercise.feedback
             if feedback.misses > 0 {
                 feedback.phase = .corrected
@@ -174,19 +178,25 @@ struct CountyExerciseView: View {
     }
 
     private func retry() {
-        withAnimation(Motion.settle) {
-            feedback.phase = .unanswered
-            feedback.message = nil
-            retryToken += 1
+        let misses = feedback.misses
+        responseLocked = false
+        withAnimation(feedbackAnimation) {
+            feedback = CountyExerciseFeedbackState(alreadyComplete: false)
+            feedback.misses = misses
         }
     }
 
     private func finishCorrectedAnswer() {
-        withAnimation(Motion.settle) {
+        responseLocked = true
+        withAnimation(feedbackAnimation) {
             feedback.phase = .complete
             feedback.message = exercise.feedback
             onComplete()
         }
+    }
+
+    private var feedbackAnimation: Animation? {
+        reduceMotion ? nil : Motion.settle
     }
 
     private func normalized(_ value: String) -> String {
@@ -465,6 +475,25 @@ private struct CountyTypingSurface: View {
             PrimaryButton(title: "Check the sentence", fullWidth: true) { onCheck(text) }
                 .disabled(text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || locked)
                 .opacity(text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || locked ? 0.45 : 1)
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                ForEach(["á", "é", "í", "ó", "ú"], id: \.self) { fada in
+                    Button(fada) {
+                        Haptics.tap()
+                        text.append(fada)
+                    }
+                    .disabled(locked)
+                    .accessibilityLabel("Insert \(fada) from keyboard toolbar")
+                }
+                Button("Check") {
+                    focused = false
+                    onCheck(text)
+                }
+                .disabled(text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || locked)
+                .accessibilityLabel("Check answer from keyboard")
+            }
         }
     }
 }

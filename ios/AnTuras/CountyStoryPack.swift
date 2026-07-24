@@ -41,6 +41,30 @@ enum CountyPageKind: String, Codable {
     case exercise
 }
 
+/// Authored narrative composition, stored with the county content rather than
+/// inferred from a page index. The cases form a reusable pacing vocabulary:
+/// place, explanation, language, evidence, pressure and consequence.
+enum CountyNarrativePresentation: String, Codable, Hashable {
+    case editorial
+    case coastalOpening
+    case tidalMeasure
+    case movementLine
+    case languageField
+    case relationshipField
+    case connectedSystem
+    case archive
+    case evidenceBoundary
+    case pressureField
+    case closingQuestion
+}
+
+struct CountyNarrativeDisplayItem: Identifiable, Codable, Equatable {
+    let id: String
+    let title: String
+    let detail: String
+    let symbol: String
+}
+
 enum CountyExerciseFamily: String, Codable, CaseIterable {
     case listenIdentify
     case listenBuildSentence
@@ -145,6 +169,11 @@ struct CountyStoryPage: Identifiable, Codable, Equatable {
     let introducedLexemeIDs: [String]
     let resourceIDs: [String]
     let exercise: CountyExercise?
+    let presentation: CountyNarrativePresentation?
+    let advanceLabel: String?
+    let visualResourceID: String?
+    let visualCaption: String?
+    let displayItems: [CountyNarrativeDisplayItem]?
 }
 
 struct CountyStoryChapter: Identifiable, Codable, Equatable {
@@ -320,11 +349,19 @@ enum CountyStoryPackValidator {
         }
 
         let resources = Dictionary(uniqueKeysWithValues: pack.resources.map { ($0.id, $0) })
-        var introduced = Set<String>()
-        for page in pack.pages(for: .learning) {
+        for page in pack.pages {
             for resourceID in page.resourceIDs where resources[resourceID] == nil {
                 throw CountyStoryPackError.missingResource(resourceID)
             }
+            if let visualResourceID = page.visualResourceID {
+                guard page.resourceIDs.contains(visualResourceID),
+                      resources[visualResourceID]?.kind == .image else {
+                    throw CountyStoryPackError.missingResource(visualResourceID)
+                }
+            }
+        }
+        var introduced = Set<String>()
+        for page in pack.pages(for: .learning) {
             if page.kind == .exercise {
                 guard let exercise = page.exercise else { throw CountyStoryPackError.missingExercise(page.id) }
                 guard Set(exercise.lexemeIDs).isSubset(of: introduced) else {
@@ -417,7 +454,21 @@ enum CountyStoryPackCatalog {
         "meath.trim-de-lacy",
     ]
 
-    static let envelopes: [CountyStoryPackEnvelope] = bundledNames.compactMap(loadEnvelope(named:))
+    private static let bundledEnvelopes: [CountyStoryPackEnvelope] = bundledNames.compactMap(loadEnvelope(named:))
+
+    /// Installed version-two packs may replace a bundled pack only when they
+    /// validate and carry an equal or newer revision. Ordering remains the
+    /// authored road order from `bundledNames`.
+    static let envelopes: [CountyStoryPackEnvelope] = {
+        let installed = CountyStoryPackStore.installedEnvelopes()
+        return bundledEnvelopes.map { bundled in
+            guard let candidate = installed[bundled.pack.id],
+                  candidate.pack.revision >= bundled.pack.revision else {
+                return bundled
+            }
+            return candidate
+        }
+    }()
     static let packs: [CountyStoryPack] = envelopes.compactMap { envelope in
         guard (try? CountyStoryPackValidator.validate(envelope)) != nil else { return nil }
         return envelope.pack
@@ -432,5 +483,66 @@ enum CountyStoryPackCatalog {
             ?? Bundle.main.url(forResource: name, withExtension: "json")
         guard let url, let data = try? Data(contentsOf: url) else { return nil }
         return try? JSONDecoder().decode(CountyStoryPackEnvelope.self, from: data)
+    }
+}
+
+enum CountyStoryPackStore {
+    @discardableResult
+    static func install(data: Data) throws -> URL {
+        let envelope = try JSONDecoder().decode(CountyStoryPackEnvelope.self, from: data)
+        try CountyStoryPackValidator.validate(envelope)
+        let folder = try packsFolder()
+        let destination = folder
+            .appendingPathComponent(safeFilename(for: envelope.pack.id))
+            .appendingPathExtension("json")
+        try data.write(to: destination, options: [.atomic])
+        return destination
+    }
+
+    static func validate(data: Data) throws -> CountyPackReport {
+        let envelope = try JSONDecoder().decode(CountyStoryPackEnvelope.self, from: data)
+        return try CountyStoryPackValidator.validate(envelope)
+    }
+
+    static func installedEnvelopes() -> [String: CountyStoryPackEnvelope] {
+        guard let folder = try? packsFolder(),
+              let urls = try? FileManager.default.contentsOfDirectory(
+                at: folder,
+                includingPropertiesForKeys: nil,
+                options: [.skipsHiddenFiles]
+              ) else { return [:] }
+
+        var result: [String: CountyStoryPackEnvelope] = [:]
+        for url in urls where url.pathExtension.lowercased() == "json" {
+            guard let data = try? Data(contentsOf: url),
+                  let envelope = try? JSONDecoder().decode(CountyStoryPackEnvelope.self, from: data),
+                  (try? CountyStoryPackValidator.validate(envelope)) != nil else { continue }
+            if let current = result[envelope.pack.id],
+               current.pack.revision > envelope.pack.revision {
+                continue
+            }
+            result[envelope.pack.id] = envelope
+        }
+        return result
+    }
+
+    private static func packsFolder() throws -> URL {
+        let root = try FileManager.default.url(
+            for: .applicationSupportDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+        )
+        let folder = root.appendingPathComponent("CountyPacks", isDirectory: true)
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        return folder
+    }
+
+    private static func safeFilename(for packID: String) -> String {
+        packID.map { character in
+            character.isLetter || character.isNumber || character == "." || character == "-"
+                ? String(character)
+                : "-"
+        }.joined()
     }
 }

@@ -38,118 +38,6 @@ final class AtlasFlowUITests: XCTestCase {
         XCTAssertTrue(openingRoad.isHittable, "The authored road should be scrolled into view")
     }
 
-    func testEpisodeFourIdentityBeatSupportsLargestAccessibilityText() throws {
-        let app = XCUIApplication()
-        app.launchArguments = [
-            "--grainne-story-step", "11",
-            "-UIPreferredContentSizeCategoryName",
-            "UICTContentSizeCategoryAccessibilityExtraExtraExtraLarge",
-        ]
-        app.launch()
-
-        XCTAssertTrue(app.staticTexts["Ainm. Mise. Tar."].waitForExistence(timeout: 5))
-        let nameField = app.textFields["Your name"]
-        XCTAssertTrue(nameField.waitForExistence(timeout: 5))
-        if !nameField.isHittable { app.swipeUp() }
-        XCTAssertTrue(nameField.isHittable)
-
-        nameField.tap()
-        nameField.typeText("Conor\n")
-        let placeField = app.textFields["The place you are from"]
-        XCTAssertTrue(placeField.waitForExistence(timeout: 3))
-        placeField.typeText("London")
-
-        let keepButton = app.buttons["Make the lines yours"]
-        XCTAssertTrue(keepButton.waitForExistence(timeout: 3))
-        XCTAssertTrue(keepButton.isEnabled)
-    }
-
-    func testCinematicEpisodeFourAndReturnScreensAreReachable() throws {
-        let crossing = XCUIApplication()
-        crossing.launchArguments = ["--grainne-story-step", "9"]
-        crossing.launch()
-
-        XCTAssertTrue(crossing.staticTexts["Episode 4 of 6"].waitForExistence(timeout: 5))
-        XCTAssertTrue(crossing.staticTexts["The sea road ends in rooms of paper"].exists)
-        XCTAssertFalse(crossing.staticTexts["The route so far"].exists)
-
-        crossing.terminate()
-
-        let returning = XCUIApplication()
-        returning.launchArguments = ["--grainne-story-step", "15"]
-        returning.launch()
-
-        XCTAssertTrue(returning.staticTexts["Episode 6 of 6"].waitForExistence(timeout: 5))
-        XCTAssertTrue(returning.staticTexts["The line home does not close"].exists)
-    }
-
-    func testEpisodeFourNameFindUsesTNAInterrogatory() throws {
-        let app = XCUIApplication()
-        app.launchArguments = ["--grainne-story-step", "10"]
-        app.launch()
-
-        XCTAssertTrue(app.staticTexts["There she is: “Grany Ne Malley”"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Interrogatory and answers, July 1593"].exists)
-        XCTAssertTrue(app.staticTexts["The National Archives, SP 63/170, ff. 201–202. Folio 201 is shown under the app’s free, exclusively educational use policy."].exists)
-        XCTAssertTrue(app.images["Original manuscript page. The first page of the July 1593 interrogatory, The National Archives, SP 63/170, folio 201."].exists)
-        XCTAssertFalse(app.staticTexts["September 1593 draft instruction"].exists)
-    }
-
-    func testLanguageBeatStartsWithBundledAudioAndActiveRecall() throws {
-        let app = XCUIApplication()
-        app.launchArguments = ["--grainne-story-step", "2"]
-        app.launch()
-
-        let hear = app.buttons["Hear farraige"]
-        XCTAssertTrue(hear.waitForExistence(timeout: 5))
-        XCTAssertFalse(app.buttons["sea"].exists, "Meaning should remain covered before listening")
-
-        hear.tap()
-        XCTAssertTrue(app.buttons["sea"].waitForExistence(timeout: 2))
-    }
-
-    func testCompletedLanguageBeatRemainsReplayable() throws {
-        let app = XCUIApplication()
-        app.launchArguments = [
-            "--grainne-story-step", "5",
-            "--completed-story-beat", "5",
-        ]
-        app.launch()
-
-        let hearCastle = app.buttons["Hear caisleán"]
-        XCTAssertTrue(hearCastle.waitForExistence(timeout: 5))
-        hearCastle.tap()
-
-        let castle = app.buttons["castle"]
-        XCTAssertTrue(castle.waitForExistence(timeout: 2))
-        XCTAssertTrue(castle.isEnabled, "Completed language answers must remain replayable")
-        castle.tap()
-
-        XCTAssertTrue(
-            app.buttons["Hear teaghlach"].waitForExistence(timeout: 2),
-            "A correct answer on a completed beat should advance the replay"
-        )
-    }
-
-    func testEpisodeFiveRequiresTheUnsupportedClaim() throws {
-        let app = XCUIApplication()
-        app.launchArguments = ["--grainne-story-step", "13"]
-        app.launch()
-
-        XCTAssertTrue(app.staticTexts["Which claim goes beyond the surviving evidence?"].waitForExistence(timeout: 5))
-        let continueButton = app.buttons["Name what remains unfinished"]
-        XCTAssertTrue(continueButton.exists)
-        XCTAssertFalse(continueButton.isEnabled)
-
-        app.buttons["The government ordered relief"].tap()
-        XCTAssertTrue(app.staticTexts["The draft supports that claim. Look for what the paper cannot prove."].waitForExistence(timeout: 2))
-        XCTAssertFalse(continueButton.isEnabled)
-
-        app.buttons["The order ended the conflict"].tap()
-        XCTAssertTrue(app.staticTexts["Difference marked"].waitForExistence(timeout: 2))
-        XCTAssertTrue(continueButton.isEnabled)
-    }
-
     func testOffalyEditorialPreviewSurvivesLargestAccessibilityText() throws {
         let app = XCUIApplication()
         app.launchArguments = [
@@ -159,7 +47,7 @@ final class AtlasFlowUITests: XCTestCase {
         ]
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["The cross at Ireland’s crossroads"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["The cross at Ireland's crossroads"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Editorial preview"].exists)
         let evidence = app.buttons["Open the evidence record"]
         XCTAssertTrue(evidence.waitForExistence(timeout: 3))
@@ -167,7 +55,7 @@ final class AtlasFlowUITests: XCTestCase {
         XCTAssertTrue(evidence.isHittable)
     }
 
-    func testSharedCountyStoryRequiresRecoveryBeforeAdvancing() throws {
+    func testLegacyCountyRouteOpensThePackBackedRecoveryModel() throws {
         let app = XCUIApplication()
         app.launchArguments = [
             "--county-story", "offaly.cross-of-the-scriptures",
@@ -176,16 +64,23 @@ final class AtlasFlowUITests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.staticTexts["Which statement is secure?"].waitForExistence(timeout: 5))
-        let next = app.buttons["Enter the next episode"]
+        let next = app.buttons["Continue"]
         XCTAssertTrue(next.exists)
         XCTAssertFalse(next.isEnabled)
 
-        app.buttons["A named scribe recorded his whole day here"].tap()
-        XCTAssertTrue(app.staticTexts["That claim asks the stone to preserve more than it does."].waitForExistence(timeout: 2))
+        app.buttons["A named scribe recorded his whole day here."].tap()
+        XCTAssertTrue(app.staticTexts["Try again"].waitForExistence(timeout: 2))
         XCTAssertFalse(next.isEnabled)
 
-        app.buttons["The surviving cross carries carved panels and a damaged inscription"].tap()
-        XCTAssertTrue(app.staticTexts["The surviving object stays at the centre."].waitForExistence(timeout: 2))
+        for _ in 0..<3 where !app.buttons["Retry"].isHittable { app.swipeUp() }
+        app.buttons["Retry"].tap()
+        for _ in 0..<3 where !app.buttons["The surviving cross carries carved panels and a damaged inscription."].exists {
+            app.swipeUp()
+        }
+        app.buttons["The surviving cross carries carved panels and a damaged inscription."].tap()
+        XCTAssertTrue(app.staticTexts["Corrected"].waitForExistence(timeout: 2))
+        for _ in 0..<3 where !app.buttons["Keep this answer"].isHittable { app.swipeUp() }
+        app.buttons["Keep this answer"].tap()
         XCTAssertTrue(next.isEnabled)
     }
 
@@ -244,9 +139,154 @@ final class AtlasFlowUITests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.staticTexts["A castle where the road is water"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.buttons["Continue"].isEnabled)
+        XCTAssertTrue(app.buttons["Follow the tide"].isEnabled)
         XCTAssertFalse(app.buttons["Hear the Irish"].exists)
         XCTAssertTrue(app.staticTexts["Story"].exists)
+    }
+
+    func testRockfleetStoryModeCompletesEveryPageInDarkAppearance() throws {
+        let app = freshRockfleetApp(mode: "story", appearance: "dark")
+        app.launch()
+
+        let pages = [
+            ("A castle where the road is water", "Follow the tide"),
+            ("The tide changes the threshold", "Read the water"),
+            ("Boats extend the walls across the bay", "Trace the water road"),
+            ("The stronghold held people as well as stone", "Enter the household"),
+            ("Relationships were part of authority", "Widen the circle"),
+            ("Harbour, household and stronghold worked together", "Test the connection"),
+            ("The papers show a political household, not a private scene", "Read against the record"),
+            ("The walls do not tell a whole life", "Keep the boundary visible"),
+            ("A connected system can be pressured at several points", "See what is at stake"),
+            ("The coast becomes a set of stakes", "Carry the question onward"),
+        ]
+
+        for (title, action) in pages {
+            XCTAssertTrue(app.staticTexts[title].waitForExistence(timeout: 5), "Missing Story page: \(title)")
+            tapButton(action, in: app)
+        }
+
+        XCTAssertTrue(app.staticTexts["Rockfleet chapter proof complete"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["You followed the complete chapter account without a language gate."].exists)
+        keepScreenshot(named: "Rockfleet Story completion — dark", from: app)
+    }
+
+    func testRockfleetTypingUsesTheKeyboardFadaToolbar() throws {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--county-pack", "mayo.grainne-1593",
+            "--mode", "learning",
+            "--page", "mayo.rockfleet.type-castle",
+            "--appearance", "light",
+            "--transient-test-state",
+        ]
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["Write the place with its fada"].waitForExistence(timeout: 5))
+        typeCastleSentence(in: app)
+        let field = app.textFields["Your Irish answer"]
+        XCTAssertEqual(field.value as? String, "Tá an caisleán anseo.")
+        tapButton("Check answer from keyboard", in: app)
+        let continueButton = app.buttons["Continue"]
+        XCTAssertTrue(continueButton.waitForExistence(timeout: 3))
+        XCTAssertFalse(app.buttons["Retry"].exists, "The exact visible answer was graded as incorrect")
+        XCTAssertTrue(continueButton.isEnabled)
+    }
+
+    func testRockfleetLearningModeCompletesEveryPageInLightAppearance() throws {
+        let app = freshRockfleetApp(mode: "learning", appearance: "light", extra: ["--microphone-denied"])
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["A castle where the road is water"].waitForExistence(timeout: 5))
+        tapButton("Follow the tide", in: app)
+
+        XCTAssertTrue(app.staticTexts["Hear the place before translating it"].waitForExistence(timeout: 5))
+        tapButton("Hear the Irish", in: app)
+        tapButton("castle", in: app)
+        finishExercise(in: app)
+
+        XCTAssertTrue(app.staticTexts["The stronghold held people as well as stone"].waitForExistence(timeout: 5))
+        tapButton("Enter the household", in: app)
+
+        XCTAssertTrue(app.staticTexts["Keep people and place distinct"].waitForExistence(timeout: 5))
+        for pair in [
+            ("caisleán", "castle"),
+            ("teaghlach", "family / household"),
+            ("mac", "son"),
+            ("bean", "woman"),
+        ] {
+            tapButton(pair.0, in: app)
+            tapButton(pair.1, in: app)
+        }
+        finishExercise(in: app)
+
+        XCTAssertTrue(app.staticTexts["Hear a complete thought"].waitForExistence(timeout: 5))
+        tapButton("Play the model", in: app)
+        for token in ["Tá", "muid", "go", "léir."] { tapButton(token, in: app) }
+        tapButton("Check the order", in: app)
+        finishExercise(in: app)
+
+        XCTAssertTrue(app.staticTexts["Build the household line"].waitForExistence(timeout: 5))
+        for token in ["Tá", "an", "teaghlach", "anseo."] { tapButton(token, in: app) }
+        tapButton("Check the order", in: app)
+        finishExercise(in: app)
+
+        XCTAssertTrue(app.staticTexts["Write the place with its fada"].waitForExistence(timeout: 5))
+        typeCastleSentence(in: app)
+        tapButton("Check answer from keyboard", in: app)
+        finishExercise(in: app)
+
+        XCTAssertTrue(app.staticTexts["Harbour, household and stronghold worked together"].waitForExistence(timeout: 5))
+        tapButton("Test the connection", in: app)
+
+        XCTAssertTrue(app.staticTexts["Answer from the place in front of you"].waitForExistence(timeout: 5))
+        tapButton("Tá an caisleán anseo.", in: app)
+        finishExercise(in: app)
+
+        XCTAssertTrue(app.staticTexts["Rebuild the system"].waitForExistence(timeout: 5))
+        for event in [
+            "The inlet gives boats a landing.",
+            "The castle protects a base.",
+            "The household turns the base into lived authority.",
+        ] {
+            tapButton(event, in: app)
+        }
+        tapButton("Check the order", in: app)
+        finishExercise(in: app)
+
+        XCTAssertTrue(app.staticTexts["Ask only what the evidence can answer"].waitForExistence(timeout: 5))
+        tapButton("Rockfleet, boats and family relationships were connected parts of Gráinne's authority.", in: app)
+        finishExercise(in: app)
+
+        XCTAssertTrue(app.staticTexts["Notice what stays in place"].waitForExistence(timeout: 5))
+        tapButton("Tá + the person or thing + anseo.", in: app)
+        finishExercise(in: app)
+
+        XCTAssertTrue(app.staticTexts["The walls do not tell a whole life"].waitForExistence(timeout: 5))
+        tapButton("Keep the boundary visible", in: app)
+
+        XCTAssertTrue(app.staticTexts["Put the household in your own voice"].waitForExistence(timeout: 5))
+        tapButton("Continue without recording", in: app)
+        finishExercise(in: app)
+
+        XCTAssertTrue(app.staticTexts["A connected system can be pressured at several points"].waitForExistence(timeout: 5))
+        tapButton("See what is at stake", in: app)
+
+        XCTAssertTrue(app.staticTexts["Bring the place word back"].waitForExistence(timeout: 5))
+        tapButton("caisleán", in: app)
+        finishExercise(in: app)
+
+        XCTAssertTrue(app.buttons["Bring the words back"].waitForExistence(timeout: 5))
+        tapButton("Bring the words back", in: app)
+
+        XCTAssertTrue(app.staticTexts["Retrieve the household line without tiles"].waitForExistence(timeout: 5))
+        typeHouseholdSentence(in: app)
+        tapButton("Check answer from keyboard", in: app)
+        finishExercise(in: app, continueLabel: "Complete this chapter path")
+
+        XCTAssertTrue(app.staticTexts["Rockfleet chapter proof complete"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["You followed the shorter causal account and completed all twelve exercise families in their authored positions."].exists)
+        keepScreenshot(named: "Rockfleet Learning completion — light", from: app)
     }
 
     func testRockfleetWrongAnswerRequiresExplicitRecovery() throws {
@@ -267,15 +307,21 @@ final class AtlasFlowUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Try again"].waitForExistence(timeout: 2))
         XCTAssertFalse(app.buttons["Continue"].isEnabled)
         for _ in 0..<3 where !app.buttons["Retry"].isHittable { app.swipeUp() }
+        app.swipeUp()
+        XCTAssertTrue(app.buttons["Retry"].isHittable)
         app.buttons["Retry"].tap()
-        for _ in 0..<3 where !app.buttons["Hear the Irish"].isHittable { app.swipeDown() }
-        app.buttons["Hear the Irish"].tap()
+        XCTAssertTrue(app.buttons["Show a hint"].waitForExistence(timeout: 2))
         for _ in 0..<3 where !app.buttons["castle"].exists { app.swipeUp() }
+        let enabled = NSPredicate(format: "enabled == true")
+        expectation(for: enabled, evaluatedWith: app.buttons["castle"])
+        waitForExpectations(timeout: 2)
         app.buttons["castle"].tap()
 
         XCTAssertTrue(app.staticTexts["Corrected"].waitForExistence(timeout: 2))
         XCTAssertFalse(app.buttons["Continue"].isEnabled)
         for _ in 0..<3 where !app.buttons["Keep this answer"].isHittable { app.swipeUp() }
+        app.swipeUp()
+        XCTAssertTrue(app.buttons["Keep this answer"].isHittable)
         app.buttons["Keep this answer"].tap()
         XCTAssertTrue(app.buttons["Continue"].isEnabled)
     }
@@ -315,5 +361,92 @@ final class AtlasFlowUITests: XCTestCase {
         for _ in 0..<10 where !app.staticTexts["Failure and edge states"].exists { app.swipeUp() }
         XCTAssertTrue(app.staticTexts["Failure and edge states"].exists)
         XCTAssertTrue(app.staticTexts["Long copy accessibility size state"].exists)
+    }
+
+    private func freshRockfleetApp(mode: String, appearance: String, extra: [String] = []) -> XCUIApplication {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--county-pack", "mayo.grainne-1593",
+            "--mode", mode,
+            "--page", "mayo.rockfleet.arrival",
+            "--appearance", appearance,
+            "--fresh-county-pack",
+            "--transient-test-state",
+        ] + extra
+        return app
+    }
+
+    private func tapButton(
+        _ label: String,
+        in app: XCUIApplication,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        let button = app.buttons[label]
+        XCTAssertTrue(button.waitForExistence(timeout: 5), "Missing button: \(label)", file: file, line: line)
+        for _ in 0..<7 where !button.isHittable { app.swipeUp() }
+        XCTAssertTrue(button.isHittable, "Button is not hittable: \(label)", file: file, line: line)
+        button.tap()
+    }
+
+    private func finishExercise(
+        in app: XCUIApplication,
+        continueLabel: String = "Continue",
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        let button = app.buttons[continueLabel]
+        XCTAssertTrue(
+            button.waitForExistence(timeout: 5),
+            "Missing exercise action: \(continueLabel)",
+            file: file,
+            line: line
+        )
+        let enabled = NSPredicate(format: "enabled == true")
+        XCTAssertEqual(
+            XCTWaiter.wait(
+                for: [XCTNSPredicateExpectation(predicate: enabled, object: button)],
+                timeout: 5
+            ),
+            .completed,
+            "Exercise action never enabled: \(continueLabel)",
+            file: file,
+            line: line
+        )
+        button.tap()
+    }
+
+    private func irishAnswerField(
+        in app: XCUIApplication,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> XCUIElement {
+        let field = app.textFields["Your Irish answer"]
+        XCTAssertTrue(field.waitForExistence(timeout: 5), "Missing Irish answer field", file: file, line: line)
+        field.tap()
+        return field
+    }
+
+    private func typeCastleSentence(in app: XCUIApplication) {
+        let field = irishAnswerField(in: app)
+        field.typeText("T")
+        tapButton("Insert á from keyboard toolbar", in: app)
+        app.typeText(" an caisle")
+        tapButton("Insert á from keyboard toolbar", in: app)
+        app.typeText("n anseo.")
+    }
+
+    private func typeHouseholdSentence(in app: XCUIApplication) {
+        let field = irishAnswerField(in: app)
+        field.typeText("T")
+        tapButton("Insert á from keyboard toolbar", in: app)
+        app.typeText(" an teaghlach anseo.")
+    }
+
+    private func keepScreenshot(named name: String, from app: XCUIApplication) {
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
     }
 }

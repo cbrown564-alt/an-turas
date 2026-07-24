@@ -14,8 +14,24 @@ struct AnTurasApp: App {
                 }
             }
             .environmentObject(state)
+            #if DEBUG
+            .preferredColorScheme(debugColorScheme)
+            #endif
         }
     }
+
+    #if DEBUG
+    private var debugColorScheme: ColorScheme? {
+        let args = ProcessInfo.processInfo.arguments
+        guard let flag = args.firstIndex(of: "--appearance"),
+              args.indices.contains(flag + 1) else { return nil }
+        switch args[flag + 1].lowercased() {
+        case "light": return .light
+        case "dark": return .dark
+        default: return nil
+        }
+    }
+    #endif
 }
 
 enum Route: Hashable {
