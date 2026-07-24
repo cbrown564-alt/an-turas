@@ -25,6 +25,11 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
   prototype.
 - [`../content/mayo/DRAFT-STATUS.md`](../content/mayo/DRAFT-STATUS.md) records the
   assembly state and open external gates for the nine-chapter Mayo pack.
+- [`mayo-historical-review/`](mayo-historical-review/README.md) is the July 2026
+  research pass on the nine-chapter review draft (C04 pin, Ch2/Ch4 chapter-weight
+  review, primary-spine audit, page claim ledger). Research input only — not
+  historian sign-off; start with
+  [`00-analysis-and-recommendations.md`](mayo-historical-review/00-analysis-and-recommendations.md).
 - [`GRAINNE-PROTOTYPE-REPORT.md`](GRAINNE-PROTOTYPE-REPORT.md) records evidence and open questions from the Gráinne prototype.
 - [`STORY-RESET.md`](STORY-RESET.md) explains the current story reset.
 - [`EXPANSIVE-INTERFACE-VISION.md`](EXPANSIVE-INTERFACE-VISION.md) explores the living-atlas direction.

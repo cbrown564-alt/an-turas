@@ -47,7 +47,11 @@ app.
 Historian re-clearance for the Chapter 2 and Chapter 4 chapter-weight claims and the
 C04 (Sidney) citation; Irish-language pedagogue review of the expanded exercises;
 native-speaker audio QA on every teaching clip; Rockfleet imagery rights. See
-`docs/GRAINNE-STORYBOARD-V2.md` (D-F) and the source brief.
+`docs/GRAINNE-STORYBOARD-V2.md` (D-F) and the source brief. The July 2026 research
+packet that prepares that historian pass is in
+`docs/mayo-historical-review/` (start with
+`00-analysis-and-recommendations.md`): C04 is pin-able from Sidney’s 1582/3 memoir;
+Ch2 and Ch4 are conditionally clear at chapter weight with light copy binds.
 
 The validator currently reports 20 referenced audio resources as not yet bundled.
 That is intentional and keeps the native-speaker audio gate visible.
