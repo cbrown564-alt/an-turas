@@ -152,22 +152,20 @@ struct CountyStoryExperienceView: View {
             VStack(alignment: .leading, spacing: 28) {
                 EditorialScreenHeader(
                     context: "\(pack.presentation.countyGa) · \(mode.title) mode",
-                    title: "Rockfleet chapter proof complete",
-                    detail: mode == .story
-                        ? "You followed the complete chapter account without a language gate."
-                        : "You followed the shorter causal account and completed all twelve exercise families in their authored positions.",
+                    title: completionTitle,
+                    detail: completionDetail(for: mode),
                     accent: Theme.moss
                 )
 
                 VStack(alignment: .leading, spacing: 10) {
                     Label("Your page progress is saved by stable id.", systemImage: "bookmark")
                     Label("Switching modes keeps shared pages complete.", systemImage: "arrow.triangle.2.circlepath")
-                    Label("Mayo is not gold and its words are not scheduled yet.", systemImage: "circle.dashed")
+                    Label(completionEffectLabel, systemImage: pack.isReleaseCleared ? "checkmark.seal" : "circle.dashed")
                 }
                 .font(.body)
                 .foregroundStyle(Theme.ink)
 
-                Text("This is the representative Rockfleet chapter required before the rest of Mayo is authored. County completion remains locked until the complete story and 20-word lifecycle exist.")
+                Text(completionStatus)
                     .font(.body)
                     .foregroundStyle(Theme.inkSoft)
                     .lineSpacing(4)
@@ -188,6 +186,50 @@ struct CountyStoryExperienceView: View {
             .frame(maxWidth: .infinity)
         }
     }
+
+    private var completionTitle: String {
+        if pack.scope == .representativeChapter { return "Rockfleet chapter proof complete" }
+        if pack.isReviewDraft { return "\(pack.presentation.countyEn) review path complete" }
+        return "\(pack.presentation.countyEn) path complete"
+    }
+
+    private func completionDetail(for mode: CountyStoryMode) -> String {
+        if pack.scope == .representativeChapter {
+            if mode == .story {
+                return "You followed the complete chapter account without a language gate."
+            }
+            return "You followed the shorter causal account and completed all twelve exercise families in their authored positions."
+        }
+        let pageCount = pack.pages(for: mode).count
+        if mode == .story {
+            return "You followed the complete \(pageCount)-page account without a language gate."
+        }
+        let exerciseCount = pack.pages(for: .learning).filter { $0.exercise != nil }.count
+        return "You followed the causal account and completed \(exerciseCount) exercises in their authored positions."
+    }
+
+    private var completionEffectLabel: String {
+        if pack.isReleaseCleared {
+            return "The reviewed county can now award its completion effects."
+        }
+        if pack.isReviewDraft {
+            return "This review pass does not award gold, a made object or scheduled words."
+        }
+        return "This proof does not award county completion or scheduled words."
+    }
+
+    private var completionStatus: String {
+        if pack.isReviewDraft {
+            return "This authored county is bundled for in-app review. Release effects remain locked while these gates are open: \(pack.openReviewGateTitles.joined(separator: ", "))."
+        }
+        if pack.scope == .representativeChapter {
+            return "This is the representative Rockfleet chapter required before the rest of Mayo is authored. County completion remains locked until the complete story and 20-word lifecycle exist."
+        }
+        if pack.isReleaseCleared {
+            return "The complete county pack and its recorded review gates are ready for the normal completion path."
+        }
+        return "This editorial preview remains available for inspection without awarding county completion."
+    }
 }
 
 private struct CountyModeOpeningView: View {
@@ -198,7 +240,7 @@ private struct CountyModeOpeningView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
                 EditorialScreenHeader(
-                    context: "\(pack.presentation.countyGa) · representative chapter",
+                    context: "\(pack.presentation.countyGa) · \(openingStatus)",
                     title: pack.title,
                     detail: pack.presentation.question,
                     accent: Theme.atlasGreen
@@ -211,18 +253,18 @@ private struct CountyModeOpeningView: View {
 
                 modeOption(
                     mode: .story,
-                    title: "Read the complete chapter",
-                    detail: "Ten narrative pages, including the deeper place, kin and evidence account. No Irish answer gates progress.",
+                    title: pack.scope == .representativeChapter ? "Read the complete chapter" : "Read the complete county story",
+                    detail: storyModeDetail,
                     symbol: "book.pages"
                 )
                 modeOption(
                     mode: .learning,
-                    title: "Learn through the shorter chapter",
-                    detail: "The causal story remains, with twelve varied full-screen exercises and explicit recovery.",
+                    title: pack.scope == .representativeChapter ? "Learn through the shorter chapter" : "Learn through the county story",
+                    detail: learningModeDetail,
                     symbol: "text.book.closed"
                 )
 
-                Text("You can change mode from the chapter menu. This proof does not complete Mayo or move words into Words you carry.")
+                Text(openingFootnote)
                     .font(.footnote)
                     .foregroundStyle(Theme.inkSoft)
                     .lineSpacing(3)
@@ -234,6 +276,40 @@ private struct CountyModeOpeningView: View {
         }
         .navigationTitle("Choose a mode")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private var openingStatus: String {
+        if pack.isReviewDraft { return "in-app review draft" }
+        if pack.scope == .representativeChapter { return "representative chapter" }
+        if pack.isReleaseCleared { return "reviewed county" }
+        return "editorial preview"
+    }
+
+    private var storyModeDetail: String {
+        let pages = pack.pages(for: .story)
+        let minutes = Int(ceil(Double(pages.reduce(0) { $0 + $1.estimatedSeconds }) / 60))
+        return "\(pages.count) narrative pages across \(pack.chapters.count) chapters, about \(minutes) minutes. No Irish answer gates progress."
+    }
+
+    private var learningModeDetail: String {
+        let pages = pack.pages(for: .learning)
+        let exercises = pages.compactMap(\.exercise)
+        let families = Set(exercises.map(\.family)).count
+        let minutes = Int(ceil(Double(pages.reduce(0) { $0 + $1.estimatedSeconds }) / 60))
+        return "\(pages.count) pages with \(exercises.count) exercises across \(families) mechanics, about \(minutes) minutes, with explicit recovery."
+    }
+
+    private var openingFootnote: String {
+        if pack.isReviewDraft {
+            return "This complete authoring draft is bundled for review. Page progress is saved, but gold, made objects and word scheduling remain locked while review gates are open."
+        }
+        if pack.scope == .representativeChapter {
+            return "You can change mode from the chapter menu. This proof does not complete Mayo or move words into Words you carry."
+        }
+        if pack.isReleaseCleared {
+            return "You can change mode from the chapter menu. The reviewed county follows the normal completion path."
+        }
+        return "You can change mode from the chapter menu. This preview remains inspection-only."
     }
 
     private func modeOption(mode: CountyStoryMode, title: String, detail: String, symbol: String) -> some View {

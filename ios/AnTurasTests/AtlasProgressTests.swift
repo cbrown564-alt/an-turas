@@ -121,7 +121,10 @@ final class AtlasProgressTests: XCTestCase {
             XCTAssertEqual(story.title, story.pack.title)
             XCTAssertEqual(story.sourceTitle, story.pack.presentation.sourceTitle)
             XCTAssertFalse(story.sourceFacts.isEmpty)
-            XCTAssertEqual(story.clearance, .editorialPreview)
+            XCTAssertEqual(story.clearance, .reviewDraft)
+            XCTAssertTrue(story.pack.isReviewDraft)
+            XCTAssertFalse(story.pack.isReleaseCleared)
+            XCTAssertEqual(story.episodes.count, 6)
             XCTAssertFalse(story.reviewGate.isEmpty)
             XCTAssertTrue(story.tegLevel.hasPrefix("TEG"))
         }
@@ -272,7 +275,8 @@ final class AtlasProgressTests: XCTestCase {
         XCTAssertNoThrow(try CountyStoryPackStore.validate(data: data))
         XCTAssertEqual(decoded.pack.id, envelope.pack.id)
         XCTAssertEqual(decoded.pack.targetWords.count, 20)
-        XCTAssertEqual(decoded.pack.pages.count, 5)
+        XCTAssertEqual(decoded.pack.pages.count, 68)
+        XCTAssertTrue(decoded.pack.isReviewDraft)
     }
 
     func testPhaseThreeProgressRoundTripsWithoutLosingCountyState() throws {
@@ -307,12 +311,13 @@ final class AtlasProgressTests: XCTestCase {
     }
 
     @MainActor
-    func testEditorialPreviewCannotAwardGoldArtifactOrReviews() throws {
+    func testReviewDraftCannotAwardGoldArtifactOrReviews() throws {
         let model = AtlasPrototypeModel()
         let story = try XCTUnwrap(
             LaunchCountyCatalog.story(id: "offaly.cross-of-the-scriptures")
         )
 
+        XCTAssertEqual(story.clearance, .reviewDraft)
         model.completeCountyStory(story)
 
         XCTAssertFalse(model.isCountyComplete(story.id))

@@ -19,9 +19,10 @@ keeping the grant, phasing and conquest review gates visible:
 
 The draft passes `tools/validate_county_pack.py` with `scope: completeCounty` and
 learning-quality enforcement enabled. `completeCounty` describes the authored data,
-not historical or sensitivity clearance. The shipping app keeps the five-page
-editorial preview until the grant-copy, castle-phasing, conquest-sensitivity,
-pedagogy, native-speaker audio and rights gates below close.
+not historical or sensitivity clearance. The app labels the full pack **Review
+draft** and keeps county gold, the made object and word scheduling locked until the
+grant-copy, castle-phasing, conquest-sensitivity, pedagogy, native-speaker audio and
+rights gates below close.
 
 The six chapters are:
 
@@ -42,7 +43,7 @@ narration.
 
 ## Phase 3 prototype binding — 14 July 2026
 
-The app now contains a four-episode / twelve-beat editorial preview under
+The earlier Phase 3 app contained a four-episode / twelve-beat editorial preview under
 `meath.trim-de-lacy`. It proves the county-story format's conquest-sensitivity and
 evidence-limit handling; the learner must distinguish route-and-river explanation
 from consent or empty-land claims. It does **not** change this packet's research-draft

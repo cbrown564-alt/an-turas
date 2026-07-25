@@ -493,10 +493,10 @@ final class AtlasPrototypeModel: ObservableObject {
         return Set(pack.requiredPageIDs(for: mode)).isSubset(of: completed)
     }
 
-    /// Completion semantics are intentionally dormant for a representative
-    /// chapter. Only a complete county pack can open the route or award gold.
+    /// Review drafts can be read end to end, but only a complete county pack with
+    /// every recorded review gate closed can open the route or award gold.
     func finish(_ pack: CountyStoryPack, mode: CountyStoryMode) {
-        guard hasCompleted(pack, mode: mode), pack.scope == .completeCounty else { return }
+        guard hasCompleted(pack, mode: mode), pack.isReleaseCleared else { return }
         if mode == .story {
             if !storyReadCountyIDs.contains(pack.id) { storyReadCountyIDs.append(pack.id) }
             markEvidenceInspected(pack.id)

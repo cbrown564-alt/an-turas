@@ -1,21 +1,3503 @@
 {
-  "schemaVersion":2,
-  "pack":{
-    "id":"meath.trim-de-lacy","revision":2,"scope":"editorialPreview","title":"A grant, a ford and a rising castle",
-    "presentation":{"countyGa":"An Mhí","countyEn":"Meath","province":"Leinster","era":"from 1172","anchor":"Hugh de Lacy · Áth Troim · Trim Castle","question":"How do paper, earth and stone show who gains power and who bears its cost?","opening":"Later grant copies and the castle fabric make conquest administration visible without turning the story into empty-land progress.","evidenceLimit":"Grant and castle show imposed authority; neither makes conquest consent or supports an invented foundation-day scene.","sourceTitle":"Later grant copies and Trim Castle fabric","sourceDetail":"Grant dated 1172 · building phases require specialist bounds","artifactTitle":"Your place-and-power plan","artifactPrompt":"Keep ford, grant and building phases visibly distinct.","tegLevel":"TEG A1 → A2","tegCanDo":"Say what you have, locate familiar things and describe a place."},
-    "targetWords":[
-      {"ga":"agam","en":"at me / I have","sound":"ug-um","anchor":"Possession without an English have-verb"},{"ga":"agat","en":"at you / you have","sound":"ug-ut","anchor":"Asking about possession"},{"ga":"talamh","en":"land","sound":"tal-uv","anchor":"The granted lordship"},{"ga":"caisleán","en":"castle","sound":"kash-lawn","anchor":"Trim Castle"},{"ga":"áth","en":"ford","sound":"aw","anchor":"Áth Troim"},{"ga":"abhainn","en":"river","sound":"ow-in","anchor":"The Boyne"},{"ga":"balla","en":"wall","sound":"bal-uh","anchor":"Built authority"},{"ga":"cloch","en":"stone","sound":"klukh","anchor":"Later castle fabric"},{"ga":"baile","en":"town","sound":"bal-ya","anchor":"Trim beside the castle"},{"ga":"tóg","en":"build / raise","sound":"tohg","anchor":"Phases of building"},{"ga":"cónaí","en":"living / residence","sound":"koh-nee","anchor":"A lived town"},{"ga":"mór","en":"big","sound":"more","anchor":"The castle's scale"},{"ga":"sean","en":"old","sound":"shan","anchor":"Older fabric and names"},{"ga":"nua","en":"new","sound":"noo-uh","anchor":"Later phases and present life"},{"ga":"anseo","en":"here","sound":"un-shuh","anchor":"At the ford"},{"ga":"ansiúd","en":"there","sound":"un-shood","anchor":"Reading across the site"},{"ga":"féach","en":"look","sound":"faykh","anchor":"Inspecting fabric"},{"ga":"seas","en":"stand","sound":"shass","anchor":"The castle in the town"},{"ga":"ainm","en":"name","sound":"an-im","anchor":"Áth Troim and Trim"},{"ga":"teach","en":"house / home","sound":"chakh","anchor":"Life beyond the monument"}
+  "schemaVersion": 2,
+  "pack": {
+    "id": "meath.trim-de-lacy",
+    "revision": 1,
+    "scope": "completeCounty",
+    "title": "Trim: an old land, a grant and a castle at the ford",
+    "presentation": {
+      "countyGa": "an Mhí",
+      "countyEn": "Meath",
+      "province": "Leinster",
+      "era": "twelfth to early thirteenth century, with a present-town afterlife",
+      "anchor": "Hugh de Lacy · 1172 grant · Áth Troim · Trim Castle and town",
+      "question": "What does a royal document claim to give, and how does a ford become a contested castle centre?",
+      "opening": "Six chapters begin with existing Meath, read the grant as a claim, move to Trim's ford, follow the first timber fortification through attack, inspect the stone castle's phases, and return the monument to a living town.",
+      "evidenceLimit": "The pack uses later grant copies, the Song of Dermot, topography, official site interpretation and surviving fabric. It does not equate grant with consent, invent a foundation day, assign every wall without review or speak for everyone affected by conquest.",
+      "sourceTitle": "1172 Meath grant tradition, Song of Dermot and Trim Castle fabric",
+      "sourceDetail": "Claims M01–M05 and M07 · grant-copy citation, castle phasing and conquest-sensitivity review remain open",
+      "artifactTitle": "Trim claim-and-fabric folio",
+      "artifactPrompt": "Carry the copied grant, ford map, timber sequence, stone phases and conquest boundary together.",
+      "tegLevel": "TEG A1–A2 bridge",
+      "tegCanDo": "Recognise and produce supported Irish for possession, place, building, residence and description inside a conquest-sensitive site account."
+    },
+    "targetWords": [
+      {
+        "ga": "agam",
+        "en": "at me / I have",
+        "sound": "ug-um",
+        "anchor": "Possession without an English have-verb"
+      },
+      {
+        "ga": "agat",
+        "en": "at you / you have",
+        "sound": "ug-ut",
+        "anchor": "Asking about possession"
+      },
+      {
+        "ga": "talamh",
+        "en": "land",
+        "sound": "tal-uv",
+        "anchor": "The granted lordship"
+      },
+      {
+        "ga": "caisleán",
+        "en": "castle",
+        "sound": "kash-lawn",
+        "anchor": "Trim Castle"
+      },
+      {
+        "ga": "áth",
+        "en": "ford",
+        "sound": "aw",
+        "anchor": "Áth Troim"
+      },
+      {
+        "ga": "abhainn",
+        "en": "river",
+        "sound": "ow-in",
+        "anchor": "The Boyne"
+      },
+      {
+        "ga": "balla",
+        "en": "wall",
+        "sound": "bal-uh",
+        "anchor": "Built authority"
+      },
+      {
+        "ga": "cloch",
+        "en": "stone",
+        "sound": "klukh",
+        "anchor": "Later castle fabric"
+      },
+      {
+        "ga": "baile",
+        "en": "town",
+        "sound": "bal-ya",
+        "anchor": "Trim beside the castle"
+      },
+      {
+        "ga": "tóg",
+        "en": "build / raise",
+        "sound": "tohg",
+        "anchor": "Phases of building"
+      },
+      {
+        "ga": "cónaí",
+        "en": "living / residence",
+        "sound": "koh-nee",
+        "anchor": "A lived town"
+      },
+      {
+        "ga": "mór",
+        "en": "big",
+        "sound": "more",
+        "anchor": "The castle's scale"
+      },
+      {
+        "ga": "sean",
+        "en": "old",
+        "sound": "shan",
+        "anchor": "Older fabric and names"
+      },
+      {
+        "ga": "nua",
+        "en": "new",
+        "sound": "noo-uh",
+        "anchor": "Later phases and present life"
+      },
+      {
+        "ga": "anseo",
+        "en": "here",
+        "sound": "un-shuh",
+        "anchor": "At the ford"
+      },
+      {
+        "ga": "ansiúd",
+        "en": "there",
+        "sound": "un-shood",
+        "anchor": "Reading across the site"
+      },
+      {
+        "ga": "féach",
+        "en": "look",
+        "sound": "faykh",
+        "anchor": "Inspecting fabric"
+      },
+      {
+        "ga": "seas",
+        "en": "stand",
+        "sound": "shass",
+        "anchor": "The castle in the town"
+      },
+      {
+        "ga": "ainm",
+        "en": "name",
+        "sound": "an-im",
+        "anchor": "Áth Troim and Trim"
+      },
+      {
+        "ga": "teach",
+        "en": "house / home",
+        "sound": "chakh",
+        "anchor": "Life beyond the monument"
+      }
     ],
-    "resources":[{"id":"evidence.meath.trim","kind":"evidence","value":"Grant copies and castle fabric","status":"specialist-review-open"}],
-    "reviewGates":[{"id":"history.meath","title":"Grant-copy and castle specialist review","status":"open"},{"id":"sensitivity.meath","title":"Conquest-sensitivity review","status":"open"},{"id":"rights.meath","title":"Production image rights","status":"open"}],
-    "chapters":[{"id":"meath.trim.preview","title":"Grant, ford and castle","place":"Trim · from 1172","pages":[
-      {"id":"meath.trim.arrival","legacyBeatIndex":0,"title":"A country written as a gift","context":"1172 · surviving in later copies","body":"Henry II granted Meath to Hugh de Lacy; the text reaches us through later manuscript copies.","detail":null,"visibility":"both","requirement":"bothRequired","kind":"narrative","estimatedSeconds":60,"introducedLexemeIDs":[],"resourceIDs":["evidence.meath.trim"],"exercise":null},
-      {"id":"meath.trim.ford","legacyBeatIndex":3,"title":"Crossing becomes centre","context":"Áth Troim · River Boyne","body":"The ford and routes help explain Trim's choice as an administrative centre without pretending the place was empty.","detail":null,"visibility":"storyOnly","requirement":"storyRequired","kind":"narrative","estimatedSeconds":70,"introducedLexemeIDs":[],"resourceIDs":["evidence.meath.trim"],"exercise":null},
-      {"id":"meath.trim.phases","legacyBeatIndex":6,"title":"Timber, earth, stone","context":"Building over time","body":"An early fortification followed the grant; the large stone complex developed through later work.","detail":"No single foundation-day picture can carry the phases honestly.","visibility":"both","requirement":"bothRequired","kind":"narrative","estimatedSeconds":70,"introducedLexemeIDs":[],"resourceIDs":["evidence.meath.trim"],"exercise":null},
-      {"id":"meath.trim.comprehension","legacyBeatIndex":5,"title":"Hold place and power together","context":"Evidence check","body":"Choose the explanation that uses geography without excusing conquest.","detail":null,"visibility":"learningOnly","requirement":"learningRequired","kind":"exercise","estimatedSeconds":65,"introducedLexemeIDs":[],"resourceIDs":["evidence.meath.trim"],"exercise":{"family":"comprehension","objective":"Connect route and river to imposed authority without erasing existing people.","prompt":"Why does the story begin at the ford?","answer":"Route and river help explain why authority was fixed here.","options":[{"id":"empty","text":"The castle appeared before anyone used the place.","isCorrect":false,"rationale":"That erases the existing place and communities."},{"id":"route","text":"Route and river help explain why authority was fixed here.","isCorrect":true,"rationale":"Geography supports the choice without justifying the conquest."},{"id":"welcome","text":"The grant proves everyone welcomed the new lordship.","isCorrect":false,"rationale":"A royal grant cannot establish consent."}],"tokens":[],"pairs":[],"sentenceTemplate":null,"translation":null,"audioText":null,"modelText":null,"feedback":"Place explains the choice without excusing the conquest.","hint":"Use the ford to explain the location, not the legitimacy of the grant.","recovery":"That version erases evidence or people the story must keep visible.","lexemeIDs":[],"operatesOnSentence":true,"recognitionMultipleChoice":true}},
-      {"id":"meath.trim.limit","legacyBeatIndex":8,"title":"A castle is also pressure","context":"Architecture · conquest","body":"Walls organise defence and administration, but they also materialise conquest and dispossession.","detail":"Specialist and sensitivity review remain open before this preview can expand.","visibility":"both","requirement":"bothRequired","kind":"narrative","estimatedSeconds":65,"introducedLexemeIDs":[],"resourceIDs":["evidence.meath.trim"],"exercise":null}
-    ]}],
-    "completion":{"storyPageIDs":["meath.trim.arrival","meath.trim.ford","meath.trim.phases","meath.trim.limit"],"learningPageIDs":["meath.trim.arrival","meath.trim.phases","meath.trim.comprehension","meath.trim.limit"]},
-    "lifecycle":[],"enforceLearningQuality":false
+    "resources": [
+      {
+        "id": "evidence.meath.m01",
+        "kind": "evidence",
+        "value": "M01 · 1172 grant of Meath to Hugh de Lacy",
+        "status": "historian-review-open"
+      },
+      {
+        "id": "evidence.meath.m02",
+        "kind": "evidence",
+        "value": "M02 · Trim chosen as caput at the ford",
+        "status": "historian-review-open"
+      },
+      {
+        "id": "evidence.meath.m03",
+        "kind": "evidence",
+        "value": "M03 · early house, trench, stockade, attack and refortification",
+        "status": "castle-specialist-review-open"
+      },
+      {
+        "id": "evidence.meath.m04",
+        "kind": "evidence",
+        "value": "M04 · stone castle developed under Hugh, Walter and successors",
+        "status": "castle-specialist-review-open"
+      },
+      {
+        "id": "evidence.meath.m05",
+        "kind": "evidence",
+        "value": "M05 · town developed beside the castle",
+        "status": "historian-review-open"
+      },
+      {
+        "id": "evidence.meath.m07",
+        "kind": "evidence",
+        "value": "M07 · conquest involved violence and dispossession",
+        "status": "sensitivity-review-open"
+      },
+      {
+        "id": "source.meath.trim-opw",
+        "kind": "source",
+        "value": "Heritage Ireland · Trim Castle · https://heritageireland.ie/places-to-visit/trim-castle/",
+        "status": "official-source-castle-review-open"
+      },
+      {
+        "id": "source.meath.song",
+        "kind": "source",
+        "value": "CELT · Song of Dermot and the Earl · Trim fortification and attack, lines 3221–3340 · https://celt.ucc.ie/published/T250001-001.html",
+        "status": "primary-text-historian-review-open"
+      },
+      {
+        "id": "source.meath.grant-copy",
+        "kind": "source",
+        "value": "Henry II grant of Meath to Hugh de Lacy · later-copy citation and transcription to be pinned by historian",
+        "status": "source-identification-open"
+      },
+      {
+        "id": "source.meath.source-brief",
+        "kind": "source",
+        "value": "content/meath/trim-de-lacy-source-brief.md · source packet and conquest-sensitivity requirements",
+        "status": "internal-research-draft"
+      },
+      {
+        "id": "audio.word.agam",
+        "kind": "audio",
+        "value": "agam",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.agat",
+        "kind": "audio",
+        "value": "agat",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.talamh",
+        "kind": "audio",
+        "value": "talamh",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.caislean",
+        "kind": "audio",
+        "value": "caisleán",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.ath",
+        "kind": "audio",
+        "value": "áth",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.abhainn",
+        "kind": "audio",
+        "value": "abhainn",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.balla",
+        "kind": "audio",
+        "value": "balla",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.cloch",
+        "kind": "audio",
+        "value": "cloch",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.baile",
+        "kind": "audio",
+        "value": "baile",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.tog",
+        "kind": "audio",
+        "value": "tóg",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.conai",
+        "kind": "audio",
+        "value": "cónaí",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.mor",
+        "kind": "audio",
+        "value": "mór",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.sean",
+        "kind": "audio",
+        "value": "sean",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.nua",
+        "kind": "audio",
+        "value": "nua",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.anseo",
+        "kind": "audio",
+        "value": "anseo",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.ansiud",
+        "kind": "audio",
+        "value": "ansiúd",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.feach",
+        "kind": "audio",
+        "value": "féach",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.seas",
+        "kind": "audio",
+        "value": "seas",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.ainm",
+        "kind": "audio",
+        "value": "ainm",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.word.teach",
+        "kind": "audio",
+        "value": "teach",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.meath-before-the-grant-hear-existing-place",
+        "kind": "audio",
+        "value": "Tá ainm ar an talamh sean agus tá baile ann.",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.meath-grant-hear-possession",
+        "kind": "audio",
+        "value": "Tá taifead nua agam; cad atá agat? Tóg é.",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.meath-ford-hear-site",
+        "kind": "audio",
+        "value": "Tá an t-áth anseo ar an abhainn; tá an baile ansiúd.",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.meath-first-fortification-hear-fortification",
+        "kind": "audio",
+        "value": "Tá cónaí sa teach; seas sa chaisleán.",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.meath-stone-castle-hear-stone-wall",
+        "kind": "audio",
+        "value": "Féach ar an mballa mór cloiche.",
+        "status": "pending-native-qa"
+      },
+      {
+        "id": "audio.exercise.meath-town-and-afterlife-speak-present-place",
+        "kind": "audio",
+        "value": "Féach ar an sean-chaisleán agus ar an mbaile nua.",
+        "status": "pending-native-qa"
+      }
+    ],
+    "reviewGates": [
+      {
+        "id": "history.grant",
+        "title": "Grant copy and expanded Meath history review",
+        "status": "open"
+      },
+      {
+        "id": "castle.phasing",
+        "title": "Trim fortification and stone phasing review",
+        "status": "open"
+      },
+      {
+        "id": "sensitivity.conquest",
+        "title": "Conquest and dispossession sensitivity review",
+        "status": "open"
+      },
+      {
+        "id": "irish.expanded",
+        "title": "Meath exercise and possession review",
+        "status": "open"
+      },
+      {
+        "id": "audio.native",
+        "title": "Native-speaker audio QA",
+        "status": "open"
+      },
+      {
+        "id": "rights.trim",
+        "title": "Trim imagery and plan rights",
+        "status": "open"
+      }
+    ],
+    "chapters": [
+      {
+        "id": "meath.before-the-grant",
+        "title": "An Talamh roimh an Deontas · The land before the grant",
+        "place": "Mide · before 1172",
+        "pages": [
+          {
+            "id": "meath.before-the-grant.opening",
+            "legacyBeatIndex": null,
+            "title": "A grant does not begin the land",
+            "context": "Mide · before 1172",
+            "body": "The talamh that Henry II would grant already held an old kingdom, churches, routes, settlements and political claims. Sean means old; baile means town or settlement; ainm means name. Those words come first so the story cannot present Meath as blank space awaiting a castle.",
+            "detail": "The county opens with existing place and authority before the new documentary claim arrives.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.talamh",
+              "lex.sean",
+              "lex.baile",
+              "lex.ainm"
+            ],
+            "resourceIDs": [
+              "evidence.meath.m07",
+              "source.meath.source-brief",
+              "audio.word.talamh",
+              "audio.word.sean",
+              "audio.word.baile",
+              "audio.word.ainm"
+            ],
+            "exercise": null,
+            "presentation": "coastalOpening",
+            "advanceLabel": "Enter the existing land",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "land",
+                "title": "talamh",
+                "detail": "A lived and contested territory",
+                "symbol": "map"
+              },
+              {
+                "id": "old",
+                "title": "sean",
+                "detail": "Older names and obligations",
+                "symbol": "clock.arrow.circlepath"
+              },
+              {
+                "id": "settlement",
+                "title": "baile",
+                "detail": "Communities already in place",
+                "symbol": "house.2"
+              }
+            ]
+          },
+          {
+            "id": "meath.before-the-grant.mide",
+            "legacyBeatIndex": null,
+            "title": "Mide was a political country, not a future estate",
+            "context": "Kingdom and province",
+            "body": "Medieval Mide extended beyond the boundaries of the modern county. Its rulers, churches and communities had their own histories and rivalries. The later lordship reused a famous territorial name while changing who claimed authority over it.",
+            "detail": "Modern county, earlier kingdom and Anglo-Norman lordship overlap; they are not identical shapes.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "movementLine",
+            "advanceLabel": "Keep the boundaries moving",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "kingdom",
+                "title": "Kingdom of Mide",
+                "detail": "An earlier political territory",
+                "symbol": "crown"
+              },
+              {
+                "id": "lordship",
+                "title": "Lordship of Meath",
+                "detail": "A later grant and conquest claim",
+                "symbol": "doc.text"
+              },
+              {
+                "id": "county",
+                "title": "County Meath",
+                "detail": "The modern journey unit",
+                "symbol": "map"
+              }
+            ]
+          },
+          {
+            "id": "meath.before-the-grant.names-survive",
+            "legacyBeatIndex": null,
+            "title": "Place-names carry older ground",
+            "context": "Áth Troim · Trim",
+            "body": "Áth Troim will matter later as the ford chosen for the new lordship's centre. Naming it now establishes continuity: the castle takes position at an already named crossing. A new fortification does not create the river, ford or memory of the place.",
+            "detail": "The name is evidence of place continuity, not proof that every later story about its origin is exact.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m02"
+            ],
+            "exercise": null,
+            "presentation": "languageField",
+            "advanceLabel": "Keep the older name",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "ath",
+                "title": "Áth Troim",
+                "detail": "The ford name",
+                "symbol": "water.waves.and.arrow.down"
+              },
+              {
+                "id": "trim",
+                "title": "Trim",
+                "detail": "The later English form",
+                "symbol": "textformat"
+              },
+              {
+                "id": "continuity",
+                "title": "Place",
+                "detail": "One crossing under changing powers",
+                "symbol": "mappin"
+              }
+            ]
+          },
+          {
+            "id": "meath.before-the-grant.hear-existing-place",
+            "legacyBeatIndex": null,
+            "title": "Hear the land before the grant",
+            "context": "Tá ainm ar an talamh sean agus tá baile ann",
+            "body": "Listen to old land, name and settlement in one line.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.meath-before-the-grant-hear-existing-place"
+            ],
+            "exercise": {
+              "family": "listenIdentify",
+              "objective": "Recognise talamh, sean, ainm and baile in a complete sentence.",
+              "prompt": "Which meaning matches the whole line?",
+              "answer": "The old land has a name and a settlement is there.",
+              "options": [
+                {
+                  "id": "existing",
+                  "text": "The old land has a name and a settlement is there.",
+                  "isCorrect": true,
+                  "rationale": "This carries all four words."
+                },
+                {
+                  "id": "empty",
+                  "text": "The new king finds empty land.",
+                  "isCorrect": false,
+                  "rationale": "The chapter rejects that framing."
+                },
+                {
+                  "id": "castle",
+                  "text": "A large stone castle is here.",
+                  "isCorrect": false,
+                  "rationale": "The castle has not yet been built."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "The old land has a name and a settlement is there.",
+              "audioText": "Tá ainm ar an talamh sean agus tá baile ann.",
+              "modelText": null,
+              "feedback": "The sentence establishes named, inhabited land before the charter.",
+              "hint": "Listen for talamh sean and ainm in the first clause.",
+              "recovery": "That answer erases either the name or the settlement. Replay the full line.",
+              "lexemeIDs": [
+                "lex.talamh",
+                "lex.sean",
+                "lex.ainm",
+                "lex.baile"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.before-the-grant.no-single-voice",
+            "legacyBeatIndex": null,
+            "title": "No surviving account speaks for everyone in Meath",
+            "context": "Sources and silence",
+            "body": "Royal documents, conquest narratives, annals, archaeology and later built fabric preserve different interests. None is the neutral voice of the land. The story will let a grant make its claim while refusing to make that claim the same thing as consent.",
+            "detail": "The conquest-sensitivity rule begins before the conquering document enters the screen.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m01",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "pressureField",
+            "advanceLabel": "Keep the voices separate",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.before-the-grant.build-named-land",
+            "legacyBeatIndex": null,
+            "title": "Build the existing-place line",
+            "context": "Tá ainm ar an talamh agus tá baile ann",
+            "body": "Put name, land and settlement into one complete sentence.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "sentenceConstruction",
+              "objective": "Produce talamh, ainm and baile in a sentence that precedes the grant.",
+              "prompt": "Build: The land has a name and there is a settlement there.",
+              "answer": "Tá ainm ar an talamh agus tá baile ann.",
+              "options": [],
+              "tokens": [
+                "baile",
+                "Tá",
+                "talamh",
+                "agus",
+                "ainm",
+                "ar",
+                "an",
+                "tá",
+                "ann."
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "The land has a name and there is a settlement there.",
+              "audioText": null,
+              "modelText": "Tá ainm ar an talamh agus tá baile ann.",
+              "feedback": "The land is named and inhabited before any new lordship is described.",
+              "hint": "Build Tá ainm ar an talamh first.",
+              "recovery": "Keep tá baile ann together in the second clause.",
+              "lexemeIDs": [
+                "lex.ainm",
+                "lex.talamh",
+                "lex.baile"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.before-the-grant.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "The opening corrects a frame; it does not recreate a court",
+            "context": "Territory · names · later records",
+            "body": "The account can establish that Meath was an inhabited political territory and that Trim was an existing named place. It cannot reconstruct one representative Gaelic household as if that family could stand for every person affected by conquest.",
+            "detail": "The learner remains an observer of evidence rather than a fictional resident assigned one voice.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m02",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Keep the land populated",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.before-the-grant.match-place-words",
+            "legacyBeatIndex": null,
+            "title": "Keep the opening words distinct",
+            "context": "talamh · baile · ainm · sean",
+            "body": "Match the land, settlement, name and age words.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "matching",
+              "objective": "Connect the opening headwords to their meanings.",
+              "prompt": "Match each Irish word to its meaning.",
+              "answer": "all pairs",
+              "options": [],
+              "tokens": [],
+              "pairs": [
+                {
+                  "id": "land",
+                  "left": "talamh",
+                  "right": "land"
+                },
+                {
+                  "id": "settlement",
+                  "left": "baile",
+                  "right": "town / settlement"
+                },
+                {
+                  "id": "name",
+                  "left": "ainm",
+                  "right": "name"
+                },
+                {
+                  "id": "old",
+                  "left": "sean",
+                  "right": "old"
+                }
+              ],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "Land, settlement, name and old now describe four different parts of the opening.",
+              "hint": "Ainm is what something is called; sean describes age.",
+              "recovery": "Those two do not match. Try another meaning.",
+              "lexemeIDs": [
+                "lex.talamh",
+                "lex.baile",
+                "lex.ainm",
+                "lex.sean"
+              ],
+              "operatesOnSentence": false,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.before-the-grant.read-opening",
+            "legacyBeatIndex": null,
+            "title": "Choose the honest starting point",
+            "context": "Story comprehension · before 1172",
+            "body": "Apply the county's conquest-sensitivity frame.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "comprehension",
+              "objective": "Recognise Meath as an existing political and inhabited territory.",
+              "prompt": "What must the story establish before the grant?",
+              "answer": "Meath already held communities, names and political claims.",
+              "options": [
+                {
+                  "id": "existing",
+                  "text": "Meath already held communities, names and political claims.",
+                  "isCorrect": true,
+                  "rationale": "This is the required starting point."
+                },
+                {
+                  "id": "empty",
+                  "text": "The land was empty until Hugh arrived.",
+                  "isCorrect": false,
+                  "rationale": "This erases existing Meath."
+                },
+                {
+                  "id": "castle",
+                  "text": "The stone keep had stood for centuries.",
+                  "isCorrect": false,
+                  "rationale": "The castle develops after the grant."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "The grant enters an existing world; it does not create one.",
+              "hint": "Choose the answer that keeps people and place visible.",
+              "recovery": "The other answers treat conquest as settlement of empty ground.",
+              "lexemeIDs": [
+                "lex.talamh",
+                "lex.baile",
+                "lex.ainm"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.before-the-grant.consequence",
+            "legacyBeatIndex": null,
+            "title": "A document is about to claim what already exists",
+            "context": "Chapter turn · land to charter",
+            "body": "The old land, settlement and name remain in view as a new paper claim arrives. In 1172 Henry II grants Meath to Hugh de Lacy. The next chapter reads what possession language can reveal—and what it can conceal.",
+            "detail": "The change is a new claim to authority over existing land.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m01",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Open the grant",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.before-the-grant.type-old-town",
+            "legacyBeatIndex": null,
+            "title": "Type the age of the place",
+            "context": "Tá an baile sean agus tá ainm air",
+            "body": "Produce settlement, old and name in one line.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "typing",
+              "objective": "Use baile, sean and ainm in a complete sentence.",
+              "prompt": "Type: The settlement is old and it has a name.",
+              "answer": "Tá an baile sean agus tá ainm air.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "The settlement is old and it has a name.",
+              "audioText": null,
+              "modelText": "Tá an baile sean agus tá ainm air.",
+              "feedback": "The sentence keeps time and name attached to the existing place.",
+              "hint": "Begin Tá an baile sean.",
+              "recovery": "Keep tá ainm air together at the end.",
+              "lexemeIDs": [
+                "lex.baile",
+                "lex.sean",
+                "lex.ainm"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      },
+      {
+        "id": "meath.grant",
+        "title": "Éileamh ar Pháipéar · A claim on paper",
+        "place": "1172 grant · copy history",
+        "pages": [
+          {
+            "id": "meath.grant.opening",
+            "legacyBeatIndex": null,
+            "title": "A king says the land is Hugh's",
+            "context": "1172 · grant of Meath",
+            "body": "Henry II granted the talamh of Meath to Hugh de Lacy. The old baile and ainm remain beneath that sentence. Irish expresses possession through agam and agat—at me, at you—rather than a direct verb meaning have. That grammar makes the chapter's question unusually sharp: what does a document say someone has?",
+            "detail": "The language focus exposes possession as a relationship and claim, not a neutral fact.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.agam",
+              "lex.agat"
+            ],
+            "resourceIDs": [
+              "evidence.meath.m01",
+              "source.meath.grant-copy",
+              "audio.word.agam",
+              "audio.word.agat"
+            ],
+            "exercise": null,
+            "presentation": "archive",
+            "advanceLabel": "Read the claim",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.grant.copy-status",
+            "legacyBeatIndex": null,
+            "title": "The grant survives through later copies",
+            "context": "Document transmission · citation open",
+            "body": "The 1172 grant is known through later manuscript copies and antiquarian transmission rather than one pristine charter in front of the learner. Final production needs a pinned copy, transcription and modern paraphrase before showing document text.",
+            "detail": "The app can state the grant at chapter level while keeping the exact wording behind a historian gate.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m01",
+              "source.meath.grant-copy"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Keep the copy history visible",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.grant.new-claim",
+            "legacyBeatIndex": null,
+            "title": "New words do not make a new world",
+            "context": "nua · new · tóg · take or raise",
+            "body": "Nua means new. Tóg can mean take, lift or raise and will later carry castle building. Here the document offers a new claim to old land. Hugh still had to turn paper authority into control through alliances, delegation, fortification and violence.",
+            "detail": "The grant is a consequential act, but it is not self-executing possession.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.nua",
+              "lex.tog"
+            ],
+            "resourceIDs": [
+              "evidence.meath.m01",
+              "evidence.meath.m07",
+              "audio.word.nua",
+              "audio.word.tog"
+            ],
+            "exercise": null,
+            "presentation": "pressureField",
+            "advanceLabel": "Separate paper from control",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.grant.hear-possession",
+            "legacyBeatIndex": null,
+            "title": "Hear the possession question",
+            "context": "Tá taifead nua agam; cad atá agat? Tóg é",
+            "body": "Listen to agam, agat, nua and tóg in one exchange.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.meath-grant-hear-possession"
+            ],
+            "exercise": {
+              "family": "listenBuildSentence",
+              "objective": "Hear the possession forms and new-record action in context.",
+              "prompt": "Listen, then build the full exchange.",
+              "answer": "Tá taifead nua agam; cad atá agat? Tóg é.",
+              "options": [],
+              "tokens": [
+                "Tá",
+                "taifead",
+                "nua",
+                "agam;",
+                "cad",
+                "atá",
+                "agat?",
+                "Tóg",
+                "é."
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "I have a new record; what do you have? Take it.",
+              "audioText": "Tá taifead nua agam; cad atá agat? Tóg é.",
+              "modelText": "Tá taifead nua agam; cad atá agat? Tóg é.",
+              "feedback": "The line asks who has the new record before instructing the learner to take it.",
+              "hint": "Build Tá taifead nua agam first; cad atá agat follows.",
+              "recovery": "Keep tóg é together as the final instruction.",
+              "lexemeIDs": [
+                "lex.agam",
+                "lex.agat",
+                "lex.nua",
+                "lex.tog"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.grant.not-consent",
+            "legacyBeatIndex": null,
+            "title": "A royal grant is not local consent",
+            "context": "Authority claimed from above",
+            "body": "The charter records what Henry claimed power to give and what Hugh was expected to hold. It does not record agreement from the people, churches or rulers whose land and obligations were being reassigned.",
+            "detail": "This sentence is the conquest-sensitivity hinge and must survive Learning-mode abridgement.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m01",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "pressureField",
+            "advanceLabel": "Refuse the false equivalence",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.grant.document-silence",
+            "legacyBeatIndex": null,
+            "title": "What the grant does not list",
+            "context": "Named grantee · unnamed lives",
+            "body": "The copied grant centres king, grantee, territory and service. It does not inventory every community, church, right or dependency affected by the transfer. That silence is structural: a document made to confer lordship is not a census of those placed beneath it.",
+            "detail": "The learner should notice who is named, who is grouped into land and what kinds of relationship disappear from the document.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m01",
+              "evidence.meath.m07",
+              "source.meath.grant-copy"
+            ],
+            "exercise": null,
+            "presentation": "archive",
+            "advanceLabel": "Read the unnamed edge",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.grant.notice-have-pattern",
+            "legacyBeatIndex": null,
+            "title": "Notice possession without have",
+            "context": "Tá … agam · Tá … agat",
+            "body": "Choose the line that asks what you have.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "grammarDiscovery",
+              "objective": "Notice the agam / agat possession pattern.",
+              "prompt": "Which line means: What do you have?",
+              "answer": "Cad atá agat?",
+              "options": [
+                {
+                  "id": "you",
+                  "text": "Cad atá agat?",
+                  "isCorrect": true,
+                  "rationale": "Agat means at you."
+                },
+                {
+                  "id": "me",
+                  "text": "Cad atá agam?",
+                  "isCorrect": false,
+                  "rationale": "Agam means at me."
+                },
+                {
+                  "id": "land",
+                  "text": "Tá talamh ann.",
+                  "isCorrect": false,
+                  "rationale": "This says land is there."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "What do you have?",
+              "audioText": null,
+              "modelText": "Cad atá agat?",
+              "feedback": "Cad atá agat? asks what is at you—what you have.",
+              "hint": "Agat points to you.",
+              "recovery": "Agam points to me; choose the form ending in -at.",
+              "lexemeIDs": [
+                "lex.agat"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.grant.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "The document proves a grant, not possession on the ground",
+            "context": "Charter claim · conquest process",
+            "body": "The grant is strong evidence that Henry conferred Meath on Hugh in 1172. Its words alone cannot prove the reach of immediate control, identify every displaced claim or turn resistance into a footnote.",
+            "detail": "Paper and ground remain separate evidence registers throughout the county.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m01",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Keep paper and ground apart",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.grant.answer-possession",
+            "legacyBeatIndex": null,
+            "title": "Answer the record question",
+            "context": "Cad atá agat? · What do you have?",
+            "body": "Choose the answer that names the record rather than accepting its land claim.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "dialogue",
+              "objective": "Respond with agam in a bounded evidence sentence.",
+              "prompt": "Cad atá agat?",
+              "answer": "Tá cóip den deontas agam.",
+              "options": [
+                {
+                  "id": "copy",
+                  "text": "Tá cóip den deontas agam.",
+                  "isCorrect": true,
+                  "rationale": "This keeps possession with the object."
+                },
+                {
+                  "id": "land",
+                  "text": "Tá an Mhí ar fad agam.",
+                  "isCorrect": false,
+                  "rationale": "This repeats the grant's claim as learner fact."
+                },
+                {
+                  "id": "you",
+                  "text": "Tá cóip den deontas agat.",
+                  "isCorrect": false,
+                  "rationale": "This says you have it rather than answering for me."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "I have a copy of the grant.",
+              "audioText": null,
+              "modelText": "Tá cóip den deontas agam.",
+              "feedback": "Tá cóip den deontas agam — you have a copy of the grant, not the land it claims.",
+              "hint": "Choose the answer about the document in hand.",
+              "recovery": "The land answer confuses holding the record with owning Meath.",
+              "lexemeIDs": [
+                "lex.agam",
+                "lex.agat"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.grant.sequence-claim",
+            "legacyBeatIndex": null,
+            "title": "Put claim and control in order",
+            "context": "Existing land · royal grant · fortification · contested control",
+            "body": "Arrange the causal account without making the charter self-executing.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "sequencing",
+              "objective": "Sequence the grant inside the conquest process.",
+              "prompt": "Put the movements in order.",
+              "answer": "Existing land → royal grant → fortification → contested control",
+              "options": [],
+              "tokens": [
+                "fortification",
+                "royal grant",
+                "contested control",
+                "existing land"
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Existing land; royal grant; fortification; contested control.",
+              "audioText": null,
+              "modelText": "Existing land → royal grant → fortification → contested control",
+              "feedback": "The paper claim enters existing land and must be enforced on the ground.",
+              "hint": "The land and communities come before the grant.",
+              "recovery": "Do not begin with the document; move existing land first.",
+              "lexemeIDs": [
+                "lex.talamh",
+                "lex.nua",
+                "lex.tog"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.grant.consequence",
+            "legacyBeatIndex": null,
+            "title": "A paper centre needs a physical centre",
+            "context": "Chapter turn · grant to Trim",
+            "body": "To hold a vast lordship, Hugh needed places from which authority could be organised and defended. Trim's ford and river offered one such centre. The next chapter leaves the copied grant and reads the ground.",
+            "detail": "The story shifts from documentary claim to topographic choice.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m02"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Go to the ford",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.grant.retrieve-record",
+            "legacyBeatIndex": null,
+            "title": "Carry the bounded possession line",
+            "context": "Tá taifead nua agam; tóg é, ach ní talamh é",
+            "body": "Retrieve the new record, the action and the evidence limit.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "delayedRetrieval",
+              "objective": "Produce agam, nua and tóg while distinguishing record from land.",
+              "prompt": "Type: I have a new record; take it, but it is not land.",
+              "answer": "Tá taifead nua agam; tóg é, ach ní talamh é.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "I have a new record; take it, but it is not land.",
+              "audioText": null,
+              "modelText": "Tá taifead nua agam; tóg é, ach ní talamh é.",
+              "feedback": "The sentence keeps the document in hand and the land outside it.",
+              "hint": "Build Tá taifead nua agam first.",
+              "recovery": "Keep ach ní talamh é as the final evidence limit.",
+              "lexemeIDs": [
+                "lex.nua",
+                "lex.agam",
+                "lex.tog",
+                "lex.talamh"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      },
+      {
+        "id": "meath.ford",
+        "title": "Áth Troim · The ford of Trim",
+        "place": "Trim · River Boyne",
+        "pages": [
+          {
+            "id": "meath.ford.opening",
+            "legacyBeatIndex": null,
+            "title": "The ford makes Trim useful",
+            "context": "Áth Troim · River Boyne",
+            "body": "The possession question from the grant remains open: Cad atá agat? The claim is nua — new — but paper does not control the ground. To tóg — raise — a centre, Hugh turns to place. An áth is a ford and an abhainn is a river; anseo and ansiúd make the site readable.",
+            "detail": "Topography explains why the lordship's centre forms here without implying that strategic value equals consent.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.ath",
+              "lex.abhainn",
+              "lex.anseo",
+              "lex.ansiud"
+            ],
+            "resourceIDs": [
+              "evidence.meath.m02",
+              "source.meath.trim-opw",
+              "audio.word.ath",
+              "audio.word.abhainn",
+              "audio.word.anseo",
+              "audio.word.ansiud"
+            ],
+            "exercise": null,
+            "presentation": "coastalOpening",
+            "advanceLabel": "Stand at the crossing",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "ford",
+                "title": "áth",
+                "detail": "A crossing in the river",
+                "symbol": "water.waves.and.arrow.down"
+              },
+              {
+                "id": "river",
+                "title": "abhainn",
+                "detail": "The Boyne route",
+                "symbol": "water.waves"
+              },
+              {
+                "id": "positions",
+                "title": "anseo · ansiúd",
+                "detail": "Here and there across the site",
+                "symbol": "arrow.left.and.right"
+              }
+            ]
+          },
+          {
+            "id": "meath.ford.caput",
+            "legacyBeatIndex": null,
+            "title": "Trim becomes the lordship's centre",
+            "context": "Caput · administrative centre",
+            "body": "Trim served as the caput, the chief centre, of the lordship. The ford, river and surrounding routes gave physical form to a grant whose territory was much larger than any one castle could see.",
+            "detail": "Caput is introduced as a historical term, not as a claim that all Meath became orderly from this point.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m02"
+            ],
+            "exercise": null,
+            "presentation": "connectedSystem",
+            "advanceLabel": "Place the centre in the wider land",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "trim",
+                "title": "Trim",
+                "detail": "Lordship centre",
+                "symbol": "mappin.circle"
+              },
+              {
+                "id": "meath",
+                "title": "Meath",
+                "detail": "A much larger claimed territory",
+                "symbol": "map"
+              },
+              {
+                "id": "routes",
+                "title": "Routes",
+                "detail": "Ways authority and resistance moved",
+                "symbol": "arrow.triangle.branch"
+              }
+            ]
+          },
+          {
+            "id": "meath.ford.ford-name",
+            "legacyBeatIndex": null,
+            "title": "The crossing remains in the name",
+            "context": "Áth Troim · Trim",
+            "body": "The place-name keeps the áth visible even when later visitors first notice towers and walls. The river is not scenery behind the castle. It is part of the reason the centre was chosen and part of the older place the fortification occupied.",
+            "detail": "Language returns attention from monument to site.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m02"
+            ],
+            "exercise": null,
+            "presentation": "languageField",
+            "advanceLabel": "Read the ford in the name",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "ath",
+                "title": "Áth",
+                "detail": "ford",
+                "symbol": "water.waves.and.arrow.down"
+              },
+              {
+                "id": "troim",
+                "title": "Troim",
+                "detail": "The second element of the place-name",
+                "symbol": "textformat"
+              },
+              {
+                "id": "trim",
+                "title": "Trim",
+                "detail": "The surviving English form",
+                "symbol": "mappin"
+              }
+            ]
+          },
+          {
+            "id": "meath.ford.hear-site",
+            "legacyBeatIndex": null,
+            "title": "Speak across the site",
+            "context": "Tá an t-áth anseo ar an abhainn; tá an baile ansiúd",
+            "body": "Record the ford, river, here and there without a score.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.meath-ford-hear-site"
+            ],
+            "exercise": {
+              "family": "speaking",
+              "objective": "Hear and produce áth, abhainn, anseo and ansiúd in a site sentence.",
+              "prompt": "Record: Tá an t-áth anseo ar an abhainn; tá an baile ansiúd.",
+              "answer": "Tá an t-áth anseo ar an abhainn; tá an baile ansiúd.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "The ford is here on the river; the settlement is there.",
+              "audioText": "Tá an t-áth anseo ar an abhainn; tá an baile ansiúd.",
+              "modelText": "Tá an t-áth anseo ar an abhainn; tá an baile ansiúd.",
+              "feedback": "The sentence places the crossing and settlement in one field.",
+              "hint": "Keep anseo with the ford and ansiúd with the settlement.",
+              "recovery": "If recording is unavailable, replay the model and continue without saving audio.",
+              "lexemeIDs": [
+                "lex.ath",
+                "lex.abhainn",
+                "lex.anseo",
+                "lex.ansiud"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.ford.route-not-consent",
+            "legacyBeatIndex": null,
+            "title": "A strategic place is still a contested place",
+            "context": "Topography and conquest",
+            "body": "The ford helps explain why Hugh chose Trim as a centre. It does not make the seizure of authority inevitable, peaceful or beneficial to everyone already tied to the land. Route logic answers where, not whether the conquest was accepted.",
+            "detail": "The distinction must survive every map and diagram.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m02",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "pressureField",
+            "advanceLabel": "Keep strategy and consent apart",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.ford.fill-here",
+            "legacyBeatIndex": null,
+            "title": "Complete the ford location",
+            "context": "Tá an t-áth anseo · The ford is here",
+            "body": "Choose the place word that points to the learner's position.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "fillGap",
+              "objective": "Use anseo in a complete sentence about the ford.",
+              "prompt": "Complete: Tá an t-áth ___.",
+              "answer": "anseo",
+              "options": [
+                {
+                  "id": "here",
+                  "text": "anseo",
+                  "isCorrect": true,
+                  "rationale": "Anseo means here."
+                },
+                {
+                  "id": "there",
+                  "text": "ansiúd",
+                  "isCorrect": false,
+                  "rationale": "Ansiúd means there."
+                },
+                {
+                  "id": "old",
+                  "text": "sean",
+                  "isCorrect": false,
+                  "rationale": "Sean means old."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": "Tá an t-áth ___.",
+              "translation": "The ford is here.",
+              "audioText": null,
+              "modelText": "Tá an t-áth anseo.",
+              "feedback": "Tá an t-áth anseo — the crossing is here.",
+              "hint": "Choose the word meaning here.",
+              "recovery": "Ansiúd points away from the speaker; anseo points here.",
+              "lexemeIDs": [
+                "lex.ath",
+                "lex.anseo"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.ford.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "The ground explains selection, not intention",
+            "context": "River, ford and later centre",
+            "body": "The Boyne crossing, surviving castle and historical consensus support Trim as the lordship's centre. They do not preserve Hugh's private first impression of the site or a single recorded moment of choice.",
+            "detail": "A map can show conditions and relationships without staging an arrival scene.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m02",
+              "source.meath.trim-opw"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Leave the arrival unspoken",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.ford.build-ford",
+            "legacyBeatIndex": null,
+            "title": "Build the site relationship",
+            "context": "Tá Áth Troim anseo, ar an abhainn",
+            "body": "Place the named ford on the river.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "sentenceConstruction",
+              "objective": "Produce áth, anseo and abhainn in a complete sentence.",
+              "prompt": "Build: The ford of Trim is here, on the river.",
+              "answer": "Tá Áth Troim anseo, ar an abhainn.",
+              "options": [],
+              "tokens": [
+                "abhainn.",
+                "anseo,",
+                "Áth",
+                "Tá",
+                "Troim",
+                "ar",
+                "an"
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "The ford of Trim is here, on the river.",
+              "audioText": null,
+              "modelText": "Tá Áth Troim anseo, ar an abhainn.",
+              "feedback": "The place-name, position and river now form one grounded line.",
+              "hint": "Begin Tá Áth Troim anseo.",
+              "recovery": "Keep ar an abhainn together at the end.",
+              "lexemeIDs": [
+                "lex.ath",
+                "lex.anseo",
+                "lex.abhainn"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.ford.read-location",
+            "legacyBeatIndex": null,
+            "title": "Choose what the ford can explain",
+            "context": "Source comprehension · topography",
+            "body": "Keep the strongest geographical claim and its political limit.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "comprehension",
+              "objective": "Distinguish strategic location from consent.",
+              "prompt": "What does the ford help explain?",
+              "answer": "Why Trim was useful as a centre of movement and control.",
+              "options": [
+                {
+                  "id": "strategy",
+                  "text": "Why Trim was useful as a centre of movement and control.",
+                  "isCorrect": true,
+                  "rationale": "The geography supports this."
+                },
+                {
+                  "id": "consent",
+                  "text": "Why everyone in Meath accepted the new lordship.",
+                  "isCorrect": false,
+                  "rationale": "Location does not establish consent."
+                },
+                {
+                  "id": "foundation",
+                  "text": "The exact day the first stone was laid.",
+                  "isCorrect": false,
+                  "rationale": "The ford does not date construction."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "The crossing explains selection and movement, not acceptance.",
+              "hint": "Choose the answer about where and why the site was useful.",
+              "recovery": "Topography cannot prove that conquest was welcomed.",
+              "lexemeIDs": [
+                "lex.ath",
+                "lex.abhainn"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.ford.consequence",
+            "legacyBeatIndex": null,
+            "title": "The chosen centre needs enclosure",
+            "context": "Chapter turn · ford to first fortification",
+            "body": "Once the grant and crossing are joined, the next action is physical. A house, trench and stockade appear in the conquest narrative; defenders, attackers and rebuilding turn the claimed centre into a contested one.",
+            "detail": "The story moves from site logic to the first recorded fortification and its destruction.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m03",
+              "source.meath.song"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Enter the first enclosure",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.ford.type-two-positions",
+            "legacyBeatIndex": null,
+            "title": "Type here and there",
+            "context": "Tá an t-áth anseo; tá an baile ansiúd",
+            "body": "Produce both place words in one contrast.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "typing",
+              "objective": "Use anseo and ansiúd with ford and settlement.",
+              "prompt": "Type: The ford is here; the settlement is there.",
+              "answer": "Tá an t-áth anseo; tá an baile ansiúd.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "The ford is here; the settlement is there.",
+              "audioText": null,
+              "modelText": "Tá an t-áth anseo; tá an baile ansiúd.",
+              "feedback": "The contrast makes the site readable across space.",
+              "hint": "Use anseo in the first clause and ansiúd in the second.",
+              "recovery": "Keep the two place words in opposite clauses.",
+              "lexemeIDs": [
+                "lex.ath",
+                "lex.anseo",
+                "lex.baile",
+                "lex.ansiud"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      },
+      {
+        "id": "meath.first-fortification",
+        "title": "An Chéad Daingean · The first fortification",
+        "place": "Trim · house, trench and stockade",
+        "pages": [
+          {
+            "id": "meath.first-fortification.opening",
+            "legacyBeatIndex": null,
+            "title": "The first castle is a fortified house",
+            "context": "Trim · early 1170s",
+            "body": "The áth and abhainn return anseo; the wider baile remains ansiúd. The Song of Dermot describes Hugh de Lacy fortifying a teach at Trim, cutting a trench and enclosing it with a stockade. That first caisleán was timber and earth, not the great stone keep visible today.",
+            "detail": "Teach and caisleán enter together so the learner can distinguish inhabited building from later monumental image.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.teach",
+              "lex.caislean"
+            ],
+            "resourceIDs": [
+              "evidence.meath.m03",
+              "source.meath.song",
+              "audio.word.teach",
+              "audio.word.caislean"
+            ],
+            "exercise": null,
+            "presentation": "coastalOpening",
+            "advanceLabel": "Enter the timber enclosure",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "house",
+                "title": "teach",
+                "detail": "The fortified house",
+                "symbol": "house"
+              },
+              {
+                "id": "trench",
+                "title": "Trench",
+                "detail": "Earthwork around the position",
+                "symbol": "circle.dashed"
+              },
+              {
+                "id": "stockade",
+                "title": "Stockade",
+                "detail": "Timber enclosure",
+                "symbol": "line.3.horizontal"
+              }
+            ]
+          },
+          {
+            "id": "meath.first-fortification.attack",
+            "legacyBeatIndex": null,
+            "title": "The enclosure is attacked and abandoned",
+            "context": "Song of Dermot · contested account",
+            "body": "The poem describes Ruaidrí Ua Conchobair's forces moving against Trim. Hugh Tyrrel's defenders abandon the position; the attackers throw down the fortification; the site is later refortified. The sequence preserves resistance, not a smooth march of construction.",
+            "detail": "The conquest source has its own loyalties and rhetoric. Its sequence is valuable without adopting every judgement in its voice.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m03",
+              "evidence.meath.m07",
+              "source.meath.song"
+            ],
+            "exercise": null,
+            "presentation": "pressureField",
+            "advanceLabel": "Follow attack and return",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.first-fortification.lived-position",
+            "legacyBeatIndex": null,
+            "title": "People live inside what maps call a strongpoint",
+            "context": "cónaí · living · seas · stand",
+            "body": "Cónaí names living or residence; seas means stand. A fortification required people to keep watch, repair timber, store supplies and occupy a vulnerable position. The evidence does not name their private routines, but it does not permit the castle to become an empty military symbol.",
+            "detail": "The learner attends to human occupation without inventing a household guide.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.conai",
+              "lex.seas"
+            ],
+            "resourceIDs": [
+              "evidence.meath.m03",
+              "audio.word.conai",
+              "audio.word.seas"
+            ],
+            "exercise": null,
+            "presentation": "relationshipField",
+            "advanceLabel": "Keep people inside the structure",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "living",
+                "title": "cónaí",
+                "detail": "Occupation and maintenance",
+                "symbol": "person.2"
+              },
+              {
+                "id": "stand",
+                "title": "seas",
+                "detail": "Holding a position",
+                "symbol": "figure.stand"
+              },
+              {
+                "id": "house",
+                "title": "teach",
+                "detail": "Shelter inside fortification",
+                "symbol": "house"
+              }
+            ]
+          },
+          {
+            "id": "meath.first-fortification.hear-fortification",
+            "legacyBeatIndex": null,
+            "title": "Hear house, castle, living and standing",
+            "context": "Tá cónaí sa teach; seas sa chaisleán",
+            "body": "Listen to occupation and defence in one line.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.meath-first-fortification-hear-fortification"
+            ],
+            "exercise": {
+              "family": "listenIdentify",
+              "objective": "Recognise teach, cónaí, seas and caisleán in context.",
+              "prompt": "Which meaning matches the whole line?",
+              "answer": "There is living in the house; stand in the castle.",
+              "options": [
+                {
+                  "id": "occupied",
+                  "text": "There is living in the house; stand in the castle.",
+                  "isCorrect": true,
+                  "rationale": "This matches both clauses."
+                },
+                {
+                  "id": "river",
+                  "text": "The ford is here on the river.",
+                  "isCorrect": false,
+                  "rationale": "That belongs to the site chapter."
+                },
+                {
+                  "id": "stone",
+                  "text": "Look at the large stone wall.",
+                  "isCorrect": false,
+                  "rationale": "That belongs to the later keep."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "There is living in the house; stand in the castle.",
+              "audioText": "Tá cónaí sa teach; seas sa chaisleán.",
+              "modelText": null,
+              "feedback": "The sentence keeps human occupation inside the fortified place.",
+              "hint": "Cónaí belongs to living; seas is the instruction to stand.",
+              "recovery": "That answer leaves out either the house or the standing action.",
+              "lexemeIDs": [
+                "lex.conai",
+                "lex.teach",
+                "lex.seas",
+                "lex.caislean"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.first-fortification.source-voice",
+            "legacyBeatIndex": null,
+            "title": "The poem calls some people noble and others rebels",
+            "context": "Narrative bias · conquest text",
+            "body": "The Song's labels reveal the perspective of an Anglo-Norman conquest narrative. The app uses its details about house, trench, stockade, attack and rebuilding while refusing to repeat partisan labels as neutral description.",
+            "detail": "Source voice becomes inspectable evidence, not invisible narration.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "source.meath.song",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "archive",
+            "advanceLabel": "Read the source's allegiance",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.first-fortification.sequence-fort",
+            "legacyBeatIndex": null,
+            "title": "Put the contested sequence in order",
+            "context": "Fortify · attack · abandon · destroy · refortify",
+            "body": "Arrange the actions preserved in the conquest poem.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "sequencing",
+              "objective": "Reconstruct the first fortification's change over time.",
+              "prompt": "Put the movements in order.",
+              "answer": "Fortify → attack → abandon → destroy → refortify",
+              "options": [],
+              "tokens": [
+                "destroy",
+                "refortify",
+                "fortify",
+                "abandon",
+                "attack"
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Fortify; attack; abandon; destroy; refortify.",
+              "audioText": null,
+              "modelText": "Fortify → attack → abandon → destroy → refortify",
+              "feedback": "The first fortification is interrupted and rebuilt, not steadily completed.",
+              "hint": "The defenders abandon the position before it is thrown down.",
+              "recovery": "Move the rebuilding to the end.",
+              "lexemeIDs": [
+                "lex.caislean",
+                "lex.tog"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.first-fortification.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "A conquest poem preserves action through rhetoric",
+            "context": "Song of Dermot · archaeology",
+            "body": "The poem supports an early fortified house, trench, stockade, attack and rebuilding. Archaeology and later fabric help place that sequence. Exact troop numbers, speeches and moral labels require separate scrutiny.",
+            "detail": "The chapter keeps the valuable event sequence and marks the source's partisan frame.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m03",
+              "source.meath.song"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Keep action and rhetoric apart",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.first-fortification.answer-where-live",
+            "legacyBeatIndex": null,
+            "title": "Answer the residence question",
+            "context": "Cá bhfuil cónaí orthu? · Where do they live?",
+            "body": "Choose the answer tied to the fortified house.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "dialogue",
+              "objective": "Use cónaí and teach in a complete response.",
+              "prompt": "Cá bhfuil cónaí orthu?",
+              "answer": "Tá cónaí orthu sa teach.",
+              "options": [
+                {
+                  "id": "house",
+                  "text": "Tá cónaí orthu sa teach.",
+                  "isCorrect": true,
+                  "rationale": "This answers where they live."
+                },
+                {
+                  "id": "river",
+                  "text": "Tá an abhainn anseo.",
+                  "isCorrect": false,
+                  "rationale": "This locates the river."
+                },
+                {
+                  "id": "grant",
+                  "text": "Tá deontas agam.",
+                  "isCorrect": false,
+                  "rationale": "This says I have a grant."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "They live in the house.",
+              "audioText": null,
+              "modelText": "Tá cónaí orthu sa teach.",
+              "feedback": "Tá cónaí orthu sa teach — the fortification remains inhabited.",
+              "hint": "Choose the answer with cónaí and teach.",
+              "recovery": "The other answers locate the river or grant rather than residence.",
+              "lexemeIDs": [
+                "lex.conai",
+                "lex.teach"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.first-fortification.type-position",
+            "legacyBeatIndex": null,
+            "title": "Type the inhabited strongpoint",
+            "context": "Seas sa chaisleán; tá cónaí sa teach",
+            "body": "Produce standing, castle, living and house in one line.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "typing",
+              "objective": "Use all four chapter words in a complete two-clause sentence.",
+              "prompt": "Type: Stand in the castle; there is living in the house.",
+              "answer": "Seas sa chaisleán; tá cónaí sa teach.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Stand in the castle; there is living in the house.",
+              "audioText": null,
+              "modelText": "Seas sa chaisleán; tá cónaí sa teach.",
+              "feedback": "The strongpoint is both defended and inhabited.",
+              "hint": "Begin Seas sa chaisleán.",
+              "recovery": "Keep tá cónaí sa teach as the second clause.",
+              "lexemeIDs": [
+                "lex.seas",
+                "lex.caislean",
+                "lex.conai",
+                "lex.teach"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.first-fortification.consequence",
+            "legacyBeatIndex": null,
+            "title": "Timber gives way to a longer stone project",
+            "context": "Chapter turn · early fort to keep",
+            "body": "The first enclosure can be built, broken and rebuilt quickly. The stone castle that dominates Trim belongs to a longer sequence under Hugh, Walter and their successors. The next chapter reads its walls as phases rather than one foundation day.",
+            "detail": "The story changes scale and material while keeping the earlier contested ground visible.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m04",
+              "source.meath.trim-opw"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Enter the stone phases",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.first-fortification.retrieve-site",
+            "legacyBeatIndex": null,
+            "title": "Bring ford and fort together",
+            "context": "Tá caisleán agus teach ag an áth; tá cónaí ann",
+            "body": "Retrieve the built position, crossing and human occupation.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "delayedRetrieval",
+              "objective": "Produce caisleán, teach, áth and cónaí in one sentence.",
+              "prompt": "Type: A castle and house are at the ford; people live there.",
+              "answer": "Tá caisleán agus teach ag an áth; tá cónaí ann.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "A castle and house are at the ford; people live there.",
+              "audioText": null,
+              "modelText": "Tá caisleán agus teach ag an áth; tá cónaí ann.",
+              "feedback": "The fortification remains tied to both place and occupation.",
+              "hint": "Build Tá caisleán agus teach ag an áth first.",
+              "recovery": "Keep tá cónaí ann as the final clause.",
+              "lexemeIDs": [
+                "lex.caislean",
+                "lex.teach",
+                "lex.ath",
+                "lex.conai"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      },
+      {
+        "id": "meath.stone-castle",
+        "title": "Caisleán Cloiche · The stone castle",
+        "place": "Trim · late twelfth and early thirteenth century",
+        "pages": [
+          {
+            "id": "meath.stone-castle.opening",
+            "legacyBeatIndex": null,
+            "title": "Stone makes the claim monumental",
+            "context": "Trim Castle · late twelfth and early thirteenth century",
+            "body": "The earlier teach, caisleán, cónaí and instruction seas return in cloch. A mór keep, defensive balla, ditch and moat turn the centre into a vast built statement. Féach means look: inspect joints, openings and changes rather than read the whole castle as one moment.",
+            "detail": "The later stone monument is a sequence of work, not the first fortification enlarged in a single uninterrupted campaign.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [
+              "lex.cloch",
+              "lex.mor",
+              "lex.balla",
+              "lex.feach"
+            ],
+            "resourceIDs": [
+              "evidence.meath.m04",
+              "source.meath.trim-opw",
+              "audio.word.cloch",
+              "audio.word.mor",
+              "audio.word.balla",
+              "audio.word.feach"
+            ],
+            "exercise": null,
+            "presentation": "coastalOpening",
+            "advanceLabel": "Approach the stone keep",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "stone",
+                "title": "cloch",
+                "detail": "The later structural material",
+                "symbol": "square.fill"
+              },
+              {
+                "id": "wall",
+                "title": "balla",
+                "detail": "Defence and enclosure",
+                "symbol": "rectangle.split.3x1"
+              },
+              {
+                "id": "look",
+                "title": "féach",
+                "detail": "Attention to phases and joints",
+                "symbol": "eye"
+              }
+            ]
+          },
+          {
+            "id": "meath.stone-castle.thirty-years",
+            "legacyBeatIndex": null,
+            "title": "The castle takes decades, not a day",
+            "context": "Hugh, Walter and successors",
+            "body": "Heritage Ireland describes Hugh de Lacy and his successors taking about thirty years to build the castle. The great keep changed through phases; later walls, gates and domestic buildings added further layers.",
+            "detail": "A date range and named succession are more honest than a single ceremonial foundation scene.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m04",
+              "source.meath.trim-opw"
+            ],
+            "exercise": null,
+            "presentation": "movementLine",
+            "advanceLabel": "Follow the phases",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "timber",
+                "title": "Timber fort",
+                "detail": "The first enclosure",
+                "symbol": "tree"
+              },
+              {
+                "id": "keep",
+                "title": "Stone keep",
+                "detail": "Built and altered over time",
+                "symbol": "building.columns"
+              },
+              {
+                "id": "enclosure",
+                "title": "Walls and gates",
+                "detail": "The wider defended complex",
+                "symbol": "rectangle.dashed"
+              }
+            ]
+          },
+          {
+            "id": "meath.stone-castle.twenty-sided",
+            "legacyBeatIndex": null,
+            "title": "The keep resists a simple front",
+            "context": "Cruciform plan · twenty exterior faces",
+            "body": "The central keep is cruciform and presents twenty exterior faces. Its shape creates projecting angles, internal rooms and changing views as the learner moves around it. The plan is evidence of design and adaptation, not merely a dramatic silhouette.",
+            "detail": "A measured diagram can carry more truth than an uncleared cinematic reconstruction.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m04",
+              "source.meath.trim-opw"
+            ],
+            "exercise": null,
+            "presentation": "connectedSystem",
+            "advanceLabel": "Walk the changing outline",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "plan",
+                "title": "Cruciform core",
+                "detail": "A cross-shaped central plan",
+                "symbol": "plus"
+              },
+              {
+                "id": "faces",
+                "title": "Twenty faces",
+                "detail": "Changing exterior planes",
+                "symbol": "hexagon"
+              },
+              {
+                "id": "rooms",
+                "title": "Interior levels",
+                "detail": "Use and defence inside the mass",
+                "symbol": "square.split.2x2"
+              }
+            ]
+          },
+          {
+            "id": "meath.stone-castle.hear-stone-wall",
+            "legacyBeatIndex": null,
+            "title": "Hear the inspection instruction",
+            "context": "Féach ar an mballa mór cloiche",
+            "body": "Listen to look, wall, big and stone in one phrase.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.meath-stone-castle-hear-stone-wall"
+            ],
+            "exercise": {
+              "family": "listenBuildSentence",
+              "objective": "Hear and rebuild féach, balla, mór and cloch together.",
+              "prompt": "Listen, then build: Look at the big stone wall.",
+              "answer": "Féach ar an mballa mór cloiche.",
+              "options": [],
+              "tokens": [
+                "cloiche.",
+                "Féach",
+                "ar",
+                "an",
+                "mballa",
+                "mór"
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Look at the big stone wall.",
+              "audioText": "Féach ar an mballa mór cloiche.",
+              "modelText": "Féach ar an mballa mór cloiche.",
+              "feedback": "The phrase directs attention to material, scale and structure.",
+              "hint": "Begin Féach ar an mballa.",
+              "recovery": "Keep mór cloiche together after balla.",
+              "lexemeIDs": [
+                "lex.feach",
+                "lex.balla",
+                "lex.mor",
+                "lex.cloch"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.stone-castle.power-and-residence",
+            "legacyBeatIndex": null,
+            "title": "The keep is residence and coercive architecture",
+            "context": "Lordship made visible",
+            "body": "Rooms, chapel, storage and circulation show a place used by elite households and administration. Ditch, wall, gate and height show defence and control. Calling it only a home softens its political work; calling it only a weapon erases the lives organised within it.",
+            "detail": "The story holds domestic and coercive functions together.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m04",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "relationshipField",
+            "advanceLabel": "Hold both functions",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "residence",
+                "title": "Residence",
+                "detail": "Rooms, household and chapel",
+                "symbol": "house"
+              },
+              {
+                "id": "control",
+                "title": "Control",
+                "detail": "Wall, gate, ditch and height",
+                "symbol": "shield"
+              }
+            ]
+          },
+          {
+            "id": "meath.stone-castle.altered-keep",
+            "legacyBeatIndex": null,
+            "title": "Later use changes the stronghold",
+            "context": "Floors · openings · domestic adaptation",
+            "body": "The keep was altered as the de Lacy lordship and later occupation changed. Additional levels and adapted rooms show that even the most commanding form was not fixed at first completion.",
+            "detail": "The exact attribution of each alteration remains part of the castle-specialist gate; the secure learner claim is continued change.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m04",
+              "source.meath.trim-opw"
+            ],
+            "exercise": null,
+            "presentation": "archive",
+            "advanceLabel": "Look for later change",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.stone-castle.match-fabric",
+            "legacyBeatIndex": null,
+            "title": "Match the stone-castle words",
+            "context": "cloch · balla · mór · féach",
+            "body": "Keep material, structure, scale and action distinct.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "matching",
+              "objective": "Connect the four stone-castle words to their meanings.",
+              "prompt": "Match each Irish word to its meaning.",
+              "answer": "all pairs",
+              "options": [],
+              "tokens": [],
+              "pairs": [
+                {
+                  "id": "stone",
+                  "left": "cloch",
+                  "right": "stone"
+                },
+                {
+                  "id": "wall",
+                  "left": "balla",
+                  "right": "wall"
+                },
+                {
+                  "id": "big",
+                  "left": "mór",
+                  "right": "big"
+                },
+                {
+                  "id": "look",
+                  "left": "féach",
+                  "right": "look"
+                }
+              ],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "Stone, wall, big and look now describe different parts of inspection.",
+              "hint": "Féach is the action; cloch is the material.",
+              "recovery": "Those two do not match. Try another meaning.",
+              "lexemeIDs": [
+                "lex.cloch",
+                "lex.balla",
+                "lex.mor",
+                "lex.feach"
+              ],
+              "operatesOnSentence": false,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.stone-castle.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "The present walls do not share one date",
+            "context": "Architectural phasing · specialist review open",
+            "body": "The fabric supports a long building history under Hugh, Walter and later lords. Exact attribution of every wall, floor and opening requires castle-specialist review. The draft keeps broad phases but does not colour-code individual stones as settled fact.",
+            "detail": "The phasing gate must close before final diagrams or learner questions claim exact builders.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m04",
+              "source.meath.trim-opw"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Keep the phases revisable",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.stone-castle.fill-wall",
+            "legacyBeatIndex": null,
+            "title": "Complete the scale line",
+            "context": "Tá an balla mór · The wall is big",
+            "body": "Choose the word that describes scale.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "fillGap",
+              "objective": "Use mór in a complete sentence about the wall.",
+              "prompt": "Complete: Tá an balla ___.",
+              "answer": "mór",
+              "options": [
+                {
+                  "id": "big",
+                  "text": "mór",
+                  "isCorrect": true,
+                  "rationale": "Mór means big."
+                },
+                {
+                  "id": "stone",
+                  "text": "cloch",
+                  "isCorrect": false,
+                  "rationale": "Cloch means stone."
+                },
+                {
+                  "id": "look",
+                  "text": "féach",
+                  "isCorrect": false,
+                  "rationale": "Féach means look."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": "Tá an balla ___.",
+              "translation": "The wall is big.",
+              "audioText": null,
+              "modelText": "Tá an balla mór.",
+              "feedback": "Tá an balla mór — the wall is big.",
+              "hint": "Choose the word meaning big.",
+              "recovery": "Cloch names material and féach is an action. The gap describes scale.",
+              "lexemeIDs": [
+                "lex.balla",
+                "lex.mor"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.stone-castle.read-phases",
+            "legacyBeatIndex": null,
+            "title": "Choose the honest building claim",
+            "context": "Source comprehension · castle fabric",
+            "body": "Keep the timber beginning, stone sequence and open attribution together.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "comprehension",
+              "objective": "Identify the bounded architectural account.",
+              "prompt": "Which statement fits the evidence?",
+              "answer": "The first timber fortification was followed by a stone castle built and altered over decades.",
+              "options": [
+                {
+                  "id": "phases",
+                  "text": "The first timber fortification was followed by a stone castle built and altered over decades.",
+                  "isCorrect": true,
+                  "rationale": "This is the bounded phasing claim."
+                },
+                {
+                  "id": "single-day",
+                  "text": "The entire stone castle was completed on the day of the grant.",
+                  "isCorrect": false,
+                  "rationale": "The build took decades and followed the first fort."
+                },
+                {
+                  "id": "unchanged",
+                  "text": "Every visible wall belongs to Hugh alone.",
+                  "isCorrect": false,
+                  "rationale": "Later phases and successors matter."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "The castle changes material and form through time.",
+              "hint": "Choose the sequence rather than a single-day foundation claim.",
+              "recovery": "The present walls do not all belong to one year or one builder.",
+              "lexemeIDs": [
+                "lex.teach",
+                "lex.caislean",
+                "lex.cloch",
+                "lex.nua",
+                "lex.sean"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.stone-castle.consequence",
+            "legacyBeatIndex": null,
+            "title": "The castle becomes part of a town",
+            "context": "Chapter turn · monument to lived place",
+            "body": "Stone makes the lordship's centre durable and visually dominant, but Trim does not end at the curtain wall. Streets, worship, work, households and later memories gather around it. The final chapter returns the monument to the town and the conquest to its afterlife.",
+            "detail": "The story widens from fabric to a lived and contested place.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m05",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Return to the town",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.stone-castle.build-stone-wall",
+            "legacyBeatIndex": null,
+            "title": "Build the inspection line",
+            "context": "Féach ar an mballa mór cloiche",
+            "body": "Produce action, structure, scale and material together.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "sentenceConstruction",
+              "objective": "Use all four new words in a complete instruction.",
+              "prompt": "Build: Look at the big stone wall.",
+              "answer": "Féach ar an mballa mór cloiche.",
+              "options": [],
+              "tokens": [
+                "mballa",
+                "Féach",
+                "cloiche.",
+                "ar",
+                "an",
+                "mór"
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Look at the big stone wall.",
+              "audioText": null,
+              "modelText": "Féach ar an mballa mór cloiche.",
+              "feedback": "The instruction now carries the full material reading.",
+              "hint": "Begin Féach ar an mballa.",
+              "recovery": "Keep mór cloiche together after the wall.",
+              "lexemeIDs": [
+                "lex.feach",
+                "lex.balla",
+                "lex.mor",
+                "lex.cloch"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      },
+      {
+        "id": "meath.town-and-afterlife",
+        "title": "Baile Beo · A living town",
+        "place": "Trim · castle, town and afterlife",
+        "pages": [
+          {
+            "id": "meath.town-and-afterlife.opening",
+            "legacyBeatIndex": null,
+            "title": "The wall stands inside a living town",
+            "context": "Trim · present place",
+            "body": "The mór balla and cloch of the caisleán remain, but Trim is also a baile where people have cónaí now. Féach returns as an instruction to look beyond the keep: river, ford, streets, later buildings and older names continue around it.",
+            "detail": "The closing chapter refuses to let monumental conquest architecture become the whole county.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m05",
+              "source.meath.trim-opw"
+            ],
+            "exercise": null,
+            "presentation": "connectedSystem",
+            "advanceLabel": "Widen beyond the wall",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "castle",
+                "title": "Castle",
+                "detail": "A dominant surviving structure",
+                "symbol": "building.columns"
+              },
+              {
+                "id": "town",
+                "title": "Town",
+                "detail": "A lived place beyond the wall",
+                "symbol": "house.2"
+              },
+              {
+                "id": "river",
+                "title": "River and ford",
+                "detail": "The older site logic",
+                "symbol": "water.waves"
+              }
+            ]
+          },
+          {
+            "id": "meath.town-and-afterlife.town-growth",
+            "legacyBeatIndex": null,
+            "title": "Urban life grows beside lordship",
+            "context": "Trim town · later medieval development",
+            "body": "A town developed beside the castle, with its own streets, worship, trade and later defences. Its history cannot be reduced to service of the keep. People negotiated, benefited from, endured and resisted changing systems of power in different ways.",
+            "detail": "The town is not a decorative epilogue; it is the human afterlife of the chosen centre.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m05",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "relationshipField",
+            "advanceLabel": "Keep the town distinct",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "castle",
+                "title": "Castle",
+                "detail": "Lordship and administration",
+                "symbol": "building.columns"
+              },
+              {
+                "id": "town",
+                "title": "Town",
+                "detail": "Households, streets and work",
+                "symbol": "house.2"
+              }
+            ]
+          },
+          {
+            "id": "meath.town-and-afterlife.old-and-new",
+            "legacyBeatIndex": null,
+            "title": "Old fabric and new life occupy one place",
+            "context": "sean · old · nua · new",
+            "body": "The castle is sean; the town is not frozen around it. Nua returns through present use, conservation and changing streets. The name Áth Troim still carries the ford even when the crossing is no longer the visitor's first thought.",
+            "detail": "Afterlife means continuity and change, not nostalgic stillness.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m02",
+              "evidence.meath.m05"
+            ],
+            "exercise": null,
+            "presentation": "languageField",
+            "advanceLabel": "Hold old and new together",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": [
+              {
+                "id": "old",
+                "title": "sean",
+                "detail": "Older fabric and names",
+                "symbol": "clock.arrow.circlepath"
+              },
+              {
+                "id": "new",
+                "title": "nua",
+                "detail": "Present life and change",
+                "symbol": "sparkles"
+              },
+              {
+                "id": "ford",
+                "title": "Áth Troim",
+                "detail": "The crossing retained in the name",
+                "symbol": "textformat"
+              }
+            ]
+          },
+          {
+            "id": "meath.town-and-afterlife.notice-old-new",
+            "legacyBeatIndex": null,
+            "title": "Notice old and new in time",
+            "context": "Bhí sé nua; tá sé sean anois",
+            "body": "Choose the sentence that expresses change without calling the town finished.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "grammarDiscovery",
+              "objective": "Use sean and nua inside a past-to-present contrast.",
+              "prompt": "Which line means: It was new; it is old now?",
+              "answer": "Bhí sé nua; tá sé sean anois.",
+              "options": [
+                {
+                  "id": "change",
+                  "text": "Bhí sé nua; tá sé sean anois.",
+                  "isCorrect": true,
+                  "rationale": "This expresses change through time."
+                },
+                {
+                  "id": "reverse",
+                  "text": "Bhí sé sean; tá sé nua anois.",
+                  "isCorrect": false,
+                  "rationale": "This reverses the castle's sequence."
+                },
+                {
+                  "id": "static",
+                  "text": "Tá sé nua agus sean.",
+                  "isCorrect": false,
+                  "rationale": "This does not express the time change clearly."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "It was new; it is old now.",
+              "audioText": null,
+              "modelText": "Bhí sé nua; tá sé sean anois.",
+              "feedback": "The line makes age a change through time rather than an essence.",
+              "hint": "Bhí places the first state in the past; tá brings the second to now.",
+              "recovery": "Choose the line with nua first and sean anois second.",
+              "lexemeIDs": [
+                "lex.nua",
+                "lex.sean"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.town-and-afterlife.conquest-afterlife",
+            "legacyBeatIndex": null,
+            "title": "Built beauty does not erase dispossession",
+            "context": "Sensitivity boundary",
+            "body": "Trim Castle is architecturally remarkable and historically coercive. Admiring its design does not require celebrating conquest as progress. The county account keeps the grant, attack, control and older Meath visible beside the surviving monument.",
+            "detail": "Multiple truths can share one screen when their relationship is stated plainly.",
+            "visibility": "storyOnly",
+            "requirement": "storyRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m04",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "pressureField",
+            "advanceLabel": "Keep beauty and power together",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.town-and-afterlife.speak-present-place",
+            "legacyBeatIndex": null,
+            "title": "Speak the old castle and living town",
+            "context": "Féach ar an sean-chaisleán agus ar an mbaile nua",
+            "body": "Record and compare the line without a score.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "audio.exercise.meath-town-and-afterlife-speak-present-place"
+            ],
+            "exercise": {
+              "family": "speaking",
+              "objective": "Produce féach, sean, caisleán, baile and nua in one sentence.",
+              "prompt": "Record: Féach ar an sean-chaisleán agus ar an mbaile nua.",
+              "answer": "Féach ar an sean-chaisleán agus ar an mbaile nua.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Look at the old castle and the new town.",
+              "audioText": "Féach ar an sean-chaisleán agus ar an mbaile nua.",
+              "modelText": "Féach ar an sean-chaisleán agus ar an mbaile nua.",
+              "feedback": "The line holds the old castle and changing town in one present view.",
+              "hint": "Keep sean-chaisleán together and end with baile nua.",
+              "recovery": "If recording is unavailable, replay the model and continue without saving audio.",
+              "lexemeIDs": [
+                "lex.feach",
+                "lex.sean",
+                "lex.caislean",
+                "lex.baile",
+                "lex.nua"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.town-and-afterlife.evidence-limit",
+            "legacyBeatIndex": null,
+            "title": "What this county account can claim",
+            "context": "Land · grant · ford · fort · castle · town",
+            "body": "The account can establish an existing Meath, a 1172 grant, Trim's strategic ford, an early fortified house attacked and rebuilt, a stone castle developed in phases, and a town growing beside it. It cannot turn a later grant copy into consent, assign every wall exactly or speak for everyone dispossessed.",
+            "detail": "The final evidence page gathers the county's causal chain and open specialist limits.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m01",
+              "evidence.meath.m02",
+              "evidence.meath.m03",
+              "evidence.meath.m04",
+              "evidence.meath.m07"
+            ],
+            "exercise": null,
+            "presentation": "evidenceBoundary",
+            "advanceLabel": "Carry the bounded story",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.town-and-afterlife.match-county-anchors",
+            "legacyBeatIndex": null,
+            "title": "Match place, document and fabric",
+            "context": "talamh · áth · caisleán · balla",
+            "body": "Reconnect the county's four physical anchors.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "matching",
+              "objective": "Connect land, ford, castle and wall to their meanings.",
+              "prompt": "Match each Irish word to its meaning.",
+              "answer": "all pairs",
+              "options": [],
+              "tokens": [],
+              "pairs": [
+                {
+                  "id": "land",
+                  "left": "talamh",
+                  "right": "land"
+                },
+                {
+                  "id": "ford",
+                  "left": "áth",
+                  "right": "ford"
+                },
+                {
+                  "id": "castle",
+                  "left": "caisleán",
+                  "right": "castle"
+                },
+                {
+                  "id": "wall",
+                  "left": "balla",
+                  "right": "wall"
+                }
+              ],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "Land, crossing, fortification and wall remain a causal sequence.",
+              "hint": "The áth crosses water; the balla encloses built space.",
+              "recovery": "Those two do not match. Try another meaning.",
+              "lexemeIDs": [
+                "lex.talamh",
+                "lex.ath",
+                "lex.caislean",
+                "lex.balla"
+              ],
+              "operatesOnSentence": false,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.town-and-afterlife.read-county-limit",
+            "legacyBeatIndex": null,
+            "title": "Choose the complete Meath claim",
+            "context": "Final source comprehension",
+            "body": "Keep existing land, grant, conflict, building and afterlife together.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "comprehension",
+              "objective": "Identify the evidence-grounded county summary.",
+              "prompt": "Which summary can this pack support?",
+              "answer": "A grant claimed existing Meath; Trim's ford became a contested fortified centre whose stone castle and town developed over time.",
+              "options": [
+                {
+                  "id": "bounded",
+                  "text": "A grant claimed existing Meath; Trim's ford became a contested fortified centre whose stone castle and town developed over time.",
+                  "isCorrect": true,
+                  "rationale": "This is the bounded county account."
+                },
+                {
+                  "id": "empty",
+                  "text": "Hugh peacefully founded a town on empty land.",
+                  "isCorrect": false,
+                  "rationale": "The land was inhabited and conquest was contested."
+                },
+                {
+                  "id": "single",
+                  "text": "The whole stone castle was completed on the day of the grant.",
+                  "isCorrect": false,
+                  "rationale": "The fortifications developed through phases."
+                }
+              ],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": null,
+              "audioText": null,
+              "modelText": null,
+              "feedback": "The summary keeps the land before the grant and the castle inside a contested sequence.",
+              "hint": "Choose the account that begins before conquest and continues beyond the keep.",
+              "recovery": "The other answers erase existing Meath or compress decades into one peaceful day.",
+              "lexemeIDs": [
+                "lex.talamh",
+                "lex.ath",
+                "lex.caislean",
+                "lex.baile"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": true
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.town-and-afterlife.consequence",
+            "legacyBeatIndex": null,
+            "title": "Carry the crossing beneath the castle",
+            "context": "County close · an Mhí",
+            "body": "Meath closes with the ford still legible beneath the monumental keep and the old land still legible beneath the grant. The castle enters What survives; any learner site diagram enters What you made; the twenty words enter review only after Learning completion.",
+            "detail": "Story completion can advance the route without turning the county gold.",
+            "visibility": "both",
+            "requirement": "bothRequired",
+            "kind": "narrative",
+            "estimatedSeconds": 78,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [
+              "evidence.meath.m02",
+              "evidence.meath.m04"
+            ],
+            "exercise": null,
+            "presentation": "closingQuestion",
+            "advanceLabel": "Carry Trim forward",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "meath.town-and-afterlife.retrieve-whole-story",
+            "legacyBeatIndex": null,
+            "title": "Bring land, ford, castle and town together",
+            "context": "Tá ainm ar an talamh; tá an t-áth, an caisleán agus an baile anseo",
+            "body": "Retrieve the county's place sequence in one closing line.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 72,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "delayedRetrieval",
+              "objective": "Produce a sentence reusing name, land, ford, castle, town and here.",
+              "prompt": "Type: The land has a name; the ford, castle and town are here.",
+              "answer": "Tá ainm ar an talamh; tá an t-áth, an caisleán agus an baile anseo.",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "The land has a name; the ford, castle and town are here.",
+              "audioText": null,
+              "modelText": "Tá ainm ar an talamh; tá an t-áth, an caisleán agus an baile anseo.",
+              "feedback": "The final line keeps place, crossing, monument and lived settlement together.",
+              "hint": "Build Tá ainm ar an talamh first.",
+              "recovery": "Keep the three place nouns together before anseo.",
+              "lexemeIDs": [
+                "lex.ainm",
+                "lex.talamh",
+                "lex.ath",
+                "lex.caislean",
+                "lex.baile",
+                "lex.anseo"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      }
+    ],
+    "completion": {
+      "storyPageIDs": [
+        "meath.before-the-grant.opening",
+        "meath.before-the-grant.mide",
+        "meath.before-the-grant.names-survive",
+        "meath.before-the-grant.no-single-voice",
+        "meath.before-the-grant.evidence-limit",
+        "meath.before-the-grant.consequence",
+        "meath.grant.opening",
+        "meath.grant.copy-status",
+        "meath.grant.new-claim",
+        "meath.grant.not-consent",
+        "meath.grant.document-silence",
+        "meath.grant.evidence-limit",
+        "meath.grant.consequence",
+        "meath.ford.opening",
+        "meath.ford.caput",
+        "meath.ford.ford-name",
+        "meath.ford.route-not-consent",
+        "meath.ford.evidence-limit",
+        "meath.ford.consequence",
+        "meath.first-fortification.opening",
+        "meath.first-fortification.attack",
+        "meath.first-fortification.lived-position",
+        "meath.first-fortification.source-voice",
+        "meath.first-fortification.evidence-limit",
+        "meath.first-fortification.consequence",
+        "meath.stone-castle.opening",
+        "meath.stone-castle.thirty-years",
+        "meath.stone-castle.twenty-sided",
+        "meath.stone-castle.power-and-residence",
+        "meath.stone-castle.altered-keep",
+        "meath.stone-castle.evidence-limit",
+        "meath.stone-castle.consequence",
+        "meath.town-and-afterlife.opening",
+        "meath.town-and-afterlife.town-growth",
+        "meath.town-and-afterlife.old-and-new",
+        "meath.town-and-afterlife.conquest-afterlife",
+        "meath.town-and-afterlife.evidence-limit",
+        "meath.town-and-afterlife.consequence"
+      ],
+      "learningPageIDs": [
+        "meath.before-the-grant.opening",
+        "meath.before-the-grant.names-survive",
+        "meath.before-the-grant.hear-existing-place",
+        "meath.before-the-grant.build-named-land",
+        "meath.before-the-grant.evidence-limit",
+        "meath.before-the-grant.match-place-words",
+        "meath.before-the-grant.read-opening",
+        "meath.before-the-grant.consequence",
+        "meath.before-the-grant.type-old-town",
+        "meath.grant.opening",
+        "meath.grant.new-claim",
+        "meath.grant.hear-possession",
+        "meath.grant.notice-have-pattern",
+        "meath.grant.evidence-limit",
+        "meath.grant.answer-possession",
+        "meath.grant.sequence-claim",
+        "meath.grant.consequence",
+        "meath.grant.retrieve-record",
+        "meath.ford.opening",
+        "meath.ford.ford-name",
+        "meath.ford.hear-site",
+        "meath.ford.fill-here",
+        "meath.ford.evidence-limit",
+        "meath.ford.build-ford",
+        "meath.ford.read-location",
+        "meath.ford.consequence",
+        "meath.ford.type-two-positions",
+        "meath.first-fortification.opening",
+        "meath.first-fortification.lived-position",
+        "meath.first-fortification.hear-fortification",
+        "meath.first-fortification.sequence-fort",
+        "meath.first-fortification.evidence-limit",
+        "meath.first-fortification.answer-where-live",
+        "meath.first-fortification.type-position",
+        "meath.first-fortification.consequence",
+        "meath.first-fortification.retrieve-site",
+        "meath.stone-castle.opening",
+        "meath.stone-castle.twenty-sided",
+        "meath.stone-castle.hear-stone-wall",
+        "meath.stone-castle.match-fabric",
+        "meath.stone-castle.evidence-limit",
+        "meath.stone-castle.fill-wall",
+        "meath.stone-castle.read-phases",
+        "meath.stone-castle.consequence",
+        "meath.stone-castle.build-stone-wall",
+        "meath.town-and-afterlife.opening",
+        "meath.town-and-afterlife.old-and-new",
+        "meath.town-and-afterlife.notice-old-new",
+        "meath.town-and-afterlife.speak-present-place",
+        "meath.town-and-afterlife.evidence-limit",
+        "meath.town-and-afterlife.match-county-anchors",
+        "meath.town-and-afterlife.read-county-limit",
+        "meath.town-and-afterlife.consequence",
+        "meath.town-and-afterlife.retrieve-whole-story"
+      ]
+    },
+    "lifecycle": [
+      {
+        "id": "lex.talamh",
+        "introducedPageID": "meath.before-the-grant.opening",
+        "heardPageID": "meath.before-the-grant.hear-existing-place",
+        "producedPageID": "meath.before-the-grant.build-named-land",
+        "reusedPageID": "meath.grant.opening"
+      },
+      {
+        "id": "lex.sean",
+        "introducedPageID": "meath.before-the-grant.opening",
+        "heardPageID": "meath.before-the-grant.hear-existing-place",
+        "producedPageID": "meath.before-the-grant.type-old-town",
+        "reusedPageID": "meath.grant.opening"
+      },
+      {
+        "id": "lex.baile",
+        "introducedPageID": "meath.before-the-grant.opening",
+        "heardPageID": "meath.before-the-grant.hear-existing-place",
+        "producedPageID": "meath.before-the-grant.build-named-land",
+        "reusedPageID": "meath.grant.opening"
+      },
+      {
+        "id": "lex.ainm",
+        "introducedPageID": "meath.before-the-grant.opening",
+        "heardPageID": "meath.before-the-grant.hear-existing-place",
+        "producedPageID": "meath.before-the-grant.build-named-land",
+        "reusedPageID": "meath.grant.opening"
+      },
+      {
+        "id": "lex.agam",
+        "introducedPageID": "meath.grant.opening",
+        "heardPageID": "meath.grant.hear-possession",
+        "producedPageID": "meath.grant.answer-possession",
+        "reusedPageID": "meath.ford.opening"
+      },
+      {
+        "id": "lex.agat",
+        "introducedPageID": "meath.grant.opening",
+        "heardPageID": "meath.grant.hear-possession",
+        "producedPageID": "meath.grant.answer-possession",
+        "reusedPageID": "meath.ford.opening"
+      },
+      {
+        "id": "lex.nua",
+        "introducedPageID": "meath.grant.new-claim",
+        "heardPageID": "meath.grant.hear-possession",
+        "producedPageID": "meath.grant.retrieve-record",
+        "reusedPageID": "meath.ford.opening"
+      },
+      {
+        "id": "lex.tog",
+        "introducedPageID": "meath.grant.new-claim",
+        "heardPageID": "meath.grant.hear-possession",
+        "producedPageID": "meath.grant.retrieve-record",
+        "reusedPageID": "meath.ford.opening"
+      },
+      {
+        "id": "lex.ath",
+        "introducedPageID": "meath.ford.opening",
+        "heardPageID": "meath.ford.hear-site",
+        "producedPageID": "meath.ford.build-ford",
+        "reusedPageID": "meath.first-fortification.opening"
+      },
+      {
+        "id": "lex.abhainn",
+        "introducedPageID": "meath.ford.opening",
+        "heardPageID": "meath.ford.hear-site",
+        "producedPageID": "meath.ford.build-ford",
+        "reusedPageID": "meath.first-fortification.opening"
+      },
+      {
+        "id": "lex.anseo",
+        "introducedPageID": "meath.ford.opening",
+        "heardPageID": "meath.ford.hear-site",
+        "producedPageID": "meath.ford.type-two-positions",
+        "reusedPageID": "meath.first-fortification.opening"
+      },
+      {
+        "id": "lex.ansiud",
+        "introducedPageID": "meath.ford.opening",
+        "heardPageID": "meath.ford.hear-site",
+        "producedPageID": "meath.ford.type-two-positions",
+        "reusedPageID": "meath.first-fortification.opening"
+      },
+      {
+        "id": "lex.teach",
+        "introducedPageID": "meath.first-fortification.opening",
+        "heardPageID": "meath.first-fortification.hear-fortification",
+        "producedPageID": "meath.first-fortification.type-position",
+        "reusedPageID": "meath.stone-castle.opening"
+      },
+      {
+        "id": "lex.caislean",
+        "introducedPageID": "meath.first-fortification.opening",
+        "heardPageID": "meath.first-fortification.hear-fortification",
+        "producedPageID": "meath.first-fortification.type-position",
+        "reusedPageID": "meath.stone-castle.opening"
+      },
+      {
+        "id": "lex.conai",
+        "introducedPageID": "meath.first-fortification.lived-position",
+        "heardPageID": "meath.first-fortification.hear-fortification",
+        "producedPageID": "meath.first-fortification.type-position",
+        "reusedPageID": "meath.stone-castle.opening"
+      },
+      {
+        "id": "lex.seas",
+        "introducedPageID": "meath.first-fortification.lived-position",
+        "heardPageID": "meath.first-fortification.hear-fortification",
+        "producedPageID": "meath.first-fortification.type-position",
+        "reusedPageID": "meath.stone-castle.opening"
+      },
+      {
+        "id": "lex.cloch",
+        "introducedPageID": "meath.stone-castle.opening",
+        "heardPageID": "meath.stone-castle.hear-stone-wall",
+        "producedPageID": "meath.stone-castle.build-stone-wall",
+        "reusedPageID": "meath.town-and-afterlife.opening"
+      },
+      {
+        "id": "lex.mor",
+        "introducedPageID": "meath.stone-castle.opening",
+        "heardPageID": "meath.stone-castle.hear-stone-wall",
+        "producedPageID": "meath.stone-castle.build-stone-wall",
+        "reusedPageID": "meath.town-and-afterlife.opening"
+      },
+      {
+        "id": "lex.balla",
+        "introducedPageID": "meath.stone-castle.opening",
+        "heardPageID": "meath.stone-castle.hear-stone-wall",
+        "producedPageID": "meath.stone-castle.build-stone-wall",
+        "reusedPageID": "meath.town-and-afterlife.opening"
+      },
+      {
+        "id": "lex.feach",
+        "introducedPageID": "meath.stone-castle.opening",
+        "heardPageID": "meath.stone-castle.hear-stone-wall",
+        "producedPageID": "meath.stone-castle.build-stone-wall",
+        "reusedPageID": "meath.town-and-afterlife.opening"
+      }
+    ],
+    "enforceLearningQuality": true
   }
 }

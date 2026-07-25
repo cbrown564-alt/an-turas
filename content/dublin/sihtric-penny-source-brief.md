@@ -5,8 +5,8 @@ cleared**. Replaces the inherited Chapter 3 795–900 raid-to-market composite (
 
 ## Phase 5 pre-clearance draft — 24 July 2026
 
-`sihtric-penny.pack.draft.json` now applies the complete Mayo authoring pattern
-without promoting provisional numismatics into the app:
+`sihtric-penny.pack.draft.json` now applies the complete Mayo authoring pattern and
+is bundled in the app as review-only content:
 
 - six chapters and 68 stable pages, with variable chapter lengths;
 - a 49.4-minute estimated Story path and a causally complete 67.2-minute Learning
@@ -19,9 +19,9 @@ without promoting provisional numismatics into the app:
 
 The draft passes `tools/validate_county_pack.py` with `scope: completeCounty` and
 learning-quality enforcement enabled. `completeCounty` describes the authored data,
-not specialist clearance. The shipping app keeps the five-page editorial preview
-until the numismatist, historian, pedagogy, native-speaker audio and rights gates
-below close.
+not specialist clearance. The app labels the full pack **Review draft** and keeps
+county gold, the made object and word scheduling locked until the numismatist,
+historian, pedagogy, native-speaker audio and rights gates below close.
 
 The six chapters are:
 
@@ -42,7 +42,7 @@ and resolve the learner-facing date convention.
 
 ## Phase 3 prototype binding — 14 July 2026
 
-The app now contains a four-episode / twelve-beat editorial preview under
+The earlier Phase 3 app contained a four-episode / twelve-beat editorial preview under
 `dublin.sihtric-penny`. It proves the reusable county-story flow while keeping the
 learner-facing specimen, legend and mint motive explicitly provisional. It does
 **not** change this packet's research-draft status.

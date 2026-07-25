@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Build the three Phase 5 pre-clearance county packs.
+"""Build the three Phase 5 in-app review county packs.
 
-The shipping Offaly, Dublin and Meath packs remain the small editorial previews
-until specialist review, native-speaker audio QA and rights work are complete.
-This script assembles the structurally complete drafts in ``content/`` using the
-same schema and quality gates as the expanded Mayo draft.
+The structurally complete drafts remain pre-clearance content: their open review
+gates prevent them from awarding county completion, artifacts or scheduled words.
+The same generated envelope is written to ``content/`` for editorial ownership and
+to the app bundle so reviewers can inspect both modes in the real experience.
 """
 
 from __future__ import annotations
@@ -21,6 +21,11 @@ OUTPUTS = {
     / "content/offaly/cross-of-the-scriptures.pack.draft.json",
     "dublin.sihtric-penny": ROOT / "content/dublin/sihtric-penny.pack.draft.json",
     "meath.trim-de-lacy": ROOT / "content/meath/trim-de-lacy.pack.draft.json",
+}
+
+BUNDLED_OUTPUTS = {
+    pack_id: ROOT / "ios/AnTuras/Resources/CountyStories" / f"{pack_id}.json"
+    for pack_id in OUTPUTS
 }
 
 AUDIO_FAMILIES = {"listenIdentify", "listenBuildSentence", "speaking"}
@@ -3885,13 +3890,11 @@ def meath_spec() -> dict:
 def main() -> int:
     specs = [offaly_spec(), dublin_spec(), meath_spec()]
     for spec in specs:
-        output = OUTPUTS[spec["id"]]
-        output.parent.mkdir(parents=True, exist_ok=True)
-        output.write_text(
-            json.dumps(assemble(spec), ensure_ascii=False, indent=2) + "\n",
-            encoding="utf-8",
-        )
-        print(output.relative_to(ROOT))
+        rendered = json.dumps(assemble(spec), ensure_ascii=False, indent=2) + "\n"
+        for output in (OUTPUTS[spec["id"]], BUNDLED_OUTPUTS[spec["id"]]):
+            output.parent.mkdir(parents=True, exist_ok=True)
+            output.write_text(rendered, encoding="utf-8")
+            print(output.relative_to(ROOT))
     return 0
 
 

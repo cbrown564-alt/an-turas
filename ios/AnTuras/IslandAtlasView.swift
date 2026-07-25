@@ -804,7 +804,7 @@ struct CurrentStoryView: View {
                         Text(story.era).font(.caption.monospaced()).foregroundStyle(Theme.inkFaint)
                     }
                     Text(story.anchor).font(.system(.title2, design: .serif, weight: .semibold)).foregroundStyle(Theme.ink)
-                    Text("Four episodes carry twenty words into the atlas. This build remains an editorial preview until the named external checks pass.")
+                    Text("\(story.episodes.count) chapters and twenty provisional words are bundled for in-app review. Completion effects remain locked until the named review gates pass.")
                         .font(.body).foregroundStyle(Theme.inkSoft).lineSpacing(4)
                     PrimaryButton(title: "Continue to \(story.countyEn)", fullWidth: true) { onOpenCountyStory(story.id) }
                 }

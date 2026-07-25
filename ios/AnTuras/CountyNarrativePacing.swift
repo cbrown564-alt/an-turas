@@ -17,8 +17,14 @@ struct CountyNarrativePage: View {
     }
 
     private var visualAssetName: String? {
-        guard let resourceID = page.visualResourceID else { return nil }
-        return pack.resources.first(where: { $0.id == resourceID && $0.kind == .image })?.value
+        guard let resourceID = page.visualResourceID,
+              let res = pack.resources.first(where: { $0.id == resourceID && ($0.kind == .image || $0.kind == .video) })
+        else { return nil }
+        if res.kind == .video {
+            let raw = res.value
+            return raw.hasPrefix("video.") ? String(raw.dropFirst(6)) : raw
+        }
+        return res.value
     }
 
     var body: some View {

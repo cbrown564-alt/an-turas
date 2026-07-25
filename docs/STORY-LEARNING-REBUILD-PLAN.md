@@ -25,8 +25,8 @@ review scheduling, and offline pack installation. It does not prove content dept
 learning quality.
 
 - Mayo's six episodes and 18 beats are too short for the intended flagship story.
-- Offaly, Dublin, and Meath are four-episode, twelve-beat editorial previews. They are
-  outlines with interactions, not substantial stories.
+- Offaly, Dublin, and Meath began as four-episode, twelve-beat editorial previews.
+  Their full review drafts are now bundled, but the review gates remain open.
 - Each new county has only four required interactions for 20 provisional words.
 - The new county flow mostly bypasses the stronger exercise mechanics already present
   in the legacy page system.
@@ -225,14 +225,15 @@ Each county needs a substantial causal story, a complete 20-word lifecycle, and 
 county-specific exercise composition. Each passes independently; three previews
 completed together do not constitute a quality gate.
 
-**Current progress (24 July):** structurally complete, non-bundled pre-clearance
-drafts now exist for all three counties. Each contains six variable-length chapters,
-68 pages, a 49.4-minute estimated Story path, 30 exercises across all 12 families,
-and complete ordered lifecycles for 20 provisional headwords. All three pass the
-strict county-pack validator. This completes authoring assembly, not the Phase 5 exit:
-the named historian, object specialist, pedagogy, native-speaker audio, rights,
-integration, accessibility and device gates remain open. The app therefore continues
-to ship the five-page editorial previews.
+**Current progress (24 July):** structurally complete pre-clearance drafts now exist
+for all three counties and are bundled for in-app review. Each contains six
+variable-length chapters, 68 pages, a 49.4-minute estimated Story path, 30 exercises
+across all 12 families, and complete ordered lifecycles for 20 provisional headwords.
+All three pass the strict county-pack validator. The app labels them **Review draft**;
+page progress is saved, but gold, made objects and word scheduling remain locked by
+the open gates. This enables review without completing the Phase 5 exit: the named
+historian, object specialist, pedagogy, native-speaker audio, rights, full
+accessibility and device gates remain open.
 
 **Exit:** all three counties pass the same internal gates as Mayo, with their own
 specialist and rights requirements closed.

@@ -33,10 +33,10 @@ schedules its words. Speaking remains ungraded record-and-compare.
 Rockfleet chapter has proved the page model, both mode projections, full-screen
 exercise system, recovery, accessibility, progress migration, and varied narrative
 composition. The Phase 4 Mayo review draft and three Phase 5 launch-county review
-drafts are now structurally complete and pass the strict content checks. They remain
-non-bundled pre-clearance work. The next target is specialist and pedagogy review,
-native-speaker audio, rights, app integration, and full accessibility/device
-verification without replacing the currently proven packs early.
+drafts are now structurally complete and pass the strict content checks. Offaly,
+Dublin and Meath are bundled as explicitly labelled in-app review drafts; Mayo
+remains non-bundled. The next target is specialist and pedagogy review,
+native-speaker audio, rights, and full accessibility/device verification.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
@@ -101,7 +101,7 @@ shared wording or a third qualified disposition resolves it; the owner cannot pr
 an unresolved dispute as settled fact.
 
 **24 July Phase 5 authoring update:** the working Mayo pattern has been applied to
-Offaly, Dublin, and Meath as three non-bundled pre-clearance packs. Each has six
+Offaly, Dublin, and Meath as three in-app pre-clearance review packs. Each has six
 variable-length chapters, 68 pages, a 49.4-minute estimated Story path, a causally
 complete Learning projection, 30 exercises across all 12 families, and one complete
 ordered lifecycle for each of its 20 provisional headwords. The exercise compositions
@@ -109,20 +109,22 @@ follow their objects: cross and inscription attention in Offaly, coin handling a
 legend reading in Dublin, and possession, grant, site sequence and fabric inspection
 in Meath. All three pass the strict county validator and their generator output is
 covered by regression tests; all **38 Python content/tooling tests** pass. A temporary
-iPhone 17 Pro substitution build decoded and rendered every draft. Story and Learning
-pages were inspected for all three counties, including the explicit missing-audio
-recovery state; the Story openings also remain scrollable at the largest accessibility
-text size, with Dublin sampled in dark appearance. The untouched shipping bundle still
-passes all 36 unit tests and the two preview UI tests affected by the substitution.
-Their source briefs now name the expanded chapter maps, official starting sources and
-open gates.
+iPhone 17 Pro substitution build first decoded and rendered every draft. The promoted
+bundle now passes all **36 Swift unit tests** and the **16 UI tests**: the initial full
+run exposed only two stale Rockfleet completion-copy expectations, and both complete
+Rockfleet walkers passed after its approved wording was restored. Offaly's review
+opening and retry/correct/recovery path pass directly; all three review openings were
+then inspected on the simulator at accessibility text size. Their source briefs name
+the expanded chapter maps, official starting sources and open gates.
 
-This is implemented authoring structure, not specialist validation or app promotion.
+This is implemented authoring structure promoted for in-app review, not specialist
+validation or public release.
 Offaly still needs medieval history and art/inscription review; Dublin needs a
 numismatist to select and transcribe the learner-facing penny; Meath needs the grant
 copy pinned, castle phasing reviewed, and conquest-sensitivity review. All three also
-need pedagogy, native-speaker audio QA, rights, integration, accessibility and device
-checks. The shipping app therefore retains the five-page editorial previews.
+need pedagogy, native-speaker audio QA, rights, full accessibility and device checks.
+The app labels all three **Review draft** and prevents them from awarding county gold,
+made objects or scheduled words while any review gate remains open.
 
 **Tester gate:** no external learner build until all four counties pass the narrative,
 20-word lifecycle, exercise-distribution, specialist review, native-speaker audio,
@@ -190,6 +192,7 @@ story or new Learning mode.
 | 2026-07-24 | **Expanded-history reviewer continuity requirement removed.** D24 records that a newly named historian may close the revision-6 `history.expanded` gate. The new review must identify revision, scope, date, requested changes and final disposition, and must explicitly confirm the candidate C04 folio and diplomatic wording. No gate is closed by this governance decision. | `docs/DECISIONS.md` D24, `content/mayo/grainne-1593-source-brief.md`, `content/mayo/DRAFT-STATUS.md` |
 | 2026-07-24 | **Split historical review permitted.** D24 now permits a narrative historian to own the Chapter 2/4 disposition and an archival specialist to own C04 folio and diplomatic-wording confirmation. One qualified person may perform both, but `history.expanded` requires both recorded dispositions. | `docs/DECISIONS.md` D24, `content/mayo/grainne-1593-source-brief.md`, `content/mayo/DRAFT-STATUS.md` |
 | 2026-07-24 | **Offaly, Dublin, and Meath full Story/Learning drafts assembled and simulator-smoke-tested.** The Mayo pattern now produces three non-bundled, six-chapter pre-clearance packs with variable page counts, estimated 49.4-minute Story paths, 30 exercises across all 12 mechanic families, complete 20-word lifecycles, object-specific evidence boundaries, and explicit open review gates. A repeatable builder and regression tests keep the generated drafts current; strict validation and all 38 Python tests pass. A temporary iPhone 17 Pro substitution build rendered representative Story and Learning pages for all three, the visible missing-audio recovery state, largest accessibility text, and a dark-appearance sample. The shipping bundle remains unchanged and passes 36 unit plus the two preview UI tests affected by substitution. This smoke test does not close specialist, full accessibility, device, or promotion gates. | `tools/build_phase5_county_drafts.py`, `tools/tests/test_validate_county_pack.py`, `content/{offaly,dublin,meath}/` |
+| 2026-07-24 | **Offaly, Dublin, and Meath promoted to in-app review drafts.** The full generated packs replace the five-page previews in the app bundle and are labelled **Review draft** wherever release state appears. Reviewers can traverse both complete modes and retain stable page progress. A new runtime guard requires `completeCounty` scope **and** zero open review gates before gold, made objects or scheduled words can be awarded; completing a review draft therefore has no release effects. Mode-opening and completion copy now derives from each pack's real chapter, page, timing, exercise and gate state instead of Rockfleet constants. All 38 Python tests, 36 Swift unit tests and 16 UI tests pass; the three review openings were directly inspected on an iPhone 17 Pro simulator at accessibility text size. | `ios/AnTuras/Resources/CountyStories/`, `CountyStoryPack.swift`, `CountyStoryExperienceView.swift`, `LaunchCountyStories.swift`, `AtlasPrototype.swift` |
 
 ## Immediate next steps (rebuild-plan Phases 4–6)
 

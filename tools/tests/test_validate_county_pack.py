@@ -29,6 +29,10 @@ PHASE5_DRAFTS = {
     "meath.trim-de-lacy": REPO_ROOT
     / "content/meath/trim-de-lacy.pack.draft.json",
 }
+PHASE5_BUNDLED = {
+    pack_id: PACKS_DIR / f"{pack_id}.json"
+    for pack_id in PHASE5_DRAFTS
+}
 
 
 def load(path):
@@ -170,10 +174,9 @@ class Phase5ReviewDraftsValidate(unittest.TestCase):
         specs = [phase5.offaly_spec(), phase5.dublin_spec(), phase5.meath_spec()]
         for spec in specs:
             with self.subTest(pack=spec["id"]):
-                self.assertEqual(
-                    phase5.assemble(spec),
-                    load(PHASE5_DRAFTS[spec["id"]]),
-                )
+                generated = phase5.assemble(spec)
+                self.assertEqual(generated, load(PHASE5_DRAFTS[spec["id"]]))
+                self.assertEqual(generated, load(PHASE5_BUNDLED[spec["id"]]))
 
 
 class LexemeConvention(unittest.TestCase):

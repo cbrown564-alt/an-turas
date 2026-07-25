@@ -4,6 +4,7 @@ import SwiftUI
 
 enum LaunchStoryClearance: String, Equatable {
     case cleared = "Reviewed story"
+    case reviewDraft = "Review draft"
     case editorialPreview = "Editorial preview"
 }
 
@@ -56,13 +57,15 @@ struct LaunchCountyStory: Identifiable {
     }
 
     var clearance: LaunchStoryClearance {
-        pack.scope == .completeCounty ? .cleared : .editorialPreview
+        if pack.isReleaseCleared { return .cleared }
+        if pack.isReviewDraft { return .reviewDraft }
+        return .editorialPreview
     }
 
     var reviewGate: String {
-        let open = pack.reviewGates.filter { $0.status != "complete" }.map(\.title)
+        let open = pack.openReviewGateTitles
         if open.isEmpty { return "The recorded history, language, audio and rights reviews are complete." }
-        return "Before public release: \(open.joined(separator: ", "))."
+        return "Open review gates: \(open.joined(separator: ", "))."
     }
 
     var episodes: [LaunchEpisode] {

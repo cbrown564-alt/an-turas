@@ -169,9 +169,9 @@ def validate(envelope: dict) -> PackReport:
                 raise PackValidationError("missingResource", f"unknown resource {rid}")
         visual = page.get("visualResourceID")
         if visual is not None:
-            if visual not in page.get("resourceIDs", []) or resources.get(visual, {}).get("kind") != "image":
+            if visual not in page.get("resourceIDs", []) or resources.get(visual, {}).get("kind") not in ("image", "video"):
                 raise PackValidationError(
-                    "missingResource", f"visual resource {visual} missing or not an image"
+                    "missingResource", f"visual resource {visual} missing or not an image/video"
                 )
 
     # Learning-mode ordering: an exercise may only use lexemes already introduced

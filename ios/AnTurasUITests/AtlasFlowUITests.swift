@@ -38,7 +38,7 @@ final class AtlasFlowUITests: XCTestCase {
         XCTAssertTrue(openingRoad.isHittable, "The authored road should be scrolled into view")
     }
 
-    func testOffalyEditorialPreviewSurvivesLargestAccessibilityText() throws {
+    func testOffalyReviewDraftSurvivesLargestAccessibilityText() throws {
         let app = XCUIApplication()
         app.launchArguments = [
             "--county-dossier", "offaly.cross-of-the-scriptures",
@@ -47,37 +47,50 @@ final class AtlasFlowUITests: XCTestCase {
         ]
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["The cross at Ireland's crossroads"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Editorial preview"].exists)
+        XCTAssertTrue(app.staticTexts["The Cross of the Scriptures: river, king and carved prayer"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Review draft"].exists)
         let evidence = app.buttons["Open the evidence record"]
         XCTAssertTrue(evidence.waitForExistence(timeout: 3))
         for _ in 0..<5 where !evidence.isHittable { app.swipeUp() }
         XCTAssertTrue(evidence.isHittable)
     }
 
-    func testLegacyCountyRouteOpensThePackBackedRecoveryModel() throws {
+    func testReviewDraftOpensThePackBackedRecoveryModel() throws {
         let app = XCUIApplication()
         app.launchArguments = [
-            "--county-story", "offaly.cross-of-the-scriptures",
-            "--county-story-beat", "5",
+            "--county-pack", "offaly.cross-of-the-scriptures",
+            "--fresh-county-pack",
+            "--mode", "learning",
+            "--page", "offaly.inscription.read-limit",
         ]
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["Which statement is secure?"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Which statement fits the surviving inscription?"].waitForExistence(timeout: 5))
         let next = app.buttons["Continue"]
         XCTAssertTrue(next.exists)
         XCTAssertFalse(next.isEnabled)
 
-        app.buttons["A named scribe recorded his whole day here."].tap()
+        app.buttons["Every letter survives clearly and scholars agree on one translation."].tap()
         XCTAssertTrue(app.staticTexts["Try again"].waitForExistence(timeout: 2))
         XCTAssertFalse(next.isEnabled)
 
-        for _ in 0..<3 where !app.buttons["Retry"].isHittable { app.swipeUp() }
-        app.buttons["Retry"].tap()
-        for _ in 0..<3 where !app.buttons["The surviving cross carries carved panels and a damaged inscription."].exists {
-            app.swipeUp()
-        }
-        app.buttons["The surviving cross carries carved panels and a damaged inscription."].tap()
+        let retry = app.buttons["Retry"]
+        XCTAssertTrue(retry.waitForExistence(timeout: 2))
+        app.swipeUp()
+        XCTAssertTrue(retry.isHittable)
+        retry.tap()
+        let correct = "It links prayer, Flann, Colmán and the making of the cross, but damaged letters affect the exact reading."
+        let correctButton = app.buttons[correct]
+        XCTAssertTrue(correctButton.waitForExistence(timeout: 2))
+        let enabled = XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "enabled == true"),
+            object: correctButton
+        )
+        XCTAssertEqual(XCTWaiter.wait(for: [enabled], timeout: 2), .completed)
+        for _ in 0..<3 where !correctButton.isHittable { app.swipeDown() }
+        XCTAssertTrue(correctButton.isHittable)
+        correctButton.tap()
+        for _ in 0..<3 where !app.staticTexts["Corrected"].exists { app.swipeUp() }
         XCTAssertTrue(app.staticTexts["Corrected"].waitForExistence(timeout: 2))
         for _ in 0..<3 where !app.buttons["Keep this answer"].isHittable { app.swipeUp() }
         app.buttons["Keep this answer"].tap()

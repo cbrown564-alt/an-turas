@@ -112,6 +112,7 @@ enum CountyResourceKind: String, Codable {
     case evidence
     case source
     case image
+    case video
     case grammarPattern
 }
 
@@ -249,6 +250,20 @@ struct CountyStoryPack: Identifiable, Codable, Equatable {
 
     func requiredPageIDs(for mode: CountyStoryMode) -> [String] {
         mode == .story ? completion.storyPageIDs : completion.learningPageIDs
+    }
+
+    var openReviewGateTitles: [String] {
+        reviewGates.filter { $0.status != "complete" }.map(\.title)
+    }
+
+    /// Complete authoring can be reviewed in-app before it is allowed to award
+    /// county completion. Release effects stay locked until every gate is closed.
+    var isReleaseCleared: Bool {
+        scope == .completeCounty && openReviewGateTitles.isEmpty
+    }
+
+    var isReviewDraft: Bool {
+        scope == .completeCounty && !openReviewGateTitles.isEmpty
     }
 }
 
