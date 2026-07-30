@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-30 (activity quality
-spec added).*
+and visual narrative. English → Irish only. Updated 2026-07-30 (Shell scorecard
+REJECT on fixtures 01/02/10).*
 
 ## Where we are
 
@@ -166,13 +166,13 @@ county runtime.
 
 | # | D27 family | `CountyExerciseFamily` | Surface | Authored (4 packs) | Contract met? |
 |---|---|---|---|---|---|
-| 1 | Listen and choose | `listenChoose` | ✓ | ✓ | Partial — repair window, in-place correction |
-| 2 | Sentence construction | `sentenceConstruction` | ✓ | ✓ | Partial — Check/Continue hierarchy |
-| 3 | Free typed production | `freeTyping` | ✓ | ✓ | Partial — two-voice typography, fada tint |
+| 1 | Listen and choose | `listenChoose` | ✓ | ✓ | **No** — Shell scorecard F1: response gated until play (D1) |
+| 2 | Sentence construction | `sentenceConstruction` | ✓ | ✓ | Partial — Check now in bottom bar; not Shell-scored this pass |
+| 3 | Free typed production | `freeTyping` | ✓ | ✓ | Partial — two-voice/fada polish deferred until Shell ACCEPT |
 | 4 | Fill-in-the-blank | `fillGap` | ✓ | ✓ | Partial — shares choice surface with read-respond |
-| 5 | Matching | `matching` | ✓ | ✓ | **No** — board locks on first wrong tap; 6 pairs exceeds brief |
+| 5 | Matching | `matching` | ✓ | ✓ | **No** — Shell scorecard F5: wrong escalates to incorrect phase; far-column board; Mayo draft still has a 5-pair exercise (Rockfleet is 4; board-lock Retry cleared) |
 | 6 | Read or listen and respond | `readRespond` | ✓ | ✓ (read only) | Partial — no listen variant yet |
-| 7 | Record and compare | `recordCompare` | ✓ | ✓ | **No** — no stable primary action; three equal ghost controls |
+| 7 | Record and compare | `recordCompare` | ✓ | ✓ | **No** — Shell scorecard F7/D2: ink Continue-without-recording on cold open; Record not primary |
 | 8 | Grammar discovery | `grammarDiscovery` | ✓ | ✓ | **No** — one MC step, not progressive reveal → produce → rule |
 | 9 | Picture or map selection | — | ✗ | ✗ | Not started (migration group 1) |
 | 10 | Listen and type | — | ✗ | ✗ | Not started (migration group 2); `audioPrompted` construction is partial overlap only |
@@ -223,8 +223,8 @@ Twelve Rockfleet Learning-path screens captured 2026-07-30. Critique:
 
 | File | D27 layer | Family / container | Authored use | Implementation gap |
 |---|---|---|---|---|
-| `01-listen-choose.png` | Response family | Listen and choose | — | Response area hidden behind gate copy before first play; hollow radio circles with no selected-state fill; instant grade on first touch |
-| `02-matching.png` | Response family | Matching | — | **Worst recovery** — one wrong tap locks all 12 targets; tint-only selection (accessibility); 6 pairs vs ≤4 chunking guidance |
+| `01-listen-choose.png` | Response family | Listen and choose | — | **Shell REJECT** — choices still disabled until Hear; repair-without-Retry works after unlock |
+| `02-matching.png` | Response family | Matching | — | **Shell REJECT (F5)** — board-lock Retry cleared; wrong still escalates to full incorrect phase; far-column board; Rockfleet 4 pairs / Mayo draft still authors 5 |
 | `03-sentence-audio.png` | Response family | Sentence construction | `audioPrompted` | Ink Check stacked above ink Continue; Irish tiles sans while story voice is serif |
 | `04-sentence-build.png` | Response family | Sentence construction | — | Same Check/Continue hierarchy; tile chips mid-screen, scattered for one-handed use |
 | `05-free-typing.png` | Response family | Free typed production | — | English translation in serif, Irish input in sans; fada row uses atlas green not moss; stacked ink primaries |
@@ -232,7 +232,7 @@ Twelve Rockfleet Learning-path screens captured 2026-07-30. Critique:
 | `07-sentence-sequence.png` | Response family | Sentence construction | `ordering` | English clause tiles, not Irish; same Check/Continue and recovery model as other builders |
 | `08-read-respond.png` | Response family | Read or listen and respond | — | Read-only MC; Irish template serif but options sans; shares hollow radio row with fill-gap and grammar |
 | `09-grammar-discovery.png` | Response family | Grammar discovery | — | **Family contract unmet** — one worked case + single MC, not reveal → reveal → produce → rule |
-| `10-record-compare.png` | Response family | Record and compare | — | **No primary action** — three equal moss ghost buttons; completion via ghost not ink bar |
+| `10-record-compare.png` | Response family | Record and compare | — | **Shell REJECT (F7/D2)** — ink Continue-without-recording from cold open; Play/Record equal moss ghosts; Record never sole primary before compare |
 | `11-fill-gap.png` | Response family | Fill-in-the-blank | — | Choice-backed gap only; identical radio-row chrome as 06/08/09 |
 | `12-delayed-typing.png` | Response family | Free typed production | `delayedRecall` | Delay works as later-page retrieval; not yet contextual mistake review; typography issues as 05 |
 
@@ -258,10 +258,17 @@ D27 contract gates, Rockfleet fixtures, and adversarial scripts. Shell P0s (repa
 primary slot, disabled styles) before parallel family polish. Does not replace
 `PRODUCT.md` / `DESIGN.md` / D27.
 
+**First Composer pass (2026-07-30) — Shell vs fixtures 01/02/10:**
+[`docs/activity-quality/SCORECARD-shell-2026-07-30.md`](docs/activity-quality/SCORECARD-shell-2026-07-30.md).
+**REJECT** (mean 3.0/5; D2 = 1). Board-lock Retry P0 cleared at `237d74f`; not an
+ACCEPT. **Kimi punch list (IDs only):** D1 D2 D3 D4 D5 F1 F5 F7. No spectacular
+family pass until Shell ACCEPT.
+
 ## Work completed
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-07-30 | **First Composer Shell scorecard — REJECT.** Fixtures 01 listen-choose, 02 matching, 10 record-compare against commit `237d74f`. Mean 3.0/5; fails D2 (speaking primary inverted), residual D3 friction, F1/F5/F7 contracts. Board-lock Retry P0 already cleared; listen-choose gate and Record primacy remain. Kimi punch list: D1 D2 D3 D4 D5 F1 F5 F7. No family spectacular pass until Shell ACCEPT. | `docs/activity-quality/SCORECARD-shell-2026-07-30.md`, `STATUS.md`, `docs/README.md` |
 | 2026-07-30 | **Activity Quality Spec drafted for Learning-mode craft loops.** Operational scorecard: ten shared dimensions, P0 checklist, D27 family/container contract gates, Rockfleet fixture map, adversarial scripts, and agent-loop roles. Linked from docs index and inventory; shell P0s before parallel polish. Does not change product or design authority. | `docs/ACTIVITY-QUALITY-SPEC.md`, `docs/README.md`, `STATUS.md` |
 | 2026-07-30 | **Three disposable iOS learning-interaction studies implemented and focused verification passed.** Sound Match tests immediate audio/meaning choice and in-place repair; Sentence Flow keeps correct sentence work while role cues visibly disappear; Coast Placement attaches *farraige*, *bá*, and *áit* to a spatial coast before removing its labels. The studies use one narrow Clew Bay fixture, no story exposition, separate local state, direct audio fallback, and no county progress, review, or shared-runtime side effects. XcodeGen was regenerated; 3 focused unit and 5 focused UI tests pass, including complete wrong-to-correct loops, both appearances, largest Dynamic Type, and reduced motion. Initial states were directly inspected on an iPhone 17 Pro Max simulator. This is implemented and verified research evidence, not validated pedagogy or a selected architecture. | `ios/AnTuras/Prototypes/InteractionStudies/`, `ios/AnTurasTests/InteractionStudyTests.swift`, `ios/AnTurasUITests/InteractionStudyUITests.swift`, `docs/INTERACTION-STUDIES-REPORT.md` |
 | 2026-07-30 | **D26 grilled; D27 records three activity layers and the migration lands.** The flat fifteen-family set became one activity anatomy, ten response families, and five containers, because five of the fifteen could not satisfy the response contract D26 also mandates. Sequencing and delayed retrieval became authored uses; grammar discovery stayed a family and reconciled with `DRILL.md`'s `discover` projection; dialogue and branching roleplay merged into one conversation container with setting as authored metadata; single-choice families now check on selection with a repair window before any struggle signal; **Words you carry** and scheduled review became two surfaces over one spine. `CountyExerciseFamily` went from twelve cases to nine with a deterministic migration from the legacy vocabulary, and 32 authored exercises across eight packs were re-expressed. A new `authoredUse` field keeps the anti-monotony cap measuring what the learner actually does after the merge. The 5,259 lines of prototype and interaction-study code were deleted once D27 recorded the retained primitives. XcodeGen regenerated; 42 unit, 17 UI, and 43 Python tests pass, and all eight packs validate. This changes the taxonomy and implementation order; it validates no learning outcome. | `CONTEXT.md`, `docs/DECISIONS.md` D27, `PRODUCT.md`, `DESIGN.md`, `docs/DRILL.md`, `docs/STORY-LEARNING-REBUILD-PLAN.md`, `ios/AnTuras/CountyStoryPack.swift`, `CountyExerciseSystem.swift`, `tools/` |
@@ -325,17 +332,23 @@ primary slot, disabled styles) before parallel family polish. Does not replace
 
 ## Immediate next steps (learning-mechanics foundation, then rebuild Phases 4–6)
 
-1. **Freeze the representative Mayo run** — use the selected D26 shell with the Clew
+1. **Clear Shell-cluster REJECT** — Kimi implements punch list
+   D1 D2 D3 D4 D5 F1 F5 F7 from
+   [`docs/activity-quality/SCORECARD-shell-2026-07-30.md`](docs/activity-quality/SCORECARD-shell-2026-07-30.md).
+   Priority: Record primacy (D2/F7), listen-choose ungated response (D1/F1), matching
+   brief unlock without mastery incorrect-phase + ≤4 authorship (D3/D4/F5), on-target
+   diagnostics (D5). Composer re-scores; no Choice/Matching/Speaking spectacular pass
+   until Shell ACCEPT.
+2. **Freeze the representative Mayo run** — use the selected D26 shell with the Clew
    Bay fixtures and record the exact listening, matching, construction, typing,
    conversation, speaking, comprehension, completion, and contextual-review sequence.
    Decide which local response, correction, scaffold-removal, motion, and spatial
    details from the iOS studies are retained; do not reopen the architecture choice.
    Grade craft against [`docs/ACTIVITY-QUALITY-SPEC.md`](docs/ACTIVITY-QUALITY-SPEC.md).
-2. **Implement the shared state engine and activity shell** — centralise attempt,
+3. **Implement the shared state engine and activity shell** — centralise attempt,
    diagnostic, hint/recovery, retry, completion, persistence, focus, accessibility
    announcements, and exactly-once memory events before migrating production packs.
-   Clear Shell-cluster P0s in the quality spec (in-place repair, one primary slot,
-   readable disabled styles) before parallel family polish.
+   Finish remaining Shell-cluster gates from the scorecard before parallel family polish.
 3. **Operate the complete representative run** — prove the selected shell end to end
    with incorrect and recovery paths, audio fallback, keyboard/fadas, microphone
    denial, interruption/resume, and fixture-only completion.
