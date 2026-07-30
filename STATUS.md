@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-30 (Shell scorecard
-REJECT on fixtures 01/02/10).*
+and visual narrative. English → Irish only. Updated 2026-07-30 (D28 Flow chapter-
+opening density; Mayo/Dublin/Meath visuals wired).*
 
 ## Where we are
 
@@ -268,6 +268,7 @@ family pass until Shell ACCEPT.
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-07-30 | **D28 chapter-opening Flow density; existing loops and stills wired.** One muted ambient hero per chapter opening; still→motion pipeline; evidence scans stay still. Wired unused Mayo Rockfleet + galley videos, Mayo draft openings to existing atmosphere stills (rev 7), Dublin's four remaining openings to catalog stills, Meath Ch1 to Boyne ford still, and the bundled Rockfleet proof to `video.mayo-rockfleet-sea-surge`. MEDIA-AUDIT now carries Batches A–C for Flow spend. Does not clear rights or generate new Flow clips in-repo. | `docs/DECISIONS.md` D28, `docs/MEDIA-AUDIT.md`, `content/mayo/`, `tools/build_phase5_county_drafts.py`, `ios/AnTuras/Resources/CountyStories/` |
 | 2026-07-30 | **First Composer Shell scorecard — REJECT.** Fixtures 01 listen-choose, 02 matching, 10 record-compare against commit `237d74f`. Mean 3.0/5; fails D2 (speaking primary inverted), residual D3 friction, F1/F5/F7 contracts. Board-lock Retry P0 already cleared; listen-choose gate and Record primacy remain. Kimi punch list: D1 D2 D3 D4 D5 F1 F5 F7. No family spectacular pass until Shell ACCEPT. | `docs/activity-quality/SCORECARD-shell-2026-07-30.md`, `STATUS.md`, `docs/README.md` |
 | 2026-07-30 | **Activity Quality Spec drafted for Learning-mode craft loops.** Operational scorecard: ten shared dimensions, P0 checklist, D27 family/container contract gates, Rockfleet fixture map, adversarial scripts, and agent-loop roles. Linked from docs index and inventory; shell P0s before parallel polish. Does not change product or design authority. | `docs/ACTIVITY-QUALITY-SPEC.md`, `docs/README.md`, `STATUS.md` |
 | 2026-07-30 | **Three disposable iOS learning-interaction studies implemented and focused verification passed.** Sound Match tests immediate audio/meaning choice and in-place repair; Sentence Flow keeps correct sentence work while role cues visibly disappear; Coast Placement attaches *farraige*, *bá*, and *áit* to a spatial coast before removing its labels. The studies use one narrow Clew Bay fixture, no story exposition, separate local state, direct audio fallback, and no county progress, review, or shared-runtime side effects. XcodeGen was regenerated; 3 focused unit and 5 focused UI tests pass, including complete wrong-to-correct loops, both appearances, largest Dynamic Type, and reduced motion. Initial states were directly inspected on an iPhone 17 Pro Max simulator. This is implemented and verified research evidence, not validated pedagogy or a selected architecture. | `ios/AnTuras/Prototypes/InteractionStudies/`, `ios/AnTurasTests/InteractionStudyTests.swift`, `ios/AnTurasUITests/InteractionStudyUITests.swift`, `docs/INTERACTION-STUDIES-REPORT.md` |

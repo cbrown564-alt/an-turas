@@ -274,13 +274,25 @@ def evidence(resource_id: str, claim_id: str, status: str = "specialist-review-o
     return {"id": resource_id, "kind": "evidence", "value": claim_id, "status": status}
 
 
-def image_resource(resource_id: str, value: str) -> dict:
+def image_resource(
+    resource_id: str,
+    value: str,
+    status: str = "production-keyframe",
+) -> dict:
     return {
         "id": resource_id,
         "kind": "image",
         "value": value,
-        "status": "production-keyframe",
+        "status": status,
     }
+
+
+def atmosphere_image(resource_id: str, value: str) -> dict:
+    return image_resource(
+        resource_id,
+        value,
+        status="ai-generated-historical-atmosphere",
+    )
 
 
 def video_resource(resource_id: str, value: str, fallback_resource_id: str) -> dict:
@@ -1749,6 +1761,8 @@ def dublin_spec() -> dict:
             resources=("evidence.dublin.d01", "evidence.dublin.d05", "evidence.dublin.d06"),
             presentation="relationshipField",
             advance_label="Place king and city together",
+            visual_resource_id="image.dublin-wood-quay-settlement",
+            visual_caption="Generated editorial interpretation of a Norse-Gaelic river settlement · not documentary evidence",
             items=display_items(
                 ("king", "Sihtric", "A king whose name enters coinage", "crown"),
                 ("city", "Dublin", "The port named by the issue", "building.2"),
@@ -1928,6 +1942,8 @@ def dublin_spec() -> dict:
             resources=("evidence.dublin.d04", "evidence.dublin.d06", "source.dublin.nmi-overview"),
             presentation="connectedSystem",
             advance_label="Handle the exchange",
+            visual_resource_id="image.dublin-viking-market",
+            visual_caption="Generated editorial interpretation of a Dublin riverside market · not documentary evidence",
             items=display_items(
                 ("buy", "ceannaigh", "Buy in the market", "basket"),
                 ("sell", "díol", "Sell or exchange goods", "arrow.left.arrow.right"),
@@ -2291,6 +2307,8 @@ def dublin_spec() -> dict:
             resources=("evidence.dublin.d03", "source.dublin.nmi-object"),
             presentation="archive",
             advance_label="Approach the letters",
+            visual_resource_id="image.dublin-minting-workshop",
+            visual_caption="Generated editorial interpretation of minting craft · not a documentary workshop record",
         ),
         narrative(
             f"{c5}.portrait",
@@ -2483,6 +2501,8 @@ def dublin_spec() -> dict:
             resources=("source.dublin.nmi-object", "evidence.dublin.d01"),
             presentation="movementLine",
             advance_label="Follow the findspot",
+            visual_resource_id="image.dublin-modern-archaeology",
+            visual_caption="Generated editorial interpretation of riverfront archaeology · not a documentary find photo",
             items=display_items(
                 ("mint", "Dublin", "Place of issue", "building.2"),
                 ("route", "Unknown route", "The missing movements", "ellipsis"),
@@ -2696,6 +2716,30 @@ def dublin_spec() -> dict:
             "video.dublin-coin-relief-light",
             "image.dublin-coin-relief",
         ),
+        atmosphere_image(
+            "image.dublin-wood-quay-settlement",
+            "dublin-wood-quay-settlement",
+        ),
+        atmosphere_image(
+            "image.dublin-viking-market",
+            "dublin-viking-market",
+        ),
+        atmosphere_image(
+            "image.dublin-minting-workshop",
+            "dublin-minting-workshop",
+        ),
+        atmosphere_image(
+            "image.dublin-modern-archaeology",
+            "dublin-modern-archaeology",
+        ),
+        atmosphere_image(
+            "image.dublin-coin-distribution",
+            "dublin-coin-distribution",
+        ),
+        atmosphere_image(
+            "image.dublin-liffey-estuary",
+            "dublin-liffey-estuary",
+        ),
         evidence("evidence.dublin.d01", "D01 · first locally struck Irish coinage under Sihtric c. 995–997", "numismatist-review-open"),
         evidence("evidence.dublin.d02", "D02 · imitation of contemporary Æthelred II types", "numismatist-review-open"),
         evidence("evidence.dublin.d03", "D03 · issues naming Sihtric and Dublin", "numismatist-review-open"),
@@ -2790,6 +2834,8 @@ def meath_spec() -> dict:
             resources=("evidence.meath.m07", "source.meath.source-brief"),
             presentation="coastalOpening",
             advance_label="Enter the existing land",
+            visual_resource_id="image.meath-boyne-ford",
+            visual_caption="Generated editorial interpretation of the Boyne ford landscape · not documentary evidence",
             items=display_items(
                 ("land", "talamh", "A lived and contested territory", "map"),
                 ("old", "sean", "Older names and obligations", "clock.arrow.circlepath"),
@@ -3919,6 +3965,10 @@ def meath_spec() -> dict:
             "video.meath-trim-curtain-sunset",
             "video.meath-trim-curtain-sunset",
             "image.meath-trim-curtain-sunset",
+        ),
+        atmosphere_image(
+            "image.meath-boyne-ford",
+            "meath-boyne-ford",
         ),
         evidence("evidence.meath.m01", "M01 · 1172 grant of Meath to Hugh de Lacy", "historian-review-open"),
         evidence("evidence.meath.m02", "M02 · Trim chosen as caput at the ford", "historian-review-open"),

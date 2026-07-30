@@ -71,6 +71,7 @@ struct StoryArtImage: View {
                 return image
             }
         }
-        return nil
+        // Atmosphere stills for chapter openings also live in the asset catalog.
+        return UIImage(named: name)
     }
 }

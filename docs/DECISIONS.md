@@ -2,6 +2,43 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D28 — Chapter-opening motion density for Flow / Gemini Omni (2026-07-30)
+
+**Decision:** Scale Gemini Omni / Google Flow video as **one muted ambient hero per
+chapter opening**, not as page wallpaper. Prefer a still→motion pipeline: author or
+select a text-free atmospheric still, then animate it into a 3–6s seamless loop with a
+named still keyframe for Reduce Motion and missing playback.
+
+Consequent rules:
+
+- **Density:** Story mode places at most one looping visual hero on the chapter's first
+  page (or the equivalent arrival beat). Interior narrative, exercise, evidence-detail,
+  and Learning activity pages stay still or text-led unless a separate recorded decision
+  opens a second slot (evidence light-sweep or transition bridge).
+- **Evidence boundary:** Documentary scans, coins, crosses, charters, and plans are never
+  replaced by generated video. Interpretive lighting sweeps may use generated relief only
+  when captions and evidence UI keep the object non-documentary. Real archival images stay
+  still evidence.
+- **No reenactment / no burnt-in copy:** unchanged from the media audit and `DESIGN.md`.
+- **Pack contract:** every video resource names an image `fallbackResourceID`; the page's
+  `visualResourceID` must appear in `resourceIDs`; captions state generated interpretation.
+- **Bundle budget:** target ≤2 MB per muted H.264/H.265 loop at ≤24 fps after encode;
+  county offline packs own county video; pause off-screen and when inactive.
+- **Generation order:** (1) wire existing loops; (2) fill missing chapter-opening stills;
+  (3) animate openings that still lack motion; (4) only then consider transition bridges or
+  phoneme articulation micro-videos after their own product contracts.
+
+**Why:** The first nine Flow loops proved place-living atmosphere without invented
+history. Generous monthly limits should deepen chapter arrivals across Mayo and the three
+review counties, not decorate every page or reopen Learning-shell architecture. Selective
+heroes keep language, place, and evidence inspectable while the learning-mechanics
+foundation remains the active sprint.
+
+**Consequences:** `docs/MEDIA-AUDIT.md` owns the operational slate and Flow queue. Pack
+builders and validators must keep video↔fallback pairing. Missing openings stay queued as
+still-then-motion work rather than forcing duplicate bay or castle footage across chapters.
+This decision does not clear rights, specialist, or tester gates.
+
 ## D27 — Three layers: anatomy, ten response families, five containers (2026-07-30)
 
 **Decision:** D26's flat list of fifteen "response families" becomes three named layers.

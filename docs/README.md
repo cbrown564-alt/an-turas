@@ -16,7 +16,7 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
 
 ## Working and reference documents
 
-- [`MEDIA-AUDIT.md`](MEDIA-AUDIT.md) is the four-county audit of visual media, documentary evidence placeholders, and audio requirements.
+- [`MEDIA-AUDIT.md`](MEDIA-AUDIT.md) is the four-county audit of visual media, documentary evidence placeholders, and audio requirements. D28 sets chapter-opening motion density; the audit owns the Flow / Gemini Omni generation queue.
 - [`STORY-LEARNING-REBUILD-PLAN.md`](STORY-LEARNING-REBUILD-PLAN.md) is the confirmed
   Phase 3 implementation plan. Canonical owners above remain authoritative for current
   behavior, design, decisions, status, and strategy.

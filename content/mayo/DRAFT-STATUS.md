@@ -1,6 +1,6 @@
 # Mayo county pack — draft status
 
-*Structurally complete revision-6 pre-clearance draft of the nine-chapter Mayo pack,
+*Structurally complete revision-7 pre-clearance draft of the nine-chapter Mayo pack,
 authored against
 the approved storyboard (`docs/GRAINNE-STORYBOARD-V2.md`). The draft lives here in
 `content/mayo/` so the shipping pack in
@@ -15,15 +15,15 @@ Validate with: `python3 tools/validate_county_pack.py content/mayo/grainne-1593.
 
 | # | Chapter | Status |
 | --- | --- | --- |
-| 1 | Clew Bay and Umhaill (`mayo.clew-bay`) | **draft authored** — introduces *farraige, bá, áit, as* |
-| 2 | Marriage, kin, and alliances (`mayo.kin-alliances`) | **review draft authored** — introduces *teaghlach, mac, deartháir, bean* |
-| 3 | Rockfleet (`mayo.rockfleet`) | **revised** — introduces only *caisleán*; eight-exercise consolidation chapter |
-| 4 | Power at sea (`mayo.power-at-sea`) | **review draft authored** — introduces *long* and reuses the coast words |
-| 5 | Bingham closes in (`mayo.bingham-pressure`) | **review draft authored** — introduces *caill* |
-| 6 | The road to London (`mayo.road-to-london`) | **review draft authored** — introduces *iarr, téigh, tar* |
-| 7 | Gráinne in the record (`mayo.in-the-record`) | **review draft authored** — introduces *ainm, mise* |
-| 8 | The royal answer (`mayo.royal-answer`) | **review draft authored** — introduces *freagair, tabhair* |
-| 9 | Return and afterlife (`mayo.return-afterlife`) | **review draft authored** — introduces *arís, cósta* and completes the chart |
+| 1 | Clew Bay and Umhaill (`mayo.clew-bay`) | **draft authored** — *farraige, bá, áit, as*; opening `video.mayo-clew-bay-tide-loop` |
+| 2 | Marriage, kin, and alliances (`mayo.kin-alliances`) | **review draft authored** — *teaghlach, mac, deartháir, bean*; opening visual queued (D28) |
+| 3 | Rockfleet (`mayo.rockfleet`) | **revised** — only *caisleán*; opening `video.mayo-rockfleet-sea-surge` |
+| 4 | Power at sea (`mayo.power-at-sea`) | **review draft authored** — *long*; still `image.mayo-galway-bay-trading` pending Flow |
+| 5 | Bingham closes in (`mayo.bingham-pressure`) | **review draft authored** — *caill*; still `image.mayo-tudor-pressure` pending Flow |
+| 6 | The road to London (`mayo.road-to-london`) | **review draft authored** — *iarr, téigh, tar*; opening `video.mayo-galley-sea-passage` |
+| 7 | Gráinne in the record (`mayo.in-the-record`) | **review draft authored** — *ainm, mise*; documentary `image.sp63-170` |
+| 8 | The royal answer (`mayo.royal-answer`) | **review draft authored** — *freagair, tabhair*; still `image.mayo-royal-court-interior` pending Flow |
+| 9 | Return and afterlife (`mayo.return-afterlife`) | **review draft authored** — *arís, cósta*; interim coastal still pending return loop |
 
 ## Internal assembly result
 
@@ -36,16 +36,17 @@ The draft now records the complete authoring shape:
 - one introduction and a complete ordered lifecycle for each of the 20 headwords;
 - D-B and D-C applied to Rockfleet;
 - `scope: completeCounty` and `enforceLearningQuality: true`;
-- revision 6; and
+- revision 7 (revision 6 historical fixes retained; revision 7 wires D28 chapter-opening
+  visuals without changing historical claims); and
 - a passing offline validator report.
 
-Revision 6 applies the July historical review's reversible fixes before external
+Revision 6 applied the July historical review's reversible fixes before external
 clearance: the candidate Carew MS 601 / SP 12/159 trail is attached to C04 while
 historian confirmation remains open; the Sidney beat is Story-only until that
 confirmation; C02's archive bias now appears in a bounded closer look; Chapter 2 and
 4 wording is tightened; C06, C10, C14, and C15 resource statuses now match their
-actual review scope; and stale representative-chapter copy is removed. It does not
-close `history.expanded`, approve release prose, or promote the pack into the app.
+actual review scope; and stale representative-chapter copy is removed. Revision 7 does
+not close `history.expanded`, approve release prose, or promote the pack into the app.
 
 `completeCounty` means the authored data is structurally complete. It does not mean
 the copy is specialist-approved, the audio is ready, or the pack is promoted into the

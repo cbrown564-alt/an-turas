@@ -137,18 +137,34 @@ class Phase5ReviewDraftsValidate(unittest.TestCase):
                     resource["id"]: resource
                     for resource in envelope["pack"]["resources"]
                 }
-                self.assertEqual(len(visual_pages), 2)
+                # D28: one chapter-opening hero each; counties may mix video loops and
+                # interim stills while Flow animation catches up.
+                expected_visuals = {
+                    "dublin.sihtric-penny": 6,
+                    "meath.trim-de-lacy": 3,
+                    "offaly.cross-of-the-scriptures": 2,
+                }
+                self.assertEqual(len(visual_pages), expected_visuals[pack_id])
+                opening_visuals = [
+                    page
+                    for chapter in envelope["pack"]["chapters"]
+                    for page in chapter["pages"][:1]
+                    if page["visualResourceID"] is not None
+                ]
+                self.assertEqual(len(opening_visuals), expected_visuals[pack_id])
+                for page in visual_pages:
+                    visual = resources[page["visualResourceID"]]
+                    self.assertIn(visual["kind"], ("video", "image"))
+                    self.assertTrue(page["visualCaption"])
+                    if visual["kind"] == "video":
+                        fallback = resources[visual["fallbackResourceID"]]
+                        self.assertEqual(fallback["kind"], "image")
                 self.assertTrue(
-                    all(
+                    any(
                         resources[page["visualResourceID"]]["kind"] == "video"
                         for page in visual_pages
                     )
                 )
-                for page in visual_pages:
-                    video = resources[page["visualResourceID"]]
-                    fallback = resources[video["fallbackResourceID"]]
-                    self.assertEqual(fallback["kind"], "image")
-                    self.assertTrue(page["visualCaption"])
 
                 pages = {
                     page["id"]: page

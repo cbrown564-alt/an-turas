@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 @testable import AnTuras
 
 final class AtlasProgressTests: XCTestCase {
@@ -150,38 +151,57 @@ final class AtlasProgressTests: XCTestCase {
         }
     }
 
-    func testPromotedCountyVideoVisualsResolveWithBundledFallbacks() throws {
-        for packID in [
-            "offaly.cross-of-the-scriptures",
-            "dublin.sihtric-penny",
-            "meath.trim-de-lacy",
-        ] {
+    func testPromotedCountyChapterOpeningVisualsResolve() throws {
+        let expectedVisualCounts = [
+            "offaly.cross-of-the-scriptures": 2,
+            "dublin.sihtric-penny": 6,
+            "meath.trim-de-lacy": 3,
+        ]
+        for (packID, expectedCount) in expectedVisualCounts {
             let pack = try XCTUnwrap(CountyStoryPackCatalog.pack(id: packID))
             let visualPages = pack.pages.filter { $0.visualResourceID != nil }
-            XCTAssertEqual(visualPages.count, 2, "\(packID) should expose two representative visuals")
+            XCTAssertEqual(
+                visualPages.count,
+                expectedCount,
+                "\(packID) should expose \(expectedCount) chapter-opening heroes (D28)"
+            )
 
+            var videoCount = 0
             for page in visualPages {
-                guard case .video(let videoName, let fallbackName) = try XCTUnwrap(
-                    pack.visual(for: page)
-                ) else {
-                    return XCTFail("\(page.id) should resolve to a video with an image fallback")
-                }
-                XCTAssertNotNil(
-                    Bundle.main.url(forResource: videoName, withExtension: "mp4"),
-                    "Missing bundled video \(videoName)"
-                )
-                XCTAssertNotNil(
-                    ["png", "jpg", "jpeg"].lazy.compactMap {
-                        Bundle.main.url(
-                            forResource: fallbackName,
-                            withExtension: $0,
-                            subdirectory: "art"
-                        )
-                    }.first,
-                    "Missing bundled fallback image \(fallbackName)"
-                )
+                let visual = try XCTUnwrap(pack.visual(for: page))
                 XCTAssertFalse((page.visualCaption ?? "").isEmpty)
+                switch visual {
+                case .image(let name):
+                    XCTAssertTrue(
+                        bundledStillExists(named: name),
+                        "Missing bundled still \(name) for \(page.id)"
+                    )
+                case .video(let videoName, let fallbackName):
+                    videoCount += 1
+                    XCTAssertNotNil(
+                        Bundle.main.url(forResource: videoName, withExtension: "mp4")
+                            ?? Bundle.main.url(
+                                forResource: videoName,
+                                withExtension: "mp4",
+                                subdirectory: "video"
+                            ),
+                        "Missing bundled video \(videoName)"
+                    )
+                    XCTAssertTrue(
+                        bundledStillExists(named: fallbackName),
+                        "Missing bundled fallback image \(fallbackName)"
+                    )
+                }
             }
+            XCTAssertGreaterThan(videoCount, 0, "\(packID) should keep at least one Flow loop")
+        }
+    }
+
+    private func bundledStillExists(named name: String) -> Bool {
+        if UIImage(named: name) != nil { return true }
+        return ["png", "jpg", "jpeg"].contains { ext in
+            Bundle.main.url(forResource: name, withExtension: ext, subdirectory: "art") != nil
+                || Bundle.main.url(forResource: name, withExtension: ext) != nil
         }
     }
 
@@ -214,9 +234,17 @@ final class AtlasProgressTests: XCTestCase {
 
         for page in storyPages where page.visualResourceID != nil {
             let resource = pack.resources.first { $0.id == page.visualResourceID }
-            XCTAssertEqual(resource?.kind, .image)
+            XCTAssertTrue(resource?.kind == .image || resource?.kind == .video)
             XCTAssertTrue(page.resourceIDs.contains(page.visualResourceID!))
             XCTAssertFalse((page.visualCaption ?? "").isEmpty)
+            if resource?.kind == .video {
+                let visual = try XCTUnwrap(pack.visual(for: page))
+                guard case .video(let videoName, let fallbackName) = visual else {
+                    return XCTFail("\(page.id) should resolve as video with fallback")
+                }
+                XCTAssertEqual(videoName, "video.mayo-rockfleet-sea-surge")
+                XCTAssertEqual(fallbackName, "mayo-rockfleet-sea-surge")
+            }
         }
     }
 

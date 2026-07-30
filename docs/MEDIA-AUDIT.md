@@ -143,29 +143,82 @@ To deliver an evidence-grounded experience for learning Irish, *An Turas* enforc
 
 ## 5. Gemini Omni & Google Flow Video Integration Framework
 
+**Policy owner:** D28. Operational detail lives here; do not invent a second density rule.
+
 ### A. What Video Adds to the Experience
 1. **Living Atmosphere & Temporal Depth**: Static imagery establishes place, but ambient video loops capture the living pulse of Ireland's landscape—Atlantic tides at Clew Bay, river current on the Boyne, mist over the Shannon callows—strengthening the core principle that **language and place are inseparable**.
-2. **Dynamic Evidence Illumination**: Rather than altering historical artifacts, video macro lighting sweeps across real 3D evidence scans (coins, rubbings, stone inscriptions) to direct learner attention to details (*SIHTRC REX DIFLI*, sandstone carvings) without generating fake historical objects.
-3. **Narrative Momentum in Transitions**: Brief, muted visual bridges between major chapter arcs give Story and Learning modes cinematic narrative pull without resorting to theatrical cutscenes.
-4. **Phonetic Articulation Guidance**: Gemini Omni's multimodal audio-visual synchronization can power lip/mouth articulation video overlays for difficult Irish phonemes (broad vs. slender consonants: *caol agus leathan*).
+2. **Dynamic Evidence Illumination**: Rather than altering historical artifacts, video macro lighting sweeps across *generated interpretive relief* (or licensed 3D) to direct attention. Real archival scans stay still documentary evidence.
+3. **Narrative Momentum in Transitions** *(deferred)*: Brief muted bridges between chapter arcs need a separate placement contract before Flow spend.
+4. **Phonetic Articulation Guidance** *(deferred)*: Lip/mouth micro-videos need native-speaker audio sync and a Learning-shell home before generation.
 
-### B. Natural Integration Points
-* **Chapter Arrival Headers**: 3–6 second seamlessly looping, muted background headers at the top of chapter openings.
-* **Evidence Inspection Canvas**: Ambient directional lighting motion behind authentic primary source overlays.
-* **Phoneme Micro-Videos**: Interactive card overlays in learning mode showing vocal articulation synchronized with native speaker audio.
+### B. Natural Integration Points (active)
+* **Chapter arrival heroes only (D28):** one 3–6s muted loop *or* atmospheric still on each chapter's first page / arrival beat.
+* Still→motion: generate or select the still first; animate in Flow; ship the still as `fallbackResourceID`.
 
 ### C. Product Boundaries & Constraints
 * **NO Invented Historical Reenactment**: Video must **never** feature AI actors performing fictionalized historical scenes (e.g. no fake video of Gráinne Ní Mháille meeting Elizabeth I). History remains anchored in authentic documentary evidence.
 * **NO Burnt-In Copy**: All video assets must be purely visual. Text overlays, titles, and exercise controls remain live, accessible SwiftUI text layers.
 * **Accessibility & Motion Compliance**: If `UIAccessibility.isReduceMotionEnabled` is active, video loops freeze to a static frame or fade smoothly without motion.
-* **Battery & Performance Efficiency**: Loops are capped at 24 FPS, muted, webm/H.265 encoded under 2MB per loop, and strictly paused when off-screen.
+* **Battery & Performance Efficiency**: Loops are capped at 24 FPS, muted, H.264/H.265 encoded under **2MB per loop** after final encode, and strictly paused when off-screen. Current shipped MP4s exceed this and need a recompress pass before large-scale bundling.
+
+### D. Wiring status (2026-07-30)
+
+| County | Chapters | Opening hero now | Motion present | Still-only interim | Still missing → queue |
+|---|---|---|---|---|---|
+| Mayo (draft rev 7) | 9 | 8/9 (+ SP 63/170 documentary on Ch7) | Clew Bay, Rockfleet, galley/London road | Power at sea, Bingham, royal answer, return coast | Kin/alliances still; dedicated return loop |
+| Mayo Rockfleet (bundled) | 1 | Rockfleet video | yes | — | — |
+| Dublin | 6 | 6/6 | Dark pool, coin relief | Wood Quay, market, mint workshop, archaeology | Animate the four stills |
+| Meath | 6 | 3/6 | Boyne flow, Trim sunset | Boyne ford (Ch1) | Grant, first fortification, town afterlife |
+| Offaly | 6 | 2/6 | Shannon mist, cross relief | — | Settlement, king–abbot, inscription, original/replica |
+
+### E. Flow / Gemini Omni generation queue (spend order)
+
+Animate existing stills before inventing new scenes. Prompts stay text-free, muted, loopable, no people in invented historical action unless already accepted as distant atmospheric figures in the still.
+
+**Batch A — animate wired stills (highest leverage)**
+
+| Target video id | Source still | Chapter opening | Motion brief |
+|---|---|---|---|
+| `video.mayo-galway-bay-trading` | `mayo-galway-bay-trading` | Mayo Ch4 power-at-sea | Slow harbour water + light cloud drift, 4–5s loop |
+| `video.mayo-tudor-pressure` | `mayo-tudor-pressure` | Mayo Ch5 Bingham | Low cloud scrape over coastal stone precinct, 5s |
+| `video.mayo-royal-court-interior` | `mayo-royal-court-interior` | Mayo Ch8 royal answer | Soft window-light shift on stone/oak interior, 4s, empty of staged audience action |
+| `video.mayo-clew-bay-return` | `mayo-clew-bay-coastal` (interim) then dedicated return still | Mayo Ch9 return | Distinct return light vs Ch1 tide loop—clearer horizon, calmer swell |
+| `video.dublin-wood-quay-settlement` | `dublin-wood-quay-settlement` | Dublin Ch2 | Hearth smoke / reed sway at river edge, 4s |
+| `video.dublin-viking-market` | `dublin-viking-market` | Dublin Ch3 | Soft crowd-distance blur only if already in still; prefer cloth/water micro-motion, 4s |
+| `video.dublin-minting-workshop` | `dublin-minting-workshop` | Dublin Ch5 | Charcoal glow + slow light on die/anvil, no hammer strike theatrics, 4s |
+| `video.dublin-modern-archaeology` | `dublin-modern-archaeology` | Dublin Ch6 | Mist/dust mote drift over excavation soil, 4s |
+| `video.meath-boyne-ford` | `meath-boyne-ford` | Meath Ch1 | Morning mist lift over ford meadows, complementary to existing Boyne pebble loop |
+
+**Batch B — missing stills, then motion**
+
+| Still id | Chapter | Notes |
+|---|---|---|
+| `mayo-kin-alliances` (new) | Mayo Ch2 | Household/kin coast without costume drama; no invented faces as likeness |
+| `mayo-return-clew-bay` | Mayo Ch9 | Dedicated return coast; replace interim coastal still |
+| `meath-grant-claim` | Meath Ch2 | Document atmosphere only—not a fake charter facsimile |
+| `meath-ringwork-fortress` | Meath Ch4 | Timber/earth ringwork at Trim ford |
+| `meath-trim-town-afterlife` | Meath Ch6 | Living town beside curtain walls |
+| `offaly-clonmacnoise-monastery` | Offaly Ch2 | Working settlement, Shannon bank |
+| `offaly-king-abbot-meeting` | Offaly Ch3 | Distant figures only; no portrait claims |
+| `offaly-inscription-attention` | Offaly Ch5 | Stone letters / damaged face as atmosphere, not fake rubbing |
+| `offaly-original-and-replica` | Offaly Ch6 | Indoor gallery light vs outdoor replica—keep non-documentary |
+
+**Batch C — deferred:** chapter-transition bridges; phoneme articulation clips; recompress all shipped loops to ≤2 MB.
+
+### F. Encode recipe (before next large drop)
+1. Export Flow loop muted, no titles.
+2. Extract mid-loop still as keyframe JPEG matching composition.
+3. Transcode ≤24 fps, 720–1080p edge-to-edge, H.264 or H.265, target ≤2 MB.
+4. Register `video.*` + `image.*` fallback; set page `visualResourceID`; caption as generated interpretation.
+5. Validate pack; Reduce Motion must show the keyframe.
 
 ---
 
 ## Summary of Media Production Targets
 
-* **Total AI Generated Images**: **24 high-resolution cinematic background images** (6 per county across 4 counties).
-* **Total Gemini Omni / Google Flow Video Loops**: **9 ambient cinematic video loops** (3 for Mayo, 2 for Dublin, 2 for Meath, 2 for Offaly).
-* **Total Documentary Evidence Scans**: **14 authentic museum/archival photographic placeholders** (TNA, Carew, Sihtric coins, De Lacy grant, High Cross panels).
-* **Total Audio Clips**: **103 studio/native pronunciations & exercises**.
+* **Density (D28):** one hero visual per chapter opening across launch counties (~27 openings), motion preferred after still lock.
+* **Shipped Flow loops today:** **9** (Mayo 3, Dublin 2, Meath 2, Offaly 2); Mayo's Rockfleet + galley loops now page-wired.
+* **AI atmospheric stills:** Dublin slate largely present; Mayo partial; Meath/Offaly gaps listed in Batch B.
+* **Documentary evidence scans:** **14** authentic museum/archival photographic placeholders (TNA, Carew, Sihtric coins, De Lacy grant, High Cross panels)—not Flow targets.
+* **Audio clips:** **103** studio/native pronunciations & exercises—separate from video spend.
 
