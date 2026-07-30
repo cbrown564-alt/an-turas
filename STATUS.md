@@ -349,28 +349,28 @@ family pass until Shell ACCEPT.
    diagnostic, hint/recovery, retry, completion, persistence, focus, accessibility
    announcements, and exactly-once memory events before migrating production packs.
    Finish remaining Shell-cluster gates from the scorecard before parallel family polish.
-3. **Operate the complete representative run** — prove the selected shell end to end
+4. **Operate the complete representative run** — prove the selected shell end to end
    with incorrect and recovery paths, audio fallback, keyboard/fadas, microphone
    denial, interruption/resume, and fixture-only completion.
-4. **Migrate the activity families in bounded groups** — recognition; construction
+5. **Migrate the activity families in bounded groups** — recognition; construction
    and production; contextual use, including grammar discovery and radio; then
    contextual mistake review, **Words you carry**, and capability-led completion.
    Each group must pass its gallery and accessibility matrix before the next spreads.
-5. **Harden the authored contract, schema, memory handoff, and validators** — mirror
+6. **Harden the authored contract, schema, memory handoff, and validators** — mirror
    Swift and Python rules, prove deterministic debt-free review behavior, preserve
    old progress, and add failing fixtures for every family and contract invariant.
-6. **Run the foundation gate** — complete automated transition, schema, persistence,
+7. **Run the foundation gate** — complete automated transition, schema, persistence,
    UI, branching, offline, and failure checks plus direct simulator, VoiceOver,
    appearance, contrast, motion, audio, microphone, keyboard/fada, and physical-device
    verification. Record the result before spreading the system.
-7. **Migrate one production Mayo slice, then decide whether to spread** — verify both
+8. **Migrate one production Mayo slice, then decide whether to spread** — verify both
    modes, progress preservation, memory events, collection handoff, and optional
    review. Resume broader county integration only after this slice and the foundation
    pass without private family-specific exceptions.
-8. **Resume county review and integration only after the foundation passes** — clear
+9. **Resume county review and integration only after the foundation passes** — clear
    Mayo's history, pedagogy, audio, and rights gates; review Offaly, Dublin, and Meath
    independently; then run the four-county tester-readiness gate.
-9. **Preserve the Phase 2 test record** — add participant count and moderated-session
+10. **Preserve the Phase 2 test record** — add participant count and moderated-session
    notes if they exist; D20 deliberately does not invent them.
 
 ### Lower priority (unchanged)
