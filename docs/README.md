@@ -32,13 +32,17 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
   historian sign-off; start with
   [`00-analysis-and-recommendations.md`](mayo-historical-review/00-analysis-and-recommendations.md).
 - [`GRAINNE-PROTOTYPE-REPORT.md`](GRAINNE-PROTOTYPE-REPORT.md) records evidence and open questions from the Gráinne prototype.
+- [`INTERACTION-STUDIES-REPORT.md`](INTERACTION-STUDIES-REPORT.md) records the
+  disposable iOS interaction studies that informed response, correction,
+  scaffold-removal, motion, and spatial details for D26. It is research evidence, not
+  the active product architecture.
+- [`../web/learning-activity-reference/index.html`](../web/learning-activity-reference/index.html)
+  is the 48-activity interactive reference field guide that supported D26. The
+  canonical activity rules live in `PRODUCT.md`, `DESIGN.md`, D26, and the rebuild
+  plan.
 - [`STORY-RESET.md`](STORY-RESET.md) explains the current story reset.
 - [`EXPANSIVE-INTERFACE-VISION.md`](EXPANSIVE-INTERFACE-VISION.md) explores the living-atlas direction.
 - [`COUNTY-STORY-SLATE.md`](COUNTY-STORY-SLATE.md) is a development slate, not publishable history.
 - [`COMPETITIVE-RESEARCH.md`](COMPETITIVE-RESEARCH.md) is research input, not product authority.
-- [`INTERACTION-STUDIES-REPORT.md`](INTERACTION-STUDIES-REPORT.md) records the
-  benchmark observations, implementation, verification, and open synthesis questions
-  from the three disposable iOS learning-interaction studies. It is research input;
-  D26 and the canonical product/design owners remain authoritative.
 
 When documents conflict, use the canonical owner for that concern. Move superseded records out of the active reading path instead of leaving two live answers.

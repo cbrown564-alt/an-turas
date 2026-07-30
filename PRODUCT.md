@@ -49,6 +49,52 @@ The learner chooses a mode at the county opening and may change it without resta
 
 Exercises are calm, full-screen tasks interspersed with story pages. They use listening, sentence building, fill-in-the-blank, matching, typing, dialogue, comprehension, sequencing, discovery, delayed recall, and ungraded record-and-compare speaking. The product borrows the interaction quality and variety of the strongest language apps without adopting their points, hearts, streaks, leagues, confetti, or reward economies.
 
+### Learning activity system
+
+Learning activities use a familiar **one screen, one task** structure. The learner
+should understand what to attend to, how to answer, and how to continue without first
+learning an An Turas-specific interaction. Product distinction comes from the real
+story, Irish, place, audio, evidence, feedback, and visual system—not from making a
+routine response mechanically novel.
+
+The core activity set is:
+
+- picture or map selection when a real visual communicates meaning precisely;
+- sentence construction from words or meaningful multiword units;
+- free typed production;
+- fill-in-the-blank;
+- listen and choose;
+- listen and type;
+- ungraded record-and-compare speaking;
+- matching for establishing a distinction;
+- authored dialogue completion;
+- read or listen and respond, increasingly in Irish;
+- radio-style listening built from reviewed narration, oral history, or archival
+  reading;
+- pre-authored branching roleplay for present-day or otherwise bounded exchanges;
+- contextual mistake review;
+- active practice from **Words you carry**; and
+- a calm completion screen that states what the learner can now understand or say and
+  what returns to the atlas.
+
+These are reusable activity families, not fifteen isolated visual concepts. They share
+one full-screen shell, response lifecycle, diagnostic feedback model, accessibility
+behavior, and completion contract. A family may take on the imagery or evidence of the
+current story, but the response method remains stable enough to become familiar.
+
+Story pages and activity pages are distinct modes of attention. A story page may be
+editorial, atmospheric, and scrollable. An activity page is focused, normally fixed
+to one viewport at standard text sizes, and contains one prompt, one dominant response
+area, one primary action, and one feedback state. Story exposition must not accumulate
+inside the activity merely to make a conventional task feel bespoke.
+
+Matching, picture selection, word tiles, and fill-in-the-blank establish or support
+learning; they do not by themselves prove recall or production. The authored county
+sequence must still move each target through meaningful introduction, retrieval,
+phrase or sentence use, and later reuse. Speaking never receives a pronunciation
+score. Branching roleplay is pre-written and reviewed rather than generated in real
+time.
+
 Image-led and text-led screens are equal expressions of this system. An image is used only when it contributes historical, geographical, emotional, or conceptual meaning. When imagery is present it is treated as a field for composition—not as a sticker, thumbnail, or card illustration—and all interface copy remains live, accessible app text. When imagery is absent, scale, measure, rhythm, tonal contrast, and a clear editorial hierarchy must provide the same sense of intention; placeholder decoration is not a substitute.
 
 Narrative intensity can change across a story. Early episodes may be observational and spacious; later episodes may become darker, closer, and more cinematic as historical pressure rises. This progression must follow the account rather than impose one dramatic treatment on the whole product. Navigation, evidence access, and learning controls remain calm and native throughout.

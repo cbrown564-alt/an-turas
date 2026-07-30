@@ -265,12 +265,50 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 ### Full-screen exercises
 
 - Every exercise occupies its own page between story pages. Do not embed a sequence of answer buttons inside a narrative card and call it a learning flow.
-- Keep one clear task, one dominant response area, and one primary action. At standard text sizes the primary action sits above the safe-area inset; at accessibility sizes the page may scroll without hiding the task or verdict.
-- Use a shared state sequence: unanswered → incorrect and retry → corrected → complete. Feedback appears beside the response area, states what was wrong in plain language, and never relies on color, shake, or haptics alone.
-- Listening may begin with a word, but phrase and sentence work becomes the default after introduction. Sentence building, cloze, matching, typing, dialogue, comprehension, sequencing, discovery, delayed recall, and ungraded speaking use the same calm shell.
+- Use one stable activity anatomy: native close or back action and quiet progress;
+  optional short context; one large prompt; one dominant response area; one primary
+  action above the safe area; diagnostic feedback in the same screen; then one
+  continue action. Do not vary this hierarchy merely to make activity families look
+  more different.
+- At standard text sizes, aim to keep the complete task and primary action within one
+  viewport. At accessibility sizes, allow the page to scroll as one coherent
+  composition without hiding the task, current response, verdict, or action.
+- Use a shared state sequence: unanswered → response formed → checked → diagnostic
+  feedback or complete → retry or continue. Selection remains editable until Check.
+  Feedback appears beside the response area, names what did or did not fit in plain
+  language, and never relies on color, shake, sound, or haptics alone.
+- Keep instructions, controls, verdicts, and progress in SF Pro. The story serif may
+  carry Irish, a quotation, or a source excerpt inside the working area, but it does
+  not turn routine interface copy into an editorial display.
+- The response family supplies the working area, not a new page composition:
+  picture or map choice; sentence tiles; native text input; cloze; audio choice or
+  dictation; record and compare; matching; dialogue; comprehension; audio story;
+  authored branching roleplay; mistake review; word practice; or completion.
+- Listening may begin with a word, but phrase and sentence work becomes the default
+  after introduction. Recognition formats provide entry and diagnosis; the county
+  sequence must later require retrieval or production.
+- Picture choice uses a historically, geographically, or linguistically meaningful
+  image, map region, object, or document detail. Do not introduce generic clip art or
+  a decorative image merely because the response family has picture-shaped slots.
+- Sentence tiles may provide the first supported construction, but a later screen
+  removes the tiles. Multiword units stay intact when syntax rather than spelling is
+  the target.
+- Matching is brief and purposeful: establish distinctions, then leave the matching
+  surface. It is not a mastery screen and does not earn clean-recall credit by itself.
+- Dialogue and branching roleplay use authored, reviewed turns. Branches may respond
+  differently to the learner's choice, but no runtime model invents Irish or
+  historical participation. Historical dialogue never casts the learner as an
+  undocumented actor.
+- Radio-style activities keep audio primary, provide segment replay and a visible
+  transcript or meaning route, and interrupt only when a response improves attention
+  or comprehension.
+- Mistake review returns to the original story, sound, sentence, or misconception.
+  **Words you carry** practice preserves each word's first place, audio, example, and
+  later uses. Neither surface presents overdue counts or accumulated debt.
+- Completion states summarise capabilities and carried material, not points,
+  accuracy theatre, rewards, or emotional pressure.
 - Word tiles, match targets, audio buttons, fada keys, record controls, and answer rows have 44 pt minimum targets. Drag interactions always have a tap or selection alternative.
 - Speaking presents the model, record, playback, and compare actions without a score. If microphone permission is denied, explain the limitation and offer a non-recording continuation.
-- Exercise chrome uses SF Pro, semantic surfaces, and the project tint. Story serif may appear inside quoted Irish or source material, never in instructions, verdicts, or controls.
 - Correctness is restrained: a checkmark, concise verdict, and optional light haptic are sufficient. Do not add hearts, XP, streaks, confetti, mascot reactions, or artificial delays.
 
 ### Atlas and Evidence

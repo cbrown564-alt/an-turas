@@ -217,40 +217,50 @@ story or new Learning mode.
 
 ## Immediate next steps (learning-mechanics foundation, then rebuild Phases 4–6)
 
-1. **Prototype and compare the direction in the running app** — benchmark public
-   interaction-quality references, freeze one small Mayo learning slice, and build two to
-   four materially different learning approaches with the same content. Verify their
-   core access and recovery states, present the tradeoffs, and record the user's
-   choice as a durable decision.
-2. **Consolidate the chosen shared mechanics foundation** — implement the common
-   attempt, diagnostic, hint/recovery, retry, completion, persistence, and exactly-once
-   memory-event model without changing production chapter content.
-3. **Prove every common response and failure state** — move listening, choices,
-   sentence tiles, Irish typing, matching, dialogue, comprehension, sequencing,
-   discovery, delayed retrieval, and ungraded speaking through the internal gallery,
-   contract adapter, and mirrored validators.
-4. **Run the foundation gate** — complete automated transition, schema, persistence,
-   UI, and offline checks plus direct simulator, VoiceOver, appearance, contrast,
-   motion, audio, microphone, keyboard/fada, and physical-device verification. Record
-   the result before spreading the system.
-5. **Resume county review and integration only after the foundation passes** — clear
+1. **Freeze the representative Mayo run** — use the selected D26 shell with the Clew
+   Bay fixtures and record the exact listening, matching, construction, typing,
+   dialogue, speaking, comprehension, completion, and contextual-review sequence.
+   Decide which local response, correction, scaffold-removal, motion, and spatial
+   details from the iOS studies are retained; do not reopen the architecture choice.
+2. **Implement the shared state engine and activity shell** — centralise attempt,
+   diagnostic, hint/recovery, retry, completion, persistence, focus, accessibility
+   announcements, and exactly-once memory events before migrating production packs.
+3. **Operate the complete representative run** — prove the selected shell end to end
+   with incorrect and recovery paths, audio fallback, keyboard/fadas, microphone
+   denial, interruption/resume, and fixture-only completion.
+4. **Migrate the activity families in bounded groups** — recognition; construction
+   and production; contextual use, including radio and finite authored roleplay; then
+   contextual mistake review, **Words you carry**, and capability-led completion.
+   Each group must pass its gallery and accessibility matrix before the next spreads.
+5. **Harden the authored contract, schema, memory handoff, and validators** — mirror
+   Swift and Python rules, prove deterministic debt-free review behavior, preserve
+   old progress, and add failing fixtures for every family and contract invariant.
+6. **Run the foundation gate** — complete automated transition, schema, persistence,
+   UI, branching, offline, and failure checks plus direct simulator, VoiceOver,
+   appearance, contrast, motion, audio, microphone, keyboard/fada, and physical-device
+   verification. Record the result before spreading the system.
+7. **Migrate one production Mayo slice, then decide whether to spread** — verify both
+   modes, progress preservation, memory events, collection handoff, and optional
+   review. Resume broader county integration only after this slice and the foundation
+   pass without private family-specific exceptions.
+8. **Resume county review and integration only after the foundation passes** — clear
    Mayo's history, pedagogy, audio, and rights gates; review Offaly, Dublin, and Meath
    independently; then run the four-county tester-readiness gate.
-6. **Preserve the Phase 2 test record** — add participant count and moderated-session
+9. **Preserve the Phase 2 test record** — add participant count and moderated-session
    notes if they exist; D20 deliberately does not invent them.
 
 ### Lower priority (unchanged)
 
-5. **Personal atlas external release gates** — run the 12–18 person hard-case protocol;
+1. **Personal atlas external release gates** — run the 12–18 person hard-case protocol;
    establish the specialist-reviewed showcase, licensed surname source and community/
    voice agreements before public promotion.
-6. **Generate Irish Cultural Guide clips only for cleared text** — do not QA superseded
+2. **Generate Irish Cultural Guide clips only for cleared text** — do not QA superseded
    D13 copy; native-speaker review remains required for Irish teaching audio. Treat
    Trinity/ABAIR partnership work as a post-launch upgrade.
-7. **Illustration production recipe** — atlas registers before Chapter 1–3 scene sets.
-8. **TestFlight build** — needs Apple Developer team in `ios/project.yml`.
-9. **Send ABAIR commercial enquiry** — optional; draft at `docs/ABAIR-enquiry.md`.
-10. **Grant funding research** — Foras na Gaeilge / Údarás strings before accepting (D10).
+3. **Illustration production recipe** — atlas registers before Chapter 1–3 scene sets.
+4. **TestFlight build** — needs Apple Developer team in `ios/project.yml`.
+5. **Send ABAIR commercial enquiry** — optional; draft at `docs/ABAIR-enquiry.md`.
+6. **Grant funding research** — Foras na Gaeilge / Údarás strings before accepting (D10).
 
 ## Long-term plan
 

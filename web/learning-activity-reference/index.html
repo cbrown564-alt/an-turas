@@ -1,0 +1,2431 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive reference catalogue of learning activity patterns from Duolingo and Brilliant, with decisions for An Turas.">
+  <title>Learning Activity Field Guide · An Turas</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #e8eae4;
+      --surface: #f7f7f2;
+      --surface-strong: #ffffff;
+      --surface-sunk: #dde0d7;
+      --ink: #23281f;
+      --ink-soft: #545c4e;
+      --ink-faint: #6c7466;
+      --line: #b9bfb2;
+      --moss: #405e3d;
+      --moss-2: #65805f;
+      --moss-tint: #e2e9df;
+      --lichen: #80670b;
+      --lichen-tint: #f0e8ca;
+      --rust: #9b4435;
+      --rust-tint: #f3ded9;
+      --blue: #315d75;
+      --blue-tint: #dce9ef;
+      --purple: #66558a;
+      --purple-tint: #e7e0f1;
+      --black: #131714;
+      --white: #f7f7f2;
+      --radius-xs: 4px;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --shadow-tight: 0 3px 7px rgba(24, 31, 22, .12);
+      --sidebar-width: 21rem;
+      --notes-width: 22rem;
+      --z-sticky: 10;
+      --z-dialog: 30;
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--page); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--page);
+      font-family: "Avenir Next", Avenir, ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    a { color: var(--moss); }
+    :focus-visible { outline: 3px solid var(--lichen); outline-offset: 3px; }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: var(--sidebar-width) minmax(30rem, 1fr) var(--notes-width);
+    }
+
+    .catalogue {
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .catalogue-head {
+      padding: 1.5rem 1.25rem 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1rem;
+    }
+
+    .brand-mark {
+      width: 2.2rem;
+      height: 2.2rem;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--black);
+      border-radius: 50%;
+      font: 700 1rem/1 Georgia, serif;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font: 600 1.06rem/1.18 Georgia, serif;
+      letter-spacing: -.01em;
+    }
+
+    .brand p {
+      margin: .16rem 0 0;
+      color: var(--ink-soft);
+      font-size: .76rem;
+    }
+
+    .search {
+      width: 100%;
+      min-height: 2.75rem;
+      padding: .65rem .75rem;
+      color: var(--ink);
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xs);
+    }
+
+    .filters {
+      display: flex;
+      gap: .35rem;
+      padding: .8rem 1.25rem;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--line);
+      scrollbar-width: thin;
+    }
+
+    .filter {
+      flex: 0 0 auto;
+      min-height: 2.35rem;
+      padding: .45rem .68rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      font-size: .76rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .filter[aria-pressed="true"] {
+      color: var(--white);
+      background: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .activity-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: .4rem 0 1rem;
+    }
+
+    .group-title {
+      margin: 1rem 1.25rem .35rem;
+      color: var(--ink-faint);
+      font-size: .7rem;
+      font-weight: 750;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .activity-link {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 2rem 1fr auto;
+      align-items: center;
+      gap: .65rem;
+      padding: .68rem 1.25rem;
+      border: 0;
+      border-radius: 0;
+      text-align: left;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .activity-link:hover { background: var(--surface-sunk); }
+    .activity-link[aria-current="true"] { background: var(--moss-tint); }
+
+    .activity-number {
+      color: var(--ink-faint);
+      font-size: .72rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .activity-link strong {
+      display: block;
+      font-size: .83rem;
+      line-height: 1.2;
+    }
+
+    .activity-link small {
+      display: block;
+      margin-top: .13rem;
+      color: var(--ink-soft);
+      font-size: .68rem;
+    }
+
+    .stance-dot {
+      width: .55rem;
+      height: .55rem;
+      border-radius: 50%;
+      background: var(--line);
+    }
+
+    .stance-dot.keep { background: var(--moss); }
+    .stance-dot.branch { background: var(--lichen); }
+    .stance-dot.reject { background: var(--rust); }
+    .stance-dot.invent { background: var(--blue); }
+
+    .stage {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--page);
+    }
+
+    .stage-head {
+      position: sticky;
+      z-index: var(--z-sticky);
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 4.3rem;
+      padding: .75rem 1.25rem;
+      background: rgba(232, 234, 228, .95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .stage-head p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: .76rem;
+    }
+
+    .stage-head strong { font-size: .88rem; }
+
+    .stage-nav {
+      display: flex;
+      gap: .45rem;
+    }
+
+    .icon-button {
+      width: 2.65rem;
+      height: 2.65rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .icon-button:hover { border-color: var(--ink); }
+
+    .stage-body {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 2.2rem 1.25rem 3.5rem;
+    }
+
+    .phone-wrap {
+      width: min(100%, 25rem);
+    }
+
+    .phone-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: .7rem;
+      color: var(--ink-soft);
+      font-size: .72rem;
+    }
+
+    .phone {
+      min-height: 48rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 2px solid var(--ink);
+      border-radius: 2.25rem;
+      box-shadow: 0 10px 28px rgba(25, 31, 23, .16);
+    }
+
+    .phone-top {
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+
+    .phone-island {
+      width: 5.4rem;
+      height: 1.2rem;
+      border-radius: 999px;
+      background: var(--black);
+    }
+
+    .lesson-chrome {
+      display: grid;
+      grid-template-columns: 2.75rem 1fr 2.75rem;
+      align-items: center;
+      gap: .6rem;
+      min-height: 3.2rem;
+      padding: .25rem .8rem .65rem;
+    }
+
+    .close-demo, .hint-demo {
+      width: 2.75rem;
+      height: 2.75rem;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+    }
+
+    .progress-track {
+      height: .55rem;
+      overflow: hidden;
+      background: var(--surface-sunk);
+      border-radius: 999px;
+    }
+
+    .progress-fill {
+      width: 38%;
+      height: 100%;
+      background: var(--moss);
+      border-radius: inherit;
+      transition: width .45s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .phone-screen {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 1.25rem 1.1rem;
+    }
+
+    .activity-context {
+      margin: 0 0 .4rem;
+      color: var(--ink-soft);
+      font-size: .76rem;
+      font-weight: 700;
+    }
+
+    .prompt {
+      margin: 0;
+      font: 600 clamp(1.45rem, 5vw, 1.85rem)/1.15 Georgia, serif;
+      letter-spacing: -.02em;
+      text-wrap: balance;
+    }
+
+    .subprompt {
+      margin: .55rem 0 0;
+      color: var(--ink-soft);
+      font-size: .92rem;
+      line-height: 1.45;
+      text-wrap: pretty;
+    }
+
+    .work {
+      flex: 1;
+      min-height: 20rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: .75rem;
+      padding: 1.25rem 0;
+    }
+
+    .choice {
+      width: 100%;
+      min-height: 3.35rem;
+      padding: .78rem .9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface-strong);
+      text-align: left;
+      font-weight: 650;
+      cursor: pointer;
+      transition: transform .15s cubic-bezier(.22, 1, .36, 1), border-color .15s ease, background .15s ease;
+    }
+
+    .choice:hover { transform: translateY(-1px); border-color: var(--ink-soft); }
+    .choice.selected { border-color: var(--moss); background: var(--moss-tint); }
+    .choice.wrong { border-color: var(--rust); background: var(--rust-tint); }
+
+    .primary {
+      width: 100%;
+      min-height: 3rem;
+      padding: .7rem 1rem;
+      color: var(--white);
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      border-radius: var(--radius-xs);
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .primary:disabled { opacity: .38; cursor: default; }
+
+    .secondary {
+      min-height: 2.75rem;
+      padding: .6rem .85rem;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xs);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .answer-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      min-height: 4rem;
+      align-content: flex-start;
+      padding: .65rem 0;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .tile-bank {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .45rem;
+    }
+
+    .tile {
+      min-height: 2.65rem;
+      padding: .52rem .75rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xs);
+      background: var(--surface-strong);
+      box-shadow: var(--shadow-tight);
+      font: 600 1rem/1 Georgia, serif;
+      cursor: pointer;
+    }
+
+    .tile.used { opacity: .28; box-shadow: none; }
+
+    .text-answer {
+      width: 100%;
+      min-height: 3.4rem;
+      padding: .8rem;
+      color: var(--ink);
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xs);
+      font: 500 1.05rem/1.3 Georgia, serif;
+    }
+
+    .audio-orb {
+      width: 7.5rem;
+      height: 7.5rem;
+      align-self: center;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--blue);
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 0 0 .75rem var(--blue-tint);
+    }
+
+    .audio-orb.playing { animation: breathe 1.4s ease-in-out infinite; }
+
+    @keyframes breathe {
+      50% { transform: scale(1.045); box-shadow: 0 0 0 1.05rem var(--blue-tint); }
+    }
+
+    .phrase {
+      text-align: center;
+      font: 600 1.7rem/1.25 Georgia, serif;
+    }
+
+    .mic-bars {
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .28rem;
+    }
+
+    .mic-bars i {
+      width: .3rem;
+      height: 1rem;
+      border-radius: 999px;
+      background: var(--moss);
+    }
+
+    .mic-bars.listening i { animation: wave .7s ease-in-out infinite alternate; }
+    .mic-bars i:nth-child(2) { animation-delay: -.22s; }
+    .mic-bars i:nth-child(3) { animation-delay: -.45s; }
+    .mic-bars i:nth-child(4) { animation-delay: -.14s; }
+    .mic-bars i:nth-child(5) { animation-delay: -.33s; }
+
+    @keyframes wave { to { height: 3.3rem; } }
+
+    .match-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+    }
+
+    .match {
+      width: 100%;
+      min-height: 3.1rem;
+      margin-bottom: .5rem;
+      padding: .6rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface-strong);
+      cursor: pointer;
+    }
+
+    .match.active { border-color: var(--lichen); background: var(--lichen-tint); }
+    .match.matched { border-color: var(--moss); background: var(--moss-tint); opacity: .72; }
+
+    .story-panel {
+      padding: 1rem;
+      background: var(--blue-tint);
+      border-radius: var(--radius-md);
+    }
+
+    .speaker {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      margin-bottom: .7rem;
+      color: var(--blue);
+      font-size: .78rem;
+      font-weight: 750;
+    }
+
+    .avatar {
+      width: 2.2rem;
+      height: 2.2rem;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--blue);
+      font-weight: 800;
+    }
+
+    .story-panel p {
+      margin: 0;
+      font: 500 1.05rem/1.5 Georgia, serif;
+    }
+
+    .scene-board {
+      min-height: 15rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background:
+        radial-gradient(circle at 25% 22%, #f6e6aa 0 9%, transparent 9.5%),
+        linear-gradient(#a8d1d5 0 56%, #66835d 56% 100%);
+    }
+
+    .scene-board .place {
+      position: absolute;
+      width: 4.6rem;
+      min-height: 3.2rem;
+      display: grid;
+      place-items: center;
+      padding: .35rem;
+      border: 0;
+      border-radius: var(--radius-sm);
+      background: rgba(247, 247, 242, .93);
+      box-shadow: var(--shadow-tight);
+      font-size: .72rem;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .scene-board .place:nth-child(1) { left: 1rem; bottom: 1.2rem; }
+    .scene-board .place:nth-child(2) { right: 1rem; top: 1rem; }
+    .scene-board .place:nth-child(3) { right: 2.5rem; bottom: 1rem; }
+    .scene-board .place.visited { color: var(--white); background: var(--moss); }
+
+    .chat {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+    }
+
+    .bubble {
+      max-width: 86%;
+      padding: .7rem .85rem;
+      border-radius: 14px 14px 14px 3px;
+      background: var(--surface-sunk);
+      line-height: 1.4;
+    }
+
+    .bubble.you {
+      align-self: flex-end;
+      color: var(--white);
+      background: var(--blue);
+      border-radius: 14px 14px 3px 14px;
+    }
+
+    .picture-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .6rem;
+    }
+
+    .picture-choice {
+      min-height: 7.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--surface-strong);
+      cursor: pointer;
+    }
+
+    .picture-choice span:first-child { font-size: 2.4rem; }
+    .picture-choice strong { font-size: .84rem; }
+    .picture-choice.selected { border-color: var(--moss); background: var(--moss-tint); }
+
+    .path-map {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .path-node {
+      width: 5.2rem;
+      height: 5.2rem;
+      display: grid;
+      place-items: center;
+      border: .45rem solid var(--surface-sunk);
+      border-radius: 50%;
+      color: var(--ink-soft);
+      background: var(--surface-strong);
+      font-size: 1.6rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .path-node:nth-child(even) { transform: translateX(3.1rem); }
+    .path-node:nth-child(3n) { transform: translateX(-3.1rem); }
+    .path-node.done { color: var(--white); background: var(--moss); border-color: var(--moss-2); }
+    .path-node.current { border-color: var(--lichen); box-shadow: 0 0 0 .35rem var(--lichen-tint); }
+
+    .practice-list {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+    }
+
+    .practice-row {
+      display: grid;
+      grid-template-columns: 2.6rem 1fr auto;
+      align-items: center;
+      gap: .7rem;
+      min-height: 4.1rem;
+      padding: .6rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .practice-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--purple-tint);
+      color: var(--purple);
+    }
+
+    .practice-row strong { display: block; font-size: .88rem; }
+    .practice-row small { color: var(--ink-soft); }
+
+    .clock {
+      width: 13rem;
+      height: 13rem;
+      position: relative;
+      align-self: center;
+      border: .75rem solid var(--ink);
+      border-radius: 50%;
+      background: var(--surface-strong);
+    }
+
+    .clock::before, .clock::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 50%;
+      width: .3rem;
+      border-radius: 999px;
+      transform-origin: 50% 100%;
+      background: var(--ink);
+    }
+
+    .clock::before { height: 3.5rem; transform: translateX(-50%) rotate(var(--hour-angle, 150deg)); }
+    .clock::after { height: 4.8rem; transform: translateX(-50%) rotate(var(--minute-angle, 240deg)); background: var(--rust); }
+
+    .slider {
+      width: 100%;
+      accent-color: var(--moss);
+    }
+
+    .visual-model {
+      min-height: 12rem;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--blue-tint);
+      border-radius: var(--radius-md);
+    }
+
+    .model-output {
+      font: 700 2.2rem/1 Georgia, serif;
+      color: var(--blue);
+    }
+
+    .graph {
+      aspect-ratio: 1;
+      position: relative;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(to right, transparent calc(50% - .5px), var(--ink-soft) 50%, transparent calc(50% + .5px)),
+        linear-gradient(to bottom, transparent calc(50% - .5px), var(--ink-soft) 50%, transparent calc(50% + .5px)),
+        linear-gradient(to right, rgba(82, 91, 77, .12) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(82, 91, 77, .12) 1px, transparent 1px);
+      background-size: auto, auto, 10% 100%, 100% 10%;
+      cursor: crosshair;
+    }
+
+    .graph-point {
+      width: 1rem;
+      height: 1rem;
+      position: absolute;
+      left: calc(var(--x) - .5rem);
+      top: calc(var(--y) - .5rem);
+      border-radius: 50%;
+      background: var(--rust);
+      box-shadow: 0 0 0 .28rem var(--rust-tint);
+    }
+
+    .number-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .35rem;
+    }
+
+    .number-cell {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface-strong);
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .number-cell.active { color: var(--white); background: var(--blue); }
+
+    .staff {
+      min-height: 11rem;
+      position: relative;
+      background:
+        linear-gradient(to bottom,
+          transparent 18%, var(--ink) 18% 19%, transparent 19% 31%,
+          var(--ink) 31% 32%, transparent 32% 44%,
+          var(--ink) 44% 45%, transparent 45% 57%,
+          var(--ink) 57% 58%, transparent 58% 70%,
+          var(--ink) 70% 71%, transparent 71%);
+    }
+
+    .note {
+      width: 1.25rem;
+      height: .9rem;
+      position: absolute;
+      left: var(--note-x, 45%);
+      top: var(--note-y, 43%);
+      border-radius: 50%;
+      background: var(--purple);
+      transform: rotate(-16deg);
+      transition: top .25s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .keyboard {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: .2rem;
+      height: 8rem;
+    }
+
+    .key {
+      border: 1px solid var(--line);
+      border-radius: 0 0 var(--radius-xs) var(--radius-xs);
+      background: var(--surface-strong);
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .key.active { color: var(--white); background: var(--purple); }
+
+    .sequence {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .sequence-item {
+      display: grid;
+      grid-template-columns: 2rem 1fr 2rem;
+      align-items: center;
+      gap: .5rem;
+      min-height: 3.4rem;
+      padding: .5rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface-strong);
+    }
+
+    .sequence-item button {
+      width: 2rem;
+      height: 2rem;
+      border: 0;
+      border-radius: 50%;
+      background: var(--surface-sunk);
+      cursor: pointer;
+    }
+
+    .balance {
+      position: relative;
+      min-height: 13rem;
+    }
+
+    .beam {
+      width: 80%;
+      height: .45rem;
+      position: absolute;
+      left: 10%;
+      top: 42%;
+      background: var(--ink);
+      transform: rotate(var(--tilt, -4deg));
+      transition: transform .35s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .beam::before, .beam::after {
+      content: "";
+      width: 4.5rem;
+      height: 2.5rem;
+      position: absolute;
+      top: .4rem;
+      border: 2px solid var(--ink);
+      border-top: 0;
+      border-radius: 0 0 3rem 3rem;
+    }
+
+    .beam::before { left: 0; }
+    .beam::after { right: 0; }
+
+    .fulcrum {
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: calc(50% - 2.4rem);
+      top: 45%;
+      border-left: 2.4rem solid transparent;
+      border-right: 2.4rem solid transparent;
+      border-bottom: 5rem solid var(--ink-soft);
+    }
+
+    .logic-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .logic-cell {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--surface-strong);
+      cursor: pointer;
+    }
+
+    .logic-cell.yes { color: var(--moss); background: var(--moss-tint); }
+    .logic-cell.no { color: var(--rust); background: var(--rust-tint); }
+
+    .blocks {
+      min-height: 9rem;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      gap: .3rem;
+    }
+
+    .block {
+      width: 2.4rem;
+      height: calc(var(--n) * 1.3rem);
+      background: var(--lichen);
+      border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+    }
+
+    .feedback {
+      display: none;
+      margin-top: auto;
+      padding: .85rem;
+      border-radius: var(--radius-sm);
+      background: var(--moss-tint);
+      color: var(--moss);
+      font-size: .86rem;
+      line-height: 1.4;
+    }
+
+    .feedback.show { display: block; animation: feedback-in .25s cubic-bezier(.22, 1, .36, 1); }
+    .feedback.bad { color: var(--rust); background: var(--rust-tint); }
+
+    @keyframes feedback-in {
+      from { opacity: .4; transform: translateY(.5rem); }
+    }
+
+    .notes {
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      overflow-y: auto;
+      padding: 1.4rem 1.25rem 3rem;
+      background: var(--surface);
+      border-left: 1px solid var(--line);
+    }
+
+    .source-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.7rem;
+      padding: .28rem .5rem;
+      border-radius: 999px;
+      color: var(--blue);
+      background: var(--blue-tint);
+      font-size: .7rem;
+      font-weight: 750;
+    }
+
+    .notes h2 {
+      margin: .85rem 0 .45rem;
+      font: 600 1.55rem/1.15 Georgia, serif;
+      letter-spacing: -.02em;
+    }
+
+    .notes .summary {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: .88rem;
+      line-height: 1.48;
+    }
+
+    .stance {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      margin: 1rem 0;
+      padding: .7rem;
+      border-radius: var(--radius-sm);
+      background: var(--surface-sunk);
+      font-size: .8rem;
+      font-weight: 750;
+    }
+
+    .stance.keep { color: var(--moss); background: var(--moss-tint); }
+    .stance.branch { color: var(--lichen); background: var(--lichen-tint); }
+    .stance.reject { color: var(--rust); background: var(--rust-tint); }
+    .stance.invent { color: var(--blue); background: var(--blue-tint); }
+
+    .note-section {
+      padding: 1rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .note-section h3 {
+      margin: 0 0 .45rem;
+      font-size: .76rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .note-section p, .note-section li {
+      color: var(--ink-soft);
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+
+    .note-section p { margin: 0; }
+    .note-section ul { margin: .35rem 0 0; padding-left: 1.15rem; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+    }
+
+    .tag {
+      padding: .32rem .5rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      font-size: .68rem;
+    }
+
+    .source-link {
+      display: inline-flex;
+      margin-top: .5rem;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .mobile-top { display: none; }
+
+    @media (max-width: 1120px) {
+      .app { grid-template-columns: 18rem minmax(28rem, 1fr); }
+      .notes {
+        width: min(28rem, calc(100vw - 2rem));
+        position: fixed;
+        z-index: var(--z-dialog);
+        right: 1rem;
+        top: 1rem;
+        height: calc(100vh - 2rem);
+        border: 1px solid var(--ink);
+        border-radius: var(--radius-md);
+        box-shadow: 0 12px 34px rgba(20, 25, 19, .24);
+        transform: translateX(calc(100% + 2rem));
+        transition: transform .25s cubic-bezier(.22, 1, .36, 1);
+      }
+      .notes.open { transform: translateX(0); }
+      .mobile-top { display: inline-grid; }
+    }
+
+    @media (max-width: 760px) {
+      .app { display: block; }
+      .catalogue {
+        width: min(22rem, calc(100vw - 2rem));
+        position: fixed;
+        z-index: var(--z-dialog);
+        left: 1rem;
+        top: 1rem;
+        height: calc(100vh - 2rem);
+        border: 1px solid var(--ink);
+        border-radius: var(--radius-md);
+        box-shadow: 0 12px 34px rgba(20, 25, 19, .24);
+        transform: translateX(calc(-100% - 2rem));
+        transition: transform .25s cubic-bezier(.22, 1, .36, 1);
+      }
+      .catalogue.open { transform: translateX(0); }
+      .stage-head { padding-inline: .75rem; }
+      .stage-body { padding: 1rem .5rem 2rem; }
+      .phone { min-height: 43rem; border-radius: 1.6rem; }
+      .phone-label { padding-inline: .25rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <aside class="catalogue" id="catalogue" aria-label="Activity catalogue">
+      <div class="catalogue-head">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">AT</div>
+          <div>
+            <h1>Learning Activity Field Guide</h1>
+            <p>48 patterns · public references · working sketches</p>
+          </div>
+        </div>
+        <input class="search" id="search" type="search" placeholder="Find an activity…" aria-label="Find an activity">
+      </div>
+      <div class="filters" aria-label="Filter activities">
+        <button class="filter" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" data-filter="Duolingo language" aria-pressed="false">Duo language</button>
+        <button class="filter" data-filter="Duolingo other" aria-pressed="false">Duo other</button>
+        <button class="filter" data-filter="Brilliant" aria-pressed="false">Brilliant</button>
+        <button class="filter" data-filter="An Turas branch" aria-pressed="false">Our branches</button>
+      </div>
+      <nav class="activity-list" id="activity-list"></nav>
+    </aside>
+
+    <section class="stage" aria-label="Interactive activity prototype">
+      <header class="stage-head">
+        <div class="stage-nav">
+          <button class="icon-button mobile-top" id="open-catalogue" aria-label="Open activity catalogue">☰</button>
+          <button class="icon-button" id="previous" aria-label="Previous activity">←</button>
+          <button class="icon-button" id="next" aria-label="Next activity">→</button>
+        </div>
+        <div>
+          <strong id="stage-title">Activity</strong>
+          <p id="stage-count">1 of 48</p>
+        </div>
+        <button class="icon-button mobile-top" id="open-notes" aria-label="Open design notes">ⓘ</button>
+      </header>
+
+      <div class="stage-body">
+        <div class="phone-wrap">
+          <div class="phone-label">
+            <span>Tap, type, move, or answer</span>
+            <span id="prototype-kind">working sketch</span>
+          </div>
+          <article class="phone" id="phone">
+            <div class="phone-top"><div class="phone-island" aria-hidden="true"></div></div>
+            <div class="lesson-chrome">
+              <button class="close-demo" aria-label="Exit prototype">×</button>
+              <div class="progress-track" aria-label="Lesson progress"><div class="progress-fill" id="progress"></div></div>
+              <button class="hint-demo" id="hint" aria-label="Show a hint">?</button>
+            </div>
+            <div class="phone-screen" id="phone-screen"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <aside class="notes" id="notes" aria-label="Design notes">
+      <button class="icon-button mobile-top" id="close-notes" aria-label="Close design notes">×</button>
+      <div id="notes-content"></div>
+    </aside>
+  </main>
+
+  <script>
+    const sources = {
+      duoImmersion: {
+        label: "Duolingo · immersion exercises",
+        url: "https://blog.duolingo.com/new-immersion-exercises-maximize-your-language-learning/"
+      },
+      duoAdventure: {
+        label: "Duolingo · Adventures",
+        url: "https://blog.duolingo.com/adventures/"
+      },
+      duoRadio: {
+        label: "Duolingo · DuoRadio",
+        url: "https://blog.duolingo.com/duoradio-listening-practice/"
+      },
+      duoPractice: {
+        label: "Duolingo · seven practice modes",
+        url: "https://blog.duolingo.com/ways-to-practice-in-duolingo/"
+      },
+      duoMath: {
+        label: "Duolingo · Math activities",
+        url: "https://blog.duolingo.com/duolingo-launches-math-app/"
+      },
+      duoMathGames: {
+        label: "Duolingo · Math games",
+        url: "https://blog.duolingo.com/math-puzzles-games/"
+      },
+      duoMusic: {
+        label: "Duolingo · Music activities",
+        url: "https://blog.duolingo.com/music-course/"
+      },
+      brilliantBasics: {
+        label: "Brilliant · interactive lesson model",
+        url: "https://brilliant.org/help/using-brilliant/what-subjects-does-brilliant-teach/"
+      },
+      brilliantPaths: {
+        label: "Brilliant · learning paths",
+        url: "https://brilliant.org/help/features/what-are-learning-paths/"
+      },
+      brilliantTutor: {
+        label: "Brilliant · contextual tutor",
+        url: "https://brilliant.org/help/features/"
+      },
+      brilliantModels: {
+        label: "Brilliant · visual representations",
+        url: "https://brilliant.org/help/for-educators/is-brilliant-aligned-with-common-core-state-standards/"
+      },
+      anTuras: {
+        label: "An Turas · product direction",
+        url: "../../PRODUCT.md"
+      }
+    };
+
+    const common = {
+      duo: {
+        source: sources.duoImmersion,
+        sourceName: "Duolingo language",
+        summary: "A compact, answerable task inside a highly repeatable lesson shell.",
+        keep: "Keep the immediate legibility: the learner should understand the required action in a glance.",
+        reject: "Do not import hearts, XP, cartoon praise, streak pressure, or translation as the default mental route.",
+        tags: ["fast prompt", "one action", "instant feedback"]
+      },
+      brilliant: {
+        source: sources.brilliantBasics,
+        sourceName: "Brilliant",
+        summary: "A problem-first step that makes the underlying idea visible and manipulable.",
+        keep: "Keep the coupling between representation and concept: the learner changes the model, not a decorative control.",
+        reject: "Avoid importing STEM puzzle aesthetics when the Irish or historical material does not need them.",
+        tags: ["learn by doing", "visual model", "worked feedback"]
+      }
+    };
+
+    const activities = [
+      {
+        id: "duo-path", title: "Path navigation", group: "Duolingo language", template: "path", stance: "reject",
+        source: sources.duoPractice, summary: "A single prescribed route turns the curriculum into visible, bite-sized nodes.",
+        keep: "Keep the clarity of what is next and what has already been completed.",
+        reject: "Reject the winding game board, treasure interruptions, lock-and-key pacing, and implied obligation to clear every node.",
+        branch: "Use the island and county dossier as meaningful geography, with optional review attached to places already carried.",
+        tags: ["curriculum map", "next action", "progress"]
+      },
+      {
+        id: "duo-lesson-start", title: "Lesson start", group: "Duolingo language", template: "choice", stance: "keep",
+        prompt: "Choose the phrase you’ll practise", subprompt: "One objective, one expected duration, one clear way in.",
+        choices: ["Say where you are from", "Name places on the coast", "Ask where someone lives"], answer: 0,
+        ...common.duo, branch: "Name the story consequence and Irish capability, not an abstract unit skill."
+      },
+      {
+        id: "duo-picture", title: "Picture selection", group: "Duolingo language", template: "picture", stance: "branch",
+        prompt: "Which image shows an t-oileán?", subprompt: "Choose the meaning without passing through English.",
+        choices: [["🏝️", "island"], ["🌊", "sea"], ["⛰️", "mountain"], ["🏰", "castle"]], answer: 0,
+        ...common.duo, branch: "Use documentary or place-specific images only when they truly disambiguate meaning; never generic clip art."
+      },
+      {
+        id: "duo-word-bank", title: "Translation word bank", group: "Duolingo language", template: "wordbank", stance: "branch",
+        prompt: "Build the line", subprompt: "I am from Mayo.",
+        words: ["Is", "mé.", "as", "Maigh Eo"], answer: "Is as Maigh Eo mé.",
+        ...common.duo, reject: "Reject translation tiles as the dominant mechanic; they can reward word-order gaming without production.",
+        branch: "Use tiles for a first structural encounter, then remove them and ask for delayed retrieval."
+      },
+      {
+        id: "duo-type", title: "Free translation", group: "Duolingo language", template: "type", stance: "branch",
+        prompt: "Write this in Irish", subprompt: "I am from Mayo.", answerText: "Is as Maigh Eo mé.",
+        ...common.duo, keep: "Keep the genuine production demand and flexible acceptance of harmless punctuation.",
+        reject: "Do not penalise dialectally valid language or minor spelling before the learning goal warrants it.",
+        branch: "Grade the named target, surface dialect alternatives, and make recovery specific to the error."
+      },
+      {
+        id: "duo-fill", title: "Fill in the blank", group: "Duolingo language", template: "choice", stance: "keep",
+        prompt: "Is ___ Maigh Eo mé.", subprompt: "Complete the origin frame.",
+        choices: ["as", "ag", "ar"], answer: 0, ...common.duo,
+        branch: "Blank the meaning-bearing contrast, not a random token, and explain why the nearby alternatives fail."
+      },
+      {
+        id: "duo-listen-choice", title: "Listen and choose", group: "Duolingo language", template: "audioChoice", stance: "keep",
+        prompt: "What did you hear?", subprompt: "Replay as often as you need.", phrase: "farraige",
+        choices: ["sea", "island", "harbour"], answer: 0, ...common.duo,
+        branch: "Anchor the sound to the visible coast and replay the word later without the image."
+      },
+      {
+        id: "duo-dictation", title: "Listen and type", group: "Duolingo language", template: "audioType", stance: "branch",
+        prompt: "Type what you hear", subprompt: "A slower replay should remain available.", phrase: "Is as Maigh Eo mé.",
+        answerText: "Is as Maigh Eo mé.", ...common.duo,
+        reject: "Do not confuse orthographic accuracy with listening comprehension on first exposure.",
+        branch: "Separate sound recognition from spelling, then bring the two together deliberately."
+      },
+      {
+        id: "duo-speak", title: "Speak the phrase", group: "Duolingo language", template: "speak", stance: "reject",
+        prompt: "Say the line aloud", subprompt: "Is as Maigh Eo mé.", phrase: "Is as Maigh Eo mé.",
+        ...common.duo, keep: "Keep the low-friction invitation to speak and the replayable model.",
+        reject: "Reject opaque pronunciation scoring, pass/fail confidence theatre, and microphone gating.",
+        branch: "Record and compare locally; show the model waveform and let the learner judge without a score."
+      },
+      {
+        id: "duo-match", title: "Matching pairs", group: "Duolingo language", template: "match", stance: "branch",
+        prompt: "Match the coast’s words", subprompt: "Choose an Irish word, then its meaning.",
+        pairs: [["farraige", "sea"], ["bá", "bay"], ["áit", "place"]], ...common.duo,
+        reject: "Do not use matching as proof that a word can be recalled or used.",
+        branch: "Use it briefly to establish distinctions, then retrieve the same words from sound or place."
+      },
+      {
+        id: "duo-dialogue", title: "Complete a dialogue", group: "Duolingo language", template: "dialogue", stance: "keep",
+        prompt: "Choose the reply", subprompt: "Stay in Irish and use the social context.",
+        line: "Cárb as tú?", choices: ["Is as Maigh Eo mé.", "Tá mé go maith.", "Seo é an fharraige."], answer: 0,
+        ...common.duo, branch: "Root the exchange in a named encounter and preserve register or dialect information."
+      },
+      {
+        id: "duo-immersion", title: "Read and respond", group: "Duolingo language", template: "storyChoice", stance: "keep",
+        prompt: "Read, then answer in Irish", subprompt: "Meaning is carried by context rather than translation.",
+        story: "Tá Máire ina cónaí in Acaill. Feiceann sí an fharraige gach maidin.",
+        choices: ["Cá bhfuil Máire ina cónaí?", "Cé hé Máire?", "Cad a itheann Máire?"], answer: 0,
+        ...common.duo, branch: "Use story facts that matter to the real place, not disposable sitcom context."
+      },
+      {
+        id: "duo-story", title: "Interactive story", group: "Duolingo language", template: "story", stance: "branch",
+        prompt: "Story", subprompt: "Short dialogue alternates with comprehension checks.",
+        ...common.duo, source: sources.duoPractice,
+        keep: "Keep the cadence: read a little, infer a little, answer without leaving the narrative.",
+        reject: "Avoid fictional filler that competes with the real account or makes the learner a participant in undocumented history.",
+        branch: "Let the Gráinne account carry the sequence; ask attention questions at genuine turns."
+      },
+      {
+        id: "duo-radio", title: "Radio / podcast lesson", group: "Duolingo language", template: "radio", stance: "keep",
+        prompt: "Éist: Voices from Clew Bay", subprompt: "A short listening passage with pauses for meaning.",
+        ...common.duo, source: sources.duoRadio,
+        keep: "Keep audio as the main surface, brief contextual interruptions, and replay at segment level.",
+        reject: "Do not bury listening inside constant visual questions or fictional host banter.",
+        branch: "Use oral history, archival reading, or carefully performed narrative with source status always inspectable."
+      },
+      {
+        id: "duo-adventure", title: "Explorable adventure", group: "Duolingo language", template: "adventure", stance: "reject",
+        prompt: "Explore the harbour", subprompt: "Tap places and use language to complete a practical task.",
+        ...common.duo, source: sources.duoAdventure,
+        keep: "Keep environmental language, learner agency, and low-risk exploration.",
+        reject: "Reject playing as a historical character or completing invented actions inside real history.",
+        branch: "Explore a present-day place or an explicitly reconstructed map as yourself: inspect, listen, ask, and navigate."
+      },
+      {
+        id: "duo-roleplay", title: "Open roleplay", group: "Duolingo language", template: "chat", stance: "branch",
+        prompt: "Ask for the ferry", subprompt: "Respond freely; the partner keeps the exchange moving.",
+        ...common.duo, source: sources.duoPractice,
+        keep: "Keep open production, conversational repair, and a goal that permits several valid routes.",
+        reject: "Do not present generated dialogue as a historical source or authoritative Irish without review.",
+        branch: "Use bounded present-day exchanges with reviewed intents, visible model uncertainty, and an exit to examples."
+      },
+      {
+        id: "duo-mistakes", title: "Mistake review", group: "Duolingo language", template: "practice", stance: "keep",
+        prompt: "Return to what slipped", subprompt: "A small set assembled from meaningful prior errors.",
+        ...common.duo, source: sources.duoPractice,
+        keep: "Keep personalised retrieval and direct return to the exact misconception.",
+        reject: "Reject a debt queue, broken-heart framing, and an ever-growing backlog.",
+        branch: "Call the words back through their county, source, sound, and original sentence."
+      },
+      {
+        id: "duo-words", title: "Word practice hub", group: "Duolingo language", template: "practice", stance: "branch",
+        prompt: "Words you have met", subprompt: "Review by sound, meaning, sentence, or place.",
+        ...common.duo, source: sources.duoPractice,
+        reject: "Do not reduce the collection to a frequency-ranked vocabulary inventory.",
+        branch: "Make every word retain its first story, source, dialect, audio, and later uses."
+      },
+      {
+        id: "duo-complete", title: "Lesson completion", group: "Duolingo language", template: "completion", stance: "reject",
+        prompt: "Lesson complete", subprompt: "A summary turns effort into a visible result.",
+        ...common.duo, keep: "Keep a concise recap and a clear next choice.",
+        reject: "Reject confetti, XP tallies, accuracy vanity metrics, streak threat, and emotional manipulation.",
+        branch: "Show what the learner can now understand or say, and what returns to the atlas."
+      },
+
+      {
+        id: "duo-clock", title: "Manipulable clock", group: "Duolingo other", template: "clock", stance: "branch",
+        prompt: "Set the time to 5:40", subprompt: "Move the control and watch both hands stay related.",
+        source: sources.duoMath, summary: "A simplified tool exposes the relationship between hours and minutes.",
+        keep: "Keep the direct manipulation of the concept and immediate visual consequence.",
+        reject: "Avoid transferring toy controls into language tasks that do not have a spatial relationship.",
+        branch: "Use direct manipulation for maps, word mutation, chronology, and document layers where space genuinely explains meaning.",
+        tags: ["direct manipulation", "coupled model", "immediate consequence"]
+      },
+      {
+        id: "duo-fractions", title: "Cross-representation match", group: "Duolingo other", template: "match", stance: "keep",
+        prompt: "Match the two representations", subprompt: "Connect the symbol to what it looks like.",
+        pairs: [["½", "◐"], ["¼", "◔"], ["¾", "◕"]], source: sources.duoMath,
+        summary: "Two representations are learned as the same idea.", keep: "Keep when Irish form, sound, place, or evidence really are equivalent views.",
+        reject: "Do not match unlike things merely to create activity.", branch: "Connect inscription ↔ reading, sound ↔ spelling, or phrase ↔ mapped relation.",
+        tags: ["representation", "matching", "transfer"]
+      },
+      {
+        id: "duo-graph", title: "Graph a relationship", group: "Duolingo other", template: "graph", stance: "branch",
+        prompt: "Place the point at (2, 3)", subprompt: "Tap the plane; the representation is the answer.",
+        source: sources.duoMathGames, summary: "The learner answers inside the same visual model used to explain the idea.",
+        keep: "Keep this identity between thinking surface and answer surface.", reject: "Do not use abstract canvases where ordinary text is clearer.",
+        branch: "For Irish, answer directly on a map, timeline, manuscript, or sound contour.", tags: ["answer in model", "spatial reasoning"]
+      },
+      {
+        id: "duo-math-paths", title: "Timed path puzzle", group: "Duolingo other", template: "numberPath", stance: "reject",
+        prompt: "Find a path that totals 10", subprompt: "Tap adjacent numbers before the timer ends.",
+        source: sources.duoMathGames, summary: "A reusable speed game turns recall into a compact challenge.",
+        keep: "Keep only for optional fluency after understanding is secure.", reject: "Reject timers and speed as default evidence of Irish competence.",
+        branch: "If used at all, make it an optional rhythm or listening fluency mode with no loss state.", tags: ["timer", "fluency", "game"]
+      },
+      {
+        id: "duo-magic", title: "Constraint grid", group: "Duolingo other", template: "logic", stance: "branch",
+        prompt: "Make every row agree", subprompt: "Mark possibilities until one arrangement remains.",
+        source: sources.duoMathGames, summary: "Several local choices must satisfy one visible global rule.",
+        keep: "Keep for word order, chronology, or source comparison when constraints are the lesson.", reject: "Do not turn grammar into arbitrary Sudoku.",
+        branch: "Use a small constraint board to compare who said what, when, and with what evidence.", tags: ["constraints", "deduction", "whole-system feedback"]
+      },
+      {
+        id: "duo-staff", title: "Place a note on the staff", group: "Duolingo other", template: "staff", stance: "branch",
+        prompt: "Move the note to the middle line", subprompt: "The answer is a position, not a button label.",
+        source: sources.duoMusic, summary: "A visual target and the learner’s action share the same representation.",
+        keep: "Keep the directness and large touch target.", reject: "Avoid dragging as the only input method.",
+        branch: "Use tap-to-place alternatives for map relations, stress, or historical sequence.", tags: ["placement", "drag alternative", "visual target"]
+      },
+      {
+        id: "duo-piano", title: "Perform in time", group: "Duolingo other", template: "keyboard", stance: "branch",
+        prompt: "Play the phrase", subprompt: "Tap C · D · E as the marker moves.",
+        source: sources.duoMusic, summary: "Reading and timed performance meet in one continuous activity.",
+        keep: "Keep rehearsal that turns recognition into a timed embodied skill.", reject: "Do not score spoken Irish like a rhythm game.",
+        branch: "Use learner-controlled shadowing: pause, replay, and compare phrase timing without public score.", tags: ["performance", "timing", "continuous feedback"]
+      },
+
+      {
+        id: "brilliant-path", title: "Course and level map", group: "Brilliant", template: "path", stance: "branch",
+        source: sources.brilliantPaths, summary: "Courses sit in ordered learning paths with regular review checkpoints.",
+        keep: "Keep visible prerequisites and the ability to see the conceptual route.", reject: "Avoid converting 32 counties into a generic skill tree.",
+        branch: "Within a county, reveal why each activity prepares the learner for the next story turn.", tags: ["prerequisites", "course map", "checkpoint"]
+      },
+      {
+        id: "brilliant-explain", title: "Interactive explanation", group: "Brilliant", template: "slider", stance: "keep",
+        prompt: "Move the coast inward", subprompt: "Watch the sheltered bay change as the opening narrows.",
+        ...common.brilliant, branch: "Explain a language or place relation through a controlled model before naming the rule."
+      },
+      {
+        id: "brilliant-visual-choice", title: "Visual multiple choice", group: "Brilliant", template: "picture", stance: "keep",
+        prompt: "Which coastline creates a sheltered bay?", subprompt: "Reason from shape before reading the name.",
+        choices: [["⌒", "open coast"], ["⊂", "sheltered inlet"], ["∿", "river"], ["◯", "island"]], answer: 1,
+        ...common.brilliant, branch: "Use visual alternatives that expose the misconception, then tie the chosen form to bá."
+      },
+      {
+        id: "brilliant-multi", title: "Select all that apply", group: "Brilliant", template: "multi", stance: "keep",
+        prompt: "Which claims does this source support?", subprompt: "More than one may be true.",
+        choices: ["A meeting took place", "We know the exact words spoken", "The date is recorded", "Every motive is certain"],
+        answers: [0, 2], ...common.brilliant,
+        keep: "Keep multi-select when evidence genuinely supports several bounded conclusions.",
+        branch: "Use this to teach evidential scope, not to manufacture trick questions."
+      },
+      {
+        id: "brilliant-number", title: "Numeric or short entry", group: "Brilliant", template: "type", stance: "branch",
+        prompt: "How many years passed?", subprompt: "From 1588 to 1593.", answerText: "5",
+        ...common.brilliant, keep: "Keep direct short answers when one exact quantity matters.",
+        reject: "Do not make typing a number stand in for historical understanding.",
+        branch: "Ask the quantity, then make its narrative consequence visible on the timeline."
+      },
+      {
+        id: "brilliant-order", title: "Reorder a process", group: "Brilliant", template: "sequence", stance: "keep",
+        prompt: "Put the account in order", subprompt: "Move each event; the temporal relation is the answer.",
+        items: ["The summons arrives", "Gráinne sails east", "She enters Greenwich", "The petitions are recorded"],
+        ...common.brilliant, branch: "Use for chronology and sentence construction, always with tap-based move controls."
+      },
+      {
+        id: "brilliant-slider", title: "Parameter simulation", group: "Brilliant", template: "slider", stance: "keep",
+        prompt: "How does shelter change?", subprompt: "Move one variable and inspect the consequence.",
+        ...common.brilliant, branch: "Use for sound contrasts, map scale, chronology, or mutation only when the controlled variable is honest."
+      },
+      {
+        id: "brilliant-plot", title: "Plot directly on a model", group: "Brilliant", template: "graph", stance: "keep",
+        prompt: "Mark the turning point", subprompt: "Tap where pressure becomes negotiation.",
+        ...common.brilliant, branch: "Let the learner answer on a timeline or map instead of translating a spatial judgment into a menu choice."
+      },
+      {
+        id: "brilliant-balance", title: "Balance a visual model", group: "Brilliant", template: "balance", stance: "branch",
+        prompt: "Restore the sentence frame", subprompt: "Add the missing unit until both sides hold.",
+        ...common.brilliant, source: sources.brilliantModels,
+        branch: "A balance can make phrase structure visible, but it should disappear once the learner can produce the line."
+      },
+      {
+        id: "brilliant-code", title: "Sequence executable steps", group: "Brilliant", template: "sequence", stance: "branch",
+        prompt: "Build the exchange", subprompt: "Order the conversational moves, then run them.",
+        items: ["Ask: Cárb as tú?", "Listen for the place", "Reply with your own origin", "Acknowledge the answer"],
+        ...common.brilliant, branch: "Borrow the run-and-debug loop for conversation structure without pretending speech is code."
+      },
+      {
+        id: "brilliant-logic", title: "Deduction grid", group: "Brilliant", template: "logic", stance: "branch",
+        prompt: "Which account fits the records?", subprompt: "Tap once for possible, twice for ruled out.",
+        ...common.brilliant, branch: "Use to compare competing readings of a bounded historical question; never gamify trauma or uncertainty."
+      },
+      {
+        id: "brilliant-pattern", title: "Build and extend a pattern", group: "Brilliant", template: "blocks", stance: "keep",
+        prompt: "Continue what changes", subprompt: "See the rule before it is named.",
+        ...common.brilliant, branch: "Let learners discover a mutation or sentence pattern across meaningful examples before showing terminology."
+      },
+      {
+        id: "brilliant-guided", title: "Guided multi-step problem", group: "Brilliant", template: "guided", stance: "keep",
+        prompt: "Work from record to claim", subprompt: "Each answer changes what can be concluded next.",
+        ...common.brilliant, keep: "Keep the staged reasoning and make each intermediate conclusion visible.",
+        branch: "Use for evidence interpretation, grammar discovery, and place reasoning—not every routine review."
+      },
+      {
+        id: "brilliant-solution", title: "Worked explanation", group: "Brilliant", template: "solution", stance: "keep",
+        prompt: "Why this answer holds", subprompt: "The explanation remains worth reading after a correct answer.",
+        ...common.brilliant, keep: "Keep feedback that explains the mechanism, not merely correctness.",
+        reject: "Avoid long generic praise before the useful explanation.",
+        branch: "Name the exact sound, structure, place relation, or evidential limit the learner used."
+      },
+      {
+        id: "brilliant-tutor", title: "Contextual tutor", group: "Brilliant", template: "tutor", stance: "branch",
+        prompt: "Get unstuck in place", subprompt: "The tutor can see the current model and what you tried.",
+        ...common.brilliant, source: sources.brilliantTutor,
+        keep: "Keep help inside the activity and tied to the learner’s current move.",
+        reject: "Do not allow an unreviewed model to invent Irish, settle contested history, or hide source uncertainty.",
+        branch: "Start with authored hints and error diagnoses; use generated help only inside strict reviewed bounds."
+      },
+      {
+        id: "brilliant-checkpoint", title: "Practice checkpoint", group: "Brilliant", template: "practice", stance: "keep",
+        prompt: "Check what still transfers", subprompt: "Mix prior ideas after the explanatory scaffolds are gone.",
+        ...common.brilliant, source: sources.brilliantPaths,
+        branch: "Return to the same Irish through a new place, speaker, or source instead of repeating the original item."
+      },
+
+      {
+        id: "atur-oral-source", title: "Hear the source, then the word", group: "An Turas branch", template: "radio", stance: "invent",
+        prompt: "A voice from the bay", subprompt: "Hear the account, isolate farraige, then hear the sentence again.",
+        source: sources.anTuras, summary: "Listening begins with a meaningful recorded or performed source, not an isolated test item.",
+        keep: "The source, word, translation, dialect, and evidence status remain inspectable.",
+        reject: "No synthetic voice should pose as an archival recording.",
+        branch: "Prototype with clearly labelled performed narration until reviewed audio exists.",
+        tags: ["oral history", "whole-part-whole", "source status"]
+      },
+      {
+        id: "atur-map", title: "Name the coast on the map", group: "An Turas branch", template: "adventure", stance: "invent",
+        prompt: "Find what the words name", subprompt: "Tap sea, bay, and place on one real coast.",
+        source: sources.anTuras, summary: "The map is both historical context and answer surface.",
+        keep: "Place carries the distinction between farraige, bá, and áit.",
+        reject: "No invented quest or avatar is needed.",
+        branch: "Withdraw the labels, then ask for the origin sentence from memory.",
+        tags: ["place relation", "map answer", "scaffold withdrawal"]
+      },
+      {
+        id: "atur-evidence", title: "Inspect claim and evidence", group: "An Turas branch", template: "guided", stance: "invent",
+        prompt: "What can this record carry?", subprompt: "Move from document detail to bounded conclusion.",
+        source: sources.anTuras, summary: "Historical evidence becomes an active reasoning task without turning into a museum quiz.",
+        keep: "The learner can inspect the source, uncertainty, and competing reading at the moment they matter.",
+        reject: "Do not reward certainty where the record is limited.",
+        branch: "Ask support / possibility / unknown, then return the conclusion to the story.",
+        tags: ["evidence reasoning", "uncertainty", "source inspection"]
+      },
+      {
+        id: "atur-reconstruct", title: "Reconstruct from surviving words", group: "An Turas branch", template: "wordbank", stance: "invent",
+        prompt: "Rebuild the line", subprompt: "The source has faded. Restore only what survives.",
+        words: ["Is", "as", "Maigh Eo", "mé."], answer: "Is as Maigh Eo mé.",
+        source: sources.anTuras, summary: "Sentence building borrows the physical logic of a damaged record rather than floating tiles.",
+        keep: "The interaction binds form, meaning, and evidence boundary.",
+        reject: "Do not imply an invented reconstruction is recorded fact.",
+        branch: "Visually distinguish surviving, supplied, and uncertain material.",
+        tags: ["sentence construction", "document", "uncertainty"]
+      },
+      {
+        id: "atur-sequence", title: "Sequence the crossing", group: "An Turas branch", template: "sequence", stance: "invent",
+        prompt: "Carry the journey east", subprompt: "Order the verified stages of the 1593 journey.",
+        items: ["West coast departure", "Sea crossing", "Arrival near London", "Greenwich petitions"],
+        source: sources.anTuras, summary: "Chronology is learned through the geography and record of one consequential journey.",
+        keep: "Every item has an evidence trail and the map changes as the order changes.",
+        reject: "Do not fill gaps with theatrical scenes.",
+        branch: "After sequencing, ask the learner to retell one transition with a carried Irish phrase.",
+        tags: ["chronology", "geography", "retelling"]
+      },
+      {
+        id: "atur-record", title: "Record and compare", group: "An Turas branch", template: "speak", stance: "invent",
+        prompt: "Say where you are from", subprompt: "Listen to the model, record locally, then compare at your own pace.",
+        phrase: "Is as Maigh Eo mé.",
+        source: sources.anTuras, summary: "Speaking practice replaces opaque scoring with attentive self-comparison.",
+        keep: "Ungraded, replayable, on-device by default, with a visible text route when the microphone is unavailable.",
+        reject: "No score, fake certainty, retained recording, or blocked progress.",
+        branch: "Add phrase-level timing and a reviewed dialect alternative without ranking either voice.",
+        tags: ["speaking", "self-comparison", "privacy"]
+      }
+    ];
+
+    let currentIndex = 0;
+    let activeFilter = "all";
+    let searchTerm = "";
+    let selectedMatches = [];
+
+    const list = document.getElementById("activity-list");
+    const phoneScreen = document.getElementById("phone-screen");
+    const notesContent = document.getElementById("notes-content");
+    const progress = document.getElementById("progress");
+    const stageTitle = document.getElementById("stage-title");
+    const stageCount = document.getElementById("stage-count");
+    const prototypeKind = document.getElementById("prototype-kind");
+    const search = document.getElementById("search");
+    const catalogue = document.getElementById("catalogue");
+    const notes = document.getElementById("notes");
+
+    const state = {
+      currentIndex,
+      activeFilter,
+      searchTerm,
+      filtered: activities.map((_, index) => index),
+      interaction: {}
+    };
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+      })[char]);
+    }
+
+    function sourceName(activity) {
+      return activity.sourceName || activity.group;
+    }
+
+    function renderList() {
+      const grouped = new Map();
+      state.filtered.forEach(index => {
+        const item = activities[index];
+        if (!grouped.has(item.group)) grouped.set(item.group, []);
+        grouped.get(item.group).push({ item, index });
+      });
+
+      list.innerHTML = [...grouped.entries()].map(([group, items]) => `
+        <div class="group-title">${escapeHTML(group)}</div>
+        ${items.map(({ item, index }) => `
+          <button class="activity-link" data-index="${index}" aria-current="${index === state.currentIndex}">
+            <span class="activity-number">${String(index + 1).padStart(2, "0")}</span>
+            <span><strong>${escapeHTML(item.title)}</strong><small>${escapeHTML(item.template)}</small></span>
+            <span class="stance-dot ${item.stance}" aria-label="${item.stance}"></span>
+          </button>
+        `).join("")}
+      `).join("") || `<p style="padding:1rem 1.25rem;color:var(--ink-soft)">No activities match that search.</p>`;
+
+      list.querySelectorAll("[data-index]").forEach(button => {
+        button.addEventListener("click", () => selectActivity(Number(button.dataset.index)));
+      });
+    }
+
+    function renderNotes(activity) {
+      notesContent.innerHTML = `
+        <span class="source-tag">${escapeHTML(sourceName(activity))}</span>
+        <h2>${escapeHTML(activity.title)}</h2>
+        <p class="summary">${escapeHTML(activity.summary)}</p>
+        <div class="stance ${activity.stance}">
+          <span class="stance-dot ${activity.stance}"></span>
+          ${activity.stance === "keep" ? "Replicate the underlying interaction" :
+            activity.stance === "reject" ? "Reject the default pattern" :
+            activity.stance === "invent" ? "New An Turas direction" :
+            "Branch from the pattern"}
+        </div>
+        <section class="note-section">
+          <h3>What is worth keeping</h3>
+          <p>${escapeHTML(activity.keep)}</p>
+        </section>
+        <section class="note-section">
+          <h3>What to refuse</h3>
+          <p>${escapeHTML(activity.reject)}</p>
+        </section>
+        <section class="note-section">
+          <h3>An Turas branch</h3>
+          <p>${escapeHTML(activity.branch || "Use the interaction only where story, place, evidence, or real language practice gives it a reason to exist.")}</p>
+        </section>
+        <section class="note-section">
+          <h3>Pattern tags</h3>
+          <div class="tags">${(activity.tags || []).map(tag => `<span class="tag">${escapeHTML(tag)}</span>`).join("")}</div>
+        </section>
+        <section class="note-section">
+          <h3>Public reference</h3>
+          <p>This is an independent interaction sketch, not a pixel copy or affiliation claim. Irish and historical copy here is provisional prototype material, not reviewed lesson content.</p>
+          <a class="source-link" href="${escapeHTML(activity.source.url)}" target="_blank" rel="noreferrer">${escapeHTML(activity.source.label)} ↗</a>
+        </section>
+      `;
+    }
+
+    function shell(activity, work, context = activity.group) {
+      return `
+        <p class="activity-context">${escapeHTML(context)}</p>
+        <h2 class="prompt">${escapeHTML(activity.prompt || activity.title)}</h2>
+        ${activity.subprompt ? `<p class="subprompt">${escapeHTML(activity.subprompt)}</p>` : ""}
+        <div class="work">${work}</div>
+        <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+      `;
+    }
+
+    function showFeedback(message, bad = false) {
+      const feedback = document.getElementById("feedback");
+      if (!feedback) return;
+      feedback.textContent = message;
+      feedback.className = `feedback show${bad ? " bad" : ""}`;
+      progress.style.width = bad ? "38%" : "68%";
+    }
+
+    function renderChoice(activity, multi = false) {
+      const choices = activity.choices || ["The coast", "The harbour", "The road"];
+      return shell(activity, `
+        <div>
+          ${choices.map((choice, index) => `
+            <button class="choice" data-choice="${index}" aria-pressed="false">${escapeHTML(Array.isArray(choice) ? choice[1] : choice)}</button>
+          `).join("")}
+        </div>
+        <button class="primary" id="check-choice" ${multi ? "" : "disabled"}>Check</button>
+      `);
+    }
+
+    function bindChoice(activity, multi = false) {
+      const picks = new Set();
+      document.querySelectorAll("[data-choice]").forEach(button => {
+        button.addEventListener("click", () => {
+          const index = Number(button.dataset.choice);
+          if (multi) {
+            if (picks.has(index)) picks.delete(index); else picks.add(index);
+            button.classList.toggle("selected");
+            button.setAttribute("aria-pressed", String(picks.has(index)));
+          } else {
+            picks.clear();
+            picks.add(index);
+            document.querySelectorAll("[data-choice]").forEach(item => item.classList.remove("selected", "wrong"));
+            button.classList.add("selected");
+            document.getElementById("check-choice").disabled = false;
+          }
+        });
+      });
+      document.getElementById("check-choice")?.addEventListener("click", () => {
+        const correct = multi
+          ? activity.answers.length === picks.size && activity.answers.every(answer => picks.has(answer))
+          : picks.has(activity.answer ?? 0);
+        if (!correct) {
+          picks.forEach(index => document.querySelector(`[data-choice="${index}"]`)?.classList.add("wrong"));
+          showFeedback("Not yet. Look again at what the prompt actually asks you to distinguish.", true);
+        } else {
+          showFeedback("Yes. The useful feedback explains the distinction, not just the score.");
+        }
+      });
+    }
+
+    function renderPicture(activity) {
+      return shell(activity, `
+        <div class="picture-grid">
+          ${activity.choices.map((choice, index) => `
+            <button class="picture-choice" data-choice="${index}" aria-pressed="false">
+              <span aria-hidden="true">${escapeHTML(choice[0])}</span><strong>${escapeHTML(choice[1])}</strong>
+            </button>
+          `).join("")}
+        </div>
+        <button class="primary" id="check-choice" disabled>Check</button>
+      `);
+    }
+
+    function renderWordbank(activity) {
+      return shell(activity, `
+        <div class="answer-row" id="answer-row" aria-label="Your answer"></div>
+        <div class="tile-bank">
+          ${activity.words.map((word, index) => `<button class="tile" data-tile="${index}">${escapeHTML(word)}</button>`).join("")}
+        </div>
+        <button class="primary" id="check-bank" disabled>Check</button>
+      `);
+    }
+
+    function bindWordbank(activity) {
+      const chosen = [];
+      const row = document.getElementById("answer-row");
+      const check = document.getElementById("check-bank");
+      function redraw() {
+        row.innerHTML = chosen.map(index => `<button class="tile" data-answer-tile="${index}">${escapeHTML(activity.words[index])}</button>`).join("");
+        document.querySelectorAll("[data-tile]").forEach(button => button.classList.toggle("used", chosen.includes(Number(button.dataset.tile))));
+        check.disabled = chosen.length === 0;
+        document.querySelectorAll("[data-answer-tile]").forEach(button => button.addEventListener("click", () => {
+          chosen.splice(chosen.indexOf(Number(button.dataset.answerTile)), 1);
+          redraw();
+        }));
+      }
+      document.querySelectorAll("[data-tile]").forEach(button => button.addEventListener("click", () => {
+        const index = Number(button.dataset.tile);
+        if (!chosen.includes(index)) chosen.push(index);
+        redraw();
+      }));
+      check.addEventListener("click", () => {
+        const answer = chosen.map(index => activity.words[index]).join(" ");
+        showFeedback(answer === activity.answer
+          ? "The structure holds. Next, remove the tiles and retrieve the line."
+          : "The pieces are right, but the relation is not yet right. Try the frame: Is · as · place · mé.", answer !== activity.answer);
+      });
+    }
+
+    function renderType(activity, withAudio = false) {
+      return shell(activity, `
+        ${withAudio ? `<button class="audio-orb" id="play-audio" aria-label="Play phrase">▶</button>` : ""}
+        <input class="text-answer" id="text-answer" autocomplete="off" autocapitalize="sentences" placeholder="Type your answer">
+        <button class="primary" id="check-type">Check</button>
+      `);
+    }
+
+    function bindType(activity, withAudio = false) {
+      if (withAudio) bindAudio(activity.phrase);
+      document.getElementById("check-type").addEventListener("click", () => {
+        const value = document.getElementById("text-answer").value.trim().toLocaleLowerCase();
+        const expected = activity.answerText.trim().toLocaleLowerCase().replace(/[.!?]$/, "");
+        const actual = value.replace(/[.!?]$/, "");
+        showFeedback(actual === expected
+          ? "That carries the target. Punctuation is not the learning goal here."
+          : `Compare the frame with: ${activity.answerText}`, actual !== expected);
+      });
+    }
+
+    function speak(text) {
+      if (!("speechSynthesis" in window)) return false;
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "ga-IE";
+      utterance.rate = .78;
+      speechSynthesis.speak(utterance);
+      return true;
+    }
+
+    function bindAudio(text) {
+      const button = document.getElementById("play-audio");
+      if (!button) return;
+      button.addEventListener("click", () => {
+        button.classList.add("playing");
+        button.textContent = "◼";
+        speak(text);
+        window.setTimeout(() => {
+          button.classList.remove("playing");
+          button.textContent = "▶";
+        }, 1500);
+      });
+    }
+
+    function renderAudioChoice(activity) {
+      return shell(activity, `
+        <button class="audio-orb" id="play-audio" aria-label="Play phrase">▶</button>
+        <div>${activity.choices.map((choice, index) => `<button class="choice" data-choice="${index}">${escapeHTML(choice)}</button>`).join("")}</div>
+        <button class="primary" id="check-choice" disabled>Check</button>
+      `);
+    }
+
+    function renderSpeak(activity) {
+      return shell(activity, `
+        <p class="phrase">${escapeHTML(activity.phrase)}</p>
+        <div class="mic-bars" id="mic-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <button class="primary" id="record">Record locally</button>
+        <button class="secondary" id="model">Hear the model instead</button>
+      `);
+    }
+
+    function bindSpeak(activity) {
+      const bars = document.getElementById("mic-bars");
+      document.getElementById("record").addEventListener("click", event => {
+        bars.classList.add("listening");
+        event.currentTarget.textContent = "Listening…";
+        window.setTimeout(() => {
+          bars.classList.remove("listening");
+          event.currentTarget.textContent = "Record again";
+          showFeedback("Recording stays on this device. Listen back and compare; there is no pass/fail score.");
+        }, 1600);
+      });
+      document.getElementById("model").addEventListener("click", () => speak(activity.phrase));
+    }
+
+    function renderMatch(activity) {
+      const left = activity.pairs.map(pair => pair[0]);
+      const right = [...activity.pairs.map(pair => pair[1])].reverse();
+      return shell(activity, `
+        <div class="match-grid">
+          <div>${left.map((value, index) => `<button class="match" data-side="left" data-match="${index}">${escapeHTML(value)}</button>`).join("")}</div>
+          <div>${right.map((value, index) => `<button class="match" data-side="right" data-match="${right.length - 1 - index}">${escapeHTML(value)}</button>`).join("")}</div>
+        </div>
+      `);
+    }
+
+    function bindMatch() {
+      let active = null;
+      let matched = 0;
+      document.querySelectorAll(".match").forEach(button => button.addEventListener("click", () => {
+        if (button.classList.contains("matched")) return;
+        if (!active || active.dataset.side === button.dataset.side) {
+          document.querySelectorAll(".match.active").forEach(item => item.classList.remove("active"));
+          active = button;
+          active.classList.add("active");
+          return;
+        }
+        if (active.dataset.match === button.dataset.match) {
+          active.classList.remove("active");
+          active.classList.add("matched");
+          button.classList.add("matched");
+          active = null;
+          matched += 1;
+          if (matched === document.querySelectorAll('[data-side="left"]').length) {
+            showFeedback("All three distinctions are visible. A later task should now ask for recall.");
+          }
+        } else {
+          button.classList.add("wrong");
+          showFeedback("Those two do not name the same thing. Keep the first selected and try again.", true);
+          window.setTimeout(() => button.classList.remove("wrong"), 600);
+        }
+      }));
+    }
+
+    function renderDialogue(activity) {
+      return shell(activity, `
+        <div class="story-panel">
+          <div class="speaker"><span class="avatar">M</span> Máire asks</div>
+          <p>${escapeHTML(activity.line)}</p>
+        </div>
+        <div>${activity.choices.map((choice, index) => `<button class="choice" data-choice="${index}">${escapeHTML(choice)}</button>`).join("")}</div>
+        <button class="primary" id="check-choice" disabled>Reply</button>
+      `);
+    }
+
+    function renderStoryChoice(activity) {
+      return shell(activity, `
+        <div class="story-panel"><p>${escapeHTML(activity.story)}</p></div>
+        <div>${activity.choices.map((choice, index) => `<button class="choice" data-choice="${index}">${escapeHTML(choice)}</button>`).join("")}</div>
+        <button class="primary" id="check-choice" disabled>Check</button>
+      `);
+    }
+
+    function renderStory(activity) {
+      return shell(activity, `
+        <div class="story-panel">
+          <div class="speaker"><span class="avatar">G</span> Gráinne</div>
+          <p>“Is as an gcósta seo mé.” The coast is not backdrop. It is route, livelihood, and power.</p>
+        </div>
+        <button class="choice" data-story-answer="0">The coast explains where she is from.</button>
+        <button class="choice" data-story-answer="1">The coast is only scenery.</button>
+      `);
+    }
+
+    function renderRadio(activity) {
+      return shell(activity, `
+        <button class="audio-orb" id="play-audio" aria-label="Play audio passage">▶</button>
+        <div class="story-panel">
+          <div class="speaker"><span class="avatar">FM</span> Segment 1 · 00:42</div>
+          <p>On the western edge of Mayo, the farraige was not an end to the land. It was the road beyond it.</p>
+        </div>
+        <button class="secondary" id="segment">Replay “farraige”</button>
+      `);
+    }
+
+    function renderAdventure(activity) {
+      return shell(activity, `
+        <div class="scene-board" aria-label="Simplified coast scene">
+          <button class="place" data-place="sea">farraige<br><small>sea</small></button>
+          <button class="place" data-place="place">áit<br><small>place</small></button>
+          <button class="place" data-place="bay">bá<br><small>bay</small></button>
+        </div>
+        <p class="subprompt" id="scene-status">Find and inspect all three places.</p>
+      `);
+    }
+
+    function renderChat(activity) {
+      return shell(activity, `
+        <div class="chat" id="chat">
+          <div class="bubble">Dia dhuit. Cá bhfuil an bád farantóireachta?</div>
+        </div>
+        <div style="display:flex;gap:.5rem">
+          <input class="text-answer" id="chat-input" placeholder="Reply in Irish or English">
+          <button class="primary" id="send" style="width:auto">Send</button>
+        </div>
+      `);
+    }
+
+    function renderPractice(activity) {
+      const rows = activity.id === "duo-words"
+        ? [["◉", "farraige", "first met at Clew Bay"], ["◌", "bá", "heard twice"], ["⌁", "áit", "ready to retrieve"]]
+        : [["↺", "Origin frame", "one structural slip"], ["◉", "Coast words", "sound and meaning"], ["⌁", "Earlier county", "delayed retrieval"]];
+      return shell(activity, `<div class="practice-list">${rows.map(row => `
+        <button class="practice-row choice">
+          <span class="practice-icon">${row[0]}</span>
+          <span><strong>${escapeHTML(row[1])}</strong><small>${escapeHTML(row[2])}</small></span>
+          <span>›</span>
+        </button>`).join("")}</div>`);
+    }
+
+    function renderCompletion(activity) {
+      return shell(activity, `
+        <div class="visual-model" style="background:var(--moss-tint)">
+          <div style="text-align:center">
+            <div class="model-output" style="color:var(--moss)">3</div>
+            <p style="margin:.45rem 0 0;color:var(--ink-soft)">coast words ready to carry</p>
+          </div>
+        </div>
+        <div class="practice-list">
+          <div class="practice-row"><span class="practice-icon">✓</span><span><strong>You can name sea, bay, and place</strong><small>Next return: after the Greenwich chapter</small></span></div>
+        </div>
+        <button class="primary">Return to Mayo</button>
+      `);
+    }
+
+    function renderPath(activity) {
+      return shell(activity, `
+        <div class="path-map">
+          <button class="path-node done">✓</button>
+          <button class="path-node done">✓</button>
+          <button class="path-node current">3</button>
+          <button class="path-node">4</button>
+          <button class="path-node">5</button>
+        </div>
+      `, activity.group === "Brilliant" ? "Foundations · Level 2" : "Unit 3 · Your journey");
+    }
+
+    function renderClock(activity) {
+      return shell(activity, `
+        <div class="clock" id="clock"></div>
+        <input class="slider" id="clock-slider" type="range" min="0" max="11" value="8" aria-label="Set minutes">
+        <button class="primary" id="check-clock">Check 5:40</button>
+      `);
+    }
+
+    function bindClock() {
+      const slider = document.getElementById("clock-slider");
+      const clock = document.getElementById("clock");
+      slider.addEventListener("input", () => {
+        const minute = Number(slider.value) * 5;
+        clock.style.setProperty("--minute-angle", `${minute * 6}deg`);
+        clock.style.setProperty("--hour-angle", `${150 + minute * .5}deg`);
+      });
+      document.getElementById("check-clock").addEventListener("click", () => {
+        const correct = Number(slider.value) === 8;
+        showFeedback(correct ? "Both hands moved as one system." : "The red hand needs to point to 40 minutes.", !correct);
+      });
+    }
+
+    function renderSlider(activity) {
+      return shell(activity, `
+        <div class="visual-model">
+          <div class="model-output" id="model-output">wide opening</div>
+        </div>
+        <input class="slider" id="model-slider" type="range" min="0" max="100" value="20" aria-label="Change the model">
+        <p class="subprompt" id="model-caption">More exposed water; less shelter.</p>
+      `);
+    }
+
+    function bindSlider() {
+      const slider = document.getElementById("model-slider");
+      slider.addEventListener("input", () => {
+        const value = Number(slider.value);
+        document.getElementById("model-output").textContent = value > 66 ? "sheltered bay" : value > 33 ? "narrowing" : "wide opening";
+        document.getElementById("model-caption").textContent = value > 66 ? "The enclosing coast makes bá meaningful." : "Move further to see the relation change.";
+        progress.style.width = `${38 + value * .3}%`;
+      });
+    }
+
+    function renderGraph(activity) {
+      return shell(activity, `<div class="graph" id="graph" aria-label="Tap to place a point"></div><button class="primary" id="check-graph">Check placement</button>`);
+    }
+
+    function bindGraph() {
+      let point = null;
+      const graph = document.getElementById("graph");
+      graph.addEventListener("click", event => {
+        const box = graph.getBoundingClientRect();
+        const x = ((event.clientX - box.left) / box.width) * 100;
+        const y = ((event.clientY - box.top) / box.height) * 100;
+        graph.innerHTML = `<span class="graph-point" style="--x:${x}%;--y:${y}%"></span>`;
+        point = { x, y };
+      });
+      document.getElementById("check-graph").addEventListener("click", () => {
+        if (!point) return showFeedback("Place a point directly on the model first.", true);
+        const good = point.x > 62 && point.x < 78 && point.y > 12 && point.y < 30;
+        showFeedback(good ? "The answer lives in the representation itself." : "Try farther right and higher on the plane.", !good);
+      });
+    }
+
+    function renderNumberPath(activity) {
+      const numbers = [2, 3, 5, 7, 1, 4, 6, 2, 8, 2, 3, 5, 1, 9, 4, 6];
+      return shell(activity, `
+        <div class="number-grid">${numbers.map((number, index) => `<button class="number-cell" data-number="${number}" data-cell="${index}">${number}</button>`).join("")}</div>
+        <p class="subprompt" id="sum">Current total: 0</p>
+        <button class="secondary" id="clear-path">Clear</button>
+      `);
+    }
+
+    function bindNumberPath() {
+      let total = 0;
+      document.querySelectorAll("[data-number]").forEach(button => button.addEventListener("click", () => {
+        button.classList.toggle("active");
+        total += button.classList.contains("active") ? Number(button.dataset.number) : -Number(button.dataset.number);
+        document.getElementById("sum").textContent = `Current total: ${total}`;
+        if (total === 10) showFeedback("Ten. Notice how the timer would change this from reasoning into speed.");
+      }));
+      document.getElementById("clear-path").addEventListener("click", () => {
+        total = 0;
+        document.querySelectorAll(".number-cell").forEach(cell => cell.classList.remove("active"));
+        document.getElementById("sum").textContent = "Current total: 0";
+      });
+    }
+
+    function renderStaff(activity) {
+      return shell(activity, `
+        <div class="staff"><div class="note" id="note"></div></div>
+        <input class="slider" id="note-slider" type="range" min="18" max="70" value="43" aria-label="Move note vertically">
+        <button class="primary" id="check-note">Check</button>
+      `);
+    }
+
+    function bindStaff() {
+      const slider = document.getElementById("note-slider");
+      slider.addEventListener("input", () => document.getElementById("note").style.setProperty("--note-y", `${slider.value}%`));
+      document.getElementById("check-note").addEventListener("click", () => {
+        const good = Math.abs(Number(slider.value) - 44) < 4;
+        showFeedback(good ? "The action and answer share one visual surface." : "Aim for the middle line.", !good);
+      });
+    }
+
+    function renderKeyboard(activity) {
+      return shell(activity, `
+        <div class="staff"><div class="note" style="--note-x:20%;--note-y:57%"></div><div class="note" style="--note-x:47%;--note-y:44%"></div><div class="note" style="--note-x:74%;--note-y:31%"></div></div>
+        <div class="keyboard">${["C","D","E","F","G","A","B"].map(key => `<button class="key" data-key="${key}">${key}</button>`).join("")}</div>
+        <p class="subprompt" id="key-status">Next: C</p>
+      `);
+    }
+
+    function bindKeyboard() {
+      const sequence = ["C", "D", "E"];
+      let step = 0;
+      document.querySelectorAll("[data-key]").forEach(button => button.addEventListener("click", () => {
+        if (button.dataset.key === sequence[step]) {
+          button.classList.add("active");
+          window.setTimeout(() => button.classList.remove("active"), 220);
+          step += 1;
+          document.getElementById("key-status").textContent = step === sequence.length ? "Phrase complete" : `Next: ${sequence[step]}`;
+          if (step === sequence.length) showFeedback("Recognition became a short performance.");
+        } else {
+          showFeedback(`Listen for ${sequence[step]} and try again.`, true);
+        }
+      }));
+    }
+
+    function renderSequence(activity) {
+      const items = activity.items.map((text, index) => ({ text, original: index }));
+      [items[1], items[2]] = [items[2], items[1]];
+      return shell(activity, `
+        <div class="sequence" id="sequence">
+          ${items.map((item, index) => `
+            <div class="sequence-item" data-original="${item.original}">
+              <button data-move="up" aria-label="Move up">↑</button>
+              <span>${escapeHTML(item.text)}</span>
+              <button data-move="down" aria-label="Move down">↓</button>
+            </div>
+          `).join("")}
+        </div>
+        <button class="primary" id="check-sequence">Check order</button>
+      `);
+    }
+
+    function bindSequence() {
+      const sequence = document.getElementById("sequence");
+      sequence.querySelectorAll("[data-move]").forEach(button => button.addEventListener("click", () => {
+        const item = button.closest(".sequence-item");
+        if (button.dataset.move === "up" && item.previousElementSibling) sequence.insertBefore(item, item.previousElementSibling);
+        if (button.dataset.move === "down" && item.nextElementSibling) sequence.insertBefore(item.nextElementSibling, item);
+      }));
+      document.getElementById("check-sequence").addEventListener("click", () => {
+        const order = [...sequence.children].map(item => Number(item.dataset.original));
+        const good = order.every((value, index) => value === index);
+        showFeedback(good ? "The order now carries the relation." : "One transition is still out of place.", !good);
+      });
+    }
+
+    function renderBalance(activity) {
+      return shell(activity, `
+        <div class="balance">
+          <div class="beam" id="beam"></div>
+          <div class="fulcrum"></div>
+        </div>
+        <div class="tile-bank">
+          <button class="tile" data-weight="1">as</button>
+          <button class="tile" data-weight="2">Maigh Eo</button>
+          <button class="tile" data-weight="1">mé</button>
+        </div>
+      `);
+    }
+
+    function bindBalance() {
+      let total = 0;
+      document.querySelectorAll("[data-weight]").forEach(button => button.addEventListener("click", () => {
+        if (button.classList.contains("used")) return;
+        button.classList.add("used");
+        total += Number(button.dataset.weight);
+        document.getElementById("beam").style.setProperty("--tilt", `${Math.max(0, 4 - total)}deg`);
+        if (total === 4) showFeedback("The frame balances. Now remove the model and retrieve the sentence.");
+      }));
+    }
+
+    function renderLogic(activity) {
+      return shell(activity, `
+        <div class="logic-grid">
+          ${Array.from({ length: 16 }, (_, index) => `<button class="logic-cell" data-logic="${index}" aria-label="Cell ${index + 1}"></button>`).join("")}
+        </div>
+        <p class="subprompt">Tap once: possible · twice: ruled out · three times: clear</p>
+        <button class="primary" id="check-logic">Review deductions</button>
+      `);
+    }
+
+    function bindLogic() {
+      document.querySelectorAll("[data-logic]").forEach(button => button.addEventListener("click", () => {
+        if (!button.classList.contains("yes") && !button.classList.contains("no")) {
+          button.classList.add("yes"); button.textContent = "●";
+        } else if (button.classList.contains("yes")) {
+          button.classList.remove("yes"); button.classList.add("no"); button.textContent = "×";
+        } else {
+          button.classList.remove("no"); button.textContent = "";
+        }
+      }));
+      document.getElementById("check-logic").addEventListener("click", () => {
+        const marks = document.querySelectorAll(".logic-cell.yes,.logic-cell.no").length;
+        showFeedback(marks > 3 ? "The grid externalises the deductions. The explanation must still reconnect them to meaning." : "Make a few deductions before reviewing.", marks <= 3);
+      });
+    }
+
+    function renderBlocks(activity) {
+      return shell(activity, `
+        <div class="blocks" id="blocks">
+          <div class="block" style="--n:1"></div><div class="block" style="--n:2"></div><div class="block" style="--n:3"></div>
+        </div>
+        <div class="tile-bank">
+          <button class="tile" data-block="4">4</button>
+          <button class="tile" data-block="2">2</button>
+          <button class="tile" data-block="5">5</button>
+        </div>
+      `);
+    }
+
+    function bindBlocks() {
+      document.querySelectorAll("[data-block]").forEach(button => button.addEventListener("click", () => {
+        const number = Number(button.dataset.block);
+        document.getElementById("blocks").insertAdjacentHTML("beforeend", `<div class="block" style="--n:${number}"></div>`);
+        showFeedback(number === 4 ? "You extended the change before being told the rule." : "That creates a different pattern. Compare the successive change.", number !== 4);
+      }));
+    }
+
+    function renderGuided(activity) {
+      return shell(activity, `
+        <div class="story-panel">
+          <div class="speaker"><span class="avatar">1</span> Surviving record</div>
+          <p>A petition records the request and date. It does not preserve every spoken word.</p>
+        </div>
+        <button class="choice" data-guide="supported">The meeting and request are supported.</button>
+        <button class="choice" data-guide="too-far">The exact private conversation is known.</button>
+        <div class="story-panel" id="guided-next" hidden>
+          <div class="speaker"><span class="avatar">2</span> Next inference</div>
+          <p>What can the recorded requests tell us about her priorities?</p>
+        </div>
+      `);
+    }
+
+    function bindGuided() {
+      document.querySelectorAll("[data-guide]").forEach(button => button.addEventListener("click", () => {
+        const good = button.dataset.guide === "supported";
+        button.classList.add(good ? "selected" : "wrong");
+        if (good) document.getElementById("guided-next").hidden = false;
+        showFeedback(good ? "That bounded conclusion opens the next reasoning step." : "The record does not carry the exact words. Keep the conclusion inside its limits.", !good);
+      }));
+    }
+
+    function renderSolution(activity) {
+      return shell(activity, `
+        <div class="story-panel">
+          <div class="speaker"><span class="avatar">✓</span> Mechanism</div>
+          <p><strong>Is as Maigh Eo mé</strong> works as a complete origin frame: <em>Is as</em> opens the relation, the place supplies the origin, and <em>mé</em> names the speaker.</p>
+        </div>
+        <button class="secondary" id="solution-toggle">Show the common misconception</button>
+        <div class="story-panel" id="misconception" hidden>
+          <p><em>Tá mé as…</em> copies the English frame too directly for this target. The exercise should diagnose that structure, not merely colour it red.</p>
+        </div>
+      `);
+    }
+
+    function bindSolution() {
+      document.getElementById("solution-toggle").addEventListener("click", () => {
+        document.getElementById("misconception").hidden = false;
+        showFeedback("Useful feedback names the relation the learner can reuse.");
+      });
+    }
+
+    function renderTutor(activity) {
+      return shell(activity, `
+        <div class="visual-model"><div class="model-output">bá ≠ farraige</div></div>
+        <div class="chat">
+          <div class="bubble">What part feels unclear?</div>
+          <button class="choice" data-tutor="1">Why are bay and sea different here?</button>
+          <button class="choice" data-tutor="2">Give me the answer.</button>
+        </div>
+      `);
+    }
+
+    function bindTutor() {
+      document.querySelectorAll("[data-tutor]").forEach(button => button.addEventListener("click", () => {
+        const good = button.dataset.tutor === "1";
+        showFeedback(good ? "The help can point at the enclosing coast: bá names the sheltered inlet; farraige names the wider sea." : "A good tutor changes the representation or asks a smaller question instead of handing over the answer.", !good);
+      }));
+    }
+
+    function bindGeneric(activity) {
+      if (activity.template === "choice") bindChoice(activity);
+      if (activity.template === "multi") bindChoice(activity, true);
+      if (activity.template === "picture") bindChoice(activity);
+      if (activity.template === "wordbank") bindWordbank(activity);
+      if (activity.template === "type") bindType(activity);
+      if (activity.template === "audioType") bindType(activity, true);
+      if (activity.template === "audioChoice") { bindChoice(activity); bindAudio(activity.phrase); }
+      if (activity.template === "speak") bindSpeak(activity);
+      if (activity.template === "match") bindMatch();
+      if (["dialogue", "storyChoice"].includes(activity.template)) bindChoice(activity);
+      if (activity.template === "story") document.querySelectorAll("[data-story-answer]").forEach(button => button.addEventListener("click", () => showFeedback(button.dataset.storyAnswer === "0" ? "The question checks the story relation without breaking the story." : "Look again: the coast carries the explanation.", button.dataset.storyAnswer !== "0")));
+      if (activity.template === "radio") { bindAudio("farraige"); document.getElementById("segment")?.addEventListener("click", () => speak("farraige")); }
+      if (activity.template === "adventure") {
+        let visits = 0;
+        document.querySelectorAll("[data-place]").forEach(button => button.addEventListener("click", () => {
+          if (!button.classList.contains("visited")) visits += 1;
+          button.classList.add("visited");
+          document.getElementById("scene-status").textContent = visits === 3 ? "All three relations found." : `${visits} of 3 inspected`;
+          if (visits === 3) showFeedback("The map taught the distinction. Next, remove its labels.");
+        }));
+      }
+      if (activity.template === "chat") {
+        document.getElementById("send").addEventListener("click", () => {
+          const input = document.getElementById("chat-input");
+          if (!input.value.trim()) return;
+          document.getElementById("chat").insertAdjacentHTML("beforeend", `<div class="bubble you">${escapeHTML(input.value)}</div><div class="bubble">Tá sé ag an gcé. The ferry is at the quay.</div>`);
+          input.value = "";
+          showFeedback("The goal allows several valid conversational routes.");
+        });
+      }
+      if (activity.template === "clock") bindClock();
+      if (activity.template === "slider") bindSlider();
+      if (activity.template === "graph") bindGraph();
+      if (activity.template === "numberPath") bindNumberPath();
+      if (activity.template === "staff") bindStaff();
+      if (activity.template === "keyboard") bindKeyboard();
+      if (activity.template === "sequence") bindSequence();
+      if (activity.template === "balance") bindBalance();
+      if (activity.template === "logic") bindLogic();
+      if (activity.template === "blocks") bindBlocks();
+      if (activity.template === "guided") bindGuided();
+      if (activity.template === "solution") bindSolution();
+      if (activity.template === "tutor") bindTutor();
+      document.querySelectorAll(".practice-row.choice").forEach(button => button.addEventListener("click", () => showFeedback("This opens a short review in the original context, not a debt queue.")));
+    }
+
+    function renderActivity(activity) {
+      const renderers = {
+        choice: renderChoice,
+        multi: item => renderChoice(item, true),
+        picture: renderPicture,
+        wordbank: renderWordbank,
+        type: renderType,
+        audioType: item => renderType(item, true),
+        audioChoice: renderAudioChoice,
+        speak: renderSpeak,
+        match: renderMatch,
+        dialogue: renderDialogue,
+        storyChoice: renderStoryChoice,
+        story: renderStory,
+        radio: renderRadio,
+        adventure: renderAdventure,
+        chat: renderChat,
+        practice: renderPractice,
+        completion: renderCompletion,
+        path: renderPath,
+        clock: renderClock,
+        slider: renderSlider,
+        graph: renderGraph,
+        numberPath: renderNumberPath,
+        staff: renderStaff,
+        keyboard: renderKeyboard,
+        sequence: renderSequence,
+        balance: renderBalance,
+        logic: renderLogic,
+        blocks: renderBlocks,
+        guided: renderGuided,
+        solution: renderSolution,
+        tutor: renderTutor
+      };
+      phoneScreen.innerHTML = renderers[activity.template](activity);
+      bindGeneric(activity);
+    }
+
+    function selectActivity(index) {
+      state.currentIndex = index;
+      state.interaction = {};
+      const activity = activities[index];
+      stageTitle.textContent = activity.title;
+      stageCount.textContent = `${index + 1} of ${activities.length}`;
+      prototypeKind.textContent = activity.stance === "invent" ? "new An Turas direction" : `${activity.template} reference`;
+      progress.style.width = "38%";
+      renderList();
+      renderActivity(activity);
+      renderNotes(activity);
+      catalogue.classList.remove("open");
+      notes.classList.remove("open");
+      history.replaceState(null, "", `#${activity.id}`);
+    }
+
+    function applyFilters() {
+      const term = state.searchTerm.toLocaleLowerCase();
+      state.filtered = activities.map((item, index) => ({ item, index })).filter(({ item }) => {
+        const inGroup = state.activeFilter === "all" || item.group === state.activeFilter;
+        const inSearch = !term || [item.title, item.group, item.summary, ...(item.tags || [])].join(" ").toLocaleLowerCase().includes(term);
+        return inGroup && inSearch;
+      }).map(({ index }) => index);
+      renderList();
+    }
+
+    document.querySelectorAll(".filter").forEach(button => button.addEventListener("click", () => {
+      state.activeFilter = button.dataset.filter;
+      document.querySelectorAll(".filter").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+      applyFilters();
+    }));
+
+    search.addEventListener("input", () => {
+      state.searchTerm = search.value;
+      applyFilters();
+    });
+
+    document.getElementById("previous").addEventListener("click", () => selectActivity((state.currentIndex - 1 + activities.length) % activities.length));
+    document.getElementById("next").addEventListener("click", () => selectActivity((state.currentIndex + 1) % activities.length));
+    document.getElementById("hint").addEventListener("click", () => showFeedback("Use the prompt, the representation, and the feedback together. This hint never blocks progress."));
+    document.getElementById("open-catalogue").addEventListener("click", () => catalogue.classList.add("open"));
+    document.getElementById("open-notes").addEventListener("click", () => notes.classList.add("open"));
+    document.getElementById("close-notes").addEventListener("click", () => notes.classList.remove("open"));
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        catalogue.classList.remove("open");
+        notes.classList.remove("open");
+      }
+      if (event.altKey && event.key === "ArrowRight") selectActivity((state.currentIndex + 1) % activities.length);
+      if (event.altKey && event.key === "ArrowLeft") selectActivity((state.currentIndex - 1 + activities.length) % activities.length);
+    });
+
+    window.addEventListener("hashchange", () => {
+      const index = activities.findIndex(activity => `#${activity.id}` === location.hash);
+      if (index >= 0 && index !== state.currentIndex) selectActivity(index);
+    });
+
+    const hashIndex = activities.findIndex(activity => `#${activity.id}` === location.hash);
+    selectActivity(hashIndex >= 0 ? hashIndex : 0);
+  </script>
+</body>
+</html>

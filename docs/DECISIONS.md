@@ -2,7 +2,67 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D26 — Adopt a familiar one-screen learning activity system (2026-07-30)
+
+**Decision:** Learning mode will use a stable **one screen, one task** activity
+architecture rather than treating every exercise as a bespoke editorial composition.
+Story pages remain authored, atmospheric, and free to vary with the account.
+Activity pages use one familiar hierarchy: quiet progress and exit, optional short
+context, one clear prompt, one dominant response area, one primary action,
+diagnostic feedback on the same screen, and one continue action.
+
+The core activity set is picture or map selection, sentence construction, free typed
+production, fill-in-the-blank, listen and choose, listen and type, ungraded
+record-and-compare speaking, matching, authored dialogue completion, read or listen
+and respond, radio-style listening, pre-authored branching roleplay, contextual
+mistake review, active practice from **Words you carry**, and calm capability-led
+completion. These correspond to reference activities 3–12, 14, 16, and 17–19 in
+`web/learning-activity-reference/index.html`; the titles and product rules, not the
+prototype numbering, are canonical.
+
+The interaction families share one shell, response lifecycle, feedback model,
+accessibility behavior, and completion contract. Their working areas differ, but
+routine controls do not adopt a new visual grammar on every screen. Recognition and
+supported-construction formats remain useful, but do not by themselves claim recall
+or production. Speaking remains ungraded. Branching roleplay is finite, pre-written,
+reviewed, and bounded to plausible present-day or explicitly reconstructed contexts;
+it is not real-time generative conversation and never casts the learner into
+undocumented history.
+
+**Why:** The 48-activity HTML field guide made the tradeoff operable. Even in
+deliberately limited visual form, the selected conventional activities made the task,
+response, feedback, and next action substantially clearer than the app's more bespoke
+exercise compositions. Familiarity here protects attention for Irish. An Turas earns
+its distinctiveness through real stories, place, evidence, reviewed language, audio,
+feedback, and its visual system—not by making learners decipher a novel control for
+each exercise.
+
+**Consequences:** This decision closes D25's unresolved direction-selection gate. Do
+not build more competing pedagogical or compositional directions before starting the
+shared implementation. Existing iOS interaction studies remain disposable research
+evidence and may contribute response or recovery details, but they do not constitute
+three candidate product architectures awaiting another choice. Their complete
+research and implementation record is in `INTERACTION-STUDIES-REPORT.md`.
+
+The next proof is one representative Mayo Learning-mode run through the selected
+shell and a representative subset of the activity families. After that slice passes,
+extract the shared runtime and migrate the remaining families in bounded groups.
+Before extracting that runtime, explicitly decide which local response, correction,
+scaffold-removal, motion, and spatial details from the iOS studies improve the
+selected shell. This is a synthesis step inside D26, not a reopening of the
+architecture selection.
+Production county content still cannot spread until the runtime, authored learning
+contract, memory signals, gallery, validators, accessibility, simulator, and physical
+device gates in `STORY-LEARNING-REBUILD-PLAN.md` pass. D26 changes the interaction
+architecture and implementation order; it does not validate learning outcomes or
+clear any county's history, pedagogy, language, audio, rights, or tester gate.
+
 ## D25 — Harden shared learning mechanics before further content spread (2026-07-30)
+
+**Status:** D26 resolves the direction-selection requirement below. The shared
+foundation, state, contract, memory, validation, and verification requirements remain
+active; the instruction to compare more candidate architectures before consolidation
+is superseded.
 
 **Decision:** The next implementation sprint is the shared learning-mechanics
 foundation, not another Mayo chapter revision, additional chapter authoring, county
@@ -11,12 +71,11 @@ content for proving the common runtime, response components, authored learning
 contract, learner-memory signals, accessibility, and failure handling. The detailed
 scope and gate live in `STORY-LEARNING-REBUILD-PLAN.md`.
 
-Rapid in-app comparison is the critical path. The first implementation deliverable
-uses one fixed Mayo fixture slice to compare two to four materially different
-interaction and pedagogy directions. Only core access states are required before that
-comparison. The user selects a direction after operating the variants and reviewing
-their tradeoffs; the choice and rejected alternatives become a new durable decision.
-Only then may the chosen primitives be consolidated into the shared runtime.
+Rapid in-app comparison was D25's original critical path. It required one fixed Mayo
+fixture slice, two to four materially different interaction directions, and a user
+choice before consolidation. The resulting studies and expanded activity reference
+made the tradeoff operable; D26 records the choice and replaces that comparison gate
+with a representative implementation slice.
 
 Every exercise uses one attempt and support lifecycle: unanswered, attempt,
 diagnostic feedback, hint or recovery, retry, and complete. Completion records
@@ -32,10 +91,11 @@ foundations should become correct and testable once before production content is
 migrated across present and future counties.
 
 **Consequences:** Do not use chapter count, exercise count, or another authored county
-as evidence that this sprint passed. Do not build the complete state engine, component
-library, schema migration, or scheduler before the prototype choice. The comparison
-may adapt publicly observable interaction strengths from products such as Duolingo
-and Brilliant, but never their identity, content, branded visuals, or reward economy.
+as evidence that this sprint passed. D25 originally prohibited building the complete
+state engine, component library, schema migration, or scheduler before the prototype
+choice; D26 now satisfies that prerequisite. The selected system may adapt publicly
+observable interaction strengths from products such as Duolingo and Brilliant, but
+never their identity, content, branded visuals, or reward economy.
 The later gate requires the selected direction, a shared state engine, complete
 exercise contracts, deterministic memory events, mirrored Swift/Python validation,
 an internal mechanics gallery, automated coverage, and direct simulator and

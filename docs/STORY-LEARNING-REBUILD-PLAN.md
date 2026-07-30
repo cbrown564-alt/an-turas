@@ -1,6 +1,7 @@
 # Story and learning rebuild
 
-*Confirmed 15 July 2026. This is the implementation plan for the Phase 3 rebuild.
+*Confirmed 15 July 2026 and amended 30 July 2026 for D26's selected learning activity
+system. This is the implementation plan for the Phase 3 rebuild.
 `PRODUCT.md`, `DESIGN.md`, `STATUS.md`, `DECISIONS.md`, `COUNTY-ATLAS.md`, and
 `CONTENT-PIPELINE.md` remain the canonical owners for their respective concerns.*
 
@@ -137,6 +138,11 @@ migrate deterministically.
 
 ### Phase 2 — Build the full-screen exercise system
 
+**Historical phase boundary:** this phase produced the first shared shell and twelve
+mechanic families. D26 and the active foundation sprint below now own the selected
+activity set and migration requirements; do not treat the numbered list here as the
+current complete family inventory.
+
 Create one shared full-screen exercise container with:
 
 - chapter context and quiet progress;
@@ -201,6 +207,13 @@ one complete runtime contract for attempts, support, completion, learner memory,
 every accessibility and failure state. This sprint closes that gap before the pattern
 is applied more widely.
 
+**Direction selected:** D26 adopts a familiar one-screen, one-task activity system.
+The interactive HTML field guide and user review close the earlier requirement to
+choose between competing activity architectures. The app should not spend another
+sprint making routine learning tasks more bespoke. Existing iOS interaction studies
+remain removable research inputs; their useful response, support, or recovery details
+may be retained without treating them as product directions awaiting selection.
+
 Mayo is fixture content, not the editorial target. Use existing Mayo language,
 exercise payloads, audio references, and story context to exercise realistic lengths,
 fadas, sentence shapes, and evidence questions. A fixture may be copied into a
@@ -212,12 +225,11 @@ that Mayo is more complete.
 
 The sprint must produce:
 
-- an in-app comparison of two to four materially different learning-mechanics
-  directions using the same small Mayo fixture slice;
-- a user-selected direction, recorded as a durable decision before consolidation;
+- one representative Mayo Learning-mode run using the selected full-screen activity
+  architecture and the same small fixture slice used by the interaction research;
 - one shared exercise runtime and state model used by every response component;
 - one authored learning contract for every exercise;
-- common response components for all current exercise families;
+- common response components for the D26 activity set;
 - deterministic learner-memory signals that scheduled review can consume;
 - an internal mechanics gallery and QA harness with direct access to every important
   state and failure;
@@ -245,17 +257,19 @@ This sprint does not:
 - add XP, hearts, streaks, leagues, confetti, cartoon rewards, artificial waits,
   overdue counts, or review debt.
 
-#### Critical path: benchmark, prototype, choose, then consolidate
+#### Critical path: prove the selected slice, then consolidate
 
-Rapid visual prototyping is the first executable phase and the sprint's critical
-path. Do not begin by generalising every response component, completing the scheduler,
-or migrating the schema. The first implementation outcome must let the user directly
-operate and compare multiple learning approaches in the running iOS app.
+D26 closes the benchmark-and-selection stage. The first executable product outcome is
+now a coherent Mayo Learning-mode run in which familiar full-screen activities replace
+the current bespoke or mixed exercise compositions. Do not begin by migrating every
+production pack, completing the scheduler, or generalising every component. Prove the
+selected shell and its hardest representative response paths first, extract the shared
+runtime from evidence, then spread it family by family.
 
-Timebox the benchmark to half a working day and the first in-app comparison to two
-working days. If a direction needs foundation infrastructure to become visible, narrow
-the direction instead of delaying the comparison. Allow one bounded revision round
-after the user sees the variants.
+The HTML activity field guide is the interaction reference. It is not a visual
+specification and is not production content. The iOS implementation uses the An Turas
+design system, native controls, safe areas, Dynamic Type, VoiceOver, both appearances,
+Increased Contrast, and Reduce Motion.
 
 Use public learning products only as interaction-quality references. Duolingo is a
 useful reference for immediate task clarity, response speed, progressive practice,
@@ -265,37 +279,43 @@ be added only when they contribute a named technique the team needs to test. Do 
 copy branded visuals, sounds, characters, copy, content, proprietary sequencing, or
 reward systems.
 
-##### Mechanics comparison matrix
+##### Reference adaptation matrix
 
 | Stance | Techniques | An Turas requirement |
 | --- | --- | --- |
 | Emulate or adapt | Clear task framing; progressive difficulty; active recall and production; immediate explanatory feedback; construction and manipulation; visual reasoning when it makes the idea clearer; fast iteration | Match the underlying interaction clarity and responsiveness while using An Turas story context, Irish, evidence boundaries, visual system, and native iOS behavior. |
-| Test cautiously | Guided scaffolding; momentum between related tasks; adaptive sequencing | Prototype only when the technique answers a named learning question. Keep support visible, let the learner pause, make every sequencing rule deterministic and explainable, and reject any version that weakens the story or creates pressure. |
+| Test cautiously | Guided scaffolding; momentum between related tasks; authored branching | Use only when the technique answers a named learning question. Keep support visible, let the learner pause, make every branch and sequencing rule deterministic and explainable, and reject any version that weakens the story or creates pressure. |
 | Reject | XP; hearts; streaks; leagues; mascot-driven rewards; urgency or social pressure; artificial waiting; debt-like review queues | Do not prototype these as options. They conflict with the product rather than representing an unresolved direction. |
 
-##### Fixed Mayo prototype slice
+##### Representative Mayo implementation slice
 
-The in-app comparison is explicitly a **Mayo learning slice**, not a Rockfleet
-mechanics demo. Use the existing revision-6 Clew Bay fixtures
+The first implementation proof is explicitly a **Mayo learning slice**, not a
+Rockfleet mechanics demo. Use the existing revision-6 Clew Bay fixtures
 `mayo.clew-bay.listen-farraige`, `mayo.clew-bay.build-origin`, and
 `mayo.clew-bay.match-coast`. Together they connect the sound and meaning of
 *farraige*, the produced line *Is as Maigh Eo mé*, and the language of the Clew Bay
-coast. Copy those payloads unchanged into the internal comparison fixture layer; this
+coast. Copy those payloads unchanged into the internal study fixture layer; this
 does not bundle or promote the revision-6 county pack.
 
-All directions use the same Irish, translation, Mayo story setup, audio, accepted
-responses, likely errors, and completion goals. If one fixture is technically
+Every activity in the representative run uses the same Irish, translation, Mayo story
+setup, audio, accepted responses, likely errors, and completion goals. If one fixture is technically
 unusable, replace it with the smallest existing **Mayo** fixture set that covers the
 same listening, production, meaning, error, and recovery loop, and record the ids
 before coding.
 
-Do not add new production prose or exercises to make a direction work. Prototype-only
-composition or support copy must be visibly identified in code and the comparison
-record as disposable fixture material.
+Do not add new production prose or exercises to make an activity family work.
+Prototype-only composition or support copy must be visibly identified in code and the
+study record as disposable fixture material.
 
-##### Materially different directions
+##### Superseded comparison record
 
-Build two to four directions; default to three. Each direction must change at least
+The following criteria explain the comparison work that preceded D26. They are
+retained as a research record, not active implementation instructions. Do not build
+more directions or require another selection round before beginning the representative
+slice.
+
+The earlier comparison required two to four directions. Each direction had to change
+at least
 two of these:
 
 - what the learner must recall or construct;
@@ -320,10 +340,12 @@ starting hypotheses include:
   sea and coast language, then produce the same Mayo origin line without the visual
   scaffold.
 
-These are hypotheses, not four mandatory features. Drop one when it does not test a
-distinct learning approach; add none merely to reach a count.
+These were hypotheses, not product families. D26 selects the conventional full-screen
+activity architecture and supersedes further comparison.
 
-##### In-app comparison loop
+##### Superseded in-app comparison loop
+
+The completed comparison used this intended loop:
 
 1. State one learning question for the slice, such as whether Clew Bay can help the
    learner connect *farraige* to place and produce *Is as Maigh Eo mé* without reading
@@ -344,13 +366,12 @@ distinct learning approach; add none merely to reach a count.
    and known shortcuts. The user operates the variants and selects one direction or
    asks for one bounded revision round.
 7. Record the chosen direction, rejected alternatives, rationale, and unresolved
-   risks as a new durable decision in `docs/DECISIONS.md`. Do not treat a score total
-   or agent preference as the decision.
+   risks as a durable decision in `docs/DECISIONS.md`. D26 is that decision.
 8. Delete or isolate rejected variant code. Extract only the chosen interaction,
    feedback, and recovery primitives into the shared runtime, then continue the
    foundation stages.
 
-##### Decision rubric
+##### Historical decision rubric
 
 Score each direction from 1 (fails) to 4 (strong), with one observed reason for every
 score. **Clarity of task** and **accessibility** are hard gates: a direction scoring
@@ -367,9 +388,116 @@ highest total when the recorded tradeoff better serves the product.
 | Native iOS usability | Are selection, input, audio, keyboard, navigation, focus, and response time familiar and dependable? |
 | Accessibility | Do Dynamic Type, VoiceOver, both appearances, Reduce Motion, target size, non-audio meaning, and non-drag operation preserve the task? |
 
-The selection closes the visual and pedagogical direction question for consolidation;
-it does not validate learning outcomes. Pedagogue review and learner evidence remain
-later gates.
+The selection closed the interaction-architecture question for consolidation. It did
+not validate learning outcomes. Pedagogue review and learner evidence remain later
+gates.
+
+#### Selected activity architecture
+
+##### Shared page anatomy
+
+Every Learning-mode activity uses the same outer composition:
+
+1. a native exit or back action and quiet chapter progress;
+2. optional context, limited to what the learner needs for this task;
+3. one task prompt;
+4. one dominant response area;
+5. one primary action above the safe area;
+6. diagnostic or completion feedback on the same screen; and
+7. one continue action into the next story or activity page.
+
+At standard text sizes, the full task should fit in one viewport. At accessibility
+sizes, the shell becomes one scrollable composition and keeps the prompt, formed
+response, feedback, and primary action reachable. Story exposition does not accumulate
+inside the shell. If context requires more than a short paragraph or one inspectable
+source excerpt, it belongs on the preceding story page.
+
+The shell uses native SwiftUI focus, keyboard, navigation, audio-session, permission,
+and accessibility behavior. It does not reproduce the HTML prototype's phone frame,
+layout, typography, or colors.
+
+##### Core response families
+
+| Family | First implementation requirement | Learning boundary |
+| --- | --- | --- |
+| Picture or map selection | One meaningful image, object, document detail, or map region per option; semantic selection group; authored rationale per distractor | Use only when the visual carries meaning. Generic illustration is not an acceptable substitute. |
+| Sentence construction | Tap to add and remove; reorder without drag; preserve meaningful multiword units; VoiceOver move actions | Supported construction must later lead to recall or production without the visible answer. |
+| Free typed production | Native text input; fada toolbar; declared normalization; precise fada and structure diagnostics; keyboard-safe action | Accept harmless declared variants. Do not silently strip meaningful orthographic distinctions. |
+| Fill-in-the-blank | One consequential missing unit; editable choice or typed response; rationale for nearby alternatives | Do not blank a random token merely to create a question. |
+| Listen and choose | Bundled audio, replay, playback state, authored non-audio fallback, misconception-based options | Recognition is introduction or diagnosis, not complete word learning. |
+| Listen and type | Bundled audio and replay plus native typing; distinguish listening from spelling errors in feedback | Do not fail comprehension solely because first-exposure spelling is incomplete. |
+| Record and compare | Model replay, record, stop, learner playback, re-record, compare or continue; ephemeral local audio; denied-microphone continuation | No score, pronunciation verdict, retained recording, or gated progress. |
+| Matching | Tap one item then its partner; non-drag and VoiceOver path; pair-level feedback and completion | Use briefly to establish a distinction. Matching alone does not earn clean-recall credit. |
+| Authored dialogue | Clear preceding speaker and turn; every acceptable response authored; pragmatic and grammatical feedback | Present-day or otherwise bounded exchanges only. The learner remains themselves. |
+| Read or listen and respond | Short reviewed passage; response increasingly stays in Irish; route back to relevant context | Questions test meaning, implication, or evidence—not whether the learner noticed the previous sentence. |
+| Radio-style listening | Audio-primary screen, segment replay, transcript or meaning route, sparse comprehension interruptions | Use reviewed narration, oral history, or clearly labelled performed archival material. |
+| Pre-authored branching roleplay | Finite reviewed node graph; learner choice or bounded input selects a branch; deterministic resume and completion | No real-time generated Irish and no invented participation in history. |
+| Contextual mistake review | Reconstruct the exact sound, sentence, place, or misconception that caused difficulty; bounded optional run | No accumulated debt, overdue count, broken-heart framing, or loss of county progress. |
+| **Words you carry** practice | Review a word through its first place, audio, sentence, target capability, and later uses | Do not reduce carried words to a context-free vocabulary inventory. |
+| Completion | State capabilities gained, carried words or evidence, next story choice, and any optional later review | No XP, accuracy theatre, confetti, mascot reaction, streak threat, or artificial delay. |
+
+##### Representative slice flow
+
+The first end-to-end Mayo proof uses the selected architecture in this order:
+
+1. **Listen and choose:** hear *farraige* in Clew Bay context and identify its
+   meaning.
+2. **Matching:** distinguish *farraige*, *bá*, and *áit* once, with pair-level
+   recovery.
+3. **Sentence construction:** build *Is as Maigh Eo mé* from meaningful units.
+4. **Free typed production:** retrieve the same line after the tiles and labels are
+   removed.
+5. **Authored dialogue:** answer *Cárb as tú?* with an accepted origin response.
+6. **Record and compare:** say the origin line beside the reviewed model without a
+   score.
+7. **Read or listen and respond:** answer one short Irish comprehension task grounded
+   in the Clew Bay setup.
+8. **Completion:** state what the learner can now hear, distinguish, and say; return
+   the words to the fixture collection without touching production county progress.
+9. **Contextual review fixture:** re-enter one struggled target from its original
+   sound, coast, or sentence after a deterministic test delay.
+
+This sequence is a fixture-level implementation proof. It does not add these pages to
+the production Mayo pack or claim that the sequence has passed pedagogue or learner
+validation.
+
+##### Family grouping for migration
+
+Implement and verify response families in bounded groups:
+
+1. **Recognition:** picture or map selection, fill-in-the-blank, listen and choose,
+   matching.
+2. **Construction and production:** sentence construction, free typing, listen and
+   type, record and compare.
+3. **Contextual use:** authored dialogue, read or listen and respond, radio-style
+   listening, pre-authored branching roleplay.
+4. **Consolidation:** contextual mistake review, **Words you carry** practice, and
+   completion.
+
+A group is complete only when every family uses the shared runtime, authored contract,
+gallery, persistence rules, and accessibility behavior. Do not mark a group complete
+because one happy path renders.
+
+##### Implementation ownership
+
+Keep each concern in one place:
+
+| Concern | Current owner or target |
+| --- | --- |
+| Exercise families and content decoding | `ios/AnTuras/CountyStoryPack.swift`; extend `CountyExerciseFamily` and the versioned exercise payload without embedding runtime state in content. |
+| Current county exercise rendering | `ios/AnTuras/CountyExerciseSystem.swift`; use as the migration boundary, then split the pure runtime, shared shell, and response views only when the representative slice proves the separation. |
+| Story/activity page transition and exact resume | `ios/AnTuras/CountyStoryExperienceView.swift` and the existing stable page-progress model. |
+| Later word practice | `ios/AnTuras/LexemeDeck.swift`; migrate its presentation onto the shared response components without letting the deck own a second grading model. |
+| Persisted learner state and review handoff | existing progress and personal-foundation stores plus `docs/DRILL.md`; persist bounded attempt/support signals, never recordings or unnecessary answer text. |
+| Swift validation | `CountyStoryPack` decoding and validation tests in `ios/AnTurasTests/`. |
+| Offline authoring validation | `tools/validate_county_pack.py` and `tools/tests/test_validate_county_pack.py`; keep its accepted and rejected fixtures aligned with Swift. |
+| Interaction and failure gallery | evolve the internal `CountyExerciseGalleryView` or replace it with one manifest-driven activity gallery; the disposable `Prototypes/InteractionStudies` gallery remains research-only. |
+| End-to-end UI verification | `ios/AnTurasUITests/`; cover the representative run, one state matrix per family group, exact resume, offline relaunch, keyboard, audio, microphone, and branching. |
+| Xcode project membership | `ios/project.yml`; regenerate the project after adding, moving, or removing source, resource, target, or build-setting entries. |
+
+Avoid a parallel “new activity app” beside the county runtime. The representative
+fixture may launch from an internal route, but it must exercise the same runtime,
+shell, and response components that production county pages will use.
 
 #### Shared runtime and state model
 
@@ -442,16 +570,22 @@ completion, accessibility announcements, and memory events remain shared.
 | Component | Required behavior |
 | --- | --- |
 | Listening and replay | Use bundled model audio, show a labelled Play/Replay control and playback state, prevent overlapping playback, and expose an authored non-audio route when playback is unavailable. A learner may replay without penalty. A text fallback marks the attempt as supported when it changes a listening objective. |
+| Picture and map choices | Use real content or a semantically accurate map region, expose each option as one labelled selection, provide text alternatives for meaningful visual detail, and map every distractor to an authored rationale. The family is unavailable when no visual representation improves meaning. |
 | Choices and fill gaps | Use one semantic selection group with 44-point rows. Selection is editable until Check. Every wrong option maps to an authored rationale or named misconception. Correctness is never exposed by color or option order alone. |
 | Sentence tiles | Support tap-to-add, tap-to-remove, and deterministic reordering. VoiceOver offers equivalent add, remove, move earlier, and move later actions; dragging is optional. Multiword units remain atomic when the learning objective is syntax rather than spelling. |
 | Irish typing | Use native text input and the existing fada toolbar. Precomposed and combining Unicode forms compare equally; case, surrounding whitespace, and declared punctuation variants follow authored rules. Fadas are not stripped from correctness: a missing or misplaced fada produces a specific diagnostic unless the contract explicitly makes it irrelevant. Keyboard appearance or dismissal must not hide the task, feedback, or primary action. |
 | Matching | Support tap-one-then-tap-partner as the baseline. Any drag treatment has the same tap and VoiceOver alternative. A wrong pair remains identifiable for diagnostic feedback; completing one pair cannot accidentally complete or credit the whole set. |
 | Dialogue | Present the preceding turn and speaker clearly, allow every authored acceptable response, and explain pragmatic or grammatical fit. Dialogue never casts the learner as an undocumented historical participant. |
 | Comprehension | Test the story, source, or evidence limit already encountered. Feedback distinguishes what the evidence supports from inference or legend and offers a path back to the relevant page when useful. |
+| Radio-style listening | Keep playback and segment replay primary, expose progress without speed pressure, preserve an authored transcript or meaning route, and insert only sparse tasks that improve listening attention or comprehension. |
+| Authored branching roleplay | Decode a finite versioned node graph, preserve the current node across interruption, make every partner line and acceptable learner path reviewable before bundling, and route bounded free input only through authored intents. It never calls a runtime language model. |
 | Sequencing | Support selection plus move-earlier/move-later controls and VoiceOver adjustable actions. The objective declares whether order concerns Irish syntax, historical sequence, or evidence handling; feedback names the first meaningful break rather than only showing the final order. |
 | Grammar discovery | Reveal examples in the authored order, withhold the rule until the learner has attended or responded, and make the inferred contrast explicit on completion. Recovery may expose one worked case but still requires a fresh application. |
 | Delayed retrieval | Begin from a recall cue rather than a visible answer. Hints and recovery use the same support signals as every other family and never create a separate hidden scoring path. |
 | Record and compare speaking | Provide model play/replay, record, stop, learner playback, re-record, and compare/continue. There is no pronunciation score or pass/fail. Microphone denial explains the limitation and offers model-listen plus unrecorded self-comparison so progress is never trapped. Recordings are discarded when the exercise or app session ends unless the learner deliberately keeps listening within that exercise. |
+| Contextual mistake review | Recreate the target and misconception from the original exercise event, choose a bounded authored review form deterministically, explain why the item returned, and allow exit without penalty. |
+| **Words you carry** practice | Query by stable target id, preserve first encounter and later-use context, offer authored practice forms appropriate to the capability, and keep collection state distinct from scheduler state. |
+| Completion | Summarise declared capabilities and carried material from completed target events, offer one next action and optional bounded review, and never derive reward copy from points, accuracy, speed, streak, or absence. |
 
 Every component must expose a typed response value and the same actions:
 `update response`, `check`, `request hint`, `begin recovery`, `retry`, and
@@ -611,6 +745,24 @@ the new contract is decoded, rendered, and validated end to end. Increment the c
 schema version when production serialization changes and supply deterministic
 migration or an explicit rejection for older external packs.
 
+Selected families add these payload requirements:
+
+- picture or map selection references source-cleared visual assets or stable semantic
+  regions plus accessible alternative text;
+- listen-and-type distinguishes accepted auditory forms from orthographic diagnostic
+  cases;
+- radio-style listening declares ordered segment ids, audio, transcript or meaning
+  fallback, and the sparse tasks attached to segment boundaries;
+- authored branching roleplay declares a versioned finite node graph, reviewed
+  partner lines, accepted learner intents or responses, entry, terminal nodes, and
+  deterministic resume behavior;
+- contextual mistake review references the original exercise, target, and
+  misconception event rather than duplicating decontextualized content;
+- **Words you carry** practice references stable target ids and authored practice
+  forms without copying county-completion state; and
+- completion declares capability summaries and collection handoff from completed
+  target evidence rather than storing reward totals.
+
 For packs with `enforceLearningQuality`, the Swift and Python validators must fail
 when:
 
@@ -626,6 +778,18 @@ when:
 - an audio-dependent task lacks bundled audio and its authored fallback;
 - a speaking exercise declares pronunciation correctness or stores audio;
 - a tile, matching, or sequencing task has no non-drag interaction;
+- a picture or map choice lacks meaningful alternative text, a stable region or
+  source-cleared asset, or a rationale for any incorrect option;
+- a radio activity has an unreachable segment task, missing replay boundary, or no
+  transcript or meaning route;
+- an authored branching roleplay contains an unreachable node, a non-terminal cycle
+  without an authored exit, an unreviewed line, an invalid resume target, or any
+  runtime-generated language path;
+- a contextual-review activity cannot trace its target and misconception back to the
+  original event;
+- a carried-word practice item names a target absent from the collection or copies
+  scheduler state into collection state;
+- a completion summary claims a capability unsupported by completed target evidence;
 - memory credit names a lexeme or pattern the exercise does not target.
 
 The validator report must list contract coverage, target capabilities, diagnostic
@@ -635,44 +799,67 @@ shared documented list so a pack cannot pass offline and fail after decoding.
 
 #### Staged implementation order
 
-1. **Benchmark and freeze the comparison slice.** Complete the mechanics comparison
-   matrix, state the learning question, confirm the fixed Mayo fixture ids, and
-   record the common error/recovery scenario. Do not build a general abstraction.
-2. **Prototype two to four directions in the app.** Make each direction operable from
-   one internal comparison entry using identical fixture content and starting state.
-   Keep experimental code removable.
-3. **Verify, compare, and choose.** Run the core accessibility states, exercise the
-   error/recovery path, present the rubric and tradeoffs, obtain the user's choice,
-   and record it as a durable decision. No later stage starts without that decision.
-4. **Freeze the broader baseline and fixture set.** Inventory all current exercise
+1. **Freeze D26 and the representative fixture.** Record the selected activity
+   families, shared page anatomy, Clew Bay fixture ids, common error/recovery
+   scenarios, and the boundary between fixture work and production Mayo. D26 and this
+   plan complete the architecture choice; do not open another direction comparison.
+2. **Freeze the broader baseline and fixture set.** Inventory all current exercise
    families, state transitions, completion paths, persistence, memory credit, and
-   component-specific exceptions. Rejected prototype code remains outside the shared
-   implementation.
-5. **Implement the chosen direction in the pure state engine.** Define typed response,
+   component-specific exceptions. Classify each current view as reuse, adapt, replace,
+   or remove. Existing interaction-study code remains isolated until a specific
+   primitive is intentionally adopted.
+3. **Implement the pure state engine.** Define typed response,
    attempt, support, completion-evidence, and memory-event values independently of
    SwiftUI. Add unit tests for every legal transition, rejected illegal transition,
    interruption, revisit, and exactly-once completion/memory credit.
-6. **Add the contract adapter and gallery shell.** Decode the new learning contract
+4. **Build the shared activity shell.** Implement the stable header/progress, optional
+   context, prompt, response slot, keyboard-safe primary action, same-screen feedback,
+   continue state, scrolling accessibility composition, focus restoration, and
+   announcements. Prove unanswered, incorrect, hint, recovery, retry, complete, and
+   revisited-complete states with a placeholder response component.
+5. **Add the contract adapter and gallery shell.** Decode the new learning contract
    for test fixtures, adapt the current Mayo fixture fields where necessary, and
    render every lifecycle state through dependency-injected audio, microphone,
    keyboard, appearance, contrast, and motion conditions.
-7. **Move response components onto the shared runtime.** Work in bounded groups:
-   listening/choices/fill gap; sentence tiles/typing; matching/sequencing;
-   dialogue/comprehension/discovery/delayed retrieval; speaking. A group moves on only
-   when its components have no family-specific completion or scheduling bypass and
-   its gallery states pass.
-8. **Connect learner memory.** Emit success, struggle, hint, and recovery signals once
+6. **Build the representative Mayo run.** Implement listen-and-choose, matching,
+   sentence construction, free typing, authored dialogue, record-and-compare,
+   comprehension, completion, and one contextual-review return in the fixed sequence.
+   Operate the complete run before extracting additional abstractions.
+7. **Complete the recognition group.** Add picture or map selection and
+   fill-in-the-blank to the proven listening, choice, and matching primitives. Pass
+   gallery, VoiceOver, Dynamic Type, appearance, contrast, motion, missing-media, and
+   incorrect/recovery states.
+8. **Complete the construction and production group.** Harden sentence tiles and
+   typing; add listen-and-type; finish record-and-compare permission, interruption,
+   playback, privacy, and non-recording continuation. Pass software and hardware
+   keyboard, Unicode, fada, audio, and microphone checks.
+9. **Complete the contextual-use group.** Harden authored dialogue and comprehension;
+   add radio-style listening and the versioned pre-authored branching-roleplay graph.
+   Verify reviewable branch coverage, interruption/resume, deterministic completion,
+   transcript or meaning routes, and the prohibition on runtime-generated Irish.
+10. **Complete the consolidation group.** Connect contextual mistake review,
+    **Words you carry** practice, and capability-led completion to the same target ids
+    and event history. Preserve the distinction between county completion,
+    collection, optional review, and scheduler state.
+11. **Connect learner memory.** Emit success, struggle, hint, and recovery signals once
    per completed target; update deterministic stability/difficulty behavior and
    persistence; add migration and debug-explanation tests. Update `docs/DRILL.md` only
    if implementation changes its owned interval or presentation policy.
-9. **Harden schema and validators.** Make `learningContract` mandatory for the
+12. **Harden schema and validators.** Make `learningContract` mandatory for the
    enforced-quality schema, mirror rules in Swift and Python, add failing fixtures for
    every rule, and prove older saved progress survives the runtime and schema change.
-   Do not bulk-migrate production counties in this stage.
-10. **Run the foundation gate.** Complete the automated suite, gallery matrix, direct
+   Add image-choice, radio segment, authored branch graph, contextual-review, carried
+   word, and completion-summary validation. Do not bulk-migrate production counties
+   in this stage.
+13. **Run the foundation gate.** Complete the automated suite, gallery matrix, direct
    simulator inspection, and physical-device walkthrough below. Record failures and
    fix the shared system or contract rather than patching a fixture.
-11. **Decide whether to spread.** Record the gate result in `STATUS.md`. If a durable
+14. **Migrate one production exercise slice.** After the foundation passes, migrate
+    one representative production Mayo sequence and verify content decoding, progress
+    preservation, memory events, collection handoff, optional review, and both modes.
+    Stop and repair the shared system if production content requires a private
+    exception.
+15. **Decide whether to spread.** Record the gate result in `STATUS.md`. If a durable
    rule changed, add or amend a decision before migrating Mayo or another county. A
    pass authorises subsequent content migration and review; it does not itself
    validate pedagogy or clear a county for external testing.
@@ -681,12 +868,11 @@ shared documented list so a pack cannot pass offline and fail after decoding.
 
 The sprint passes only when:
 
-- two to four materially different directions using the same Mayo fixture slice were
-  operated in the running app, compared against the reference-quality matrix and
-  decision rubric, and checked in their core accessibility states;
-- the user's chosen direction and the reasons for rejecting the alternatives are
-  recorded in `docs/DECISIONS.md`;
-- every exercise family uses the shared state engine and typed response interface;
+- D26 remains the recorded direction and the implemented activity shell matches its
+  one-screen, one-task anatomy;
+- the representative Mayo fixture run completes from listening through contextual
+  review without touching production county progress;
+- every D26 activity family uses the shared state engine and typed response interface;
 - unit tests cover every required transition, support combination, interruption,
   revisit, and exactly-once completion/memory event;
 - every exercise fixture has a complete authored learning contract and both
@@ -698,6 +884,13 @@ The sprint passes only when:
   updates, and never create a gate or overdue task count;
 - the gallery manifest proves complete component, state, failure, and environment
   coverage;
+- the authored branching-roleplay fixture proves every node and exit is reviewable,
+  deterministic, resumable, and free of runtime-generated Irish;
+- picture and map choices have meaningful visual content plus accessible text
+  alternatives, and radio-style listening has segment replay plus an authored
+  transcript or meaning route;
+- mistake review, **Words you carry**, and completion use the same stable targets and
+  event history without creating review debt or conflating collection with scheduling;
 - UI automation exercises response formation, incorrect feedback, hint, recovery,
   retry, completion, resume, missing audio, denied microphone, and offline relaunch;
 - no component requires dragging, sound, motion, color, or a microphone to complete;
@@ -706,10 +899,10 @@ The sprint passes only when:
 
 Direct verification must include:
 
-1. the initial prototype comparison on an iPhone 17 Pro-class simulator, including
-   every direction's start, incorrect, recovery, and complete states plus its core
-   accessibility check;
-2. the complete gallery on an iPhone 17 Pro-class simulator in light and dark
+1. the complete representative Mayo fixture run on an iPhone 17 Pro-class simulator,
+   including every activity's start, incorrect, recovery, and complete states plus its
+   core accessibility check;
+2. the complete D26 family gallery on an iPhone 17 Pro-class simulator in light and dark
    appearances;
 3. every component at the largest accessibility text size, with Increased Contrast
    and Reduce Motion checked independently;
@@ -730,9 +923,9 @@ Compilation, snapshots, or one successful path do not satisfy this gate.
 Do not migrate or author production county exercises against the revised system until
 all of these decisions have an evidence-backed pass:
 
-1. **Direction:** the user has selected one in-app prototype direction against the
-   rubric, and the choice, rejected alternatives, and risks are recorded in
-   `docs/DECISIONS.md`.
+1. **Direction:** D26 remains the active decision; the implementation proves its
+   one-screen, one-task architecture and selected activity families without reopening
+   bespoke candidate directions.
 2. **Runtime:** one state engine owns attempts, support, completion, persistence, and
    exactly-once events; no family keeps a private alternative.
 3. **Completion:** clean, corrected, hinted, and recovered completion semantics are
