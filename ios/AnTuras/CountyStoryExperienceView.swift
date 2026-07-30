@@ -11,6 +11,8 @@ struct CountyStoryExperienceView: View {
     @State private var showingChapterMenu = false
     @State private var finishedMode: CountyStoryMode?
     @State private var locallyCompletedPageIDs: Set<String> = []
+    @State private var exerciseBar = CountyExerciseBarState(title: "Continue", isEnabled: false, isCheck: false)
+    @State private var exerciseBarAction: (() -> Void)?
 
     private var mode: CountyStoryMode? { atlas.mode(for: pack.id) }
 
@@ -53,7 +55,9 @@ struct CountyStoryExperienceView: View {
             .environmentObject(atlas)
         }
         .onAppear {
-            if let mode { _ = atlas.begin(pack, mode: mode) }
+            if let mode, atlas.mode(for: pack.id) == nil {
+                _ = atlas.begin(pack, mode: mode)
+            }
         }
     }
 
@@ -82,10 +86,18 @@ struct CountyStoryExperienceView: View {
                     VStack(alignment: .leading, spacing: 24) {
                         Color.clear.frame(height: 0).id("county-page-top")
                         if page.kind == .exercise, page.exercise != nil {
-                            CountyExerciseView(page: page, alreadyComplete: isComplete) {
-                                locallyCompletedPageIDs.insert(page.id)
-                                atlas.markPageComplete(page.id, in: pack)
-                            }
+                            CountyExerciseView(
+                                page: page,
+                                alreadyComplete: isComplete,
+                                onComplete: {
+                                    locallyCompletedPageIDs.insert(page.id)
+                                    atlas.markPageComplete(page.id, in: pack)
+                                },
+                                onBarUpdate: { bar, action in
+                                    exerciseBar = bar
+                                    exerciseBarAction = action
+                                }
+                            )
                             .padding(.horizontal, EditorialLayout.pageInset)
                             .padding(.top, 24)
                             .frame(maxWidth: EditorialLayout.readingWidth)
@@ -117,13 +129,24 @@ struct CountyStoryExperienceView: View {
         .safeAreaInset(edge: .bottom) {
             CountyPageControls(
                 canGoBack: index > 0,
-                canContinue: page.kind == .narrative || isComplete,
-                continueTitle: page.advanceLabel ?? (index == visible.count - 1 ? "Complete this chapter path" : "Continue"),
+                canContinue: page.kind == .narrative ? true : (isComplete || exerciseBar.isEnabled),
+                continueTitle: page.kind == .exercise ? exerciseBar.title : (page.advanceLabel ?? (index == visible.count - 1 ? "Complete this chapter path" : "Continue")),
+                continueEnabled: page.kind == .narrative ? true : (isComplete || exerciseBar.isEnabled),
                 onBack: {
                     guard index > 0 else { return }
                     move(to: visible[index - 1])
                 },
                 onContinue: {
+                    if page.kind == .exercise, !isComplete {
+                        if exerciseBar.isCheck, let exerciseBarAction {
+                            exerciseBarAction()
+                            return
+                        }
+                        if exerciseBarAction != nil, page.exercise?.family == .recordCompare {
+                            exerciseBarAction?()
+                            return
+                        }
+                    }
                     if page.kind == .narrative { atlas.markPageComplete(page.id, in: pack) }
                     if index == visible.count - 1 {
                         atlas.finish(pack, mode: mode)
@@ -133,6 +156,10 @@ struct CountyStoryExperienceView: View {
                     }
                 }
             )
+        }
+        .onChange(of: page.id) { _, _ in
+            exerciseBar = CountyExerciseBarState(title: "Continue", isEnabled: false, isCheck: false)
+            exerciseBarAction = nil
         }
         .transition(reduceMotion ? .opacity : .asymmetric(
             insertion: .move(edge: .trailing).combined(with: .opacity),
@@ -357,7 +384,7 @@ private struct CountyStoryChrome: View {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     Capsule().fill(Theme.line).frame(height: 3)
-                    Capsule().fill(Theme.moss)
+                    Capsule().fill(Theme.atlasGreen)
                         .frame(width: geometry.size.width * CGFloat(current) / CGFloat(max(total, 1)), height: 3)
                 }
             }
@@ -377,12 +404,17 @@ private struct CountyPageControls: View {
     let canGoBack: Bool
     let canContinue: Bool
     let continueTitle: String
+    var continueEnabled: Bool? = nil
     let onBack: () -> Void
     let onContinue: () -> Void
 
     private var visibleContinueTitle: String {
         guard dynamicTypeSize.isAccessibilitySize else { return continueTitle }
-        return continueTitle.contains("Complete") ? "Complete" : "Continue"
+        return continueTitle.contains("Complete") ? "Complete" : continueTitle
+    }
+
+    private var isPrimaryEnabled: Bool {
+        continueEnabled ?? canContinue
     }
 
     var body: some View {
@@ -399,9 +431,7 @@ private struct CountyPageControls: View {
                 .buttonStyle(CarvePress())
                 .accessibilityLabel("Previous page")
             }
-            PrimaryButton(title: visibleContinueTitle, fullWidth: true, action: onContinue)
-                .disabled(!canContinue)
-                .opacity(canContinue ? 1 : 0.45)
+            PrimaryButton(title: visibleContinueTitle, fullWidth: true, enabled: isPrimaryEnabled, action: onContinue)
                 .accessibilityLabel(continueTitle)
         }
         .padding(.horizontal, EditorialLayout.pageInset)

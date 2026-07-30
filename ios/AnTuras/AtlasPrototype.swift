@@ -108,15 +108,21 @@ struct AtlasPrototypeView: View {
                 let requestedMode = modeFlag.flatMap { index in
                     args.indices.contains(index + 1) ? CountyStoryMode(rawValue: args[index + 1]) : nil
                 }
-                if let requestedMode { _ = atlas.begin(pack, mode: requestedMode) }
-                if let pageFlag = args.firstIndex(of: "--page"),
-                   args.indices.contains(pageFlag + 1),
-                   pack.page(id: args[pageFlag + 1]) != nil {
-                    let pageID = args[pageFlag + 1]
-                    atlas.setActivePage(pageID, in: pack)
+                let pageFlag = args.firstIndex(of: "--page")
+                let requestedPageID = pageFlag.flatMap { index in
+                    args.indices.contains(index + 1) ? args[index + 1] : nil
+                }
+                if let requestedMode {
+                    atlas.countyStoryModes[pack.id] = requestedMode.rawValue
+                    atlas.activeCountyStoryID = pack.id
+                }
+                if let requestedPageID, pack.page(id: requestedPageID) != nil {
+                    atlas.setActivePage(requestedPageID, in: pack)
                     if !args.contains("--completed-page") {
-                        atlas.completedCountyPageIDs[pack.id, default: []].removeAll { $0 == pageID }
+                        atlas.completedCountyPageIDs[pack.id, default: []].removeAll { $0 == requestedPageID }
                     }
+                } else if let requestedMode {
+                    _ = atlas.begin(pack, mode: requestedMode)
                 }
                 path = [.countyPack(pack.id)]
             } else if args.contains("--mayo-dossier") {

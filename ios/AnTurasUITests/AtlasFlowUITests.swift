@@ -93,14 +93,9 @@ final class AtlasFlowUITests: XCTestCase {
         XCTAssertFalse(next.isEnabled)
 
         app.buttons["Every letter survives clearly and scholars agree on one translation."].tap()
-        XCTAssertTrue(app.staticTexts["Try again"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
         XCTAssertFalse(next.isEnabled)
 
-        let retry = app.buttons["Retry"]
-        XCTAssertTrue(retry.waitForExistence(timeout: 2))
-        app.swipeUp()
-        XCTAssertTrue(retry.isHittable)
-        retry.tap()
         let correct = "It links prayer, Flann, Colmán and the making of the cross, but damaged letters affect the exact reading."
         let correctButton = app.buttons[correct]
         XCTAssertTrue(correctButton.waitForExistence(timeout: 2))
@@ -112,10 +107,6 @@ final class AtlasFlowUITests: XCTestCase {
         for _ in 0..<3 where !correctButton.isHittable { app.swipeDown() }
         XCTAssertTrue(correctButton.isHittable)
         correctButton.tap()
-        for _ in 0..<3 where !app.staticTexts["Corrected"].exists { app.swipeUp() }
-        XCTAssertTrue(app.staticTexts["Corrected"].waitForExistence(timeout: 2))
-        for _ in 0..<3 where !app.buttons["Keep this answer"].isHittable { app.swipeUp() }
-        app.buttons["Keep this answer"].tap()
         XCTAssertTrue(next.isEnabled)
     }
 
@@ -213,13 +204,14 @@ final class AtlasFlowUITests: XCTestCase {
             "--mode", "learning",
             "--page", "mayo.rockfleet.type-castle",
             "--appearance", "light",
+            "--fresh-county-pack",
             "--transient-test-state",
         ]
         app.launch()
 
         XCTAssertTrue(app.staticTexts["Write the place with its fada"].waitForExistence(timeout: 5))
         typeCastleSentence(in: app)
-        let field = app.textFields["Your Irish answer"]
+        let field = irishAnswerField(in: app)
         XCTAssertEqual(field.value as? String, "Tá an caisleán anseo.")
         tapButton("Check answer from keyboard", in: app)
         let continueButton = app.buttons["Continue"]
@@ -237,7 +229,7 @@ final class AtlasFlowUITests: XCTestCase {
 
         XCTAssertTrue(app.staticTexts["Hear the place before translating it"].waitForExistence(timeout: 5))
         tapButton("Hear the Irish", in: app)
-        tapButton("castle", in: app)
+        tapChoice("castle", in: app)
         finishExercise(in: app)
 
         XCTAssertTrue(app.staticTexts["The stronghold held people as well as stone"].waitForExistence(timeout: 5))
@@ -301,14 +293,14 @@ final class AtlasFlowUITests: XCTestCase {
         tapButton("Keep the boundary visible", in: app)
 
         XCTAssertTrue(app.staticTexts["Put the household in your own voice"].waitForExistence(timeout: 5))
-        tapButton("Continue without recording", in: app)
+        waitForPrimaryBar("Continue without recording", in: app).tap()
         finishExercise(in: app)
 
         XCTAssertTrue(app.staticTexts["A connected system can be pressured at several points"].waitForExistence(timeout: 5))
         tapButton("See what is at stake", in: app)
 
         XCTAssertTrue(app.staticTexts["Bring the place word back"].waitForExistence(timeout: 5))
-        tapButton("caisleán", in: app)
+        tapChoice("caisleán", in: app)
         finishExercise(in: app)
 
         XCTAssertTrue(app.buttons["Bring the words back"].waitForExistence(timeout: 5))
@@ -324,40 +316,27 @@ final class AtlasFlowUITests: XCTestCase {
         keepScreenshot(named: "Rockfleet Learning completion — light", from: app)
     }
 
-    func testRockfleetWrongAnswerRequiresExplicitRecovery() throws {
+    func testRockfleetWrongAnswerStaysRepairableInPlace() throws {
         let app = XCUIApplication()
         app.launchArguments = [
             "--county-pack", "mayo.grainne-1593",
             "--mode", "learning",
             "--page", "mayo.rockfleet.listen-caislean",
+            "--fresh-county-pack",
         ]
         app.launch()
 
         let hear = app.buttons["Hear the Irish"]
         XCTAssertTrue(hear.waitForExistence(timeout: 5))
         hear.tap()
-        for _ in 0..<3 where !app.buttons["ship"].exists { app.swipeUp() }
-        app.buttons["ship"].tap()
+        tapChoice("ship", in: app)
 
-        XCTAssertTrue(app.staticTexts["Try again"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
         XCTAssertFalse(app.buttons["Continue"].isEnabled)
-        for _ in 0..<3 where !app.buttons["Retry"].isHittable { app.swipeUp() }
-        app.swipeUp()
-        XCTAssertTrue(app.buttons["Retry"].isHittable)
-        app.buttons["Retry"].tap()
-        XCTAssertTrue(app.buttons["Show a hint"].waitForExistence(timeout: 2))
-        for _ in 0..<3 where !app.buttons["castle"].exists { app.swipeUp() }
-        let enabled = NSPredicate(format: "enabled == true")
-        expectation(for: enabled, evaluatedWith: app.buttons["castle"])
-        waitForExpectations(timeout: 2)
-        app.buttons["castle"].tap()
+        XCTAssertFalse(app.buttons["Retry"].exists)
 
-        XCTAssertTrue(app.staticTexts["Corrected"].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.buttons["Continue"].isEnabled)
-        for _ in 0..<3 where !app.buttons["Keep this answer"].isHittable { app.swipeUp() }
-        app.swipeUp()
-        XCTAssertTrue(app.buttons["Keep this answer"].isHittable)
-        app.buttons["Keep this answer"].tap()
+        tapChoice("castle", in: app)
+
         XCTAssertTrue(app.buttons["Continue"].isEnabled)
     }
 
@@ -368,16 +347,14 @@ final class AtlasFlowUITests: XCTestCase {
             "--mode", "learning",
             "--page", "mayo.rockfleet.speaking",
             "--microphone-denied",
+            "--fresh-county-pack",
         ]
         app.launch()
 
         XCTAssertTrue(app.staticTexts["Put the household in your own voice"].waitForExistence(timeout: 5))
         for _ in 0..<4 where !app.staticTexts["Microphone access is off. You can keep listening and continue without recording."].exists { app.swipeUp() }
         XCTAssertTrue(app.staticTexts["Microphone access is off. You can keep listening and continue without recording."].exists)
-        let continueWithout = app.buttons["Continue without recording"]
-        XCTAssertTrue(continueWithout.exists)
-        for _ in 0..<3 where !continueWithout.isHittable { app.swipeUp() }
-        XCTAssertTrue(continueWithout.isEnabled)
+        let continueWithout = waitForPrimaryBar("Continue without recording", in: app)
         continueWithout.tap()
         XCTAssertTrue(app.buttons["Continue"].isEnabled)
     }
@@ -409,6 +386,44 @@ final class AtlasFlowUITests: XCTestCase {
             "--transient-test-state",
         ] + extra
         return app
+    }
+
+    private func tapChoice(
+        _ label: String,
+        in app: XCUIApplication,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        let choice = app.buttons[label]
+        XCTAssertTrue(choice.waitForExistence(timeout: 5), "Missing choice: \(label)", file: file, line: line)
+        let hittable = NSPredicate(format: "hittable == true")
+        XCTAssertEqual(
+            XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: hittable, object: choice)], timeout: 5),
+            .completed,
+            "Choice never hittable: \(label)",
+            file: file,
+            line: line
+        )
+        choice.tap()
+    }
+
+    private func waitForPrimaryBar(
+        _ label: String,
+        in app: XCUIApplication,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> XCUIElement {
+        let button = app.buttons[label]
+        XCTAssertTrue(button.waitForExistence(timeout: 5), "Missing bar action: \(label)", file: file, line: line)
+        let enabled = NSPredicate(format: "enabled == true")
+        XCTAssertEqual(
+            XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: enabled, object: button)], timeout: 5),
+            .completed,
+            "Bar action never enabled: \(label)",
+            file: file,
+            line: line
+        )
+        return button
     }
 
     private func tapButton(
@@ -456,15 +471,17 @@ final class AtlasFlowUITests: XCTestCase {
         file: StaticString = #filePath,
         line: UInt = #line
     ) -> XCUIElement {
-        let field = app.textFields["Your Irish answer"]
-        XCTAssertTrue(field.waitForExistence(timeout: 5), "Missing Irish answer field", file: file, line: line)
-        field.tap()
-        return field
+        let field = app.textFields["irish-answer-field"]
+        let area = app.textViews["irish-answer-field"]
+        let match = field.waitForExistence(timeout: 2) ? field : area
+        XCTAssertTrue(match.waitForExistence(timeout: 5), "Missing Irish answer field", file: file, line: line)
+        match.tap()
+        return match
     }
 
     private func typeCastleSentence(in app: XCUIApplication) {
-        let field = irishAnswerField(in: app)
-        field.typeText("T")
+        _ = irishAnswerField(in: app)
+        app.typeText("T")
         tapButton("Insert á from keyboard toolbar", in: app)
         app.typeText(" an caisle")
         tapButton("Insert á from keyboard toolbar", in: app)
@@ -472,8 +489,8 @@ final class AtlasFlowUITests: XCTestCase {
     }
 
     private func typeHouseholdSentence(in app: XCUIApplication) {
-        let field = irishAnswerField(in: app)
-        field.typeText("T")
+        _ = irishAnswerField(in: app)
+        app.typeText("T")
         tapButton("Insert á from keyboard toolbar", in: app)
         app.typeText(" an teaghlach anseo.")
     }

@@ -27,7 +27,7 @@ struct ExerciseFrame<Content: View>: View {
             .padding(.bottom, 2)
             if let context {
                 Text(context)
-                    .font(.system(size: 16, design: .serif))
+                    .font(.system(.body, design: .serif))
                     .italic()
                     .foregroundStyle(Theme.inkSoft)
                     .lineSpacing(4)
@@ -51,11 +51,11 @@ struct Verdict: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(headline)
-                .font(.system(size: 14, weight: .semibold))
+                .font(.subheadline.weight(.semibold))
                 .foregroundStyle(ok ? Theme.moss : Theme.rust)
             if let detail {
                 Text(detail)
-                    .font(.system(size: 13))
+                    .font(.footnote)
                     .foregroundStyle(Theme.inkSoft)
                     .lineSpacing(3)
             }
@@ -96,19 +96,19 @@ struct ChoiceView: View {
             pick(opt)
         } label: {
             Text(opt.txt)
-                .font(.system(size: 17, design: .serif))
+                .font(.system(.body, design: .serif))
                 .foregroundStyle(Theme.ink)
                 .lineSpacing(3)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 14)
                 .padding(.horizontal, 16)
                 .background(background(for: opt))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .overlay(RoundedRectangle(cornerRadius: 8)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(border(for: opt), lineWidth: 1))
                 .scaleEffect(solved && opt.ok ? 1.02 : 1)
         }
-        .disabled(solved || wrongPicks.contains(opt.id))
+        .disabled(solved)
         .buttonStyle(CarvePress())
         .shake(shakes[opt.id, default: 0])
         .animation(Motion.pop, value: solved)
@@ -192,14 +192,7 @@ struct AssembleView: View {
                 .frame(minHeight: 46)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-                Button("Seiceáil — check") { check() }
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(Theme.bg)
-                    .padding(.vertical, 11)
-                    .padding(.horizontal, 20)
-                    .background(Theme.ink)
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
-                    .buttonStyle(CarvePress())
+                PrimaryButton(title: "Seiceáil — check", fullWidth: false) { check() }
                     .disabled(solved)
                     .padding(.top, 2)
 
@@ -225,14 +218,13 @@ struct AssembleView: View {
             }
         } label: {
             Text(item.word)
-                .font(.system(size: 17, design: .serif))
+                .font(.system(.body, design: .serif))
                 .foregroundStyle(Theme.ink)
                 .padding(.vertical, 10)
                 .padding(.horizontal, 15)
                 .background(Theme.raised)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Theme.line, lineWidth: 1))
-                .shadow(color: Theme.ink.opacity(inBank ? 0.06 : 0.1), radius: 3, y: 2)
+                .clipShape(RoundedRectangle(cornerRadius: 7))
+                .overlay(RoundedRectangle(cornerRadius: 7).stroke(Theme.line, lineWidth: 1))
         }
         .buttonStyle(CarvePress())
         .matchedGeometryEffect(id: item.id, in: tileNS)
@@ -276,7 +268,7 @@ struct TypeInView: View {
             VStack(alignment: .leading, spacing: 12) {
                 HStack(spacing: 8) {
                     TextField(block.placeholder, text: $text)
-                        .font(.system(size: 17, design: .serif))
+                        .font(.system(.body, design: .serif))
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
                         .submitLabel(.done)
@@ -285,31 +277,23 @@ struct TypeInView: View {
                         .padding(.vertical, 12)
                         .padding(.horizontal, 14)
                         .background(Theme.raised)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .overlay(RoundedRectangle(cornerRadius: 8)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .overlay(RoundedRectangle(cornerRadius: 10)
                             .stroke(focused ? Theme.moss.opacity(0.6) : Theme.line, lineWidth: 1))
                         .disabled(solved)
-                    Button("Seiceáil") { grade() }
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(Theme.bg)
-                        .padding(.vertical, 13)
-                        .padding(.horizontal, 16)
-                        .background(Theme.ink)
-                        .clipShape(RoundedRectangle(cornerRadius: 6))
-                        .buttonStyle(CarvePress())
-                        .disabled(solved)
+                    PrimaryButton(title: "Seiceáil", fullWidth: false, enabled: !solved) { grade() }
                 }
                 .shake(shakeCount)
                 if block.fada {
                     Text("Fadas matter: use these keys to add the long mark. A missing fada can change the word.")
-                        .font(.system(size: 12.5))
+                        .font(.footnote)
                         .foregroundStyle(Theme.inkSoft)
                         .lineSpacing(2)
                     FadaKeyRow(text: $text, disabled: solved)
                 }
                 if let hint = block.hint, verdict == nil {
                     Text(hint)
-                        .font(.system(size: 13))
+                        .font(.footnote)
                         .foregroundStyle(Theme.inkFaint)
                         .lineSpacing(3)
                 }
@@ -441,14 +425,14 @@ struct MatchView: View {
             tap(item, isLeft: isLeft)
         } label: {
             Text(item)
-                .font(isLeft ? .system(size: 16.5, design: .serif) : .system(size: 14))
+                .font(isLeft ? .system(.body, design: .serif) : .body)
                 .foregroundStyle(locked.contains(item) ? Theme.inkSoft : Theme.ink)
                 .lineSpacing(2)
                 .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
                 .padding(.horizontal, 12)
                 .padding(.leading, isLeft ? 7 : 0)
                 .background(background(item, isLeft: isLeft))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .overlay(alignment: .leading) {
                     // The carved groove marks the stone side — Irish only.
                     if isLeft {
@@ -459,9 +443,7 @@ struct MatchView: View {
                             .padding(.leading, 7)
                     }
                 }
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke(border(item, isLeft: isLeft), lineWidth: 1))
-                .shadow(color: Theme.ink.opacity(isLeft && !locked.contains(item) ? 0.07 : 0),
-                        radius: 3, y: 2)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(border(item, isLeft: isLeft), lineWidth: 1))
                 .contentShape(Rectangle())
                 .anchorPreference(key: MatchCardAnchorKey.self, value: .bounds) {
                     ["\(isLeft ? "L" : "R"):\(item)": $0]
@@ -540,9 +522,9 @@ struct FadaKeyRow: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("SÍNEADH FADA · TAP TO INSERT")
-                .font(.caption2.weight(.semibold))
-                .foregroundStyle(Theme.atlasGreen)
+            Text("Síneadh fada · tap to insert")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Theme.inkSoft)
                 .fixedSize(horizontal: false, vertical: true)
             FlowLayout(spacing: 6) {
                 ForEach(["á", "é", "í", "ó", "ú"], id: \.self) { fada in
@@ -555,8 +537,8 @@ struct FadaKeyRow: View {
                     .padding(.horizontal, 13)
                     .frame(minWidth: 44, minHeight: 44)
                     .background(Theme.raised)
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
-                    .overlay(RoundedRectangle(cornerRadius: 6).stroke(Theme.atlasGreen.opacity(0.4), lineWidth: 1))
+                    .clipShape(RoundedRectangle(cornerRadius: 7))
+                    .overlay(RoundedRectangle(cornerRadius: 7).stroke(Theme.line, lineWidth: 1))
                     .buttonStyle(CarvePress())
                     .disabled(disabled)
                     .accessibilityLabel("Insert \(fada) with fada")
@@ -619,16 +601,15 @@ struct ListenView: View {
             HStack(spacing: 12) {
                 Image(systemName: speech.isSpeaking(block.say)
                       ? "speaker.wave.2.fill" : "speaker.wave.2")
-                    .font(.system(size: 19, weight: .semibold))
+                    .font(.title2.weight(.semibold))
                     .foregroundStyle(Theme.moss)
                     .contentTransition(.symbolEffect(.replace))
                     .frame(width: 54, height: 54)
                     .background(Theme.raised)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Theme.line, lineWidth: 1))
-                    .shadow(color: Theme.ink.opacity(0.08), radius: 4, y: 2)
                 Text("Éist — hear it again")
-                    .font(.system(size: 13, weight: .medium))
+                    .font(.subheadline.weight(.medium))
                     .foregroundStyle(Theme.inkSoft)
             }
             .contentShape(Rectangle())
@@ -642,17 +623,17 @@ struct ListenView: View {
             pick(opt)
         } label: {
             Text(opt.txt)
-                .font(.system(size: 17, design: .serif))
+                .font(.system(.body, design: .serif))
                 .foregroundStyle(Theme.ink)
                 .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
                 .padding(.horizontal, 16)
                 .background(background(for: opt))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .overlay(RoundedRectangle(cornerRadius: 8)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(border(for: opt), lineWidth: 1))
                 .scaleEffect(solved && opt.ok ? 1.02 : 1)
         }
-        .disabled(solved || wrongPicks.contains(opt.id))
+        .disabled(solved)
         .buttonStyle(CarvePress())
         .shake(shakes[opt.id, default: 0])
         .animation(Motion.pop, value: solved)
@@ -661,7 +642,7 @@ struct ListenView: View {
     private var silentFallback: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("This one needs a voice, and we don't have a clip for it yet. The ear steps aside until the line is recorded.")
-                .font(.system(size: 14))
+                .font(.footnote)
                 .foregroundStyle(Theme.inkSoft)
                 .lineSpacing(4)
             PrimaryButton(title: "Lean ar aghaidh — continue") {

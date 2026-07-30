@@ -129,6 +129,7 @@ private struct AccessibleShakeModifier: ViewModifier {
 struct PrimaryButton: View {
     let title: String
     var fullWidth = false
+    var enabled = true
     var accessibilityIdentifier: String? = nil
     let action: () -> Void
 
@@ -136,17 +137,41 @@ struct PrimaryButton: View {
         Button(action: action) {
             Text(title)
                 .font(.headline)
-                .foregroundStyle(Theme.bg)
+                .foregroundStyle(enabled ? Theme.bg : Theme.stone)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.vertical, 13)
                 .padding(.horizontal, 22)
                 .frame(maxWidth: fullWidth ? .infinity : nil, minHeight: 44)
-                .background(Theme.ink)
+                .background(enabled ? Theme.ink : Theme.sunk)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
+                .overlay {
+                    if !enabled {
+                        RoundedRectangle(cornerRadius: 4)
+                            .stroke(Theme.line, lineWidth: 1)
+                    }
+                }
         }
         .buttonStyle(CarvePress())
+        .disabled(!enabled)
         .accessibilityIdentifier(accessibilityIdentifier ?? title)
+    }
+}
+
+/// A low-emphasis hint affordance — not a bordered control.
+struct QuietHintButton: View {
+    let title: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(Theme.moss)
+                .frame(minHeight: 44, alignment: .leading)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(title)
     }
 }
 
