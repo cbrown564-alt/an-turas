@@ -382,10 +382,12 @@ family pass until Shell ACCEPT.
 2. **Generate Irish Cultural Guide clips only for cleared text** — do not QA superseded
    D13 copy; native-speaker review remains required for Irish teaching audio. Treat
    Trinity/ABAIR partnership work as a post-launch upgrade.
-3. **Illustration production recipe** — atlas registers before Chapter 1–3 scene sets.
-4. **TestFlight build** — needs Apple Developer team in `ios/project.yml`.
-5. **Send ABAIR commercial enquiry** — optional; draft at `docs/ABAIR-enquiry.md`.
-6. **Grant funding research** — Foras na Gaeilge / Údarás strings before accepting (D10).
+3. **Flow / Gemini Omni Batch A** — animate the D28 queue in `docs/MEDIA-AUDIT.md`
+   (wired stills first), then Batch B missing stills; recompress shipped loops to ≤2 MB.
+4. **Illustration production recipe** — atlas registers before Chapter 1–3 scene sets.
+5. **TestFlight build** — needs Apple Developer team in `ios/project.yml`.
+6. **Send ABAIR commercial enquiry** — optional; draft at `docs/ABAIR-enquiry.md`.
+7. **Grant funding research** — Foras na Gaeilge / Údarás strings before accepting (D10).
 
 ## Long-term plan
 
