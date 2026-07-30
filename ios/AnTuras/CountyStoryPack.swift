@@ -121,6 +121,12 @@ struct CountyPackResource: Identifiable, Codable, Equatable {
     let kind: CountyResourceKind
     let value: String
     let status: String
+    let fallbackResourceID: String?
+}
+
+enum CountyVisual: Equatable {
+    case image(name: String)
+    case video(name: String, fallbackImageName: String)
 }
 
 struct CountyExerciseOption: Identifiable, Codable, Equatable {
@@ -252,6 +258,28 @@ struct CountyStoryPack: Identifiable, Codable, Equatable {
         mode == .story ? completion.storyPageIDs : completion.learningPageIDs
     }
 
+    func visual(for page: CountyStoryPage) -> CountyVisual? {
+        guard let visualResourceID = page.visualResourceID,
+              page.resourceIDs.contains(visualResourceID),
+              let resource = resources.first(where: { $0.id == visualResourceID }) else {
+            return nil
+        }
+        switch resource.kind {
+        case .image:
+            return .image(name: resource.value)
+        case .video:
+            guard let fallbackID = resource.fallbackResourceID,
+                  let fallback = resources.first(where: {
+                      $0.id == fallbackID && $0.kind == .image
+                  }) else {
+                return nil
+            }
+            return .video(name: resource.value, fallbackImageName: fallback.value)
+        default:
+            return nil
+        }
+    }
+
     var openReviewGateTitles: [String] {
         reviewGates.filter { $0.status != "complete" }.map(\.title)
     }
@@ -370,8 +398,18 @@ enum CountyStoryPackValidator {
             }
             if let visualResourceID = page.visualResourceID {
                 guard page.resourceIDs.contains(visualResourceID),
-                      resources[visualResourceID]?.kind == .image else {
+                      let visualResource = resources[visualResourceID],
+                      visualResource.kind == .image || visualResource.kind == .video else {
                     throw CountyStoryPackError.missingResource(visualResourceID)
+                }
+                if visualResource.kind == .video {
+                    guard let fallbackID = visualResource.fallbackResourceID,
+                          let fallback = resources[fallbackID],
+                          fallback.kind == .image else {
+                        throw CountyStoryPackError.missingResource(
+                            visualResource.fallbackResourceID ?? visualResourceID
+                        )
+                    }
                 }
             }
         }

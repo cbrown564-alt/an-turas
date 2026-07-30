@@ -65,9 +65,13 @@ def narrative(
     advance_label: str,
     items: list[dict] | None = None,
     estimated_seconds: int = 78,
+    visual_resource_id: str | None = None,
+    visual_caption: str | None = None,
 ) -> dict:
     introduced_ids = [lexeme_id(word) for word in introduced]
     resource_ids = list(resources) + [audio_word_id(word) for word in introduced]
+    if visual_resource_id and visual_resource_id not in resource_ids:
+        resource_ids.append(visual_resource_id)
     requirement = {
         "both": "bothRequired",
         "storyOnly": "storyRequired",
@@ -89,8 +93,8 @@ def narrative(
         "exercise": None,
         "presentation": presentation,
         "advanceLabel": advance_label,
-        "visualResourceID": None,
-        "visualCaption": None,
+        "visualResourceID": visual_resource_id,
+        "visualCaption": visual_caption,
         "displayItems": items,
     }
 
@@ -264,6 +268,25 @@ def evidence(resource_id: str, claim_id: str, status: str = "specialist-review-o
     return {"id": resource_id, "kind": "evidence", "value": claim_id, "status": status}
 
 
+def image_resource(resource_id: str, value: str) -> dict:
+    return {
+        "id": resource_id,
+        "kind": "image",
+        "value": value,
+        "status": "production-keyframe",
+    }
+
+
+def video_resource(resource_id: str, value: str, fallback_resource_id: str) -> dict:
+    return {
+        "id": resource_id,
+        "kind": "video",
+        "value": value,
+        "status": "production-video-loop",
+        "fallbackResourceID": fallback_resource_id,
+    }
+
+
 def offaly_spec() -> dict:
     target_words = [
         word("abhainn", "river", "ow-in", "The Shannon route"),
@@ -301,6 +324,8 @@ def offaly_spec() -> dict:
             resources=("evidence.offaly.o01", "source.offaly.heritage-guide"),
             presentation="coastalOpening",
             advance_label="Follow the water",
+            visual_resource_id="video.offaly-shannon-callows-mist",
+            visual_caption="Generated editorial interpretation of the Shannon callows · not documentary evidence",
             items=display_items(
                 ("river", "abhainn", "A north–south water route", "water.waves"),
                 ("boat", "bád", "People and goods on the Shannon", "sailboat"),
@@ -851,6 +876,8 @@ def offaly_spec() -> dict:
             resources=("evidence.offaly.o04", "evidence.offaly.o07", "source.offaly.highlights"),
             presentation="coastalOpening",
             advance_label="Stand before the stone",
+            visual_resource_id="video.offaly-cross-carving-relief",
+            visual_caption="Generated editorial interpretation of carved sandstone relief · not documentary evidence",
             items=display_items(
                 ("stone", "cloch", "The material that carries the carving", "square.fill"),
                 ("cross", "cros", "The public form", "plus"),
@@ -1410,6 +1437,24 @@ def offaly_spec() -> dict:
     ]
 
     resources = [
+        image_resource(
+            "image.offaly-shannon-callows-mist",
+            "offaly-shannon-callows-mist",
+        ),
+        video_resource(
+            "video.offaly-shannon-callows-mist",
+            "video.offaly-shannon-callows-mist",
+            "image.offaly-shannon-callows-mist",
+        ),
+        image_resource(
+            "image.offaly-cross-carving-relief",
+            "offaly-cross-carving-relief",
+        ),
+        video_resource(
+            "video.offaly-cross-carving-relief",
+            "video.offaly-cross-carving-relief",
+            "image.offaly-cross-carving-relief",
+        ),
         evidence("evidence.offaly.o01", "O01 · Shannon and east–west route junction"),
         evidence("evidence.offaly.o02", "O02 · sixth-century foundation tradition"),
         evidence("evidence.offaly.o03", "O03 · major ecclesiastical settlement by c. 900"),
@@ -1509,6 +1554,8 @@ def dublin_spec() -> dict:
             resources=("evidence.dublin.d06", "source.dublin.nmi-overview"),
             presentation="coastalOpening",
             advance_label="Enter the port",
+            visual_resource_id="video.dublin-dark-pool-mist",
+            visual_caption="Generated editorial interpretation of Dublin's dark pool and port · not documentary evidence",
             items=display_items(
                 ("river", "abhainn", "The Liffey route", "water.waves"),
                 ("ship", "long", "Sea travel and cargo", "sailboat"),
@@ -2059,6 +2106,8 @@ def dublin_spec() -> dict:
             resources=("evidence.dublin.d01", "source.dublin.nmi-object", "source.dublin.nmi-overview"),
             presentation="coastalOpening",
             advance_label="Handle the penny",
+            visual_resource_id="video.dublin-coin-relief-light",
+            visual_caption="Generated editorial interpretation of light moving across a silver penny · not documentary evidence",
             items=display_items(
                 ("penny", "pingin", "A small silver denomination", "circle"),
                 ("came", "tháinig", "A familiar design came into use", "arrow.down"),
@@ -2623,6 +2672,24 @@ def dublin_spec() -> dict:
     ]
 
     resources = [
+        image_resource(
+            "image.dublin-dark-pool-mist",
+            "dublin-dark-pool-mist",
+        ),
+        video_resource(
+            "video.dublin-dark-pool-mist",
+            "video.dublin-dark-pool-mist",
+            "image.dublin-dark-pool-mist",
+        ),
+        image_resource(
+            "image.dublin-coin-relief",
+            "dublin-coin-relief",
+        ),
+        video_resource(
+            "video.dublin-coin-relief-light",
+            "video.dublin-coin-relief-light",
+            "image.dublin-coin-relief",
+        ),
         evidence("evidence.dublin.d01", "D01 · first locally struck Irish coinage under Sihtric c. 995–997", "numismatist-review-open"),
         evidence("evidence.dublin.d02", "D02 · imitation of contemporary Æthelred II types", "numismatist-review-open"),
         evidence("evidence.dublin.d03", "D03 · issues naming Sihtric and Dublin", "numismatist-review-open"),
@@ -3075,6 +3142,8 @@ def meath_spec() -> dict:
             resources=("evidence.meath.m02", "source.meath.trim-opw"),
             presentation="coastalOpening",
             advance_label="Stand at the crossing",
+            visual_resource_id="video.meath-boyne-flow-loop",
+            visual_caption="Generated editorial interpretation of water moving through the Boyne ford · not documentary evidence",
             items=display_items(
                 ("ford", "áth", "A crossing in the river", "water.waves.and.arrow.down"),
                 ("river", "abhainn", "The Boyne route", "water.waves"),
@@ -3427,6 +3496,8 @@ def meath_spec() -> dict:
             resources=("evidence.meath.m04", "source.meath.trim-opw"),
             presentation="coastalOpening",
             advance_label="Approach the stone keep",
+            visual_resource_id="video.meath-trim-curtain-sunset",
+            visual_caption="Generated editorial interpretation of light moving across Trim's curtain wall · not documentary evidence",
             items=display_items(
                 ("stone", "cloch", "The later structural material", "square.fill"),
                 ("wall", "balla", "Defence and enclosure", "rectangle.split.3x1"),
@@ -3825,6 +3896,24 @@ def meath_spec() -> dict:
     ]
 
     resources = [
+        image_resource(
+            "image.meath-boyne-flow-loop",
+            "meath-boyne-flow-loop",
+        ),
+        video_resource(
+            "video.meath-boyne-flow-loop",
+            "video.meath-boyne-flow-loop",
+            "image.meath-boyne-flow-loop",
+        ),
+        image_resource(
+            "image.meath-trim-curtain-sunset",
+            "meath-trim-curtain-sunset",
+        ),
+        video_resource(
+            "video.meath-trim-curtain-sunset",
+            "video.meath-trim-curtain-sunset",
+            "image.meath-trim-curtain-sunset",
+        ),
         evidence("evidence.meath.m01", "M01 · 1172 grant of Meath to Hugh de Lacy", "historian-review-open"),
         evidence("evidence.meath.m02", "M02 · Trim chosen as caput at the ford", "historian-review-open"),
         evidence("evidence.meath.m03", "M03 · early house, trench, stockade, attack and refortification", "castle-specialist-review-open"),

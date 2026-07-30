@@ -18,6 +18,11 @@ Mayo is the representative implementation. Do not invite another external tester
 round until Mayo, Offaly, Dublin, and Meath all pass the internal readiness gate in
 this plan.
 
+The active next work is the learning-mechanics foundation sprint below. Mayo now
+serves only as realistic fixture content for that sprint. Do not improve one Mayo
+chapter, author more chapter content, integrate another county, or spread the current
+exercise implementation until the foundation gate passes.
+
 ## Why the current build does not pass
 
 The working four-county product proves navigation, progress, evidence, collection,
@@ -187,6 +192,562 @@ appearances and at accessibility text sizes.
 
 **Exit:** the representative chapter passes every standard below. Revise the model or
 mechanics before authoring the remaining chapters if it does not.
+
+### Foundation sprint — Make the shared learning mechanics production-ready
+
+**Active before Phases 4–6.** The Rockfleet proof established that the app can render
+the required exercise families in one calm full-screen shell. It did not yet establish
+one complete runtime contract for attempts, support, completion, learner memory, and
+every accessibility and failure state. This sprint closes that gap before the pattern
+is applied more widely.
+
+Mayo is fixture content, not the editorial target. Use existing Mayo language,
+exercise payloads, audio references, and story context to exercise realistic lengths,
+fadas, sentence shapes, and evidence questions. A fixture may be copied into a
+test-only gallery or adapter when isolation is required, but the sprint does not
+rewrite Mayo prose, add exercises to a chapter, close a content review gate, or claim
+that Mayo is more complete.
+
+#### Scope
+
+The sprint must produce:
+
+- an in-app comparison of two to four materially different learning-mechanics
+  directions using the same small Mayo fixture slice;
+- a user-selected direction, recorded as a durable decision before consolidation;
+- one shared exercise runtime and state model used by every response component;
+- one authored learning contract for every exercise;
+- common response components for all current exercise families;
+- deterministic learner-memory signals that scheduled review can consume;
+- an internal mechanics gallery and QA harness with direct access to every important
+  state and failure;
+- a versioned content-pack path and validators for the authored contract;
+- automated coverage plus direct simulator and physical-device verification;
+- a recorded foundation-gate decision before any production pack is migrated or any
+  chapter or county is authored against the revised system.
+
+The sprint preserves the product's story-first order. An exercise may use only
+language and evidence that the preceding Learning-mode pages have made meaningful.
+The exercise shell remains quiet, native, and subordinate to the county account.
+
+#### Non-goals
+
+This sprint does not:
+
+- improve Rockfleet or any other Mayo chapter as a story;
+- author, translate, review, record, or illustrate new production content;
+- add counties, integrate the nine-chapter Mayo draft, or promote any review draft;
+- replace Story and Learning modes, the atlas, evidence views, or collection;
+- grade pronunciation or introduce speech recognition;
+- create a self-directed adaptive curriculum or silently change lesson order;
+- clear historian, pedagogy, audio, rights, accessibility, or release gates for a
+  county;
+- add XP, hearts, streaks, leagues, confetti, cartoon rewards, artificial waits,
+  overdue counts, or review debt.
+
+#### Critical path: benchmark, prototype, choose, then consolidate
+
+Rapid visual prototyping is the first executable phase and the sprint's critical
+path. Do not begin by generalising every response component, completing the scheduler,
+or migrating the schema. The first implementation outcome must let the user directly
+operate and compare multiple learning approaches in the running iOS app.
+
+Timebox the benchmark to half a working day and the first in-app comparison to two
+working days. If a direction needs foundation infrastructure to become visible, narrow
+the direction instead of delaying the comparison. Allow one bounded revision round
+after the user sees the variants.
+
+Use public learning products only as interaction-quality references. Duolingo is a
+useful reference for immediate task clarity, response speed, progressive practice,
+and legible feedback. Brilliant is a useful reference for construction, guided
+discovery, and visual manipulation that makes an idea graspable. Other products may
+be added only when they contribute a named technique the team needs to test. Do not
+copy branded visuals, sounds, characters, copy, content, proprietary sequencing, or
+reward systems.
+
+##### Mechanics comparison matrix
+
+| Stance | Techniques | An Turas requirement |
+| --- | --- | --- |
+| Emulate or adapt | Clear task framing; progressive difficulty; active recall and production; immediate explanatory feedback; construction and manipulation; visual reasoning when it makes the idea clearer; fast iteration | Match the underlying interaction clarity and responsiveness while using An Turas story context, Irish, evidence boundaries, visual system, and native iOS behavior. |
+| Test cautiously | Guided scaffolding; momentum between related tasks; adaptive sequencing | Prototype only when the technique answers a named learning question. Keep support visible, let the learner pause, make every sequencing rule deterministic and explainable, and reject any version that weakens the story or creates pressure. |
+| Reject | XP; hearts; streaks; leagues; mascot-driven rewards; urgency or social pressure; artificial waiting; debt-like review queues | Do not prototype these as options. They conflict with the product rather than representing an unresolved direction. |
+
+##### Fixed Mayo prototype slice
+
+The in-app comparison is explicitly a **Mayo learning slice**, not a Rockfleet
+mechanics demo. Use the existing revision-6 Clew Bay fixtures
+`mayo.clew-bay.listen-farraige`, `mayo.clew-bay.build-origin`, and
+`mayo.clew-bay.match-coast`. Together they connect the sound and meaning of
+*farraige*, the produced line *Is as Maigh Eo mé*, and the language of the Clew Bay
+coast. Copy those payloads unchanged into the internal comparison fixture layer; this
+does not bundle or promote the revision-6 county pack.
+
+All directions use the same Irish, translation, Mayo story setup, audio, accepted
+responses, likely errors, and completion goals. If one fixture is technically
+unusable, replace it with the smallest existing **Mayo** fixture set that covers the
+same listening, production, meaning, error, and recovery loop, and record the ids
+before coding.
+
+Do not add new production prose or exercises to make a direction work. Prototype-only
+composition or support copy must be visibly identified in code and the comparison
+record as disposable fixture material.
+
+##### Materially different directions
+
+Build two to four directions; default to three. Each direction must change at least
+two of these:
+
+- what the learner must recall or construct;
+- when, and in what form, support appears;
+- how the learner manipulates or produces Irish;
+- how a misconception is diagnosed;
+- how recovery changes the next attempt;
+- how story context or evidence motivates the response.
+
+A color, spacing, animation, typography, card, or button-layout variation does not
+count as a direction. Each direction must also name the reusable primitives it would
+contribute to later exercises; a one-off Mayo trick is not enough. Useful
+starting hypotheses include:
+
+- **Ear-first retrieval:** hear *farraige*, then produce *Is as Maigh Eo mé* from the
+  Mayo story cue before seeing construction support.
+- **Guided construction:** assemble the origin line from meaningful units, then
+  remove support and retrieve it again after diagnostic feedback.
+- **Contrast and discovery:** compare the existing Clew Bay coast terms, notice their
+  distinct meanings, then apply the distinction before producing the origin line.
+- **Visual place reasoning:** use the existing Clew Bay place relationships to connect
+  sea and coast language, then produce the same Mayo origin line without the visual
+  scaffold.
+
+These are hypotheses, not four mandatory features. Drop one when it does not test a
+distinct learning approach; add none merely to reach a count.
+
+##### In-app comparison loop
+
+1. State one learning question for the slice, such as whether Clew Bay can help the
+   learner connect *farraige* to place and produce *Is as Maigh Eo mé* without reading
+   the answer.
+2. Freeze the Mayo fixture ids and a common start, error, recovery, and completion
+   scenario.
+3. Add one internal comparison entry in the running app. It lists the directions,
+   launches each from the same initial state, preserves no cross-variant answer
+   advantage, and returns to a concise comparison view.
+4. Implement only the code needed to feel each direction honestly. Temporary
+   duplication is preferable to an early shared abstraction that makes the variants
+   artificially alike.
+5. Verify each direction at standard and largest accessibility text sizes, in light
+   and dark appearances, with VoiceOver reading order and actions, and with Reduce
+   Motion. Exercise its incorrect and recovery path. Fix blocking access defects
+   before comparison; the full gallery matrix remains a later consolidation gate.
+6. Present the working variants with captures, the rubric below, material tradeoffs,
+   and known shortcuts. The user operates the variants and selects one direction or
+   asks for one bounded revision round.
+7. Record the chosen direction, rejected alternatives, rationale, and unresolved
+   risks as a new durable decision in `docs/DECISIONS.md`. Do not treat a score total
+   or agent preference as the decision.
+8. Delete or isolate rejected variant code. Extract only the chosen interaction,
+   feedback, and recovery primitives into the shared runtime, then continue the
+   foundation stages.
+
+##### Decision rubric
+
+Score each direction from 1 (fails) to 4 (strong), with one observed reason for every
+score. **Clarity of task** and **accessibility** are hard gates: a direction scoring
+below 3 on either cannot be selected without revision. The user may choose against the
+highest total when the recorded tradeoff better serves the product.
+
+| Criterion | Question |
+| --- | --- |
+| Clarity of task | Can the learner tell what to attend to, do, and check without explanation? |
+| Meaningful story connection | Does the Mayo and Clew Bay context make the Irish response necessary or memorable, rather than decorating a generic drill? |
+| Active recall and production | How much of the target must the learner retrieve, construct, say, or manipulate instead of recognise? |
+| Quality of recovery | Does an error produce a useful diagnosis and a changed next attempt without revealing the whole answer or shaming the learner? |
+| Emotional tone | Does the direction feel calm, adult, exacting, and encouraging without reward theatre or pressure? |
+| Native iOS usability | Are selection, input, audio, keyboard, navigation, focus, and response time familiar and dependable? |
+| Accessibility | Do Dynamic Type, VoiceOver, both appearances, Reduce Motion, target size, non-audio meaning, and non-drag operation preserve the task? |
+
+The selection closes the visual and pedagogical direction question for consolidation;
+it does not validate learning outcomes. Pedagogue review and learner evidence remain
+later gates.
+
+#### Shared runtime and state model
+
+Every exercise family must render through the same state engine. A component supplies
+and reads a typed response; it does not own correctness, hint, retry, completion,
+memory credit, or persistence rules.
+
+The visible lifecycle is:
+
+1. **Unanswered** — the task and response component are available, no answer has been
+   judged, and no correctness language is shown.
+2. **Attempt** — the learner has selected, arranged, typed, spoken, or otherwise
+   formed a response. A selected-but-unchecked response remains editable. Checking the
+   response creates an immutable attempt event.
+3. **Diagnostic feedback** — an incorrect attempt is frozen long enough to show what
+   did not fit and why. Feedback refers to the learner's response or a named likely
+   misconception; “wrong” alone is not valid feedback.
+4. **Hint or recovery** — a hint narrows attention without silently answering the
+   task. Recovery reduces or restructures the same objective when another identical
+   retry would not teach anything. Neither state completes the exercise by itself.
+5. **Retry** — the response becomes editable again and the learner makes a new
+   attempt. The relevant diagnostic or chosen support remains reachable. A retry is
+   not a delayed replay of the first submission.
+6. **Complete** — the learner has produced the exercise's declared completion
+   evidence. The verdict states what they did, provides one clear continue action,
+   and records the level of support used.
+
+Required transitions:
+
+```text
+unanswered → attempt
+attempt → complete
+attempt → diagnostic feedback
+unanswered → hint → attempt
+diagnostic feedback → retry → attempt
+diagnostic feedback → hint → retry → attempt
+diagnostic feedback → recovery → retry → attempt
+attempt → diagnostic feedback → … → complete
+```
+
+Back navigation, app backgrounding, interruption by audio or microphone permission,
+and view recomposition must not invent a new attempt or lose a completed one. Reopening
+a completed page may allow practice, but cannot remove completion or duplicate memory
+credit. Illegal transitions must be rejected by the state engine and covered by unit
+tests.
+
+Each checked attempt records, at minimum:
+
+- exercise id and stable target-language ids;
+- attempt ordinal;
+- outcome: correct or incorrect;
+- whether diagnostic feedback was shown;
+- whether a hint was used;
+- whether recovery was used;
+- the declared completion-evidence kind;
+- completion and memory-credit status.
+
+Do not persist microphone audio, a verbatim free-text response, or answer-option
+history merely to support scheduling. Speaking recordings remain ephemeral and
+on-device. Persist only the bounded state needed for resume, completion, support
+signals, and review.
+
+#### Shared shell and response components
+
+The shell owns chapter context, quiet progress, task title, objective, response area,
+feedback/support area, and one primary action above the safe area. Components own
+only response capture and presentation. Correctness, diagnostic selection, retry,
+completion, accessibility announcements, and memory events remain shared.
+
+| Component | Required behavior |
+| --- | --- |
+| Listening and replay | Use bundled model audio, show a labelled Play/Replay control and playback state, prevent overlapping playback, and expose an authored non-audio route when playback is unavailable. A learner may replay without penalty. A text fallback marks the attempt as supported when it changes a listening objective. |
+| Choices and fill gaps | Use one semantic selection group with 44-point rows. Selection is editable until Check. Every wrong option maps to an authored rationale or named misconception. Correctness is never exposed by color or option order alone. |
+| Sentence tiles | Support tap-to-add, tap-to-remove, and deterministic reordering. VoiceOver offers equivalent add, remove, move earlier, and move later actions; dragging is optional. Multiword units remain atomic when the learning objective is syntax rather than spelling. |
+| Irish typing | Use native text input and the existing fada toolbar. Precomposed and combining Unicode forms compare equally; case, surrounding whitespace, and declared punctuation variants follow authored rules. Fadas are not stripped from correctness: a missing or misplaced fada produces a specific diagnostic unless the contract explicitly makes it irrelevant. Keyboard appearance or dismissal must not hide the task, feedback, or primary action. |
+| Matching | Support tap-one-then-tap-partner as the baseline. Any drag treatment has the same tap and VoiceOver alternative. A wrong pair remains identifiable for diagnostic feedback; completing one pair cannot accidentally complete or credit the whole set. |
+| Dialogue | Present the preceding turn and speaker clearly, allow every authored acceptable response, and explain pragmatic or grammatical fit. Dialogue never casts the learner as an undocumented historical participant. |
+| Comprehension | Test the story, source, or evidence limit already encountered. Feedback distinguishes what the evidence supports from inference or legend and offers a path back to the relevant page when useful. |
+| Sequencing | Support selection plus move-earlier/move-later controls and VoiceOver adjustable actions. The objective declares whether order concerns Irish syntax, historical sequence, or evidence handling; feedback names the first meaningful break rather than only showing the final order. |
+| Grammar discovery | Reveal examples in the authored order, withhold the rule until the learner has attended or responded, and make the inferred contrast explicit on completion. Recovery may expose one worked case but still requires a fresh application. |
+| Delayed retrieval | Begin from a recall cue rather than a visible answer. Hints and recovery use the same support signals as every other family and never create a separate hidden scoring path. |
+| Record and compare speaking | Provide model play/replay, record, stop, learner playback, re-record, and compare/continue. There is no pronunciation score or pass/fail. Microphone denial explains the limitation and offers model-listen plus unrecorded self-comparison so progress is never trapped. Recordings are discarded when the exercise or app session ends unless the learner deliberately keeps listening within that exercise. |
+
+Every component must expose a typed response value and the same actions:
+`update response`, `check`, `request hint`, `begin recovery`, `retry`, and
+`complete`. A family-specific view must not call county completion, schedule review,
+or advance the page directly.
+
+#### Authored learning contract
+
+Every exercise, including an optional or test-fixture exercise, must declare:
+
+- **Objective:** one observable ability, written as what the learner will understand,
+  distinguish, recall, construct, interpret, or compare.
+- **Target language:** stable lexeme and/or grammar-pattern ids plus whether each
+  target is being recognised, recalled, produced, interpreted, or spoken for
+  comparison.
+- **Likely misconception or rationale:** the plausible confusion being tested.
+  Choice distractors retain per-option rationales; constructed responses require
+  named diagnostic cases and an authored fallback for an unclassified response.
+- **Diagnostic feedback:** plain-language feedback for each named misconception and a
+  success message that restates the achieved objective without praise inflation.
+- **Hint:** the smallest useful cue that directs attention without revealing the
+  complete response.
+- **Recovery:** a supported version of the same objective, including the response the
+  learner must still make after support.
+- **Evidence of completion:** a typed rule such as correct selection, correct
+  construction, corrected construction, reconstructed response, valid dialogue turn,
+  ordered sequence, or completed record-and-compare cycle.
+
+The runtime must not infer pedagogy from display copy. Prompts, answers, tokens,
+pairs, audio, and options remain family-specific response data; the learning contract
+states why that data exists and what completion means.
+
+#### Learner memory and scheduled review
+
+Inline Learning-mode exercises own the evidence emitted during the county path.
+`docs/DRILL.md` remains the owner of later scheduled-review presentation and interval
+policy. The handoff between them must use the same stable lexeme and pattern ids.
+
+For every completed target, the runtime emits four independent signals:
+
+- **success** — the declared completion evidence was produced;
+- **struggle** — at least one checked attempt was incorrect;
+- **hint use** — a hint was opened before completion;
+- **recovery use** — the supported recovery path was used.
+
+A clean success has `success = true` and the other three signals false. Completion
+after any support remains a real completion and allows the learner to continue, but
+it is not recorded as clean recall. A speaking comparison records completion and
+support use, never inferred pronunciation quality.
+
+The review model must satisfy these rules:
+
+- the same authored exercise, event history, and scheduler version always produce
+  the same memory update;
+- struggle, hint use, and recovery use may bring an already-authored review
+  opportunity forward or limit a stability increase, but may not insert an
+  unauthored task, alter story order, or block county progress;
+- recovery completion does not claim independent production; the next optional
+  review begins from recall before offering support again;
+- a plain-language reason is available for a review invitation, such as “You used a
+  hint here, so this phrase is ready to revisit”;
+- absence never accumulates penalties or an overdue count. A learner returning after
+  a week sees a bounded optional invitation, not seven days of debt;
+- review runs retain the existing bounded deck behavior and may be left without
+  losing county completion, words, or future access;
+- no random difficulty selection, engagement optimisation, or remote model changes
+  the next task. Any future scheduler change is versioned, documented in
+  `docs/DRILL.md`, and migration-tested.
+
+Debug and test output must explain each memory update using its input signals and
+rule version. Learner-facing UI does not need to expose interval arithmetic, but it
+must never disguise a required task as an optional one or use guilt to drive return.
+
+#### Interaction, accessibility, and reliability invariants
+
+These are release requirements for every component and every state:
+
+- one task, one dominant response area, and one primary action;
+- 44 × 44 point minimum targets and a primary action clear of the safe area,
+  software keyboard, and microphone controls;
+- a scrollable composition at accessibility text sizes without clipping,
+  truncation, hidden feedback, or loss of response context;
+- a stable VoiceOver reading order: context, task, response, diagnostic/support,
+  primary action; selection, correctness, playback, recording, and completion changes
+  receive concise announcements;
+- controls have specific accessible names and states; no instruction depends on
+  position, gesture, color, animation, haptic feedback, or sound alone;
+- equivalent non-drag controls for tiles, matching, and sequencing;
+- light and dark appearances plus Increased Contrast preserve text, boundary, focus,
+  selection, correction, and completion distinctions;
+- Reduce Motion removes shake, spring, stagger, automatic page movement, and
+  decorative video while preserving immediate state change and focus;
+- missing or corrupt audio produces a stable authored fallback rather than a dead
+  control, spinner, crash, or automatic correct answer;
+- microphone denial, interruption, and revocation keep the speaking task usable and
+  offer the non-recording continuation;
+- Irish typing works with the software keyboard, hardware keyboard, paste, composed
+  Unicode, and the fada toolbar; focus can be restored after feedback and retry;
+- all required content, audio, grading, retry, completion, resume, and memory updates
+  work offline. Network absence cannot change correctness or hide the recovery path;
+- app backgrounding, termination, and relaunch preserve completed exercises and the
+  minimum in-progress state declared by the runtime without duplicating memory credit.
+
+#### Internal mechanics gallery and QA harness
+
+Build one internal-only gallery driven by stable test fixtures and dependency
+injection. It must not depend on editing a production pack, toggling a real permission
+by hand, deleting a real audio file, or waiting for a scheduler date.
+
+The gallery manifest enumerates every response component and exercise family. Each
+entry has direct launch or deep-link access to:
+
+- unanswered;
+- selected or otherwise formed but not checked;
+- incorrect with diagnostic feedback;
+- hint;
+- recovery;
+- retry with prior support visible;
+- correct before page advance;
+- complete and revisited-complete;
+- long prompt, feedback, Irish, and translation copy;
+- missing audio for every audio-dependent component;
+- denied microphone and interrupted recording for speaking;
+- software-keyboard and fada-toolbar presentation for typing.
+
+The harness must also render the shared state set at:
+
+- standard text and the largest supported accessibility text size;
+- VoiceOver with a documented expected reading order and announcements;
+- light and dark appearances;
+- Increased Contrast;
+- Reduce Motion.
+
+Coverage is manifest-driven: an automated test fails when a component, family, core
+state, required failure, or environment named above has no fixture. Snapshot or image
+comparison may supplement inspection, but it does not replace operating the controls
+with VoiceOver, audio, microphone, and a real keyboard.
+
+#### Content-pack and validation implications
+
+Do not edit production content packs during this documentation task. During
+implementation, introduce a versioned `learningContract` inside each exercise payload
+with:
+
+- `objective`;
+- `targets` containing stable lexeme or pattern ids and the intended capability;
+- `misconceptions` with stable ids, rationale, and diagnostic feedback;
+- `successFeedback`;
+- `hint`;
+- `recovery`, including the response still required after support;
+- `completionEvidence`.
+
+Keep options, tokens, pairs, accepted answers, audio, and model text in the
+family-specific payload. Existing flat fields may be adapted for the internal Mayo
+fixtures while the runtime is built, but a production pack must not be migrated until
+the new contract is decoded, rendered, and validated end to end. Increment the county
+schema version when production serialization changes and supply deterministic
+migration or an explicit rejection for older external packs.
+
+For packs with `enforceLearningQuality`, the Swift and Python validators must fail
+when:
+
+- any exercise lacks a complete learning contract;
+- a target id is unknown, appears before it is introduced, or is incompatible with
+  the declared objective or completion evidence;
+- a wrong option lacks a misconception/rationale mapping;
+- a constructed-response exercise has no named diagnostic and no fallback
+  diagnostic;
+- a hint reveals the complete accepted answer without an authored reason;
+- recovery changes the target or completes without a new learner response;
+- completion evidence is unavailable to that response component;
+- an audio-dependent task lacks bundled audio and its authored fallback;
+- a speaking exercise declares pronunciation correctness or stores audio;
+- a tile, matching, or sequencing task has no non-drag interaction;
+- memory credit names a lexeme or pattern the exercise does not target.
+
+The validator report must list contract coverage, target capabilities, diagnostic
+coverage, recovery coverage, completion-evidence kinds, audio/fallback state, and
+memory-signal destinations. Runtime and validator enums must be checked against one
+shared documented list so a pack cannot pass offline and fail after decoding.
+
+#### Staged implementation order
+
+1. **Benchmark and freeze the comparison slice.** Complete the mechanics comparison
+   matrix, state the learning question, confirm the fixed Mayo fixture ids, and
+   record the common error/recovery scenario. Do not build a general abstraction.
+2. **Prototype two to four directions in the app.** Make each direction operable from
+   one internal comparison entry using identical fixture content and starting state.
+   Keep experimental code removable.
+3. **Verify, compare, and choose.** Run the core accessibility states, exercise the
+   error/recovery path, present the rubric and tradeoffs, obtain the user's choice,
+   and record it as a durable decision. No later stage starts without that decision.
+4. **Freeze the broader baseline and fixture set.** Inventory all current exercise
+   families, state transitions, completion paths, persistence, memory credit, and
+   component-specific exceptions. Rejected prototype code remains outside the shared
+   implementation.
+5. **Implement the chosen direction in the pure state engine.** Define typed response,
+   attempt, support, completion-evidence, and memory-event values independently of
+   SwiftUI. Add unit tests for every legal transition, rejected illegal transition,
+   interruption, revisit, and exactly-once completion/memory credit.
+6. **Add the contract adapter and gallery shell.** Decode the new learning contract
+   for test fixtures, adapt the current Mayo fixture fields where necessary, and
+   render every lifecycle state through dependency-injected audio, microphone,
+   keyboard, appearance, contrast, and motion conditions.
+7. **Move response components onto the shared runtime.** Work in bounded groups:
+   listening/choices/fill gap; sentence tiles/typing; matching/sequencing;
+   dialogue/comprehension/discovery/delayed retrieval; speaking. A group moves on only
+   when its components have no family-specific completion or scheduling bypass and
+   its gallery states pass.
+8. **Connect learner memory.** Emit success, struggle, hint, and recovery signals once
+   per completed target; update deterministic stability/difficulty behavior and
+   persistence; add migration and debug-explanation tests. Update `docs/DRILL.md` only
+   if implementation changes its owned interval or presentation policy.
+9. **Harden schema and validators.** Make `learningContract` mandatory for the
+   enforced-quality schema, mirror rules in Swift and Python, add failing fixtures for
+   every rule, and prove older saved progress survives the runtime and schema change.
+   Do not bulk-migrate production counties in this stage.
+10. **Run the foundation gate.** Complete the automated suite, gallery matrix, direct
+   simulator inspection, and physical-device walkthrough below. Record failures and
+   fix the shared system or contract rather than patching a fixture.
+11. **Decide whether to spread.** Record the gate result in `STATUS.md`. If a durable
+   rule changed, add or amend a decision before migrating Mayo or another county. A
+   pass authorises subsequent content migration and review; it does not itself
+   validate pedagogy or clear a county for external testing.
+
+#### Acceptance and verification
+
+The sprint passes only when:
+
+- two to four materially different directions using the same Mayo fixture slice were
+  operated in the running app, compared against the reference-quality matrix and
+  decision rubric, and checked in their core accessibility states;
+- the user's chosen direction and the reasons for rejecting the alternatives are
+  recorded in `docs/DECISIONS.md`;
+- every exercise family uses the shared state engine and typed response interface;
+- unit tests cover every required transition, support combination, interruption,
+  revisit, and exactly-once completion/memory event;
+- every exercise fixture has a complete authored learning contract and both
+  validators accept and reject the same cases;
+- every incorrect fixture produces diagnostic feedback tied to a misconception or
+  response, every hint leaves something to do, and every recovery requires a fresh
+  response;
+- all four memory signals persist correctly, produce deterministic explainable
+  updates, and never create a gate or overdue task count;
+- the gallery manifest proves complete component, state, failure, and environment
+  coverage;
+- UI automation exercises response formation, incorrect feedback, hint, recovery,
+  retry, completion, resume, missing audio, denied microphone, and offline relaunch;
+- no component requires dragging, sound, motion, color, or a microphone to complete;
+- no Critical or High issue remains in mechanics, accessibility, persistence, privacy,
+  or content-contract review.
+
+Direct verification must include:
+
+1. the initial prototype comparison on an iPhone 17 Pro-class simulator, including
+   every direction's start, incorrect, recovery, and complete states plus its core
+   accessibility check;
+2. the complete gallery on an iPhone 17 Pro-class simulator in light and dark
+   appearances;
+3. every component at the largest accessibility text size, with Increased Contrast
+   and Reduce Motion checked independently;
+4. VoiceOver operation of each component through unanswered, incorrect, support,
+   retry, and complete states, including focus after state changes;
+5. a physical-iPhone walkthrough of bundled audio, replay, interruption, software
+   keyboard, fada entry, hardware-keyboard input when available, microphone
+   allow/deny/revoke, speaking playback, background/resume, termination/relaunch, and
+   offline completion;
+6. a representative existing Mayo fixture sequence from story context into exercise,
+   recovery, completion, memory credit, and optional review invitation. This verifies
+   integration only; it is not a Mayo chapter review.
+
+Compilation, snapshots, or one successful path do not satisfy this gate.
+
+#### Decisions required before spreading
+
+Do not migrate or author production county exercises against the revised system until
+all of these decisions have an evidence-backed pass:
+
+1. **Direction:** the user has selected one in-app prototype direction against the
+   rubric, and the choice, rejected alternatives, and risks are recorded in
+   `docs/DECISIONS.md`.
+2. **Runtime:** one state engine owns attempts, support, completion, persistence, and
+   exactly-once events; no family keeps a private alternative.
+3. **Completion:** clean, corrected, hinted, and recovered completion semantics are
+   agreed and do not trap the learner or make a false clean-recall claim.
+4. **Memory:** success, struggle, hint, and recovery signals produce deterministic,
+   explainable, debt-free review behavior under the versioned scheduler.
+5. **Authoring:** the learning contract is sufficient for every family and validators
+   prevent generic feedback, answer-revealing hints, target-changing recovery, and
+   unsupported completion evidence.
+6. **Access and failure:** the gallery and direct checks pass for VoiceOver, Dynamic
+   Type, both appearances, Increased Contrast, Reduce Motion, missing audio, denied
+   microphone, keyboard/fada input, interruption, and offline use.
+7. **Spread:** the foundation is recorded as **implemented** and **verified** in
+   `STATUS.md`. It remains unvalidated until pedagogue review and representative
+   learner evidence support the intended learning outcome.
 
 ### Phase 4 — Rebuild Mayo
 

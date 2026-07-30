@@ -126,6 +126,29 @@ class Phase5ReviewDraftsValidate(unittest.TestCase):
                 self.assertEqual(report.lifecycle_covered, 20)
                 self.assertTrue(report.open_review_gates)
 
+                visual_pages = [
+                    page
+                    for chapter in envelope["pack"]["chapters"]
+                    for page in chapter["pages"]
+                    if page["visualResourceID"] is not None
+                ]
+                resources = {
+                    resource["id"]: resource
+                    for resource in envelope["pack"]["resources"]
+                }
+                self.assertEqual(len(visual_pages), 2)
+                self.assertTrue(
+                    all(
+                        resources[page["visualResourceID"]]["kind"] == "video"
+                        for page in visual_pages
+                    )
+                )
+                for page in visual_pages:
+                    video = resources[page["visualResourceID"]]
+                    fallback = resources[video["fallbackResourceID"]]
+                    self.assertEqual(fallback["kind"], "image")
+                    self.assertTrue(page["visualCaption"])
+
                 pages = {
                     page["id"]: page
                     for chapter in envelope["pack"]["chapters"]
@@ -213,6 +236,38 @@ class AddedRules(unittest.TestCase):
         # still pass — the all-twenty rule is scoped to completeCounty only.
         report = v.validate(self.pack)
         self.assertEqual(report.scope, "representativeChapter")
+
+    def test_video_visual_with_image_fallback_is_valid(self):
+        page = self.pack["pack"]["chapters"][0]["pages"][0]
+        page["resourceIDs"].append("video.test")
+        page["visualResourceID"] = "video.test"
+        self.pack["pack"]["resources"].append(
+            {
+                "id": "video.test",
+                "kind": "video",
+                "value": "video.test",
+                "status": "production-video-loop",
+                "fallbackResourceID": "image.clew-bay",
+            }
+        )
+
+        self.assertEqual(v.validate(self.pack).pack_id, "mayo.grainne-1593")
+
+    def test_video_visual_requires_image_fallback(self):
+        page = self.pack["pack"]["chapters"][0]["pages"][0]
+        page["resourceIDs"].append("video.test")
+        page["visualResourceID"] = "video.test"
+        self.pack["pack"]["resources"].append(
+            {
+                "id": "video.test",
+                "kind": "video",
+                "value": "video.test",
+                "status": "production-video-loop",
+                "fallbackResourceID": "evidence.rockfleet-c07",
+            }
+        )
+
+        self._expect("missingResource")
 
 
 class MirroredSwiftRules(unittest.TestCase):

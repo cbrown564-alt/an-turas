@@ -1,4 +1,6 @@
+import AVFoundation
 import SwiftUI
+import UIKit
 
 /// Narrative pages share navigation and evidence behavior, but not a template.
 /// The pack chooses a composition that matches what the reader is attending to.
@@ -16,24 +18,13 @@ struct CountyNarrativePage: View {
         page.displayItems ?? []
     }
 
-    private var visualAssetName: String? {
-        guard let resourceID = page.visualResourceID,
-              let res = pack.resources.first(where: { $0.id == resourceID && ($0.kind == .image || $0.kind == .video) })
-        else { return nil }
-        if res.kind == .video {
-            let raw = res.value
-            return raw.hasPrefix("video.") ? String(raw.dropFirst(6)) : raw
-        }
-        return res.value
-    }
-
     var body: some View {
         Group {
             switch presentation {
             case .coastalOpening:
                 CoastalOpeningPage(
                     page: page,
-                    assetName: visualAssetName,
+                    visual: pack.visual(for: page),
                     hasEvidence: hasEvidence,
                     onOpenEvidence: onOpenEvidence
                 )
@@ -50,7 +41,7 @@ struct CountyNarrativePage: View {
             case .archive:
                 ArchivePage(
                     page: page,
-                    assetName: visualAssetName,
+                    visual: pack.visual(for: page),
                     hasEvidence: hasEvidence,
                     onOpenEvidence: onOpenEvidence
                 )
@@ -75,7 +66,7 @@ private struct CoastalOpeningPage: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     let page: CountyStoryPage
-    let assetName: String?
+    let visual: CountyVisual?
     let hasEvidence: Bool
     let onOpenEvidence: () -> Void
 
@@ -131,8 +122,8 @@ private struct CoastalOpeningPage: View {
     @ViewBuilder
     private func image(height: CGFloat) -> some View {
         GeometryReader { geometry in
-            if let assetName {
-                StoryArtImage(name: assetName)
+            if let visual {
+                CountyVisualMedia(visual: visual)
                     .scaledToFill()
                     .frame(width: geometry.size.width, height: height)
                     .clipped()
@@ -143,6 +134,7 @@ private struct CoastalOpeningPage: View {
         .frame(height: height)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(page.visualCaption ?? "Editorial landscape")
+        .accessibilityIdentifier("county-visual-\(page.id)")
     }
 
     private var imageCaption: some View {
@@ -445,7 +437,7 @@ private struct ArchivePage: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     let page: CountyStoryPage
-    let assetName: String?
+    let visual: CountyVisual?
     let hasEvidence: Bool
     let onOpenEvidence: () -> Void
 
@@ -502,16 +494,9 @@ private struct ArchivePage: View {
 
     private func archiveImage(width: CGFloat?, height: CGFloat) -> some View {
         Group {
-            if let assetName {
-                if width == nil {
-                    Image(assetName)
-                        .resizable()
-                        .scaledToFit()
-                } else {
-                    Image(assetName)
-                        .resizable()
-                        .scaledToFill()
-                }
+            if let visual {
+                CountyVisualMedia(visual: visual)
+                    .aspectRatio(contentMode: width == nil ? .fit : .fill)
             } else {
                 Theme.sunk
             }
@@ -521,6 +506,121 @@ private struct ArchivePage: View {
         .clipped()
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(page.visualCaption ?? "Archival source")
+        .accessibilityIdentifier("county-visual-\(page.id)")
+    }
+}
+
+private struct CountyVisualMedia: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.scenePhase) private var scenePhase
+
+    let visual: CountyVisual
+
+    var body: some View {
+        switch visual {
+        case .image(let name):
+            StoryArtImage(name: name)
+        case .video(let name, let fallbackImageName):
+            ZStack {
+                StoryArtImage(name: fallbackImageName)
+                if !reduceMotion, let url = Self.videoURL(named: name) {
+                    LoopingVideoSurface(
+                        url: url,
+                        isPlaying: scenePhase == .active
+                    )
+                }
+            }
+        }
+    }
+
+    private static func videoURL(named name: String) -> URL? {
+        Bundle.main.url(forResource: name, withExtension: "mp4", subdirectory: "video")
+            ?? Bundle.main.url(forResource: name, withExtension: "mp4")
+    }
+}
+
+private struct LoopingVideoSurface: UIViewRepresentable {
+    let url: URL
+    let isPlaying: Bool
+
+    func makeUIView(context: Context) -> LoopingVideoUIView {
+        let view = LoopingVideoUIView()
+        view.configure(url: url)
+        view.setPlaying(isPlaying)
+        return view
+    }
+
+    func updateUIView(_ uiView: LoopingVideoUIView, context: Context) {
+        uiView.configure(url: url)
+        uiView.setPlaying(isPlaying)
+    }
+
+    static func dismantleUIView(_ uiView: LoopingVideoUIView, coordinator: ()) {
+        uiView.stop()
+    }
+}
+
+private final class LoopingVideoUIView: UIView {
+    private let playerLayer = AVPlayerLayer()
+    private var player: AVQueuePlayer?
+    private var looper: AVPlayerLooper?
+    private var currentURL: URL?
+    private var statusObservation: NSKeyValueObservation?
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .clear
+        playerLayer.videoGravity = .resizeAspectFill
+        layer.addSublayer(playerLayer)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        playerLayer.frame = bounds
+    }
+
+    func configure(url: URL) {
+        guard currentURL != url else { return }
+        stop()
+        currentURL = url
+        let queue = AVQueuePlayer()
+        queue.isMuted = true
+        queue.actionAtItemEnd = .none
+        let item = AVPlayerItem(url: url)
+        looper = AVPlayerLooper(player: queue, templateItem: item)
+        playerLayer.isHidden = true
+        statusObservation = queue.observe(\.status, options: [.initial, .new]) {
+            [weak self] player, _ in
+            DispatchQueue.main.async {
+                self?.playerLayer.isHidden = player.status != .readyToPlay
+            }
+        }
+        player = queue
+        playerLayer.player = queue
+    }
+
+    func setPlaying(_ shouldPlay: Bool) {
+        if shouldPlay {
+            player?.play()
+        } else {
+            player?.pause()
+        }
+    }
+
+    func stop() {
+        player?.pause()
+        player?.removeAllItems()
+        playerLayer.player = nil
+        playerLayer.isHidden = true
+        statusObservation?.invalidate()
+        statusObservation = nil
+        looper = nil
+        player = nil
+        currentURL = nil
     }
 }
 

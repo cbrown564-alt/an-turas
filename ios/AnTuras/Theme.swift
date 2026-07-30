@@ -129,6 +129,7 @@ private struct AccessibleShakeModifier: ViewModifier {
 struct PrimaryButton: View {
     let title: String
     var fullWidth = false
+    var accessibilityIdentifier: String? = nil
     let action: () -> Void
 
     var body: some View {
@@ -145,6 +146,7 @@ struct PrimaryButton: View {
                 .clipShape(RoundedRectangle(cornerRadius: 4))
         }
         .buttonStyle(CarvePress())
+        .accessibilityIdentifier(accessibilityIdentifier ?? title)
     }
 }
 

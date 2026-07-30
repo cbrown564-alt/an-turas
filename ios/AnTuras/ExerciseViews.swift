@@ -541,24 +541,24 @@ struct FadaKeyRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("SÍNEADH FADA · TAP TO INSERT")
-                .font(.system(size: 10, weight: .semibold))
-                .kerning(1)
+                .font(.caption2.weight(.semibold))
                 .foregroundStyle(Theme.atlasGreen)
-            HStack(spacing: 6) {
+                .fixedSize(horizontal: false, vertical: true)
+            FlowLayout(spacing: 6) {
                 ForEach(["á", "é", "í", "ó", "ú"], id: \.self) { fada in
                     Button(fada) {
-                        guard !disabled else { return }
                         Haptics.tap()
                         text.append(fada)
                     }
-                    .font(.system(size: 16, design: .serif))
+                    .font(.system(.body, design: .serif))
                     .foregroundStyle(Theme.ink)
-                    .padding(.vertical, 7)
                     .padding(.horizontal, 13)
+                    .frame(minWidth: 44, minHeight: 44)
                     .background(Theme.raised)
                     .clipShape(RoundedRectangle(cornerRadius: 6))
                     .overlay(RoundedRectangle(cornerRadius: 6).stroke(Theme.atlasGreen.opacity(0.4), lineWidth: 1))
                     .buttonStyle(CarvePress())
+                    .disabled(disabled)
                     .accessibilityLabel("Insert \(fada) with fada")
                 }
             }

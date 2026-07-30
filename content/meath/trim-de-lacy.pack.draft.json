@@ -145,6 +145,32 @@
     ],
     "resources": [
       {
+        "id": "image.meath-boyne-flow-loop",
+        "kind": "image",
+        "value": "meath-boyne-flow-loop",
+        "status": "production-keyframe"
+      },
+      {
+        "id": "video.meath-boyne-flow-loop",
+        "kind": "video",
+        "value": "video.meath-boyne-flow-loop",
+        "status": "production-video-loop",
+        "fallbackResourceID": "image.meath-boyne-flow-loop"
+      },
+      {
+        "id": "image.meath-trim-curtain-sunset",
+        "kind": "image",
+        "value": "meath-trim-curtain-sunset",
+        "status": "production-keyframe"
+      },
+      {
+        "id": "video.meath-trim-curtain-sunset",
+        "kind": "video",
+        "value": "video.meath-trim-curtain-sunset",
+        "status": "production-video-loop",
+        "fallbackResourceID": "image.meath-trim-curtain-sunset"
+      },
+      {
         "id": "evidence.meath.m01",
         "kind": "evidence",
         "value": "M01 · 1172 grant of Meath to Hugh de Lacy",
@@ -1356,13 +1382,14 @@
               "audio.word.ath",
               "audio.word.abhainn",
               "audio.word.anseo",
-              "audio.word.ansiud"
+              "audio.word.ansiud",
+              "video.meath-boyne-flow-loop"
             ],
             "exercise": null,
             "presentation": "coastalOpening",
             "advanceLabel": "Stand at the crossing",
-            "visualResourceID": null,
-            "visualCaption": null,
+            "visualResourceID": "video.meath-boyne-flow-loop",
+            "visualCaption": "Generated editorial interpretation of water moving through the Boyne ford · not documentary evidence",
             "displayItems": [
               {
                 "id": "ford",
@@ -2273,13 +2300,14 @@
               "audio.word.cloch",
               "audio.word.mor",
               "audio.word.balla",
-              "audio.word.feach"
+              "audio.word.feach",
+              "video.meath-trim-curtain-sunset"
             ],
             "exercise": null,
             "presentation": "coastalOpening",
             "advanceLabel": "Approach the stone keep",
-            "visualResourceID": null,
-            "visualCaption": null,
+            "visualResourceID": "video.meath-trim-curtain-sunset",
+            "visualCaption": "Generated editorial interpretation of light moving across Trim's curtain wall · not documentary evidence",
             "displayItems": [
               {
                 "id": "stone",

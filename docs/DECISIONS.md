@@ -2,6 +2,48 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D25 — Harden shared learning mechanics before further content spread (2026-07-30)
+
+**Decision:** The next implementation sprint is the shared learning-mechanics
+foundation, not another Mayo chapter revision, additional chapter authoring, county
+expansion, or production-pack migration. Existing Mayo material is realistic fixture
+content for proving the common runtime, response components, authored learning
+contract, learner-memory signals, accessibility, and failure handling. The detailed
+scope and gate live in `STORY-LEARNING-REBUILD-PLAN.md`.
+
+Rapid in-app comparison is the critical path. The first implementation deliverable
+uses one fixed Mayo fixture slice to compare two to four materially different
+interaction and pedagogy directions. Only core access states are required before that
+comparison. The user selects a direction after operating the variants and reviewing
+their tradeoffs; the choice and rejected alternatives become a new durable decision.
+Only then may the chosen primitives be consolidated into the shared runtime.
+
+Every exercise uses one attempt and support lifecycle: unanswered, attempt,
+diagnostic feedback, hint or recovery, retry, and complete. Completion records
+success, struggle, hint use, and recovery use against stable language-item ids.
+Supported completion allows the learner to continue but does not claim clean recall.
+Later review remains deterministic, explainable, optional, bounded, and free of
+overdue task debt. Speaking remains ungraded record-and-compare.
+
+**Why:** The Rockfleet proof established mechanic breadth and a working shared shell,
+but spreading the current implementation would also spread component-specific state,
+feedback, completion, scheduling, accessibility, and failure assumptions. Those
+foundations should become correct and testable once before production content is
+migrated across present and future counties.
+
+**Consequences:** Do not use chapter count, exercise count, or another authored county
+as evidence that this sprint passed. Do not build the complete state engine, component
+library, schema migration, or scheduler before the prototype choice. The comparison
+may adapt publicly observable interaction strengths from products such as Duolingo
+and Brilliant, but never their identity, content, branded visuals, or reward economy.
+The later gate requires the selected direction, a shared state engine, complete
+exercise contracts, deterministic memory events, mirrored Swift/Python validation,
+an internal mechanics gallery, automated coverage, and direct simulator and
+physical-device verification. `DRILL.md` continues to own later scheduled-review
+presentation and interval policy. After the gate passes, production packs may migrate
+one representative slice at a time; county pedagogy, history, audio, rights, and
+external-tester gates remain separate.
+
 ## D24 — Allow a new historian to close the expanded Mayo review (2026-07-24)
 
 **Decision:** The historian who approved the six-episode Mayo prototype does not have

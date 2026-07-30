@@ -145,6 +145,32 @@
     ],
     "resources": [
       {
+        "id": "image.dublin-dark-pool-mist",
+        "kind": "image",
+        "value": "dublin-dark-pool-mist",
+        "status": "production-keyframe"
+      },
+      {
+        "id": "video.dublin-dark-pool-mist",
+        "kind": "video",
+        "value": "video.dublin-dark-pool-mist",
+        "status": "production-video-loop",
+        "fallbackResourceID": "image.dublin-dark-pool-mist"
+      },
+      {
+        "id": "image.dublin-coin-relief",
+        "kind": "image",
+        "value": "dublin-coin-relief",
+        "status": "production-keyframe"
+      },
+      {
+        "id": "video.dublin-coin-relief-light",
+        "kind": "video",
+        "value": "video.dublin-coin-relief-light",
+        "status": "production-video-loop",
+        "fallbackResourceID": "image.dublin-coin-relief"
+      },
+      {
         "id": "evidence.dublin.d01",
         "kind": "evidence",
         "value": "D01 · first locally struck Irish coinage under Sihtric c. 995–997",
@@ -417,13 +443,14 @@
               "audio.word.baile",
               "audio.word.cathair",
               "audio.word.abhainn",
-              "audio.word.long"
+              "audio.word.long",
+              "video.dublin-dark-pool-mist"
             ],
             "exercise": null,
             "presentation": "coastalOpening",
             "advanceLabel": "Enter the port",
-            "visualResourceID": null,
-            "visualCaption": null,
+            "visualResourceID": "video.dublin-dark-pool-mist",
+            "visualCaption": "Generated editorial interpretation of Dublin's dark pool and port · not documentary evidence",
             "displayItems": [
               {
                 "id": "river",
@@ -1893,13 +1920,14 @@
               "source.dublin.nmi-overview",
               "audio.word.pingin",
               "audio.word.thainig",
-              "audio.word.chuaigh"
+              "audio.word.chuaigh",
+              "video.dublin-coin-relief-light"
             ],
             "exercise": null,
             "presentation": "coastalOpening",
             "advanceLabel": "Handle the penny",
-            "visualResourceID": null,
-            "visualCaption": null,
+            "visualResourceID": "video.dublin-coin-relief-light",
+            "visualCaption": "Generated editorial interpretation of light moving across a silver penny · not documentary evidence",
             "displayItems": [
               {
                 "id": "penny",

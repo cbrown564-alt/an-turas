@@ -55,6 +55,28 @@ final class AtlasFlowUITests: XCTestCase {
         XCTAssertTrue(evidence.isHittable)
     }
 
+    func testOffalyReviewOpeningExposesItsAuthoredVisual() throws {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--county-pack", "offaly.cross-of-the-scriptures",
+            "--fresh-county-pack",
+            "--mode", "story",
+            "--page", "offaly.river-road.opening",
+        ]
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["A river running through the middle"].waitForExistence(timeout: 5))
+        XCTAssertTrue(
+            app.descendants(matching: .any)["county-visual-offaly.river-road.opening"]
+                .waitForExistence(timeout: 3)
+        )
+        XCTAssertTrue(
+            app.staticTexts[
+                "Generated editorial interpretation of the Shannon callows · not documentary evidence"
+            ].exists
+        )
+    }
+
     func testReviewDraftOpensThePackBackedRecoveryModel() throws {
         let app = XCUIApplication()
         app.launchArguments = [

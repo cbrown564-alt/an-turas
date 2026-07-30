@@ -1,7 +1,7 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-24.*
+and visual narrative. English → Irish only. Updated 2026-07-30.*
 
 ## Where we are
 
@@ -29,14 +29,16 @@ and does not claim the 20 words. Learning mode keeps a shorter causal account, i
 varied full-screen exercises, and is the only path that turns the county gold and
 schedules its words. Speaking remains ungraded record-and-compare.
 
-**Current target:** rebuild-plan phases 0–3 are complete. The representative
-Rockfleet chapter has proved the page model, both mode projections, full-screen
-exercise system, recovery, accessibility, progress migration, and varied narrative
-composition. The Phase 4 Mayo review draft and three Phase 5 launch-county review
-drafts are now structurally complete and pass the strict content checks. Offaly,
-Dublin and Meath are bundled as explicitly labelled in-app review drafts; Mayo
-remains non-bundled. The next target is specialist and pedagogy review,
-native-speaker audio, rights, and full accessibility/device verification.
+**Current target:** rebuild-plan phases 0–3 are complete. D25 now makes the shared
+learning-mechanics foundation the active next sprint before more chapter authoring,
+county expansion, or production-pack migration. Its first executable phase is a
+running iOS comparison of two to four materially different learning approaches using
+the same small Mayo fixture slice. The user chooses a direction before the team
+consolidates the shared runtime. Mayo is fixture content, not the sprint's editorial
+target. This 30 July update documents the work only. None of the new prototypes,
+runtime, schema, validator, gallery, or test requirements is implemented by it. The
+Phase 4 Mayo and Phase 5 launch-county review drafts remain at their recorded gate
+states.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
@@ -126,6 +128,15 @@ need pedagogy, native-speaker audio QA, rights, full accessibility and device ch
 The app labels all three **Review draft** and prevents them from awarding county gold,
 made objects or scheduled words while any review gate remains open.
 
+**25 July media correction:** Offaly, Dublin and Meath now each connect two
+representative county pages to their bundled muted video loop and explicit still
+keyframe. The shared renderer loops only while the app is active and shows the still
+for Reduce Motion or unavailable playback. Swift and Python validators now accept the
+same image/video visual contract and require every video to name an image fallback.
+Direct iPhone 17 Pro simulator inspection confirmed the Offaly opening composition,
+advancing video frames and identical still frames with Reduce Motion enabled. All
+**37 Swift unit tests**, **17 UI tests** and **40 Python content/tooling tests** pass.
+
 **Tester gate:** no external learner build until all four counties pass the narrative,
 20-word lifecycle, exercise-distribution, specialist review, native-speaker audio,
 rights, accessibility, physical-device, migration, offline, and automated checks in
@@ -194,20 +205,28 @@ story or new Learning mode.
 | 2026-07-24 | **Offaly, Dublin, and Meath full Story/Learning drafts assembled and simulator-smoke-tested.** The Mayo pattern now produces three non-bundled, six-chapter pre-clearance packs with variable page counts, estimated 49.4-minute Story paths, 30 exercises across all 12 mechanic families, complete 20-word lifecycles, object-specific evidence boundaries, and explicit open review gates. A repeatable builder and regression tests keep the generated drafts current; strict validation and all 38 Python tests pass. A temporary iPhone 17 Pro substitution build rendered representative Story and Learning pages for all three, the visible missing-audio recovery state, largest accessibility text, and a dark-appearance sample. The shipping bundle remains unchanged and passes 36 unit plus the two preview UI tests affected by substitution. This smoke test does not close specialist, full accessibility, device, or promotion gates. | `tools/build_phase5_county_drafts.py`, `tools/tests/test_validate_county_pack.py`, `content/{offaly,dublin,meath}/` |
 | 2026-07-24 | **Offaly, Dublin, and Meath promoted to in-app review drafts.** The full generated packs replace the five-page previews in the app bundle and are labelled **Review draft** wherever release state appears. Reviewers can traverse both complete modes and retain stable page progress. A new runtime guard requires `completeCounty` scope **and** zero open review gates before gold, made objects or scheduled words can be awarded; completing a review draft therefore has no release effects. Mode-opening and completion copy now derives from each pack's real chapter, page, timing, exercise and gate state instead of Rockfleet constants. All 38 Python tests, 36 Swift unit tests and 16 UI tests pass; the three review openings were directly inspected on an iPhone 17 Pro simulator at accessibility text size. | `ios/AnTuras/Resources/CountyStories/`, `CountyStoryPack.swift`, `CountyStoryExperienceView.swift`, `LaunchCountyStories.swift`, `AtlasPrototype.swift` |
 
-## Immediate next steps (rebuild-plan Phases 4–6)
+## Immediate next steps (learning-mechanics foundation, then rebuild Phases 4–6)
 
-1. **Review and integrate Mayo** — clear the targeted history and pedagogy passes,
-   bundle and QA the 20 outstanding audio resources, clear or replace Rockfleet
-   imagery, then update the complete-county app copy, integrate the reviewed pack, and
-   close accessibility, device, migration, offline, and automated gates.
-2. **Review the three Phase 5 drafts independently** — Offaly needs the cross
-   inscription and panels settled; Dublin needs the production penny and both-face
-   legend selected; Meath needs the grant copy, castle phases and conquest framing
-   cleared. Apply pedagogue revisions before producing final audio.
-3. **Run the four-county internal gate** — automated validators, full tests, timed
-   walkthroughs, physical-device and accessibility checks. Schedule external testing
-   only after every item passes.
-4. **Preserve the Phase 2 test record** — add participant count and moderated-session
+1. **Prototype and compare the direction in the running app** — benchmark public
+   interaction-quality references, freeze one small Mayo learning slice, and build two to
+   four materially different learning approaches with the same content. Verify their
+   core access and recovery states, present the tradeoffs, and record the user's
+   choice as a durable decision.
+2. **Consolidate the chosen shared mechanics foundation** — implement the common
+   attempt, diagnostic, hint/recovery, retry, completion, persistence, and exactly-once
+   memory-event model without changing production chapter content.
+3. **Prove every common response and failure state** — move listening, choices,
+   sentence tiles, Irish typing, matching, dialogue, comprehension, sequencing,
+   discovery, delayed retrieval, and ungraded speaking through the internal gallery,
+   contract adapter, and mirrored validators.
+4. **Run the foundation gate** — complete automated transition, schema, persistence,
+   UI, and offline checks plus direct simulator, VoiceOver, appearance, contrast,
+   motion, audio, microphone, keyboard/fada, and physical-device verification. Record
+   the result before spreading the system.
+5. **Resume county review and integration only after the foundation passes** — clear
+   Mayo's history, pedagogy, audio, and rights gates; review Offaly, Dublin, and Meath
+   independently; then run the four-county tester-readiness gate.
+6. **Preserve the Phase 2 test record** — add participant count and moderated-session
    notes if they exist; D20 deliberately does not invent them.
 
 ### Lower priority (unchanged)

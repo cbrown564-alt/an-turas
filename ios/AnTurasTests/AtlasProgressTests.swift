@@ -150,6 +150,41 @@ final class AtlasProgressTests: XCTestCase {
         }
     }
 
+    func testPromotedCountyVideoVisualsResolveWithBundledFallbacks() throws {
+        for packID in [
+            "offaly.cross-of-the-scriptures",
+            "dublin.sihtric-penny",
+            "meath.trim-de-lacy",
+        ] {
+            let pack = try XCTUnwrap(CountyStoryPackCatalog.pack(id: packID))
+            let visualPages = pack.pages.filter { $0.visualResourceID != nil }
+            XCTAssertEqual(visualPages.count, 2, "\(packID) should expose two representative visuals")
+
+            for page in visualPages {
+                guard case .video(let videoName, let fallbackName) = try XCTUnwrap(
+                    pack.visual(for: page)
+                ) else {
+                    return XCTFail("\(page.id) should resolve to a video with an image fallback")
+                }
+                XCTAssertNotNil(
+                    Bundle.main.url(forResource: videoName, withExtension: "mp4"),
+                    "Missing bundled video \(videoName)"
+                )
+                XCTAssertNotNil(
+                    ["png", "jpg", "jpeg"].lazy.compactMap {
+                        Bundle.main.url(
+                            forResource: fallbackName,
+                            withExtension: $0,
+                            subdirectory: "art"
+                        )
+                    }.first,
+                    "Missing bundled fallback image \(fallbackName)"
+                )
+                XCTAssertFalse((page.visualCaption ?? "").isEmpty)
+            }
+        }
+    }
+
     func testRockfleetPackProjectsOneSequenceIntoTwoHonestModes() throws {
         let pack = try XCTUnwrap(CountyStoryPackCatalog.pack(id: "mayo.grainne-1593"))
         let envelope = try XCTUnwrap(CountyStoryPackCatalog.envelopes.first { $0.pack.id == pack.id })

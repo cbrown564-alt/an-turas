@@ -145,6 +145,32 @@
     ],
     "resources": [
       {
+        "id": "image.offaly-shannon-callows-mist",
+        "kind": "image",
+        "value": "offaly-shannon-callows-mist",
+        "status": "production-keyframe"
+      },
+      {
+        "id": "video.offaly-shannon-callows-mist",
+        "kind": "video",
+        "value": "video.offaly-shannon-callows-mist",
+        "status": "production-video-loop",
+        "fallbackResourceID": "image.offaly-shannon-callows-mist"
+      },
+      {
+        "id": "image.offaly-cross-carving-relief",
+        "kind": "image",
+        "value": "offaly-cross-carving-relief",
+        "status": "production-keyframe"
+      },
+      {
+        "id": "video.offaly-cross-carving-relief",
+        "kind": "video",
+        "value": "video.offaly-cross-carving-relief",
+        "status": "production-video-loop",
+        "fallbackResourceID": "image.offaly-cross-carving-relief"
+      },
+      {
         "id": "evidence.offaly.o01",
         "kind": "evidence",
         "value": "O01 · Shannon and east–west route junction",
@@ -427,13 +453,14 @@
               "source.offaly.heritage-guide",
               "audio.word.abhainn",
               "audio.word.bad",
-              "audio.word.bothar"
+              "audio.word.bothar",
+              "video.offaly-shannon-callows-mist"
             ],
             "exercise": null,
             "presentation": "coastalOpening",
             "advanceLabel": "Follow the water",
-            "visualResourceID": null,
-            "visualCaption": null,
+            "visualResourceID": "video.offaly-shannon-callows-mist",
+            "visualCaption": "Generated editorial interpretation of the Shannon callows · not documentary evidence",
             "displayItems": [
               {
                 "id": "river",
@@ -1872,13 +1899,14 @@
               "source.offaly.highlights",
               "audio.word.cloch",
               "audio.word.seas",
-              "audio.word.feach"
+              "audio.word.feach",
+              "video.offaly-cross-carving-relief"
             ],
             "exercise": null,
             "presentation": "coastalOpening",
             "advanceLabel": "Stand before the stone",
-            "visualResourceID": null,
-            "visualCaption": null,
+            "visualResourceID": "video.offaly-cross-carving-relief",
+            "visualCaption": "Generated editorial interpretation of carved sandstone relief · not documentary evidence",
             "displayItems": [
               {
                 "id": "stone",

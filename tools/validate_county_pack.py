@@ -173,6 +173,14 @@ def validate(envelope: dict) -> PackReport:
                 raise PackValidationError(
                     "missingResource", f"visual resource {visual} missing or not an image/video"
                 )
+            visual_resource = resources[visual]
+            if visual_resource.get("kind") == "video":
+                fallback = visual_resource.get("fallbackResourceID")
+                if resources.get(fallback, {}).get("kind") != "image":
+                    raise PackValidationError(
+                        "missingResource",
+                        f"video visual {visual} has no image fallback",
+                    )
 
     # Learning-mode ordering: an exercise may only use lexemes already introduced
     # by an earlier learning-visible page; option and audio integrity per exercise.
