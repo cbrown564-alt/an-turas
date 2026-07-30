@@ -36,5 +36,9 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
 - [`EXPANSIVE-INTERFACE-VISION.md`](EXPANSIVE-INTERFACE-VISION.md) explores the living-atlas direction.
 - [`COUNTY-STORY-SLATE.md`](COUNTY-STORY-SLATE.md) is a development slate, not publishable history.
 - [`COMPETITIVE-RESEARCH.md`](COMPETITIVE-RESEARCH.md) is research input, not product authority.
+- [`INTERACTION-STUDIES-REPORT.md`](INTERACTION-STUDIES-REPORT.md) records the
+  benchmark observations, implementation, verification, and open synthesis questions
+  from the three disposable iOS learning-interaction studies. It is research input;
+  D26 and the canonical product/design owners remain authoritative.
 
 When documents conflict, use the canonical owner for that concern. Move superseded records out of the active reading path instead of leaving two live answers.

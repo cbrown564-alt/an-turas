@@ -251,6 +251,40 @@ struct LearningMechanicsComparisonView: View {
                     accent: Theme.moss
                 )
 
+                NavigationLink(value: AtlasRoute.interactionStudies) {
+                    HStack(alignment: .top, spacing: 15) {
+                        Image(systemName: "hand.tap")
+                            .font(.title2)
+                            .foregroundStyle(Theme.moss)
+                            .frame(width: 44, height: 44)
+                            .accessibilityHidden(true)
+
+                        VStack(alignment: .leading, spacing: 7) {
+                            Text("Open the interaction studies")
+                                .font(.headline)
+                                .foregroundStyle(Theme.ink)
+                            Text("Three shorter loops remove the story layer and test touch, feedback, pace and visible scaffold removal.")
+                                .font(.body)
+                                .foregroundStyle(Theme.inkSoft)
+                                .lineSpacing(3)
+                        }
+
+                        Spacer(minLength: 6)
+
+                        Image(systemName: "chevron.right")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(Theme.inkFaint)
+                            .accessibilityHidden(true)
+                    }
+                    .padding(16)
+                    .frame(maxWidth: .infinity, minHeight: 92, alignment: .leading)
+                    .background(Theme.mossTint)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(InteractionStudyPressStyle())
+                .accessibilityIdentifier("open-interaction-studies")
+
                 commonRun
 
                 VStack(alignment: .leading, spacing: 12) {

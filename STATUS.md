@@ -24,21 +24,29 @@ learning outcomes, specialist review, audio, or rights after the 15 July product
 reset.
 
 **Current product decision:** D21 defines one county page sequence filtered into Story
-and Learning modes. Story mode carries the complete account, opens the next county,
-and does not claim the 20 words. Learning mode keeps a shorter causal account, inserts
-varied full-screen exercises, and is the only path that turns the county gold and
-schedules its words. Speaking remains ungraded record-and-compare.
+and Learning modes. D26 now defines a familiar one-screen activity system for the
+Learning path: stable task anatomy and response lifecycle, with story, Irish, place,
+evidence, audio, feedback, and the visual system carrying the product's distinction.
+Story mode carries the complete account and opens the next county; only Learning mode
+turns the county gold and schedules its words. Speaking remains ungraded
+record-and-compare.
 
-**Current target:** rebuild-plan phases 0–3 are complete. D25 now makes the shared
-learning-mechanics foundation the active next sprint before more chapter authoring,
-county expansion, or production-pack migration. Its first executable phase is a
-running iOS comparison of two to four materially different learning approaches using
-the same small Mayo fixture slice. The user chooses a direction before the team
-consolidates the shared runtime. Mayo is fixture content, not the sprint's editorial
-target. This 30 July update documents the work only. None of the new prototypes,
-runtime, schema, validator, gallery, or test requirements is implemented by it. The
-Phase 4 Mayo and Phase 5 launch-county review drafts remain at their recorded gate
-states.
+**Current target:** rebuild-plan phases 0–3 are complete. D25 makes the shared
+learning-mechanics foundation the active sprint before more chapter authoring, county
+expansion, or production-pack migration. Two complementary 30 July inputs now exist:
+the expanded 48-activity reference review that led to D26, and three working iOS
+interaction studies—Sound Match, Sentence Flow, and Coast Placement—using the same
+narrow Clew Bay fixture. The studies are implemented and pass their focused 3-unit /
+5-UI simulator suite, including complete repair loops, audio fallback, both
+appearances, largest Dynamic Type, and reduced motion. They remain disposable and
+isolated from the shared county runtime.
+
+The next proof is one representative Mayo Learning-mode run through D26's selected
+one-screen shell. Before extracting the shared runtime, that proof must explicitly
+decide which response, correction, scaffold-removal, motion, and spatial details from
+the iOS studies improve the selected activity families. This combines the two bodies
+of work without reopening three candidate architectures. The Phase 4 Mayo and Phase 5
+launch-county review drafts remain at their recorded gate states.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
@@ -148,6 +156,8 @@ story or new Learning mode.
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-07-30 | **Three disposable iOS learning-interaction studies implemented and focused verification passed.** Sound Match tests immediate audio/meaning choice and in-place repair; Sentence Flow keeps correct sentence work while role cues visibly disappear; Coast Placement attaches *farraige*, *bá*, and *áit* to a spatial coast before removing its labels. The studies use one narrow Clew Bay fixture, no story exposition, separate local state, direct audio fallback, and no county progress, review, or shared-runtime side effects. XcodeGen was regenerated; 3 focused unit and 5 focused UI tests pass, including complete wrong-to-correct loops, both appearances, largest Dynamic Type, and reduced motion. Initial states were directly inspected on an iPhone 17 Pro Max simulator. This is implemented and verified research evidence, not validated pedagogy or a selected architecture. | `ios/AnTuras/Prototypes/InteractionStudies/`, `ios/AnTurasTests/InteractionStudyTests.swift`, `ios/AnTurasUITests/InteractionStudyUITests.swift`, `docs/INTERACTION-STUDIES-REPORT.md` |
+| 2026-07-30 | **Expanded activity reference review completed and D26 recorded.** A separate 48-activity HTML field guide supported selection of a familiar one-screen activity system. The next Mayo proof will combine that stable shell with only the response and recovery details from the iOS studies that improve clarity and repeatability. | `web/learning-activity-reference/`, `PRODUCT.md`, `DESIGN.md`, `docs/DECISIONS.md` D26 |
 | 2026-07-04 | Repo founded; vision + full strategy map (unknowns, challenges, resources, competition) | `README.md`, `docs/STRATEGY.md` |
 | 2026-07-04 | Persona decided: school-Irish re-learners + diaspora primary, NI as cultural north star | `docs/DECISIONS.md` D1 |
 | 2026-07-04 | Dialect decided: Connacht first; Ulster required before NI launch | `docs/DECISIONS.md` D2 |
