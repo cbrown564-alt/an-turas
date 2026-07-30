@@ -41,9 +41,11 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
   gates, Rockfleet fixtures, adversarial scripts, agent-loop contract). It does
   not own product or design rules; update `PRODUCT.md`, `DESIGN.md`, and D26/D27
   first when those change. Filled reviews live under
-  [`activity-quality/`](activity-quality/); the first Shell pass is
-  [`SCORECARD-shell-2026-07-30.md`](activity-quality/SCORECARD-shell-2026-07-30.md)
-  (**REJECT** — Kimi punch list D1 D2 D3 D4 D5 F1 F5 F7 before family polish).
+  [`activity-quality/`](activity-quality/); Shell reviews:
+  first pass [`SCORECARD-shell-2026-07-30.md`](activity-quality/SCORECARD-shell-2026-07-30.md)
+  (**REJECT** at `237d74f`); re-score
+  [`SCORECARD-shell-rescore-2026-07-30.md`](activity-quality/SCORECARD-shell-rescore-2026-07-30.md)
+  (**ACCEPT** at `e4c6a8b`).
 - [`../web/learning-activity-reference/index.html`](../web/learning-activity-reference/index.html)
   is the 48-activity interactive reference field guide that supported D26. The
   canonical activity rules live in `PRODUCT.md`, `DESIGN.md`, D26, and the rebuild

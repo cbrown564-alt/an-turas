@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-30 (Shell scorecard
-punch list implemented; Composer re-score pending).*
+and visual narrative. English → Irish only. Updated 2026-07-30 (Shell cluster
+ACCEPT at e4c6a8b; freeze representative Mayo run next).*
 
 ## Where we are
 
@@ -166,13 +166,13 @@ county runtime.
 
 | # | D27 family | `CountyExerciseFamily` | Surface | Authored (4 packs) | Contract met? |
 |---|---|---|---|---|---|
-| 1 | Listen and choose | `listenChoose` | ✓ | ✓ | Punch-list fix landed — response answerable from cold open; repair window before struggle chrome. Awaiting Composer re-score |
+| 1 | Listen and choose | `listenChoose` | ✓ | ✓ | **Yes** — Shell ACCEPT (F1); response answerable from cold open; D27 repair window before struggle chrome |
 | 2 | Sentence construction | `sentenceConstruction` | ✓ | ✓ | Partial — Check in bottom bar (nil-action regression fixed); stable tile bank; not Shell-scored this pass |
-| 3 | Free typed production | `freeTyping` | ✓ | ✓ | Partial — two-voice/fada polish deferred until Shell ACCEPT |
+| 3 | Free typed production | `freeTyping` | ✓ | ✓ | Partial — two-voice/fada polish deferred until family cluster passes |
 | 4 | Fill-in-the-blank | `fillGap` | ✓ | ✓ | Partial — shares choice surface with read-respond |
-| 5 | Matching | `matching` | ✓ | ✓ | Punch-list fix landed — wrong pair = on-target note + next-tap unlock, no incorrect-phase escalation; thumb-native single-column board; ≤4 pairs enforced in authorship and both validators. Awaiting Composer re-score |
+| 5 | Matching | `matching` | ✓ | ✓ | **Yes** — Shell ACCEPT (F5); wrong pair = on-target note + next-tap unlock; thumb-native board; ≤4 pairs enforced |
 | 6 | Read or listen and respond | `readRespond` | ✓ | ✓ (read only) | Partial — no listen variant yet |
-| 7 | Record and compare | `recordCompare` | ✓ | ✓ | Punch-list fix landed — Record/Stop owns ink until compare; "I compared both" after playback; escape quiet unless mic denied. Awaiting Composer re-score |
+| 7 | Record and compare | `recordCompare` | ✓ | ✓ | **Yes** — Shell ACCEPT (F7); Record/Stop owns ink until compare; quiet escape unless mic denied |
 | 8 | Grammar discovery | `grammarDiscovery` | ✓ | ✓ | **No** — one MC step, not progressive reveal → produce → rule |
 | 9 | Picture or map selection | — | ✗ | ✗ | Not started (migration group 1) |
 | 10 | Listen and type | — | ✗ | ✗ | Not started (migration group 2); `audioPrompted` construction is partial overlap only |
@@ -223,8 +223,8 @@ Twelve Rockfleet Learning-path screens captured 2026-07-30. Critique:
 
 | File | D27 layer | Family / container | Authored use | Implementation gap |
 |---|---|---|---|---|
-| `01-listen-choose.png` | Response family | Listen and choose | — | Fix landed — choices answerable from cold open; first wrong carries on-row rationale without struggle chrome; re-score pending |
-| `02-matching.png` | Response family | Matching | — | Fix landed — single-column thumb board; wrong pair = persistent on-target note, next tap unlocks, no incorrect phase; Mayo draft re-authored to 4 pairs; re-score pending |
+| `01-listen-choose.png` | Response family | Listen and choose | — | **Shell ACCEPT** — choices answerable from cold open; D27 repair window; on-row rationale |
+| `02-matching.png` | Response family | Matching | — | **Shell ACCEPT** — thumb-native board; brief wrong-pair unlock; ≤4 pairs |
 | `03-sentence-audio.png` | Response family | Sentence construction | `audioPrompted` | Bar-driven Check works (nil-action regression fixed); bank tiles leave placeholders so targets never slide; Irish tiles sans while story voice is serif remains |
 | `04-sentence-build.png` | Response family | Sentence construction | — | Same bar fix and stable bank; tile chips no longer scatter on pick |
 | `05-free-typing.png` | Response family | Free typed production | — | English translation in serif, Irish input in sans; fada row uses atlas green not moss; stacked ink primaries |
@@ -232,7 +232,7 @@ Twelve Rockfleet Learning-path screens captured 2026-07-30. Critique:
 | `07-sentence-sequence.png` | Response family | Sentence construction | `ordering` | English clause tiles, not Irish; same Check/Continue and recovery model as other builders |
 | `08-read-respond.png` | Response family | Read or listen and respond | — | Read-only MC; Irish template serif but options sans; shares hollow radio row with fill-gap and grammar |
 | `09-grammar-discovery.png` | Response family | Grammar discovery | — | **Family contract unmet** — one worked case + single MC, not reveal → reveal → produce → rule |
-| `10-record-compare.png` | Response family | Record and compare | — | Fix landed — ink slot runs Record → Stop → "I compared both" (held until playback); Play model / Play back / Record again moss ghosts; escape quiet unless mic denied; re-score pending |
+| `10-record-compare.png` | Response family | Record and compare | — | **Shell ACCEPT** — Record owns ink; ghosts for Play/Record again; quiet escape unless mic denied |
 | `11-fill-gap.png` | Response family | Fill-in-the-blank | — | Choice-backed gap only; identical radio-row chrome as 06/08/09 |
 | `12-delayed-typing.png` | Response family | Free typed production | `delayedRecall` | Delay works as later-page retrieval; not yet contextual mistake review; typography issues as 05 |
 
@@ -264,20 +264,18 @@ primary slot, disabled styles) before parallel family polish. Does not replace
 ACCEPT. **Kimi punch list (IDs only):** D1 D2 D3 D4 D5 F1 F5 F7. No spectacular
 family pass until Shell ACCEPT.
 
-**Punch-list implementation landed (2026-07-30):** all five items are in the
-county shell with UI coverage (Record primacy, ungated listen-choose, D27 repair
-window for selection families, brief matching unlock, thumb-native matching
-board, on-target diagnostics, ≤4-pair authorship + validator enforcement). The
-same pass found and fixed two `237d74f` regressions the scorecard grading could
-not see: the bottom-bar Check lost its action to a state-sync overwrite
-(sentence-construction pages advanced without grading), and the terminal
-exercise page lost its "Complete this chapter path" label. Composer re-score is
-the next gate; do not treat the fixes as an ACCEPT.
+**Composer re-score (2026-07-30) — Shell ACCEPT at `e4c6a8b`:**
+[`docs/activity-quality/SCORECARD-shell-rescore-2026-07-30.md`](docs/activity-quality/SCORECARD-shell-rescore-2026-07-30.md).
+Mean **4.1/5**; F1/F5/F7 pass; P0 clear. First pass REJECT at `237d74f` is
+superseded for fixtures 01/02/10. Choice / Matching / Speaking spectacular
+passes may proceed in cluster order; next gate is freezing the representative
+Mayo run.
 
 ## Work completed
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-07-30 | **Composer Shell re-score — ACCEPT.** Fixtures 01/02/10 at `e4c6a8b`. Mean 4.1/5; D2 5, D7 5; F1/F5/F7 pass; P0 clear. Four targeted UI tests pass (repair window, matching unlock, record primacy, mic escape); largest Dynamic Type on all three fixtures; cold-open and mic-denied screenshots in `tmp/exercise-screenshots/rescore-2026-07-30/`. Residual: D8/D9 Reduce Motion and full VoiceOver not re-run. Unblocks freeze-the-representative-Mayo-run. | `docs/activity-quality/SCORECARD-shell-rescore-2026-07-30.md`, `STATUS.md` |
 | 2026-07-30 | **Shell scorecard punch list implemented; two 237d74f bar regressions found and fixed.** All five Kimi items landed in the county shell: Record/Stop owns the ink slot until compare with a quiet no-recording escape (D2/F7); listen-choose answers from cold open (D1/F1); selection families follow the D27 repair window — first wrong carries the rationale on the affected row and struggle fires only when the next touch fails to self-correct, matching never leaves its brief on-target note (D3/D5/F1/F5); matching is a single-column thumb board and the Mayo draft's 5-pair board is re-authored to four with ≤4 pairs enforced in both validators (D4/F5). Verification also exposed two regressions from `237d74f`: the bottom-bar Check published its action then had it overwritten nil by a state sync (builders advanced without grading), and the terminal exercise page lost "Complete this chapter path". Builder banks now keep placeholders so tiles never slide mid-task. Full simulator suite passes on iPhone 17 Pro (42 unit, 19 UI, incl. new repair-window, matching-unlock and record-primacy tests); 45 Python tests pass; changed screens inspected light, dark, and at largest Dynamic Type. Awaiting Composer re-score; not an ACCEPT. | `ios/AnTuras/CountyExerciseSystem.swift`, `CountyStoryExperienceView.swift`, `CountyStoryPack.swift`, `content/mayo/grainne-1593.pack.draft.json`, `tools/validate_county_pack.py`, `tools/tests/`, `ios/AnTurasUITests/AtlasFlowUITests.swift` |
 | 2026-07-30 | **D28 chapter-opening Flow density; existing loops and stills wired.** One muted ambient hero per chapter opening; still→motion pipeline; evidence scans stay still. Wired unused Mayo Rockfleet + galley videos, Mayo draft openings to existing atmosphere stills (rev 7), Dublin's four remaining openings to catalog stills, Meath Ch1 to Boyne ford still, and the bundled Rockfleet proof to `video.mayo-rockfleet-sea-surge`. MEDIA-AUDIT now carries Batches A–C for Flow spend. Does not clear rights or generate new Flow clips in-repo. | `docs/DECISIONS.md` D28, `docs/MEDIA-AUDIT.md`, `content/mayo/`, `tools/build_phase5_county_drafts.py`, `ios/AnTuras/Resources/CountyStories/` |
 | 2026-07-30 | **First Composer Shell scorecard — REJECT.** Fixtures 01 listen-choose, 02 matching, 10 record-compare against commit `237d74f`. Mean 3.0/5; fails D2 (speaking primary inverted), residual D3 friction, F1/F5/F7 contracts. Board-lock Retry P0 already cleared; listen-choose gate and Record primacy remain. Kimi punch list: D1 D2 D3 D4 D5 F1 F5 F7. No family spectacular pass until Shell ACCEPT. | `docs/activity-quality/SCORECARD-shell-2026-07-30.md`, `STATUS.md`, `docs/README.md` |
@@ -344,46 +342,37 @@ the next gate; do not treat the fixes as an ACCEPT.
 
 ## Immediate next steps (learning-mechanics foundation, then rebuild Phases 4–6)
 
-1. **Re-score the Shell cluster** — the punch list
-   D1 D2 D3 D4 D5 F1 F5 F7 from
-   [`docs/activity-quality/SCORECARD-shell-2026-07-30.md`](docs/activity-quality/SCORECARD-shell-2026-07-30.md)
-   is implemented (Record primacy, ungated listen-choose, D27 repair window,
-   brief matching unlock, thumb-native board, on-target diagnostics, ≤4-pair
-   authorship and validator enforcement), with UI tests for each behavior and a
-   green full suite. Composer re-scores fixtures 01/02/10 against the new shell;
-   no Choice/Matching/Speaking spectacular pass until Shell ACCEPT.
-2. **Freeze the representative Mayo run** — use the selected D26 shell with the Clew
+1. **Freeze the representative Mayo run** — use the selected D26 shell with the Clew
    Bay fixtures and record the exact listening, matching, construction, typing,
    conversation, speaking, comprehension, completion, and contextual-review sequence.
    Decide which local response, correction, scaffold-removal, motion, and spatial
    details from the iOS studies are retained; do not reopen the architecture choice.
    Grade craft against [`docs/ACTIVITY-QUALITY-SPEC.md`](docs/ACTIVITY-QUALITY-SPEC.md).
-3. **Implement the shared state engine and activity shell** — centralise attempt,
+2. **Implement the shared state engine and activity shell** — centralise attempt,
    diagnostic, hint/recovery, retry, completion, persistence, focus, accessibility
    announcements, and exactly-once memory events before migrating production packs.
-   Finish remaining Shell-cluster gates from the scorecard before parallel family polish.
-4. **Operate the complete representative run** — prove the selected shell end to end
+3. **Operate the complete representative run** — prove the selected shell end to end
    with incorrect and recovery paths, audio fallback, keyboard/fadas, microphone
    denial, interruption/resume, and fixture-only completion.
-5. **Migrate the activity families in bounded groups** — recognition; construction
+4. **Migrate the activity families in bounded groups** — recognition; construction
    and production; contextual use, including grammar discovery and radio; then
    contextual mistake review, **Words you carry**, and capability-led completion.
    Each group must pass its gallery and accessibility matrix before the next spreads.
-6. **Harden the authored contract, schema, memory handoff, and validators** — mirror
+5. **Harden the authored contract, schema, memory handoff, and validators** — mirror
    Swift and Python rules, prove deterministic debt-free review behavior, preserve
    old progress, and add failing fixtures for every family and contract invariant.
-7. **Run the foundation gate** — complete automated transition, schema, persistence,
+6. **Run the foundation gate** — complete automated transition, schema, persistence,
    UI, branching, offline, and failure checks plus direct simulator, VoiceOver,
    appearance, contrast, motion, audio, microphone, keyboard/fada, and physical-device
    verification. Record the result before spreading the system.
-8. **Migrate one production Mayo slice, then decide whether to spread** — verify both
+7. **Migrate one production Mayo slice, then decide whether to spread** — verify both
    modes, progress preservation, memory events, collection handoff, and optional
    review. Resume broader county integration only after this slice and the foundation
    pass without private family-specific exceptions.
-9. **Resume county review and integration only after the foundation passes** — clear
+8. **Resume county review and integration only after the foundation passes** — clear
    Mayo's history, pedagogy, audio, and rights gates; review Offaly, Dublin, and Meath
    independently; then run the four-county tester-readiness gate.
-10. **Preserve the Phase 2 test record** — add participant count and moderated-session
+9. **Preserve the Phase 2 test record** — add participant count and moderated-session
    notes if they exist; D20 deliberately does not invent them.
 
 ### Lower priority (unchanged)
