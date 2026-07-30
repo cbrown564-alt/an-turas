@@ -20,8 +20,7 @@ struct AtlasPrototypeView: View {
                     FirstRunIslandView(
                         onBegin: beginStory,
                         onOpenName: { path.append(.personalSearch(.name)) },
-                        onOpenPlace: { path.append(.personalSearch(.place)) },
-                        onOpenLearningComparison: { path.append(.learningComparison) }
+                        onOpenPlace: { path.append(.personalSearch(.place)) }
                     )
                 }
             }
@@ -86,25 +85,7 @@ struct AtlasPrototypeView: View {
                     atlas.atlasReviews[candidate.id] = .init(due: Date().addingTimeInterval(-60))
                 }
             }
-            if let flag = args.firstIndex(of: "--interaction-study"),
-               args.indices.contains(flag + 1),
-               let study = InteractionStudyID(rawValue: args[flag + 1]) {
-                path = [
-                    .interactionStudies,
-                    .interactionStudy(study.rawValue),
-                ]
-            } else if args.contains("--interaction-studies") {
-                path = [.interactionStudies]
-            } else if let flag = args.firstIndex(of: "--learning-prototype"),
-               args.indices.contains(flag + 1),
-               let direction = LearningPrototypeDirection(rawValue: args[flag + 1]) {
-                path = [
-                    .learningComparison,
-                    .learningPrototype(direction.rawValue),
-                ]
-            } else if args.contains("--learning-comparison") {
-                path = [.learningComparison]
-            } else if args.contains("--exercise-gallery") {
+            if args.contains("--exercise-gallery") {
                 atlas.hasOpenedAtlas = true
                 path = [.exerciseGallery]
             } else if let flag = args.firstIndex(of: "--county-pack"),
@@ -206,8 +187,7 @@ struct AtlasPrototypeView: View {
                 onOpenMayoStory: beginStory,
                 onOpenMayoDossier: { path.append(.mayoDossier) },
                 onOpenCountyStory: { path.append(.launchCountyStory($0)) },
-                onOpenCountyDossier: { path.append(.launchCountyDossier($0)) },
-                onOpenLearningComparison: { path.append(.learningComparison) }
+                onOpenCountyDossier: { path.append(.launchCountyDossier($0)) }
             )
             .tag(AtlasTab.story)
             .tabItem { Label("An Scéal", systemImage: "book.pages") }
@@ -265,18 +245,6 @@ struct AtlasPrototypeView: View {
             }
         case .exerciseGallery:
             CountyExerciseGalleryView()
-        case .learningComparison:
-            LearningMechanicsComparisonView()
-        case .learningPrototype(let id):
-            if let direction = LearningPrototypeDirection(rawValue: id) {
-                LearningPrototypeDestination(direction: direction)
-            }
-        case .interactionStudies:
-            InteractionStudyGalleryView()
-        case .interactionStudy(let id):
-            if let study = InteractionStudyID(rawValue: id) {
-                InteractionStudyDestination(study: study)
-            }
         case .firstTakeaway:
             FirstEncounterTakeawayView {
                 atlas.hasOpenedAtlas = true
@@ -362,10 +330,6 @@ enum AtlasRoute: Hashable {
     case grainnePerson
     case countyPack(String)
     case exerciseGallery
-    case learningComparison
-    case learningPrototype(String)
-    case interactionStudies
-    case interactionStudy(String)
     case firstTakeaway
     case evidence
     case fieldNote

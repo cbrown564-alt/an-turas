@@ -65,45 +65,97 @@ struct CountyNarrativeDisplayItem: Identifiable, Codable, Equatable {
     let symbol: String
 }
 
+/// The D27 activity layers. Response families satisfy the shared response contract;
+/// containers host or end activities and declare their own.
+///
+/// Families and containers not yet implemented — picture or map selection, listen and
+/// type, radio, contextual mistake review, **Words you carry** practice, and completion —
+/// arrive with their surfaces in the staged order in `STORY-LEARNING-REBUILD-PLAN.md`.
+/// They are deliberately absent here rather than declared without a surface.
 enum CountyExerciseFamily: String, Codable, CaseIterable {
-    case listenIdentify
-    case listenBuildSentence
+    case listenChoose
     case sentenceConstruction
     case fillGap
     case matching
-    case typing
-    case dialogue
-    case sequencing
-    case comprehension
-    case speaking
+    case freeTyping
+    case readRespond
+    case recordCompare
     case grammarDiscovery
-    case delayedRetrieval
+    case conversation
+
+    /// D27: containers host or end activities rather than being a way to answer, so they
+    /// do not satisfy the response contract and do not count toward family diversity.
+    var isContainer: Bool {
+        self == .conversation
+    }
 
     var title: String {
         switch self {
-        case .listenIdentify: return "Listen and identify"
-        case .listenBuildSentence: return "Listen and build"
+        case .listenChoose: return "Listen and identify"
         case .sentenceConstruction: return "Build a sentence"
         case .fillGap: return "Complete the sentence"
         case .matching: return "Match related language"
-        case .typing: return "Type the line"
-        case .dialogue: return "Complete the dialogue"
-        case .sequencing: return "Put it in order"
-        case .comprehension: return "Read the evidence"
-        case .speaking: return "Record and compare"
+        case .freeTyping: return "Type the line"
+        case .readRespond: return "Read the evidence"
+        case .recordCompare: return "Record and compare"
         case .grammarDiscovery: return "Notice the pattern"
-        case .delayedRetrieval: return "Bring it back"
+        case .conversation: return "Take your turn"
+        }
+    }
+
+    /// D27: single-choice families check on selection and carry Continue as the primary
+    /// action. Multi-part responses stay editable until an explicit Check.
+    var checksOnSelection: Bool {
+        switch self {
+        case .listenChoose, .readRespond, .grammarDiscovery:
+            return true
+        case .fillGap:
+            // Only the choice-backed variant; a typed gap keeps its Check.
+            return true
+        case .sentenceConstruction, .matching, .freeTyping, .recordCompare, .conversation:
+            return false
         }
     }
 
     var isActiveProduction: Bool {
         switch self {
-        case .listenBuildSentence, .sentenceConstruction, .typing, .dialogue,
-             .sequencing, .speaking, .delayedRetrieval:
+        case .sentenceConstruction, .freeTyping, .recordCompare, .grammarDiscovery,
+             .conversation:
             return true
-        default:
+        case .listenChoose, .fillGap, .matching, .readRespond:
             return false
         }
+    }
+
+    /// Deterministic migration from the pre-D27 schema-2 vocabulary. `sequencing` and
+    /// `delayedRetrieval` were absorbed as authored uses, `listenBuildSentence` folds into
+    /// audio-prompted construction, and `dialogue` merges into `conversation`.
+    static func migratingLegacyRawValue(_ raw: String) -> CountyExerciseFamily? {
+        switch raw {
+        case "listenIdentify": return .listenChoose
+        case "listenBuildSentence", "sequencing": return .sentenceConstruction
+        case "typing", "delayedRetrieval": return .freeTyping
+        case "dialogue": return .conversation
+        case "comprehension": return .readRespond
+        case "speaking": return .recordCompare
+        default: return CountyExerciseFamily(rawValue: raw)
+        }
+    }
+
+    init(from decoder: Decoder) throws {
+        let raw = try decoder.singleValueContainer().decode(String.self)
+        guard let migrated = Self.migratingLegacyRawValue(raw) else {
+            throw DecodingError.dataCorrupted(
+                .init(codingPath: decoder.codingPath,
+                      debugDescription: "unknown exercise family \(raw)")
+            )
+        }
+        self = migrated
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(rawValue)
     }
 }
 
@@ -144,6 +196,11 @@ struct CountyExercisePair: Identifiable, Codable, Equatable {
 
 struct CountyExercise: Codable, Equatable {
     let family: CountyExerciseFamily
+    /// D27: a pedagogical purpose achieved by configuring an existing family rather than
+    /// by introducing a new one — `ordering`, `audioPrompted`, `delayedRecall`. It counts
+    /// separately from its parent family in the monotony cap, because it is not the same
+    /// experience for the learner.
+    let authoredUse: String?
     let objective: String
     let prompt: String
     let answer: String
@@ -425,7 +482,8 @@ enum CountyStoryPackValidator {
                    (correctOptions.count != 1 || Set(exercise.options.map { $0.text.lowercased() }).count != exercise.options.count) {
                     throw CountyStoryPackError.duplicateAnswer(page.id)
                 }
-                if [.listenIdentify, .listenBuildSentence, .speaking].contains(exercise.family) {
+                let audioFamilies: Set<CountyExerciseFamily> = [.listenChoose, .recordCompare]
+                if audioFamilies.contains(exercise.family) {
                     let audioResources = page.resourceIDs.compactMap { resources[$0] }.filter { $0.kind == .audio }
                     guard exercise.audioText != nil, !audioResources.isEmpty else {
                         throw CountyStoryPackError.missingRequiredAudio(page.id)
@@ -460,11 +518,19 @@ enum CountyStoryPackValidator {
         let exercises = pack.pages.compactMap(\.exercise)
         if pack.enforceLearningQuality, !exercises.isEmpty {
             let distribution = Dictionary(grouping: exercises, by: \.family).mapValues(\.count)
-            guard distribution.count >= 7 else {
-                throw CountyStoryPackError.exerciseDistribution("A learning path needs at least seven mechanic families.")
+            // D27: percentages run over every activity page, containers included, because
+            // a conversation genuinely carries production load. Diversity counts response
+            // families only, so a pack cannot satisfy it by stacking containers.
+            let familyDiversity = distribution.keys.filter { !$0.isContainer }.count
+            guard familyDiversity >= 7 else {
+                throw CountyStoryPackError.exerciseDistribution("A learning path needs at least seven response families.")
             }
             let total = Double(exercises.count)
-            guard Double(distribution.values.max() ?? 0) / total <= 0.25 else {
+            // The monotony cap measures what the learner actually does, so it counts a
+            // declared authored use separately from its parent family (D27).
+            let byUse = Dictionary(grouping: exercises, by: { $0.authoredUse ?? $0.family.rawValue })
+                .mapValues(\.count)
+            guard Double(byUse.values.max() ?? 0) / total <= 0.25 else {
                 throw CountyStoryPackError.exerciseDistribution("One exercise family exceeds 25 percent of the path.")
             }
             guard Double(exercises.filter(\.operatesOnSentence).count) / total >= 0.5 else {
@@ -476,7 +542,7 @@ enum CountyStoryPackValidator {
             guard Double(exercises.filter(\.recognitionMultipleChoice).count) / total <= 0.25 else {
                 throw CountyStoryPackError.exerciseDistribution("Recognition multiple choice exceeds 25 percent of the path.")
             }
-            let singleWordListening = exercises.filter { $0.family == .listenIdentify && !$0.operatesOnSentence }.count
+            let singleWordListening = exercises.filter { $0.family == .listenChoose && !$0.operatesOnSentence }.count
             guard Double(singleWordListening) / total <= 0.1 else {
                 throw CountyStoryPackError.exerciseDistribution("Single-word listen-and-pick exceeds 10 percent of the path.")
             }

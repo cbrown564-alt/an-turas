@@ -47,7 +47,7 @@ Each county is authored as one ordered sequence of stable pages, then filtered i
 
 The learner chooses a mode at the county opening and may change it without restarting. Shared pages preserve one completion record. Finishing Story mode records that the account was read and opens the next county. Only completing Learning mode turns the county gold, moves its 20 words into **Words you carry**, and makes them eligible for later review.
 
-Exercises are calm, full-screen tasks interspersed with story pages. They use listening, sentence building, fill-in-the-blank, matching, typing, dialogue, comprehension, sequencing, discovery, delayed recall, and ungraded record-and-compare speaking. The product borrows the interaction quality and variety of the strongest language apps without adopting their points, hearts, streaks, leagues, confetti, or reward economies.
+Exercises are calm, full-screen tasks interspersed with story pages. They use listening, sentence building, fill-in-the-blank, matching, typing, conversation, comprehension, grammar discovery, and ungraded record-and-compare speaking. The product borrows the interaction quality and variety of the strongest language apps without adopting their points, hearts, streaks, leagues, confetti, or reward economies.
 
 ### Learning activity system
 
@@ -57,7 +57,11 @@ learning an An Turas-specific interaction. Product distinction comes from the re
 story, Irish, place, audio, evidence, feedback, and visual system—not from making a
 routine response mechanically novel.
 
-The core activity set is:
+The system has three layers: one **activity anatomy**, ten **response families**, and
+five **containers**. D27 owns the layers; this section states what each is for.
+
+Ten response families are ways for the learner to answer. Each satisfies the same
+response contract, so none needs a private lifecycle:
 
 - picture or map selection when a real visual communicates meaning precisely;
 - sentence construction from words or meaningful multiword units;
@@ -67,17 +71,24 @@ The core activity set is:
 - listen and type;
 - ungraded record-and-compare speaking;
 - matching for establishing a distinction;
-- authored dialogue completion;
-- read or listen and respond, increasingly in Irish;
-- radio-style listening built from reviewed narration, oral history, or archival
+- read or listen and respond, increasingly in Irish; and
+- grammar discovery, which reveals worked cases in authored order and withholds the
+  rule until the learner has produced it.
+
+Five containers host or end activities rather than being a way to answer, so each has
+its own contract:
+
+- **conversation**: multi-turn authored exchange, owning turns, branching, and resume.
+  Its setting is either historical-bounded, where the learner stays themselves and the
+  evidence limit holds, or present-day;
+- **radio-style listening** built from reviewed narration, oral history, or archival
   reading;
-- pre-authored branching roleplay for present-day or otherwise bounded exchanges;
-- contextual mistake review;
+- **contextual mistake review**;
 - active practice from **Words you carry**; and
 - a calm completion screen that states what the learner can now understand or say and
   what returns to the atlas.
 
-These are reusable activity families, not fifteen isolated visual concepts. They share
+These are reusable layers, not fifteen isolated visual concepts. Every activity shares
 one full-screen shell, response lifecycle, diagnostic feedback model, accessibility
 behavior, and completion contract. A family may take on the imagery or evidence of the
 current story, but the response method remains stable enough to become familiar.
@@ -92,8 +103,7 @@ Matching, picture selection, word tiles, and fill-in-the-blank establish or supp
 learning; they do not by themselves prove recall or production. The authored county
 sequence must still move each target through meaningful introduction, retrieval,
 phrase or sentence use, and later reuse. Speaking never receives a pronunciation
-score. Branching roleplay is pre-written and reviewed rather than generated in real
-time.
+score. Conversation is pre-written and reviewed rather than generated in real time.
 
 Image-led and text-led screens are equal expressions of this system. An image is used only when it contributes historical, geographical, emotional, or conceptual meaning. When imagery is present it is treated as a field for composition—not as a sticker, thumbnail, or card illustration—and all interface copy remains live, accessible app text. When imagery is absent, scale, measure, rhythm, tonal contrast, and a clear editorial hierarchy must provide the same sense of intention; placeholder decoration is not a substitute.
 

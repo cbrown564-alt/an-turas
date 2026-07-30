@@ -32,20 +32,23 @@ from pathlib import Path
 SCHEMA_VERSION = 2
 TARGET_WORD_COUNT = 20
 
-# Exercise families whose learner action is active production (mirror of
+# D27 containers: these host or end activities rather than being a way to answer, so
+# they count toward the percentage quotas but never toward family diversity (mirror of
+# CountyExerciseFamily.isContainer in Swift).
+CONTAINERS = {"conversation"}
+
+# Exercise families and containers whose learner action is active production (mirror of
 # CountyExerciseFamily.isActiveProduction in Swift).
 ACTIVE_PRODUCTION_FAMILIES = {
-    "listenBuildSentence",
     "sentenceConstruction",
-    "typing",
-    "dialogue",
-    "sequencing",
-    "speaking",
-    "delayedRetrieval",
+    "freeTyping",
+    "recordCompare",
+    "grammarDiscovery",
+    "conversation",
 }
 
 # Families that must carry bundled audio to run.
-AUDIO_FAMILIES = {"listenIdentify", "listenBuildSentence", "speaking"}
+AUDIO_FAMILIES = {"listenChoose", "recordCompare"}
 
 _FADA = str.maketrans("áéíóúÁÉÍÓÚ", "aeiouaeiou")
 
@@ -282,11 +285,22 @@ def validate(envelope: dict) -> PackReport:
         by_family: dict[str, int] = {}
         for ex in exercises:
             by_family[ex.get("family")] = by_family.get(ex.get("family"), 0) + 1
-        if len(by_family) < 7:
+        # D27: percentages run over every activity page, containers included, because a
+        # conversation genuinely carries production load. Diversity counts response
+        # families only, so a pack cannot satisfy it by stacking containers.
+        family_diversity = len([f for f in by_family if f not in CONTAINERS])
+        if family_diversity < 7:
             raise PackValidationError(
-                "exerciseDistribution", "a learning path needs at least seven mechanic families"
+                "exerciseDistribution", "a learning path needs at least seven response families"
             )
-        if max(by_family.values()) / total > 0.25:
+        # The monotony cap measures what the learner actually does, so it counts a
+        # declared authored use separately from its parent family (D27): ordering and
+        # audio-prompted construction are not the same experience as plain tile building.
+        by_use: dict[str, int] = {}
+        for ex in exercises:
+            key = ex.get("authoredUse") or ex.get("family")
+            by_use[key] = by_use.get(key, 0) + 1
+        if max(by_use.values()) / total > 0.25:
             raise PackValidationError(
                 "exerciseDistribution", "one exercise family exceeds 25 percent of the path"
             )
@@ -305,7 +319,7 @@ def validate(envelope: dict) -> PackReport:
         single_word_listen = sum(
             1
             for e in exercises
-            if e.get("family") == "listenIdentify" and not e.get("operatesOnSentence")
+            if e.get("family") == "listenChoose" and not e.get("operatesOnSentence")
         )
         if single_word_listen / total > 0.1:
             raise PackValidationError(

@@ -384,3 +384,54 @@ final class AtlasProgressTests: XCTestCase {
         XCTAssertGreaterThan(clean.due, recovery.due)
     }
 }
+
+/// D27: the activity layers, the legacy-vocabulary migration, and the commit model.
+final class CountyExerciseFamilyLayerTests: XCTestCase {
+    func testLegacyFamiliesMigrateDeterministically() {
+        XCTAssertEqual(CountyExerciseFamily.migratingLegacyRawValue("listenIdentify"), .listenChoose)
+        XCTAssertEqual(CountyExerciseFamily.migratingLegacyRawValue("comprehension"), .readRespond)
+        XCTAssertEqual(CountyExerciseFamily.migratingLegacyRawValue("speaking"), .recordCompare)
+        // Absorbed as authored uses rather than surviving as families.
+        XCTAssertEqual(CountyExerciseFamily.migratingLegacyRawValue("sequencing"), .sentenceConstruction)
+        XCTAssertEqual(CountyExerciseFamily.migratingLegacyRawValue("listenBuildSentence"), .sentenceConstruction)
+        XCTAssertEqual(CountyExerciseFamily.migratingLegacyRawValue("delayedRetrieval"), .freeTyping)
+        // Dialogue and roleplay are one container.
+        XCTAssertEqual(CountyExerciseFamily.migratingLegacyRawValue("dialogue"), .conversation)
+        XCTAssertNil(CountyExerciseFamily.migratingLegacyRawValue("mascotCheer"))
+    }
+
+    func testLegacyRawValueDecodesThroughTheMigration() throws {
+        let decoded = try JSONDecoder().decode(
+            [CountyExerciseFamily].self,
+            from: Data(#"["listenIdentify","sequencing","dialogue"]"#.utf8)
+        )
+        XCTAssertEqual(decoded, [.listenChoose, .sentenceConstruction, .conversation])
+    }
+
+    func testUnknownFamilyIsRejectedRatherThanDefaulted() {
+        XCTAssertThrowsError(
+            try JSONDecoder().decode(
+                [CountyExerciseFamily].self,
+                from: Data(#"["hearts"]"#.utf8)
+            )
+        )
+    }
+
+    func testConversationIsTheOnlyContainerAndStillCountsAsProduction() {
+        let containers = CountyExerciseFamily.allCases.filter(\.isContainer)
+        XCTAssertEqual(containers, [.conversation])
+        // A container carries real production load even though it is not a family.
+        XCTAssertTrue(CountyExerciseFamily.conversation.isActiveProduction)
+        XCTAssertEqual(CountyExerciseFamily.allCases.filter { !$0.isContainer }.count, 8)
+    }
+
+    func testOnlySingleChoiceFamiliesCheckOnSelection() {
+        XCTAssertTrue(CountyExerciseFamily.listenChoose.checksOnSelection)
+        XCTAssertTrue(CountyExerciseFamily.readRespond.checksOnSelection)
+        // Multi-part responses stay editable until an explicit Check.
+        XCTAssertFalse(CountyExerciseFamily.sentenceConstruction.checksOnSelection)
+        XCTAssertFalse(CountyExerciseFamily.matching.checksOnSelection)
+        XCTAssertFalse(CountyExerciseFamily.freeTyping.checksOnSelection)
+        XCTAssertFalse(CountyExerciseFamily.conversation.checksOnSelection)
+    }
+}

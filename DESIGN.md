@@ -274,16 +274,22 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
   viewport. At accessibility sizes, allow the page to scroll as one coherent
   composition without hiding the task, current response, verdict, or action.
 - Use a shared state sequence: unanswered → response formed → checked → diagnostic
-  feedback or complete → retry or continue. Selection remains editable until Check.
-  Feedback appears beside the response area, names what did or did not fit in plain
-  language, and never relies on color, shake, sound, or haptics alone.
+  feedback or complete → retry or continue. Feedback appears beside the response area,
+  names what did or did not fit in plain language, and never relies on color, shake,
+  sound, or haptics alone.
+- Single-choice families—listen and choose, picture or map selection, and single-answer
+  fill-in-the-blank—check on selection, so the primary action carries Continue rather
+  than Check. Multi-part families keep an explicit Check and stay editable until it is
+  pressed. A wrong selection shows its diagnostic immediately and stays repairable: the
+  next touch changes the answer in place rather than restarting the task.
 - Keep instructions, controls, verdicts, and progress in SF Pro. The story serif may
   carry Irish, a quotation, or a source excerpt inside the working area, but it does
   not turn routine interface copy into an editorial display.
-- The response family supplies the working area, not a new page composition:
-  picture or map choice; sentence tiles; native text input; cloze; audio choice or
-  dictation; record and compare; matching; dialogue; comprehension; audio story;
-  authored branching roleplay; mistake review; word practice; or completion.
+- The response family supplies the working area, not a new page composition: picture or
+  map choice; sentence tiles; native text input; cloze; audio choice or dictation;
+  record and compare; matching; comprehension; or progressive reveal. A container—
+  conversation, radio, mistake review, word practice, or completion—arranges families
+  across turns or segments; it does not invent a new page composition either.
 - Listening may begin with a word, but phrase and sentence work becomes the default
   after introduction. Recognition formats provide entry and diagnosis; the county
   sequence must later require retrieval or production.
@@ -295,10 +301,13 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
   the target.
 - Matching is brief and purposeful: establish distinctions, then leave the matching
   surface. It is not a mastery screen and does not earn clean-recall credit by itself.
-- Dialogue and branching roleplay use authored, reviewed turns. Branches may respond
-  differently to the learner's choice, but no runtime model invents Irish or
-  historical participation. Historical dialogue never casts the learner as an
-  undocumented actor.
+- Conversation uses authored, reviewed turns. Branches may respond differently to the
+  learner's choice, but no runtime model invents Irish or historical participation. A
+  historical-bounded conversation never casts the learner as an undocumented actor; a
+  present-day one lets them speak as themselves.
+- Grammar discovery reveals worked cases in the authored order and withholds the rule
+  until the learner has produced it. The reveal is the response area, not decoration
+  around one.
 - Radio-style activities keep audio primary, provide segment replay and a visible
   transcript or meaning route, and interrupt only when a response improves attention
   or comprehension.

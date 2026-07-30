@@ -418,23 +418,39 @@ layout, typography, or colors.
 
 ##### Core response families
 
+These ten families satisfy the shared response contract. The five containers follow in
+their own table; D27 owns the distinction.
+
 | Family | First implementation requirement | Learning boundary |
 | --- | --- | --- |
-| Picture or map selection | One meaningful image, object, document detail, or map region per option; semantic selection group; authored rationale per distractor | Use only when the visual carries meaning. Generic illustration is not an acceptable substitute. |
+| Picture or map selection | One meaningful image, object, document detail, or map region per option; semantic selection group; authored rationale per distractor; checks on selection | Use only when the visual carries meaning. Generic illustration is not an acceptable substitute. |
 | Sentence construction | Tap to add and remove; reorder without drag; preserve meaningful multiword units; VoiceOver move actions | Supported construction must later lead to recall or production without the visible answer. |
 | Free typed production | Native text input; fada toolbar; declared normalization; precise fada and structure diagnostics; keyboard-safe action | Accept harmless declared variants. Do not silently strip meaningful orthographic distinctions. |
-| Fill-in-the-blank | One consequential missing unit; editable choice or typed response; rationale for nearby alternatives | Do not blank a random token merely to create a question. |
-| Listen and choose | Bundled audio, replay, playback state, authored non-audio fallback, misconception-based options | Recognition is introduction or diagnosis, not complete word learning. |
+| Fill-in-the-blank | One consequential missing unit; editable choice or typed response; rationale for nearby alternatives; single-answer choice variants check on selection | Do not blank a random token merely to create a question. |
+| Listen and choose | Bundled audio, replay, playback state, authored non-audio fallback, misconception-based options; checks on selection | Recognition is introduction or diagnosis, not complete word learning. |
 | Listen and type | Bundled audio and replay plus native typing; distinguish listening from spelling errors in feedback | Do not fail comprehension solely because first-exposure spelling is incomplete. |
 | Record and compare | Model replay, record, stop, learner playback, re-record, compare or continue; ephemeral local audio; denied-microphone continuation | No score, pronunciation verdict, retained recording, or gated progress. |
 | Matching | Tap one item then its partner; non-drag and VoiceOver path; pair-level feedback and completion | Use briefly to establish a distinction. Matching alone does not earn clean-recall credit. |
-| Authored dialogue | Clear preceding speaker and turn; every acceptable response authored; pragmatic and grammatical feedback | Present-day or otherwise bounded exchanges only. The learner remains themselves. |
 | Read or listen and respond | Short reviewed passage; response increasingly stays in Irish; route back to relevant context | Questions test meaning, implication, or evidence—not whether the learner noticed the previous sentence. |
+| Grammar discovery | Reveal worked cases in the authored order; withhold the rule until a produce step is answered; make the contrast explicit on completion | Recovery may expose one worked case but still requires a fresh application. |
+
+##### Containers
+
+A container hosts or ends activities rather than being a way to answer, so it does not
+satisfy the response contract. Each declares its own.
+
+| Container | First implementation requirement | Learning boundary |
+| --- | --- | --- |
+| Conversation | Finite reviewed node graph; clear preceding speaker and turn; learner choice or bounded input selects a branch; every acceptable response authored; pragmatic and grammatical feedback; deterministic resume and completion | No real-time generated Irish. A historical-bounded setting never invents participation in history; the learner remains themselves. |
 | Radio-style listening | Audio-primary screen, segment replay, transcript or meaning route, sparse comprehension interruptions | Use reviewed narration, oral history, or clearly labelled performed archival material. |
-| Pre-authored branching roleplay | Finite reviewed node graph; learner choice or bounded input selects a branch; deterministic resume and completion | No real-time generated Irish and no invented participation in history. |
 | Contextual mistake review | Reconstruct the exact sound, sentence, place, or misconception that caused difficulty; bounded optional run | No accumulated debt, overdue count, broken-heart framing, or loss of county progress. |
 | **Words you carry** practice | Review a word through its first place, audio, sentence, target capability, and later uses | Do not reduce carried words to a context-free vocabulary inventory. |
 | Completion | State capabilities gained, carried words or evidence, next story choice, and any optional later review | No XP, accuracy theatre, confetti, mascot reaction, streak threat, or artificial delay. |
+
+**Setting** is authored metadata on a conversation, not a structural difference:
+*historical-bounded*, where the learner stays themselves and the evidence limit holds,
+or *present-day*, where they converse freely. A conversation whose branches never change
+a later partner line is a single-turn exercise and must be authored as one.
 
 ##### Representative slice flow
 
@@ -447,7 +463,10 @@ The first end-to-end Mayo proof uses the selected architecture in this order:
 3. **Sentence construction:** build *Is as Maigh Eo mé* from meaningful units.
 4. **Free typed production:** retrieve the same line after the tiles and labels are
    removed.
-5. **Authored dialogue:** answer *Cárb as tú?* with an accepted origin response.
+5. **Conversation:** a present-day Clew Bay exchange of at least three turns that opens
+   with *Cárb as tú?* and takes the origin line as the learner's answer. At least one
+   branch must change a later partner line, and the run must survive interruption and
+   resume at the current node.
 6. **Record and compare:** say the origin line beside the reviewed model without a
    score.
 7. **Read or listen and respond:** answer one short Irish comprehension task grounded
@@ -457,26 +476,38 @@ The first end-to-end Mayo proof uses the selected architecture in this order:
 9. **Contextual review fixture:** re-enter one struggled target from its original
    sound, coast, or sentence after a deterministic test delay.
 
+The conversation is deliberately the hardest container and sits inside the first proof
+rather than after it. The shared runtime must meet multi-turn state, branching, and
+resume before the abstraction is extracted; deriving it only from single-screen families
+and fitting the containers afterwards would invalidate the group gates already passed.
+Radio-style listening is the easier segment case and follows in group 3.
+
+The Mayo fixture is Clew Bay in 1593, so its conversation cannot be historical-bounded:
+a present-day setting is the only one that does not cast the learner into undocumented
+history. It also keeps the conversation distinct from step 4 rather than repeating the
+same single answer in a new frame.
+
 This sequence is a fixture-level implementation proof. It does not add these pages to
 the production Mayo pack or claim that the sequence has passed pedagogue or learner
 validation.
 
 ##### Family grouping for migration
 
-Implement and verify response families in bounded groups:
+Implement and verify in bounded groups:
 
 1. **Recognition:** picture or map selection, fill-in-the-blank, listen and choose,
    matching.
 2. **Construction and production:** sentence construction, free typing, listen and
    type, record and compare.
-3. **Contextual use:** authored dialogue, read or listen and respond, radio-style
-   listening, pre-authored branching roleplay.
+3. **Contextual use:** read or listen and respond, grammar discovery, and radio-style
+   listening. Conversation is already proven by the representative slice; this group
+   extends it to the remaining authored settings.
 4. **Consolidation:** contextual mistake review, **Words you carry** practice, and
    completion.
 
-A group is complete only when every family uses the shared runtime, authored contract,
-gallery, persistence rules, and accessibility behavior. Do not mark a group complete
-because one happy path renders.
+A group is complete only when every family and container in it uses the shared runtime,
+authored contract, gallery, persistence rules, and accessibility behavior. Do not mark a
+group complete because one happy path renders.
 
 ##### Implementation ownership
 
@@ -491,7 +522,7 @@ Keep each concern in one place:
 | Persisted learner state and review handoff | existing progress and personal-foundation stores plus `docs/DRILL.md`; persist bounded attempt/support signals, never recordings or unnecessary answer text. |
 | Swift validation | `CountyStoryPack` decoding and validation tests in `ios/AnTurasTests/`. |
 | Offline authoring validation | `tools/validate_county_pack.py` and `tools/tests/test_validate_county_pack.py`; keep its accepted and rejected fixtures aligned with Swift. |
-| Interaction and failure gallery | evolve the internal `CountyExerciseGalleryView` or replace it with one manifest-driven activity gallery; the disposable `Prototypes/InteractionStudies` gallery remains research-only. |
+| Interaction and failure gallery | evolve the internal `CountyExerciseGalleryView` or replace it with one manifest-driven activity gallery. The disposable study gallery was removed with the study code once D27 recorded the retained primitives. |
 | End-to-end UI verification | `ios/AnTurasUITests/`; cover the representative run, one state matrix per family group, exact resume, offline relaunch, keyboard, audio, microphone, and branching. |
 | Xcode project membership | `ios/project.yml`; regenerate the project after adding, moving, or removing source, resource, target, or build-setting entries. |
 
@@ -571,17 +602,14 @@ completion, accessibility announcements, and memory events remain shared.
 | --- | --- |
 | Listening and replay | Use bundled model audio, show a labelled Play/Replay control and playback state, prevent overlapping playback, and expose an authored non-audio route when playback is unavailable. A learner may replay without penalty. A text fallback marks the attempt as supported when it changes a listening objective. |
 | Picture and map choices | Use real content or a semantically accurate map region, expose each option as one labelled selection, provide text alternatives for meaningful visual detail, and map every distractor to an authored rationale. The family is unavailable when no visual representation improves meaning. |
-| Choices and fill gaps | Use one semantic selection group with 44-point rows. Selection is editable until Check. Every wrong option maps to an authored rationale or named misconception. Correctness is never exposed by color or option order alone. |
+| Choices and fill gaps | Use one semantic selection group with 44-point rows. Single-choice families check on selection and carry Continue as the primary action; multi-part responses stay editable until an explicit Check. Every wrong option maps to an authored rationale or named misconception. Correctness is never exposed by color or option order alone. |
 | Sentence tiles | Support tap-to-add, tap-to-remove, and deterministic reordering. VoiceOver offers equivalent add, remove, move earlier, and move later actions; dragging is optional. Multiword units remain atomic when the learning objective is syntax rather than spelling. |
 | Irish typing | Use native text input and the existing fada toolbar. Precomposed and combining Unicode forms compare equally; case, surrounding whitespace, and declared punctuation variants follow authored rules. Fadas are not stripped from correctness: a missing or misplaced fada produces a specific diagnostic unless the contract explicitly makes it irrelevant. Keyboard appearance or dismissal must not hide the task, feedback, or primary action. |
 | Matching | Support tap-one-then-tap-partner as the baseline. Any drag treatment has the same tap and VoiceOver alternative. A wrong pair remains identifiable for diagnostic feedback; completing one pair cannot accidentally complete or credit the whole set. |
-| Dialogue | Present the preceding turn and speaker clearly, allow every authored acceptable response, and explain pragmatic or grammatical fit. Dialogue never casts the learner as an undocumented historical participant. |
 | Comprehension | Test the story, source, or evidence limit already encountered. Feedback distinguishes what the evidence supports from inference or legend and offers a path back to the relevant page when useful. |
-| Radio-style listening | Keep playback and segment replay primary, expose progress without speed pressure, preserve an authored transcript or meaning route, and insert only sparse tasks that improve listening attention or comprehension. |
-| Authored branching roleplay | Decode a finite versioned node graph, preserve the current node across interruption, make every partner line and acceptable learner path reviewable before bundling, and route bounded free input only through authored intents. It never calls a runtime language model. |
-| Sequencing | Support selection plus move-earlier/move-later controls and VoiceOver adjustable actions. The objective declares whether order concerns Irish syntax, historical sequence, or evidence handling; feedback names the first meaningful break rather than only showing the final order. |
 | Grammar discovery | Reveal examples in the authored order, withhold the rule until the learner has attended or responded, and make the inferred contrast explicit on completion. Recovery may expose one worked case but still requires a fresh application. |
-| Delayed retrieval | Begin from a recall cue rather than a visible answer. Hints and recovery use the same support signals as every other family and never create a separate hidden scoring path. |
+| Conversation | Present the preceding turn and speaker clearly, allow every authored acceptable response, and explain pragmatic or grammatical fit. Decode a finite versioned node graph, preserve the current node across interruption, make every partner line and acceptable learner path reviewable before bundling, and route bounded free input only through authored intents. It never calls a runtime language model, and a historical-bounded setting never casts the learner as an undocumented historical participant. |
+| Radio-style listening | Keep playback and segment replay primary, expose progress without speed pressure, preserve an authored transcript or meaning route, and insert only sparse tasks that improve listening attention or comprehension. |
 | Record and compare speaking | Provide model play/replay, record, stop, learner playback, re-record, and compare/continue. There is no pronunciation score or pass/fail. Microphone denial explains the limitation and offers model-listen plus unrecorded self-comparison so progress is never trapped. Recordings are discarded when the exercise or app session ends unless the learner deliberately keeps listening within that exercise. |
 | Contextual mistake review | Recreate the target and misconception from the original exercise event, choose a bounded authored review form deterministically, explain why the item returned, and allow exit without penalty. |
 | **Words you carry** practice | Query by stable target id, preserve first encounter and later-use context, offer authored practice forms appropriate to the capability, and keep collection state distinct from scheduler state. |
@@ -753,7 +781,7 @@ Selected families add these payload requirements:
   cases;
 - radio-style listening declares ordered segment ids, audio, transcript or meaning
   fallback, and the sparse tasks attached to segment boundaries;
-- authored branching roleplay declares a versioned finite node graph, reviewed
+- conversation declares a versioned finite node graph, its setting, reviewed
   partner lines, accepted learner intents or responses, entry, terminal nodes, and
   deterministic resume behavior;
 - contextual mistake review references the original exercise, target, and
@@ -777,14 +805,18 @@ when:
 - completion evidence is unavailable to that response component;
 - an audio-dependent task lacks bundled audio and its authored fallback;
 - a speaking exercise declares pronunciation correctness or stores audio;
-- a tile, matching, or sequencing task has no non-drag interaction;
+- a tile or matching task has no non-drag interaction;
 - a picture or map choice lacks meaningful alternative text, a stable region or
   source-cleared asset, or a rationale for any incorrect option;
 - a radio activity has an unreachable segment task, missing replay boundary, or no
   transcript or meaning route;
-- an authored branching roleplay contains an unreachable node, a non-terminal cycle
+- a conversation contains an unreachable node, a non-terminal cycle
   without an authored exit, an unreviewed line, an invalid resume target, or any
   runtime-generated language path;
+- a conversation declares no branch that changes a later partner line, which makes it a
+  single-turn exercise authored in the wrong shape;
+- a grammar-discovery activity reveals its rule before a produce step is answered, or
+  has no produce step at all;
 - a contextual-review activity cannot trace its target and misconception back to the
   original event;
 - a carried-word practice item names a target absent from the collection or copies
@@ -822,7 +854,7 @@ shared documented list so a pack cannot pass offline and fail after decoding.
    render every lifecycle state through dependency-injected audio, microphone,
    keyboard, appearance, contrast, and motion conditions.
 6. **Build the representative Mayo run.** Implement listen-and-choose, matching,
-   sentence construction, free typing, authored dialogue, record-and-compare,
+   sentence construction, free typing, a multi-turn conversation, record-and-compare,
    comprehension, completion, and one contextual-review return in the fixed sequence.
    Operate the complete run before extracting additional abstractions.
 7. **Complete the recognition group.** Add picture or map selection and
@@ -833,8 +865,8 @@ shared documented list so a pack cannot pass offline and fail after decoding.
    typing; add listen-and-type; finish record-and-compare permission, interruption,
    playback, privacy, and non-recording continuation. Pass software and hardware
    keyboard, Unicode, fada, audio, and microphone checks.
-9. **Complete the contextual-use group.** Harden authored dialogue and comprehension;
-   add radio-style listening and the versioned pre-authored branching-roleplay graph.
+9. **Complete the contextual-use group.** Harden comprehension and grammar discovery;
+   add radio-style listening and the remaining authored conversation settings.
    Verify reviewable branch coverage, interruption/resume, deterministic completion,
    transcript or meaning routes, and the prohibition on runtime-generated Irish.
 10. **Complete the consolidation group.** Connect contextual mistake review,
@@ -884,7 +916,7 @@ The sprint passes only when:
   updates, and never create a gate or overdue task count;
 - the gallery manifest proves complete component, state, failure, and environment
   coverage;
-- the authored branching-roleplay fixture proves every node and exit is reviewable,
+- the conversation fixture proves every node and exit is reviewable,
   deterministic, resumable, and free of runtime-generated Irish;
 - picture and map choices have meaningful visual content plus accessible text
   alternatives, and radio-style listening has segment replay plus an authored

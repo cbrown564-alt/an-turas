@@ -7,7 +7,6 @@ struct FirstRunIslandView: View {
     let onBegin: () -> Void
     var onOpenName: () -> Void = {}
     var onOpenPlace: () -> Void = {}
-    var onOpenLearningComparison: () -> Void = {}
 
     var body: some View {
         ScrollView {
@@ -60,20 +59,6 @@ struct FirstRunIslandView: View {
                 .buttonStyle(CarvePress())
                 .accessibilityLabel("Begin the story of Gráinne Ní Mháille in Mayo")
 
-                #if DEBUG
-                EditorialRule()
-                Button(action: onOpenLearningComparison) {
-                    Label("Compare learning prototypes", systemImage: "rectangle.3.group")
-                        .font(.headline)
-                        .foregroundStyle(Theme.moss)
-                        .frame(minHeight: 44)
-                }
-                .buttonStyle(CarvePress())
-                .accessibilityHint(
-                    "Opens the internal Clew Bay learning-mechanics comparison"
-                )
-                .accessibilityIdentifier("open-learning-prototypes")
-                #endif
             }
             .padding(.horizontal, 20)
             .padding(.top, 14)
@@ -749,7 +734,6 @@ struct CurrentStoryView: View {
     let onOpenMayoDossier: () -> Void
     let onOpenCountyStory: (String) -> Void
     let onOpenCountyDossier: (String) -> Void
-    let onOpenLearningComparison: () -> Void
 
     private var nextStory: LaunchCountyStory? {
         guard atlas.storyCompleted else { return nil }
@@ -766,10 +750,6 @@ struct CurrentStoryView: View {
                 } else {
                     completedRoad
                 }
-
-                #if DEBUG
-                prototypeComparisonEntry
-                #endif
             }
             .padding(20)
             .padding(.bottom, 28)
@@ -804,24 +784,6 @@ struct CurrentStoryView: View {
         }
     }
 
-    #if DEBUG
-    private var prototypeComparisonEntry: some View {
-        Group {
-            EditorialRule()
-            Button(action: onOpenLearningComparison) {
-                Label("Compare learning prototypes", systemImage: "rectangle.3.group")
-                    .font(.headline)
-                    .foregroundStyle(Theme.moss)
-                    .frame(minHeight: 44)
-            }
-            .buttonStyle(CarvePress())
-            .accessibilityHint(
-                "Opens the internal Clew Bay learning-mechanics comparison"
-            )
-            .accessibilityIdentifier("open-learning-prototypes")
-        }
-    }
-    #endif
 
     private func launchCurrent(_ story: LaunchCountyStory) -> some View {
         Group {

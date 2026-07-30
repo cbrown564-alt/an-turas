@@ -56,6 +56,30 @@ and `listenBuildSentence` remained live in `CountyExerciseFamily`, in
 exercises, while D26's list omitted them. `DRILL.md`'s `discover` projection likewise
 survived D26 unmentioned.
 
+**Retained study primitives.** The synthesis step D26 required is recorded here, so the
+disposable study code can be removed before the state engine is built. These transfer
+into the shared shell:
+
+- the response is the visual centre of the page;
+- a simple choice grades on selection, with a repair window before any struggle signal;
+- a wrong response stays editable and repair is the next touch;
+- the diagnostic attaches to the affected target, not only to a panel;
+- correct work survives repair;
+- a language object visibly loses its support rather than being replaced;
+- substantial response targets with a stable bottom action;
+- audio fallback lives inside the task, never on an error page; and
+- restart is fast enough to judge repetition honestly.
+
+Three questions from `INTERACTION-STUDIES-REPORT.md` stay open and belong to the shell
+build, not to another study: which supports recede within a task versus across later
+activities; the quiet An Turas vocabulary for sound and haptics; and where local in-place
+repair should override a generic feedback panel. They are answered by building the shell,
+and the report preserves the observations needed to answer them.
+
+Not retained: the three study views as a runtime, bespoke maps where a familiar choice
+communicates the same thing, study-local visual constants as global tokens, and any
+treatment of recognition or tile reconstruction as proof of free recall.
+
 **Consequences:** D26's rationale is restated as a consistency and taste argument rather
 than a learning-attention claim. Nothing tests whether familiar mechanics protect
 attention for Irish until the four-county tester-readiness gate, which remains the first
@@ -78,6 +102,10 @@ audio, rights, or tester gate.
 
 ## D26 — Adopt a familiar one-screen learning activity system (2026-07-30)
 
+**Status:** D27 supersedes the flat activity set below with three layers and records the
+family reconciliation. The anatomy, the familiarity principle, the reviewed-language
+boundary, and the ungraded-speaking rule remain active as written.
+
 **Decision:** Learning mode will use a stable **one screen, one task** activity
 architecture rather than treating every exercise as a bespoke editorial composition.
 Story pages remain authored, atmospheric, and free to vary with the account.
@@ -85,20 +113,16 @@ Activity pages use one familiar hierarchy: quiet progress and exit, optional sho
 context, one clear prompt, one dominant response area, one primary action,
 diagnostic feedback on the same screen, and one continue action.
 
-The core activity set is picture or map selection, sentence construction, free typed
-production, fill-in-the-blank, listen and choose, listen and type, ungraded
-record-and-compare speaking, matching, authored dialogue completion, read or listen
-and respond, radio-style listening, pre-authored branching roleplay, contextual
-mistake review, active practice from **Words you carry**, and calm capability-led
-completion. These correspond to reference activities 3–12, 14, 16, and 17–19 in
-`web/learning-activity-reference/index.html`; the titles and product rules, not the
-prototype numbering, are canonical.
+The core activity set was recorded here as fifteen items drawn from reference
+activities 3–12, 14, 16, and 17–19 in `web/learning-activity-reference/index.html`.
+D27 replaces that flat list with ten response families and five containers; the titles
+and product rules, not the prototype numbering, remain canonical.
 
 The interaction families share one shell, response lifecycle, feedback model,
 accessibility behavior, and completion contract. Their working areas differ, but
 routine controls do not adopt a new visual grammar on every screen. Recognition and
 supported-construction formats remain useful, but do not by themselves claim recall
-or production. Speaking remains ungraded. Branching roleplay is finite, pre-written,
+or production. Speaking remains ungraded. Authored conversation is finite, pre-written,
 reviewed, and bounded to plausible present-day or explicitly reconstructed contexts;
 it is not real-time generative conversation and never casts the learner into
 undocumented history.
@@ -106,10 +130,17 @@ undocumented history.
 **Why:** The 48-activity HTML field guide made the tradeoff operable. Even in
 deliberately limited visual form, the selected conventional activities made the task,
 response, feedback, and next action substantially clearer than the app's more bespoke
-exercise compositions. Familiarity here protects attention for Irish. An Turas earns
-its distinctiveness through real stories, place, evidence, reviewed language, audio,
-feedback, and its visual system—not by making learners decipher a novel control for
-each exercise.
+exercise compositions. An Turas earns its distinctiveness through real stories, place,
+evidence, reviewed language, audio, feedback, and its visual system—not by making
+learners decipher a novel control for each exercise. A familiar activity set also costs
+far less to build and maintain: one shell and one lifecycle instead of a bespoke
+composition per exercise.
+
+This is an argument from interaction consistency, task clarity, and implementation cost.
+It is deliberately **not** a claim that familiar mechanics measurably protect attention
+for Irish. That is an empirical question, the review behind this decision was conducted
+by the owner rather than with learners, and nothing tests it before the four-county
+tester-readiness gate. Do not cite D26 as evidence for a learning outcome.
 
 **Consequences:** This decision closes D25's unresolved direction-selection gate. Do
 not build more competing pedagogical or compositional directions before starting the

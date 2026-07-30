@@ -75,19 +75,17 @@ struct CountyExerciseView: View {
     @ViewBuilder
     private var responseSurface: some View {
         switch exercise.family {
-        case .listenIdentify:
+        case .listenChoose:
             CountyListenChoiceSurface(exercise: exercise, locked: locksResponse, onPick: grade)
-        case .listenBuildSentence:
-            CountyBuilderSurface(exercise: exercise, locked: locksResponse, startsWithAudio: true, onCheck: gradeText)
-        case .sentenceConstruction, .sequencing:
-            CountyBuilderSurface(exercise: exercise, locked: locksResponse, startsWithAudio: false, onCheck: gradeText)
+        case .sentenceConstruction:
+            CountyBuilderSurface(exercise: exercise, locked: locksResponse, startsWithAudio: exercise.audioText != nil, onCheck: gradeText)
         case .matching:
             CountyMatchingSurface(exercise: exercise, locked: locksResponse, onWrong: markWrong, onComplete: markCorrect)
-        case .typing, .delayedRetrieval:
+        case .freeTyping:
             CountyTypingSurface(exercise: exercise, locked: locksResponse, onCheck: gradeText)
-        case .fillGap, .dialogue, .comprehension, .grammarDiscovery:
+        case .fillGap, .conversation, .readRespond, .grammarDiscovery:
             CountyChoiceSurface(exercise: exercise, locked: locksResponse, onPick: grade)
-        case .speaking:
+        case .recordCompare:
             CountySpeakingSurface(exercise: exercise, locked: locksResponse, onComplete: markCorrect)
         }
     }
@@ -364,7 +362,9 @@ private struct CountyBuilderSurface: View {
             .frame(maxWidth: .infinity, minHeight: 54, alignment: .leading)
 
             PrimaryButton(title: "Check the order", fullWidth: true) {
-                let separator = exercise.family == .sequencing ? " | " : " "
+                // D27: ordering is an authored use of sentence construction, and joins
+                // its units with a visible separator rather than as running Irish.
+                let separator = exercise.authoredUse == "ordering" ? " | " : " "
                 onCheck(chosen.joined(separator: separator))
             }
             .disabled(chosen.count != exercise.tokens.count || locked || (startsWithAudio && !heard))

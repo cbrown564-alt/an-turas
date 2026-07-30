@@ -1,12 +1,31 @@
 # Scheduled review — one language item layer
 
-*Drafted 2026-07-08; scope clarified after D21 on 15 July 2026. This document owns
-scheduled vocabulary and grammar review after language has been earned. Inline
-Learning-mode exercises and Story-mode filtering are owned by `PRODUCT.md`,
-`COUNTY-ATLAS.md`, and `STORY-LEARNING-REBUILD-PLAN.md`. All three scheduled-review
-projections have landed for legacy Chapter 1: `discover`, grammar-at-volume
-(generated substitution drills), and vocabulary-at-volume (the scheduled retrieval
-deck).*
+*Drafted 2026-07-08; scope clarified after D21 on 15 July 2026; reconciled with D26–D27
+on 30 July 2026. This document owns scheduled vocabulary and grammar review after
+language has been earned. Inline Learning-mode exercises and Story-mode filtering are
+owned by `PRODUCT.md`, `COUNTY-ATLAS.md`, and `STORY-LEARNING-REBUILD-PLAN.md`. All three
+scheduled-review projections have landed for legacy Chapter 1: `discover`,
+grammar-at-volume (generated substitution drills), and vocabulary-at-volume (the
+scheduled retrieval deck).*
+
+**D27 reconciliation.** The spine described here and D26's **Words you carry** are one
+model, not two. The lexicon and pattern bank remain the only corpus. Two projections sit
+on it:
+
+- **collection** — per-learner encounter metadata: a word's first place, audio, example,
+  and later uses;
+- **scheduler** — due state for later review.
+
+**Words you carry** is the learner-facing surface over collection; scheduled review is
+the surface over scheduler. This is what D26 means by keeping collection state distinct
+from scheduler state, and it does not weaken the guarantee below: neither surface owns a
+corpus, and both may only touch earned ids. Retire *retrieval deck*, *drill surface*, and
+`LexemeDeck` as learner-facing names; they describe implementation, not places the
+learner goes.
+
+The `discover` projection below is promoted by D27 to a response family, **grammar
+discovery**, and moves onto the shared activity runtime. It is still authored the same
+way and still owned here.
 
 ## The principle
 

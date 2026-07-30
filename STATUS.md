@@ -157,6 +157,7 @@ story or new Learning mode.
 | Date | Work | Where |
 |---|---|---|
 | 2026-07-30 | **Three disposable iOS learning-interaction studies implemented and focused verification passed.** Sound Match tests immediate audio/meaning choice and in-place repair; Sentence Flow keeps correct sentence work while role cues visibly disappear; Coast Placement attaches *farraige*, *bá*, and *áit* to a spatial coast before removing its labels. The studies use one narrow Clew Bay fixture, no story exposition, separate local state, direct audio fallback, and no county progress, review, or shared-runtime side effects. XcodeGen was regenerated; 3 focused unit and 5 focused UI tests pass, including complete wrong-to-correct loops, both appearances, largest Dynamic Type, and reduced motion. Initial states were directly inspected on an iPhone 17 Pro Max simulator. This is implemented and verified research evidence, not validated pedagogy or a selected architecture. | `ios/AnTuras/Prototypes/InteractionStudies/`, `ios/AnTurasTests/InteractionStudyTests.swift`, `ios/AnTurasUITests/InteractionStudyUITests.swift`, `docs/INTERACTION-STUDIES-REPORT.md` |
+| 2026-07-30 | **D26 grilled; D27 records three activity layers and the migration lands.** The flat fifteen-family set became one activity anatomy, ten response families, and five containers, because five of the fifteen could not satisfy the response contract D26 also mandates. Sequencing and delayed retrieval became authored uses; grammar discovery stayed a family and reconciled with `DRILL.md`'s `discover` projection; dialogue and branching roleplay merged into one conversation container with setting as authored metadata; single-choice families now check on selection with a repair window before any struggle signal; **Words you carry** and scheduled review became two surfaces over one spine. `CountyExerciseFamily` went from twelve cases to nine with a deterministic migration from the legacy vocabulary, and 32 authored exercises across eight packs were re-expressed. A new `authoredUse` field keeps the anti-monotony cap measuring what the learner actually does after the merge. The 5,259 lines of prototype and interaction-study code were deleted once D27 recorded the retained primitives. XcodeGen regenerated; 42 unit, 17 UI, and 43 Python tests pass, and all eight packs validate. This changes the taxonomy and implementation order; it validates no learning outcome. | `CONTEXT.md`, `docs/DECISIONS.md` D27, `PRODUCT.md`, `DESIGN.md`, `docs/DRILL.md`, `docs/STORY-LEARNING-REBUILD-PLAN.md`, `ios/AnTuras/CountyStoryPack.swift`, `CountyExerciseSystem.swift`, `tools/` |
 | 2026-07-30 | **Expanded activity reference review completed and D26 recorded.** A separate 48-activity HTML field guide supported selection of a familiar one-screen activity system. The next Mayo proof will combine that stable shell with only the response and recovery details from the iOS studies that improve clarity and repeatability. | `web/learning-activity-reference/`, `PRODUCT.md`, `DESIGN.md`, `docs/DECISIONS.md` D26 |
 | 2026-07-04 | Repo founded; vision + full strategy map (unknowns, challenges, resources, competition) | `README.md`, `docs/STRATEGY.md` |
 | 2026-07-04 | Persona decided: school-Irish re-learners + diaspora primary, NI as cultural north star | `docs/DECISIONS.md` D1 |
@@ -219,7 +220,7 @@ story or new Learning mode.
 
 1. **Freeze the representative Mayo run** — use the selected D26 shell with the Clew
    Bay fixtures and record the exact listening, matching, construction, typing,
-   dialogue, speaking, comprehension, completion, and contextual-review sequence.
+   conversation, speaking, comprehension, completion, and contextual-review sequence.
    Decide which local response, correction, scaffold-removal, motion, and spatial
    details from the iOS studies are retained; do not reopen the architecture choice.
 2. **Implement the shared state engine and activity shell** — centralise attempt,
@@ -229,7 +230,7 @@ story or new Learning mode.
    with incorrect and recovery paths, audio fallback, keyboard/fadas, microphone
    denial, interruption/resume, and fixture-only completion.
 4. **Migrate the activity families in bounded groups** — recognition; construction
-   and production; contextual use, including radio and finite authored roleplay; then
+   and production; contextual use, including grammar discovery and radio; then
    contextual mistake review, **Words you carry**, and capability-led completion.
    Each group must pass its gallery and accessibility matrix before the next spreads.
 5. **Harden the authored contract, schema, memory handoff, and validators** — mirror

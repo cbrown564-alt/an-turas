@@ -64,7 +64,8 @@ class MayoReviewDraftValidates(unittest.TestCase):
         self.assertEqual(report.scope, "completeCounty")
         self.assertEqual(len(envelope["pack"]["chapters"]), 9)
         self.assertEqual(sum(report.exercise_distribution.values()), 38)
-        self.assertEqual(len(report.exercise_distribution), 12)
+        # D27: nine families and containers, down from twelve pre-absorption.
+        self.assertEqual(len(report.exercise_distribution), 9)
         self.assertEqual(report.lifecycle_covered, 20)
         self.assertGreaterEqual(report.story_minutes, 60)
         self.assertLessEqual(report.story_minutes, 90)
@@ -122,7 +123,7 @@ class Phase5ReviewDraftsValidate(unittest.TestCase):
                 self.assertEqual(len(envelope["pack"]["chapters"]), 6)
                 self.assertGreaterEqual(report.story_minutes, 45)
                 self.assertEqual(sum(report.exercise_distribution.values()), 30)
-                self.assertEqual(len(report.exercise_distribution), 12)
+                self.assertEqual(len(report.exercise_distribution), 9)
                 self.assertEqual(report.lifecycle_covered, 20)
                 self.assertTrue(report.open_review_gates)
 
@@ -319,6 +320,58 @@ class MirroredSwiftRules(unittest.TestCase):
     def test_unsupported_schema(self):
         self.pack["schemaVersion"] = 99
         self._expect("unsupportedSchema")
+
+
+class D27LayerRules(unittest.TestCase):
+    """Percentages run over every activity page; diversity counts families only."""
+
+    def setUp(self):
+        self.pack = load(MAYO_REVIEW_DRAFT)
+
+    def _exercises(self):
+        return [
+            page["exercise"]
+            for chapter in self.pack["pack"]["chapters"]
+            for page in chapter["pages"]
+            if page.get("exercise")
+        ]
+
+    def _expect(self, code):
+        with self.assertRaises(v.PackValidationError) as ctx:
+            v.validate(self.pack)
+        self.assertEqual(ctx.exception.code, code)
+
+    def test_containers_do_not_satisfy_family_diversity(self):
+        # Collapse everything but six response families into the conversation
+        # container. Thirty-eight activities across seven distinct values still
+        # fails, because only response families count toward diversity.
+        keep = {"listenChoose", "sentenceConstruction", "fillGap",
+                "matching", "freeTyping", "readRespond"}
+        for exercise in self._exercises():
+            if exercise["family"] not in keep:
+                exercise["family"] = "conversation"
+        families = {e["family"] for e in self._exercises()}
+        self.assertEqual(len(families), 7)
+        self._expect("exerciseDistribution")
+
+    def test_conversation_counts_toward_production(self):
+        # A container carries real production load, so moving production into
+        # conversation must not break the 40 percent floor.
+        for exercise in self._exercises():
+            if exercise["family"] == "recordCompare":
+                exercise["family"] = "conversation"
+        report = v.validate(self.pack)
+        self.assertNotIn("recordCompare", report.exercise_distribution)
+        self.assertEqual(report.exercise_distribution["conversation"], 5)
+
+    def test_authored_use_is_counted_apart_from_its_family(self):
+        # Absorbing ordering and audio-prompted construction into sentence
+        # construction concentrates the pack. The authored use keeps the
+        # monotony cap measuring what the learner actually does, so erasing it
+        # must trip the cap.
+        for exercise in self._exercises():
+            exercise.pop("authoredUse", None)
+        self._expect("exerciseDistribution")
 
 
 if __name__ == "__main__":

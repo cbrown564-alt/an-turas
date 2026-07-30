@@ -278,7 +278,8 @@ visual communicates the distinction precisely.
 
 ## Shared implementation boundary
 
-The studies live under `ios/AnTuras/Prototypes/InteractionStudies/` and have their own
+The studies lived under `ios/AnTuras/Prototypes/InteractionStudies/`, removed once D27
+recorded the retained primitives; git history preserves them. They had their own
 catalogue, fixture projection, gallery, destination switch, state, feedback, motion,
 and completion. Temporary duplication is intentional.
 
@@ -366,8 +367,6 @@ physical-device pass were not rerun for this disposable lab checkpoint.
 The studies suggest response-level details worth carrying into the D26 implementation:
 
 - make the response the visual centre;
-- grade a simple choice on selection when a separate Check action adds no useful
-  deliberation;
 - keep a wrong response editable and make repair the next touch;
 - attach the diagnostic cue to the affected target or working model;
 - preserve correct work during repair;
@@ -380,7 +379,12 @@ The studies suggest response-level details worth carrying into the D26 implement
 - make restart fast enough that repetition can be judged honestly.
 
 These are candidates for synthesis, not permanent rules merely because they exist in
-working code.
+working code. D27 records which were adopted.
+
+Two of the study's suggestions were decided rather than carried forward. Grading a
+simple choice on selection is now the rule for single-choice families, with a repair
+window before any struggle signal is recorded, so a mis-tap does not enter contextual
+mistake review as a misconception. Multi-part responses keep an explicit Check.
 
 ## What should not transfer
 
@@ -398,20 +402,22 @@ working code.
 The separate expanded exercise review and this iOS interaction study now need one
 explicit synthesis pass. That pass should answer:
 
-1. Which selected D26 activity families benefit from grading on selection, and which
-   genuinely need a Check action?
-2. What is the common correction pattern, and where should local in-place repair
+1. What is the common correction pattern, and where should local in-place repair
    override a generic feedback panel?
-3. How can the stable one-screen shell preserve familiarity while letting a sentence
+2. How can the stable one-screen shell preserve familiarity while letting a sentence
    track, map, document, or audio control become the visual centre?
-4. Which supports should visibly recede within the same task, and which should recede
+3. Which supports should visibly recede within the same task, and which should recede
    across later authored activities?
-5. Which actions warrant sound or haptics, and what is the quiet An Turas vocabulary
+4. Which actions warrant sound or haptics, and what is the quiet An Turas vocabulary
    for them?
-6. How will a representative Mayo run move from recognition and supported
-   construction to genuine retrieval, production, and later reuse?
-7. What must be measured with learners to distinguish visual appeal, ease of use,
-   repeat desire, and actual learning?
+
+Three questions listed here earlier are closed. Grading on selection is settled above.
+The recognition-to-production progression is already enforced, not open: the four-stage
+lifecycle in `tools/validate_county_pack.py` requires every target word to move
+`introduced <= heard < produced < reused` in page order, with at least forty percent of
+activities in production families. Learner measurement is a real question but not one
+this report can answer; the four-county tester-readiness gate owns it, and D26 records
+that it remains the first contact with a learner other than the owner.
 
 The next build should answer these questions in one representative Mayo Learning-mode
 run through the selected shell. It should extract only the response details that make
