@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-30 (D28 Flow chapter-
-opening density; Mayo/Dublin/Meath visuals wired).*
+and visual narrative. English → Irish only. Updated 2026-07-30 (Shell scorecard
+punch list implemented; Composer re-score pending).*
 
 ## Where we are
 
@@ -166,13 +166,13 @@ county runtime.
 
 | # | D27 family | `CountyExerciseFamily` | Surface | Authored (4 packs) | Contract met? |
 |---|---|---|---|---|---|
-| 1 | Listen and choose | `listenChoose` | ✓ | ✓ | **No** — Shell scorecard F1: response gated until play (D1) |
-| 2 | Sentence construction | `sentenceConstruction` | ✓ | ✓ | Partial — Check now in bottom bar; not Shell-scored this pass |
+| 1 | Listen and choose | `listenChoose` | ✓ | ✓ | Punch-list fix landed — response answerable from cold open; repair window before struggle chrome. Awaiting Composer re-score |
+| 2 | Sentence construction | `sentenceConstruction` | ✓ | ✓ | Partial — Check in bottom bar (nil-action regression fixed); stable tile bank; not Shell-scored this pass |
 | 3 | Free typed production | `freeTyping` | ✓ | ✓ | Partial — two-voice/fada polish deferred until Shell ACCEPT |
 | 4 | Fill-in-the-blank | `fillGap` | ✓ | ✓ | Partial — shares choice surface with read-respond |
-| 5 | Matching | `matching` | ✓ | ✓ | **No** — Shell scorecard F5: wrong escalates to incorrect phase; far-column board; Mayo draft still has a 5-pair exercise (Rockfleet is 4; board-lock Retry cleared) |
+| 5 | Matching | `matching` | ✓ | ✓ | Punch-list fix landed — wrong pair = on-target note + next-tap unlock, no incorrect-phase escalation; thumb-native single-column board; ≤4 pairs enforced in authorship and both validators. Awaiting Composer re-score |
 | 6 | Read or listen and respond | `readRespond` | ✓ | ✓ (read only) | Partial — no listen variant yet |
-| 7 | Record and compare | `recordCompare` | ✓ | ✓ | **No** — Shell scorecard F7/D2: ink Continue-without-recording on cold open; Record not primary |
+| 7 | Record and compare | `recordCompare` | ✓ | ✓ | Punch-list fix landed — Record/Stop owns ink until compare; "I compared both" after playback; escape quiet unless mic denied. Awaiting Composer re-score |
 | 8 | Grammar discovery | `grammarDiscovery` | ✓ | ✓ | **No** — one MC step, not progressive reveal → produce → rule |
 | 9 | Picture or map selection | — | ✗ | ✗ | Not started (migration group 1) |
 | 10 | Listen and type | — | ✗ | ✗ | Not started (migration group 2); `audioPrompted` construction is partial overlap only |
@@ -223,16 +223,16 @@ Twelve Rockfleet Learning-path screens captured 2026-07-30. Critique:
 
 | File | D27 layer | Family / container | Authored use | Implementation gap |
 |---|---|---|---|---|
-| `01-listen-choose.png` | Response family | Listen and choose | — | **Shell REJECT** — choices still disabled until Hear; repair-without-Retry works after unlock |
-| `02-matching.png` | Response family | Matching | — | **Shell REJECT (F5)** — board-lock Retry cleared; wrong still escalates to full incorrect phase; far-column board; Rockfleet 4 pairs / Mayo draft still authors 5 |
-| `03-sentence-audio.png` | Response family | Sentence construction | `audioPrompted` | Ink Check stacked above ink Continue; Irish tiles sans while story voice is serif |
-| `04-sentence-build.png` | Response family | Sentence construction | — | Same Check/Continue hierarchy; tile chips mid-screen, scattered for one-handed use |
+| `01-listen-choose.png` | Response family | Listen and choose | — | Fix landed — choices answerable from cold open; first wrong carries on-row rationale without struggle chrome; re-score pending |
+| `02-matching.png` | Response family | Matching | — | Fix landed — single-column thumb board; wrong pair = persistent on-target note, next tap unlocks, no incorrect phase; Mayo draft re-authored to 4 pairs; re-score pending |
+| `03-sentence-audio.png` | Response family | Sentence construction | `audioPrompted` | Bar-driven Check works (nil-action regression fixed); bank tiles leave placeholders so targets never slide; Irish tiles sans while story voice is serif remains |
+| `04-sentence-build.png` | Response family | Sentence construction | — | Same bar fix and stable bank; tile chips no longer scatter on pick |
 | `05-free-typing.png` | Response family | Free typed production | — | English translation in serif, Irish input in sans; fada row uses atlas green not moss; stacked ink primaries |
 | `06-conversation.png` | Container | Conversation | — | **Container contract unmet** — bare choice list, no turn transcript, branching, or resume |
 | `07-sentence-sequence.png` | Response family | Sentence construction | `ordering` | English clause tiles, not Irish; same Check/Continue and recovery model as other builders |
 | `08-read-respond.png` | Response family | Read or listen and respond | — | Read-only MC; Irish template serif but options sans; shares hollow radio row with fill-gap and grammar |
 | `09-grammar-discovery.png` | Response family | Grammar discovery | — | **Family contract unmet** — one worked case + single MC, not reveal → reveal → produce → rule |
-| `10-record-compare.png` | Response family | Record and compare | — | **Shell REJECT (F7/D2)** — ink Continue-without-recording from cold open; Play/Record equal moss ghosts; Record never sole primary before compare |
+| `10-record-compare.png` | Response family | Record and compare | — | Fix landed — ink slot runs Record → Stop → "I compared both" (held until playback); Play model / Play back / Record again moss ghosts; escape quiet unless mic denied; re-score pending |
 | `11-fill-gap.png` | Response family | Fill-in-the-blank | — | Choice-backed gap only; identical radio-row chrome as 06/08/09 |
 | `12-delayed-typing.png` | Response family | Free typed production | `delayedRecall` | Delay works as later-page retrieval; not yet contextual mistake review; typography issues as 05 |
 
@@ -264,10 +264,21 @@ primary slot, disabled styles) before parallel family polish. Does not replace
 ACCEPT. **Kimi punch list (IDs only):** D1 D2 D3 D4 D5 F1 F5 F7. No spectacular
 family pass until Shell ACCEPT.
 
+**Punch-list implementation landed (2026-07-30):** all five items are in the
+county shell with UI coverage (Record primacy, ungated listen-choose, D27 repair
+window for selection families, brief matching unlock, thumb-native matching
+board, on-target diagnostics, ≤4-pair authorship + validator enforcement). The
+same pass found and fixed two `237d74f` regressions the scorecard grading could
+not see: the bottom-bar Check lost its action to a state-sync overwrite
+(sentence-construction pages advanced without grading), and the terminal
+exercise page lost its "Complete this chapter path" label. Composer re-score is
+the next gate; do not treat the fixes as an ACCEPT.
+
 ## Work completed
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-07-30 | **Shell scorecard punch list implemented; two 237d74f bar regressions found and fixed.** All five Kimi items landed in the county shell: Record/Stop owns the ink slot until compare with a quiet no-recording escape (D2/F7); listen-choose answers from cold open (D1/F1); selection families follow the D27 repair window — first wrong carries the rationale on the affected row and struggle fires only when the next touch fails to self-correct, matching never leaves its brief on-target note (D3/D5/F1/F5); matching is a single-column thumb board and the Mayo draft's 5-pair board is re-authored to four with ≤4 pairs enforced in both validators (D4/F5). Verification also exposed two regressions from `237d74f`: the bottom-bar Check published its action then had it overwritten nil by a state sync (builders advanced without grading), and the terminal exercise page lost "Complete this chapter path". Builder banks now keep placeholders so tiles never slide mid-task. Full simulator suite passes on iPhone 17 Pro (42 unit, 19 UI, incl. new repair-window, matching-unlock and record-primacy tests); 45 Python tests pass; changed screens inspected light, dark, and at largest Dynamic Type. Awaiting Composer re-score; not an ACCEPT. | `ios/AnTuras/CountyExerciseSystem.swift`, `CountyStoryExperienceView.swift`, `CountyStoryPack.swift`, `content/mayo/grainne-1593.pack.draft.json`, `tools/validate_county_pack.py`, `tools/tests/`, `ios/AnTurasUITests/AtlasFlowUITests.swift` |
 | 2026-07-30 | **D28 chapter-opening Flow density; existing loops and stills wired.** One muted ambient hero per chapter opening; still→motion pipeline; evidence scans stay still. Wired unused Mayo Rockfleet + galley videos, Mayo draft openings to existing atmosphere stills (rev 7), Dublin's four remaining openings to catalog stills, Meath Ch1 to Boyne ford still, and the bundled Rockfleet proof to `video.mayo-rockfleet-sea-surge`. MEDIA-AUDIT now carries Batches A–C for Flow spend. Does not clear rights or generate new Flow clips in-repo. | `docs/DECISIONS.md` D28, `docs/MEDIA-AUDIT.md`, `content/mayo/`, `tools/build_phase5_county_drafts.py`, `ios/AnTuras/Resources/CountyStories/` |
 | 2026-07-30 | **First Composer Shell scorecard — REJECT.** Fixtures 01 listen-choose, 02 matching, 10 record-compare against commit `237d74f`. Mean 3.0/5; fails D2 (speaking primary inverted), residual D3 friction, F1/F5/F7 contracts. Board-lock Retry P0 already cleared; listen-choose gate and Record primacy remain. Kimi punch list: D1 D2 D3 D4 D5 F1 F5 F7. No family spectacular pass until Shell ACCEPT. | `docs/activity-quality/SCORECARD-shell-2026-07-30.md`, `STATUS.md`, `docs/README.md` |
 | 2026-07-30 | **Activity Quality Spec drafted for Learning-mode craft loops.** Operational scorecard: ten shared dimensions, P0 checklist, D27 family/container contract gates, Rockfleet fixture map, adversarial scripts, and agent-loop roles. Linked from docs index and inventory; shell P0s before parallel polish. Does not change product or design authority. | `docs/ACTIVITY-QUALITY-SPEC.md`, `docs/README.md`, `STATUS.md` |
@@ -333,13 +344,14 @@ family pass until Shell ACCEPT.
 
 ## Immediate next steps (learning-mechanics foundation, then rebuild Phases 4–6)
 
-1. **Clear Shell-cluster REJECT** — Kimi implements punch list
+1. **Re-score the Shell cluster** — the punch list
    D1 D2 D3 D4 D5 F1 F5 F7 from
-   [`docs/activity-quality/SCORECARD-shell-2026-07-30.md`](docs/activity-quality/SCORECARD-shell-2026-07-30.md).
-   Priority: Record primacy (D2/F7), listen-choose ungated response (D1/F1), matching
-   brief unlock without mastery incorrect-phase + ≤4 authorship (D3/D4/F5), on-target
-   diagnostics (D5). Composer re-scores; no Choice/Matching/Speaking spectacular pass
-   until Shell ACCEPT.
+   [`docs/activity-quality/SCORECARD-shell-2026-07-30.md`](docs/activity-quality/SCORECARD-shell-2026-07-30.md)
+   is implemented (Record primacy, ungated listen-choose, D27 repair window,
+   brief matching unlock, thumb-native board, on-target diagnostics, ≤4-pair
+   authorship and validator enforcement), with UI tests for each behavior and a
+   green full suite. Composer re-scores fixtures 01/02/10 against the new shell;
+   no Choice/Matching/Speaking spectacular pass until Shell ACCEPT.
 2. **Freeze the representative Mayo run** — use the selected D26 shell with the Clew
    Bay fixtures and record the exact listening, matching, construction, typing,
    conversation, speaking, comprehension, completion, and contextual-review sequence.

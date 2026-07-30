@@ -383,6 +383,7 @@ enum CountyStoryPackError: LocalizedError, Equatable {
     case missingRequiredAudio(String)
     case duplicateAnswer(String)
     case invalidLifecycle(String)
+    case invalidMatchingBoard(String)
     case legacyBeatStructure
     case exerciseDistribution(String)
 
@@ -401,6 +402,7 @@ enum CountyStoryPackError: LocalizedError, Equatable {
         case .missingRequiredAudio(let id): return "Exercise \(id) has no bundled-audio reference."
         case .duplicateAnswer(let id): return "Exercise \(id) repeats its correct answer among the distractors."
         case .invalidLifecycle(let id): return "Lexeme lifecycle \(id) is missing or out of order."
+        case .invalidMatchingBoard(let id): return "Matching exercise \(id) must board two to four pairs (F5)."
         case .legacyBeatStructure: return "The pack still depends on a fixed three-page chapter structure."
         case .exerciseDistribution(let issue): return issue
         }
@@ -488,6 +490,9 @@ enum CountyStoryPackValidator {
                     guard exercise.audioText != nil, !audioResources.isEmpty else {
                         throw CountyStoryPackError.missingRequiredAudio(page.id)
                     }
+                }
+                if exercise.family == .matching, !(2...4).contains(exercise.pairs.count) {
+                    throw CountyStoryPackError.invalidMatchingBoard(page.id)
                 }
             }
             introduced.formUnion(page.introducedLexemeIDs)

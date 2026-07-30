@@ -18,11 +18,16 @@ private struct CountyExerciseFeedbackState {
     var phase: CountyExercisePhase
     var message: String?
     var misses: Int
+    /// D27 repair window: after one wrong selection the attempt stays open and
+    /// only the affected target carries the diagnostic. Struggle is recorded
+    /// solely when the next touch fails to self-correct.
+    var repairOpen: Bool
 
     init(alreadyComplete: Bool) {
         phase = alreadyComplete ? .complete : .unanswered
         message = alreadyComplete ? "This exercise is complete. You can still revisit the task." : nil
         misses = 0
+        repairOpen = false
     }
 }
 
@@ -39,7 +44,7 @@ struct CountyExerciseView: View {
     @State private var feedback: CountyExerciseFeedbackState
     @State private var responseLocked: Bool
     @State private var checkReady = false
-    @State private var speakingCanContinue = false
+    @State private var checkAction: (() -> Void)?
 
     init(
         page: CountyStoryPage,
@@ -88,7 +93,6 @@ struct CountyExerciseView: View {
         .onAppear { syncBarState() }
         .onChange(of: feedback.phase) { _, _ in syncBarState() }
         .onChange(of: checkReady) { _, _ in syncBarState() }
-        .onChange(of: speakingCanContinue) { _, _ in syncBarState() }
         .onChange(of: responseLocked) { _, _ in syncBarState() }
     }
 
@@ -105,11 +109,18 @@ struct CountyExerciseView: View {
                 onCheck: gradeText,
                 onCheckReadyChange: { ready, handler in
                     checkReady = ready
-                    syncBarState(checkHandler: ready ? handler : nil)
+                    checkAction = ready ? handler : nil
+                    syncBarState()
                 }
             )
         case .matching:
-            CountyMatchingSurface(exercise: exercise, locked: locksResponse, onWrong: markWrong, onComplete: markCorrect)
+            CountyMatchingSurface(
+                exercise: exercise,
+                locked: locksResponse,
+                onWrong: { noteSelectionWrong($0, escalates: false) },
+                onRepair: noteSelectionRepair,
+                onComplete: markCorrect
+            )
         case .freeTyping:
             CountyTypingSurface(
                 exercise: exercise,
@@ -117,7 +128,8 @@ struct CountyExerciseView: View {
                 onCheck: gradeText,
                 onCheckReadyChange: { ready, handler in
                     checkReady = ready
-                    syncBarState(checkHandler: ready ? handler : nil)
+                    checkAction = ready ? handler : nil
+                    syncBarState()
                 }
             )
         case .conversation:
@@ -136,8 +148,11 @@ struct CountyExerciseView: View {
                 exercise: exercise,
                 locked: locksResponse,
                 onComplete: markCorrect,
-                onContinueReadyChange: { ready in
-                    speakingCanContinue = ready
+                onPrimaryChange: { title, enabled, action in
+                    onBarUpdate(
+                        CountyExerciseBarState(title: title, isEnabled: enabled, isCheck: false),
+                        action
+                    )
                 }
             )
         }
@@ -189,7 +204,7 @@ struct CountyExerciseView: View {
         if option.isCorrect {
             markCorrect(option.rationale)
         } else {
-            markWrong("\(option.rationale) \(exercise.recovery)")
+            noteSelectionWrong("\(option.rationale) \(exercise.recovery)", escalates: true)
         }
     }
 
@@ -210,6 +225,31 @@ struct CountyExerciseView: View {
         }
     }
 
+    /// A wrong touch on a selection-graded family stays local: the diagnostic
+    /// attaches to the affected target and the attempt remains open. Only a
+    /// second wrong touch — the D27 repair window closing — records struggle,
+    /// and only choice families raise the recovery panel for it. Matching keeps
+    /// its brief on-target unlock instead of mastery-failure chrome.
+    private func noteSelectionWrong(_ message: String, escalates: Bool) {
+        Haptics.error()
+        AccessibilityNotification.Announcement(message).post()
+        guard feedback.repairOpen else {
+            feedback.repairOpen = true
+            return
+        }
+        feedback.misses += 1
+        if escalates {
+            withAnimation(feedbackAnimation) {
+                feedback.phase = .incorrect
+                feedback.message = message
+            }
+        }
+    }
+
+    private func noteSelectionRepair() {
+        feedback.repairOpen = false
+    }
+
     private func markCorrect(_ message: String? = nil) {
         Haptics.chisel()
         responseLocked = true
@@ -221,7 +261,7 @@ struct CountyExerciseView: View {
         syncBarState()
     }
 
-    private func syncBarState(checkHandler: (() -> Void)? = nil) {
+    private func syncBarState() {
         if feedback.phase == .complete || alreadyComplete {
             onBarUpdate(CountyExerciseBarState(title: "Continue", isEnabled: true, isCheck: false), nil)
             return
@@ -229,16 +269,14 @@ struct CountyExerciseView: View {
 
         switch exercise.family {
         case .recordCompare:
-            let title = speakingCanContinue ? "I compared both" : "Continue without recording"
-            onBarUpdate(
-                CountyExerciseBarState(title: title, isEnabled: true, isCheck: false),
-                { markCorrect(exercise.feedback) }
-            )
+            // The speaking surface publishes its own primary per recording state
+            // (Record, Stop, I compared both, or the mic-denied escape).
+            break
         case .sentenceConstruction, .freeTyping:
             let title = exercise.family == .sentenceConstruction ? "Check the order" : "Check the sentence"
             onBarUpdate(
                 CountyExerciseBarState(title: title, isEnabled: checkReady, isCheck: true),
-                checkHandler
+                checkReady ? checkAction : nil
             )
         default:
             onBarUpdate(CountyExerciseBarState(title: "Continue", isEnabled: false, isCheck: false), nil)
@@ -284,21 +322,12 @@ private struct CountyListenChoiceSurface: View {
                 MissingAudioNotice()
             }
 
-            if !heard {
-                Text("Listen once, then choose a meaning.")
-                    .font(.subheadline)
-                    .foregroundStyle(Theme.inkSoft)
-            }
-
             CountyChoiceSurface(
                 exercise: exercise,
                 locked: locked,
-                interactionEnabled: heard,
                 onPick: onPick,
                 optionFont: .system(.body, design: .serif)
             )
-            .opacity(heard ? 1 : 0.72)
-            .accessibilityHint(heard ? "" : "Choices unlock after you hear the Irish once.")
         }
     }
 }
@@ -323,14 +352,11 @@ private struct MissingAudioNotice: View {
 private struct CountyChoiceSurface: View {
     let exercise: CountyExercise
     let locked: Bool
-    var interactionEnabled: Bool = true
     let onPick: (CountyExerciseOption) -> Void
     var optionFont: Font = .body
 
     @State private var wrongOptionIDs: Set<String> = []
     @State private var chosenCorrectID: String?
-
-    private var canInteract: Bool { interactionEnabled && !locked }
 
     var body: some View {
         VStack(spacing: 10) {
@@ -349,44 +375,57 @@ private struct CountyChoiceSurface: View {
 
     @ViewBuilder
     private func choiceRow(_ option: CountyExerciseOption) -> some View {
-        Button {
-            guard canInteract else { return }
-            if option.isCorrect {
-                chosenCorrectID = option.id
-                wrongOptionIDs.removeAll()
-            } else {
-                wrongOptionIDs.insert(option.id)
-            }
-            onPick(option)
-        } label: {
-            HStack(alignment: .firstTextBaseline, spacing: 12) {
-                Text(option.text)
-                    .font(optionFont)
-                    .multilineTextAlignment(.leading)
-                    .fixedSize(horizontal: false, vertical: true)
-                Spacer(minLength: 8)
-                if chosenCorrectID == option.id {
-                    Image(systemName: "checkmark.circle.fill")
-                        .font(.body)
-                        .foregroundStyle(Theme.moss)
-                        .accessibilityHidden(true)
+        let isWrong = wrongOptionIDs.contains(option.id)
+        VStack(alignment: .leading, spacing: 6) {
+            Button {
+                guard !locked else { return }
+                if option.isCorrect {
+                    chosenCorrectID = option.id
+                    wrongOptionIDs.removeAll()
+                } else {
+                    wrongOptionIDs.insert(option.id)
+                }
+                onPick(option)
+            } label: {
+                HStack(alignment: .firstTextBaseline, spacing: 12) {
+                    Text(option.text)
+                        .font(optionFont)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 8)
+                    if chosenCorrectID == option.id {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.body)
+                            .foregroundStyle(Theme.moss)
+                            .accessibilityHidden(true)
+                    }
+                }
+                .foregroundStyle(Theme.ink)
+                .padding(.vertical, 13)
+                .padding(.horizontal, 15)
+                .frame(maxWidth: .infinity, minHeight: 48, alignment: .leading)
+                .background(rowBackground(for: option))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(rowBorder(for: option), lineWidth: chosenCorrectID == option.id || isWrong ? 2 : 1)
                 }
             }
-            .foregroundStyle(Theme.ink)
-            .padding(.vertical, 13)
-            .padding(.horizontal, 15)
-            .frame(maxWidth: .infinity, minHeight: 48, alignment: .leading)
-            .background(rowBackground(for: option))
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .overlay {
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(rowBorder(for: option), lineWidth: chosenCorrectID == option.id || wrongOptionIDs.contains(option.id) ? 2 : 1)
+            .buttonStyle(CarvePress())
+            .disabled(locked)
+            .accessibilityLabel(option.text)
+            .accessibilityValue(isWrong ? "Not correct" : (chosenCorrectID == option.id ? "Correct" : ""))
+            .accessibilityAddTraits(choiceTraits(for: option))
+
+            if isWrong {
+                Text(option.rationale)
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.rust)
+                    .lineSpacing(3)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, 15)
             }
         }
-        .buttonStyle(CarvePress())
-        .allowsHitTesting(canInteract)
-        .accessibilityLabel(option.text)
-        .accessibilityAddTraits(choiceTraits(for: option))
     }
 
     private func choiceTraits(for option: CountyExerciseOption) -> AccessibilityTraits {
@@ -508,6 +547,10 @@ private struct CountyGrammarDiscoverySurface: View {
     }
 }
 
+/// Tile builder with a stable bank: picked tiles leave a sunk placeholder so
+/// remaining tiles never slide under the learner's thumb (or under a resolved
+/// accessibility frame mid-animation). Tiles return to their own slot when
+/// removed from the answer.
 private struct CountyBuilderSurface: View {
     let exercise: CountyExercise
     let locked: Bool
@@ -516,24 +559,9 @@ private struct CountyBuilderSurface: View {
     let onCheckReadyChange: (Bool, @escaping () -> Void) -> Void
 
     @ObservedObject private var speech = SpeechService.shared
-    @State private var bank: [String]
-    @State private var chosen: [String] = []
+    @State private var placed: Set<Int> = []
+    @State private var chosen: [Int] = []
     @State private var heard = false
-
-    init(
-        exercise: CountyExercise,
-        locked: Bool,
-        startsWithAudio: Bool,
-        onCheck: @escaping (String) -> Void,
-        onCheckReadyChange: @escaping (Bool, @escaping () -> Void) -> Void
-    ) {
-        self.exercise = exercise
-        self.locked = locked
-        self.startsWithAudio = startsWithAudio
-        self.onCheck = onCheck
-        self.onCheckReadyChange = onCheckReadyChange
-        _bank = State(initialValue: exercise.tokens)
-    }
 
     private var tokenFont: Font {
         exercise.operatesOnSentence ? .system(.body, design: .serif) : .body
@@ -559,10 +587,10 @@ private struct CountyBuilderSurface: View {
             }
 
             FlowLayout(spacing: 8) {
-                ForEach(Array(chosen.enumerated()), id: \.offset) { index, token in
-                    tile(token) {
-                        chosen.remove(at: index)
-                        bank.append(token)
+                ForEach(Array(chosen.enumerated()), id: \.offset) { position, slot in
+                    tile(exercise.tokens[slot]) {
+                        placed.remove(slot)
+                        chosen.remove(at: position)
                         publishCheckState()
                     }
                 }
@@ -571,14 +599,25 @@ private struct CountyBuilderSurface: View {
             .padding(10)
             .background(Theme.sunk)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .accessibilityLabel("Your answer: \(chosen.joined(separator: " "))")
+            .accessibilityLabel("Your answer: \(chosen.map { exercise.tokens[$0] }.joined(separator: " "))")
 
             FlowLayout(spacing: 8) {
-                ForEach(Array(bank.enumerated()), id: \.offset) { index, token in
-                    tile(token) {
-                        bank.remove(at: index)
-                        chosen.append(token)
-                        publishCheckState()
+                ForEach(Array(exercise.tokens.enumerated()), id: \.offset) { slot, token in
+                    if placed.contains(slot) {
+                        Text(token)
+                            .font(tokenFont)
+                            .opacity(0)
+                            .padding(.horizontal, 13)
+                            .frame(minHeight: 44)
+                            .background(Theme.sunk)
+                            .clipShape(RoundedRectangle(cornerRadius: 7))
+                            .accessibilityHidden(true)
+                    } else {
+                        tile(token) {
+                            placed.insert(slot)
+                            chosen.append(slot)
+                            publishCheckState()
+                        }
                     }
                 }
             }
@@ -595,7 +634,7 @@ private struct CountyBuilderSurface: View {
 
     private func performCheck() {
         let separator = exercise.authoredUse == "ordering" ? " | " : " "
-        onCheck(chosen.joined(separator: separator))
+        onCheck(chosen.map { exercise.tokens[$0] }.joined(separator: separator))
     }
 
     private func tile(_ token: String, action: @escaping () -> Void) -> some View {
@@ -614,104 +653,162 @@ private struct CountyBuilderSurface: View {
     }
 }
 
+/// Thumb-native matching: Irish word chips sit in one compact row pair above
+/// full-width meaning rows that stay in reach of the bottom bar. A wrong pair
+/// never locks the board or escalates to mastery chrome — the attempted meaning
+/// keeps a plain-language note until the next tap repairs it.
 private struct CountyMatchingSurface: View {
     let exercise: CountyExercise
     let locked: Bool
     let onWrong: (String) -> Void
+    let onRepair: () -> Void
     let onComplete: (String?) -> Void
 
     @ObservedObject private var speech = SpeechService.shared
     @State private var selectedLeft: CountyExercisePair?
     @State private var matched: Set<String> = []
-    @State private var flashingRightID: String?
+    @State private var missedRightID: String?
+
+    private var wordColumns: [GridItem] {
+        [GridItem(.flexible(), spacing: 9), GridItem(.flexible(), spacing: 9)]
+    }
 
     var body: some View {
-        HStack(alignment: .top, spacing: 12) {
-            VStack(spacing: 9) {
+        VStack(alignment: .leading, spacing: 12) {
+            LazyVGrid(columns: wordColumns, spacing: 9) {
                 ForEach(exercise.pairs) { pair in
-                    matchButton(
-                        pair.left,
-                        isIrish: true,
-                        selected: selectedLeft?.id == pair.id,
-                        complete: matched.contains(pair.id)
-                    ) {
-                        selectedLeft = pair
-                        if speech.canSpeak(pair.left) { speech.speak(pair.left) }
-                    }
+                    wordChip(pair)
                 }
             }
+
             VStack(spacing: 9) {
                 ForEach(Array(exercise.pairs.reversed())) { pair in
-                    matchButton(
-                        pair.right,
-                        isIrish: false,
-                        selected: false,
-                        complete: matched.contains(pair.id),
-                        flashing: flashingRightID == pair.id
-                    ) {
-                        guard let selectedLeft else { return }
-                        if selectedLeft.id == pair.id {
-                            matched.insert(pair.id)
-                            self.selectedLeft = nil
-                            flashingRightID = nil
-                            if matched.count == exercise.pairs.count {
-                                onComplete(exercise.feedback)
-                            }
-                        } else {
-                            flashingRightID = pair.id
-                            onWrong(exercise.recovery)
-                            Task { @MainActor in
-                                try? await Task.sleep(for: .milliseconds(500))
-                                if flashingRightID == pair.id { flashingRightID = nil }
-                            }
-                        }
-                    }
+                    meaningRow(pair)
                 }
             }
         }
     }
 
-    private func matchButton(
-        _ text: String,
-        isIrish: Bool,
-        selected: Bool,
-        complete: Bool,
-        flashing: Bool = false,
-        action: @escaping () -> Void
-    ) -> some View {
-        Button(action: action) {
-            HStack {
-                Text(text)
-                    .font(isIrish ? .system(.body, design: .serif) : .body)
+    private func pickWord(_ pair: CountyExercisePair) {
+        Haptics.tap()
+        selectedLeft = pair
+        missedRightID = nil
+        if speech.canSpeak(pair.left) { speech.speak(pair.left) }
+    }
+
+    private func pickMeaning(_ pair: CountyExercisePair) {
+        guard let selectedLeft else { return }
+        if selectedLeft.id == pair.id {
+            Haptics.tap()
+            matched.insert(pair.id)
+            self.selectedLeft = nil
+            missedRightID = nil
+            onRepair()
+            if matched.count == exercise.pairs.count {
+                onComplete(exercise.feedback)
+            }
+        } else {
+            missedRightID = pair.id
+            onWrong(mismatchNote(attempted: pair, selected: selectedLeft))
+        }
+    }
+
+    private func mismatchNote(attempted: CountyExercisePair, selected: CountyExercisePair) -> String {
+        "\u{201C}\(attempted.right)\u{201D} does not belong with \u{201C}\(selected.left)\u{201D}. Choose another meaning."
+    }
+
+    private func wordChip(_ pair: CountyExercisePair) -> some View {
+        let complete = matched.contains(pair.id)
+        let selected = selectedLeft?.id == pair.id
+        return Button {
+            pickWord(pair)
+        } label: {
+            HStack(spacing: 8) {
+                Text(pair.left)
+                    .font(.system(.body, design: .serif))
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer(minLength: 4)
                 if complete {
                     Image(systemName: "checkmark")
                         .font(.caption.weight(.bold))
                         .foregroundStyle(Theme.moss)
+                        .accessibilityHidden(true)
                 } else if selected {
                     Image(systemName: "circle.fill")
                         .font(.caption2)
                         .foregroundStyle(Theme.moss)
+                        .accessibilityHidden(true)
                 }
             }
             .foregroundStyle(complete ? Theme.moss : Theme.ink)
             .padding(.horizontal, 12)
             .frame(maxWidth: .infinity, minHeight: 48, alignment: .leading)
-            .background(flashing ? Theme.rustTint : (selected ? Theme.mossTint : Theme.raised))
+            .background(selected ? Theme.mossTint : Theme.raised)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .overlay {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(
-                        flashing ? Theme.rust : (selected ? Theme.moss : Theme.line),
-                        lineWidth: selected || flashing ? 2 : 1
-                    )
+                    .stroke(selected ? Theme.moss : Theme.line, lineWidth: selected ? 2 : 1)
             }
         }
         .buttonStyle(CarvePress())
         .disabled(locked || complete)
-        .accessibilityLabel(text)
+        .accessibilityLabel(pair.left)
+        .accessibilityValue(complete ? "matched" : (selected ? "selected" : ""))
         .accessibilityAddTraits(selected || complete ? .isSelected : [])
+    }
+
+    private func meaningRow(_ pair: CountyExercisePair) -> some View {
+        let complete = matched.contains(pair.id)
+        let missed = missedRightID == pair.id
+        return VStack(alignment: .leading, spacing: 6) {
+            Button {
+                pickMeaning(pair)
+            } label: {
+                HStack(alignment: .firstTextBaseline, spacing: 10) {
+                    if complete {
+                        Text(pair.left)
+                            .font(.system(.body, design: .serif, weight: .semibold))
+                            .fixedSize(horizontal: false, vertical: true)
+                        Image(systemName: "checkmark")
+                            .font(.caption.weight(.bold))
+                            .accessibilityHidden(true)
+                    }
+                    Text(pair.right)
+                        .font(.body)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 8)
+                }
+                .foregroundStyle(complete ? Theme.moss : Theme.ink)
+                .padding(.vertical, 13)
+                .padding(.horizontal, 15)
+                .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
+                .background(missed ? Theme.rustTint : (complete ? Theme.mossTint : Theme.raised))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(
+                            missed ? Theme.rust : (complete ? Theme.moss : Theme.line),
+                            lineWidth: missed || complete ? 2 : 1
+                        )
+                }
+            }
+            .buttonStyle(CarvePress())
+            .disabled(locked || complete)
+            .accessibilityLabel(pair.right)
+            .accessibilityValue(complete ? "matched with \(pair.left)" : (missed ? "not a match" : ""))
+            .accessibilityHint(selectedLeft == nil && !complete ? "Choose an Irish word first." : "")
+            .accessibilityAddTraits(complete ? .isSelected : [])
+
+            if missed, let selectedLeft {
+                Text(mismatchNote(attempted: pair, selected: selectedLeft))
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.rust)
+                    .lineSpacing(3)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, 15)
+            }
+        }
     }
 }
 
@@ -787,11 +884,16 @@ private struct CountyTypingSurface: View {
     }
 }
 
+/// Record and compare keeps one ink primary per state, owned by the shared
+/// bottom slot: Record (or Stop) until a recording exists, then "I compared
+/// both" once playback has happened. Play model, Play back and Record again
+/// stay moss ghosts; the no-recording escape is a quiet text button unless the
+/// microphone is unavailable, where it becomes the primary.
 private struct CountySpeakingSurface: View {
     let exercise: CountyExercise
     let locked: Bool
     let onComplete: (String?) -> Void
-    let onContinueReadyChange: (Bool) -> Void
+    let onPrimaryChange: (_ title: String, _ isEnabled: Bool, _ action: (() -> Void)?) -> Void
 
     @StateObject private var recorder = EchoRecorder()
     @ObservedObject private var speech = SpeechService.shared
@@ -800,6 +902,8 @@ private struct CountySpeakingSurface: View {
     private var forcedDenied: Bool {
         ProcessInfo.processInfo.arguments.contains("--microphone-denied")
     }
+
+    private var micUnavailable: Bool { recorder.denied || forcedDenied }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -817,51 +921,48 @@ private struct CountySpeakingSurface: View {
                 MissingAudioNotice()
             }
 
-            if recorder.denied || forcedDenied {
+            if micUnavailable {
                 Label("Microphone access is off. You can keep listening and continue without recording.", systemImage: "mic.slash")
                     .font(.body)
                     .foregroundStyle(Theme.inkSoft)
                     .padding(16)
                     .background(Theme.sunk)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .accessibilityElement(children: .combine)
             } else {
-                recordingControls
+                recordingStatus
             }
 
-            if compared {
+            if compared, !locked {
                 Text("No score is produced. The recording stays in the app's temporary local storage and is discarded when you leave this task.")
                     .font(.subheadline)
                     .foregroundStyle(Theme.inkSoft)
                     .lineSpacing(3)
             }
+
+            if !micUnavailable, !locked, recorder.state != .recording {
+                QuietHintButton(title: "Continue without recording") { finish() }
+                    .accessibilityIdentifier("speaking-continue-without-recording")
+            }
         }
-        .onAppear {
-            onContinueReadyChange(true)
-        }
-        .onChange(of: compared) { _, _ in
-            onContinueReadyChange(true)
-        }
+        .onAppear { publishPrimary() }
+        .onChange(of: recorder.state) { _, _ in publishPrimary() }
+        .onChange(of: recorder.denied) { _, _ in publishPrimary() }
+        .onChange(of: compared) { _, _ in publishPrimary() }
+        .onChange(of: locked) { _, _ in publishPrimary() }
         .onDisappear { recorder.discard() }
     }
 
     @ViewBuilder
-    private var recordingControls: some View {
+    private var recordingStatus: some View {
         switch recorder.state {
-        case .idle, .recording:
-            Button {
-                if recorder.state == .recording {
-                    recorder.stop()
-                } else {
-                    speech.stop()
-                    recorder.toggle()
-                }
-            } label: {
-                Label(recorder.state == .recording ? "Stop recording" : "Record your voice", systemImage: recorder.state == .recording ? "stop.fill" : "mic.fill")
-                    .frame(maxWidth: .infinity, minHeight: 48)
-            }
-            .buttonStyle(.bordered)
-            .tint(recorder.state == .recording ? Theme.rust : Theme.moss)
-            .disabled(locked)
+        case .idle:
+            EmptyView()
+        case .recording:
+            Label("Recording — stop when you have said the line.", systemImage: "record.circle")
+                .font(.body)
+                .foregroundStyle(Theme.rust)
+                .accessibilityElement(children: .combine)
         case .recorded:
             HStack(spacing: 10) {
                 Button {
@@ -873,12 +974,49 @@ private struct CountySpeakingSurface: View {
                         .frame(minHeight: 44)
                 }
                 .buttonStyle(.bordered)
-                Button("Record again") { recorder.toggle() }
-                    .buttonStyle(.bordered)
-                    .frame(minHeight: 44)
+                Button("Record again") {
+                    compared = false
+                    recorder.toggle()
+                }
+                .buttonStyle(.bordered)
+                .frame(minHeight: 44)
             }
             .tint(Theme.moss)
+            .disabled(locked)
         }
+    }
+
+    private func publishPrimary() {
+        guard !locked else {
+            onPrimaryChange("Continue", true, nil)
+            return
+        }
+        if micUnavailable {
+            onPrimaryChange("Continue without recording", true, finish)
+            return
+        }
+        switch recorder.state {
+        case .idle:
+            onPrimaryChange("Record your voice", true, startRecording)
+        case .recording:
+            onPrimaryChange("Stop recording", true, stopRecording)
+        case .recorded:
+            onPrimaryChange("I compared both", compared, compared ? finish : nil)
+        }
+    }
+
+    private func startRecording() {
+        speech.stop()
+        recorder.toggle()
+    }
+
+    private func stopRecording() {
+        recorder.stop()
+    }
+
+    private func finish() {
+        recorder.stopPlayback()
+        onComplete(exercise.feedback)
     }
 }
 

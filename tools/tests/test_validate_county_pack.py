@@ -333,6 +333,25 @@ class MirroredSwiftRules(unittest.TestCase):
         self.pack["pack"]["chapters"][0]["pages"][0]["resourceIDs"] = ["resource.does-not-exist"]
         self._expect("missingResource")
 
+    def test_matching_board_is_capped_at_four_pairs(self):
+        # F5: a fifth pair turns the brief distinction board into a mastery chore.
+        for page in self.pack["pack"]["chapters"][0]["pages"]:
+            exercise = page.get("exercise") or {}
+            if exercise.get("family") == "matching":
+                exercise["pairs"].append(
+                    {"id": "costa", "left": "cósta", "right": "coast"}
+                )
+                break
+        self._expect("invalidMatchingBoard")
+
+    def test_matching_board_needs_at_least_two_pairs(self):
+        for page in self.pack["pack"]["chapters"][0]["pages"]:
+            exercise = page.get("exercise") or {}
+            if exercise.get("family") == "matching":
+                exercise["pairs"] = exercise["pairs"][:1]
+                break
+        self._expect("invalidMatchingBoard")
+
     def test_unsupported_schema(self):
         self.pack["schemaVersion"] = 99
         self._expect("unsupportedSchema")

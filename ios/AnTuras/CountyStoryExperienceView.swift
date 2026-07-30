@@ -130,7 +130,9 @@ struct CountyStoryExperienceView: View {
             CountyPageControls(
                 canGoBack: index > 0,
                 canContinue: page.kind == .narrative ? true : (isComplete || exerciseBar.isEnabled),
-                continueTitle: page.kind == .exercise ? exerciseBar.title : (page.advanceLabel ?? (index == visible.count - 1 ? "Complete this chapter path" : "Continue")),
+                continueTitle: page.kind == .exercise
+                    ? (index == visible.count - 1 && isComplete ? "Complete this chapter path" : exerciseBar.title)
+                    : (page.advanceLabel ?? (index == visible.count - 1 ? "Complete this chapter path" : "Continue")),
                 continueEnabled: page.kind == .narrative ? true : (isComplete || exerciseBar.isEnabled),
                 onBack: {
                     guard index > 0 else { return }

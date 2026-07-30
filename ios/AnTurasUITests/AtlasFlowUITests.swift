@@ -92,7 +92,15 @@ final class AtlasFlowUITests: XCTestCase {
         XCTAssertTrue(next.exists)
         XCTAssertFalse(next.isEnabled)
 
+        // First wrong selection: the diagnostic attaches to the row and the
+        // attempt stays open — no struggle chrome yet (D27 repair window).
         app.buttons["Every letter survives clearly and scholars agree on one translation."].tap()
+        XCTAssertTrue(app.staticTexts["The inscription is damaged and debated."].waitForExistence(timeout: 2))
+        XCTAssertFalse(app.staticTexts["Not quite"].exists)
+        XCTAssertFalse(next.isEnabled)
+
+        // A second wrong without self-correcting fires the struggle signal.
+        app.buttons["It records Flann's spoken instructions to the carvers."].tap()
         XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
         XCTAssertFalse(next.isEnabled)
 
@@ -326,18 +334,93 @@ final class AtlasFlowUITests: XCTestCase {
         ]
         app.launch()
 
-        let hear = app.buttons["Hear the Irish"]
-        XCTAssertTrue(hear.waitForExistence(timeout: 5))
-        hear.tap()
+        // The response area answers from cold open — no play-first gate (D1/F1).
         tapChoice("ship", in: app)
 
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        // First wrong: rationale on the affected row, attempt open, no struggle chrome.
+        XCTAssertTrue(app.staticTexts["Long is the word for ship; the sound is different."].waitForExistence(timeout: 2))
+        XCTAssertFalse(app.staticTexts["Not quite"].exists)
         XCTAssertFalse(app.buttons["Continue"].isEnabled)
         XCTAssertFalse(app.buttons["Retry"].exists)
 
+        // A second wrong without self-correcting fires the struggle signal (D27).
+        tapChoice("coast", in: app)
+        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        XCTAssertFalse(app.buttons["Continue"].isEnabled)
+
+        // Repair is still the next touch.
         tapChoice("castle", in: app)
 
         XCTAssertTrue(app.buttons["Continue"].isEnabled)
+    }
+
+    func testRockfleetMatchingWrongPairStaysBriefAndRepairable() throws {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--county-pack", "mayo.grainne-1593",
+            "--mode", "learning",
+            "--page", "mayo.rockfleet.match-household",
+            "--fresh-county-pack",
+        ]
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["Keep people and place distinct"].waitForExistence(timeout: 5))
+        tapButton("caisleán", in: app)
+        tapButton("son", in: app)
+
+        // A wrong pair keeps a plain-language note on the attempted meaning —
+        // never mastery-failure chrome or a locked board (D3/D5/F5).
+        XCTAssertTrue(app.staticTexts["“son” does not belong with “caisleán”. Choose another meaning."].waitForExistence(timeout: 2))
+        XCTAssertFalse(app.staticTexts["Not quite"].exists)
+
+        // The word stays selected; the next tap repairs the pair in place.
+        tapButton("castle", in: app)
+        XCTAssertFalse(app.staticTexts["“son” does not belong with “caisleán”. Choose another meaning."].exists)
+
+        for pair in [("teaghlach", "family / household"), ("mac", "son"), ("bean", "woman")] {
+            tapButton(pair.0, in: app)
+            tapButton(pair.1, in: app)
+        }
+
+        XCTAssertTrue(app.buttons["Continue"].isEnabled)
+        XCTAssertFalse(app.staticTexts["Not quite"].exists)
+    }
+
+    func testRockfleetRecordKeepsInkPrimaryUntilCompare() throws {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--county-pack", "mayo.grainne-1593",
+            "--mode", "learning",
+            "--page", "mayo.rockfleet.speaking",
+            "--fresh-county-pack",
+        ]
+        addUIInterruptionMonitor(withDescription: "Microphone permission") { alert in
+            for label in ["Allow", "OK"] where alert.buttons[label].exists {
+                alert.buttons[label].tap()
+                return true
+            }
+            return false
+        }
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["Put the household in your own voice"].waitForExistence(timeout: 5))
+
+        // Cold open: Record owns the one ink primary; the escape stays quiet (D2/F7).
+        waitForPrimaryBar("Record your voice", in: app).tap()
+        app.swipeUp()
+
+        waitForPrimaryBar("Stop recording", in: app).tap()
+
+        // After Stop the primary is the post-compare continue, held until playback.
+        let compared = app.buttons["I compared both"]
+        XCTAssertTrue(compared.waitForExistence(timeout: 5))
+        XCTAssertFalse(compared.isEnabled)
+
+        tapButton("Play your voice", in: app)
+        waitForPrimaryBar("I compared both", in: app).tap()
+
+        finishExercise(in: app)
+        XCTAssertTrue(app.staticTexts["A connected system can be pressured at several points"].waitForExistence(timeout: 5))
     }
 
     func testRockfleetDeniedMicrophoneNeverTrapsProgress() throws {

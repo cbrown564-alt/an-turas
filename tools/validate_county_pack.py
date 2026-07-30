@@ -220,6 +220,14 @@ def validate(envelope: dict) -> PackReport:
                     raise PackValidationError(
                         "missingRequiredAudio", f"{page.get('id')} has no bundled audio"
                     )
+            # F5: matching is a brief distinction task — two to four pairs per board.
+            if exercise.get("family") == "matching":
+                pair_count = len(exercise.get("pairs", []))
+                if not 2 <= pair_count <= 4:
+                    raise PackValidationError(
+                        "invalidMatchingBoard",
+                        f"{page.get('id')} boards {pair_count} pairs; matching takes two to four",
+                    )
         introduced.update(page.get("introducedLexemeIDs", []))
 
     # Lifecycle ordering, on the flat page order across chapters.
