@@ -1,7 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-30.*
+and visual narrative. English → Irish only. Updated 2026-07-30 (activity quality
+spec added).*
 
 ## Where we are
 
@@ -152,10 +153,116 @@ rights, accessibility, physical-device, migration, offline, and automated checks
 evidence with no session record in the repository; it does not validate the expanded
 story or new Learning mode.
 
+## Learning activity inventory (D27)
+
+Canonical taxonomy: one **activity anatomy**, ten **response families**, five
+**containers**, and three **authored uses** (`ordering`, `audioPrompted`,
+`delayedRecall`). Owners: `PRODUCT.md`, `docs/DECISIONS.md` D27, `CONTEXT.md`,
+`docs/STORY-LEARNING-REBUILD-PLAN.md`. Legacy Chapter 1–3 inline formats and
+`DRILL.md` scheduled-review projections remain parallel until migrated onto the shared
+county runtime.
+
+### Response families — implementation checklist
+
+| # | D27 family | `CountyExerciseFamily` | Surface | Authored (4 packs) | Contract met? |
+|---|---|---|---|---|---|
+| 1 | Listen and choose | `listenChoose` | ✓ | ✓ | Partial — repair window, in-place correction |
+| 2 | Sentence construction | `sentenceConstruction` | ✓ | ✓ | Partial — Check/Continue hierarchy |
+| 3 | Free typed production | `freeTyping` | ✓ | ✓ | Partial — two-voice typography, fada tint |
+| 4 | Fill-in-the-blank | `fillGap` | ✓ | ✓ | Partial — shares choice surface with read-respond |
+| 5 | Matching | `matching` | ✓ | ✓ | **No** — board locks on first wrong tap; 6 pairs exceeds brief |
+| 6 | Read or listen and respond | `readRespond` | ✓ | ✓ (read only) | Partial — no listen variant yet |
+| 7 | Record and compare | `recordCompare` | ✓ | ✓ | **No** — no stable primary action; three equal ghost controls |
+| 8 | Grammar discovery | `grammarDiscovery` | ✓ | ✓ | **No** — one MC step, not progressive reveal → produce → rule |
+| 9 | Picture or map selection | — | ✗ | ✗ | Not started (migration group 1) |
+| 10 | Listen and type | — | ✗ | ✗ | Not started (migration group 2); `audioPrompted` construction is partial overlap only |
+
+### Containers — implementation checklist
+
+| # | D27 container | In enum / surface | Authored | Contract met? |
+|---|---|---|---|---|
+| 1 | Conversation | `conversation` / thin MC list | ✓ | **No** — no turn graph, branching, or resume |
+| 2 | Radio-style listening | — | ✗ | Not started (migration group 3) |
+| 3 | Contextual mistake review | — | ✗ | Not started (migration group 4); `delayedRecall` is a typing use only |
+| 4 | **Words you carry** practice | legacy `VocabDeckView` | chapter 1 | **No** — not on shared county shell |
+| 5 | Completion | `CountyStoryExperienceView` | ✓ | Partial — no capability summary or collection handoff per D27 |
+
+### Authored uses (configuration, not families)
+
+| Use | Parent family | In packs | Runtime |
+|---|---|---|---|
+| `ordering` | `sentenceConstruction` | ✓ all four | ✓ tile order with `\|` separator |
+| `audioPrompted` | `sentenceConstruction` | ✓ all four | ✓ bundled audio before build |
+| `delayedRecall` | `freeTyping` | ✓ all four | ✓ later-page retrieval; not yet wired to mistake-review container |
+
+### Legacy parallel systems (not yet on county runtime)
+
+| System | Formats / entry | Status |
+|---|---|---|
+| Chapter 1–3 inline exercises | `choice`, `assemble`, `typein`, `match`, `listen`, `echo`, `turn`, `recarve`, `discover` in `Models.swift` | Retained; `ExerciseViews.swift` still diverges from county shell |
+| Grammar discovery (`discover`) | `DiscoverView` | Wired for chapter 1; progressive reveal works here |
+| Grammar at volume | `PatternDrillView` / `assemble` | Wired; session-gated |
+| Vocabulary at volume | `VocabDeckView` / `LexemeDeck` | Wired; scheduler over lexeme ids |
+
+### Content coverage (county packs)
+
+| Pack | Exercises | Enum cases present | Notes |
+|---|---|---|---|
+| Rockfleet representative (`mayo.grainne-1593.json`, bundled) | 12 | all 9 | Current Phase 3 proof |
+| Mayo full draft | 38 | all 9 | Not bundled; pre-clearance |
+| Offaly / Dublin / Meath (bundled review) | 30 each | all 9 | Review draft; no gold until gates close |
+
+Pre-D27 **twelve mechanic families** are fully re-authored as the nine enum cases plus
+three authored uses. References to "12 families" elsewhere in this file describe the
+24 July rebuild before D27 collapsed the taxonomy.
+
+### Screenshot map (`tmp/exercise-screenshots/`)
+
+Twelve Rockfleet Learning-path screens captured 2026-07-30. Critique:
+`.impeccable/critique/2026-07-30T15-34-03Z__tmp-exercise-screenshots.md`.
+
+| File | D27 layer | Family / container | Authored use | Implementation gap |
+|---|---|---|---|---|
+| `01-listen-choose.png` | Response family | Listen and choose | — | Response area hidden behind gate copy before first play; hollow radio circles with no selected-state fill; instant grade on first touch |
+| `02-matching.png` | Response family | Matching | — | **Worst recovery** — one wrong tap locks all 12 targets; tint-only selection (accessibility); 6 pairs vs ≤4 chunking guidance |
+| `03-sentence-audio.png` | Response family | Sentence construction | `audioPrompted` | Ink Check stacked above ink Continue; Irish tiles sans while story voice is serif |
+| `04-sentence-build.png` | Response family | Sentence construction | — | Same Check/Continue hierarchy; tile chips mid-screen, scattered for one-handed use |
+| `05-free-typing.png` | Response family | Free typed production | — | English translation in serif, Irish input in sans; fada row uses atlas green not moss; stacked ink primaries |
+| `06-conversation.png` | Container | Conversation | — | **Container contract unmet** — bare choice list, no turn transcript, branching, or resume |
+| `07-sentence-sequence.png` | Response family | Sentence construction | `ordering` | English clause tiles, not Irish; same Check/Continue and recovery model as other builders |
+| `08-read-respond.png` | Response family | Read or listen and respond | — | Read-only MC; Irish template serif but options sans; shares hollow radio row with fill-gap and grammar |
+| `09-grammar-discovery.png` | Response family | Grammar discovery | — | **Family contract unmet** — one worked case + single MC, not reveal → reveal → produce → rule |
+| `10-record-compare.png` | Response family | Record and compare | — | **No primary action** — three equal moss ghost buttons; completion via ghost not ink bar |
+| `11-fill-gap.png` | Response family | Fill-in-the-blank | — | Choice-backed gap only; identical radio-row chrome as 06/08/09 |
+| `12-delayed-typing.png` | Response family | Free typed production | `delayedRecall` | Delay works as later-page retrieval; not yet contextual mistake review; typography issues as 05 |
+
+**Not pictured (intended but absent):** picture or map selection, listen and type,
+radio-style listening, contextual mistake review, **Words you carry** practice, and the
+D27 completion container.
+
+### Migration groups (remaining build order)
+
+1. **Recognition** — add picture or map selection (only missing family in group).
+2. **Construction and production** — add listen and type.
+3. **Contextual use** — radio; extend conversation to full node graph (representative Clew
+   Bay fixture is the acceptance test).
+4. **Consolidation** — contextual mistake review, **Words you carry** on shared runtime,
+   capability-led completion; migrate `LexemeDeck` / `DiscoverView` grading onto county
+   shell.
+
+### Activity quality bar
+
+Operational scorecard for cluster craft and agent loops:
+[`docs/ACTIVITY-QUALITY-SPEC.md`](docs/ACTIVITY-QUALITY-SPEC.md). Shared dimensions,
+D27 contract gates, Rockfleet fixtures, and adversarial scripts. Shell P0s (repair,
+primary slot, disabled styles) before parallel family polish. Does not replace
+`PRODUCT.md` / `DESIGN.md` / D27.
+
 ## Work completed
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-07-30 | **Activity Quality Spec drafted for Learning-mode craft loops.** Operational scorecard: ten shared dimensions, P0 checklist, D27 family/container contract gates, Rockfleet fixture map, adversarial scripts, and agent-loop roles. Linked from docs index and inventory; shell P0s before parallel polish. Does not change product or design authority. | `docs/ACTIVITY-QUALITY-SPEC.md`, `docs/README.md`, `STATUS.md` |
 | 2026-07-30 | **Three disposable iOS learning-interaction studies implemented and focused verification passed.** Sound Match tests immediate audio/meaning choice and in-place repair; Sentence Flow keeps correct sentence work while role cues visibly disappear; Coast Placement attaches *farraige*, *bá*, and *áit* to a spatial coast before removing its labels. The studies use one narrow Clew Bay fixture, no story exposition, separate local state, direct audio fallback, and no county progress, review, or shared-runtime side effects. XcodeGen was regenerated; 3 focused unit and 5 focused UI tests pass, including complete wrong-to-correct loops, both appearances, largest Dynamic Type, and reduced motion. Initial states were directly inspected on an iPhone 17 Pro Max simulator. This is implemented and verified research evidence, not validated pedagogy or a selected architecture. | `ios/AnTuras/Prototypes/InteractionStudies/`, `ios/AnTurasTests/InteractionStudyTests.swift`, `ios/AnTurasUITests/InteractionStudyUITests.swift`, `docs/INTERACTION-STUDIES-REPORT.md` |
 | 2026-07-30 | **D26 grilled; D27 records three activity layers and the migration lands.** The flat fifteen-family set became one activity anatomy, ten response families, and five containers, because five of the fifteen could not satisfy the response contract D26 also mandates. Sequencing and delayed retrieval became authored uses; grammar discovery stayed a family and reconciled with `DRILL.md`'s `discover` projection; dialogue and branching roleplay merged into one conversation container with setting as authored metadata; single-choice families now check on selection with a repair window before any struggle signal; **Words you carry** and scheduled review became two surfaces over one spine. `CountyExerciseFamily` went from twelve cases to nine with a deterministic migration from the legacy vocabulary, and 32 authored exercises across eight packs were re-expressed. A new `authoredUse` field keeps the anti-monotony cap measuring what the learner actually does after the merge. The 5,259 lines of prototype and interaction-study code were deleted once D27 recorded the retained primitives. XcodeGen regenerated; 42 unit, 17 UI, and 43 Python tests pass, and all eight packs validate. This changes the taxonomy and implementation order; it validates no learning outcome. | `CONTEXT.md`, `docs/DECISIONS.md` D27, `PRODUCT.md`, `DESIGN.md`, `docs/DRILL.md`, `docs/STORY-LEARNING-REBUILD-PLAN.md`, `ios/AnTuras/CountyStoryPack.swift`, `CountyExerciseSystem.swift`, `tools/` |
 | 2026-07-30 | **Expanded activity reference review completed and D26 recorded.** A separate 48-activity HTML field guide supported selection of a familiar one-screen activity system. The next Mayo proof will combine that stable shell with only the response and recovery details from the iOS studies that improve clarity and repeatability. | `web/learning-activity-reference/`, `PRODUCT.md`, `DESIGN.md`, `docs/DECISIONS.md` D26 |
@@ -223,9 +330,12 @@ story or new Learning mode.
    conversation, speaking, comprehension, completion, and contextual-review sequence.
    Decide which local response, correction, scaffold-removal, motion, and spatial
    details from the iOS studies are retained; do not reopen the architecture choice.
+   Grade craft against [`docs/ACTIVITY-QUALITY-SPEC.md`](docs/ACTIVITY-QUALITY-SPEC.md).
 2. **Implement the shared state engine and activity shell** — centralise attempt,
    diagnostic, hint/recovery, retry, completion, persistence, focus, accessibility
    announcements, and exactly-once memory events before migrating production packs.
+   Clear Shell-cluster P0s in the quality spec (in-place repair, one primary slot,
+   readable disabled styles) before parallel family polish.
 3. **Operate the complete representative run** — prove the selected shell end to end
    with incorrect and recovery paths, audio fallback, keyboard/fadas, microphone
    denial, interruption/resume, and fixture-only completion.

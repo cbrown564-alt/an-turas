@@ -36,6 +36,11 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
   disposable iOS interaction studies that informed response, correction,
   scaffold-removal, motion, and spatial details for D26. It is research evidence, not
   the active product architecture.
+- [`ACTIVITY-QUALITY-SPEC.md`](ACTIVITY-QUALITY-SPEC.md) is the operational
+  scorecard for Learning-mode exercise craft (shared dimensions, D27 contract
+  gates, Rockfleet fixtures, adversarial scripts, agent-loop contract). It does
+  not own product or design rules; update `PRODUCT.md`, `DESIGN.md`, and D26/D27
+  first when those change.
 - [`../web/learning-activity-reference/index.html`](../web/learning-activity-reference/index.html)
   is the 48-activity interactive reference field guide that supported D26. The
   canonical activity rules live in `PRODUCT.md`, `DESIGN.md`, D26, and the rebuild
