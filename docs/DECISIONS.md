@@ -2,6 +2,80 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D27 — Three layers: anatomy, ten response families, five containers (2026-07-30)
+
+**Decision:** D26's flat list of fifteen "response families" becomes three named layers.
+
+The **activity anatomy** is the fixed outer composition, unchanged from D26.
+
+Ten **response families** satisfy the shared response contract — update response, check,
+request hint, begin recovery, retry, complete: picture or map selection, sentence
+construction, free typed production, fill-in-the-blank, listen and choose, listen and
+type, record and compare, matching, read or listen and respond, and grammar discovery.
+
+Five **containers** host or terminate response families rather than being one, and each
+carries its own contract: conversation, radio-style listening, contextual mistake review,
+**Words you carry** practice, and completion.
+
+Consequent resolutions:
+
+- **Sequencing** and **delayed retrieval** are authored uses, not families. Sequencing is
+  sentence construction with an order objective; delayed retrieval is an authored use of
+  contextual mistake review and **Words you carry** practice.
+- **Grammar discovery** stays a family. Progressive reveal gated on a produce step is a
+  response lifecycle no other family has, and it is `DRILL.md`'s `discover` projection.
+- **Dialogue and branching roleplay merge** into the single **conversation** container,
+  which owns turns, branching, resume, and node-graph validation. **Setting** —
+  historical-bounded or present-day — is authored metadata, not a structural difference.
+- **Single-choice families grade on selection**; multi-part families keep Check. A wrong
+  selection shows its diagnostic immediately but leaves the attempt open; the struggle
+  memory event fires only if the learner does not self-correct on the next touch or
+  leaves. This supersedes DESIGN.md's universal editable-until-Check rule.
+- **One spine, two projections.** Lexemes and patterns are the only corpus. Collection
+  holds per-learner encounter metadata; scheduler holds due state. **Words you carry** is
+  the surface over collection, scheduled review the surface over scheduler. This satisfies
+  both `DRILL.md`'s no-disconnected-corpus guarantee and D26's collection-distinct-from-
+  scheduler requirement.
+- **Distribution quotas** are computed over all activity pages including containers, so
+  conversation and radio count toward production and listening load. The seven-distinct
+  rule counts response families only, so diversity cannot be met by stacking containers.
+- **A conversation joins the representative Mayo slice**, so the runtime meets multi-turn,
+  branching, and resume before the abstraction is extracted.
+
+**Why:** D26's value is one stable anatomy, but five of its fifteen families could not
+satisfy the response contract it also mandates — completion has no response, mistake
+review and **Words you carry** select other families, radio is a segment timeline, and
+roleplay is a multi-screen graph. Flattening three kinds of thing into one list would
+have forced per-family exceptions into the shared runtime, which is the exact problem the
+foundation sprint exists to remove. Naming the layers keeps D26's familiarity claim and
+makes the contract genuinely shared.
+
+The family reconciliation was also forced by evidence: `sequencing`, `delayedRetrieval`,
+and `listenBuildSentence` remained live in `CountyExerciseFamily`, in
+`ACTIVE_PRODUCTION_FAMILIES`, in the plan's component table, and in thirty-two authored
+exercises, while D26's list omitted them. `DRILL.md`'s `discover` projection likewise
+survived D26 unmentioned.
+
+**Consequences:** D26's rationale is restated as a consistency and taste argument rather
+than a learning-attention claim. Nothing tests whether familiar mechanics protect
+attention for Irish until the four-county tester-readiness gate, which remains the first
+contact with a learner other than the owner; the claim should not be asserted as
+established before then.
+
+Migration is cheap but real. Twenty-eight of the thirty-two affected exercises regenerate
+through `tools/build_phase5_county_drafts.py`; Mayo's four are hand-reviewed revision-6
+content needing editorial decisions. Swift and Python validators must move together.
+
+The interaction-study and prototype code — 4,458 lines of views and 801 lines of tests
+across seven files, five `AtlasPrototype` entry points, and their project entries — is
+deleted once the retained-primitive synthesis is recorded and before the state engine is
+built. `INTERACTION-STUDIES-REPORT.md` preserves the findings and git history preserves
+the code.
+
+This decision changes the taxonomy, the commit model, and the implementation order. It
+does not validate learning outcomes or clear any county's history, pedagogy, language,
+audio, rights, or tester gate.
+
 ## D26 — Adopt a familiar one-screen learning activity system (2026-07-30)
 
 **Decision:** Learning mode will use a stable **one screen, one task** activity
