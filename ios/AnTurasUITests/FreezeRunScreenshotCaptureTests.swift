@@ -34,7 +34,24 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
 
     private func tapButton(_ label: String, in app: XCUIApplication) {
         let button = app.buttons[label]
-        guard button.waitForExistence(timeout: 5) else { return }
+        XCTAssertTrue(button.waitForExistence(timeout: 5), "Missing button: \(label)")
+        for _ in 0..<10 where !button.isHittable { app.swipeUp() }
+        if button.isHittable {
+            button.tap()
+        } else {
+            button.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        }
+    }
+
+    private func tapCheckWhenReady(_ label: String = "Check the order", in app: XCUIApplication) {
+        let button = app.buttons[label]
+        XCTAssertTrue(button.waitForExistence(timeout: 5), "Missing check: \(label)")
+        let enabled = NSPredicate(format: "enabled == true")
+        XCTAssertEqual(
+            XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: enabled, object: button)], timeout: 8),
+            .completed,
+            "Check never enabled: \(label)"
+        )
         for _ in 0..<7 where !button.isHittable { app.swipeUp() }
         button.tap()
     }
@@ -107,14 +124,28 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
 
         for token in ["as", "Is", "Maigh Eo", "mé."] { tapButton(token, in: app) }
         shot("03-build-filled", from: app)
-        tapButton("Check the order", in: app)
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        tapCheckWhenReady(in: app)
+        XCTAssertTrue(
+            app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH 'Not quite'")).firstMatch
+                .waitForExistence(timeout: 2)
+        )
         shot("03-build-wrong", from: app)
 
         for token in ["as", "Maigh Eo", "mé."] { tapButton(token, in: app) }
         for token in ["as", "Maigh Eo", "mé."] { tapButton(token, in: app) }
-        tapButton("Check the order", in: app)
+        tapCheckWhenReady(in: app)
+        XCTAssertTrue(
+            app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH 'Complete'")).firstMatch
+                .waitForExistence(timeout: 2)
+        )
+        XCTAssertFalse(
+            app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH 'Not quite'")).firstMatch.exists
+        )
         shot("03-build-complete", from: app)
+
+        let out = URL(fileURLWithPath: "/Users/cobro/code/irish/tmp/exercise-screenshots/builder-2026-07-31/03-build-complete.png")
+        try? FileManager.default.createDirectory(at: out.deletingLastPathComponent(), withIntermediateDirectories: true)
+        try XCUIScreen.main.screenshot().pngRepresentation.write(to: out)
     }
 
     // MARK: D — Typing (step 4)

@@ -243,7 +243,7 @@ final class AtlasFlowUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["The stronghold held people as well as stone"].waitForExistence(timeout: 5))
         tapButton("Enter the household", in: app)
 
-        XCTAssertTrue(app.staticTexts["Keep people and place distinct"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Tap the matching pairs"].waitForExistence(timeout: 5))
         for pair in [
             ("caisleán", "castle"),
             ("teaghlach", "family / household"),
@@ -255,13 +255,13 @@ final class AtlasFlowUITests: XCTestCase {
         }
         finishExercise(in: app)
 
-        XCTAssertTrue(app.staticTexts["Hear a complete thought"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Listen, then build the sentence"].waitForExistence(timeout: 5))
         tapButton("Listen", in: app)
         for token in ["Tá", "muid", "go", "léir."] { tapButton(token, in: app) }
         tapButton("Check the order", in: app)
         finishExercise(in: app)
 
-        XCTAssertTrue(app.staticTexts["Build the household line"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Build the sentence"].waitForExistence(timeout: 5))
         for token in ["Tá", "an", "teaghlach", "anseo."] { tapButton(token, in: app) }
         tapButton("Check the order", in: app)
         finishExercise(in: app)
@@ -278,7 +278,7 @@ final class AtlasFlowUITests: XCTestCase {
         tapButton("Tá an caisleán anseo.", in: app)
         finishExercise(in: app)
 
-        XCTAssertTrue(app.staticTexts["Rebuild the system"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Put them in order"].waitForExistence(timeout: 5))
         for event in [
             "The inlet gives boats a landing.",
             "The castle protects a base.",
@@ -354,6 +354,45 @@ final class AtlasFlowUITests: XCTestCase {
         XCTAssertTrue(app.buttons["Continue"].isEnabled)
     }
 
+    func testRockfleetMatchingSlotsStayFixedWithOnePairLeft() throws {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--county-pack", "mayo.grainne-1593",
+            "--mode", "learning",
+            "--page", "mayo.rockfleet.match-household",
+            "--fresh-county-pack",
+        ]
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["Tap the matching pairs"].waitForExistence(timeout: 5))
+
+        for word in ["caisleán", "teaghlach", "mac", "bean"] {
+            let button = app.buttons[word]
+            XCTAssertTrue(button.waitForExistence(timeout: 2))
+            XCTAssertLessThanOrEqual(button.frame.height, 88, "\(word) cold height \(button.frame.height)")
+        }
+
+        for pair in [("caisleán", "castle"), ("mac", "son"), ("bean", "woman")] {
+            tapButton(pair.0, in: app)
+            tapButton(pair.1, in: app)
+            Thread.sleep(forTimeInterval: 0.55)
+        }
+
+        Thread.sleep(forTimeInterval: 0.3)
+
+        let teaghlach = app.buttons["teaghlach"]
+        let household = app.buttons["family / household"]
+        XCTAssertTrue(teaghlach.waitForExistence(timeout: 2))
+        XCTAssertTrue(household.waitForExistence(timeout: 2))
+        XCTAssertLessThanOrEqual(teaghlach.frame.height, 88, "Irish tile stretched to \(teaghlach.frame.height)")
+        XCTAssertLessThanOrEqual(household.frame.height, 88, "Meaning tile stretched to \(household.frame.height)")
+
+        let out = URL(fileURLWithPath: "/Users/cobro/code/irish/tmp/exercise-screenshots/match-slots-one-left.png")
+        try XCUIScreen.main.screenshot().pngRepresentation.write(to: out)
+
+        keepScreenshot(named: "Rockfleet matching — one pair left, fixed slots", from: app)
+    }
+
     func testRockfleetMatchingWrongPairStaysBriefAndRepairable() throws {
         let app = XCUIApplication()
         app.launchArguments = [
@@ -364,7 +403,7 @@ final class AtlasFlowUITests: XCTestCase {
         ]
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["Keep people and place distinct"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Tap the matching pairs"].waitForExistence(timeout: 5))
         tapButton("caisleán", in: app)
         tapButton("son", in: app)
 

@@ -81,6 +81,8 @@ enum ExerciseSurface {
     /// still breathe when a meaning wraps.
     static let matchTileMinHeight: CGFloat = 72
     static let chipMinHeight: CGFloat = 48
+    /// Builder answer tray: one chip row plus ruled breathing room.
+    static let builderTrayMinHeight: CGFloat = 96
     static let listenTrayMinHeight: CGFloat = 88
     static let slowCapsuleMinHeight: CGFloat = 44
     static let slowCapsuleMinWidth: CGFloat = 56
@@ -96,6 +98,16 @@ enum ExerciseSurface {
     static let borderEmphasis: CGFloat = 1.5
     static let borderState: CGFloat = 2
     static let tactileLip: CGFloat = 3
+    /// Reserved band under meaning tiles for a one-line wrong note so slots
+    /// stay the same height whether or not a diagnostic is visible.
+    static let matchNoteBandHeight: CGFloat = 28
+    static var matchSlotHeight: CGFloat { matchTileMinHeight + matchNoteBandHeight }
+
+    static func matchBoardHeight(pairCount: Int) -> CGFloat {
+        guard pairCount > 0 else { return 0 }
+        let rows = CGFloat(pairCount)
+        return rows * matchSlotHeight + (rows - 1) * tileGridSpacing
+    }
 }
 
 /// Bottom lip on raised tiles — limestone tactile cue, not cartoon 3D.

@@ -95,7 +95,7 @@ struct CountyStoryExperienceView: View {
                                     // AX-size content outgrows this and scrolls as one
                                     // composition, and keyboard avoidance keeps the
                                     // focused field visible on top of it.
-                                    .frame(minHeight: max(geometry.size.height - 108, 0))
+                                    .frame(minHeight: max(geometry.size.height - 108, 0), alignment: .top)
                             } else {
                                 CountyNarrativePage(
                                     page: page,

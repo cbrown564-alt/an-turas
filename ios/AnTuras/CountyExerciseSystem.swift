@@ -285,13 +285,23 @@ struct CountyExerciseView: View {
             // supplies a viewport min-height; AX-size content outgrows it and
             // scrolls as one composition, and with the keyboard up the scroll
             // view still brings the focused field into view.
-            Spacer(minLength: ExerciseSurface.zoneGap)
+            // Matching and builder keep fixed surface heights — pin under the
+            // prompt so banks stay above the bar inset.
+            if exercise.family == .matching || exercise.family == .sentenceConstruction {
+                responseSurface
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.top, ExerciseSurface.zoneGap)
 
-            responseSurface
+                feedbackPanel
+            } else {
+                Spacer(minLength: ExerciseSurface.zoneGap)
 
-            feedbackPanel
+                responseSurface
 
-            Spacer(minLength: ExerciseSurface.zoneGap)
+                feedbackPanel
+
+                Spacer(minLength: ExerciseSurface.zoneGap)
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .task { syncBarState() }
@@ -486,6 +496,7 @@ struct CountyExerciseView: View {
                     .transition(.identity)
                 }
             }
+            .animation(feedbackAnimation, value: presentationPhase)
         }
     }
 
@@ -584,12 +595,9 @@ struct CountyExerciseView: View {
 
     private func markWrong(_ message: String) {
         Haptics.error()
-        let transition = withAnimation(feedbackAnimation) {
-            formEngineResponse()
-            let checked = engine.check(outcome: .incorrect, diagnosticShown: true, escalatesDiagnostic: true)
-            panelMessage = message
-            return checked
-        }
+        formEngineResponse()
+        let transition = engine.check(outcome: .incorrect, diagnosticShown: true, escalatesDiagnostic: true)
+        panelMessage = message
         apply(transition)
     }
 
@@ -625,12 +633,11 @@ struct CountyExerciseView: View {
         } else {
             Haptics.chisel()
         }
-        let transition = withAnimation(feedbackAnimation) {
-            formEngineResponse()
-            let completed = engine.complete()
-            panelMessage = message ?? exercise.feedback
-            return completed
-        }
+        // Commit feedback copy before the phase animation so the complete
+        // panel never stacks on the outgoing incorrect line (D5 ghost).
+        panelMessage = message ?? exercise.feedback
+        formEngineResponse()
+        let transition = engine.complete()
         apply(transition)
         if transition.accepted {
             onComplete()
@@ -749,11 +756,10 @@ private struct CountyListenChoiceSurface: View {
     }
 }
 
-/// Shared InstrumentControl: sunk listen tray + Slow capsule, or hero + footer
-/// pills for speak. Never choice-shaped peer squares.
+/// Shared listen instrument: ripple stone for recognition, sunk tray for builders.
 private struct CountyAudioPromptControl: View {
     enum Presentation {
-        /// Waveform tray without revealing the Irish (recognition tasks).
+        /// Ripple disc without revealing the Irish (recognition tasks).
         case listenObject(hearLabel: String, replayLabel: String)
         /// Compact sunk model tray above a builder bank.
         case modelControl(playLabel: String, replayLabel: String)
@@ -762,18 +768,21 @@ private struct CountyAudioPromptControl: View {
     let text: String
     let presentation: Presentation
     var includeSlow: Bool = true
+    /// Inline ripple under an Irish hero (read/respond); default is stage hero.
+    var compact: Bool = false
     var disabled: Bool = false
     var onWillPlay: (() -> Void)? = nil
     var onPlayed: (() -> Void)? = nil
 
     @ObservedObject private var speech = SpeechService.shared
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var hasPlayed = false
 
     private static let slowRate: Float = 0.7
 
     private var isPlaying: Bool { speech.isSpeaking(text) }
 
-    private var primaryLabel: String {
+    private var accessibilityLabel: String {
         switch presentation {
         case .listenObject(let hear, let replay):
             return hasPlayed ? replay : hear
@@ -782,13 +791,134 @@ private struct CountyAudioPromptControl: View {
         }
     }
 
+    private var modelTrayLabel: String { accessibilityLabel }
+
+    private var actionWord: String { hasPlayed ? "Éist arís" : "Éist" }
+
     var body: some View {
-        instrumentTray
+        switch presentation {
+        case .listenObject:
+            rippleInstrument
+        case .modelControl:
+            modelInstrumentTray
+        }
     }
 
-    /// Full-width sunk tray with the Slow rate demoted to a caption accessory
-    /// at its trailing edge — never a peer capsule beside the play control.
-    private var instrumentTray: some View {
+    // MARK: Ripple stone (listen and choose, listen-only read/respond)
+
+    @ViewBuilder
+    private var rippleInstrument: some View {
+        if compact {
+            compactRippleRow
+        } else {
+            heroRippleColumn
+        }
+    }
+
+    private var heroRippleColumn: some View {
+        VStack(spacing: 14) {
+            rippleDisc(diameter: 132, waveWidth: 52)
+            HStack(spacing: 16) {
+                Text(actionWord)
+                    .font(.headline)
+                    .foregroundStyle(Theme.ink)
+                if includeSlow {
+                    slowTextButton
+                }
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 8)
+        .opacity(disabled ? 0.55 : 1)
+    }
+
+    private var compactRippleRow: some View {
+        HStack(spacing: 12) {
+            rippleDisc(diameter: 56, waveWidth: 28)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(actionWord)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Theme.moss)
+                if includeSlow {
+                    slowTextButton
+                }
+            }
+            Spacer(minLength: 0)
+        }
+        .opacity(disabled ? 0.55 : 1)
+    }
+
+    private func rippleDisc(diameter: CGFloat, waveWidth: CGFloat) -> some View {
+        Button {
+            play(rate: 1)
+        } label: {
+            ZStack {
+                rippleRings(diameter: diameter)
+                OrganicWaveMark(playing: isPlaying)
+                    .frame(width: waveWidth, height: waveWidth * 0.54)
+            }
+            .frame(width: diameter, height: diameter)
+            .background(Theme.raised)
+            .clipShape(Circle())
+            .overlay {
+                Circle()
+                    .stroke(
+                        isPlaying ? Theme.moss : Theme.line,
+                        lineWidth: isPlaying ? ExerciseSurface.borderState : ExerciseSurface.borderHairline
+                    )
+            }
+            .tactileLip(radius: diameter / 2, active: !disabled)
+        }
+        .buttonStyle(CarvePress())
+        .disabled(disabled)
+        .accessibilityLabel(accessibilityLabel)
+        .accessibilityValue(isPlaying ? "playing" : (hasPlayed ? "played" : "ready"))
+    }
+
+    private var slowTextButton: some View {
+        Button {
+            play(rate: Self.slowRate)
+        } label: {
+            Text("Slow")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Theme.inkSoft)
+        }
+        .buttonStyle(.plain)
+        .disabled(disabled)
+        .accessibilityLabel("Play slowly")
+        .accessibilityHint("Plays the same recording at a slower rate")
+    }
+
+    private func rippleRings(diameter: CGFloat) -> some View {
+        TimelineView(
+            .animation(
+                minimumInterval: reduceMotion || !isPlaying ? 60 : 0.16,
+                paused: reduceMotion || !isPlaying
+            )
+        ) { context in
+            let t = context.date.timeIntervalSinceReferenceDate
+            let scale = diameter / 132
+            ZStack {
+                ForEach(0..<3, id: \.self) { ring in
+                    let base = (44 + CGFloat(ring) * 22) * scale
+                    let breathe = isPlaying && !reduceMotion
+                        ? 1 + 0.06 * CGFloat(sin(t * 2.4 + Double(ring)))
+                        : 1
+                    Circle()
+                        .stroke(Theme.line.opacity(0.85 - Double(ring) * 0.2), lineWidth: 1)
+                        .frame(width: base * breathe, height: base * breathe)
+                        .opacity(isPlaying ? 0.9 - Double(ring) * 0.22 : 0.55 - Double(ring) * 0.12)
+                }
+            }
+        }
+        .accessibilityHidden(true)
+    }
+
+    // MARK: Sunk tray (audio-prompted builders)
+
+    /// Full-width sunk tray with Slow demoted to a caption accessory at the
+    /// trailing edge — never a peer capsule beside the play control.
+    private var modelInstrumentTray: some View {
         HStack(alignment: .center, spacing: 0) {
             Button {
                 play(rate: 1)
@@ -796,7 +926,7 @@ private struct CountyAudioPromptControl: View {
                 HStack(alignment: .center, spacing: 14) {
                     AudioWaveMark(playing: isPlaying)
                         .frame(width: 36, height: 28)
-                    Text(primaryLabel)
+                    Text(modelTrayLabel)
                         .font(.headline)
                         .foregroundStyle(Theme.ink)
                     Spacer(minLength: 8)
@@ -808,7 +938,7 @@ private struct CountyAudioPromptControl: View {
             }
             .buttonStyle(CarvePress())
             .disabled(disabled)
-            .accessibilityLabel(primaryLabel)
+            .accessibilityLabel(modelTrayLabel)
             .accessibilityValue(isPlaying ? "playing" : (hasPlayed ? "played" : "ready"))
 
             if includeSlow {
@@ -889,6 +1019,43 @@ private struct AudioWaveMark: View {
                 }
             }
             .frame(width: compact ? 22 : 32, height: compact ? 16 : 24)
+        }
+        .accessibilityHidden(true)
+    }
+}
+
+/// Organic wave stroke for the ripple listen instrument — distinct from EQ bars.
+private struct OrganicWaveMark: View {
+    let playing: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    var body: some View {
+        TimelineView(
+            .animation(
+                minimumInterval: reduceMotion || !playing ? 60 : 0.1,
+                paused: reduceMotion || !playing
+            )
+        ) { context in
+            let t = context.date.timeIntervalSinceReferenceDate
+            Canvas { graphicsContext, size in
+                var path = Path()
+                let midY = size.height * 0.5
+                let amplitude = playing && !reduceMotion ? size.height * 0.22 : size.height * 0.14
+                let wavelength = size.width / 2.2
+                path.move(to: CGPoint(x: 0, y: midY))
+                let steps = 24
+                for step in 0...steps {
+                    let x = size.width * CGFloat(step) / CGFloat(steps)
+                    let phase = (x / wavelength) * .pi * 2 + (playing ? t * 5 : 0)
+                    let y = midY + sin(phase) * amplitude
+                    path.addLine(to: CGPoint(x: x, y: y))
+                }
+                graphicsContext.stroke(
+                    path,
+                    with: .color(Theme.moss.opacity(playing ? 0.95 : 0.42)),
+                    style: StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round)
+                )
+            }
         }
         .accessibilityHidden(true)
     }
@@ -1373,7 +1540,6 @@ private struct CountyReadRespondSurface: View {
     let onPick: (CountyExerciseOption) -> Void
 
     @ObservedObject private var speech = SpeechService.shared
-    @State private var hasPlayed = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: ExerciseSurface.zoneGap) {
@@ -1387,7 +1553,15 @@ private struct CountyReadRespondSurface: View {
                         .accessibilityAddTraits(.isHeader)
 
                     if let audioText = exercise.audioText, speech.canSpeak(audioText) {
-                        listenControl(for: audioText)
+                        CountyAudioPromptControl(
+                            text: audioText,
+                            presentation: .listenObject(
+                                hearLabel: "Listen",
+                                replayLabel: "Listen again"
+                            ),
+                            compact: true,
+                            disabled: locked
+                        )
                     } else if exercise.audioText != nil {
                         MissingAudioNotice()
                     }
@@ -1424,27 +1598,6 @@ private struct CountyReadRespondSurface: View {
                 showsSentenceTemplate: false
             )
         }
-    }
-
-    private func listenControl(for audioText: String) -> some View {
-        Button {
-            guard !locked else { return }
-            Haptics.tap()
-            speech.speak(audioText)
-            hasPlayed = true
-        } label: {
-            HStack(spacing: 8) {
-                AudioWaveMark(playing: speech.isSpeaking(audioText), compact: true)
-                Text(hasPlayed ? "Listen again" : "Listen")
-                    .font(.subheadline.weight(.semibold))
-            }
-            .foregroundStyle(Theme.moss)
-            .frame(minHeight: 44, alignment: .leading)
-        }
-        .buttonStyle(.plain)
-        .disabled(locked)
-        .accessibilityLabel(hasPlayed ? "Listen again" : "Listen")
-        .accessibilityValue(speech.isSpeaking(audioText) ? "playing" : (hasPlayed ? "played" : "ready"))
     }
 }
 
@@ -1653,9 +1806,9 @@ private struct CountyGrammarDiscoverySurface: View {
 }
 
 /// Tile builder with a stable bank: picked tiles leave a sunk placeholder so
-/// remaining tiles never slide under the learner's thumb (or under a resolved
-/// accessibility frame mid-animation). Tiles return to their own slot when
-/// removed from the answer.
+/// Sentence construction: ruled answer tray above, word bank below. Placed
+/// tiles leave the bank entirely — no ghost placeholders. Audio-first steps
+/// lead with ripple listen; the bank stays visually secondary until heard.
 private struct CountyBuilderSurface: View {
     let exercise: CountyExercise
     let locked: Bool
@@ -1664,6 +1817,7 @@ private struct CountyBuilderSurface: View {
     let onCheckReadyChange: (Bool, @escaping () -> Void) -> Void
 
     @ObservedObject private var speech = SpeechService.shared
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var placed: Set<Int> = []
     @State private var chosen: [Int] = []
     @State private var heard = false
@@ -1679,14 +1833,18 @@ private struct CountyBuilderSurface: View {
         usesWorkingIrish ? .system(.title3, design: .serif) : .title3
     }
 
+    private var bankDemoted: Bool {
+        startsWithAudio && !heard && chosen.isEmpty
+    }
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 0) {
             if startsWithAudio, let audioText = exercise.audioText {
                 if speech.canSpeak(audioText) {
                     CountyAudioPromptControl(
                         text: audioText,
-                        presentation: .modelControl(
-                            playLabel: "Listen",
+                        presentation: .listenObject(
+                            hearLabel: "Listen",
                             replayLabel: "Listen again"
                         ),
                         disabled: locked,
@@ -1700,66 +1858,78 @@ private struct CountyBuilderSurface: View {
                 }
             }
 
-            FlowLayout(spacing: ExerciseSurface.tileGridSpacing) {
-                ForEach(Array(chosen.enumerated()), id: \.offset) { position, slot in
-                    tile(exercise.tokens[slot], inAnswer: true) {
-                        placed.remove(slot)
-                        chosen.remove(at: position)
-                        publishCheckState()
-                    }
-                    .accessibilityLabel(exercise.tokens[slot])
-                    .accessibilityHint("In your answer. Double-tap to return it to the bank.")
-                }
-            }
-            .frame(maxWidth: .infinity, minHeight: 88, alignment: .leading)
-            .padding(12)
-            .background(alignment: .topLeading) {
-                ZStack(alignment: .topLeading) {
-                    Theme.sunk
-                    // Ruled answer lines: one hairline resting in the gutter
-                    // under each tile row, in front of the sunk fill but
-                    // behind the tiles — lined paper, not a box. Rows beyond
-                    // the first appear as the tray grows with tiles.
-                    VStack(spacing: ExerciseSurface.chipMinHeight + ExerciseSurface.tileGridSpacing - ExerciseSurface.borderHairline) {
-                        ForEach(0..<4, id: \.self) { _ in
-                            Rectangle()
-                                .fill(Theme.line)
-                                .frame(height: ExerciseSurface.borderHairline)
-                        }
-                    }
-                    .padding(.horizontal, 12)
-                    .padding(.top, 12 + ExerciseSurface.chipMinHeight + ExerciseSurface.tileGridSpacing / 2 - ExerciseSurface.borderHairline / 2)
-                    .accessibilityHidden(true)
-                }
-            }
-            .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.trayRadius))
-            .accessibilityElement(children: .contain)
-            .accessibilityLabel("Your answer: \(chosen.map { exercise.tokens[$0] }.joined(separator: " "))")
+            answerTray
+                .padding(.top, startsWithAudio ? ExerciseSurface.choiceGap : 0)
 
-            FlowLayout(spacing: ExerciseSurface.tileGridSpacing) {
-                ForEach(Array(exercise.tokens.enumerated()), id: \.offset) { slot, token in
-                    if placed.contains(slot) {
-                        Text(token)
-                            .font(tokenFont)
-                            .opacity(0)
-                            .padding(.horizontal, ExerciseSurface.optionPadH)
-                            .frame(minHeight: ExerciseSurface.chipMinHeight)
-                            .background(Theme.sunk)
-                            .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.chipRadius))
-                            .accessibilityHidden(true)
-                    } else {
-                        tile(token, inAnswer: false) {
-                            placed.insert(slot)
-                            chosen.append(slot)
-                            publishCheckState()
-                        }
-                    }
-                }
-            }
-            .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
+            tokenBank
+                .padding(.top, ExerciseSurface.zoneGap)
+                .opacity(bankDemoted ? 0.84 : 1)
+                .animation(reduceMotion ? nil : Motion.settle, value: bankDemoted)
         }
+        .frame(maxWidth: .infinity, alignment: .top)
+        .fixedSize(horizontal: false, vertical: true)
         .onAppear { publishCheckState() }
         .onChange(of: locked) { _, _ in publishCheckState() }
+    }
+
+    private var answerTray: some View {
+        FlowLayout(spacing: ExerciseSurface.tileGridSpacing) {
+            ForEach(Array(chosen.enumerated()), id: \.offset) { position, slot in
+                tile(exercise.tokens[slot], inAnswer: true) {
+                    placed.remove(slot)
+                    chosen.remove(at: position)
+                    publishCheckState()
+                }
+                .accessibilityLabel(exercise.tokens[slot])
+                .accessibilityHint("In your answer. Double-tap to return it to the bank.")
+            }
+        }
+        .frame(maxWidth: .infinity, minHeight: ExerciseSurface.builderTrayMinHeight, alignment: .leading)
+        .padding(12)
+        .background(alignment: .topLeading) {
+            ZStack(alignment: .topLeading) {
+                Theme.sunk
+                VStack(spacing: ExerciseSurface.chipMinHeight + ExerciseSurface.tileGridSpacing - ExerciseSurface.borderHairline) {
+                    ForEach(0..<4, id: \.self) { _ in
+                        Rectangle()
+                            .fill(Theme.line)
+                            .frame(height: ExerciseSurface.borderHairline)
+                    }
+                }
+                .padding(.horizontal, 12)
+                .padding(.top, 12 + ExerciseSurface.chipMinHeight + ExerciseSurface.tileGridSpacing / 2 - ExerciseSurface.borderHairline / 2)
+                .accessibilityHidden(true)
+            }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.trayRadius))
+        .overlay {
+            RoundedRectangle(cornerRadius: ExerciseSurface.trayRadius)
+                .stroke(Theme.line, lineWidth: ExerciseSurface.borderHairline)
+        }
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel(
+            chosen.isEmpty
+                ? "Your answer. Tap words from the bank below."
+                : "Your answer: \(chosen.map { exercise.tokens[$0] }.joined(separator: " "))"
+        )
+    }
+
+    private var tokenBank: some View {
+        FlowLayout(spacing: ExerciseSurface.tileGridSpacing) {
+            ForEach(Array(exercise.tokens.enumerated()), id: \.offset) { slot, token in
+                if !placed.contains(slot) {
+                    tile(token, inAnswer: false) {
+                        placed.insert(slot)
+                        chosen.append(slot)
+                        publishCheckState()
+                    }
+                    .accessibilityLabel(token)
+                    .accessibilityHint("Add to your answer.")
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, minHeight: ExerciseSurface.chipMinHeight, alignment: .leading)
+        .accessibilityElement(children: .contain)
     }
 
     private func publishCheckState() {
@@ -1797,9 +1967,9 @@ private struct CountyBuilderSurface: View {
     }
 }
 
-/// Equal-geometry matching: one two-column board of identical tiles (Irish
-/// leading, meanings trailing) with the same tactile chrome on both sides.
-/// Matched pairs leave the board — no double list.
+/// Two-column matching: Irish stone in one column, shuffled chalk meanings in
+/// the other. Columns are independent — the learner joins any word to any
+/// meaning. A moss thread snaps across the gutter when a pair locks.
 private struct CountyMatchingSurface: View {
     let exercise: CountyExercise
     let locked: Bool
@@ -1808,94 +1978,203 @@ private struct CountyMatchingSurface: View {
     let onComplete: (String?) -> Void
 
     @ObservedObject private var speech = SpeechService.shared
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var selectedLeft: CountyExercisePair?
     @State private var matched: Set<String> = []
     @State private var missedRightID: String?
+    @State private var meaningOrder: [String]
+    @State private var celebratingPairID: String?
 
-    private var unmatchedPairs: [CountyExercisePair] {
-        exercise.pairs.filter { !matched.contains($0.id) }
+    init(
+        exercise: CountyExercise,
+        locked: Bool,
+        onWrong: @escaping (String) -> Void,
+        onRepair: @escaping () -> Void,
+        onComplete: @escaping (String?) -> Void
+    ) {
+        self.exercise = exercise
+        self.locked = locked
+        self.onWrong = onWrong
+        self.onRepair = onRepair
+        self.onComplete = onComplete
+        _meaningOrder = State(initialValue: exercise.pairs.map(\.id).shuffled())
     }
 
-    private var unmatchedMeanings: [CountyExercisePair] {
-        Array(unmatchedPairs.reversed())
+    private var boardHeight: CGFloat {
+        ExerciseSurface.matchBoardHeight(pairCount: exercise.pairs.count)
     }
 
     var body: some View {
-        // One uniform board: every row pairs an Irish tile (leading column)
-        // with a meaning tile (trailing column) at identical width and equal
-        // row height. Column order is the existing deal — authored order
-        // left, reversed right; only the geometry changes. Matched rows
-        // collapse and the rest re-grid with Motion.settle.
-        VStack(spacing: ExerciseSurface.tileGridSpacing) {
-            ForEach(Array(unmatchedPairs.enumerated()), id: \.element.id) { index, leftPair in
-                let rightPair = unmatchedMeanings[index]
-                let missed = missedRightID == rightPair.id
-                VStack(alignment: .leading, spacing: 6) {
-                    HStack(spacing: ExerciseSurface.tileGridSpacing) {
-                        matchTile(
-                            text: leftPair.left,
-                            font: .system(.title3, design: .serif, weight: selectedLeft?.id == leftPair.id ? .semibold : .regular),
-                            selected: selectedLeft?.id == leftPair.id,
-                            missed: false,
-                            awaiting: false
-                        ) {
-                            pickWord(leftPair)
-                        }
-                        .accessibilityLabel(leftPair.left)
-                        .accessibilityValue(selectedLeft?.id == leftPair.id ? "selected" : "")
-                        .accessibilityAddTraits(selectedLeft?.id == leftPair.id ? .isSelected : [])
+        VStack(alignment: .leading, spacing: ExerciseSurface.choiceGap) {
+            matchColumnHeaders
 
-                        matchTile(
-                            text: rightPair.right,
-                            font: .title3,
-                            selected: false,
-                            missed: missed,
-                            awaiting: selectedLeft != nil && !missed
-                        ) {
-                            pickMeaning(rightPair)
-                        }
-                        .accessibilityLabel(rightPair.right)
-                        .accessibilityValue(missed ? "not a match" : "")
-                        .accessibilityHint(selectedLeft == nil ? "Choose an Irish word first." : "")
+            HStack(alignment: .top, spacing: ExerciseSurface.tileGridSpacing) {
+                VStack(spacing: ExerciseSurface.tileGridSpacing) {
+                    ForEach(exercise.pairs) { pair in
+                        irishSlot(for: pair)
                     }
-                    .fixedSize(horizontal: false, vertical: true)
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: boardHeight, alignment: .top)
 
-                    if missed, let selectedLeft {
-                        Text(mismatchNote(attempted: rightPair, selected: selectedLeft))
+                VStack(spacing: ExerciseSurface.tileGridSpacing) {
+                    ForEach(meaningOrder, id: \.self) { pairID in
+                        if let pair = exercise.pairs.first(where: { $0.id == pairID }) {
+                            meaningSlot(for: pair)
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: boardHeight, alignment: .top)
+            }
+            .frame(height: boardHeight, alignment: .top)
+            .overlayPreferenceValue(MatchTileAnchorKey.self) { anchors in
+                GeometryReader { geometry in
+                    if let celebratingPairID,
+                       let leftAnchor = anchors[MatchTileAnchorKey.id(pairID: celebratingPairID, irish: true)],
+                       let rightAnchor = anchors[MatchTileAnchorKey.id(pairID: celebratingPairID, irish: false)] {
+                        MatchPairThread(
+                            from: CGPoint(x: geometry[leftAnchor].maxX, y: geometry[leftAnchor].midY),
+                            to: CGPoint(x: geometry[rightAnchor].minX, y: geometry[rightAnchor].midY)
+                        )
+                    }
+                }
+                .allowsHitTesting(false)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .top)
+        .fixedSize(horizontal: false, vertical: true)
+    }
+
+    /// Slots stay on the board after a match so remaining tiles never grow.
+    private func shouldShowTile(_ pair: CountyExercisePair) -> Bool {
+        !matched.contains(pair.id) || celebratingPairID == pair.id
+    }
+
+    /// Fixed-height row anchor — content overlays the slot so flex layout
+    /// cannot redistribute height when earlier pairs are matched.
+    private func matchSlotContainer<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        Color.clear
+            .frame(height: ExerciseSurface.matchSlotHeight)
+            .overlay(alignment: .top) {
+                content()
+            }
+            .frame(height: ExerciseSurface.matchSlotHeight, alignment: .top)
+    }
+
+    @ViewBuilder
+    private func irishSlot(for pair: CountyExercisePair) -> some View {
+        let visible = shouldShowTile(pair)
+        matchSlotContainer {
+            matchTile(
+                pairID: pair.id,
+                side: .irish,
+                text: pair.left,
+                selected: selectedLeft?.id == pair.id,
+                missed: false,
+                awaiting: false,
+                celebrating: celebratingPairID == pair.id
+            ) {
+                pickWord(pair)
+            }
+            .opacity(visible ? 1 : 0)
+            .allowsHitTesting(visible)
+            .accessibilityHidden(!visible)
+            .accessibilityLabel(pair.left)
+            .accessibilityValue(selectedLeft?.id == pair.id ? "selected" : "")
+            .accessibilityAddTraits(selectedLeft?.id == pair.id ? .isSelected : [])
+        }
+        .animation(nil, value: matched)
+    }
+
+    @ViewBuilder
+    private func meaningSlot(for pair: CountyExercisePair) -> some View {
+        let visible = shouldShowTile(pair)
+        let missed = missedRightID == pair.id
+        matchSlotContainer {
+            VStack(alignment: .leading, spacing: 6) {
+                matchTile(
+                    pairID: pair.id,
+                    side: .english,
+                    text: pair.right,
+                    selected: false,
+                    missed: missed,
+                    awaiting: selectedLeft != nil && !missed && celebratingPairID == nil,
+                    celebrating: celebratingPairID == pair.id
+                ) {
+                    pickMeaning(pair)
+                }
+                .opacity(visible ? 1 : 0)
+                .allowsHitTesting(visible)
+                .accessibilityHidden(!visible)
+                .accessibilityLabel(pair.right)
+                .accessibilityValue(missed ? "not a match" : "")
+                .accessibilityHint(selectedLeft == nil ? "Choose an Irish word first." : "")
+
+                Group {
+                    if visible, missed, let selectedLeft {
+                        Text(mismatchNote(attempted: pair, selected: selectedLeft))
                             .font(.subheadline)
                             .foregroundStyle(Theme.rust)
                             .lineSpacing(3)
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.horizontal, ExerciseSurface.optionPadH)
+                    } else {
+                        Color.clear
                     }
                 }
+                .frame(height: ExerciseSurface.matchNoteBandHeight, alignment: .top)
             }
         }
+        .animation(nil, value: matched)
+    }
+
+    private var matchColumnHeaders: some View {
+        HStack(spacing: ExerciseSurface.tileGridSpacing) {
+            Text("Irish")
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text("Meaning")
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .font(.caption.weight(.semibold))
+        .foregroundStyle(Theme.inkFaint)
+        .textCase(.uppercase)
+        .kerning(0.5)
+        .padding(.horizontal, ExerciseSurface.optionPadH)
+        .accessibilityHidden(true)
     }
 
     private func pickWord(_ pair: CountyExercisePair) {
+        guard celebratingPairID == nil else { return }
         Haptics.tap()
-        selectedLeft = pair
-        missedRightID = nil
-        if speech.canSpeak(pair.left) { speech.speak(pair.left) }
+        if selectedLeft?.id == pair.id {
+            selectedLeft = nil
+        } else {
+            selectedLeft = pair
+            missedRightID = nil
+            if speech.canSpeak(pair.left) { speech.speak(pair.left) }
+        }
     }
 
     private func pickMeaning(_ pair: CountyExercisePair) {
-        guard let selectedLeft else { return }
-        if selectedLeft.id == pair.id {
-            Haptics.tap()
-            withAnimation(Motion.settle) {
+        guard let leftSelection = selectedLeft, celebratingPairID == nil else { return }
+        if leftSelection.id == pair.id {
+            Haptics.chisel()
+            celebratingPairID = pair.id
+            onRepair()
+            let settleDelay = reduceMotion ? 0 : 0.38
+            DispatchQueue.main.asyncAfter(deadline: .now() + settleDelay) {
                 matched.insert(pair.id)
                 self.selectedLeft = nil
                 missedRightID = nil
-            }
-            onRepair()
-            if matched.count == exercise.pairs.count {
-                onComplete(exercise.feedback)
+                celebratingPairID = nil
+                if matched.count == exercise.pairs.count {
+                    onComplete(exercise.feedback)
+                }
             }
         } else {
             missedRightID = pair.id
-            onWrong(mismatchNote(attempted: pair, selected: selectedLeft))
+            onWrong(mismatchNote(attempted: pair, selected: leftSelection))
         }
     }
 
@@ -1903,44 +2182,151 @@ private struct CountyMatchingSurface: View {
         "Not a match."
     }
 
+    private enum MatchTileSide {
+        case irish
+        case english
+    }
+
+    @ViewBuilder
     private func matchTile(
+        pairID: String,
+        side: MatchTileSide,
         text: String,
-        font: Font,
         selected: Bool,
         missed: Bool,
         awaiting: Bool,
+        celebrating: Bool,
         action: @escaping () -> Void
     ) -> some View {
+        let isIrish = side == .irish
         Button(action: action) {
             Text(text)
-                .font(font)
+                .font(isIrish ? .system(.title3, design: .serif, weight: selected || celebrating ? .semibold : .regular) : .title3)
                 .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .fixedSize(horizontal: false, vertical: true)
-                .foregroundStyle(selected ? Theme.moss : Theme.ink)
-                .padding(.vertical, ExerciseSurface.optionPadV)
+                .foregroundStyle(tileForeground(selected: selected, missed: missed, celebrating: celebrating))
                 .padding(.horizontal, ExerciseSurface.optionPadH)
-                .frame(
-                    maxWidth: .infinity,
-                    minHeight: ExerciseSurface.matchTileMinHeight,
-                    maxHeight: .infinity,
-                    alignment: .center
-                )
-                .background(
-                    missed ? Theme.rustTint : (selected ? Theme.mossTint : Theme.raised)
-                )
+                .padding(.leading, isIrish ? 6 : 0)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .frame(height: ExerciseSurface.matchTileMinHeight)
+                .background(tileBackground(side: side, selected: selected, missed: missed, celebrating: celebrating))
                 .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.tileRadius))
                 .overlay {
                     RoundedRectangle(cornerRadius: ExerciseSurface.tileRadius)
                         .stroke(
-                            missed ? Theme.rust : (selected ? Theme.moss : (awaiting ? Theme.inkSoft : Theme.line)),
-                            lineWidth: missed || selected ? ExerciseSurface.borderState : (awaiting ? ExerciseSurface.borderEmphasis : ExerciseSurface.borderHairline)
+                            tileBorder(selected: selected, missed: missed, awaiting: awaiting, celebrating: celebrating),
+                            lineWidth: borderWidth(selected: selected, missed: missed, awaiting: awaiting, celebrating: celebrating)
                         )
                 }
-                .tactileLip(radius: ExerciseSurface.tileRadius, active: !selected && !missed)
+                .overlay(alignment: .leading) {
+                    if isIrish {
+                        RoundedRectangle(cornerRadius: 1.5)
+                            .fill(grooveColor(selected: selected, celebrating: celebrating))
+                            .frame(width: 3)
+                            .padding(.vertical, 10)
+                            .padding(.leading, 8)
+                    }
+                }
+                .tactileLip(radius: ExerciseSurface.tileRadius, active: isIrish && !selected && !missed && !celebrating)
+                .contentShape(RoundedRectangle(cornerRadius: ExerciseSurface.tileRadius))
         }
         .buttonStyle(CarvePress())
-        .disabled(locked)
+        .frame(maxWidth: .infinity)
+        .frame(height: ExerciseSurface.matchTileMinHeight)
+        .fixedSize(horizontal: false, vertical: true)
+        .disabled(locked || (celebratingPairID != nil && celebratingPairID != pairID))
+        .anchorPreference(
+            key: MatchTileAnchorKey.self,
+            value: .bounds,
+            transform: { [MatchTileAnchorKey.id(pairID: pairID, irish: isIrish): $0] }
+        )
+    }
+
+    private func tileForeground(selected: Bool, missed: Bool, celebrating: Bool) -> Color {
+        if celebrating { return Theme.moss }
+        if missed { return Theme.ink }
+        if selected { return Theme.moss }
+        return Theme.ink
+    }
+
+    private func tileBackground(side: MatchTileSide, selected: Bool, missed: Bool, celebrating: Bool) -> Color {
+        if celebrating { return Theme.mossTintDeep }
+        if missed { return Theme.rustTint }
+        if selected { return Theme.mossTint }
+        return side == .irish ? Theme.raised : Color.clear
+    }
+
+    private func grooveColor(selected: Bool, celebrating: Bool) -> Color {
+        if celebrating { return Theme.moss }
+        if selected { return Theme.moss.opacity(0.75) }
+        return Theme.stone
+    }
+
+    private func tileBorder(selected: Bool, missed: Bool, awaiting: Bool, celebrating: Bool) -> Color {
+        if celebrating { return Theme.moss }
+        if missed { return Theme.rust }
+        if selected { return Theme.moss }
+        if awaiting { return Theme.inkSoft }
+        return Theme.line
+    }
+
+    private func borderWidth(selected: Bool, missed: Bool, awaiting: Bool, celebrating: Bool) -> CGFloat {
+        if celebrating || missed || selected { return ExerciseSurface.borderState }
+        if awaiting { return ExerciseSurface.borderEmphasis }
+        return ExerciseSurface.borderHairline
+    }
+}
+
+private struct MatchTileAnchorKey: PreferenceKey {
+    static var defaultValue: [String: Anchor<CGRect>] = [:]
+
+    static func id(pairID: String, irish: Bool) -> String {
+        "\(irish ? "L" : "R"):\(pairID)"
+    }
+
+    static func reduce(value: inout [String: Anchor<CGRect>], nextValue: () -> [String: Anchor<CGRect>]) {
+        value.merge(nextValue()) { $1 }
+    }
+}
+
+/// Moss thread snapped between a locked pair — the line between word and meaning.
+private struct MatchPairThread: View {
+    let from: CGPoint
+    let to: CGPoint
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var progress: CGFloat = 0
+
+    var body: some View {
+        MatchThreadCurve(from: from, to: to)
+            .trim(from: 0, to: progress)
+            .stroke(
+                Theme.moss.opacity(0.55),
+                style: StrokeStyle(lineWidth: 2, lineCap: .round)
+            )
+            .onAppear {
+                if reduceMotion {
+                    progress = 1
+                } else {
+                    withAnimation(Motion.pop) { progress = 1 }
+                }
+            }
+    }
+}
+
+private struct MatchThreadCurve: Shape {
+    let from: CGPoint
+    let to: CGPoint
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: from)
+        let midX = (from.x + to.x) / 2
+        path.addCurve(
+            to: to,
+            control1: CGPoint(x: midX, y: from.y),
+            control2: CGPoint(x: midX, y: to.y)
+        )
+        return path
     }
 }
 
