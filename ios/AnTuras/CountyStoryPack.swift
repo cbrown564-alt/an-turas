@@ -106,7 +106,7 @@ enum CountyExerciseFamily: String, Codable, CaseIterable {
         case .grammarDiscovery: return "Notice the pattern"
         case .conversation: return "Take your turn"
         case .completion: return "See what you can do"
-        case .contextualReview: return "Return to what slipped"
+        case .contextualReview: return "Quick review"
         }
     }
 

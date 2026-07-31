@@ -222,7 +222,7 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 
 ### Cards / Containers
 
-- **Corner Style:** Quietly curved (8–12 pt), never pill-shaped.
+- **Corner Style:** Quietly curved (8–12 pt), never pill-shaped. Exercise response tiles are the exception at 14 pt (see Full-screen exercises).
 - **Background:** Raised for discrete evidence or exercises; sunk for inset explanation and reflection.
 - **Shadow Strategy:** None at rest. Use a one-point boundary only when adjacent tonal layers do not separate clearly.
 - **Internal Padding:** 16 pt default, 20–22 pt for dossier-scale containers.
@@ -277,6 +277,26 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
   feedback or complete → retry or continue. Feedback appears beside the response area,
   names what did or did not fit in plain language, and never relies on color, shake,
   sound, or haptics alone.
+- Response tiles share one anatomy across families: 14 pt corners, a hairline boundary
+  at rest, the 3 pt tactile lip, and 64 pt minimum height (72 pt matching tiles, 48 pt
+  bank chips). Every tappable element on an exercise page uses this anatomy, so the
+  page never leaves the learner guessing what is pressable.
+- Committed states are filled, not merely outlined: pale moss fill for the selected
+  response, deeper moss for the confirmed-correct one, pale rust for the incorrect
+  one — each paired with its icon and plain-language text so no state rides on color
+  alone. An unmarked selected state is a defect, not subtlety.
+- The page composes as a stage: the prompt pins to the top, the response surface holds
+  the flexible middle, banks and option lists settle into the lower half, and the
+  primary action stays above the safe area. Content must not huddle at the top leaving
+  a dead middle.
+- An empty answer area still reads as a destination: ruled lines in the construction
+  tray, dashed underscores in cloze gaps. The learner should see where the work lands
+  before they place it.
+- One hero per screen. When a prompt carries both audio and reading material, one
+  leads and the other demotes to a small accessory or disclosure; never stack two
+  competing prompt surfaces.
+- Rate and replay utilities (slow playback, rehear) are caption-scale accessories
+  beside the primary audio control, never peer capsules competing with it.
 - Single-choice families—listen and choose, picture or map selection, and single-answer
   fill-in-the-blank—check on selection, so the primary action carries Continue rather
   than Check. Multi-part families keep an explicit Check and stay editable until it is
@@ -304,7 +324,9 @@ Components should feel carved, placed, or revealed—never glossy. Standard iOS 
 - Conversation uses authored, reviewed turns. Branches may respond differently to the
   learner's choice, but no runtime model invents Irish or historical participation. A
   historical-bounded conversation never casts the learner as an undocumented actor; a
-  present-day one lets them speak as themselves.
+  present-day one lets them speak as themselves. Turns alternate alignment—partner
+  leading, learner trailing—so speaker identity reads spatially; settled history dims
+  while the active turn stays full strength.
 - Grammar discovery reveals worked cases in the authored order and withholds the rule
   until the learner has produced it. The reveal is the response area, not decoration
   around one.

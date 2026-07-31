@@ -256,7 +256,7 @@ final class AtlasFlowUITests: XCTestCase {
         finishExercise(in: app)
 
         XCTAssertTrue(app.staticTexts["Hear a complete thought"].waitForExistence(timeout: 5))
-        tapButton("Play the model", in: app)
+        tapButton("Listen", in: app)
         for token in ["Tá", "muid", "go", "léir."] { tapButton(token, in: app) }
         tapButton("Check the order", in: app)
         finishExercise(in: app)
@@ -301,7 +301,7 @@ final class AtlasFlowUITests: XCTestCase {
         tapButton("Keep the boundary visible", in: app)
 
         XCTAssertTrue(app.staticTexts["Put the household in your own voice"].waitForExistence(timeout: 5))
-        waitForPrimaryBar("Continue without recording", in: app).tap()
+        waitForPrimaryBar("Continue", in: app).tap()
         finishExercise(in: app)
 
         XCTAssertTrue(app.staticTexts["A connected system can be pressured at several points"].waitForExistence(timeout: 5))
@@ -370,12 +370,12 @@ final class AtlasFlowUITests: XCTestCase {
 
         // A wrong pair keeps a plain-language note on the attempted meaning —
         // never mastery-failure chrome or a locked board (D3/D5/F5).
-        XCTAssertTrue(app.staticTexts["“son” does not belong with “caisleán”. Choose another meaning."].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not a match."].waitForExistence(timeout: 2))
         XCTAssertFalse(app.staticTexts["Not quite"].exists)
 
         // The word stays selected; the next tap repairs the pair in place.
         tapButton("castle", in: app)
-        XCTAssertFalse(app.staticTexts["“son” does not belong with “caisleán”. Choose another meaning."].exists)
+        XCTAssertFalse(app.staticTexts["Not a match."].exists)
 
         for pair in [("teaghlach", "family / household"), ("mac", "son"), ("bean", "woman")] {
             tapButton(pair.0, in: app)
@@ -405,19 +405,10 @@ final class AtlasFlowUITests: XCTestCase {
 
         XCTAssertTrue(app.staticTexts["Put the household in your own voice"].waitForExistence(timeout: 5))
 
-        // Cold open: Record owns the one ink primary; the escape stays quiet (D2/F7).
-        waitForPrimaryBar("Record your voice", in: app).tap()
-        app.swipeUp()
-
-        waitForPrimaryBar("Stop recording", in: app).tap()
-
-        // After Stop the primary is the post-compare continue, held until playback.
-        let compared = app.buttons["I compared both"]
-        XCTAssertTrue(compared.waitForExistence(timeout: 5))
-        XCTAssertFalse(compared.isEnabled)
-
-        tapButton("Play your voice", in: app)
-        waitForPrimaryBar("I compared both", in: app).tap()
+        // Cold open: the mic owns recording; Continue stays disabled until a take exists.
+        tapButton("Record", in: app)
+        waitForPrimaryBar("Stop", in: app).tap()
+        waitForPrimaryBar("Continue", in: app).tap()
 
         finishExercise(in: app)
         XCTAssertTrue(app.staticTexts["A connected system can be pressured at several points"].waitForExistence(timeout: 5))
@@ -435,9 +426,9 @@ final class AtlasFlowUITests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.staticTexts["Put the household in your own voice"].waitForExistence(timeout: 5))
-        for _ in 0..<4 where !app.staticTexts["Microphone access is off. You can keep listening and continue without recording."].exists { app.swipeUp() }
-        XCTAssertTrue(app.staticTexts["Microphone access is off. You can keep listening and continue without recording."].exists)
-        let continueWithout = waitForPrimaryBar("Continue without recording", in: app)
+        for _ in 0..<4 where !app.staticTexts["Microphone access is off."].exists { app.swipeUp() }
+        XCTAssertTrue(app.staticTexts["Microphone access is off."].exists)
+        let continueWithout = waitForPrimaryBar("Continue", in: app)
         continueWithout.tap()
         XCTAssertTrue(app.buttons["Continue"].isEnabled)
     }

@@ -84,31 +84,39 @@ struct CountyStoryExperienceView: View {
             )
 
             ScrollViewReader { proxy in
-                ScrollView {
-                    VStack(alignment: .leading, spacing: isExercise ? 0 : 24) {
-                        Color.clear.frame(height: 0).id("county-page-top")
-                        if isExercise {
-                            exercisePage(page, isComplete: isComplete, topPadding: 8)
-                        } else {
-                            CountyNarrativePage(
-                                page: page,
-                                pack: pack,
-                                hasEvidence: page.resourceIDs.contains { resourceID in
-                                    pack.resources.contains { $0.id == resourceID && ($0.kind == .evidence || $0.kind == .source) }
-                                },
-                                onOpenEvidence: onOpenEvidence
-                            )
+                GeometryReader { geometry in
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: isExercise ? 0 : 24) {
+                            Color.clear.frame(height: 0).id("county-page-top")
+                            if isExercise {
+                                exercisePage(page, isComplete: isComplete, topPadding: 8)
+                                    // Stage zoning: a short exercise page fills the
+                                    // viewport so the shell can center its working area;
+                                    // AX-size content outgrows this and scrolls as one
+                                    // composition, and keyboard avoidance keeps the
+                                    // focused field visible on top of it.
+                                    .frame(minHeight: max(geometry.size.height - 108, 0))
+                            } else {
+                                CountyNarrativePage(
+                                    page: page,
+                                    pack: pack,
+                                    hasEvidence: page.resourceIDs.contains { resourceID in
+                                        pack.resources.contains { $0.id == resourceID && ($0.kind == .evidence || $0.kind == .source) }
+                                    },
+                                    onOpenEvidence: onOpenEvidence
+                                )
+                            }
+                            Color.clear.frame(height: 0).id("county-page-bottom")
                         }
-                        Color.clear.frame(height: 0).id("county-page-bottom")
+                        .padding(.bottom, 108)
+                        .frame(maxWidth: .infinity)
+                        .id(page.id)
                     }
-                    .padding(.bottom, 108)
-                    .frame(maxWidth: .infinity)
-                    .id(page.id)
-                }
-                .scrollDismissesKeyboard(.interactively)
-                .onAppear { scrollToTaskStart(proxy, page: page) }
-                .onChange(of: page.id) { _, _ in
-                    scrollToTaskStart(proxy, page: page)
+                    .scrollDismissesKeyboard(.interactively)
+                    .onAppear { scrollToTaskStart(proxy, page: page) }
+                    .onChange(of: page.id) { _, _ in
+                        scrollToTaskStart(proxy, page: page)
+                    }
                 }
             }
         }
@@ -217,9 +225,11 @@ struct CountyStoryExperienceView: View {
     }
 
     private var collectionHandoff: String {
+        #if DEBUG
         if isInternalFixture {
             return "For this fixture run they sit in a fixture collection only — no county gold, no made object and no scheduled reviews."
         }
+        #endif
         return "These words return to your collection; Words you carry meets them there when scheduling opens."
     }
 
@@ -519,6 +529,10 @@ private struct CountyPageControls: View {
             }
             PrimaryButton(title: visibleContinueTitle, fullWidth: true, enabled: isPrimaryEnabled, action: onContinue)
                 .accessibilityLabel(continueTitle)
+                // Bar-label swaps (Check the order → Continue) apply instantly:
+                // the settle-transaction cross-dissolve rendered both titles at
+                // once — the D2 stale-label ghost.
+                .animation(nil, value: visibleContinueTitle)
         }
         .padding(.horizontal, EditorialLayout.pageInset)
         .padding(.vertical, 12)

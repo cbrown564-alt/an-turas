@@ -66,8 +66,8 @@
               "answer": "sea",
               "options": [
                 { "id": "sea", "text": "sea", "isCorrect": true, "rationale": "Farraige means the sea.", "misconceptionID": null },
-                { "id": "island", "text": "island", "isCorrect": false, "rationale": "That names the land in the water, not the water itself.", "misconceptionID": "land-for-water" },
-                { "id": "castle", "text": "castle", "isCorrect": false, "rationale": "Caisleán means castle; this word names the open water.", "misconceptionID": "castle-for-sea" }
+                { "id": "island", "text": "island", "isCorrect": false, "rationale": "That's land, not water.", "misconceptionID": "land-for-water" },
+                { "id": "castle", "text": "castle", "isCorrect": false, "rationale": "That's caisleán — castle.", "misconceptionID": "castle-for-sea" }
               ],
               "tokens": [],
               "pairs": [],
@@ -77,7 +77,7 @@
               "modelText": null,
               "feedback": "Farraige is the sea that makes this coast a working world.",
               "hint": "Listen for the rolling middle sound: far-ig-eh.",
-              "recovery": "That answer names something on the water rather than the water. Replay farraige and try again.",
+              "recovery": "Listen again, then choose.",
               "lexemeIDs": ["lex.farraige"],
               "operatesOnSentence": false,
               "recognitionMultipleChoice": true,
@@ -90,8 +90,8 @@
                   { "id": "lex.farraige", "capability": "recognised" }
                 ],
                 "misconceptions": [
-                  { "id": "land-for-water", "rationale": "The learner names the land in the water rather than the water itself.", "feedback": "That names the land in the water, not the water itself. Farraige is the open sea." },
-                  { "id": "castle-for-sea", "rationale": "The learner reaches for a familiar coast word, caisleán, instead of the water word.", "feedback": "Caisleán means castle; farraige names the open water." },
+                  { "id": "land-for-water", "rationale": "The learner names the land in the water rather than the water itself.", "feedback": "That's land, not water." },
+                  { "id": "castle-for-sea", "rationale": "The learner reaches for a familiar coast word, caisleán, instead of the water word.", "feedback": "That's caisleán — castle." },
                   { "id": "fallback", "rationale": "A response the named misconceptions do not cover.", "feedback": "Replay farraige and keep it on the open water." }
                 ],
                 "successFeedback": "Farraige is the sea that makes this coast a working world.",
@@ -141,7 +141,7 @@
               "modelText": null,
               "feedback": "Sea, bay and place — the coast now has three distinct names.",
               "hint": "Replay the words. Farraige is the open water; bá is the sheltered inlet; áit is the named coast.",
-              "recovery": "Those two do not belong together. Keep the first word selected and try another meaning.",
+              "recovery": "Try another pair.",
               "lexemeIDs": ["lex.farraige", "lex.ba", "lex.ait"],
               "operatesOnSentence": false,
               "recognitionMultipleChoice": false,
@@ -201,7 +201,7 @@
               "modelText": "Is as Maigh Eo mé.",
               "feedback": "Is as Maigh Eo mé — origin stated in one clean frame.",
               "hint": "The frame runs Is as [place] mé.",
-              "recovery": "Every word is needed. Keep the order Is · as · the place · mé.",
+              "recovery": "Check the word order.",
               "lexemeIDs": ["lex.as"],
               "operatesOnSentence": true,
               "recognitionMultipleChoice": false,
@@ -214,12 +214,12 @@
                   { "id": "lex.as", "capability": "produced" }
                 ],
                 "misconceptions": [
-                  { "id": "frame-order-slip", "rationale": "The origin frame's word order slips when the pieces are separate tiles.", "feedback": "Every word is needed. Keep the order Is · as · the place · mé." }
+                  { "id": "frame-order-slip", "rationale": "The origin frame's word order slips when the pieces are separate tiles.", "feedback": "Check the word order." }
                 ],
                 "successFeedback": "Is as Maigh Eo mé — origin stated in one clean frame.",
                 "hint": "The frame runs Is as [place] mé.",
                 "recovery": {
-                  "guidance": "Every word is needed. Keep the order Is · as · the place · mé.",
+                  "guidance": "Check the word order.",
                   "requiredResponse": "Build the line again from the tiles."
                 },
                 "completionEvidence": "correctConstruction"
@@ -554,14 +554,14 @@
                   "id": "sea",
                   "text": "I am from the open sea.",
                   "isCorrect": false,
-                  "rationale": "That bends farraige into an origin; the line names a county, not the water.",
+                  "rationale": "Maigh Eo is Mayo, not the sea.",
                   "misconceptionID": "farraige-as-origin"
                 },
                 {
                   "id": "bay",
                   "text": "The bay is my place.",
                   "isCorrect": false,
-                  "rationale": "That keeps bá but drops the origin frame the line is built on.",
+                  "rationale": "Keep the as … mé frame.",
                   "misconceptionID": "frame-dropped"
                 }
               ],
@@ -573,7 +573,7 @@
               "modelText": "On this coast the open sea is farraige, the sheltered bay is bá, and a named place is áit. With the frame as … mé you can place yourself here.",
               "feedback": "The line places the speaker in Mayo — the coast's words and the origin frame agree.",
               "hint": "Read the frame as … mé literally: from Mayo am I.",
-              "recovery": "That reading bends one of the coast's words out of shape. Keep Maigh Eo as Mayo.",
+              "recovery": "Maigh Eo is Mayo.",
               "lexemeIDs": ["lex.as"],
               "operatesOnSentence": true,
               "recognitionMultipleChoice": true,
@@ -686,7 +686,7 @@
           {
             "id": "mayo.clew-bay.review-struggle",
             "legacyBeatIndex": null,
-            "title": "Return to what slipped",
+            "title": "Quick review",
             "context": "Clew Bay · one more pass",
             "body": "The run's own record chooses the target.",
             "detail": null,
@@ -730,8 +730,8 @@
                     "answer": "sea",
                     "options": [
                       { "id": "sea", "text": "sea", "isCorrect": true, "rationale": "Farraige means the sea." },
-                      { "id": "island", "text": "island", "isCorrect": false, "rationale": "That names the land in the water, not the water itself." },
-                      { "id": "castle", "text": "castle", "isCorrect": false, "rationale": "Caisleán means castle; this word names the open water." }
+                      { "id": "island", "text": "island", "isCorrect": false, "rationale": "That's land, not water." },
+                      { "id": "castle", "text": "castle", "isCorrect": false, "rationale": "That's caisleán — castle." }
                     ],
                     "tokens": [],
                     "pairs": [],

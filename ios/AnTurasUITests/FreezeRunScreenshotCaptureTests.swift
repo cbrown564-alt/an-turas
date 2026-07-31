@@ -17,6 +17,10 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
     }
 
     private func shot(_ name: String, from app: XCUIApplication) {
+        // Settle wait: taps commit SwiftUI state a frame or two later, and an
+        // instant screenshot catches the pre-commit frame (selection fills
+        // and verdict swaps missing). Every capture must be post-commit.
+        Thread.sleep(forTimeInterval: 0.5)
         let data = XCUIScreen.main.screenshot().pngRepresentation
         try? data.write(to: shotsFolder.appendingPathComponent("\(name).png"))
     }
@@ -83,7 +87,7 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
         tapButton("farraige", in: app)
         shot("02-match-word-selected", from: app)
         tapButton("bay", in: app)
-        XCTAssertTrue(app.staticTexts["“bay” does not belong with “farraige”. Choose another meaning."].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not a match."].waitForExistence(timeout: 2))
         shot("02-match-wrong-note", from: app)
 
         tapButton("sea", in: app)
@@ -130,6 +134,9 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
         shot("04-type-wrong", from: app)
 
+        // The bar Check resigns keyboard focus (intended keyboard-yield);
+        // re-tap the field before editing the answer.
+        match.tap()
         app.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 3))
         app.typeText("m")
         tapButton("Insert é from keyboard toolbar", in: app)
@@ -197,24 +204,23 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Say the line"].waitForExistence(timeout: 5))
         shot("06-speak-cold", from: app)
 
-        let record = app.buttons["Record your voice"]
+        let record = app.buttons["Record"]
         XCTAssertTrue(record.waitForExistence(timeout: 3))
         record.tap()
-        let stop = app.buttons["Stop recording"]
+        let stop = app.buttons["Stop"]
         XCTAssertTrue(stop.waitForExistence(timeout: 3))
         stop.tap()
         shot("06-speak-recorded", from: app)
 
-        tapButton("Play your voice", in: app)
-        let compared = app.buttons["I compared both"]
-        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: compared)
+        let cont = app.buttons["Continue"]
+        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: cont)
         _ = XCTWaiter.wait(for: [enabled], timeout: 5)
-        compared.tap()
+        cont.tap()
         shot("06-speak-complete", from: app)
 
         let denied = launch(["--page", "mayo.clew-bay.speak-origin", "--microphone-denied"])
         XCTAssertTrue(denied.staticTexts["Say the line"].waitForExistence(timeout: 5))
-        for _ in 0..<4 where !denied.staticTexts["Microphone access is off. You can keep listening and continue without recording."].exists { denied.swipeUp() }
+        for _ in 0..<4 where !denied.staticTexts["Microphone access is off."].exists { denied.swipeUp() }
         shot("06-speak-mic-denied", from: denied)
     }
 
@@ -228,14 +234,14 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
         shot("08-completion-collection", from: completion)
 
         let review = launch(["--page", "mayo.clew-bay.review-struggle", "--appearance", "light"])
-        XCTAssertTrue(review.staticTexts["Return to what slipped"].waitForExistence(timeout: 5))
+        XCTAssertTrue(review.staticTexts["Quick review"].waitForExistence(timeout: 5))
         shot("09-review-cold", from: review)
         tapButton("sea", in: review)
         review.swipeDown()
         shot("09-review-complete", from: review)
 
         let end = launch(["--page", "mayo.clew-bay.review-struggle", "--appearance", "dark"])
-        XCTAssertTrue(end.staticTexts["Return to what slipped"].waitForExistence(timeout: 5))
+        XCTAssertTrue(end.staticTexts["Quick review"].waitForExistence(timeout: 5))
         shot("09-review-cold-dark", from: end)
     }
 }

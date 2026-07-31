@@ -26,7 +26,7 @@ final class CountyActivityShellUITests: XCTestCase {
         // escalating the panel.
         XCTAssertTrue(app.staticTexts["Tap what you hear"].waitForExistence(timeout: 5))
         tapChoice("island", in: app)
-        XCTAssertTrue(app.staticTexts["That names the land in the water, not the water itself."].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["That's land, not water."].waitForExistence(timeout: 2))
         XCTAssertFalse(app.staticTexts["Not quite"].exists)
 
         // Leave mid-window: the page dismantle calls engine.interrupt(), which
@@ -41,12 +41,9 @@ final class CountyActivityShellUITests: XCTestCase {
         finishExercise(in: app)
 
         // Step 9 — C3: the interrupted step's struggle selects the sea word.
-        jumpToPage("Return to what slipped", in: app)
-        XCTAssertTrue(app.staticTexts["Return to what slipped"].waitForExistence(timeout: 5))
-        XCTAssertTrue(
-            app.staticTexts["the sea word slipped — meet it again from the original sound."].waitForExistence(timeout: 3),
-            "The interrupt-emitted struggle must target the contextual review"
-        )
+        jumpToPage("Quick review", in: app)
+        XCTAssertTrue(app.staticTexts["Quick review"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["Listen"].waitForExistence(timeout: 3))
         tapChoice("sea", in: app)
         let completeButton = app.buttons["Complete this chapter path"]
         let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: completeButton)
@@ -76,8 +73,8 @@ final class CountyActivityShellUITests: XCTestCase {
         let recovery = app.buttons["exercise-recovery-button"]
         XCTAssertTrue(recovery.waitForExistence(timeout: 3), "The escalated panel must offer recovery")
         recovery.tap()
-        let steadier = app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "A steadier step")).firstMatch
-        XCTAssertTrue(steadier.waitForExistence(timeout: 3), "Recovery must show its own panel state")
+        let recoveryPanel = app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "fada")).firstMatch
+        XCTAssertTrue(recoveryPanel.waitForExistence(timeout: 3), "Recovery must show its own panel state")
 
         // Recovery never completes by itself: the learner repairs the text and
         // Checks again (engine: recovery → retry → attempt → complete).
@@ -120,8 +117,8 @@ final class CountyActivityShellUITests: XCTestCase {
         let recovery = app.buttons["exercise-recovery-button"]
         XCTAssertTrue(recovery.waitForExistence(timeout: 3), "The escalated panel must offer recovery")
         recovery.tap()
-        let steadier = app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "A steadier step")).firstMatch
-        XCTAssertTrue(steadier.waitForExistence(timeout: 3), "Recovery must show its own panel state")
+        let recoveryPanel = app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "fada")).firstMatch
+        XCTAssertTrue(recoveryPanel.waitForExistence(timeout: 3), "Recovery must show its own panel state")
 
         // The keyboard yields on recovery, so the field keeps a valid frame in
         // the recomposed scroll view and scrolls back into reach.

@@ -64,23 +64,37 @@ enum Theme {
     static let salt     = Color(light: 0xF2F3EC, dark: 0xF2F3EC)
 
     static var mossTint: Color { moss.opacity(0.12) }
+    /// Deeper moss fill for a confirmed-correct tile; `mossTint` marks selection.
+    static var mossTintDeep: Color { moss.opacity(0.2) }
     static var rustTint: Color { rust.opacity(0.12) }
 }
 
 /// Shared exercise surface grammar — distinct forms per role so hierarchy is
 /// visible without reading labels (Phase A craft vs Duo).
 enum ExerciseSurface {
-    static let tileRadius: CGFloat = 12
+    static let tileRadius: CGFloat = 14
     static let chipRadius: CGFloat = 8
     static let trayRadius: CGFloat = 12
     static let capsuleRadius: CGFloat = 999
-    static let choiceMinHeight: CGFloat = 56
-    static let chipMinHeight: CGFloat = 44
+    static let choiceMinHeight: CGFloat = 64
+    /// Matching-board tiles: taller than a choice row so half-width tiles
+    /// still breathe when a meaning wraps.
+    static let matchTileMinHeight: CGFloat = 72
+    static let chipMinHeight: CGFloat = 48
     static let listenTrayMinHeight: CGFloat = 88
     static let slowCapsuleMinHeight: CGFloat = 44
     static let slowCapsuleMinWidth: CGFloat = 56
     static let zoneGap: CGFloat = 20
     static let choiceGap: CGFloat = 10
+    /// Gap inside tile grids (matching stacks, builder bank and answer).
+    static let tileGridSpacing: CGFloat = 12
+    /// Option-tile interior padding.
+    static let optionPadH: CGFloat = 16
+    static let optionPadV: CGFloat = 14
+    /// Border weights: resting hairline, mid emphasis, committed state.
+    static let borderHairline: CGFloat = 1
+    static let borderEmphasis: CGFloat = 1.5
+    static let borderState: CGFloat = 2
     static let tactileLip: CGFloat = 3
 }
 
@@ -88,18 +102,22 @@ enum ExerciseSurface {
 struct TactileLip: ViewModifier {
     var radius: CGFloat = ExerciseSurface.tileRadius
     var active: Bool = true
+    /// Tightened bottom corners for transcript-aligned tiles; nil mirrors `radius`.
+    var bottomLeadingRadius: CGFloat? = nil
+    var bottomTrailingRadius: CGFloat? = nil
 
     func body(content: Content) -> some View {
         content.overlay(alignment: .bottom) {
             if active {
                 UnevenRoundedRectangle(
                     topLeadingRadius: 0,
-                    bottomLeadingRadius: radius,
-                    bottomTrailingRadius: radius,
+                    bottomLeadingRadius: bottomLeadingRadius ?? radius,
+                    bottomTrailingRadius: bottomTrailingRadius ?? radius,
                     topTrailingRadius: 0
                 )
                 .fill(Theme.sunk.opacity(0.9))
                 .frame(height: ExerciseSurface.tactileLip)
+                .offset(y: ExerciseSurface.tactileLip)
                 .allowsHitTesting(false)
             }
         }
@@ -107,8 +125,18 @@ struct TactileLip: ViewModifier {
 }
 
 extension View {
-    func tactileLip(radius: CGFloat = ExerciseSurface.tileRadius, active: Bool = true) -> some View {
-        modifier(TactileLip(radius: radius, active: active))
+    func tactileLip(
+        radius: CGFloat = ExerciseSurface.tileRadius,
+        active: Bool = true,
+        bottomLeadingRadius: CGFloat? = nil,
+        bottomTrailingRadius: CGFloat? = nil
+    ) -> some View {
+        modifier(TactileLip(
+            radius: radius,
+            active: active,
+            bottomLeadingRadius: bottomLeadingRadius,
+            bottomTrailingRadius: bottomTrailingRadius
+        ))
     }
 }
 
@@ -182,7 +210,9 @@ struct PrimaryButton: View {
         Button(action: action) {
             Text(title)
                 .font(.headline)
-                .foregroundStyle(enabled ? Theme.bg : Theme.inkSoft)
+                // Disabled stays plainly readable on the sunk fill (D9 bar):
+                // half-strength ink, not a pale gray whisper.
+                .foregroundStyle(enabled ? Theme.bg : Theme.ink.opacity(0.55))
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.vertical, 13)
