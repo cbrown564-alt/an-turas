@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Build and verify the app's bundled ElevenLabs speech catalog.
 
-The catalog is derived from the SwiftUI content that can request speech:
-authored speech/reply/reaction beats, listen prompts, lenses, proverbs, glosses,
-and literal AtlasAudioLine/SoundRow calls. Personalized ``{name}`` lines are
-listed as dynamic exclusions because a pre-generated house voice cannot speak
-an arbitrary learner name honestly.
+Catalog sources (union, deduped by slug):
+- legacy chapter JSON speech / listen / lens / seanfhocal / gloss lines
+- Swift AtlasAudioLine / SoundRow / Self(ga:) literals
+- county draft packs and bundled CountyStories / Fixtures packs
+- content/audio/irish-inventory-v1.json (preferred teaching inventory)
+
+Personalized ``{name}`` lines remain dynamic exclusions.
 """
 
 from __future__ import annotations
@@ -28,6 +30,7 @@ ROOT = Path(__file__).resolve().parents[2]
 RESOURCE_DIR = ROOT / "ios/AnTuras/Resources"
 AUDIO_DIR = RESOURCE_DIR / "Audio"
 MANIFEST_PATH = AUDIO_DIR / "manifest.json"
+INVENTORY_PATH = ROOT / "content/audio/irish-inventory-v1.json"
 VOICE_ID = "NPWroowF4phQhaPWjXPj"
 VOICE_NAME = "Irish Cultural Guide"
 MODEL_ID = "eleven_v3"
@@ -37,6 +40,7 @@ CHAPTERS = ("chapter1.json", "chapter2.json", "chapter3.json")
 SWIFT_LITERAL_AUDIO = re.compile(
     r'(?:AtlasAudioLine\(ga:|SoundRow\(text:|Self\(ga:)\s*"([^"\\]+)"'
 )
+VALID_KINDS = ("headword", "phrase", "conversation", "legacy")
 
 
 @dataclass
@@ -44,6 +48,7 @@ class CatalogLine:
     slug: str
     text: str
     sources: set[str] = field(default_factory=set)
+    kind: str = "legacy"
 
 
 def slug(text: str) -> str:
@@ -70,11 +75,52 @@ def load_env() -> None:
         os.environ.setdefault(key.strip(), value.strip())
 
 
-def build_catalog() -> tuple[list[CatalogLine], list[dict[str, object]]]:
+def county_pack_paths() -> list[Path]:
+    paths: list[Path] = []
+    paths.extend(sorted((ROOT / "content").glob("*/*.pack.draft.json")))
+    stories = RESOURCE_DIR / "CountyStories"
+    if stories.exists():
+        paths.extend(sorted(stories.glob("*.json")))
+    fixtures = RESOURCE_DIR / "Fixtures"
+    if fixtures.exists():
+        paths.extend(sorted(fixtures.glob("*.json")))
+    return paths
+
+
+def walk_pack_audio(value: object, add, source: str) -> None:
+    if isinstance(value, list):
+        for child in value:
+            walk_pack_audio(child, add, source)
+        return
+    if not isinstance(value, dict):
+        return
+
+    if value.get("kind") == "audio" and isinstance(value.get("value"), str):
+        text = value["value"].strip()
+        kind = "phrase" if (" " in text or any(ch in text for ch in ".!?")) else "headword"
+        add(text, f"{source}:resource", kind)
+
+    audio_text = value.get("audioText")
+    if isinstance(audio_text, str) and audio_text.strip():
+        text = audio_text.strip()
+        kind = "conversation" if "?" in text else (
+            "phrase" if " " in text else "headword"
+        )
+        add(text, f"{source}:audioText", kind)
+
+    for child in value.values():
+        walk_pack_audio(child, add, source)
+
+
+def build_catalog(
+    *,
+    from_inventory: bool = False,
+    kinds: set[str] | None = None,
+) -> tuple[list[CatalogLine], list[dict[str, object]]]:
     catalog: dict[str, CatalogLine] = {}
     dynamic: dict[str, set[str]] = {}
 
-    def add(text: object, source: str) -> None:
+    def add(text: object, source: str, kind: str = "legacy") -> None:
         if not isinstance(text, str) or not text.strip():
             return
         text = text.strip()
@@ -84,42 +130,83 @@ def build_catalog() -> tuple[list[CatalogLine], list[dict[str, object]]]:
         key = slug(text)
         if not key:
             return
-        line = catalog.setdefault(key, CatalogLine(slug=key, text=text))
+        if kinds is not None and kind not in kinds:
+            # Still record if an existing entry of an allowed kind already owns the slug
+            existing = catalog.get(key)
+            if existing is None or (kinds is not None and existing.kind not in kinds):
+                return
+        line = catalog.setdefault(key, CatalogLine(slug=key, text=text, kind=kind))
         line.sources.add(source)
+        # Prefer more specific teaching kinds over legacy when merging
+        priority = {"headword": 3, "phrase": 2, "conversation": 2, "legacy": 1}
+        if priority.get(kind, 0) > priority.get(line.kind, 0):
+            line.kind = kind
+            line.text = text
 
-    def walk(value: object, source: str) -> None:
+    def walk_chapter(value: object, source: str) -> None:
         if isinstance(value, list):
             for child in value:
-                walk(child, source)
+                walk_chapter(child, source)
             return
         if not isinstance(value, dict):
             return
 
         spoken = value.get("s")
-        # Glosses also use `s`, but there it is a rough sound hint. A real
-        # speech beat/reply has a meaning or reaction and no `t` headword.
         if (
             isinstance(spoken, str)
             and "t" not in value
             and any(key in value for key in ("g", "reaction", "who"))
         ):
-            add(spoken, f"{source}:speech")
+            add(spoken, f"{source}:speech", "legacy")
         if isinstance(value.get("say"), str):
-            add(value["say"], f"{source}:listen")
+            add(value["say"], f"{source}:listen", "legacy")
         if value.get("type") in ("lens", "seanfhocal"):
-            add(value.get("ga"), f"{source}:{value['type']}")
+            add(value.get("ga"), f"{source}:{value['type']}", "legacy")
         if all(isinstance(value.get(key), str) for key in ("t", "g", "s")):
-            add(value["t"], f"{source}:gloss")
+            add(value["t"], f"{source}:gloss", "legacy")
 
         for child in value.values():
-            walk(child, source)
+            walk_chapter(child, source)
 
-    for filename in CHAPTERS:
-        walk(json.loads((RESOURCE_DIR / filename).read_text()), filename)
+    if from_inventory:
+        if not INVENTORY_PATH.exists():
+            raise RuntimeError(
+                f"Missing inventory {INVENTORY_PATH}; run assemble_irish_inventory.py first"
+            )
+        inventory = json.loads(INVENTORY_PATH.read_text())
+        for entry in inventory.get("entries", []):
+            text = entry.get("text")
+            kind = entry.get("kind", "legacy")
+            counties = ",".join(entry.get("counties") or []) or "inventory"
+            add(text, f"inventory:{kind}:{counties}", kind)
+    else:
+        for filename in CHAPTERS:
+            path = RESOURCE_DIR / filename
+            if path.exists():
+                walk_chapter(json.loads(path.read_text()), filename)
 
-    for swift_path in sorted((ROOT / "ios/AnTuras").glob("*.swift")):
-        for match in SWIFT_LITERAL_AUDIO.finditer(swift_path.read_text()):
-            add(match.group(1), f"{swift_path.name}:literal")
+        for swift_path in sorted((ROOT / "ios/AnTuras").glob("*.swift")):
+            for match in SWIFT_LITERAL_AUDIO.finditer(swift_path.read_text()):
+                add(match.group(1), f"{swift_path.name}:literal", "legacy")
+
+        for pack_path in county_pack_paths():
+            rel = pack_path.relative_to(ROOT)
+            root = json.loads(pack_path.read_text())
+            pack = root.get("pack", root)
+            walk_pack_audio(pack, add, str(rel))
+
+        if INVENTORY_PATH.exists():
+            inventory = json.loads(INVENTORY_PATH.read_text())
+            for entry in inventory.get("entries", []):
+                text = entry.get("text")
+                kind = entry.get("kind", "legacy")
+                counties = ",".join(entry.get("counties") or []) or "inventory"
+                add(text, f"inventory:{kind}:{counties}", kind)
+
+    if kinds is not None:
+        catalog = {
+            key: line for key, line in catalog.items() if line.kind in kinds
+        }
 
     dynamic_items = [
         {
@@ -198,6 +285,7 @@ def file_record(line: CatalogLine, path: Path) -> dict[str, object]:
         "slug": line.slug,
         "text": line.text,
         "sources": sorted(line.sources),
+        "kind": line.kind,
         "file": path.name,
         "bytes": path.stat().st_size,
         "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
@@ -207,6 +295,29 @@ def file_record(line: CatalogLine, path: Path) -> dict[str, object]:
         "channels": stream.get("channels"),
         "qa_state": "generated_unreviewed",
     }
+
+
+def merge_manifest_records(
+    new_records: list[dict[str, object]],
+    dynamic: list[dict[str, object]],
+    *,
+    replace_all: bool,
+) -> list[dict[str, object]]:
+    """Merge newly generated/verified records into the existing manifest.
+
+    Inventory batch runs must not delete legacy chapter clips that are still
+    bundled on disk. Full catalog runs (no --kind / replace_all) rewrite fully.
+    """
+    by_slug: dict[str, dict[str, object]] = {}
+    if not replace_all and MANIFEST_PATH.exists():
+        existing = json.loads(MANIFEST_PATH.read_text())
+        for line in existing.get("lines", []):
+            by_slug[str(line["slug"])] = line
+    for record in new_records:
+        by_slug[str(record["slug"])] = record
+    records = sorted(by_slug.values(), key=lambda item: str(item["slug"]))
+    write_manifest(records, dynamic)
+    return records
 
 
 def write_manifest(
@@ -247,10 +358,70 @@ def verify_manifest(
             raise RuntimeError(
                 f"Manifest {key} is {manifest.get(key)!r}, expected {expected!r}"
             )
-    if manifest.get("lines") != records:
+    # Compare without requiring kind field on older records
+    def normalize(lines: list[dict[str, object]]) -> list[dict[str, object]]:
+        out = []
+        for line in lines:
+            item = {k: v for k, v in line.items() if k != "kind"}
+            out.append(item)
+        return out
+
+    if normalize(manifest.get("lines") or []) != normalize(records):
         raise RuntimeError("Manifest clip records do not match the bundled catalog")
     if manifest.get("dynamic_exclusions") != dynamic:
         raise RuntimeError("Manifest dynamic exclusions do not match the speech catalog")
+
+
+def write_checksum_archive(records: list[dict[str, object]], label: str) -> Path:
+    archive_dir = ROOT / "content/audio/archive"
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    path = archive_dir / f"checksums-{label}-{stamp}.json"
+    payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "label": label,
+        "clip_count": len(records),
+        "clips": [
+            {
+                "slug": r["slug"],
+                "text": r["text"],
+                "sha256": r["sha256"],
+                "bytes": r["bytes"],
+                "duration_seconds": r["duration_seconds"],
+            }
+            for r in records
+        ],
+    }
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+    return path
+
+
+def update_inventory_qa_states(present_slugs: set[str]) -> None:
+    if not INVENTORY_PATH.exists():
+        return
+    inventory = json.loads(INVENTORY_PATH.read_text())
+    for entry in inventory.get("entries", []):
+        if entry.get("slug") in present_slugs:
+            if entry.get("qa_state") == "pending_generation":
+                entry["qa_state"] = "generated_unreviewed"
+    inventory["counts"] = {
+        "total": len(inventory.get("entries", [])),
+        "headword": sum(1 for e in inventory["entries"] if e["kind"] == "headword"),
+        "phrase": sum(1 for e in inventory["entries"] if e["kind"] == "phrase"),
+        "conversation": sum(
+            1 for e in inventory["entries"] if e["kind"] == "conversation"
+        ),
+        "already_generated": sum(
+            1
+            for e in inventory["entries"]
+            if e["qa_state"] in ("generated_unreviewed", "spot_flagged", "qa_passed")
+        ),
+        "pending_generation": sum(
+            1 for e in inventory["entries"] if e["qa_state"] == "pending_generation"
+        ),
+    }
+    inventory["generated_at"] = datetime.now(timezone.utc).isoformat()
+    INVENTORY_PATH.write_text(json.dumps(inventory, ensure_ascii=False, indent=2) + "\n")
 
 
 def parse_args() -> argparse.Namespace:
@@ -260,20 +431,49 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--verify-only", action="store_true", help="Validate the complete existing catalog"
     )
+    parser.add_argument(
+        "--from-inventory",
+        action="store_true",
+        help="Build catalog only from content/audio/irish-inventory-v1.json",
+    )
+    parser.add_argument(
+        "--kind",
+        action="append",
+        choices=VALID_KINDS,
+        help="Limit generation to one or more kinds (repeatable)",
+    )
+    parser.add_argument(
+        "--missing-only",
+        action="store_true",
+        help="With --dry-run, print only missing clips",
+    )
+    parser.add_argument(
+        "--archive-checksums",
+        action="store_true",
+        help="Write content/audio/archive checksum snapshot after run",
+    )
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
     load_env()
-    lines, dynamic = build_catalog()
+    kinds = set(args.kind) if args.kind else None
+    lines, dynamic = build_catalog(from_inventory=args.from_inventory, kinds=kinds)
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
-    print(f"Catalog: {len(lines)} static clips; {len(dynamic)} dynamic exclusions")
+
+    missing = [line for line in lines if not (AUDIO_DIR / f"{line.slug}.mp3").exists()]
+    chars = sum(len(line.text) for line in missing)
+    print(
+        f"Catalog: {len(lines)} static clips; {len(dynamic)} dynamic exclusions; "
+        f"{len(missing)} missing (~{chars} chars)"
+    )
 
     if args.dry_run:
-        for line in lines:
+        shown = missing if args.missing_only else lines
+        for line in shown:
             state = "present" if (AUDIO_DIR / f"{line.slug}.mp3").exists() else "missing"
-            print(f"{state:7} {line.slug}: {line.text}")
+            print(f"{state:7} [{line.kind}] {line.slug}: {line.text}")
         return 0
 
     key = os.environ.get("ELEVENLABS_API_KEY")
@@ -300,18 +500,35 @@ def main() -> int:
         if not args.verify_only and (args.force or not target.exists()):
             print(f"[{index}/{len(lines)}] generate {line.slug}", flush=True)
             generate_clip(session, line, target)
-            # Avoid a burst of requests while keeping the build practical.
             time.sleep(0.08)
         records.append(file_record(line, target))
 
-    expected = {record["file"] for record in records}
-    extras = sorted(path.name for path in AUDIO_DIR.glob("*.mp3") if path.name not in expected)
-    if extras:
-        print("Unreferenced MP3 files: " + ", ".join(extras), file=sys.stderr)
-    if args.verify_only:
+    replace_all = kinds is None and not args.from_inventory
+    if args.verify_only and replace_all:
         verify_manifest(records, dynamic)
     else:
-        write_manifest(records, dynamic)
+        merged = merge_manifest_records(
+            records, dynamic, replace_all=replace_all and not args.from_inventory
+        )
+        if args.from_inventory or kinds is not None:
+            # Keep legacy clips: merge inventory/batch into full on-disk set
+            all_mp3 = {
+                path.stem: path for path in AUDIO_DIR.glob("*.mp3")
+            }
+            # Rebuild manifest from all known records + any on-disk leftovers already in merged
+            records = merged
+        update_inventory_qa_states({str(r["slug"]) for r in records})
+        if args.archive_checksums:
+            label = "+".join(sorted(kinds)) if kinds else (
+                "inventory" if args.from_inventory else "full"
+            )
+            path = write_checksum_archive(records, label)
+            print(f"Checksum archive: {path}")
+
+    expected = {record["file"] for record in records}
+    extras = sorted(path.name for path in AUDIO_DIR.glob("*.mp3") if path.name not in expected)
+    if extras and replace_all and not args.from_inventory:
+        print("Unreferenced MP3 files: " + ", ".join(extras), file=sys.stderr)
     print(f"Verified {len(records)} MP3 clips; manifest: {MANIFEST_PATH}")
     return 0
 
