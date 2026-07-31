@@ -4,6 +4,7 @@ enum CountyExercisePhase: String, CaseIterable {
     case unanswered
     case incorrect
     case hint
+    case recovery
     case complete
 }
 
@@ -18,6 +19,14 @@ struct CountyExerciseBarState: Equatable {
 /// hints and completion live here rather than being reinvented by each task.
 struct CountyExerciseView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.scenePhase) private var scenePhase
+
+    /// VoiceOver focus targets owned by the shell: the task prompt (start of
+    /// the documented reading order) and the feedback/support panel.
+    private enum ShellFocus: Hashable {
+        case prompt
+        case feedback
+    }
 
     let page: CountyStoryPage
     let alreadyComplete: Bool
@@ -43,6 +52,11 @@ struct CountyExerciseView: View {
     @State private var panelMessage: String?
     @State private var checkReady = false
     @State private var checkAction: (() -> Void)?
+    /// Shell-owned announcement/focus queue: one pending task at a time, so a
+    /// batched state change (haptics + panel swap + engine transition) yields
+    /// one concise VoiceOver announcement and one focus move.
+    @State private var announcementTask: Task<Void, Never>?
+    @AccessibilityFocusState private var a11yFocus: ShellFocus?
 
     init(
         page: CountyStoryPage,
@@ -159,9 +173,67 @@ struct CountyExerciseView: View {
     /// escalated diagnostic, or completion.
     private var presentationPhase: CountyExercisePhase {
         if engine.isComplete { return .complete }
+        if engine.phase == .recovery { return .recovery }
         if engine.phase == .hint { return .hint }
         if engine.diagnosticEscalated { return .incorrect }
         return .unanswered
+    }
+
+    // MARK: Shell-owned announcements and VoiceOver focus
+
+    /// Every state-change announcement and focus move funnels through the
+    /// shell (rebuild plan step 4); response components never post their own.
+    private func handlePresentationChange(from old: CountyExercisePhase, to new: CountyExercisePhase) {
+        switch new {
+        case .hint:
+            announceAndFocus(panelMessage ?? exercise.hint)
+        case .incorrect:
+            announceAndFocus(panelMessage ?? exercise.recovery)
+        case .recovery:
+            announceAndFocus(panelMessage ?? exercise.recovery)
+        case .complete where old != .complete:
+            announceAndFocus(panelMessage ?? exercise.feedback)
+        case .unanswered where old != .unanswered:
+            // A hint taken early, an in-place repair, or a retry reopening the
+            // response: return focus to the start of the task's reading order.
+            restorePromptFocus()
+        default:
+            break
+        }
+    }
+
+    /// A concise announcement with no focus move (the on-target diagnostic of
+    /// matching and conversation, whose note stays beside the response).
+    private func announce(_ message: String) {
+        announcementTask?.cancel()
+        announcementTask = Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(500))
+            guard !Task.isCancelled else { return }
+            AccessibilityNotification.Announcement(message).post()
+        }
+    }
+
+    /// Move VoiceOver focus onto the freshly risen panel, then announce its
+    /// message once the layout has settled.
+    private func announceAndFocus(_ message: String) {
+        announcementTask?.cancel()
+        announcementTask = Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(300))
+            guard !Task.isCancelled else { return }
+            a11yFocus = .feedback
+            try? await Task.sleep(for: .milliseconds(400))
+            guard !Task.isCancelled else { return }
+            AccessibilityNotification.Announcement(message).post()
+        }
+    }
+
+    private func restorePromptFocus() {
+        announcementTask?.cancel()
+        announcementTask = Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(300))
+            guard !Task.isCancelled else { return }
+            a11yFocus = .prompt
+        }
     }
 
     /// Drives one formed response through the engine, reopening the response
@@ -196,6 +268,7 @@ struct CountyExerciseView: View {
                     .font(.headline)
                     .foregroundStyle(Theme.ink)
                     .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityFocused($a11yFocus, equals: .prompt)
                 if !exercise.objective.isEmpty {
                     Text(exercise.objective)
                         .font(.subheadline)
@@ -214,6 +287,24 @@ struct CountyExerciseView: View {
         .onAppear { syncBarState() }
         .onChange(of: engine.phase) { _, _ in syncBarState() }
         .onChange(of: checkReady) { _, _ in syncBarState() }
+        .onChange(of: presentationPhase) { old, new in
+            handlePresentationChange(from: old, to: new)
+        }
+        // Rebuild plan step 4: the shell owns interruption. Back navigation,
+        // page advance, the chapter menu and atlas exit all dismantle this
+        // view; backgrounding reaches it through the scene phase. An open D27
+        // repair window closes as unrepaired struggle; a completed engine
+        // loses nothing. The emitted events route through `apply` like any
+        // other engine signal.
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .background {
+                apply(engine.interrupt())
+            }
+        }
+        .onDisappear {
+            apply(engine.interrupt())
+            announcementTask?.cancel()
+        }
     }
 
     @ViewBuilder
@@ -245,6 +336,7 @@ struct CountyExerciseView: View {
             CountyTypingSurface(
                 exercise: exercise,
                 locked: locksResponse,
+                recoveryPresented: engine.phase == .recovery,
                 onCheck: gradeText,
                 onCheckReadyChange: { ready, handler in
                     checkReady = ready
@@ -294,6 +386,7 @@ struct CountyExerciseView: View {
                     candidate: candidate,
                     struggled: struggledPageIDs.contains(candidate.pageID),
                     locked: locksResponse,
+                    recoveryPresented: engine.phase == .recovery,
                     onPick: { option in
                         if option.isCorrect {
                             formEngineResponse()
@@ -347,11 +440,30 @@ struct CountyExerciseView: View {
         case .hint:
             feedbackMessage(icon: "lightbulb", title: "Hint", text: panelMessage ?? exercise.hint, color: Theme.lichen)
         case .incorrect:
+            VStack(alignment: .leading, spacing: 4) {
+                feedbackMessage(
+                    icon: "arrow.uturn.left",
+                    title: "Not quite",
+                    text: panelMessage ?? exercise.recovery,
+                    color: Theme.rust
+                )
+                // Rebuild plan step 4: recovery restructures the same objective
+                // through the engine; it never completes the exercise by
+                // itself, and the next response lands via retry.
+                QuietHintButton(title: "Show a steadier step") {
+                    withAnimation(feedbackAnimation) {
+                        engine.beginRecovery()
+                        panelMessage = exercise.recovery
+                    }
+                }
+                .accessibilityIdentifier("exercise-recovery-button")
+            }
+        case .recovery:
             feedbackMessage(
-                icon: "arrow.uturn.left",
-                title: "Not quite",
+                icon: "arrow.uturn.left.circle",
+                title: "A steadier step",
                 text: panelMessage ?? exercise.recovery,
-                color: Theme.rust
+                color: Theme.lichen
             )
         case .complete:
             feedbackMessage(icon: "checkmark", title: "Complete", text: panelMessage ?? exercise.feedback, color: Theme.moss)
@@ -374,6 +486,7 @@ struct CountyExerciseView: View {
         .background(title == "Not quite" ? Theme.rustTint : Theme.raised)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .accessibilityElement(children: .combine)
+        .accessibilityFocused($a11yFocus, equals: .feedback)
     }
 
     private func grade(_ option: CountyExerciseOption) {
@@ -414,7 +527,7 @@ struct CountyExerciseView: View {
     /// its brief on-target unlock instead of mastery-failure chrome.
     private func noteSelectionWrong(_ message: String, escalates: Bool) {
         Haptics.error()
-        AccessibilityNotification.Announcement(message).post()
+        announce(message)
         formEngineResponse()
         let transition = withAnimation(feedbackAnimation) {
             let checked = engine.check(outcome: .incorrect, diagnosticShown: true, escalatesDiagnostic: escalates)
@@ -1080,6 +1193,7 @@ private struct CountyContextualReviewSurface: View {
     let candidate: CountyReviewCandidate
     let struggled: Bool
     let locked: Bool
+    var recoveryPresented: Bool = false
     let onPick: (CountyExerciseOption) -> Void
     let onCheck: (String) -> Void
     let onCheckReadyChange: (Bool, @escaping () -> Void) -> Void
@@ -1132,6 +1246,7 @@ private struct CountyContextualReviewSurface: View {
                 CountyTypingSurface(
                     exercise: embedded,
                     locked: locked,
+                    recoveryPresented: recoveryPresented,
                     onCheck: onCheck,
                     onCheckReadyChange: onCheckReadyChange
                 )
@@ -1480,6 +1595,10 @@ private struct CountyMatchingSurface: View {
 private struct CountyTypingSurface: View {
     let exercise: CountyExercise
     let locked: Bool
+    /// The shell's recovery phase: the keyboard must yield so the restructured
+    /// panel and the answer field share a coherent, fully reachable scroll
+    /// composition (D3/D9). The next touch on the field restores the keyboard.
+    var recoveryPresented: Bool = false
     let onCheck: (String) -> Void
     let onCheckReadyChange: (Bool, @escaping () -> Void) -> Void
 
@@ -1489,11 +1608,13 @@ private struct CountyTypingSurface: View {
     init(
         exercise: CountyExercise,
         locked: Bool,
+        recoveryPresented: Bool = false,
         onCheck: @escaping (String) -> Void,
         onCheckReadyChange: @escaping (Bool, @escaping () -> Void) -> Void
     ) {
         self.exercise = exercise
         self.locked = locked
+        self.recoveryPresented = recoveryPresented
         self.onCheck = onCheck
         self.onCheckReadyChange = onCheckReadyChange
     }
@@ -1522,6 +1643,15 @@ private struct CountyTypingSurface: View {
         }
         .onAppear { publishCheckState() }
         .onChange(of: locked) { _, _ in publishCheckState() }
+        // Entering recovery swaps and shortens the feedback panel; with the
+        // keyboard still up, the first-responder field can be left outside the
+        // keyboard-constrained viewport with an invalid accessibility frame,
+        // unreachable to VoiceOver and scroll-to-visible. Resigning focus lets
+        // the composition recompose; tapping the field re-raises the keyboard
+        // for the in-place repair.
+        .onChange(of: recoveryPresented) { _, presented in
+            if presented { focused = false }
+        }
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()

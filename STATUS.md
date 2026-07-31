@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-31 (shared state
-engine step 3 ACCEPT + Grok PASS; shared activity shell next).*
+and visual narrative. English → Irish only. Updated 2026-07-31 (shared activity
+shell step 4 ACCEPT + Grok PASS; schema/foundation next).*
 
 ## Where we are
 
@@ -65,8 +65,13 @@ diagnostic, hint/recovery, retry, completion, and exactly-once memory events;
 ACCEPT + Grok PASS
 ([`SCORECARD-state-engine-2026-07-31.md`](docs/activity-quality/SCORECARD-state-engine-2026-07-31.md),
 [`GROK-COHERENCE-state-engine-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-state-engine-2026-07-31.md)).
-Next engineering: shared activity shell (`interrupt` / `beginRecovery` wiring,
-focus, centralised announcements), then schema harden and foundation gate.
+**Shared activity shell (rebuild plan step 4) landed:** `interrupt` on disappear/
+background, `beginRecovery` with keyboard-yield so typing stays repairable,
+centralised announce/focus queue. Composer REJECT then re-score ACCEPT + Grok PASS
+([`SCORECARD-activity-shell-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-2026-07-31.md),
+[`SCORECARD-activity-shell-rescore-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md),
+[`GROK-COHERENCE-activity-shell-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-activity-shell-2026-07-31.md)).
+Next engineering: harden authored contract/schema/validators, then foundation gate.
 Grammar/Greenfield stay parked. The Phase 4 Mayo and Phase 5 launch-county
 review drafts remain at their recorded gate states.
 
@@ -300,6 +305,8 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-07-31 | **Shared activity shell (rebuild plan step 4) — Composer re-score ACCEPT + Grok PASS.** Punch list S4-1–C3 cleared: recovery resigns typing focus so the field stays hittable; chapter-menu scroll proves interrupt→C3; `CountyActivityShellUITests` 3/3 pass (incl. AX5). Prior REJECT superseded for step-4 acceptance. Unblocks schema/foundation. Working tree uncommitted. | `ios/AnTuras/CountyExerciseSystem.swift`, `ios/AnTurasUITests/CountyActivityShellUITests.swift`, `docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md`, `GROK-COHERENCE-activity-shell-2026-07-31.md`, `STATUS.md` |
+| 2026-07-31 | **Composer activity-shell scorecard — REJECT.** Step-4 shape present (`interrupt` on disappear/background, `beginRecovery`, centralised announce/focus) and freeze walk + 49 engine/freeze unit tests still pass, but both `CountyActivityShellUITests` fail: typing recovery leaves `irish-answer-field` with zero AX frame (D3/D9 P0); interrupt→C3 unproven (menu row miss). Kimi punch list: S4-1 S4-2 S4-3 D3 D9 CG-2 CG-5 C3. Working tree uncommitted. | `docs/activity-quality/SCORECARD-activity-shell-2026-07-31.md`, `ios/AnTuras/CountyExerciseSystem.swift`, `ios/AnTurasUITests/CountyActivityShellUITests.swift`, `STATUS.md` |
 | 2026-07-31 | **Shared state engine (rebuild plan step 3) — Composer ACCEPT + Grok PASS.** Pure `CountyActivityStateEngine` with required/illegal transitions, D27 repair window, exactly-once memory, revisit suppression; wired into county shell; 49 unit tests (engine + freeze) pass. Deferred: `interrupt`/`beginRecovery` shell hooks, persistence, focus/announcements (steps 4–7/11). Unblocks shared activity shell. Working tree uncommitted. | `ios/AnTuras/CountyActivityStateEngine.swift`, `CountyExerciseSystem.swift`, `ios/AnTurasTests/CountyActivityStateEngineTests.swift`, `docs/activity-quality/SCORECARD-state-engine-2026-07-31.md`, `GROK-COHERENCE-state-engine-2026-07-31.md`, `STATUS.md` |
 | 2026-07-31 | **Grok coherence PASS on D29 freeze-run ACCEPT merges.** Shared anatomy holds across clusters; scaffold removal 3→6 is visible and narrated on C5; C1/C3/C5 Composer calls confirmed; dual conversation path kept as intentional production fallback; residuals (D5 ghost, bar-label ghost, VoiceOver rotor, gallery matrix) deferred to foundation gate. Unblocks shared state engine extraction; Grammar/Greenfield remain parked. Working tree still uncommitted. | `docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`, `STATUS.md`, `docs/README.md` |
 | 2026-07-30 | **Composer freeze-run cluster scorecards — all ACCEPT.** Five clusters scored against `tmp/exercise-screenshots/freeze-run-2026-07-30/` plus `FreezeRunUITests` / `CountyFreezeRunTests`: Construction 4.3 (F2), Typing 4.3 (F3), Choice 4.5 (F1/F6), Conversation 4.5 (C1 hard gate — turn graph, misfit, branch, resume), Consolidation 4.4 (C3/C5). P0 clear on all; no dimension below 3. C1 adjudicated PASS (not bare MC). C3 no-struggle copy judged honest. Residual polish: D5 ghost on listen complete, D2 bar label ghost on build complete, D8/D9 foundation gate items. Unblocks Grok coherence review. | `docs/activity-quality/SCORECARD-*-freeze-2026-07-30.md`, `docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md`, `STATUS.md`, `docs/README.md` |
@@ -383,12 +390,11 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 4. **~~Grok coherence review~~ (done — 2026-07-31)** —
    [`docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md);
    craft operate-the-run is complete; residuals ride the foundation gate.
-5. **~~Shared state engine (rebuild plan step 3)~~ (done — Kimi / Composer ACCEPT /
-   Grok PASS 2026-07-31)** — pure lifecycle engine + shell wiring; see scorecard.
-   **Remaining of STATUS 5 / rebuild plan step 4:** shared activity shell —
-   wire `interrupt()` and `beginRecovery()`, centralise focus and accessibility
-   announcements; keep freeze sequence unchanged. Persistence of attempt credit
-   stays with steps 6–7/11.
+5. **~~Shared state engine + activity shell (rebuild plan steps 3–4)~~ (done —
+   2026-07-31)** — engine Composer ACCEPT + Grok PASS; shell REJECT then
+   re-score ACCEPT + Grok PASS
+   ([`SCORECARD-activity-shell-rescore-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md)).
+   Persistence of attempt credit stays with steps 6–7/11.
 6. **Harden the authored contract, schema, memory handoff, and validators** — mirror
    Swift and Python rules, prove deterministic debt-free review behavior, preserve
    old progress, and add failing fixtures for every family and contract invariant.

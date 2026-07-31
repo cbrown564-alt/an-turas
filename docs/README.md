@@ -62,6 +62,11 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
   Shared state engine step 3 (**Composer ACCEPT** + **Grok PASS** 2026-07-31):
   [`SCORECARD-state-engine-2026-07-31.md`](activity-quality/SCORECARD-state-engine-2026-07-31.md),
   [`GROK-COHERENCE-state-engine-2026-07-31.md`](activity-quality/GROK-COHERENCE-state-engine-2026-07-31.md).
+  Shared activity shell step 4 (**Composer REJECT** then **re-score ACCEPT** +
+  **Grok PASS** 2026-07-31):
+  [`SCORECARD-activity-shell-2026-07-31.md`](activity-quality/SCORECARD-activity-shell-2026-07-31.md),
+  [`SCORECARD-activity-shell-rescore-2026-07-31.md`](activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md),
+  [`GROK-COHERENCE-activity-shell-2026-07-31.md`](activity-quality/GROK-COHERENCE-activity-shell-2026-07-31.md).
 - [`../web/learning-activity-reference/index.html`](../web/learning-activity-reference/index.html)
   is the 48-activity interactive reference field guide that supported D26. The
   canonical activity rules live in `PRODUCT.md`, `DESIGN.md`, D26, and the rebuild

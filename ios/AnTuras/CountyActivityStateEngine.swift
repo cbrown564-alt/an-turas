@@ -433,9 +433,9 @@ struct CountyActivityStateEngine: Equatable {
 
     /// Back navigation, backgrounding, and permission interruption must not
     /// invent a new attempt or lose a completed one. Per D27, leaving with the
-    /// repair window open closes it as an unrepaired struggle. The current
-    /// shell does not call this yet; page-lifecycle wiring lands with the
-    /// shared shell in rebuild plan step 4.
+    /// repair window open closes it as an unrepaired struggle. The shared
+    /// shell calls this on page dismantle and app backgrounding (rebuild plan
+    /// step 4); response components never call it directly.
     @discardableResult
     mutating func interrupt() -> CountyActivityTransition {
         let from = phase
