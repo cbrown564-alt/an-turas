@@ -45,7 +45,20 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
   first pass [`SCORECARD-shell-2026-07-30.md`](activity-quality/SCORECARD-shell-2026-07-30.md)
   (**REJECT** at `237d74f`); re-score
   [`SCORECARD-shell-rescore-2026-07-30.md`](activity-quality/SCORECARD-shell-rescore-2026-07-30.md)
-  (**ACCEPT** at `e4c6a8b`).
+  (**ACCEPT** at `e4c6a8b`). Representative Mayo run freeze (D29):
+  [`MAYO-REPRESENTATIVE-RUN-FREEZE.md`](activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md);
+  Design/IX cluster handoff:
+  [`KIMI-HANDOFF-freeze-clusters.md`](activity-quality/KIMI-HANDOFF-freeze-clusters.md).
+  Composer freeze-run scorecards (2026-07-30, all **ACCEPT**):
+  [`COMPOSER-ROLLUP-freeze-2026-07-30.md`](activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md);
+  per cluster —
+  [`SCORECARD-construction-freeze-2026-07-30.md`](activity-quality/SCORECARD-construction-freeze-2026-07-30.md),
+  [`SCORECARD-typing-freeze-2026-07-30.md`](activity-quality/SCORECARD-typing-freeze-2026-07-30.md),
+  [`SCORECARD-choice-freeze-2026-07-30.md`](activity-quality/SCORECARD-choice-freeze-2026-07-30.md),
+  [`SCORECARD-conversation-freeze-2026-07-30.md`](activity-quality/SCORECARD-conversation-freeze-2026-07-30.md),
+  [`SCORECARD-consolidation-freeze-2026-07-30.md`](activity-quality/SCORECARD-consolidation-freeze-2026-07-30.md).
+  Grok coherence (**PASS** 2026-07-31):
+  [`GROK-COHERENCE-freeze-2026-07-31.md`](activity-quality/GROK-COHERENCE-freeze-2026-07-31.md).
 - [`../web/learning-activity-reference/index.html`](../web/learning-activity-reference/index.html)
   is the 48-activity interactive reference field guide that supported D26. The
   canonical activity rules live in `PRODUCT.md`, `DESIGN.md`, D26, and the rebuild

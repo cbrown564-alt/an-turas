@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-30 (Shell cluster
-ACCEPT at e4c6a8b; freeze representative Mayo run next).*
+and visual narrative. English → Irish only. Updated 2026-07-31 (D29 freeze run —
+Composer ACCEPTs + Grok coherence PASS; shared state engine next).*
 
 ## Where we are
 
@@ -42,11 +42,24 @@ narrow Clew Bay fixture. The studies are implemented and pass their focused 3-un
 appearances, largest Dynamic Type, and reduced motion. They remain disposable and
 isolated from the shared county runtime.
 
-The next proof is one representative Mayo Learning-mode run through D26's selected
-one-screen shell. Before extracting the shared runtime, that proof must explicitly
-decide which response, correction, scaffold-removal, motion, and spatial details from
-the iOS studies improve the selected activity families. This combines the two bodies
-of work without reopening three candidate architectures. The Phase 4 Mayo and Phase 5
+**D29 freeze run implemented:** the nine-step Clew Bay sequence in
+[`docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md`](docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md)
+now operates end-to-end on the shared county shell via the internal `--freeze-run`
+route and the `mayo.clew-bay-freeze` fixture pack. Design/IX clusters A–G landed:
+F6 listen-or-read respond, F2/F3 craft fixes and per-tile VoiceOver labels, the C1
+conversation turn graph with branching and exact resume, the C5 completion container
+with fixture collection handoff, and the C3 contextual review with deterministic
+struggle targeting. The run walks all nine steps on iPhone 17 Pro with wrong→repair→complete
+coverage, mic denial, branch/resume, and Reduce Motion, largest Dynamic Type, and dark
+captures in `tmp/exercise-screenshots/freeze-run-2026-07-30/`. Shell ACCEPT at
+`e4c6a8b` stands. **Composer cluster scorecards ACCEPT (2026-07-30):** Construction
+4.3, Typing 4.3, Choice 4.5, Conversation 4.5 (C1 hard gate), Consolidation 4.4 —
+see [`docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md`](docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md).
+**Grok coherence PASS (2026-07-31):**
+[`docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md)
+— shared anatomy holds; scaffold 3→6 is visible; dual conversation path is intentional
+production fallback; residuals go to the foundation gate. Next engineering: extract the
+shared state engine; Grammar/Greenfield stay parked. The Phase 4 Mayo and Phase 5
 launch-county review drafts remain at their recorded gate states.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
@@ -166,13 +179,13 @@ county runtime.
 
 | # | D27 family | `CountyExerciseFamily` | Surface | Authored (4 packs) | Contract met? |
 |---|---|---|---|---|---|
-| 1 | Listen and choose | `listenChoose` | ✓ | ✓ | **Yes** — Shell ACCEPT (F1); response answerable from cold open; D27 repair window before struggle chrome |
-| 2 | Sentence construction | `sentenceConstruction` | ✓ | ✓ | Partial — Check in bottom bar (nil-action regression fixed); stable tile bank; not Shell-scored this pass |
-| 3 | Free typed production | `freeTyping` | ✓ | ✓ | Partial — two-voice/fada polish deferred until family cluster passes |
+| 1 | Listen and choose | `listenChoose` | ✓ | ✓ | **Yes** — Shell ACCEPT (F1) + Composer ACCEPT (Choice cluster mean 4.5) on freeze step 1 — [`SCORECARD-choice-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-choice-freeze-2026-07-30.md) |
+| 2 | Sentence construction | `sentenceConstruction` | ✓ | ✓ | **Yes** — Composer ACCEPT (F2, mean 4.3) on freeze step 3 — [`SCORECARD-construction-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-construction-freeze-2026-07-30.md) |
+| 3 | Free typed production | `freeTyping` | ✓ | ✓ | **Yes** — Composer ACCEPT (F3, mean 4.3) on freeze step 4 — [`SCORECARD-typing-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-typing-freeze-2026-07-30.md) |
 | 4 | Fill-in-the-blank | `fillGap` | ✓ | ✓ | Partial — shares choice surface with read-respond |
 | 5 | Matching | `matching` | ✓ | ✓ | **Yes** — Shell ACCEPT (F5); wrong pair = on-target note + next-tap unlock; thumb-native board; ≤4 pairs enforced |
-| 6 | Read or listen and respond | `readRespond` | ✓ | ✓ (read only) | Partial — no listen variant yet |
-| 7 | Record and compare | `recordCompare` | ✓ | ✓ | **Yes** — Shell ACCEPT (F7); Record/Stop owns ink until compare; quiet escape unless mic denied |
+| 6 | Read or listen and respond | `readRespond` | ✓ | ✓ (+ listen variant) | **Yes** — Composer ACCEPT (F6, Choice cluster mean 4.5) on freeze step 7 — [`SCORECARD-choice-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-choice-freeze-2026-07-30.md) |
+| 7 | Record and compare | `recordCompare` | ✓ | ✓ | **Yes** — Shell ACCEPT (F7); Record/Stop owns ink until compare; quiet escape unless mic denied; freeze step 6 authors the origin line |
 | 8 | Grammar discovery | `grammarDiscovery` | ✓ | ✓ | **No** — one MC step, not progressive reveal → produce → rule |
 | 9 | Picture or map selection | — | ✗ | ✗ | Not started (migration group 1) |
 | 10 | Listen and type | — | ✗ | ✗ | Not started (migration group 2); `audioPrompted` construction is partial overlap only |
@@ -181,11 +194,11 @@ county runtime.
 
 | # | D27 container | In enum / surface | Authored | Contract met? |
 |---|---|---|---|---|
-| 1 | Conversation | `conversation` / thin MC list | ✓ | **No** — no turn graph, branching, or resume |
+| 1 | Conversation | `conversation` / turn-graph surface | ✓ (+ freeze graph) | **Yes** — Composer ACCEPT (C1 hard gate, mean 4.5) on freeze step 5 — [`SCORECARD-conversation-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-conversation-freeze-2026-07-30.md); production packs keep thin MC fallback (migration group 3) |
 | 2 | Radio-style listening | — | ✗ | Not started (migration group 3) |
-| 3 | Contextual mistake review | — | ✗ | Not started (migration group 4); `delayedRecall` is a typing use only |
+| 3 | Contextual mistake review | `contextualReview` / review surface | ✓ (freeze) | **Yes** — Composer ACCEPT (C3, Consolidation mean 4.4) on freeze step 9 — [`SCORECARD-consolidation-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-consolidation-freeze-2026-07-30.md) |
 | 4 | **Words you carry** practice | legacy `VocabDeckView` | chapter 1 | **No** — not on shared county shell |
-| 5 | Completion | `CountyStoryExperienceView` | ✓ | Partial — no capability summary or collection handoff per D27 |
+| 5 | Completion | `completion` / completion surface | ✓ (freeze) | **Yes** — Composer ACCEPT (C5, Consolidation mean 4.4) on freeze step 8 — [`SCORECARD-consolidation-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-consolidation-freeze-2026-07-30.md) |
 
 ### Authored uses (configuration, not families)
 
@@ -220,6 +233,11 @@ three authored uses. References to "12 families" elsewhere in this file describe
 
 Twelve Rockfleet Learning-path screens captured 2026-07-30. Critique:
 `.impeccable/critique/2026-07-30T15-34-03Z__tmp-exercise-screenshots.md`.
+The D29 freeze run's four-state and accessibility captures live in
+`tmp/exercise-screenshots/freeze-run-2026-07-30/` — 39 shots across all nine steps:
+cold/wrong/struggle/complete per changed family, conversation misfit and branch,
+mic-denied escape, completion capability + collection, review context card,
+largest Dynamic Type, dark appearance, and Reduce Motion peer states.
 
 | File | D27 layer | Family / container | Authored use | Implementation gap |
 |---|---|---|---|---|
@@ -268,13 +286,16 @@ family pass until Shell ACCEPT.
 [`docs/activity-quality/SCORECARD-shell-rescore-2026-07-30.md`](docs/activity-quality/SCORECARD-shell-rescore-2026-07-30.md).
 Mean **4.1/5**; F1/F5/F7 pass; P0 clear. First pass REJECT at `237d74f` is
 superseded for fixtures 01/02/10. Choice / Matching / Speaking spectacular
-passes may proceed in cluster order; next gate is freezing the representative
-Mayo run.
+passes may proceed in cluster order; D29 freezes the Clew Bay representative run.
 
 ## Work completed
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-07-31 | **Grok coherence PASS on D29 freeze-run ACCEPT merges.** Shared anatomy holds across clusters; scaffold removal 3→6 is visible and narrated on C5; C1/C3/C5 Composer calls confirmed; dual conversation path kept as intentional production fallback; residuals (D5 ghost, bar-label ghost, VoiceOver rotor, gallery matrix) deferred to foundation gate. Unblocks shared state engine extraction; Grammar/Greenfield remain parked. Working tree still uncommitted. | `docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`, `STATUS.md`, `docs/README.md` |
+| 2026-07-30 | **Composer freeze-run cluster scorecards — all ACCEPT.** Five clusters scored against `tmp/exercise-screenshots/freeze-run-2026-07-30/` plus `FreezeRunUITests` / `CountyFreezeRunTests`: Construction 4.3 (F2), Typing 4.3 (F3), Choice 4.5 (F1/F6), Conversation 4.5 (C1 hard gate — turn graph, misfit, branch, resume), Consolidation 4.4 (C3/C5). P0 clear on all; no dimension below 3. C1 adjudicated PASS (not bare MC). C3 no-struggle copy judged honest. Residual polish: D5 ghost on listen complete, D2 bar label ghost on build complete, D8/D9 foundation gate items. Unblocks Grok coherence review. | `docs/activity-quality/SCORECARD-*-freeze-2026-07-30.md`, `docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md`, `STATUS.md`, `docs/README.md` |
+| 2026-07-30 | **D29 freeze run implemented — Design/IX clusters A–G.** The nine-step Clew Bay run operates end-to-end on the shared county shell via the `--freeze-run` route and the new `mayo.clew-bay-freeze` fixture pack (fixture boundary held; production packs untouched). C1 landed as a real turn graph: finite authored nodes, present-day setting, on-turn misfit diagnostics, a branch that changes a later partner line, and exact node resume with transcript across relaunches, validated in both validators. C5 completion states three capabilities and hands the four words to a fixture-scoped collection (no gold, no scheduler); C3 contextual review selects an authored target deterministically from the run's D27 struggle record and re-enters it from the original sound or sentence with the original response method. F6 gained the authored listen variant (replay + visible text/meaning route); F2 builder tiles are individually named for VoiceOver; F1 prompt aligned with the ungated board. Conversation pages land on the current turn when restored (bottom-scroll fix found by UI test). Full simulator suite passes on iPhone 17 Pro (56 unit incl. 14 freeze tests; 32 UI incl. nine-step wrong→repair→complete walk, branch + double-relaunch resume, mic-denied escape, record/compare); 51 Python tests pass. 39 four-state, AX5, dark, and Reduce Motion captures in `tmp/exercise-screenshots/freeze-run-2026-07-30/`. | `ios/AnTuras/CountyStoryPack.swift`, `CountyExerciseSystem.swift`, `CountyStoryExperienceView.swift`, `AtlasPrototype.swift`, `AppState.swift`, `ios/AnTuras/Resources/Fixtures/mayo.clew-bay-freeze.json`, `ios/AnTurasTests/CountyFreezeRunTests.swift`, `ios/AnTurasUITests/FreezeRunUITests.swift`, `tools/validate_county_pack.py`, `docs/activity-quality/KIMI-HANDOFF-freeze-clusters.md`, `STATUS.md` |
+| 2026-07-30 | **D29 — Representative Mayo Learning-mode run frozen.** Nine-step Clew Bay sequence locked (listen → match → build → type → conversation → speak → comprehend → completion → contextual review); study synthesis closed; Coast Placement deferred to F9; fixture vs production boundary and cluster order A–G recorded. Shell ACCEPT unchanged. Unblocks Design/IX clusters. | `docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md`, `docs/DECISIONS.md` D29, `STATUS.md`, `docs/README.md` |
 | 2026-07-30 | **Composer Shell re-score — ACCEPT.** Fixtures 01/02/10 at `e4c6a8b`. Mean 4.1/5; D2 5, D7 5; F1/F5/F7 pass; P0 clear. Four targeted UI tests pass (repair window, matching unlock, record primacy, mic escape); largest Dynamic Type on all three fixtures; cold-open and mic-denied screenshots in `tmp/exercise-screenshots/rescore-2026-07-30/`. Residual: D8/D9 Reduce Motion and full VoiceOver not re-run. Unblocks freeze-the-representative-Mayo-run. | `docs/activity-quality/SCORECARD-shell-rescore-2026-07-30.md`, `STATUS.md` |
 | 2026-07-30 | **Shell scorecard punch list implemented; two 237d74f bar regressions found and fixed.** All five Kimi items landed in the county shell: Record/Stop owns the ink slot until compare with a quiet no-recording escape (D2/F7); listen-choose answers from cold open (D1/F1); selection families follow the D27 repair window — first wrong carries the rationale on the affected row and struggle fires only when the next touch fails to self-correct, matching never leaves its brief on-target note (D3/D5/F1/F5); matching is a single-column thumb board and the Mayo draft's 5-pair board is re-authored to four with ≤4 pairs enforced in both validators (D4/F5). Verification also exposed two regressions from `237d74f`: the bottom-bar Check published its action then had it overwritten nil by a state sync (builders advanced without grading), and the terminal exercise page lost "Complete this chapter path". Builder banks now keep placeholders so tiles never slide mid-task. Full simulator suite passes on iPhone 17 Pro (42 unit, 19 UI, incl. new repair-window, matching-unlock and record-primacy tests); 45 Python tests pass; changed screens inspected light, dark, and at largest Dynamic Type. Awaiting Composer re-score; not an ACCEPT. | `ios/AnTuras/CountyExerciseSystem.swift`, `CountyStoryExperienceView.swift`, `CountyStoryPack.swift`, `content/mayo/grainne-1593.pack.draft.json`, `tools/validate_county_pack.py`, `tools/tests/`, `ios/AnTurasUITests/AtlasFlowUITests.swift` |
 | 2026-07-30 | **D28 chapter-opening Flow density; existing loops and stills wired.** One muted ambient hero per chapter opening; still→motion pipeline; evidence scans stay still. Wired unused Mayo Rockfleet + galley videos, Mayo draft openings to existing atmosphere stills (rev 7), Dublin's four remaining openings to catalog stills, Meath Ch1 to Boyne ford still, and the bundled Rockfleet proof to `video.mayo-rockfleet-sea-surge`. MEDIA-AUDIT now carries Batches A–C for Flow spend. Does not clear rights or generate new Flow clips in-repo. | `docs/DECISIONS.md` D28, `docs/MEDIA-AUDIT.md`, `content/mayo/`, `tools/build_phase5_county_drafts.py`, `ios/AnTuras/Resources/CountyStories/` |
@@ -342,37 +363,40 @@ Mayo run.
 
 ## Immediate next steps (learning-mechanics foundation, then rebuild Phases 4–6)
 
-1. **Freeze the representative Mayo run** — use the selected D26 shell with the Clew
-   Bay fixtures and record the exact listening, matching, construction, typing,
-   conversation, speaking, comprehension, completion, and contextual-review sequence.
-   Decide which local response, correction, scaffold-removal, motion, and spatial
-   details from the iOS studies are retained; do not reopen the architecture choice.
-   Grade craft against [`docs/ACTIVITY-QUALITY-SPEC.md`](docs/ACTIVITY-QUALITY-SPEC.md).
-2. **Implement the shared state engine and activity shell** — centralise attempt,
+1. **~~Freeze the representative Mayo run~~ (done — D29)** — sequence, retained study
+   details, and cluster order live in
+   [`docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md`](docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md).
+2. **~~Implement clusters A–G for the frozen run~~ (done — Kimi)** — all nine steps
+   operate on the shared shell.
+3. **~~Composer cluster scorecards~~ (done — 2026-07-30)** — all five required clusters
+   ACCEPT (rollup:
+   [`docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md`](docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md)).
+4. **~~Grok coherence review~~ (done — 2026-07-31)** —
+   [`docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md);
+   craft operate-the-run is complete; residuals ride the foundation gate.
+5. **Implement the shared state engine and activity shell** — centralise attempt,
    diagnostic, hint/recovery, retry, completion, persistence, focus, accessibility
    announcements, and exactly-once memory events before migrating production packs.
-3. **Operate the complete representative run** — prove the selected shell end to end
-   with incorrect and recovery paths, audio fallback, keyboard/fadas, microphone
-   denial, interruption/resume, and fixture-only completion.
-4. **Migrate the activity families in bounded groups** — recognition; construction
-   and production; contextual use, including grammar discovery and radio; then
-   contextual mistake review, **Words you carry**, and capability-led completion.
-   Each group must pass its gallery and accessibility matrix before the next spreads.
-5. **Harden the authored contract, schema, memory handoff, and validators** — mirror
+6. **Harden the authored contract, schema, memory handoff, and validators** — mirror
    Swift and Python rules, prove deterministic debt-free review behavior, preserve
    old progress, and add failing fixtures for every family and contract invariant.
-6. **Run the foundation gate** — complete automated transition, schema, persistence,
-   UI, branching, offline, and failure checks plus direct simulator, VoiceOver,
-   appearance, contrast, motion, audio, microphone, keyboard/fada, and physical-device
-   verification. Record the result before spreading the system.
-7. **Migrate one production Mayo slice, then decide whether to spread** — verify both
+7. **Run the foundation gate** — complete automated transition, schema, persistence,
+   UI, branching, offline, and failure checks plus direct simulator, VoiceOver rotor,
+   appearance, contrast, motion, audio, microphone, keyboard/fada, gallery matrix for
+   C1/C3/C5, residual D5/D2 polish, and physical-device verification. Record the result
+   before spreading the system. Grammar/Greenfield stay parked until this passes.
+8. **Migrate the activity families in bounded groups** — recognition greenfield;
+   construction listen-and-type; contextual use (grammar, radio, production conversation
+   graphs); then **Words you carry** and scheduler-owned mistake review. Each group must
+   pass its gallery and accessibility matrix before the next spreads.
+9. **Migrate one production Mayo slice, then decide whether to spread** — verify both
    modes, progress preservation, memory events, collection handoff, and optional
    review. Resume broader county integration only after this slice and the foundation
    pass without private family-specific exceptions.
-8. **Resume county review and integration only after the foundation passes** — clear
+10. **Resume county review and integration only after the foundation passes** — clear
    Mayo's history, pedagogy, audio, and rights gates; review Offaly, Dublin, and Meath
    independently; then run the four-county tester-readiness gate.
-9. **Preserve the Phase 2 test record** — add participant count and moderated-session
+11. **Preserve the Phase 2 test record** — add participant count and moderated-session
    notes if they exist; D20 deliberately does not invent them.
 
 ### Lower priority (unchanged)

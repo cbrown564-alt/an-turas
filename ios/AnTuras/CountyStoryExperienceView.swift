@@ -96,6 +96,17 @@ struct CountyStoryExperienceView: View {
                                 onBarUpdate: { bar, action in
                                     exerciseBar = bar
                                     exerciseBarAction = action
+                                },
+                                struggledPageIDs: atlas.struggledPageIDs(in: pack),
+                                conversationState: atlas.conversationState(for: page.id),
+                                onConversationState: { atlas.saveConversationState($0, for: page.id) },
+                                collectionWords: collectionWords,
+                                collectionHandoff: collectionHandoff,
+                                onCollect: {
+                                    atlas.recordFixtureCollection(collectionWords.map(\.ga), in: pack)
+                                },
+                                onStruggle: {
+                                    atlas.recordStruggle(page.id, in: pack)
                                 }
                             )
                             .padding(.horizontal, EditorialLayout.pageInset)
@@ -112,17 +123,16 @@ struct CountyStoryExperienceView: View {
                                 onOpenEvidence: onOpenEvidence
                             )
                         }
+                        Color.clear.frame(height: 0).id("county-page-bottom")
                     }
                     .padding(.bottom, 124)
                     .frame(maxWidth: .infinity)
                     .id(page.id)
                 }
                 .scrollDismissesKeyboard(.interactively)
+                .onAppear { scrollToTaskStart(proxy, page: page) }
                 .onChange(of: page.id) { _, _ in
-                    Task { @MainActor in
-                        await Task.yield()
-                        proxy.scrollTo("county-page-top", anchor: .top)
-                    }
+                    scrollToTaskStart(proxy, page: page)
                 }
             }
         }
@@ -176,6 +186,40 @@ struct CountyStoryExperienceView: View {
         }
     }
 
+    /// Conversations land on the current turn (a restored graph reads bottom-up
+    /// like any transcript); every other task starts at its prompt.
+    private func scrollToTaskStart(_ proxy: ScrollViewProxy, page: CountyStoryPage) {
+        Task { @MainActor in
+            await Task.yield()
+            if page.exercise?.family == .conversation {
+                proxy.scrollTo("county-page-bottom", anchor: .bottom)
+            } else {
+                proxy.scrollTo("county-page-top", anchor: .top)
+            }
+        }
+    }
+
+    /// C5: the words a completion container hands over — the pack's headwords
+    /// that the run's exercises actually worked.
+    private var collectionWords: [AtlasWord] {
+        let usedLexemes = Set(pack.pages(for: .learning).compactMap(\.exercise).flatMap(\.lexemeIDs))
+        guard !usedLexemes.isEmpty else { return [] }
+        return pack.targetWords.filter { word in
+            usedLexemes.contains("lex." + word.ga.folding(options: .diacriticInsensitive, locale: nil).lowercased())
+        }
+    }
+
+    private var collectionHandoff: String {
+        if pack.id == CountyFreezeRunFixture.packID {
+            return "For this fixture run they sit in a fixture collection only — no county gold, no made object and no scheduled reviews."
+        }
+        return "These words return to your collection; Words you carry meets them there when scheduling opens."
+    }
+
+    private var isFreezeFixture: Bool {
+        pack.id == CountyFreezeRunFixture.packID
+    }
+
     private func completionView(_ mode: CountyStoryMode) -> some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 28) {
@@ -217,12 +261,16 @@ struct CountyStoryExperienceView: View {
     }
 
     private var completionTitle: String {
+        if isFreezeFixture { return "Clew Bay fixture run complete" }
         if pack.scope == .representativeChapter { return "Rockfleet chapter proof complete" }
         if pack.isReviewDraft { return "\(pack.presentation.countyEn) review path complete" }
         return "\(pack.presentation.countyEn) path complete"
     }
 
     private func completionDetail(for mode: CountyStoryMode) -> String {
+        if isFreezeFixture {
+            return "You walked all nine frozen steps — cold opens, in-place repairs, a branching conversation and an exact resume — on the shared county shell."
+        }
         if pack.scope == .representativeChapter {
             if mode == .story {
                 return "You followed the complete chapter account without a language gate."
@@ -238,6 +286,9 @@ struct CountyStoryExperienceView: View {
     }
 
     private var completionEffectLabel: String {
+        if isFreezeFixture {
+            return "The words sit in a fixture collection; this run awards no county gold, made objects or scheduled words."
+        }
         if pack.isReleaseCleared {
             return "The reviewed county can now award its completion effects."
         }
@@ -248,6 +299,9 @@ struct CountyStoryExperienceView: View {
     }
 
     private var completionStatus: String {
+        if isFreezeFixture {
+            return "This is the D29 representative-run proof. Production Mayo promotion is untouched, and the fixture collection stays separate from Words you carry and the review scheduler."
+        }
         if pack.isReviewDraft {
             return "This authored county is bundled for in-app review. Release effects remain locked while these gates are open: \(pack.openReviewGateTitles.joined(separator: ", "))."
         }

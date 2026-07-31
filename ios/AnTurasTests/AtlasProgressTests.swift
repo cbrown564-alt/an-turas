@@ -212,7 +212,13 @@ final class AtlasProgressTests: XCTestCase {
 
         XCTAssertEqual(pack.scope, .representativeChapter)
         XCTAssertTrue(pack.pages(for: .story).allSatisfy { $0.kind == .narrative })
-        XCTAssertEqual(Set(pack.pages.compactMap(\.exercise).map(\.family)), Set(CountyExerciseFamily.allCases))
+        // The nine authored D27 families remain; completion and contextual
+        // review containers arrive with their freeze fixtures, not this pack.
+        let rockfleetFamilies: Set<CountyExerciseFamily> = [
+            .listenChoose, .sentenceConstruction, .fillGap, .matching, .freeTyping,
+            .readRespond, .recordCompare, .grammarDiscovery, .conversation,
+        ]
+        XCTAssertEqual(Set(pack.pages.compactMap(\.exercise).map(\.family)), rockfleetFamilies)
         XCTAssertGreaterThanOrEqual(pack.pages(for: .story).count, 10)
         XCTAssertGreaterThanOrEqual(pack.pages(for: .learning).count, 15)
         XCTAssertGreaterThan(report.storyMinutes, 14)
@@ -445,11 +451,14 @@ final class CountyExerciseFamilyLayerTests: XCTestCase {
         )
     }
 
-    func testConversationIsTheOnlyContainerAndStillCountsAsProduction() {
+    func testContainersAreDeclaredAndProductionLoadIsHonest() {
         let containers = CountyExerciseFamily.allCases.filter(\.isContainer)
-        XCTAssertEqual(containers, [.conversation])
-        // A container carries real production load even though it is not a family.
+        XCTAssertEqual(containers, [.conversation, .completion, .contextualReview])
+        // Conversation and mistake review carry real production load even though
+        // they are not families; completion states capabilities only.
         XCTAssertTrue(CountyExerciseFamily.conversation.isActiveProduction)
+        XCTAssertTrue(CountyExerciseFamily.contextualReview.isActiveProduction)
+        XCTAssertFalse(CountyExerciseFamily.completion.isActiveProduction)
         XCTAssertEqual(CountyExerciseFamily.allCases.filter { !$0.isContainer }.count, 8)
     }
 

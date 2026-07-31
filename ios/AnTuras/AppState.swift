@@ -114,6 +114,14 @@ final class AppState: ObservableObject {
         var madeArtifactIDs: [String] = []
         var atlasReviews: [String: AtlasReviewProgress] = [:]
         var calendarDaysVisited: [String] = []
+        /// D27/C3: ordered exercise-page struggles per pack, so contextual
+        /// mistake review can target what actually slipped.
+        var countyExerciseStruggles: [String: [String]] = [:]
+        /// C1: turn-graph position per conversation page for exact resume.
+        var countyConversationStates: [String: CountyConversationState] = [:]
+        /// D29 fixture boundary: words a fixture completion hands over stay in
+        /// a fixture collection, never in county gold or the scheduler.
+        var fixtureCollections: [String: [String]] = [:]
 
         init(
             hasOpenedAtlas: Bool = false,
@@ -138,7 +146,10 @@ final class AppState: ObservableObject {
             inspectedEvidenceIDs: [String] = [],
             madeArtifactIDs: [String] = [],
             atlasReviews: [String: AtlasReviewProgress] = [:],
-            calendarDaysVisited: [String] = []
+            calendarDaysVisited: [String] = [],
+            countyExerciseStruggles: [String: [String]] = [:],
+            countyConversationStates: [String: CountyConversationState] = [:],
+            fixtureCollections: [String: [String]] = [:]
         ) {
             self.hasOpenedAtlas = hasOpenedAtlas
             self.evidenceInspected = evidenceInspected
@@ -163,6 +174,9 @@ final class AppState: ObservableObject {
             self.madeArtifactIDs = madeArtifactIDs
             self.atlasReviews = atlasReviews
             self.calendarDaysVisited = calendarDaysVisited
+            self.countyExerciseStruggles = countyExerciseStruggles
+            self.countyConversationStates = countyConversationStates
+            self.fixtureCollections = fixtureCollections
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -174,6 +188,7 @@ final class AppState: ObservableObject {
             case countyStoryModes, activeCountyPageIDs, completedCountyPageIDs
             case storyReadCountyIDs, countyPackVersions
             case atlasReviews, calendarDaysVisited
+            case countyExerciseStruggles, countyConversationStates, fixtureCollections
         }
 
         init(from decoder: Decoder) throws {
@@ -201,6 +216,9 @@ final class AppState: ObservableObject {
             madeArtifactIDs = try values.decodeIfPresent([String].self, forKey: .madeArtifactIDs) ?? []
             atlasReviews = try values.decodeIfPresent([String: AtlasReviewProgress].self, forKey: .atlasReviews) ?? [:]
             calendarDaysVisited = try values.decodeIfPresent([String].self, forKey: .calendarDaysVisited) ?? []
+            countyExerciseStruggles = try values.decodeIfPresent([String: [String]].self, forKey: .countyExerciseStruggles) ?? [:]
+            countyConversationStates = try values.decodeIfPresent([String: CountyConversationState].self, forKey: .countyConversationStates) ?? [:]
+            fixtureCollections = try values.decodeIfPresent([String: [String]].self, forKey: .fixtureCollections) ?? [:]
         }
     }
 

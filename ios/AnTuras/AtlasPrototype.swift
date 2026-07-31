@@ -85,7 +85,28 @@ struct AtlasPrototypeView: View {
                     atlas.atlasReviews[candidate.id] = .init(due: Date().addingTimeInterval(-60))
                 }
             }
-            if args.contains("--exercise-gallery") {
+            // D29 freeze run: the nine-step Clew Bay fixture through the shared
+            // county shell. Fixture-only; never touches production promotion.
+            if args.contains("--freeze-run"), let pack = CountyFreezeRunFixture.pack() {
+                atlas.hasOpenedAtlas = true
+                atlas.storyInProgress = true
+                if args.contains("--fresh-county-pack") {
+                    atlas.countyStoryModes.removeValue(forKey: pack.id)
+                    atlas.activeCountyPageIDs.removeValue(forKey: pack.id)
+                    atlas.completedCountyPageIDs.removeValue(forKey: pack.id)
+                    atlas.clearRunRecords(for: pack)
+                }
+                _ = atlas.begin(pack, mode: .learning)
+                if let pageFlag = args.firstIndex(of: "--page"),
+                   args.indices.contains(pageFlag + 1),
+                   pack.page(id: args[pageFlag + 1]) != nil {
+                    atlas.setActivePage(args[pageFlag + 1], in: pack)
+                    if !args.contains("--completed-page") {
+                        atlas.completedCountyPageIDs[pack.id, default: []].removeAll { $0 == args[pageFlag + 1] }
+                    }
+                }
+                path = [.freezeRun]
+            } else if args.contains("--exercise-gallery") {
                 atlas.hasOpenedAtlas = true
                 path = [.exerciseGallery]
             } else if let flag = args.firstIndex(of: "--county-pack"),
@@ -99,6 +120,7 @@ struct AtlasPrototypeView: View {
                     atlas.completedCountyPageIDs.removeValue(forKey: pack.id)
                     atlas.storyReadCountyIDs.removeAll { $0 == pack.id }
                     atlas.completedCountyStoryIDs.removeAll { $0 == pack.id }
+                    atlas.clearRunRecords(for: pack)
                 }
                 if args.contains("--mode-opening") {
                     atlas.countyStoryModes.removeValue(forKey: pack.id)
@@ -249,6 +271,20 @@ struct AtlasPrototypeView: View {
                     }
                 )
             }
+        case .freezeRun:
+            if let pack = CountyFreezeRunFixture.pack() {
+                CountyStoryExperienceView(
+                    pack: pack,
+                    onOpenEvidence: { path.append(.evidence) },
+                    onExit: {
+                        atlas.hasOpenedAtlas = true
+                        atlas.storyInProgress = false
+                        atlas.tab = .island
+                        atlas.shouldFocusOpeningRoad = true
+                        path.removeAll()
+                    }
+                )
+            }
         case .exerciseGallery:
             CountyExerciseGalleryView()
         case .firstTakeaway:
@@ -335,6 +371,7 @@ enum AtlasRoute: Hashable {
     case mayoDossier
     case grainnePerson
     case countyPack(String)
+    case freezeRun
     case exerciseGallery
     case firstTakeaway
     case evidence
@@ -374,6 +411,14 @@ final class AtlasPrototypeModel: ObservableObject {
     @Published var madeArtifactIDs: [String] = []
     @Published var atlasReviews: [String: AppState.AtlasReviewProgress] = [:]
     @Published var calendarDaysVisited: [String] = []
+    /// D27/C3: ordered exercise-page struggles per pack, feeding contextual
+    /// mistake review. Ordered so the earliest slip can win deterministically.
+    @Published var countyExerciseStruggles: [String: [String]] = [:]
+    /// C1: turn-graph position per conversation page, keyed by page id.
+    @Published var countyConversationStates: [String: CountyConversationState] = [:]
+    /// D29 fixture boundary: fixture completion handoffs (pack id -> word ga),
+    /// kept apart from county gold and the review scheduler.
+    @Published var fixtureCollections: [String: [String]] = [:]
 
     var carriedWords: [AtlasWord] {
         CountyStoryPackCatalog.pack(id: "mayo.grainne-1593")?.targetWords ?? []
@@ -610,6 +655,50 @@ final class AtlasPrototypeModel: ObservableObject {
         calendarDaysVisited.contains(key)
     }
 
+    // MARK: Run-scoped activity records (struggles, conversations, fixture collection)
+
+    /// D27 struggle memory event, recorded once per exercise page in run order.
+    func recordStruggle(_ pageID: String, in pack: CountyStoryPack) {
+        guard pack.page(id: pageID) != nil else { return }
+        var struggles = countyExerciseStruggles[pack.id, default: []]
+        guard !struggles.contains(pageID) else { return }
+        struggles.append(pageID)
+        countyExerciseStruggles[pack.id] = struggles
+    }
+
+    func struggledPageIDs(in pack: CountyStoryPack) -> [String] {
+        countyExerciseStruggles[pack.id, default: []]
+    }
+
+    /// C1: persist the turn-graph position after every fitting reply so an
+    /// interrupted conversation resumes at the exact node with its transcript.
+    func saveConversationState(_ state: CountyConversationState, for pageID: String) {
+        countyConversationStates[pageID] = state
+    }
+
+    func conversationState(for pageID: String) -> CountyConversationState? {
+        countyConversationStates[pageID]
+    }
+
+    /// C5 fixture handoff: the completion container files its words into the
+    /// fixture collection only — no county gold, no scheduled reviews.
+    func recordFixtureCollection(_ words: [String], in pack: CountyStoryPack) {
+        var collected = fixtureCollections[pack.id, default: []]
+        for word in words where !collected.contains(word) {
+            collected.append(word)
+        }
+        fixtureCollections[pack.id] = collected
+    }
+
+    /// Debug resets (`--fresh-county-pack`) clear every run-scoped record for
+    /// one pack alongside its page progress.
+    func clearRunRecords(for pack: CountyStoryPack) {
+        countyExerciseStruggles.removeValue(forKey: pack.id)
+        fixtureCollections.removeValue(forKey: pack.id)
+        let pageIDs = Set(pack.pages.map(\.id))
+        countyConversationStates = countyConversationStates.filter { !pageIDs.contains($0.key) }
+    }
+
     private func seedReviews(storyID: String, words: [AtlasWord], now: Date = Date()) {
         for (index, word) in words.enumerated() {
             let key = "\(storyID)|\(word.ga)"
@@ -648,7 +737,10 @@ final class AtlasPrototypeModel: ObservableObject {
             inspectedEvidenceIDs: inspectedEvidenceIDs,
             madeArtifactIDs: madeArtifactIDs,
             atlasReviews: atlasReviews,
-            calendarDaysVisited: calendarDaysVisited
+            calendarDaysVisited: calendarDaysVisited,
+            countyExerciseStruggles: countyExerciseStruggles,
+            countyConversationStates: countyConversationStates,
+            fixtureCollections: fixtureCollections
         )
     }
 
@@ -687,6 +779,9 @@ final class AtlasPrototypeModel: ObservableObject {
         madeArtifactIDs = progress.madeArtifactIDs.uniqued()
         atlasReviews = progress.atlasReviews
         calendarDaysVisited = progress.calendarDaysVisited.uniqued()
+        countyExerciseStruggles = progress.countyExerciseStruggles
+        countyConversationStates = progress.countyConversationStates
+        fixtureCollections = progress.fixtureCollections
         if storyCompleted { seedReviews(storyID: "mayo.grainne-1593", words: carriedWords) }
         for story in LaunchCountyCatalog.stories where completedCountyStoryIDs.contains(story.id) {
             seedReviews(storyID: story.id, words: story.words)

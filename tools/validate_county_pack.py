@@ -35,7 +35,7 @@ TARGET_WORD_COUNT = 20
 # D27 containers: these host or end activities rather than being a way to answer, so
 # they count toward the percentage quotas but never toward family diversity (mirror of
 # CountyExerciseFamily.isContainer in Swift).
-CONTAINERS = {"conversation"}
+CONTAINERS = {"conversation", "completion", "contextualReview"}
 
 # Exercise families and containers whose learner action is active production (mirror of
 # CountyExerciseFamily.isActiveProduction in Swift).
@@ -45,6 +45,7 @@ ACTIVE_PRODUCTION_FAMILIES = {
     "recordCompare",
     "grammarDiscovery",
     "conversation",
+    "contextualReview",
 }
 
 # Families that must carry bundled audio to run.
@@ -80,6 +81,33 @@ def _visibility_includes(visibility: str, mode: str) -> bool:
     if visibility == "learningOnly":
         return mode == "learning"
     return False
+
+
+def _validate_conversation_graph(page_id: str, graph: dict) -> None:
+    """C1 contract: an authored conversation is a finite turn graph with a
+    declared setting, a resolvable start and next references, at least two
+    nodes, one genuine branch (a node with two fitting replies) and at least
+    one terminal fitting reply — never a bare multiple-choice list. Mirrors
+    ``validateConversationGraph`` in ``CountyStoryPack.swift``."""
+    nodes = graph.get("nodes", [])
+    node_ids = {node.get("id") for node in nodes}
+    replies = [reply for node in nodes for reply in node.get("replies", [])]
+    ok = (
+        bool(graph.get("setting"))
+        and len(nodes) >= 2
+        and graph.get("start") in node_ids
+        and all(node.get("replies") for node in nodes)
+        and all(reply.get("next") is None or reply.get("next") in node_ids for reply in replies)
+        and any(reply.get("isFitting") and reply.get("next") is None for reply in replies)
+        and any(
+            len([r for r in node.get("replies", []) if r.get("isFitting")]) >= 2
+            for node in nodes
+        )
+    )
+    if not ok:
+        raise PackValidationError(
+            "invalidConversationGraph", f"{page_id} fails the C1 turn-graph contract"
+        )
 
 
 @dataclass
@@ -228,6 +256,21 @@ def validate(envelope: dict) -> PackReport:
                         "invalidMatchingBoard",
                         f"{page.get('id')} boards {pair_count} pairs; matching takes two to four",
                     )
+            # C1: a graph-authored conversation must be a real turn graph.
+            if exercise.get("family") == "conversation" and exercise.get("conversation") is not None:
+                _validate_conversation_graph(page.get("id"), exercise["conversation"])
+            # C5: completion states capabilities, not points.
+            if exercise.get("family") == "completion" and not exercise.get("capabilities"):
+                raise PackValidationError(
+                    "invalidCompletionPayload",
+                    f"{page.get('id')} states no capabilities (C5)",
+                )
+            # C3: contextual review needs authored re-entry candidates.
+            if exercise.get("family") == "contextualReview" and not exercise.get("reviewCandidates"):
+                raise PackValidationError(
+                    "invalidReviewPayload",
+                    f"{page.get('id')} has no authored re-entry candidates (C3)",
+                )
         introduced.update(page.get("introducedLexemeIDs", []))
 
     # Lifecycle ordering, on the flat page order across chapters.

@@ -82,11 +82,16 @@ enum CountyExerciseFamily: String, Codable, CaseIterable {
     case recordCompare
     case grammarDiscovery
     case conversation
+    case completion
+    case contextualReview
 
     /// D27: containers host or end activities rather than being a way to answer, so they
     /// do not satisfy the response contract and do not count toward family diversity.
     var isContainer: Bool {
-        self == .conversation
+        switch self {
+        case .conversation, .completion, .contextualReview: return true
+        default: return false
+        }
     }
 
     var title: String {
@@ -100,6 +105,8 @@ enum CountyExerciseFamily: String, Codable, CaseIterable {
         case .recordCompare: return "Record and compare"
         case .grammarDiscovery: return "Notice the pattern"
         case .conversation: return "Take your turn"
+        case .completion: return "See what you can do"
+        case .contextualReview: return "Return to what slipped"
         }
     }
 
@@ -112,7 +119,8 @@ enum CountyExerciseFamily: String, Codable, CaseIterable {
         case .fillGap:
             // Only the choice-backed variant; a typed gap keeps its Check.
             return true
-        case .sentenceConstruction, .matching, .freeTyping, .recordCompare, .conversation:
+        case .sentenceConstruction, .matching, .freeTyping, .recordCompare, .conversation,
+             .completion, .contextualReview:
             return false
         }
     }
@@ -120,9 +128,9 @@ enum CountyExerciseFamily: String, Codable, CaseIterable {
     var isActiveProduction: Bool {
         switch self {
         case .sentenceConstruction, .freeTyping, .recordCompare, .grammarDiscovery,
-             .conversation:
+             .conversation, .contextualReview:
             return true
-        case .listenChoose, .fillGap, .matching, .readRespond:
+        case .listenChoose, .fillGap, .matching, .readRespond, .completion:
             return false
         }
     }
@@ -194,6 +202,132 @@ struct CountyExercisePair: Identifiable, Codable, Equatable {
     let right: String
 }
 
+// MARK: - D27 container payloads
+
+/// One learner reply inside a conversation node. A fitting reply advances the
+/// graph (`next`) or ends the conversation (`next == nil`); a mismatched reply
+/// carries its diagnostic on that turn and never advances.
+struct CountyConversationReply: Identifiable, Codable, Equatable {
+    let id: String
+    let text: String
+    let gloss: String?
+    let isFitting: Bool
+    let diagnostic: String?
+    let next: String?
+    let audioText: String?
+}
+
+struct CountyConversationNode: Identifiable, Codable, Equatable {
+    let id: String
+    let partner: String
+    let partnerGloss: String?
+    let audioText: String?
+    let replies: [CountyConversationReply]
+}
+
+/// C1: a finite, authored conversation — no runtime-generated Irish. `setting`
+/// is authored metadata (`present-day` or `historical-bounded`), not a
+/// structural difference (D27).
+struct CountyConversationGraph: Codable, Equatable {
+    let setting: String
+    let start: String
+    let nodes: [CountyConversationNode]
+
+    func node(id: String) -> CountyConversationNode? {
+        nodes.first { $0.id == id }
+    }
+}
+
+/// One durable record of a completed learner turn, so an interrupted
+/// conversation restores its transcript and current node exactly (C1 resume).
+struct CountyConversationTurnRecord: Codable, Equatable {
+    let nodeID: String
+    let replyID: String
+}
+
+struct CountyConversationState: Codable, Equatable {
+    var turns: [CountyConversationTurnRecord]
+    var currentNodeID: String
+}
+
+enum CountyConversationStep: Equatable {
+    case advanced(CountyConversationState)
+    case misfit(String)
+    case completed(CountyConversationState)
+}
+
+/// Pure turn-graph walk — kept free of SwiftUI so branch, resume and
+/// completion are unit-testable without a simulator.
+enum CountyConversationEngine {
+    static func initialState(for graph: CountyConversationGraph) -> CountyConversationState {
+        CountyConversationState(turns: [], currentNodeID: graph.start)
+    }
+
+    static func choose(
+        replyID: String,
+        in state: CountyConversationState,
+        graph: CountyConversationGraph
+    ) -> CountyConversationStep {
+        guard let node = graph.node(id: state.currentNodeID),
+              let reply = node.replies.first(where: { $0.id == replyID }) else {
+            return .misfit("That reply is not on this turn.")
+        }
+        guard reply.isFitting else {
+            return .misfit(reply.diagnostic ?? "That does not fit this turn.")
+        }
+        var next = state
+        next.turns.append(CountyConversationTurnRecord(nodeID: node.id, replyID: reply.id))
+        guard let nextNodeID = reply.next else {
+            return .completed(next)
+        }
+        next.currentNodeID = nextNodeID
+        return .advanced(next)
+    }
+
+    /// The partner line the learner faces at the resumed or advanced node.
+    static func currentNode(
+        in state: CountyConversationState,
+        graph: CountyConversationGraph
+    ) -> CountyConversationNode? {
+        graph.node(id: state.currentNodeID)
+    }
+}
+
+/// C5: one capability the completion container can honestly state.
+struct CountyCompletionCapability: Identifiable, Codable, Equatable {
+    let id: String
+    let title: String
+    let detail: String
+    let symbol: String
+}
+
+/// C3: one authored re-entry into an earlier task. The embedded exercise keeps
+/// the original sound, sentence and response method; `pageID` ties the target
+/// to the struggle that selects it.
+struct CountyReviewCandidate: Identifiable, Codable, Equatable {
+    let id: String
+    let pageID: String
+    let label: String
+    let exercise: CountyExercise
+}
+
+/// Deterministic struggle targeting for contextual mistake review: the
+/// earliest struggled page with an authored candidate wins; with no recorded
+/// struggle the first candidate is the authored default.
+enum CountyContextualReviewTargeting {
+    static func candidate(
+        from candidates: [CountyReviewCandidate],
+        struggledPageIDs: [String]
+    ) -> CountyReviewCandidate? {
+        for pageID in struggledPageIDs {
+            if let match = candidates.first(where: { $0.pageID == pageID }) {
+                return match
+            }
+        }
+        return candidates.first
+    }
+}
+
 struct CountyExercise: Codable, Equatable {
     let family: CountyExerciseFamily
     /// D27: a pedagogical purpose achieved by configuring an existing family rather than
@@ -217,6 +351,12 @@ struct CountyExercise: Codable, Equatable {
     let lexemeIDs: [String]
     let operatesOnSentence: Bool
     let recognitionMultipleChoice: Bool
+    /// C1 turn graph. Absent on legacy thin multiple-choice conversations.
+    let conversation: CountyConversationGraph?
+    /// C5 capabilities the completion container states.
+    let capabilities: [CountyCompletionCapability]?
+    /// C3 authored re-entry targets, selected by the run's struggle record.
+    let reviewCandidates: [CountyReviewCandidate]?
 }
 
 struct CountyStoryPage: Identifiable, Codable, Equatable {
@@ -384,6 +524,9 @@ enum CountyStoryPackError: LocalizedError, Equatable {
     case duplicateAnswer(String)
     case invalidLifecycle(String)
     case invalidMatchingBoard(String)
+    case invalidConversationGraph(String)
+    case invalidCompletionPayload(String)
+    case invalidReviewPayload(String)
     case legacyBeatStructure
     case exerciseDistribution(String)
 
@@ -403,6 +546,9 @@ enum CountyStoryPackError: LocalizedError, Equatable {
         case .duplicateAnswer(let id): return "Exercise \(id) repeats its correct answer among the distractors."
         case .invalidLifecycle(let id): return "Lexeme lifecycle \(id) is missing or out of order."
         case .invalidMatchingBoard(let id): return "Matching exercise \(id) must board two to four pairs (F5)."
+        case .invalidConversationGraph(let id): return "Conversation exercise \(id) fails the C1 turn-graph contract."
+        case .invalidCompletionPayload(let id): return "Completion page \(id) states no capabilities (C5)."
+        case .invalidReviewPayload(let id): return "Contextual review \(id) has no authored re-entry candidates (C3)."
         case .legacyBeatStructure: return "The pack still depends on a fixed three-page chapter structure."
         case .exerciseDistribution(let issue): return issue
         }
@@ -494,6 +640,17 @@ enum CountyStoryPackValidator {
                 if exercise.family == .matching, !(2...4).contains(exercise.pairs.count) {
                     throw CountyStoryPackError.invalidMatchingBoard(page.id)
                 }
+                if exercise.family == .conversation, let graph = exercise.conversation {
+                    try validateConversationGraph(graph, pageID: page.id)
+                }
+                if exercise.family == .completion,
+                   exercise.capabilities?.isEmpty != false {
+                    throw CountyStoryPackError.invalidCompletionPayload(page.id)
+                }
+                if exercise.family == .contextualReview,
+                   exercise.reviewCandidates?.isEmpty != false {
+                    throw CountyStoryPackError.invalidReviewPayload(page.id)
+                }
             }
             introduced.formUnion(page.introducedLexemeIDs)
         }
@@ -568,6 +725,28 @@ enum CountyStoryPackValidator {
             openReviewGates: pack.reviewGates.filter { $0.status != "complete" }.map(\.title)
         )
     }
+
+    /// C1 contract: an authored conversation is a finite turn graph with a
+    /// declared setting, a resolvable start and next references, at least two
+    /// nodes, one genuine branch (a node with two fitting replies), and at
+    /// least one terminal fitting reply — never a bare multiple-choice list.
+    static func validateConversationGraph(
+        _ graph: CountyConversationGraph,
+        pageID: String
+    ) throws {
+        let nodeIDs = Set(graph.nodes.map(\.id))
+        let replies = graph.nodes.flatMap(\.replies)
+        let valid = !graph.setting.isEmpty
+            && graph.nodes.count >= 2
+            && nodeIDs.contains(graph.start)
+            && graph.nodes.allSatisfy { !$0.replies.isEmpty }
+            && replies.allSatisfy { $0.next == nil || nodeIDs.contains($0.next!) }
+            && replies.contains { $0.isFitting && $0.next == nil }
+            && graph.nodes.contains { $0.replies.filter(\.isFitting).count >= 2 }
+        guard valid else {
+            throw CountyStoryPackError.invalidConversationGraph(pageID)
+        }
+    }
 }
 
 enum CountyStoryPackCatalog {
@@ -607,6 +786,41 @@ enum CountyStoryPackCatalog {
             ?? Bundle.main.url(forResource: name, withExtension: "json")
         guard let url, let data = try? Data(contentsOf: url) else { return nil }
         return try? JSONDecoder().decode(CountyStoryPackEnvelope.self, from: data)
+    }
+}
+
+/// D29 freeze: the representative Clew Bay Learning run. This fixture is
+/// decoded straight from the bundle and is never installed, promoted, or run
+/// through the production twenty-word county gate — it proves the shared shell
+/// on nine frozen steps without mutating production Mayo content.
+enum CountyFreezeRunFixture {
+    static let packID = "mayo.clew-bay-freeze"
+
+    /// The nine frozen steps in their fixed order (D29).
+    static let stepPageIDs = [
+        "mayo.clew-bay.listen-farraige",
+        "mayo.clew-bay.match-coast",
+        "mayo.clew-bay.build-origin",
+        "mayo.clew-bay.type-origin",
+        "mayo.clew-bay.conversation-origin",
+        "mayo.clew-bay.speak-origin",
+        "mayo.clew-bay.comprehend-coast",
+        "mayo.clew-bay.completion",
+        "mayo.clew-bay.review-struggle",
+    ]
+
+    static func pack() -> CountyStoryPack? {
+        let url = Bundle.main.url(
+            forResource: packID,
+            withExtension: "json",
+            subdirectory: "Fixtures"
+        ) ?? Bundle.main.url(forResource: packID, withExtension: "json")
+        guard let url,
+              let data = try? Data(contentsOf: url),
+              let envelope = try? JSONDecoder().decode(CountyStoryPackEnvelope.self, from: data) else {
+            return nil
+        }
+        return envelope.pack
     }
 }
 

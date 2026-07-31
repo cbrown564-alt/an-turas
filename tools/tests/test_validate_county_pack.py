@@ -357,6 +357,113 @@ class MirroredSwiftRules(unittest.TestCase):
         self._expect("unsupportedSchema")
 
 
+class ContainerPayloadRules(unittest.TestCase):
+    """C1 turn-graph, C5 completion and C3 review payload gates, mirrored from Swift."""
+
+    def setUp(self):
+        self.pack = load(MAYO_PACK)
+
+    def _expect(self, code):
+        with self.assertRaises(v.PackValidationError) as ctx:
+            v.validate(self.pack)
+        self.assertEqual(ctx.exception.code, code)
+
+    def _dialogue_exercise(self):
+        for page in self.pack["pack"]["chapters"][0]["pages"]:
+            exercise = page.get("exercise") or {}
+            if exercise.get("family") == "conversation":
+                return page, exercise
+        raise AssertionError("Mayo pack lost its conversation exercise")
+
+    @staticmethod
+    def _graph(next_target="n2"):
+        return {
+            "setting": "present-day",
+            "start": "n1",
+            "nodes": [
+                {
+                    "id": "n1",
+                    "partner": "Cárb as tú?",
+                    "partnerGloss": "Where are you from?",
+                    "audioText": None,
+                    "replies": [
+                        {"id": "a", "text": "Is as Maigh Eo mé.", "gloss": None,
+                         "isFitting": True, "diagnostic": None, "next": next_target,
+                         "audioText": None},
+                        {"id": "b", "text": "Bá.", "gloss": None,
+                         "isFitting": False, "diagnostic": "That names the bay.",
+                         "next": None, "audioText": None},
+                    ],
+                },
+                {
+                    "id": "n2",
+                    "partner": "Cén t-ainm atá ort?",
+                    "partnerGloss": None,
+                    "audioText": None,
+                    "replies": [
+                        {"id": "c", "text": "Is mise …", "gloss": None,
+                         "isFitting": True, "diagnostic": None, "next": "n3",
+                         "audioText": None},
+                        {"id": "d", "text": "Cé thusa?", "gloss": None,
+                         "isFitting": True, "diagnostic": None, "next": "n3",
+                         "audioText": None},
+                    ],
+                },
+                {
+                    "id": "n3",
+                    "partner": "Slán go fóill.",
+                    "partnerGloss": None,
+                    "audioText": None,
+                    "replies": [
+                        {"id": "e", "text": "Slán go fóill.", "gloss": None,
+                         "isFitting": True, "diagnostic": None, "next": None,
+                         "audioText": None},
+                    ],
+                },
+            ],
+        }
+
+    def test_valid_conversation_graph_passes(self):
+        _, exercise = self._dialogue_exercise()
+        exercise["options"] = []
+        exercise["conversation"] = self._graph()
+        self.assertEqual(v.validate(self.pack).pack_id, "mayo.grainne-1593")
+
+    def test_conversation_graph_rejects_dangling_next(self):
+        _, exercise = self._dialogue_exercise()
+        exercise["options"] = []
+        exercise["conversation"] = self._graph(next_target="nowhere")
+        self._expect("invalidConversationGraph")
+
+    def test_conversation_graph_rejects_missing_setting(self):
+        _, exercise = self._dialogue_exercise()
+        exercise["options"] = []
+        graph = self._graph()
+        graph["setting"] = ""
+        exercise["conversation"] = graph
+        self._expect("invalidConversationGraph")
+
+    def test_conversation_graph_rejects_a_bare_single_exchange(self):
+        _, exercise = self._dialogue_exercise()
+        exercise["options"] = []
+        graph = self._graph()
+        graph["nodes"] = graph["nodes"][:1]
+        exercise["conversation"] = graph
+        self._expect("invalidConversationGraph")
+
+    def test_completion_requires_capabilities(self):
+        _, exercise = self._dialogue_exercise()
+        exercise["family"] = "completion"
+        exercise["options"] = []
+        self._expect("invalidCompletionPayload")
+
+    def test_contextual_review_requires_candidates(self):
+        _, exercise = self._dialogue_exercise()
+        exercise["family"] = "contextualReview"
+        exercise["options"] = []
+        self._expect("invalidReviewPayload")
+
+
 class D27LayerRules(unittest.TestCase):
     """Percentages run over every activity page; diversity counts families only."""
 

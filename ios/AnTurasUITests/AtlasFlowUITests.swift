@@ -451,7 +451,7 @@ final class AtlasFlowUITests: XCTestCase {
         ]
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["One feedback model, twelve mechanics"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["One feedback model across the activity layers"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Listen and identify"].exists)
         for _ in 0..<10 where !app.staticTexts["Failure and edge states"].exists { app.swipeUp() }
         XCTAssertTrue(app.staticTexts["Failure and edge states"].exists)

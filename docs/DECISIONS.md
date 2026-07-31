@@ -2,6 +2,30 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D29 — Representative Mayo Learning-mode run frozen (2026-07-30)
+
+**Decision:** The learning-mechanics foundation proof is the nine-step Clew Bay
+Learning-mode sequence recorded in
+`docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md`. D26/D27 architecture
+is not reopened. Shell craft ACCEPT at `e4c6a8b` stands for F1/F5/F7 P0s.
+
+The freeze locks: fixture ids and new ids for typing, conversation, speaking,
+comprehension, completion, and contextual review; present-day-only conversation;
+fixture-vs-production boundary; retained study correction, working-model centre,
+scaffold-removal, and quiet motion/haptic rules; Coast Placement deferred to F9;
+and cluster order Choice → Construction → Matching → Typing → Speaking →
+Conversation → Consolidation (Grammar/Greenfield parked until the run operates).
+
+**Why:** STATUS and D26 required an explicit synthesis before extracting the
+shared runtime. Freezing one Clew Bay sequence prevents Rockfleet craft fixtures
+from being mistaken for the end-to-end proof, and closes the four open study
+questions without another architecture comparison.
+
+**Consequences:** Design/IX implements clusters against the freeze and the
+activity-quality spec; Composer scores each cluster; quality owner reviews after
+ACCEPT merges. Production Mayo packs are not edited for this proof. The freeze
+validates no learning outcome and clears no county gate.
+
 ## D28 — Chapter-opening motion density for Flow / Gemini Omni (2026-07-30)
 
 **Decision:** Scale Gemini Omni / Google Flow video as **one muted ambient hero per

@@ -40,6 +40,18 @@ struct CountyExerciseView: View {
     let alreadyComplete: Bool
     let onComplete: () -> Void
     let onBarUpdate: (CountyExerciseBarState, (() -> Void)?) -> Void
+    /// C3: the run's ordered struggle record, used to target contextual review.
+    let struggledPageIDs: [String]
+    /// C1: persisted turn-graph position for exact resume after interruption.
+    let conversationState: CountyConversationState?
+    let onConversationState: ((CountyConversationState) -> Void)?
+    /// C5: words the completion container hands to the collection.
+    let collectionWords: [AtlasWord]
+    let collectionHandoff: String
+    let onCollect: (() -> Void)?
+    /// D27 struggle memory event: fires when a repair window closes uncorrected
+    /// or an explicit Check fails.
+    let onStruggle: (() -> Void)?
 
     @State private var feedback: CountyExerciseFeedbackState
     @State private var responseLocked: Bool
@@ -50,18 +62,40 @@ struct CountyExerciseView: View {
         page: CountyStoryPage,
         alreadyComplete: Bool,
         onComplete: @escaping () -> Void,
-        onBarUpdate: @escaping (CountyExerciseBarState, (() -> Void)?) -> Void
+        onBarUpdate: @escaping (CountyExerciseBarState, (() -> Void)?) -> Void,
+        struggledPageIDs: [String] = [],
+        conversationState: CountyConversationState? = nil,
+        onConversationState: ((CountyConversationState) -> Void)? = nil,
+        collectionWords: [AtlasWord] = [],
+        collectionHandoff: String = "",
+        onCollect: (() -> Void)? = nil,
+        onStruggle: (() -> Void)? = nil
     ) {
         self.page = page
         self.alreadyComplete = alreadyComplete
         self.onComplete = onComplete
         self.onBarUpdate = onBarUpdate
+        self.struggledPageIDs = struggledPageIDs
+        self.conversationState = conversationState
+        self.onConversationState = onConversationState
+        self.collectionWords = collectionWords
+        self.collectionHandoff = collectionHandoff
+        self.onCollect = onCollect
+        self.onStruggle = onStruggle
         _feedback = State(initialValue: CountyExerciseFeedbackState(alreadyComplete: alreadyComplete))
         _responseLocked = State(initialValue: alreadyComplete)
     }
 
     private var exercise: CountyExercise { page.exercise! }
     private var locksResponse: Bool { responseLocked }
+
+    /// C3: the deterministic target for this run's contextual review.
+    private var resolvedReviewCandidate: CountyReviewCandidate? {
+        CountyContextualReviewTargeting.candidate(
+            from: exercise.reviewCandidates ?? [],
+            struggledPageIDs: struggledPageIDs
+        )
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -133,16 +167,69 @@ struct CountyExerciseView: View {
                 }
             )
         case .conversation:
-            CountyConversationSurface(exercise: exercise, locked: locksResponse, onPick: grade)
+            if let graph = exercise.conversation {
+                CountyConversationGraphSurface(
+                    graph: graph,
+                    locked: locksResponse,
+                    restored: conversationState,
+                    onStateChange: { onConversationState?($0) },
+                    onMisfit: { noteSelectionWrong($0, escalates: false) },
+                    onRepair: noteSelectionRepair,
+                    onComplete: { markCorrect($0) },
+                    feedbackMessage: exercise.feedback
+                )
+            } else {
+                CountyConversationSurface(exercise: exercise, locked: locksResponse, onPick: grade)
+            }
         case .grammarDiscovery:
             CountyGrammarDiscoverySurface(exercise: exercise, locked: locksResponse, onPick: grade)
-        case .fillGap, .readRespond:
+        case .fillGap:
             CountyChoiceSurface(
                 exercise: exercise,
                 locked: locksResponse,
                 onPick: grade,
-                optionFont: exercise.family == .readRespond ? .body : .system(.body, design: .serif)
+                optionFont: .system(.body, design: .serif)
             )
+        case .readRespond:
+            CountyReadRespondSurface(exercise: exercise, locked: locksResponse, onPick: grade)
+        case .completion:
+            CountyCompletionSurface(
+                capabilities: exercise.capabilities ?? [],
+                collectionWords: collectionWords,
+                handoffNote: collectionHandoff,
+                locked: locksResponse,
+                onCollect: { onCollect?() },
+                onComplete: { markCorrect($0) },
+                feedbackMessage: exercise.feedback
+            )
+        case .contextualReview:
+            if let candidate = resolvedReviewCandidate {
+                CountyContextualReviewSurface(
+                    candidate: candidate,
+                    struggled: struggledPageIDs.contains(candidate.pageID),
+                    locked: locksResponse,
+                    onPick: { option in
+                        if option.isCorrect {
+                            noteSelectionRepair()
+                            markCorrect(candidate.exercise.feedback)
+                        } else {
+                            noteSelectionWrong(option.rationale, escalates: false)
+                        }
+                    },
+                    onCheck: { value in
+                        if normalized(value) == normalized(candidate.exercise.answer) {
+                            markCorrect(candidate.exercise.feedback)
+                        } else {
+                            markWrong(candidate.exercise.recovery)
+                        }
+                    },
+                    onCheckReadyChange: { ready, handler in
+                        checkReady = ready
+                        checkAction = ready ? handler : nil
+                        syncBarState()
+                    }
+                )
+            }
         case .recordCompare:
             CountySpeakingSurface(
                 exercise: exercise,
@@ -223,6 +310,7 @@ struct CountyExerciseView: View {
             feedback.phase = .incorrect
             feedback.message = message
         }
+        onStruggle?()
     }
 
     /// A wrong touch on a selection-graded family stays local: the diagnostic
@@ -238,6 +326,7 @@ struct CountyExerciseView: View {
             return
         }
         feedback.misses += 1
+        onStruggle?()
         if escalates {
             withAnimation(feedbackAnimation) {
                 feedback.phase = .incorrect
@@ -251,7 +340,13 @@ struct CountyExerciseView: View {
     }
 
     private func markCorrect(_ message: String? = nil) {
-        Haptics.chisel()
+        // The freeze's quiet vocabulary: a soft chisel per item; the single
+        // flourish is reserved for the run's completion container (C5).
+        if exercise.family == .completion {
+            Haptics.flourish()
+        } else {
+            Haptics.chisel()
+        }
         responseLocked = true
         withAnimation(feedbackAnimation) {
             feedback.message = message ?? exercise.feedback
@@ -278,6 +373,17 @@ struct CountyExerciseView: View {
                 CountyExerciseBarState(title: title, isEnabled: checkReady, isCheck: true),
                 checkReady ? checkAction : nil
             )
+        case .contextualReview:
+            // A typed re-entry owns the Check slot; a choice re-entry completes
+            // on selection like its parent family.
+            if resolvedReviewCandidate?.exercise.family == .freeTyping {
+                onBarUpdate(
+                    CountyExerciseBarState(title: "Check the line", isEnabled: checkReady, isCheck: true),
+                    checkReady ? checkAction : nil
+                )
+            } else {
+                onBarUpdate(CountyExerciseBarState(title: "Continue", isEnabled: false, isCheck: false), nil)
+            }
         default:
             onBarUpdate(CountyExerciseBarState(title: "Continue", isEnabled: false, isCheck: false), nil)
         }
@@ -491,6 +597,466 @@ private struct CountyConversationSurface: View {
     }
 }
 
+/// C1 conversation: a finite authored turn graph rendered as one living
+/// transcript. Partner lines keep their sunk cards; fitting learner replies
+/// join the transcript as moss rows. A mismatched reply carries its diagnostic
+/// on that turn and the graph never advances until a fitting reply lands, so
+/// any acceptable branch can be tried without clearing prior turns. The state
+/// persists after every turn, and an interrupted conversation resumes at the
+/// exact node with its transcript intact.
+private struct CountyConversationGraphSurface: View {
+    let graph: CountyConversationGraph
+    let locked: Bool
+    let restored: CountyConversationState?
+    let onStateChange: (CountyConversationState) -> Void
+    let onMisfit: (String) -> Void
+    let onRepair: () -> Void
+    let onComplete: (String?) -> Void
+    let feedbackMessage: String
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @ObservedObject private var speech = SpeechService.shared
+    @State private var state: CountyConversationState
+    @State private var misfitReplyID: String?
+
+    init(
+        graph: CountyConversationGraph,
+        locked: Bool,
+        restored: CountyConversationState?,
+        onStateChange: @escaping (CountyConversationState) -> Void,
+        onMisfit: @escaping (String) -> Void,
+        onRepair: @escaping () -> Void,
+        onComplete: @escaping (String?) -> Void,
+        feedbackMessage: String
+    ) {
+        self.graph = graph
+        self.locked = locked
+        self.restored = restored
+        self.onStateChange = onStateChange
+        self.onMisfit = onMisfit
+        self.onRepair = onRepair
+        self.onComplete = onComplete
+        self.feedbackMessage = feedbackMessage
+        let valid = restored.flatMap { graph.node(id: $0.currentNodeID) != nil ? $0 : nil }
+        _state = State(initialValue: valid ?? CountyConversationEngine.initialState(for: graph))
+        _misfitReplyID = State(initialValue: nil)
+    }
+
+    private var isConversationComplete: Bool {
+        guard let last = state.turns.last,
+              let node = graph.node(id: last.nodeID),
+              let reply = node.replies.first(where: { $0.id == last.replyID }) else { return false }
+        return reply.next == nil
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            if !state.turns.isEmpty {
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach(Array(state.turns.enumerated()), id: \.offset) { _, turn in
+                        if let node = graph.node(id: turn.nodeID),
+                           let reply = node.replies.first(where: { $0.id == turn.replyID }) {
+                            partnerCard(node.partner, gloss: node.partnerGloss, settled: true)
+                            learnerRow(reply.text, gloss: reply.gloss)
+                        }
+                    }
+                }
+                .accessibilityElement(children: .contain)
+            }
+
+            if !isConversationComplete, let node = CountyConversationEngine.currentNode(in: state, graph: graph) {
+                partnerCard(node.partner, gloss: node.partnerGloss, audioText: node.audioText, settled: false)
+
+                Text("Your reply")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.inkSoft)
+
+                VStack(spacing: 10) {
+                    ForEach(node.replies) { reply in
+                        replyRow(reply)
+                    }
+                }
+            }
+        }
+    }
+
+    private func pick(_ reply: CountyConversationReply) {
+        switch CountyConversationEngine.choose(replyID: reply.id, in: state, graph: graph) {
+        case .misfit(let message):
+            misfitReplyID = reply.id
+            onMisfit(message)
+        case .advanced(let next):
+            settle(into: next, reply: reply)
+        case .completed(let next):
+            settle(into: next, reply: reply)
+            onComplete(feedbackMessage)
+        }
+    }
+
+    private func settle(into next: CountyConversationState, reply: CountyConversationReply) {
+        if let audioText = reply.audioText, speech.canSpeak(audioText) {
+            speech.speak(audioText)
+        } else {
+            Haptics.tap()
+        }
+        misfitReplyID = nil
+        withAnimation(reduceMotion ? nil : Motion.settle) {
+            state = next
+        }
+        onRepair()
+        onStateChange(next)
+    }
+
+    private func partnerCard(
+        _ line: String,
+        gloss: String?,
+        audioText: String? = nil,
+        settled: Bool
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text("They say")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(Theme.inkSoft)
+                Spacer(minLength: 8)
+                if let audioText, speech.canSpeak(audioText) {
+                    Button {
+                        speech.speak(audioText)
+                    } label: {
+                        Image(systemName: speech.isSpeaking(audioText) ? "speaker.wave.2.fill" : "speaker.wave.2")
+                            .font(.subheadline)
+                            .foregroundStyle(Theme.moss)
+                            .frame(width: 44, height: 44)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Hear the line: \(line)")
+                }
+            }
+            Text(line)
+                .font(.system(.title3, design: .serif, weight: .semibold))
+                .foregroundStyle(settled ? Theme.inkSoft : Theme.ink)
+                .fixedSize(horizontal: false, vertical: true)
+            if let gloss, !gloss.isEmpty {
+                Text(gloss)
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.inkFaint)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Theme.sunk)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .accessibilityElement(children: .contain)
+    }
+
+    private func learnerRow(_ text: String, gloss: String?) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 10) {
+            Image(systemName: "checkmark")
+                .font(.caption.weight(.bold))
+                .foregroundStyle(Theme.moss)
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 3) {
+                Text(text)
+                    .font(.system(.body, design: .serif, weight: .semibold))
+                    .foregroundStyle(Theme.moss)
+                    .fixedSize(horizontal: false, vertical: true)
+                if let gloss, !gloss.isEmpty {
+                    Text(gloss)
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            Spacer(minLength: 8)
+        }
+        .padding(.vertical, 11)
+        .padding(.horizontal, 15)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Theme.mossTint)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("You said: \(text)")
+    }
+
+    private func replyRow(_ reply: CountyConversationReply) -> some View {
+        let misfit = misfitReplyID == reply.id
+        return VStack(alignment: .leading, spacing: 6) {
+            Button {
+                guard !locked else { return }
+                pick(reply)
+            } label: {
+                HStack(alignment: .firstTextBaseline, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(reply.text)
+                            .font(.system(.body, design: .serif, weight: .semibold))
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                        if let gloss = reply.gloss, !gloss.isEmpty {
+                            Text(gloss)
+                                .font(.subheadline)
+                                .foregroundStyle(Theme.inkSoft)
+                                .multilineTextAlignment(.leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                    }
+                    Spacer(minLength: 8)
+                }
+                .foregroundStyle(Theme.ink)
+                .padding(.vertical, 13)
+                .padding(.horizontal, 15)
+                .frame(maxWidth: .infinity, minHeight: 48, alignment: .leading)
+                .background(misfit ? Theme.rustTint : Theme.raised)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(misfit ? Theme.rust : Theme.line, lineWidth: misfit ? 2 : 1)
+                }
+            }
+            .buttonStyle(CarvePress())
+            .disabled(locked)
+            .accessibilityLabel(reply.gloss.map { "\(reply.text) — \($0)" } ?? reply.text)
+            .accessibilityValue(misfit ? "Does not fit this turn" : "")
+
+            if misfit, let diagnostic = reply.diagnostic {
+                Text(diagnostic)
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.rust)
+                    .lineSpacing(3)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, 15)
+            }
+        }
+    }
+}
+
+/// F6 read or listen and respond: the reading sits in a sunk card with the
+/// Irish line in the story serif; when a listen variant is authored, replay is
+/// always available and the visible text and meaning route remain on screen —
+/// missing audio never traps the answer.
+private struct CountyReadRespondSurface: View {
+    let exercise: CountyExercise
+    let locked: Bool
+    let onPick: (CountyExerciseOption) -> Void
+
+    @ObservedObject private var speech = SpeechService.shared
+    @State private var heard = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            if let audioText = exercise.audioText {
+                if speech.canSpeak(audioText) {
+                    Button {
+                        Haptics.tap()
+                        speech.speak(audioText)
+                        heard = true
+                    } label: {
+                        Label(heard ? "Replay the line" : "Hear the line", systemImage: heard ? "speaker.wave.2.fill" : "speaker.wave.2")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, minHeight: 52)
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(Theme.moss)
+                    .disabled(locked)
+                } else {
+                    MissingAudioNotice()
+                }
+            }
+
+            if let note = exercise.modelText, !note.isEmpty {
+                Text(note)
+                    .font(.body)
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(3)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(16)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Theme.sunk)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            }
+
+            CountyChoiceSurface(
+                exercise: exercise,
+                locked: locked,
+                onPick: onPick,
+                optionFont: .body
+            )
+        }
+    }
+}
+
+/// C5 completion: states what the run has made possible and hands its words to
+/// the collection — capabilities, not points theatre. No response is required;
+/// the page completes as it appears so the bottom slot carries one live
+/// Continue.
+private struct CountyCompletionSurface: View {
+    let capabilities: [CountyCompletionCapability]
+    let collectionWords: [AtlasWord]
+    let handoffNote: String
+    let locked: Bool
+    let onCollect: () -> Void
+    let onComplete: (String?) -> Void
+    let feedbackMessage: String
+
+    @State private var gathered = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 10) {
+                ForEach(capabilities) { capability in
+                    HStack(alignment: .top, spacing: 12) {
+                        Image(systemName: capability.symbol)
+                            .font(.headline)
+                            .foregroundStyle(Theme.moss)
+                            .frame(width: 28, height: 28)
+                            .accessibilityHidden(true)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(capability.title)
+                                .font(.headline)
+                                .foregroundStyle(Theme.ink)
+                                .fixedSize(horizontal: false, vertical: true)
+                            Text(capability.detail)
+                                .font(.subheadline)
+                                .foregroundStyle(Theme.inkSoft)
+                                .lineSpacing(3)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        Spacer(minLength: 8)
+                        Image(systemName: "checkmark")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(Theme.moss)
+                            .accessibilityHidden(true)
+                    }
+                    .padding(16)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Theme.raised)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .accessibilityElement(children: .combine)
+                }
+            }
+
+            if !collectionWords.isEmpty {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Words you carry from this run")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(Theme.inkSoft)
+                    ForEach(collectionWords) { word in
+                        HStack(alignment: .firstTextBaseline, spacing: 8) {
+                            Text(word.ga)
+                                .font(.system(.body, design: .serif, weight: .semibold))
+                                .foregroundStyle(Theme.ink)
+                            Text("· \(word.en)")
+                                .font(.body)
+                                .foregroundStyle(Theme.inkSoft)
+                            Spacer(minLength: 8)
+                        }
+                        .frame(minHeight: 32)
+                        .accessibilityElement(children: .combine)
+                    }
+                    Text(handoffNote)
+                        .font(.footnote)
+                        .foregroundStyle(Theme.inkSoft)
+                        .lineSpacing(3)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                .padding(16)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Theme.sunk)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            }
+        }
+        .onAppear {
+            guard !gathered else { return }
+            gathered = true
+            onCollect()
+            if !locked {
+                onComplete(feedbackMessage)
+            }
+        }
+    }
+}
+
+/// C3 contextual mistake review: the run's own struggle record chooses one
+/// authored target, and the learner re-enters it from the original sound or
+/// sentence — context first, then the original response method. It is never a
+/// bare delayed retype.
+private struct CountyContextualReviewSurface: View {
+    let candidate: CountyReviewCandidate
+    let struggled: Bool
+    let locked: Bool
+    let onPick: (CountyExerciseOption) -> Void
+    let onCheck: (String) -> Void
+    let onCheckReadyChange: (Bool, @escaping () -> Void) -> Void
+
+    @ObservedObject private var speech = SpeechService.shared
+    @State private var heard = false
+
+    private var embedded: CountyExercise { candidate.exercise }
+    private var originalLine: String { embedded.modelText ?? embedded.answer }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(struggled
+                     ? "Earlier, \(candidate.label) slipped. Meet it again from the original sound."
+                     : "Nothing slipped on this run. One quiet return keeps \(candidate.label) warm.")
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(3)
+                    .fixedSize(horizontal: false, vertical: true)
+                HStack(alignment: .firstTextBaseline, spacing: 10) {
+                    Text(originalLine)
+                        .font(.system(.title3, design: .serif, weight: .semibold))
+                        .foregroundStyle(Theme.ink)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 8)
+                    if let audioText = embedded.audioText, speech.canSpeak(audioText) {
+                        Button {
+                            Haptics.tap()
+                            speech.speak(audioText)
+                            heard = true
+                        } label: {
+                            Label(heard ? "Replay" : "Hear", systemImage: speech.isSpeaking(audioText) ? "speaker.wave.2.fill" : "speaker.wave.2")
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundStyle(Theme.moss)
+                                .frame(minHeight: 44)
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("Hear the original sound: \(audioText)")
+                    }
+                }
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Theme.sunk)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+
+            switch embedded.family {
+            case .freeTyping:
+                CountyTypingSurface(
+                    exercise: embedded,
+                    locked: locked,
+                    onCheck: onCheck,
+                    onCheckReadyChange: onCheckReadyChange
+                )
+            case .listenChoose:
+                CountyListenChoiceSurface(
+                    exercise: embedded,
+                    locked: locked,
+                    onPick: onPick
+                )
+            default:
+                CountyChoiceSurface(
+                    exercise: embedded,
+                    locked: locked,
+                    onPick: onPick,
+                    optionFont: .system(.body, design: .serif)
+                )
+            }
+        }
+    }
+}
+
 private struct CountyGrammarDiscoverySurface: View {
     let exercise: CountyExercise
     let locked: Bool
@@ -593,12 +1159,15 @@ private struct CountyBuilderSurface: View {
                         chosen.remove(at: position)
                         publishCheckState()
                     }
+                    .accessibilityLabel(exercise.tokens[slot])
+                    .accessibilityHint("In your answer. Double-tap to return it to the bank.")
                 }
             }
             .frame(maxWidth: .infinity, minHeight: 54, alignment: .leading)
             .padding(10)
             .background(Theme.sunk)
             .clipShape(RoundedRectangle(cornerRadius: 10))
+            .accessibilityElement(children: .contain)
             .accessibilityLabel("Your answer: \(chosen.map { exercise.tokens[$0] }.joined(separator: " "))")
 
             FlowLayout(spacing: 8) {
@@ -1035,7 +1604,7 @@ struct CountyExerciseGalleryView: View {
             VStack(alignment: .leading, spacing: 30) {
                 EditorialScreenHeader(
                     context: "Internal exercise gallery",
-                    title: "One feedback model, twelve mechanics",
+                    title: "One feedback model across the activity layers",
                     detail: "Use this screen to inspect copy length, state language, missing resources and accessibility recomposition."
                 )
 
