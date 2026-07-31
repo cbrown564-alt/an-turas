@@ -59,6 +59,9 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
   [`SCORECARD-consolidation-freeze-2026-07-30.md`](activity-quality/SCORECARD-consolidation-freeze-2026-07-30.md).
   Grok coherence (**PASS** 2026-07-31):
   [`GROK-COHERENCE-freeze-2026-07-31.md`](activity-quality/GROK-COHERENCE-freeze-2026-07-31.md).
+  Shared state engine step 3 (**Composer ACCEPT** + **Grok PASS** 2026-07-31):
+  [`SCORECARD-state-engine-2026-07-31.md`](activity-quality/SCORECARD-state-engine-2026-07-31.md),
+  [`GROK-COHERENCE-state-engine-2026-07-31.md`](activity-quality/GROK-COHERENCE-state-engine-2026-07-31.md).
 - [`../web/learning-activity-reference/index.html`](../web/learning-activity-reference/index.html)
   is the 48-activity interactive reference field guide that supported D26. The
   canonical activity rules live in `PRODUCT.md`, `DESIGN.md`, D26, and the rebuild

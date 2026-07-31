@@ -14,23 +14,6 @@ struct CountyExerciseBarState: Equatable {
     var isCheck: Bool
 }
 
-private struct CountyExerciseFeedbackState {
-    var phase: CountyExercisePhase
-    var message: String?
-    var misses: Int
-    /// D27 repair window: after one wrong selection the attempt stays open and
-    /// only the affected target carries the diagnostic. Struggle is recorded
-    /// solely when the next touch fails to self-correct.
-    var repairOpen: Bool
-
-    init(alreadyComplete: Bool) {
-        phase = alreadyComplete ? .complete : .unanswered
-        message = alreadyComplete ? "This exercise is complete. You can still revisit the task." : nil
-        misses = 0
-        repairOpen = false
-    }
-}
-
 /// One calm task shell for every county-pack mechanic. Correctness, retry,
 /// hints and completion live here rather than being reinvented by each task.
 struct CountyExerciseView: View {
@@ -53,8 +36,11 @@ struct CountyExerciseView: View {
     /// or an explicit Check fails.
     let onStruggle: (() -> Void)?
 
-    @State private var feedback: CountyExerciseFeedbackState
-    @State private var responseLocked: Bool
+    /// The pure lifecycle engine owns correctness, support, retry, completion
+    /// and exactly-once memory credit (rebuild plan step 3). The view keeps
+    /// only presentation copy and family-local response state.
+    @State private var engine: CountyActivityStateEngine
+    @State private var panelMessage: String?
     @State private var checkReady = false
     @State private var checkAction: (() -> Void)?
 
@@ -82,12 +68,23 @@ struct CountyExerciseView: View {
         self.collectionHandoff = collectionHandoff
         self.onCollect = onCollect
         self.onStruggle = onStruggle
-        _feedback = State(initialValue: CountyExerciseFeedbackState(alreadyComplete: alreadyComplete))
-        _responseLocked = State(initialValue: alreadyComplete)
+        let exercise = page.exercise!
+        let reviewCandidate = CountyContextualReviewTargeting.candidate(
+            from: exercise.reviewCandidates ?? [],
+            struggledPageIDs: struggledPageIDs
+        )
+        _engine = State(initialValue: CountyActivityStateEngine(
+            exerciseID: page.id,
+            targetIDs: exercise.lexemeIDs,
+            grading: Self.activityGrading(for: exercise, candidate: reviewCandidate),
+            completionEvidence: Self.completionEvidence(for: exercise, candidate: reviewCandidate),
+            restoringCompletion: alreadyComplete
+        ))
+        _panelMessage = State(initialValue: alreadyComplete ? "This exercise is complete. You can still revisit the task." : nil)
     }
 
     private var exercise: CountyExercise { page.exercise! }
-    private var locksResponse: Bool { responseLocked }
+    private var locksResponse: Bool { engine.isComplete }
 
     /// C3: the deterministic target for this run's contextual review.
     private var resolvedReviewCandidate: CountyReviewCandidate? {
@@ -95,6 +92,96 @@ struct CountyExerciseView: View {
             from: exercise.reviewCandidates ?? [],
             struggledPageIDs: struggledPageIDs
         )
+    }
+
+    /// D27 grading: multi-part responses keep an explicit Check; everything
+    /// else grades on the selection touch behind the repair window.
+    private static func activityGrading(
+        for exercise: CountyExercise,
+        candidate: CountyReviewCandidate?
+    ) -> CountyActivityGrading {
+        switch exercise.family {
+        case .sentenceConstruction, .freeTyping:
+            return .explicitCheck
+        case .contextualReview:
+            return candidate?.exercise.family == .freeTyping ? .explicitCheck : .selectionTouch
+        default:
+            return .selectionTouch
+        }
+    }
+
+    /// The completion evidence each family declares until the authored
+    /// learning contract lands (rebuild plan step 5). The completion
+    /// container states capabilities, so it declares no target evidence.
+    private static func completionEvidence(
+        for exercise: CountyExercise,
+        candidate: CountyReviewCandidate?
+    ) -> CountyCompletionEvidence? {
+        switch exercise.family {
+        case .listenChoose, .fillGap, .readRespond, .grammarDiscovery:
+            return .correctSelection
+        case .sentenceConstruction:
+            return exercise.authoredUse == "ordering" ? .orderedSequence : .correctConstruction
+        case .freeTyping:
+            return .correctConstruction
+        case .matching:
+            return .reconstructedResponse
+        case .conversation:
+            return .validDialogueTurn
+        case .recordCompare:
+            return .completedRecordCompare
+        case .contextualReview:
+            return candidate?.exercise.family == .freeTyping ? .correctedConstruction : .correctSelection
+        case .completion:
+            return nil
+        }
+    }
+
+    /// The typed response kind this page's family supplies to the engine.
+    private var familyResponseKind: CountyActivityResponse.Kind {
+        switch exercise.family {
+        case .sentenceConstruction: return .arrangement
+        case .freeTyping: return .typedText
+        case .matching: return .pairing
+        case .conversation: return .dialogueTurn
+        case .recordCompare: return .spokenComparison
+        case .completion: return .containerAction
+        case .contextualReview:
+            return resolvedReviewCandidate?.exercise.family == .freeTyping ? .typedText : .selection
+        case .listenChoose, .fillGap, .readRespond, .grammarDiscovery:
+            return .selection
+        }
+    }
+
+    /// The feedback panel keeps the freeze's four-state vocabulary; the
+    /// engine's richer lifecycle maps onto it. An unrepaired diagnostic stays
+    /// on the affected target, so the panel only rises for a hint, an
+    /// escalated diagnostic, or completion.
+    private var presentationPhase: CountyExercisePhase {
+        if engine.isComplete { return .complete }
+        if engine.phase == .hint { return .hint }
+        if engine.diagnosticEscalated { return .incorrect }
+        return .unanswered
+    }
+
+    /// Drives one formed response through the engine, reopening the response
+    /// through retry when a diagnostic or recovery has closed it.
+    @discardableResult
+    private func formEngineResponse() -> CountyActivityTransition {
+        if engine.requiresRetry {
+            engine.retry()
+        }
+        return engine.updateResponse(CountyActivityResponse(familyResponseKind))
+    }
+
+    /// Memory events reach their current consumers: struggle feeds the run's
+    /// ordered record (C3/D27). Success, hint and recovery are emitted
+    /// exactly once by the engine; their persistence lands with the
+    /// learner-memory handoff (rebuild plan step 11).
+    private func apply(_ transition: CountyActivityTransition) {
+        for event in transition.memoryEvents where event.kind == .struggle {
+            onStruggle?()
+        }
     }
 
     var body: some View {
@@ -125,9 +212,8 @@ struct CountyExerciseView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .task { syncBarState() }
         .onAppear { syncBarState() }
-        .onChange(of: feedback.phase) { _, _ in syncBarState() }
+        .onChange(of: engine.phase) { _, _ in syncBarState() }
         .onChange(of: checkReady) { _, _ in syncBarState() }
-        .onChange(of: responseLocked) { _, _ in syncBarState() }
     }
 
     @ViewBuilder
@@ -210,7 +296,8 @@ struct CountyExerciseView: View {
                     locked: locksResponse,
                     onPick: { option in
                         if option.isCorrect {
-                            noteSelectionRepair()
+                            formEngineResponse()
+                            apply(engine.check(outcome: .correct, diagnosticShown: false))
                             markCorrect(candidate.exercise.feedback)
                         } else {
                             noteSelectionWrong(option.rationale, escalates: false)
@@ -218,6 +305,8 @@ struct CountyExerciseView: View {
                     },
                     onCheck: { value in
                         if normalized(value) == normalized(candidate.exercise.answer) {
+                            formEngineResponse()
+                            apply(engine.check(outcome: .correct, diagnosticShown: false))
                             markCorrect(candidate.exercise.feedback)
                         } else {
                             markWrong(candidate.exercise.recovery)
@@ -247,25 +336,25 @@ struct CountyExerciseView: View {
 
     @ViewBuilder
     private var feedbackPanel: some View {
-        switch feedback.phase {
+        switch presentationPhase {
         case .unanswered:
             QuietHintButton(title: "Show a hint") {
                 withAnimation(feedbackAnimation) {
-                    feedback.phase = .hint
-                    feedback.message = exercise.hint
+                    engine.requestHint()
+                    panelMessage = exercise.hint
                 }
             }
         case .hint:
-            feedbackMessage(icon: "lightbulb", title: "Hint", text: feedback.message ?? exercise.hint, color: Theme.lichen)
+            feedbackMessage(icon: "lightbulb", title: "Hint", text: panelMessage ?? exercise.hint, color: Theme.lichen)
         case .incorrect:
             feedbackMessage(
                 icon: "arrow.uturn.left",
                 title: "Not quite",
-                text: feedback.message ?? exercise.recovery,
+                text: panelMessage ?? exercise.recovery,
                 color: Theme.rust
             )
         case .complete:
-            feedbackMessage(icon: "checkmark", title: "Complete", text: feedback.message ?? exercise.feedback, color: Theme.moss)
+            feedbackMessage(icon: "checkmark", title: "Complete", text: panelMessage ?? exercise.feedback, color: Theme.moss)
         }
     }
 
@@ -289,6 +378,8 @@ struct CountyExerciseView: View {
 
     private func grade(_ option: CountyExerciseOption) {
         if option.isCorrect {
+            formEngineResponse()
+            apply(engine.check(outcome: .correct, diagnosticShown: false))
             markCorrect(option.rationale)
         } else {
             noteSelectionWrong("\(option.rationale) \(exercise.recovery)", escalates: true)
@@ -297,6 +388,8 @@ struct CountyExerciseView: View {
 
     private func gradeText(_ value: String) {
         if normalized(value) == normalized(exercise.answer) {
+            formEngineResponse()
+            apply(engine.check(outcome: .correct, diagnosticShown: false))
             markCorrect(exercise.feedback)
         } else {
             markWrong(exercise.recovery)
@@ -305,12 +398,13 @@ struct CountyExerciseView: View {
 
     private func markWrong(_ message: String) {
         Haptics.error()
-        withAnimation(feedbackAnimation) {
-            feedback.misses += 1
-            feedback.phase = .incorrect
-            feedback.message = message
+        let transition = withAnimation(feedbackAnimation) {
+            formEngineResponse()
+            let checked = engine.check(outcome: .incorrect, diagnosticShown: true, escalatesDiagnostic: true)
+            panelMessage = message
+            return checked
         }
-        onStruggle?()
+        apply(transition)
     }
 
     /// A wrong touch on a selection-graded family stays local: the diagnostic
@@ -321,22 +415,20 @@ struct CountyExerciseView: View {
     private func noteSelectionWrong(_ message: String, escalates: Bool) {
         Haptics.error()
         AccessibilityNotification.Announcement(message).post()
-        guard feedback.repairOpen else {
-            feedback.repairOpen = true
-            return
-        }
-        feedback.misses += 1
-        onStruggle?()
-        if escalates {
-            withAnimation(feedbackAnimation) {
-                feedback.phase = .incorrect
-                feedback.message = message
+        formEngineResponse()
+        let transition = withAnimation(feedbackAnimation) {
+            let checked = engine.check(outcome: .incorrect, diagnosticShown: true, escalatesDiagnostic: escalates)
+            if engine.diagnosticEscalated {
+                panelMessage = message
             }
+            return checked
         }
+        apply(transition)
     }
 
     private func noteSelectionRepair() {
-        feedback.repairOpen = false
+        formEngineResponse()
+        engine.registerRepair()
     }
 
     private func markCorrect(_ message: String? = nil) {
@@ -347,17 +439,21 @@ struct CountyExerciseView: View {
         } else {
             Haptics.chisel()
         }
-        responseLocked = true
-        withAnimation(feedbackAnimation) {
-            feedback.message = message ?? exercise.feedback
-            feedback.phase = .complete
+        let transition = withAnimation(feedbackAnimation) {
+            formEngineResponse()
+            let completed = engine.complete()
+            panelMessage = message ?? exercise.feedback
+            return completed
+        }
+        apply(transition)
+        if transition.accepted {
             onComplete()
         }
         syncBarState()
     }
 
     private func syncBarState() {
-        if feedback.phase == .complete || alreadyComplete {
+        if engine.isComplete {
             onBarUpdate(CountyExerciseBarState(title: "Continue", isEnabled: true, isCheck: false), nil)
             return
         }

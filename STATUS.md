@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-31 (D29 freeze run —
-Composer ACCEPTs + Grok coherence PASS; shared state engine next).*
+and visual narrative. English → Irish only. Updated 2026-07-31 (shared state
+engine step 3 ACCEPT + Grok PASS; shared activity shell next).*
 
 ## Where we are
 
@@ -58,9 +58,17 @@ see [`docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md`](docs/activity
 **Grok coherence PASS (2026-07-31):**
 [`docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md)
 — shared anatomy holds; scaffold 3→6 is visible; dual conversation path is intentional
-production fallback; residuals go to the foundation gate. Next engineering: extract the
-shared state engine; Grammar/Greenfield stay parked. The Phase 4 Mayo and Phase 5
-launch-county review drafts remain at their recorded gate states.
+production fallback; residuals go to the foundation gate. **Shared state engine
+(rebuild plan step 3) landed:** `CountyActivityStateEngine` owns attempt,
+diagnostic, hint/recovery, retry, completion, and exactly-once memory events;
+`CountyExerciseSystem` wires it without reopening freeze D27 behavior. Composer
+ACCEPT + Grok PASS
+([`SCORECARD-state-engine-2026-07-31.md`](docs/activity-quality/SCORECARD-state-engine-2026-07-31.md),
+[`GROK-COHERENCE-state-engine-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-state-engine-2026-07-31.md)).
+Next engineering: shared activity shell (`interrupt` / `beginRecovery` wiring,
+focus, centralised announcements), then schema harden and foundation gate.
+Grammar/Greenfield stay parked. The Phase 4 Mayo and Phase 5 launch-county
+review drafts remain at their recorded gate states.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
@@ -292,6 +300,7 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-07-31 | **Shared state engine (rebuild plan step 3) — Composer ACCEPT + Grok PASS.** Pure `CountyActivityStateEngine` with required/illegal transitions, D27 repair window, exactly-once memory, revisit suppression; wired into county shell; 49 unit tests (engine + freeze) pass. Deferred: `interrupt`/`beginRecovery` shell hooks, persistence, focus/announcements (steps 4–7/11). Unblocks shared activity shell. Working tree uncommitted. | `ios/AnTuras/CountyActivityStateEngine.swift`, `CountyExerciseSystem.swift`, `ios/AnTurasTests/CountyActivityStateEngineTests.swift`, `docs/activity-quality/SCORECARD-state-engine-2026-07-31.md`, `GROK-COHERENCE-state-engine-2026-07-31.md`, `STATUS.md` |
 | 2026-07-31 | **Grok coherence PASS on D29 freeze-run ACCEPT merges.** Shared anatomy holds across clusters; scaffold removal 3→6 is visible and narrated on C5; C1/C3/C5 Composer calls confirmed; dual conversation path kept as intentional production fallback; residuals (D5 ghost, bar-label ghost, VoiceOver rotor, gallery matrix) deferred to foundation gate. Unblocks shared state engine extraction; Grammar/Greenfield remain parked. Working tree still uncommitted. | `docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`, `STATUS.md`, `docs/README.md` |
 | 2026-07-30 | **Composer freeze-run cluster scorecards — all ACCEPT.** Five clusters scored against `tmp/exercise-screenshots/freeze-run-2026-07-30/` plus `FreezeRunUITests` / `CountyFreezeRunTests`: Construction 4.3 (F2), Typing 4.3 (F3), Choice 4.5 (F1/F6), Conversation 4.5 (C1 hard gate — turn graph, misfit, branch, resume), Consolidation 4.4 (C3/C5). P0 clear on all; no dimension below 3. C1 adjudicated PASS (not bare MC). C3 no-struggle copy judged honest. Residual polish: D5 ghost on listen complete, D2 bar label ghost on build complete, D8/D9 foundation gate items. Unblocks Grok coherence review. | `docs/activity-quality/SCORECARD-*-freeze-2026-07-30.md`, `docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md`, `STATUS.md`, `docs/README.md` |
 | 2026-07-30 | **D29 freeze run implemented — Design/IX clusters A–G.** The nine-step Clew Bay run operates end-to-end on the shared county shell via the `--freeze-run` route and the new `mayo.clew-bay-freeze` fixture pack (fixture boundary held; production packs untouched). C1 landed as a real turn graph: finite authored nodes, present-day setting, on-turn misfit diagnostics, a branch that changes a later partner line, and exact node resume with transcript across relaunches, validated in both validators. C5 completion states three capabilities and hands the four words to a fixture-scoped collection (no gold, no scheduler); C3 contextual review selects an authored target deterministically from the run's D27 struggle record and re-enters it from the original sound or sentence with the original response method. F6 gained the authored listen variant (replay + visible text/meaning route); F2 builder tiles are individually named for VoiceOver; F1 prompt aligned with the ungated board. Conversation pages land on the current turn when restored (bottom-scroll fix found by UI test). Full simulator suite passes on iPhone 17 Pro (56 unit incl. 14 freeze tests; 32 UI incl. nine-step wrong→repair→complete walk, branch + double-relaunch resume, mic-denied escape, record/compare); 51 Python tests pass. 39 four-state, AX5, dark, and Reduce Motion captures in `tmp/exercise-screenshots/freeze-run-2026-07-30/`. | `ios/AnTuras/CountyStoryPack.swift`, `CountyExerciseSystem.swift`, `CountyStoryExperienceView.swift`, `AtlasPrototype.swift`, `AppState.swift`, `ios/AnTuras/Resources/Fixtures/mayo.clew-bay-freeze.json`, `ios/AnTurasTests/CountyFreezeRunTests.swift`, `ios/AnTurasUITests/FreezeRunUITests.swift`, `tools/validate_county_pack.py`, `docs/activity-quality/KIMI-HANDOFF-freeze-clusters.md`, `STATUS.md` |
@@ -374,9 +383,12 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 4. **~~Grok coherence review~~ (done — 2026-07-31)** —
    [`docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md);
    craft operate-the-run is complete; residuals ride the foundation gate.
-5. **Implement the shared state engine and activity shell** — centralise attempt,
-   diagnostic, hint/recovery, retry, completion, persistence, focus, accessibility
-   announcements, and exactly-once memory events before migrating production packs.
+5. **~~Shared state engine (rebuild plan step 3)~~ (done — Kimi / Composer ACCEPT /
+   Grok PASS 2026-07-31)** — pure lifecycle engine + shell wiring; see scorecard.
+   **Remaining of STATUS 5 / rebuild plan step 4:** shared activity shell —
+   wire `interrupt()` and `beginRecovery()`, centralise focus and accessibility
+   announcements; keep freeze sequence unchanged. Persistence of attempt credit
+   stays with steps 6–7/11.
 6. **Harden the authored contract, schema, memory handoff, and validators** — mirror
    Swift and Python rules, prove deterministic debt-free review behavior, preserve
    old progress, and add failing fixtures for every family and contract invariant.
