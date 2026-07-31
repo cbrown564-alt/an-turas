@@ -697,8 +697,18 @@ private struct CountyListenChoiceSurface: View {
     /// When false, the parent owns the audio instrument (review remap).
     var includeAudio: Bool = true
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    /// True after the learner plays the clip or touches a choice — either
+    /// lifts the demoted choice stack (F1: audio leads, meanings follow).
+    @State private var hasEngaged = false
+
+    private var offersAudio: Bool {
+        guard includeAudio, let audioText = exercise.audioText else { return false }
+        return SpeechService.shared.canSpeak(audioText)
+    }
+
     var body: some View {
-        VStack(alignment: .leading, spacing: ExerciseSurface.zoneGap) {
+        VStack(alignment: .leading, spacing: 0) {
             if includeAudio {
                 if let audioText = exercise.audioText, SpeechService.shared.canSpeak(audioText) {
                     CountyAudioPromptControl(
@@ -707,19 +717,35 @@ private struct CountyListenChoiceSurface: View {
                             hearLabel: "Listen",
                             replayLabel: "Listen again"
                         ),
-                        disabled: locked
+                        disabled: locked,
+                        onPlayed: { hasEngaged = true }
                     )
                 } else if exercise.audioText != nil {
                     MissingAudioNotice()
                 }
             }
 
+            if offersAudio {
+                Spacer(minLength: ExerciseSurface.zoneGap)
+            }
+
             CountyChoiceSurface(
                 exercise: exercise,
                 locked: locked,
-                onPick: onPick
+                onPick: { option in
+                    hasEngaged = true
+                    onPick(option)
+                },
+                demoted: offersAudio && !hasEngaged && !locked
+            )
+            .animation(reduceMotion ? nil : Motion.settle, value: hasEngaged)
+            .accessibilityHint(
+                offersAudio && !hasEngaged
+                    ? "You can listen first or choose an answer."
+                    : ""
             )
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 }
 
@@ -895,6 +921,9 @@ private struct CountyChoiceSurface: View {
 
     /// When false, the parent surface owns the Irish prompt (read/respond).
     var showsSentenceTemplate: Bool = true
+    /// F1 listen-choose: meanings stay tappable but visually follow the audio
+    /// instrument until the learner listens or answers.
+    var demoted: Bool = false
 
     @State private var wrongOptionIDs: Set<String> = []
     @State private var chosenCorrectID: String?
@@ -917,6 +946,7 @@ private struct CountyChoiceSurface: View {
                 choiceRow(option)
             }
         }
+        .opacity(demoted ? 0.84 : 1)
     }
 
     @ViewBuilder
@@ -980,13 +1010,14 @@ private struct CountyChoiceSurface: View {
             .accessibilityValue(isWrong ? "Not correct" : (isCorrect ? "Correct" : ""))
             .accessibilityAddTraits(choiceTraits(for: option))
 
-            if isWrong {
+            if isWrong, !locked {
                 Text(option.rationale)
                     .font(.subheadline)
                     .foregroundStyle(Theme.rust)
                     .lineSpacing(3)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.horizontal, ExerciseSurface.optionPadH)
+                    .transition(.identity)
             }
         }
     }
