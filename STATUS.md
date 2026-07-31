@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-31 (shared activity
-shell step 4 ACCEPT + Grok PASS; schema/foundation next).*
+and visual narrative. English → Irish only. Updated 2026-07-31 (ElevenLabs Irish
+teaching inventory generated; shared activity shell ACCEPT; schema/foundation next).*
 
 ## Where we are
 
@@ -74,6 +74,22 @@ centralised announce/focus queue. Composer REJECT then re-score ACCEPT + Grok PA
 Next engineering: harden authored contract/schema/validators, then foundation gate.
 Grammar/Greenfield stay parked. The Phase 4 Mayo and Phase 5 launch-county
 review drafts remain at their recorded gate states.
+
+**ElevenLabs Irish audio sprint (2026-07-31):** before the subscription window
+closes, Irish teaching audio is frozen and generated. Canonical inventory:
+[`content/audio/irish-inventory-v1.json`](content/audio/irish-inventory-v1.json)
+— **289** unique strings (**191** headwords across all 32 counties, **48** launch
+phrases, **50** launch conversation lines); **0** pending generation. Bundled
+catalog is **359** MP3s (inventory + legacy chapter clips) under
+`ios/AnTuras/Resources/Audio/` with checksum archives in
+`content/audio/archive/`. Atlas lemmas live in
+[`content/audio/atlas-headwords-v1.md`](content/audio/atlas-headwords-v1.md)
+(provisional until pedagogue). **Bind rule:** launch exercises may only set
+`audioText` to inventory strings; new Irish without a clip stays silent until a
+post-ElevenLabs provider can regenerate. English narrative VO was out of scope.
+Native-speaker QA remains open (D17); owner spot-listen queue:
+[`content/audio/SPOT-LISTEN-2026-07-31.md`](content/audio/SPOT-LISTEN-2026-07-31.md).
+Generator: `tools/tts-bakeoff/build-production-audio.py --from-inventory`.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
@@ -305,6 +321,7 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-07-31 | **ElevenLabs Irish teaching audio sprint — inventory frozen and generated.** 289 unique Irish strings (191 atlas/launch headwords, 48 launch phrases, 50 conversation lines) generated with Irish Cultural Guide; 0 pending; 359 bundled MP3s including legacy chapter clips. Bind rule: exercises may only use inventory `audioText`. English narrative VO out of scope. Native QA still open; 44 strings in owner spot-listen queue. | `content/audio/`, `tools/tts-bakeoff/assemble_irish_inventory.py`, `tools/tts-bakeoff/build-production-audio.py`, `ios/AnTuras/Resources/Audio/`, `docs/MEDIA-AUDIT.md`, `STATUS.md` |
 | 2026-07-31 | **Shared activity shell (rebuild plan step 4) — Composer re-score ACCEPT + Grok PASS.** Punch list S4-1–C3 cleared: recovery resigns typing focus so the field stays hittable; chapter-menu scroll proves interrupt→C3; `CountyActivityShellUITests` 3/3 pass (incl. AX5). Prior REJECT superseded for step-4 acceptance. Unblocks schema/foundation. Working tree uncommitted. | `ios/AnTuras/CountyExerciseSystem.swift`, `ios/AnTurasUITests/CountyActivityShellUITests.swift`, `docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md`, `GROK-COHERENCE-activity-shell-2026-07-31.md`, `STATUS.md` |
 | 2026-07-31 | **Composer activity-shell scorecard — REJECT.** Step-4 shape present (`interrupt` on disappear/background, `beginRecovery`, centralised announce/focus) and freeze walk + 49 engine/freeze unit tests still pass, but both `CountyActivityShellUITests` fail: typing recovery leaves `irish-answer-field` with zero AX frame (D3/D9 P0); interrupt→C3 unproven (menu row miss). Kimi punch list: S4-1 S4-2 S4-3 D3 D9 CG-2 CG-5 C3. Working tree uncommitted. | `docs/activity-quality/SCORECARD-activity-shell-2026-07-31.md`, `ios/AnTuras/CountyExerciseSystem.swift`, `ios/AnTurasUITests/CountyActivityShellUITests.swift`, `STATUS.md` |
 | 2026-07-31 | **Shared state engine (rebuild plan step 3) — Composer ACCEPT + Grok PASS.** Pure `CountyActivityStateEngine` with required/illegal transitions, D27 repair window, exactly-once memory, revisit suppression; wired into county shell; 49 unit tests (engine + freeze) pass. Deferred: `interrupt`/`beginRecovery` shell hooks, persistence, focus/announcements (steps 4–7/11). Unblocks shared activity shell. Working tree uncommitted. | `ios/AnTuras/CountyActivityStateEngine.swift`, `CountyExerciseSystem.swift`, `ios/AnTurasTests/CountyActivityStateEngineTests.swift`, `docs/activity-quality/SCORECARD-state-engine-2026-07-31.md`, `GROK-COHERENCE-state-engine-2026-07-31.md`, `STATUS.md` |

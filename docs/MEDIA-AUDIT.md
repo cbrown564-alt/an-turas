@@ -45,8 +45,8 @@ To deliver an evidence-grounded experience for learning Irish, *An Turas* enforc
 | `video.mayo-galley-sea-passage` | *Ambient 4s loop*: Wooden galley hull carving through dark swell in open Atlantic, spray rising, horizon staying steady. | Ch 6 Voyage Bridge |
 
 ### D. Audio Requirements
-* **20 Headwords**: *farraige, bá, long, áit, as, caisleán, teaghlach, mac, bean, tá, bith, costa, deartháir, caill, iarr, téigh, tar, ainm, freagair, tabhair*.
-* **Phrase & Exercise Audio**: 25 listening & dialogue clips (`audio.is-as-maigh-eo-me`, `audio.na-caill-an-long`, etc.).
+* **20 Headwords**: *farraige, bá, long, áit, as, caisleán, teaghlach, mac, bean, caill, deartháir, iarr, téigh, ainm, mise, tar, freagair, tabhair, arís, cósta* (draft pack; MEDIA-AUDIT stale variants superseded).
+* **Phrase & conversation audio**: frozen in `content/audio/launch-phrases-conversations-v1.json` and generated into the bundled catalog (2026-07-31).
 
 ---
 
@@ -76,8 +76,8 @@ To deliver an evidence-grounded experience for learning Irish, *An Turas* enforc
 | `video.dublin-coin-relief-light` | *Macro lighting sweep 5s*: Directional light grazing across the relief of the Sihtric Silkbeard silver penny, catching silver patina sheen and inscription grooves. | Ch 4 & 5 Evidence Canvas |
 
 ### D. Audio Requirements
-* **20 Headwords**: *dubh, linn, ath, cloch, baile, long, margadh, airgead, pingin, rí, ainm, cathair, chuaigh, tháinig, ceannaigh, díol, téigh, tar, tabhair, tóg*.
-* **Phrase & Exercise Audio**: 26 exercise listening clips (`audio.exercise.dublin-first-penny-hear-coin-movement`, etc.).
+* **20 Headwords**: draft pack lemmas (see `content/audio/atlas-headwords-v1.json` dublin).
+* **Phrase & conversation audio**: frozen and generated 2026-07-31 into the bundled catalog.
 
 ---
 
@@ -106,8 +106,8 @@ To deliver an evidence-grounded experience for learning Irish, *An Turas* enforc
 | `video.meath-trim-curtain-sunset` | *Cinematic 6s loop*: Golden sunset light slowly fading across the curtain walls of Trim Castle, river reflections shifting below. | Ch 6 Legacy Header |
 
 ### D. Audio Requirements
-* **20 Headwords**: *áth, talamh, baile, teach, rí, agat, agam, cónaí, nuadh, seán, caisleán, cloch, balla, tóg, mór, anseo, ansiúd, féach, seas, ainm*.
-* **Phrase & Exercise Audio**: 26 exercise listening clips (`audio.exercise.meath-grant-hear-possession`, etc.).
+* **20 Headwords**: draft pack lemmas (see `content/audio/atlas-headwords-v1.json` meath).
+* **Phrase & conversation audio**: frozen and generated 2026-07-31 into the bundled catalog.
 
 ---
 
@@ -136,8 +136,8 @@ To deliver an evidence-grounded experience for learning Irish, *An Turas* enforc
 | `video.offaly-cross-carving-relief` | *Macro lighting sweep 4s*: Warm low-angle sunlight panning across carved sandstone biblical relief panels, emphasizing depth of iron chisel work. | Ch 4 & 5 Evidence Header |
 
 ### D. Audio Requirements
-* **20 Headwords**: *abhainn, bóthar, baile, mainistir, rí, déan, mór, beag, cros, cloch, seas, féach, léigh, guí, anois, anseo, lá, obair, bád, foghlaim*.
-* **Phrase & Exercise Audio**: 26 exercise listening clips (`audio.exercise.offaly-carved-cross-hear-looking`, etc.).
+* **20 Headwords**: draft pack lemmas (see `content/audio/atlas-headwords-v1.json` offaly).
+* **Phrase & conversation audio**: frozen and generated 2026-07-31 into the bundled catalog.
 
 ---
 
@@ -220,5 +220,10 @@ Animate existing stills before inventing new scenes. Prompts stay text-free, mut
 * **Shipped Flow loops today:** **9** (Mayo 3, Dublin 2, Meath 2, Offaly 2); Mayo's Rockfleet + galley loops now page-wired.
 * **AI atmospheric stills:** Dublin slate largely present; Mayo partial; Meath/Offaly gaps listed in Batch B.
 * **Documentary evidence scans:** **14** authentic museum/archival photographic placeholders (TNA, Carew, Sihtric coins, De Lacy grant, High Cross panels)—not Flow targets.
-* **Audio clips:** **103** studio/native pronunciations & exercises—separate from video spend.
+* **Audio clips:** Irish teaching inventory frozen and generated 2026-07-31 —
+  **289** unique strings in [`../content/audio/irish-inventory-v1.json`](../content/audio/irish-inventory-v1.json)
+  (191 headwords for all 32 counties, 48 launch phrases, 50 launch conversation
+  lines); **359** MP3s bundled including legacy chapter clips. Bind rule: launch
+  `audioText` must come from the inventory. Native-speaker QA still open (D17).
+  English narrative VO not generated in this pass.
 
