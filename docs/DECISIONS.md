@@ -2,6 +2,38 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D30 — Phrase-family fluency model for Irish teaching audio (2026-07-31)
+
+**Decision:** Expand Irish teaching exposure as **phrase families** around soft-frozen
+launch-county lexeme banks — not as mass orphan headword generation. A phrase family is
+an authored set of full Irish utterances that all realise one taught lexeme (including
+mutated/inflected forms) while varying the surrounds; every member is place- or
+story-grounded. Family grouping lives with spine/story content; the audio inventory
+remains a spoken-text → clip registry under the existing bind rule.
+
+**First proof:** Co-design one Mayo vertical slice — *farraige*, ~4–6 members (≤2
+invented pedagogical surrounds), consuming **sentence construction with a surround
+change** first; add **delayed reuse** only after that fixture ACCEPT. Host the proof in
+a sibling freeze-style fixture, then promote; do not mutate the D29 nine-step Clew Bay
+freeze or production Mayo packs for the first pass.
+
+**Gates:** Owner may draft and generate fixture TTS labeled unreviewed. Pedagogue review
+and native-speaker audio QA (D17) may run in parallel after generate; both block teaching
+claims, production promotion, and scale-out. Soft-freeze Mayo’s storyboard/pack ~20;
+treat atlas headwords as provisional. Scale order: prove the two consuming patterns on
+*farraige*, then densify Mayo’s taught lexemes; do not inventory-lead atlas coverage or
+thin-width four-county families first.
+
+**Why:** Creator-tier TTS is no longer scarce; unused audio, unreviewed longer Irish, and
+place-detached inventing are. Exercise demand and QA must gate volume. Representative-slice
+discipline (D22) and listening-first pedagogy (D11) require same-lexeme / varied-context
+banks that Learning-mode can actually play.
+
+**Consequences:** Record family schema beside county content before bulk generation.
+Extend validators so packs reference family members under the bind rule. Keep Trinity/
+ABAIR as a post-launch upgrade (D17). Glossary: `CONTEXT.md` (**phrase family**, **lexeme**).
+Short ADR: `docs/adr/0001-phrase-family-fluency.md`.
+
 ## D29 — Representative Mayo Learning-mode run frozen (2026-07-30)
 
 **Decision:** The learning-mechanics foundation proof is the nine-step Clew Bay

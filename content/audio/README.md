@@ -3,6 +3,9 @@
 Canonical frozen Irish strings for teaching audio. Runtime playback keys off
 **spoken text → slug → MP3** (`Speech.swift`), not pack resource IDs.
 
+Phrase-family pedagogical grouping lives with county content (e.g.
+`content/mayo/phrase-families/`), not in this registry — see D30.
+
 ## Files
 
 | File | Role |
@@ -35,7 +38,9 @@ Canonical frozen Irish strings for teaching audio. Runtime playback keys off
 
 After inventory freeze, launch exercises may only set `audioText` to strings present
 in `irish-inventory-v1.json`. New Irish without a clip stays silent until a
-post-ElevenLabs provider can regenerate.
+post-ElevenLabs provider can regenerate. `tools/validate_county_pack.py` rejects
+packs that break this rule (`audioNotInInventory`). Wire packs with
+`tools/tts-bakeoff/wire_packs_to_inventory.py` after regenerating Phase 5 drafts.
 
 ## Rebuild
 

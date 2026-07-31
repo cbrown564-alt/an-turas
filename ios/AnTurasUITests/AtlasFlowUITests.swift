@@ -96,12 +96,12 @@ final class AtlasFlowUITests: XCTestCase {
         // attempt stays open — no struggle chrome yet (D27 repair window).
         app.buttons["Every letter survives clearly and scholars agree on one translation."].tap()
         XCTAssertTrue(app.staticTexts["The inscription is damaged and debated."].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.staticTexts["Not quite"].exists)
+        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.exists)
         XCTAssertFalse(next.isEnabled)
 
         // A second wrong without self-correcting fires the struggle signal.
         app.buttons["It records Flann's spoken instructions to the carvers."].tap()
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
         XCTAssertFalse(next.isEnabled)
 
         let correct = "It links prayer, Flann, Colmán and the making of the cross, but damaged letters affect the exact reading."
@@ -339,13 +339,13 @@ final class AtlasFlowUITests: XCTestCase {
 
         // First wrong: rationale on the affected row, attempt open, no struggle chrome.
         XCTAssertTrue(app.staticTexts["Long is the word for ship; the sound is different."].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.staticTexts["Not quite"].exists)
+        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.exists)
         XCTAssertFalse(app.buttons["Continue"].isEnabled)
         XCTAssertFalse(app.buttons["Retry"].exists)
 
         // A second wrong without self-correcting fires the struggle signal (D27).
         tapChoice("coast", in: app)
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
         XCTAssertFalse(app.buttons["Continue"].isEnabled)
 
         // Repair is still the next touch.
@@ -371,7 +371,7 @@ final class AtlasFlowUITests: XCTestCase {
         // A wrong pair keeps a plain-language note on the attempted meaning —
         // never mastery-failure chrome or a locked board (D3/D5/F5).
         XCTAssertTrue(app.staticTexts["“son” does not belong with “caisleán”. Choose another meaning."].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.staticTexts["Not quite"].exists)
+        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.exists)
 
         // The word stays selected; the next tap repairs the pair in place.
         tapButton("castle", in: app)
@@ -383,7 +383,7 @@ final class AtlasFlowUITests: XCTestCase {
         }
 
         XCTAssertTrue(app.buttons["Continue"].isEnabled)
-        XCTAssertFalse(app.staticTexts["Not quite"].exists)
+        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.exists)
     }
 
     func testRockfleetRecordKeepsInkPrimaryUntilCompare() throws {

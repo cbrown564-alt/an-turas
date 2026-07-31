@@ -51,7 +51,7 @@ final class FreezeRunReduceMotionCaptureTests: XCTestCase {
             "--page", "mayo.clew-bay.match-coast",
         ]
         match.launch()
-        XCTAssertTrue(match.staticTexts["Keep the coast's words distinct"].waitForExistence(timeout: 5))
+        XCTAssertTrue(match.staticTexts["Tap the matching pairs"].waitForExistence(timeout: 5))
         let word = match.buttons["farraige"]
         XCTAssertTrue(word.waitForExistence(timeout: 3))
         word.tap()

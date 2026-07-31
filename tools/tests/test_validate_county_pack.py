@@ -20,6 +20,7 @@ import build_phase5_county_drafts as phase5  # noqa: E402
 PACKS_DIR = REPO_ROOT / "ios/AnTuras/Resources/CountyStories"
 BUNDLED_PACKS = sorted(PACKS_DIR.glob("*.json"))
 MAYO_PACK = PACKS_DIR / "mayo.grainne-1593.json"
+CONTRACT_ENUMS = REPO_ROOT / "ios/AnTuras/Resources/Fixtures/contract-enums.json"
 MAYO_REVIEW_DRAFT = REPO_ROOT / "content/mayo/grainne-1593.pack.draft.json"
 PHASE5_DRAFTS = {
     "offaly.cross-of-the-scriptures": REPO_ROOT
@@ -253,6 +254,20 @@ class AddedRules(unittest.TestCase):
         # still pass — the all-twenty rule is scoped to completeCounty only.
         report = v.validate(self.pack)
         self.assertEqual(report.scope, "representativeChapter")
+
+    def test_audio_text_must_belong_to_frozen_inventory(self):
+        page = self.pack["pack"]["chapters"][0]["pages"][0]
+        exercise = page.get("exercise")
+        if not exercise:
+            # First page may be narrative; find any exercise.
+            for chapter in self.pack["pack"]["chapters"]:
+                for candidate in chapter["pages"]:
+                    if candidate.get("exercise"):
+                        page = candidate
+                        exercise = candidate["exercise"]
+                        break
+        exercise["audioText"] = "Níl an líne seo san inventory."
+        self._expect("audioNotInInventory")
 
     def test_video_visual_with_image_fallback_is_valid(self):
         page = self.pack["pack"]["chapters"][0]["pages"][0]
@@ -514,6 +529,314 @@ class D27LayerRules(unittest.TestCase):
         for exercise in self._exercises():
             exercise.pop("authoredUse", None)
         self._expect("exerciseDistribution")
+
+
+class MirroredRuleGaps(unittest.TestCase):
+    """Failing fixtures for pre-existing mirrored codes that had none."""
+
+    def setUp(self):
+        self.pack = load(MAYO_PACK)
+
+    def _expect(self, code):
+        with self.assertRaises(v.PackValidationError) as ctx:
+            v.validate(self.pack)
+        self.assertEqual(ctx.exception.code, code)
+
+    def _first_exercise_page(self):
+        for chapter in self.pack["pack"]["chapters"]:
+            for page in chapter["pages"]:
+                if page["kind"] == "exercise" and page.get("exercise"):
+                    return page, page["exercise"]
+        raise AssertionError("Mayo pack lost its exercises")
+
+    def test_pack_id_must_be_dotted_with_positive_revision(self):
+        self.pack["pack"]["id"] = "mayo"
+        self._expect("invalidPackID")
+
+    def test_chapter_must_be_non_empty_in_both_modes(self):
+        for page in self.pack["pack"]["chapters"][0]["pages"]:
+            page["visibility"] = "learningOnly"
+        self._expect("emptyModeChapter")
+
+    def test_completion_must_reference_visible_pages(self):
+        self.pack["pack"]["completion"]["learningPageIDs"].append("mayo.rockfleet.missing")
+        self._expect("invalidCompletionPage")
+
+    def test_exercise_page_needs_an_exercise_payload(self):
+        page, _ = self._first_exercise_page()
+        page["exercise"] = None
+        self._expect("missingExercise")
+
+    def test_options_may_not_repeat_the_correct_answer(self):
+        _, exercise = self._first_exercise_page()
+        exercise["options"][1]["text"] = exercise["options"][0]["text"]
+        self._expect("duplicateAnswer")
+
+    def test_audio_family_needs_audio_text_and_bundled_reference(self):
+        page, exercise = self._first_exercise_page()
+        self.assertEqual(exercise["family"], "listenChoose")
+        exercise["audioText"] = None
+        self._expect("missingRequiredAudio")
+
+    def test_legacy_three_page_chapters_are_rejected(self):
+        # Re-chunk the 23-page pack into three-page chapters (one appended
+        # story page makes 24) without disturbing page order, so every earlier
+        # rule still passes and only the fixed-template shape fails.
+        pack = self.pack["pack"]
+        pages = [page for chapter in pack["chapters"] for page in chapter["pages"]]
+        pages.append(
+            {
+                "id": "mayo.rockfleet.epilogue-test",
+                "legacyBeatIndex": None,
+                "title": "Epilogue",
+                "context": "Rockfleet",
+                "body": "The tide keeps its own time.",
+                "detail": None,
+                "visibility": "storyOnly",
+                "requirement": "optional",
+                "kind": "narrative",
+                "estimatedSeconds": 30,
+                "introducedLexemeIDs": [],
+                "resourceIDs": [],
+                "exercise": None,
+                "presentation": None,
+                "advanceLabel": None,
+                "visualResourceID": None,
+                "visualCaption": None,
+                "displayItems": None,
+            }
+        )
+        pack["chapters"] = [
+            {
+                "id": f"mayo.test-chapter-{index // 3}",
+                "title": f"Test chapter {index // 3}",
+                "place": "Rockfleet",
+                "pages": pages[index : index + 3],
+            }
+            for index in range(0, len(pages), 3)
+        ]
+        self._expect("legacyBeatStructure")
+
+
+class ContractRules(unittest.TestCase):
+    """The authored learning-contract rules fire wherever an exercise carries a
+    ``learningContract``, mirrored 1:1 with the Swift validator. Production
+    packs stay flat and adapted until the production-slice migration, so these
+    tests inject a contract into the bundled Mayo pack and break one rule."""
+
+    def setUp(self):
+        self.pack = load(MAYO_PACK)
+
+    def _expect(self, code):
+        with self.assertRaises(v.PackValidationError) as ctx:
+            v.validate(self.pack)
+        self.assertEqual(ctx.exception.code, code)
+
+    def _exercise_page(self, family):
+        for chapter in self.pack["pack"]["chapters"]:
+            for page in chapter["pages"]:
+                exercise = page.get("exercise")
+                if exercise and exercise.get("family") == family:
+                    return page, exercise
+        raise AssertionError(f"Mayo pack lost its {family} exercise")
+
+    @staticmethod
+    def _contract(exercise, **overrides):
+        contract = {
+            "objective": exercise.get("objective"),
+            "targets": [
+                {"id": lexeme, "capability": "recalled"}
+                for lexeme in exercise.get("lexemeIDs", [])
+            ],
+            "misconceptions": [
+                {
+                    "id": "fallback",
+                    "rationale": "A response the named diagnostics do not cover.",
+                    "feedback": "Try the line again with the model.",
+                }
+            ],
+            "successFeedback": "The line holds.",
+            "hint": "Keep the frame.",
+            "recovery": {
+                "guidance": "Read the model once, then answer again.",
+                "requiredResponse": "Make the response again after the support.",
+            },
+            "completionEvidence": "correctConstruction",
+        }
+        contract.update(overrides)
+        return contract
+
+    def test_valid_authored_contract_passes(self):
+        _, exercise = self._exercise_page("freeTyping")
+        exercise["learningContract"] = self._contract(exercise)
+        report = v.validate(self.pack)
+        self.assertEqual(report.contract_authored, 1)
+        self.assertEqual(report.contract_adapted, 11)
+
+    def test_distractor_without_misconception_mapping(self):
+        _, exercise = self._exercise_page("listenChoose")
+        exercise["learningContract"] = self._contract(
+            exercise, completionEvidence="correctSelection"
+        )
+        self._expect("missingMisconceptionMapping")
+
+    def test_distractor_referencing_undeclared_misconception(self):
+        _, exercise = self._exercise_page("listenChoose")
+        exercise["options"][1]["misconceptionID"] = "ghost"
+        exercise["learningContract"] = self._contract(
+            exercise, completionEvidence="correctSelection"
+        )
+        self._expect("missingMisconceptionMapping")
+
+    def test_constructed_response_without_diagnostics(self):
+        _, exercise = self._exercise_page("freeTyping")
+        exercise["learningContract"] = self._contract(exercise, misconceptions=[])
+        self._expect("missingDiagnosticCases")
+
+    def test_hint_equal_to_the_accepted_answer(self):
+        _, exercise = self._exercise_page("freeTyping")
+        exercise["learningContract"] = self._contract(
+            exercise, hint=exercise["answer"]
+        )
+        self._expect("answerRevealingHint")
+
+    def test_hint_containing_the_answer_fada_folded(self):
+        _, exercise = self._exercise_page("freeTyping")
+        folded = exercise["answer"].translate(v._FADA).lower()
+        exercise["learningContract"] = self._contract(
+            exercise, hint=f"Write it once: {folded} — then check."
+        )
+        self._expect("answerRevealingHint")
+
+    def test_recovery_declaring_a_different_target_set(self):
+        _, exercise = self._exercise_page("freeTyping")
+        contract = self._contract(exercise)
+        contract["recovery"]["targetIDs"] = ["lex.teaghlach"]
+        exercise["learningContract"] = contract
+        self._expect("targetChangingRecovery")
+
+    def test_recovery_restating_the_same_targets_passes(self):
+        _, exercise = self._exercise_page("freeTyping")
+        contract = self._contract(exercise)
+        contract["recovery"]["targetIDs"] = list(exercise["lexemeIDs"])
+        exercise["learningContract"] = contract
+        self.assertEqual(v.validate(self.pack).pack_id, "mayo.grainne-1593")
+
+    def test_evidence_incompatible_with_the_family(self):
+        _, exercise = self._exercise_page("freeTyping")
+        exercise["learningContract"] = self._contract(
+            exercise, completionEvidence="validDialogueTurn"
+        )
+        self._expect("unsupportedCompletionEvidence")
+
+    def test_memory_credit_naming_an_untargeted_lexeme(self):
+        _, exercise = self._exercise_page("freeTyping")
+        exercise["learningContract"] = self._contract(
+            exercise,
+            targets=[{"id": "lex.teaghlach", "capability": "recalled"}],
+        )
+        self._expect("offTargetMemoryCredit")
+
+    @staticmethod
+    def _review_candidate(origin_page_id, lexemes):
+        return {
+            "id": "cand.test",
+            "pageID": origin_page_id,
+            "label": "the castle word",
+            "exercise": {
+                "family": "listenChoose",
+                "objective": "Hear caisleán again.",
+                "prompt": "Hear the word again, then choose its meaning.",
+                "answer": "castle",
+                "options": [],
+                "tokens": [],
+                "pairs": [],
+                "feedback": "It holds this time.",
+                "hint": "Replay the word.",
+                "recovery": "Replay and answer again.",
+                "lexemeIDs": lexemes,
+                "operatesOnSentence": False,
+                "recognitionMultipleChoice": True,
+            },
+        }
+
+    def _review_exercise(self, candidate):
+        page, exercise = self._exercise_page("freeTyping")
+        exercise["family"] = "contextualReview"
+        exercise["reviewCandidates"] = [candidate]
+        return page, exercise
+
+    def test_review_candidate_must_trace_to_its_origin(self):
+        candidate = self._review_candidate(
+            "mayo.rockfleet.listen-caislean", ["lex.teaghlach"]
+        )
+        self._review_exercise(candidate)
+        self._expect("untraceableReviewTarget")
+
+    def test_review_candidate_traced_to_origin_passes(self):
+        candidate = self._review_candidate(
+            "mayo.rockfleet.listen-caislean", ["lex.caislean"]
+        )
+        self._review_exercise(candidate)
+        self.assertEqual(v.validate(self.pack).pack_id, "mayo.grainne-1593")
+
+    def _completion_exercise(self, lexemes):
+        page, exercise = self._exercise_page("readRespond")
+        exercise["family"] = "completion"
+        exercise["options"] = []
+        exercise["lexemeIDs"] = lexemes
+        exercise["capabilities"] = [
+            {
+                "id": "say",
+                "title": "You can say where you are.",
+                "detail": "The frame is yours.",
+                "symbol": "person.wave.2",
+            }
+        ]
+        return page, exercise
+
+    def test_capability_claim_without_supporting_evidence(self):
+        # No exercise targets lex.farraige, so a completion targeting only it
+        # has no completed-target evidence behind its claims.
+        arrival = self.pack["pack"]["chapters"][0]["pages"][0]
+        arrival["introducedLexemeIDs"] = arrival["introducedLexemeIDs"] + ["lex.farraige"]
+        self._completion_exercise(["lex.farraige"])
+        self._expect("unsupportedCapabilityClaim")
+
+    def test_capability_claim_with_supporting_evidence_passes(self):
+        # listen-caislean targets lex.caislean with declared (adapted) evidence.
+        self._completion_exercise(["lex.caislean"])
+        self.assertEqual(v.validate(self.pack).pack_id, "mayo.grainne-1593")
+
+
+class SharedEnumList(unittest.TestCase):
+    """Runtime and validator enums are checked against one shared documented
+    list (rebuild plan, 'Automated enforcement') so a pack cannot pass offline
+    and fail after decoding."""
+
+    def setUp(self):
+        self.enums = load(CONTRACT_ENUMS)
+
+    def test_python_constants_match_the_shared_list(self):
+        self.assertEqual(set(self.enums["responseFamilies"]), v.RESPONSE_FAMILIES)
+        self.assertEqual(set(self.enums["pureContainers"]), v.PURE_CONTAINERS)
+        self.assertEqual(tuple(self.enums["authoredUses"]), v.AUTHORED_USES)
+        self.assertEqual(set(self.enums["targetCapabilities"]), v.TARGET_CAPABILITIES)
+        self.assertEqual(
+            set(self.enums["completionEvidenceKinds"]), v.COMPLETION_EVIDENCE_KINDS
+        )
+        self.assertEqual(set(self.enums["memoryEventKinds"]), v.MEMORY_EVENT_KINDS)
+
+    def test_shared_list_covers_every_family_exactly_once(self):
+        response = self.enums["responseFamilies"]
+        containers = self.enums["pureContainers"]
+        self.assertEqual(len(response), len(set(response)))
+        self.assertTrue(set(response).isdisjoint(containers))
+        # The compatibility table declares an entry for every family and only
+        # names known evidence kinds.
+        self.assertEqual(set(v.FAMILY_COMPLETION_EVIDENCE), set(response) | set(containers))
+        for kinds in v.FAMILY_COMPLETION_EVIDENCE.values():
+            self.assertLessEqual(kinds, v.COMPLETION_EVIDENCE_KINDS)
 
 
 if __name__ == "__main__":

@@ -223,7 +223,9 @@ Animate existing stills before inventing new scenes. Prompts stay text-free, mut
 * **Audio clips:** Irish teaching inventory frozen and generated 2026-07-31 —
   **289** unique strings in [`../content/audio/irish-inventory-v1.json`](../content/audio/irish-inventory-v1.json)
   (191 headwords for all 32 counties, 48 launch phrases, 50 launch conversation
-  lines); **359** MP3s bundled including legacy chapter clips. Bind rule: launch
-  `audioText` must come from the inventory. Native-speaker QA still open (D17).
-  English narrative VO not generated in this pass.
+  lines); **359** MP3s bundled including legacy chapter clips. Launch draft and
+  CountyStories packs now mark those resources `bundled` and bind conversation
+  `audioText` to inventory lines. Bind rule: launch `audioText` must come from the
+  inventory (`audioNotInInventory` in the county validator). Native-speaker QA still
+  open (D17). English narrative VO not generated in this pass.
 

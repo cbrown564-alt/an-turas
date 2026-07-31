@@ -24,22 +24,22 @@ final class FreezeRunUITests: XCTestCase {
 
         // Step 1 — F1 listen and choose: answerable cold open, repair window,
         // struggle on the second wrong, next-touch repair (D1/D3/F1).
-        XCTAssertTrue(app.staticTexts["Hear the sea before you read it"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Tap what you hear"].waitForExistence(timeout: 5))
         tapChoice("island", in: app)
         XCTAssertTrue(app.staticTexts["That names the land in the water, not the water itself."].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.staticTexts["Not quite"].exists)
+        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.exists)
         tapChoice("castle", in: app)
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
         tapChoice("sea", in: app)
         finishExercise(in: app)
 
         // Step 2 — F5 matching: a wrong pair keeps a brief on-target note and
         // the next tap repairs; never a board lock (D3/D5/F5).
-        XCTAssertTrue(app.staticTexts["Keep the coast's words distinct"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Tap the matching pairs"].waitForExistence(timeout: 5))
         tapButton("farraige", in: app)
         tapButton("bay", in: app)
         XCTAssertTrue(app.staticTexts["“bay” does not belong with “farraige”. Choose another meaning."].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.staticTexts["Not quite"].exists)
+        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.exists)
         tapButton("sea", in: app)
         XCTAssertFalse(app.staticTexts["“bay” does not belong with “farraige”. Choose another meaning."].exists)
         tapButton("bá", in: app)
@@ -50,10 +50,10 @@ final class FreezeRunUITests: XCTestCase {
 
         // Step 3 — F2 construction: explicit Check; wrong units stay editable
         // and correct work survives (F2/D3).
-        XCTAssertTrue(app.staticTexts["Build a line of origin"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Build the sentence"].waitForExistence(timeout: 5))
         for token in ["as", "Is", "Maigh Eo", "mé."] { tapButton(token, in: app) }
         tapButton("Check the order", in: app)
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
         for token in ["as", "Maigh Eo", "mé."] { tapButton(token, in: app) }
         for token in ["as", "Maigh Eo", "mé."] { tapButton(token, in: app) }
         tapButton("Check the order", in: app)
@@ -62,11 +62,11 @@ final class FreezeRunUITests: XCTestCase {
         // Step 4 — F3 unsupported typing: fada aids present; a failed Check
         // keeps the text; repair in place (F3/D3/D6). The bottom-bar Check
         // keeps field focus, so the cursor stays at the end for the repair.
-        XCTAssertTrue(app.staticTexts["Type the origin line without tiles"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Type the sentence"].waitForExistence(timeout: 5))
         _ = irishAnswerField(in: app)
         app.typeText("Is as Maigh Eo me.")
         tapButton("Check the sentence", in: app)
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
         app.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 3))
         app.typeText("m")
         tapButton("Insert é from keyboard toolbar", in: app)
@@ -91,7 +91,7 @@ final class FreezeRunUITests: XCTestCase {
 
         // Step 6 — F7 record and compare with the microphone denied: the
         // escape becomes the primary and never traps progress (D7/F7).
-        XCTAssertTrue(app.staticTexts["Say the origin line beside the model"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Say the line"].waitForExistence(timeout: 5))
         for _ in 0..<4 where !app.staticTexts["Microphone access is off. You can keep listening and continue without recording."].exists { app.swipeUp() }
         XCTAssertTrue(app.staticTexts["Microphone access is off. You can keep listening and continue without recording."].exists)
         waitForPrimaryBar("Continue without recording", in: app).tap()
@@ -99,7 +99,7 @@ final class FreezeRunUITests: XCTestCase {
 
         // Step 7 — F6 read or listen and respond: the note, the listen
         // variant's replay, and the meaning route are all on screen (F6).
-        XCTAssertTrue(app.staticTexts["Read the coast's setup"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Choose what it means"].waitForExistence(timeout: 5))
         assertText(containing: "the sheltered bay is bá", in: app)
         XCTAssertTrue(app.buttons["Hear the line"].exists)
         tapChoice("I am from Mayo.", in: app)
@@ -123,7 +123,7 @@ final class FreezeRunUITests: XCTestCase {
         // Step 9 — C3 contextual review: the step-1 struggle selects the sea
         // word, re-entered from its original sound (C3).
         XCTAssertTrue(app.staticTexts["Return to what slipped"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Earlier, the sea word slipped. Meet it again from the original sound."].exists)
+        XCTAssertTrue(app.staticTexts["the sea word slipped — meet it again from the original sound."].exists)
         tapChoice("sea", in: app)
         finishExercise(in: app, continueLabel: "Complete this chapter path")
 
@@ -197,7 +197,7 @@ final class FreezeRunUITests: XCTestCase {
         }
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["Say the origin line beside the model"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Say the line"].waitForExistence(timeout: 5))
         waitForPrimaryBar("Record your voice", in: app).tap()
         app.swipeUp()
         waitForPrimaryBar("Stop recording", in: app).tap()
@@ -226,7 +226,7 @@ final class FreezeRunUITests: XCTestCase {
         app.launch()
 
         XCTAssertTrue(app.staticTexts["Return to what slipped"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Nothing slipped on this run. One quiet return keeps the sea word warm."].exists)
+        XCTAssertTrue(app.staticTexts["Nothing slipped. One quiet return keeps the sea word warm."].exists)
         tapChoice("sea", in: app)
         // The review is the run's last page, so completing it promotes the bar
         // to the chapter-path label.

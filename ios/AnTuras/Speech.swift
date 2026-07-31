@@ -41,10 +41,12 @@ final class SpeechService: NSObject, ObservableObject {
         Self.bundledURL(for: text) != nil
     }
 
-    func speak(_ text: String) {
+    /// Plays the bundled clip for `text`. Pass `rate` below 1 for a slower
+    /// teaching listen (AVAudioPlayer rate; 1 is normal, ~0.7 is the Slow control).
+    func speak(_ text: String, rate: Float = 1) {
         stop()
         if let url = Self.bundledURL(for: text) {
-            playClip(url: url, text: text)
+            playClip(url: url, text: text, rate: rate)
         }
     }
 
@@ -74,11 +76,13 @@ final class SpeechService: NSObject, ObservableObject {
 
     // MARK: Sources
 
-    private func playClip(url: URL, text: String) {
+    private func playClip(url: URL, text: String, rate: Float = 1) {
         guard let p = try? AVAudioPlayer(contentsOf: url) else { return }
         activateSession()
         player = p
         p.delegate = self
+        p.enableRate = true
+        p.rate = min(max(rate, 0.5), 2)
         p.prepareToPlay()
         speaking = true
         currentText = text

@@ -1,8 +1,9 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-31 (ElevenLabs Irish
-teaching inventory generated; shared activity shell ACCEPT; schema/foundation next).*
+and visual narrative. English → Irish only. Updated 2026-07-31 (D30 phrase-family
+model locked; *farraige* B-fixture in progress; ElevenLabs inventory generated; shared
+activity shell ACCEPT).*
 
 ## Where we are
 
@@ -32,14 +33,26 @@ Story mode carries the complete account and opens the next county; only Learning
 turns the county gold and schedules its words. Speaking remains ungraded
 record-and-compare.
 
-**Current target:** rebuild-plan phases 0–3 are complete. D25 makes the shared
-learning-mechanics foundation the active sprint before more chapter authoring, county
-expansion, or production-pack migration. Two complementary 30 July inputs now exist:
-the expanded 48-activity reference review that led to D26, and three working iOS
-interaction studies—Sound Match, Sentence Flow, and Coast Placement—using the same
-narrow Clew Bay fixture. The studies are implemented and pass their focused 3-unit /
-5-UI simulator suite, including complete repair loops, audio fallback, both
-appearances, largest Dynamic Type, and reduced motion. They remain disposable and
+**Current major phase — phrase-family fluency expansion (D30):** ElevenLabs first-pass
+Irish teaching audio proved far cheaper and better than expected (Creator tier: ~1.7k
+credits from ~236k banked for the 289-string sprint). Generation is no longer the scarce
+resource. Expand **exposure density around taught lexemes** via phrase families — full
+utterances that keep one lexeme (including mutations) while varying place- or
+story-grounded surrounds — not a massively larger vocabulary bank. **D30** locks the
+model, gates, and scale order: soft-freeze Mayo’s ~20; co-design one *farraige* vertical
+slice (~4–6 members, ≤2 invented); prove surround-change **sentence construction** in a
+sibling fixture before delayed reuse; pedagogue + native QA block teaching claims and
+scale-out; densify Mayo only after the two patterns work. Family metadata lives with
+county content (`content/mayo/phrase-families/`); audio inventory stays text→clip.
+Unused audio is waste. Native QA, mutations/fadas, and place/story binding remain the
+real gates.
+
+**Supporting engineering:** rebuild-plan phases 0–3 are complete. Shared activity shell
+and state engine are ACCEPT. Harden authored contract/schema/validators and run the
+foundation gate so Learning-mode can consume phrase families without private
+exceptions. Two complementary 30 July inputs remain: the expanded 48-activity reference
+review that led to D26, and three working iOS interaction studies—Sound Match, Sentence
+Flow, and Coast Placement—on the Clew Bay fixture. The studies stay disposable and
 isolated from the shared county runtime.
 
 **D29 freeze run implemented:** the nine-step Clew Bay sequence in
@@ -71,7 +84,6 @@ centralised announce/focus queue. Composer REJECT then re-score ACCEPT + Grok PA
 ([`SCORECARD-activity-shell-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-2026-07-31.md),
 [`SCORECARD-activity-shell-rescore-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md),
 [`GROK-COHERENCE-activity-shell-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-activity-shell-2026-07-31.md)).
-Next engineering: harden authored contract/schema/validators, then foundation gate.
 Grammar/Greenfield stay parked. The Phase 4 Mayo and Phase 5 launch-county
 review drafts remain at their recorded gate states.
 
@@ -79,17 +91,25 @@ review drafts remain at their recorded gate states.
 closes, Irish teaching audio is frozen and generated. Canonical inventory:
 [`content/audio/irish-inventory-v1.json`](content/audio/irish-inventory-v1.json)
 — **289** unique strings (**191** headwords across all 32 counties, **48** launch
-phrases, **50** launch conversation lines); **0** pending generation. Bundled
-catalog is **359** MP3s (inventory + legacy chapter clips) under
-`ios/AnTuras/Resources/Audio/` with checksum archives in
-`content/audio/archive/`. Atlas lemmas live in
+phrases, **50** launch conversation lines); **0** pending generation; ~3.4k billed
+characters / ~7.4 min unique audio. Bundled catalog is **359** MP3s (inventory +
+legacy chapter clips) under `ios/AnTuras/Resources/Audio/` with checksum archives in
+`content/audio/archive/`. Observed cost: **~1.7k Creator credits** against ~236k
+banked — TTS volume is no longer the limiter. Atlas lemmas live in
 [`content/audio/atlas-headwords-v1.md`](content/audio/atlas-headwords-v1.md)
 (provisional until pedagogue). **Bind rule:** launch exercises may only set
-`audioText` to inventory strings; new Irish without a clip stays silent until a
-post-ElevenLabs provider can regenerate. English narrative VO was out of scope.
-Native-speaker QA remains open (D17); owner spot-listen queue:
+`audioText` to inventory strings; new Irish without a clip stays silent until
+regenerated into inventory. English narrative VO was out of scope. Native-speaker
+QA remains open (D17); owner spot-listen queue:
 [`content/audio/SPOT-LISTEN-2026-07-31.md`](content/audio/SPOT-LISTEN-2026-07-31.md).
 Generator: `tools/tts-bakeoff/build-production-audio.py --from-inventory`.
+Launch packs are wired to the inventory: audio resources are `bundled` where
+clips exist, thin conversation pages carry inventory `audioText`, and
+`tools/validate_county_pack.py` rejects spoken Irish outside the inventory.
+**Next audio direction:** freeze launch-county lemma sets; design phrase families
+(same lemma, varied surrounds, place-bound where possible); add exercise patterns
+that consume families; then generate and QA in batches. Do not mass-expand orphan
+headwords.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
@@ -321,6 +341,12 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-07-31 | **Exercise shell declutter to Duo-density layout.** Exercise chrome is progress-only; cold open is one SF imperative (shortened freeze titles) with lightbulb hint; prompt/objective leave the viewport; feedback is a one-line verdict not a card; audio/speak/conversation/review/completion lose meta prose.  | `CountyExerciseSystem.swift`, `CountyStoryExperienceView.swift`, `mayo.clew-bay-freeze.json`, UITests, `STATUS.md` |
+| 2026-07-31 | **Exercise shell: five Duo-comparison UX improvements.** Cold open collapses to title + prompt (objective rises with support); response surfaces enlarged; choice/matching use shape + opacity states (leading mark, radius, fade settled); shared `CountyAudioPromptControl` with playing/played, replay, and Slow via `SpeechService` rate; one-ink bar rule restated (Continue / Check / Record). 61 focused unit + 7 UI (FreezeRun + Atlas repair/record) pass on iPhone 17 Pro. | `ios/AnTuras/CountyExerciseSystem.swift`, `Speech.swift`, `STATUS.md` |
+| 2026-07-31 | **D30 *farraige* B fixture drafted and wired.** Four-member family (2 attested, 2 invented); sibling pack `mayo.farraige-family-b` with surround-change construction; 3 new inventory phrases + MP3s (generated_unreviewed); `--farraige-family-b` launch; unit tests pass. Pedagogue/native QA and craft ACCEPT still open. | `content/mayo/phrase-families/`, `ios/AnTuras/Resources/Fixtures/mayo.farraige-family-b.json`, `content/audio/`, `CountyStoryPack.swift`, `AtlasPrototype.swift` |
+| 2026-07-31 | **D30 — Phrase-family fluency model locked.** Phrase families = same taught lexeme (incl. morphology), varied place/story surrounds; metadata with county content; audio inventory stays text→clip. First proof: *farraige* ~4–6 members (≤2 invented), surround-change construction in sibling fixture, then delayed reuse; pedagogue + native QA block teaching claims and scale-out; densify Mayo after patterns work. Soft-freeze Mayo ~20. | `docs/DECISIONS.md` D30, `docs/adr/0001-phrase-family-fluency.md`, `CONTEXT.md`, `content/mayo/phrase-families/farraige.v1.json`, `STATUS.md` |
+| 2026-07-31 | **Current major phase set: phrase-family fluency expansion.** ElevenLabs Creator cost (~1.7k of ~236k credits for 289 strings) and first-pass quality remove TTS as the limiter. Expand exposure density around taught lemmas (varied full phrases / contexts), not a massive orphan vocabulary bank. Generate only after a phrase-family model and consuming exercise patterns exist; native QA and place/story binding remain gates. Schema/foundation stay supporting work. | `STATUS.md`, `content/audio/` |
+| 2026-07-31 | **Wire launch packs to frozen Irish audio inventory.** Flip draft/bundled audio resources to `bundled` where MP3s exist; bind thin conversation `audioText` to inventory lines; Phase 5 generator emits bundled audio + conversation clips; validator rejects `audioNotInInventory`. Mayo Rockfleet representative slice wired without replacing the nine-chapter draft. Native-speaker QA gate remains open. | `tools/tts-bakeoff/wire_packs_to_inventory.py`, `tools/build_phase5_county_drafts.py`, `tools/validate_county_pack.py`, `content/*/`, `ios/AnTuras/Resources/CountyStories/`, `STATUS.md` |
 | 2026-07-31 | **ElevenLabs Irish teaching audio sprint — inventory frozen and generated.** 289 unique Irish strings (191 atlas/launch headwords, 48 launch phrases, 50 conversation lines) generated with Irish Cultural Guide; 0 pending; 359 bundled MP3s including legacy chapter clips. Bind rule: exercises may only use inventory `audioText`. English narrative VO out of scope. Native QA still open; 44 strings in owner spot-listen queue. | `content/audio/`, `tools/tts-bakeoff/assemble_irish_inventory.py`, `tools/tts-bakeoff/build-production-audio.py`, `ios/AnTuras/Resources/Audio/`, `docs/MEDIA-AUDIT.md`, `STATUS.md` |
 | 2026-07-31 | **Shared activity shell (rebuild plan step 4) — Composer re-score ACCEPT + Grok PASS.** Punch list S4-1–C3 cleared: recovery resigns typing focus so the field stays hittable; chapter-menu scroll proves interrupt→C3; `CountyActivityShellUITests` 3/3 pass (incl. AX5). Prior REJECT superseded for step-4 acceptance. Unblocks schema/foundation. Working tree uncommitted. | `ios/AnTuras/CountyExerciseSystem.swift`, `ios/AnTurasUITests/CountyActivityShellUITests.swift`, `docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md`, `GROK-COHERENCE-activity-shell-2026-07-31.md`, `STATUS.md` |
 | 2026-07-31 | **Composer activity-shell scorecard — REJECT.** Step-4 shape present (`interrupt` on disappear/background, `beginRecovery`, centralised announce/focus) and freeze walk + 49 engine/freeze unit tests still pass, but both `CountyActivityShellUITests` fail: typing recovery leaves `irish-answer-field` with zero AX frame (D3/D9 P0); interrupt→C3 unproven (menu row miss). Kimi punch list: S4-1 S4-2 S4-3 D3 D9 CG-2 CG-5 C3. Working tree uncommitted. | `docs/activity-quality/SCORECARD-activity-shell-2026-07-31.md`, `ios/AnTuras/CountyExerciseSystem.swift`, `ios/AnTurasUITests/CountyActivityShellUITests.swift`, `STATUS.md` |
@@ -394,45 +420,69 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 | 2026-07-24 | **Offaly, Dublin, and Meath full Story/Learning drafts assembled and simulator-smoke-tested.** The Mayo pattern now produces three non-bundled, six-chapter pre-clearance packs with variable page counts, estimated 49.4-minute Story paths, 30 exercises across all 12 mechanic families, complete 20-word lifecycles, object-specific evidence boundaries, and explicit open review gates. A repeatable builder and regression tests keep the generated drafts current; strict validation and all 38 Python tests pass. A temporary iPhone 17 Pro substitution build rendered representative Story and Learning pages for all three, the visible missing-audio recovery state, largest accessibility text, and a dark-appearance sample. The shipping bundle remains unchanged and passes 36 unit plus the two preview UI tests affected by substitution. This smoke test does not close specialist, full accessibility, device, or promotion gates. | `tools/build_phase5_county_drafts.py`, `tools/tests/test_validate_county_pack.py`, `content/{offaly,dublin,meath}/` |
 | 2026-07-24 | **Offaly, Dublin, and Meath promoted to in-app review drafts.** The full generated packs replace the five-page previews in the app bundle and are labelled **Review draft** wherever release state appears. Reviewers can traverse both complete modes and retain stable page progress. A new runtime guard requires `completeCounty` scope **and** zero open review gates before gold, made objects or scheduled words can be awarded; completing a review draft therefore has no release effects. Mode-opening and completion copy now derives from each pack's real chapter, page, timing, exercise and gate state instead of Rockfleet constants. All 38 Python tests, 36 Swift unit tests and 16 UI tests pass; the three review openings were directly inspected on an iPhone 17 Pro simulator at accessibility text size. | `ios/AnTuras/Resources/CountyStories/`, `CountyStoryPack.swift`, `CountyStoryExperienceView.swift`, `LaunchCountyStories.swift`, `AtlasPrototype.swift` |
 
-## Immediate next steps (learning-mechanics foundation, then rebuild Phases 4–6)
+## Immediate next steps (phrase-family fluency, then foundation / Phases 4–6)
 
-1. **~~Freeze the representative Mayo run~~ (done — D29)** — sequence, retained study
+### Major phase — phrase-family fluency expansion (D30)
+
+1. **~~Lock the phrase-family model~~ (done — D30)** — glossary in `CONTEXT.md`;
+   decision in `docs/DECISIONS.md` D30 / `docs/adr/0001-phrase-family-fluency.md`.
+2. **~~Soft-freeze Mayo’s taught ~20~~ (done for this phase)** — storyboard/pack bank
+   stands; atlas headwords stay provisional; no opportunistic orphan adds.
+3. **~~Draft *farraige* B fixture~~ (landed — still needs ACCEPT)** — family at
+   [`content/mayo/phrase-families/farraige.v1.json`](content/mayo/phrase-families/farraige.v1.json);
+   sibling pack `mayo.farraige-family-b`; hear ship-on-sea → build sea-here; three new
+   inventory phrases generated (unreviewed); launch with `--farraige-family-b`. Pedagogue
+   + native QA still open. Do not mutate D29.
+4. **ACCEPT the B slice** — craft/coherence on the surround-change construction fixture
+   before adding delayed reuse.
+5. **Second fixture pass — pattern C** — delayed reuse of another *farraige* family
+   member; still fixture-scoped until pedagogue + native QA.
+6. **Pedagogue + native QA on the *farraige* family** — both required before teaching
+   claims, production promotion, or Mayo densification.
+7. **Densify Mayo** — ~4–6 member families for remaining taught lexemes, gated by
+   exercise demand; then consider other launch counties. Keep vocab growth opportunistic.
+
+### Supporting — learning-mechanics foundation and county gates
+
+8. **~~Freeze the representative Mayo run~~ (done — D29)** — sequence, retained study
    details, and cluster order live in
    [`docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md`](docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md).
-2. **~~Implement clusters A–G for the frozen run~~ (done — Kimi)** — all nine steps
+9. **~~Implement clusters A–G for the frozen run~~ (done — Kimi)** — all nine steps
    operate on the shared shell.
-3. **~~Composer cluster scorecards~~ (done — 2026-07-30)** — all five required clusters
+10. **~~Composer cluster scorecards~~ (done — 2026-07-30)** — all five required clusters
    ACCEPT (rollup:
    [`docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md`](docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md)).
-4. **~~Grok coherence review~~ (done — 2026-07-31)** —
+11. **~~Grok coherence review~~ (done — 2026-07-31)** —
    [`docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md);
    craft operate-the-run is complete; residuals ride the foundation gate.
-5. **~~Shared state engine + activity shell (rebuild plan steps 3–4)~~ (done —
-   2026-07-31)** — engine Composer ACCEPT + Grok PASS; shell REJECT then
-   re-score ACCEPT + Grok PASS
-   ([`SCORECARD-activity-shell-rescore-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md)).
-   Persistence of attempt credit stays with steps 6–7/11.
-6. **Harden the authored contract, schema, memory handoff, and validators** — mirror
-   Swift and Python rules, prove deterministic debt-free review behavior, preserve
-   old progress, and add failing fixtures for every family and contract invariant.
-7. **Run the foundation gate** — complete automated transition, schema, persistence,
-   UI, branching, offline, and failure checks plus direct simulator, VoiceOver rotor,
-   appearance, contrast, motion, audio, microphone, keyboard/fada, gallery matrix for
-   C1/C3/C5, residual D5/D2 polish, and physical-device verification. Record the result
-   before spreading the system. Grammar/Greenfield stay parked until this passes.
-8. **Migrate the activity families in bounded groups** — recognition greenfield;
-   construction listen-and-type; contextual use (grammar, radio, production conversation
-   graphs); then **Words you carry** and scheduler-owned mistake review. Each group must
-   pass its gallery and accessibility matrix before the next spreads.
-9. **Migrate one production Mayo slice, then decide whether to spread** — verify both
-   modes, progress preservation, memory events, collection handoff, and optional
-   review. Resume broader county integration only after this slice and the foundation
-   pass without private family-specific exceptions.
-10. **Resume county review and integration only after the foundation passes** — clear
-   Mayo's history, pedagogy, audio, and rights gates; review Offaly, Dublin, and Meath
-   independently; then run the four-county tester-readiness gate.
-11. **Preserve the Phase 2 test record** — add participant count and moderated-session
-   notes if they exist; D20 deliberately does not invent them.
+12. **~~Shared state engine + activity shell (rebuild plan steps 3–4)~~ (done —
+    2026-07-31)** — engine Composer ACCEPT + Grok PASS; shell REJECT then
+    re-score ACCEPT + Grok PASS
+    ([`SCORECARD-activity-shell-rescore-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md)).
+    Persistence of attempt credit stays with steps 13–14/16.
+13. **Harden the authored contract, schema, memory handoff, and validators** — mirror
+    Swift and Python rules, prove deterministic debt-free review behavior, preserve
+    old progress, and add failing fixtures for every family and contract invariant.
+    Extend as needed so packs can reference phrase-family members under the bind rule.
+14. **Run the foundation gate** — complete automated transition, schema, persistence,
+    UI, branching, offline, and failure checks plus direct simulator, VoiceOver rotor,
+    appearance, contrast, motion, audio, microphone, keyboard/fada, gallery matrix for
+    C1/C3/C5, residual D5/D2 polish, and physical-device verification. Record the result
+    before spreading the system. Grammar/Greenfield stay parked until this passes.
+15. **Migrate the activity families in bounded groups** — recognition greenfield;
+    construction listen-and-type; contextual use (grammar, radio, production conversation
+    graphs); then **Words you carry** and scheduler-owned mistake review. Prefer patterns
+    that consume phrase families. Each group must pass its gallery and accessibility
+    matrix before the next spreads.
+16. **Migrate one production Mayo slice, then decide whether to spread** — verify both
+    modes, progress preservation, memory events, collection handoff, and optional
+    review. Resume broader county integration only after this slice and the foundation
+    pass without private family-specific exceptions.
+17. **Resume county review and integration only after the foundation passes** — clear
+    Mayo's history, pedagogy, audio, and rights gates; review Offaly, Dublin, and Meath
+    independently; then run the four-county tester-readiness gate.
+18. **Preserve the Phase 2 test record** — add participant count and moderated-session
+    notes if they exist; D20 deliberately does not invent them.
 
 ### Lower priority (unchanged)
 
@@ -441,7 +491,8 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
    voice agreements before public promotion.
 2. **Generate Irish Cultural Guide clips only for cleared text** — do not QA superseded
    D13 copy; native-speaker review remains required for Irish teaching audio. Treat
-   Trinity/ABAIR partnership work as a post-launch upgrade.
+   Trinity/ABAIR partnership work as a post-launch upgrade. Prefer phrase-family batches
+   over orphan headword expansion.
 3. **Flow / Gemini Omni Batch A** — animate the D28 queue in `docs/MEDIA-AUDIT.md`
    (wired stills first), then Batch B missing stills; recompress shipped loops to ≤2 MB.
 4. **Illustration production recipe** — atlas registers before Chapter 1–3 scene sets.
@@ -461,7 +512,10 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
   evidence, collection, review, calendar, offline, and progress foundations while
   replacing the preview-shaped county content and repetitive learning path. Mayo proves
   one authored sequence with two modes before Offaly, Dublin, and Meath are rebuilt.
-  The phase exits only when all four counties pass the internal tester-readiness gate.
+  Within Phase 3, the **current major workstream** is phrase-family fluency expansion
+  around taught lemmas (exercise design → generate → native QA), with shared-shell
+  foundation hardening as supporting engineering. The phase exits only when all four
+  counties pass the internal tester-readiness gate.
 - **Phase 4 — Launch:** premium subscription to diaspora + re-learners; calendar-aligned
   moments (Seachtain na Gaeilge, St Patrick's Day); grant funding layered on top.
 - **Phase 5 — NI expansion:** gated on Ulster dialect audio (D2) and community
@@ -479,6 +533,8 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 - **Grant-funding strings** — understand before accepting public money (D10).
 - **Irish-language audio upgrade path** — pursue Trinity/ABAIR/established speech-data
   partnerships after launch; Irish Cultural Guide is the initial-launch baseline (D17).
+- **Phrase-family delayed-reuse (C) shape** — after B fixture ACCEPT, whether delayed
+  reuse is free typing, contextual review, or Words you carry (D30 parks this).
 
 ## Resolved (Phase 1 → 2)
 
@@ -497,8 +553,11 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 - **blas.** is shipping fast in the same waters (rigour angle); our differentiation
   is narrative/identity — window is now.
 - Content accuracy: nothing ships publicly without native-speaker review.
+- Cheap TTS can outrun QA and exercise demand: do not bulk-generate phrase families the
+  Learning path cannot play, or unreviewed longer Irish that fails mutations/fadas.
 - Bespoke content cost per chapter remains the business-model risk; four chapters at
-  launch is depth-over-breadth by design (D10).
+  launch is depth-over-breadth by design (D10). Audio generation cost is no longer the
+  primary limiter for Irish teaching clips on Creator tier.
 - Fixed schemas can create the appearance of a complete county while rewarding short
   outlines and repeated mechanics. D22 requires representative-slice proof and
   outcome-based validators before the pattern spreads again.

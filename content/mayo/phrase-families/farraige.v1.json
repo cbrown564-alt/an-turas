@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.farraige",
+  "lexeme_id": "lex.farraige",
+  "citation_form": "farraige",
+  "gloss": "sea",
+  "county": "mayo",
+  "place_grounding": "Clew Bay / Umhaill — the open sea that makes this coast a working world",
+  "status": "fixture_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 first vertical slice. ≤2 invented. B proof: hear one member, build another (surround change). Do not promote into production Mayo or densify other lexemes until pedagogue + native QA and fixture ACCEPT.",
+  "members": [
+    {
+      "id": "farraige.citation",
+      "text": "farraige",
+      "gloss": "sea",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.clew-bay.listen-farraige",
+        "content/mayo/grainne-1593.pack.draft.json"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "farraige.ship-on-sea",
+      "text": "Tá an long ar an bhfarraige.",
+      "gloss": "The ship is on the sea.",
+      "morphology": "lenited after ar an (bhfarraige)",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.power-at-sea.type-sea"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "farraige.sea-here",
+      "text": "Tá an fharraige anseo.",
+      "gloss": "The sea is here.",
+      "morphology": "lenited after an (fharraige); location frame parallel to Tá an caisleán anseo",
+      "source": "invented",
+      "attested_in": [],
+      "invented": true,
+      "place_note": "Clew Bay opening — the sea present on this coast",
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "farraige.where-sea",
+      "text": "Cá bhfuil an fharraige?",
+      "gloss": "Where is the sea?",
+      "morphology": "lenited after an (fharraige); question parallel to Cá bhfuil an caisleán?",
+      "source": "invented",
+      "attested_in": [],
+      "invented": true,
+      "place_note": "Points the learner toward the open water that defines Clew Bay",
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "in_fixture",
+      "fixture_pack_id": "mayo.farraige-family-b",
+      "page_id": "mayo.farraige-family.build-sea-here",
+      "hears_member_id": "farraige.ship-on-sea",
+      "builds_member_id": "farraige.sea-here"
+    },
+    "c_delayed_reuse": {
+      "status": "parked_until_b_accept",
+      "note": "Second fixture pass after surround-change construction ACCEPT (D30)."
+    }
+  }
+}

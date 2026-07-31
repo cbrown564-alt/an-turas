@@ -106,6 +106,27 @@ struct AtlasPrototypeView: View {
                     }
                 }
                 path = [.freezeRun]
+            } else if args.contains("--farraige-family-b"),
+                      let pack = CountyFarraigeFamilyBFixture.pack() {
+                // D30 phrase-family B proof: surround-change construction fixture.
+                atlas.hasOpenedAtlas = true
+                atlas.storyInProgress = true
+                if args.contains("--fresh-county-pack") {
+                    atlas.countyStoryModes.removeValue(forKey: pack.id)
+                    atlas.activeCountyPageIDs.removeValue(forKey: pack.id)
+                    atlas.completedCountyPageIDs.removeValue(forKey: pack.id)
+                    atlas.clearRunRecords(for: pack)
+                }
+                _ = atlas.begin(pack, mode: .learning)
+                if let pageFlag = args.firstIndex(of: "--page"),
+                   args.indices.contains(pageFlag + 1),
+                   pack.page(id: args[pageFlag + 1]) != nil {
+                    atlas.setActivePage(args[pageFlag + 1], in: pack)
+                    if !args.contains("--completed-page") {
+                        atlas.completedCountyPageIDs[pack.id, default: []].removeAll { $0 == args[pageFlag + 1] }
+                    }
+                }
+                path = [.farraigeFamilyB]
             } else if args.contains("--exercise-gallery") {
                 atlas.hasOpenedAtlas = true
                 path = [.exerciseGallery]
@@ -285,6 +306,20 @@ struct AtlasPrototypeView: View {
                     }
                 )
             }
+        case .farraigeFamilyB:
+            if let pack = CountyFarraigeFamilyBFixture.pack() {
+                CountyStoryExperienceView(
+                    pack: pack,
+                    onOpenEvidence: { path.append(.evidence) },
+                    onExit: {
+                        atlas.hasOpenedAtlas = true
+                        atlas.storyInProgress = false
+                        atlas.tab = .island
+                        atlas.shouldFocusOpeningRoad = true
+                        path.removeAll()
+                    }
+                )
+            }
         case .exerciseGallery:
             CountyExerciseGalleryView()
         case .firstTakeaway:
@@ -372,6 +407,7 @@ enum AtlasRoute: Hashable {
     case grainnePerson
     case countyPack(String)
     case freezeRun
+    case farraigeFamilyB
     case exerciseGallery
     case firstTakeaway
     case evidence

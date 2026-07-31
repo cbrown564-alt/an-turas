@@ -144,7 +144,11 @@ def exercise(
     estimated_seconds: int = 72,
 ) -> dict:
     resources: list[str] = []
-    if family in AUDIO_FAMILIES or authored_use == AUDIO_PROMPTED_CONSTRUCTION:
+    if (
+        family in AUDIO_FAMILIES
+        or authored_use == AUDIO_PROMPTED_CONSTRUCTION
+        or (family == "conversation" and audio_text)
+    ):
         resources.append("audio.exercise." + page_id.replace(".", "-"))
     return {
         "id": page_id,
@@ -211,20 +215,23 @@ def assemble(spec: dict) -> dict:
             "id": audio_word_id(word["ga"]),
             "kind": "audio",
             "value": word["ga"],
-            "status": "pending-native-qa",
+            "status": "bundled",
         }
         for word in spec["targetWords"]
     )
     for page in pages:
         payload = page["exercise"]
-        if payload and (payload["family"] in AUDIO_FAMILIES
-                        or payload.get("authoredUse") == AUDIO_PROMPTED_CONSTRUCTION):
+        if payload and (
+            payload["family"] in AUDIO_FAMILIES
+            or payload.get("authoredUse") == AUDIO_PROMPTED_CONSTRUCTION
+            or (payload["family"] == "conversation" and payload.get("audioText"))
+        ):
             resources.append(
                 {
                     "id": page["resourceIDs"][0],
                     "kind": "audio",
                     "value": payload["audioText"],
-                    "status": "pending-native-qa",
+                    "status": "bundled",
                 }
             )
 
@@ -247,7 +254,7 @@ def assemble(spec: dict) -> dict:
         "schemaVersion": 2,
         "pack": {
             "id": spec["id"],
-            "revision": 1,
+            "revision": 2,
             "scope": "completeCounty",
             "title": spec["title"],
             "presentation": spec["presentation"],
@@ -632,7 +639,7 @@ def offaly_spec() -> dict:
             "Place the action in the site you have just entered.",
             family="conversation",
             objective="Produce a supported learning sentence in response to a place question.",
-            prompt="A guide asks: Cad atá tú a dhéanamh anseo? Choose the answer: I am learning here.",
+            prompt="An bhfuil tú ag foghlaim?",
             answer="Tá mé ag foghlaim anseo.",
             lexemes=("foghlaim", "anseo"),
             feedback="Tá mé ag foghlaim anseo — the activity and the place stay together.",
@@ -645,6 +652,7 @@ def offaly_spec() -> dict:
             ],
             translation="I am learning here.",
             model_text="Tá mé ag foghlaim anseo.",
+            audio_text="An bhfuil tú ag foghlaim?",
         ),
         exercise(
             f"{c2}.sequence-settlement",
@@ -1017,7 +1025,7 @@ def offaly_spec() -> dict:
             "Choose the answer that names the material object.",
             family="conversation",
             objective="Respond with a complete sentence naming the stone cross.",
-            prompt="Cad a fheiceann tú?",
+            prompt="Cá bhfuil an chros?",
             answer="Feicim cros chloiche.",
             lexemes=("féach", "cros", "cloch"),
             feedback="Feicim cros chloiche — I see a stone cross.",
@@ -1030,6 +1038,7 @@ def offaly_spec() -> dict:
             ],
             translation="I see a stone cross.",
             model_text="Feicim cros chloiche.",
+            audio_text="Cá bhfuil an chros?",
         ),
         narrative(
             f"{c4}.consequence",
@@ -1837,7 +1846,7 @@ def dublin_spec() -> dict:
             "Choose the answer anchored in the coin story.",
             family="conversation",
             objective="Respond with ainm and rí in a supported exchange.",
-            prompt="Cad is ainm don rí?",
+            prompt="Cé hé an rí?",
             answer="Sihtric is ainm don rí.",
             lexemes=("ainm", "rí"),
             feedback="Sihtric is ainm don rí — the named ruler remains the object anchor.",
@@ -1850,6 +1859,7 @@ def dublin_spec() -> dict:
             ],
             translation="Sihtric is the king's name.",
             model_text="Sihtric is ainm don rí.",
+            audio_text="Cé hé an rí?",
         ),
         narrative(
             f"{c2}.evidence-limit",
@@ -2235,7 +2245,7 @@ def dublin_spec() -> dict:
             "Choose the answer that follows issue into circulation.",
             family="conversation",
             objective="Respond with chuaigh and pingin in a complete sentence.",
-            prompt="Cár chuaigh an phingin?",
+            prompt="Téigh ar ais go dtí an chathair.",
             answer="Chuaigh an phingin ón mionta go dtí an margadh.",
             lexemes=("chuaigh", "pingin", "margadh"),
             feedback="The answer moves the issued penny from mint to market.",
@@ -2248,6 +2258,7 @@ def dublin_spec() -> dict:
             ],
             translation="The penny went from the mint to the market.",
             model_text="Chuaigh an phingin ón mionta go dtí an margadh.",
+            audio_text="Téigh ar ais go dtí an chathair.",
         ),
         exercise(
             f"{c4}.type-past",
@@ -3134,6 +3145,7 @@ def meath_spec() -> dict:
             ],
             translation="I have a copy of the grant.",
             model_text="Tá cóip den deontas agam.",
+            audio_text="Cad atá agat?",
         ),
         exercise(
             f"{c2}.sequence-claim",
@@ -3476,7 +3488,7 @@ def meath_spec() -> dict:
             "Choose the answer tied to the fortified house.",
             family="conversation",
             objective="Use cónaí and teach in a complete response.",
-            prompt="Cá bhfuil cónaí orthu?",
+            prompt="An bhfuil cónaí ort anseo?",
             answer="Tá cónaí orthu sa teach.",
             lexemes=("cónaí", "teach"),
             feedback="Tá cónaí orthu sa teach — the fortification remains inhabited.",
@@ -3489,6 +3501,7 @@ def meath_spec() -> dict:
             ],
             translation="They live in the house.",
             model_text="Tá cónaí orthu sa teach.",
+            audio_text="An bhfuil cónaí ort anseo?",
         ),
         exercise(
             f"{c4}.type-position",

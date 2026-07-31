@@ -228,6 +228,12 @@
         "kind": "image",
         "value": "mayo-rockfleet-sea-surge",
         "status": "production-keyframe"
+      },
+      {
+        "id": "audio.inventory.caa-bhfuil-an-caisleaan",
+        "kind": "audio",
+        "value": "Cá bhfuil an caisleán?",
+        "status": "bundled"
       }
     ],
     "reviewGates": [
@@ -760,12 +766,13 @@
             "estimatedSeconds": 70,
             "introducedLexemeIDs": [],
             "resourceIDs": [
-              "pattern.ta-anseo"
+              "pattern.ta-anseo",
+              "audio.inventory.caa-bhfuil-an-caisleaan"
             ],
             "exercise": {
               "family": "conversation",
               "objective": "Use the castle sentence as a relevant dialogue turn.",
-              "prompt": "Cad atá anseo? Choose the complete answer.",
+              "prompt": "Cá bhfuil an caisleán? Choose the complete answer.",
               "answer": "Tá an caisleán anseo.",
               "options": [
                 {
@@ -791,7 +798,7 @@
               "pairs": [],
               "sentenceTemplate": null,
               "translation": "The castle is here.",
-              "audioText": null,
+              "audioText": "Cá bhfuil an caisleán?",
               "modelText": "Tá an caisleán anseo.",
               "feedback": "The reply names the place and completes the thought.",
               "hint": "Use Tá … anseo to say what is here.",

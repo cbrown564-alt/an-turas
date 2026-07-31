@@ -61,19 +61,6 @@ struct CountyActivityResponse: Equatable {
     }
 }
 
-/// The declared completion-evidence kinds from the rebuild plan's authored
-/// learning contract. Raw values are the future schema vocabulary: runtime
-/// and validators must share this one list.
-enum CountyCompletionEvidence: String, CaseIterable, Codable, Equatable {
-    case correctSelection
-    case correctConstruction
-    case correctedConstruction
-    case reconstructedResponse
-    case validDialogueTurn
-    case orderedSequence
-    case completedRecordCompare
-}
-
 /// Support narrows or restructures the same objective; neither kind completes
 /// the exercise by itself.
 enum CountyActivitySupport: String, Equatable {

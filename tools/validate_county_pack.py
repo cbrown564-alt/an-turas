@@ -3,13 +3,18 @@
 
 This mirrors the runtime Swift validator in
 ``ios/AnTuras/CountyStoryPack.swift`` (``CountyStoryPackValidator``) so a pack can
-be checked without a simulator build, and adds the two enforcement rules the
-rebuild plan requires but the runtime guard does not yet implement:
+be checked without a simulator build — including the authored learning-contract
+rules (rebuild plan, "Automated enforcement"), which fire wherever an exercise
+carries a ``learningContract`` and keep identical error codes on both sides —
+and adds the enforcement rules the rebuild plan requires but the runtime guard
+does not implement:
 
 * every target word of a ``completeCounty`` pack must carry a full four-stage
   lifecycle (introduced -> heard -> produced -> reused);
 * every lexeme id referenced by the pack must belong to the twenty-word
-  contract, under the ``lex.<ga with fadas folded>`` convention.
+  contract, under the ``lex.<ga with fadas folded>`` convention;
+* every spoken Irish string used for playback must belong to the frozen
+  ElevenLabs inventory (``content/audio/irish-inventory-v1.json``).
 
 The runtime Swift validator stays the install-time guard; this is the authoring
 and CI gate. Both are tested against the same real packs, so they cannot silently
@@ -31,6 +36,8 @@ from pathlib import Path
 
 SCHEMA_VERSION = 2
 TARGET_WORD_COUNT = 20
+REPO_ROOT = Path(__file__).resolve().parents[1]
+IRISH_INVENTORY_PATH = REPO_ROOT / "content/audio/irish-inventory-v1.json"
 
 # D27 containers: these host or end activities rather than being a way to answer, so
 # they count toward the percentage quotas but never toward family diversity (mirror of
@@ -51,7 +58,86 @@ ACTIVE_PRODUCTION_FAMILIES = {
 # Families that must carry bundled audio to run.
 AUDIO_FAMILIES = {"listenChoose", "recordCompare"}
 
+# --- Shared contract vocabulary -------------------------------------------
+# Keep these in sync with ios/AnTuras/Resources/Fixtures/contract-enums.json
+# (parity-tested) and with the runtime enums in ios/AnTuras/CountyStoryPack.swift
+# and ios/AnTuras/CountyActivityStateEngine.swift.
+
+# Families whose learner action answers with target language. Conversation is a
+# D27 distribution container, but its learner turns are a response method, so it
+# lists here; completion and contextual review host or end activities without
+# their own answer method.
+RESPONSE_FAMILIES = frozenset(
+    {
+        "listenChoose",
+        "sentenceConstruction",
+        "fillGap",
+        "matching",
+        "freeTyping",
+        "readRespond",
+        "recordCompare",
+        "grammarDiscovery",
+        "conversation",
+    }
+)
+PURE_CONTAINERS = frozenset({"completion", "contextualReview"})
+AUTHORED_USES = ("ordering", "audioPrompted", "delayedRecall")
+TARGET_CAPABILITIES = frozenset(
+    {"recognised", "recalled", "produced", "interpreted", "spokenForComparison"}
+)
+COMPLETION_EVIDENCE_KINDS = frozenset(
+    {
+        "correctSelection",
+        "correctConstruction",
+        "correctedConstruction",
+        "reconstructedResponse",
+        "validDialogueTurn",
+        "orderedSequence",
+        "completedRecordCompare",
+    }
+)
+MEMORY_EVENT_KINDS = frozenset({"success", "struggle", "hint", "recovery"})
+
+# Families whose contract must name diagnostic cases: sentence construction,
+# free typing, and the typed form of fill-in-the-blank (no options).
+CONSTRUCTED_RESPONSE_FAMILIES = {"sentenceConstruction", "freeTyping"}
+
+# The completion-evidence kinds an authored contract may declare per family —
+# the adapter's mapping widened to the response methods each family offers
+# (mirror of CountyExerciseFamily.compatibleCompletionEvidence in Swift). The
+# completion container states capabilities, so it supports no target evidence.
+FAMILY_COMPLETION_EVIDENCE = {
+    "listenChoose": {"correctSelection"},
+    "readRespond": {"correctSelection"},
+    "grammarDiscovery": {"correctSelection"},
+    "fillGap": {"correctSelection", "correctConstruction"},
+    "sentenceConstruction": {"correctConstruction", "orderedSequence"},
+    "freeTyping": {"correctConstruction"},
+    "matching": {"reconstructedResponse"},
+    "conversation": {"validDialogueTurn"},
+    "recordCompare": {"completedRecordCompare"},
+    "contextualReview": {"correctSelection", "correctedConstruction"},
+    "completion": set(),
+}
+
 _FADA = str.maketrans("áéíóúÁÉÍÓÚ", "aeiouaeiou")
+_inventory_texts: set[str] | None = None
+
+
+def load_irish_inventory_texts() -> set[str] | None:
+    """Return frozen inventory strings, or None when the inventory file is absent."""
+    global _inventory_texts
+    if _inventory_texts is not None:
+        return _inventory_texts
+    if not IRISH_INVENTORY_PATH.exists():
+        return None
+    payload = json.loads(IRISH_INVENTORY_PATH.read_text())
+    _inventory_texts = {
+        entry["text"]
+        for entry in payload.get("entries", [])
+        if isinstance(entry.get("text"), str) and entry["text"].strip()
+    }
+    return _inventory_texts
 
 
 def lexeme_id(ga: str) -> str:
@@ -110,6 +196,110 @@ def _validate_conversation_graph(page_id: str, graph: dict) -> None:
         )
 
 
+def _fold_fada(text: str) -> str:
+    """Case-insensitive, fada-folded comparison form (mirror of
+    ``CountyStoryPackValidator.foldingFadas`` in Swift)."""
+    return text.translate(_FADA).lower()
+
+
+def _adapted_completion_evidence(exercise: dict) -> str | None:
+    """The evidence the deterministic adapter declares from the family and its
+    authored use (mirror of ``adaptedCompletionEvidence`` in Swift, with no
+    resolved review candidate — the static gate needs only non-nil-ness)."""
+    family = exercise.get("family")
+    if family in ("listenChoose", "fillGap", "readRespond", "grammarDiscovery"):
+        return "correctSelection"
+    if family == "sentenceConstruction":
+        return (
+            "orderedSequence"
+            if exercise.get("authoredUse") == "ordering"
+            else "correctConstruction"
+        )
+    if family == "freeTyping":
+        return "correctConstruction"
+    if family == "matching":
+        return "reconstructedResponse"
+    if family == "conversation":
+        return "validDialogueTurn"
+    if family == "recordCompare":
+        return "completedRecordCompare"
+    if family == "contextualReview":
+        return "correctSelection"
+    return None  # completion states capabilities
+
+
+def _resolved_completion_evidence(exercise: dict) -> str | None:
+    """The authored evidence when a contract declares one, else the adapted
+    family default — one vocabulary either way (mirror of Swift
+    ``resolvedContract``)."""
+    contract = exercise.get("learningContract")
+    if contract is not None:
+        return contract.get("completionEvidence")
+    return _adapted_completion_evidence(exercise)
+
+
+def _resolved_target_ids(exercise: dict) -> set[str]:
+    contract = exercise.get("learningContract")
+    if contract is not None:
+        return {target.get("id") for target in contract.get("targets", [])}
+    return set(exercise.get("lexemeIDs", []))
+
+
+def _validate_learning_contract(page_id: str, exercise: dict, contract: dict) -> None:
+    """Authored learning-contract rules (rebuild plan, "Automated
+    enforcement"), mirrored from ``validateLearningContract`` in
+    ``CountyStoryPack.swift``. Flat pre-contract packs never enter here — the
+    deterministic adapter covers them until the production-slice migration
+    makes contracts mandatory."""
+    misconceptions = contract.get("misconceptions", [])
+    declared = {m.get("id") for m in misconceptions}
+    for option in exercise.get("options", []):
+        if option.get("isCorrect"):
+            continue
+        if option.get("misconceptionID") not in declared:
+            raise PackValidationError(
+                "missingMisconceptionMapping",
+                f"{page_id} distractor {option.get('id')} has no declared misconception mapping",
+            )
+    family = exercise.get("family")
+    constructed = family in CONSTRUCTED_RESPONSE_FAMILIES or (
+        family == "fillGap" and not exercise.get("options")
+    )
+    if constructed and not misconceptions:
+        raise PackValidationError(
+            "missingDiagnosticCases",
+            f"{page_id} constructs a response but names no diagnostic cases",
+        )
+    answer = _fold_fada(exercise.get("answer") or "")
+    hint = _fold_fada(contract.get("hint") or "")
+    if answer and hint and (hint == answer or answer in hint):
+        raise PackValidationError(
+            "answerRevealingHint",
+            f"{page_id} hint reveals the complete accepted answer",
+        )
+    target_ids = [target.get("id") for target in contract.get("targets", [])]
+    recovery_targets = (contract.get("recovery") or {}).get("targetIDs")
+    if recovery_targets is not None and set(recovery_targets) != set(target_ids):
+        raise PackValidationError(
+            "targetChangingRecovery",
+            f"{page_id} recovery changes the declared target set",
+        )
+    evidence = contract.get("completionEvidence")
+    if evidence is not None and evidence not in FAMILY_COMPLETION_EVIDENCE.get(family, set()):
+        raise PackValidationError(
+            "unsupportedCompletionEvidence",
+            f"{page_id} declares {evidence}, which {family} cannot produce",
+        )
+    lexemes = set(exercise.get("lexemeIDs", []))
+    off_target = [target for target in target_ids if target not in lexemes]
+    if off_target:
+        raise PackValidationError(
+            "offTargetMemoryCredit",
+            f"{page_id} credits memory to target(s) the exercise does not target: "
+            f"{', '.join(off_target)}",
+        )
+
+
 @dataclass
 class PackReport:
     pack_id: str
@@ -124,6 +314,16 @@ class PackReport:
     evidence_reference_count: int
     open_review_gates: list[str]
     word_lifecycle: list[tuple[str, bool]] = field(default_factory=list)
+    # Exercises carrying an authored learning contract versus contracts the
+    # deterministic adapter derives from the flat fields.
+    contract_authored: int = 0
+    contract_adapted: int = 0
+    # Distractors mapped to a named misconception, over all distractors.
+    distractors_mapped: int = 0
+    distractor_count: int = 0
+    # Completion-evidence kinds the pack declares (authored) or derives
+    # (adapted), sorted.
+    completion_evidence_kinds: list[str] = field(default_factory=list)
 
 
 def validate(envelope: dict) -> PackReport:
@@ -218,6 +418,8 @@ def validate(envelope: dict) -> PackReport:
     learning_pages = [
         p for p in all_pages if _visibility_includes(p.get("visibility"), "learning")
     ]
+    pages_by_id = {p.get("id"): p for p in all_pages}
+    all_exercises = [p["exercise"] for p in all_pages if p.get("exercise")]
     introduced: set[str] = set()
     for page in learning_pages:
         if page.get("kind") == "exercise":
@@ -271,7 +473,79 @@ def validate(envelope: dict) -> PackReport:
                     "invalidReviewPayload",
                     f"{page.get('id')} has no authored re-entry candidates (C3)",
                 )
+            # Authored learning-contract rules (rebuild plan, "Automated
+            # enforcement"). Flat pre-contract packs never enter here — the
+            # deterministic adapter covers them until the production-slice
+            # migration makes contracts mandatory.
+            contract = exercise.get("learningContract")
+            if contract is not None:
+                _validate_learning_contract(page.get("id"), exercise, contract)
+            # C3: a review candidate must trace its target back to the origin
+            # page's exercise.
+            for candidate in exercise.get("reviewCandidates") or []:
+                origin = pages_by_id.get(candidate.get("pageID")) or {}
+                origin_exercise = origin.get("exercise")
+                embedded = candidate.get("exercise") or {}
+                if origin_exercise is None or set(embedded.get("lexemeIDs", [])) != set(
+                    origin_exercise.get("lexemeIDs", [])
+                ):
+                    raise PackValidationError(
+                        "untraceableReviewTarget",
+                        f"{page.get('id')} candidate {candidate.get('id')} cannot trace "
+                        "its target back to the origin exercise (C3)",
+                    )
+            # C5: a stated capability needs completed-target evidence behind it.
+            # Conservative heuristic: a claim passes when any other exercise
+            # shares a declared target and declares any completion evidence —
+            # capability-to-evidence mapping is fuzzy, so when in doubt the
+            # claim stands.
+            if exercise.get("family") == "completion" and exercise.get("capabilities"):
+                claimed = _resolved_target_ids(exercise)
+                if claimed:
+                    supported = any(
+                        other is not exercise
+                        and _resolved_completion_evidence(other) is not None
+                        and claimed & _resolved_target_ids(other)
+                        for other in all_exercises
+                    )
+                    if not supported:
+                        raise PackValidationError(
+                            "unsupportedCapabilityClaim",
+                            f"{page.get('id')} claims a capability no completed-target "
+                            "evidence supports (C5)",
+                        )
         introduced.update(page.get("introducedLexemeIDs", []))
+
+    # Bind rule: every spoken Irish string used for playback must already exist in
+    # the frozen ElevenLabs inventory (content/audio/irish-inventory-v1.json).
+    inventory = load_irish_inventory_texts()
+    if inventory is not None:
+        spoken: list[tuple[str, str]] = []
+        for resource in pack.get("resources", []):
+            if resource.get("kind") != "audio":
+                continue
+            value = resource.get("value")
+            if isinstance(value, str) and value.strip():
+                spoken.append((f"resource:{resource.get('id')}", value.strip()))
+
+        def collect_audio_text(obj: object, trail: str) -> None:
+            if isinstance(obj, dict):
+                value = obj.get("audioText")
+                if isinstance(value, str) and value.strip():
+                    spoken.append((trail or "audioText", value.strip()))
+                for key, child in obj.items():
+                    collect_audio_text(child, f"{trail}.{key}" if trail else key)
+            elif isinstance(obj, list):
+                for index, child in enumerate(obj):
+                    collect_audio_text(child, f"{trail}[{index}]")
+
+        collect_audio_text(pack, "")
+        for source, text in spoken:
+            if text not in inventory:
+                raise PackValidationError(
+                    "audioNotInInventory",
+                    f"{source} uses {text!r}, which is not in the frozen Irish inventory",
+                )
 
     # Lifecycle ordering, on the flat page order across chapters.
     ordered_ids = [p.get("id") for p in all_pages]
@@ -408,6 +682,13 @@ def _build_report(pack, resources, all_pages, contract_lexemes) -> PackReport:
         lid = lexeme_id(word.get("ga"))
         word_lifecycle.append((word.get("ga"), lid in lifecycle_ids))
 
+    distractors = [
+        option
+        for ex in exercises
+        for option in ex.get("options", [])
+        if not option.get("isCorrect")
+    ]
+
     return PackReport(
         pack_id=pack.get("id"),
         scope=pack.get("scope"),
@@ -421,6 +702,13 @@ def _build_report(pack, resources, all_pages, contract_lexemes) -> PackReport:
         evidence_reference_count=sum(1 for r in referenced if r.get("kind") in ("evidence", "source")),
         open_review_gates=[g.get("title") for g in pack.get("reviewGates", []) if g.get("status") != "complete"],
         word_lifecycle=word_lifecycle,
+        contract_authored=sum(1 for ex in exercises if ex.get("learningContract") is not None),
+        contract_adapted=sum(1 for ex in exercises if ex.get("learningContract") is None),
+        distractors_mapped=sum(1 for o in distractors if o.get("misconceptionID") is not None),
+        distractor_count=len(distractors),
+        completion_evidence_kinds=sorted(
+            {e for e in (_resolved_completion_evidence(ex) for ex in exercises) if e}
+        ),
     )
 
 
@@ -439,6 +727,19 @@ def format_report(report: PackReport) -> str:
     missing = [ga for ga, covered in report.word_lifecycle if not covered]
     if missing and report.scope == "completeCounty":
         lines.append(f"      missing: {', '.join(missing)}")
+    total_contracts = report.contract_authored + report.contract_adapted
+    if total_contracts:
+        lines.append(
+            f"  Contract       {report.contract_authored} authored, "
+            f"{report.contract_adapted} adapted (of {total_contracts} exercises)"
+        )
+    if report.distractor_count:
+        lines.append(
+            f"  Diagnostics    {report.distractors_mapped}/{report.distractor_count} "
+            "distractors mapped to misconceptions"
+        )
+    if report.completion_evidence_kinds:
+        lines.append(f"  Evidence kinds {', '.join(report.completion_evidence_kinds)}")
     lines.append(f"  Audio          {report.required_audio_count} references"
                  + (f", {len(report.missing_audio_ids)} not yet bundled" if report.missing_audio_ids else ""))
     if report.missing_audio_ids:

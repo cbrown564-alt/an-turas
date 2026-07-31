@@ -194,6 +194,10 @@ struct CountyExerciseOption: Identifiable, Codable, Equatable {
     let text: String
     let isCorrect: Bool
     let rationale: String
+    /// The named misconception this distractor tests, when the exercise's
+    /// learning contract declares one. Absent on correct options and on flat
+    /// pre-contract packs.
+    let misconceptionID: String?
 }
 
 struct CountyExercisePair: Identifiable, Codable, Equatable {
@@ -357,6 +361,209 @@ struct CountyExercise: Codable, Equatable {
     let capabilities: [CountyCompletionCapability]?
     /// C3 authored re-entry targets, selected by the run's struggle record.
     let reviewCandidates: [CountyReviewCandidate]?
+    /// The authored learning contract. Absent on flat pre-contract packs;
+    /// `resolvedContract` adapts one from the flat fields instead.
+    let learningContract: CountyLearningContract?
+}
+
+// MARK: - Authored learning contract (D27, rebuild plan step 5)
+
+/// The declared completion-evidence kinds from the rebuild plan's authored
+/// learning contract. Raw values are the schema vocabulary: payload, engine,
+/// and validators share this one list.
+enum CountyCompletionEvidence: String, CaseIterable, Codable, Equatable {
+    case correctSelection
+    case correctConstruction
+    case correctedConstruction
+    case reconstructedResponse
+    case validDialogueTurn
+    case orderedSequence
+    case completedRecordCompare
+}
+
+/// Whether a target is being recognised, recalled, produced, interpreted, or
+/// spoken for comparison (rebuild plan, "Target language").
+enum CountyTargetCapability: String, Codable, CaseIterable, Equatable {
+    case recognised
+    case recalled
+    case produced
+    case interpreted
+    case spokenForComparison
+}
+
+struct CountyContractTarget: Identifiable, Codable, Equatable {
+    let id: String
+    let capability: CountyTargetCapability
+}
+
+/// One plausible confusion the exercise tests, with its plain-language
+/// diagnostic. Choice distractors point here through `misconceptionID`;
+/// constructed responses name their diagnostic cases and keep a fallback for
+/// an unclassified response.
+struct CountyMisconception: Identifiable, Codable, Equatable {
+    let id: String
+    let rationale: String
+    let feedback: String
+}
+
+/// A supported version of the same objective, including the response the
+/// learner must still make after support.
+struct CountyRecoveryContract: Codable, Equatable {
+    let guidance: String
+    let requiredResponse: String
+    /// Declared only when recovery narrows the target set; absent means the
+    /// recovery works the contract's targets unchanged. A present but
+    /// different set fails `targetChangingRecovery`.
+    let targetIDs: [String]?
+
+    init(guidance: String, requiredResponse: String, targetIDs: [String]? = nil) {
+        self.guidance = guidance
+        self.requiredResponse = requiredResponse
+        self.targetIDs = targetIDs
+    }
+}
+
+/// Why an exercise's response data exists and what completion means (rebuild
+/// plan, "Authored learning contract"). The runtime reads the declared
+/// contract only — it never infers pedagogy from family or display copy (D27).
+/// Packs authored before the contract carry the flat fields instead; the
+/// deterministic adapter below derives the same shape, so authored and adapted
+/// contracts share one runtime path.
+struct CountyLearningContract: Codable, Equatable {
+    let objective: String
+    let targets: [CountyContractTarget]
+    let misconceptions: [CountyMisconception]
+    let successFeedback: String
+    let hint: String
+    let recovery: CountyRecoveryContract
+    /// `nil` for containers whose completion states capabilities rather than
+    /// target-language evidence.
+    let completionEvidence: CountyCompletionEvidence?
+}
+
+extension CountyExerciseFamily {
+    /// The capability the adapter assigns a target when no authored contract
+    /// declares one.
+    var adaptedTargetCapability: CountyTargetCapability {
+        switch self {
+        case .listenChoose, .fillGap, .matching, .completion:
+            return .recognised
+        case .readRespond, .grammarDiscovery:
+            return .interpreted
+        case .sentenceConstruction, .conversation:
+            return .produced
+        case .freeTyping, .contextualReview:
+            return .recalled
+        case .recordCompare:
+            return .spokenForComparison
+        }
+    }
+
+    /// The completion evidence the adapter declares from the family and its
+    /// authored use — the mapping the shell inferred at render time before the
+    /// contract landed. The completion container states capabilities, so it
+    /// declares no target evidence.
+    func adaptedCompletionEvidence(
+        authoredUse: String?,
+        reviewCandidate: CountyReviewCandidate?
+    ) -> CountyCompletionEvidence? {
+        switch self {
+        case .listenChoose, .fillGap, .readRespond, .grammarDiscovery:
+            return .correctSelection
+        case .sentenceConstruction:
+            return authoredUse == "ordering" ? .orderedSequence : .correctConstruction
+        case .freeTyping:
+            return .correctConstruction
+        case .matching:
+            return .reconstructedResponse
+        case .conversation:
+            return .validDialogueTurn
+        case .recordCompare:
+            return .completedRecordCompare
+        case .contextualReview:
+            return reviewCandidate?.exercise.family == .freeTyping ? .correctedConstruction : .correctSelection
+        case .completion:
+            return nil
+        }
+    }
+
+    /// The completion-evidence kinds an authored contract may declare for this
+    /// family — the adapter's mapping widened to the response methods the
+    /// family actually offers (a typed gap constructs where a choice-backed
+    /// gap selects; an ordering use sequences). The completion container
+    /// states capabilities, so it supports no target evidence. Mirrors
+    /// `FAMILY_COMPLETION_EVIDENCE` in tools/validate_county_pack.py.
+    var compatibleCompletionEvidence: Set<CountyCompletionEvidence> {
+        switch self {
+        case .listenChoose, .readRespond, .grammarDiscovery:
+            return [.correctSelection]
+        case .fillGap:
+            return [.correctSelection, .correctConstruction]
+        case .sentenceConstruction:
+            return [.correctConstruction, .orderedSequence]
+        case .freeTyping:
+            return [.correctConstruction]
+        case .matching:
+            return [.reconstructedResponse]
+        case .conversation:
+            return [.validDialogueTurn]
+        case .recordCompare:
+            return [.completedRecordCompare]
+        case .contextualReview:
+            return [.correctSelection, .correctedConstruction]
+        case .completion:
+            return []
+        }
+    }
+}
+
+extension CountyLearningContract {
+    /// Deterministic adaptation of the pre-contract flat fields (rebuild plan
+    /// step 5): the single feedback string becomes the fallback misconception
+    /// diagnostic, lexeme ids become targets with a family-derived capability,
+    /// and the family's declared evidence carries over. The same exercise
+    /// always adapts to the same contract.
+    static func adapting(
+        exercise: CountyExercise,
+        reviewCandidate: CountyReviewCandidate? = nil
+    ) -> CountyLearningContract {
+        CountyLearningContract(
+            objective: exercise.objective,
+            targets: exercise.lexemeIDs.map {
+                CountyContractTarget(id: $0, capability: exercise.family.adaptedTargetCapability)
+            },
+            misconceptions: [
+                CountyMisconception(
+                    id: "fallback",
+                    rationale: "A response the authored diagnostics do not name.",
+                    feedback: exercise.feedback
+                ),
+            ],
+            successFeedback: exercise.feedback,
+            hint: exercise.hint,
+            recovery: CountyRecoveryContract(
+                guidance: exercise.recovery,
+                requiredResponse: "Make the response again after the support."
+            ),
+            completionEvidence: exercise.family.adaptedCompletionEvidence(
+                authoredUse: exercise.authoredUse,
+                reviewCandidate: reviewCandidate
+            )
+        )
+    }
+}
+
+extension CountyExercise {
+    /// The authored contract when the payload declares one, otherwise the
+    /// deterministic adaptation of the flat fields — one runtime path either
+    /// way. A contextual review passes its resolved candidate so the adapted
+    /// evidence follows the re-entered task.
+    func resolvedContract(reviewCandidate: CountyReviewCandidate? = nil) -> CountyLearningContract {
+        learningContract ?? CountyLearningContract.adapting(
+            exercise: self,
+            reviewCandidate: reviewCandidate
+        )
+    }
 }
 
 struct CountyStoryPage: Identifiable, Codable, Equatable {
@@ -507,6 +714,16 @@ struct CountyPackReport: Equatable {
     let missingAudioIDs: [String]
     let evidenceReferenceCount: Int
     let openReviewGates: [String]
+    /// Exercises carrying an authored learning contract versus contracts the
+    /// deterministic adapter derives from the flat fields.
+    let contractAuthoredCount: Int
+    let contractAdaptedCount: Int
+    /// Distractors mapped to a named misconception, over all distractors.
+    let distractorsMapped: Int
+    let distractorCount: Int
+    /// The completion-evidence kinds the pack declares (authored) or derives
+    /// (adapted), sorted by raw value.
+    let completionEvidenceKinds: [CountyCompletionEvidence]
 }
 
 enum CountyStoryPackError: LocalizedError, Equatable {
@@ -529,6 +746,14 @@ enum CountyStoryPackError: LocalizedError, Equatable {
     case invalidReviewPayload(String)
     case legacyBeatStructure
     case exerciseDistribution(String)
+    case missingMisconceptionMapping(String)
+    case missingDiagnosticCases(String)
+    case answerRevealingHint(String)
+    case targetChangingRecovery(String)
+    case unsupportedCompletionEvidence(String)
+    case offTargetMemoryCredit(String)
+    case untraceableReviewTarget(String)
+    case unsupportedCapabilityClaim(String)
 
     var errorDescription: String? {
         switch self {
@@ -551,6 +776,14 @@ enum CountyStoryPackError: LocalizedError, Equatable {
         case .invalidReviewPayload(let id): return "Contextual review \(id) has no authored re-entry candidates (C3)."
         case .legacyBeatStructure: return "The pack still depends on a fixed three-page chapter structure."
         case .exerciseDistribution(let issue): return issue
+        case .missingMisconceptionMapping(let id): return "Exercise \(id) has a distractor with no declared misconception mapping."
+        case .missingDiagnosticCases(let id): return "Constructed-response exercise \(id) declares no diagnostic cases."
+        case .answerRevealingHint(let id): return "Exercise \(id) has a hint that reveals the complete accepted answer."
+        case .targetChangingRecovery(let id): return "Exercise \(id) has a recovery that changes the declared target set."
+        case .unsupportedCompletionEvidence(let id): return "Exercise \(id) declares completion evidence its response method cannot produce."
+        case .offTargetMemoryCredit(let id): return "Exercise \(id) credits memory to a target the exercise does not target."
+        case .untraceableReviewTarget(let id): return "Contextual review \(id) cannot trace a candidate back to its origin exercise (C3)."
+        case .unsupportedCapabilityClaim(let id): return "Completion page \(id) claims a capability no completed-target evidence supports (C5)."
         }
     }
 }
@@ -651,6 +884,40 @@ enum CountyStoryPackValidator {
                    exercise.reviewCandidates?.isEmpty != false {
                     throw CountyStoryPackError.invalidReviewPayload(page.id)
                 }
+                // Authored learning-contract rules (rebuild plan, "Automated
+                // enforcement"). Flat pre-contract packs never enter here — the
+                // deterministic adapter covers them until the production-slice
+                // migration makes contracts mandatory.
+                if let contract = exercise.learningContract {
+                    try validateLearningContract(contract, exercise: exercise, pageID: page.id)
+                }
+                // C3: a review candidate must trace its target back to the
+                // origin page's exercise.
+                for candidate in exercise.reviewCandidates ?? [] {
+                    guard let originLexemes = pack.page(id: candidate.pageID)?.exercise?.lexemeIDs,
+                          Set(candidate.exercise.lexemeIDs) == Set(originLexemes) else {
+                        throw CountyStoryPackError.untraceableReviewTarget(page.id)
+                    }
+                }
+                // C5: a stated capability needs completed-target evidence behind
+                // it. Conservative heuristic: a claim passes when any other
+                // exercise shares a declared target and declares any completion
+                // evidence — capability-to-evidence mapping is fuzzy, so when in
+                // doubt the claim stands.
+                if exercise.family == .completion, exercise.capabilities?.isEmpty == false {
+                    let claimedTargets = Set(exercise.resolvedContract().targets.map(\.id))
+                    if !claimedTargets.isEmpty {
+                        let supported = pack.pages.contains { otherPage in
+                            guard otherPage.id != page.id, let other = otherPage.exercise else { return false }
+                            let contract = other.resolvedContract()
+                            return contract.completionEvidence != nil
+                                && !Set(contract.targets.map(\.id)).isDisjoint(with: claimedTargets)
+                        }
+                        guard supported else {
+                            throw CountyStoryPackError.unsupportedCapabilityClaim(page.id)
+                        }
+                    }
+                }
             }
             introduced.formUnion(page.introducedLexemeIDs)
         }
@@ -713,6 +980,9 @@ enum CountyStoryPackValidator {
         let distribution = Dictionary(grouping: exercises, by: \.family).mapValues(\.count)
         let referencedResources = pack.pages.flatMap(\.resourceIDs).compactMap { resources[$0] }
         let audio = referencedResources.filter { $0.kind == .audio }
+        let distractors = exercises.flatMap { $0.options.filter { !$0.isCorrect } }
+        let evidenceKinds = Set(exercises.compactMap { $0.resolvedContract().completionEvidence })
+            .sorted { $0.rawValue < $1.rawValue }
         return CountyPackReport(
             storyMinutes: Double(pack.pages(for: .story).reduce(0) { $0 + $1.estimatedSeconds }) / 60,
             learningMinutes: Double(pack.pages(for: .learning).reduce(0) { $0 + $1.estimatedSeconds }) / 60,
@@ -722,8 +992,72 @@ enum CountyStoryPackValidator {
             requiredAudioCount: audio.count,
             missingAudioIDs: audio.filter { $0.status != "bundled" }.map(\.id),
             evidenceReferenceCount: referencedResources.filter { $0.kind == .evidence || $0.kind == .source }.count,
-            openReviewGates: pack.reviewGates.filter { $0.status != "complete" }.map(\.title)
+            openReviewGates: pack.reviewGates.filter { $0.status != "complete" }.map(\.title),
+            contractAuthoredCount: exercises.filter { $0.learningContract != nil }.count,
+            contractAdaptedCount: exercises.filter { $0.learningContract == nil }.count,
+            distractorsMapped: distractors.filter { $0.misconceptionID != nil }.count,
+            distractorCount: distractors.count,
+            completionEvidenceKinds: evidenceKinds
         )
+    }
+
+    /// Authored learning-contract rules (rebuild plan, "Automated
+    /// enforcement"): every distractor maps to a declared misconception, a
+    /// constructed response names diagnostic cases, the hint never reveals the
+    /// whole accepted answer, recovery keeps the declared targets, the declared
+    /// evidence is one the family's response method can produce, and memory
+    /// credit names a target the exercise targets. Mirrors
+    /// `_validate_learning_contract` in tools/validate_county_pack.py.
+    static func validateLearningContract(
+        _ contract: CountyLearningContract,
+        exercise: CountyExercise,
+        pageID: String
+    ) throws {
+        let declared = Set(contract.misconceptions.map(\.id))
+        for option in exercise.options where !option.isCorrect {
+            guard let misconceptionID = option.misconceptionID,
+                  declared.contains(misconceptionID) else {
+                throw CountyStoryPackError.missingMisconceptionMapping(pageID)
+            }
+        }
+        let isConstructedResponse = exercise.family == .sentenceConstruction
+            || exercise.family == .freeTyping
+            || (exercise.family == .fillGap && exercise.options.isEmpty)
+        if isConstructedResponse, contract.misconceptions.isEmpty {
+            throw CountyStoryPackError.missingDiagnosticCases(pageID)
+        }
+        let answer = foldingFadas(exercise.answer)
+        let hint = foldingFadas(contract.hint)
+        if !answer.isEmpty, !hint.isEmpty, hint == answer || hint.contains(answer) {
+            throw CountyStoryPackError.answerRevealingHint(pageID)
+        }
+        if let recoveryTargets = contract.recovery.targetIDs,
+           Set(recoveryTargets) != Set(contract.targets.map(\.id)) {
+            throw CountyStoryPackError.targetChangingRecovery(pageID)
+        }
+        if let evidence = contract.completionEvidence,
+           !exercise.family.compatibleCompletionEvidence.contains(evidence) {
+            throw CountyStoryPackError.unsupportedCompletionEvidence(pageID)
+        }
+        let lexemes = Set(exercise.lexemeIDs)
+        if contract.targets.contains(where: { !lexemes.contains($0.id) }) {
+            throw CountyStoryPackError.offTargetMemoryCredit(pageID)
+        }
+    }
+
+    /// Case-insensitive, fada-folded comparison form — the same convention as
+    /// `_FADA` in tools/validate_county_pack.py.
+    static func foldingFadas(_ text: String) -> String {
+        String(text.lowercased().map { character in
+            switch character {
+            case "á": return "a"
+            case "é": return "e"
+            case "í": return "i"
+            case "ó": return "o"
+            case "ú": return "u"
+            default: return character
+            }
+        })
     }
 
     /// C1 contract: an authored conversation is a finite turn graph with a
@@ -810,11 +1144,32 @@ enum CountyFreezeRunFixture {
     ]
 
     static func pack() -> CountyStoryPack? {
+        CountyFixturePackLoader.pack(id: packID)
+    }
+}
+
+/// D30 phrase-family B proof: hear one *farraige* member, build another.
+/// Sibling fixture — does not mutate the D29 Clew Bay freeze or production Mayo.
+enum CountyFarraigeFamilyBFixture {
+    static let packID = "mayo.farraige-family-b"
+
+    static let stepPageIDs = [
+        "mayo.farraige-family.shoreline",
+        "mayo.farraige-family.build-sea-here",
+    ]
+
+    static func pack() -> CountyStoryPack? {
+        CountyFixturePackLoader.pack(id: packID)
+    }
+}
+
+enum CountyFixturePackLoader {
+    static func pack(id: String) -> CountyStoryPack? {
         let url = Bundle.main.url(
-            forResource: packID,
+            forResource: id,
             withExtension: "json",
             subdirectory: "Fixtures"
-        ) ?? Bundle.main.url(forResource: packID, withExtension: "json")
+        ) ?? Bundle.main.url(forResource: id, withExtension: "json")
         guard let url,
               let data = try? Data(contentsOf: url),
               let envelope = try? JSONDecoder().decode(CountyStoryPackEnvelope.self, from: data) else {

@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "pack": {
     "id": "mayo.grainne-1593",
-    "revision": 7,
+    "revision": 8,
     "scope": "completeCounty",
     "title": "Gráinne Ní Mháille: Clew Bay, London, and return",
     "presentation": {
@@ -220,25 +220,25 @@
         "id": "audio.farraige",
         "kind": "audio",
         "value": "farraige",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.ba",
         "kind": "audio",
         "value": "bá",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.ait",
         "kind": "audio",
         "value": "áit",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.is-as-maigh-eo-me",
         "kind": "audio",
         "value": "Is as Maigh Eo mé.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "evidence.clew-bay-umhaill",
@@ -274,97 +274,97 @@
         "id": "audio.dearthair",
         "kind": "audio",
         "value": "deartháir",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.long",
         "kind": "audio",
         "value": "long",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.ta-an-long-sa-bha",
         "kind": "audio",
         "value": "Tá an long sa bhá.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.caill",
         "kind": "audio",
         "value": "caill",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.na-caill-an-long",
         "kind": "audio",
         "value": "Ná caill an long.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.iarr",
         "kind": "audio",
         "value": "iarr",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.teigh",
         "kind": "audio",
         "value": "téigh",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.tar",
         "kind": "audio",
         "value": "tar",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.teigh-london-iarr",
         "kind": "audio",
         "value": "Téigh go Londain agus iarr freagra.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.ainm",
         "kind": "audio",
         "value": "ainm",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.is-mise-grainne",
         "kind": "audio",
         "value": "Is mise Gráinne.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.freagair",
         "kind": "audio",
         "value": "freagair",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.tabhair",
         "kind": "audio",
         "value": "tabhair",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.aris",
         "kind": "audio",
         "value": "arís",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.costa",
         "kind": "audio",
         "value": "cósta",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.ta-an-caislean-ar-an-gcosta",
         "kind": "audio",
         "value": "Tá an caisleán ar an gcósta.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "evidence.kin-c05-c07",
@@ -530,6 +530,18 @@
         "kind": "image",
         "value": "mayo-rockfleet-sea-surge",
         "status": "production-keyframe"
+      },
+      {
+        "id": "audio.inventory.caa-bhfuil-an-caisleaan",
+        "kind": "audio",
+        "value": "Cá bhfuil an caisleán?",
+        "status": "bundled"
+      },
+      {
+        "id": "audio.inventory.iarr-freagra",
+        "kind": "audio",
+        "value": "Iarr freagra.",
+        "status": "bundled"
       }
     ],
     "reviewGates": [
@@ -1983,12 +1995,13 @@
             "estimatedSeconds": 70,
             "introducedLexemeIDs": [],
             "resourceIDs": [
-              "pattern.ta-anseo"
+              "pattern.ta-anseo",
+              "audio.inventory.caa-bhfuil-an-caisleaan"
             ],
             "exercise": {
               "family": "conversation",
               "objective": "Use the castle sentence as a relevant dialogue turn.",
-              "prompt": "Cad atá anseo? Choose the complete answer.",
+              "prompt": "Cá bhfuil an caisleán? Choose the complete answer.",
               "answer": "Tá an caisleán anseo.",
               "options": [
                 {
@@ -2014,7 +2027,7 @@
               "pairs": [],
               "sentenceTemplate": null,
               "translation": "The castle is here.",
-              "audioText": null,
+              "audioText": "Cá bhfuil an caisleán?",
               "modelText": "Tá an caisleán anseo.",
               "feedback": "The reply names the place and completes the thought.",
               "hint": "Use Tá … anseo to say what is here.",
@@ -3210,11 +3223,13 @@
             "kind": "exercise",
             "estimatedSeconds": 70,
             "introducedLexemeIDs": [],
-            "resourceIDs": [],
+            "resourceIDs": [
+              "audio.inventory.iarr-freagra"
+            ],
             "exercise": {
               "family": "conversation",
               "objective": "Use iarr as the relevant action in a short supported exchange.",
-              "prompt": "Cad a dhéanfaidh sí? Choose: She will ask for an answer.",
+              "prompt": "Iarr freagra. Choose: She will ask for an answer.",
               "answer": "Iarrfaidh sí freagra.",
               "options": [
                 {
@@ -3240,7 +3255,7 @@
               "pairs": [],
               "sentenceTemplate": null,
               "translation": "She will ask for an answer.",
-              "audioText": null,
+              "audioText": "Iarr freagra.",
               "modelText": "Iarrfaidh sí freagra.",
               "feedback": "The exchange keeps the petition's action central: she will ask.",
               "hint": "Choose the line built from iarr.",

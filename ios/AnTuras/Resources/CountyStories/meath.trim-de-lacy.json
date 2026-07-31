@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "pack": {
     "id": "meath.trim-de-lacy",
-    "revision": 1,
+    "revision": 2,
     "scope": "completeCounty",
     "title": "Trim: an old land, a grant and a castle at the ford",
     "presentation": {
@@ -240,157 +240,169 @@
         "id": "audio.word.agam",
         "kind": "audio",
         "value": "agam",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.agat",
         "kind": "audio",
         "value": "agat",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.talamh",
         "kind": "audio",
         "value": "talamh",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.caislean",
         "kind": "audio",
         "value": "caisleán",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.ath",
         "kind": "audio",
         "value": "áth",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.abhainn",
         "kind": "audio",
         "value": "abhainn",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.balla",
         "kind": "audio",
         "value": "balla",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.cloch",
         "kind": "audio",
         "value": "cloch",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.baile",
         "kind": "audio",
         "value": "baile",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.tog",
         "kind": "audio",
         "value": "tóg",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.conai",
         "kind": "audio",
         "value": "cónaí",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.mor",
         "kind": "audio",
         "value": "mór",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.sean",
         "kind": "audio",
         "value": "sean",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.nua",
         "kind": "audio",
         "value": "nua",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.anseo",
         "kind": "audio",
         "value": "anseo",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.ansiud",
         "kind": "audio",
         "value": "ansiúd",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.feach",
         "kind": "audio",
         "value": "féach",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.seas",
         "kind": "audio",
         "value": "seas",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.ainm",
         "kind": "audio",
         "value": "ainm",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.teach",
         "kind": "audio",
         "value": "teach",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.meath-before-the-grant-hear-existing-place",
         "kind": "audio",
         "value": "Tá ainm ar an talamh sean agus tá baile ann.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.meath-grant-hear-possession",
         "kind": "audio",
         "value": "Tá taifead nua agam; cad atá agat? Tóg é.",
-        "status": "pending-native-qa"
+        "status": "bundled"
+      },
+      {
+        "id": "audio.exercise.meath-grant-answer-possession",
+        "kind": "audio",
+        "value": "Cad atá agat?",
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.meath-ford-hear-site",
         "kind": "audio",
         "value": "Tá an t-áth anseo ar an abhainn; tá an baile ansiúd.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.meath-first-fortification-hear-fortification",
         "kind": "audio",
         "value": "Tá cónaí sa teach; seas sa chaisleán.",
-        "status": "pending-native-qa"
+        "status": "bundled"
+      },
+      {
+        "id": "audio.exercise.meath-first-fortification-answer-where-live",
+        "kind": "audio",
+        "value": "An bhfuil cónaí ort anseo?",
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.meath-stone-castle-hear-stone-wall",
         "kind": "audio",
         "value": "Féach ar an mballa mór cloiche.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.meath-town-and-afterlife-speak-present-place",
         "kind": "audio",
         "value": "Féach ar an sean-chaisleán agus ar an mbaile nua.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       }
     ],
     "reviewGates": [
@@ -1206,7 +1218,9 @@
             "kind": "exercise",
             "estimatedSeconds": 72,
             "introducedLexemeIDs": [],
-            "resourceIDs": [],
+            "resourceIDs": [
+              "audio.exercise.meath-grant-answer-possession"
+            ],
             "exercise": {
               "family": "conversation",
               "authoredUse": null,
@@ -1237,7 +1251,7 @@
               "pairs": [],
               "sentenceTemplate": null,
               "translation": "I have a copy of the grant.",
-              "audioText": null,
+              "audioText": "Cad atá agat?",
               "modelText": "Tá cóip den deontas agam.",
               "feedback": "Tá cóip den deontas agam — you have a copy of the grant, not the land it claims.",
               "hint": "Choose the answer about the document in hand.",
@@ -2137,12 +2151,14 @@
             "kind": "exercise",
             "estimatedSeconds": 72,
             "introducedLexemeIDs": [],
-            "resourceIDs": [],
+            "resourceIDs": [
+              "audio.exercise.meath-first-fortification-answer-where-live"
+            ],
             "exercise": {
               "family": "conversation",
               "authoredUse": null,
               "objective": "Use cónaí and teach in a complete response.",
-              "prompt": "Cá bhfuil cónaí orthu?",
+              "prompt": "An bhfuil cónaí ort anseo?",
               "answer": "Tá cónaí orthu sa teach.",
               "options": [
                 {
@@ -2168,7 +2184,7 @@
               "pairs": [],
               "sentenceTemplate": null,
               "translation": "They live in the house.",
-              "audioText": null,
+              "audioText": "An bhfuil cónaí ort anseo?",
               "modelText": "Tá cónaí orthu sa teach.",
               "feedback": "Tá cónaí orthu sa teach — the fortification remains inhabited.",
               "hint": "Choose the answer with cónaí and teach.",

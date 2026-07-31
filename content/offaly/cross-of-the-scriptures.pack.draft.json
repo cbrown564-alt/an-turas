@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "pack": {
     "id": "offaly.cross-of-the-scriptures",
-    "revision": 1,
+    "revision": 2,
     "scope": "completeCounty",
     "title": "The Cross of the Scriptures: river, king and carved prayer",
     "presentation": {
@@ -246,157 +246,169 @@
         "id": "audio.word.abhainn",
         "kind": "audio",
         "value": "abhainn",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.cloch",
         "kind": "audio",
         "value": "cloch",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.cros",
         "kind": "audio",
         "value": "cros",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.ri",
         "kind": "audio",
         "value": "rí",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.mainistir",
         "kind": "audio",
         "value": "mainistir",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.baile",
         "kind": "audio",
         "value": "baile",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.obair",
         "kind": "audio",
         "value": "obair",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.la",
         "kind": "audio",
         "value": "lá",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.anseo",
         "kind": "audio",
         "value": "anseo",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.anois",
         "kind": "audio",
         "value": "anois",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.mor",
         "kind": "audio",
         "value": "mór",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.beag",
         "kind": "audio",
         "value": "beag",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.feach",
         "kind": "audio",
         "value": "féach",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.seas",
         "kind": "audio",
         "value": "seas",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.dean",
         "kind": "audio",
         "value": "déan",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.foghlaim",
         "kind": "audio",
         "value": "foghlaim",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.leigh",
         "kind": "audio",
         "value": "léigh",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.gui",
         "kind": "audio",
         "value": "guí",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.bad",
         "kind": "audio",
         "value": "bád",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.word.bothar",
         "kind": "audio",
         "value": "bóthar",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.offaly-river-road-hear-river",
         "kind": "audio",
         "value": "Tá abhainn, bád agus bóthar anseo.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.offaly-settlement-hear-working-place",
         "kind": "audio",
         "value": "Tá obair sa mhainistir agus tá mé ag foghlaim sa bhaile gach lá.",
-        "status": "pending-native-qa"
+        "status": "bundled"
+      },
+      {
+        "id": "audio.exercise.offaly-settlement-build-learning",
+        "kind": "audio",
+        "value": "An bhfuil tú ag foghlaim?",
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.offaly-king-and-abbot-hear-king",
         "kind": "audio",
         "value": "Déan cros mhór don rí le sonraí beaga.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.offaly-carved-cross-hear-looking",
         "kind": "audio",
         "value": "Seas anseo agus féach ar an gcros chloiche.",
-        "status": "pending-native-qa"
+        "status": "bundled"
+      },
+      {
+        "id": "audio.exercise.offaly-carved-cross-dialogue-object",
+        "kind": "audio",
+        "value": "Cá bhfuil an chros?",
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.offaly-inscription-hear-reading",
         "kind": "audio",
         "value": "Léigh an t-inscríbhinn anois agus guí.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       },
       {
         "id": "audio.exercise.offaly-original-and-replica-speak-whole-place",
         "kind": "audio",
         "value": "Tá an chloch agus an chros anseo anois.",
-        "status": "pending-native-qa"
+        "status": "bundled"
       }
     ],
     "reviewGates": [
@@ -1219,12 +1231,14 @@
             "kind": "exercise",
             "estimatedSeconds": 72,
             "introducedLexemeIDs": [],
-            "resourceIDs": [],
+            "resourceIDs": [
+              "audio.exercise.offaly-settlement-build-learning"
+            ],
             "exercise": {
               "family": "conversation",
               "authoredUse": null,
               "objective": "Produce a supported learning sentence in response to a place question.",
-              "prompt": "A guide asks: Cad atá tú a dhéanamh anseo? Choose the answer: I am learning here.",
+              "prompt": "An bhfuil tú ag foghlaim?",
               "answer": "Tá mé ag foghlaim anseo.",
               "options": [
                 {
@@ -1250,7 +1264,7 @@
               "pairs": [],
               "sentenceTemplate": null,
               "translation": "I am learning here.",
-              "audioText": null,
+              "audioText": "An bhfuil tú ag foghlaim?",
               "modelText": "Tá mé ag foghlaim anseo.",
               "feedback": "Tá mé ag foghlaim anseo — the activity and the place stay together.",
               "hint": "Choose the answer with ag foghlaim and anseo.",
@@ -2237,12 +2251,14 @@
             "kind": "exercise",
             "estimatedSeconds": 72,
             "introducedLexemeIDs": [],
-            "resourceIDs": [],
+            "resourceIDs": [
+              "audio.exercise.offaly-carved-cross-dialogue-object"
+            ],
             "exercise": {
               "family": "conversation",
               "authoredUse": null,
               "objective": "Respond with a complete sentence naming the stone cross.",
-              "prompt": "Cad a fheiceann tú?",
+              "prompt": "Cá bhfuil an chros?",
               "answer": "Feicim cros chloiche.",
               "options": [
                 {
@@ -2268,7 +2284,7 @@
               "pairs": [],
               "sentenceTemplate": null,
               "translation": "I see a stone cross.",
-              "audioText": null,
+              "audioText": "Cá bhfuil an chros?",
               "modelText": "Feicim cros chloiche.",
               "feedback": "Feicim cros chloiche — I see a stone cross.",
               "hint": "Choose the answer with both the object and its material.",

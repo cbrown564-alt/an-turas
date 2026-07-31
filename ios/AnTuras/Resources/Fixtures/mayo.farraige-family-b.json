@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 2,
+  "pack": {
+    "id": "mayo.farraige-family-b",
+    "revision": 1,
+    "scope": "editorialPreview",
+    "title": "Farraige phrase-family B proof (fixture)",
+    "presentation": {
+      "countyGa": "Maigh Eo",
+      "countyEn": "Mayo — farraige family B fixture",
+      "province": "Connacht",
+      "era": "present day",
+      "anchor": "Clew Bay",
+      "question": "Can surround-change construction consume a phrase family?",
+      "opening": "Hear farraige in a ship line, then build a different Clew Bay line that keeps the same lexeme.",
+      "evidenceLimit": "Internal D30 fixture. No historical claims, no county gold, no teaching claims until pedagogue and native audio QA.",
+      "sourceTitle": "D30 phrase-family fluency — B proof",
+      "sourceDetail": "content/mayo/phrase-families/farraige.v1.json — sibling fixture; does not mutate D29.",
+      "artifactTitle": "No artifact",
+      "artifactPrompt": "Fixture runs make no objects.",
+      "tegLevel": "TEG A1 (fixture)",
+      "tegCanDo": "Fixture capabilities only — not an awarded qualification."
+    },
+    "targetWords": [
+      { "ga": "farraige", "en": "sea", "sound": "far-ig-eh", "anchor": "Clew Bay as a maritime world" },
+      { "ga": "long", "en": "ship", "sound": "lung", "anchor": "The fleet that works the sea" },
+      { "ga": "bá", "en": "bay", "sound": "baw", "anchor": "The geography that opens Mayo" },
+      { "ga": "áit", "en": "place", "sound": "awtch", "anchor": "A place that matters" }
+    ],
+    "resources": [
+      { "id": "audio.farraige", "kind": "audio", "value": "farraige", "status": "bundled", "fallbackResourceID": null },
+      { "id": "audio.taa-an-long-ar-an-bhfarraige", "kind": "audio", "value": "Tá an long ar an bhfarraige.", "status": "bundled", "fallbackResourceID": null },
+      { "id": "audio.taa-an-fharraige-anseo", "kind": "audio", "value": "Tá an fharraige anseo.", "status": "bundled", "fallbackResourceID": null }
+    ],
+    "reviewGates": [],
+    "chapters": [
+      {
+        "id": "mayo.farraige-family-b",
+        "title": "Farraige · phrase-family B",
+        "place": "Clew Bay",
+        "pages": [
+          {
+            "id": "mayo.farraige-family.shoreline",
+            "legacyBeatIndex": null,
+            "title": "The sea that names this coast",
+            "context": "Clew Bay · farraige",
+            "body": "On Clew Bay the open water is farraige. The same word returns in different surrounds — on a ship, and as the sea that is here.",
+            "detail": "D30 fixture copy only. Two invented pedagogical surrounds stay unreviewed.",
+            "visibility": "both",
+            "requirement": "optional",
+            "kind": "narrative",
+            "estimatedSeconds": 35,
+            "introducedLexemeIDs": ["lex.farraige"],
+            "resourceIDs": ["audio.farraige"],
+            "exercise": null,
+            "presentation": null,
+            "advanceLabel": "Hear farraige at work",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "mayo.farraige-family.build-sea-here",
+            "legacyBeatIndex": null,
+            "title": "Keep farraige; change the surround",
+            "context": "Tá an long ar an bhfarraige → Tá an fharraige anseo",
+            "body": "Hear the ship on the sea. Build a different Clew Bay line that still uses farraige.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 90,
+            "introducedLexemeIDs": [],
+            "resourceIDs": ["audio.taa-an-long-ar-an-bhfarraige"],
+            "exercise": {
+              "family": "sentenceConstruction",
+              "authoredUse": null,
+              "objective": "Produce a Clew Bay location line with farraige after hearing the lexeme in a ship surround.",
+              "prompt": "Hear the ship on the sea. Build: The sea is here.",
+              "answer": "Tá an fharraige anseo.",
+              "options": [],
+              "tokens": ["Tá", "an", "fharraige", "anseo."],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "The sea is here.",
+              "audioText": "Tá an long ar an bhfarraige.",
+              "modelText": "Tá an fharraige anseo.",
+              "feedback": "Same lexeme, new surround — the sea that is here on this coast.",
+              "hint": "Keep the location frame Tá an … anseo, with farraige lenited after an.",
+              "recovery": "You heard bhfarraige on a ship. Build Tá an fharraige anseo — location, not the ship line.",
+              "lexemeIDs": ["lex.farraige"],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false,
+              "conversation": null,
+              "capabilities": null,
+              "reviewCandidates": null,
+              "learningContract": {
+                "objective": "Produce a Clew Bay location line with farraige after hearing the lexeme in a ship surround.",
+                "targets": [
+                  { "id": "lex.farraige", "capability": "produced" }
+                ],
+                "misconceptions": [
+                  {
+                    "id": "replay-ship-line",
+                    "rationale": "The learner rebuilds the heard ship sentence instead of the location surround.",
+                    "feedback": "That is the ship line you heard. Build the location line: Tá an fharraige anseo."
+                  },
+                  {
+                    "id": "mutation-slip",
+                    "rationale": "The learner drops the lenition required after an.",
+                    "feedback": "After an, farraige becomes fharraige — keep the lenition."
+                  },
+                  {
+                    "id": "fallback",
+                    "rationale": "A response the named misconceptions do not cover.",
+                    "feedback": "Replay the ship line, then build Tá an fharraige anseo."
+                  }
+                ],
+                "successFeedback": "Same lexeme, new surround — the sea that is here on this coast.",
+                "hint": "Keep the location frame Tá an … anseo, with farraige lenited after an.",
+                "recovery": {
+                  "guidance": "You heard bhfarraige on a ship. Build Tá an fharraige anseo — location, not the ship line.",
+                  "requiredResponse": "Build the location line again from the tiles."
+                },
+                "completionEvidence": "correctConstruction"
+              }
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      }
+    ],
+    "completion": {
+      "storyPageIDs": ["mayo.farraige-family.shoreline"],
+      "learningPageIDs": ["mayo.farraige-family.build-sea-here"]
+    },
+    "lifecycle": [],
+    "enforceLearningQuality": false
+  }
+}

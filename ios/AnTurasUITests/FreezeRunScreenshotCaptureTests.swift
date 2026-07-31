@@ -47,25 +47,25 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
 
     func testCaptureChoiceStates() throws {
         let app = launch(["--page", "mayo.clew-bay.listen-farraige", "--appearance", "light"])
-        XCTAssertTrue(app.staticTexts["Hear the sea before you read it"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Tap what you hear"].waitForExistence(timeout: 5))
         shot("01-listen-cold", from: app)
 
         tapButton("island", in: app)
         shot("01-listen-wrong", from: app)
 
         tapButton("castle", in: app)
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
         shot("01-listen-struggle", from: app)
 
         tapButton("sea", in: app)
         shot("01-listen-complete", from: app)
 
         let dark = launch(["--page", "mayo.clew-bay.listen-farraige", "--appearance", "dark"])
-        XCTAssertTrue(dark.staticTexts["Hear the sea before you read it"].waitForExistence(timeout: 5))
+        XCTAssertTrue(dark.staticTexts["Tap what you hear"].waitForExistence(timeout: 5))
         shot("01-listen-cold-dark", from: dark)
 
         let f6 = launch(["--page", "mayo.clew-bay.comprehend-coast", "--appearance", "light"])
-        XCTAssertTrue(f6.staticTexts["Read the coast's setup"].waitForExistence(timeout: 5))
+        XCTAssertTrue(f6.staticTexts["Choose what it means"].waitForExistence(timeout: 5))
         shot("07-comprehend-cold", from: f6)
         tapButton("I am from the open sea.", in: f6)
         shot("07-comprehend-wrong", from: f6)
@@ -77,7 +77,7 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
 
     func testCaptureMatchingStates() throws {
         let app = launch(["--page", "mayo.clew-bay.match-coast", "--appearance", "light"])
-        XCTAssertTrue(app.staticTexts["Keep the coast's words distinct"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Tap the matching pairs"].waitForExistence(timeout: 5))
         shot("02-match-cold", from: app)
 
         tapButton("farraige", in: app)
@@ -98,13 +98,13 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
 
     func testCaptureConstructionStates() throws {
         let app = launch(["--page", "mayo.clew-bay.build-origin", "--appearance", "light"])
-        XCTAssertTrue(app.staticTexts["Build a line of origin"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Build the sentence"].waitForExistence(timeout: 5))
         shot("03-build-cold", from: app)
 
         for token in ["as", "Is", "Maigh Eo", "mé."] { tapButton(token, in: app) }
         shot("03-build-filled", from: app)
         tapButton("Check the order", in: app)
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
         shot("03-build-wrong", from: app)
 
         for token in ["as", "Maigh Eo", "mé."] { tapButton(token, in: app) }
@@ -117,7 +117,7 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
 
     func testCaptureTypingStates() throws {
         let app = launch(["--page", "mayo.clew-bay.type-origin", "--appearance", "light"])
-        XCTAssertTrue(app.staticTexts["Type the origin line without tiles"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Type the sentence"].waitForExistence(timeout: 5))
         shot("04-type-cold", from: app)
 
         let field = app.textFields["irish-answer-field"]
@@ -127,7 +127,7 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
         app.typeText("Is as Maigh Eo me.")
         shot("04-type-filled", from: app)
         tapButton("Check the sentence", in: app)
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
         shot("04-type-wrong", from: app)
 
         app.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 3))
@@ -143,7 +143,7 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
             "-UIPreferredContentSizeCategoryName",
             "UICTContentSizeCategoryAccessibilityExtraExtraExtraLarge",
         ])
-        XCTAssertTrue(a11y.staticTexts["Type the origin line without tiles"].waitForExistence(timeout: 5))
+        XCTAssertTrue(a11y.staticTexts["Type the sentence"].waitForExistence(timeout: 5))
         shot("04-type-a11y", from: a11y)
     }
 
@@ -194,7 +194,7 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
             }
             return false
         }
-        XCTAssertTrue(app.staticTexts["Say the origin line beside the model"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Say the line"].waitForExistence(timeout: 5))
         shot("06-speak-cold", from: app)
 
         let record = app.buttons["Record your voice"]
@@ -213,7 +213,7 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
         shot("06-speak-complete", from: app)
 
         let denied = launch(["--page", "mayo.clew-bay.speak-origin", "--microphone-denied"])
-        XCTAssertTrue(denied.staticTexts["Say the origin line beside the model"].waitForExistence(timeout: 5))
+        XCTAssertTrue(denied.staticTexts["Say the line"].waitForExistence(timeout: 5))
         for _ in 0..<4 where !denied.staticTexts["Microphone access is off. You can keep listening and continue without recording."].exists { denied.swipeUp() }
         shot("06-speak-mic-denied", from: denied)
     }

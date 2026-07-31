@@ -71,6 +71,7 @@ struct CountyStoryExperienceView: View {
         let index = visible.firstIndex(where: { $0.id == page.id }) ?? 0
         let isComplete = locallyCompletedPageIDs.contains(page.id)
             || atlas.isPageComplete(page.id, in: pack.id)
+        let isExercise = page.kind == .exercise && page.exercise != nil
 
         return VStack(spacing: 0) {
             CountyStoryChrome(
@@ -78,41 +79,16 @@ struct CountyStoryExperienceView: View {
                 mode: mode,
                 chapter: pack.chapter(containing: page.id),
                 current: index + 1,
-                total: visible.count
+                total: visible.count,
+                compact: isExercise
             )
 
             ScrollViewReader { proxy in
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 24) {
+                    VStack(alignment: .leading, spacing: isExercise ? 0 : 24) {
                         Color.clear.frame(height: 0).id("county-page-top")
-                        if page.kind == .exercise, page.exercise != nil {
-                            CountyExerciseView(
-                                page: page,
-                                alreadyComplete: isComplete,
-                                onComplete: {
-                                    locallyCompletedPageIDs.insert(page.id)
-                                    atlas.markPageComplete(page.id, in: pack)
-                                },
-                                onBarUpdate: { bar, action in
-                                    exerciseBar = bar
-                                    exerciseBarAction = action
-                                },
-                                struggledPageIDs: atlas.struggledPageIDs(in: pack),
-                                conversationState: atlas.conversationState(for: page.id),
-                                onConversationState: { atlas.saveConversationState($0, for: page.id) },
-                                collectionWords: collectionWords,
-                                collectionHandoff: collectionHandoff,
-                                onCollect: {
-                                    atlas.recordFixtureCollection(collectionWords.map(\.ga), in: pack)
-                                },
-                                onStruggle: {
-                                    atlas.recordStruggle(page.id, in: pack)
-                                }
-                            )
-                            .padding(.horizontal, EditorialLayout.pageInset)
-                            .padding(.top, 24)
-                            .frame(maxWidth: EditorialLayout.readingWidth)
-                            .frame(maxWidth: .infinity)
+                        if isExercise {
+                            exercisePage(page, isComplete: isComplete, topPadding: 8)
                         } else {
                             CountyNarrativePage(
                                 page: page,
@@ -125,7 +101,7 @@ struct CountyStoryExperienceView: View {
                         }
                         Color.clear.frame(height: 0).id("county-page-bottom")
                     }
-                    .padding(.bottom, 124)
+                    .padding(.bottom, 108)
                     .frame(maxWidth: .infinity)
                     .id(page.id)
                 }
@@ -179,6 +155,37 @@ struct CountyStoryExperienceView: View {
         ))
     }
 
+    @ViewBuilder
+    private func exercisePage(_ page: CountyStoryPage, isComplete: Bool, topPadding: CGFloat) -> some View {
+        CountyExerciseView(
+            page: page,
+            alreadyComplete: isComplete,
+            onComplete: {
+                locallyCompletedPageIDs.insert(page.id)
+                atlas.markPageComplete(page.id, in: pack)
+            },
+            onBarUpdate: { bar, action in
+                exerciseBar = bar
+                exerciseBarAction = action
+            },
+            struggledPageIDs: atlas.struggledPageIDs(in: pack),
+            conversationState: atlas.conversationState(for: page.id),
+            onConversationState: { atlas.saveConversationState($0, for: page.id) },
+            collectionWords: collectionWords,
+            collectionHandoff: collectionHandoff,
+            onCollect: {
+                atlas.recordFixtureCollection(collectionWords.map(\.ga), in: pack)
+            },
+            onStruggle: {
+                atlas.recordStruggle(page.id, in: pack)
+            }
+        )
+        .padding(.horizontal, EditorialLayout.pageInset)
+        .padding(.top, topPadding)
+        .frame(maxWidth: EditorialLayout.readingWidth)
+        .frame(maxWidth: .infinity)
+    }
+
     private func move(to page: CountyStoryPage) {
         Haptics.tap()
         withAnimation(reduceMotion ? nil : Motion.settle) {
@@ -210,7 +217,7 @@ struct CountyStoryExperienceView: View {
     }
 
     private var collectionHandoff: String {
-        if pack.id == CountyFreezeRunFixture.packID {
+        if isInternalFixture {
             return "For this fixture run they sit in a fixture collection only — no county gold, no made object and no scheduled reviews."
         }
         return "These words return to your collection; Words you carry meets them there when scheduling opens."
@@ -218,6 +225,11 @@ struct CountyStoryExperienceView: View {
 
     private var isFreezeFixture: Bool {
         pack.id == CountyFreezeRunFixture.packID
+    }
+
+    private var isInternalFixture: Bool {
+        pack.id == CountyFreezeRunFixture.packID
+            || pack.id == CountyFarraigeFamilyBFixture.packID
     }
 
     private func completionView(_ mode: CountyStoryMode) -> some View {
@@ -262,6 +274,9 @@ struct CountyStoryExperienceView: View {
 
     private var completionTitle: String {
         if isFreezeFixture { return "Clew Bay fixture run complete" }
+        if pack.id == CountyFarraigeFamilyBFixture.packID {
+            return "Farraige family B fixture complete"
+        }
         if pack.scope == .representativeChapter { return "Rockfleet chapter proof complete" }
         if pack.isReviewDraft { return "\(pack.presentation.countyEn) review path complete" }
         return "\(pack.presentation.countyEn) path complete"
@@ -270,6 +285,9 @@ struct CountyStoryExperienceView: View {
     private func completionDetail(for mode: CountyStoryMode) -> String {
         if isFreezeFixture {
             return "You walked all nine frozen steps — cold opens, in-place repairs, a branching conversation and an exact resume — on the shared county shell."
+        }
+        if pack.id == CountyFarraigeFamilyBFixture.packID {
+            return "You heard farraige in a ship surround and built a different Clew Bay line — D30 pattern B on the shared shell."
         }
         if pack.scope == .representativeChapter {
             if mode == .story {
@@ -286,7 +304,7 @@ struct CountyStoryExperienceView: View {
     }
 
     private var completionEffectLabel: String {
-        if isFreezeFixture {
+        if isInternalFixture {
             return "The words sit in a fixture collection; this run awards no county gold, made objects or scheduled words."
         }
         if pack.isReleaseCleared {
@@ -301,6 +319,9 @@ struct CountyStoryExperienceView: View {
     private var completionStatus: String {
         if isFreezeFixture {
             return "This is the D29 representative-run proof. Production Mayo promotion is untouched, and the fixture collection stays separate from Words you carry and the review scheduler."
+        }
+        if pack.id == CountyFarraigeFamilyBFixture.packID {
+            return "This is the D30 farraige phrase-family B proof. Teaching claims stay blocked until pedagogue and native audio QA; production Mayo is untouched."
         }
         if pack.isReviewDraft {
             return "This authored county is bundled for in-app review. Release effects remain locked while these gates are open: \(pack.openReviewGateTitles.joined(separator: ", "))."
@@ -425,29 +446,38 @@ private struct CountyStoryChrome: View {
     let chapter: CountyStoryChapter?
     let current: Int
     let total: Int
+    /// Exercise pages keep Duo-density chrome: progress only. Narrative keeps
+    /// the mode / chapter labels.
+    var compact: Bool = false
 
     var body: some View {
-        VStack(spacing: 8) {
-            HStack(alignment: .firstTextBaseline, spacing: 12) {
-                Text(mode.title)
-                Spacer()
-                Text(chapter?.title ?? pack.title).lineLimit(1)
-                Text("\(current)/\(total)").monospacedDigit()
+        VStack(spacing: compact ? 0 : 8) {
+            if !compact {
+                HStack(alignment: .firstTextBaseline, spacing: 12) {
+                    Text(mode.title)
+                    Spacer()
+                    Text(chapter?.title ?? pack.title).lineLimit(1)
+                    Text("\(current)/\(total)").monospacedDigit()
+                }
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Theme.inkSoft)
             }
-            .font(.caption.weight(.semibold))
-            .foregroundStyle(Theme.inkSoft)
 
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
-                    Capsule().fill(Theme.line).frame(height: 3)
+                    Capsule().fill(Theme.line).frame(height: compact ? 6 : 3)
                     Capsule().fill(Theme.atlasGreen)
-                        .frame(width: geometry.size.width * CGFloat(current) / CGFloat(max(total, 1)), height: 3)
+                        .frame(
+                            width: geometry.size.width * CGFloat(current) / CGFloat(max(total, 1)),
+                            height: compact ? 6 : 3
+                        )
                 }
             }
-            .frame(height: 3)
+            .frame(height: compact ? 6 : 3)
         }
         .padding(.horizontal, EditorialLayout.pageInset)
-        .padding(.vertical, 11)
+        .padding(.top, compact ? 6 : 11)
+        .padding(.bottom, compact ? 8 : 11)
         .background(Theme.bg)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(mode.title) mode, \(chapter?.title ?? pack.title), page \(current) of \(total)")

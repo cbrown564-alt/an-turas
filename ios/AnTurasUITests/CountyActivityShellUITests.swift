@@ -24,19 +24,19 @@ final class CountyActivityShellUITests: XCTestCase {
 
         // Step 1 — one wrong selection opens the D27 repair window without
         // escalating the panel.
-        XCTAssertTrue(app.staticTexts["Hear the sea before you read it"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Tap what you hear"].waitForExistence(timeout: 5))
         tapChoice("island", in: app)
         XCTAssertTrue(app.staticTexts["That names the land in the water, not the water itself."].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.staticTexts["Not quite"].exists)
+        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.exists)
 
         // Leave mid-window: the page dismantle calls engine.interrupt(), which
         // closes the window as an unrepaired struggle on the run's record.
-        jumpToPage("Keep the coast's words distinct", in: app)
-        XCTAssertTrue(app.staticTexts["Keep the coast's words distinct"].waitForExistence(timeout: 5))
+        jumpToPage("Tap the matching pairs", in: app)
+        XCTAssertTrue(app.staticTexts["Tap the matching pairs"].waitForExistence(timeout: 5))
 
         // Return and answer cleanly; the struggle record must survive.
-        jumpToPage("Hear the sea before you read it", in: app)
-        XCTAssertTrue(app.staticTexts["Hear the sea before you read it"].waitForExistence(timeout: 5))
+        jumpToPage("Tap what you hear", in: app)
+        XCTAssertTrue(app.staticTexts["Tap what you hear"].waitForExistence(timeout: 5))
         tapChoice("sea", in: app)
         finishExercise(in: app)
 
@@ -44,7 +44,7 @@ final class CountyActivityShellUITests: XCTestCase {
         jumpToPage("Return to what slipped", in: app)
         XCTAssertTrue(app.staticTexts["Return to what slipped"].waitForExistence(timeout: 5))
         XCTAssertTrue(
-            app.staticTexts["Earlier, the sea word slipped. Meet it again from the original sound."].waitForExistence(timeout: 3),
+            app.staticTexts["the sea word slipped — meet it again from the original sound."].waitForExistence(timeout: 3),
             "The interrupt-emitted struggle must target the contextual review"
         )
         tapChoice("sea", in: app)
@@ -66,11 +66,11 @@ final class CountyActivityShellUITests: XCTestCase {
         app.launch()
 
         // Step 4 — free typing with an explicit Check. A fada-less line fails.
-        XCTAssertTrue(app.staticTexts["Type the origin line without tiles"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Type the sentence"].waitForExistence(timeout: 5))
         _ = irishAnswerField(in: app)
         app.typeText("Is as Maigh Eo me.")
         tapButton("Check the sentence", in: app)
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
 
         // The shell's recovery affordance restructures the same objective.
         let recovery = app.buttons["exercise-recovery-button"]
@@ -111,11 +111,11 @@ final class CountyActivityShellUITests: XCTestCase {
         ]
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["Type the origin line without tiles"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Type the sentence"].waitForExistence(timeout: 5))
         _ = irishAnswerField(in: app)
         app.typeText("Is as Maigh Eo me.")
         tapButton("Check the sentence", in: app)
-        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
 
         let recovery = app.buttons["exercise-recovery-button"]
         XCTAssertTrue(recovery.waitForExistence(timeout: 3), "The escalated panel must offer recovery")

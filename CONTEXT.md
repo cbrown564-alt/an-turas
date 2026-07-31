@@ -101,11 +101,21 @@ _Avoid_: content model, item bank
 
 **Lexeme**:
 The vocabulary atom on the spine, identified by a stable id that every surface references.
-_Avoid_: word, gloss, term, vocab item
+_Avoid_: word, gloss, term, vocab item, lemma
 
 **Pattern**:
 The grammar molecule on the spine: a frame plus the slots earned lexemes fill.
 _Avoid_: rule, structure, template
+
+**Phrase family**:
+An authored set of full Irish utterances that all realise one taught lexeme — including
+mutated, declined, or conjugated forms — while varying the surrounds. Every member is
+grounded in the county story or a real place relation; generic tourist Irish does not
+qualify. Family grouping and pedagogical metadata live with the spine and story content;
+playback clips remain a separate registry keyed by spoken text. The family is an exposure
+bank that activities select from; it is not itself a pattern and not a second vocabulary
+corpus.
+_Avoid_: phrase bank, lemma set, sentence set, tourist phrases, audio inventory
 
 **Earned**:
 The state of a spine item that an authored page has referenced. Only earned items may be

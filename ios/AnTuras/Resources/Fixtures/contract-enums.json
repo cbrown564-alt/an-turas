@@ -1,0 +1,51 @@
+{
+  "description": "The shared contract vocabulary for the county learning runtime and both pack validators (rebuild plan, 'Automated enforcement'). Runtime and validator enums are checked against this one documented list so a pack cannot pass offline and fail after decoding. Parity: CountyContractValidationTests on the Swift side, tools/tests/test_validate_county_pack.py on the Python side.",
+  "responseFamilies": [
+    "listenChoose",
+    "sentenceConstruction",
+    "fillGap",
+    "matching",
+    "freeTyping",
+    "readRespond",
+    "recordCompare",
+    "grammarDiscovery",
+    "conversation"
+  ],
+  "pureContainers": [
+    "completion",
+    "contextualReview"
+  ],
+  "notes": {
+    "responseFamilies": "CountyExerciseFamily cases whose learner action answers with target language. Conversation is a D27 distribution container, but its learner turns are a response method, so it lists here.",
+    "pureContainers": "CountyExerciseFamily cases that host or end activities without their own answer method: completion states capabilities, contextual review re-enters an embedded exercise that carries the response method. responseFamilies and pureContainers together enumerate every CountyExerciseFamily case.",
+    "authoredUses": "The D27 authored uses declared on CountyExercise.authoredUse; there is no runtime enum, so the parity test asserts this documented list.",
+    "memoryEventKinds": "CountyMemoryEventKind in CountyActivityStateEngine.swift."
+  },
+  "authoredUses": [
+    "ordering",
+    "audioPrompted",
+    "delayedRecall"
+  ],
+  "targetCapabilities": [
+    "recognised",
+    "recalled",
+    "produced",
+    "interpreted",
+    "spokenForComparison"
+  ],
+  "completionEvidenceKinds": [
+    "correctSelection",
+    "correctConstruction",
+    "correctedConstruction",
+    "reconstructedResponse",
+    "validDialogueTurn",
+    "orderedSequence",
+    "completedRecordCompare"
+  ],
+  "memoryEventKinds": [
+    "success",
+    "struggle",
+    "hint",
+    "recovery"
+  ]
+}
