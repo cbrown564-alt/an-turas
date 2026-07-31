@@ -497,17 +497,22 @@ struct CountyExerciseView: View {
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(color)
                 .frame(width: 20, height: 20)
-                .padding(.top, 2)
-            Text(text)
-                .font(.subheadline)
-                .foregroundStyle(Theme.inkSoft)
-                .lineSpacing(2)
-                .lineLimit(lineLimit)
-                .fixedSize(horizontal: false, vertical: true)
+                .padding(.top, 1)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(accessibilityPrefix)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(color)
+                Text(text)
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.inkSoft)
+                    .lineSpacing(2)
+                    .lineLimit(lineLimit)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
         .padding(.top, 4)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .accessibilityElement(children: .ignore)
+        .accessibilityElement(children: .combine)
         .accessibilityLabel("\(accessibilityPrefix). \(text)")
         .accessibilityFocused($a11yFocus, equals: .feedback)
     }
@@ -644,20 +649,24 @@ private struct CountyListenChoiceSurface: View {
     let exercise: CountyExercise
     let locked: Bool
     let onPick: (CountyExerciseOption) -> Void
+    /// When false, the parent owns the audio instrument (review remap).
+    var includeAudio: Bool = true
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            if let audioText = exercise.audioText, SpeechService.shared.canSpeak(audioText) {
-                CountyAudioPromptControl(
-                    text: audioText,
-                    presentation: .listenObject(
-                        hearLabel: "Hear the Irish",
-                        replayLabel: "Replay the Irish"
-                    ),
-                    disabled: locked
-                )
-            } else if exercise.audioText != nil {
-                MissingAudioNotice()
+        VStack(alignment: .leading, spacing: ExerciseSurface.zoneGap) {
+            if includeAudio {
+                if let audioText = exercise.audioText, SpeechService.shared.canSpeak(audioText) {
+                    CountyAudioPromptControl(
+                        text: audioText,
+                        presentation: .listenObject(
+                            hearLabel: "Hear the Irish",
+                            replayLabel: "Replay the Irish"
+                        ),
+                        disabled: locked
+                    )
+                } else if exercise.audioText != nil {
+                    MissingAudioNotice()
+                }
             }
 
             CountyChoiceSurface(
@@ -670,15 +679,15 @@ private struct CountyListenChoiceSurface: View {
     }
 }
 
-/// Shared listen object: playing / played / idle, replay, and optional Slow.
-/// Moss ghost chrome only — never steals the ink primary (D2).
+/// Shared InstrumentControl: sunk listen tray + Slow capsule, or hero + footer
+/// pills for speak. Never choice-shaped peer squares.
 private struct CountyAudioPromptControl: View {
     enum Presentation {
-        /// Waveform board without revealing the Irish (recognition tasks).
+        /// Waveform tray without revealing the Irish (recognition tasks).
         case listenObject(hearLabel: String, replayLabel: String)
-        /// Visible Irish target with Play as a secondary control (speak).
+        /// Visible Irish hero on page bg; Play·Slow as instrument footer.
         case spokenTarget
-        /// Compact model control above a builder bank.
+        /// Compact sunk model tray above a builder bank.
         case modelControl(playLabel: String, replayLabel: String)
     }
 
@@ -689,7 +698,6 @@ private struct CountyAudioPromptControl: View {
     var onWillPlay: (() -> Void)? = nil
     var onPlayed: (() -> Void)? = nil
 
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @ObservedObject private var speech = SpeechService.shared
     @State private var hasPlayed = false
 
@@ -710,16 +718,15 @@ private struct CountyAudioPromptControl: View {
 
     var body: some View {
         switch presentation {
-        case .listenObject:
-            listenBoard
+        case .listenObject, .modelControl:
+            instrumentTray
         case .spokenTarget:
-            spokenTargetBoard
-        case .modelControl:
-            modelRow
+            spokenStage
         }
     }
 
-    private var listenBoard: some View {
+    /// Full-width sunk tray + Slow capsule — used for listen and model play.
+    private var instrumentTray: some View {
         HStack(alignment: .center, spacing: 10) {
             Button {
                 play(rate: 1)
@@ -733,13 +740,13 @@ private struct CountyAudioPromptControl: View {
                     Spacer(minLength: 8)
                 }
                 .padding(.horizontal, 16)
-                .padding(.vertical, 16)
-                .frame(maxWidth: .infinity, minHeight: 72, alignment: .leading)
-                .background(Theme.raised)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .padding(.vertical, 18)
+                .frame(maxWidth: .infinity, minHeight: ExerciseSurface.listenTrayMinHeight, alignment: .leading)
+                .background(Theme.sunk)
+                .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.trayRadius))
                 .overlay {
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(isPlaying ? Theme.moss : Theme.line, lineWidth: isPlaying ? 2 : 1)
+                    RoundedRectangle(cornerRadius: ExerciseSurface.trayRadius)
+                        .stroke(isPlaying ? Theme.moss : Color.clear, lineWidth: isPlaying ? 2 : 0)
                 }
             }
             .buttonStyle(CarvePress())
@@ -749,119 +756,72 @@ private struct CountyAudioPromptControl: View {
             .opacity(disabled ? 0.55 : 1)
 
             if includeSlow {
-                Button {
-                    play(rate: Self.slowRate)
-                } label: {
-                    Text("SLOW")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(Theme.moss)
-                        .frame(minWidth: 52, minHeight: 72)
-                        .background(Theme.raised)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(Theme.line, lineWidth: 1)
-                        }
-                }
-                .buttonStyle(CarvePress())
-                .disabled(disabled)
-                .accessibilityLabel("Play slowly")
-                .accessibilityHint("Plays the same recording at a slower rate")
+                slowCapsule(accessibilityLabel: "Play slowly")
             }
         }
     }
 
-    private var spokenTargetBoard: some View {
-        VStack(alignment: .leading, spacing: 10) {
+    /// Hero Irish on bg + Play·Slow instrument pills under the line.
+    private var spokenStage: some View {
+        VStack(alignment: .leading, spacing: 14) {
             Text(text)
-                .font(.system(.title, design: .serif, weight: .semibold))
+                .font(.system(.largeTitle, design: .serif, weight: .semibold))
                 .foregroundStyle(Theme.ink)
+                .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
-                .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 16)
-                .background(Theme.raised)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(Theme.line, lineWidth: 1)
-                }
+                .frame(maxWidth: .infinity, minHeight: 72, alignment: .center)
                 .accessibilityLabel("Model line: \(text)")
+                .accessibilityAddTraits(.isHeader)
 
             HStack(spacing: 10) {
                 Button {
                     play(rate: 1)
                 } label: {
                     Label(primaryLabel, systemImage: isPlaying ? "speaker.wave.2.fill" : "speaker.wave.2")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, minHeight: 48)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Theme.moss)
+                        .padding(.horizontal, 14)
+                        .frame(minHeight: ExerciseSurface.slowCapsuleMinHeight)
+                        .background(Theme.sunk)
+                        .clipShape(Capsule())
                 }
-                .buttonStyle(.bordered)
-                .tint(Theme.moss)
+                .buttonStyle(CarvePress())
                 .disabled(disabled)
                 .accessibilityLabel(primaryLabel)
                 .accessibilityValue(isPlaying ? "playing" : (hasPlayed ? "played" : "ready"))
 
                 if includeSlow {
-                    Button("SLOW") { play(rate: Self.slowRate) }
-                        .font(.caption.weight(.bold))
-                        .buttonStyle(.bordered)
-                        .tint(Theme.moss)
-                        .frame(minHeight: 48)
-                        .disabled(disabled)
-                        .accessibilityLabel("Play the model slowly")
+                    slowCapsule(accessibilityLabel: "Play the model slowly")
                 }
+
+                Spacer(minLength: 0)
             }
         }
     }
 
-    private var modelRow: some View {
-        HStack(alignment: .center, spacing: 10) {
-            Button {
-                play(rate: 1)
-            } label: {
-                HStack(spacing: 12) {
-                    AudioWaveMark(playing: isPlaying)
-                    Text(primaryLabel)
-                        .font(.headline)
-                    Spacer(minLength: 8)
-                }
-                .foregroundStyle(Theme.ink)
+    private func slowCapsule(accessibilityLabel: String) -> some View {
+        Button {
+            play(rate: Self.slowRate)
+        } label: {
+            Text("Slow")
+                .font(.caption.weight(.bold))
+                .foregroundStyle(Theme.moss)
                 .padding(.horizontal, 14)
-                .padding(.vertical, 14)
-                .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
-                .background(Theme.raised)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .frame(
+                    minWidth: ExerciseSurface.slowCapsuleMinWidth,
+                    minHeight: ExerciseSurface.slowCapsuleMinHeight
+                )
+                .background(Theme.sunk)
+                .clipShape(Capsule())
                 .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(isPlaying ? Theme.moss : Theme.line, lineWidth: isPlaying ? 2 : 1)
+                    Capsule()
+                        .stroke(Theme.moss.opacity(0.45), lineWidth: 1)
                 }
-            }
-            .buttonStyle(CarvePress())
-            .disabled(disabled)
-            .accessibilityLabel(primaryLabel)
-            .accessibilityValue(isPlaying ? "playing" : (hasPlayed ? "played" : "ready"))
-
-            if includeSlow {
-                Button {
-                    play(rate: Self.slowRate)
-                } label: {
-                    Text("SLOW")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(Theme.moss)
-                        .frame(minWidth: 52, minHeight: 56)
-                        .background(Theme.raised)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Theme.line, lineWidth: 1)
-                        }
-                }
-                .buttonStyle(CarvePress())
-                .disabled(disabled)
-                .accessibilityLabel("Play slowly")
-            }
         }
+        .buttonStyle(CarvePress())
+        .disabled(disabled)
+        .accessibilityLabel(accessibilityLabel)
+        .accessibilityHint("Plays the same recording at a slower rate")
     }
 
     private func play(rate: Float) {
@@ -932,7 +892,7 @@ private struct CountyChoiceSurface: View {
     @State private var chosenCorrectID: String?
 
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: ExerciseSurface.choiceGap) {
             if let template = exercise.sentenceTemplate {
                 Text(template)
                     .font(.system(.title, design: .serif, weight: .semibold))
@@ -952,6 +912,7 @@ private struct CountyChoiceSurface: View {
         let isWrong = wrongOptionIDs.contains(option.id)
         let isCorrect = chosenCorrectID == option.id
         let settledAway = chosenCorrectID != nil && !isCorrect && !isWrong
+        let shortLabel = option.text.split(whereSeparator: \.isWhitespace).count <= 3
         VStack(alignment: .leading, spacing: 6) {
             Button {
                 guard !locked else { return }
@@ -963,7 +924,7 @@ private struct CountyChoiceSurface: View {
                 }
                 onPick(option)
             } label: {
-                HStack(alignment: .firstTextBaseline, spacing: 12) {
+                HStack(alignment: .center, spacing: 12) {
                     RoundedRectangle(cornerRadius: 1.5)
                         .fill(leadingMark(for: option))
                         .frame(width: 4, height: 22)
@@ -971,9 +932,9 @@ private struct CountyChoiceSurface: View {
                         .accessibilityHidden(true)
                     Text(option.text)
                         .font(optionFont)
-                        .multilineTextAlignment(.leading)
+                        .multilineTextAlignment(shortLabel ? .center : .leading)
+                        .frame(maxWidth: .infinity, alignment: shortLabel ? .center : .leading)
                         .fixedSize(horizontal: false, vertical: true)
-                    Spacer(minLength: 8)
                     if isCorrect {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.body)
@@ -984,18 +945,21 @@ private struct CountyChoiceSurface: View {
                             .font(.body)
                             .foregroundStyle(Theme.rust)
                             .accessibilityHidden(true)
+                    } else {
+                        Color.clear.frame(width: 22, height: 22)
                     }
                 }
                 .foregroundStyle(Theme.ink)
-                .padding(.vertical, 16)
+                .padding(.vertical, 14)
                 .padding(.horizontal, 15)
-                .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
+                .frame(maxWidth: .infinity, minHeight: ExerciseSurface.choiceMinHeight, alignment: .center)
                 .background(rowBackground(for: option))
-                .clipShape(RoundedRectangle(cornerRadius: isCorrect ? 14 : 10))
+                .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.tileRadius))
                 .overlay {
-                    RoundedRectangle(cornerRadius: isCorrect ? 14 : 10)
+                    RoundedRectangle(cornerRadius: ExerciseSurface.tileRadius)
                         .stroke(rowBorder(for: option), lineWidth: rowBorderWidth(for: option))
                 }
+                .tactileLip(radius: ExerciseSurface.tileRadius, active: !isCorrect && !isWrong)
             }
             .buttonStyle(CarvePress())
             .disabled(locked)
@@ -1468,13 +1432,13 @@ private struct CountyContextualReviewSurface: View {
     let onCheckReadyChange: (Bool, @escaping () -> Void) -> Void
 
     @ObservedObject private var speech = SpeechService.shared
-    @State private var heard = false
 
     private var embedded: CountyExercise { candidate.exercise }
     private var originalLine: String { embedded.modelText ?? embedded.answer }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: ExerciseSurface.zoneGap) {
+            // HeroStimulus — borderless; no nested raised card.
             VStack(alignment: .leading, spacing: 8) {
                 Text(struggled
                      ? "\(candidate.label) slipped — meet it again from the original sound."
@@ -1482,36 +1446,13 @@ private struct CountyContextualReviewSurface: View {
                     .font(.subheadline)
                     .foregroundStyle(Theme.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)
-                HStack(alignment: .firstTextBaseline, spacing: 10) {
-                    Text(originalLine)
-                        .font(.system(.title3, design: .serif, weight: .semibold))
-                        .foregroundStyle(Theme.ink)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Spacer(minLength: 8)
-                    if let audioText = embedded.audioText, speech.canSpeak(audioText) {
-                        Button {
-                            Haptics.tap()
-                            speech.speak(audioText)
-                            heard = true
-                        } label: {
-                            Label(heard ? "Replay" : "Hear", systemImage: speech.isSpeaking(audioText) ? "speaker.wave.2.fill" : "speaker.wave.2")
-                                .font(.subheadline.weight(.semibold))
-                                .foregroundStyle(Theme.moss)
-                                .frame(minHeight: 44)
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("Hear the original sound: \(audioText)")
-                    }
-                }
+                Text(originalLine)
+                    .font(.system(.title, design: .serif, weight: .semibold))
+                    .foregroundStyle(Theme.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityAddTraits(.isHeader)
             }
-            .padding(14)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Theme.raised)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .overlay {
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Theme.line, lineWidth: 1)
-            }
 
             switch embedded.family {
             case .freeTyping:
@@ -1523,10 +1464,24 @@ private struct CountyContextualReviewSurface: View {
                     onCheckReadyChange: onCheckReadyChange
                 )
             case .listenChoose:
+                // One InstrumentControl only — choices without a second Hear.
+                if let audioText = embedded.audioText, speech.canSpeak(audioText) {
+                    CountyAudioPromptControl(
+                        text: audioText,
+                        presentation: .listenObject(
+                            hearLabel: "Hear the Irish",
+                            replayLabel: "Replay the Irish"
+                        ),
+                        disabled: locked
+                    )
+                } else if embedded.audioText != nil {
+                    MissingAudioNotice()
+                }
                 CountyListenChoiceSurface(
                     exercise: embedded,
                     locked: locked,
-                    onPick: onPick
+                    onPick: onPick,
+                    includeAudio: false
                 )
             default:
                 CountyChoiceSurface(
@@ -1651,11 +1606,7 @@ private struct CountyBuilderSurface: View {
             .frame(maxWidth: .infinity, minHeight: 88, alignment: .leading)
             .padding(12)
             .background(Theme.sunk)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            .overlay {
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Theme.line, lineWidth: 1)
-            }
+            .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.trayRadius))
             .accessibilityElement(children: .contain)
             .accessibilityLabel("Your answer: \(chosen.map { exercise.tokens[$0] }.joined(separator: " "))")
 
@@ -1666,9 +1617,9 @@ private struct CountyBuilderSurface: View {
                             .font(tokenFont)
                             .opacity(0)
                             .padding(.horizontal, 14)
-                            .frame(minHeight: 50)
+                            .frame(minHeight: ExerciseSurface.chipMinHeight)
                             .background(Theme.sunk)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.chipRadius))
                             .accessibilityHidden(true)
                     } else {
                         tile(token, inAnswer: false) {
@@ -1702,23 +1653,22 @@ private struct CountyBuilderSurface: View {
                 .foregroundStyle(Theme.ink)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 14)
-                .frame(minHeight: 50)
+                .frame(minHeight: ExerciseSurface.chipMinHeight)
                 .background(Theme.raised)
-                .clipShape(RoundedRectangle(cornerRadius: inAnswer ? 10 : 8))
+                .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.chipRadius))
                 .overlay {
-                    RoundedRectangle(cornerRadius: inAnswer ? 10 : 8)
+                    RoundedRectangle(cornerRadius: ExerciseSurface.chipRadius)
                         .stroke(inAnswer ? Theme.moss : Theme.line, lineWidth: inAnswer ? 2 : 1)
                 }
+                .tactileLip(radius: ExerciseSurface.chipRadius, active: !inAnswer)
         }
         .buttonStyle(CarvePress())
         .disabled(locked)
     }
 }
 
-/// Thumb-native matching: Irish word chips sit in one compact row pair above
-/// full-width meaning rows that stay in reach of the bottom bar. A wrong pair
-/// never locks the board or escalates to mastery chrome — the attempted meaning
-/// keeps a plain-language note until the next tap repairs it.
+/// Equal-geometry matching: two full-width stacks (Irish, then meanings) with
+/// identical tactile chrome. Matched pairs leave the board — no double list.
 private struct CountyMatchingSurface: View {
     let exercise: CountyExercise
     let locked: Bool
@@ -1731,21 +1681,59 @@ private struct CountyMatchingSurface: View {
     @State private var matched: Set<String> = []
     @State private var missedRightID: String?
 
-    private var wordColumns: [GridItem] {
-        [GridItem(.flexible(), spacing: 9), GridItem(.flexible(), spacing: 9)]
+    private var unmatchedPairs: [CountyExercisePair] {
+        exercise.pairs.filter { !matched.contains($0.id) }
+    }
+
+    private var unmatchedMeanings: [CountyExercisePair] {
+        Array(unmatchedPairs.reversed())
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            LazyVGrid(columns: wordColumns, spacing: 10) {
-                ForEach(exercise.pairs) { pair in
-                    wordChip(pair)
+        VStack(alignment: .leading, spacing: ExerciseSurface.zoneGap) {
+            VStack(spacing: ExerciseSurface.choiceGap) {
+                ForEach(unmatchedPairs) { pair in
+                    matchTile(
+                        text: pair.left,
+                        font: .system(.body, design: .serif, weight: selectedLeft?.id == pair.id ? .semibold : .regular),
+                        selected: selectedLeft?.id == pair.id,
+                        missed: false,
+                        awaiting: false
+                    ) {
+                        pickWord(pair)
+                    }
+                    .accessibilityLabel(pair.left)
+                    .accessibilityValue(selectedLeft?.id == pair.id ? "selected" : "")
+                    .accessibilityAddTraits(selectedLeft?.id == pair.id ? .isSelected : [])
                 }
             }
 
-            VStack(spacing: 10) {
-                ForEach(Array(exercise.pairs.reversed())) { pair in
-                    meaningRow(pair)
+            VStack(spacing: ExerciseSurface.choiceGap) {
+                ForEach(unmatchedMeanings) { pair in
+                    let missed = missedRightID == pair.id
+                    VStack(alignment: .leading, spacing: 6) {
+                        matchTile(
+                            text: pair.right,
+                            font: .body,
+                            selected: false,
+                            missed: missed,
+                            awaiting: selectedLeft != nil && !missed
+                        ) {
+                            pickMeaning(pair)
+                        }
+                        .accessibilityLabel(pair.right)
+                        .accessibilityValue(missed ? "not a match" : "")
+                        .accessibilityHint(selectedLeft == nil ? "Choose an Irish word first." : "")
+
+                        if missed, let selectedLeft {
+                            Text(mismatchNote(attempted: pair, selected: selectedLeft))
+                                .font(.subheadline)
+                                .foregroundStyle(Theme.rust)
+                                .lineSpacing(3)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.horizontal, 15)
+                        }
+                    }
                 }
             }
         }
@@ -1762,9 +1750,11 @@ private struct CountyMatchingSurface: View {
         guard let selectedLeft else { return }
         if selectedLeft.id == pair.id {
             Haptics.tap()
-            matched.insert(pair.id)
-            self.selectedLeft = nil
-            missedRightID = nil
+            withAnimation(Motion.settle) {
+                matched.insert(pair.id)
+                self.selectedLeft = nil
+                missedRightID = nil
+            }
             onRepair()
             if matched.count == exercise.pairs.count {
                 onComplete(exercise.feedback)
@@ -1779,113 +1769,40 @@ private struct CountyMatchingSurface: View {
         "\u{201C}\(attempted.right)\u{201D} does not belong with \u{201C}\(selected.left)\u{201D}. Choose another meaning."
     }
 
-    private func wordChip(_ pair: CountyExercisePair) -> some View {
-        let complete = matched.contains(pair.id)
-        let selected = selectedLeft?.id == pair.id
-        return Button {
-            pickWord(pair)
-        } label: {
-            HStack(spacing: 8) {
-                RoundedRectangle(cornerRadius: 1.5)
-                    .fill(selected ? Theme.moss : Color.clear)
-                    .frame(width: 4, height: 20)
-                    .accessibilityHidden(true)
-                Text(pair.left)
-                    .font(.system(.body, design: .serif, weight: selected ? .semibold : .regular))
-                    .fixedSize(horizontal: false, vertical: true)
-                Spacer(minLength: 4)
-                if complete {
-                    Image(systemName: "checkmark")
-                        .font(.caption.weight(.bold))
-                        .foregroundStyle(Theme.moss)
-                        .accessibilityHidden(true)
-                } else if selected {
-                    Image(systemName: "circle.fill")
-                        .font(.caption2)
-                        .foregroundStyle(Theme.moss)
-                        .accessibilityHidden(true)
-                }
-            }
-            .foregroundStyle(Theme.ink)
-            .padding(.horizontal, 12)
-            .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
-            .background(selected ? Theme.mossTint : Theme.raised)
-            .clipShape(RoundedRectangle(cornerRadius: selected ? 12 : 10))
-            .overlay {
-                RoundedRectangle(cornerRadius: selected ? 12 : 10)
-                    .stroke(
-                        selected ? Theme.moss : Theme.line,
-                        lineWidth: selected ? 2.5 : 1
-                    )
-            }
-        }
-        .buttonStyle(CarvePress())
-        .disabled(locked || complete)
-        .opacity(complete ? 0.4 : 1)
-        .accessibilityLabel(pair.left)
-        .accessibilityValue(complete ? "matched" : (selected ? "selected" : ""))
-        .accessibilityAddTraits(selected || complete ? .isSelected : [])
-    }
-
-    private func meaningRow(_ pair: CountyExercisePair) -> some View {
-        let complete = matched.contains(pair.id)
-        let missed = missedRightID == pair.id
-        let awaitingPair = selectedLeft != nil && !complete && !missed
-        return VStack(alignment: .leading, spacing: 6) {
-            Button {
-                pickMeaning(pair)
-            } label: {
-                HStack(alignment: .firstTextBaseline, spacing: 10) {
-                    RoundedRectangle(cornerRadius: 1.5)
-                        .fill(missed ? Theme.rust : (complete ? Theme.moss : Color.clear))
-                        .frame(width: 4, height: 22)
-                        .opacity(missed || complete ? 1 : 0)
-                        .accessibilityHidden(true)
-                    if complete {
-                        Text(pair.left)
-                            .font(.system(.body, design: .serif, weight: .semibold))
-                            .fixedSize(horizontal: false, vertical: true)
-                        Image(systemName: "checkmark")
-                            .font(.caption.weight(.bold))
-                            .accessibilityHidden(true)
-                    }
-                    Text(pair.right)
-                        .font(.body)
-                        .multilineTextAlignment(.leading)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Spacer(minLength: 8)
-                }
+    private func matchTile(
+        text: String,
+        font: Font,
+        selected: Bool,
+        missed: Bool,
+        awaiting: Bool,
+        action: @escaping () -> Void
+    ) -> some View {
+        let shortLabel = text.split(whereSeparator: \.isWhitespace).count <= 3
+        return Button(action: action) {
+            Text(text)
+                .font(font)
+                .multilineTextAlignment(shortLabel ? .center : .leading)
+                .frame(maxWidth: .infinity, alignment: shortLabel ? .center : .leading)
+                .fixedSize(horizontal: false, vertical: true)
                 .foregroundStyle(Theme.ink)
-                .padding(.vertical, 16)
+                .padding(.vertical, 14)
                 .padding(.horizontal, 15)
-                .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
-                .background(missed ? Theme.rustTint : (complete ? Theme.mossTint : Theme.raised))
-                .clipShape(RoundedRectangle(cornerRadius: complete || missed ? 12 : 10))
+                .frame(maxWidth: .infinity, minHeight: ExerciseSurface.choiceMinHeight, alignment: .center)
+                .background(
+                    missed ? Theme.rustTint : (selected ? Theme.mossTint : Theme.raised)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.tileRadius))
                 .overlay {
-                    RoundedRectangle(cornerRadius: complete || missed ? 12 : 10)
+                    RoundedRectangle(cornerRadius: ExerciseSurface.tileRadius)
                         .stroke(
-                            missed ? Theme.rust : (complete ? Theme.moss : (awaitingPair ? Theme.inkSoft : Theme.line)),
-                            lineWidth: missed || complete ? 2.5 : (awaitingPair ? 1.5 : 1)
+                            missed ? Theme.rust : (selected ? Theme.moss : (awaiting ? Theme.inkSoft : Theme.line)),
+                            lineWidth: missed || selected ? 2.5 : (awaiting ? 1.5 : 1)
                         )
                 }
-            }
-            .buttonStyle(CarvePress())
-            .disabled(locked || complete)
-            .opacity(complete ? 0.4 : 1)
-            .accessibilityLabel(pair.right)
-            .accessibilityValue(complete ? "matched with \(pair.left)" : (missed ? "not a match" : ""))
-            .accessibilityHint(selectedLeft == nil && !complete ? "Choose an Irish word first." : "")
-            .accessibilityAddTraits(complete ? .isSelected : [])
-
-            if missed, let selectedLeft {
-                Text(mismatchNote(attempted: pair, selected: selectedLeft))
-                    .font(.subheadline)
-                    .foregroundStyle(Theme.rust)
-                    .lineSpacing(3)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.horizontal, 15)
-            }
+                .tactileLip(radius: ExerciseSurface.tileRadius, active: !selected && !missed)
         }
+        .buttonStyle(CarvePress())
+        .disabled(locked)
     }
 }
 
@@ -1925,11 +1842,11 @@ private struct CountyTypingSurface: View {
                 .focused($focused)
                 .padding(16)
                 .frame(minHeight: 80)
-                .background(Theme.raised)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .background(Theme.sunk)
+                .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.trayRadius))
                 .overlay {
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(focused ? Theme.moss : Theme.line, lineWidth: focused ? 2 : 1)
+                    RoundedRectangle(cornerRadius: ExerciseSurface.trayRadius)
+                        .stroke(focused ? Theme.moss : Color.clear, lineWidth: focused ? 2 : 0)
                 }
                 .disabled(locked)
                 .accessibilityLabel("Your Irish answer")
@@ -1975,11 +1892,8 @@ private struct CountyTypingSurface: View {
     }
 }
 
-/// Record and compare keeps one ink primary per state, owned by the shared
-/// bottom slot: Record (or Stop) until a recording exists, then "I compared
-/// both" once playback has happened. Play model, Play back and Record again
-/// stay moss ghosts; the no-recording escape is a quiet text button unless the
-/// microphone is unavailable, where it becomes the primary.
+/// Speak stage: Irish hero on page bg, Play·Slow as instrument pills, then a
+/// single compare strip after recording. Bottom bar owns the only ink primary.
 private struct CountySpeakingSurface: View {
     let exercise: CountyExercise
     let locked: Bool
@@ -1997,7 +1911,7 @@ private struct CountySpeakingSurface: View {
     private var micUnavailable: Bool { recorder.denied || forcedDenied }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: ExerciseSurface.zoneGap) {
             if let model = exercise.audioText, speech.canSpeak(model) {
                 CountyAudioPromptControl(
                     text: model,
@@ -2015,18 +1929,13 @@ private struct CountySpeakingSurface: View {
                 Label("Microphone access is off. You can keep listening and continue without recording.", systemImage: "mic.slash")
                     .font(.body)
                     .foregroundStyle(Theme.inkSoft)
-                    .padding(16)
+                    .padding(14)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .background(Theme.sunk)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.trayRadius))
                     .accessibilityElement(children: .combine)
             } else {
                 recordingStatus
-            }
-
-            if compared, !locked {
-                Text("No pronunciation score — compare by ear.")
-                    .font(.caption)
-                    .foregroundStyle(Theme.inkSoft)
             }
 
             if !micUnavailable, !locked, recorder.state != .recording {
@@ -2049,29 +1958,54 @@ private struct CountySpeakingSurface: View {
             EmptyView()
         case .recording:
             Label("Recording — stop when you have said the line.", systemImage: "record.circle")
-                .font(.body)
+                .font(.subheadline.weight(.semibold))
                 .foregroundStyle(Theme.rust)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .accessibilityElement(children: .combine)
         case .recorded:
-            HStack(spacing: 10) {
-                Button {
-                    speech.stop()
-                    recorder.playBack()
-                    compared = true
-                } label: {
-                    Label("Play your voice", systemImage: recorder.playing ? "waveform" : "play.fill")
-                        .frame(minHeight: 44)
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(spacing: 8) {
+                    Button {
+                        speech.stop()
+                        recorder.playBack()
+                        compared = true
+                    } label: {
+                        Label("Yours", systemImage: recorder.playing ? "waveform" : "play.fill")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(Theme.moss)
+                            .padding(.horizontal, 14)
+                            .frame(minHeight: ExerciseSurface.slowCapsuleMinHeight)
+                            .background(Theme.sunk)
+                            .clipShape(Capsule())
+                    }
+                    .buttonStyle(CarvePress())
+                    .accessibilityLabel("Play your voice")
+
+                    Button {
+                        compared = false
+                        recorder.toggle()
+                    } label: {
+                        Text("Again")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(Theme.moss)
+                            .padding(.horizontal, 14)
+                            .frame(minHeight: ExerciseSurface.slowCapsuleMinHeight)
+                            .background(Theme.sunk)
+                            .clipShape(Capsule())
+                    }
+                    .buttonStyle(CarvePress())
+                    .accessibilityLabel("Record again")
+
+                    Spacer(minLength: 0)
                 }
-                .buttonStyle(.bordered)
-                Button("Record again") {
-                    compared = false
-                    recorder.toggle()
+                .disabled(locked)
+
+                if compared, !locked {
+                    Text("No pronunciation score — compare by ear.")
+                        .font(.caption)
+                        .foregroundStyle(Theme.inkSoft)
                 }
-                .buttonStyle(.bordered)
-                .frame(minHeight: 44)
             }
-            .tint(Theme.moss)
-            .disabled(locked)
         }
     }
 

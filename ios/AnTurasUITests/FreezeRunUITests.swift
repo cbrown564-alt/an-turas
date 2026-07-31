@@ -27,9 +27,9 @@ final class FreezeRunUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Tap what you hear"].waitForExistence(timeout: 5))
         tapChoice("island", in: app)
         XCTAssertTrue(app.staticTexts["That names the land in the water, not the water itself."].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.exists)
+        XCTAssertFalse(app.staticTexts["Not quite"].exists)
         tapChoice("castle", in: app)
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
         tapChoice("sea", in: app)
         finishExercise(in: app)
 
@@ -39,7 +39,7 @@ final class FreezeRunUITests: XCTestCase {
         tapButton("farraige", in: app)
         tapButton("bay", in: app)
         XCTAssertTrue(app.staticTexts["“bay” does not belong with “farraige”. Choose another meaning."].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.exists)
+        XCTAssertFalse(app.staticTexts["Not quite"].exists)
         tapButton("sea", in: app)
         XCTAssertFalse(app.staticTexts["“bay” does not belong with “farraige”. Choose another meaning."].exists)
         tapButton("bá", in: app)
@@ -53,7 +53,7 @@ final class FreezeRunUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Build the sentence"].waitForExistence(timeout: 5))
         for token in ["as", "Is", "Maigh Eo", "mé."] { tapButton(token, in: app) }
         tapButton("Check the order", in: app)
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
         for token in ["as", "Maigh Eo", "mé."] { tapButton(token, in: app) }
         for token in ["as", "Maigh Eo", "mé."] { tapButton(token, in: app) }
         tapButton("Check the order", in: app)
@@ -66,7 +66,7 @@ final class FreezeRunUITests: XCTestCase {
         _ = irishAnswerField(in: app)
         app.typeText("Is as Maigh Eo me.")
         tapButton("Check the sentence", in: app)
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
         app.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 3))
         app.typeText("m")
         tapButton("Insert é from keyboard toolbar", in: app)

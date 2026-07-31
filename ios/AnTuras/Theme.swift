@@ -67,6 +67,51 @@ enum Theme {
     static var rustTint: Color { rust.opacity(0.12) }
 }
 
+/// Shared exercise surface grammar — distinct forms per role so hierarchy is
+/// visible without reading labels (Phase A craft vs Duo).
+enum ExerciseSurface {
+    static let tileRadius: CGFloat = 12
+    static let chipRadius: CGFloat = 8
+    static let trayRadius: CGFloat = 12
+    static let capsuleRadius: CGFloat = 999
+    static let choiceMinHeight: CGFloat = 56
+    static let chipMinHeight: CGFloat = 44
+    static let listenTrayMinHeight: CGFloat = 88
+    static let slowCapsuleMinHeight: CGFloat = 44
+    static let slowCapsuleMinWidth: CGFloat = 56
+    static let zoneGap: CGFloat = 20
+    static let choiceGap: CGFloat = 10
+    static let tactileLip: CGFloat = 3
+}
+
+/// Bottom lip on raised tiles — limestone tactile cue, not cartoon 3D.
+struct TactileLip: ViewModifier {
+    var radius: CGFloat = ExerciseSurface.tileRadius
+    var active: Bool = true
+
+    func body(content: Content) -> some View {
+        content.overlay(alignment: .bottom) {
+            if active {
+                UnevenRoundedRectangle(
+                    topLeadingRadius: 0,
+                    bottomLeadingRadius: radius,
+                    bottomTrailingRadius: radius,
+                    topTrailingRadius: 0
+                )
+                .fill(Theme.sunk.opacity(0.9))
+                .frame(height: ExerciseSurface.tactileLip)
+                .allowsHitTesting(false)
+            }
+        }
+    }
+}
+
+extension View {
+    func tactileLip(radius: CGFloat = ExerciseSurface.tileRadius, active: Bool = true) -> some View {
+        modifier(TactileLip(radius: radius, active: active))
+    }
+}
+
 // MARK: - Motion tokens: everything settles like dust after a chisel strike.
 
 enum Motion {
@@ -137,7 +182,7 @@ struct PrimaryButton: View {
         Button(action: action) {
             Text(title)
                 .font(.headline)
-                .foregroundStyle(enabled ? Theme.bg : Theme.stone)
+                .foregroundStyle(enabled ? Theme.bg : Theme.inkSoft)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.vertical, 13)

@@ -54,7 +54,7 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
         shot("01-listen-wrong", from: app)
 
         tapButton("castle", in: app)
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
         shot("01-listen-struggle", from: app)
 
         tapButton("sea", in: app)
@@ -104,7 +104,7 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
         for token in ["as", "Is", "Maigh Eo", "mé."] { tapButton(token, in: app) }
         shot("03-build-filled", from: app)
         tapButton("Check the order", in: app)
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
         shot("03-build-wrong", from: app)
 
         for token in ["as", "Maigh Eo", "mé."] { tapButton(token, in: app) }
@@ -127,7 +127,7 @@ final class FreezeRunScreenshotCaptureTests: XCTestCase {
         app.typeText("Is as Maigh Eo me.")
         shot("04-type-filled", from: app)
         tapButton("Check the sentence", in: app)
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
         shot("04-type-wrong", from: app)
 
         app.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 3))

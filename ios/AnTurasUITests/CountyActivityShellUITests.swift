@@ -27,7 +27,7 @@ final class CountyActivityShellUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Tap what you hear"].waitForExistence(timeout: 5))
         tapChoice("island", in: app)
         XCTAssertTrue(app.staticTexts["That names the land in the water, not the water itself."].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.exists)
+        XCTAssertFalse(app.staticTexts["Not quite"].exists)
 
         // Leave mid-window: the page dismantle calls engine.interrupt(), which
         // closes the window as an unrepaired struggle on the run's record.
@@ -70,7 +70,7 @@ final class CountyActivityShellUITests: XCTestCase {
         _ = irishAnswerField(in: app)
         app.typeText("Is as Maigh Eo me.")
         tapButton("Check the sentence", in: app)
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
 
         // The shell's recovery affordance restructures the same objective.
         let recovery = app.buttons["exercise-recovery-button"]
@@ -115,7 +115,7 @@ final class CountyActivityShellUITests: XCTestCase {
         _ = irishAnswerField(in: app)
         app.typeText("Is as Maigh Eo me.")
         tapButton("Check the sentence", in: app)
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Not quite")).firstMatch.waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
 
         let recovery = app.buttons["exercise-recovery-button"]
         XCTAssertTrue(recovery.waitForExistence(timeout: 3), "The escalated panel must offer recovery")

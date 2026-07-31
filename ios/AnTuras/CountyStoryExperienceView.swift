@@ -114,7 +114,7 @@ struct CountyStoryExperienceView: View {
         }
         .safeAreaInset(edge: .bottom) {
             CountyPageControls(
-                canGoBack: index > 0,
+                canGoBack: index > 0 && !isExercise,
                 canContinue: page.kind == .narrative ? true : (isComplete || exerciseBar.isEnabled),
                 continueTitle: page.kind == .exercise
                     ? (index == visible.count - 1 && isComplete ? "Complete this chapter path" : exerciseBar.title)
