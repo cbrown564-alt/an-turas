@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.teigh",
+  "lexeme_id": "lex.teigh",
+  "citation_form": "téigh",
+  "gloss": "go",
+  "county": "mayo",
+  "place_grounding": "The crossing — go toward London / return pressure",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — motion. 0 invented; Mayo-bound inventory preferred.",
+  "members": [
+    {
+      "id": "teigh.citation",
+      "text": "téigh",
+      "gloss": "go",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.road-to-london.listen-build-request"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "teigh.go-london-ask",
+      "text": "Téigh go Londain agus iarr freagra.",
+      "gloss": "Go to London and ask for an answer.",
+      "morphology": "imperative",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.road-to-london.listen-build-request"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "teigh.go-back",
+      "text": "Téigh ar ais.",
+      "gloss": "Go back.",
+      "morphology": "imperative + ar ais",
+      "source": "inventory",
+      "attested_in": [
+        "content/audio/irish-inventory-v1.json"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "teigh.go-on-road",
+      "text": "Téigh ar an mbóthar.",
+      "gloss": "Go on the road.",
+      "morphology": "eclipsis after ar an",
+      "source": "inventory",
+      "attested_in": [
+        "content/audio/irish-inventory-v1.json"
+      ],
+      "invented": false,
+      "place_note": "Road as the remaining path",
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "teigh.go-london-ask",
+      "builds_member_id": "teigh.go-back"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "teigh.go-london-ask",
+      "reuses_member_id": "teigh.go-on-road"
+    }
+  }
+}

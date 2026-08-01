@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 2,
+  "pack": {
+    "id": "mayo.farraige-family-c",
+    "revision": 1,
+    "scope": "editorialPreview",
+    "title": "Farraige phrase-family C proof (fixture)",
+    "presentation": {
+      "countyGa": "Maigh Eo",
+      "countyEn": "Mayo — farraige family C fixture",
+      "province": "Connacht",
+      "era": "present day",
+      "anchor": "Clew Bay",
+      "question": "Can delayed free typing reuse a different phrase-family member?",
+      "opening": "Build one Clew Bay farraige line, walk the bay, then type a different question that still keeps the lexeme.",
+      "evidenceLimit": "Internal D30 fixture. No historical claims, no county gold, no teaching claims until pedagogue and native audio QA.",
+      "sourceTitle": "D30 phrase-family fluency — C proof",
+      "sourceDetail": "content/mayo/phrase-families/farraige.v1.json — sibling fixture; does not mutate D29 or B.",
+      "artifactTitle": "No artifact",
+      "artifactPrompt": "Fixture runs make no objects.",
+      "tegLevel": "TEG A1 (fixture)",
+      "tegCanDo": "Fixture capabilities only — not an awarded qualification."
+    },
+    "targetWords": [
+      {
+        "ga": "farraige",
+        "en": "sea",
+        "sound": "far-ig-eh",
+        "anchor": "Clew Bay as a maritime world"
+      },
+      {
+        "ga": "bá",
+        "en": "bay",
+        "sound": "baw",
+        "anchor": "The geography that opens Mayo"
+      },
+      {
+        "ga": "áit",
+        "en": "place",
+        "sound": "awtch",
+        "anchor": "A place that matters"
+      },
+      {
+        "ga": "long",
+        "en": "ship",
+        "sound": "lung",
+        "anchor": "The fleet that works the sea"
+      }
+    ],
+    "resources": [
+      {
+        "id": "audio.farraige",
+        "kind": "audio",
+        "value": "farraige",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.taa-an-fharraige-anseo",
+        "kind": "audio",
+        "value": "Tá an fharraige anseo.",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.caa-bhfuil-an-fharraige",
+        "kind": "audio",
+        "value": "Cá bhfuil an fharraige?",
+        "status": "bundled",
+        "fallbackResourceID": null
+      }
+    ],
+    "reviewGates": [],
+    "chapters": [
+      {
+        "id": "mayo.farraige-family-c",
+        "title": "Farraige · phrase-family C",
+        "place": "Clew Bay",
+        "pages": [
+          {
+            "id": "mayo.farraige-family-c.encounter-sea-here",
+            "legacyBeatIndex": null,
+            "title": "Keep farraige",
+            "context": "Tá an fharraige anseo",
+            "body": "Place farraige in a Clew Bay location line. A different surround returns later without tiles.",
+            "detail": "D30 pattern C — encounter before delay.",
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 80,
+            "introducedLexemeIDs": [
+              "lex.farraige"
+            ],
+            "resourceIDs": [
+              "audio.taa-an-fharraige-anseo"
+            ],
+            "exercise": {
+              "family": "sentenceConstruction",
+              "authoredUse": null,
+              "objective": "Produce the location line with farraige before a delayed reuse of a different family member.",
+              "prompt": "Build: The sea is here.",
+              "answer": "Tá an fharraige anseo.",
+              "options": [],
+              "tokens": [
+                "Tá",
+                "an",
+                "fharraige",
+                "anseo."
+              ],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "The sea is here.",
+              "audioText": null,
+              "modelText": "Tá an fharraige anseo.",
+              "feedback": "The location line holds — farraige sits on this coast.",
+              "hint": "Keep the location frame Tá an … anseo, with farraige lenited after an.",
+              "recovery": "Build Tá an fharraige anseo — location on Clew Bay.",
+              "lexemeIDs": [
+                "lex.farraige"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false,
+              "conversation": null,
+              "capabilities": null,
+              "reviewCandidates": null,
+              "learningContract": {
+                "objective": "Produce the location line with farraige before a delayed reuse of a different family member.",
+                "targets": [
+                  {
+                    "id": "lex.farraige",
+                    "capability": "produced"
+                  }
+                ],
+                "misconceptions": [
+                  {
+                    "id": "mutation-slip",
+                    "rationale": "The learner drops the lenition required after an.",
+                    "feedback": "After an, farraige becomes fharraige — keep the lenition."
+                  },
+                  {
+                    "id": "fallback",
+                    "rationale": "A response the named misconceptions do not cover.",
+                    "feedback": "Build Tá an fharraige anseo — location on Clew Bay."
+                  }
+                ],
+                "successFeedback": "The location line holds — farraige sits on this coast.",
+                "hint": "Keep the location frame Tá an … anseo, with farraige lenited after an.",
+                "recovery": {
+                  "guidance": "Build Tá an fharraige anseo — location on Clew Bay.",
+                  "requiredResponse": "Build the location line again from the tiles."
+                },
+                "completionEvidence": "correctConstruction"
+              },
+              "phraseFamilyMemberIDs": [
+                "farraige.sea-here"
+              ]
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "mayo.farraige-family-c.bay-delay",
+            "legacyBeatIndex": null,
+            "title": "The bay holds the question",
+            "context": "Clew Bay · bá",
+            "body": "Between the islands the water opens as bá — the bay that shelters the coast. Farraige is still the open sea beyond. When you ask where it is, the same lexeme returns in a new surround.",
+            "detail": null,
+            "visibility": "both",
+            "requirement": "optional",
+            "kind": "narrative",
+            "estimatedSeconds": 40,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": null,
+            "presentation": null,
+            "advanceLabel": "Ask for the sea",
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          },
+          {
+            "id": "mayo.farraige-family-c.delayed-where-sea",
+            "legacyBeatIndex": null,
+            "title": "Type the question",
+            "context": "Cá bhfuil an fharraige?",
+            "body": "No tiles. Ask where the sea is — a different farraige surround after the bay.",
+            "detail": null,
+            "visibility": "learningOnly",
+            "requirement": "learningRequired",
+            "kind": "exercise",
+            "estimatedSeconds": 90,
+            "introducedLexemeIDs": [],
+            "resourceIDs": [],
+            "exercise": {
+              "family": "freeTyping",
+              "authoredUse": "delayedRecall",
+              "objective": "Retrieve a different farraige family member after intervening bay narrative — unsupported typing.",
+              "prompt": "Type: Where is the sea?",
+              "answer": "Cá bhfuil an fharraige?",
+              "options": [],
+              "tokens": [],
+              "pairs": [],
+              "sentenceTemplate": null,
+              "translation": "Where is the sea?",
+              "audioText": null,
+              "modelText": "Cá bhfuil an fharraige?",
+              "feedback": "Same lexeme, later surround — the question points to the open water.",
+              "hint": "Cá bhfuil … ? with an fharraige — fada on Cá, lenition after an.",
+              "recovery": "You built the location line earlier. Ask Cá bhfuil an fharraige? — question, not Tá an … anseo.",
+              "lexemeIDs": [
+                "lex.farraige"
+              ],
+              "operatesOnSentence": true,
+              "recognitionMultipleChoice": false,
+              "conversation": null,
+              "capabilities": null,
+              "reviewCandidates": null,
+              "learningContract": {
+                "objective": "Retrieve a different farraige family member after intervening bay narrative — unsupported typing.",
+                "targets": [
+                  {
+                    "id": "lex.farraige",
+                    "capability": "recalled"
+                  }
+                ],
+                "misconceptions": [
+                  {
+                    "id": "replay-location",
+                    "rationale": "The learner retypes the earlier location line instead of the question surround.",
+                    "feedback": "That is the location line from earlier. Ask the question: Cá bhfuil an fharraige?"
+                  },
+                  {
+                    "id": "missing-fada",
+                    "rationale": "The fada on Cá is dropped when typing from memory.",
+                    "feedback": "Keep the fada on Cá — the fada row gives you á."
+                  },
+                  {
+                    "id": "mutation-slip",
+                    "rationale": "The learner drops the lenition required after an.",
+                    "feedback": "After an, farraige becomes fharraige — keep the lenition."
+                  },
+                  {
+                    "id": "fallback",
+                    "rationale": "A response the named misconceptions do not cover.",
+                    "feedback": "Type Cá bhfuil an fharraige? — question frame, fada on Cá, lenition on fharraige."
+                  }
+                ],
+                "successFeedback": "Same lexeme, later surround — the question points to the open water.",
+                "hint": "Cá bhfuil … ? with an fharraige — fada on Cá, lenition after an.",
+                "recovery": {
+                  "guidance": "You built the location line earlier. Ask Cá bhfuil an fharraige? — question, not Tá an … anseo.",
+                  "requiredResponse": "Type the question again after the support."
+                },
+                "completionEvidence": "correctConstruction"
+              },
+              "phraseFamilyMemberIDs": [
+                "farraige.where-sea"
+              ]
+            },
+            "presentation": null,
+            "advanceLabel": null,
+            "visualResourceID": null,
+            "visualCaption": null,
+            "displayItems": null
+          }
+        ]
+      }
+    ],
+    "completion": {
+      "storyPageIDs": [
+        "mayo.farraige-family-c.bay-delay"
+      ],
+      "learningPageIDs": [
+        "mayo.farraige-family-c.encounter-sea-here",
+        "mayo.farraige-family-c.bay-delay",
+        "mayo.farraige-family-c.delayed-where-sea"
+      ]
+    },
+    "lifecycle": [],
+    "enforceLearningQuality": false
+  }
+}

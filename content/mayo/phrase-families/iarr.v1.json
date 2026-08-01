@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.iarr",
+  "lexeme_id": "lex.iarr",
+  "citation_form": "iarr",
+  "gloss": "ask",
+  "county": "mayo",
+  "place_grounding": "Petition path — asking power for an answer",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — petition. 0 invented.",
+  "members": [
+    {
+      "id": "iarr.citation",
+      "text": "iarr",
+      "gloss": "ask",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.road-to-london.listen-build-request"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "iarr.ask-answer",
+      "text": "Iarr freagra.",
+      "gloss": "Ask for an answer.",
+      "morphology": "imperative",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.road-to-london.dialogue-ask"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "iarr.go-and-ask",
+      "text": "Téigh go Londain agus iarr freagra.",
+      "gloss": "Go to London and ask for an answer.",
+      "morphology": "coordinated imperative",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.road-to-london.listen-build-request"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "iarr.ask-again",
+      "text": "Iarr arís.",
+      "gloss": "Ask again.",
+      "morphology": "imperative + arís",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.return-afterlife.build-again"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "iarr.ask-again-coast",
+      "text": "Iarr arís ar an gcósta.",
+      "gloss": "Ask again on the coast.",
+      "morphology": "imperative + arís + cósta eclipsed",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.return-afterlife.delayed-coast"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "iarr.ask-answer",
+      "builds_member_id": "iarr.ask-again"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "iarr.go-and-ask",
+      "reuses_member_id": "iarr.ask-again-coast"
+    }
+  }
+}

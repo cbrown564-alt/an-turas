@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.caislean",
+  "lexeme_id": "lex.caislean",
+  "citation_form": "caisleán",
+  "gloss": "castle",
+  "county": "mayo",
+  "place_grounding": "Rockfleet / Carraigahowley — the held place on this coast",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — coastal cohort (Rockfleet). All members attested from Mayo draft / inventory. 0 invented.",
+  "members": [
+    {
+      "id": "caislean.citation",
+      "text": "caisleán",
+      "gloss": "castle",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": ["mayo.rockfleet.listen-caislean"],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "caislean.castle-here",
+      "text": "Tá an caisleán anseo.",
+      "gloss": "The castle is here.",
+      "morphology": "citation after an; location frame",
+      "source": "draft-pack",
+      "attested_in": ["mayo.rockfleet.type-castle"],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "caislean.where-castle",
+      "text": "Cá bhfuil an caisleán?",
+      "gloss": "Where is the castle?",
+      "morphology": "citation after an; question",
+      "source": "draft-pack",
+      "attested_in": ["mayo.rockfleet.comprehend-castle"],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "caislean.castle-on-coast",
+      "text": "Tá an caisleán ar an gcósta.",
+      "gloss": "The castle is on the coast.",
+      "morphology": "citation after an; cósta eclipsed after ar an",
+      "source": "draft-pack",
+      "attested_in": ["mayo.return-afterlife.speak-coast"],
+      "invented": false,
+      "place_note": "Rockfleet on today's coast",
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "caislean.look-at-castle",
+      "text": "Féach ar an gcaisleán.",
+      "gloss": "Look at the castle.",
+      "morphology": "eclipsis after ar an (gcaisleán)",
+      "source": "inventory",
+      "attested_in": ["content/audio/irish-inventory-v1.json"],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "caislean.where-castle",
+      "builds_member_id": "caislean.castle-here",
+      "note": "Already paired in Rockfleet comprehend/type; formalise as family B when rewiring."
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "caislean.castle-here",
+      "reuses_member_id": "caislean.castle-on-coast",
+      "note": "Location → coast frame after intervening chapters."
+    }
+  }
+}

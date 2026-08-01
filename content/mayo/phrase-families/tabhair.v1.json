@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.tabhair",
+  "lexeme_id": "lex.tabhair",
+  "citation_form": "tabhair",
+  "gloss": "give",
+  "county": "mayo",
+  "place_grounding": "Relief ordered — give help / give an answer",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — give. 0 invented.",
+  "members": [
+    {
+      "id": "tabhair.citation",
+      "text": "tabhair",
+      "gloss": "give",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.royal-answer.notice-actions"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "tabhair.give-help",
+      "text": "Tabhair cabhair.",
+      "gloss": "Give help.",
+      "morphology": "imperative",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.royal-answer.notice-actions"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "tabhair.answer-and-give",
+      "text": "Freagair agus tabhair cabhair.",
+      "gloss": "Answer and give help.",
+      "morphology": "coordinated",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.royal-answer.build-response"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "tabhair.give-me-answer",
+      "text": "Tabhair freagra dom.",
+      "gloss": "Give me an answer.",
+      "morphology": "imperative + freagra + dom",
+      "source": "inventory",
+      "attested_in": [
+        "content/audio/irish-inventory-v1.json"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "tabhair.give-help",
+      "builds_member_id": "tabhair.give-me-answer"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "tabhair.give-help",
+      "reuses_member_id": "tabhair.answer-and-give"
+    }
+  }
+}

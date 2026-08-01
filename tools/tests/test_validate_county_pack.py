@@ -269,6 +269,43 @@ class AddedRules(unittest.TestCase):
         exercise["audioText"] = "Níl an líne seo san inventory."
         self._expect("audioNotInInventory")
 
+    def test_unknown_phrase_family_member_rejected(self):
+        for chapter in self.pack["pack"]["chapters"]:
+            for page in chapter["pages"]:
+                exercise = page.get("exercise")
+                if exercise and exercise.get("answer"):
+                    exercise["phraseFamilyMemberIDs"] = ["farraige.not-a-real-member"]
+                    self._expect("unknownPhraseFamilyMember")
+                    return
+        self.fail("no exercise with an answer found")
+
+    def test_phrase_family_member_mismatch_rejected(self):
+        for chapter in self.pack["pack"]["chapters"]:
+            for page in chapter["pages"]:
+                exercise = page.get("exercise")
+                if not exercise:
+                    continue
+                # Castle-here member must not bind to an unrelated answer.
+                if exercise.get("answer") == "Tá an caisleán anseo.":
+                    exercise["phraseFamilyMemberIDs"] = ["farraige.ship-on-sea"]
+                    self._expect("phraseFamilyMemberMismatch")
+                    return
+        self.fail("no castle-here exercise found")
+
+    def test_wired_phrase_family_members_pass(self):
+        # Bundled Rockfleet now carries D30 member ids where answers match.
+        report = v.validate(self.pack)
+        self.assertGreaterEqual(
+            sum(
+                1
+                for ch in self.pack["pack"]["chapters"]
+                for p in ch["pages"]
+                if (p.get("exercise") or {}).get("phraseFamilyMemberIDs")
+            ),
+            1,
+        )
+        self.assertEqual(report.pack_id, "mayo.grainne-1593")
+
     def test_video_visual_with_image_fallback_is_valid(self):
         page = self.pack["pack"]["chapters"][0]["pages"][0]
         page["resourceIDs"].append("video.test")

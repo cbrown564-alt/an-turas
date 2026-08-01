@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.aris",
+  "lexeme_id": "lex.aris",
+  "citation_form": "arís",
+  "gloss": "again",
+  "county": "mayo",
+  "place_grounding": "Unfinished preservation — ask again on the coast",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — again. 0 invented.",
+  "members": [
+    {
+      "id": "aris.citation",
+      "text": "arís",
+      "gloss": "again",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.return-afterlife.build-again"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "aris.ask-again",
+      "text": "Iarr arís.",
+      "gloss": "Ask again.",
+      "morphology": "iarr + arís",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.return-afterlife.build-again"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "aris.ask-again-coast",
+      "text": "Iarr arís ar an gcósta.",
+      "gloss": "Ask again on the coast.",
+      "morphology": "iarr + arís + cósta",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.return-afterlife.delayed-coast"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "aris.ask-again",
+      "builds_member_id": "aris.ask-again-coast"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "aris.ask-again",
+      "reuses_member_id": "aris.ask-again-coast"
+    }
+  }
+}

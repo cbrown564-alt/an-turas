@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.dearthair",
+  "lexeme_id": "lex.dearthair",
+  "citation_form": "deartháir",
+  "gloss": "brother",
+  "county": "mayo",
+  "place_grounding": "Donal na Píopa — brother held and named in the household",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — kin batch. 1 invented isolation line.",
+  "members": [
+    {
+      "id": "dearthair.citation",
+      "text": "deartháir",
+      "gloss": "brother",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.kin-alliances.match-kin"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "dearthair.son-and-brother",
+      "text": "Tá mac agus deartháir sa teaghlach san áit seo.",
+      "gloss": "There is a son and a brother in the household in this place.",
+      "morphology": "deartháir in belonging",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.kin-alliances.build-belonging"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "dearthair.under-pressure",
+      "text": "Tá an mac agus an deartháir faoi bhrú.",
+      "gloss": "The son and the brother are under pressure.",
+      "morphology": "definite deartháir",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.bingham-pressure.build-kin-pressure"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "dearthair.brother-here",
+      "text": "Tá an deartháir anseo.",
+      "gloss": "The brother is here.",
+      "morphology": "location frame parallel",
+      "source": "invented",
+      "attested_in": [],
+      "invented": true,
+      "place_note": "Isolates deartháir in the Rockfleet location frame",
+      "qa_state": "pending_generation"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "dearthair.son-and-brother",
+      "builds_member_id": "dearthair.brother-here"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "dearthair.son-and-brother",
+      "reuses_member_id": "dearthair.under-pressure"
+    }
+  }
+}

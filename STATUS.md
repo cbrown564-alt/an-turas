@@ -1,9 +1,9 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-07-31 (D30 phrase-family
-model locked; *farraige* B-fixture in progress; ElevenLabs inventory generated; shared
-activity shell ACCEPT).*
+and visual narrative. English → Irish only. Updated 2026-08-01 (D30 Mayo densify
+complete for all 20; kin wired; phrase-family schema + Learning refs; foundation gate
+remainder open).*
 
 ## Where we are
 
@@ -36,16 +36,17 @@ record-and-compare.
 **Current major phase — phrase-family fluency expansion (D30):** ElevenLabs first-pass
 Irish teaching audio proved far cheaper and better than expected (Creator tier: ~1.7k
 credits from ~236k banked for the 289-string sprint). Generation is no longer the scarce
-resource. Expand **exposure density around taught lexemes** via phrase families — full
-utterances that keep one lexeme (including mutations) while varying place- or
-story-grounded surrounds — not a massively larger vocabulary bank. **D30** locks the
-model, gates, and scale order: soft-freeze Mayo’s ~20; co-design one *farraige* vertical
-slice (~4–6 members, ≤2 invented); prove surround-change **sentence construction** in a
-sibling fixture before delayed reuse; pedagogue + native QA block teaching claims and
-scale-out; densify Mayo only after the two patterns work. Family metadata lives with
-county content (`content/mayo/phrase-families/`); audio inventory stays text→clip.
-Unused audio is waste. Native QA, mutations/fadas, and place/story binding remain the
-real gates.
+resource. Expand **exposure density around taught lexemes** via phrase families.
+**B+C craft ACCEPT** and **pedagogue + native QA passed** on *farraige*. **Mayo densify
+complete for all 20 taught lexemes** under `content/mayo/phrase-families/` (coastal +
+petition/motion + kin batches). **Foundation wiring landed:** optional
+`phraseFamilyMemberIDs` on exercises; Python + Swift validators enforce catalog resolve
++ bind-rule text match; Rockfleet and Mayo draft Learning pages wired where answers
+already matched members; catalog bundled at
+`ios/AnTuras/Resources/PhraseFamilies/mayo/`. **Next:** finish foundation gate
+(gallery matrix, VoiceOver rotor, physical device, persistence residuals) then migrate
+one production Mayo slice that *consumes* B/C patterns end-to-end; per-family QA on
+non-*farraige* drafts before teaching claims.
 
 **Supporting engineering:** rebuild-plan phases 0–3 are complete. Shared activity shell
 and state engine are ACCEPT. Harden authored contract/schema/validators and run the
@@ -341,6 +342,10 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-08-01 | **D30 Mayo densify complete + kin batch + Learning wiring.** All 20 taught lexemes have phrase-family drafts; kin (*teaghlach/mac/bean/deartháir*) included. Schema: `phraseFamilyMemberIDs`; Swift/Python validators; catalog bundled; Mayo draft 25 + Rockfleet 6 exercises wired. Full foundation gate (gallery/device) still open. | `content/mayo/phrase-families/`, `ios/AnTuras/Resources/PhraseFamilies/`, `CountyStoryPack.swift`, `validate_county_pack.py`, packs, `STATUS.md` |
+| 2026-08-01 | **D30 *farraige* pedagogue + native QA passed; Mayo coastal densify started.** Family scale-ready; inventory four strings `qa_passed`. Drafted *bá* / *long* / *áit* / *caisleán* phrase families (attested-first, ≤1 invented each where needed). Next densify: *teaghlach* / *iarr* / kin by demand. | `content/mayo/phrase-families/`, `content/audio/irish-inventory-v1.json`, `STATUS.md` |
+| 2026-08-01 | **D30 *farraige* C craft ACCEPT.** Delayed reuse via freeTyping + `delayedRecall`: build sea-here → bay narrative → type where-sea; mean 4.6/5; F3 + D30-C Pass. C shape locked (not contextual review / Words you carry). Unblocks pedagogue + native QA gate before Mayo densify. | `docs/activity-quality/SCORECARD-farraige-family-c-2026-08-01.md`, `mayo.farraige-family-c.json`, `FarraigeFamilyCUITests.swift`, `CountyFarraigeFamilyCFixtureTests.swift`, `farraige.v1.json`, `STATUS.md` |
+| 2026-08-01 | **D30 *farraige* B craft ACCEPT.** Surround-change construction (hear ship-on-sea → build sea-here) on shared shell; mean 4.5/5; F2 + D30-B Pass; title shortened to “Keep farraige”; UI walk + cold/wrong/complete/dark/a11y captures. Unblocks pattern C. Pedagogue/native QA and teaching claims still open. | `docs/activity-quality/SCORECARD-farraige-family-b-2026-08-01.md`, `FarraigeFamilyBUITests.swift`, `mayo.farraige-family-b.json`, `farraige.v1.json`, `STATUS.md` |
 | 2026-07-31 | **Exercise shell declutter to Duo-density layout.** Exercise chrome is progress-only; cold open is one SF imperative (shortened freeze titles) with lightbulb hint; prompt/objective leave the viewport; feedback is a one-line verdict not a card; audio/speak/conversation/review/completion lose meta prose.  | `CountyExerciseSystem.swift`, `CountyStoryExperienceView.swift`, `mayo.clew-bay-freeze.json`, UITests, `STATUS.md` |
 | 2026-07-31 | **Exercise shell: five Duo-comparison UX improvements.** Cold open collapses to title + prompt (objective rises with support); response surfaces enlarged; choice/matching use shape + opacity states (leading mark, radius, fade settled); shared `CountyAudioPromptControl` with playing/played, replay, and Slow via `SpeechService` rate; one-ink bar rule restated (Continue / Check / Record). 61 focused unit + 7 UI (FreezeRun + Atlas repair/record) pass on iPhone 17 Pro. | `ios/AnTuras/CountyExerciseSystem.swift`, `Speech.swift`, `STATUS.md` |
 | 2026-07-31 | **D30 *farraige* B fixture drafted and wired.** Four-member family (2 attested, 2 invented); sibling pack `mayo.farraige-family-b` with surround-change construction; 3 new inventory phrases + MP3s (generated_unreviewed); `--farraige-family-b` launch; unit tests pass. Pedagogue/native QA and craft ACCEPT still open. | `content/mayo/phrase-families/`, `ios/AnTuras/Resources/Fixtures/mayo.farraige-family-b.json`, `content/audio/`, `CountyStoryPack.swift`, `AtlasPrototype.swift` |
@@ -428,60 +433,75 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
    decision in `docs/DECISIONS.md` D30 / `docs/adr/0001-phrase-family-fluency.md`.
 2. **~~Soft-freeze Mayo’s taught ~20~~ (done for this phase)** — storyboard/pack bank
    stands; atlas headwords stay provisional; no opportunistic orphan adds.
-3. **~~Draft *farraige* B fixture~~ (landed — still needs ACCEPT)** — family at
+3. **~~Draft *farraige* B fixture~~ (done)** — family at
    [`content/mayo/phrase-families/farraige.v1.json`](content/mayo/phrase-families/farraige.v1.json);
    sibling pack `mayo.farraige-family-b`; hear ship-on-sea → build sea-here; three new
-   inventory phrases generated (unreviewed); launch with `--farraige-family-b`. Pedagogue
-   + native QA still open. Do not mutate D29.
-4. **ACCEPT the B slice** — craft/coherence on the surround-change construction fixture
-   before adding delayed reuse.
-5. **Second fixture pass — pattern C** — delayed reuse of another *farraige* family
-   member; still fixture-scoped until pedagogue + native QA.
-6. **Pedagogue + native QA on the *farraige* family** — both required before teaching
-   claims, production promotion, or Mayo densification.
-7. **Densify Mayo** — ~4–6 member families for remaining taught lexemes, gated by
-   exercise demand; then consider other launch counties. Keep vocab growth opportunistic.
+   inventory phrases generated (unreviewed); launch with `--farraige-family-b`.
+4. **~~ACCEPT the B slice~~ (done — 2026-08-01)** — craft/coherence ACCEPT mean 4.5/5;
+   F2 + D30-B Pass —
+   [`SCORECARD-farraige-family-b-2026-08-01.md`](docs/activity-quality/SCORECARD-farraige-family-b-2026-08-01.md);
+   UI walk + cold/wrong/complete/dark/a11y captures in
+   `tmp/exercise-screenshots/farraige-family-b-2026-08-01/`. Pedagogue + native QA still
+   open. Do not mutate D29.
+5. **~~Second fixture pass — pattern C~~ (done — 2026-08-01)** — delayed freeTyping of
+   *where-sea* after *sea-here* encounter + bay narrative; mean 4.6/5; F3 + D30-C Pass —
+   [`SCORECARD-farraige-family-c-2026-08-01.md`](docs/activity-quality/SCORECARD-farraige-family-c-2026-08-01.md);
+   launch `--farraige-family-c`; captures in
+   `tmp/exercise-screenshots/farraige-family-c-2026-08-01/`.
+6. **~~Pedagogue + native QA on the *farraige* family~~ (done — 2026-08-01)** —
+   owner-reported pass; family `qa_passed_scale_ready`; four inventory strings
+   `qa_passed`. Teaching claims and Mayo densify unblocked. Production county promotion
+   still needs separate history/rights/audio gates.
+7. **~~Densify Mayo~~ (done — 2026-08-01)** — all 20 taught lexemes have phrase-family
+   drafts under [`content/mayo/phrase-families/`](content/mayo/phrase-families/)
+   (coastal, petition/motion, kin). Attested-first; ≤2 invented per family. Per-family
+   pedagogue + native QA still required before teaching claims on non-*farraige*.
+8. **~~Wire packs to phrase-family members (schema slice)~~ (done — 2026-08-01)** —
+   `phraseFamilyMemberIDs` on exercises; Swift `PhraseFamilyCatalog` + Python loader;
+   validators reject unknown/mismatched members; Mayo draft (25) and Rockfleet (6)
+   Learning exercises wired where answers matched. Full foundation gate (below) still
+   open.
 
 ### Supporting — learning-mechanics foundation and county gates
 
-8. **~~Freeze the representative Mayo run~~ (done — D29)** — sequence, retained study
+9. **~~Freeze the representative Mayo run~~ (done — D29)** — sequence, retained study
    details, and cluster order live in
    [`docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md`](docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md).
-9. **~~Implement clusters A–G for the frozen run~~ (done — Kimi)** — all nine steps
+10. **~~Implement clusters A–G for the frozen run~~ (done — Kimi)** — all nine steps
    operate on the shared shell.
-10. **~~Composer cluster scorecards~~ (done — 2026-07-30)** — all five required clusters
+11. **~~Composer cluster scorecards~~ (done — 2026-07-30)** — all five required clusters
    ACCEPT (rollup:
    [`docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md`](docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md)).
-11. **~~Grok coherence review~~ (done — 2026-07-31)** —
-   [`docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md);
-   craft operate-the-run is complete; residuals ride the foundation gate.
-12. **~~Shared state engine + activity shell (rebuild plan steps 3–4)~~ (done —
+12. **~~Grok coherence review~~ (done — 2026-07-31)** —
+    [`docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md);
+    craft operate-the-run is complete; residuals ride the foundation gate.
+13. **~~Shared state engine + activity shell (rebuild plan steps 3–4)~~ (done —
     2026-07-31)** — engine Composer ACCEPT + Grok PASS; shell REJECT then
     re-score ACCEPT + Grok PASS
     ([`SCORECARD-activity-shell-rescore-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md)).
-    Persistence of attempt credit stays with steps 13–14/16.
-13. **Harden the authored contract, schema, memory handoff, and validators** — mirror
-    Swift and Python rules, prove deterministic debt-free review behavior, preserve
-    old progress, and add failing fixtures for every family and contract invariant.
-    Extend as needed so packs can reference phrase-family members under the bind rule.
-14. **Run the foundation gate** — complete automated transition, schema, persistence,
+    Persistence of attempt credit stays with steps 14–15/17.
+14. **Harden the authored contract, schema, memory handoff, and validators** — ~~phrase-
+    family member refs (D30) landed~~; still open: mandatory learningContract on
+    enforced-quality packs, failing fixtures for remaining invariants, deterministic
+    debt-free review behavior, progress preservation.
+15. **Run the foundation gate** — complete automated transition, schema, persistence,
     UI, branching, offline, and failure checks plus direct simulator, VoiceOver rotor,
     appearance, contrast, motion, audio, microphone, keyboard/fada, gallery matrix for
     C1/C3/C5, residual D5/D2 polish, and physical-device verification. Record the result
     before spreading the system. Grammar/Greenfield stay parked until this passes.
-15. **Migrate the activity families in bounded groups** — recognition greenfield;
+16. **Migrate the activity families in bounded groups** — recognition greenfield;
     construction listen-and-type; contextual use (grammar, radio, production conversation
     graphs); then **Words you carry** and scheduler-owned mistake review. Prefer patterns
     that consume phrase families. Each group must pass its gallery and accessibility
     matrix before the next spreads.
-16. **Migrate one production Mayo slice, then decide whether to spread** — verify both
-    modes, progress preservation, memory events, collection handoff, and optional
-    review. Resume broader county integration only after this slice and the foundation
-    pass without private family-specific exceptions.
-17. **Resume county review and integration only after the foundation passes** — clear
+17. **Migrate one production Mayo slice that consumes B/C family patterns, then decide
+    whether to spread** — verify both modes, progress preservation, memory events,
+    collection handoff, and optional review. Resume broader county integration only
+    after this slice and the foundation pass without private family-specific exceptions.
+18. **Resume county review and integration only after the foundation passes** — clear
     Mayo's history, pedagogy, audio, and rights gates; review Offaly, Dublin, and Meath
     independently; then run the four-county tester-readiness gate.
-18. **Preserve the Phase 2 test record** — add participant count and moderated-session
+19. **Preserve the Phase 2 test record** — add participant count and moderated-session
     notes if they exist; D20 deliberately does not invent them.
 
 ### Lower priority (unchanged)
@@ -533,8 +553,9 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 - **Grant-funding strings** — understand before accepting public money (D10).
 - **Irish-language audio upgrade path** — pursue Trinity/ABAIR/established speech-data
   partnerships after launch; Irish Cultural Guide is the initial-launch baseline (D17).
-- **Phrase-family delayed-reuse (C) shape** — after B fixture ACCEPT, whether delayed
-  reuse is free typing, contextual review, or Words you carry (D30 parks this).
+- **Phrase-family delayed-reuse (C) shape** — **resolved 2026-08-01:** freeTyping +
+  `delayedRecall` on the county shell. Contextual review and Words you carry remain
+  separate surfaces.
 
 ## Resolved (Phase 1 → 2)
 

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.caill",
+  "lexeme_id": "lex.caill",
+  "citation_form": "caill",
+  "gloss": "lose",
+  "county": "mayo",
+  "place_grounding": "Umhaill under Bingham — loss of fleet and safety",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — squeeze. 0 invented.",
+  "members": [
+    {
+      "id": "caill.citation",
+      "text": "caill",
+      "gloss": "lose",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.bingham-pressure.fill-loss"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "caill.do-not-lose-ship",
+      "text": "Ná caill an long.",
+      "gloss": "Do not lose the ship.",
+      "morphology": "imperative negative",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.bingham-pressure.listen-loss"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "caill.will-lose-ship",
+      "text": "Caillfidh sí an long.",
+      "gloss": "She will lose the ship.",
+      "morphology": "future",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.road-to-london.dialogue-ask"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "caill.do-not-lose-ship",
+      "builds_member_id": "caill.will-lose-ship"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "caill.do-not-lose-ship",
+      "reuses_member_id": "caill.will-lose-ship"
+    }
+  }
+}

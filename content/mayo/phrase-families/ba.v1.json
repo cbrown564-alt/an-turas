@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.ba",
+  "lexeme_id": "lex.ba",
+  "citation_form": "bá",
+  "gloss": "bay",
+  "county": "mayo",
+  "place_grounding": "Clew Bay — the sheltered water that opens this coast",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — coastal cohort after farraige QA pass. Members attested from Mayo draft / inventory. ≤0 invented. Consume via B/C patterns when exercise demand names them; do not orphan-generate.",
+  "members": [
+    {
+      "id": "ba.citation",
+      "text": "bá",
+      "gloss": "bay",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": ["mayo.clew-bay.match-coast"],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "ba.ship-in-bay",
+      "text": "Tá an long sa bhá.",
+      "gloss": "The ship is in the bay.",
+      "morphology": "lenited after sa (bhá)",
+      "source": "draft-pack",
+      "attested_in": ["mayo.power-at-sea.build-ship-bay", "mayo.power-at-sea.speak-ship"],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "ba.return-to-bay",
+      "text": "Tar ar ais chuig an mbá.",
+      "gloss": "Come back to the bay.",
+      "morphology": "eclipsis after chuig an (mbá)",
+      "source": "inventory",
+      "attested_in": ["content/audio/irish-inventory-v1.json"],
+      "invented": false,
+      "place_note": "Return pressure toward Clew Bay",
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "ba.where-bay",
+      "text": "Cá bhfuil an bhá?",
+      "gloss": "Where is the bay?",
+      "morphology": "lenited after an (bhá); question parallel to Cá bhfuil an fharraige?",
+      "source": "invented",
+      "attested_in": [],
+      "invented": true,
+      "place_note": "Points to the sheltered water of Clew Bay",
+      "qa_state": "pending_generation"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "ba.ship-in-bay",
+      "builds_member_id": "ba.return-to-bay",
+      "note": "Wire when a Learning page needs surround-change for bá."
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "ba.ship-in-bay",
+      "reuses_member_id": "ba.where-bay",
+      "note": "Wire when delayed recall of bá is authored."
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.tar",
+  "lexeme_id": "lex.tar",
+  "citation_form": "tar",
+  "gloss": "come",
+  "county": "mayo",
+  "place_grounding": "Arrival into the record / return to the bay",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — arrival. 0 invented.",
+  "members": [
+    {
+      "id": "tar.citation",
+      "text": "tar",
+      "gloss": "come",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.road-to-london.type-arrival"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "tar.come-london",
+      "text": "Tar go Londain.",
+      "gloss": "Come to London.",
+      "morphology": "imperative",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.road-to-london.type-arrival"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "tar.come-to-ship",
+      "text": "Tar go dtí an long.",
+      "gloss": "Come to the ship.",
+      "morphology": "go dtí + long",
+      "source": "inventory",
+      "attested_in": [
+        "content/audio/irish-inventory-v1.json"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "tar.come-back-bay",
+      "text": "Tar ar ais chuig an mbá.",
+      "gloss": "Come back to the bay.",
+      "morphology": "ar ais + eclipsis mbá",
+      "source": "inventory",
+      "attested_in": [
+        "content/audio/irish-inventory-v1.json"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "tar.come-london",
+      "builds_member_id": "tar.come-back-bay"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "tar.come-london",
+      "reuses_member_id": "tar.come-to-ship"
+    }
+  }
+}

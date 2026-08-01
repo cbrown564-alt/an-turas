@@ -240,6 +240,7 @@ struct CountyStoryExperienceView: View {
     private var isInternalFixture: Bool {
         pack.id == CountyFreezeRunFixture.packID
             || pack.id == CountyFarraigeFamilyBFixture.packID
+            || pack.id == CountyFarraigeFamilyCFixture.packID
     }
 
     private func completionView(_ mode: CountyStoryMode) -> some View {
@@ -287,6 +288,9 @@ struct CountyStoryExperienceView: View {
         if pack.id == CountyFarraigeFamilyBFixture.packID {
             return "Farraige family B fixture complete"
         }
+        if pack.id == CountyFarraigeFamilyCFixture.packID {
+            return "Farraige family C fixture complete"
+        }
         if pack.scope == .representativeChapter { return "Rockfleet chapter proof complete" }
         if pack.isReviewDraft { return "\(pack.presentation.countyEn) review path complete" }
         return "\(pack.presentation.countyEn) path complete"
@@ -298,6 +302,9 @@ struct CountyStoryExperienceView: View {
         }
         if pack.id == CountyFarraigeFamilyBFixture.packID {
             return "You heard farraige in a ship surround and built a different Clew Bay line — D30 pattern B on the shared shell."
+        }
+        if pack.id == CountyFarraigeFamilyCFixture.packID {
+            return "You built one farraige surround, walked the bay, then typed a different question — D30 pattern C on the shared shell."
         }
         if pack.scope == .representativeChapter {
             if mode == .story {
@@ -332,6 +339,9 @@ struct CountyStoryExperienceView: View {
         }
         if pack.id == CountyFarraigeFamilyBFixture.packID {
             return "This is the D30 farraige phrase-family B proof. Teaching claims stay blocked until pedagogue and native audio QA; production Mayo is untouched."
+        }
+        if pack.id == CountyFarraigeFamilyCFixture.packID {
+            return "This is the D30 farraige phrase-family C proof (delayed reuse). Teaching claims stay blocked until pedagogue and native audio QA; production Mayo is untouched."
         }
         if pack.isReviewDraft {
             return "This authored county is bundled for in-app review. Release effects remain locked while these gates are open: \(pack.openReviewGateTitles.joined(separator: ", "))."

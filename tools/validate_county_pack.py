@@ -140,6 +140,58 @@ def load_irish_inventory_texts() -> set[str] | None:
     return _inventory_texts
 
 
+def load_phrase_family_members(county: str) -> dict[str, dict]:
+    """Load D30 phrase-family members for a county from content/{county}/phrase-families/."""
+    folder = REPO_ROOT / "content" / county / "phrase-families"
+    members: dict[str, dict] = {}
+    if not folder.is_dir():
+        return members
+    for path in sorted(folder.glob("*.v1.json")):
+        payload = json.loads(path.read_text())
+        lexeme_id_value = payload.get("lexeme_id")
+        for member in payload.get("members", []):
+            mid = member.get("id")
+            text = member.get("text")
+            if isinstance(mid, str) and isinstance(text, str) and mid and text.strip():
+                members[mid] = {
+                    "text": text.strip(),
+                    "lexeme_id": lexeme_id_value,
+                    "family_id": payload.get("id"),
+                }
+    return members
+
+
+def _fold_fadas(text: str) -> str:
+    return text.translate(_FADA).lower().strip()
+
+
+def _validate_phrase_family_members(page_id: str, pack_id: str, exercise: dict) -> None:
+    """D30: named family members must resolve and match answer/audio/model text."""
+    member_ids = exercise.get("phraseFamilyMemberIDs") or []
+    if not member_ids:
+        return
+    county = pack_id.split(".", 1)[0] if isinstance(pack_id, str) else ""
+    catalog = load_phrase_family_members(county)
+    bound = {
+        _fold_fadas(value)
+        for key in ("answer", "audioText", "modelText")
+        if isinstance((value := exercise.get(key)), str) and value.strip()
+    }
+    for member_id in member_ids:
+        member = catalog.get(member_id)
+        if member is None:
+            raise PackValidationError(
+                "unknownPhraseFamilyMember",
+                f"{page_id} names phrase-family member {member_id!r} missing from {county} catalog",
+            )
+        if _fold_fadas(member["text"]) not in bound:
+            raise PackValidationError(
+                "phraseFamilyMemberMismatch",
+                f"{page_id} member {member_id!r} text {member['text']!r} does not match "
+                "answer/audioText/modelText under the bind rule",
+            )
+
+
 def lexeme_id(ga: str) -> str:
     """The lexeme id convention: ``lex.`` + the headword with fadas folded.
 
@@ -480,6 +532,7 @@ def validate(envelope: dict) -> PackReport:
             contract = exercise.get("learningContract")
             if contract is not None:
                 _validate_learning_contract(page.get("id"), exercise, contract)
+            _validate_phrase_family_members(page.get("id"), pack.get("id"), exercise)
             # C3: a review candidate must trace its target back to the origin
             # page's exercise.
             for candidate in exercise.get("reviewCandidates") or []:

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.long",
+  "lexeme_id": "lex.long",
+  "citation_form": "long",
+  "gloss": "ship",
+  "county": "mayo",
+  "place_grounding": "Clew Bay fleet — the vessel that works the sea and bay",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — coastal cohort. All members attested from Mayo draft / inventory. 0 invented.",
+  "members": [
+    {
+      "id": "long.citation",
+      "text": "long",
+      "gloss": "ship",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": ["mayo.power-at-sea.speak-ship"],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "long.ship-in-bay",
+      "text": "Tá an long sa bhá.",
+      "gloss": "The ship is in the bay.",
+      "morphology": "citation subject; bá lenited after sa",
+      "source": "draft-pack",
+      "attested_in": ["mayo.power-at-sea.build-ship-bay"],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "long.ship-on-sea",
+      "text": "Tá an long ar an bhfarraige.",
+      "gloss": "The ship is on the sea.",
+      "morphology": "citation subject; farraige lenited after ar an",
+      "source": "draft-pack",
+      "attested_in": ["mayo.power-at-sea.type-sea"],
+      "invented": false,
+      "qa_state": "qa_passed"
+    },
+    {
+      "id": "long.do-not-lose",
+      "text": "Ná caill an long.",
+      "gloss": "Do not lose the ship.",
+      "morphology": "citation object after caill",
+      "source": "draft-pack",
+      "attested_in": ["mayo.bingham-pressure.listen-loss"],
+      "invented": false,
+      "place_note": "Squeeze — fleet at risk",
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "long.ship-here-q",
+      "text": "An bhfuil an long anseo?",
+      "gloss": "Is the ship here?",
+      "morphology": "citation after an; yes/no question",
+      "source": "inventory",
+      "attested_in": ["content/audio/irish-inventory-v1.json"],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "long.ship-in-bay",
+      "builds_member_id": "long.ship-on-sea",
+      "note": "Bay → sea surround change; both attested."
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "long.ship-in-bay",
+      "reuses_member_id": "long.do-not-lose",
+      "note": "Later pressure line reuses long after livelihood chapter."
+    }
+  }
+}

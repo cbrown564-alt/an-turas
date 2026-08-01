@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.ainm",
+  "lexeme_id": "lex.ainm",
+  "citation_form": "ainm",
+  "gloss": "name",
+  "county": "mayo",
+  "place_grounding": "The record — name in two languages before the court",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — name. 0 invented.",
+  "members": [
+    {
+      "id": "ainm.citation",
+      "text": "ainm",
+      "gloss": "name",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.in-the-record.type-name"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "ainm.grainne-named",
+      "text": "Gráinne is ainm di.",
+      "gloss": "Gráinne is her name.",
+      "morphology": "name-identification",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.in-the-record.type-name"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "ainm.what-is-your-name",
+      "text": "Cén t-ainm atá ort?",
+      "gloss": "What is your name?",
+      "morphology": "t-prothesis after an",
+      "source": "inventory",
+      "attested_in": [
+        "content/audio/irish-inventory-v1.json"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "ainm.name-of-place",
+      "text": "Cén t-ainm atá ar an áit?",
+      "gloss": "What is the name of the place?",
+      "morphology": "t-prothesis; áit frame",
+      "source": "inventory",
+      "attested_in": [
+        "content/audio/irish-inventory-v1.json"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "ainm.what-is-your-name",
+      "builds_member_id": "ainm.grainne-named"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "ainm.grainne-named",
+      "reuses_member_id": "ainm.name-of-place"
+    }
+  }
+}

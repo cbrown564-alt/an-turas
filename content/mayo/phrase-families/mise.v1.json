@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.mise",
+  "lexeme_id": "lex.mise",
+  "citation_form": "mise",
+  "gloss": "me / I",
+  "county": "mayo",
+  "place_grounding": "Self after the name — Is mise in the record",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — identity. 1 invented parallel for learner name practice frame.",
+  "members": [
+    {
+      "id": "mise.citation",
+      "text": "mise",
+      "gloss": "me / I (emphatic)",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.in-the-record.build-identity"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "mise.i-am-grainne",
+      "text": "Is mise Gráinne.",
+      "gloss": "I am Gráinne.",
+      "morphology": "Is mise + name",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.in-the-record.build-identity"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "mise.i-am-ellipsis",
+      "text": "Is mise…",
+      "gloss": "I am …",
+      "morphology": "open identification frame",
+      "source": "inventory",
+      "attested_in": [
+        "content/audio/irish-inventory-v1.json"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "mise.i-am-from-frame",
+      "text": "Is mise as Maigh Eo.",
+      "gloss": "I am from Mayo.",
+      "morphology": "Is mise + as place (invented parallel)",
+      "source": "invented",
+      "attested_in": [],
+      "invented": true,
+      "place_note": "Identity + origin on this coast",
+      "qa_state": "pending_generation"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "mise.i-am-grainne",
+      "builds_member_id": "mise.i-am-ellipsis"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "mise.i-am-grainne",
+      "reuses_member_id": "mise.i-am-from-frame"
+    }
+  }
+}

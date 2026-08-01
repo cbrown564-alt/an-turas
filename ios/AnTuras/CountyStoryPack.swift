@@ -353,6 +353,10 @@ struct CountyExercise: Codable, Equatable {
     let hint: String
     let recovery: String
     let lexemeIDs: [String]
+    /// D30: optional phrase-family member ids this exercise consumes. When present,
+    /// validators require each id to resolve in the county's phrase-family catalog
+    /// and to match a spoken/produced Irish string on the exercise (bind rule).
+    let phraseFamilyMemberIDs: [String]?
     let operatesOnSentence: Bool
     let recognitionMultipleChoice: Bool
     /// C1 turn graph. Absent on legacy thin multiple-choice conversations.
@@ -754,6 +758,8 @@ enum CountyStoryPackError: LocalizedError, Equatable {
     case offTargetMemoryCredit(String)
     case untraceableReviewTarget(String)
     case unsupportedCapabilityClaim(String)
+    case unknownPhraseFamilyMember(String)
+    case phraseFamilyMemberMismatch(String)
 
     var errorDescription: String? {
         switch self {
@@ -784,6 +790,8 @@ enum CountyStoryPackError: LocalizedError, Equatable {
         case .offTargetMemoryCredit(let id): return "Exercise \(id) credits memory to a target the exercise does not target."
         case .untraceableReviewTarget(let id): return "Contextual review \(id) cannot trace a candidate back to its origin exercise (C3)."
         case .unsupportedCapabilityClaim(let id): return "Completion page \(id) claims a capability no completed-target evidence supports (C5)."
+        case .unknownPhraseFamilyMember(let id): return "Exercise \(id) names a phrase-family member that is not in the county catalog (D30)."
+        case .phraseFamilyMemberMismatch(let id): return "Exercise \(id) phrase-family member text does not match answer/audio/model under the bind rule (D30)."
         }
     }
 }
@@ -891,6 +899,7 @@ enum CountyStoryPackValidator {
                 if let contract = exercise.learningContract {
                     try validateLearningContract(contract, exercise: exercise, pageID: page.id)
                 }
+                try validatePhraseFamilyMembers(exercise, pageID: page.id, packID: pack.id)
                 // C3: a review candidate must trace its target back to the
                 // origin page's exercise.
                 for candidate in exercise.reviewCandidates ?? [] {
@@ -1045,6 +1054,32 @@ enum CountyStoryPackValidator {
         }
     }
 
+    /// D30: each named phrase-family member must resolve in the county catalog
+    /// and match answer, audioText, or modelText (bind rule for family exposure).
+    static func validatePhraseFamilyMembers(
+        _ exercise: CountyExercise,
+        pageID: String,
+        packID: String
+    ) throws {
+        guard let memberIDs = exercise.phraseFamilyMemberIDs, !memberIDs.isEmpty else { return }
+        let county = packID.split(separator: ".").first.map(String.init) ?? packID
+        let catalog = PhraseFamilyCatalog.members(forCounty: county)
+        var bound = Set<String>()
+        for value in [exercise.answer, exercise.audioText, exercise.modelText].compactMap({ $0 }) {
+            let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !trimmed.isEmpty { bound.insert(foldingFadas(trimmed)) }
+        }
+        for memberID in memberIDs {
+            guard let member = catalog[memberID] else {
+                throw CountyStoryPackError.unknownPhraseFamilyMember(pageID)
+            }
+            let memberKey = foldingFadas(member.text.trimmingCharacters(in: .whitespacesAndNewlines))
+            guard bound.contains(memberKey) else {
+                throw CountyStoryPackError.phraseFamilyMemberMismatch(pageID)
+            }
+        }
+    }
+
     /// Case-insensitive, fada-folded comparison form — the same convention as
     /// `_FADA` in tools/validate_county_pack.py.
     static func foldingFadas(_ text: String) -> String {
@@ -1163,6 +1198,25 @@ enum CountyFarraigeFamilyBFixture {
     }
 }
 
+/// D30 phrase-family C proof: encounter one *farraige* member, delay, type another.
+/// Sibling fixture — does not mutate D29, B, or production Mayo.
+enum CountyFarraigeFamilyCFixture {
+    static let packID = "mayo.farraige-family-c"
+
+    static let stepPageIDs = [
+        "mayo.farraige-family-c.encounter-sea-here",
+        "mayo.farraige-family-c.bay-delay",
+        "mayo.farraige-family-c.delayed-where-sea",
+    ]
+
+    static let encounterPageID = "mayo.farraige-family-c.encounter-sea-here"
+    static let delayedPageID = "mayo.farraige-family-c.delayed-where-sea"
+
+    static func pack() -> CountyStoryPack? {
+        CountyFixturePackLoader.pack(id: packID)
+    }
+}
+
 enum CountyFixturePackLoader {
     static func pack(id: String) -> CountyStoryPack? {
         let url = Bundle.main.url(
@@ -1176,6 +1230,68 @@ enum CountyFixturePackLoader {
             return nil
         }
         return envelope.pack
+    }
+}
+
+/// D30 phrase-family member index loaded from bundled county family files.
+enum PhraseFamilyCatalog {
+    struct Member: Equatable {
+        let id: String
+        let text: String
+        let lexemeID: String
+    }
+
+    private struct FamilyFile: Decodable {
+        let lexemeID: String
+        let members: [MemberFile]
+
+        enum CodingKeys: String, CodingKey {
+            case lexemeID = "lexeme_id"
+            case members
+        }
+    }
+
+    private struct MemberFile: Decodable {
+        let id: String
+        let text: String
+    }
+
+    private static var cache: [String: [String: Member]] = [:]
+
+    static func members(forCounty county: String) -> [String: Member] {
+        if let cached = cache[county] { return cached }
+        var map: [String: Member] = [:]
+        for url in familyURLs(forCounty: county) {
+            guard let data = try? Data(contentsOf: url),
+                  let family = try? JSONDecoder().decode(FamilyFile.self, from: data) else {
+                continue
+            }
+            for member in family.members {
+                map[member.id] = Member(id: member.id, text: member.text, lexemeID: family.lexemeID)
+            }
+        }
+        cache[county] = map
+        return map
+    }
+
+    /// Clears the in-memory index (tests).
+    static func resetCache() {
+        cache.removeAll()
+    }
+
+    private static func familyURLs(forCounty county: String) -> [URL] {
+        let bundle = Bundle.main
+        let candidates = [
+            bundle.urls(forResourcesWithExtension: "json", subdirectory: "PhraseFamilies/\(county)"),
+            bundle.urls(forResourcesWithExtension: "json", subdirectory: "mayo"),
+            bundle.urls(forResourcesWithExtension: "json", subdirectory: "PhraseFamilies"),
+        ].compactMap { $0 }
+        if let nested = candidates.first(where: { !$0.isEmpty }) {
+            return nested.filter { $0.lastPathComponent.hasSuffix(".v1.json") }
+        }
+        // Flattened resource copy: match Mayo family filenames in the bundle root.
+        let root = bundle.urls(forResourcesWithExtension: "json", subdirectory: nil) ?? []
+        return root.filter { $0.lastPathComponent.hasSuffix(".v1.json") }
     }
 }
 

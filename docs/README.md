@@ -67,6 +67,10 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
   [`SCORECARD-activity-shell-2026-07-31.md`](activity-quality/SCORECARD-activity-shell-2026-07-31.md),
   [`SCORECARD-activity-shell-rescore-2026-07-31.md`](activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md),
   [`GROK-COHERENCE-activity-shell-2026-07-31.md`](activity-quality/GROK-COHERENCE-activity-shell-2026-07-31.md).
+  D30 *farraige* B surround-change construction (**craft ACCEPT** 2026-08-01):
+  [`SCORECARD-farraige-family-b-2026-08-01.md`](activity-quality/SCORECARD-farraige-family-b-2026-08-01.md).
+  D30 *farraige* C delayed reuse typing (**craft ACCEPT** 2026-08-01):
+  [`SCORECARD-farraige-family-c-2026-08-01.md`](activity-quality/SCORECARD-farraige-family-c-2026-08-01.md).
 - [`../web/learning-activity-reference/index.html`](../web/learning-activity-reference/index.html)
   is the 48-activity interactive reference field guide that supported D26. The
   canonical activity rules live in `PRODUCT.md`, `DESIGN.md`, D26, and the rebuild

@@ -22,15 +22,53 @@
       "tegCanDo": "Fixture capabilities only — not an awarded qualification."
     },
     "targetWords": [
-      { "ga": "farraige", "en": "sea", "sound": "far-ig-eh", "anchor": "Clew Bay as a maritime world" },
-      { "ga": "long", "en": "ship", "sound": "lung", "anchor": "The fleet that works the sea" },
-      { "ga": "bá", "en": "bay", "sound": "baw", "anchor": "The geography that opens Mayo" },
-      { "ga": "áit", "en": "place", "sound": "awtch", "anchor": "A place that matters" }
+      {
+        "ga": "farraige",
+        "en": "sea",
+        "sound": "far-ig-eh",
+        "anchor": "Clew Bay as a maritime world"
+      },
+      {
+        "ga": "long",
+        "en": "ship",
+        "sound": "lung",
+        "anchor": "The fleet that works the sea"
+      },
+      {
+        "ga": "bá",
+        "en": "bay",
+        "sound": "baw",
+        "anchor": "The geography that opens Mayo"
+      },
+      {
+        "ga": "áit",
+        "en": "place",
+        "sound": "awtch",
+        "anchor": "A place that matters"
+      }
     ],
     "resources": [
-      { "id": "audio.farraige", "kind": "audio", "value": "farraige", "status": "bundled", "fallbackResourceID": null },
-      { "id": "audio.taa-an-long-ar-an-bhfarraige", "kind": "audio", "value": "Tá an long ar an bhfarraige.", "status": "bundled", "fallbackResourceID": null },
-      { "id": "audio.taa-an-fharraige-anseo", "kind": "audio", "value": "Tá an fharraige anseo.", "status": "bundled", "fallbackResourceID": null }
+      {
+        "id": "audio.farraige",
+        "kind": "audio",
+        "value": "farraige",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.taa-an-long-ar-an-bhfarraige",
+        "kind": "audio",
+        "value": "Tá an long ar an bhfarraige.",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.taa-an-fharraige-anseo",
+        "kind": "audio",
+        "value": "Tá an fharraige anseo.",
+        "status": "bundled",
+        "fallbackResourceID": null
+      }
     ],
     "reviewGates": [],
     "chapters": [
@@ -50,8 +88,12 @@
             "requirement": "optional",
             "kind": "narrative",
             "estimatedSeconds": 35,
-            "introducedLexemeIDs": ["lex.farraige"],
-            "resourceIDs": ["audio.farraige"],
+            "introducedLexemeIDs": [
+              "lex.farraige"
+            ],
+            "resourceIDs": [
+              "audio.farraige"
+            ],
             "exercise": null,
             "presentation": null,
             "advanceLabel": "Hear farraige at work",
@@ -62,7 +104,7 @@
           {
             "id": "mayo.farraige-family.build-sea-here",
             "legacyBeatIndex": null,
-            "title": "Keep farraige; change the surround",
+            "title": "Keep farraige",
             "context": "Tá an long ar an bhfarraige → Tá an fharraige anseo",
             "body": "Hear the ship on the sea. Build a different Clew Bay line that still uses farraige.",
             "detail": null,
@@ -71,7 +113,9 @@
             "kind": "exercise",
             "estimatedSeconds": 90,
             "introducedLexemeIDs": [],
-            "resourceIDs": ["audio.taa-an-long-ar-an-bhfarraige"],
+            "resourceIDs": [
+              "audio.taa-an-long-ar-an-bhfarraige"
+            ],
             "exercise": {
               "family": "sentenceConstruction",
               "authoredUse": null,
@@ -79,7 +123,12 @@
               "prompt": "Hear the ship on the sea. Build: The sea is here.",
               "answer": "Tá an fharraige anseo.",
               "options": [],
-              "tokens": ["Tá", "an", "fharraige", "anseo."],
+              "tokens": [
+                "Tá",
+                "an",
+                "fharraige",
+                "anseo."
+              ],
               "pairs": [],
               "sentenceTemplate": null,
               "translation": "The sea is here.",
@@ -88,7 +137,9 @@
               "feedback": "Same lexeme, new surround — the sea that is here on this coast.",
               "hint": "Keep the location frame Tá an … anseo, with farraige lenited after an.",
               "recovery": "You heard bhfarraige on a ship. Build Tá an fharraige anseo — location, not the ship line.",
-              "lexemeIDs": ["lex.farraige"],
+              "lexemeIDs": [
+                "lex.farraige"
+              ],
               "operatesOnSentence": true,
               "recognitionMultipleChoice": false,
               "conversation": null,
@@ -97,7 +148,10 @@
               "learningContract": {
                 "objective": "Produce a Clew Bay location line with farraige after hearing the lexeme in a ship surround.",
                 "targets": [
-                  { "id": "lex.farraige", "capability": "produced" }
+                  {
+                    "id": "lex.farraige",
+                    "capability": "produced"
+                  }
                 ],
                 "misconceptions": [
                   {
@@ -123,7 +177,12 @@
                   "requiredResponse": "Build the location line again from the tiles."
                 },
                 "completionEvidence": "correctConstruction"
-              }
+              },
+              "phraseFamilyMemberIDs": [
+                "farraige.sea-here",
+                "long.ship-on-sea",
+                "farraige.ship-on-sea"
+              ]
             },
             "presentation": null,
             "advanceLabel": null,
@@ -135,8 +194,12 @@
       }
     ],
     "completion": {
-      "storyPageIDs": ["mayo.farraige-family.shoreline"],
-      "learningPageIDs": ["mayo.farraige-family.build-sea-here"]
+      "storyPageIDs": [
+        "mayo.farraige-family.shoreline"
+      ],
+      "learningPageIDs": [
+        "mayo.farraige-family.build-sea-here"
+      ]
     },
     "lifecycle": [],
     "enforceLearningQuality": false

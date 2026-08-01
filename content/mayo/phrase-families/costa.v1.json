@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.costa",
+  "lexeme_id": "lex.costa",
+  "citation_form": "cósta",
+  "gloss": "coast",
+  "county": "mayo",
+  "place_grounding": "Present Mayo shore — the coast that remains",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — coast close. 0 invented.",
+  "members": [
+    {
+      "id": "costa.citation",
+      "text": "cósta",
+      "gloss": "coast",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.return-afterlife.speak-coast"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "costa.castle-on-coast",
+      "text": "Tá an caisleán ar an gcósta.",
+      "gloss": "The castle is on the coast.",
+      "morphology": "eclipsis after ar an",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.return-afterlife.speak-coast"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "costa.it-on-coast",
+      "text": "Tá sé ar an gcósta.",
+      "gloss": "It is on the coast.",
+      "morphology": "eclipsis after ar an",
+      "source": "inventory",
+      "attested_in": [
+        "content/audio/irish-inventory-v1.json"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "costa.ask-again-coast",
+      "text": "Iarr arís ar an gcósta.",
+      "gloss": "Ask again on the coast.",
+      "morphology": "cósta eclipsed",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.return-afterlife.delayed-coast"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "costa.castle-on-coast",
+      "builds_member_id": "costa.it-on-coast"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "costa.castle-on-coast",
+      "reuses_member_id": "costa.ask-again-coast"
+    }
+  }
+}

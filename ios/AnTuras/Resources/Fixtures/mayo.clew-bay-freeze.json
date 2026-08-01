@@ -22,21 +22,95 @@
       "tegCanDo": "Fixture capabilities only — not an awarded qualification."
     },
     "targetWords": [
-      { "ga": "farraige", "en": "sea", "sound": "far-ig-eh", "anchor": "Clew Bay as a maritime world" },
-      { "ga": "bá", "en": "bay", "sound": "baw", "anchor": "The geography that opens Mayo" },
-      { "ga": "áit", "en": "place", "sound": "awtch", "anchor": "A place that matters" },
-      { "ga": "as", "en": "from", "sound": "ass", "anchor": "Origin on the Mayo coast" }
+      {
+        "ga": "farraige",
+        "en": "sea",
+        "sound": "far-ig-eh",
+        "anchor": "Clew Bay as a maritime world"
+      },
+      {
+        "ga": "bá",
+        "en": "bay",
+        "sound": "baw",
+        "anchor": "The geography that opens Mayo"
+      },
+      {
+        "ga": "áit",
+        "en": "place",
+        "sound": "awtch",
+        "anchor": "A place that matters"
+      },
+      {
+        "ga": "as",
+        "en": "from",
+        "sound": "ass",
+        "anchor": "Origin on the Mayo coast"
+      }
     ],
     "resources": [
-      { "id": "audio.farraige", "kind": "audio", "value": "farraige", "status": "bundled", "fallbackResourceID": null },
-      { "id": "audio.ba", "kind": "audio", "value": "bá", "status": "bundled", "fallbackResourceID": null },
-      { "id": "audio.ait", "kind": "audio", "value": "áit", "status": "bundled", "fallbackResourceID": null },
-      { "id": "audio.is-as-maigh-eo-me", "kind": "audio", "value": "Is as Maigh Eo mé.", "status": "bundled", "fallbackResourceID": null },
-      { "id": "audio.cen-t-ainm-ata-ort", "kind": "audio", "value": "Cén t-ainm atá ort?", "status": "bundled", "fallbackResourceID": null },
-      { "id": "audio.ce-thusa", "kind": "audio", "value": "Cé thusa?", "status": "bundled", "fallbackResourceID": null },
-      { "id": "audio.slan-go-foill", "kind": "audio", "value": "Slán go fóill.", "status": "bundled", "fallbackResourceID": null },
-      { "id": "audio.maith", "kind": "audio", "value": "Maith.", "status": "bundled", "fallbackResourceID": null },
-      { "id": "audio.is-mise", "kind": "audio", "value": "Is mise…", "status": "bundled", "fallbackResourceID": null }
+      {
+        "id": "audio.farraige",
+        "kind": "audio",
+        "value": "farraige",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.ba",
+        "kind": "audio",
+        "value": "bá",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.ait",
+        "kind": "audio",
+        "value": "áit",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.is-as-maigh-eo-me",
+        "kind": "audio",
+        "value": "Is as Maigh Eo mé.",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.cen-t-ainm-ata-ort",
+        "kind": "audio",
+        "value": "Cén t-ainm atá ort?",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.ce-thusa",
+        "kind": "audio",
+        "value": "Cé thusa?",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.slan-go-foill",
+        "kind": "audio",
+        "value": "Slán go fóill.",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.maith",
+        "kind": "audio",
+        "value": "Maith.",
+        "status": "bundled",
+        "fallbackResourceID": null
+      },
+      {
+        "id": "audio.is-mise",
+        "kind": "audio",
+        "value": "Is mise…",
+        "status": "bundled",
+        "fallbackResourceID": null
+      }
     ],
     "reviewGates": [],
     "chapters": [
@@ -57,7 +131,9 @@
             "kind": "exercise",
             "estimatedSeconds": 55,
             "introducedLexemeIDs": [],
-            "resourceIDs": ["audio.farraige"],
+            "resourceIDs": [
+              "audio.farraige"
+            ],
             "exercise": {
               "family": "listenChoose",
               "authoredUse": null,
@@ -65,9 +141,27 @@
               "prompt": "Hear farraige and choose its meaning — you can answer whenever you are ready.",
               "answer": "sea",
               "options": [
-                { "id": "sea", "text": "sea", "isCorrect": true, "rationale": "Farraige means the sea.", "misconceptionID": null },
-                { "id": "island", "text": "island", "isCorrect": false, "rationale": "That's land, not water.", "misconceptionID": "land-for-water" },
-                { "id": "castle", "text": "castle", "isCorrect": false, "rationale": "That's caisleán — castle.", "misconceptionID": "castle-for-sea" }
+                {
+                  "id": "sea",
+                  "text": "sea",
+                  "isCorrect": true,
+                  "rationale": "Farraige means the sea.",
+                  "misconceptionID": null
+                },
+                {
+                  "id": "island",
+                  "text": "island",
+                  "isCorrect": false,
+                  "rationale": "That's land, not water.",
+                  "misconceptionID": "land-for-water"
+                },
+                {
+                  "id": "castle",
+                  "text": "castle",
+                  "isCorrect": false,
+                  "rationale": "That's caisleán — castle.",
+                  "misconceptionID": "castle-for-sea"
+                }
               ],
               "tokens": [],
               "pairs": [],
@@ -78,7 +172,9 @@
               "feedback": "Farraige is the sea that makes this coast a working world.",
               "hint": "Listen for the rolling middle sound: far-ig-eh.",
               "recovery": "Listen again, then choose.",
-              "lexemeIDs": ["lex.farraige"],
+              "lexemeIDs": [
+                "lex.farraige"
+              ],
               "operatesOnSentence": false,
               "recognitionMultipleChoice": true,
               "conversation": null,
@@ -87,12 +183,27 @@
               "learningContract": {
                 "objective": "Recognise farraige by sound as the sea that defines this coast.",
                 "targets": [
-                  { "id": "lex.farraige", "capability": "recognised" }
+                  {
+                    "id": "lex.farraige",
+                    "capability": "recognised"
+                  }
                 ],
                 "misconceptions": [
-                  { "id": "land-for-water", "rationale": "The learner names the land in the water rather than the water itself.", "feedback": "That's land, not water." },
-                  { "id": "castle-for-sea", "rationale": "The learner reaches for a familiar coast word, caisleán, instead of the water word.", "feedback": "That's caisleán — castle." },
-                  { "id": "fallback", "rationale": "A response the named misconceptions do not cover.", "feedback": "Replay farraige and keep it on the open water." }
+                  {
+                    "id": "land-for-water",
+                    "rationale": "The learner names the land in the water rather than the water itself.",
+                    "feedback": "That's land, not water."
+                  },
+                  {
+                    "id": "castle-for-sea",
+                    "rationale": "The learner reaches for a familiar coast word, caisleán, instead of the water word.",
+                    "feedback": "That's caisleán — castle."
+                  },
+                  {
+                    "id": "fallback",
+                    "rationale": "A response the named misconceptions do not cover.",
+                    "feedback": "Replay farraige and keep it on the open water."
+                  }
                 ],
                 "successFeedback": "Farraige is the sea that makes this coast a working world.",
                 "hint": "Listen for the rolling middle sound: far-ig-eh.",
@@ -101,7 +212,10 @@
                   "requiredResponse": "Choose the meaning of farraige again after the replay."
                 },
                 "completionEvidence": "correctSelection"
-              }
+              },
+              "phraseFamilyMemberIDs": [
+                "farraige.citation"
+              ]
             },
             "presentation": null,
             "advanceLabel": null,
@@ -121,7 +235,11 @@
             "kind": "exercise",
             "estimatedSeconds": 85,
             "introducedLexemeIDs": [],
-            "resourceIDs": ["audio.farraige", "audio.ba", "audio.ait"],
+            "resourceIDs": [
+              "audio.farraige",
+              "audio.ba",
+              "audio.ait"
+            ],
             "exercise": {
               "family": "matching",
               "authoredUse": null,
@@ -131,9 +249,21 @@
               "options": [],
               "tokens": [],
               "pairs": [
-                { "id": "farraige", "left": "farraige", "right": "sea" },
-                { "id": "ba", "left": "bá", "right": "bay" },
-                { "id": "ait", "left": "áit", "right": "place" }
+                {
+                  "id": "farraige",
+                  "left": "farraige",
+                  "right": "sea"
+                },
+                {
+                  "id": "ba",
+                  "left": "bá",
+                  "right": "bay"
+                },
+                {
+                  "id": "ait",
+                  "left": "áit",
+                  "right": "place"
+                }
               ],
               "sentenceTemplate": null,
               "translation": null,
@@ -142,7 +272,11 @@
               "feedback": "Sea, bay and place — the coast now has three distinct names.",
               "hint": "Replay the words. Farraige is the open water; bá is the sheltered inlet; áit is the named coast.",
               "recovery": "Try another pair.",
-              "lexemeIDs": ["lex.farraige", "lex.ba", "lex.ait"],
+              "lexemeIDs": [
+                "lex.farraige",
+                "lex.ba",
+                "lex.ait"
+              ],
               "operatesOnSentence": false,
               "recognitionMultipleChoice": false,
               "conversation": null,
@@ -151,12 +285,25 @@
               "learningContract": {
                 "objective": "Connect the opening headwords to their meanings.",
                 "targets": [
-                  { "id": "lex.farraige", "capability": "recognised" },
-                  { "id": "lex.ba", "capability": "recognised" },
-                  { "id": "lex.ait", "capability": "recognised" }
+                  {
+                    "id": "lex.farraige",
+                    "capability": "recognised"
+                  },
+                  {
+                    "id": "lex.ba",
+                    "capability": "recognised"
+                  },
+                  {
+                    "id": "lex.ait",
+                    "capability": "recognised"
+                  }
                 ],
                 "misconceptions": [
-                  { "id": "swapped-coast-words", "rationale": "Sea, bay and place blur into one undifferentiated coast word.", "feedback": "Those two do not belong together. Farraige is the open water; bá is the sheltered inlet; áit is the named coast." }
+                  {
+                    "id": "swapped-coast-words",
+                    "rationale": "Sea, bay and place blur into one undifferentiated coast word.",
+                    "feedback": "Those two do not belong together. Farraige is the open water; bá is the sheltered inlet; áit is the named coast."
+                  }
                 ],
                 "successFeedback": "Sea, bay and place — the coast now has three distinct names.",
                 "hint": "Replay the words. Farraige is the open water; bá is the sheltered inlet; áit is the named coast.",
@@ -193,7 +340,12 @@
               "prompt": "Build: I am from Mayo.",
               "answer": "Is as Maigh Eo mé.",
               "options": [],
-              "tokens": ["as", "Maigh Eo", "Is", "mé."],
+              "tokens": [
+                "as",
+                "Maigh Eo",
+                "Is",
+                "mé."
+              ],
               "pairs": [],
               "sentenceTemplate": null,
               "translation": "I am from Mayo.",
@@ -202,7 +354,9 @@
               "feedback": "Is as Maigh Eo mé — origin stated in one clean frame.",
               "hint": "The frame runs Is as [place] mé.",
               "recovery": "Check the word order.",
-              "lexemeIDs": ["lex.as"],
+              "lexemeIDs": [
+                "lex.as"
+              ],
               "operatesOnSentence": true,
               "recognitionMultipleChoice": false,
               "conversation": null,
@@ -211,10 +365,17 @@
               "learningContract": {
                 "objective": "Produce a complete origin sentence with the as … mé frame.",
                 "targets": [
-                  { "id": "lex.as", "capability": "produced" }
+                  {
+                    "id": "lex.as",
+                    "capability": "produced"
+                  }
                 ],
                 "misconceptions": [
-                  { "id": "frame-order-slip", "rationale": "The origin frame's word order slips when the pieces are separate tiles.", "feedback": "Check the word order." }
+                  {
+                    "id": "frame-order-slip",
+                    "rationale": "The origin frame's word order slips when the pieces are separate tiles.",
+                    "feedback": "Check the word order."
+                  }
                 ],
                 "successFeedback": "Is as Maigh Eo mé — origin stated in one clean frame.",
                 "hint": "The frame runs Is as [place] mé.",
@@ -223,7 +384,10 @@
                   "requiredResponse": "Build the line again from the tiles."
                 },
                 "completionEvidence": "correctConstruction"
-              }
+              },
+              "phraseFamilyMemberIDs": [
+                "as.from-mayo"
+              ]
             },
             "presentation": null,
             "advanceLabel": null,
@@ -260,7 +424,9 @@
               "feedback": "Typed whole, without tiles — the frame is yours now.",
               "hint": "Keep the frame Is as [place] mé. The fada row gives you é.",
               "recovery": "The frame is close. Keep the order Is · as · Maigh Eo · mé, with the fada on mé.",
-              "lexemeIDs": ["lex.as"],
+              "lexemeIDs": [
+                "lex.as"
+              ],
               "operatesOnSentence": true,
               "recognitionMultipleChoice": false,
               "conversation": null,
@@ -269,11 +435,22 @@
               "learningContract": {
                 "objective": "Produce the origin line unsupported — no tiles, no model replay.",
                 "targets": [
-                  { "id": "lex.as", "capability": "recalled" }
+                  {
+                    "id": "lex.as",
+                    "capability": "recalled"
+                  }
                 ],
                 "misconceptions": [
-                  { "id": "missing-fada", "rationale": "The fada on mé is dropped when the line is typed from memory.", "feedback": "Keep the fada on mé — the fada row gives you é." },
-                  { "id": "frame-order-slip", "rationale": "The origin frame's word order slips without the tiles.", "feedback": "Keep the order Is · as · Maigh Eo · mé." }
+                  {
+                    "id": "missing-fada",
+                    "rationale": "The fada on mé is dropped when the line is typed from memory.",
+                    "feedback": "Keep the fada on mé — the fada row gives you é."
+                  },
+                  {
+                    "id": "frame-order-slip",
+                    "rationale": "The origin frame's word order slips without the tiles.",
+                    "feedback": "Keep the order Is · as · Maigh Eo · mé."
+                  }
                 ],
                 "successFeedback": "Typed whole, without tiles — the frame is yours now.",
                 "hint": "Keep the frame Is as [place] mé. The fada row gives you é.",
@@ -282,7 +459,10 @@
                   "requiredResponse": "Type the whole line again after the support."
                 },
                 "completionEvidence": "correctConstruction"
-              }
+              },
+              "phraseFamilyMemberIDs": [
+                "as.from-mayo"
+              ]
             },
             "presentation": null,
             "advanceLabel": null,
@@ -326,7 +506,9 @@
               "feedback": "Three turns held — you placed yourself and closed the exchange.",
               "hint": "The origin frame Is as … mé answers where you are from.",
               "recovery": "That reply does not fit this turn. The conversation waits — choose another.",
-              "lexemeIDs": ["lex.as"],
+              "lexemeIDs": [
+                "lex.as"
+              ],
               "operatesOnSentence": true,
               "recognitionMultipleChoice": false,
               "conversation": {
@@ -444,11 +626,22 @@
               "learningContract": {
                 "objective": "Use the origin line inside a short present-day exchange.",
                 "targets": [
-                  { "id": "lex.as", "capability": "produced" }
+                  {
+                    "id": "lex.as",
+                    "capability": "produced"
+                  }
                 ],
                 "misconceptions": [
-                  { "id": "wrong-turn", "rationale": "A reply that belongs to another turn is offered for this one.", "feedback": "That reply does not fit this turn. Answer the question the walker asked." },
-                  { "id": "thing-for-self", "rationale": "A coast word stands in where the exchange asks about the speaker.", "feedback": "That names a thing on the coast, not where you are from. Use the frame about yourself." }
+                  {
+                    "id": "wrong-turn",
+                    "rationale": "A reply that belongs to another turn is offered for this one.",
+                    "feedback": "That reply does not fit this turn. Answer the question the walker asked."
+                  },
+                  {
+                    "id": "thing-for-self",
+                    "rationale": "A coast word stands in where the exchange asks about the speaker.",
+                    "feedback": "That names a thing on the coast, not where you are from. Use the frame about yourself."
+                  }
                 ],
                 "successFeedback": "Three turns held — you placed yourself and closed the exchange.",
                 "hint": "The origin frame Is as … mé answers where you are from.",
@@ -477,7 +670,9 @@
             "kind": "exercise",
             "estimatedSeconds": 90,
             "introducedLexemeIDs": [],
-            "resourceIDs": ["audio.is-as-maigh-eo-me"],
+            "resourceIDs": [
+              "audio.is-as-maigh-eo-me"
+            ],
             "exercise": {
               "family": "recordCompare",
               "authoredUse": null,
@@ -494,7 +689,9 @@
               "feedback": "You made a local recording and compared it with the model. Nothing was graded or uploaded.",
               "hint": "Keep it one continuous line: Is as Maigh Eo mé.",
               "recovery": "The microphone is optional. You can replay the model and continue without recording.",
-              "lexemeIDs": ["lex.as"],
+              "lexemeIDs": [
+                "lex.as"
+              ],
               "operatesOnSentence": true,
               "recognitionMultipleChoice": false,
               "conversation": null,
@@ -503,10 +700,17 @@
               "learningContract": {
                 "objective": "Compare your production of the origin line with the bundled model.",
                 "targets": [
-                  { "id": "lex.as", "capability": "spokenForComparison" }
+                  {
+                    "id": "lex.as",
+                    "capability": "spokenForComparison"
+                  }
                 ],
                 "misconceptions": [
-                  { "id": "mic-unavailable", "rationale": "The microphone is denied or unavailable, and the task looks blocked.", "feedback": "The microphone is optional. Replay the model and compare without recording." }
+                  {
+                    "id": "mic-unavailable",
+                    "rationale": "The microphone is denied or unavailable, and the task looks blocked.",
+                    "feedback": "The microphone is optional. Replay the model and compare without recording."
+                  }
                 ],
                 "successFeedback": "You made a local recording and compared it with the model. Nothing was graded or uploaded.",
                 "hint": "Keep it one continuous line: Is as Maigh Eo mé.",
@@ -515,7 +719,10 @@
                   "requiredResponse": "Compare your voice with the model, recorded or not."
                 },
                 "completionEvidence": "completedRecordCompare"
-              }
+              },
+              "phraseFamilyMemberIDs": [
+                "as.from-mayo"
+              ]
             },
             "presentation": null,
             "advanceLabel": null,
@@ -535,7 +742,9 @@
             "kind": "exercise",
             "estimatedSeconds": 70,
             "introducedLexemeIDs": [],
-            "resourceIDs": ["audio.is-as-maigh-eo-me"],
+            "resourceIDs": [
+              "audio.is-as-maigh-eo-me"
+            ],
             "exercise": {
               "family": "readRespond",
               "authoredUse": null,
@@ -574,7 +783,9 @@
               "feedback": "The line places the speaker in Mayo — the coast's words and the origin frame agree.",
               "hint": "Read the frame as … mé literally: from Mayo am I.",
               "recovery": "Maigh Eo is Mayo.",
-              "lexemeIDs": ["lex.as"],
+              "lexemeIDs": [
+                "lex.as"
+              ],
               "operatesOnSentence": true,
               "recognitionMultipleChoice": true,
               "conversation": null,
@@ -583,12 +794,27 @@
               "learningContract": {
                 "objective": "Connect the Clew Bay words and the origin frame to what they say.",
                 "targets": [
-                  { "id": "lex.as", "capability": "interpreted" }
+                  {
+                    "id": "lex.as",
+                    "capability": "interpreted"
+                  }
                 ],
                 "misconceptions": [
-                  { "id": "farraige-as-origin", "rationale": "Farraige is bent into an origin it does not state.", "feedback": "That bends farraige into an origin; the line names a county, not the water." },
-                  { "id": "frame-dropped", "rationale": "Bá is kept while the origin frame the line is built on is dropped.", "feedback": "That keeps bá but drops the origin frame the line is built on." },
-                  { "id": "fallback", "rationale": "A response the named misconceptions do not cover.", "feedback": "Read the frame as … mé literally: from Mayo am I." }
+                  {
+                    "id": "farraige-as-origin",
+                    "rationale": "Farraige is bent into an origin it does not state.",
+                    "feedback": "That bends farraige into an origin; the line names a county, not the water."
+                  },
+                  {
+                    "id": "frame-dropped",
+                    "rationale": "Bá is kept while the origin frame the line is built on is dropped.",
+                    "feedback": "That keeps bá but drops the origin frame the line is built on."
+                  },
+                  {
+                    "id": "fallback",
+                    "rationale": "A response the named misconceptions do not cover.",
+                    "feedback": "Read the frame as … mé literally: from Mayo am I."
+                  }
                 ],
                 "successFeedback": "The line places the speaker in Mayo — the coast's words and the origin frame agree.",
                 "hint": "Read the frame as … mé literally: from Mayo am I.",
@@ -597,7 +823,10 @@
                   "requiredResponse": "Read the note again and choose what the line says."
                 },
                 "completionEvidence": "correctSelection"
-              }
+              },
+              "phraseFamilyMemberIDs": [
+                "as.from-mayo"
+              ]
             },
             "presentation": null,
             "advanceLabel": null,
@@ -634,7 +863,12 @@
               "feedback": "The coast's first words are yours to carry.",
               "hint": "Read each capability aloud if it helps.",
               "recovery": "Nothing to answer here — read what you can now do.",
-              "lexemeIDs": ["lex.farraige", "lex.ba", "lex.ait", "lex.as"],
+              "lexemeIDs": [
+                "lex.farraige",
+                "lex.ba",
+                "lex.ait",
+                "lex.as"
+              ],
               "operatesOnSentence": false,
               "recognitionMultipleChoice": false,
               "conversation": null,
@@ -662,10 +896,22 @@
               "learningContract": {
                 "objective": "State what this run has made possible and where the words go.",
                 "targets": [
-                  { "id": "lex.farraige", "capability": "recognised" },
-                  { "id": "lex.ba", "capability": "recognised" },
-                  { "id": "lex.ait", "capability": "recognised" },
-                  { "id": "lex.as", "capability": "produced" }
+                  {
+                    "id": "lex.farraige",
+                    "capability": "recognised"
+                  },
+                  {
+                    "id": "lex.ba",
+                    "capability": "recognised"
+                  },
+                  {
+                    "id": "lex.ait",
+                    "capability": "recognised"
+                  },
+                  {
+                    "id": "lex.as",
+                    "capability": "produced"
+                  }
                 ],
                 "misconceptions": [],
                 "successFeedback": "The coast's first words are yours to carry.",
@@ -695,7 +941,10 @@
             "kind": "exercise",
             "estimatedSeconds": 75,
             "introducedLexemeIDs": [],
-            "resourceIDs": ["audio.farraige", "audio.is-as-maigh-eo-me"],
+            "resourceIDs": [
+              "audio.farraige",
+              "audio.is-as-maigh-eo-me"
+            ],
             "exercise": {
               "family": "contextualReview",
               "authoredUse": null,
@@ -712,7 +961,10 @@
               "feedback": "The slipped target holds this time.",
               "hint": "Replay the original sound, then answer as you did before.",
               "recovery": "Close. Replay the sound and keep each word in its place.",
-              "lexemeIDs": ["lex.farraige", "lex.as"],
+              "lexemeIDs": [
+                "lex.farraige",
+                "lex.as"
+              ],
               "operatesOnSentence": true,
               "recognitionMultipleChoice": false,
               "conversation": null,
@@ -729,9 +981,24 @@
                     "prompt": "Hear the word again, then choose its meaning.",
                     "answer": "sea",
                     "options": [
-                      { "id": "sea", "text": "sea", "isCorrect": true, "rationale": "Farraige means the sea." },
-                      { "id": "island", "text": "island", "isCorrect": false, "rationale": "That's land, not water." },
-                      { "id": "castle", "text": "castle", "isCorrect": false, "rationale": "That's caisleán — castle." }
+                      {
+                        "id": "sea",
+                        "text": "sea",
+                        "isCorrect": true,
+                        "rationale": "Farraige means the sea."
+                      },
+                      {
+                        "id": "island",
+                        "text": "island",
+                        "isCorrect": false,
+                        "rationale": "That's land, not water."
+                      },
+                      {
+                        "id": "castle",
+                        "text": "castle",
+                        "isCorrect": false,
+                        "rationale": "That's caisleán — castle."
+                      }
                     ],
                     "tokens": [],
                     "pairs": [],
@@ -742,7 +1009,9 @@
                     "feedback": "Farraige holds as the sea this time.",
                     "hint": "far-ig-eh — the rolling middle sound.",
                     "recovery": "Replay farraige once more and keep it on the open water.",
-                    "lexemeIDs": ["lex.farraige"],
+                    "lexemeIDs": [
+                      "lex.farraige"
+                    ],
                     "operatesOnSentence": false,
                     "recognitionMultipleChoice": true,
                     "conversation": null,
@@ -770,7 +1039,9 @@
                     "feedback": "The origin line holds whole this time.",
                     "hint": "Is · as · Maigh Eo · mé, with the fada on mé.",
                     "recovery": "Replay the line and restore each word in its place.",
-                    "lexemeIDs": ["lex.as"],
+                    "lexemeIDs": [
+                      "lex.as"
+                    ],
                     "operatesOnSentence": true,
                     "recognitionMultipleChoice": false,
                     "conversation": null,
@@ -782,11 +1053,21 @@
               "learningContract": {
                 "objective": "Re-enter one struggled target from its original sound or sentence — never a bare retype.",
                 "targets": [
-                  { "id": "lex.farraige", "capability": "recognised" },
-                  { "id": "lex.as", "capability": "recalled" }
+                  {
+                    "id": "lex.farraige",
+                    "capability": "recognised"
+                  },
+                  {
+                    "id": "lex.as",
+                    "capability": "recalled"
+                  }
                 ],
                 "misconceptions": [
-                  { "id": "slipped-again", "rationale": "The struggled target slips a second time when it is met in its original form.", "feedback": "Close. Replay the sound and keep each word in its place." }
+                  {
+                    "id": "slipped-again",
+                    "rationale": "The struggled target slips a second time when it is met in its original form.",
+                    "feedback": "Close. Replay the sound and keep each word in its place."
+                  }
                 ],
                 "successFeedback": "The slipped target holds this time.",
                 "hint": "Replay the original sound, then answer as you did before.",

@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.as",
+  "lexeme_id": "lex.as",
+  "citation_form": "as",
+  "gloss": "from",
+  "county": "mayo",
+  "place_grounding": "Maigh Eo / Clew Bay — origin on this coast",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — origin frame. 0 invented.",
+  "members": [
+    {
+      "id": "as.citation",
+      "text": "as",
+      "gloss": "from",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.clew-bay.build-origin"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "as.from-mayo",
+      "text": "Is as Maigh Eo mé.",
+      "gloss": "I am from Mayo.",
+      "morphology": "as + place + mé",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.clew-bay.build-origin",
+        "mayo.in-the-record.retrieve-origin"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "as.where-from",
+      "text": "Cárb as tú?",
+      "gloss": "Where are you from?",
+      "morphology": "as in origin question",
+      "source": "inventory",
+      "attested_in": [
+        "content/audio/irish-inventory-v1.json"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "as.where-from",
+      "builds_member_id": "as.from-mayo"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "as.from-mayo",
+      "reuses_member_id": "as.from-mayo",
+      "note": "Same line delayed in record chapter — reuse of frame, not a new surround."
+    }
+  }
+}

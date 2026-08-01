@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.bean",
+  "lexeme_id": "lex.bean",
+  "citation_form": "bean",
+  "gloss": "woman",
+  "county": "mayo",
+  "place_grounding": "Gráinne recorded as a woman of power on this coast",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — kin batch. 1 invented parallel without personal name for later reuse.",
+  "members": [
+    {
+      "id": "bean.citation",
+      "text": "bean",
+      "gloss": "woman",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.kin-alliances.fill-woman"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "bean.grainne-is-woman",
+      "text": "Is bean í Gráinne.",
+      "gloss": "Gráinne is a woman.",
+      "morphology": "classification",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.kin-alliances.fill-woman"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "bean.she-is-woman",
+      "text": "Is bean í.",
+      "gloss": "She is a woman.",
+      "morphology": "classification without name",
+      "source": "invented",
+      "attested_in": [],
+      "invented": true,
+      "place_note": "Same frame without the personal name",
+      "qa_state": "pending_generation"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "bean.grainne-is-woman",
+      "builds_member_id": "bean.she-is-woman"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "bean.grainne-is-woman",
+      "reuses_member_id": "bean.she-is-woman"
+    }
+  }
+}

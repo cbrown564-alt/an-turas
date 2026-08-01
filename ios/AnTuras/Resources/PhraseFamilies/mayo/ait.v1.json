@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.ait",
+  "lexeme_id": "lex.ait",
+  "citation_form": "áit",
+  "gloss": "place",
+  "county": "mayo",
+  "place_grounding": "Clew Bay / Umhaill — a named place that matters on this coast",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — coastal cohort. 1 invented question parallel; rest attested.",
+  "members": [
+    {
+      "id": "ait.citation",
+      "text": "áit",
+      "gloss": "place",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": ["mayo.clew-bay.match-coast"],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "ait.i-have-place",
+      "text": "Tá áit agam anseo.",
+      "gloss": "I have a place here.",
+      "morphology": "citation after Tá; possession frame",
+      "source": "inventory",
+      "attested_in": ["content/audio/irish-inventory-v1.json"],
+      "invented": false,
+      "place_note": "Belonging on this coast",
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "ait.name-of-place",
+      "text": "Cén t-ainm atá ar an áit?",
+      "gloss": "What is the name of the place?",
+      "morphology": "citation after ar an",
+      "source": "inventory",
+      "attested_in": ["content/audio/irish-inventory-v1.json"],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "ait.where-place",
+      "text": "Cá bhfuil an áit?",
+      "gloss": "Where is the place?",
+      "morphology": "citation after an; question parallel to Cá bhfuil an fharraige?",
+      "source": "invented",
+      "attested_in": [],
+      "invented": true,
+      "place_note": "Locates the named coast the learner is standing on",
+      "qa_state": "pending_generation"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "ait.i-have-place",
+      "builds_member_id": "ait.name-of-place",
+      "note": "Possession → naming surround."
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "ait.i-have-place",
+      "reuses_member_id": "ait.where-place",
+      "note": "Delayed location question."
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.teaghlach",
+  "lexeme_id": "lex.teaghlach",
+  "citation_form": "teaghlach",
+  "gloss": "family / household",
+  "county": "mayo",
+  "place_grounding": "Rockfleet household — kinship as authority",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — kin batch. 0 invented.",
+  "members": [
+    {
+      "id": "teaghlach.citation",
+      "text": "teaghlach",
+      "gloss": "family / household",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.kin-alliances.listen-family"
+      ],
+      "invented": false,
+      "qa_state": "spot_flagged"
+    },
+    {
+      "id": "teaghlach.household-here",
+      "text": "Tá an teaghlach anseo.",
+      "gloss": "The household is here.",
+      "morphology": "location frame",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.rockfleet.delayed-retrieval"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "teaghlach.the-household",
+      "text": "An teaghlach.",
+      "gloss": "The household.",
+      "morphology": "definite NP",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.rockfleet.dialogue"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "teaghlach.kin-in-place",
+      "text": "Tá mac agus deartháir sa teaghlach san áit seo.",
+      "gloss": "There is a son and a brother in the household in this place.",
+      "morphology": "teaghlach as container",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.kin-alliances.build-belonging"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "teaghlach.the-household",
+      "builds_member_id": "teaghlach.household-here"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "teaghlach.household-here",
+      "reuses_member_id": "teaghlach.kin-in-place"
+    }
+  }
+}

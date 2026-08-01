@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "mayo.phrase-family.freagair",
+  "lexeme_id": "lex.freagair",
+  "citation_form": "freagair",
+  "gloss": "answer",
+  "county": "mayo",
+  "place_grounding": "The royal answer — answer and give effect",
+  "status": "densify_draft",
+  "review": {
+    "pedagogue": "pending",
+    "native_audio_qa": "pending",
+    "teaching_claims_allowed": false,
+    "scale_out_allowed": false
+  },
+  "notes": "D30 Mayo densify — answer verb. 1 invented parallel for isolated imperative.",
+  "members": [
+    {
+      "id": "freagair.citation",
+      "text": "freagair",
+      "gloss": "answer",
+      "morphology": "citation",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.royal-answer.notice-actions"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "freagair.answer-and-give",
+      "text": "Freagair agus tabhair cabhair.",
+      "gloss": "Answer and give help.",
+      "morphology": "coordinated imperatives",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.royal-answer.build-response"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "freagair.answer-the-request",
+      "text": "Freagair an iarraidh.",
+      "gloss": "Answer the request.",
+      "morphology": "imperative + object",
+      "source": "draft-pack",
+      "attested_in": [
+        "mayo.royal-answer.notice-actions"
+      ],
+      "invented": false,
+      "qa_state": "generated_unreviewed"
+    },
+    {
+      "id": "freagair.answer",
+      "text": "Freagair.",
+      "gloss": "Answer.",
+      "morphology": "bare imperative",
+      "source": "invented",
+      "attested_in": [],
+      "invented": true,
+      "place_note": "Isolates the answer act before give",
+      "qa_state": "pending_generation"
+    }
+  ],
+  "consuming_patterns": {
+    "b_surround_change_construction": {
+      "status": "planned",
+      "hears_member_id": "freagair.answer-the-request",
+      "builds_member_id": "freagair.answer-and-give"
+    },
+    "c_delayed_reuse": {
+      "status": "planned",
+      "encounter_member_id": "freagair.answer-and-give",
+      "reuses_member_id": "freagair.answer"
+    }
+  }
+}
