@@ -30,6 +30,10 @@ struct CountyExerciseView: View {
 
     let page: CountyStoryPage
     let alreadyComplete: Bool
+    /// The first learning task may carry a short authored arrival cue. Later
+    /// tasks keep the familiar compact shell; their page title/context is
+    /// already represented by the preceding completed task.
+    let showsStoryContext: Bool
     let onComplete: () -> Void
     let onBarUpdate: (CountyExerciseBarState, (() -> Void)?) -> Void
     /// C3: the run's ordered struggle record, used to target contextual review.
@@ -61,6 +65,7 @@ struct CountyExerciseView: View {
     init(
         page: CountyStoryPage,
         alreadyComplete: Bool,
+        showsStoryContext: Bool = false,
         onComplete: @escaping () -> Void,
         onBarUpdate: @escaping (CountyExerciseBarState, (() -> Void)?) -> Void,
         struggledPageIDs: [String] = [],
@@ -73,6 +78,7 @@ struct CountyExerciseView: View {
     ) {
         self.page = page
         self.alreadyComplete = alreadyComplete
+        self.showsStoryContext = showsStoryContext
         self.onComplete = onComplete
         self.onBarUpdate = onBarUpdate
         self.struggledPageIDs = struggledPageIDs
@@ -267,6 +273,40 @@ struct CountyExerciseView: View {
                     .buttonStyle(.plain)
                     .accessibilityLabel("Show a hint")
                 }
+            }
+
+            // The internal Clew Bay route opens directly on the shared activity
+            // shell. Keep the authored page context visible here so the first
+            // task still arrives through the story rather than as a context-free
+            // drill. This is deliberately short: longer exposition belongs on
+            // a narrative page, while this line gives the learner the place and
+            // immediate reason to attend to the task.
+            if showsStoryContext,
+               (!page.context.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                || !page.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) {
+                VStack(alignment: .leading, spacing: 5) {
+                    if !page.context.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        Text(page.context)
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(Theme.inkSoft)
+                            .textCase(.uppercase)
+                            .kerning(0.7)
+                    }
+                    if !page.body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        Text(page.body)
+                            .font(.body)
+                            .foregroundStyle(Theme.inkSoft)
+                            .lineSpacing(2)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel(
+                    [page.context, page.body]
+                        .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                        .filter { !$0.isEmpty }
+                        .joined(separator: ". ")
+                )
             }
 
             // Build / type: one soft English target under the imperative when
@@ -2161,12 +2201,15 @@ private struct CountyMatchingSurface: View {
         if leftSelection.id == pair.id {
             Haptics.chisel()
             celebratingPairID = pair.id
+            // A correct next touch repairs the prior mismatch immediately.
+            // Keep the brief pair settle, but do not leave the old diagnostic
+            // visible under a now-correct response.
+            missedRightID = nil
             onRepair()
             let settleDelay = reduceMotion ? 0 : 0.38
             DispatchQueue.main.asyncAfter(deadline: .now() + settleDelay) {
                 matched.insert(pair.id)
                 self.selectedLeft = nil
-                missedRightID = nil
                 celebratingPairID = nil
                 if matched.count == exercise.pairs.count {
                     onComplete(exercise.feedback)

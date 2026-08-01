@@ -89,7 +89,12 @@ struct CountyStoryExperienceView: View {
                         VStack(alignment: .leading, spacing: isExercise ? 0 : 24) {
                             Color.clear.frame(height: 0).id("county-page-top")
                             if isExercise {
-                                exercisePage(page, isComplete: isComplete, topPadding: 8)
+                                exercisePage(
+                                    page,
+                                    isComplete: isComplete,
+                                    topPadding: 8,
+                                    showsStoryContext: index == 0
+                                )
                                     // Stage zoning: a short exercise page fills the
                                     // viewport so the shell can center its working area;
                                     // AX-size content outgrows this and scrolls as one
@@ -117,6 +122,11 @@ struct CountyStoryExperienceView: View {
                     .onChange(of: page.id) { _, _ in
                         scrollToTaskStart(proxy, page: page)
                     }
+                    // A new activity must not inherit the previous task's
+                    // scroll offset. This is especially important after a
+                    // matching board or a long conversation: the next
+                    // construction bank must be reachable from its cold open.
+                    .id(page.id)
                 }
             }
         }
@@ -148,7 +158,15 @@ struct CountyStoryExperienceView: View {
                         atlas.finish(pack, mode: mode)
                         withAnimation(reduceMotion ? nil : Motion.settle) { finishedMode = mode }
                     } else {
-                        move(to: visible[index + 1])
+                        // Exercise-to-exercise navigation swaps the working
+                        // surface in place. Keeping it immediate avoids a
+                        // transient accessibility frame from the previous
+                        // task covering the next task's response controls.
+                        let next = visible[index + 1]
+                        move(
+                            to: next,
+                            animated: !(page.kind == .exercise && next.kind == .exercise)
+                        )
                     }
                 }
             )
@@ -164,10 +182,16 @@ struct CountyStoryExperienceView: View {
     }
 
     @ViewBuilder
-    private func exercisePage(_ page: CountyStoryPage, isComplete: Bool, topPadding: CGFloat) -> some View {
+    private func exercisePage(
+        _ page: CountyStoryPage,
+        isComplete: Bool,
+        topPadding: CGFloat,
+        showsStoryContext: Bool
+    ) -> some View {
         CountyExerciseView(
             page: page,
             alreadyComplete: isComplete,
+            showsStoryContext: showsStoryContext,
             onComplete: {
                 locallyCompletedPageIDs.insert(page.id)
                 atlas.markPageComplete(page.id, in: pack)
@@ -194,9 +218,13 @@ struct CountyStoryExperienceView: View {
         .frame(maxWidth: .infinity)
     }
 
-    private func move(to page: CountyStoryPage) {
+    private func move(to page: CountyStoryPage, animated: Bool = true) {
         Haptics.tap()
-        withAnimation(reduceMotion ? nil : Motion.settle) {
+        if animated {
+            withAnimation(reduceMotion ? nil : Motion.settle) {
+                atlas.setActivePage(page.id, in: pack)
+            }
+        } else {
             atlas.setActivePage(page.id, in: pack)
         }
     }
