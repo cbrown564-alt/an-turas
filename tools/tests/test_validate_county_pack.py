@@ -267,6 +267,7 @@ class AddedRules(unittest.TestCase):
                         exercise = candidate["exercise"]
                         break
         exercise["audioText"] = "Níl an líne seo san inventory."
+        exercise.pop("phraseFamilyMemberIDs", None)
         self._expect("audioNotInInventory")
 
     def test_unknown_phrase_family_member_rejected(self):
@@ -844,6 +845,24 @@ class ContractRules(unittest.TestCase):
         # listen-caislean targets lex.caislean with declared (adapted) evidence.
         self._completion_exercise(["lex.caislean"])
         self.assertEqual(v.validate(self.pack).pack_id, "mayo.grainne-1593")
+
+    def test_incomplete_learning_contract(self):
+        _, exercise = self._exercise_page("freeTyping")
+        exercise["learningContract"] = self._contract(exercise)
+        exercise["learningContract"]["objective"] = "  "
+        self._expect("incompleteLearningContract")
+
+    def test_recovery_omits_fresh_response(self):
+        _, exercise = self._exercise_page("freeTyping")
+        exercise["learningContract"] = self._contract(exercise)
+        exercise["learningContract"]["recovery"]["requiredResponse"] = ""
+        self._expect("recoveryOmitsFreshResponse")
+
+    def test_enforce_learning_quality_requires_adapted_completeness(self):
+        # Blank a flat field so the adapted contract is incomplete.
+        _, exercise = self._exercise_page("freeTyping")
+        exercise["objective"] = ""
+        self._expect("incompleteLearningContract")
 
 
 class SharedEnumList(unittest.TestCase):

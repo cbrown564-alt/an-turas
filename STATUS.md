@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-08-01 (foundation gate
-engineering PASS; next is one Mayo production slice consuming D30 B/C).*
+and visual narrative. English → Irish only. Updated 2026-08-02 (D32 emergency
+nine-day Irish audio harvest; next is broad county phrase production and capture).*
 
 ## Where we are
 
@@ -107,10 +107,16 @@ Generator: `tools/tts-bakeoff/build-production-audio.py --from-inventory`.
 Launch packs are wired to the inventory: audio resources are `bundled` where
 clips exist, thin conversation pages carry inventory `audioText`, and
 `tools/validate_county_pack.py` rejects spoken Irish outside the inventory.
-**Next audio direction:** freeze launch-county lemma sets; design phrase families
-(same lemma, varied surrounds, place-bound where possible); add exercise patterns
-that consume families; then generate and QA in batches. Do not mass-expand orphan
-headwords.
+**D32 emergency harvest direction (2026-08-02):** the remaining ElevenLabs subscription
+window is a one-time production opportunity with more than 100k credits and nine days
+remaining. Generate provisional written vocabulary and phrase-family members across all
+32 counties, then capture them in resumable, schema-validated batches. Some wastage,
+duplication, inaccuracy, and rework are accepted. The v2 store, stable hashes,
+provenance, risk flags, claims, leases, checksums, and orthogonal QA/release states
+remain mandatory. Native-speaker and pedagogy review block teaching claims and learner
+release, but do not block provisional capture during this window. After expiry, select,
+correct, review, and wire the strongest lines into exercises. The normal 3,000–5,000
+capture target is a post-harvest selection guide, not an emergency cap.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
@@ -342,6 +348,7 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-08-02 | **Structured Irish audio execution is path- and environment-gated.** The runner uses the existing project UV environment, resolves the primary `main` worktree as the only canonical destination, stages and validates MP3s before create-only placement, and records batch/runtime checksums on successful execution. The missing-only batch is authorized with three existing clips cancelled for reuse and `Gráinne is ainm di.` active at an estimated 19 credits. The pre-generation ElevenLabs usage query returned HTTP 401, so generation stopped before TTS; no audio or manifest result was written. | `tools/structured_audio_generation.py`, `tools/run-structured-audio-generation.sh`, `content/audio/README.md`, `STATUS.md` |
 | 2026-08-01 | **Foundation gate engineering PASS.** Resolved contracts mandatory under `enforceLearningQuality`; four memory signals + debt-free review seed; C1/C3/C5 gallery; freeze/shell/gallery UI green; device build installed (locked at launch). Next: one Mayo production B/C slice. | `CountyLearnerMemory.swift`, `CountyStoryPack.swift`, `CountyExerciseSystem.swift`, `AtlasPrototype.swift`, `FOUNDATION-GATE-2026-08-01.md`, `STATUS.md` |
 | 2026-08-01 | **D30 Mayo densify complete + kin batch + Learning wiring.** All 20 taught lexemes have phrase-family drafts; kin (*teaghlach/mac/bean/deartháir*) included. Schema: `phraseFamilyMemberIDs`; Swift/Python validators; catalog bundled; Mayo draft 25 + Rockfleet 6 exercises wired. Full foundation gate (gallery/device) still open. | `content/mayo/phrase-families/`, `ios/AnTuras/Resources/PhraseFamilies/`, `CountyStoryPack.swift`, `validate_county_pack.py`, packs, `STATUS.md` |
 | 2026-08-01 | **D30 *farraige* pedagogue + native QA passed; Mayo coastal densify started.** Family scale-ready; inventory four strings `qa_passed`. Drafted *bá* / *long* / *áit* / *caisleán* phrase families (attested-first, ≤1 invented each where needed). Next densify: *teaghlach* / *iarr* / kin by demand. | `content/mayo/phrase-families/`, `content/audio/irish-inventory-v1.json`, `STATUS.md` |
@@ -509,10 +516,11 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 1. **Personal atlas external release gates** — run the 12–18 person hard-case protocol;
    establish the specialist-reviewed showcase, licensed surname source and community/
    voice agreements before public promotion.
-2. **Generate Irish Cultural Guide clips only for cleared text** — do not QA superseded
-   D13 copy; native-speaker review remains required for Irish teaching audio. Treat
-   Trinity/ABAIR partnership work as a post-launch upgrade. Prefer phrase-family batches
-   over orphan headword expansion.
+2. **Complete the D32 emergency Irish harvest** — generate provisional all-county
+   phrase-family text and capture it in registered batches before the subscription
+   expires. Native-speaker review remains required before learner release. Treat
+   Trinity/ABAIR partnership work as a post-launch upgrade. Prefer phrase-family
+   batches over untracked orphan headword expansion.
 3. **Flow / Gemini Omni Batch A** — animate the D28 queue in `docs/MEDIA-AUDIT.md`
    (wired stills first), then Batch B missing stills; recompress shipped loops to ≤2 MB.
 4. **Illustration production recipe** — atlas registers before Chapter 1–3 scene sets.

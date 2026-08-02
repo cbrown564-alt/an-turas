@@ -54,8 +54,10 @@ duplicating TTS.
 
 Draft members may remain incomplete only while capture is not requested and release is
 blocked. Invented pedagogical text remains `invented: true` after review. It may request
-capture only after an explicit pedagogy approval record, or under an explicit
-fixture-only owner exception; neither path grants learner release.
+capture under the explicit **D32 nine-day emergency-harvest approval** when the member
+has stable identity, provenance, use, and risk metadata. This is a time-boxed capture
+exception for provisional material, not a release or teaching approval. Neither
+emergency capture nor a successful provider result grants learner release.
 
 ## Authoring handoff
 
@@ -67,10 +69,14 @@ For each new slice, the authoring agent must:
    recording only reviews that actually occurred;
 3. register the family id/path in sorted order in `phrase-family-store-v2.json`, then
    run `check` and inspect `report` without treating its counts as approval;
-4. build a purpose-named draft batch with the locked profile and register the inspected
+4. build a purpose-named batch with the locked profile and register the inspected
    manifest in the store; and
-5. leave provider execution blocked until capture requests name the exact batch line,
-   the batch and line are approved, and the executing worker owns an active claim.
+5. for ordinary work, leave provider execution blocked until capture requests name the
+   exact batch line, the batch and line are approved, and the executing worker owns an
+   active claim. During the D32 harvest window, an explicit emergency-harvest approval
+   may authorize provisional lines that are not yet pedagogy- or native-QA-cleared;
+   exact-line approval, active claims, resumability, and all result/checksum recording
+   still apply.
 
 The offline tool creates and validates handoff records only. It contains no ElevenLabs
 client and grants no authority to generate audio.
@@ -91,9 +97,11 @@ python3 -B tools/structured_audio_authoring.py build-batch \
   --output content/audio/authoring/batches/irish.exercise.001.json
 ```
 
-New manifests are drafts with `provider_calls_allowed: false`. Before execution, each
-member needs a valid capture request, each line needs explicit batch approval, and a
-partitioned batch needs a claim owner and lease. Provider execution records request id,
+New manifests are drafts with `provider_calls_allowed: false`. Before ordinary
+execution, each member needs a valid capture request and each line needs explicit batch
+approval. During D32, a manifest may instead be explicitly approved for emergency
+harvest while its members remain review-pending. A partitioned batch still needs a claim
+owner and lease. Provider execution records request id,
 attempt count, retry timing, structured errors, canonical output path, byte count,
 duration, and SHA-256. `succeeded` is valid only when the named MP3 exists and its
 checksum matches. Text membership in `irish-inventory-v1.json` never sets that result.
@@ -118,11 +126,17 @@ user decision and a versioned contract change before any manifest can validate.
 
 ## Pre-expiry capacity plan
 
-These are project planning targets, not evidence of a universal industry standard:
+The normal planning targets below are superseded for the nine-day D32 harvest by the
+available ElevenLabs credit budget and expiry deadline. They remain useful as a
+post-harvest selection target, not as a cap on provisional capture.
 
-- **Primary:** capture approximately **3,000–5,000** controlled, metadata-rich An Turas
-  utterances, then select roughly **1,200–1,500** of the strongest exercise-integrated
-  lines for the first learner-facing release corpus.
+- **Emergency harvest:** capture as much broad, metadata-rich county/story material as
+  the remaining credits and nine-day window allow, accepting duplication, weak lines,
+  and later rework. Measure against the credit budget and unique text/voice lines rather
+  than enforcing the normal utterance cap.
+- **Post-harvest selection:** retain roughly **1,200–1,500** of the strongest
+  exercise-integrated lines for the first learner-facing release corpus, expanding that
+  set only after review and integration.
 - Within Irish, prioritise exercise-bound phrase families, reusable dialogue roles,
   place/story openings and recaps, then controlled listening contrasts only where a
   defined learning action requires them.
@@ -133,10 +147,22 @@ These are project planning targets, not evidence of a universal industry standar
   paired cue demonstrations. That is a separate project's work and must use its own
   contract-compliant records.
 
-Do not exceed 5,000 An Turas captures unless every additional line names a phrase
-family, lesson pattern, dialogue variation, story/place opening or recap, or another
-documented learning use. Every generated line still needs contract-compliant text,
-context, provenance, and generation control.
+During D32, generated lines may be discarded or reworked after capture. Every retained
+line still needs contract-compliant text, context, provenance, stable identity, and
+generation control before it can enter the learner-facing corpus.
+
+## D32 emergency harvest checklist
+
+1. Generate provisional phrase-family/member documents across all counties, using the
+   atlas and story slate as inputs and marking uncertainty or invention.
+2. Append family paths in sorted order to `phrase-family-store-v2.json` and run
+   `check`/`report` after each batch of edits.
+3. Build many purpose-named, resumable county/story batches rather than one opaque
+   corpus manifest.
+4. Authorize capture explicitly for the expiry window; keep provider execution,
+   checksums, claims, leases, and errors fully recorded.
+5. Treat harvested output as review-pending until native-speaker, pedagogy, historical,
+   and exercise checks promote it.
 
 ## Coverage accounting
 
@@ -153,3 +179,31 @@ backed by a bundled clip. `tools/validate_county_pack.py` rejects unknown audio 
 resolves both legacy v1 and canonical v2 phrase-family members. The legacy inventory
 builder remains available for existing clips, but new structured capture is handed off
 through a v2 batch manifest rather than inferred from inventory membership.
+
+## Gated execution and canonical output
+
+Provider execution is deliberately separate from authoring validation. Run the offline
+preflight from any worktree through the existing project UV environment:
+
+```bash
+tools/run-structured-audio-generation.sh --json
+```
+
+The wrapper resolves the primary `main` worktree and invokes
+`tools/tts-bakeoff/.venv/bin/python`. A preflight failure never imports the provider
+client and never reads the API key. Generation requires the exact authorized four-line
+Mayo batch, an approved batch and line request, an active claim, the locked voice/model,
+a matching deterministic identity, a current numeric usage snapshot, and the
+canonical destination check: `ios/AnTuras/Resources/Audio/` in the primary `main`
+worktree.
+
+```bash
+tools/run-structured-audio-generation.sh --generate
+```
+
+Responses are first written under `/private/tmp`, checked with `ffprobe`, and created at
+the canonical destination only when the target path is absent. The runner refuses to
+overwrite an existing clip or silently reuse one from an older batch; a missing-only
+batch is required for that case. It then records checksums, usage snapshots, and
+unreviewed QA state in the registered batch and runtime manifest. Temporary worktrees,
+legacy bakeoff folders, and unregistered manifests are never valid destinations.

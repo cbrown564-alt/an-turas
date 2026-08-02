@@ -234,7 +234,8 @@
         "actual_batch_credits",
         "actual_cumulative_credits",
         "usage_before",
-        "usage_after"
+        "usage_after",
+        "cap_authorization"
       ],
       "properties": {
         "approved_cap": { "const": 25000 },
@@ -251,6 +252,17 @@
         },
         "usage_after": {
           "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/usageSnapshot" }]
+        },
+        "cap_authorization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "authorized_by", "authorized_at", "reason"],
+          "properties": {
+            "status": { "const": "removed" },
+            "authorized_by": { "type": "string", "minLength": 1 },
+            "authorized_at": { "type": "string", "minLength": 1 },
+            "reason": { "type": "string", "minLength": 1 }
+          }
         }
       }
     },

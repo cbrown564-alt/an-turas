@@ -760,6 +760,8 @@ enum CountyStoryPackError: LocalizedError, Equatable {
     case unsupportedCapabilityClaim(String)
     case unknownPhraseFamilyMember(String)
     case phraseFamilyMemberMismatch(String)
+    case incompleteLearningContract(String)
+    case recoveryOmitsFreshResponse(String)
 
     var errorDescription: String? {
         switch self {
@@ -792,6 +794,8 @@ enum CountyStoryPackError: LocalizedError, Equatable {
         case .unsupportedCapabilityClaim(let id): return "Completion page \(id) claims a capability no completed-target evidence supports (C5)."
         case .unknownPhraseFamilyMember(let id): return "Exercise \(id) names a phrase-family member that is not in the county catalog (D30)."
         case .phraseFamilyMemberMismatch(let id): return "Exercise \(id) phrase-family member text does not match answer/audio/model under the bind rule (D30)."
+        case .incompleteLearningContract(let id): return "Exercise \(id) lacks a complete learning contract (objective, feedback, hint, recovery)."
+        case .recoveryOmitsFreshResponse(let id): return "Exercise \(id) recovery completes without requiring a fresh learner response."
         }
     }
 }
@@ -892,12 +896,19 @@ enum CountyStoryPackValidator {
                    exercise.reviewCandidates?.isEmpty != false {
                     throw CountyStoryPackError.invalidReviewPayload(page.id)
                 }
-                // Authored learning-contract rules (rebuild plan, "Automated
-                // enforcement"). Flat pre-contract packs never enter here — the
-                // deterministic adapter covers them until the production-slice
-                // migration makes contracts mandatory.
+                // Learning-contract rules (rebuild plan step 12). Authored
+                // contracts take the full distractor/diagnostic suite. Under
+                // enforceLearningQuality every exercise must still resolve to a
+                // complete contract (authored or adapted) without bulk-migrating
+                // production packs yet — that remains the production-slice step.
                 if let contract = exercise.learningContract {
                     try validateLearningContract(contract, exercise: exercise, pageID: page.id)
+                } else if pack.enforceLearningQuality {
+                    try validateResolvedContractCompleteness(
+                        exercise.resolvedContract(),
+                        exercise: exercise,
+                        pageID: page.id
+                    )
                 }
                 try validatePhraseFamilyMembers(exercise, pageID: page.id, packID: pack.id)
                 // C3: a review candidate must trace its target back to the
@@ -1022,6 +1033,7 @@ enum CountyStoryPackValidator {
         exercise: CountyExercise,
         pageID: String
     ) throws {
+        try validateResolvedContractCompleteness(contract, exercise: exercise, pageID: pageID)
         let declared = Set(contract.misconceptions.map(\.id))
         for option in exercise.options where !option.isCorrect {
             guard let misconceptionID = option.misconceptionID,
@@ -1043,6 +1055,35 @@ enum CountyStoryPackValidator {
         if let recoveryTargets = contract.recovery.targetIDs,
            Set(recoveryTargets) != Set(contract.targets.map(\.id)) {
             throw CountyStoryPackError.targetChangingRecovery(pageID)
+        }
+        if let evidence = contract.completionEvidence,
+           !exercise.family.compatibleCompletionEvidence.contains(evidence) {
+            throw CountyStoryPackError.unsupportedCompletionEvidence(pageID)
+        }
+        let lexemes = Set(exercise.lexemeIDs)
+        if contract.targets.contains(where: { !lexemes.contains($0.id) }) {
+            throw CountyStoryPackError.offTargetMemoryCredit(pageID)
+        }
+    }
+
+    /// Structural completeness for authored *and* adapted contracts under
+    /// `enforceLearningQuality`: objective/feedback/hint/recovery present, and
+    /// recovery still requires a fresh learner response.
+    static func validateResolvedContractCompleteness(
+        _ contract: CountyLearningContract,
+        exercise: CountyExercise,
+        pageID: String
+    ) throws {
+        let objective = contract.objective.trimmingCharacters(in: .whitespacesAndNewlines)
+        let success = contract.successFeedback.trimmingCharacters(in: .whitespacesAndNewlines)
+        let hint = contract.hint.trimmingCharacters(in: .whitespacesAndNewlines)
+        let guidance = contract.recovery.guidance.trimmingCharacters(in: .whitespacesAndNewlines)
+        let required = contract.recovery.requiredResponse.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !objective.isEmpty, !success.isEmpty, !hint.isEmpty, !guidance.isEmpty else {
+            throw CountyStoryPackError.incompleteLearningContract(pageID)
+        }
+        guard !required.isEmpty else {
+            throw CountyStoryPackError.recoveryOmitsFreshResponse(pageID)
         }
         if let evidence = contract.completionEvidence,
            !exercise.family.compatibleCompletionEvidence.contains(evidence) {

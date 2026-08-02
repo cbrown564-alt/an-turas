@@ -280,6 +280,40 @@ final class CountyContractValidationTests: XCTestCase {
             }
         }
     }
+
+    func testIncompleteLearningContract() throws {
+        try expectError(.incompleteLearningContract("mayo.clew-bay.build-origin")) { envelope in
+            mutateContract(of: "mayo.clew-bay.build-origin", in: &envelope) { contract in
+                contract["objective"] = "   "
+            }
+        }
+    }
+
+    func testRecoveryOmitsFreshResponse() throws {
+        try expectError(.recoveryOmitsFreshResponse("mayo.clew-bay.build-origin")) { envelope in
+            mutateContract(of: "mayo.clew-bay.build-origin", in: &envelope) { contract in
+                var recovery = contract["recovery"] as! [String: Any]
+                recovery["requiredResponse"] = ""
+                contract["recovery"] = recovery
+            }
+        }
+    }
+
+    func testEnforceLearningQualityRequiresResolvedContractCompleteness() throws {
+        // Rockfleet is flat + enforceLearningQuality; the adapter must still
+        // produce a complete contract without authored JSON.
+        let url = Bundle.main.url(
+            forResource: "mayo.grainne-1593",
+            withExtension: "json",
+            subdirectory: "CountyStories"
+        ) ?? Bundle.main.url(forResource: "mayo.grainne-1593", withExtension: "json")
+        let data = try Data(contentsOf: try XCTUnwrap(url))
+        let envelope = try JSONDecoder().decode(CountyStoryPackEnvelope.self, from: data)
+        XCTAssertTrue(envelope.pack.enforceLearningQuality)
+        let report = try CountyStoryPackValidator.validate(envelope)
+        XCTAssertEqual(report.contractAuthoredCount, 0)
+        XCTAssertEqual(report.contractAdaptedCount, 12)
+    }
 }
 
 /// The runtime enums and the shared documented list in

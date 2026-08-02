@@ -601,9 +601,14 @@ def validate_member(
                 elif basis == "fixture_owner_exception":
                     if not (learning or {}).get("fixture_only") or authorization.get("fixture_only") is not True:
                         errors.append(f"{label}: fixture exception must be explicitly fixture-only")
+                elif basis == "d32_emergency_harvest":
+                    if authorization.get("harvest_deadline") != "2026-08-11":
+                        errors.append(f"{label}: D32 harvest authorization requires the 2026-08-11 deadline")
+                    if authorization.get("learner_release_blocked") is not True:
+                        errors.append(f"{label}: D32 harvest authorization must keep learner release blocked")
                 else:
                     errors.append(f"{label}: unsafe authorization for invented capture")
-            elif basis not in {"repository_draft_owner", "pedagogy_approved"}:
+            elif basis not in {"repository_draft_owner", "pedagogy_approved", "d32_emergency_harvest"}:
                 errors.append(f"{label}: invalid authorization for sourced capture")
     elif isinstance(capture, dict) and capture.get("authorization") is not None:
         errors.append(f"{label}: only requested capture may carry authorization")
@@ -794,8 +799,14 @@ def validate_batch(
     if not isinstance(spend, dict):
         errors.append(f"{label}: spend must be an object")
         spend = {}
-    if spend.get("approved_cap") != APPROVED_CREDIT_CAP:
+    cap_auth = spend.get("cap_authorization")
+    cap_removed = isinstance(cap_auth, dict) and cap_auth.get("status") == "removed"
+    if not cap_removed and spend.get("approved_cap") != APPROVED_CREDIT_CAP:
         errors.append(f"{label}: spend approved_cap must remain {APPROVED_CREDIT_CAP}")
+    if cap_removed:
+        for field in ("authorized_by", "authorized_at", "reason"):
+            if not isinstance(cap_auth.get(field), str) or not cap_auth[field].strip():
+                errors.append(f"{label}: removed cap requires {field}")
     if spend.get("estimate_basis") != ESTIMATE_BASIS:
         errors.append(f"{label}: spend estimate_basis is not canonical")
     if spend.get("credits_per_character") != CREDITS_PER_CHARACTER:
@@ -873,7 +884,7 @@ def validate_batch(
                 errors.append(f"{llabel}: batch references incomplete member {member_id!r}")
             if member.get("irish", {}).get("normalized_text") != normalized:
                 errors.append(f"{llabel}: member text does not match line")
-            if execution_state == "approved" or line.get("request", {}).get("status") == "approved":
+            if line.get("request", {}).get("status") == "approved":
                 capture_request = member.get("states", {}).get("capture_request", {})
                 if capture_request.get("status") != "requested":
                     errors.append(f"{llabel}: approved line requires requested member capture")
@@ -912,8 +923,10 @@ def validate_batch(
             errors.append(f"{llabel}: invalid request state")
         elif request.get("status") == "approved" and execution_state != "approved":
             errors.append(f"{llabel}: line cannot be approved in an unapproved batch")
-        elif execution_state == "approved" and request.get("status") != "approved":
-            errors.append(f"{llabel}: approved batch requires an approved line request")
+        elif execution_state == "approved" and request.get("status") not in {"approved", "cancelled"}:
+            errors.append(
+                f"{llabel}: approved batch requires an approved or explicitly cancelled line request"
+            )
         if isinstance(request, dict) and request.get("status") == "approved":
             for field in ("approved_by", "approved_at"):
                 if not isinstance(request.get(field), str) or not request[field]:
@@ -934,6 +947,12 @@ def validate_batch(
 
         result = line.get("provider_result")
         result_status = result.get("status") if isinstance(result, dict) else None
+        if isinstance(request, dict) and request.get("status") == "cancelled":
+            if result_status != "not_started":
+                errors.append(f"{llabel}: cancelled line must not claim provider work")
+            output = resolve_repo_path(root, (line.get("audio") or {}).get("output_path"))
+            if output is None or not output.is_file():
+                errors.append(f"{llabel}: cancelled line must retain an existing canonical audio file")
         if result_status not in {"not_started", "in_progress", "succeeded", "failed"}:
             errors.append(f"{llabel}: invalid provider result state")
         if execution_state == "draft" and result_status != "not_started":
@@ -1013,7 +1032,12 @@ def validate_batch(
         errors.append(f"{label}: stored counts do not match line state")
     if isinstance(spend, dict):
         estimated_batch = round(
-            sum(line.get("estimated_credits", 0) for line in lines if isinstance(line, dict)),
+            sum(
+                line.get("estimated_credits", 0)
+                for line in lines
+                if isinstance(line, dict)
+                and line.get("request", {}).get("status") != "cancelled"
+            ),
             3,
         )
         if spend.get("estimated_batch_credits") != estimated_batch:
@@ -1092,8 +1116,18 @@ def validate_contract(root: Path = ROOT, store_path: Path | None = None) -> tupl
             errors.append("store: first-release planning target must remain 1,200–1,500")
         if not isinstance(release_max, int) or not isinstance(capture_max, int) or release_max > capture_max:
             errors.append("store: release target cannot exceed capture target")
-        if capacity.get("status") != "planning_target_not_industry_standard":
-            errors.append("store: capacity target must not be presented as an industry standard")
+        allowed_capacity_statuses = {
+            "planning_target_not_industry_standard",
+            "d32_emergency_harvest_until_2026-08-11",
+        }
+        if capacity.get("status") not in allowed_capacity_statuses:
+            errors.append("store: capacity target must use a recognized planning or emergency-harvest status")
+        if capacity.get("status") == "d32_emergency_harvest_until_2026-08-11":
+            emergency = capacity.get("emergency_harvest")
+            if not isinstance(emergency, dict) or emergency.get("enabled") is not True:
+                errors.append("store: D32 emergency harvest must be explicitly enabled")
+            if not isinstance(emergency, dict) or emergency.get("learner_release_allowed_before_review") is not False:
+                errors.append("store: D32 emergency harvest must keep learner release blocked before review")
         if capacity.get("irish_priority_order") != IRISH_PRIORITY_ORDER:
             errors.append("store: Irish pre-expiry priority order changed")
         reserves = capacity.get("reserves")

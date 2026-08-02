@@ -122,6 +122,10 @@ final class AppState: ObservableObject {
         /// D29 fixture boundary: words a fixture completion hands over stay in
         /// a fixture collection, never in county gold or the scheduler.
         var fixtureCollections: [String: [String]] = [:]
+        /// Exactly-once Learning memory credits (success/struggle/hint/recovery).
+        var countyMemoryEvents: [CountyPersistedMemoryEvent] = []
+        /// Aggregated per-target flags keyed `packID|lexemeID` for review seeding.
+        var countyTargetMemory: [String: CountyTargetMemoryFlags] = [:]
 
         init(
             hasOpenedAtlas: Bool = false,
@@ -149,7 +153,9 @@ final class AppState: ObservableObject {
             calendarDaysVisited: [String] = [],
             countyExerciseStruggles: [String: [String]] = [:],
             countyConversationStates: [String: CountyConversationState] = [:],
-            fixtureCollections: [String: [String]] = [:]
+            fixtureCollections: [String: [String]] = [:],
+            countyMemoryEvents: [CountyPersistedMemoryEvent] = [],
+            countyTargetMemory: [String: CountyTargetMemoryFlags] = [:]
         ) {
             self.hasOpenedAtlas = hasOpenedAtlas
             self.evidenceInspected = evidenceInspected
@@ -177,6 +183,8 @@ final class AppState: ObservableObject {
             self.countyExerciseStruggles = countyExerciseStruggles
             self.countyConversationStates = countyConversationStates
             self.fixtureCollections = fixtureCollections
+            self.countyMemoryEvents = countyMemoryEvents
+            self.countyTargetMemory = countyTargetMemory
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -189,6 +197,7 @@ final class AppState: ObservableObject {
             case storyReadCountyIDs, countyPackVersions
             case atlasReviews, calendarDaysVisited
             case countyExerciseStruggles, countyConversationStates, fixtureCollections
+            case countyMemoryEvents, countyTargetMemory
         }
 
         init(from decoder: Decoder) throws {
@@ -219,6 +228,8 @@ final class AppState: ObservableObject {
             countyExerciseStruggles = try values.decodeIfPresent([String: [String]].self, forKey: .countyExerciseStruggles) ?? [:]
             countyConversationStates = try values.decodeIfPresent([String: CountyConversationState].self, forKey: .countyConversationStates) ?? [:]
             fixtureCollections = try values.decodeIfPresent([String: [String]].self, forKey: .fixtureCollections) ?? [:]
+            countyMemoryEvents = try values.decodeIfPresent([CountyPersistedMemoryEvent].self, forKey: .countyMemoryEvents) ?? []
+            countyTargetMemory = try values.decodeIfPresent([String: CountyTargetMemoryFlags].self, forKey: .countyTargetMemory) ?? [:]
         }
     }
 

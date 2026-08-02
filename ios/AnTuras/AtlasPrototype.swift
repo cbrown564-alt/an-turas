@@ -356,7 +356,15 @@ struct AtlasPrototypeView: View {
                 )
             }
         case .exerciseGallery:
-            CountyExerciseGalleryView()
+            CountyExerciseGalleryView { pageID in
+                guard let pack = CountyFreezeRunFixture.pack() else { return }
+                atlas.hasOpenedAtlas = true
+                atlas.storyInProgress = true
+                _ = atlas.begin(pack, mode: .learning)
+                atlas.setActivePage(pageID, in: pack)
+                atlas.completedCountyPageIDs[pack.id, default: []].removeAll { $0 == pageID }
+                path.append(.freezeRun)
+            }
         case .firstTakeaway:
             FirstEncounterTakeawayView {
                 atlas.hasOpenedAtlas = true
@@ -491,6 +499,11 @@ final class AtlasPrototypeModel: ObservableObject {
     /// D29 fixture boundary: fixture completion handoffs (pack id -> word ga),
     /// kept apart from county gold and the review scheduler.
     @Published var fixtureCollections: [String: [String]] = [:]
+    /// Exactly-once Learning memory credits and per-target review seed flags.
+    /// Stored without `@Published` so recording a success/hint/recovery mid-task
+    /// cannot recreate the exercise view and wipe matching/builder state.
+    private var countyMemoryEvents: [CountyPersistedMemoryEvent] = []
+    private var countyTargetMemory: [String: CountyTargetMemoryFlags] = [:]
 
     var carriedWords: [AtlasWord] {
         CountyStoryPackCatalog.pack(id: "mayo.grainne-1593")?.targetWords ?? []
@@ -742,6 +755,37 @@ final class AtlasPrototypeModel: ObservableObject {
         countyExerciseStruggles[pack.id, default: []]
     }
 
+    /// Persist one engine memory signal and update per-target review seed flags.
+    /// Struggle still publishes via `recordStruggle` for C3; other kinds stay
+    /// silent to the view graph until the next ordinary atlas publish.
+    func recordMemoryEvent(_ event: CountyMemoryEvent, in pack: CountyStoryPack) {
+        _ = CountyLearnerMemory.record(
+            event,
+            packID: pack.id,
+            into: &countyMemoryEvents,
+            flags: &countyTargetMemory
+        )
+        if event.kind == .struggle {
+            recordStruggle(event.exerciseID, in: pack)
+        }
+    }
+
+    /// Test/debug access to the silent memory ledger.
+    func memoryEvents(for pack: CountyStoryPack) -> [CountyPersistedMemoryEvent] {
+        countyMemoryEvents.filter { $0.packID == pack.id }
+    }
+
+    func targetMemoryFlags(for pack: CountyStoryPack) -> [String: CountyTargetMemoryFlags] {
+        let prefix = pack.id + "|"
+        return countyTargetMemory.filter { $0.key.hasPrefix(prefix) }
+    }
+
+    /// Explainable debug string for one scheduled headword's Learning memory.
+    func explainMemory(for word: AtlasWord, in pack: CountyStoryPack) -> String {
+        let flags = CountyLearnerMemory.flags(for: word, packID: pack.id, in: countyTargetMemory)
+        return CountyLearnerMemory.reviewSeed(from: flags).explanation
+    }
+
     /// C1: persist the turn-graph position after every fitting reply so an
     /// interrupted conversation resumes at the exact node with its transcript.
     func saveConversationState(_ state: CountyConversationState, for pageID: String) {
@@ -769,18 +813,24 @@ final class AtlasPrototypeModel: ObservableObject {
         fixtureCollections.removeValue(forKey: pack.id)
         let pageIDs = Set(pack.pages.map(\.id))
         countyConversationStates = countyConversationStates.filter { !pageIDs.contains($0.key) }
+        countyMemoryEvents = countyMemoryEvents.filter { $0.packID != pack.id }
+        let flagPrefix = pack.id + "|"
+        countyTargetMemory = countyTargetMemory.filter { !$0.key.hasPrefix(flagPrefix) }
     }
 
     private func seedReviews(storyID: String, words: [AtlasWord], now: Date = Date()) {
         for (index, word) in words.enumerated() {
             let key = "\(storyID)|\(word.ga)"
             guard atlasReviews[key] == nil else { continue }
+            let flags = CountyLearnerMemory.flags(for: word, packID: storyID, in: countyTargetMemory)
+            let seed = CountyLearnerMemory.reviewSeed(from: flags, staggerIndex: index)
             atlasReviews[key] = .init(
-                due: now.addingTimeInterval(86_400 + Double(index) * 90),
-                stability: 1,
-                difficulty: 5,
+                due: Calendar.current.date(byAdding: .day, value: seed.intervalDays, to: now)
+                    ?? now.addingTimeInterval(Double(seed.intervalDays) * 86_400),
+                stability: seed.stability,
+                difficulty: seed.difficulty,
                 reps: 0,
-                lapses: 0
+                lapses: flags.struggle ? 1 : 0
             )
         }
     }
@@ -812,7 +862,9 @@ final class AtlasPrototypeModel: ObservableObject {
             calendarDaysVisited: calendarDaysVisited,
             countyExerciseStruggles: countyExerciseStruggles,
             countyConversationStates: countyConversationStates,
-            fixtureCollections: fixtureCollections
+            fixtureCollections: fixtureCollections,
+            countyMemoryEvents: countyMemoryEvents,
+            countyTargetMemory: countyTargetMemory
         )
     }
 
@@ -854,6 +906,8 @@ final class AtlasPrototypeModel: ObservableObject {
         countyExerciseStruggles = progress.countyExerciseStruggles
         countyConversationStates = progress.countyConversationStates
         fixtureCollections = progress.fixtureCollections
+        countyMemoryEvents = progress.countyMemoryEvents
+        countyTargetMemory = progress.countyTargetMemory
         if storyCompleted { seedReviews(storyID: "mayo.grainne-1593", words: carriedWords) }
         for story in LaunchCountyCatalog.stories where completedCountyStoryIDs.contains(story.id) {
             seedReviews(storyID: story.id, words: story.words)

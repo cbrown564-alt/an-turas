@@ -14,8 +14,16 @@
     }
   ],
   "capacity_policy": {
-    "status": "planning_target_not_industry_standard",
+    "status": "d32_emergency_harvest_until_2026-08-11",
     "primary_project": "An Turas structured exercise corpus",
+    "emergency_harvest": {
+      "enabled": true,
+      "deadline": "2026-08-11",
+      "objective": "Capture broad provisional county/story phrase-family material before the ElevenLabs subscription expires; wastage and rework are accepted.",
+      "cap": "available_credit_budget_and_time",
+      "review_pending_capture_allowed": true,
+      "learner_release_allowed_before_review": false
+    },
     "capture_inventory_target": {
       "minimum_utterances": 3000,
       "maximum_utterances": 5000
@@ -24,7 +32,7 @@
       "minimum_utterances": 1200,
       "maximum_utterances": 1500
     },
-    "above_capture_maximum_requires": "Every additional utterance must name a phrase family, lesson pattern, dialogue variation, story/place opening or recap, or another documented learning use.",
+    "above_capture_maximum_requires": "During D32, additional provisional utterances may be captured when they carry stable identity, provenance, risk metadata, and a plausible county/story/learning use. After D32, the normal cap and documented-use rule resume.",
     "irish_priority_order": [
       "exercise-bound phrase families",
       "reusable dialogue roles",

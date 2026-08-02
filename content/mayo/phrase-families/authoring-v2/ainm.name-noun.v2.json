@@ -135,11 +135,19 @@
           }
         },
         "capture_request": {
-          "status": "not_requested",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
+          "status": "requested",
+          "requested_by": "automation.structured-audio-generation",
+          "requested_at": "2026-08-02T08:42:10Z",
+          "authorization": {
+            "basis": "repository_draft_owner",
+            "authorized_by": "user.delegation.019fc17b-bc3f-7f10-ae2a-8320fe2b231f",
+            "authorized_at": "2026-08-02T08:42:10Z",
+            "reason": "User approved missing-only generation of Gráinne is ainm di. while reusing the three existing canonical clips unchanged.",
+            "fixture_only": false
+          },
+          "batch_line_ids": [
+            "mayo.d31.capture-prep.2026-08-02.line.3db7de3f60203217"
+          ]
         },
         "audio_qa": {
           "status": "not_generated",

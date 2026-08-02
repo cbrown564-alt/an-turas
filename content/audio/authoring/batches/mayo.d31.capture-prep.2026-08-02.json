@@ -19,21 +19,27 @@
     }
   },
   "execution": {
-    "state": "draft",
-    "provider_calls_allowed": false,
-    "approved_by": null,
-    "approved_at": null
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.delegation.019fc17b-bc3f-7f10-ae2a-8320fe2b231f",
+    "approved_at": "2026-08-02T08:42:10Z"
   },
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
     "credits_per_character": 1.0,
-    "estimated_batch_credits": 92.0,
-    "estimated_cumulative_credits": 111.0,
+    "estimated_batch_credits": 19.0,
+    "estimated_cumulative_credits": 38.0,
     "actual_batch_credits": null,
     "actual_cumulative_credits": null,
     "usage_before": null,
-    "usage_after": null
+    "usage_after": null,
+    "cap_authorization": {
+      "status": "removed",
+      "authorized_by": "user.delegation.019fc17b-bc3f-7f10-ae2a-8320fe2b231f",
+      "authorized_at": "2026-08-02T08:59:34Z",
+      "reason": "User explicitly removed the prior 25,000-credit cap globally for the Irish audio workflow."
+    }
   },
   "lines": [
     {
@@ -54,7 +60,7 @@
         "lease_expires_at": null
       },
       "request": {
-        "status": "planned",
+        "status": "cancelled",
         "approved_by": null,
         "approved_at": null
       },
@@ -102,7 +108,7 @@
         "lease_expires_at": null
       },
       "request": {
-        "status": "planned",
+        "status": "cancelled",
         "approved_by": null,
         "approved_at": null
       },
@@ -144,15 +150,15 @@
       "estimated_credits": 19.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "claimed",
+        "owner_id": "codex.audio-runner.2026-08-02",
+        "claimed_at": "2026-08-02T08:42:10Z",
+        "lease_expires_at": "2026-08-02T09:12:10Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.delegation.019fc17b-bc3f-7f10-ae2a-8320fe2b231f",
+        "approved_at": "2026-08-02T08:42:10Z"
       },
       "retry": {
         "attempt_count": 0,
@@ -198,7 +204,7 @@
         "lease_expires_at": null
       },
       "request": {
-        "status": "planned",
+        "status": "cancelled",
         "approved_by": null,
         "approved_at": null
       },
@@ -232,10 +238,10 @@
   "counts": {
     "lines": 4,
     "member_references": 4,
-    "planned": 4,
-    "approved": 0,
+    "planned": 0,
+    "approved": 1,
     "succeeded": 0,
     "failed": 0
   },
-  "manifest_identity_sha256": "b52b6c6d050aae7354ba767f3a96b40ffef0d31e9b902ce9ddd6df48b52626c4"
+  "manifest_identity_sha256": "c61a665bd0ac72c3fd65efee192ccbb02c90c01c1b4e6a4469b68889248038fa"
 }

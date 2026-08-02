@@ -322,9 +322,8 @@ def _resolved_target_ids(exercise: dict) -> set[str]:
 def _validate_learning_contract(page_id: str, exercise: dict, contract: dict) -> None:
     """Authored learning-contract rules (rebuild plan, "Automated
     enforcement"), mirrored from ``validateLearningContract`` in
-    ``CountyStoryPack.swift``. Flat pre-contract packs never enter here — the
-    deterministic adapter covers them until the production-slice migration
-    makes contracts mandatory."""
+    ``CountyStoryPack.swift``."""
+    _validate_resolved_contract_completeness(page_id, exercise, contract)
     misconceptions = contract.get("misconceptions", [])
     declared = {m.get("id") for m in misconceptions}
     for option in exercise.get("options", []):
@@ -372,6 +371,70 @@ def _validate_learning_contract(page_id: str, exercise: dict, contract: dict) ->
             f"{page_id} credits memory to target(s) the exercise does not target: "
             f"{', '.join(off_target)}",
         )
+
+
+def _validate_resolved_contract_completeness(page_id: str, exercise: dict, contract: dict) -> None:
+    """Structural completeness for authored and adapted contracts under
+    ``enforceLearningQuality`` — mirrors Swift
+    ``validateResolvedContractCompleteness``."""
+    objective = (contract.get("objective") or "").strip()
+    success = (contract.get("successFeedback") or "").strip()
+    hint = (contract.get("hint") or "").strip()
+    recovery = contract.get("recovery") or {}
+    guidance = (recovery.get("guidance") or "").strip()
+    required = (recovery.get("requiredResponse") or "").strip()
+    if not objective or not success or not hint or not guidance:
+        raise PackValidationError(
+            "incompleteLearningContract",
+            f"{page_id} lacks a complete learning contract (objective, feedback, hint, recovery)",
+        )
+    if not required:
+        raise PackValidationError(
+            "recoveryOmitsFreshResponse",
+            f"{page_id} recovery completes without requiring a fresh learner response",
+        )
+    family = exercise.get("family")
+    evidence = contract.get("completionEvidence")
+    if evidence is not None and evidence not in FAMILY_COMPLETION_EVIDENCE.get(family, set()):
+        raise PackValidationError(
+            "unsupportedCompletionEvidence",
+            f"{page_id} declares {evidence}, which {family} cannot produce",
+        )
+    target_ids = [target.get("id") for target in contract.get("targets", [])]
+    lexemes = set(exercise.get("lexemeIDs", []))
+    off_target = [target for target in target_ids if target not in lexemes]
+    if off_target:
+        raise PackValidationError(
+            "offTargetMemoryCredit",
+            f"{page_id} credits memory to target(s) the exercise does not target: "
+            f"{', '.join(off_target)}",
+        )
+
+
+def _adapted_learning_contract(exercise: dict) -> dict:
+    """Mirror of Swift ``CountyLearningContract.adapting`` for offline checks."""
+    family = exercise.get("family")
+    return {
+        "objective": exercise.get("objective") or "",
+        "targets": [
+            {"id": lexeme, "capability": "recognised"}
+            for lexeme in exercise.get("lexemeIDs", [])
+        ],
+        "misconceptions": [
+            {
+                "id": "fallback",
+                "rationale": "A response the authored diagnostics do not name.",
+                "feedback": exercise.get("feedback") or "",
+            }
+        ],
+        "successFeedback": exercise.get("feedback") or "",
+        "hint": exercise.get("hint") or "",
+        "recovery": {
+            "guidance": exercise.get("recovery") or "",
+            "requiredResponse": "Make the response again after the support.",
+        },
+        "completionEvidence": _adapted_completion_evidence(exercise),
+    }
 
 
 @dataclass
@@ -547,13 +610,17 @@ def validate(envelope: dict) -> PackReport:
                     "invalidReviewPayload",
                     f"{page.get('id')} has no authored re-entry candidates (C3)",
                 )
-            # Authored learning-contract rules (rebuild plan, "Automated
-            # enforcement"). Flat pre-contract packs never enter here — the
-            # deterministic adapter covers them until the production-slice
-            # migration makes contracts mandatory.
+            # Learning-contract rules (rebuild plan step 12). Authored contracts
+            # take the full distractor/diagnostic suite. Under
+            # enforceLearningQuality every exercise must still resolve to a
+            # complete contract (authored or adapted).
             contract = exercise.get("learningContract")
             if contract is not None:
                 _validate_learning_contract(page.get("id"), exercise, contract)
+            elif pack.get("enforceLearningQuality"):
+                _validate_resolved_contract_completeness(
+                    page.get("id"), exercise, _adapted_learning_contract(exercise)
+                )
             _validate_phrase_family_members(page.get("id"), pack.get("id"), exercise)
             # C3: a review candidate must trace its target back to the origin
             # page's exercise.

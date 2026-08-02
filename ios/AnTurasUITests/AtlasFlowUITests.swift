@@ -472,7 +472,7 @@ final class AtlasFlowUITests: XCTestCase {
         XCTAssertTrue(app.buttons["Continue"].isEnabled)
     }
 
-    func testExerciseGalleryCoversTwelveFamiliesAndFailureStates() throws {
+    func testExerciseGalleryCoversContainersFamiliesAndFailureStates() throws {
         let app = XCUIApplication()
         app.launchArguments = [
             "--exercise-gallery",
@@ -481,11 +481,20 @@ final class AtlasFlowUITests: XCTestCase {
         ]
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["One feedback model across the activity layers"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Listen and identify"].exists)
-        for _ in 0..<10 where !app.staticTexts["Failure and edge states"].exists { app.swipeUp() }
+        XCTAssertTrue(app.staticTexts["Foundation gate matrix"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["Open C1 Conversation"].exists)
+        XCTAssertTrue(app.buttons["Open C3 Contextual review"].exists)
+        XCTAssertTrue(app.buttons["Open C5 Completion"].exists)
+        for _ in 0..<12 where !app.staticTexts["Failure and edge states"].exists { app.swipeUp() }
         XCTAssertTrue(app.staticTexts["Failure and edge states"].exists)
         XCTAssertTrue(app.staticTexts["Long copy accessibility size state"].exists)
+        XCTAssertTrue(app.staticTexts["Missing audio failure state"].exists)
+
+        app.buttons["Open C1 Conversation"].tap()
+        XCTAssertTrue(
+            app.staticTexts["Meeting on the shore"].waitForExistence(timeout: 8),
+            "Gallery C1 row should open the freeze conversation on the shared shell"
+        )
     }
 
     private func freshRockfleetApp(mode: String, appearance: String, extra: [String] = []) -> XCUIApplication {

@@ -2,6 +2,37 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D32 — Nine-day Irish audio harvest (2026-08-02)
+
+**Decision:** Use the remaining ElevenLabs subscription window as a one-time production
+harvest across all 32 counties. The primary objective is to convert the available
+credits into a broad, reusable corpus of written Irish phrase-family members and
+spoken clips before expiry. Some generated text and audio will be inaccurate,
+duplicated, unused, or later discarded; that wastage and rework are accepted.
+
+The appendable v2 phrase-family/member store and strict batch schemas remain mandatory.
+They are the harvest ledger, not a reason to wait for learner-release readiness. Draft
+families may be captured under an explicit emergency-harvest approval when they carry
+stable identity, provenance, invention/risk flags, text hashes, and a plausible
+county/story/learning use. Capture, audio QA, pedagogy, and learner release remain
+independent states. Unreviewed harvest output cannot support teaching or public-release
+claims.
+
+**Operating order:** generate provisional county vocabulary and phrase families first;
+deduplicate and batch them by county/story/sense; capture in resumable manifests while
+credits remain; then select, correct, review, wire, and promote the strongest material
+after expiry. Prioritise broad county coverage, place/story openings and recaps,
+dialogue roles, mutations and inflections, and reusable exercise surrounds. Keep the
+locked Irish Cultural Guide voice/model unchanged. The normal 3,000–5,000 capture
+planning target is superseded for this window by the available credit budget and the
+nine-day deadline.
+
+**Consequences:** D31's schemas, checksums, claims, leases, and release gates stay in
+force. The emergency exception changes only the capture gate: pedagogy and native QA
+block promotion, not provisional generation during the expiry window. `STATUS.md` and
+`content/audio/README.md` own the operating checklist and must distinguish harvested,
+reviewed, bundled, and learner-release-eligible counts.
+
 ## D31 — Structured Irish authoring and controlled pre-expiry capture (2026-08-01)
 
 **Decision:** Replace the proposed four-slots-per-spelling queue with an appendable v2
