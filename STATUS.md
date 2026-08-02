@@ -1,631 +1,213 @@
 # STATUS
 
-*Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-08-02 (D32 emergency
-all-county authoring and provisional audio capture complete; review and selection next).*
-
-## Where we are
-
-**Phase 3 — Story and Learning rebuild.** The four-county road is implemented and was
-simulator-verified on 14 July, but it is not ready for another external tester round.
-Feedback reported on 15 July found Mayo worthwhile but too short and found Offaly,
-Dublin, and Meath too light to count as substantial stories. The learning path had
-also regressed toward repetitive listen-and-pick exercises. Repository inspection
-supports that diagnosis: each new county is a twelve-beat editorial preview with four
-required interactions for 20 provisional words, and completion schedules words whose
-full learning lifecycle was never authored.
-
-**Current implemented evidence:** the island route, dossiers, evidence views,
-collection, learner-made objects, review scheduling, TEG summary, An Féilire, offline
-pack installation, durable progress across four counties, and the rebuilt Rockfleet
-representative chapter. The complete 24 July iPhone 17 Pro Max simulator suite passes
-36 unit and 16 UI tests, and all 36 Python content/tooling tests pass. Those checks
-verify the working implementation; they do not validate the broader Mayo narrative,
-learning outcomes, specialist review, audio, or rights after the 15 July product
-reset.
-
-**Current product decision:** D21 defines one county page sequence filtered into Story
-and Learning modes. D26 now defines a familiar one-screen activity system for the
-Learning path: stable task anatomy and response lifecycle, with story, Irish, place,
-evidence, audio, feedback, and the visual system carrying the product's distinction.
-Story mode carries the complete account and opens the next county; only Learning mode
-turns the county gold and schedules its words. Speaking remains ungraded
-record-and-compare.
-
-**Current major phase — phrase-family fluency expansion (D30):** ElevenLabs first-pass
-Irish teaching audio proved far cheaper and better than expected (Creator tier: ~1.7k
-credits from ~236k banked for the 289-string sprint). Generation is no longer the scarce
-resource. Expand **exposure density around taught lexemes** via phrase families.
-**B+C craft ACCEPT** and **pedagogue + native QA passed** on *farraige*. **Mayo densify
-complete for all 20 taught lexemes** under `content/mayo/phrase-families/` (coastal +
-petition/motion + kin batches). **Foundation wiring landed** earlier today. **Foundation
-gate engineering PASS (2026-08-01):** resolved `learningContract` mandatory under
-`enforceLearningQuality`; four memory signals persist with debt-free review seeding;
-manifest gallery opens C1/C3/C5 on the freeze fixture; freeze + shell + gallery UI
-verified on iPhone 17 Pro. Record:
-[`docs/activity-quality/FOUNDATION-GATE-2026-08-01.md`](docs/activity-quality/FOUNDATION-GATE-2026-08-01.md).
-**Next:** migrate one production Mayo Learning slice that consumes B/C patterns
-end-to-end; per-family QA on non-*farraige* drafts before teaching claims; full
-VoiceOver rotor + physical-device foundation walk remain residual owner checks.
-
-**Supporting engineering:** rebuild-plan phases 0–3 are complete. Shared activity shell
-and state engine are ACCEPT. Harden authored contract/schema/validators and run the
-foundation gate so Learning-mode can consume phrase families without private
-exceptions. Two complementary 30 July inputs remain: the expanded 48-activity reference
-review that led to D26, and three working iOS interaction studies—Sound Match, Sentence
-Flow, and Coast Placement—on the Clew Bay fixture. The studies stay disposable and
-isolated from the shared county runtime.
-
-**D29 freeze run implemented:** the nine-step Clew Bay sequence in
-[`docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md`](docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md)
-now operates end-to-end on the shared county shell via the internal `--freeze-run`
-route and the `mayo.clew-bay-freeze` fixture pack. Design/IX clusters A–G landed:
-F6 listen-or-read respond, F2/F3 craft fixes and per-tile VoiceOver labels, the C1
-conversation turn graph with branching and exact resume, the C5 completion container
-with fixture collection handoff, and the C3 contextual review with deterministic
-struggle targeting. The run walks all nine steps on iPhone 17 Pro with wrong→repair→complete
-coverage, mic denial, branch/resume, and Reduce Motion, largest Dynamic Type, and dark
-captures in `tmp/exercise-screenshots/freeze-run-2026-07-30/`. Shell ACCEPT at
-`e4c6a8b` stands. **Composer cluster scorecards ACCEPT (2026-07-30):** Construction
-4.3, Typing 4.3, Choice 4.5, Conversation 4.5 (C1 hard gate), Consolidation 4.4 —
-see [`docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md`](docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md).
-**Grok coherence PASS (2026-07-31):**
-[`docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md)
-— shared anatomy holds; scaffold 3→6 is visible; dual conversation path is intentional
-production fallback; residuals go to the foundation gate. **Shared state engine
-(rebuild plan step 3) landed:** `CountyActivityStateEngine` owns attempt,
-diagnostic, hint/recovery, retry, completion, and exactly-once memory events;
-`CountyExerciseSystem` wires it without reopening freeze D27 behavior. Composer
-ACCEPT + Grok PASS
-([`SCORECARD-state-engine-2026-07-31.md`](docs/activity-quality/SCORECARD-state-engine-2026-07-31.md),
-[`GROK-COHERENCE-state-engine-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-state-engine-2026-07-31.md)).
-**Shared activity shell (rebuild plan step 4) landed:** `interrupt` on disappear/
-background, `beginRecovery` with keyboard-yield so typing stays repairable,
-centralised announce/focus queue. Composer REJECT then re-score ACCEPT + Grok PASS
-([`SCORECARD-activity-shell-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-2026-07-31.md),
-[`SCORECARD-activity-shell-rescore-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md),
-[`GROK-COHERENCE-activity-shell-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-activity-shell-2026-07-31.md)).
-Grammar/Greenfield stay parked. The Phase 4 Mayo and Phase 5 launch-county
-review drafts remain at their recorded gate states.
-
-**ElevenLabs Irish audio sprint (2026-07-31):** before the subscription window
-closes, Irish teaching audio is frozen and generated. Canonical inventory:
-[`content/audio/irish-inventory-v1.json`](content/audio/irish-inventory-v1.json)
-— **289** unique strings (**191** headwords across all 32 counties, **48** launch
-phrases, **50** launch conversation lines); **0** pending generation; ~3.4k billed
-characters / ~7.4 min unique audio. Bundled catalog is **359** MP3s (inventory +
-legacy chapter clips) under `ios/AnTuras/Resources/Audio/` with checksum archives in
-`content/audio/archive/`. Observed cost: **~1.7k Creator credits** against ~236k
-banked — TTS volume is no longer the limiter. Atlas lemmas live in
-[`content/audio/atlas-headwords-v1.md`](content/audio/atlas-headwords-v1.md)
-(provisional until pedagogue). **Bind rule:** launch exercises may only set
-`audioText` to inventory strings; new Irish without a clip stays silent until
-regenerated into inventory. English narrative VO was out of scope. Native-speaker
-QA remains open (D17); owner spot-listen queue:
-[`content/audio/SPOT-LISTEN-2026-07-31.md`](content/audio/SPOT-LISTEN-2026-07-31.md).
-Generator: `tools/tts-bakeoff/build-production-audio.py --from-inventory`.
-Launch packs are wired to the inventory: audio resources are `bundled` where
-clips exist, thin conversation pages carry inventory `audioText`, and
-`tools/validate_county_pack.py` rejects spoken Irish outside the inventory.
-**D32 emergency harvest direction (2026-08-02):** the remaining ElevenLabs subscription
-window is a one-time production opportunity with more than 100k credits and nine days
-remaining. Generate provisional written vocabulary and phrase-family members across all
-32 counties, then capture them in resumable, schema-validated batches. Some wastage,
-duplication, inaccuracy, and rework are accepted. The v2 store, stable hashes,
-provenance, risk flags, claims, leases, checksums, and orthogonal QA/release states
-remain mandatory. Native-speaker and pedagogy review block teaching claims and learner
-release, but do not block provisional capture during this window. After expiry, select,
-correct, review, and wire the strongest lines into exercises. The normal 3,000–5,000
-capture target is a post-harvest selection guide, not an emergency cap.
-
-**D32 Track E integrity scoreboard (2026-08-02):** the read-only production-loop
-scoreboard (`python3 -B tools/structured_audio_authoring.py reconcile --scoreboard
---json`) reports **640** authored families, **1,443** complete members, **673** unique
-texts, all **640** atlas placements, and all **32** counties. The registered ledger
-contains **674** lines: **666** approved and succeeded, **7** cancelled for explicit
-reuse, **0** actively claimed, and **0** failed. The bundle contains **666**
-source-labeled new-v2 clips and **362** legacy/runtime clips; all **1,028/1,028** checksums
-verify with no missing, mismatched, or orphan MP3s. There is **0** remaining resumable,
-retryable, or manual-recovery work. The Personal Atlas tranche adds **80** subjects
-(**50** names and **30** places), two spoken forms each, and **160** captured clips.
-ElevenLabs usage moved from the authorized **92,508-credit baseline to 94,899 observed
-credits** during that payload, a **2,391** credit increase within the explicit
-4,332-credit ceiling. The drain now validates the
-complete authoring contract once per run and reuses that snapshot for every batch,
-removing the repeated corpus scan that throttled all-county execution. The v2
-learner-release-eligible count remains **0**: these files are provisional
-`generated_unreviewed` captures, not reviewed teaching audio.
-
-**D32 mechanistic review posture (2026-08-02):** deterministic, disjoint sampling now
-selects **78** clips across 11 overlapping risk strata, including names, places,
-mutations, fadas, duplicates, launch lines, source risk, and acoustic outliers. An
-offline ABAIR comparison adapter can measure duration, level, spectral shape,
-zero-crossing rate, and coarse envelope similarity against lawfully obtained local
-reference clips while retaining provenance and checksums. It does not scrape ABAIR,
-copy reference audio, assign pronunciation correctness, or close a release gate.
-The first pure-pedagogy sidecar contains **5** narrative lessons and **18** English-
-framed lines around exact repository Irish examples; its pedagogy, Irish-language,
-and pronunciation gates remain open.
-
-**24 July rebuild update:** Phase 0's product contract is complete. The Phase
-1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
-projection and separate completion state are implemented and verified for the
-representative Rockfleet slice. Phase 2's shared exercise shell covers all twelve
-mechanic families, including explicit correction, fada-aware typing, bundled audio,
-ephemeral speaking, denied-microphone recovery and the internal failure-state
-gallery. The Phase 3 Rockfleet proof now contains ten Story pages with ten authored
-compositions—landscape, tide, route, language, relationships, system, archive,
-evidence boundary, pressure and consequence—plus an eighteen-page Learning path.
-The complete iPhone 17 Pro Max simulator scheme passes **52 tests**, and all **36 Python
-content/tooling tests** pass. Direct simulator inspection covers light and dark
-appearances, accessibility text reflow, Increased Contrast and Reduce Motion. Both
-full paths now have end-to-end UI coverage, including the keyboard fada toolbar and
-delayed retrieval. County routes use version-two packs; the duplicate legacy Gráinne
-renderer and embedded launch-county copy have been removed.
-
-The latest signed app builds, installs and launches on the physical iPhone 15 Pro Max.
-Three on-device UI checks pass with no failures: the complete ten-page Story path in
-dark appearance, the complete eighteen-page Learning path in light appearance, and
-the mode opening at the largest accessibility text size. The Learning walkthrough
-exercises bundled audio, matching, sentence construction, the keyboard fada toolbar,
-denied-microphone recovery, delayed retrieval, and completion. Direct device
-screenshots also verify the coastal opening and following tide diagram. No
-device-specific defect was found.
-
-This closes the rebuild plan's Phase 3 representative exit criterion. It verifies the
-implemented Rockfleet pattern; it does not validate learning outcomes or clear the
-broader Mayo and four-county work in phases 4–6 for another external tester round.
-
-**24 July Phase 4 authoring update:** the nine-chapter production storyboard is
-approved under D23, with every open choice D-A–D-F resolved as recommended. The
-offline county-pack validator now mirrors the Swift runtime rules and adds complete
-20-word lifecycle and lexeme-contract checks. The non-bundled revision-6 pre-clearance
-draft now contains all nine chapters and 100 pages, including 38 exercises across all
-12 families. Its estimated Story path is 86.2 minutes; all 20 words have one
-introduction and a complete ordered lifecycle. Rockfleet introduces only *caisleán*
-and carries eight exercises. The July historical review's reversible fixes are
-applied: C02 now surfaces, C04 has a candidate Carew/SP 12 trail but stays Story-only,
-and mismatched evidence statuses and stale prototype copy are corrected. The draft
-passes the validator with `completeCounty` scope and learning-quality enforcement
-enabled; all **36 Python content/tooling tests** pass. Twenty referenced audio
-resources are accurately marked unbundled. Historian re-clearance for Chapters 2 and
-4 and C04, pedagogue review, native-speaker audio QA, and Rockfleet imagery rights
-remain open external gates, so the draft has not replaced the bundled representative
-chapter. D24 allows a newly named historian to close `history.expanded`; the review
-must identify its revision and scope. C04 confirmation may be supplied separately by
-an archival specialist, but both dispositions are required to close the gate. D24
-uses evidence-based reviewer qualification: relevant work and source competence
-rather than academic title or institutional affiliation. Paid review is allowed with
-internal disclosure, but a contributor cannot solely approve material they authored;
-overlap requires a second qualified independent disposition. With consent, public
-provenance may show reviewer name, scope, and completion date; private operational and
-conflict records remain internal. A reviewer who declines public naming may still
-close the gate when the internal record is complete; public provenance then shows
-qualified role, scope, and date. Meaning-bearing historical edits after approval
-reopen only the affected disposition; non-semantic production changes do not.
-Historical approval has no calendar expiry, but material new evidence, scholarship,
-or a credible challenge reopens the affected scope.
-Qualified-reviewer disagreement keeps the affected disposition open until conservative
-shared wording or a third qualified disposition resolves it; the owner cannot promote
-an unresolved dispute as settled fact.
-
-**24 July Phase 5 authoring update:** the working Mayo pattern has been applied to
-Offaly, Dublin, and Meath as three in-app pre-clearance review packs. Each has six
-variable-length chapters, 68 pages, a 49.4-minute estimated Story path, a causally
-complete Learning projection, 30 exercises across all 12 families, and one complete
-ordered lifecycle for each of its 20 provisional headwords. The exercise compositions
-follow their objects: cross and inscription attention in Offaly, coin handling and
-legend reading in Dublin, and possession, grant, site sequence and fabric inspection
-in Meath. All three pass the strict county validator and their generator output is
-covered by regression tests; all **38 Python content/tooling tests** pass. A temporary
-iPhone 17 Pro substitution build first decoded and rendered every draft. The promoted
-bundle now passes all **36 Swift unit tests** and the **16 UI tests**: the initial full
-run exposed only two stale Rockfleet completion-copy expectations, and both complete
-Rockfleet walkers passed after its approved wording was restored. Offaly's review
-opening and retry/correct/recovery path pass directly; all three review openings were
-then inspected on the simulator at accessibility text size. Their source briefs name
-the expanded chapter maps, official starting sources and open gates.
-
-This is implemented authoring structure promoted for in-app review, not specialist
-validation or public release.
-Offaly still needs medieval history and art/inscription review; Dublin needs a
-numismatist to select and transcribe the learner-facing penny; Meath needs the grant
-copy pinned, castle phasing reviewed, and conquest-sensitivity review. All three also
-need pedagogy, native-speaker audio QA, rights, full accessibility and device checks.
-The app labels all three **Review draft** and prevents them from awarding county gold,
-made objects or scheduled words while any review gate remains open.
-
-**25 July media correction:** Offaly, Dublin and Meath now each connect two
-representative county pages to their bundled muted video loop and explicit still
-keyframe. The shared renderer loops only while the app is active and shows the still
-for Reduce Motion or unavailable playback. Swift and Python validators now accept the
-same image/video visual contract and require every video to name an image fallback.
-Direct iPhone 17 Pro simulator inspection confirmed the Offaly opening composition,
-advancing video frames and identical still frames with Reduce Motion enabled. All
-**37 Swift unit tests**, **17 UI tests** and **40 Python content/tooling tests** pass.
-
-**Tester gate:** no external learner build until all four counties pass the narrative,
-20-word lifecycle, exercise-distribution, specialist review, native-speaker audio,
-rights, accessibility, physical-device, migration, offline, and automated checks in
-`docs/STORY-LEARNING-REBUILD-PLAN.md`. The prior Mayo test remains owner-reported
-evidence with no session record in the repository; it does not validate the expanded
-story or new Learning mode.
-
-## Learning activity inventory (D27)
-
-Canonical taxonomy: one **activity anatomy**, ten **response families**, five
-**containers**, and three **authored uses** (`ordering`, `audioPrompted`,
-`delayedRecall`). Owners: `PRODUCT.md`, `docs/DECISIONS.md` D27, `CONTEXT.md`,
-`docs/STORY-LEARNING-REBUILD-PLAN.md`. Legacy Chapter 1–3 inline formats and
-`DRILL.md` scheduled-review projections remain parallel until migrated onto the shared
-county runtime.
-
-### Response families — implementation checklist
-
-| # | D27 family | `CountyExerciseFamily` | Surface | Authored (4 packs) | Contract met? |
-|---|---|---|---|---|---|
-| 1 | Listen and choose | `listenChoose` | ✓ | ✓ | **Yes** — Shell ACCEPT (F1) + Composer ACCEPT (Choice cluster mean 4.5) on freeze step 1 — [`SCORECARD-choice-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-choice-freeze-2026-07-30.md) |
-| 2 | Sentence construction | `sentenceConstruction` | ✓ | ✓ | **Yes** — Composer ACCEPT (F2, mean 4.3) on freeze step 3 — [`SCORECARD-construction-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-construction-freeze-2026-07-30.md) |
-| 3 | Free typed production | `freeTyping` | ✓ | ✓ | **Yes** — Composer ACCEPT (F3, mean 4.3) on freeze step 4 — [`SCORECARD-typing-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-typing-freeze-2026-07-30.md) |
-| 4 | Fill-in-the-blank | `fillGap` | ✓ | ✓ | Partial — shares choice surface with read-respond |
-| 5 | Matching | `matching` | ✓ | ✓ | **Yes** — Shell ACCEPT (F5); wrong pair = on-target note + next-tap unlock; thumb-native board; ≤4 pairs enforced |
-| 6 | Read or listen and respond | `readRespond` | ✓ | ✓ (+ listen variant) | **Yes** — Composer ACCEPT (F6, Choice cluster mean 4.5) on freeze step 7 — [`SCORECARD-choice-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-choice-freeze-2026-07-30.md) |
-| 7 | Record and compare | `recordCompare` | ✓ | ✓ | **Yes** — Shell ACCEPT (F7); Record/Stop owns ink until compare; quiet escape unless mic denied; freeze step 6 authors the origin line |
-| 8 | Grammar discovery | `grammarDiscovery` | ✓ | ✓ | **No** — one MC step, not progressive reveal → produce → rule |
-| 9 | Picture or map selection | — | ✗ | ✗ | Not started (migration group 1) |
-| 10 | Listen and type | — | ✗ | ✗ | Not started (migration group 2); `audioPrompted` construction is partial overlap only |
-
-### Containers — implementation checklist
-
-| # | D27 container | In enum / surface | Authored | Contract met? |
-|---|---|---|---|---|
-| 1 | Conversation | `conversation` / turn-graph surface | ✓ (+ freeze graph) | **Yes** — Composer ACCEPT (C1 hard gate, mean 4.5) on freeze step 5 — [`SCORECARD-conversation-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-conversation-freeze-2026-07-30.md); production packs keep thin MC fallback (migration group 3) |
-| 2 | Radio-style listening | — | ✗ | Not started (migration group 3) |
-| 3 | Contextual mistake review | `contextualReview` / review surface | ✓ (freeze) | **Yes** — Composer ACCEPT (C3, Consolidation mean 4.4) on freeze step 9 — [`SCORECARD-consolidation-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-consolidation-freeze-2026-07-30.md) |
-| 4 | **Words you carry** practice | legacy `VocabDeckView` | chapter 1 | **No** — not on shared county shell |
-| 5 | Completion | `completion` / completion surface | ✓ (freeze) | **Yes** — Composer ACCEPT (C5, Consolidation mean 4.4) on freeze step 8 — [`SCORECARD-consolidation-freeze-2026-07-30.md`](docs/activity-quality/SCORECARD-consolidation-freeze-2026-07-30.md) |
-
-### Authored uses (configuration, not families)
-
-| Use | Parent family | In packs | Runtime |
-|---|---|---|---|
-| `ordering` | `sentenceConstruction` | ✓ all four | ✓ tile order with `\|` separator |
-| `audioPrompted` | `sentenceConstruction` | ✓ all four | ✓ bundled audio before build |
-| `delayedRecall` | `freeTyping` | ✓ all four | ✓ later-page retrieval; not yet wired to mistake-review container |
-
-### Legacy parallel systems (not yet on county runtime)
-
-| System | Formats / entry | Status |
-|---|---|---|
-| Chapter 1–3 inline exercises | `choice`, `assemble`, `typein`, `match`, `listen`, `echo`, `turn`, `recarve`, `discover` in `Models.swift` | Retained; `ExerciseViews.swift` still diverges from county shell |
-| Grammar discovery (`discover`) | `DiscoverView` | Wired for chapter 1; progressive reveal works here |
-| Grammar at volume | `PatternDrillView` / `assemble` | Wired; session-gated |
-| Vocabulary at volume | `VocabDeckView` / `LexemeDeck` | Wired; scheduler over lexeme ids |
-
-### Content coverage (county packs)
-
-| Pack | Exercises | Enum cases present | Notes |
-|---|---|---|---|
-| Rockfleet representative (`mayo.grainne-1593.json`, bundled) | 12 | all 9 | Current Phase 3 proof |
-| Mayo full draft | 38 | all 9 | Not bundled; pre-clearance |
-| Offaly / Dublin / Meath (bundled review) | 30 each | all 9 | Review draft; no gold until gates close |
-
-Pre-D27 **twelve mechanic families** are fully re-authored as the nine enum cases plus
-three authored uses. References to "12 families" elsewhere in this file describe the
-24 July rebuild before D27 collapsed the taxonomy.
-
-### Screenshot map (`tmp/exercise-screenshots/`)
-
-Twelve Rockfleet Learning-path screens captured 2026-07-30. Critique:
-`.impeccable/critique/2026-07-30T15-34-03Z__tmp-exercise-screenshots.md`.
-The D29 freeze run's four-state and accessibility captures live in
-`tmp/exercise-screenshots/freeze-run-2026-07-30/` — 39 shots across all nine steps:
-cold/wrong/struggle/complete per changed family, conversation misfit and branch,
-mic-denied escape, completion capability + collection, review context card,
-largest Dynamic Type, dark appearance, and Reduce Motion peer states.
-
-| File | D27 layer | Family / container | Authored use | Implementation gap |
-|---|---|---|---|---|
-| `01-listen-choose.png` | Response family | Listen and choose | — | **Shell ACCEPT** — choices answerable from cold open; D27 repair window; on-row rationale |
-| `02-matching.png` | Response family | Matching | — | **Shell ACCEPT** — thumb-native board; brief wrong-pair unlock; ≤4 pairs |
-| `03-sentence-audio.png` | Response family | Sentence construction | `audioPrompted` | Bar-driven Check works (nil-action regression fixed); bank tiles leave placeholders so targets never slide; Irish tiles sans while story voice is serif remains |
-| `04-sentence-build.png` | Response family | Sentence construction | — | Same bar fix and stable bank; tile chips no longer scatter on pick |
-| `05-free-typing.png` | Response family | Free typed production | — | English translation in serif, Irish input in sans; fada row uses atlas green not moss; stacked ink primaries |
-| `06-conversation.png` | Container | Conversation | — | **Container contract unmet** — bare choice list, no turn transcript, branching, or resume |
-| `07-sentence-sequence.png` | Response family | Sentence construction | `ordering` | English clause tiles, not Irish; same Check/Continue and recovery model as other builders |
-| `08-read-respond.png` | Response family | Read or listen and respond | — | Read-only MC; Irish template serif but options sans; shares hollow radio row with fill-gap and grammar |
-| `09-grammar-discovery.png` | Response family | Grammar discovery | — | **Family contract unmet** — one worked case + single MC, not reveal → reveal → produce → rule |
-| `10-record-compare.png` | Response family | Record and compare | — | **Shell ACCEPT** — Record owns ink; ghosts for Play/Record again; quiet escape unless mic denied |
-| `11-fill-gap.png` | Response family | Fill-in-the-blank | — | Choice-backed gap only; identical radio-row chrome as 06/08/09 |
-| `12-delayed-typing.png` | Response family | Free typed production | `delayedRecall` | Delay works as later-page retrieval; not yet contextual mistake review; typography issues as 05 |
-
-**Not pictured (intended but absent):** picture or map selection, listen and type,
-radio-style listening, contextual mistake review, **Words you carry** practice, and the
-D27 completion container.
-
-### Migration groups (remaining build order)
-
-1. **Recognition** — add picture or map selection (only missing family in group).
-2. **Construction and production** — add listen and type.
-3. **Contextual use** — radio; extend conversation to full node graph (representative Clew
-   Bay fixture is the acceptance test).
-4. **Consolidation** — contextual mistake review, **Words you carry** on shared runtime,
-   capability-led completion; migrate `LexemeDeck` / `DiscoverView` grading onto county
-   shell.
-
-### Activity quality bar
-
-Operational scorecard for cluster craft and agent loops:
-[`docs/ACTIVITY-QUALITY-SPEC.md`](docs/ACTIVITY-QUALITY-SPEC.md). Shared dimensions,
-D27 contract gates, Rockfleet fixtures, and adversarial scripts. Shell P0s (repair,
-primary slot, disabled styles) before parallel family polish. Does not replace
-`PRODUCT.md` / `DESIGN.md` / D27.
-
-**First Composer pass (2026-07-30) — Shell vs fixtures 01/02/10:**
-[`docs/activity-quality/SCORECARD-shell-2026-07-30.md`](docs/activity-quality/SCORECARD-shell-2026-07-30.md).
-**REJECT** (mean 3.0/5; D2 = 1). Board-lock Retry P0 cleared at `237d74f`; not an
-ACCEPT. **Kimi punch list (IDs only):** D1 D2 D3 D4 D5 F1 F5 F7. No spectacular
-family pass until Shell ACCEPT.
-
-**Composer re-score (2026-07-30) — Shell ACCEPT at `e4c6a8b`:**
-[`docs/activity-quality/SCORECARD-shell-rescore-2026-07-30.md`](docs/activity-quality/SCORECARD-shell-rescore-2026-07-30.md).
-Mean **4.1/5**; F1/F5/F7 pass; P0 clear. First pass REJECT at `237d74f` is
-superseded for fixtures 01/02/10. Choice / Matching / Speaking spectacular
-passes may proceed in cluster order; D29 freezes the Clew Bay representative run.
-
-## Work completed
-
-| Date | Work | Where |
-|---|---|---|
-| 2026-08-02 | **Track D first pure-pedagogy corpus drafted.** The authoring-only Irish explanation sidecar contains exactly 5 short grammar/spelling/pronunciation lessons and 18 English-framed lines around exact repository Irish examples. Every line carries source/provenance, deterministic risk flags, pending pedagogy/Irish-language/pronunciation review, and blocked learner release; no teaching, native-speaker, or pronunciation approval is claimed. | `content/pedagogy/irish-explanations-v1.json`, `content/pedagogy/schemas/irish-explanations-v1.schema.json`, `tools/validate_pedagogy_corpus.py`, `docs/DECISIONS.md` D33 |
-| 2026-08-02 | **D32 Track B harvest planner implemented.** `prepare-harvest` accepts Track A v2 family files/directories, canonicalizes NFC Irish and recomputes slugs/hashes, checks stable ids and family/member references, reports duplicate text/locked-voice lines, skips registered lines for resumability, partitions new work by county/story/sense, and emits draft/provider-blocked manifests only. Current representative Mayo input produced no new manifest because all four lines are already registered; no Track A output was fabricated. | `tools/structured_audio_authoring.py`, `tools/tests/test_structured_audio_authoring.py`, `content/audio/README.md`, `STATUS.md` |
-| 2026-08-02 | **D32 Track D high-risk Irish triage recorded.** The canonical spot-listen record now carries a P0–P2 queue for missing inventory lines, exact-text intent conflicts, names, mutations, inflections, register prompts, launch openings/recaps/dialogue, legacy family members, and the active batch handoff. A non-linguistic audit separates capture blockers (withhold even provisionally), review-before-release risks (capture only when the D32 contract permits), and operational watches (do not duplicate active claims). No native-speaker, pedagogy, historian, or audio-QA gate was closed; learner release remains blocked. | `content/audio/SPOT-LISTEN-2026-07-31.md`, `tools/audit_irish_review_queue.py`, `content/audio/README.md`, `STATUS.md` |
-| 2026-08-02 | **Structured Irish audio execution is path- and environment-gated.** The runner uses the existing project UV environment, resolves the primary `main` worktree as the only canonical destination, stages and validates MP3s before create-only placement, and records batch/runtime checksums on successful execution. The missing-only batch is authorized with three existing clips cancelled for reuse and `Gráinne is ainm di.` active at an estimated 19 credits. The pre-generation ElevenLabs usage query returned HTTP 401, so generation stopped before TTS; no audio or manifest result was written. | `tools/structured_audio_generation.py`, `tools/run-structured-audio-generation.sh`, `content/audio/README.md`, `STATUS.md` |
-| 2026-08-01 | **Foundation gate engineering PASS.** Resolved contracts mandatory under `enforceLearningQuality`; four memory signals + debt-free review seed; C1/C3/C5 gallery; freeze/shell/gallery UI green; device build installed (locked at launch). Next: one Mayo production B/C slice. | `CountyLearnerMemory.swift`, `CountyStoryPack.swift`, `CountyExerciseSystem.swift`, `AtlasPrototype.swift`, `FOUNDATION-GATE-2026-08-01.md`, `STATUS.md` |
-| 2026-08-01 | **D30 Mayo densify complete + kin batch + Learning wiring.** All 20 taught lexemes have phrase-family drafts; kin (*teaghlach/mac/bean/deartháir*) included. Schema: `phraseFamilyMemberIDs`; Swift/Python validators; catalog bundled; Mayo draft 25 + Rockfleet 6 exercises wired. Full foundation gate (gallery/device) still open. | `content/mayo/phrase-families/`, `ios/AnTuras/Resources/PhraseFamilies/`, `CountyStoryPack.swift`, `validate_county_pack.py`, packs, `STATUS.md` |
-| 2026-08-01 | **D30 *farraige* pedagogue + native QA passed; Mayo coastal densify started.** Family scale-ready; inventory four strings `qa_passed`. Drafted *bá* / *long* / *áit* / *caisleán* phrase families (attested-first, ≤1 invented each where needed). Next densify: *teaghlach* / *iarr* / kin by demand. | `content/mayo/phrase-families/`, `content/audio/irish-inventory-v1.json`, `STATUS.md` |
-| 2026-08-01 | **D30 *farraige* C craft ACCEPT.** Delayed reuse via freeTyping + `delayedRecall`: build sea-here → bay narrative → type where-sea; mean 4.6/5; F3 + D30-C Pass. C shape locked (not contextual review / Words you carry). Unblocks pedagogue + native QA gate before Mayo densify. | `docs/activity-quality/SCORECARD-farraige-family-c-2026-08-01.md`, `mayo.farraige-family-c.json`, `FarraigeFamilyCUITests.swift`, `CountyFarraigeFamilyCFixtureTests.swift`, `farraige.v1.json`, `STATUS.md` |
-| 2026-08-01 | **D30 *farraige* B craft ACCEPT.** Surround-change construction (hear ship-on-sea → build sea-here) on shared shell; mean 4.5/5; F2 + D30-B Pass; title shortened to “Keep farraige”; UI walk + cold/wrong/complete/dark/a11y captures. Unblocks pattern C. Pedagogue/native QA and teaching claims still open. | `docs/activity-quality/SCORECARD-farraige-family-b-2026-08-01.md`, `FarraigeFamilyBUITests.swift`, `mayo.farraige-family-b.json`, `farraige.v1.json`, `STATUS.md` |
-| 2026-07-31 | **Exercise shell declutter to Duo-density layout.** Exercise chrome is progress-only; cold open is one SF imperative (shortened freeze titles) with lightbulb hint; prompt/objective leave the viewport; feedback is a one-line verdict not a card; audio/speak/conversation/review/completion lose meta prose.  | `CountyExerciseSystem.swift`, `CountyStoryExperienceView.swift`, `mayo.clew-bay-freeze.json`, UITests, `STATUS.md` |
-| 2026-07-31 | **Exercise shell: five Duo-comparison UX improvements.** Cold open collapses to title + prompt (objective rises with support); response surfaces enlarged; choice/matching use shape + opacity states (leading mark, radius, fade settled); shared `CountyAudioPromptControl` with playing/played, replay, and Slow via `SpeechService` rate; one-ink bar rule restated (Continue / Check / Record). 61 focused unit + 7 UI (FreezeRun + Atlas repair/record) pass on iPhone 17 Pro. | `ios/AnTuras/CountyExerciseSystem.swift`, `Speech.swift`, `STATUS.md` |
-| 2026-07-31 | **D30 *farraige* B fixture drafted and wired.** Four-member family (2 attested, 2 invented); sibling pack `mayo.farraige-family-b` with surround-change construction; 3 new inventory phrases + MP3s (generated_unreviewed); `--farraige-family-b` launch; unit tests pass. Pedagogue/native QA and craft ACCEPT still open. | `content/mayo/phrase-families/`, `ios/AnTuras/Resources/Fixtures/mayo.farraige-family-b.json`, `content/audio/`, `CountyStoryPack.swift`, `AtlasPrototype.swift` |
-| 2026-07-31 | **D30 — Phrase-family fluency model locked.** Phrase families = same taught lexeme (incl. morphology), varied place/story surrounds; metadata with county content; audio inventory stays text→clip. First proof: *farraige* ~4–6 members (≤2 invented), surround-change construction in sibling fixture, then delayed reuse; pedagogue + native QA block teaching claims and scale-out; densify Mayo after patterns work. Soft-freeze Mayo ~20. | `docs/DECISIONS.md` D30, `docs/adr/0001-phrase-family-fluency.md`, `CONTEXT.md`, `content/mayo/phrase-families/farraige.v1.json`, `STATUS.md` |
-| 2026-07-31 | **Current major phase set: phrase-family fluency expansion.** ElevenLabs Creator cost (~1.7k of ~236k credits for 289 strings) and first-pass quality remove TTS as the limiter. Expand exposure density around taught lemmas (varied full phrases / contexts), not a massive orphan vocabulary bank. Generate only after a phrase-family model and consuming exercise patterns exist; native QA and place/story binding remain gates. Schema/foundation stay supporting work. | `STATUS.md`, `content/audio/` |
-| 2026-07-31 | **Wire launch packs to frozen Irish audio inventory.** Flip draft/bundled audio resources to `bundled` where MP3s exist; bind thin conversation `audioText` to inventory lines; Phase 5 generator emits bundled audio + conversation clips; validator rejects `audioNotInInventory`. Mayo Rockfleet representative slice wired without replacing the nine-chapter draft. Native-speaker QA gate remains open. | `tools/tts-bakeoff/wire_packs_to_inventory.py`, `tools/build_phase5_county_drafts.py`, `tools/validate_county_pack.py`, `content/*/`, `ios/AnTuras/Resources/CountyStories/`, `STATUS.md` |
-| 2026-07-31 | **ElevenLabs Irish teaching audio sprint — inventory frozen and generated.** 289 unique Irish strings (191 atlas/launch headwords, 48 launch phrases, 50 conversation lines) generated with Irish Cultural Guide; 0 pending; 359 bundled MP3s including legacy chapter clips. Bind rule: exercises may only use inventory `audioText`. English narrative VO out of scope. Native QA still open; 44 strings in owner spot-listen queue. | `content/audio/`, `tools/tts-bakeoff/assemble_irish_inventory.py`, `tools/tts-bakeoff/build-production-audio.py`, `ios/AnTuras/Resources/Audio/`, `docs/MEDIA-AUDIT.md`, `STATUS.md` |
-| 2026-07-31 | **Shared activity shell (rebuild plan step 4) — Composer re-score ACCEPT + Grok PASS.** Punch list S4-1–C3 cleared: recovery resigns typing focus so the field stays hittable; chapter-menu scroll proves interrupt→C3; `CountyActivityShellUITests` 3/3 pass (incl. AX5). Prior REJECT superseded for step-4 acceptance. Unblocks schema/foundation. Working tree uncommitted. | `ios/AnTuras/CountyExerciseSystem.swift`, `ios/AnTurasUITests/CountyActivityShellUITests.swift`, `docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md`, `GROK-COHERENCE-activity-shell-2026-07-31.md`, `STATUS.md` |
-| 2026-07-31 | **Composer activity-shell scorecard — REJECT.** Step-4 shape present (`interrupt` on disappear/background, `beginRecovery`, centralised announce/focus) and freeze walk + 49 engine/freeze unit tests still pass, but both `CountyActivityShellUITests` fail: typing recovery leaves `irish-answer-field` with zero AX frame (D3/D9 P0); interrupt→C3 unproven (menu row miss). Kimi punch list: S4-1 S4-2 S4-3 D3 D9 CG-2 CG-5 C3. Working tree uncommitted. | `docs/activity-quality/SCORECARD-activity-shell-2026-07-31.md`, `ios/AnTuras/CountyExerciseSystem.swift`, `ios/AnTurasUITests/CountyActivityShellUITests.swift`, `STATUS.md` |
-| 2026-07-31 | **Shared state engine (rebuild plan step 3) — Composer ACCEPT + Grok PASS.** Pure `CountyActivityStateEngine` with required/illegal transitions, D27 repair window, exactly-once memory, revisit suppression; wired into county shell; 49 unit tests (engine + freeze) pass. Deferred: `interrupt`/`beginRecovery` shell hooks, persistence, focus/announcements (steps 4–7/11). Unblocks shared activity shell. Working tree uncommitted. | `ios/AnTuras/CountyActivityStateEngine.swift`, `CountyExerciseSystem.swift`, `ios/AnTurasTests/CountyActivityStateEngineTests.swift`, `docs/activity-quality/SCORECARD-state-engine-2026-07-31.md`, `GROK-COHERENCE-state-engine-2026-07-31.md`, `STATUS.md` |
-| 2026-07-31 | **Grok coherence PASS on D29 freeze-run ACCEPT merges.** Shared anatomy holds across clusters; scaffold removal 3→6 is visible and narrated on C5; C1/C3/C5 Composer calls confirmed; dual conversation path kept as intentional production fallback; residuals (D5 ghost, bar-label ghost, VoiceOver rotor, gallery matrix) deferred to foundation gate. Unblocks shared state engine extraction; Grammar/Greenfield remain parked. Working tree still uncommitted. | `docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`, `STATUS.md`, `docs/README.md` |
-| 2026-07-30 | **Composer freeze-run cluster scorecards — all ACCEPT.** Five clusters scored against `tmp/exercise-screenshots/freeze-run-2026-07-30/` plus `FreezeRunUITests` / `CountyFreezeRunTests`: Construction 4.3 (F2), Typing 4.3 (F3), Choice 4.5 (F1/F6), Conversation 4.5 (C1 hard gate — turn graph, misfit, branch, resume), Consolidation 4.4 (C3/C5). P0 clear on all; no dimension below 3. C1 adjudicated PASS (not bare MC). C3 no-struggle copy judged honest. Residual polish: D5 ghost on listen complete, D2 bar label ghost on build complete, D8/D9 foundation gate items. Unblocks Grok coherence review. | `docs/activity-quality/SCORECARD-*-freeze-2026-07-30.md`, `docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md`, `STATUS.md`, `docs/README.md` |
-| 2026-07-30 | **D29 freeze run implemented — Design/IX clusters A–G.** The nine-step Clew Bay run operates end-to-end on the shared county shell via the `--freeze-run` route and the new `mayo.clew-bay-freeze` fixture pack (fixture boundary held; production packs untouched). C1 landed as a real turn graph: finite authored nodes, present-day setting, on-turn misfit diagnostics, a branch that changes a later partner line, and exact node resume with transcript across relaunches, validated in both validators. C5 completion states three capabilities and hands the four words to a fixture-scoped collection (no gold, no scheduler); C3 contextual review selects an authored target deterministically from the run's D27 struggle record and re-enters it from the original sound or sentence with the original response method. F6 gained the authored listen variant (replay + visible text/meaning route); F2 builder tiles are individually named for VoiceOver; F1 prompt aligned with the ungated board. Conversation pages land on the current turn when restored (bottom-scroll fix found by UI test). Full simulator suite passes on iPhone 17 Pro (56 unit incl. 14 freeze tests; 32 UI incl. nine-step wrong→repair→complete walk, branch + double-relaunch resume, mic-denied escape, record/compare); 51 Python tests pass. 39 four-state, AX5, dark, and Reduce Motion captures in `tmp/exercise-screenshots/freeze-run-2026-07-30/`. | `ios/AnTuras/CountyStoryPack.swift`, `CountyExerciseSystem.swift`, `CountyStoryExperienceView.swift`, `AtlasPrototype.swift`, `AppState.swift`, `ios/AnTuras/Resources/Fixtures/mayo.clew-bay-freeze.json`, `ios/AnTurasTests/CountyFreezeRunTests.swift`, `ios/AnTurasUITests/FreezeRunUITests.swift`, `tools/validate_county_pack.py`, `docs/activity-quality/KIMI-HANDOFF-freeze-clusters.md`, `STATUS.md` |
-| 2026-07-30 | **D29 — Representative Mayo Learning-mode run frozen.** Nine-step Clew Bay sequence locked (listen → match → build → type → conversation → speak → comprehend → completion → contextual review); study synthesis closed; Coast Placement deferred to F9; fixture vs production boundary and cluster order A–G recorded. Shell ACCEPT unchanged. Unblocks Design/IX clusters. | `docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md`, `docs/DECISIONS.md` D29, `STATUS.md`, `docs/README.md` |
-| 2026-07-30 | **Composer Shell re-score — ACCEPT.** Fixtures 01/02/10 at `e4c6a8b`. Mean 4.1/5; D2 5, D7 5; F1/F5/F7 pass; P0 clear. Four targeted UI tests pass (repair window, matching unlock, record primacy, mic escape); largest Dynamic Type on all three fixtures; cold-open and mic-denied screenshots in `tmp/exercise-screenshots/rescore-2026-07-30/`. Residual: D8/D9 Reduce Motion and full VoiceOver not re-run. Unblocks freeze-the-representative-Mayo-run. | `docs/activity-quality/SCORECARD-shell-rescore-2026-07-30.md`, `STATUS.md` |
-| 2026-07-30 | **Shell scorecard punch list implemented; two 237d74f bar regressions found and fixed.** All five Kimi items landed in the county shell: Record/Stop owns the ink slot until compare with a quiet no-recording escape (D2/F7); listen-choose answers from cold open (D1/F1); selection families follow the D27 repair window — first wrong carries the rationale on the affected row and struggle fires only when the next touch fails to self-correct, matching never leaves its brief on-target note (D3/D5/F1/F5); matching is a single-column thumb board and the Mayo draft's 5-pair board is re-authored to four with ≤4 pairs enforced in both validators (D4/F5). Verification also exposed two regressions from `237d74f`: the bottom-bar Check published its action then had it overwritten nil by a state sync (builders advanced without grading), and the terminal exercise page lost "Complete this chapter path". Builder banks now keep placeholders so tiles never slide mid-task. Full simulator suite passes on iPhone 17 Pro (42 unit, 19 UI, incl. new repair-window, matching-unlock and record-primacy tests); 45 Python tests pass; changed screens inspected light, dark, and at largest Dynamic Type. Awaiting Composer re-score; not an ACCEPT. | `ios/AnTuras/CountyExerciseSystem.swift`, `CountyStoryExperienceView.swift`, `CountyStoryPack.swift`, `content/mayo/grainne-1593.pack.draft.json`, `tools/validate_county_pack.py`, `tools/tests/`, `ios/AnTurasUITests/AtlasFlowUITests.swift` |
-| 2026-07-30 | **D28 chapter-opening Flow density; existing loops and stills wired.** One muted ambient hero per chapter opening; still→motion pipeline; evidence scans stay still. Wired unused Mayo Rockfleet + galley videos, Mayo draft openings to existing atmosphere stills (rev 7), Dublin's four remaining openings to catalog stills, Meath Ch1 to Boyne ford still, and the bundled Rockfleet proof to `video.mayo-rockfleet-sea-surge`. MEDIA-AUDIT now carries Batches A–C for Flow spend. Does not clear rights or generate new Flow clips in-repo. | `docs/DECISIONS.md` D28, `docs/MEDIA-AUDIT.md`, `content/mayo/`, `tools/build_phase5_county_drafts.py`, `ios/AnTuras/Resources/CountyStories/` |
-| 2026-07-30 | **First Composer Shell scorecard — REJECT.** Fixtures 01 listen-choose, 02 matching, 10 record-compare against commit `237d74f`. Mean 3.0/5; fails D2 (speaking primary inverted), residual D3 friction, F1/F5/F7 contracts. Board-lock Retry P0 already cleared; listen-choose gate and Record primacy remain. Kimi punch list: D1 D2 D3 D4 D5 F1 F5 F7. No family spectacular pass until Shell ACCEPT. | `docs/activity-quality/SCORECARD-shell-2026-07-30.md`, `STATUS.md`, `docs/README.md` |
-| 2026-07-30 | **Activity Quality Spec drafted for Learning-mode craft loops.** Operational scorecard: ten shared dimensions, P0 checklist, D27 family/container contract gates, Rockfleet fixture map, adversarial scripts, and agent-loop roles. Linked from docs index and inventory; shell P0s before parallel polish. Does not change product or design authority. | `docs/ACTIVITY-QUALITY-SPEC.md`, `docs/README.md`, `STATUS.md` |
-| 2026-07-30 | **Three disposable iOS learning-interaction studies implemented and focused verification passed.** Sound Match tests immediate audio/meaning choice and in-place repair; Sentence Flow keeps correct sentence work while role cues visibly disappear; Coast Placement attaches *farraige*, *bá*, and *áit* to a spatial coast before removing its labels. The studies use one narrow Clew Bay fixture, no story exposition, separate local state, direct audio fallback, and no county progress, review, or shared-runtime side effects. XcodeGen was regenerated; 3 focused unit and 5 focused UI tests pass, including complete wrong-to-correct loops, both appearances, largest Dynamic Type, and reduced motion. Initial states were directly inspected on an iPhone 17 Pro Max simulator. This is implemented and verified research evidence, not validated pedagogy or a selected architecture. | `ios/AnTuras/Prototypes/InteractionStudies/`, `ios/AnTurasTests/InteractionStudyTests.swift`, `ios/AnTurasUITests/InteractionStudyUITests.swift`, `docs/INTERACTION-STUDIES-REPORT.md` |
-| 2026-07-30 | **D26 grilled; D27 records three activity layers and the migration lands.** The flat fifteen-family set became one activity anatomy, ten response families, and five containers, because five of the fifteen could not satisfy the response contract D26 also mandates. Sequencing and delayed retrieval became authored uses; grammar discovery stayed a family and reconciled with `DRILL.md`'s `discover` projection; dialogue and branching roleplay merged into one conversation container with setting as authored metadata; single-choice families now check on selection with a repair window before any struggle signal; **Words you carry** and scheduled review became two surfaces over one spine. `CountyExerciseFamily` went from twelve cases to nine with a deterministic migration from the legacy vocabulary, and 32 authored exercises across eight packs were re-expressed. A new `authoredUse` field keeps the anti-monotony cap measuring what the learner actually does after the merge. The 5,259 lines of prototype and interaction-study code were deleted once D27 recorded the retained primitives. XcodeGen regenerated; 42 unit, 17 UI, and 43 Python tests pass, and all eight packs validate. This changes the taxonomy and implementation order; it validates no learning outcome. | `CONTEXT.md`, `docs/DECISIONS.md` D27, `PRODUCT.md`, `DESIGN.md`, `docs/DRILL.md`, `docs/STORY-LEARNING-REBUILD-PLAN.md`, `ios/AnTuras/CountyStoryPack.swift`, `CountyExerciseSystem.swift`, `tools/` |
-| 2026-07-30 | **Expanded activity reference review completed and D26 recorded.** A separate 48-activity HTML field guide supported selection of a familiar one-screen activity system. The next Mayo proof will combine that stable shell with only the response and recovery details from the iOS studies that improve clarity and repeatability. | `web/learning-activity-reference/`, `PRODUCT.md`, `DESIGN.md`, `docs/DECISIONS.md` D26 |
-| 2026-07-04 | Repo founded; vision + full strategy map (unknowns, challenges, resources, competition) | `README.md`, `docs/STRATEGY.md` |
-| 2026-07-04 | Persona decided: school-Irish re-learners + diaspora primary, NI as cultural north star | `docs/DECISIONS.md` D1 |
-| 2026-07-04 | Dialect decided: Connacht first; Ulster required before NI launch | `docs/DECISIONS.md` D2 |
-| 2026-07-04 | Historical spine drafted: 13 chapters, Ogham → Belfast revival, grammar ladder A1→B1 mapped to TEG | `docs/SPINE.md` |
-| 2026-07-04 | ABAIR licensing mapped: commercial use needs written TCD consent; bundling rights are the key ask; contact info@abair.ie; fallbacks ranked | `docs/ABAIR.md` |
-| 2026-07-04 | Chapter 1 vertical slice built and published as playable HTML prototype: 5 sessions, carve-progress mechanic, ogham name-carver artifact | `prototype/index.html` |
-| 2026-07-04 | HTML slice reviewed: **mechanics, design taste, and flow approved** → platform decision D3, port to SwiftUI | `docs/DECISIONS.md` D3 |
-| 2026-07-04 | SwiftUI prototype built and verified on iPhone 17 Pro simulator (iOS 26): all 5 sessions, content as bundled JSON, ogham Canvas renderer, carve-progress bar, gloss sheets, fada keys; debug deep-links (`--map`, `--session N`, `--reveal N`) for screenshots | `ios/` (xcodegen project) |
-| 2026-07-04 | Native-feel overhaul ("the chisel"): NavigationStack with back-swipe + iOS 18 zoom transition; CoreHaptics vocabulary (chisel strike per correct answer, stroke ticks, completion flourish, error knock); ogham stones carve themselves stroke-by-stroke; map redesigned as an ogham stemline path with session numbers as strokes; story beats rise on springs, past beats dim; assemble tiles fly via matchedGeometryEffect; shake on wrong answers; Reduce Motion respected throughout; verified light + dark on simulator | `ios/AnTuras/` (`Haptics.swift` new) |
-| 2026-07-04 | Sessions re-architected as swiped pages ("chalk before carve"): horizontal scene-paging replaces the vertical click-to-reveal flow; consecutive narrative blocks share a page, exercises gate the turn (pages beyond an unsolved exercise don't exist — swipe rubber-bands with a dull knock, iOS 18+); solving auto-turns the page after the verdict lands; next page trailed as breathing chalk guide-marks naming what's coming; synthetic completion page per session (flourish on arrival); DEBUG toolbar toggle between scene-pages and block-pages groupings; `--reveal N` now jumps to page N with earlier exercises pre-solved | `ios/AnTuras/` (SessionView, Models) |
-| 2026-07-04 | Page redesign ("three registers") after review found pages monotonous and top-pinned. Block-pages toggle removed — scene pages won. Pages are now **authored in content, not derived**: chapter1.json restructured so each session is a list of typed pages; scene paras became beats, with spoken Irish as *data* (speaker, meaning, rough sound) rather than inline links; exercises carry an optional in-world context line. Spoken Irish is the hero primitive: display serif against a carved groove, pronunciation beneath, tap for meaning. Sluglines (place · time, small caps + short rule) mark scene changes. Notes are full-bleed lichen-washed manual pages with specimen pairs on a hanging rule. Exercises lost the grey card — register mark (three chalk strokes · CLEACHTADH), italic story beat, serif prompt, elements raised directly on the page. Register-specific composition: scenes/features sit at the optical centre, notes/exercises anchor at chapter-start depth. All registers verified light + dark on simulator | `ios/AnTuras/` (chapter1.json, Models, SessionView, ExerciseViews, ArtifactView) |
-| 2026-07-04 | **Six new primitives** (second experimental wave). (1) *Sound*: bundled-clip audio pipeline — clips first (`Resources/Audio/<slug>`, manifest for the provider bake-off), system ga-IE voice second (Apple ships none as of iOS 26 — confirmed), graceful per-line silence last; ears on speech beats, glosses, seanfhocal. New `listen` page (ear-before-eye minimal pairs: féar/fear, Seán/sean in S4) and `echo` page (record yourself beside the model, ungraded — U8 punt; mic permission; skip hatch). (2) *Turns*: `turn` page — the scene pauses on your line; two chalk-dashed replies, both acceptable Irish, no fail state; choosing carves it as TUSA and the scene answers each differently; {name} interpolation (S3: meeting Bríd). (3) *Weathering*: `recarve` pages open S2–5 — earlier phrases weathered (vowels erode to middots), re-typed fadas-and-all to restore the groove; doubles as return acknowledgment (tá tú ar ais), which also now greets returns on map + cover; sessions carry an authored `hook` shown under AMÁRACH on the completion page. (4) *Lens*: `lens` feature page — Killala peels to Cill Ala, morphemes step out (S2). (5) *The hand*: artifact stone is now carved by the learner's own finger, base→top past chalk guides, tick per stroke; finished stone exports via ShareLink as an image card ("my name in ogham"). (6) Exercise polish: all non-note registers at optical centre; match = stone (serif + groove, raised) vs chalk (flat sans) with a thread drawn across the gutter per locked pair. Debug seeding args `--name`, `--done`. All verified light + dark on simulator | `ios/AnTuras/` (Speech, Beats, EchoView, TurnView, RecarveView, LensView new; Models, SessionView, ExerciseViews, Ogham, ArtifactView, MapView, CoverView, AppState, chapter1.json, project.yml) |
-
-| 2026-07-04 | **TTS bake-off (round 2):** Gemini 3.1 Flash TTS (`gemini-3.1-flash-tts-preview`) regenerated 21/21; auto-jury removed — manual review via `tools/tts-bakeoff/review.html`; `winners.json` template for per-line picks; Irish TTS landscape researched (`docs/TTS-research.md`) | `tools/tts-bakeoff/`, `docs/TTS-research.md` |
-
-| 2026-07-05 | **TTS decision:** Gemini 3.1 Flash TTS selected for playtest clips (quite good); ElevenLabs + Gemini 2.5 rejected on pronunciation; Azure `ga-IE` scheduled as follow-up bake-off | `docs/TTS-research.md` |
-
-| 2026-07-05 | **Competitive atlas built ("The Seventh Way"):** interactive HTML companion to `COMPETITIVE-RESEARCH.md` — working reconstructions of all six competitor families' core loops (Duolingo lesson, blas. mastery grid, SSi audio round, Bitesize daily letter, Gaeilgeoir chat, Drops match, DCU MOOC), the structure×culture territory map, wrecks-on-the-shore lessons, live mockups of the slice's registers + primitives (recarve/turn/lens/ogham carver), seven imagined-future prototypes (Músaem, Ar Ais, Do Logainm, Féilire, dialect atlas, Dhá Litir, An Doras, in-world Comhrá), a pull×yield feature map, and six trade-off stances with move-conditions. Light+dark, page-language in Solas an Atlantaigh | `docs/seventh-way.html` |
-
-| 2026-07-05 | **Illustration exploration framed:** principles → six style branches (incised, chalk, print, Atlantic wash, flat graphic, manuscript) → fixed test brief → two-day wide/deep funnel → canonical style bible (will log as D4); surfaces inventoried from chapter1.json | `docs/ILLUSTRATIONS.md` |
-| 2026-07-05 | **The big picture built** — three surfaces from the Seventh Way futures shelf, answering playtester feedback ("intrigued by ch. 1 but where is this going?"). (1) *An Turas, the journey map*: the island of Ireland drawn in the carved-limestone language (Natural Earth 50m coastline → 241-point Swift shape, whole island per D1), the 13 spine chapters as numbered waypoints through place *and* time — Cill Ala c. 480 → Béal Feirste inniu; chalk-before-carve extended to the course (road behind carved in moss, one clear chalk leg ahead, faintest thread beyond); *tá tú anseo* pulse; every waypoint opens an era card (hook, payload, artifact) from new `journey.json`; ch. 1's card opens the chonair. Cover → journey → chonair → session is the new spine of the app. (2) *An Músaem*: 13 niches, one line-drawn glyph per artifact, ch. 1's ogham stone unlocks on completion (opens the existing share flow); locked niches are chalk-dashed with era cards; a rust dot means an artifact's people are asking. (3) *Ar Ais*: authored visits in chapter1.json (Dáire, Bríd, an bhaintreach, an chloch féin — 7 across the 5 sessions), FSRS-lite scheduler faoin gcraiceann (due +1 day on session end, ×2.5 on clean recall, reset on struggle, persisted; migration schedules visits for sessions done before the feature existed), queue dressed as people asking (*Tá beirt ag fiafraí fút*, N lá ó shin), answered with the recarve mechanic incl. ismise/isas pattern checks; never a card count. Returning learners land on the journey when someone is asking, else on the chonair. Debug args: `--journey --museum --arais --due N --card N`. All verified light + dark on iPhone 17 Pro sim. **The 13-waypoint navigation described here is superseded by D12's 32-county map; its chapter progress and mechanics remain migration inputs.** | `ios/AnTuras/` (JourneyView, MuseumView, ArAisView, IrelandShape, ChapterCard new; AppState, Models, AnTurasApp, MapView; Resources/journey.json; chapter1.json visits) |
-| 2026-07-05 | **Journey map review pass:** thread visibility, label placement, and copy quick wins, then two follow-ups. (1) Chapter 9's place name carried a stray year ("Baile Átha Cliath, 1893") no other chapter has — dropped, era range already covers it. (2) Waypoint tap targets were sized off the label's 170pt frame rather than the marker, scaled 3.2×, giving each waypoint a ~500pt-wide invisible hit region that could steal taps meant for a neighbour; replaced per-marker tap gestures with one nearest-waypoint gesture over the whole map, so density (Dubhlinn and an lá inniu render ~14pt apart) can no longer mis-resolve a tap. (3) Added a time axis strip below the map — the route is chaotic in space but linear in time, and the map alone couldn't carry that; 13 evenly-spaced ticks (not calendar-proportional — chapters 8–13 would crowd the last tenth of a real timeline) in the same moss/chalk depths as the road, endpoints and current era captioned, each tap-through to its chapter card | `ios/AnTuras/JourneyView.swift`, `Resources/journey.json` |
-
-| 2026-07-05 | **Phase 1 playtest decisions logged; Phase 2 entered.** Retention: tá tú ar ais + journey map validated; An Féilire chosen as gentle ritual layer (D6). Audio: Gemini all-generated + native-speaker QA (D7). Illustration: scene pages only (D8). CMS review layer scoped (D9). Business: premium + grants on top, Ch 1–4 launch, bespoke (D10). Pedagogy: listening-first permanent (D11). Phase 1 exit (D5). | `docs/DECISIONS.md` D5–D11, `docs/STRATEGY.md`, `docs/TTS-research.md` |
-
-| 2026-07-05 | **Chapter 2 content pipeline run + process doc.** Three-stage pass (generator → adversarial reviewer → overall editor) produced `chapter2.json` (*Oileán na Naomh*, 5 sessions, 58 pages); repeatable workflow and good-enough gates written up | `content/chapter2/`, `ios/AnTuras/Resources/chapter2.json`, `docs/CONTENT-PIPELINE.md` |
-
-| 2026-07-06 | **Chapter 3 through the pipeline (*Na Lochlannaigh*, Vikings).** Second repeat of the three-stage pass produced `chapter3.json` (past tense + irregulars, directions, market/Norse-loanword payload, Dubhlinn lens); adversarial review returned **PASS WITH REVISIONS**, editor fixes logged. Human board sign-off, audio, and scene illustration still required | `content/chapter3/`, `ios/AnTuras/Resources/chapter3.json` |
-
-| 2026-07-07 | **App went multi-chapter.** `ContentLoader` now serves chapters 1–3; `AppState` gained multi-chapter selection with **per-chapter progress persistence**; visits loader **merges Ar Ais across chapters** (was chapter-1 only). Per-chapter artifact registers built: **illuminated initial** (ch. 2) and **hack-silver arm-ring** with `{name}` notch (ch. 3, `ArmRingView.swift`) | `ios/AnTuras/` (Models, AppState, ArtifactView, IlluminatedInitialView, ArmRingView) |
-
-| 2026-07-08 | **Build fixes.** Swift build errors in `AppState` init and share-card rendering resolved; tree building clean on simulator | `ios/AnTuras/` (AppState, ArtifactView) |
-| 2026-07-10 | **County-led product architecture adopted (D12).** All 32 counties now have researched first-story leads, each requiring a named real anchor, substantial reading/encounter, 20-word plan, source/rights register, and expert review. The county map is the learner-facing structure; the historical spine remains the sequencing rail. Core documentation and the content-pipeline gates were updated; app/schema migration remains future work. | `docs/DECISIONS.md` D12, `docs/COUNTY-ATLAS.md`, `docs/COUNTY-STORY-SLATE.md`, `docs/SPINE.md`, `docs/CONTENT-PIPELINE.md` |
-| 2026-07-10 | **First full county-story arc implemented — Mayo / Breastagh.** Chapter 1 is now a story-first Mayo pack (`mayo.breastagh-stones`) with explicit anchor, inscription encounter, 20-word groups, source/rights/review metadata, and story-keyed progress migrated losslessly from Chapter 1 saves. The path and county card show the story contract; the lesson distinguishes the fictional practice inscription from the damaged Breastagh reading. It remains an editorial draft, blocked from public release pending historian, pedagogue, rights, and audio QA. | `ios/AnTuras/Resources/journey.json`, `chapter1.json`, `Models.swift`, `AppState.swift`, `JourneyView.swift`, `MapView.swift`, `content/mayo/source-register.md` |
-| 2026-07-11 | **First-story reset and expansive interface vision.** Clean-slate review replaced Breastagh as Mayo's flagship with Gráinne Ní Mháille's 1593 petition; retained Clonmacnoise but recentered Offaly on Flann Sinna and the Cross of the Scriptures c. 900; retained Sihtric but recentered Dublin on the first Irish penny c. 997. Breastagh becomes the prototype for short, labelled reconstruction field notes. A living-historical-atlas direction now expands the app around the island, people, evidence, time, county dossiers, source certainty, and a collection separating real evidence from learner-made artifacts. This row records the design direction; the implementation and test result follow below. | `docs/STORY-RESET.md`, `docs/EXPANSIVE-INTERFACE-VISION.md`, `docs/DECISIONS.md` D13 |
-| 2026-07-11 | **Gráinne first encounter iterated and tester-approved.** The first atlas build exposed too much product and editorial architecture; a first simplification became trustworthy but dry. The approved revision restores narrative craft through Rockfleet, Gráinne's losses and agency, a dedicated person beat, an interactive 1593 family-letter reveal, and Irish earned through her name before the learner's. Later storytelling is surfaced affirmatively rather than as a warning. Approval applies to this simple foundation; the next milestone is resolving the full-story product contract before wider testing. | `ios/AnTuras/AtlasPrototype.swift`, `IslandAtlasView.swift`, `MayoStoryPrototype.swift`, `AtlasCollectionViews.swift`, `docs/GRAINNE-PROTOTYPE-REPORT.md` |
-| 2026-07-11 | **Gráinne / Mayo product contract resolved for storyboarding.** One county at a time; four to six bingeable 8–12 minute episodes; flagship-first stress test with side stories only for demonstrated gaps; broader Gráinne life organised around 1593; binding discovery + Irish action per episode; exactly 20 lexical headwords with need/use/later-reuse lifecycle; three-level evidence ladder; quiet county record + usable language + one completion artifact; Mayo voyage chart; authored next county rather than a picker; just-in-time optional grammar. Remaining research and design questions are explicitly carried. | `docs/GRAINNE-PRODUCT-CONTRACT.md`, `docs/DECISIONS.md` D14–D15, `docs/PRODUCT-GLOSSARY.md` |
-| 2026-07-12 | **Gráinne flagship stress-test + storyboard + weave + lo-fi review; Mayo source brief started.** Provisional pass: she can carry Mayo alone for narrative depth and the 20-word lifecycle; no side story yet. Five-episode spine organised around 1593; language weave and three-level evidence ladder drafted; lo-fi review passes with revisions (tighten Ep3, watch Ep5 overload) and blocks implementation/tester round until paper walkthrough. Historian-ready Mayo 1593 packet begun with claim ledger and rights plan; Breastagh register retargeted as field-note only. | `docs/GRAINNE-SOURCE-STRESS-TEST.md`, `docs/GRAINNE-STORYBOARD.md`, `docs/GRAINNE-LANGUAGE-WEAVE.md`, `docs/GRAINNE-LOFI-REVIEW.md`, `content/mayo/grainne-1593-source-brief.md` |
-| 2026-07-12 | **Walkthrough revisions + parallel launch packets.** Storyboard revised to six episodes; Mayo brief advanced with L1 paraphrases and transcription-first rights default. Offaly Cross, Dublin penny, and Meath/Trim briefs (plus Meath clean-slate confirm) opened. Content-review HTML CMS foundation + manifest; editorial board recruitment pack; Chapters 1–3 legacy salvage map. | `docs/GRAINNE-STORYBOARD.md`, `content/mayo/grainne-1593-source-brief.md`, `content/offaly/`, `content/dublin/`, `content/meath/`, `tools/content-review/`, `docs/CONTENT-REVIEW-CMS.md`, `docs/editorial/BOARD-RECRUITMENT.md`, `docs/LEGACY-SALVAGE-MAP.md` |
-| 2026-07-12 | **Personal atlas Phase 1 pilot shipped in-app.** Behind-a-name / behind-a-place search and result shell on the living atlas: 25 given + 25 surname + 30 place packs, certainty labels, historical-form travel, local saves under “What matters to you,” Mayo story handoffs, first-encounter hooks. Bundled JSON; no genealogy matching; foundation vs authored depth. Specialist review and licensed surname authority still required before public hardening. | `docs/PERSONAL-HISTORIES-FEATURE-PLAN.md`, `ios/AnTuras/PersonalAtlas*.swift`, `Resources/personal-atlas-subjects.json`, `content/personal-atlas/` |
-| 2026-07-13 | **Personal atlas Phase 0–4 engineering delivered behind evidence gates.** Added the hard-case research protocol; assertion-level CMS and deny-by-default public exporter; signed/versioned detail cache and deep links; production Logainm ingestion and a lazy 51 MB SQLite foundation containing 126,712 places and 305,638 aliases; automated all-island quality audit and safe nulling of 7,571 invalid source coordinates; applied 22 existing-link hierarchy recoveries plus four reviewed Northern repairs with provenance; private corrections and privacy-safe query ledger; aggregate distribution pipeline; coarse opt-in nearby places; source-visible static previews; map/time, voices, keepsake, field mode, family worksheet, and community-edition gates. Simulator build and 22 Swift unit plus 5 UI and 22 Python tests pass. No pilot subject was promoted: specialist, rights, audio, accessibility, community, hosting, and user-validation work remains external release work. | `docs/PERSONAL-ATLAS-*.md`, `ios/AnTuras/PersonalAtlas*.swift`, `tools/content-review/`, `tools/*personal*`, `.github/workflows/logainm-monthly.yml`, `web/personal-atlas/` |
-| 2026-07-13 | **House story voice selected.** ElevenLabs generated voice *Irish Cultural Guide* (`NPWroowF4phQhaPWjXPj`) is the default voice for Gráinne / Mayo narrative audio and the next story-audio tests. Browser review accepted the character despite generation variability; two of three samples were good enough. Irish headwords and phrases remain subject to focused language QA before bundling. | `docs/DECISIONS.md` D16, `docs/TTS-research.md` |
-| 2026-07-13 | **Initial-launch voice locked.** Irish Cultural Guide is now the default voice for all initial-launch narrative and Irish teaching audio. It is not perfect, but is mostly accurate and good enough to carry launch; the Gaeilge-first alternatives tested worse. Trinity College Dublin, ABAIR, and other established Irish-language speech/data partnerships are post-launch upgrade paths. | `docs/DECISIONS.md` D17, `docs/TTS-research.md` |
-| 2026-07-13 | **Gráinne historian/pedagogue gate passed; full six-episode prototype implemented.** Historian and Irish-language pedagogue approval of the Mayo claims and 20-word weave was reported, with very positive tester feedback on the direction. The app now carries the complete Clew Bay → Rockfleet → squeeze → crossing/record → partial answer → return arc as 18 resumable beats, one dramatic/language action per episode, the full 20-word lifecycle, a progressive voyage chart, versioned migration from the approved four-step encounter, and a cinematic palette/illustration progression. Generated interpretive portraiture replaces the former abstract mark; the person page now uses the same full-width editorial composition and evidence rhythm. The final simulator run passes 22 Swift unit and 5 UI tests, including XXXL accessibility text, person-page evidence reachability, and route persistence; all 22 Python content/tooling tests also pass. Public release still requires final native-speaker audio QA, rights clearance for production imagery, accessibility/device QA, and a moderated complete-arc tester round. | `ios/AnTuras/GrainneFullStory.swift`, `ios/AnTuras/MayoStoryPrototype.swift`, `docs/GRAINNE-ART-DIRECTION.md`, `docs/GRAINNE-STORYBOARD.md`, `docs/GRAINNE-LANGUAGE-WEAVE.md` |
-| 2026-07-13 | **Editorial composition system documented and rolled across the app.** `PRODUCT.md` and `DESIGN.md` now make image-led and text-led surfaces equal expressions of one system: one anchor, live accessible copy, intentional negative space, accessibility recomposition, story-led cinematic pressure, and containers that earn their boundary. Shared semantic SwiftUI headers now carry that grammar through the living atlas, personal atlas, legacy journey/map, review, practice, lesson, and artifact surfaces. The Mayo dossier is a full-width landscape hero; the obsolete portrait-sticker treatment is gone from active surfaces. Chapter 1 scene art is full-width and four text-bearing generated assets have clean, text-free v2 replacements. Normal and accessibility-size simulator compositions were inspected on iPhone 17 Pro. | `PRODUCT.md`, `DESIGN.md`, `.impeccable/design.json`, `ios/AnTuras/Theme.swift`, `ios/AnTuras/MayoStoryPrototype.swift`, `ios/AnTuras/SessionView.swift`, `ios/AnTuras/Resources/art/*-v2.png` |
-| 2026-07-14 | **Signed-off Gráinne copy implemented.** The warmer, concrete replacement voice now carries all 18 beats; route-turn chart labels, authored episode exits, dossier promise, person-page separation, listening-first prompts and `Say it like` labels match the review. Episode 4 handles the July `SP 63/170` interrogatory under D18/D19, Episode 5 now tests the unsupported conclusion instead of revealing it, and the collection reports all 20 approved Mayo headwords. XcodeGen regeneration and the complete iPhone 17 Pro simulator suite pass: 23 unit tests and 10 UI tests, including XXXL Dynamic Type, evidence reachability, audio-first recall, completed-beat replay, source identity and the new Episode 5 recovery path. The affected Episode 5 screen was also directly inspected in the simulator. | `docs/GRAINNE-COPY-REVIEW.md`, `ios/AnTuras/GrainneFullStory.swift`, `ios/AnTuras/MayoStoryPrototype.swift`, `ios/AnTuras/AtlasCollectionViews.swift`, `ios/AnTurasTests/AtlasProgressTests.swift`, `ios/AnTurasUITests/AtlasFlowUITests.swift` |
-| 2026-07-14 | **Phase 3 four-county working product implemented and simulator-verified.** D20 records the owner-reported Phase 2 pass. A reusable county-story engine now carries Offaly's Cross of the Scriptures, Sihtric's Dublin penny and Trim's grant/castle as visibly provisional four-episode loops; map progression, evidence and made-object shelves, 80-word accumulation, TEG can-do context, stability/difficulty review scheduling, daily calendar ritual and atomic offline pack validation share one durable state model. After XcodeGen regeneration, the complete iPhone 17 Pro simulator suite passes **28 unit and 14 UI tests**; all **22 Python content/tooling tests** pass. UI coverage includes the Offaly dossier at XXXL Dynamic Type and the shared recovery interaction; direct simulator inspection covers the Offaly dossier/listen beat, Dublin in dark appearance and Meath evidence in light appearance. | `ios/AnTuras/LaunchCountyStories.swift`, `AtlasCalendarView.swift`, `AtlasPrototype.swift`, `IslandAtlasView.swift`, `AtlasCollectionViews.swift`, `AppState.swift`, `ios/AnTurasTests/AtlasProgressTests.swift`, `ios/AnTurasUITests/AtlasFlowUITests.swift`, `content/{offaly,dublin,meath}/` |
-| 2026-07-15 | **Story and Learning rebuild confirmed.** New feedback rejects the four-county previews as the next tester build. D21–D22 lock one page sequence with two modes, separate story-read and language-complete progress, an eight-to-ten chapter / 60–90 minute Mayo target, varied full-screen exercises, and a four-county internal gate before external testing. This is a confirmed plan and product decision, not an implemented app change. | `docs/STORY-LEARNING-REBUILD-PLAN.md`, `docs/DECISIONS.md` D21–D22, canonical product/status documents |
-| 2026-07-24 | **Story/Learning rebuild phases 0–3 complete; Rockfleet proof passes on simulator and physical iPhone.** Versioned page packs, stable ids, dual mode projections, separate progress/completion, deterministic legacy migration, a shared twelve-family full-screen exercise system, and the representative Rockfleet chapter are working. The first uniform narrative renderer was rejected as visually monotonous; Rockfleet now changes composition with the account and varies its forward action labels while preserving native navigation. The legacy Gráinne renderer and hardcoded launch-county copy are removed in favour of pack-backed routes. XcodeGen regeneration and the complete iPhone 17 Pro Max simulator scheme pass 52 tests; 22 Python content/tooling tests pass. Light, dark, accessibility-size, Increased Contrast and Reduce Motion states were directly inspected. On the physical iPhone 15 Pro Max, the complete dark Story path, complete light Learning path, and largest accessibility-text opening pass with no failures. | `ios/AnTuras/CountyStoryPack.swift`, `CountyStoryExperienceView.swift`, `CountyNarrativePacing.swift`, `CountyExerciseSystem.swift`, `StoryEvidenceComponents.swift`, `Resources/CountyStories/`, `ios/AnTurasTests/AtlasProgressTests.swift`, `ios/AnTurasUITests/AtlasFlowUITests.swift` |
-| 2026-07-24 | **Mayo Phase 4 production plan approved; authoring pipeline proved.** D23 records the approved nine-chapter storyboard and recommended D-A–D-F choices. The offline validator prints per-county timing, exercise, lifecycle, audio, evidence, and gate state while matching the runtime rules and adding complete-lifecycle and lexeme-contract enforcement. Chapter 1, *Clew Bay and Umhaill*, is authored in a non-bundled county draft so the proven Rockfleet pack stays intact during assembly. All 35 Python content/tooling tests pass. Expanded history, pedagogy, audio, and image-rights gates remain open. | `docs/GRAINNE-STORYBOARD-V2.md`, `docs/DECISIONS.md` D23, `tools/validate_county_pack.py`, `tools/tests/test_validate_county_pack.py`, `content/mayo/` |
-| 2026-07-24 | **Nine-chapter Mayo review draft completed and machine-checked.** Chapters 2 and 4–9 are authored; Rockfleet now introduces only *caisleán* and is trimmed to eight exercises. The non-bundled revision-5 draft contains 99 pages, an 84.8-minute estimated Story path, 38 exercises across all 12 families, and complete ordered lifecycles for all 20 headwords. Strict county-pack validation and all 36 Python tests pass. The structurally complete draft remains outside the app because expanded specialist review, 20 teaching-audio resources, Rockfleet image rights, integration, and device/accessibility checks are still open. | `content/mayo/grainne-1593.pack.draft.json`, `content/mayo/DRAFT-STATUS.md`, `docs/GRAINNE-STORYBOARD-V2.md` |
-| 2026-07-24 | **Mayo revision-6 historian candidate prepared.** The accepted pre-clearance workflow applies the July historical review's reversible fixes before external review: C04 now carries a candidate Carew MS 601 / SP 12/159 trail but remains Story-only and behind `history.expanded`; C02's archive bias appears in Story mode; Chapter 2/4 wording, C06/C10/C14/C15 evidence statuses, names, and stale prototype copy are corrected. The non-bundled pack now contains 100 pages with an 86.2-minute Story path and 104.1-minute Learning path. Strict validation and all 36 Python tests pass. No external gate is closed and the bundled app remains unchanged. | `content/mayo/grainne-1593.pack.draft.json`, `content/mayo/grainne-1593-source-brief.md`, `content/mayo/DRAFT-STATUS.md`, `docs/mayo-historical-review/` |
-| 2026-07-24 | **Expanded-history reviewer continuity requirement removed.** D24 records that a newly named historian may close the revision-6 `history.expanded` gate. The new review must identify revision, scope, date, requested changes and final disposition, and must explicitly confirm the candidate C04 folio and diplomatic wording. No gate is closed by this governance decision. | `docs/DECISIONS.md` D24, `content/mayo/grainne-1593-source-brief.md`, `content/mayo/DRAFT-STATUS.md` |
-| 2026-07-24 | **Split historical review permitted.** D24 now permits a narrative historian to own the Chapter 2/4 disposition and an archival specialist to own C04 folio and diplomatic-wording confirmation. One qualified person may perform both, but `history.expanded` requires both recorded dispositions. | `docs/DECISIONS.md` D24, `content/mayo/grainne-1593-source-brief.md`, `content/mayo/DRAFT-STATUS.md` |
-| 2026-07-24 | **Offaly, Dublin, and Meath full Story/Learning drafts assembled and simulator-smoke-tested.** The Mayo pattern now produces three non-bundled, six-chapter pre-clearance packs with variable page counts, estimated 49.4-minute Story paths, 30 exercises across all 12 mechanic families, complete 20-word lifecycles, object-specific evidence boundaries, and explicit open review gates. A repeatable builder and regression tests keep the generated drafts current; strict validation and all 38 Python tests pass. A temporary iPhone 17 Pro substitution build rendered representative Story and Learning pages for all three, the visible missing-audio recovery state, largest accessibility text, and a dark-appearance sample. The shipping bundle remains unchanged and passes 36 unit plus the two preview UI tests affected by substitution. This smoke test does not close specialist, full accessibility, device, or promotion gates. | `tools/build_phase5_county_drafts.py`, `tools/tests/test_validate_county_pack.py`, `content/{offaly,dublin,meath}/` |
-| 2026-07-24 | **Offaly, Dublin, and Meath promoted to in-app review drafts.** The full generated packs replace the five-page previews in the app bundle and are labelled **Review draft** wherever release state appears. Reviewers can traverse both complete modes and retain stable page progress. A new runtime guard requires `completeCounty` scope **and** zero open review gates before gold, made objects or scheduled words can be awarded; completing a review draft therefore has no release effects. Mode-opening and completion copy now derives from each pack's real chapter, page, timing, exercise and gate state instead of Rockfleet constants. All 38 Python tests, 36 Swift unit tests and 16 UI tests pass; the three review openings were directly inspected on an iPhone 17 Pro simulator at accessibility text size. | `ios/AnTuras/Resources/CountyStories/`, `CountyStoryPack.swift`, `CountyStoryExperienceView.swift`, `LaunchCountyStories.swift`, `AtlasPrototype.swift` |
-
-## Immediate next steps (phrase-family fluency, then foundation / Phases 4–6)
-
-### Major phase — phrase-family fluency expansion (D30)
-
-1. **~~Lock the phrase-family model~~ (done — D30)** — glossary in `CONTEXT.md`;
-   decision in `docs/DECISIONS.md` D30 / `docs/adr/0001-phrase-family-fluency.md`.
-2. **~~Soft-freeze Mayo’s taught ~20~~ (done for this phase)** — storyboard/pack bank
-   stands; atlas headwords stay provisional; no opportunistic orphan adds.
-3. **~~Draft *farraige* B fixture~~ (done)** — family at
-   [`content/mayo/phrase-families/farraige.v1.json`](content/mayo/phrase-families/farraige.v1.json);
-   sibling pack `mayo.farraige-family-b`; hear ship-on-sea → build sea-here; three new
-   inventory phrases generated (unreviewed); launch with `--farraige-family-b`.
-4. **~~ACCEPT the B slice~~ (done — 2026-08-01)** — craft/coherence ACCEPT mean 4.5/5;
-   F2 + D30-B Pass —
-   [`SCORECARD-farraige-family-b-2026-08-01.md`](docs/activity-quality/SCORECARD-farraige-family-b-2026-08-01.md);
-   UI walk + cold/wrong/complete/dark/a11y captures in
-   `tmp/exercise-screenshots/farraige-family-b-2026-08-01/`. Pedagogue + native QA still
-   open. Do not mutate D29.
-5. **~~Second fixture pass — pattern C~~ (done — 2026-08-01)** — delayed freeTyping of
-   *where-sea* after *sea-here* encounter + bay narrative; mean 4.6/5; F3 + D30-C Pass —
-   [`SCORECARD-farraige-family-c-2026-08-01.md`](docs/activity-quality/SCORECARD-farraige-family-c-2026-08-01.md);
-   launch `--farraige-family-c`; captures in
-   `tmp/exercise-screenshots/farraige-family-c-2026-08-01/`.
-6. **~~Pedagogue + native QA on the *farraige* family~~ (done — 2026-08-01)** —
-   owner-reported pass; family `qa_passed_scale_ready`; four inventory strings
-   `qa_passed`. Teaching claims and Mayo densify unblocked. Production county promotion
-   still needs separate history/rights/audio gates.
-7. **~~Densify Mayo~~ (done — 2026-08-01)** — all 20 taught lexemes have phrase-family
-   drafts under [`content/mayo/phrase-families/`](content/mayo/phrase-families/)
-   (coastal, petition/motion, kin). Attested-first; ≤2 invented per family. Per-family
-   pedagogue + native QA still required before teaching claims on non-*farraige*.
-8. **~~Wire packs to phrase-family members (schema slice)~~ (done — 2026-08-01)** —
-   `phraseFamilyMemberIDs` on exercises; Swift `PhraseFamilyCatalog` + Python loader;
-   validators reject unknown/mismatched members; Mayo draft (25) and Rockfleet (6)
-   Learning exercises wired where answers matched. Full foundation gate (below) still
-   open.
-
-### Supporting — learning-mechanics foundation and county gates
-
-9. **~~Freeze the representative Mayo run~~ (done — D29)** — sequence, retained study
-   details, and cluster order live in
-   [`docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md`](docs/activity-quality/MAYO-REPRESENTATIVE-RUN-FREEZE.md).
-10. **~~Implement clusters A–G for the frozen run~~ (done — Kimi)** — all nine steps
-   operate on the shared shell.
-11. **~~Composer cluster scorecards~~ (done — 2026-07-30)** — all five required clusters
-   ACCEPT (rollup:
-   [`docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md`](docs/activity-quality/COMPOSER-ROLLUP-freeze-2026-07-30.md)).
-12. **~~Grok coherence review~~ (done — 2026-07-31)** —
-    [`docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md`](docs/activity-quality/GROK-COHERENCE-freeze-2026-07-31.md);
-    craft operate-the-run is complete; residuals ride the foundation gate.
-13. **~~Shared state engine + activity shell (rebuild plan steps 3–4)~~ (done —
-    2026-07-31)** — engine Composer ACCEPT + Grok PASS; shell REJECT then
-    re-score ACCEPT + Grok PASS
-    ([`SCORECARD-activity-shell-rescore-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md)).
-    Persistence of attempt credit stays with steps 14–15/17.
-14. **~~Harden the authored contract, schema, memory handoff, and validators~~ (done —
-    2026-08-01)** — resolved contracts mandatory under `enforceLearningQuality`;
-    incomplete / recovery-without-fresh-response fixtures; four memory signals persist
-    with debt-free review seeding; older progress JSON survives.
-15. **~~Run the foundation gate~~ (engineering PASS — 2026-08-01)** — see
-    [`docs/activity-quality/FOUNDATION-GATE-2026-08-01.md`](docs/activity-quality/FOUNDATION-GATE-2026-08-01.md).
-    Gallery C1/C3/C5 operable; freeze + shell UI green; device build installed (launch
-    needs unlock). Residual: full VoiceOver rotor walk + unlocked-device spot-check.
-16. **Migrate the activity families in bounded groups** — recognition greenfield;
-    construction listen-and-type; contextual use (grammar, radio, production conversation
-    graphs); then **Words you carry** and scheduler-owned mistake review. Prefer patterns
-    that consume phrase families. Each group must pass its gallery and accessibility
-    matrix before the next spreads.
-17. **Migrate one production Mayo slice that consumes B/C family patterns, then decide
-    whether to spread** — verify both modes, progress preservation, memory events,
-    collection handoff, and optional review. Resume broader county integration only
-    after this slice and the foundation pass without private family-specific exceptions.
-18. **Resume county review and integration only after the foundation passes** — clear
-    Mayo's history, pedagogy, audio, and rights gates; review Offaly, Dublin, and Meath
-    independently; then run the four-county tester-readiness gate.
-19. **Preserve the Phase 2 test record** — add participant count and moderated-session
-    notes if they exist; D20 deliberately does not invent them.
-
-### Lower priority (unchanged)
-
-1. **Personal atlas external release gates** — run the 12–18 person hard-case protocol;
-   establish the specialist-reviewed showcase, licensed surname source and community/
-   voice agreements before public promotion.
-2. **Complete the D32 emergency Irish harvest** — generate provisional all-county
-   phrase-family text and capture it in registered batches before the subscription
-   expires. Native-speaker review remains required before learner release. Treat
-   Trinity/ABAIR partnership work as a post-launch upgrade. Prefer phrase-family
-   batches over untracked orphan headword expansion.
-3. **Flow / Gemini Omni Batch A** — animate the D28 queue in `docs/MEDIA-AUDIT.md`
-   (wired stills first), then Batch B missing stills; recompress shipped loops to ≤2 MB.
-4. **Illustration production recipe** — atlas registers before Chapter 1–3 scene sets.
-5. **TestFlight build** — needs Apple Developer team in `ios/project.yml`.
-6. **Send ABAIR commercial enquiry** — optional; draft at `docs/ABAIR-enquiry.md`.
-7. **Grant funding research** — Foras na Gaeilge / Údarás strings before accepting (D10).
-
-## Long-term plan
-
-- **Phase 1 — Vertical slice (complete):** Chapter 1 SwiftUI app with writing, audio,
-  and illustrations. Playtest validated narrative pull without streaks; tá tú ar ais and
-  the journey map named as return mechanisms. Exit criterion met (D5).
-- **Phase 2 — Story contract + atlas proof (complete by owner report):** Gráinne claims,
-  weave and copy are approved; the six-episode prototype was delivered and its complete
-  moderated arc was reported passed on 14 July (D20). Session details are not in-repo.
-- **Phase 3 — Story and Learning rebuild (now):** preserve the implemented atlas,
-  evidence, collection, review, calendar, offline, and progress foundations while
-  replacing the preview-shaped county content and repetitive learning path. Mayo proves
-  one authored sequence with two modes before Offaly, Dublin, and Meath are rebuilt.
-  Within Phase 3, the **current major workstream** is phrase-family fluency expansion
-  around taught lemmas (exercise design → generate → native QA), with shared-shell
-  foundation hardening as supporting engineering. The phase exits only when all four
-  counties pass the internal tester-readiness gate.
-- **Phase 4 — Launch:** premium subscription to diaspora + re-learners; calendar-aligned
-  moments (Seachtain na Gaeilge, St Patrick's Day); grant funding layered on top.
-- **Phase 5 — NI expansion:** gated on Ulster dialect audio (D2) and community
-  relationships (Turas, Glór na Móna); chapters 10–12 carry the editorial weight.
-
-## Open questions being carried
-
-- **An Féilire implementation** — direction chosen (D6); product design and content
-  tagging for calendar-tied material is Phase 3/4 work.
-- **Contested history editorial principles** (STRATEGY.md U7) — write before Chapter 10
-  production; advisory board scope TBD.
-- **Frame device carrying the learner between county stops and eras** (SPINE.md, open
-  creative question). D12 fixes the map structure; it does not yet select the recurring
-  narrative device.
-- **Grant-funding strings** — understand before accepting public money (D10).
-- **Irish-language audio upgrade path** — pursue Trinity/ABAIR/established speech-data
-  partnerships after launch; Irish Cultural Guide is the initial-launch baseline (D17).
-- **Phrase-family delayed-reuse (C) shape** — **resolved 2026-08-01:** freeTyping +
-  `delayedRecall` on the county shell. Contextual review and Words you carry remain
-  separate surfaces.
-
-## Resolved (Phase 1 → 2)
-
-| Unknown | Resolution |
-|---|---|
-| U1 Persona | D1 — re-learners + diaspora; NI north star |
-| U2 Dialect | D2 — Connacht first |
-| U3 Retention loop | D5/D6 — narrative pull (tá tú ar ais, journey map) + An Féilire rituals |
-| U4 Story and language relationship | D21 — one page sequence, Story mode without language gates, Learning mode with the shorter causal story and required exercises |
-| U5 Audio strategy | D17 — Irish Cultural Guide for all initial-launch audio, all-generated with native-speaker QA; D7 is the historical Chapter 1 baseline |
-| U6 Business model | D10 — premium + grants on top; Ch 1–4 launch; bespoke |
-| U8 Pronunciation | D11 — listening-first permanent; echo ungraded |
-
-## Risks watchlist
-
-- **blas.** is shipping fast in the same waters (rigour angle); our differentiation
-  is narrative/identity — window is now.
-- Content accuracy: nothing ships publicly without native-speaker review.
-- Cheap TTS can outrun QA and exercise demand: do not bulk-generate phrase families the
-  Learning path cannot play, or unreviewed longer Irish that fails mutations/fadas.
-- Bespoke content cost per chapter remains the business-model risk; four chapters at
-  launch is depth-over-breadth by design (D10). Audio generation cost is no longer the
-  primary limiter for Irish teaching clips on Creator tier.
-- Fixed schemas can create the appearance of a complete county while rewarding short
-  outlines and repeated mechanics. D22 requires representative-slice proof and
-  outcome-based validators before the pattern spreads again.
-- The new interface could become an attractive historical browser that weakens the
-  language journey. Every prototype must prove that real evidence makes the Irish
-  more memorable and usable, not merely that the atlas is enjoyable to browse.
-- Source access and rights now gate story shape earlier: petitions, coins, crosses,
-  recordings, portraits, and maps need claim-level provenance before final UI and art.
-- Legacy progress, artifacts, and review schedules must survive replacement story ids;
-  editorial courage cannot become destructive migration.
+*Project: An Turas (working title) — an iOS app for learning Irish through the real
+stories and places of Ireland. Updated 2026-08-02.*
+
+## Current outcome
+
+An Turas has a verified representative Mayo Story-and-Learning loop, shared learning
+runtime, four in-app county review packs, a nationwide Personal Atlas foundation, and
+a controlled Irish authoring/audio pipeline.
+
+The immediate phase is the **D32 emergency Irish audio harvest**. The first all-county
+tranche is complete, but the harvest is not: **141,200 ElevenLabs credits remained at
+the last observed provider check**. Provisional generation may continue during the
+subscription window. Capture does not imply linguistic approval or learner release.
+
+The product is implemented as a substantial prototype. It has not been validated for
+learning outcomes or promoted for public release.
+
+## Current evidence
+
+### Irish corpus and audio
+
+- **640** phrase families, **1,443** complete authored members, and **673** unique
+  normalized texts across all **32** counties.
+- **674** registered audio lines: **666** approved and succeeded, **7** cancelled for
+  explicit reuse, **0** failed, and **0** actively claimed.
+- **1,028** bundled MP3s: **666** source-labelled v2 captures and **362** legacy/runtime
+  clips.
+- **1,028/1,028** checksums verify. There are no missing, mismatched, or orphan files,
+  and no remaining resumable or manual-recovery work.
+- The Personal Atlas tranche contains **80** subjects—**50 names** and **30 places**—
+  with two spoken forms each and **160** newly captured clips.
+- All v2 captures remain `generated_unreviewed`; the learner-release-eligible count is
+  **0**.
+
+Canonical records:
+
+- [`content/audio/authoring/phrase-family-store-v2.json`](content/audio/authoring/phrase-family-store-v2.json)
+- [`ios/AnTuras/Resources/Audio/manifest.json`](ios/AnTuras/Resources/Audio/manifest.json)
+- [`content/audio/README.md`](content/audio/README.md)
+
+### Mechanistic review
+
+- Deterministic disjoint sampling selects **78** clips across **11** risk strata,
+  including names, places, mutations, fadas, launch lines, duplicates, source risk,
+  and acoustic outliers.
+- The offline ABAIR comparator records provenance and checksums and compares duration,
+  level, spectral shape, zero-crossing rate, and coarse envelopes against locally
+  supplied reference clips.
+- No ABAIR reference corpus has been supplied or compared yet. The comparator does not
+  scrape ABAIR, decide pronunciation correctness, or close a release gate.
+
+Canonical records:
+
+- [`content/audio/authoring/sampling/d32-risk-stratification-2026-08-02.json`](content/audio/authoring/sampling/d32-risk-stratification-2026-08-02.json)
+- [`docs/ABAIR.md`](docs/ABAIR.md)
+- [`tools/abair_reference_compare.py`](tools/abair_reference_compare.py)
+
+### Pedagogy
+
+- The authoring-only pedagogy sidecar contains **5** narrative lessons and **18**
+  English-framed lines around exact repository Irish examples.
+- Source references, invented pedagogical framing, risk flags, and separate pedagogy,
+  Irish-language, pronunciation, and learner-release states are recorded.
+- All review gates remain open. The sidecar is implemented and mechanically verified,
+  but not validated as teaching material and not connected to the learner runtime.
+
+Canonical records:
+
+- [`content/pedagogy/irish-explanations-v1.json`](content/pedagogy/irish-explanations-v1.json)
+- [`content/pedagogy/README.md`](content/pedagogy/README.md)
+- [`docs/DECISIONS.md`](docs/DECISIONS.md) D33
+
+### Product runtime
+
+- The representative Rockfleet chapter has complete Story and Learning paths on the
+  shared county runtime.
+- The shared activity shell, response state engine, recovery, memory handoff, review
+  seeding, and phrase-family references are implemented.
+- Mayo has a nine-chapter production draft. Offaly, Dublin, and Meath are bundled as
+  review drafts and cannot award county completion while their gates remain open.
+- The nationwide Personal Atlas foundation contains **126,712** place records;
+  **100,738** have Irish forms. Only a small prioritized subset has authored teaching
+  context and audio.
+
+The latest full app and device verification predates the D32 content/audio additions.
+Those additions changed resources rather than interaction code, but a fresh simulator
+and physical-device run is still required before promotion.
+
+### Verification at the current revision
+
+- `python3 -B tools/structured_audio_authoring.py check` — passed.
+- `python3 -B tools/structured_audio_authoring.py reconcile --scoreboard --json` —
+  passed with the counts above.
+- `python3 -B -m unittest discover -s tools/tests` — **149/149 passed** on 2026-08-02.
+- Commit `26d3825` records the latest Personal Atlas audio tranche. The working tree
+  was clean before this status update.
+
+## Active implementation sequence
+
+### 1. Expand high-value authoring banks while credits remain
+
+Continue Track A in independently appendable tranches. Prioritize:
+
+1. Irish personal names, surnames, historical names, and high-value place names already
+   represented in the Personal Atlas or county stories;
+2. story openings, recaps, transitions, and reusable dialogue roles;
+3. phrase-family contrasts that exercise mutations, inflections, fadas, and likely
+   pronunciation failures;
+4. narrative pedagogy examples with a named grammar or pronunciation purpose.
+
+Every member must retain a stable ID, exact Irish text, English intent, source or
+invented status, risk flags, and a plausible story/place/learning use. D32 permits
+provisional capture; it does not permit untracked orphan text.
+
+### 2. Normalize, deduplicate, and build resumable manifests
+
+Track B canonicalizes NFC text, detects exact reuse and intent conflicts, assigns
+stable line identities, and partitions work by county, story, sense, and risk. Each
+tranche must pass authoring validation and a credit preflight before provider calls.
+
+### 3. Drain manifests continuously with explicit credit checkpoints
+
+Track C uses the locked Irish Cultural Guide voice and model from D31. Run capture in
+bounded payloads, checkpoint provider usage between payloads, preserve a regeneration
+reserve, and stop at the agreed credit floor or subscription expiry. A successful
+payload must end with registered results, bundle checksums, and zero unresolved claims.
+
+The D31 **3,000–5,000 utterance** range remains a planning reference, not a D32 cap.
+Available credits, metadata quality, and plausible future use determine the emergency
+harvest ceiling.
+
+### 4. Replace exhaustive listening with anomaly detection and quarantine
+
+After each tranche, Track D regenerates the deterministic sample and runs technical
+checks across the entire inventory. It should quarantine:
+
+- missing, corrupt, clipped, unusually short/long, silent, or level-outlier audio;
+- conflicting meanings for identical Irish text;
+- names, places, mutations, fadas, and launch lines selected by the risk sampler;
+- material that diverges materially from a lawfully supplied reference set.
+
+Mechanical agreement is evidence for prioritization, not linguistic correctness.
+Reference comparisons remain disabled until a lawful local ABAIR reference corpus and
+its provenance are available.
+
+### 5. Reconcile every tranche before starting the next
+
+Track E updates inventory, checksums, batch state, recovery state, Atlas/pedagogy
+coverage, and the credit ledger. Do not start a new provider payload while the previous
+one has unresolved claims, missing checksums, or unregistered files.
+
+### 6. Freeze the harvest, select, and prove one learner-facing slice
+
+When the credit window closes, stop corpus expansion and rank the captured material by
+story relevance, reuse, pedagogical purpose, risk, and mechanical audio quality. Then:
+
+1. correct and gate the selected subset;
+2. connect one production Mayo Learning slice to reviewed phrase-family and narrative
+   pedagogy material;
+3. verify Story and Learning modes, progress preservation, memory events, collection
+   handoff, accessibility, audio playback, and offline behavior;
+4. inspect the complete slice on simulator and physical device;
+5. spread the pattern only if the representative slice passes without private
+   family-specific exceptions.
+
+## Open gates and unblock conditions
+
+| Gate | Current state | Unblock condition |
+| --- | --- | --- |
+| Irish authoring | Provisional at scale | Selected records corrected and approved for their stated intent |
+| Audio QA | Mechanically checked, human gate open | Qualified Irish speaker approves the selected learner-facing subset and recorded scope |
+| Pedagogy | Five-lesson draft only | Pedagogue and Irish-language review the exact sidecar revision |
+| ABAIR comparison | Adapter implemented, no references loaded | Lawful local references with permission, provenance, and checksums |
+| Mayo production | Nine-chapter draft, representative runtime proof | History, pedagogy, language, audio, rights, accessibility, and device gates close |
+| Offaly | Review draft | Medieval history and art/inscription review plus shared launch gates |
+| Dublin | Review draft | Numismatic object/transcription review plus shared launch gates |
+| Meath | Review draft | Grant source, castle phasing, and conquest-sensitivity review plus shared launch gates |
+| External learner round | Blocked | All four counties pass the internal tester-readiness gate |
+| Public release | Blocked | Product, specialist, rights, accessibility, device, operational, and commercial gates close |
+
+## Known risks
+
+- Generating faster than the corpus can be attributed, deduplicated, and assigned a
+  plausible use would convert prepaid credits into unusable inventory.
+- Acoustic similarity can catch anomalies but cannot establish grammatical,
+  dialectal, semantic, or pedagogical correctness.
+- Names and places are unusually sensitive to dialect, local convention, historical
+  form, and anglicized/Irish-form ambiguity.
+- The Personal Atlas foundation is broad, but authored context and audio coverage are
+  still shallow relative to its 126,712 place records.
+- Bespoke reviewed story and pedagogy production—not TTS generation—is the long-term
+  cost and scheduling constraint.
+
+## Historical context
+
+- **Phase 1:** built and tested the first Gráinne vertical slice; narrative pull was
+  promising, but the evidence record is incomplete.
+- **Phase 2:** established the story, evidence, Atlas, collection, offline, progress,
+  and review foundations.
+- **Phase 3:** replaced thin county previews with separate Story and Learning modes,
+  rebuilt the shared activity system, proved the Rockfleet representative loop, and
+  produced substantial review drafts for Mayo, Offaly, Dublin, and Meath.
+- **D30–D31:** proved phrase-family learning patterns, added controlled authoring and
+  resumable audio generation, and locked the initial Irish voice/model contract.
+- **D32–D33:** expanded provisional authoring and audio across all 32 counties, added
+  mechanistic risk sampling and offline reference comparison, began Personal Atlas
+  name/place audio, and created the first reviewable narrative-pedagogy sidecar.
+
+Durable product rules and decisions remain in [`PRODUCT.md`](PRODUCT.md) and
+[`docs/DECISIONS.md`](docs/DECISIONS.md). Launch strategy and unresolved strategic
+questions remain in [`docs/STRATEGY.md`](docs/STRATEGY.md).
