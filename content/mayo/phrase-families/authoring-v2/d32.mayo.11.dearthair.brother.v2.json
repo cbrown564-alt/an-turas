@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.mayo.11.dearthair.brother",
+  "county": "mayo",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.mayo.grainne-1593"
+  },
+  "target": {
+    "lexeme_id": "lex.dearthair",
+    "citation_form": "deartháir",
+    "sense_id": "mayo.dearthair.brother",
+    "part_of_speech": "lexical item",
+    "english_sense": "brother"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.mayo.11.dearthair",
+      "gloss": "brother"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.mayo.11.dearthair.brother.opening",
+      "family_id": "d32.mayo.11.dearthair.brother",
+      "target": {
+        "lexeme_id": "lex.dearthair",
+        "citation_form": "deartháir",
+        "sense_id": "mayo.dearthair.brother",
+        "part_of_speech": "lexical item",
+        "target_form": "deartháir",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá deartháir anseo.",
+        "normalized_text": "Tá deartháir anseo.",
+        "inventory_slug": "taa-dearthaair-anseo",
+        "text_sha256": "d21af4de20f111c3fcece5101aab32de6052fa63c86827aa015fe5e63ac356e4"
+      },
+      "english": {
+        "intent": "The brother is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.11.dearthair"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the mayo story with the atlas-bound brother at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.opening.11",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the mayo story with the atlas-bound brother at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.opening.11",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.mayo.11.dearthair.brother.dialogue",
+      "family_id": "d32.mayo.11.dearthair.brother",
+      "target": {
+        "lexeme_id": "lex.dearthair",
+        "citation_form": "deartháir",
+        "sense_id": "mayo.dearthair.brother",
+        "part_of_speech": "lexical item",
+        "target_form": "deartháir",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil deartháir anseo?",
+        "normalized_text": "An bhfuil deartháir anseo?",
+        "inventory_slug": "an-bhfuil-dearthaair-anseo",
+        "text_sha256": "1897434d9b093b55ab67022e9194106560e8a0b2278211639c7c0da82fc45b9c"
+      },
+      "english": {
+        "intent": "Is the brother here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.11.dearthair"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse deartháir in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.dialogue.11",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse deartháir in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.dialogue.11",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

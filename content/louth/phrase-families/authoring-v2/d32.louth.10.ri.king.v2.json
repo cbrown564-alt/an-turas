@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.louth.10.ri.king",
+  "county": "louth",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.louth.cu-chulainn-cooley"
+  },
+  "target": {
+    "lexeme_id": "lex.ri",
+    "citation_form": "rí",
+    "sense_id": "louth.ri.king",
+    "part_of_speech": "noun",
+    "english_sense": "king"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.louth.10.ri",
+      "gloss": "king"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.louth.10.ri.king.opening",
+      "family_id": "d32.louth.10.ri.king",
+      "target": {
+        "lexeme_id": "lex.ri",
+        "citation_form": "rí",
+        "sense_id": "louth.ri.king",
+        "part_of_speech": "noun",
+        "target_form": "rí",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá rí anseo.",
+        "normalized_text": "Tá rí anseo.",
+        "inventory_slug": "taa-rii-anseo",
+        "text_sha256": "9bec0aca3e03d46018f011f1b62b289012bb8a7fef62bddd1c3493f80d648ce3"
+      },
+      "english": {
+        "intent": "The king is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "louth",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley"
+        },
+        "atlas_placement_ids": [
+          "atlas.louth.10.ri"
+        ],
+        "place": {
+          "id": "d32.louth.place",
+          "label": "Lú / Louth"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the louth story with the atlas-bound king at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley.opening.10",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the louth story with the atlas-bound king at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.louth.cu-chulainn-cooley.opening.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.louth.10.ri.king.dialogue",
+      "family_id": "d32.louth.10.ri.king",
+      "target": {
+        "lexeme_id": "lex.ri",
+        "citation_form": "rí",
+        "sense_id": "louth.ri.king",
+        "part_of_speech": "noun",
+        "target_form": "rí",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil rí anseo?",
+        "normalized_text": "An bhfuil rí anseo?",
+        "inventory_slug": "an-bhfuil-rii-anseo",
+        "text_sha256": "38daed250bcf3e0e2e16d5ff6dfe114e82dfc8f677093cc1804b2043d40e4f6c"
+      },
+      "english": {
+        "intent": "Is the king here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "louth",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley"
+        },
+        "atlas_placement_ids": [
+          "atlas.louth.10.ri"
+        ],
+        "place": {
+          "id": "d32.louth.place",
+          "label": "Lú / Louth"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse rí in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley.dialogue.10",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse rí in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.louth.cu-chulainn-cooley.dialogue.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

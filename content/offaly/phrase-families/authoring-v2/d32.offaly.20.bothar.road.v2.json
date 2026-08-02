@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.offaly.20.bothar.road",
+  "county": "offaly",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.offaly.cross-of-the-scriptures"
+  },
+  "target": {
+    "lexeme_id": "lex.bothar",
+    "citation_form": "bóthar",
+    "sense_id": "offaly.bothar.road",
+    "part_of_speech": "noun",
+    "english_sense": "road"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.offaly.20.bothar",
+      "gloss": "road"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.offaly.20.bothar.road.opening",
+      "family_id": "d32.offaly.20.bothar.road",
+      "target": {
+        "lexeme_id": "lex.bothar",
+        "citation_form": "bóthar",
+        "sense_id": "offaly.bothar.road",
+        "part_of_speech": "noun",
+        "target_form": "bóthar",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá bóthar anseo.",
+        "normalized_text": "Tá bóthar anseo.",
+        "inventory_slug": "taa-boothar-anseo",
+        "text_sha256": "bf8df54a400f7a70d0937ea6152298503196db585d6ad015150a6a613036386e"
+      },
+      "english": {
+        "intent": "The road is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "offaly",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures"
+        },
+        "atlas_placement_ids": [
+          "atlas.offaly.20.bothar"
+        ],
+        "place": {
+          "id": "d32.offaly.place",
+          "label": "Uíbh Fhailí / Offaly"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the offaly story with the atlas-bound road at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures.opening.20",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the offaly story with the atlas-bound road at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.offaly.cross-of-the-scriptures.opening.20",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.offaly.20.bothar.road.return",
+      "family_id": "d32.offaly.20.bothar.road",
+      "target": {
+        "lexeme_id": "lex.bothar",
+        "citation_form": "bóthar",
+        "sense_id": "offaly.bothar.road",
+        "part_of_speech": "noun",
+        "target_form": "bóthar",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá bóthar sa scéal.",
+        "normalized_text": "Tá bóthar sa scéal.",
+        "inventory_slug": "taa-boothar-sa-sceeal",
+        "text_sha256": "f0afd7b1fd5e8017a64d732adcb3a036b3cbd5b4aa060d86e4ecd526d769d4a0"
+      },
+      "english": {
+        "intent": "The road is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "offaly",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures"
+        },
+        "atlas_placement_ids": [
+          "atlas.offaly.20.bothar"
+        ],
+        "place": {
+          "id": "d32.offaly.place",
+          "label": "Uíbh Fhailí / Offaly"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry bóthar from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures.return.20",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry bóthar from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.offaly.cross-of-the-scriptures.return.20",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

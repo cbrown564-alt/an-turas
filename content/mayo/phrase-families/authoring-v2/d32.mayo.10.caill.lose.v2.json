@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.mayo.10.caill.lose",
+  "county": "mayo",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.mayo.grainne-1593"
+  },
+  "target": {
+    "lexeme_id": "lex.caill",
+    "citation_form": "caill",
+    "sense_id": "mayo.caill.lose",
+    "part_of_speech": "verb",
+    "english_sense": "lose"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.mayo.10.caill",
+      "gloss": "lose"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.mayo.10.caill.lose.opening",
+      "family_id": "d32.mayo.10.caill.lose",
+      "target": {
+        "lexeme_id": "lex.caill",
+        "citation_form": "caill",
+        "sense_id": "mayo.caill.lose",
+        "part_of_speech": "verb",
+        "target_form": "caill",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá caill anseo.",
+        "normalized_text": "Tá caill anseo.",
+        "inventory_slug": "taa-caill-anseo",
+        "text_sha256": "894ff0915a90e93ed4e25e963faaa09ce69b2928f3f9d582eb0f8ebc86bb0f2d"
+      },
+      "english": {
+        "intent": "The lose is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.10.caill"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the mayo story with the atlas-bound lose at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.opening.10",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the mayo story with the atlas-bound lose at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.opening.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.mayo.10.caill.lose.return",
+      "family_id": "d32.mayo.10.caill.lose",
+      "target": {
+        "lexeme_id": "lex.caill",
+        "citation_form": "caill",
+        "sense_id": "mayo.caill.lose",
+        "part_of_speech": "verb",
+        "target_form": "caill",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá caill sa scéal.",
+        "normalized_text": "Tá caill sa scéal.",
+        "inventory_slug": "taa-caill-sa-sceeal",
+        "text_sha256": "edfcf507fdc18e3af49f06ddd50e4c6370ef0a2d060c7faf642a3868118f85e4"
+      },
+      "english": {
+        "intent": "The lose is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.10.caill"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry caill from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.return.10",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry caill from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.return.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

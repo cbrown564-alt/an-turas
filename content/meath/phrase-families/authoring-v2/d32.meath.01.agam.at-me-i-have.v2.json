@@ -1,0 +1,272 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.meath.01.agam.at-me-i-have",
+  "county": "meath",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.meath.trim-de-lacy"
+  },
+  "target": {
+    "lexeme_id": "lex.agam",
+    "citation_form": "agam",
+    "sense_id": "meath.agam.at-me-i-have",
+    "part_of_speech": "pronoun",
+    "english_sense": "at me / I have"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.meath.01.agam",
+      "gloss": "at me / I have"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.meath.01.agam.at-me-i-have.opening",
+      "family_id": "d32.meath.01.agam.at-me-i-have",
+      "target": {
+        "lexeme_id": "lex.agam",
+        "citation_form": "agam",
+        "sense_id": "meath.agam.at-me-i-have",
+        "part_of_speech": "pronoun",
+        "target_form": "agam",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá agam anseo.",
+        "normalized_text": "Tá agam anseo.",
+        "inventory_slug": "taa-agam-anseo",
+        "text_sha256": "2c2a582b5009f311b0d0903c1db693e6c883d5586067f7b8516cd2678756a722"
+      },
+      "english": {
+        "intent": "The at me / I have is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "meath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.meath.trim-de-lacy"
+        },
+        "atlas_placement_ids": [
+          "atlas.meath.01.agam"
+        ],
+        "place": {
+          "id": "d32.meath.place",
+          "label": "an Mhí / Meath"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the meath story with the atlas-bound at me / I have at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.meath.trim-de-lacy.opening.01",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the meath story with the atlas-bound at me / I have at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.meath.trim-de-lacy.opening.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.meath.01.agam.at-me-i-have.dialogue",
+      "family_id": "d32.meath.01.agam.at-me-i-have",
+      "target": {
+        "lexeme_id": "lex.agam",
+        "citation_form": "agam",
+        "sense_id": "meath.agam.at-me-i-have",
+        "part_of_speech": "pronoun",
+        "target_form": "agam",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil agam anseo?",
+        "normalized_text": "An bhfuil agam anseo?",
+        "inventory_slug": "an-bhfuil-agam-anseo",
+        "text_sha256": "1158475fe2225d11b3167d46d0fab0186d8eadab989db184dd2e87ee46d3a44f"
+      },
+      "english": {
+        "intent": "Is the at me / I have here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "meath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.meath.trim-de-lacy"
+        },
+        "atlas_placement_ids": [
+          "atlas.meath.01.agam"
+        ],
+        "place": {
+          "id": "d32.meath.place",
+          "label": "an Mhí / Meath"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse agam in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.meath.trim-de-lacy.dialogue.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse agam in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.meath.trim-de-lacy.dialogue.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

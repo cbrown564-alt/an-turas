@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.offaly.07.obair.work",
+  "county": "offaly",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.offaly.cross-of-the-scriptures"
+  },
+  "target": {
+    "lexeme_id": "lex.obair",
+    "citation_form": "obair",
+    "sense_id": "offaly.obair.work",
+    "part_of_speech": "noun",
+    "english_sense": "work"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.offaly.07.obair",
+      "gloss": "work"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.offaly.07.obair.work.opening",
+      "family_id": "d32.offaly.07.obair.work",
+      "target": {
+        "lexeme_id": "lex.obair",
+        "citation_form": "obair",
+        "sense_id": "offaly.obair.work",
+        "part_of_speech": "noun",
+        "target_form": "obair",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá obair anseo.",
+        "normalized_text": "Tá obair anseo.",
+        "inventory_slug": "taa-obair-anseo",
+        "text_sha256": "357db06cc69206582fae976f2c42fcce989a7b8bcc59fb4d4d9219dc7a14a61e"
+      },
+      "english": {
+        "intent": "The work is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "offaly",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures"
+        },
+        "atlas_placement_ids": [
+          "atlas.offaly.07.obair"
+        ],
+        "place": {
+          "id": "d32.offaly.place",
+          "label": "Uíbh Fhailí / Offaly"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the offaly story with the atlas-bound work at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures.opening.07",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the offaly story with the atlas-bound work at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.offaly.cross-of-the-scriptures.opening.07",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.offaly.07.obair.work.recap",
+      "family_id": "d32.offaly.07.obair.work",
+      "target": {
+        "lexeme_id": "lex.obair",
+        "citation_form": "obair",
+        "sense_id": "offaly.obair.work",
+        "part_of_speech": "noun",
+        "target_form": "obair",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar obair.",
+        "normalized_text": "Féach ar obair.",
+        "inventory_slug": "feeach-ar-obair",
+        "text_sha256": "3e4be4f742a062a69282a23e1b63cec1cedb3f135b847f33cf44ab8cb1ffcbc5"
+      },
+      "english": {
+        "intent": "Look at the work.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "offaly",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures"
+        },
+        "atlas_placement_ids": [
+          "atlas.offaly.07.obair"
+        ],
+        "place": {
+          "id": "d32.offaly.place",
+          "label": "Uíbh Fhailí / Offaly"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the work placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures.recap.07",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the work placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.offaly.cross-of-the-scriptures.recap.07",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.sligo.12.scriobh.write",
+  "county": "sligo",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.sligo.yeats-ben-bulben"
+  },
+  "target": {
+    "lexeme_id": "lex.scriobh",
+    "citation_form": "scríobh",
+    "sense_id": "sligo.scriobh.write",
+    "part_of_speech": "verb",
+    "english_sense": "write"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.sligo.12.scriobh",
+      "gloss": "write"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.sligo.12.scriobh.write.opening",
+      "family_id": "d32.sligo.12.scriobh.write",
+      "target": {
+        "lexeme_id": "lex.scriobh",
+        "citation_form": "scríobh",
+        "sense_id": "sligo.scriobh.write",
+        "part_of_speech": "verb",
+        "target_form": "scríobh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá scríobh anseo.",
+        "normalized_text": "Tá scríobh anseo.",
+        "inventory_slug": "taa-scriiobh-anseo",
+        "text_sha256": "44ed2f7b4161834b4f9a690b6b5fef3a3135a1ab12ee87efe45e0c012b449857"
+      },
+      "english": {
+        "intent": "The write is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "sligo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben"
+        },
+        "atlas_placement_ids": [
+          "atlas.sligo.12.scriobh"
+        ],
+        "place": {
+          "id": "d32.sligo.place",
+          "label": "Sligeach / Sligo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the sligo story with the atlas-bound write at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben.opening.12",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the sligo story with the atlas-bound write at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.sligo.yeats-ben-bulben.opening.12",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.sligo.12.scriobh.write.return",
+      "family_id": "d32.sligo.12.scriobh.write",
+      "target": {
+        "lexeme_id": "lex.scriobh",
+        "citation_form": "scríobh",
+        "sense_id": "sligo.scriobh.write",
+        "part_of_speech": "verb",
+        "target_form": "scríobh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá scríobh sa scéal.",
+        "normalized_text": "Tá scríobh sa scéal.",
+        "inventory_slug": "taa-scriiobh-sa-sceeal",
+        "text_sha256": "2a42dff65e3108d9c53525e57c6ab0b89295d96639d958b83cfbc228c63acf52"
+      },
+      "english": {
+        "intent": "The write is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "sligo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben"
+        },
+        "atlas_placement_ids": [
+          "atlas.sligo.12.scriobh"
+        ],
+        "place": {
+          "id": "d32.sligo.place",
+          "label": "Sligeach / Sligo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry scríobh from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben.return.12",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry scríobh from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.sligo.yeats-ben-bulben.return.12",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

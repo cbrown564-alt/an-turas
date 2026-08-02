@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.monaghan.06.baile.village-home",
+  "county": "monaghan",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.monaghan.patrick-kavanagh"
+  },
+  "target": {
+    "lexeme_id": "lex.baile",
+    "citation_form": "baile",
+    "sense_id": "monaghan.baile.village-home",
+    "part_of_speech": "noun",
+    "english_sense": "village / home"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.monaghan.06.baile",
+      "gloss": "village / home"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.monaghan.06.baile.village-home.opening",
+      "family_id": "d32.monaghan.06.baile.village-home",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "monaghan.baile.village-home",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá baile anseo.",
+        "normalized_text": "Tá baile anseo.",
+        "inventory_slug": "taa-baile-anseo",
+        "text_sha256": "6dea1095abd34dba2257f186ba1d40ed3902a6b7a5bc11685ea2e443ba5e62ae"
+      },
+      "english": {
+        "intent": "The village / home is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "monaghan",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.monaghan.patrick-kavanagh"
+        },
+        "atlas_placement_ids": [
+          "atlas.monaghan.06.baile"
+        ],
+        "place": {
+          "id": "d32.monaghan.place",
+          "label": "Muineachán / Monaghan"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the monaghan story with the atlas-bound village / home at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.monaghan.patrick-kavanagh.opening.06",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the monaghan story with the atlas-bound village / home at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.monaghan.patrick-kavanagh.opening.06",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.monaghan.06.baile.village-home.return",
+      "family_id": "d32.monaghan.06.baile.village-home",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "monaghan.baile.village-home",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá baile sa scéal.",
+        "normalized_text": "Tá baile sa scéal.",
+        "inventory_slug": "taa-baile-sa-sceeal",
+        "text_sha256": "b45ee2ee092ec959571854acbfb03d129c33530c2e2f1d190a4a2ed7739dce90"
+      },
+      "english": {
+        "intent": "The village / home is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "monaghan",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.monaghan.patrick-kavanagh"
+        },
+        "atlas_placement_ids": [
+          "atlas.monaghan.06.baile"
+        ],
+        "place": {
+          "id": "d32.monaghan.place",
+          "label": "Muineachán / Monaghan"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry baile from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.monaghan.patrick-kavanagh.return.06",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry baile from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.monaghan.patrick-kavanagh.return.06",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

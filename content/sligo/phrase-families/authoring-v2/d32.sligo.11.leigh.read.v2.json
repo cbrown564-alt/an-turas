@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.sligo.11.leigh.read",
+  "county": "sligo",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.sligo.yeats-ben-bulben"
+  },
+  "target": {
+    "lexeme_id": "lex.leigh",
+    "citation_form": "léigh",
+    "sense_id": "sligo.leigh.read",
+    "part_of_speech": "verb",
+    "english_sense": "read"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.sligo.11.leigh",
+      "gloss": "read"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.sligo.11.leigh.read.opening",
+      "family_id": "d32.sligo.11.leigh.read",
+      "target": {
+        "lexeme_id": "lex.leigh",
+        "citation_form": "léigh",
+        "sense_id": "sligo.leigh.read",
+        "part_of_speech": "verb",
+        "target_form": "léigh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá léigh anseo.",
+        "normalized_text": "Tá léigh anseo.",
+        "inventory_slug": "taa-leeigh-anseo",
+        "text_sha256": "e1472e038f622a6f36a6a56e1a95d892d2857acb17f52d472641225413ecf6ac"
+      },
+      "english": {
+        "intent": "The read is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "sligo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben"
+        },
+        "atlas_placement_ids": [
+          "atlas.sligo.11.leigh"
+        ],
+        "place": {
+          "id": "d32.sligo.place",
+          "label": "Sligeach / Sligo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the sligo story with the atlas-bound read at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben.opening.11",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the sligo story with the atlas-bound read at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.sligo.yeats-ben-bulben.opening.11",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.sligo.11.leigh.read.recap",
+      "family_id": "d32.sligo.11.leigh.read",
+      "target": {
+        "lexeme_id": "lex.leigh",
+        "citation_form": "léigh",
+        "sense_id": "sligo.leigh.read",
+        "part_of_speech": "verb",
+        "target_form": "léigh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar léigh.",
+        "normalized_text": "Féach ar léigh.",
+        "inventory_slug": "feeach-ar-leeigh",
+        "text_sha256": "5e2a4393dd170348f0cb853f69c911f630575c738c81f55c769d30d106ac2f43"
+      },
+      "english": {
+        "intent": "Look at the read.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "sligo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben"
+        },
+        "atlas_placement_ids": [
+          "atlas.sligo.11.leigh"
+        ],
+        "place": {
+          "id": "d32.sligo.place",
+          "label": "Sligeach / Sligo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the read placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben.recap.11",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the read placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.sligo.yeats-ben-bulben.recap.11",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.roscommon.18.mor.big",
+  "county": "roscommon",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.roscommon.medb-rathcroghan"
+  },
+  "target": {
+    "lexeme_id": "lex.mor",
+    "citation_form": "mór",
+    "sense_id": "roscommon.mor.big",
+    "part_of_speech": "adjective",
+    "english_sense": "big"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.roscommon.18.mor",
+      "gloss": "big"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.roscommon.18.mor.big.opening",
+      "family_id": "d32.roscommon.18.mor.big",
+      "target": {
+        "lexeme_id": "lex.mor",
+        "citation_form": "mór",
+        "sense_id": "roscommon.mor.big",
+        "part_of_speech": "adjective",
+        "target_form": "mór",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá mór anseo.",
+        "normalized_text": "Tá mór anseo.",
+        "inventory_slug": "taa-moor-anseo",
+        "text_sha256": "3517c178b064232dd37c2b32bd218ed70096f1bef5d7601d94a75ff21598098b"
+      },
+      "english": {
+        "intent": "The big is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.18.mor"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the roscommon story with the atlas-bound big at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.opening.18",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the roscommon story with the atlas-bound big at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.opening.18",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.roscommon.18.mor.big.dialogue",
+      "family_id": "d32.roscommon.18.mor.big",
+      "target": {
+        "lexeme_id": "lex.mor",
+        "citation_form": "mór",
+        "sense_id": "roscommon.mor.big",
+        "part_of_speech": "adjective",
+        "target_form": "mór",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil mór anseo?",
+        "normalized_text": "An bhfuil mór anseo?",
+        "inventory_slug": "an-bhfuil-moor-anseo",
+        "text_sha256": "992a5a69ccba24a57c0b993a39b7078ff671931404558b5189afc54706f4cb9e"
+      },
+      "english": {
+        "intent": "Is the big here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.18.mor"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse mór in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.dialogue.18",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse mór in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.dialogue.18",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

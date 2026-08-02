@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.meath.20.teach.house-home",
+  "county": "meath",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.meath.trim-de-lacy"
+  },
+  "target": {
+    "lexeme_id": "lex.teach",
+    "citation_form": "teach",
+    "sense_id": "meath.teach.house-home",
+    "part_of_speech": "noun",
+    "english_sense": "house / home"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.meath.20.teach",
+      "gloss": "house / home"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.meath.20.teach.house-home.opening",
+      "family_id": "d32.meath.20.teach.house-home",
+      "target": {
+        "lexeme_id": "lex.teach",
+        "citation_form": "teach",
+        "sense_id": "meath.teach.house-home",
+        "part_of_speech": "noun",
+        "target_form": "teach",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá teach anseo.",
+        "normalized_text": "Tá teach anseo.",
+        "inventory_slug": "taa-teach-anseo",
+        "text_sha256": "9c96f3d56a65b0fce7d288438d99b05b2bc2b210cb5c6f6eb45159fa78e1b4f1"
+      },
+      "english": {
+        "intent": "The house / home is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "meath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.meath.trim-de-lacy"
+        },
+        "atlas_placement_ids": [
+          "atlas.meath.20.teach"
+        ],
+        "place": {
+          "id": "d32.meath.place",
+          "label": "an Mhí / Meath"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the meath story with the atlas-bound house / home at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.meath.trim-de-lacy.opening.20",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the meath story with the atlas-bound house / home at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.meath.trim-de-lacy.opening.20",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.meath.20.teach.house-home.recap",
+      "family_id": "d32.meath.20.teach.house-home",
+      "target": {
+        "lexeme_id": "lex.teach",
+        "citation_form": "teach",
+        "sense_id": "meath.teach.house-home",
+        "part_of_speech": "noun",
+        "target_form": "teach",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar teach.",
+        "normalized_text": "Féach ar teach.",
+        "inventory_slug": "feeach-ar-teach",
+        "text_sha256": "24fcc274b11b0a614ba3a011c129e33a9a33bea4aa8502a02947e5aa3ffaac7f"
+      },
+      "english": {
+        "intent": "Look at the house / home.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "meath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.meath.trim-de-lacy"
+        },
+        "atlas_placement_ids": [
+          "atlas.meath.20.teach"
+        ],
+        "place": {
+          "id": "d32.meath.place",
+          "label": "an Mhí / Meath"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the house / home placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.meath.trim-de-lacy.recap.20",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the house / home placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.meath.trim-de-lacy.recap.20",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}
