@@ -10,8 +10,11 @@ runtime, four in-app county review packs, a nationwide Personal Atlas foundation
 a controlled Irish authoring/audio pipeline.
 
 The immediate phase is the **D32 emergency Irish audio harvest**. The first all-county
-tranche is complete, but the harvest is not: **141,200 ElevenLabs credits remained at
-the last observed provider check**. Provisional generation may continue during the
+tranche and a story-linked Personal Atlas tranche are complete, but the harvest is not:
+**140,946 ElevenLabs credits remained at the last observed provider check**. The latest
+tranche used **254** aggregate credits for **18** successful captures. The provider does
+not expose a trustworthy per-batch credit allocation, so the ledger records that delta
+only at the aggregate checkpoint. Provisional generation may continue during the
 subscription window. Capture does not imply linguistic approval or learner release.
 
 The product is implemented as a substantial prototype. It has not been validated for
@@ -21,21 +24,31 @@ learning outcomes or promoted for public release.
 
 ### Irish corpus and audio
 
-- **640** phrase families, **1,443** complete authored members, and **673** unique
-  normalized texts across all **32** counties.
-- **674** registered audio lines: **666** approved and succeeded, **7** cancelled for
-  explicit reuse, **0** failed, and **0** actively claimed.
-- **1,028** bundled MP3s: **666** source-labelled v2 captures and **362** legacy/runtime
+- **640** phrase families, **1,461** authored members, **1,459** complete members, and
+  **689** unique normalized texts across all **32** counties. The two incomplete members
+  are the deliberately retired Corca Dhuibhne lines described below.
+- **692** registered audio lines: **682** approved, **684** provider successes, **2**
+  retired semantic quarantines, **9** cancelled, **0** failed, and **0** actively
+  claimed. There is no remaining resumable or manual-recovery work.
+- **1,046** bundled MP3s: **684** source-labelled v2 captures and **362** legacy/runtime
   clips.
-- **1,028/1,028** checksums verify. There are no missing, mismatched, or orphan files,
-  and no remaining resumable or manual-recovery work.
+- **1,046/1,046** checksums verify. There are no missing, mismatched, or orphan files.
+- The technical anomaly audit inspected all **1,046** clips: **1,036** pass, **10** need
+  targeted listening review, and **0** require technical quarantine. Two additional
+  Corca Dhuibhne captures are retained byte-for-byte for audit but are semantically
+  retired, dynamically excluded, failed for learner QA, and unavailable through both
+  text and named-asset runtime paths.
 - The Personal Atlas tranche contains **80** subjects—**50 names** and **30 places**—
   with two spoken forms each and **160** newly captured clips.
+- The latest story-linked authoring tranche adds **9** name/place subjects and **18**
+  lines across eight resumable manifests. Sixteen lines remain pending human QA; the two
+  Corca Dhuibhne lines are the retired captures above.
 - **20** pre-D31 worktree captures are checksum-verified in a quarantine archive;
   they are excluded from the runtime and v2 ledger pending explicit migration, and one
   conflicts with an existing canonical slug.
-- All v2 captures remain `generated_unreviewed`; the learner-release-eligible count is
-  **0**.
+- All v2 captures remain `generated_unreviewed`. The high-risk audit reports **17**
+  capture blockers, **141** review-before-release items, and **0** learner-release-
+  eligible lines.
 
 Canonical records:
 
@@ -62,7 +75,7 @@ Canonical records:
 
 ### Pedagogy
 
-- The authoring-only pedagogy sidecar contains **5** narrative lessons and **18**
+- The authoring-only pedagogy sidecar contains **7** narrative lessons and **26**
   English-framed lines around exact repository Irish examples.
 - Source references, invented pedagogical framing, risk flags, and separate pedagogy,
   Irish-language, pronunciation, and learner-release states are recorded.
@@ -88,23 +101,47 @@ Canonical records:
   context and audio.
 
 The latest full app and device verification predates the D32 content/audio additions.
-Those additions changed resources rather than interaction code, but a fresh simulator
-and physical-device run is still required before promotion.
+Those additions now include runtime speech-catalog safeguards as well as resources.
+The host currently reports no installed simulator runtime and CoreSimulator is
+unavailable, so a fresh simulator and physical-device run is still required before
+promotion.
 
 ### Verification at the current revision
 
 - `python3 -B tools/structured_audio_authoring.py check` — passed.
 - `python3 -B tools/structured_audio_authoring.py reconcile --scoreboard --json` —
-  passed with the counts above.
-- `python3 -B -m unittest discover -s tools/tests` — **149/149 passed** on 2026-08-02.
+  passed with **0 errors**, the counts above, and checksum-verified retired captures.
+- `python3 -B -m unittest discover -s tools/tests` — **167/167 passed** on 2026-08-02.
+- Swift parse checks passed for the speech runtime and catalog tests. The Xcode resource
+  scan finds **1,046/1,046** expected MP3s with no missing, mismatched, or orphan
+  resources.
+- A generic-device Xcode build reached Swift compilation but could not complete asset
+  catalog compilation because this host has no CoreSimulator runtime. iOS XCTest,
+  playback, accessibility, appearance, and physical-device checks were therefore not
+  rerun; this is an open verification gate, not a passing result.
 - The complete nine-step Clew Bay UI walk and focused screenshot-capture test pass on
   an iPhone 17 Pro simulator after the recovered context/transition change. Direct
   inspection confirms the first task shows its *Farraige · sea* arrival cue without
   displacing its listening control or choices.
 - Reconciliation of the original D32 worktrees is complete. Ten formerly dirty states
   are retained under `worktree-archive/*` tags; superseded, retired, and temporary
-  material was not promoted into active source. Three new, active worktrees now own the
-  Personal Atlas name tranche, audio-anomaly quarantine, and narrative-pedagogy tranche.
+  material was not promoted into active source. Luna implementation tasks completed the
+  pedagogy, name/place authoring, capture, anomaly-audit, ledger, runtime, and provenance
+  work. A Sol review found no remaining actionable P1/P2 issue at revision `4ca6cca`.
+
+### Completed in the latest coordinated cycle
+
+- Added two narrative-pedagogy lessons and eight exact, repository-bound Irish examples.
+- Authored nine story-linked Personal Atlas name/place subjects and captured 18 bounded
+  payload lines with no failures or unresolved claims.
+- Replaced the anomaly audit's slow per-file probing with batched inspection and metadata
+  stratification; the cold run improved from about **37.4 s** to **10.0 s**, with cached
+  runs near **0.01 s**.
+- Repaired manifest membership, Xcode resources, aggregate credit accounting, exact
+  source identity, retired-capture reconciliation, and runtime fail-closed speech lookup.
+- Recorded nine post-hoc capture chronology warnings explicitly. Those manifests remain
+  `chronology_unverified` and blocked from release until a human reviews the historical
+  ledger sequence.
 
 ## Active implementation sequence
 
@@ -180,7 +217,7 @@ story relevance, reuse, pedagogical purpose, risk, and mechanical audio quality.
 | --- | --- | --- |
 | Irish authoring | Provisional at scale | Selected records corrected and approved for their stated intent |
 | Audio QA | Mechanically checked, human gate open | Qualified Irish speaker approves the selected learner-facing subset and recorded scope |
-| Pedagogy | Five-lesson draft only | Pedagogue and Irish-language review the exact sidecar revision |
+| Pedagogy | Seven-lesson draft only | Pedagogue and Irish-language review the exact sidecar revision |
 | ABAIR comparison | Adapter implemented, no references loaded | Lawful local references with permission, provenance, and checksums |
 | Mayo production | Nine-chapter draft, representative runtime proof | History, pedagogy, language, audio, rights, accessibility, and device gates close |
 | Offaly | Review draft | Medieval history and art/inscription review plus shared launch gates |
@@ -197,6 +234,9 @@ story relevance, reuse, pedagogical purpose, risk, and mechanical audio quality.
   dialectal, semantic, or pedagogical correctness.
 - Names and places are unusually sensitive to dialect, local convention, historical
   form, and anglicized/Irish-form ambiguity.
+- Nine capture manifests have explicit post-hoc chronology warnings. Their bytes and
+  checksums are auditable, but ledger sequence cannot be treated as contemporaneous
+  provider evidence until reviewed.
 - The Personal Atlas foundation is broad, but authored context and audio coverage are
   still shallow relative to its 126,712 place records.
 - Bespoke reviewed story and pedagogy production—not TTS generation—is the long-term
