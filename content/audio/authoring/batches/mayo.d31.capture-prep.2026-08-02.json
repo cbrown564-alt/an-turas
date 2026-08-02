@@ -30,10 +30,18 @@
     "credits_per_character": 1.0,
     "estimated_batch_credits": 19.0,
     "estimated_cumulative_credits": 38.0,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 87428.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T09:10:15.375657+00:00",
+      "used_credits": 87428.0,
+      "remaining_credits": 148671.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T09:10:18.177282+00:00",
+      "used_credits": 87428.0,
+      "remaining_credits": 148671.0
+    },
     "cap_authorization": {
       "status": "removed",
       "authorized_by": "user.delegation.019fc17b-bc3f-7f10-ae2a-8320fe2b231f",
@@ -150,7 +158,7 @@
       "estimated_credits": 19.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "claimed",
+        "status": "completed",
         "owner_id": "codex.audio-runner.2026-08-02",
         "claimed_at": "2026-08-02T08:42:10Z",
         "lease_expires_at": "2026-08-02T09:12:10Z"
@@ -161,28 +169,28 @@
         "approved_at": "2026-08-02T08:42:10Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T09:10:18.177282+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "response:1df3c59c6b0cf7393f4383f5e3fff1bf24fbf9079d17f794b508d3132591f044",
+        "started_at": "2026-08-02T09:10:15.375657+00:00",
+        "completed_at": "2026-08-02T09:10:18.177282+00:00",
+        "reported_credits": 19.0,
+        "reported_characters": 19
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/graainne-is-ainm-di.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "1df3c59c6b0cf7393f4383f5e3fff1bf24fbf9079d17f794b508d3132591f044",
+        "bytes": 43929,
+        "duration_seconds": 1.76
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -240,7 +248,7 @@
     "member_references": 4,
     "planned": 0,
     "approved": 1,
-    "succeeded": 0,
+    "succeeded": 1,
     "failed": 0
   },
   "manifest_identity_sha256": "c61a665bd0ac72c3fd65efee192ccbb02c90c01c1b4e6a4469b68889248038fa"
