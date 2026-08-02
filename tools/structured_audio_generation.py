@@ -379,7 +379,9 @@ def preflight(canonical_root: Path, batch_raw: str) -> dict[str, Any]:
     for line in lines:
         request = line.get("request") or {}
         claim = line.get("claim") or {}
-        if request.get("status") == "cancelled":
+        if request.get("status") == "cancelled" or (
+            line.get("provider_result", {}).get("status") == "succeeded"
+        ):
             continue
         active_lines.append(line)
         if request.get("status") != "approved":
@@ -451,7 +453,7 @@ def preflight(canonical_root: Path, batch_raw: str) -> dict[str, Any]:
         if any(
             line.get("inventory_slug") == item["slug"]
             and (line.get("request") or {}).get("status") == "approved"
-            for line in lines
+            for line in active_lines
         )
     ]
     if existing_active:
