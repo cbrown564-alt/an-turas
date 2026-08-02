@@ -159,6 +159,534 @@
       ]
     },
     {
+      "id": "d32.dublin.04.baile.town-homestead.personal-atlas.place-dubhlinn.context",
+      "family_id": "d32.dublin.04.baile.town-homestead",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "dublin.baile.town-homestead",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is baile é Dubhlinn.",
+        "normalized_text": "Is baile é Dubhlinn.",
+        "inventory_slug": "is-baile-ee-dubhlinn",
+        "text_sha256": "d6fe9388a5a528e9388e38cc0ccab1c0e8542d152f63c6f9260452cff0433b7a"
+      },
+      "english": {
+        "intent": "Dubhlinn is a town or settlement.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.04.baile"
+        ],
+        "place": {
+          "id": "personal-atlas.dublin",
+          "label": "Dublin / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Introduce the Personal Atlas place-name Dubhlinn in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-dublin-04-baile-town-homestead.place-dubhlinn.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas place-name Dubhlinn in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
+            "record_id": "place.dubhlinn",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.1397536",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-dublin-04-baile-town-homestead.place-dubhlinn.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.dublin.04.baile.town-homestead.personal-atlas.place-dubhlinn.dialogue",
+      "family_id": "d32.dublin.04.baile.town-homestead",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "dublin.baile.town-homestead",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An baile é Dubhlinn?",
+        "normalized_text": "An baile é Dubhlinn?",
+        "inventory_slug": "an-baile-ee-dubhlinn",
+        "text_sha256": "c23097a703e94ef409dce073bd061a4a6596b378ed94d7d4f3176a6a39941c65"
+      },
+      "english": {
+        "intent": "Is Dubhlinn a town or settlement?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.04.baile"
+        ],
+        "place": {
+          "id": "personal-atlas.dublin",
+          "label": "Dublin / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Retrieve the Personal Atlas place-name Dubhlinn in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-dublin-04-baile-town-homestead.place-dubhlinn.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas place-name Dubhlinn in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
+            "record_id": "place.dubhlinn",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.1397536",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-dublin-04-baile-town-homestead.place-dubhlinn.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.dublin.04.baile.town-homestead.personal-atlas.place-howth.context",
+      "family_id": "d32.dublin.04.baile.town-homestead",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "dublin.baile.town-homestead",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is baile é Binn Éadair.",
+        "normalized_text": "Is baile é Binn Éadair.",
+        "inventory_slug": "is-baile-ee-binn-eeadair",
+        "text_sha256": "146e4c677bcbeef501635234952f41cdc8f42edec08246f287580f62b7ec5cfa"
+      },
+      "english": {
+        "intent": "Binn Éadair is a town or settlement.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.04.baile"
+        ],
+        "place": {
+          "id": "personal-atlas.dublin",
+          "label": "Dublin / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Introduce the Personal Atlas place-name Binn Éadair in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-dublin-04-baile-town-homestead.place-howth.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas place-name Binn Éadair in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
+            "record_id": "place.howth",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.899",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-dublin-04-baile-town-homestead.place-howth.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.dublin.04.baile.town-homestead.personal-atlas.place-howth.dialogue",
+      "family_id": "d32.dublin.04.baile.town-homestead",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "dublin.baile.town-homestead",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An baile é Binn Éadair?",
+        "normalized_text": "An baile é Binn Éadair?",
+        "inventory_slug": "an-baile-ee-binn-eeadair",
+        "text_sha256": "4dac40db1011e59a56d17995dd2fb1fdb857eec3b8ee42fabed3b645c8abcc42"
+      },
+      "english": {
+        "intent": "Is Binn Éadair a town or settlement?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.04.baile"
+        ],
+        "place": {
+          "id": "personal-atlas.dublin",
+          "label": "Dublin / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Retrieve the Personal Atlas place-name Binn Éadair in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-dublin-04-baile-town-homestead.place-howth.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas place-name Binn Éadair in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
+            "record_id": "place.howth",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.899",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-dublin-04-baile-town-homestead.place-howth.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
       "id": "d32.dublin.04.baile.town-homestead.recap",
       "family_id": "d32.dublin.04.baile.town-homestead",
       "target": {

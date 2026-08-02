@@ -287,6 +287,778 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.donegal.20.ainm.name.personal-atlas.name-given-padraig.context",
+      "family_id": "d32.donegal.20.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "donegal.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is é Pádraig an t-ainm.",
+        "normalized_text": "Is é Pádraig an t-ainm.",
+        "inventory_slug": "is-ee-paadraig-an-t-ainm",
+        "text_sha256": "888fe35576ca0ab6d02687fb7266ef9be1d21150fb6e4b67f4aa509a054ff037"
+      },
+      "english": {
+        "intent": "Pádraig is the name.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "donegal",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls"
+        },
+        "atlas_placement_ids": [
+          "atlas.donegal.20.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.donegal",
+          "label": "Donegal / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Introduce the Personal Atlas given or family name Pádraig in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.donegal.name-given-padraig.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas given or family name Pádraig in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
+            "record_id": "name.given.padraig",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.donegal.name-given-padraig.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.donegal.20.ainm.name.personal-atlas.name-given-padraig.dialogue",
+      "family_id": "d32.donegal.20.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "donegal.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An é Pádraig d’ainm?",
+        "normalized_text": "An é Pádraig d’ainm?",
+        "inventory_slug": "an-ee-paadraig-d-ainm",
+        "text_sha256": "6270a9f737167ede41af6ce227b8fb55e9120818a742e67b784c0bad3a88d353"
+      },
+      "english": {
+        "intent": "Is Pádraig your name?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "donegal",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls"
+        },
+        "atlas_placement_ids": [
+          "atlas.donegal.20.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.donegal",
+          "label": "Donegal / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Retrieve the Personal Atlas given or family name Pádraig in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.donegal.name-given-padraig.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas given or family name Pádraig in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
+            "record_id": "name.given.padraig",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.donegal.name-given-padraig.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.donegal.20.ainm.name.personal-atlas.name-surname-power.context",
+      "family_id": "d32.donegal.20.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "donegal.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is é de Paor an t-ainm teaghlaigh.",
+        "normalized_text": "Is é de Paor an t-ainm teaghlaigh.",
+        "inventory_slug": "is-ee-de-paor-an-t-ainm-teaghlaigh",
+        "text_sha256": "359b7c9ae7ee53b1078a80a3def9999c716898bc6e3860cb66434b9fa21d3d56"
+      },
+      "english": {
+        "intent": "de Paor is the family name.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "donegal",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls"
+        },
+        "atlas_placement_ids": [
+          "atlas.donegal.20.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.donegal",
+          "label": "Donegal / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Introduce the Personal Atlas given or family name de Paor in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.donegal.name-surname-power.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas given or family name de Paor in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
+            "record_id": "name.surname.power",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.donegal.name-surname-power.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.donegal.20.ainm.name.personal-atlas.name-surname-power.dialogue",
+      "family_id": "d32.donegal.20.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "donegal.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An é de Paor d’ainm teaghlaigh?",
+        "normalized_text": "An é de Paor d’ainm teaghlaigh?",
+        "inventory_slug": "an-ee-de-paor-d-ainm-teaghlaigh",
+        "text_sha256": "b44220339beb7ce2d5e0fba2f9530236a6a578c7b6f79759d18ab560bded3605"
+      },
+      "english": {
+        "intent": "Is de Paor your family name?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "donegal",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls"
+        },
+        "atlas_placement_ids": [
+          "atlas.donegal.20.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.donegal",
+          "label": "Donegal / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Retrieve the Personal Atlas given or family name de Paor in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.donegal.name-surname-power.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas given or family name de Paor in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
+            "record_id": "name.surname.power",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.donegal.name-surname-power.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.donegal.20.ainm.name.personal-atlas.place-letterkenny.context",
+      "family_id": "d32.donegal.20.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "donegal.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is é Leitir Ceanainn ainm na háite.",
+        "normalized_text": "Is é Leitir Ceanainn ainm na háite.",
+        "inventory_slug": "is-ee-leitir-ceanainn-ainm-na-haaite",
+        "text_sha256": "671b2b4785ce0c302ce873849ef17efe8b60daeef4bae47096f0fe8297fe02ff"
+      },
+      "english": {
+        "intent": "Leitir Ceanainn is the place-name.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "donegal",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls"
+        },
+        "atlas_placement_ids": [
+          "atlas.donegal.20.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.donegal",
+          "label": "Donegal / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Introduce the Personal Atlas place-name Leitir Ceanainn in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.donegal.place-letterkenny.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas place-name Leitir Ceanainn in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
+            "record_id": "place.letterkenny",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.15696",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.donegal.place-letterkenny.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.donegal.20.ainm.name.personal-atlas.place-letterkenny.dialogue",
+      "family_id": "d32.donegal.20.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "donegal.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An é Leitir Ceanainn ainm na háite?",
+        "normalized_text": "An é Leitir Ceanainn ainm na háite?",
+        "inventory_slug": "an-ee-leitir-ceanainn-ainm-na-haaite",
+        "text_sha256": "122408019fbb8bbd7ee50051947b7a54f311337fccbd8129d9c1416014e0112f"
+      },
+      "english": {
+        "intent": "Is Leitir Ceanainn the place-name?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "donegal",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls"
+        },
+        "atlas_placement_ids": [
+          "atlas.donegal.20.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.donegal",
+          "label": "Donegal / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Retrieve the Personal Atlas place-name Leitir Ceanainn in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.donegal.place-letterkenny.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas place-name Leitir Ceanainn in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
+            "record_id": "place.letterkenny",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.15696",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.donegal.place-letterkenny.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }
