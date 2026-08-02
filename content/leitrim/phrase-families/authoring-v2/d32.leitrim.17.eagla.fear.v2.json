@@ -28,127 +28,6 @@
   },
   "members": [
     {
-      "id": "d32.leitrim.17.eagla.fear.opening",
-      "family_id": "d32.leitrim.17.eagla.fear",
-      "target": {
-        "lexeme_id": "lex.eagla",
-        "citation_form": "eagla",
-        "sense_id": "leitrim.eagla.fear",
-        "part_of_speech": "noun",
-        "target_form": "eagla",
-        "morphology": "atlas citation form; provisional surrounding frame"
-      },
-      "irish": {
-        "text": "Tá eagla anseo.",
-        "normalized_text": "Tá eagla anseo.",
-        "inventory_slug": "taa-eagla-anseo",
-        "text_sha256": "eaedbdb3793e58d6292ccddba7aa73540c4e39688a2112099c3d33b05a50e3c2"
-      },
-      "english": {
-        "intent": "The fear is here.",
-        "literal_note": "D32 invented pedagogical line; not an attested quotation."
-      },
-      "binding": {
-        "county": "leitrim",
-        "story_ref": {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.leitrim.brian-na-murtha"
-        },
-        "atlas_placement_ids": [
-          "atlas.leitrim.17.eagla"
-        ],
-        "place": {
-          "id": "d32.leitrim.place",
-          "label": "Liatroim / Leitrim"
-        },
-        "setting": "present_day",
-        "learner_role": "present_day_self"
-      },
-      "learning": {
-        "stages": [
-          "introduction"
-        ],
-        "roles": [
-          "story_opening"
-        ],
-        "dialect": "standard Irish; provisional county context",
-        "register": "neutral pedagogical frame",
-        "purpose": "Open the leitrim story with the atlas-bound fear at its named place.",
-        "fixture_only": false
-      },
-      "exercise_consumers": [
-        {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.leitrim.brian-na-murtha.opening.17",
-          "response_family": "listenChoose",
-          "container": "none",
-          "use": "Open the leitrim story with the atlas-bound fear at its named place."
-        }
-      ],
-      "provenance": {
-        "origin": "invented_pedagogical",
-        "invented": true,
-        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
-        "source_refs": [
-          {
-            "path": "content/audio/authoring/d32-county-harvest-uses.json",
-            "record_id": "d32.leitrim.brian-na-murtha.opening.17",
-            "supports": "exercise_context"
-          }
-        ]
-      },
-      "states": {
-        "authoring": {
-          "status": "complete",
-          "revision": 1,
-          "author_ref": "track-a.d32-scale-authoring",
-          "completed_at": "2026-08-02"
-        },
-        "reviews": {
-          "editorial": {
-            "status": "pending",
-            "record": null
-          },
-          "pedagogy": {
-            "status": "pending",
-            "record": null
-          },
-          "irish_language": {
-            "status": "pending",
-            "record": null
-          }
-        },
-        "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
-        },
-        "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
-        },
-        "learner_release": {
-          "status": "blocked",
-          "reasons": [
-            "invented_text",
-            "editorial_review_pending",
-            "pedagogy_review_pending",
-            "irish_language_review_pending",
-            "audio_not_generated"
-          ]
-        }
-      },
-      "risk_flags": [
-        "audio_pronunciation",
-        "fada",
-        "invented_text",
-        "source_ambiguity"
-      ]
-    },
-    {
       "id": "d32.leitrim.17.eagla.fear.dialogue",
       "family_id": "d32.leitrim.17.eagla.fear",
       "target": {
@@ -240,11 +119,21 @@
           }
         },
         "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.leitrim.d32-leitrim-brian-na-murtha.part-01.line.1334253340c3a72c"
+          ]
         },
         "audio_qa": {
           "status": "not_generated",
@@ -264,6 +153,137 @@
       },
       "risk_flags": [
         "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.leitrim.17.eagla.fear.opening",
+      "family_id": "d32.leitrim.17.eagla.fear",
+      "target": {
+        "lexeme_id": "lex.eagla",
+        "citation_form": "eagla",
+        "sense_id": "leitrim.eagla.fear",
+        "part_of_speech": "noun",
+        "target_form": "eagla",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá eagla anseo.",
+        "normalized_text": "Tá eagla anseo.",
+        "inventory_slug": "taa-eagla-anseo",
+        "text_sha256": "eaedbdb3793e58d6292ccddba7aa73540c4e39688a2112099c3d33b05a50e3c2"
+      },
+      "english": {
+        "intent": "The fear is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "leitrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.leitrim.brian-na-murtha"
+        },
+        "atlas_placement_ids": [
+          "atlas.leitrim.17.eagla"
+        ],
+        "place": {
+          "id": "d32.leitrim.place",
+          "label": "Liatroim / Leitrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the leitrim story with the atlas-bound fear at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.leitrim.brian-na-murtha.opening.17",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the leitrim story with the atlas-bound fear at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.leitrim.brian-na-murtha.opening.17",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.derry.d32-derry-city-walls-siege.part-01.line.c59a4f2a5c35b797"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
         "invented_text",
         "source_ambiguity"
       ]

@@ -28,149 +28,6 @@
   },
   "members": [
     {
-      "id": "farraige.ship-on-sea",
-      "family_id": "mayo.grainne-1593.farraige.sea-noun",
-      "target": {
-        "lexeme_id": "lex.farraige.sea-noun",
-        "citation_form": "farraige",
-        "sense_id": "farraige.sea-noun",
-        "part_of_speech": "noun",
-        "target_form": "bhfarraige",
-        "morphology": "eclipsis in the prepositional article frame ar an bhfarraige"
-      },
-      "irish": {
-        "text": "Tá an long ar an bhfarraige.",
-        "normalized_text": "Tá an long ar an bhfarraige.",
-        "inventory_slug": "taa-an-long-ar-an-bhfarraige",
-        "text_sha256": "051000ebecb78b9d459655e40157c54a1a0d33e588cf5daf20b9a8ec63798af4"
-      },
-      "english": {
-        "intent": "The ship is on the sea.",
-        "literal_note": "A story-grounded ship sentence, not a claim that the learner is present in the historical scene."
-      },
-      "binding": {
-        "county": "mayo",
-        "story_ref": {
-          "path": "content/mayo/grainne-1593.pack.draft.json",
-          "record_id": "mayo.grainne-1593"
-        },
-        "atlas_placement_ids": [
-          "atlas.mayo.01.farraige"
-        ],
-        "place": {
-          "id": "mayo.clew-bay-umhaill",
-          "label": "Clew Bay / Umhaill"
-        },
-        "setting": "historical_bounded",
-        "learner_role": "self_observer"
-      },
-      "learning": {
-        "stages": [
-          "phrase_or_sentence_use"
-        ],
-        "roles": [
-          "context_introduction",
-          "productive_pattern"
-        ],
-        "dialect": "standard-with-Connacht-context",
-        "register": "neutral declarative",
-        "purpose": "Put the taught sea lexeme inside the working ship context before a surround change.",
-        "fixture_only": false
-      },
-      "exercise_consumers": [
-        {
-          "path": "content/mayo/grainne-1593.pack.draft.json",
-          "record_id": "mayo.power-at-sea.type-sea",
-          "response_family": "freeTyping",
-          "container": "none",
-          "use": "complete sentence production"
-        },
-        {
-          "path": "ios/AnTuras/Resources/Fixtures/mayo.farraige-family-b.json",
-          "record_id": "mayo.farraige-family.build-sea-here",
-          "response_family": "sentenceConstruction",
-          "container": "none",
-          "use": "heard source for surround change"
-        }
-      ],
-      "provenance": {
-        "origin": "repository_draft",
-        "invented": false,
-        "composition_note": "Exact text is present in the Mayo review draft; repository presence is not linguistic approval.",
-        "source_refs": [
-          {
-            "path": "content/mayo/grainne-1593.pack.draft.json",
-            "record_id": "mayo.power-at-sea.type-sea",
-            "text_field": "exercise.answer",
-            "supports": "repository_text"
-          }
-        ]
-      },
-      "states": {
-        "authoring": {
-          "status": "complete",
-          "revision": 1,
-          "author_ref": "migration.contract-repair",
-          "completed_at": "2026-08-01"
-        },
-        "reviews": {
-          "editorial": {
-            "status": "approved",
-            "record": {
-              "reviewer_ref": "user.delegation.019fc17b-bc3f-7f10-ae2a-8320fe2b231f",
-              "reviewed_at": "2026-08-02T08:13:55Z",
-              "scope": "explicit user approval of editorial review for this canonical member",
-              "evidence_ref": "codex-thread:019fc17b-bc3f-7f10-ae2a-8320fe2b231f"
-            }
-          },
-          "pedagogy": {
-            "status": "approved",
-            "record": {
-              "reviewer_ref": "user.delegation.019fc17b-bc3f-7f10-ae2a-8320fe2b231f",
-              "reviewed_at": "2026-08-02T08:13:55Z",
-              "scope": "explicit user approval of pedagogy review for this canonical member",
-              "evidence_ref": "codex-thread:019fc17b-bc3f-7f10-ae2a-8320fe2b231f"
-            }
-          },
-          "irish_language": {
-            "status": "approved",
-            "record": {
-              "reviewer_ref": "user.delegation.019fc17b-bc3f-7f10-ae2a-8320fe2b231f",
-              "reviewed_at": "2026-08-02T08:13:55Z",
-              "scope": "explicit user approval of Irish-language review for this canonical member",
-              "evidence_ref": "codex-thread:019fc17b-bc3f-7f10-ae2a-8320fe2b231f"
-            }
-          }
-        },
-        "capture_request": {
-          "status": "not_requested",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
-        },
-        "audio_qa": {
-          "status": "legacy_unverified",
-          "record": {
-            "evidence_ref": "content/audio/irish-inventory-v1.json",
-            "note": "The legacy inventory says qa_passed, but no v2 batch/result/reviewer record has been imported."
-          },
-          "batch_line_id": null
-        },
-        "learner_release": {
-          "status": "blocked",
-          "reasons": [
-            "v2_review_records_pending",
-            "legacy_audio_result_not_imported"
-          ]
-        }
-      },
-      "risk_flags": [
-        "fada",
-        "initial_mutation"
-      ]
-    },
-    {
       "id": "farraige.sea-here",
       "family_id": "mayo.grainne-1593.farraige.sea-noun",
       "target": {
@@ -314,6 +171,149 @@
       },
       "risk_flags": [
         "invented_text",
+        "fada",
+        "initial_mutation"
+      ]
+    },
+    {
+      "id": "farraige.ship-on-sea",
+      "family_id": "mayo.grainne-1593.farraige.sea-noun",
+      "target": {
+        "lexeme_id": "lex.farraige.sea-noun",
+        "citation_form": "farraige",
+        "sense_id": "farraige.sea-noun",
+        "part_of_speech": "noun",
+        "target_form": "bhfarraige",
+        "morphology": "eclipsis in the prepositional article frame ar an bhfarraige"
+      },
+      "irish": {
+        "text": "Tá an long ar an bhfarraige.",
+        "normalized_text": "Tá an long ar an bhfarraige.",
+        "inventory_slug": "taa-an-long-ar-an-bhfarraige",
+        "text_sha256": "051000ebecb78b9d459655e40157c54a1a0d33e588cf5daf20b9a8ec63798af4"
+      },
+      "english": {
+        "intent": "The ship is on the sea.",
+        "literal_note": "A story-grounded ship sentence, not a claim that the learner is present in the historical scene."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/mayo/grainne-1593.pack.draft.json",
+          "record_id": "mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.01.farraige"
+        ],
+        "place": {
+          "id": "mayo.clew-bay-umhaill",
+          "label": "Clew Bay / Umhaill"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "context_introduction",
+          "productive_pattern"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral declarative",
+        "purpose": "Put the taught sea lexeme inside the working ship context before a surround change.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/mayo/grainne-1593.pack.draft.json",
+          "record_id": "mayo.power-at-sea.type-sea",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "complete sentence production"
+        },
+        {
+          "path": "ios/AnTuras/Resources/Fixtures/mayo.farraige-family-b.json",
+          "record_id": "mayo.farraige-family.build-sea-here",
+          "response_family": "sentenceConstruction",
+          "container": "none",
+          "use": "heard source for surround change"
+        }
+      ],
+      "provenance": {
+        "origin": "repository_draft",
+        "invented": false,
+        "composition_note": "Exact text is present in the Mayo review draft; repository presence is not linguistic approval.",
+        "source_refs": [
+          {
+            "path": "content/mayo/grainne-1593.pack.draft.json",
+            "record_id": "mayo.power-at-sea.type-sea",
+            "text_field": "exercise.answer",
+            "supports": "repository_text"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "migration.contract-repair",
+          "completed_at": "2026-08-01"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "approved",
+            "record": {
+              "reviewer_ref": "user.delegation.019fc17b-bc3f-7f10-ae2a-8320fe2b231f",
+              "reviewed_at": "2026-08-02T08:13:55Z",
+              "scope": "explicit user approval of editorial review for this canonical member",
+              "evidence_ref": "codex-thread:019fc17b-bc3f-7f10-ae2a-8320fe2b231f"
+            }
+          },
+          "pedagogy": {
+            "status": "approved",
+            "record": {
+              "reviewer_ref": "user.delegation.019fc17b-bc3f-7f10-ae2a-8320fe2b231f",
+              "reviewed_at": "2026-08-02T08:13:55Z",
+              "scope": "explicit user approval of pedagogy review for this canonical member",
+              "evidence_ref": "codex-thread:019fc17b-bc3f-7f10-ae2a-8320fe2b231f"
+            }
+          },
+          "irish_language": {
+            "status": "approved",
+            "record": {
+              "reviewer_ref": "user.delegation.019fc17b-bc3f-7f10-ae2a-8320fe2b231f",
+              "reviewed_at": "2026-08-02T08:13:55Z",
+              "scope": "explicit user approval of Irish-language review for this canonical member",
+              "evidence_ref": "codex-thread:019fc17b-bc3f-7f10-ae2a-8320fe2b231f"
+            }
+          }
+        },
+        "capture_request": {
+          "status": "not_requested",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "legacy_unverified",
+          "record": {
+            "evidence_ref": "content/audio/irish-inventory-v1.json",
+            "note": "The legacy inventory says qa_passed, but no v2 batch/result/reviewer record has been imported."
+          },
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "v2_review_records_pending",
+            "legacy_audio_result_not_imported"
+          ]
+        }
+      },
+      "risk_flags": [
         "fada",
         "initial_mutation"
       ]

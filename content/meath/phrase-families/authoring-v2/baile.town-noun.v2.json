@@ -3,50 +3,421 @@
   "contract": "irish_phrase_family",
   "id": "meath.trim-de-lacy.baile.town-noun",
   "county": "meath",
-  "story_ref": {"path": "content/meath/trim-de-lacy.pack.draft.json", "record_id": "meath.trim-de-lacy"},
-  "target": {"lexeme_id": "lex.baile", "citation_form": "baile", "sense_id": "baile.town-noun", "part_of_speech": "noun", "english_sense": "town"},
-  "atlas_placements": [{"id": "atlas.meath.09.baile", "gloss": "town"}],
+  "story_ref": {
+    "path": "content/meath/trim-de-lacy.pack.draft.json",
+    "record_id": "meath.trim-de-lacy"
+  },
+  "target": {
+    "lexeme_id": "lex.baile",
+    "citation_form": "baile",
+    "sense_id": "baile.town-noun",
+    "part_of_speech": "noun",
+    "english_sense": "town"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.meath.09.baile",
+      "gloss": "town"
+    }
+  ],
   "status": "draft",
-  "claims": {"linguistic_approval": false, "historical_authenticity": false, "note": "Provisional county/story family from the Meath review-draft exercise bank; repository text is not Irish-language or historical approval."},
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "Provisional county/story family from the Meath review-draft exercise bank; repository text is not Irish-language or historical approval."
+  },
   "members": [
     {
       "id": "meath.baile.before-grant",
       "family_id": "meath.trim-de-lacy.baile.town-noun",
-      "target": {"lexeme_id": "lex.baile", "citation_form": "baile", "sense_id": "baile.town-noun", "part_of_speech": "noun", "target_form": "baile", "morphology": "citation form in an existing-settlement statement"},
-      "irish": {"text": "Tá ainm ar an talamh sean agus tá baile ann.", "normalized_text": "Tá ainm ar an talamh sean agus tá baile ann.", "inventory_slug": "taa-ainm-ar-an-talamh-sean-agus-taa-baile-ann", "text_sha256": "e37cf63ab15baf3a25e039f5047d62687eb2539ead24b7b79432a254b09ccb60"},
-      "english": {"intent": "The old land has a name and a settlement is there.", "literal_note": "The line keeps existing named settlement visible before the grant story; it does not invent an empty-land premise."},
-      "binding": {"county": "meath", "story_ref": {"path": "content/meath/trim-de-lacy.pack.draft.json", "record_id": "meath.trim-de-lacy"}, "atlas_placement_ids": ["atlas.meath.09.baile"], "place": {"id": "meath.ath-troim", "label": "Trim / Áth Troim"}, "setting": "historical_bounded", "learner_role": "self_observer"},
-      "learning": {"stages": ["introduction", "phrase_or_sentence_use"], "roles": ["context_introduction", "story_opening"], "dialect": "standard Irish; Meath place context", "register": "neutral historical description", "purpose": "Open the Trim story with named land and settlement before the grant is examined.", "fixture_only": false},
-      "exercise_consumers": [{"path": "content/meath/trim-de-lacy.pack.draft.json", "record_id": "meath.before-the-grant.hear-existing-place", "response_family": "listenChoose", "container": "none", "use": "hear the settlement before the grant"}],
-      "provenance": {"origin": "repository_draft", "invented": false, "composition_note": "Exact Irish text is the existing review-draft listening prompt; repository presence is not linguistic approval.", "source_refs": [{"path": "content/meath/trim-de-lacy.pack.draft.json", "record_id": "meath.before-the-grant.hear-existing-place", "text_field": "exercise.audioText", "supports": "repository_text"}]},
-      "states": {"authoring": {"status": "complete", "revision": 1, "author_ref": "track-a.county-writers", "completed_at": "2026-08-02"}, "reviews": {"editorial": {"status": "pending", "record": null}, "pedagogy": {"status": "pending", "record": null}, "irish_language": {"status": "pending", "record": null}}, "capture_request": {"status": "not_requested", "requested_by": null, "requested_at": null, "authorization": null, "batch_line_ids": []}, "audio_qa": {"status": "not_generated", "record": null, "batch_line_id": null}, "learner_release": {"status": "blocked", "reasons": ["editorial_review_pending", "pedagogy_review_pending", "irish_language_review_pending", "audio_not_generated"]}},
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "baile.town-noun",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "citation form in an existing-settlement statement"
+      },
+      "irish": {
+        "text": "Tá ainm ar an talamh sean agus tá baile ann.",
+        "normalized_text": "Tá ainm ar an talamh sean agus tá baile ann.",
+        "inventory_slug": "taa-ainm-ar-an-talamh-sean-agus-taa-baile-ann",
+        "text_sha256": "e37cf63ab15baf3a25e039f5047d62687eb2539ead24b7b79432a254b09ccb60"
+      },
+      "english": {
+        "intent": "The old land has a name and a settlement is there.",
+        "literal_note": "The line keeps existing named settlement visible before the grant story; it does not invent an empty-land premise."
+      },
+      "binding": {
+        "county": "meath",
+        "story_ref": {
+          "path": "content/meath/trim-de-lacy.pack.draft.json",
+          "record_id": "meath.trim-de-lacy"
+        },
+        "atlas_placement_ids": [
+          "atlas.meath.09.baile"
+        ],
+        "place": {
+          "id": "meath.ath-troim",
+          "label": "Trim / Áth Troim"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "introduction",
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "context_introduction",
+          "story_opening"
+        ],
+        "dialect": "standard Irish; Meath place context",
+        "register": "neutral historical description",
+        "purpose": "Open the Trim story with named land and settlement before the grant is examined.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/meath/trim-de-lacy.pack.draft.json",
+          "record_id": "meath.before-the-grant.hear-existing-place",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "hear the settlement before the grant"
+        }
+      ],
+      "provenance": {
+        "origin": "repository_draft",
+        "invented": false,
+        "composition_note": "Exact Irish text is the existing review-draft listening prompt; repository presence is not linguistic approval.",
+        "source_refs": [
+          {
+            "path": "content/meath/trim-de-lacy.pack.draft.json",
+            "record_id": "meath.before-the-grant.hear-existing-place",
+            "text_field": "exercise.audioText",
+            "supports": "repository_text"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.county-writers",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.meath.meath-trim-de-lacy.part-01.line.b6d03c71f65dac45"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
       "risk_flags": []
     },
     {
       "id": "meath.baile.ford-contrast",
       "family_id": "meath.trim-de-lacy.baile.town-noun",
-      "target": {"lexeme_id": "lex.baile", "citation_form": "baile", "sense_id": "baile.town-noun", "part_of_speech": "noun", "target_form": "baile", "morphology": "definite form in a here/there place contrast"},
-      "irish": {"text": "Tá an t-áth anseo; tá an baile ansiúd.", "normalized_text": "Tá an t-áth anseo; tá an baile ansiúd.", "inventory_slug": "taa-an-t-aath-anseo-taa-an-baile-ansiuud", "text_sha256": "218263d85b5a8083abd7dbf62cbd00e5f4967511369f8c845bdd0f0b11ca18ca"},
-      "english": {"intent": "The ford is here; the settlement is there.", "literal_note": "A site-reading contrast across Trim's ford and town."},
-      "binding": {"county": "meath", "story_ref": {"path": "content/meath/trim-de-lacy.pack.draft.json", "record_id": "meath.trim-de-lacy"}, "atlas_placement_ids": ["atlas.meath.09.baile"], "place": {"id": "meath.ath-troim", "label": "Trim / Áth Troim"}, "setting": "present_day", "learner_role": "present_day_self"},
-      "learning": {"stages": ["phrase_or_sentence_use", "retrieval"], "roles": ["productive_pattern", "morphology_contrast", "story_recap"], "dialect": "standard Irish; Meath place context", "register": "neutral site contrast", "purpose": "Keep baile in a reusable here/there contrast after the ford encounter.", "fixture_only": false},
-      "exercise_consumers": [{"path": "content/meath/trim-de-lacy.pack.draft.json", "record_id": "meath.ford.type-two-positions", "response_family": "freeTyping", "container": "none", "use": "type the ford-and-settlement contrast"}],
-      "provenance": {"origin": "repository_draft", "invented": false, "composition_note": "Exact Irish text is the existing review-draft typing model; repository presence is not linguistic approval.", "source_refs": [{"path": "content/meath/trim-de-lacy.pack.draft.json", "record_id": "meath.ford.type-two-positions", "text_field": "exercise.modelText", "supports": "repository_text"}]},
-      "states": {"authoring": {"status": "complete", "revision": 1, "author_ref": "track-a.county-writers", "completed_at": "2026-08-02"}, "reviews": {"editorial": {"status": "pending", "record": null}, "pedagogy": {"status": "pending", "record": null}, "irish_language": {"status": "pending", "record": null}}, "capture_request": {"status": "not_requested", "requested_by": null, "requested_at": null, "authorization": null, "batch_line_ids": []}, "audio_qa": {"status": "not_generated", "record": null, "batch_line_id": null}, "learner_release": {"status": "blocked", "reasons": ["editorial_review_pending", "pedagogy_review_pending", "irish_language_review_pending", "audio_not_generated"]}},
-      "risk_flags": ["fada", "initial_mutation"]
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "baile.town-noun",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "definite form in a here/there place contrast"
+      },
+      "irish": {
+        "text": "Tá an t-áth anseo; tá an baile ansiúd.",
+        "normalized_text": "Tá an t-áth anseo; tá an baile ansiúd.",
+        "inventory_slug": "taa-an-t-aath-anseo-taa-an-baile-ansiuud",
+        "text_sha256": "218263d85b5a8083abd7dbf62cbd00e5f4967511369f8c845bdd0f0b11ca18ca"
+      },
+      "english": {
+        "intent": "The ford is here; the settlement is there.",
+        "literal_note": "A site-reading contrast across Trim's ford and town."
+      },
+      "binding": {
+        "county": "meath",
+        "story_ref": {
+          "path": "content/meath/trim-de-lacy.pack.draft.json",
+          "record_id": "meath.trim-de-lacy"
+        },
+        "atlas_placement_ids": [
+          "atlas.meath.09.baile"
+        ],
+        "place": {
+          "id": "meath.ath-troim",
+          "label": "Trim / Áth Troim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use",
+          "retrieval"
+        ],
+        "roles": [
+          "productive_pattern",
+          "morphology_contrast",
+          "story_recap"
+        ],
+        "dialect": "standard Irish; Meath place context",
+        "register": "neutral site contrast",
+        "purpose": "Keep baile in a reusable here/there contrast after the ford encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/meath/trim-de-lacy.pack.draft.json",
+          "record_id": "meath.ford.type-two-positions",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "type the ford-and-settlement contrast"
+        }
+      ],
+      "provenance": {
+        "origin": "repository_draft",
+        "invented": false,
+        "composition_note": "Exact Irish text is the existing review-draft typing model; repository presence is not linguistic approval.",
+        "source_refs": [
+          {
+            "path": "content/meath/trim-de-lacy.pack.draft.json",
+            "record_id": "meath.ford.type-two-positions",
+            "text_field": "exercise.modelText",
+            "supports": "repository_text"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.county-writers",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.meath.meath-trim-de-lacy.part-01.line.0ee43dc97d84ecae"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "fada",
+        "initial_mutation"
+      ]
     },
     {
       "id": "meath.baile.living-town",
       "family_id": "meath.trim-de-lacy.baile.town-noun",
-      "target": {"lexeme_id": "lex.baile", "citation_form": "baile", "sense_id": "baile.town-noun", "part_of_speech": "noun", "target_form": "mbaile", "morphology": "initial mutation after ar an in the present-town phrase"},
-      "irish": {"text": "Féach ar an sean-chaisleán agus ar an mbaile nua.", "normalized_text": "Féach ar an sean-chaisleán agus ar an mbaile nua.", "inventory_slug": "feeach-ar-an-sean-chaisleaan-agus-ar-an-mbaile-nua", "text_sha256": "3bde2267c1d15dcd7f3abfa18e109d14844c21336dd2ecfafab799ea6832a9ea"},
-      "english": {"intent": "Look at the old castle and the new town.", "literal_note": "A present-day return to the living town beside the old monument."},
-      "binding": {"county": "meath", "story_ref": {"path": "content/meath/trim-de-lacy.pack.draft.json", "record_id": "meath.trim-de-lacy"}, "atlas_placement_ids": ["atlas.meath.09.baile"], "place": {"id": "meath.ath-troim", "label": "Trim / Áth Troim"}, "setting": "present_day", "learner_role": "present_day_self"},
-      "learning": {"stages": ["later_reuse", "phrase_or_sentence_use"], "roles": ["later_reuse", "morphology_contrast", "story_recap"], "dialect": "standard Irish; Meath place context", "register": "neutral present-day observation", "purpose": "Recap the county story by putting the living town beside the old castle.", "fixture_only": false},
-      "exercise_consumers": [{"path": "content/meath/trim-de-lacy.pack.draft.json", "record_id": "meath.town-and-afterlife.speak-present-place", "response_family": "recordCompare", "container": "none", "use": "speak the old-castle and living-town recap"}],
-      "provenance": {"origin": "repository_draft", "invented": false, "composition_note": "Exact Irish text is the existing review-draft speaking model; repository presence is not linguistic approval.", "source_refs": [{"path": "content/meath/trim-de-lacy.pack.draft.json", "record_id": "meath.town-and-afterlife.speak-present-place", "text_field": "exercise.modelText", "supports": "repository_text"}]},
-      "states": {"authoring": {"status": "complete", "revision": 1, "author_ref": "track-a.county-writers", "completed_at": "2026-08-02"}, "reviews": {"editorial": {"status": "pending", "record": null}, "pedagogy": {"status": "pending", "record": null}, "irish_language": {"status": "pending", "record": null}}, "capture_request": {"status": "not_requested", "requested_by": null, "requested_at": null, "authorization": null, "batch_line_ids": []}, "audio_qa": {"status": "not_generated", "record": null, "batch_line_id": null}, "learner_release": {"status": "blocked", "reasons": ["editorial_review_pending", "pedagogy_review_pending", "irish_language_review_pending", "audio_not_generated"]}},
-      "risk_flags": ["fada", "initial_mutation"]
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "baile.town-noun",
+        "part_of_speech": "noun",
+        "target_form": "mbaile",
+        "morphology": "initial mutation after ar an in the present-town phrase"
+      },
+      "irish": {
+        "text": "Féach ar an sean-chaisleán agus ar an mbaile nua.",
+        "normalized_text": "Féach ar an sean-chaisleán agus ar an mbaile nua.",
+        "inventory_slug": "feeach-ar-an-sean-chaisleaan-agus-ar-an-mbaile-nua",
+        "text_sha256": "3bde2267c1d15dcd7f3abfa18e109d14844c21336dd2ecfafab799ea6832a9ea"
+      },
+      "english": {
+        "intent": "Look at the old castle and the new town.",
+        "literal_note": "A present-day return to the living town beside the old monument."
+      },
+      "binding": {
+        "county": "meath",
+        "story_ref": {
+          "path": "content/meath/trim-de-lacy.pack.draft.json",
+          "record_id": "meath.trim-de-lacy"
+        },
+        "atlas_placement_ids": [
+          "atlas.meath.09.baile"
+        ],
+        "place": {
+          "id": "meath.ath-troim",
+          "label": "Trim / Áth Troim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse",
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "later_reuse",
+          "morphology_contrast",
+          "story_recap"
+        ],
+        "dialect": "standard Irish; Meath place context",
+        "register": "neutral present-day observation",
+        "purpose": "Recap the county story by putting the living town beside the old castle.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/meath/trim-de-lacy.pack.draft.json",
+          "record_id": "meath.town-and-afterlife.speak-present-place",
+          "response_family": "recordCompare",
+          "container": "none",
+          "use": "speak the old-castle and living-town recap"
+        }
+      ],
+      "provenance": {
+        "origin": "repository_draft",
+        "invented": false,
+        "composition_note": "Exact Irish text is the existing review-draft speaking model; repository presence is not linguistic approval.",
+        "source_refs": [
+          {
+            "path": "content/meath/trim-de-lacy.pack.draft.json",
+            "record_id": "meath.town-and-afterlife.speak-present-place",
+            "text_field": "exercise.modelText",
+            "supports": "repository_text"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.county-writers",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.meath.meath-trim-de-lacy.part-01.line.f7a40f8c7875937a"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "fada",
+        "initial_mutation"
+      ]
     }
   ]
 }

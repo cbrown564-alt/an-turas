@@ -28,127 +28,6 @@
   },
   "members": [
     {
-      "id": "d32.derry.07.dun.close-fort.opening",
-      "family_id": "d32.derry.07.dun.close-fort",
-      "target": {
-        "lexeme_id": "lex.dun",
-        "citation_form": "dún",
-        "sense_id": "derry.dun.close-fort",
-        "part_of_speech": "noun",
-        "target_form": "dún",
-        "morphology": "atlas citation form; provisional surrounding frame"
-      },
-      "irish": {
-        "text": "Tá dún anseo.",
-        "normalized_text": "Tá dún anseo.",
-        "inventory_slug": "taa-duun-anseo",
-        "text_sha256": "2db5fa4a79a6efda11e00499b597add4687ce28b086880996a7c31346ecc28e8"
-      },
-      "english": {
-        "intent": "The close / fort is here.",
-        "literal_note": "D32 invented pedagogical line; not an attested quotation."
-      },
-      "binding": {
-        "county": "derry",
-        "story_ref": {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.derry.city-walls-siege"
-        },
-        "atlas_placement_ids": [
-          "atlas.derry.07.dun"
-        ],
-        "place": {
-          "id": "d32.derry.place",
-          "label": "Doire / Derry"
-        },
-        "setting": "present_day",
-        "learner_role": "present_day_self"
-      },
-      "learning": {
-        "stages": [
-          "introduction"
-        ],
-        "roles": [
-          "story_opening"
-        ],
-        "dialect": "standard Irish; provisional county context",
-        "register": "neutral pedagogical frame",
-        "purpose": "Open the derry story with the atlas-bound close / fort at its named place.",
-        "fixture_only": false
-      },
-      "exercise_consumers": [
-        {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.derry.city-walls-siege.opening.07",
-          "response_family": "listenChoose",
-          "container": "none",
-          "use": "Open the derry story with the atlas-bound close / fort at its named place."
-        }
-      ],
-      "provenance": {
-        "origin": "invented_pedagogical",
-        "invented": true,
-        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
-        "source_refs": [
-          {
-            "path": "content/audio/authoring/d32-county-harvest-uses.json",
-            "record_id": "d32.derry.city-walls-siege.opening.07",
-            "supports": "exercise_context"
-          }
-        ]
-      },
-      "states": {
-        "authoring": {
-          "status": "complete",
-          "revision": 1,
-          "author_ref": "track-a.d32-scale-authoring",
-          "completed_at": "2026-08-02"
-        },
-        "reviews": {
-          "editorial": {
-            "status": "pending",
-            "record": null
-          },
-          "pedagogy": {
-            "status": "pending",
-            "record": null
-          },
-          "irish_language": {
-            "status": "pending",
-            "record": null
-          }
-        },
-        "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
-        },
-        "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
-        },
-        "learner_release": {
-          "status": "blocked",
-          "reasons": [
-            "invented_text",
-            "editorial_review_pending",
-            "pedagogy_review_pending",
-            "irish_language_review_pending",
-            "audio_not_generated"
-          ]
-        }
-      },
-      "risk_flags": [
-        "audio_pronunciation",
-        "fada",
-        "invented_text",
-        "source_ambiguity"
-      ]
-    },
-    {
       "id": "d32.derry.07.dun.close-fort.dialogue",
       "family_id": "d32.derry.07.dun.close-fort",
       "target": {
@@ -240,11 +119,152 @@
           }
         },
         "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.derry.d32-derry-city-walls-siege.part-01.line.6d67e4d44e101357"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.derry.07.dun.close-fort.opening",
+      "family_id": "d32.derry.07.dun.close-fort",
+      "target": {
+        "lexeme_id": "lex.dun",
+        "citation_form": "dún",
+        "sense_id": "derry.dun.close-fort",
+        "part_of_speech": "noun",
+        "target_form": "dún",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá dún anseo.",
+        "normalized_text": "Tá dún anseo.",
+        "inventory_slug": "taa-duun-anseo",
+        "text_sha256": "2db5fa4a79a6efda11e00499b597add4687ce28b086880996a7c31346ecc28e8"
+      },
+      "english": {
+        "intent": "The close / fort is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "derry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege"
+        },
+        "atlas_placement_ids": [
+          "atlas.derry.07.dun"
+        ],
+        "place": {
+          "id": "d32.derry.place",
+          "label": "Doire / Derry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the derry story with the atlas-bound close / fort at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege.opening.07",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the derry story with the atlas-bound close / fort at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.derry.city-walls-siege.opening.07",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.clare.d32-clare-brian-boru-kincora.part-01.line.13b0307038413fee"
+          ]
         },
         "audio_qa": {
           "status": "not_generated",

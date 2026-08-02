@@ -28,127 +28,6 @@
   },
   "members": [
     {
-      "id": "d32.wexford.20.ainm.name.opening",
-      "family_id": "d32.wexford.20.ainm.name",
-      "target": {
-        "lexeme_id": "lex.ainm",
-        "citation_form": "ainm",
-        "sense_id": "wexford.ainm.name",
-        "part_of_speech": "noun",
-        "target_form": "ainm",
-        "morphology": "atlas citation form; provisional surrounding frame"
-      },
-      "irish": {
-        "text": "Tá ainm anseo.",
-        "normalized_text": "Tá ainm anseo.",
-        "inventory_slug": "taa-ainm-anseo",
-        "text_sha256": "49933352a57911a95cf791fc7ba2a745846621392e43509ff49f90db19e88ded"
-      },
-      "english": {
-        "intent": "The name is here.",
-        "literal_note": "D32 invented pedagogical line; not an attested quotation."
-      },
-      "binding": {
-        "county": "wexford",
-        "story_ref": {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.wexford.bagenal-harvey-1798"
-        },
-        "atlas_placement_ids": [
-          "atlas.wexford.20.ainm"
-        ],
-        "place": {
-          "id": "d32.wexford.place",
-          "label": "Loch Garman / Wexford"
-        },
-        "setting": "present_day",
-        "learner_role": "present_day_self"
-      },
-      "learning": {
-        "stages": [
-          "introduction"
-        ],
-        "roles": [
-          "story_opening"
-        ],
-        "dialect": "standard Irish; provisional county context",
-        "register": "neutral pedagogical frame",
-        "purpose": "Open the wexford story with the atlas-bound name at its named place.",
-        "fixture_only": false
-      },
-      "exercise_consumers": [
-        {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.wexford.bagenal-harvey-1798.opening.20",
-          "response_family": "listenChoose",
-          "container": "none",
-          "use": "Open the wexford story with the atlas-bound name at its named place."
-        }
-      ],
-      "provenance": {
-        "origin": "invented_pedagogical",
-        "invented": true,
-        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
-        "source_refs": [
-          {
-            "path": "content/audio/authoring/d32-county-harvest-uses.json",
-            "record_id": "d32.wexford.bagenal-harvey-1798.opening.20",
-            "supports": "exercise_context"
-          }
-        ]
-      },
-      "states": {
-        "authoring": {
-          "status": "complete",
-          "revision": 1,
-          "author_ref": "track-a.d32-scale-authoring",
-          "completed_at": "2026-08-02"
-        },
-        "reviews": {
-          "editorial": {
-            "status": "pending",
-            "record": null
-          },
-          "pedagogy": {
-            "status": "pending",
-            "record": null
-          },
-          "irish_language": {
-            "status": "pending",
-            "record": null
-          }
-        },
-        "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
-        },
-        "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
-        },
-        "learner_release": {
-          "status": "blocked",
-          "reasons": [
-            "invented_text",
-            "editorial_review_pending",
-            "pedagogy_review_pending",
-            "irish_language_review_pending",
-            "audio_not_generated"
-          ]
-        }
-      },
-      "risk_flags": [
-        "audio_pronunciation",
-        "fada",
-        "invented_text",
-        "source_ambiguity"
-      ]
-    },
-    {
       "id": "d32.wexford.20.ainm.name.dialogue",
       "family_id": "d32.wexford.20.ainm.name",
       "target": {
@@ -240,11 +119,21 @@
           }
         },
         "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.armagh.d32-armagh-book-of-armagh.part-01.line.567ca22120c8ed37"
+          ]
         },
         "audio_qa": {
           "status": "not_generated",
@@ -264,6 +153,137 @@
       },
       "risk_flags": [
         "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.wexford.20.ainm.name.opening",
+      "family_id": "d32.wexford.20.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "wexford.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá ainm anseo.",
+        "normalized_text": "Tá ainm anseo.",
+        "inventory_slug": "taa-ainm-anseo",
+        "text_sha256": "49933352a57911a95cf791fc7ba2a745846621392e43509ff49f90db19e88ded"
+      },
+      "english": {
+        "intent": "The name is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "wexford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798"
+        },
+        "atlas_placement_ids": [
+          "atlas.wexford.20.ainm"
+        ],
+        "place": {
+          "id": "d32.wexford.place",
+          "label": "Loch Garman / Wexford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the wexford story with the atlas-bound name at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798.opening.20",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the wexford story with the atlas-bound name at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wexford.bagenal-harvey-1798.opening.20",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.part-01.line.262f6a84139ae99b"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
         "invented_text",
         "source_ambiguity"
       ]

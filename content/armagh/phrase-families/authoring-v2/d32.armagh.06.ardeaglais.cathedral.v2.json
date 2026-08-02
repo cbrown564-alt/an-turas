@@ -28,127 +28,6 @@
   },
   "members": [
     {
-      "id": "d32.armagh.06.ardeaglais.cathedral.opening",
-      "family_id": "d32.armagh.06.ardeaglais.cathedral",
-      "target": {
-        "lexeme_id": "lex.ardeaglais",
-        "citation_form": "ardeaglais",
-        "sense_id": "armagh.ardeaglais.cathedral",
-        "part_of_speech": "lexical item",
-        "target_form": "ardeaglais",
-        "morphology": "atlas citation form; provisional surrounding frame"
-      },
-      "irish": {
-        "text": "Tá ardeaglais anseo.",
-        "normalized_text": "Tá ardeaglais anseo.",
-        "inventory_slug": "taa-ardeaglais-anseo",
-        "text_sha256": "49e30d18e8885ac9b14165cd7ea494f5c5012279e9a065eee972391f82e90948"
-      },
-      "english": {
-        "intent": "The cathedral is here.",
-        "literal_note": "D32 invented pedagogical line; not an attested quotation."
-      },
-      "binding": {
-        "county": "armagh",
-        "story_ref": {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.armagh.book-of-armagh"
-        },
-        "atlas_placement_ids": [
-          "atlas.armagh.06.ardeaglais"
-        ],
-        "place": {
-          "id": "d32.armagh.place",
-          "label": "Ard Mhacha / Armagh"
-        },
-        "setting": "present_day",
-        "learner_role": "present_day_self"
-      },
-      "learning": {
-        "stages": [
-          "introduction"
-        ],
-        "roles": [
-          "story_opening"
-        ],
-        "dialect": "standard Irish; provisional county context",
-        "register": "neutral pedagogical frame",
-        "purpose": "Open the armagh story with the atlas-bound cathedral at its named place.",
-        "fixture_only": false
-      },
-      "exercise_consumers": [
-        {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.armagh.book-of-armagh.opening.06",
-          "response_family": "listenChoose",
-          "container": "none",
-          "use": "Open the armagh story with the atlas-bound cathedral at its named place."
-        }
-      ],
-      "provenance": {
-        "origin": "invented_pedagogical",
-        "invented": true,
-        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
-        "source_refs": [
-          {
-            "path": "content/audio/authoring/d32-county-harvest-uses.json",
-            "record_id": "d32.armagh.book-of-armagh.opening.06",
-            "supports": "exercise_context"
-          }
-        ]
-      },
-      "states": {
-        "authoring": {
-          "status": "complete",
-          "revision": 1,
-          "author_ref": "track-a.d32-scale-authoring",
-          "completed_at": "2026-08-02"
-        },
-        "reviews": {
-          "editorial": {
-            "status": "pending",
-            "record": null
-          },
-          "pedagogy": {
-            "status": "pending",
-            "record": null
-          },
-          "irish_language": {
-            "status": "pending",
-            "record": null
-          }
-        },
-        "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
-        },
-        "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
-        },
-        "learner_release": {
-          "status": "blocked",
-          "reasons": [
-            "invented_text",
-            "editorial_review_pending",
-            "pedagogy_review_pending",
-            "irish_language_review_pending",
-            "audio_not_generated"
-          ]
-        }
-      },
-      "risk_flags": [
-        "audio_pronunciation",
-        "fada",
-        "invented_text",
-        "source_ambiguity"
-      ]
-    },
-    {
       "id": "d32.armagh.06.ardeaglais.cathedral.dialogue",
       "family_id": "d32.armagh.06.ardeaglais.cathedral",
       "target": {
@@ -240,11 +119,21 @@
           }
         },
         "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.armagh.d32-armagh-book-of-armagh.part-01.line.3a6279a6b90beb65"
+          ]
         },
         "audio_qa": {
           "status": "not_generated",
@@ -264,6 +153,137 @@
       },
       "risk_flags": [
         "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.armagh.06.ardeaglais.cathedral.opening",
+      "family_id": "d32.armagh.06.ardeaglais.cathedral",
+      "target": {
+        "lexeme_id": "lex.ardeaglais",
+        "citation_form": "ardeaglais",
+        "sense_id": "armagh.ardeaglais.cathedral",
+        "part_of_speech": "lexical item",
+        "target_form": "ardeaglais",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá ardeaglais anseo.",
+        "normalized_text": "Tá ardeaglais anseo.",
+        "inventory_slug": "taa-ardeaglais-anseo",
+        "text_sha256": "49e30d18e8885ac9b14165cd7ea494f5c5012279e9a065eee972391f82e90948"
+      },
+      "english": {
+        "intent": "The cathedral is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "armagh",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh"
+        },
+        "atlas_placement_ids": [
+          "atlas.armagh.06.ardeaglais"
+        ],
+        "place": {
+          "id": "d32.armagh.place",
+          "label": "Ard Mhacha / Armagh"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the armagh story with the atlas-bound cathedral at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh.opening.06",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the armagh story with the atlas-bound cathedral at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.armagh.book-of-armagh.opening.06",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.armagh.d32-armagh-book-of-armagh.part-01.line.97bf559f0f9c7be4"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
         "invented_text",
         "source_ambiguity"
       ]

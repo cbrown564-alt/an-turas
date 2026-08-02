@@ -28,127 +28,6 @@
   },
   "members": [
     {
-      "id": "d32.sligo.10.ait.place.opening",
-      "family_id": "d32.sligo.10.ait.place",
-      "target": {
-        "lexeme_id": "lex.ait",
-        "citation_form": "áit",
-        "sense_id": "sligo.ait.place",
-        "part_of_speech": "noun",
-        "target_form": "áit",
-        "morphology": "atlas citation form; provisional surrounding frame"
-      },
-      "irish": {
-        "text": "Tá áit anseo.",
-        "normalized_text": "Tá áit anseo.",
-        "inventory_slug": "taa-aait-anseo",
-        "text_sha256": "7adcee96f4fd464b52a1768d7c3f611c8cfe40ed1b9250fbf133953c015cbe40"
-      },
-      "english": {
-        "intent": "The place is here.",
-        "literal_note": "D32 invented pedagogical line; not an attested quotation."
-      },
-      "binding": {
-        "county": "sligo",
-        "story_ref": {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.sligo.yeats-ben-bulben"
-        },
-        "atlas_placement_ids": [
-          "atlas.sligo.10.ait"
-        ],
-        "place": {
-          "id": "d32.sligo.place",
-          "label": "Sligeach / Sligo"
-        },
-        "setting": "present_day",
-        "learner_role": "present_day_self"
-      },
-      "learning": {
-        "stages": [
-          "introduction"
-        ],
-        "roles": [
-          "story_opening"
-        ],
-        "dialect": "standard Irish; provisional county context",
-        "register": "neutral pedagogical frame",
-        "purpose": "Open the sligo story with the atlas-bound place at its named place.",
-        "fixture_only": false
-      },
-      "exercise_consumers": [
-        {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.sligo.yeats-ben-bulben.opening.10",
-          "response_family": "listenChoose",
-          "container": "none",
-          "use": "Open the sligo story with the atlas-bound place at its named place."
-        }
-      ],
-      "provenance": {
-        "origin": "invented_pedagogical",
-        "invented": true,
-        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
-        "source_refs": [
-          {
-            "path": "content/audio/authoring/d32-county-harvest-uses.json",
-            "record_id": "d32.sligo.yeats-ben-bulben.opening.10",
-            "supports": "exercise_context"
-          }
-        ]
-      },
-      "states": {
-        "authoring": {
-          "status": "complete",
-          "revision": 1,
-          "author_ref": "track-a.d32-scale-authoring",
-          "completed_at": "2026-08-02"
-        },
-        "reviews": {
-          "editorial": {
-            "status": "pending",
-            "record": null
-          },
-          "pedagogy": {
-            "status": "pending",
-            "record": null
-          },
-          "irish_language": {
-            "status": "pending",
-            "record": null
-          }
-        },
-        "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
-        },
-        "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
-        },
-        "learner_release": {
-          "status": "blocked",
-          "reasons": [
-            "invented_text",
-            "editorial_review_pending",
-            "pedagogy_review_pending",
-            "irish_language_review_pending",
-            "audio_not_generated"
-          ]
-        }
-      },
-      "risk_flags": [
-        "audio_pronunciation",
-        "fada",
-        "invented_text",
-        "source_ambiguity"
-      ]
-    },
-    {
       "id": "d32.sligo.10.ait.place.dialogue",
       "family_id": "d32.sligo.10.ait.place",
       "target": {
@@ -240,11 +119,152 @@
           }
         },
         "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.part-01.line.3fccc7daf2235a4c"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.sligo.10.ait.place.opening",
+      "family_id": "d32.sligo.10.ait.place",
+      "target": {
+        "lexeme_id": "lex.ait",
+        "citation_form": "áit",
+        "sense_id": "sligo.ait.place",
+        "part_of_speech": "noun",
+        "target_form": "áit",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá áit anseo.",
+        "normalized_text": "Tá áit anseo.",
+        "inventory_slug": "taa-aait-anseo",
+        "text_sha256": "7adcee96f4fd464b52a1768d7c3f611c8cfe40ed1b9250fbf133953c015cbe40"
+      },
+      "english": {
+        "intent": "The place is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "sligo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben"
+        },
+        "atlas_placement_ids": [
+          "atlas.sligo.10.ait"
+        ],
+        "place": {
+          "id": "d32.sligo.place",
+          "label": "Sligeach / Sligo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the sligo story with the atlas-bound place at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben.opening.10",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the sligo story with the atlas-bound place at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.sligo.yeats-ben-bulben.opening.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.part-02.line.4990240081a4804b"
+          ]
         },
         "audio_qa": {
           "status": "not_generated",

@@ -28,127 +28,6 @@
   },
   "members": [
     {
-      "id": "d32.waterford.06.calafort.harbour.opening",
-      "family_id": "d32.waterford.06.calafort.harbour",
-      "target": {
-        "lexeme_id": "lex.calafort",
-        "citation_form": "calafort",
-        "sense_id": "waterford.calafort.harbour",
-        "part_of_speech": "lexical item",
-        "target_form": "calafort",
-        "morphology": "atlas citation form; provisional surrounding frame"
-      },
-      "irish": {
-        "text": "Tá calafort anseo.",
-        "normalized_text": "Tá calafort anseo.",
-        "inventory_slug": "taa-calafort-anseo",
-        "text_sha256": "e7d8ca971b545cbc4612d2a74a469fa61c1ae96da460013a0643daca34baede6"
-      },
-      "english": {
-        "intent": "The harbour is here.",
-        "literal_note": "D32 invented pedagogical line; not an attested quotation."
-      },
-      "binding": {
-        "county": "waterford",
-        "story_ref": {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.waterford.reginalds-tower"
-        },
-        "atlas_placement_ids": [
-          "atlas.waterford.06.calafort"
-        ],
-        "place": {
-          "id": "d32.waterford.place",
-          "label": "Port Láirge / Waterford"
-        },
-        "setting": "present_day",
-        "learner_role": "present_day_self"
-      },
-      "learning": {
-        "stages": [
-          "introduction"
-        ],
-        "roles": [
-          "story_opening"
-        ],
-        "dialect": "standard Irish; provisional county context",
-        "register": "neutral pedagogical frame",
-        "purpose": "Open the waterford story with the atlas-bound harbour at its named place.",
-        "fixture_only": false
-      },
-      "exercise_consumers": [
-        {
-          "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.waterford.reginalds-tower.opening.06",
-          "response_family": "listenChoose",
-          "container": "none",
-          "use": "Open the waterford story with the atlas-bound harbour at its named place."
-        }
-      ],
-      "provenance": {
-        "origin": "invented_pedagogical",
-        "invented": true,
-        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
-        "source_refs": [
-          {
-            "path": "content/audio/authoring/d32-county-harvest-uses.json",
-            "record_id": "d32.waterford.reginalds-tower.opening.06",
-            "supports": "exercise_context"
-          }
-        ]
-      },
-      "states": {
-        "authoring": {
-          "status": "complete",
-          "revision": 1,
-          "author_ref": "track-a.d32-scale-authoring",
-          "completed_at": "2026-08-02"
-        },
-        "reviews": {
-          "editorial": {
-            "status": "pending",
-            "record": null
-          },
-          "pedagogy": {
-            "status": "pending",
-            "record": null
-          },
-          "irish_language": {
-            "status": "pending",
-            "record": null
-          }
-        },
-        "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
-        },
-        "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
-        },
-        "learner_release": {
-          "status": "blocked",
-          "reasons": [
-            "invented_text",
-            "editorial_review_pending",
-            "pedagogy_review_pending",
-            "irish_language_review_pending",
-            "audio_not_generated"
-          ]
-        }
-      },
-      "risk_flags": [
-        "audio_pronunciation",
-        "fada",
-        "invented_text",
-        "source_ambiguity"
-      ]
-    },
-    {
       "id": "d32.waterford.06.calafort.harbour.dialogue",
       "family_id": "d32.waterford.06.calafort.harbour",
       "target": {
@@ -240,11 +119,21 @@
           }
         },
         "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.waterford.d32-waterford-reginalds-tower.part-01.line.3e48c0c96ddcf2fd"
+          ]
         },
         "audio_qa": {
           "status": "not_generated",
@@ -264,6 +153,137 @@
       },
       "risk_flags": [
         "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.waterford.06.calafort.harbour.opening",
+      "family_id": "d32.waterford.06.calafort.harbour",
+      "target": {
+        "lexeme_id": "lex.calafort",
+        "citation_form": "calafort",
+        "sense_id": "waterford.calafort.harbour",
+        "part_of_speech": "lexical item",
+        "target_form": "calafort",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá calafort anseo.",
+        "normalized_text": "Tá calafort anseo.",
+        "inventory_slug": "taa-calafort-anseo",
+        "text_sha256": "e7d8ca971b545cbc4612d2a74a469fa61c1ae96da460013a0643daca34baede6"
+      },
+      "english": {
+        "intent": "The harbour is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "waterford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower"
+        },
+        "atlas_placement_ids": [
+          "atlas.waterford.06.calafort"
+        ],
+        "place": {
+          "id": "d32.waterford.place",
+          "label": "Port Láirge / Waterford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the waterford story with the atlas-bound harbour at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower.opening.06",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the waterford story with the atlas-bound harbour at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.waterford.reginalds-tower.opening.06",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-a.d32",
+          "requested_at": "2026-08-02T10:52:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.scale.019fc1ba",
+            "authorized_at": "2026-08-02T10:52:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.donegal.d32-donegal-flight-of-the-earls.part-01.line.099cf6c120d09954"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
         "invented_text",
         "source_ambiguity"
       ]

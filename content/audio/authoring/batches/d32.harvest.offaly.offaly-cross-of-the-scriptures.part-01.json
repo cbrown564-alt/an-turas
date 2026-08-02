@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.offaly.offaly-cross-of-the-scriptures.part-01",
+  "created_at": "2026-08-02T10:52:00Z",
+  "purpose": "D32 emergency harvest — offaly / offaly.cross-of-the-scriptures / senses cros.cross-noun / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.scale.019fc1ba",
+    "approved_at": "2026-08-02T10:52:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.offaly.offaly-cross-of-the-scriptures.part-01.line.3d4cb8226fcbbb01",
+      "member_ids": [
+        "offaly.cros.object-recap"
+      ],
+      "normalized_text": "Tá cros mhór chloiche anseo.",
+      "text_sha256": "7944641cc33a2988055b8918afe1f3f2da34540f5d809b1f95f6f56692d5bfa6",
+      "inventory_slug": "taa-cros-mhoor-chloiche-anseo",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "claimed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-02T10:52:00Z",
+        "lease_expires_at": "2026-08-03T10:52:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.scale.019fc1ba",
+        "approved_at": "2026-08-02T10:52:00Z"
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-cros-mhoor-chloiche-anseo.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.offaly.offaly-cross-of-the-scriptures.part-01.line.83f2841e50b44ab3",
+      "member_ids": [
+        "offaly.cros.object-instruction",
+        "offaly.cros.object-typing"
+      ],
+      "normalized_text": "Seas anseo agus féach ar an gcros chloiche.",
+      "text_sha256": "3275b60b15cc5b8de67a1158e6103a30e80654b0ccec52b0e6be27886251d311",
+      "inventory_slug": "seas-anseo-agus-feeach-ar-an-gcros-chloiche",
+      "estimated_characters": 43,
+      "estimated_credits": 43.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "claimed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-02T10:52:00Z",
+        "lease_expires_at": "2026-08-03T10:52:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.scale.019fc1ba",
+        "approved_at": "2026-08-02T10:52:00Z"
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/seas-anseo-agus-feeach-ar-an-gcros-chloiche.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 71.0,
+    "estimated_cumulative_credits": 109.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 3,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "15bd199c210644975c0243b1ffbcab07d7ce57f6788490b50db7c65d0abb7d53"
+}
