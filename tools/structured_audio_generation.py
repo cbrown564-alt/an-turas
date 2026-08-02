@@ -513,6 +513,13 @@ def generate(batch_info: dict[str, Any]) -> dict[str, Any]:
     import requests
 
     batch = copy.deepcopy(batch_info["batch"])
+    batch_lines_by_id = {
+        line["line_id"]: line for line in batch.get("lines", [])
+    }
+    active_lines = [
+        batch_lines_by_id[line["line_id"]]
+        for line in batch_info["active_lines"]
+    ]
     canonical_root = Path(batch_info["canonical_root"])
     batch_path = Path(batch_info["batch_path"])
     manifest_path = Path(batch_info["canonical_audio_dir"]) / "manifest.json"
@@ -539,7 +546,7 @@ def generate(batch_info: dict[str, Any]) -> dict[str, Any]:
                 "current numeric remaining usage is below the estimated batch cost"
             )
         verify_voice(session)
-        for line in batch_info["active_lines"]:
+        for line in active_lines:
             target = Path(batch_info["targets"][line["inventory_slug"]])
             staged = staging / target.name
             response = session.post(
@@ -581,7 +588,7 @@ def generate(batch_info: dict[str, Any]) -> dict[str, Any]:
         runtime_manifest = load_json(manifest_path)
         validate_runtime_manifest(
             runtime_manifest,
-            batch_info["active_lines"],
+            active_lines,
             {slug: Path(path) for slug, path in batch_info["targets"].items()},
         )
         for item in generated:
