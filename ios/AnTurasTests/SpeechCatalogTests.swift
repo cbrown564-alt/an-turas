@@ -103,6 +103,31 @@ final class SpeechCatalogTests: XCTestCase {
         XCTAssertNotNil(SpeechService.bundledURL(named: "sean.mp3"))
     }
 
+    func testNamedLookupFailsClosedWhenCatalogCannotLoad() {
+        let missingCatalog = SpeechRuntimeCatalog.index(from: nil)
+        let malformedCatalog = SpeechRuntimeCatalog.index(from: Data("{not-json".utf8))
+        let unavailableCatalog = SpeechRuntimeIndex.unavailable
+
+        for catalog in [missingCatalog, malformedCatalog, unavailableCatalog] {
+            XCTAssertFalse(catalog.isLoaded)
+            XCTAssertNil(
+                SpeechService.bundledURL(named: "sean.mp3", using: catalog),
+                "Named assets must fail closed without a loaded catalog"
+            )
+        }
+
+        XCTAssertNotNil(
+            SpeechService.bundledURL(named: "sean.mp3", using: SpeechRuntimeCatalog.index),
+            "A separate verified recording remains available with a loaded catalog"
+        )
+        XCTAssertNil(
+            SpeechService.bundledURL(
+                named: "an-baile-ee-corca-dhuibhne.mp3",
+                using: SpeechRuntimeCatalog.index
+            )
+        )
+    }
+
     func testSlugRuleMatchesCatalogAndDoesNotInventPersonalizedSpeech() {
         XCTAssertEqual(SpeechService.slug(for: "Seo Bríd, m'iníon."), "seo-briid-m-iniion")
         XCTAssertEqual(SpeechService.slug(for: "Cén t-ainm atá ort?"), "ceen-t-ainm-ataa-ort")

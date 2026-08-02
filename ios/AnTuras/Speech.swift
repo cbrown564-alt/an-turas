@@ -10,7 +10,7 @@ private struct SpeechRuntimeManifest: Decodable {
     }
 }
 
-private struct SpeechRuntimeLine: Decodable {
+fileprivate struct SpeechRuntimeLine: Decodable {
     let slug: String
     let text: String
     let file: String
@@ -28,12 +28,14 @@ private struct SpeechRuntimeExclusion: Decodable {
     let slug: String
 }
 
-private struct SpeechRuntimeIndex {
-    let linesBySlug: [String: SpeechRuntimeLine]
-    let linesByFile: [String: SpeechRuntimeLine]
-    let exclusions: Set<String>
+struct SpeechRuntimeIndex {
+    let isLoaded: Bool
+    fileprivate let linesBySlug: [String: SpeechRuntimeLine]
+    fileprivate let linesByFile: [String: SpeechRuntimeLine]
+    fileprivate let exclusions: Set<String>
 
     static let unavailable = SpeechRuntimeIndex(
+        isLoaded: false,
         linesBySlug: [:],
         linesByFile: [:],
         exclusions: []
@@ -45,12 +47,11 @@ private struct SpeechRuntimeIndex {
     }
 }
 
-private enum SpeechRuntimeCatalog {
+enum SpeechRuntimeCatalog {
     static let index: SpeechRuntimeIndex = load()
 
-    private static func load() -> SpeechRuntimeIndex {
-        guard let url = Bundle.main.url(forResource: "manifest", withExtension: "json"),
-              let data = try? Data(contentsOf: url),
+    static func index(from data: Data?) -> SpeechRuntimeIndex {
+        guard let data,
               let manifest = try? JSONDecoder().decode(SpeechRuntimeManifest.self, from: data)
         else { return .unavailable }
 
@@ -67,10 +68,18 @@ private enum SpeechRuntimeCatalog {
         }
 
         return SpeechRuntimeIndex(
+            isLoaded: true,
             linesBySlug: linesBySlug,
             linesByFile: linesByFile,
             exclusions: Set(manifest.dynamicExclusions.map(\.slug))
         )
+    }
+
+    private static func load() -> SpeechRuntimeIndex {
+        guard let url = Bundle.main.url(forResource: "manifest", withExtension: "json"),
+              let data = try? Data(contentsOf: url)
+        else { return .unavailable }
+        return index(from: data)
     }
 }
 
@@ -231,12 +240,19 @@ final class SpeechService: NSObject, ObservableObject {
     }
 
     nonisolated static func bundledURL(named assetName: String) -> URL? {
+        bundledURL(named: assetName, using: SpeechRuntimeCatalog.index)
+    }
+
+    nonisolated static func bundledURL(
+        named assetName: String,
+        using index: SpeechRuntimeIndex
+    ) -> URL? {
         let safeName = URL(fileURLWithPath: assetName).lastPathComponent
         let file = (safeName as NSString).deletingPathExtension
         let ext = (safeName as NSString).pathExtension
         guard !file.isEmpty, !ext.isEmpty else { return nil }
 
-        let index = SpeechRuntimeCatalog.index
+        guard index.isLoaded else { return nil }
         if let line = index.linesByFile[safeName] {
             guard index.isLearnerUsable(line) else { return nil }
         }
