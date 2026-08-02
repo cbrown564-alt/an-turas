@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-place",
+  "created_at": "2026-08-02T18:00:00+01:00",
+  "purpose": "D32 emergency harvest — mayo / d32.mayo.grainne-1593 / mayo.ait.place",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-place.line.cbbfaae903bed319",
+      "member_ids": [
+        "d32.mayo.04.ait.place.personal-atlas.place-cuan-mo.dialogue"
+      ],
+      "normalized_text": "An áit í Cuan Mó?",
+      "text_sha256": "3bd1e4712088afa5a3fe7485db9411965a449e00cacb4aa9b83e32b4b5ec3f81",
+      "inventory_slug": "an-aait-ii-cuan-moo",
+      "estimated_characters": 17,
+      "estimated_credits": 17.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-aait-ii-cuan-moo.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-place.line.d1f45ac82a7c5309",
+      "member_ids": [
+        "d32.mayo.04.ait.place.personal-atlas.place-cuan-mo.context"
+      ],
+      "normalized_text": "Is áit í Cuan Mó.",
+      "text_sha256": "7009fc6468a9eeb59952f5670a2d50107be5fbdc85db92b68185cad0b726844b",
+      "inventory_slug": "is-aait-ii-cuan-moo",
+      "estimated_characters": 17,
+      "estimated_credits": 17.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-aait-ii-cuan-moo.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 34.0,
+    "estimated_cumulative_credits": 13351.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "a34fae4cd625a9763f3b8396bd782076808d6bd86342e0963bf43f8554066315"
+}

@@ -168,6 +168,262 @@
         "fada",
         "pronoun_reference"
       ]
+    },
+    {
+      "id": "mayo.grainne-1593.ainm.name-noun.personal-atlas.historical-name-grainne-ni-mhaille.context",
+      "family_id": "mayo.grainne-1593.ainm.name-noun",
+      "target": {
+        "lexeme_id": "lex.ainm.name-noun",
+        "citation_form": "ainm",
+        "sense_id": "ainm.name-noun",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is ainm stairiúil é Gráinne Ní Mháille.",
+        "normalized_text": "Is ainm stairiúil é Gráinne Ní Mháille.",
+        "inventory_slug": "is-ainm-stairiuuil-ee-graainne-nii-mhaaille",
+        "text_sha256": "cf51ffaf491fa69c3ee0ad6a8d0cc048cfc2751aae3f0cd371ca8bb0ada5f3e4"
+      },
+      "english": {
+        "intent": "Gráinne Ní Mháille is a historical name.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/mayo/grainne-1593.pack.draft.json",
+          "record_id": "mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.14.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.mayo",
+          "label": "Mayo / present-day Personal Atlas context"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional historical-name context",
+        "register": "neutral historical-bounded frame",
+        "purpose": "Introduce the Personal Atlas given or family name Gráinne Ní Mháille in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.mayo-grainne-1593-ainm-name-noun.historical-name-grainne-ni-mhaille.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas given or family name Gráinne Ní Mháille in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.mayo-grainne-1593-ainm-name-noun.historical-name-grainne-ni-mhaille.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "mayo.grainne-1593.ainm.name-noun.personal-atlas.historical-name-grainne-ni-mhaille.dialogue",
+      "family_id": "mayo.grainne-1593.ainm.name-noun",
+      "target": {
+        "lexeme_id": "lex.ainm.name-noun",
+        "citation_form": "ainm",
+        "sense_id": "ainm.name-noun",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An é Gráinne Ní Mháille an t-ainm stairiúil?",
+        "normalized_text": "An é Gráinne Ní Mháille an t-ainm stairiúil?",
+        "inventory_slug": "an-ee-graainne-nii-mhaaille-an-t-ainm-stairiuuil",
+        "text_sha256": "b7e5b5c0d6958a4beb256928cfddae7e351182419683cfc5db6fb7aef6e724fd"
+      },
+      "english": {
+        "intent": "Is Gráinne Ní Mháille the historical name?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/mayo/grainne-1593.pack.draft.json",
+          "record_id": "mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.14.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.mayo",
+          "label": "Mayo / present-day Personal Atlas context"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional historical-name context",
+        "register": "neutral historical-bounded frame",
+        "purpose": "Retrieve the Personal Atlas given or family name Gráinne Ní Mháille in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.mayo-grainne-1593-ainm-name-noun.historical-name-grainne-ni-mhaille.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas given or family name Gráinne Ní Mháille in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.mayo-grainne-1593-ainm-name-noun.historical-name-grainne-ni-mhaille.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

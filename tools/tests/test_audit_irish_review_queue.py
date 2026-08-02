@@ -23,7 +23,7 @@ class IrishReviewAuditTests(unittest.TestCase):
     def test_current_source_counts_are_explicit(self) -> None:
         self.assertEqual(self.result["summary"]["launch_rows"], 104)
         self.assertEqual(self.result["summary"]["legacy_members"], 79)
-        self.assertEqual(self.result["summary"]["v2_members"], 1443)
+        self.assertEqual(self.result["summary"]["v2_members"], 1461)
         self.assertEqual(self.result["summary"]["inventory_spot_flagged"], 43)
 
     def test_missing_launch_inventory_is_a_hard_bind_rule_finding(self) -> None:

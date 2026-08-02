@@ -32,7 +32,133 @@ FOUNDATION_PATH = ROOT / "ios/AnTuras/Resources/personal-atlas-foundation.sqlite
 USES_PATH = ROOT / "content/audio/authoring/d32-county-harvest-uses.json"
 LOGAINM_SOURCE_INDEX_PATH = ROOT / "content/personal-atlas/logainm-v2-source-index.json"
 FAMILY_GLOB = "content/*/phrase-families/authoring-v2/d32.*.v2.json"
+LEGACY_NAME_FAMILY_GLOB = "content/{county}/phrase-families/authoring-v2/ainm.name-noun.v2.json"
 CREATED_AT = "2026-08-02"
+
+
+# A small, appendable extension for high-value names and places already present
+# in the D32 story slate. These are authoring inputs, not a learner-facing atlas
+# pack: their story records establish why the subject belongs in this tranche,
+# while the generated sentence remains invented and review-pending.
+STORY_SLATE_SUBJECTS: tuple[dict[str, Any], ...] = (
+    {
+        "id": "historical.name.grainne-ni-mhaille",
+        "kind": "name",
+        "canonicalDisplay": "Gráinne Ní Mháille",
+        "authoring_kind": "historical_name",
+        "county": "mayo",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.sihtric",
+        "kind": "name",
+        "canonicalDisplay": "Sihtric",
+        "authoring_kind": "historical_name",
+        "county": "dublin",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.dublin.sihtric-penny",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.flann-sinna",
+        "kind": "name",
+        "canonicalDisplay": "Flann Sinna",
+        "authoring_kind": "historical_name",
+        "county": "offaly",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.offaly.cross-of-the-scriptures",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.aodh-o-neill",
+        "kind": "name",
+        "canonicalDisplay": "Aodh Ó Néill",
+        "authoring_kind": "historical_name",
+        "county": "donegal",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.donegal.flight-of-the-earls",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.piaras-feiritear",
+        "kind": "name",
+        "canonicalDisplay": "Piaras Feiritéar",
+        "authoring_kind": "historical_name",
+        "county": "kerry",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kerry.piaras-feiritear",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "place.rath-maolain",
+        "kind": "place",
+        "canonicalDisplay": "Ráth Maoláin",
+        "variants": ["Rathmullan"],
+        "placeProfile": {
+            "placeKind": "town",
+            "hierarchy": "Dún na nGall / Cill Mhic Réanáin / Cill Gharbháin / Donegal",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.donegal.flight-of-the-earls",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "place.corca-dhuibhne",
+        "kind": "place",
+        "canonicalDisplay": "Corca Dhuibhne",
+        "variants": ["Corkaguiny"],
+        "placeProfile": {"placeKind": "barony", "hierarchy": "Ciarraí / Kerry"},
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kerry.piaras-feiritear",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "place.cuan-mo",
+        "kind": "place",
+        "canonicalDisplay": "Cuan Mó",
+        "variants": ["Clew Bay"],
+        "placeProfile": {
+            "placeKind": "bay",
+            "hierarchy": "Maigh Eo / Buiríos Umhaill / Muraisc / Mayo",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "place.carna",
+        "kind": "place",
+        "canonicalDisplay": "Carna",
+        "variants": ["Carna"],
+        "placeProfile": {
+            "placeKind": "village",
+            "hierarchy": "Gaillimh / Galway",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.galway.joe-heaney-carna",
+            "supports": "pattern_only",
+        },
+    },
+)
 
 
 COUNTY_SLUGS = {
@@ -80,6 +206,9 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
 
 
 def expected_county(subject: dict[str, Any]) -> str | None:
+    explicit_county = subject.get("county")
+    if isinstance(explicit_county, str) and explicit_county in COUNTY_SLUGS.values():
+        return explicit_county
     hierarchy = (subject.get("placeProfile") or {}).get("hierarchy") or ""
     english_county = hierarchy.rsplit("/", 1)[-1].strip()
     return COUNTY_SLUGS.get(english_county)
@@ -142,6 +271,40 @@ def story_ref(family: dict[str, Any]) -> dict[str, str]:
 
 def place_label(family: dict[str, Any]) -> str:
     return f"{family['county'].title()} / present-day Personal Atlas context"
+
+
+def subject_family(
+    indexed: dict[tuple[str, str], tuple[Path, dict[str, Any]]],
+    subject: dict[str, Any],
+) -> dict[str, Any] | None:
+    """Resolve an authoring subject to an existing family in its county."""
+    county = expected_county(subject)
+    if county is None:
+        return None
+    if subject.get("kind") == "name":
+        family = indexed.get((county, "ainm"), (None, None))[1]
+        if family is None and subject.get("authoring_kind") == "historical_name":
+            legacy_paths = sorted(ROOT.glob(LEGACY_NAME_FAMILY_GLOB.format(county=county)))
+            if legacy_paths:
+                family = load_json(legacy_paths[-1])
+        if family is None and subject.get("authoring_kind") == "historical_name":
+            family = indexed.get((county, "rí"), (None, None))[1]
+        return family
+    return place_family(indexed, subject)
+
+
+def family_path(
+    indexed: dict[tuple[str, str], tuple[Path, dict[str, Any]]],
+    family: dict[str, Any],
+) -> Path:
+    for path, candidate in indexed.values():
+        if candidate.get("id") == family.get("id"):
+            return path
+    county = family.get("county")
+    for path in sorted(ROOT.glob(f"content/{county}/phrase-families/authoring-v2/*.v2.json")):
+        if load_json(path).get("id") == family.get("id"):
+            return path
+    raise ValueError(f"family is not a canonical repository document: {family.get('id')!r}")
 
 
 def place_family(indexed: dict[tuple[str, str], tuple[Path, dict[str, Any]]], subject: dict[str, Any]) -> dict[str, Any] | None:
@@ -219,14 +382,19 @@ def make_member(
     response_family = "listenChoose" if mode == "context" else "freeTyping"
     role = "context_introduction" if mode == "context" else "dialogue_turn"
     stage = "introduction" if mode == "context" else "retrieval"
+    subject_source = subject.get("authoring_source")
     source_refs: list[dict[str, str]] = [
-        {
+        copy.deepcopy(subject_source)
+        if isinstance(subject_source, dict)
+        else {
             "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
             "record_id": subject_id,
             "supports": "pattern_only",
         }
     ]
     risk_flags = ["invented_text", "audio_pronunciation", "source_ambiguity"]
+    if subject.get("authoring_kind") == "historical_name":
+        risk_flags.append("historical_roleplay")
     if any(char in normalized for char in "áéíóúÁÉÍÓÚ"):
         risk_flags.append("fada")
     if logainm is not None:
@@ -272,14 +440,30 @@ def make_member(
             "story_ref": story_ref(family),
             "atlas_placement_ids": placement_ids,
             "place": {"id": f"personal-atlas.{family['county']}", "label": place_label(family)},
-            "setting": "present_day",
-            "learner_role": "present_day_self",
+            "setting": (
+                "historical_bounded"
+                if subject.get("authoring_kind") == "historical_name"
+                else "present_day"
+            ),
+            "learner_role": (
+                "self_observer"
+                if subject.get("authoring_kind") == "historical_name"
+                else "present_day_self"
+            ),
         },
         "learning": {
             "stages": [stage],
             "roles": [role],
-            "dialect": "standard Irish; provisional name/place context",
-            "register": "neutral pedagogical frame",
+            "dialect": (
+                "standard Irish; provisional historical-name context"
+                if subject.get("authoring_kind") == "historical_name"
+                else "standard Irish; provisional name/place context"
+            ),
+            "register": (
+                "neutral historical-bounded frame"
+                if subject.get("authoring_kind") == "historical_name"
+                else "neutral pedagogical frame"
+            ),
             "purpose": use,
             "fixture_only": False,
         },
@@ -295,7 +479,11 @@ def make_member(
         "provenance": {
             "origin": "invented_pedagogical",
             "invented": True,
-            "composition_note": "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+            "composition_note": (
+                "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim."
+                if subject.get("authoring_source")
+                else "Deterministically composed around a Personal Atlas subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim."
+            ),
             "source_refs": source_refs,
         },
         "states": member_state(risk_flags),
@@ -321,6 +509,7 @@ def make_member(
 
 def main() -> int:
     subjects = load_json(SUBJECTS_PATH)["subjects"]
+    authoring_subjects = [*subjects, *STORY_SLATE_SUBJECTS]
     uses = load_json(USES_PATH)
     indexed = family_index()
     name_families = sorted(
@@ -333,7 +522,7 @@ def main() -> int:
     connection = sqlite3.connect(FOUNDATION_PATH)
     logainm_by_subject = {
         subject["id"]: logainm_match(subject, connection)
-        for subject in subjects
+        for subject in authoring_subjects
         if subject.get("kind") == "place"
     }
     metadata = dict(connection.execute("SELECT key, value FROM metadata").fetchall())
@@ -357,7 +546,7 @@ def main() -> int:
     changed: dict[Path, dict[str, Any]] = {}
     desired_place_families = {
         subject["id"]: (place_family(indexed, subject) or {}).get("id")
-        for subject in subjects
+        for subject in authoring_subjects
         if subject.get("kind") == "place"
     }
     place_slugs = {
@@ -417,12 +606,14 @@ def main() -> int:
     name_index = 0
 
     try:
-        for subject in subjects:
+        for subject in authoring_subjects:
             kind = subject.get("kind")
             county = expected_county(subject) if kind == "place" else None
             if kind == "name":
-                family = name_families[name_index % len(name_families)]
-                name_index += 1
+                family = subject_family(indexed, subject)
+                if family is None and subject.get("authoring_kind") != "historical_name":
+                    family = name_families[name_index % len(name_families)]
+                    name_index += 1
             elif kind == "place":
                 family = place_family(indexed, subject)
                 if family is None:
@@ -433,11 +624,22 @@ def main() -> int:
             else:
                 continue
 
-            path = next(path for path, candidate in indexed.values() if candidate["id"] == family["id"])
+            path = family_path(indexed, family)
             target_name = subject["canonicalDisplay"]
             logainm = logainm_by_subject.get(subject["id"]) if kind == "place" else None
             is_given = (subject.get("nameProfile") or {}).get("nameKind") == "given"
-            if kind == "name" and is_given:
+            if subject.get("authoring_kind") == "historical_name":
+                if family["target"]["citation_form"] == "rí":
+                    context_text = f"Is rí é {target_name}."
+                    context_english = f"{target_name} is a king."
+                    dialogue_text = f"An rí é {target_name}?"
+                    dialogue_english = f"Is {target_name} a king?"
+                else:
+                    context_text = f"Is ainm stairiúil é {target_name}."
+                    context_english = f"{target_name} is a historical name."
+                    dialogue_text = f"An é {target_name} an t-ainm stairiúil?"
+                    dialogue_english = f"Is {target_name} the historical name?"
+            elif kind == "name" and is_given:
                 context_text = f"Is é {target_name} an t-ainm."
                 context_english = f"{target_name} is the name."
                 dialogue_text = f"An é {target_name} d’ainm?"
@@ -474,6 +676,11 @@ def main() -> int:
                     context_english = f"{target_name} is a monastery."
                     dialogue_text = f"An mainistir é {target_name}?"
                     dialogue_english = f"Is {target_name} a monastery?"
+                elif citation == "ainm":
+                    context_text = f"Is ainm áite é {target_name}."
+                    context_english = f"{target_name} is a place-name."
+                    dialogue_text = f"An ainm áite é {target_name}?"
+                    dialogue_english = f"Is {target_name} a place-name?"
                 else:
                     context_text = f"Is áit í {target_name}."
                     context_english = f"{target_name} is a place."
@@ -576,8 +783,17 @@ def main() -> int:
                 "members_added": added_members,
                 "exercises_added": added_exercises,
                 "subjects_covered": len(covered_subjects),
-                "names_covered": sum(subject_id.startswith("name.") for subject_id in covered_subjects),
-                "places_covered": sum(subject_id.startswith("place.") for subject_id in covered_subjects),
+                "names_covered": sum(
+                    subject.get("kind") == "name"
+                    for subject in authoring_subjects
+                    if subject["id"] in covered_subjects
+                ),
+                "places_covered": sum(
+                    subject.get("kind") == "place"
+                    for subject in authoring_subjects
+                    if subject["id"] in covered_subjects
+                ),
+                "story_slate_subjects": len(STORY_SLATE_SUBJECTS),
                 "skipped_subjects": skipped_subjects,
                 "logainm_source_snapshot": "ios/AnTuras/Resources/personal-atlas-foundation.sqlite",
             },

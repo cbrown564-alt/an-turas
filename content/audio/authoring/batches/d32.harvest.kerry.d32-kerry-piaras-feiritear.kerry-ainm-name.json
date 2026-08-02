@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-ainm-name",
+  "created_at": "2026-08-02T18:00:00+01:00",
+  "purpose": "D32 emergency harvest — kerry / d32.kerry.piaras-feiritear / kerry.ainm.name",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-ainm-name.line.302036a0312307e7",
+      "member_ids": [
+        "d32.kerry.20.ainm.name.personal-atlas.historical-name-piaras-feiritear.dialogue"
+      ],
+      "normalized_text": "An é Piaras Feiritéar an t-ainm stairiúil?",
+      "text_sha256": "8469f6615c33b00aadaf14021283e37ccea5b7afb7647991f8eb7dc453a8fd17",
+      "inventory_slug": "an-ee-piaras-feiriteear-an-t-ainm-stairiuuil",
+      "estimated_characters": 42,
+      "estimated_credits": 42.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-piaras-feiriteear-an-t-ainm-stairiuuil.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-ainm-name.line.c3719f707d178d89",
+      "member_ids": [
+        "d32.kerry.20.ainm.name.personal-atlas.historical-name-piaras-feiritear.context"
+      ],
+      "normalized_text": "Is ainm stairiúil é Piaras Feiritéar.",
+      "text_sha256": "7936bc8b7f1b9c164d975905aa304c2535f55d1d8f6d5c60f566b1a6e2046269",
+      "inventory_slug": "is-ainm-stairiuuil-ee-piaras-feiriteear",
+      "estimated_characters": 37,
+      "estimated_credits": 37.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ainm-stairiuuil-ee-piaras-feiriteear.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 79.0,
+    "estimated_cumulative_credits": 13396.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "3702c3a227a1fe786311e8adb67cd341d3452720e8e8eb595807e9972df3e7cd"
+}
