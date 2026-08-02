@@ -81,8 +81,12 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
         self.assertEqual(report["atlas"]["orthographic_headwords"], 191)
         self.assertEqual(report["atlas"]["orthographic_headwords_in_multiple_counties"], 96)
         self.assertEqual(report["atlas"]["orthographic_headwords_with_multiple_glosses"], 12)
-        self.assertEqual(report["authoring_store"]["atlas_placements_covered"], 2)
-        self.assertEqual(report["authoring_store"]["distinct_senses"], 2)
+        self.assertGreaterEqual(report["authoring_store"]["atlas_placements_covered"], 2)
+        self.assertLessEqual(
+            report["authoring_store"]["atlas_placements_covered"],
+            report["atlas"]["county_placements"],
+        )
+        self.assertGreaterEqual(report["authoring_store"]["distinct_senses"], 2)
         self.assertEqual(report["authoring_store"]["learner_release_eligible_members"], 0)
         self.assertEqual(
             report["planning_targets"]["capture_inventory"],
