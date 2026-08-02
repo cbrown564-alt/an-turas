@@ -1919,6 +1919,30 @@ def main(argv: list[str] | None = None) -> int:
     subparsers = parser.add_subparsers(dest="command", required=True)
     subparsers.add_parser("check", help="validate the canonical store and registered batches")
     subparsers.add_parser("report", help="print separate atlas/authoring/release coverage")
+    reconcile = subparsers.add_parser(
+        "reconcile",
+        help="read-only reconciliation across authoring, batches, inventory, bundle, and archives",
+    )
+    reconcile.add_argument(
+        "--at",
+        help="deterministic ISO timestamp with timezone for lease checks",
+    )
+    reconcile.add_argument("--json", action="store_true", help="emit machine-readable JSON")
+    reconcile.add_argument(
+        "--scoreboard",
+        action="store_true",
+        help="emit only the compact live production-loop scoreboard",
+    )
+    resume = subparsers.add_parser(
+        "resume-plan",
+        help="print a non-destructive recovery/resume plan for registered batch lines",
+    )
+    resume.add_argument("--batch-id", help="limit the plan to one registered batch")
+    resume.add_argument(
+        "--at",
+        help="deterministic ISO timestamp with timezone for lease checks",
+    )
+    resume.add_argument("--json", action="store_true", help="emit machine-readable JSON")
     build = subparsers.add_parser("build-batch", help="write a deterministic draft batch manifest")
     build.add_argument("--batch-id", required=True)
     build.add_argument("--member-id", action="append", required=True)
@@ -1951,6 +1975,30 @@ def main(argv: list[str] | None = None) -> int:
         help="register written manifests in the sorted canonical store batch_documents list",
     )
     args = parser.parse_args(argv)
+
+    if args.command in {"reconcile", "resume-plan"}:
+        from structured_audio_reconciliation import (
+            build_resume_plan,
+            parse_timestamp,
+            reconcile as reconcile_contract,
+        )
+
+        as_of = parse_timestamp(args.at) if args.at else None
+        if args.at and as_of is None:
+            parser.error("--at must be an ISO timestamp with a timezone")
+        report = reconcile_contract(ROOT, as_of=as_of)
+        if args.command == "resume-plan":
+            print(
+                json.dumps(
+                    build_resume_plan(report, batch_id=args.batch_id),
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
+        else:
+            payload = report["scoreboard"] if args.scoreboard else report
+            print(json.dumps(payload, ensure_ascii=False, indent=2, default=str))
+        return 0
 
     errors, contract = validate_contract()
     if errors:

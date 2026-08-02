@@ -18,6 +18,7 @@ unreviewed audio is not learner-release approval.
 | `authoring/schemas/phrase-family-v2.schema.json` | Member contract: target, text, binding, exercise use, provenance, risks, and orthogonal states |
 | `authoring/schemas/generation-batch-v1.schema.json` | Deterministic capture handoff: identity, voice, claim, request, retry, result, checksum, error, and QA |
 | `authoring/voice-profiles-v1.json` | The single user-locked Irish voice/model profile |
+| `tools/structured_audio_reconciliation.py` | Read-only ledger reconciliation, live scoreboard, and recovery planning |
 | `../{county}/phrase-families/authoring-v2/*.v2.json` | Canonical family/member authoring documents beside county story content |
 | `authoring/batches/*.json` | Draft, approved, or closed generation manifests; a draft never permits provider calls |
 | `irish-inventory-v1.json` | Legacy/runtime spoken-text registry and current clip QA state |
@@ -80,7 +81,26 @@ For each new slice, the authoring agent must:
    still apply.
 
 The offline tool creates and validates handoff records only. It contains no ElevenLabs
-client and grants no authority to generate audio.
+client and grants no authority to generate audio. `reconcile` is a read-only
+machine-readable audit of authored, authorized, captured, checksum-verified, bundled,
+audio-QA-reviewed, and learner-release-eligible states. It also reports orphan or
+missing bundle files, checksum and inventory drift, duplicate normalized text/voice
+lines, stale claims or leases, interrupted attempts, invalid provider successes, and
+archive/Xcode resource drift. `resume-plan` prints manual recovery candidates and
+preflight-only commands; it never clears claims, changes leases, writes manifests,
+calls ElevenLabs, overwrites files, or deletes material. An expired lease must be
+resolved explicitly in the authoritative batch history before a provider preflight or
+retry.
+
+For the production loop, `reconcile --scoreboard --json` is the compact live
+scoreboard. It reports authored families/members/texts/counties, registered and
+approved/claimed/succeeded/failed lines, new v2 versus legacy bundled clips, checksum
+state, and remaining resumable or manual-recovery work. The full `reconcile` output
+retains the per-record findings and source drift details.
+
+In that scoreboard, **new v2** means a runtime row explicitly sourced from a registered
+`structured_batch:<batch_id>`; **legacy** means every other bundled row. Inventory
+membership or a matching checksum never upgrades a legacy row into a v2 capture.
 
 ## Capture manifest and resumability
 
@@ -89,6 +109,11 @@ client and grants no authority to generate audio.
 ```bash
 python3 -B tools/structured_audio_authoring.py check
 python3 -B tools/structured_audio_authoring.py report
+python3 -B tools/structured_audio_authoring.py reconcile --at 2026-08-02T12:00:00Z
+python3 -B tools/structured_audio_authoring.py reconcile --scoreboard --json
+python3 -B tools/structured_audio_authoring.py resume-plan \
+  --batch-id mayo.d31.capture-prep.2026-08-02 \
+  --at 2026-08-02T12:00:00Z
 python3 -B tools/structured_audio_authoring.py build-batch \
   --batch-id irish.exercise.001 \
   --member-id ainm.grainne-named \

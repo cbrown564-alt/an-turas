@@ -183,6 +183,8 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
 
     def test_unreviewed_invention_cannot_silently_request_capture(self):
         member = copy.deepcopy(self.loaded.members["farraige.sea-here"])
+        # The canonical farraige member is now pedagogy-approved. Make the
+        # adversarial fixture explicitly review-pending before requesting capture.
         member["states"]["reviews"]["pedagogy"] = {
             "status": "pending",
             "record": None,
@@ -466,6 +468,13 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
     def test_approved_batch_requires_explicit_member_capture_request(self):
         loaded = copy.deepcopy(self.loaded)
         batch = copy.deepcopy(loaded.batches[0])
+        loaded.members["ainm.grainne-named"]["states"]["capture_request"] = {
+            "status": "not_requested",
+            "requested_by": None,
+            "requested_at": None,
+            "authorization": None,
+            "batch_line_ids": [],
+        }
         batch["execution"] = {
             "state": "approved",
             "provider_calls_allowed": True,
