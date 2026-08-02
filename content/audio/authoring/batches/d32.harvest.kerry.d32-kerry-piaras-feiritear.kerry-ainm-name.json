@@ -19,10 +19,10 @@
     }
   },
   "execution": {
-    "state": "draft",
-    "provider_calls_allowed": false,
-    "approved_by": null,
-    "approved_at": null
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.delegated.019fc314",
+    "approved_at": "2026-08-02T16:38:00Z"
   },
   "lines": [
     {
@@ -37,39 +37,39 @@
       "estimated_credits": 42.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.luna.audio-drain",
+        "claimed_at": "2026-08-02T16:38:00Z",
+        "lease_expires_at": "2026-08-02T18:38:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-02T16:38:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T16:28:31.689845+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "KLpL0XXWDD33pQeoYFs2",
+        "started_at": "2026-08-02T16:28:26.389891+00:00",
+        "completed_at": "2026-08-02T16:28:31.673712+00:00",
+        "reported_credits": 42.0,
+        "reported_characters": 42
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/an-ee-piaras-feiriteear-an-t-ainm-stairiuuil.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "7068c7818527ae9e64f4ac9b2832a2e941728f40dc751b08cb501f7b98cb875e",
+        "bytes": 82173,
+        "duration_seconds": 3.36
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,39 +85,39 @@
       "estimated_credits": 37.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.luna.audio-drain",
+        "claimed_at": "2026-08-02T16:38:00Z",
+        "lease_expires_at": "2026-08-02T18:38:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-02T16:38:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T16:28:31.690048+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "T8GfCl8YRS5sgIyQ6Y4N",
+        "started_at": "2026-08-02T16:28:26.389891+00:00",
+        "completed_at": "2026-08-02T16:28:31.673712+00:00",
+        "reported_credits": 37.0,
+        "reported_characters": 37
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/is-ainm-stairiuuil-ee-piaras-feiriteear.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "d3d14117c07b5be1ce941ace82dbf5c9ff5b58cdf40c59ae2df30469652312f0",
+        "bytes": 80292,
+        "duration_seconds": 3.28
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -128,17 +128,34 @@
     "credits_per_character": 1.0,
     "estimated_batch_credits": 79.0,
     "estimated_cumulative_credits": 13396.0,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 95019.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T16:28:26.389891+00:00",
+      "used_credits": 95019.0,
+      "remaining_credits": 141080.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T16:28:31.673712+00:00",
+      "used_credits": 95019.0,
+      "remaining_credits": 141080.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.delegated.019fc314",
+      "authorized_at": "2026-08-02T16:38:00Z",
+      "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
+      "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-04",
+      "baseline_used_credits": 95019.0,
+      "payload_credit_limit": 79.0
+    }
   },
   "counts": {
     "lines": 2,
     "member_references": 2,
-    "planned": 2,
-    "approved": 0,
-    "succeeded": 0,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
     "failed": 0
   },
   "manifest_identity_sha256": "3702c3a227a1fe786311e8adb67cd341d3452720e8e8eb595807e9972df3e7cd"

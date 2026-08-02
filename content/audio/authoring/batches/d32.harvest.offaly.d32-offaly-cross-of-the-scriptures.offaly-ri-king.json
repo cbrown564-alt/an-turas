@@ -19,10 +19,10 @@
     }
   },
   "execution": {
-    "state": "draft",
-    "provider_calls_allowed": false,
-    "approved_by": null,
-    "approved_at": null
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.delegated.019fc314",
+    "approved_at": "2026-08-02T17:46:00Z"
   },
   "lines": [
     {
@@ -37,39 +37,39 @@
       "estimated_credits": 20.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.luna.audio-drain",
+        "claimed_at": "2026-08-02T17:46:00Z",
+        "lease_expires_at": "2026-08-02T19:46:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-02T17:46:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T16:41:00.976383+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "5c9JyuXTBcpRQfVtCr4Q",
+        "started_at": "2026-08-02T16:40:56.995705+00:00",
+        "completed_at": "2026-08-02T16:41:00.960894+00:00",
+        "reported_credits": 20.0,
+        "reported_characters": 20
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/an-rii-ee-flann-sinna.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "39ce0f2ff8ed15d5544d28bb1f8c45f26fdfa37ebb8c302203812b1d4690bddd",
+        "bytes": 45810,
+        "duration_seconds": 1.84
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,39 +85,39 @@
       "estimated_credits": 20.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.luna.audio-drain",
+        "claimed_at": "2026-08-02T17:46:00Z",
+        "lease_expires_at": "2026-08-02T19:46:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-02T17:46:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T16:41:00.976527+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "Fy84f1BhC5JmQ512hRim",
+        "started_at": "2026-08-02T16:40:56.995705+00:00",
+        "completed_at": "2026-08-02T16:41:00.960894+00:00",
+        "reported_credits": 20.0,
+        "reported_characters": 20
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/is-rii-ee-flann-sinna.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "d3bcf1c3f1edb5e23076a84f5dcd786b05d9b83c64b0ba4470d7ceb295e46461",
+        "bytes": 49572,
+        "duration_seconds": 2.0
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -128,17 +128,34 @@
     "credits_per_character": 1.0,
     "estimated_batch_credits": 40.0,
     "estimated_cumulative_credits": 13357.0,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 95153.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T16:40:56.995705+00:00",
+      "used_credits": 95153.0,
+      "remaining_credits": 140946.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T16:41:00.960894+00:00",
+      "used_credits": 95153.0,
+      "remaining_credits": 140946.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.delegated.019fc314",
+      "authorized_at": "2026-08-02T17:52:00Z",
+      "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
+      "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-08-retry",
+      "baseline_used_credits": 95153.0,
+      "payload_credit_limit": 40.0
+    }
   },
   "counts": {
     "lines": 2,
     "member_references": 2,
-    "planned": 2,
-    "approved": 0,
-    "succeeded": 0,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
     "failed": 0
   },
   "manifest_identity_sha256": "f50b0f251fb5073dc826f157f5d9aa6758fabc8a866cccc2644bc0a679366cd9"

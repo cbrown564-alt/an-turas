@@ -19,10 +19,10 @@
     }
   },
   "execution": {
-    "state": "draft",
-    "provider_calls_allowed": false,
-    "approved_by": null,
-    "approved_at": null
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.delegated.019fc314",
+    "approved_at": "2026-08-02T17:04:00Z"
   },
   "lines": [
     {
@@ -37,39 +37,39 @@
       "estimated_credits": 17.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.luna.audio-drain",
+        "claimed_at": "2026-08-02T17:04:00Z",
+        "lease_expires_at": "2026-08-02T19:04:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-02T17:04:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T16:34:47.540258+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "mp9AVRCOCUNMNBOaQxqW",
+        "started_at": "2026-08-02T16:34:42.724385+00:00",
+        "completed_at": "2026-08-02T16:34:47.525788+00:00",
+        "reported_credits": 17.0,
+        "reported_characters": 17
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/an-aait-ii-cuan-moo.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "a51e21f1d03e7757e0040dd29196d5a6c36bbd8ca39f50715811291c809a89d8",
+        "bytes": 53333,
+        "duration_seconds": 2.16
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,39 +85,39 @@
       "estimated_credits": 17.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.luna.audio-drain",
+        "claimed_at": "2026-08-02T17:04:00Z",
+        "lease_expires_at": "2026-08-02T19:04:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-02T17:04:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T16:34:47.540433+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "NCARwxEDDp2L7UzEmVzN",
+        "started_at": "2026-08-02T16:34:42.724385+00:00",
+        "completed_at": "2026-08-02T16:34:47.525788+00:00",
+        "reported_credits": 17.0,
+        "reported_characters": 17
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/is-aait-ii-cuan-moo.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "3f9df6461088ce7df655ed1ca90d99a5436ca34aa5c5a2de02fb791c4a91cede",
+        "bytes": 51453,
+        "duration_seconds": 2.08
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -128,17 +128,34 @@
     "credits_per_character": 1.0,
     "estimated_batch_credits": 34.0,
     "estimated_cumulative_credits": 13351.0,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 95090.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T16:34:42.724385+00:00",
+      "used_credits": 95090.0,
+      "remaining_credits": 141009.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T16:34:47.525788+00:00",
+      "used_credits": 95090.0,
+      "remaining_credits": 141009.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.delegated.019fc314",
+      "authorized_at": "2026-08-02T17:09:00Z",
+      "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
+      "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-06-retry",
+      "baseline_used_credits": 95090.0,
+      "payload_credit_limit": 34.0
+    }
   },
   "counts": {
     "lines": 2,
     "member_references": 2,
-    "planned": 2,
-    "approved": 0,
-    "succeeded": 0,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
     "failed": 0
   },
   "manifest_identity_sha256": "a34fae4cd625a9763f3b8396bd782076808d6bd86342e0963bf43f8554066315"

@@ -19,10 +19,10 @@
     }
   },
   "execution": {
-    "state": "draft",
-    "provider_calls_allowed": false,
-    "approved_by": null,
-    "approved_at": null
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.delegated.019fc314",
+    "approved_at": "2026-08-02T17:24:00Z"
   },
   "lines": [
     {
@@ -37,39 +37,39 @@
       "estimated_credits": 39.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.luna.audio-drain",
+        "claimed_at": "2026-08-02T17:24:00Z",
+        "lease_expires_at": "2026-08-02T19:24:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-02T17:24:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T16:37:53.017390+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "AmbsBkzTcjfsGI1b68I6",
+        "started_at": "2026-08-02T16:37:47.070135+00:00",
+        "completed_at": "2026-08-02T16:37:53.002076+00:00",
+        "reported_credits": 39.0,
+        "reported_characters": 39
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/is-ainm-stairiuuil-ee-graainne-nii-mhaaille.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "ef11059a99700be60ff3d125911ac5ef35ae92ec772641552c30b6373a59aa09",
+        "bytes": 84053,
+        "duration_seconds": 3.44
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,39 +85,39 @@
       "estimated_credits": 44.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.luna.audio-drain",
+        "claimed_at": "2026-08-02T17:24:00Z",
+        "lease_expires_at": "2026-08-02T19:24:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-02T17:24:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T16:37:53.017588+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "4pSDV38J7iKZOfQxaV9f",
+        "started_at": "2026-08-02T16:37:47.070135+00:00",
+        "completed_at": "2026-08-02T16:37:53.002076+00:00",
+        "reported_credits": 44.0,
+        "reported_characters": 44
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/an-ee-graainne-nii-mhaaille-an-t-ainm-stairiuuil.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "03a6647d78c5a60d79c783adf634d0274aae067e7b4b3ae984990e8e6dd2df77",
+        "bytes": 80292,
+        "duration_seconds": 3.28
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -128,17 +128,34 @@
     "credits_per_character": 1.0,
     "estimated_batch_credits": 83.0,
     "estimated_cumulative_credits": 13400.0,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 95108.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T16:37:47.070135+00:00",
+      "used_credits": 95108.0,
+      "remaining_credits": 140991.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T16:37:53.002076+00:00",
+      "used_credits": 95108.0,
+      "remaining_credits": 140991.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.delegated.019fc314",
+      "authorized_at": "2026-08-02T17:29:00Z",
+      "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
+      "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-07-retry",
+      "baseline_used_credits": 95108.0,
+      "payload_credit_limit": 83.0
+    }
   },
   "counts": {
     "lines": 2,
     "member_references": 2,
-    "planned": 2,
-    "approved": 0,
-    "succeeded": 0,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
     "failed": 0
   },
   "manifest_identity_sha256": "2f63f1fe4c42bb9fd6ad82d723bf5e121caa447405ac12400bf4d94bd60471e6"

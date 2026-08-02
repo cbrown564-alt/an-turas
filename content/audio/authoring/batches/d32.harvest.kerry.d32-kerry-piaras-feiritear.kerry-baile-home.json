@@ -19,10 +19,10 @@
     }
   },
   "execution": {
-    "state": "draft",
-    "provider_calls_allowed": false,
-    "approved_by": null,
-    "approved_at": null
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.delegated.019fc314",
+    "approved_at": "2026-08-02T16:49:00Z"
   },
   "lines": [
     {
@@ -37,39 +37,39 @@
       "estimated_credits": 26.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.luna.audio-drain",
+        "claimed_at": "2026-08-02T16:49:00Z",
+        "lease_expires_at": "2026-08-02T18:49:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-02T16:49:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T16:31:37.611622+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "iaVOJXCsWWsVEPP8BFhY",
+        "started_at": "2026-08-02T16:31:33.057043+00:00",
+        "completed_at": "2026-08-02T16:31:37.602673+00:00",
+        "reported_credits": 26.0,
+        "reported_characters": 26
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/is-baile-ee-corca-dhuibhne.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "bb4300af69bb1a8d90995dad13b40ca79c823bea7209634eea38d5c417b5e811",
+        "bytes": 58976,
+        "duration_seconds": 2.4
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,39 +85,39 @@
       "estimated_credits": 26.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.luna.audio-drain",
+        "claimed_at": "2026-08-02T16:49:00Z",
+        "lease_expires_at": "2026-08-02T18:49:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-02T16:49:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T16:31:37.611723+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "qoDk037GV2Gdcnckyrvz",
+        "started_at": "2026-08-02T16:31:33.057043+00:00",
+        "completed_at": "2026-08-02T16:31:37.602673+00:00",
+        "reported_credits": 26.0,
+        "reported_characters": 26
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/an-baile-ee-corca-dhuibhne.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "7743b126e43c3ab681e9daa6105ba4170d0bced05cb21d6a110cc6f3e4345e3b",
+        "bytes": 62737,
+        "duration_seconds": 2.56
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -128,17 +128,34 @@
     "credits_per_character": 1.0,
     "estimated_batch_credits": 52.0,
     "estimated_cumulative_credits": 13369.0,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 95062.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T16:31:33.057043+00:00",
+      "used_credits": 95062.0,
+      "remaining_credits": 141037.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T16:31:37.602673+00:00",
+      "used_credits": 95062.0,
+      "remaining_credits": 141037.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.delegated.019fc314",
+      "authorized_at": "2026-08-02T16:54:00Z",
+      "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
+      "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-05-retry",
+      "baseline_used_credits": 95062.0,
+      "payload_credit_limit": 52.0
+    }
   },
   "counts": {
     "lines": 2,
     "member_references": 2,
-    "planned": 2,
-    "approved": 0,
-    "succeeded": 0,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
     "failed": 0
   },
   "manifest_identity_sha256": "24009656fa97c6569c88dad6c50293018ea0a050b547d22184c752d8f979a42c"
