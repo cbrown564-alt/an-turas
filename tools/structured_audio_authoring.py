@@ -652,6 +652,9 @@ def approve_emergency_harvest(
     claim_owner: str,
     claimed_at: str,
     lease_expires_at: str,
+    payload_id: str | None = None,
+    baseline_used_credits: float | None = None,
+    payload_credit_limit: float | None = None,
 ) -> dict[str, Any]:
     """Authorize only D32 capture; retain every independent review/release gate."""
     for label, value in (
@@ -679,14 +682,19 @@ def approve_emergency_harvest(
             "approved_by": approved_by,
             "approved_at": approved_at,
         }
+        if not payload_id or baseline_used_credits is None or payload_credit_limit is None:
+            raise ValueError("D32 emergency harvest requires an explicit payload id, usage baseline, and credit limit")
         batch.setdefault("spend", {})["cap_authorization"] = {
-            "status": "removed",
+            "status": "payload_limited",
             "authorized_by": approved_by,
             "authorized_at": approved_at,
             "reason": (
                 "The user explicitly authorized this exact D32 emergency-harvest "
                 "payload and its manifest-estimated provider spend."
             ),
+            "payload_id": payload_id,
+            "baseline_used_credits": baseline_used_credits,
+            "payload_credit_limit": payload_credit_limit,
         }
         for line in batch.get("lines", []):
             line["claim"] = {
@@ -1445,13 +1453,24 @@ def validate_batch(
         errors.append(f"{label}: spend must be an object")
         spend = {}
     cap_auth = spend.get("cap_authorization")
-    cap_removed = isinstance(cap_auth, dict) and cap_auth.get("status") == "removed"
-    if not cap_removed and spend.get("approved_cap") != APPROVED_CREDIT_CAP:
+    cap_status = cap_auth.get("status") if isinstance(cap_auth, dict) else None
+    cap_removed = cap_status == "removed"
+    payload_limited = cap_status == "payload_limited"
+    if not cap_removed and not payload_limited and spend.get("approved_cap") != APPROVED_CREDIT_CAP:
         errors.append(f"{label}: spend approved_cap must remain {APPROVED_CREDIT_CAP}")
-    if cap_removed:
+    if cap_removed or payload_limited:
         for field in ("authorized_by", "authorized_at", "reason"):
             if not isinstance(cap_auth.get(field), str) or not cap_auth[field].strip():
-                errors.append(f"{label}: removed cap requires {field}")
+                errors.append(f"{label}: spend authorization requires {field}")
+    if payload_limited:
+        if not isinstance(cap_auth.get("payload_id"), str) or not cap_auth["payload_id"].strip():
+            errors.append(f"{label}: payload-limited authorization requires payload_id")
+        for field in ("baseline_used_credits", "payload_credit_limit"):
+            value = cap_auth.get(field)
+            if not isinstance(value, (int, float)) or isinstance(value, bool) or value < 0:
+                errors.append(f"{label}: payload-limited authorization requires non-negative {field}")
+        if cap_auth.get("payload_credit_limit") == 0:
+            errors.append(f"{label}: payload_credit_limit must be positive")
     if spend.get("estimate_basis") != ESTIMATE_BASIS:
         errors.append(f"{label}: spend estimate_basis is not canonical")
     if spend.get("credits_per_character") != CREDITS_PER_CHARACTER:
@@ -2283,6 +2302,9 @@ def main(argv: list[str] | None = None) -> int:
     emergency.add_argument("--claim-owner", required=True, help="deterministic Track C claim owner")
     emergency.add_argument("--claimed-at", required=True, help="claim timestamp")
     emergency.add_argument("--lease-expires-at", required=True, help="claim lease expiry timestamp")
+    emergency.add_argument("--payload-id", required=True, help="stable identifier for the explicitly approved provider payload")
+    emergency.add_argument("--baseline-used-credits", required=True, type=float, help="live provider usage baseline for this payload")
+    emergency.add_argument("--payload-credit-limit", required=True, type=float, help="maximum incremental provider credits authorized for this payload")
     emergency.add_argument(
         "--max-lines-per-batch",
         type=int,
@@ -2392,6 +2414,9 @@ def main(argv: list[str] | None = None) -> int:
                 claim_owner=args.claim_owner,
                 claimed_at=args.claimed_at,
                 lease_expires_at=args.lease_expires_at,
+                payload_id=args.payload_id,
+                baseline_used_credits=args.baseline_used_credits,
+                payload_credit_limit=args.payload_credit_limit,
             )
             written = write_emergency_harvest(plan, root=ROOT)
             final_errors, _ = validate_contract()

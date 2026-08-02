@@ -258,10 +258,13 @@
           "additionalProperties": false,
           "required": ["status", "authorized_by", "authorized_at", "reason"],
           "properties": {
-            "status": { "const": "removed" },
+            "status": { "enum": ["removed", "payload_limited"] },
             "authorized_by": { "type": "string", "minLength": 1 },
             "authorized_at": { "type": "string", "minLength": 1 },
-            "reason": { "type": "string", "minLength": 1 }
+            "reason": { "type": "string", "minLength": 1 },
+            "payload_id": { "type": "string", "minLength": 1 },
+            "baseline_used_credits": { "type": "number", "minimum": 0 },
+            "payload_credit_limit": { "type": "number", "exclusiveMinimum": 0 }
           }
         }
       }

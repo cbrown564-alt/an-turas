@@ -517,11 +517,23 @@ def generate(batch_info: dict[str, Any]) -> dict[str, Any]:
     try:
         usage_before = query_usage(session)
         estimated = float(batch["spend"]["estimated_batch_credits"])
-        cap_removed = batch.get("spend", {}).get("cap_authorization", {}).get("status") == "removed"
+        cap_authorization = batch.get("spend", {}).get("cap_authorization", {})
+        cap_status = cap_authorization.get("status")
+        cap_removed = cap_status == "removed"
+        payload_limited = cap_status == "payload_limited"
+        payload_baseline = float(cap_authorization.get("baseline_used_credits", 0))
+        payload_limit = float(cap_authorization.get("payload_credit_limit", 0))
+        if payload_limited:
+            payload_used = max(0.0, usage_before.used_credits - payload_baseline)
+            if payload_used + estimated > payload_limit:
+                raise GateError(
+                    "current D32 payload usage plus estimated batch exceeds the explicitly authorized payload limit"
+                )
         if not cap_removed and usage_before.used_credits + estimated > APPROVED_CREDIT_CAP:
-            raise GateError(
-                "current numeric usage plus estimated batch exceeds the authorized spending limit"
-            )
+            if not payload_limited:
+                raise GateError(
+                    "current numeric usage plus estimated batch exceeds the authorized spending limit"
+                )
         if not cap_removed and usage_before.remaining_credits < estimated:
             raise GateError(
                 "current numeric remaining usage is below the estimated batch cost"
@@ -563,7 +575,14 @@ def generate(batch_info: dict[str, Any]) -> dict[str, Any]:
             )
         usage_after = query_usage(session)
         actual_batch_credits = usage_after.used_credits - usage_before.used_credits
-        if actual_batch_credits < 0 or (not cap_removed and usage_after.used_credits > APPROVED_CREDIT_CAP):
+        payload_over_limit = (
+            payload_limited
+            and usage_after.used_credits - payload_baseline > payload_limit
+        )
+        if actual_batch_credits < 0 or payload_over_limit or (
+            not cap_removed and not payload_limited
+            and usage_after.used_credits > APPROVED_CREDIT_CAP
+        ):
             raise GateError("post-generation numeric usage violates the authorized spending limit")
 
         runtime_manifest = load_json(manifest_path)
