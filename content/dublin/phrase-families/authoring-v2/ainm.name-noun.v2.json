@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "dublin.sihtric-penny.ainm.name-noun",
+  "county": "dublin",
+  "story_ref": {"path": "content/dublin/sihtric-penny.pack.draft.json", "record_id": "dublin.sihtric-penny"},
+  "target": {"lexeme_id": "lex.ainm", "citation_form": "ainm", "sense_id": "ainm.name-noun", "part_of_speech": "noun", "english_sense": "name"},
+  "atlas_placements": [{"id": "atlas.dublin.17.ainm", "gloss": "name"}],
+  "status": "draft",
+  "claims": {"linguistic_approval": false, "historical_authenticity": false, "note": "Provisional county/story family from the Dublin review-draft exercise bank; repository text is not Irish-language or historical approval."},
+  "members": [
+    {
+      "id": "dublin.ainm.coin-market",
+      "family_id": "dublin.sihtric-penny.ainm.name-noun",
+      "target": {"lexeme_id": "lex.ainm", "citation_form": "ainm", "sense_id": "ainm.name-noun", "part_of_speech": "noun", "target_form": "ainm", "morphology": "citation form in a named-object frame"},
+      "irish": {"text": "Tá ainm an rí ar airgead an mhargaidh agus na trádála.", "normalized_text": "Tá ainm an rí ar airgead an mhargaidh agus na trádála.", "inventory_slug": "taa-ainm-an-rii-ar-airgead-an-mhargaidh-agus-na-traadaala", "text_sha256": "dd9775ade7bf1c91395e40ee46c40fea1cb443b279dffb7a2ca1b2c1845e36c2"},
+      "english": {"intent": "The king's name is on the money of market and trade.", "literal_note": "The line describes the name relationship in the coin story without inventing a minting scene."},
+      "binding": {"county": "dublin", "story_ref": {"path": "content/dublin/sihtric-penny.pack.draft.json", "record_id": "dublin.sihtric-penny"}, "atlas_placement_ids": ["atlas.dublin.17.ainm"], "place": {"id": "dublin.baile-atha-cliath", "label": "Dublin / Baile Átha Cliath"}, "setting": "historical_bounded", "learner_role": "self_observer"},
+      "learning": {"stages": ["introduction", "phrase_or_sentence_use"], "roles": ["context_introduction", "productive_pattern", "story_opening"], "dialect": "standard Irish; Dublin object context", "register": "neutral object-led description", "purpose": "Open the named-king chapter by linking ainm to the penny, market and trade evidence.", "fixture_only": false},
+      "exercise_consumers": [{"path": "content/dublin/sihtric-penny.pack.draft.json", "record_id": "dublin.named-king.hear-name-and-market", "response_family": "sentenceConstruction", "container": "none", "use": "hear and rebuild the name-and-market sentence"}],
+      "provenance": {"origin": "repository_draft", "invented": false, "composition_note": "Exact Irish text is the existing review-draft sentence-construction prompt; repository presence is not linguistic approval.", "source_refs": [{"path": "content/dublin/sihtric-penny.pack.draft.json", "record_id": "dublin.named-king.hear-name-and-market", "text_field": "exercise.audioText", "supports": "repository_text"}]},
+      "states": {"authoring": {"status": "complete", "revision": 1, "author_ref": "track-a.county-writers", "completed_at": "2026-08-02"}, "reviews": {"editorial": {"status": "pending", "record": null}, "pedagogy": {"status": "pending", "record": null}, "irish_language": {"status": "pending", "record": null}}, "capture_request": {"status": "not_requested", "requested_by": null, "requested_at": null, "authorization": null, "batch_line_ids": []}, "audio_qa": {"status": "not_generated", "record": null, "batch_line_id": null}, "learner_release": {"status": "blocked", "reasons": ["editorial_review_pending", "pedagogy_review_pending", "irish_language_review_pending", "audio_not_generated"]}},
+      "risk_flags": ["fada", "initial_mutation"]
+    },
+    {
+      "id": "dublin.ainm.named-ruler",
+      "family_id": "dublin.sihtric-penny.ainm.name-noun",
+      "target": {"lexeme_id": "lex.ainm", "citation_form": "ainm", "sense_id": "ainm.name-noun", "part_of_speech": "noun", "target_form": "ainm", "morphology": "is ainm identification frame"},
+      "irish": {"text": "Sihtric is ainm don rí.", "normalized_text": "Sihtric is ainm don rí.", "inventory_slug": "sihtric-is-ainm-don-rii", "text_sha256": "13a6879cc2131c597a400da2cea262b0d591b98f2f54c5275d4d9720eef77a82"},
+      "english": {"intent": "Sihtric is the king's name.", "literal_note": "A supported response to the king-name question; it does not claim the learner is Sihtric."},
+      "binding": {"county": "dublin", "story_ref": {"path": "content/dublin/sihtric-penny.pack.draft.json", "record_id": "dublin.sihtric-penny"}, "atlas_placement_ids": ["atlas.dublin.17.ainm"], "place": {"id": "dublin.baile-atha-cliath", "label": "Dublin / Baile Átha Cliath"}, "setting": "historical_bounded", "learner_role": "self_observer"},
+      "learning": {"stages": ["phrase_or_sentence_use", "later_reuse"], "roles": ["productive_pattern", "story_recap"], "dialect": "standard Irish; Dublin object context", "register": "neutral supported answer", "purpose": "Reuse ainm in a complete answer frame after the learner has encountered the coin's named ruler.", "fixture_only": false},
+      "exercise_consumers": [{"path": "content/dublin/sihtric-penny.pack.draft.json", "record_id": "dublin.named-king.notice-name-frame", "response_family": "grammarDiscovery", "container": "none", "use": "notice the is ainm response frame"}],
+      "provenance": {"origin": "repository_draft", "invented": false, "composition_note": "Exact Irish text is present in the existing review-draft grammar exercise; repository presence is not linguistic approval.", "source_refs": [{"path": "content/dublin/sihtric-penny.pack.draft.json", "record_id": "dublin.named-king.notice-name-frame", "text_field": "exercise.modelText", "supports": "repository_text"}]},
+      "states": {"authoring": {"status": "complete", "revision": 1, "author_ref": "track-a.county-writers", "completed_at": "2026-08-02"}, "reviews": {"editorial": {"status": "pending", "record": null}, "pedagogy": {"status": "pending", "record": null}, "irish_language": {"status": "pending", "record": null}}, "capture_request": {"status": "not_requested", "requested_by": null, "requested_at": null, "authorization": null, "batch_line_ids": []}, "audio_qa": {"status": "not_generated", "record": null, "batch_line_id": null}, "learner_release": {"status": "blocked", "reasons": ["editorial_review_pending", "pedagogy_review_pending", "irish_language_review_pending", "audio_not_generated"]}},
+      "risk_flags": ["fada"]
+    },
+    {
+      "id": "dublin.ainm.return-to-legend",
+      "family_id": "dublin.sihtric-penny.ainm.name-noun",
+      "target": {"lexeme_id": "lex.ainm", "citation_form": "ainm", "sense_id": "ainm.name-noun", "part_of_speech": "noun", "target_form": "ainm", "morphology": "citation form after chuig an"},
+      "irish": {"text": "Tar ar ais chuig an ainm.", "normalized_text": "Tar ar ais chuig an ainm.", "inventory_slug": "tar-ar-ais-chuig-an-ainm", "text_sha256": "401604ff760d2c8393f53236122214fd758cec430324f97987c885a5436fe1a2"},
+      "english": {"intent": "Come back to the name.", "literal_note": "A bounded inspection instruction returning the learner to the coin legend."},
+      "binding": {"county": "dublin", "story_ref": {"path": "content/dublin/sihtric-penny.pack.draft.json", "record_id": "dublin.sihtric-penny"}, "atlas_placement_ids": ["atlas.dublin.17.ainm"], "place": {"id": "dublin.baile-atha-cliath", "label": "Dublin / Baile Átha Cliath"}, "setting": "present_day", "learner_role": "present_day_self"},
+      "learning": {"stages": ["retrieval", "later_reuse"], "roles": ["later_reuse", "story_recap"], "dialect": "standard Irish; Dublin object context", "register": "neutral inspection instruction", "purpose": "Recap ainm by returning from the legend boundary to the named object.", "fixture_only": false},
+      "exercise_consumers": [{"path": "content/dublin/sihtric-penny.pack.draft.json", "record_id": "dublin.read-the-legend.fill-movement", "response_family": "fillGap", "container": "none", "use": "complete the return-to-legend movement line"}],
+      "provenance": {"origin": "repository_draft", "invented": false, "composition_note": "Exact Irish text is the existing review-draft fill-gap model; repository presence is not linguistic approval.", "source_refs": [{"path": "content/dublin/sihtric-penny.pack.draft.json", "record_id": "dublin.read-the-legend.fill-movement", "text_field": "exercise.modelText", "supports": "repository_text"}]},
+      "states": {"authoring": {"status": "complete", "revision": 1, "author_ref": "track-a.county-writers", "completed_at": "2026-08-02"}, "reviews": {"editorial": {"status": "pending", "record": null}, "pedagogy": {"status": "pending", "record": null}, "irish_language": {"status": "pending", "record": null}}, "capture_request": {"status": "not_requested", "requested_by": null, "requested_at": null, "authorization": null, "batch_line_ids": []}, "audio_qa": {"status": "not_generated", "record": null, "batch_line_id": null}, "learner_release": {"status": "blocked", "reasons": ["editorial_review_pending", "pedagogy_review_pending", "irish_language_review_pending", "audio_not_generated"]}},
+      "risk_flags": []
+    }
+  ]
+}

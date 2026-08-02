@@ -14,6 +14,7 @@ unreviewed audio is not learner-release approval.
 | File | Role |
 |------|------|
 | `authoring/phrase-family-store-v2.json` | Appendable index of county/story/sense family documents, capacity policy, and registered batches |
+| `authoring/d32-county-authoring-queue.md` | Track A's provisional 32-county partition and manifest-ready slice handoff |
 | `authoring/schemas/phrase-family-v2.schema.json` | Member contract: target, text, binding, exercise use, provenance, risks, and orthogonal states |
 | `authoring/schemas/generation-batch-v1.schema.json` | Deterministic capture handoff: identity, voice, claim, request, retry, result, checksum, error, and QA |
 | `authoring/voice-profiles-v1.json` | The single user-locked Irish voice/model profile |

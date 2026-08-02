@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "offaly.cross-of-the-scriptures.cros.cross-noun",
+  "county": "offaly",
+  "story_ref": {"path": "content/offaly/cross-of-the-scriptures.pack.draft.json", "record_id": "offaly.cross-of-the-scriptures"},
+  "target": {"lexeme_id": "lex.cros", "citation_form": "cros", "sense_id": "cros.cross-noun", "part_of_speech": "noun", "english_sense": "cross"},
+  "atlas_placements": [{"id": "atlas.offaly.03.cros", "gloss": "cross"}],
+  "status": "draft",
+  "claims": {"linguistic_approval": false, "historical_authenticity": false, "note": "Provisional county/story family from the Offaly review-draft exercise bank; repository text is not Irish-language or historical approval."},
+  "members": [
+    {
+      "id": "offaly.cros.object-instruction",
+      "family_id": "offaly.cross-of-the-scriptures.cros.cross-noun",
+      "target": {"lexeme_id": "lex.cros", "citation_form": "cros", "sense_id": "cros.cross-noun", "part_of_speech": "noun", "target_form": "gcros", "morphology": "initial mutation after ar an in the object phrase"},
+      "irish": {"text": "Seas anseo agus féach ar an gcros chloiche.", "normalized_text": "Seas anseo agus féach ar an gcros chloiche.", "inventory_slug": "seas-anseo-agus-feeach-ar-an-gcros-chloiche", "text_sha256": "3275b60b15cc5b8de67a1158e6103a30e80654b0ccec52b0e6be27886251d311"},
+      "english": {"intent": "Stand here and look at the stone cross.", "literal_note": "A present-day learner instruction at the surviving object; it does not invent a historical speaker."},
+      "binding": {"county": "offaly", "story_ref": {"path": "content/offaly/cross-of-the-scriptures.pack.draft.json", "record_id": "offaly.cross-of-the-scriptures"}, "atlas_placement_ids": ["atlas.offaly.03.cros"], "place": {"id": "offaly.clonmacnoise", "label": "Clonmacnoise / Cluain Mhic Nóis"}, "setting": "present_day", "learner_role": "present_day_self"},
+      "learning": {"stages": ["introduction", "phrase_or_sentence_use"], "roles": ["context_introduction", "morphology_contrast", "story_opening"], "dialect": "standard Irish; local place context", "register": "neutral viewing instruction", "purpose": "Open the Cross of the Scriptures encounter with a place-bound instruction and expose the mutated cros form.", "fixture_only": false},
+      "exercise_consumers": [{"path": "content/offaly/cross-of-the-scriptures.pack.draft.json", "record_id": "offaly.carved-cross.hear-looking", "response_family": "listenChoose", "container": "none", "use": "hear the object instruction before choosing its meaning"}],
+      "provenance": {"origin": "repository_draft", "invented": false, "composition_note": "Exact Irish text is the existing review-draft exercise audio prompt; repository presence is not linguistic approval.", "source_refs": [{"path": "content/offaly/cross-of-the-scriptures.pack.draft.json", "record_id": "offaly.carved-cross.hear-looking", "text_field": "exercise.audioText", "supports": "repository_text"}]},
+      "states": {"authoring": {"status": "complete", "revision": 1, "author_ref": "track-a.county-writers", "completed_at": "2026-08-02"}, "reviews": {"editorial": {"status": "pending", "record": null}, "pedagogy": {"status": "pending", "record": null}, "irish_language": {"status": "pending", "record": null}}, "capture_request": {"status": "not_requested", "requested_by": null, "requested_at": null, "authorization": null, "batch_line_ids": []}, "audio_qa": {"status": "not_generated", "record": null, "batch_line_id": null}, "learner_release": {"status": "blocked", "reasons": ["editorial_review_pending", "pedagogy_review_pending", "irish_language_review_pending", "audio_not_generated"]}},
+      "risk_flags": ["initial_mutation"]
+    },
+    {
+      "id": "offaly.cros.object-recap",
+      "family_id": "offaly.cross-of-the-scriptures.cros.cross-noun",
+      "target": {"lexeme_id": "lex.cros", "citation_form": "cros", "sense_id": "cros.cross-noun", "part_of_speech": "noun", "target_form": "cros", "morphology": "citation form in a definite object description"},
+      "irish": {"text": "Tá cros mhór chloiche anseo.", "normalized_text": "Tá cros mhór chloiche anseo.", "inventory_slug": "taa-cros-mhoor-chloiche-anseo", "text_sha256": "7944641cc33a2988055b8918afe1f3f2da34540f5d809b1f95f6f56692d5bfa6"},
+      "english": {"intent": "There is a large stone cross here.", "literal_note": "A supported present-day recap of the object encounter."},
+      "binding": {"county": "offaly", "story_ref": {"path": "content/offaly/cross-of-the-scriptures.pack.draft.json", "record_id": "offaly.cross-of-the-scriptures"}, "atlas_placement_ids": ["atlas.offaly.03.cros"], "place": {"id": "offaly.clonmacnoise", "label": "Clonmacnoise / Cluain Mhic Nóis"}, "setting": "present_day", "learner_role": "present_day_self"},
+      "learning": {"stages": ["phrase_or_sentence_use", "later_reuse"], "roles": ["later_reuse", "story_recap"], "dialect": "standard Irish; local place context", "register": "neutral present-day observation", "purpose": "Reuse cros in a short place-bound recap after the learner has looked at the carved object.", "fixture_only": false},
+      "exercise_consumers": [{"path": "content/offaly/cross-of-the-scriptures.pack.draft.json", "record_id": "offaly.carved-cross.retrieve-cross", "response_family": "freeTyping", "container": "none", "use": "retrieve the cross, material, scale and place"}],
+      "provenance": {"origin": "repository_draft", "invented": false, "composition_note": "Exact Irish text is the existing review-draft retrieval model; repository presence is not linguistic approval.", "source_refs": [{"path": "content/offaly/cross-of-the-scriptures.pack.draft.json", "record_id": "offaly.carved-cross.retrieve-cross", "text_field": "exercise.modelText", "supports": "repository_text"}]},
+      "states": {"authoring": {"status": "complete", "revision": 1, "author_ref": "track-a.county-writers", "completed_at": "2026-08-02"}, "reviews": {"editorial": {"status": "pending", "record": null}, "pedagogy": {"status": "pending", "record": null}, "irish_language": {"status": "pending", "record": null}}, "capture_request": {"status": "not_requested", "requested_by": null, "requested_at": null, "authorization": null, "batch_line_ids": []}, "audio_qa": {"status": "not_generated", "record": null, "batch_line_id": null}, "learner_release": {"status": "blocked", "reasons": ["editorial_review_pending", "pedagogy_review_pending", "irish_language_review_pending", "audio_not_generated"]}},
+      "risk_flags": []
+    },
+    {
+      "id": "offaly.cros.object-typing",
+      "family_id": "offaly.cross-of-the-scriptures.cros.cross-noun",
+      "target": {"lexeme_id": "lex.cros", "citation_form": "cros", "sense_id": "cros.cross-noun", "part_of_speech": "noun", "target_form": "gcros", "morphology": "initial mutation after ar an in the object phrase"},
+      "irish": {"text": "Seas anseo agus féach ar an gcros chloiche.", "normalized_text": "Seas anseo agus féach ar an gcros chloiche.", "inventory_slug": "seas-anseo-agus-feeach-ar-an-gcros-chloiche", "text_sha256": "3275b60b15cc5b8de67a1158e6103a30e80654b0ccec52b0e6be27886251d311"},
+      "english": {"intent": "Stand here and look at the stone cross.", "literal_note": "The same line is retained for productive typing after listening."},
+      "binding": {"county": "offaly", "story_ref": {"path": "content/offaly/cross-of-the-scriptures.pack.draft.json", "record_id": "offaly.cross-of-the-scriptures"}, "atlas_placement_ids": ["atlas.offaly.03.cros"], "place": {"id": "offaly.clonmacnoise", "label": "Clonmacnoise / Cluain Mhic Nóis"}, "setting": "present_day", "learner_role": "present_day_self"},
+      "learning": {"stages": ["retrieval", "phrase_or_sentence_use"], "roles": ["productive_pattern", "morphology_contrast", "story_recap"], "dialect": "standard Irish; local place context", "register": "neutral viewing instruction", "purpose": "Retrieve the same cross phrase in typing while preserving the mutated form.", "fixture_only": false},
+      "exercise_consumers": [{"path": "content/offaly/cross-of-the-scriptures.pack.draft.json", "record_id": "offaly.carved-cross.type-attention", "response_family": "freeTyping", "container": "none", "use": "type the place-bound viewing instruction"}],
+      "provenance": {"origin": "repository_draft", "invented": false, "composition_note": "Exact Irish text is the existing review-draft typing model; repository presence is not linguistic approval.", "source_refs": [{"path": "content/offaly/cross-of-the-scriptures.pack.draft.json", "record_id": "offaly.carved-cross.type-attention", "text_field": "exercise.modelText", "supports": "repository_text"}]},
+      "states": {"authoring": {"status": "complete", "revision": 1, "author_ref": "track-a.county-writers", "completed_at": "2026-08-02"}, "reviews": {"editorial": {"status": "pending", "record": null}, "pedagogy": {"status": "pending", "record": null}, "irish_language": {"status": "pending", "record": null}}, "capture_request": {"status": "not_requested", "requested_by": null, "requested_at": null, "authorization": null, "batch_line_ids": []}, "audio_qa": {"status": "not_generated", "record": null, "batch_line_id": null}, "learner_release": {"status": "blocked", "reasons": ["editorial_review_pending", "pedagogy_review_pending", "irish_language_review_pending", "audio_not_generated"]}},
+      "risk_flags": ["initial_mutation"]
+    }
+  ]
+}

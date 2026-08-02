@@ -28,6 +28,18 @@ BUNDLED_OUTPUTS = {
     for pack_id in OUTPUTS
 }
 
+PHRASE_FAMILY_MEMBER_BINDINGS = {
+    "offaly.carved-cross.hear-looking": ["offaly.cros.object-instruction"],
+    "offaly.carved-cross.type-attention": ["offaly.cros.object-typing"],
+    "offaly.carved-cross.retrieve-cross": ["offaly.cros.object-recap"],
+    "dublin.named-king.hear-name-and-market": ["dublin.ainm.coin-market"],
+    "dublin.named-king.notice-name-frame": ["dublin.ainm.named-ruler"],
+    "dublin.read-the-legend.fill-movement": ["dublin.ainm.return-to-legend"],
+    "meath.before-the-grant.hear-existing-place": ["meath.baile.before-grant"],
+    "meath.ford.type-two-positions": ["meath.baile.ford-contrast"],
+    "meath.town-and-afterlife.speak-present-place": ["meath.baile.living-town"],
+}
+
 AUDIO_FAMILIES = {"listenChoose", "recordCompare"}
 
 # D27 authored uses: a purpose achieved by configuring an existing family.
@@ -209,6 +221,10 @@ def assemble(spec: dict) -> dict:
         for chapter in spec["chapters"]
         for page in chapter["pages"]
     ]
+    for page in pages:
+        member_ids = PHRASE_FAMILY_MEMBER_BINDINGS.get(page["id"])
+        if member_ids and page["exercise"]:
+            page["exercise"]["phraseFamilyMemberIDs"] = list(member_ids)
     resources = list(spec["resources"])
     resources.extend(
         {
