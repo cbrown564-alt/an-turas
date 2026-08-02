@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.personal-atlas.dublin.d32-dublin-sihtric-penny.part-01",
+  "created_at": "2026-08-02T15:02:00+01:00",
+  "purpose": "D32 emergency harvest — dublin / d32.dublin.sihtric-penny / senses dublin.baile.town-homestead, dublin.cathair.city / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.personal-atlas.scale.019fc1ba",
+    "approved_at": "2026-08-02T15:02:00+01:00"
+  },
+  "lines": [
+    {
+      "line_id": "d32.personal-atlas.dublin.d32-dublin-sihtric-penny.part-01.line.1f27cd9071e4b0ba",
+      "member_ids": [
+        "d32.dublin.04.baile.town-homestead.personal-atlas.place-dubhlinn.dialogue"
+      ],
+      "normalized_text": "An baile é Dubhlinn?",
+      "text_sha256": "c23097a703e94ef409dce073bd061a4a6596b378ed94d7d4f3176a6a39941c65",
+      "inventory_slug": "an-baile-ee-dubhlinn",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:03:43.248930+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "kETnxARyonoUVCii07uw",
+        "started_at": "2026-08-02T14:03:32.544309+00:00",
+        "completed_at": "2026-08-02T14:03:43.233797+00:00",
+        "reported_credits": 20.0,
+        "reported_characters": 20
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-baile-ee-dubhlinn.mp3",
+        "sha256": "d1510c8b9015b6ed0e2ff62bc412b17b6c364eb378bd51bb442556255437ffb0",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.dublin.d32-dublin-sihtric-penny.part-01.line.27f949e3e4366308",
+      "member_ids": [
+        "d32.dublin.04.baile.town-homestead.personal-atlas.place-howth.context"
+      ],
+      "normalized_text": "Is baile é Binn Éadair.",
+      "text_sha256": "146e4c677bcbeef501635234952f41cdc8f42edec08246f287580f62b7ec5cfa",
+      "inventory_slug": "is-baile-ee-binn-eeadair",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:03:43.249073+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "eZhzhZsYs7MWRzfYdVRo",
+        "started_at": "2026-08-02T14:03:32.544309+00:00",
+        "completed_at": "2026-08-02T14:03:43.233797+00:00",
+        "reported_credits": 23.0,
+        "reported_characters": 23
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-baile-ee-binn-eeadair.mp3",
+        "sha256": "e2ee3a68225a94a30f907292fc9172f3d62627b13b44ad8b1e3064b81334af00",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.dublin.d32-dublin-sihtric-penny.part-01.line.77e5b575f942d3dd",
+      "member_ids": [
+        "d32.dublin.04.baile.town-homestead.personal-atlas.place-dubhlinn.context"
+      ],
+      "normalized_text": "Is baile é Dubhlinn.",
+      "text_sha256": "d6fe9388a5a528e9388e38cc0ccab1c0e8542d152f63c6f9260452cff0433b7a",
+      "inventory_slug": "is-baile-ee-dubhlinn",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:03:43.249220+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "pjNXdzkWC2h1E9KWT1eu",
+        "started_at": "2026-08-02T14:03:32.544309+00:00",
+        "completed_at": "2026-08-02T14:03:43.233797+00:00",
+        "reported_credits": 20.0,
+        "reported_characters": 20
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-baile-ee-dubhlinn.mp3",
+        "sha256": "c068373a010038535739436fcb3704ddce90d7b60321db314084d6d8b80bb70e",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.dublin.d32-dublin-sihtric-penny.part-01.line.bd61bca0f1b43bcb",
+      "member_ids": [
+        "d32.dublin.18.cathair.city.personal-atlas.place-dublin.context"
+      ],
+      "normalized_text": "Is cathair í Baile Átha Cliath.",
+      "text_sha256": "b276e04d8df69e6d01189ea2e37ac4e7e80891649dcf0df99fda8ce588851ab5",
+      "inventory_slug": "is-cathair-ii-baile-aatha-cliath",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:03:43.249352+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "qKpAMgBntVVHwCU9IPkF",
+        "started_at": "2026-08-02T14:03:32.544309+00:00",
+        "completed_at": "2026-08-02T14:03:43.233797+00:00",
+        "reported_credits": 31.0,
+        "reported_characters": 31
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-cathair-ii-baile-aatha-cliath.mp3",
+        "sha256": "2458ca74c70349d794b3ecafa87592ebb59cb3041e5b4022e554aa9ab9ffc88e",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.dublin.d32-dublin-sihtric-penny.part-01.line.c060314eca7ce54c",
+      "member_ids": [
+        "d32.dublin.18.cathair.city.personal-atlas.place-dublin.dialogue"
+      ],
+      "normalized_text": "An cathair í Baile Átha Cliath?",
+      "text_sha256": "99cc3c1554c34af7e355b0f439a4788d665cbbe73ca3355b76876d05e8ec1722",
+      "inventory_slug": "an-cathair-ii-baile-aatha-cliath",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:03:43.249503+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Qu8uKrdDhdDkNBEEg1Dy",
+        "started_at": "2026-08-02T14:03:32.544309+00:00",
+        "completed_at": "2026-08-02T14:03:43.233797+00:00",
+        "reported_credits": 31.0,
+        "reported_characters": 31
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-cathair-ii-baile-aatha-cliath.mp3",
+        "sha256": "e8295adf1e04fa9574eb5ba23dbf19fe4e52182b2967223b083688c709f1c612",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.dublin.d32-dublin-sihtric-penny.part-01.line.c359aea4f678624c",
+      "member_ids": [
+        "d32.dublin.04.baile.town-homestead.personal-atlas.place-howth.dialogue"
+      ],
+      "normalized_text": "An baile é Binn Éadair?",
+      "text_sha256": "4dac40db1011e59a56d17995dd2fb1fdb857eec3b8ee42fabed3b645c8abcc42",
+      "inventory_slug": "an-baile-ee-binn-eeadair",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:03:43.249638+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "NeGpV2a6dJRLqbfmfOE1",
+        "started_at": "2026-08-02T14:03:32.544309+00:00",
+        "completed_at": "2026-08-02T14:03:43.233797+00:00",
+        "reported_credits": 23.0,
+        "reported_characters": 23
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-baile-ee-binn-eeadair.mp3",
+        "sha256": "492e3751480bce6e69704184d723efa51e6912cdb87d8eb8229067820d5b01f3",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 148.0,
+    "estimated_cumulative_credits": 9133.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 93204.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T14:03:32.544309+00:00",
+      "used_credits": 93204.0,
+      "remaining_credits": 142895.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T14:03:43.233797+00:00",
+      "used_credits": 93204.0,
+      "remaining_credits": 142895.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.personal-atlas.scale.019fc1ba",
+      "authorized_at": "2026-08-02T15:02:00+01:00",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.personal-atlas.2026-08-02",
+      "baseline_used_credits": 92508.0,
+      "payload_credit_limit": 4332.0
+    }
+  },
+  "counts": {
+    "lines": 6,
+    "member_references": 6,
+    "planned": 0,
+    "approved": 6,
+    "succeeded": 6,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "4138cce24127b03a9194c0006b311873341914b5a73f3efafa8c28583fee7c4a"
+}

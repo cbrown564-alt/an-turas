@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.personal-atlas.wexford.d32-wexford-bagenal-harvey-1798.part-01",
+  "created_at": "2026-08-02T15:02:00+01:00",
+  "purpose": "D32 emergency harvest — wexford / d32.wexford.bagenal-harvey-1798 / senses wexford.ainm.name / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.personal-atlas.scale.019fc1ba",
+    "approved_at": "2026-08-02T15:02:00+01:00"
+  },
+  "lines": [
+    {
+      "line_id": "d32.personal-atlas.wexford.d32-wexford-bagenal-harvey-1798.part-01.line.79de954710096f24",
+      "member_ids": [
+        "d32.wexford.20.ainm.name.personal-atlas.name-surname-kelly.dialogue"
+      ],
+      "normalized_text": "An é Ó Ceallaigh d’ainm teaghlaigh?",
+      "text_sha256": "724aaba38c6a88b2c51e5a0b8e03beb233b8cbe4a23a20094c740a348fdff003",
+      "inventory_slug": "an-ee-oo-ceallaigh-d-ainm-teaghlaigh",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:07:32.272015+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "P2wAdTrLkafmZF9bEt0D",
+        "started_at": "2026-08-02T14:07:26.822743+00:00",
+        "completed_at": "2026-08-02T14:07:32.246777+00:00",
+        "reported_credits": 35.0,
+        "reported_characters": 35
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-oo-ceallaigh-d-ainm-teaghlaigh.mp3",
+        "sha256": "9bb45f5409484b01ba87553d766b413d2c21a487f44df817aa25701e2364b027",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.wexford.d32-wexford-bagenal-harvey-1798.part-01.line.9676802d95dbfaea",
+      "member_ids": [
+        "d32.wexford.20.ainm.name.personal-atlas.name-surname-kelly.context"
+      ],
+      "normalized_text": "Is é Ó Ceallaigh an t-ainm teaghlaigh.",
+      "text_sha256": "1edb7d213b3c5b952e0b6506ab83601b3830d61ded9af26d0fd5fcc09deab029",
+      "inventory_slug": "is-ee-oo-ceallaigh-an-t-ainm-teaghlaigh",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:07:32.272105+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "4AJmdRBjTjJT5Nv2IAee",
+        "started_at": "2026-08-02T14:07:26.822743+00:00",
+        "completed_at": "2026-08-02T14:07:32.246777+00:00",
+        "reported_credits": 38.0,
+        "reported_characters": 38
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-oo-ceallaigh-an-t-ainm-teaghlaigh.mp3",
+        "sha256": "57558d89cc54118059dfbf4b5b49c3567dc7346e2c210e6895d2c5320dc615ec",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 73.0,
+    "estimated_cumulative_credits": 9058.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 94797.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T14:07:26.822743+00:00",
+      "used_credits": 94797.0,
+      "remaining_credits": 141302.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T14:07:32.246777+00:00",
+      "used_credits": 94797.0,
+      "remaining_credits": 141302.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.personal-atlas.scale.019fc1ba",
+      "authorized_at": "2026-08-02T15:02:00+01:00",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.personal-atlas.2026-08-02",
+      "baseline_used_credits": 92508.0,
+      "payload_credit_limit": 4332.0
+    }
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "9f939b9e2066394d4a6aadda23a29a4a5a303075870ee4687bb000e42fef4354"
+}

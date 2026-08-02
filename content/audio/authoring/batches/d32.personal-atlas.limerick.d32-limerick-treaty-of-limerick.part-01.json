@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.personal-atlas.limerick.d32-limerick-treaty-of-limerick.part-01",
+  "created_at": "2026-08-02T15:02:00+01:00",
+  "purpose": "D32 emergency harvest — limerick / d32.limerick.treaty-of-limerick / senses limerick.ainm.name, limerick.cathair.city / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.personal-atlas.scale.019fc1ba",
+    "approved_at": "2026-08-02T15:02:00+01:00"
+  },
+  "lines": [
+    {
+      "line_id": "d32.personal-atlas.limerick.d32-limerick-treaty-of-limerick.part-01.line.0e992b1fcb4df9de",
+      "member_ids": [
+        "d32.limerick.20.ainm.name.personal-atlas.name-given-deirdre.context"
+      ],
+      "normalized_text": "Is é Deirdre an t-ainm.",
+      "text_sha256": "7e4c7126fe16a17c999e182535badd547efbf6aa8ecd14ab4fde584ac6a5d650",
+      "inventory_slug": "is-ee-deirdre-an-t-ainm",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:05:13.684249+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "7kbYKgXiUkd3hGwOHw05",
+        "started_at": "2026-08-02T14:05:03.004841+00:00",
+        "completed_at": "2026-08-02T14:05:13.673143+00:00",
+        "reported_credits": 23.0,
+        "reported_characters": 23
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-deirdre-an-t-ainm.mp3",
+        "sha256": "e72452dd8b008dbe6a32596834e09244c86054d69468a3aab24258f59dcdc9ce",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.limerick.d32-limerick-treaty-of-limerick.part-01.line.154e2719358c5766",
+      "member_ids": [
+        "d32.limerick.02.cathair.city.personal-atlas.place-limerick.context"
+      ],
+      "normalized_text": "Is cathair í Luimneach.",
+      "text_sha256": "022a899d8320856ecaa032c6b1711f3373af0ba991451e2e739f81c13da14876",
+      "inventory_slug": "is-cathair-ii-luimneach",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:05:13.684417+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ZhuAhLJ0W6DolndffulC",
+        "started_at": "2026-08-02T14:05:03.004841+00:00",
+        "completed_at": "2026-08-02T14:05:13.673143+00:00",
+        "reported_credits": 23.0,
+        "reported_characters": 23
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-cathair-ii-luimneach.mp3",
+        "sha256": "8df9f255ccf6ccfd0ce3309b1f774f6acf7c572404e73bb493ca5c7bba7051b7",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.limerick.d32-limerick-treaty-of-limerick.part-01.line.5969cca13b04ffd2",
+      "member_ids": [
+        "d32.limerick.02.cathair.city.personal-atlas.place-limerick.dialogue"
+      ],
+      "normalized_text": "An cathair í Luimneach?",
+      "text_sha256": "0584799192375c5ec8b00164706fd3c9d52faf2b7d5ee453f4d4597c32ed788f",
+      "inventory_slug": "an-cathair-ii-luimneach",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:05:13.684553+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "oyIIuVYMTpSub7dK3cRP",
+        "started_at": "2026-08-02T14:05:03.004841+00:00",
+        "completed_at": "2026-08-02T14:05:13.673143+00:00",
+        "reported_credits": 23.0,
+        "reported_characters": 23
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-cathair-ii-luimneach.mp3",
+        "sha256": "d82198bd070d536b8fbcee1a18317952906435a7799f9b822375090d4c17ec73",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.limerick.d32-limerick-treaty-of-limerick.part-01.line.97e10dacd52b50dd",
+      "member_ids": [
+        "d32.limerick.20.ainm.name.personal-atlas.name-given-deirdre.dialogue"
+      ],
+      "normalized_text": "An é Deirdre d’ainm?",
+      "text_sha256": "b7133c236b78c02b85f758d6404ddf46970bd6bf214d42eef2c60d421fe78083",
+      "inventory_slug": "an-ee-deirdre-d-ainm",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:05:13.684669+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Vr01Nw06a70PVqPH9V8e",
+        "started_at": "2026-08-02T14:05:03.004841+00:00",
+        "completed_at": "2026-08-02T14:05:13.673143+00:00",
+        "reported_credits": 20.0,
+        "reported_characters": 20
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-deirdre-d-ainm.mp3",
+        "sha256": "77b4d63d8bbdcdd22454d6a0c157896178392cdc0ce1f4e7c27d9d1c3bd8b266",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.limerick.d32-limerick-treaty-of-limerick.part-01.line.a79637ed650fc783",
+      "member_ids": [
+        "d32.limerick.20.ainm.name.personal-atlas.name-surname-burke.context"
+      ],
+      "normalized_text": "Is é de Búrca an t-ainm teaghlaigh.",
+      "text_sha256": "00123191cac7fdcc919fc486fb9223ef03988d453a0bac01a51fc78cc95cf09d",
+      "inventory_slug": "is-ee-de-buurca-an-t-ainm-teaghlaigh",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:05:13.684788+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "wbKArgkvEJ7i30RhHLaS",
+        "started_at": "2026-08-02T14:05:03.004841+00:00",
+        "completed_at": "2026-08-02T14:05:13.673143+00:00",
+        "reported_credits": 35.0,
+        "reported_characters": 35
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-de-buurca-an-t-ainm-teaghlaigh.mp3",
+        "sha256": "d2616e23a0840f165e643383275bb22c1b06ebbcf6646c58ac31ce6e0379bb6a",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.limerick.d32-limerick-treaty-of-limerick.part-01.line.cdd1f32392207b12",
+      "member_ids": [
+        "d32.limerick.20.ainm.name.personal-atlas.name-surname-burke.dialogue"
+      ],
+      "normalized_text": "An é de Búrca d’ainm teaghlaigh?",
+      "text_sha256": "03f94de7d01e352159f6a70c20ff0e0f534105d742afa8c689141f103c9bf75f",
+      "inventory_slug": "an-ee-de-buurca-d-ainm-teaghlaigh",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:05:13.684933+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "4WkgVffiPnnfajY29tmD",
+        "started_at": "2026-08-02T14:05:03.004841+00:00",
+        "completed_at": "2026-08-02T14:05:13.673143+00:00",
+        "reported_credits": 32.0,
+        "reported_characters": 32
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-de-buurca-d-ainm-teaghlaigh.mp3",
+        "sha256": "5bfb23af4d00d6665dbb69a0e989c638780d38c9c53ca8a8ebe848d1f2437075",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 156.0,
+    "estimated_cumulative_credits": 9141.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 93598.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T14:05:03.004841+00:00",
+      "used_credits": 93598.0,
+      "remaining_credits": 142501.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T14:05:13.673143+00:00",
+      "used_credits": 93598.0,
+      "remaining_credits": 142501.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.personal-atlas.scale.019fc1ba",
+      "authorized_at": "2026-08-02T15:02:00+01:00",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.personal-atlas.2026-08-02",
+      "baseline_used_credits": 92508.0,
+      "payload_credit_limit": 4332.0
+    }
+  },
+  "counts": {
+    "lines": 6,
+    "member_references": 6,
+    "planned": 0,
+    "approved": 6,
+    "succeeded": 6,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "6a86bbda68f91f9342c3fb08ef6885907cc7a28f3800d95b3524dc53b714f2cd"
+}

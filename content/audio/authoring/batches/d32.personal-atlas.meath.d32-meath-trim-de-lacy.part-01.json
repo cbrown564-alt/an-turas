@@ -1,0 +1,450 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.personal-atlas.meath.d32-meath-trim-de-lacy.part-01",
+  "created_at": "2026-08-02T15:02:00+01:00",
+  "purpose": "D32 emergency harvest — meath / d32.meath.trim-de-lacy / senses meath.ainm.name / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.personal-atlas.scale.019fc1ba",
+    "approved_at": "2026-08-02T15:02:00+01:00"
+  },
+  "lines": [
+    {
+      "line_id": "d32.personal-atlas.meath.d32-meath-trim-de-lacy.part-01.line.07003b40b0a0fa76",
+      "member_ids": [
+        "d32.meath.19.ainm.name.personal-atlas.name-given-odhran.dialogue"
+      ],
+      "normalized_text": "An é Odhrán d’ainm?",
+      "text_sha256": "1f0e4f26e84bd5463baaaaa12567db24a79757fcc3613d26f5a2973d2a45dee1",
+      "inventory_slug": "an-ee-odhraan-d-ainm",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:17.525369+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "mdbh40IkZZmJiGxqzc7S",
+        "started_at": "2026-08-02T14:06:01.825097+00:00",
+        "completed_at": "2026-08-02T14:06:17.512141+00:00",
+        "reported_credits": 19.0,
+        "reported_characters": 19
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-odhraan-d-ainm.mp3",
+        "sha256": "56dfe57decbdf3635c174266415fc81897276cbcf015cd83668364d50ba28752",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.meath.d32-meath-trim-de-lacy.part-01.line.2194ad855f56c4fe",
+      "member_ids": [
+        "d32.meath.19.ainm.name.personal-atlas.place-newgrange.context"
+      ],
+      "normalized_text": "Is é Sí an Bhrú ainm na háite.",
+      "text_sha256": "d637f4b4500c4bbd5193e394180d0bfa62e48e0b9eb8e5e136c943f1eadacb50",
+      "inventory_slug": "is-ee-sii-an-bhruu-ainm-na-haaite",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:17.525450+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "QoRemtAka4DspeKSi7HQ",
+        "started_at": "2026-08-02T14:06:01.825097+00:00",
+        "completed_at": "2026-08-02T14:06:17.512141+00:00",
+        "reported_credits": 30.0,
+        "reported_characters": 30
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-sii-an-bhruu-ainm-na-haaite.mp3",
+        "sha256": "b49892a78c9f17627058118d3335ec42e9b77750b69a283d4257f92c33285c7e",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.meath.d32-meath-trim-de-lacy.part-01.line.6f12d78eb64dc605",
+      "member_ids": [
+        "d32.meath.19.ainm.name.personal-atlas.place-trim.dialogue"
+      ],
+      "normalized_text": "An é Baile Átha Troim ainm na háite?",
+      "text_sha256": "c882e75e89e1f36d0521c5b3c876ab2aa507e87511ea0571e65fa006cce224cd",
+      "inventory_slug": "an-ee-baile-aatha-troim-ainm-na-haaite",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:17.525741+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "FxZuaE2NC5VPjRqFb0UD",
+        "started_at": "2026-08-02T14:06:01.825097+00:00",
+        "completed_at": "2026-08-02T14:06:17.512141+00:00",
+        "reported_credits": 36.0,
+        "reported_characters": 36
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-baile-aatha-troim-ainm-na-haaite.mp3",
+        "sha256": "8b7736e5dbd582483ddb62a3aa56f06fc1629ef4878ee53d88b0f3a7093652f5",
+        "bytes": 80292,
+        "duration_seconds": 3.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.meath.d32-meath-trim-de-lacy.part-01.line.88637600f24163e5",
+      "member_ids": [
+        "d32.meath.19.ainm.name.personal-atlas.name-surname-nolan.context"
+      ],
+      "normalized_text": "Is é Ó Nualláin an t-ainm teaghlaigh.",
+      "text_sha256": "a6699d717347367248b3d5a980d990feb77f8ae060d47876351cace9144dffa3",
+      "inventory_slug": "is-ee-oo-nuallaain-an-t-ainm-teaghlaigh",
+      "estimated_characters": 37,
+      "estimated_credits": 37.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:17.525884+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "c49J5YEkYe2JJvvPsHG6",
+        "started_at": "2026-08-02T14:06:01.825097+00:00",
+        "completed_at": "2026-08-02T14:06:17.512141+00:00",
+        "reported_credits": 37.0,
+        "reported_characters": 37
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-oo-nuallaain-an-t-ainm-teaghlaigh.mp3",
+        "sha256": "7932ef3ff95af16370ade91e079bfdc96e2e64f2bb6c0cc239c9b814232314a4",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.meath.d32-meath-trim-de-lacy.part-01.line.ae693fffc72e58f8",
+      "member_ids": [
+        "d32.meath.19.ainm.name.personal-atlas.place-newgrange.dialogue"
+      ],
+      "normalized_text": "An é Sí an Bhrú ainm na háite?",
+      "text_sha256": "7025362b31fddebacefc3c08c7f741b9ff1cccbf9fe390928b82ad4f8378f8a7",
+      "inventory_slug": "an-ee-sii-an-bhruu-ainm-na-haaite",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:17.525973+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "LbCj2fqNvHyJ8HrLyY2z",
+        "started_at": "2026-08-02T14:06:01.825097+00:00",
+        "completed_at": "2026-08-02T14:06:17.512141+00:00",
+        "reported_credits": 30.0,
+        "reported_characters": 30
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-sii-an-bhruu-ainm-na-haaite.mp3",
+        "sha256": "39c1b613a2b1ec7c96a4865c381f4a1d2baf998dad5d3685271a384e8c42575c",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.meath.d32-meath-trim-de-lacy.part-01.line.d8a6d3359b469676",
+      "member_ids": [
+        "d32.meath.19.ainm.name.personal-atlas.name-given-odhran.context"
+      ],
+      "normalized_text": "Is é Odhrán an t-ainm.",
+      "text_sha256": "42a119793aaabae2b318b4ca8a0115366decc6cdb957abe82717b9a68b0c7e53",
+      "inventory_slug": "is-ee-odhraan-an-t-ainm",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:17.526068+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "hMH4zq6sZxpfQ4MRXKnn",
+        "started_at": "2026-08-02T14:06:01.825097+00:00",
+        "completed_at": "2026-08-02T14:06:17.512141+00:00",
+        "reported_credits": 22.0,
+        "reported_characters": 22
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-odhraan-an-t-ainm.mp3",
+        "sha256": "0ec34e507b584cec9b09f7c9fc6093ca1580f660294ac59e353884da921133ed",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.meath.d32-meath-trim-de-lacy.part-01.line.dfc7a2184962c70b",
+      "member_ids": [
+        "d32.meath.19.ainm.name.personal-atlas.name-surname-nolan.dialogue"
+      ],
+      "normalized_text": "An é Ó Nualláin d’ainm teaghlaigh?",
+      "text_sha256": "ccb8a75c2a769a35b6eb8603622f1550841bb1dad39ae0b9bfd54412b584d0cc",
+      "inventory_slug": "an-ee-oo-nuallaain-d-ainm-teaghlaigh",
+      "estimated_characters": 34,
+      "estimated_credits": 34.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:17.526119+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "4HZ5P9WzxGUoYoo5HM9f",
+        "started_at": "2026-08-02T14:06:01.825097+00:00",
+        "completed_at": "2026-08-02T14:06:17.512141+00:00",
+        "reported_credits": 34.0,
+        "reported_characters": 34
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-oo-nuallaain-d-ainm-teaghlaigh.mp3",
+        "sha256": "1b108a42317e14b1c42cafb28c39028a85bb80e6fff887b05ffd24a896b2bc6d",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.meath.d32-meath-trim-de-lacy.part-01.line.f6ed163198d99768",
+      "member_ids": [
+        "d32.meath.19.ainm.name.personal-atlas.place-trim.context"
+      ],
+      "normalized_text": "Is é Baile Átha Troim ainm na háite.",
+      "text_sha256": "f826664cde0ab8ff24d1d228bd02576bf8d8406798f6da39b8a3b3ce01a9e9b7",
+      "inventory_slug": "is-ee-baile-aatha-troim-ainm-na-haaite",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:17.526172+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "It8pU9xdwWQCmi0GMC5e",
+        "started_at": "2026-08-02T14:06:01.825097+00:00",
+        "completed_at": "2026-08-02T14:06:17.512141+00:00",
+        "reported_credits": 36.0,
+        "reported_characters": 36
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-baile-aatha-troim-ainm-na-haaite.mp3",
+        "sha256": "e1c59af1cc5a18f89b8a7f8a59c1e41a2563da6aceaac11462c57d805536d043",
+        "bytes": 84053,
+        "duration_seconds": 3.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 244.0,
+    "estimated_cumulative_credits": 9229.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 94051.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T14:06:01.825097+00:00",
+      "used_credits": 94051.0,
+      "remaining_credits": 142048.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T14:06:17.512141+00:00",
+      "used_credits": 94051.0,
+      "remaining_credits": 142048.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.personal-atlas.scale.019fc1ba",
+      "authorized_at": "2026-08-02T15:02:00+01:00",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.personal-atlas.2026-08-02",
+      "baseline_used_credits": 92508.0,
+      "payload_credit_limit": 4332.0
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "3f1ec6e55011dd3fae1fe99004d90ce0601bda221c20514c2451fcdd6b2bb6be"
+}

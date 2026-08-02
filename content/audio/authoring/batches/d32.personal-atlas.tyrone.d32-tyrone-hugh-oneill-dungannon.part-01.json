@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.personal-atlas.tyrone.d32-tyrone-hugh-oneill-dungannon.part-01",
+  "created_at": "2026-08-02T15:02:00+01:00",
+  "purpose": "D32 emergency harvest — tyrone / d32.tyrone.hugh-oneill-dungannon / senses tyrone.ainm.name / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.personal-atlas.scale.019fc1ba",
+    "approved_at": "2026-08-02T15:02:00+01:00"
+  },
+  "lines": [
+    {
+      "line_id": "d32.personal-atlas.tyrone.d32-tyrone-hugh-oneill-dungannon.part-01.line.6fe769e2dafb13a2",
+      "member_ids": [
+        "d32.tyrone.20.ainm.name.personal-atlas.name-given-roisin.dialogue"
+      ],
+      "normalized_text": "An é Róisín d’ainm?",
+      "text_sha256": "8217949e789bc67ee742ebb2182d5470a913ee7e1b98347899c348db865f539d",
+      "inventory_slug": "an-ee-rooisiin-d-ainm",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:07:04.445523+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Ru5hksYdH2EAx4w2cav0",
+        "started_at": "2026-08-02T14:07:00.042427+00:00",
+        "completed_at": "2026-08-02T14:07:04.440143+00:00",
+        "reported_credits": 19.0,
+        "reported_characters": 19
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-rooisiin-d-ainm.mp3",
+        "sha256": "bda4c44e98b973d1b383df4e74deef7bd6f07f46033b074b1fd0a4e9dc8e858b",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.tyrone.d32-tyrone-hugh-oneill-dungannon.part-01.line.951598bbd8931676",
+      "member_ids": [
+        "d32.tyrone.20.ainm.name.personal-atlas.name-given-roisin.context"
+      ],
+      "normalized_text": "Is é Róisín an t-ainm.",
+      "text_sha256": "e6f95b42a57fda8b672d7319a1e67f08803fc03f96380becae8fedebd9c5bac2",
+      "inventory_slug": "is-ee-rooisiin-an-t-ainm",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:07:04.445591+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "aSAUvvtV8pENPjZ0XicX",
+        "started_at": "2026-08-02T14:07:00.042427+00:00",
+        "completed_at": "2026-08-02T14:07:04.440143+00:00",
+        "reported_credits": 22.0,
+        "reported_characters": 22
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-rooisiin-an-t-ainm.mp3",
+        "sha256": "3874b36508cba69a991cba689cb7b025ce99ba1789f9a018c70b71e913ba7281",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 41.0,
+    "estimated_cumulative_credits": 9026.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 94491.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T14:07:00.042427+00:00",
+      "used_credits": 94491.0,
+      "remaining_credits": 141608.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T14:07:04.440143+00:00",
+      "used_credits": 94491.0,
+      "remaining_credits": 141608.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.personal-atlas.scale.019fc1ba",
+      "authorized_at": "2026-08-02T15:02:00+01:00",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.personal-atlas.2026-08-02",
+      "baseline_used_credits": 92508.0,
+      "payload_credit_limit": 4332.0
+    }
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "23fdd2246bf15ffa77b8263c78a9d146508fee67f63e26c523a3ec7f29ffaf18"
+}

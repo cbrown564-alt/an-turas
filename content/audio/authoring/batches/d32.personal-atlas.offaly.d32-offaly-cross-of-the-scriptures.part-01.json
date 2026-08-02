@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.personal-atlas.offaly.d32-offaly-cross-of-the-scriptures.part-01",
+  "created_at": "2026-08-02T15:02:00+01:00",
+  "purpose": "D32 emergency harvest — offaly / d32.offaly.cross-of-the-scriptures / senses offaly.mainistir.monastery / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.personal-atlas.scale.019fc1ba",
+    "approved_at": "2026-08-02T15:02:00+01:00"
+  },
+  "lines": [
+    {
+      "line_id": "d32.personal-atlas.offaly.d32-offaly-cross-of-the-scriptures.part-01.line.c1e8bde1ab7d1302",
+      "member_ids": [
+        "d32.offaly.05.mainistir.monastery.personal-atlas.place-clonmacnoise.dialogue"
+      ],
+      "normalized_text": "An mainistir é Cluain Mhic Nóis?",
+      "text_sha256": "a6b9f5c76728a37a3966a2f3446f2074c2be0a81dd344fd5c93181f0a5b07493",
+      "inventory_slug": "an-mainistir-ee-cluain-mhic-noois",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:33.626160+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "KfVq3OplerSPhErMtgoQ",
+        "started_at": "2026-08-02T14:06:28.348165+00:00",
+        "completed_at": "2026-08-02T14:06:33.620582+00:00",
+        "reported_credits": 32.0,
+        "reported_characters": 32
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-mainistir-ee-cluain-mhic-noois.mp3",
+        "sha256": "1d274baf327d3c5b640a626ecf7fe77e154fe6aeda4a0977b6cbf5c62bde5636",
+        "bytes": 78411,
+        "duration_seconds": 3.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.offaly.d32-offaly-cross-of-the-scriptures.part-01.line.c93de8087e227b6b",
+      "member_ids": [
+        "d32.offaly.05.mainistir.monastery.personal-atlas.place-clonmacnoise.context"
+      ],
+      "normalized_text": "Is mainistir é Cluain Mhic Nóis.",
+      "text_sha256": "38244180677a0e9f5f4025b83d2fdc4cc596f7eebf1b83827864ec88c333c8a5",
+      "inventory_slug": "is-mainistir-ee-cluain-mhic-noois",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:33.626261+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "dVTyuXO4vVyrbFhf6HLQ",
+        "started_at": "2026-08-02T14:06:28.348165+00:00",
+        "completed_at": "2026-08-02T14:06:33.620582+00:00",
+        "reported_credits": 32.0,
+        "reported_characters": 32
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-mainistir-ee-cluain-mhic-noois.mp3",
+        "sha256": "2fadd955fee2e6c7b3537cf68bf91a2982d3b7d53aac3d1e526810dbeae1fcea",
+        "bytes": 74649,
+        "duration_seconds": 3.04
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 64.0,
+    "estimated_cumulative_credits": 9049.0,
+    "actual_batch_credits": 440.0,
+    "actual_cumulative_credits": 94491.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T14:06:28.348165+00:00",
+      "used_credits": 94051.0,
+      "remaining_credits": 142048.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T14:06:33.620582+00:00",
+      "used_credits": 94491.0,
+      "remaining_credits": 141608.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.personal-atlas.scale.019fc1ba",
+      "authorized_at": "2026-08-02T15:02:00+01:00",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.personal-atlas.2026-08-02",
+      "baseline_used_credits": 92508.0,
+      "payload_credit_limit": 4332.0
+    }
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "bb1a3e400f91a59e517cf0a8d2265c521331e75a1154e6dfe0390c941f4ae261"
+}

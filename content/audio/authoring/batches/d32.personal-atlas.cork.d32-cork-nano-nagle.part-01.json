@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.personal-atlas.cork.d32-cork-nano-nagle.part-01",
+  "created_at": "2026-08-02T15:02:00+01:00",
+  "purpose": "D32 emergency harvest — cork / d32.cork.nano-nagle / senses cork.ainm.name, cork.cathair.city / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.personal-atlas.scale.019fc1ba",
+    "approved_at": "2026-08-02T15:02:00+01:00"
+  },
+  "lines": [
+    {
+      "line_id": "d32.personal-atlas.cork.d32-cork-nano-nagle.part-01.line.102cfa0157f8e0fd",
+      "member_ids": [
+        "d32.cork.20.ainm.name.personal-atlas.name-surname-fitzgerald.context"
+      ],
+      "normalized_text": "Is é Mac Gearailt an t-ainm teaghlaigh.",
+      "text_sha256": "b48ba95286867d22820af6f577b120e779186671bbbb990393b71ed174d67055",
+      "inventory_slug": "is-ee-mac-gearailt-an-t-ainm-teaghlaigh",
+      "estimated_characters": 39,
+      "estimated_credits": 39.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:57.263617+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Q45uIRQsmwZWaGe1nMwo",
+        "started_at": "2026-08-02T14:02:47.236350+00:00",
+        "completed_at": "2026-08-02T14:02:57.249392+00:00",
+        "reported_credits": 39.0,
+        "reported_characters": 39
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-mac-gearailt-an-t-ainm-teaghlaigh.mp3",
+        "sha256": "e309f0ed7224e63edba4a746fd5645938ae31fc0e4aeb7cf89b8e1f024e83d65",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.cork.d32-cork-nano-nagle.part-01.line.398a347b34b29a5e",
+      "member_ids": [
+        "d32.cork.20.ainm.name.personal-atlas.name-given-sean.dialogue"
+      ],
+      "normalized_text": "An é Seán d’ainm?",
+      "text_sha256": "ee8c72e61be01d26464d8096e5997dc038ff0070a646bac673d69e8d11eb1821",
+      "inventory_slug": "an-ee-seaan-d-ainm",
+      "estimated_characters": 17,
+      "estimated_credits": 17.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:57.263800+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "DeEmuYesKtbv5TCcJa9t",
+        "started_at": "2026-08-02T14:02:47.236350+00:00",
+        "completed_at": "2026-08-02T14:02:57.249392+00:00",
+        "reported_credits": 17.0,
+        "reported_characters": 17
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-seaan-d-ainm.mp3",
+        "sha256": "dbd4092fe443f02bbdb49bcda9bd8263c39a58fca25ab4be5b8066c48ece0fd4",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.cork.d32-cork-nano-nagle.part-01.line.79def05a74a998b9",
+      "member_ids": [
+        "d32.cork.20.ainm.name.personal-atlas.name-surname-fitzgerald.dialogue"
+      ],
+      "normalized_text": "An é Mac Gearailt d’ainm teaghlaigh?",
+      "text_sha256": "d8a2bfff9e00c4883bcbfe221bb8ff9b792e7c14d0cf976bb9decf7b7d9693d6",
+      "inventory_slug": "an-ee-mac-gearailt-d-ainm-teaghlaigh",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:57.263916+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ayc6MBvYvXnRcb1tGd8C",
+        "started_at": "2026-08-02T14:02:47.236350+00:00",
+        "completed_at": "2026-08-02T14:02:57.249392+00:00",
+        "reported_credits": 36.0,
+        "reported_characters": 36
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-mac-gearailt-d-ainm-teaghlaigh.mp3",
+        "sha256": "e543c9a73c2e5df7c2d367c31cd896c576f396324a823d5d6aea0f30f1c446b3",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.cork.d32-cork-nano-nagle.part-01.line.b4258398e6967d1e",
+      "member_ids": [
+        "d32.cork.20.ainm.name.personal-atlas.name-given-sean.context"
+      ],
+      "normalized_text": "Is é Seán an t-ainm.",
+      "text_sha256": "74ca14f875f7b78ff0c3d68d7400734576c5c0e225e4da328de279d3fda0f463",
+      "inventory_slug": "is-ee-seaan-an-t-ainm",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:57.264056+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "grBcJmdh1KZPPCIufSlh",
+        "started_at": "2026-08-02T14:02:47.236350+00:00",
+        "completed_at": "2026-08-02T14:02:57.249392+00:00",
+        "reported_credits": 20.0,
+        "reported_characters": 20
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-seaan-an-t-ainm.mp3",
+        "sha256": "d4e32f5cb789c91785871d4fcf98e70c9bc4d47119464cad96f5424c9181f71e",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.cork.d32-cork-nano-nagle.part-01.line.b65edaa8e1f9ed97",
+      "member_ids": [
+        "d32.cork.07.cathair.city.personal-atlas.place-cork.context"
+      ],
+      "normalized_text": "Is cathair í Corcaigh.",
+      "text_sha256": "c214bcc84e6759517c49b9d6a311188a10f5b6d8fe2a81f3ae8df858ccd28624",
+      "inventory_slug": "is-cathair-ii-corcaigh",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:57.264175+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "K8dRXq7enCOxJsU2aupa",
+        "started_at": "2026-08-02T14:02:47.236350+00:00",
+        "completed_at": "2026-08-02T14:02:57.249392+00:00",
+        "reported_credits": 22.0,
+        "reported_characters": 22
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-cathair-ii-corcaigh.mp3",
+        "sha256": "dce0269a66bf5c5018b003ea966cb41daf45736ad66ace4f37de48927fc6228b",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.cork.d32-cork-nano-nagle.part-01.line.f973d5aad9e432a0",
+      "member_ids": [
+        "d32.cork.07.cathair.city.personal-atlas.place-cork.dialogue"
+      ],
+      "normalized_text": "An cathair í Corcaigh?",
+      "text_sha256": "3e8dda4406bac30892de6d94ef0982d1fff1c7c7554919af58de4c79437ada5c",
+      "inventory_slug": "an-cathair-ii-corcaigh",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:57.264300+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "7N4xq1PTbFCFTMIsrDbr",
+        "started_at": "2026-08-02T14:02:47.236350+00:00",
+        "completed_at": "2026-08-02T14:02:57.249392+00:00",
+        "reported_credits": 22.0,
+        "reported_characters": 22
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-cathair-ii-corcaigh.mp3",
+        "sha256": "2bb2019c429e4cef936918fd03b4a8a9370c6f387f2fe988e806f8218aa1625f",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 156.0,
+    "estimated_cumulative_credits": 9141.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 92752.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T14:02:47.236350+00:00",
+      "used_credits": 92752.0,
+      "remaining_credits": 143347.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T14:02:57.249392+00:00",
+      "used_credits": 92752.0,
+      "remaining_credits": 143347.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.personal-atlas.scale.019fc1ba",
+      "authorized_at": "2026-08-02T15:02:00+01:00",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.personal-atlas.2026-08-02",
+      "baseline_used_credits": 92508.0,
+      "payload_credit_limit": 4332.0
+    }
+  },
+  "counts": {
+    "lines": 6,
+    "member_references": 6,
+    "planned": 0,
+    "approved": 6,
+    "succeeded": 6,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "5b9729f8f91a5de8da52ac7f51d97111bfa5f935c077e04d169177b3b3dfcb70"
+}

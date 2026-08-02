@@ -120,19 +120,32 @@ capture target is a post-harvest selection guide, not an emergency cap.
 
 **D32 Track E integrity scoreboard (2026-08-02):** the read-only production-loop
 scoreboard (`python3 -B tools/structured_audio_authoring.py reconcile --scoreboard
---json`) reports **640** authored families, **1,283** complete members, **513** unique
+--json`) reports **640** authored families, **1,443** complete members, **673** unique
 texts, all **640** atlas placements, and all **32** counties. The registered ledger
-contains **514** lines: **506** approved and succeeded, **7** cancelled for explicit
-reuse, **0** actively claimed, and **0** failed. The bundle contains **506**
-source-labeled new-v2 clips and **362** legacy/runtime clips; all **868/868** checksums
+contains **674** lines: **666** approved and succeeded, **7** cancelled for explicit
+reuse, **0** actively claimed, and **0** failed. The bundle contains **666**
+source-labeled new-v2 clips and **362** legacy/runtime clips; all **1,028/1,028** checksums
 verify with no missing, mismatched, or orphan MP3s. There is **0** remaining resumable,
-retryable, or manual-recovery work. ElevenLabs usage moved from the authorized
-**87,428-credit baseline to 92,445 observed credits** during the payload, a **5,017**
-credit increase within the explicit 9,137-credit ceiling. The drain now validates the
+retryable, or manual-recovery work. The Personal Atlas tranche adds **80** subjects
+(**50** names and **30** places), two spoken forms each, and **160** captured clips.
+ElevenLabs usage moved from the authorized **92,508-credit baseline to 94,899 observed
+credits** during that payload, a **2,391** credit increase within the explicit
+4,332-credit ceiling. The drain now validates the
 complete authoring contract once per run and reuses that snapshot for every batch,
 removing the repeated corpus scan that throttled all-county execution. The v2
 learner-release-eligible count remains **0**: these files are provisional
 `generated_unreviewed` captures, not reviewed teaching audio.
+
+**D32 mechanistic review posture (2026-08-02):** deterministic, disjoint sampling now
+selects **78** clips across 11 overlapping risk strata, including names, places,
+mutations, fadas, duplicates, launch lines, source risk, and acoustic outliers. An
+offline ABAIR comparison adapter can measure duration, level, spectral shape,
+zero-crossing rate, and coarse envelope similarity against lawfully obtained local
+reference clips while retaining provenance and checksums. It does not scrape ABAIR,
+copy reference audio, assign pronunciation correctness, or close a release gate.
+The first pure-pedagogy sidecar contains **5** narrative lessons and **18** English-
+framed lines around exact repository Irish examples; its pedagogy, Irish-language,
+and pronunciation gates remain open.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode

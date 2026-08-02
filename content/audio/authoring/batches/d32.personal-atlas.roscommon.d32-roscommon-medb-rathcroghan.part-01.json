@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.personal-atlas.roscommon.d32-roscommon-medb-rathcroghan.part-01",
+  "created_at": "2026-08-02T15:02:00+01:00",
+  "purpose": "D32 emergency harvest — roscommon / d32.roscommon.medb-rathcroghan / senses roscommon.ainm.name / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.personal-atlas.scale.019fc1ba",
+    "approved_at": "2026-08-02T15:02:00+01:00"
+  },
+  "lines": [
+    {
+      "line_id": "d32.personal-atlas.roscommon.d32-roscommon-medb-rathcroghan.part-01.line.24eb188d36f538b1",
+      "member_ids": [
+        "d32.roscommon.20.ainm.name.personal-atlas.name-given-donal.dialogue"
+      ],
+      "normalized_text": "An é Dónal d’ainm?",
+      "text_sha256": "c4d2df40fe5a5b435111d4980f15eee9f94d5c55f8aa566d0745a27aa33e9671",
+      "inventory_slug": "an-ee-doonal-d-ainm",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:40.637620+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "toViKiMKXoBE97WllqyH",
+        "started_at": "2026-08-02T14:06:36.343255+00:00",
+        "completed_at": "2026-08-02T14:06:40.627755+00:00",
+        "reported_credits": 18.0,
+        "reported_characters": 18
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-doonal-d-ainm.mp3",
+        "sha256": "4b33b5430c6d5bc64474137933758f2d06821a4edb65f4a30272beddd5c560d6",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.roscommon.d32-roscommon-medb-rathcroghan.part-01.line.d85e307682ada07f",
+      "member_ids": [
+        "d32.roscommon.20.ainm.name.personal-atlas.name-given-donal.context"
+      ],
+      "normalized_text": "Is é Dónal an t-ainm.",
+      "text_sha256": "ba236cc4bd899bbc441f1a4fe8993b2a6344c0340bd3b4198022bfea085b0ca9",
+      "inventory_slug": "is-ee-doonal-an-t-ainm",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:06:40.637687+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "rQp3LrfgMs6dWPUbL3us",
+        "started_at": "2026-08-02T14:06:36.343255+00:00",
+        "completed_at": "2026-08-02T14:06:40.627755+00:00",
+        "reported_credits": 21.0,
+        "reported_characters": 21
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-doonal-an-t-ainm.mp3",
+        "sha256": "f599b932f772c11384a9d50fdee415451e0fc999aab01c150571a6ef1b0a8292",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 39.0,
+    "estimated_cumulative_credits": 9024.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 94491.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T14:06:36.343255+00:00",
+      "used_credits": 94491.0,
+      "remaining_credits": 141608.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T14:06:40.627755+00:00",
+      "used_credits": 94491.0,
+      "remaining_credits": 141608.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.personal-atlas.scale.019fc1ba",
+      "authorized_at": "2026-08-02T15:02:00+01:00",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.personal-atlas.2026-08-02",
+      "baseline_used_credits": 92508.0,
+      "payload_credit_limit": 4332.0
+    }
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "64acd1f97805bec53f607ee7ae4eb18c13d6064cb0bd510092015cfd52a6bb51"
+}

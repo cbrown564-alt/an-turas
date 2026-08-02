@@ -1,0 +1,450 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.personal-atlas.antrim.d32-antrim-fionn-mac-cumhaill.part-01",
+  "created_at": "2026-08-02T15:02:00+01:00",
+  "purpose": "D32 emergency harvest — antrim / d32.antrim.fionn-mac-cumhaill / senses antrim.ainm.name, antrim.ait.place / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.personal-atlas.scale.019fc1ba",
+    "approved_at": "2026-08-02T15:02:00+01:00"
+  },
+  "lines": [
+    {
+      "line_id": "d32.personal-atlas.antrim.d32-antrim-fionn-mac-cumhaill.part-01.line.0417b6ed7dff3ec0",
+      "member_ids": [
+        "d32.antrim.20.ait.place.personal-atlas.place-giants.dialogue"
+      ],
+      "normalized_text": "An áit í Clochán an Aifir?",
+      "text_sha256": "56e520138fd7225a8ab3501bf507a75f81134471db7890efa0507a487f6da710",
+      "inventory_slug": "an-aait-ii-clochaan-an-aifir",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:03.660152+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "yFVrXX0W2Cc0njB0jABp",
+        "started_at": "2026-08-02T14:01:48.930272+00:00",
+        "completed_at": "2026-08-02T14:02:03.643113+00:00",
+        "reported_credits": 26.0,
+        "reported_characters": 26
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-aait-ii-clochaan-an-aifir.mp3",
+        "sha256": "75f1d41b01e9604080e6b603e76d475e1ba946c99adb467521a9b01142126ef7",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.antrim.d32-antrim-fionn-mac-cumhaill.part-01.line.4713d0600ea00f7f",
+      "member_ids": [
+        "d32.antrim.19.ainm.name.personal-atlas.name-given-grainne.context"
+      ],
+      "normalized_text": "Is é Gráinne an t-ainm.",
+      "text_sha256": "cd5dc3724fdc5e7f7802faa6d8e2cf89f5ebea19eddde83dd371998e8658e0da",
+      "inventory_slug": "is-ee-graainne-an-t-ainm",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:03.660326+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "adU5PuvzjWlsaQvldzrv",
+        "started_at": "2026-08-02T14:01:48.930272+00:00",
+        "completed_at": "2026-08-02T14:02:03.643113+00:00",
+        "reported_credits": 23.0,
+        "reported_characters": 23
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-graainne-an-t-ainm.mp3",
+        "sha256": "f3f00e0c79cac95c17b3ec7a0ad41da872dc2308ba49a2beeadbcea28bd94ebe",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.antrim.d32-antrim-fionn-mac-cumhaill.part-01.line.4bd50be9e88278a9",
+      "member_ids": [
+        "d32.antrim.19.ainm.name.personal-atlas.place-belfast.context"
+      ],
+      "normalized_text": "Is é Béal Feirste ainm na háite.",
+      "text_sha256": "743fbe8ef5a53a8c20bd032d9aa9881f03678cf09543e41ae023bbff3e572a85",
+      "inventory_slug": "is-ee-beeal-feirste-ainm-na-haaite",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:03.660465+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "OTbDpBJuT6h2qItTNNce",
+        "started_at": "2026-08-02T14:01:48.930272+00:00",
+        "completed_at": "2026-08-02T14:02:03.643113+00:00",
+        "reported_credits": 32.0,
+        "reported_characters": 32
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-beeal-feirste-ainm-na-haaite.mp3",
+        "sha256": "e5a4783f9b2238cffdd4e4ead0a38203135c607b1bdea867e90631edb12d9121",
+        "bytes": 74649,
+        "duration_seconds": 3.04
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.antrim.d32-antrim-fionn-mac-cumhaill.part-01.line.51485fc453675baa",
+      "member_ids": [
+        "d32.antrim.19.ainm.name.personal-atlas.name-surname-ryan.dialogue"
+      ],
+      "normalized_text": "An é Ó Riain d’ainm teaghlaigh?",
+      "text_sha256": "a42d461884fe01deb50febff1c8634c11aba1e109318a4444aceebc1aa9bc2b9",
+      "inventory_slug": "an-ee-oo-riain-d-ainm-teaghlaigh",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:03.660635+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Yui8C0R5iwPSNhRKiggB",
+        "started_at": "2026-08-02T14:01:48.930272+00:00",
+        "completed_at": "2026-08-02T14:02:03.643113+00:00",
+        "reported_credits": 31.0,
+        "reported_characters": 31
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-oo-riain-d-ainm-teaghlaigh.mp3",
+        "sha256": "a6af37f35d9c82b34f1750bc2e32cd158020ad8e7fa2f212ed0cfb9d1cb66194",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.antrim.d32-antrim-fionn-mac-cumhaill.part-01.line.70da53d16cd9c81d",
+      "member_ids": [
+        "d32.antrim.19.ainm.name.personal-atlas.place-belfast.dialogue"
+      ],
+      "normalized_text": "An é Béal Feirste ainm na háite?",
+      "text_sha256": "e9bd89138f43b6b32156c37e1fba171c3ba357576f13e16ed7fd6ba9f74eb4aa",
+      "inventory_slug": "an-ee-beeal-feirste-ainm-na-haaite",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:03.660779+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "4ldnmmIwgC9zdbNUL4kd",
+        "started_at": "2026-08-02T14:01:48.930272+00:00",
+        "completed_at": "2026-08-02T14:02:03.643113+00:00",
+        "reported_credits": 32.0,
+        "reported_characters": 32
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-beeal-feirste-ainm-na-haaite.mp3",
+        "sha256": "734d971916b6c5c1c961f8f4105392178db168f332d908c8081fbb19230be1b5",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.antrim.d32-antrim-fionn-mac-cumhaill.part-01.line.87b62abc237f0a3c",
+      "member_ids": [
+        "d32.antrim.19.ainm.name.personal-atlas.name-surname-ryan.context"
+      ],
+      "normalized_text": "Is é Ó Riain an t-ainm teaghlaigh.",
+      "text_sha256": "2fa58f480434baccca20618a45bb61daba314c9ebaa9cec8e6a806b135be88c6",
+      "inventory_slug": "is-ee-oo-riain-an-t-ainm-teaghlaigh",
+      "estimated_characters": 34,
+      "estimated_credits": 34.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:03.660947+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "iqqBN2vuQG4UTMfMnvN0",
+        "started_at": "2026-08-02T14:01:48.930272+00:00",
+        "completed_at": "2026-08-02T14:02:03.643113+00:00",
+        "reported_credits": 34.0,
+        "reported_characters": 34
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-oo-riain-an-t-ainm-teaghlaigh.mp3",
+        "sha256": "f8720132632642cc536ba99782a7246997e823f69ca48e414098385da8c9678d",
+        "bytes": 72769,
+        "duration_seconds": 2.96
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.antrim.d32-antrim-fionn-mac-cumhaill.part-01.line.b268d9b317c1b6fb",
+      "member_ids": [
+        "d32.antrim.19.ainm.name.personal-atlas.name-given-grainne.dialogue"
+      ],
+      "normalized_text": "An é Gráinne d’ainm?",
+      "text_sha256": "86ad702f35f4b9454a71e8c4b0d60bd3fe638a783642c0118696b78d0587430f",
+      "inventory_slug": "an-ee-graainne-d-ainm",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:03.661107+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "wuM4tlbU23CmGSn00xs4",
+        "started_at": "2026-08-02T14:01:48.930272+00:00",
+        "completed_at": "2026-08-02T14:02:03.643113+00:00",
+        "reported_credits": 20.0,
+        "reported_characters": 20
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-graainne-d-ainm.mp3",
+        "sha256": "d7f4f716211ba96c7a4abf4c213adda75b61b4c1c79691364e297c175cebe1d3",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.personal-atlas.antrim.d32-antrim-fionn-mac-cumhaill.part-01.line.d113d3bcce285f9c",
+      "member_ids": [
+        "d32.antrim.20.ait.place.personal-atlas.place-giants.context"
+      ],
+      "normalized_text": "Is áit í Clochán an Aifir.",
+      "text_sha256": "d59609d2a32da0bde131d069bd664d1971bb634b829083f45b7a162c25e972a0",
+      "inventory_slug": "is-aait-ii-clochaan-an-aifir",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.personal-atlas",
+        "claimed_at": "2026-08-02T15:02:00+01:00",
+        "lease_expires_at": "2026-08-03T15:02:00+01:00"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.personal-atlas.scale.019fc1ba",
+        "approved_at": "2026-08-02T15:02:00+01:00"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-02T14:02:03.661224+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "9pey7U6kWUmXJd5vV3ra",
+        "started_at": "2026-08-02T14:01:48.930272+00:00",
+        "completed_at": "2026-08-02T14:02:03.643113+00:00",
+        "reported_credits": 26.0,
+        "reported_characters": 26
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-aait-ii-clochaan-an-aifir.mp3",
+        "sha256": "1830b1e615624d6f5b1c1c3e0cca4cabf76503f90c268de20ad3163807e865c7",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 224.0,
+    "estimated_cumulative_credits": 9209.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 92508.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T14:01:48.930272+00:00",
+      "used_credits": 92508.0,
+      "remaining_credits": 143591.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T14:02:03.643113+00:00",
+      "used_credits": 92508.0,
+      "remaining_credits": 143591.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.personal-atlas.scale.019fc1ba",
+      "authorized_at": "2026-08-02T15:02:00+01:00",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.personal-atlas.2026-08-02",
+      "baseline_used_credits": 92508.0,
+      "payload_credit_limit": 4332.0
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "607b64c52b5c36153ebe55eef2b90f0bd733cfed2e3307a31e52b961a8a5ac3c"
+}
