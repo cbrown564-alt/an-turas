@@ -265,8 +265,20 @@ version. Missing or undecodable files, silence, clipping, and absolute duration 
 are emitted as `audio_technical_quarantine` findings. Distribution outliers for duration
 or level are emitted as `audio_technical_review_required` findings. Each finding has a
 clear reason and disposition; nothing is moved, deleted, overwritten, or promoted to a
-different QA state. A decoder-unavailable result is itself blocking because the tranche
-was not technically inspected.
+different QA state. Duration and level outliers use deterministic baselines keyed first by
+the manifest `kind` and a text-length bucket, then by `kind` alone when the narrower group
+has fewer than eight usable clips. A sparse group produces no statistical outlier review;
+the absolute quarantine checks remain active. This keeps headwords and long sentences
+from becoming one predictable global comparison while making the fallback explicit in
+the row report. A decoder-unavailable result is itself blocking because the tranche was
+not technically inspected.
+
+Clipping uses an absolute-plus-ratio quarantine rule: at least 16 full-scale samples and
+at least 0.01% of decoded samples must both be present. This catches a short full-scale
+event in a long clip without treating one isolated decoder sample as proof of clipping.
+The decoder uses bounded 32-file `ffmpeg` batches with per-file temporary PCM outputs;
+failed batches fall back to the original single-file path, and the existing stat/hash
+cache makes repeated audits decode-free when files are unchanged.
 
 Run the full post-tranche pass with:
 
