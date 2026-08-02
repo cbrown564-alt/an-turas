@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antur.as/schemas/abair-reference-comparison-v1.schema.json",
+  "title": "Offline ABAIR reference comparison manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract", "comparison_enabled", "network_access", "terms", "pairs"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "contract": { "const": "offline_abair_reference_comparison" },
+    "comparison_enabled": { "type": "boolean" },
+    "network_access": { "const": false },
+    "terms": { "$ref": "#/$defs/terms" },
+    "pairs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/pair" }
+    }
+  },
+  "$defs": {
+    "terms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["terms_url", "permission_basis", "lawful_acquisition_attested", "use_scope", "redistribution_allowed", "local_only"],
+      "properties": {
+        "terms_url": { "type": "string", "format": "uri" },
+        "permission_basis": { "type": "string", "minLength": 1 },
+        "lawful_acquisition_attested": { "const": true },
+        "use_scope": { "enum": ["internal_evaluation", "noncommercial_educational", "written_permission"] },
+        "redistribution_allowed": { "type": "boolean" },
+        "local_only": { "const": true },
+        "permission_reference": { "type": ["string", "null"] }
+      }
+    },
+    "pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pair_id", "text", "elevenlabs_path", "abair_path", "abair_source", "acquired_at", "abair_sha256"],
+      "properties": {
+        "pair_id": { "type": "string", "minLength": 1 },
+        "text": { "type": "string", "minLength": 1 },
+        "inventory_slug": { "type": ["string", "null"] },
+        "elevenlabs_path": { "type": "string", "minLength": 1 },
+        "abair_path": { "type": "string", "minLength": 1 },
+        "abair_source": { "type": "string", "format": "uri" },
+        "acquired_at": { "type": "string", "minLength": 1 },
+        "abair_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

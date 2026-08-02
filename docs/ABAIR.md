@@ -101,3 +101,26 @@ architecture is offline-first (audio bundled in chapter packs), we specifically 
       voice; Connemara web voices not on public API). Bake-off results in
       `tools/tts-bakeoff/winners.json`; ABAIR won quality on 19/21 lines.*
 - [x] Draft the one-page enquiry letter (step 2) — `docs/ABAIR-enquiry.md`.
+
+## Offline reference comparison (D32)
+
+The project may compare locally retained ElevenLabs clips with ABAIR reference
+synthesis for internal research, but the comparison adapter is disabled by default
+and never contacts ABAIR. It accepts only a manifest that records, per reference,
+the local path, source URL, acquisition date, checksum, and an explicit lawful-use
+basis. It does not copy ABAIR audio into the repository, upload ElevenLabs audio,
+call the synthesis endpoint, or treat a local reference as redistributable.
+
+The current ABAIR terms say generated outputs are available for personal,
+educational, or non-commercial use unless otherwise agreed, and prohibit copying,
+modifying, or distributing service material without explicit permission. Commercial
+use or bundling in An Turas therefore remains blocked without written TCD/ABAIR
+permission. Re-check the live terms before each new evaluation batch; this document
+is an operational summary, not legal advice.
+
+Use `tools/abair_reference_compare.py ingest` to create a disabled manifest from
+lawfully obtained local files, then explicitly enable a manifest for an offline
+run. The report contains duration, energy, spectral, zero-crossing, and coarse
+envelope-difference signals only. It has no pronunciation score or correctness
+claim; human Irish-language review remains required, and the output is never a
+learner-release or bundling decision.
