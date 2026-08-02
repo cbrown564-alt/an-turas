@@ -28,6 +28,52 @@ private struct SpeechRuntimeExclusion: Decodable {
     let slug: String
 }
 
+private struct SpeechRuntimeIndex {
+    let linesBySlug: [String: SpeechRuntimeLine]
+    let linesByFile: [String: SpeechRuntimeLine]
+    let exclusions: Set<String>
+
+    static let unavailable = SpeechRuntimeIndex(
+        linesBySlug: [:],
+        linesByFile: [:],
+        exclusions: []
+    )
+
+    func isLearnerUsable(_ line: SpeechRuntimeLine) -> Bool {
+        ["generated_unreviewed", "spot_flagged", "qa_passed"].contains(line.qaState)
+            && !exclusions.contains(line.slug)
+    }
+}
+
+private enum SpeechRuntimeCatalog {
+    static let index: SpeechRuntimeIndex = load()
+
+    private static func load() -> SpeechRuntimeIndex {
+        guard let url = Bundle.main.url(forResource: "manifest", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let manifest = try? JSONDecoder().decode(SpeechRuntimeManifest.self, from: data)
+        else { return .unavailable }
+
+        var linesBySlug: [String: SpeechRuntimeLine] = [:]
+        var linesByFile: [String: SpeechRuntimeLine] = [:]
+        for line in manifest.lines {
+            guard line.file == "\(line.slug).mp3",
+                  URL(fileURLWithPath: line.file).lastPathComponent == line.file,
+                  linesBySlug[line.slug] == nil,
+                  linesByFile[line.file] == nil
+            else { return .unavailable }
+            linesBySlug[line.slug] = line
+            linesByFile[line.file] = line
+        }
+
+        return SpeechRuntimeIndex(
+            linesBySlug: linesBySlug,
+            linesByFile: linesByFile,
+            exclusions: Set(manifest.dynamicExclusions.map(\.slug))
+        )
+    }
+}
+
 // MARK: - An Guth — the voice.
 // All release-path speech uses reviewed, bundled clips generated with the
 // ElevenLabs Irish Cultural Guide house voice. We deliberately do not fall
@@ -175,38 +221,13 @@ final class SpeechService: NSObject, ObservableObject {
 
     nonisolated static func bundledURL(for text: String) -> URL? {
         let name = slug(for: text)
-        guard let line = runtimeManifestLine(forSlug: name),
+        let index = SpeechRuntimeCatalog.index
+        guard let line = index.linesBySlug[name],
               line.text == text,
-              ["generated_unreviewed", "spot_flagged", "qa_passed"].contains(line.qaState),
-              !runtimeManifestExclusions.contains(name)
+              index.isLearnerUsable(line)
         else { return nil }
 
-        let manifestFile = URL(fileURLWithPath: line.file).lastPathComponent
-        guard manifestFile == "\(name).mp3" else { return nil }
-
-        for ext in ["mp3", "m4a", "wav", "caf"] {
-            if let url = Bundle.main.url(forResource: name, withExtension: ext),
-               url.lastPathComponent == manifestFile {
-                return url
-            }
-        }
-        return nil
-    }
-
-    nonisolated private static var runtimeManifestExclusions: Set<String> {
-        guard let manifest = runtimeManifest() else { return [] }
-        return Set(manifest.dynamicExclusions.map(\.slug))
-    }
-
-    nonisolated private static func runtimeManifestLine(forSlug slug: String) -> SpeechRuntimeLine? {
-        runtimeManifest()?.lines.first { $0.slug == slug }
-    }
-
-    nonisolated private static func runtimeManifest() -> SpeechRuntimeManifest? {
-        guard let url = Bundle.main.url(forResource: "manifest", withExtension: "json"),
-              let data = try? Data(contentsOf: url)
-        else { return nil }
-        return try? JSONDecoder().decode(SpeechRuntimeManifest.self, from: data)
+        return Bundle.main.url(forResource: name, withExtension: "mp3")
     }
 
     nonisolated static func bundledURL(named assetName: String) -> URL? {
@@ -214,6 +235,12 @@ final class SpeechService: NSObject, ObservableObject {
         let file = (safeName as NSString).deletingPathExtension
         let ext = (safeName as NSString).pathExtension
         guard !file.isEmpty, !ext.isEmpty else { return nil }
+
+        let index = SpeechRuntimeCatalog.index
+        if let line = index.linesByFile[safeName] {
+            guard index.isLearnerUsable(line) else { return nil }
+        }
+
         return Bundle.main.url(forResource: file, withExtension: ext, subdirectory: "Audio")
             ?? Bundle.main.url(forResource: file, withExtension: ext)
     }

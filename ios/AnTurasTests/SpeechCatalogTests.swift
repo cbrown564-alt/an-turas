@@ -86,6 +86,23 @@ final class SpeechCatalogTests: XCTestCase {
         }
     }
 
+    func testNamedManifestAssetsUseTheSameFailClosedPolicy() {
+        let excludedAssets = [
+            "an-baile-ee-corca-dhuibhne.mp3",
+            "is-baile-ee-corca-dhuibhne.mp3",
+        ]
+        for asset in excludedAssets {
+            XCTAssertFalse(SpeechService.shared.canPlayVerifiedAsset(named: asset), asset)
+            XCTAssertNil(SpeechService.bundledURL(named: asset), asset)
+            SpeechService.shared.playVerifiedAsset(named: asset, displayText: asset)
+            XCTAssertFalse(SpeechService.shared.speaking, asset)
+            XCTAssertNil(SpeechService.shared.currentText, asset)
+        }
+
+        XCTAssertTrue(SpeechService.shared.canPlayVerifiedAsset(named: "sean.mp3"))
+        XCTAssertNotNil(SpeechService.bundledURL(named: "sean.mp3"))
+    }
+
     func testSlugRuleMatchesCatalogAndDoesNotInventPersonalizedSpeech() {
         XCTAssertEqual(SpeechService.slug(for: "Seo Bríd, m'iníon."), "seo-briid-m-iniion")
         XCTAssertEqual(SpeechService.slug(for: "Cén t-ainm atá ort?"), "ceen-t-ainm-ataa-ort")

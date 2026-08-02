@@ -108,16 +108,41 @@ SOURCE_SUPPORT = {
     "exercise_context",
     "migration_only",
 }
-# These five D32 source ids predate durable record instances and retain their
-# checked-in ordinal pointers until their own source repair. New ambiguous
-# pointers, including the repaired Piaras records, must use record_instance_id.
-LEGACY_ORDINAL_RECORD_IDS = frozenset(
+# These exact checked-in references predate durable record instances. The full
+# pointer identity is grandfathered; a new file, path, scope, id, or index is
+# not allowed to inherit the exception by matching only record_id.
+LEGACY_ORDINAL_REFERENCES = frozenset(
     {
-        "d32.donegal.flight-of-the-earls",
-        "d32.dublin.sihtric-penny",
-        "d32.galway.joe-heaney-carna",
-        "d32.mayo.grainne-1593",
-        "d32.offaly.cross-of-the-scriptures",
+        (
+            "content/audio/authoring/d32-county-harvest-uses.json",
+            "stories",
+            "d32.donegal.flight-of-the-earls",
+            0,
+        ),
+        (
+            "content/audio/authoring/d32-county-harvest-uses.json",
+            "stories",
+            "d32.dublin.sihtric-penny",
+            0,
+        ),
+        (
+            "content/audio/authoring/d32-county-harvest-uses.json",
+            "stories",
+            "d32.galway.joe-heaney-carna",
+            0,
+        ),
+        (
+            "content/audio/authoring/d32-county-harvest-uses.json",
+            "stories",
+            "d32.mayo.grainne-1593",
+            0,
+        ),
+        (
+            "content/audio/authoring/d32-county-harvest-uses.json",
+            "stories",
+            "d32.offaly.cross-of-the-scriptures",
+            0,
+        ),
     }
 )
 LOCKED_VOICE_PROFILE = {
@@ -1091,6 +1116,12 @@ def validate_ref(
             f"{label}: record_id {record_id!r} not found in {ref.get('path')!r}"
         )
         return None
+    legacy_ordinal_reference = (
+        ref.get("path"),
+        record_scope,
+        record_id,
+        record_index,
+    ) in LEGACY_ORDINAL_REFERENCES
     if record_instance_id is not None:
         instance_matches = [
             record
@@ -1107,7 +1138,7 @@ def validate_ref(
     elif (
         len(matches) > 1
         and record_index is not None
-        and record_id not in LEGACY_ORDINAL_RECORD_IDS
+        and not legacy_ordinal_reference
     ):
         errors.append(
             f"{label}: record_id {record_id!r} is ambiguous ({len(matches)} matches); "

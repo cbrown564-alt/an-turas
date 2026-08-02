@@ -116,6 +116,18 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
             self.assertEqual(errors, [])
             self.assertEqual(record["record_instance_id"], "d32.kerry.piaras-feiritear.primary")
 
+            adversarial_ref = {
+                "path": "stories.json",
+                "record_id": "d32.mayo.grainne-1593",
+                "record_scope": "stories",
+                "record_index": 0,
+            }
+            errors = []
+            self.assertIsNone(
+                contract.validate_ref(adversarial_ref, Path(temporary), "story", errors)
+            )
+            self.assertTrue(any("record_index is ordinal-only" in error for error in errors))
+
     def test_corca_dhuibhne_capture_is_quarantined_without_losing_audit_bytes(self):
         batch = next(
             batch
