@@ -34,7 +34,7 @@
       "text_sha256": "218263d85b5a8083abd7dbf62cbd00e5f4967511369f8c845bdd0f0b11ca18ca",
       "inventory_slug": "taa-an-t-aath-anseo-taa-an-baile-ansiuud",
       "estimated_characters": 38,
-      "estimated_credits": 38.0,
+      "estimated_credits": 38,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -82,7 +82,7 @@
       "text_sha256": "e37cf63ab15baf3a25e039f5047d62687eb2539ead24b7b79432a254b09ccb60",
       "inventory_slug": "taa-ainm-ar-an-talamh-sean-agus-taa-baile-ann",
       "estimated_characters": 44,
-      "estimated_credits": 44.0,
+      "estimated_credits": 44,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -130,7 +130,7 @@
       "text_sha256": "3bde2267c1d15dcd7f3abfa18e109d14844c21336dd2ecfafab799ea6832a9ea",
       "inventory_slug": "feeach-ar-an-sean-chaisleaan-agus-ar-an-mbaile-nua",
       "estimated_characters": 49,
-      "estimated_credits": 49.0,
+      "estimated_credits": 49,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -173,13 +173,19 @@
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 131.0,
-    "estimated_cumulative_credits": 169.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 131,
+    "estimated_cumulative_credits": 169,
     "actual_batch_credits": null,
     "actual_cumulative_credits": null,
     "usage_before": null,
-    "usage_after": null
+    "usage_after": null,
+    "cap_authorization": {
+      "status": "removed",
+      "authorized_by": "user.d32.scale.019fc1ba",
+      "authorized_at": "2026-08-02T10:52:00Z",
+      "reason": "The user explicitly authorized this exact 505-file D32 emergency-harvest payload for up to 9,137 ElevenLabs credits."
+    }
   },
   "counts": {
     "lines": 3,
@@ -189,5 +195,5 @@
     "succeeded": 0,
     "failed": 0
   },
-  "manifest_identity_sha256": "92b29e2ce70510282734de3e6d47eed4fb2b644727a418514b218ce722a479ae"
+  "manifest_identity_sha256": "527dabb203140a253945c88738ad78d5c616e88356e45891cfe33bd148315ca3"
 }

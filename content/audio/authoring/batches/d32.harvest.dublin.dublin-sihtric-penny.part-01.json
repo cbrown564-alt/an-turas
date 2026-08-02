@@ -34,7 +34,7 @@
       "text_sha256": "401604ff760d2c8393f53236122214fd758cec430324f97987c885a5436fe1a2",
       "inventory_slug": "tar-ar-ais-chuig-an-ainm",
       "estimated_characters": 25,
-      "estimated_credits": 25.0,
+      "estimated_credits": 25,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -82,7 +82,7 @@
       "text_sha256": "dd9775ade7bf1c91395e40ee46c40fea1cb443b279dffb7a2ca1b2c1845e36c2",
       "inventory_slug": "taa-ainm-an-rii-ar-airgead-an-mhargaidh-agus-na-traadaala",
       "estimated_characters": 54,
-      "estimated_credits": 54.0,
+      "estimated_credits": 54,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -130,7 +130,7 @@
       "text_sha256": "13a6879cc2131c597a400da2cea262b0d591b98f2f54c5275d4d9720eef77a82",
       "inventory_slug": "sihtric-is-ainm-don-rii",
       "estimated_characters": 23,
-      "estimated_credits": 23.0,
+      "estimated_credits": 23,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -173,13 +173,19 @@
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 102.0,
-    "estimated_cumulative_credits": 140.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 102,
+    "estimated_cumulative_credits": 140,
     "actual_batch_credits": null,
     "actual_cumulative_credits": null,
     "usage_before": null,
-    "usage_after": null
+    "usage_after": null,
+    "cap_authorization": {
+      "status": "removed",
+      "authorized_by": "user.d32.scale.019fc1ba",
+      "authorized_at": "2026-08-02T10:52:00Z",
+      "reason": "The user explicitly authorized this exact 505-file D32 emergency-harvest payload for up to 9,137 ElevenLabs credits."
+    }
   },
   "counts": {
     "lines": 3,
@@ -189,5 +195,5 @@
     "succeeded": 0,
     "failed": 0
   },
-  "manifest_identity_sha256": "bb30e649c54be0af15a3e9f08c7a5401d4dfd196abfc30583e1828f6b4dc49c9"
+  "manifest_identity_sha256": "8edf4786326fdfc12154bf95f6d11c80fac51aebbf023a2699907da64bdb2002"
 }

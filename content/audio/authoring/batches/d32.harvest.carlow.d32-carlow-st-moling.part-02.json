@@ -34,7 +34,7 @@
       "text_sha256": "1e1b298dc099ef36c77cbb8e77f113edadab5aa26260ea90c19b1b2dec6e07a6",
       "inventory_slug": "taa-oilithreacht-anseo",
       "estimated_characters": 22,
-      "estimated_credits": 22.0,
+      "estimated_credits": 22,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -89,7 +89,7 @@
       "text_sha256": "b0f2d674bcd317e7aa5b8c0809ae38765c60c0fac6e9494943dc2a4805a72f6b",
       "inventory_slug": "taa-tar-sa-sceeal",
       "estimated_characters": 16,
-      "estimated_credits": 16.0,
+      "estimated_credits": 16,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -152,7 +152,7 @@
       "text_sha256": "eeb135d3ca89d05194154e3e19d319a52c8488741b4ea8da50b11a7da0af9fde",
       "inventory_slug": "taa-teeigh-anseo",
       "estimated_characters": 15,
-      "estimated_credits": 15.0,
+      "estimated_credits": 15,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -214,7 +214,7 @@
       "text_sha256": "5e9e5ef6c3c14a714ce14d28f765d7b7fc309f264a2c826fb70370ce97725246",
       "inventory_slug": "taa-tar-anseo",
       "estimated_characters": 13,
-      "estimated_credits": 13.0,
+      "estimated_credits": 13,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -266,7 +266,7 @@
       "text_sha256": "7c9ae77242a14b68b9a10bd086d0a1d6c50f94bc1317658354102b0f7bd87b27",
       "inventory_slug": "taa-uisce-anseo",
       "estimated_characters": 15,
-      "estimated_credits": 15.0,
+      "estimated_credits": 15,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -309,13 +309,19 @@
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 81.0,
-    "estimated_cumulative_credits": 119.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 81,
+    "estimated_cumulative_credits": 119,
     "actual_batch_credits": null,
     "actual_cumulative_credits": null,
     "usage_before": null,
-    "usage_after": null
+    "usage_after": null,
+    "cap_authorization": {
+      "status": "removed",
+      "authorized_by": "user.d32.scale.019fc1ba",
+      "authorized_at": "2026-08-02T10:52:00Z",
+      "reason": "The user explicitly authorized this exact 505-file D32 emergency-harvest payload for up to 9,137 ElevenLabs credits."
+    }
   },
   "counts": {
     "lines": 5,
@@ -325,5 +331,5 @@
     "succeeded": 0,
     "failed": 0
   },
-  "manifest_identity_sha256": "d0446336d0fc3f231f2f3c68e3f0c139c3a895a73ae748db175b08108da37325"
+  "manifest_identity_sha256": "86fbcd8f91b48fa7d3f65b856390c9a7da702fea2ca29ec4ba02cad19fae4ac9"
 }

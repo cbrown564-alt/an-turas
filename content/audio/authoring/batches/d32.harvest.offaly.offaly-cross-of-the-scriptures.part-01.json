@@ -34,7 +34,7 @@
       "text_sha256": "7944641cc33a2988055b8918afe1f3f2da34540f5d809b1f95f6f56692d5bfa6",
       "inventory_slug": "taa-cros-mhoor-chloiche-anseo",
       "estimated_characters": 28,
-      "estimated_credits": 28.0,
+      "estimated_credits": 28,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -83,7 +83,7 @@
       "text_sha256": "3275b60b15cc5b8de67a1158e6103a30e80654b0ccec52b0e6be27886251d311",
       "inventory_slug": "seas-anseo-agus-feeach-ar-an-gcros-chloiche",
       "estimated_characters": 43,
-      "estimated_credits": 43.0,
+      "estimated_credits": 43,
       "capture_disposition": "generated_unreviewed",
       "claim": {
         "status": "claimed",
@@ -126,13 +126,19 @@
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 71.0,
-    "estimated_cumulative_credits": 109.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 71,
+    "estimated_cumulative_credits": 109,
     "actual_batch_credits": null,
     "actual_cumulative_credits": null,
     "usage_before": null,
-    "usage_after": null
+    "usage_after": null,
+    "cap_authorization": {
+      "status": "removed",
+      "authorized_by": "user.d32.scale.019fc1ba",
+      "authorized_at": "2026-08-02T10:52:00Z",
+      "reason": "The user explicitly authorized this exact 505-file D32 emergency-harvest payload for up to 9,137 ElevenLabs credits."
+    }
   },
   "counts": {
     "lines": 2,
@@ -142,5 +148,5 @@
     "succeeded": 0,
     "failed": 0
   },
-  "manifest_identity_sha256": "15bd199c210644975c0243b1ffbcab07d7ce57f6788490b50db7c65d0abb7d53"
+  "manifest_identity_sha256": "9412ef3c908c5509a23f8a3d7f231a3b5928ec0ca4b1cfa2d15b24198a063648"
 }

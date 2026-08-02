@@ -679,6 +679,15 @@ def approve_emergency_harvest(
             "approved_by": approved_by,
             "approved_at": approved_at,
         }
+        batch.setdefault("spend", {})["cap_authorization"] = {
+            "status": "removed",
+            "authorized_by": approved_by,
+            "authorized_at": approved_at,
+            "reason": (
+                "The user explicitly authorized this exact D32 emergency-harvest "
+                "payload and its manifest-estimated provider spend."
+            ),
+        }
         for line in batch.get("lines", []):
             line["claim"] = {
                 "status": "claimed",
