@@ -33,6 +33,27 @@ block promotion, not provisional generation during the expiry window. `STATUS.md
 `content/audio/README.md` own the operating checklist and must distinguish harvested,
 reviewed, bundled, and learner-release-eligible counts.
 
+## D33 — Keep pure-pedagogy explanations in a reviewable sidecar (2026-08-02)
+
+**Decision:** Add an authoring-only `content/pedagogy/irish-explanations-v1.json`
+contract for short English-framed explanations around exact Irish examples. Each line
+must carry source references, invented pedagogical provenance, deterministic risk flags,
+independent pedagogy/Irish-language/pronunciation review states, and a separate learner
+release state. The first corpus remains a draft and every line remains release-blocked.
+
+**Why:** The existing `grammarDiscovery` and `Pattern` runtime shapes can carry worked
+cases, withheld production, and a rule, but they do not carry line-level evidence,
+authored framing status, deterministic risk prompts, or orthogonal review/release
+states. A sidecar is the smallest reversible extension and avoids weakening the
+phrase-family, batch, county-pack, or runtime contracts.
+
+**Consequences:** `tools/validate_pedagogy_corpus.py` is the offline mechanical check.
+It validates structure, source paths, exact NFC Irish examples, visible risk prompts,
+and pending/release separation; it does not decide whether Irish is grammatical,
+idiomatic, dialectally appropriate, pedagogically sound, or correctly pronounced. A
+future runtime bridge must preserve the sidecar's evidence and gates; corpus presence
+does not authorize TTS, teaching claims, bundling, or learner release.
+
 ## D31 — Structured Irish authoring and controlled pre-expiry capture (2026-08-01)
 
 **Decision:** Replace the proposed four-slots-per-spelling queue with an appendable v2

@@ -1,0 +1,630 @@
+{
+  "schema_version": 1,
+  "contract": "irish_pedagogy_explanations",
+  "id": "irish.pedagogy.explanations.d32-track-d.v1",
+  "status": "draft",
+  "language": {
+    "target": "ga",
+    "framing": "en"
+  },
+  "review_policy": {
+    "learner_release": "blocked",
+    "required_reviews": [
+      "pedagogy",
+      "irish_language",
+      "audio_pronunciation"
+    ],
+    "capture_note": "This is an authoring-only explanation corpus. It does not authorize TTS, teaching, bundling, or learner release."
+  },
+  "lessons": [
+    {
+      "id": "grammar.ta-anseo",
+      "title": "Let the place frame hold",
+      "area": "grammar",
+      "memory_hook": "Tá holds the frame; the thing in the middle can change; anseo points here.",
+      "scope": "Two repository examples of a location frame; do not generalize every use of Tá from this note.",
+      "lines": [
+        {
+          "id": "grammar.ta-anseo.arrival",
+          "kind": "framing",
+          "english": "At Rockfleet, begin with two things that can be here: a castle, then a household. The story gives the learner a place before it names a rule.",
+          "irish_examples": ["Tá an caisleán anseo.", "Tá an teaghlach anseo."],
+          "source_refs": [
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "pattern.ta-anseo",
+              "field": "resources[id=pattern.ta-anseo]",
+              "supports": "pattern_only"
+            },
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "mayo.rockfleet.grammar-pattern",
+              "field": "pack.chapters.pages[id=mayo.rockfleet.grammar-pattern].exercise",
+              "supports": "exercise_context"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "English framing is a provisional Track D teaching composition; the Irish examples are copied exactly from the listed repository records."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "initial_mutation"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "grammar.ta-anseo.intuition",
+          "kind": "intuition",
+          "english": "Hear a three-part path: Tá + the thing + anseo. In these worked lines, the outside pieces stay while the middle noun changes.",
+          "irish_examples": ["Tá an caisleán anseo.", "Tá an teaghlach anseo."],
+          "source_refs": [
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "pattern.ta-anseo",
+              "field": "resources[id=pattern.ta-anseo]",
+              "supports": "pattern_only"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The memory hook is a provisional English explanation of the two sourced examples, not a complete grammar claim."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "initial_mutation"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "grammar.ta-anseo.example",
+          "kind": "example",
+          "english": "Let the place word arrive last in this small frame: the castle is here.",
+          "irish_examples": ["Tá an caisleán anseo."],
+          "source_refs": [
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "mayo.rockfleet.listen-caislean",
+              "field": "pack.chapters.pages[id=mayo.rockfleet.listen-caislean].exercise.modelText",
+              "supports": "exercise_context"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "English framing is provisional; the Irish sentence is copied from the cited exercise model text."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "initial_mutation"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "grammar.ta-anseo.boundary",
+          "kind": "boundary",
+          "english": "This note stays with the two Mayo examples. It does not say that every sentence beginning with Tá means “is here,” and it does not replace a reviewed lesson sequence.",
+          "irish_examples": ["Tá an caisleán anseo.", "Tá an teaghlach anseo."],
+          "source_refs": [
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "pattern.ta-anseo",
+              "field": "resources[id=pattern.ta-anseo]",
+              "supports": "pattern_only"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The boundary language is authored to prevent overgeneralisation; no new Irish wording is introduced."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "initial_mutation"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "grammar.is-ainm",
+      "title": "Keep the name frame visible",
+      "area": "grammar",
+      "memory_hook": "is ainm is the name frame; keep the small reference word attached to its sentence.",
+      "scope": "One sourced identification sentence and one separate question frame; this is not a complete account of Irish names.",
+      "lines": [
+        {
+          "id": "grammar.is-ainm.framing",
+          "kind": "framing",
+          "english": "A name can arrive as a relationship: the sentence identifies Gráinne by saying what her name is. Keep the frame visible before translating each word alone.",
+          "irish_examples": ["Gráinne is ainm di."],
+          "source_refs": [
+            {
+              "path": "content/mayo/phrase-families/authoring-v2/ainm.name-noun.v2.json",
+              "record_id": "ainm.grainne-named",
+              "field": "members[id=ainm.grainne-named].irish.text",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "English framing is provisional; the Irish sentence and its repository intent are copied from the cited v2 member."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "named_entity", "pronoun_reference"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "grammar.is-ainm.intuition",
+          "kind": "intuition",
+          "english": "Memory hook: keep is ainm as one name frame. In this sentence, di points to her; keep it with the example rather than making it a free-standing rule.",
+          "irish_examples": ["Gráinne is ainm di."],
+          "source_refs": [
+            {
+              "path": "content/mayo/phrase-families/authoring-v2/ainm.name-noun.v2.json",
+              "record_id": "ainm.grainne-named",
+              "field": "members[id=ainm.grainne-named].english.literal_note",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The memory hook is a provisional explanation around the cited sentence; it is not a native-speaker or pedagogue review."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "named_entity", "pronoun_reference"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "grammar.is-ainm.boundary",
+          "kind": "boundary",
+          "english": "A separate source line asks a name question: Cad is ainm duit? Keep that question available for a later comparison; this short note does not collapse the two frames into one.",
+          "irish_examples": ["Cad is ainm duit?"],
+          "source_refs": [
+            {
+              "path": "content/audio/launch-phrases-conversations-v1.json",
+              "record_id": "launch.mayo.phrases.11",
+              "field": "counties.mayo.phrases[10].text",
+              "supports": "migration_only"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The English boundary is authored; the question is cited as a migration input only and is not treated as reviewed Irish."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "pronoun_reference", "source_ambiguity"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "pronunciation.fada-contrast",
+      "title": "Let the fada stay visible",
+      "area": "pronunciation",
+      "memory_hook": "A small mark can move the meaning; let the written mark cue the sound contrast.",
+      "scope": "The two chapter-one minimal pairs are memory hooks, not a complete pronunciation or dialect account.",
+      "lines": [
+        {
+          "id": "pronunciation.fada-contrast.framing",
+          "kind": "framing",
+          "english": "The fada is a visible length mark in this chapter's lesson. Give it attention before chasing a sound you have not yet heard from reviewed audio.",
+          "irish_examples": ["fear", "féar", "sean", "Seán"],
+          "source_refs": [
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "note.two-to-bes",
+              "field": "sessions[chapter1].pages[type=note,title=An síneadh fada].paras",
+              "supports": "repository_text"
+            },
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "lex.fear-man",
+              "field": "lexicon[id=lex.fear-man]",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "English framing is provisional; the written contrasts are copied from the existing chapter-one note and lexicon."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "audio_pronunciation", "named_entity"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "pronunciation.fada-contrast.pair",
+          "kind": "contrast",
+          "english": "Use the pair as a memory hook: fear is listed as “man”; féar is listed as “grass.” The mark is doing work inside the word.",
+          "irish_examples": ["fear", "féar"],
+          "source_refs": [
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "lex.fear-man",
+              "field": "lexicon[id=lex.fear-man]",
+              "supports": "repository_text"
+            },
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "lex.fear-grass",
+              "field": "lexicon[id=lex.fear-grass]",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The pair is source-backed repository content; the explanatory memory hook is provisional."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "audio_pronunciation"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "pronunciation.fada-contrast.intuition",
+          "kind": "intuition",
+          "english": "When the eye sees the mark, the learner gets a reminder to listen for the contrast. The written cue is part of the memory route, not decoration.",
+          "irish_examples": ["féar", "Seán"],
+          "source_refs": [
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "lex.fear-grass",
+              "field": "lexicon[id=lex.fear-grass].ph",
+              "supports": "repository_text"
+            },
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "lex.sean-name",
+              "field": "lexicon[id=lex.sean-name].ph",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The memory route is authored around existing pronunciation cues; it must not be read as completed audio review."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "audio_pronunciation", "named_entity"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "pronunciation.fada-contrast.boundary",
+          "kind": "boundary",
+          "english": "This corpus keeps the chapter's written contrast. It does not replace native-speaker audio review or settle every dialect reading.",
+          "irish_examples": ["fear", "féar", "sean", "Seán"],
+          "source_refs": [
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "lex.sean-name",
+              "field": "lexicon[id=lex.sean-name]",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The boundary is authored to keep the pronunciation claim narrow; the examples are copied from the cited chapter lexicon."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "audio_pronunciation", "named_entity", "dialect_register"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "spelling.caol-le-caol",
+      "title": "Let the vowels travel as a pair",
+      "area": "spelling",
+      "memory_hook": "The vowels beside a consonant are signposts; in these worked names, they travel as a pair.",
+      "scope": "The spelling pattern is shown through the chapter's names and motto; it is not a complete account of dialect pronunciation.",
+      "lines": [
+        {
+          "id": "spelling.caol-le-caol.framing",
+          "kind": "framing",
+          "english": "Look at the vowels beside a consonant. The chapter calls them signposts that help the learner notice broad and slender spelling before naming a rule.",
+          "irish_examples": ["Dáire", "Áine", "Rónán"],
+          "source_refs": [
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "v-caol",
+              "field": "values[id=v-caol].frame",
+              "supports": "repository_text"
+            },
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "discover.caol-le-caol",
+              "field": "sessions[chapter1].pages[type=discover].steps",
+              "supports": "pattern_only"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "English framing is provisional; the names and signpost idea are copied or paraphrased from the cited chapter records."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "named_entity", "audio_pronunciation"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "spelling.caol-le-caol.intuition",
+          "kind": "intuition",
+          "english": "Memory hook: caol le caol, leathan le leathan — slender with slender, broad with broad. Picture the two vowel signposts agreeing across the consonant.",
+          "irish_examples": ["Caol le caol agus leathan le leathan."],
+          "source_refs": [
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "lex.caol-le-caol",
+              "field": "lexicon[id=lex.caol-le-caol]",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The memory hook is an authored English framing around the exact chapter motto."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "audio_pronunciation"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "spelling.caol-le-caol.examples",
+          "kind": "example",
+          "english": "Try the pattern on names before you name the rule: Dáire and Áine show slender neighbours in the worked examples; Rónán shows broad neighbours.",
+          "irish_examples": ["Dáire", "Áine", "Rónán"],
+          "source_refs": [
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "discover.caol-le-caol",
+              "field": "sessions[chapter1].pages[type=discover].steps",
+              "supports": "pattern_only"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The worked names and their broad/slender labels come from the cited discovery steps; the English bridge is provisional."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "named_entity", "audio_pronunciation"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "spelling.caol-le-caol.boundary",
+          "kind": "boundary",
+          "english": "This note stays with the worked pattern. It does not settle every dialect pronunciation or turn three names into a complete grammar lesson.",
+          "irish_examples": ["Caol le caol agus leathan le leathan.", "Dáire", "Áine", "Rónán"],
+          "source_refs": [
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "v-caol",
+              "field": "values[id=v-caol].answer",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The boundary language is authored to keep the rule scoped to the cited worked examples."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "named_entity", "audio_pronunciation", "dialect_register"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "pronunciation.sean-name",
+      "title": "Keep the name's mark",
+      "area": "pronunciation",
+      "memory_hook": "The name keeps its mark: sean and Seán are not the same written item in this contrast.",
+      "scope": "The chapter's sean/Seán contrast and its worked s example only; no universal dialect claim.",
+      "lines": [
+        {
+          "id": "pronunciation.sean-name.contrast",
+          "kind": "contrast",
+          "english": "Two written forms can share a start and diverge at the fada: sean is listed as “old”; Seán is the name in the chapter's contrast.",
+          "irish_examples": ["sean", "Seán"],
+          "source_refs": [
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "lex.sean-old",
+              "field": "lexicon[id=lex.sean-old]",
+              "supports": "repository_text"
+            },
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "lex.sean-name",
+              "field": "lexicon[id=lex.sean-name]",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The written contrast is copied from the chapter lexicon; the English memory framing is provisional."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "named_entity", "audio_pronunciation"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "pronunciation.sean-name.intuition",
+          "kind": "intuition",
+          "english": "Keep the mark on the name. In the draft's listening contrast, the written fada is a cue to expect a different length and meaning, not a decorative extra.",
+          "irish_examples": ["Seán"],
+          "source_refs": [
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "lex.sean-name",
+              "field": "lexicon[id=lex.sean-name].ph",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The memory hook is authored around the chapter's written and pronunciation cue; audio review remains pending."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "named_entity", "audio_pronunciation"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "pronunciation.sean-name.boundary",
+          "kind": "boundary",
+          "english": "The chapter presents s in Seán as slender in this example. Pronunciation review remains open; this note makes no universal dialect claim.",
+          "irish_examples": ["Seán"],
+          "source_refs": [
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "lex.sean-name",
+              "field": "lexicon[id=lex.sean-name]",
+              "supports": "repository_text"
+            },
+            {
+              "path": "ios/AnTuras/Resources/chapter1.json",
+              "record_id": "choice.sean-sound",
+              "field": "sessions[chapter1].pages[type=choice,prompt=In the name Seán]",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The boundary names the scope of an existing worked example; it does not certify the pronunciation."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "named_entity", "audio_pronunciation", "dialect_register"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        }
+      ]
+    }
+  ]
+}

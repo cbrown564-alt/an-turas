@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antur.as/schemas/irish-explanations-v1.schema.json",
+  "title": "An Turas Irish pedagogy explanation corpus",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract",
+    "id",
+    "status",
+    "language",
+    "review_policy",
+    "lessons"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "contract": { "const": "irish_pedagogy_explanations" },
+    "id": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["draft", "active", "retired"] },
+    "language": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "framing"],
+      "properties": {
+        "target": { "const": "ga" },
+        "framing": { "const": "en" }
+      }
+    },
+    "review_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["learner_release", "required_reviews", "capture_note"],
+      "properties": {
+        "learner_release": { "const": "blocked" },
+        "required_reviews": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["pedagogy", "irish_language", "audio_pronunciation"]
+          }
+        },
+        "capture_note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "lessons": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/lesson" }
+    }
+  },
+  "$defs": {
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "record_id", "field", "supports"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "record_id": { "type": "string", "minLength": 1 },
+        "field": { "type": "string", "minLength": 1 },
+        "supports": {
+          "enum": [
+            "repository_text",
+            "external_attestation",
+            "pattern_only",
+            "exercise_context",
+            "migration_only"
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin", "invented", "composition_note"],
+      "properties": {
+        "origin": { "const": "invented_pedagogical" },
+        "invented": { "const": true },
+        "composition_note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "reviewRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewer_ref", "reviewed_at", "scope", "evidence_ref"],
+      "properties": {
+        "reviewer_ref": { "type": "string", "minLength": 1 },
+        "reviewed_at": { "type": "string", "minLength": 1 },
+        "scope": { "type": "string", "minLength": 1 },
+        "evidence_ref": { "type": "string", "minLength": 1 }
+      }
+    },
+    "reviewGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "record"],
+      "properties": {
+        "status": {
+          "enum": ["not_requested", "pending", "approved", "changes_requested", "rejected"]
+        },
+        "record": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/reviewRecord" }
+          ]
+        }
+      }
+    },
+    "learnerRelease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reasons"],
+      "properties": {
+        "status": { "enum": ["blocked", "eligible", "retired"] },
+        "reasons": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "line": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "english",
+        "irish_examples",
+        "source_refs",
+        "provenance",
+        "risk_flags",
+        "reviews",
+        "learner_release"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["framing", "intuition", "example", "contrast", "boundary"] },
+        "english": { "type": "string", "minLength": 1 },
+        "irish_examples": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/sourceRef" }
+        },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "risk_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "fada",
+              "initial_mutation",
+              "pronoun_reference",
+              "named_entity",
+              "audio_pronunciation",
+              "scope_guard",
+              "invented_text",
+              "explanation_claim",
+              "source_ambiguity",
+              "dialect_register",
+              "long_sentence"
+            ]
+          }
+        },
+        "reviews": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["pedagogy", "irish_language", "audio_pronunciation"],
+          "properties": {
+            "pedagogy": { "$ref": "#/$defs/reviewGate" },
+            "irish_language": { "$ref": "#/$defs/reviewGate" },
+            "audio_pronunciation": { "$ref": "#/$defs/reviewGate" }
+          }
+        },
+        "learner_release": { "$ref": "#/$defs/learnerRelease" }
+      }
+    },
+    "lesson": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "area", "memory_hook", "scope", "lines"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "area": { "enum": ["grammar", "spelling", "pronunciation"] },
+        "memory_hook": { "type": "string", "minLength": 1 },
+        "scope": { "type": "string", "minLength": 1 },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/line" }
+        }
+      }
+    }
+  }
+}
