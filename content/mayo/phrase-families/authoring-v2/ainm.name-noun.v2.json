@@ -285,9 +285,14 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "pending",
+          "record": {
+            "status": "generated_unreviewed",
+            "clip_sha256": "ef11059a99700be60ff3d125911ac5ef35ae92ec772641552c30b6373a59aa09",
+            "runtime_source": "structured_batch:d32.harvest.mayo.mayo-grainne-1593.ainm-name-noun",
+            "note": "Captured output is retained for human audio QA; this record is not a QA approval."
+          },
+          "batch_line_id": "d32.harvest.mayo.mayo-grainne-1593.ainm-name-noun.line.906105391a8df61e"
         },
         "learner_release": {
           "status": "blocked",
@@ -296,7 +301,7 @@
             "editorial_review_pending",
             "pedagogy_review_pending",
             "irish_language_review_pending",
-            "audio_not_generated",
+            "audio_qa_pending",
             "source_ambiguity"
           ]
         }
@@ -425,9 +430,14 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "pending",
+          "record": {
+            "status": "generated_unreviewed",
+            "clip_sha256": "03a6647d78c5a60d79c783adf634d0274aae067e7b4b3ae984990e8e6dd2df77",
+            "runtime_source": "structured_batch:d32.harvest.mayo.mayo-grainne-1593.ainm-name-noun",
+            "note": "Captured output is retained for human audio QA; this record is not a QA approval."
+          },
+          "batch_line_id": "d32.harvest.mayo.mayo-grainne-1593.ainm-name-noun.line.972b3b0c385491b9"
         },
         "learner_release": {
           "status": "blocked",
@@ -436,7 +446,7 @@
             "editorial_review_pending",
             "pedagogy_review_pending",
             "irish_language_review_pending",
-            "audio_not_generated",
+            "audio_qa_pending",
             "source_ambiguity"
           ]
         }

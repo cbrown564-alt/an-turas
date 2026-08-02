@@ -58,8 +58,8 @@
         "provider_request_id": "AmbsBkzTcjfsGI1b68I6",
         "started_at": "2026-08-02T16:37:47.070135+00:00",
         "completed_at": "2026-08-02T16:37:53.002076+00:00",
-        "reported_credits": 39.0,
-        "reported_characters": 39
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -106,8 +106,8 @@
         "provider_request_id": "4pSDV38J7iKZOfQxaV9f",
         "started_at": "2026-08-02T16:37:47.070135+00:00",
         "completed_at": "2026-08-02T16:37:53.002076+00:00",
-        "reported_credits": 44.0,
-        "reported_characters": 44
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -122,23 +122,58 @@
       }
     }
   ],
+  "chronology": {
+    "status": "post_hoc_unverified",
+    "disposition": "post-hoc/chronology-unverified",
+    "original_evidence_preserved": true,
+    "unresolved_ordering": [
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:37:53.002076+00:00",
+        "line_id": "d32.harvest.mayo.mayo-grainne-1593.ainm-name-noun"
+      },
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "spend.usage_before.captured_at",
+        "later_at": "2026-08-02T16:37:47.070135+00:00",
+        "line_id": ""
+      },
+      {
+        "earlier_field": "execution.approved_at",
+        "earlier_at": "2026-08-02T17:24:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:37:53.002076+00:00",
+        "line_id": "d32.harvest.mayo.mayo-grainne-1593.ainm-name-noun"
+      },
+      {
+        "earlier_field": "line.claim.claimed_at",
+        "earlier_at": "2026-08-02T17:24:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:37:53.002076+00:00",
+        "line_id": "d32.harvest.mayo.mayo-grainne-1593.ainm-name-noun.line.906105391a8df61e"
+      }
+    ]
+  },
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 83.0,
-    "estimated_cumulative_credits": 13400.0,
-    "actual_batch_credits": 0.0,
-    "actual_cumulative_credits": 95108.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 83,
+    "estimated_cumulative_credits": 13400,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": 95108,
     "usage_before": {
       "captured_at": "2026-08-02T16:37:47.070135+00:00",
-      "used_credits": 95108.0,
-      "remaining_credits": 140991.0
+      "used_credits": 95108,
+      "remaining_credits": 140991
     },
     "usage_after": {
       "captured_at": "2026-08-02T16:37:53.002076+00:00",
-      "used_credits": 95108.0,
-      "remaining_credits": 140991.0
+      "used_credits": 95108,
+      "remaining_credits": 140991
     },
     "cap_authorization": {
       "status": "payload_limited",
@@ -146,8 +181,12 @@
       "authorized_at": "2026-08-02T17:29:00Z",
       "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
       "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-07-retry",
-      "baseline_used_credits": 95108.0,
-      "payload_credit_limit": 83.0
+      "baseline_used_credits": 95108,
+      "payload_credit_limit": 83
+    },
+    "settlement": {
+      "status": "aggregate_only_delayed_metering",
+      "settlement_ref": "d32.personal-atlas.audio-drain.2026-08-02"
     }
   },
   "counts": {
@@ -158,5 +197,5 @@
     "succeeded": 2,
     "failed": 0
   },
-  "manifest_identity_sha256": "2f63f1fe4c42bb9fd6ad82d723bf5e121caa447405ac12400bf4d94bd60471e6"
+  "manifest_identity_sha256": "da60aa1a423b29fd37ced5bc13e35af9a1077ae35143d96dabfa9b9388d95168"
 }

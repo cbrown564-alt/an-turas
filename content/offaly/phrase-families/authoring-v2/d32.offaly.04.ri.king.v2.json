@@ -280,9 +280,14 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "pending",
+          "record": {
+            "status": "generated_unreviewed",
+            "clip_sha256": "d3bcf1c3f1edb5e23076a84f5dcd786b05d9b83c64b0ba4470d7ceb295e46461",
+            "runtime_source": "structured_batch:d32.harvest.offaly.d32-offaly-cross-of-the-scriptures.offaly-ri-king",
+            "note": "Captured output is retained for human audio QA; this record is not a QA approval."
+          },
+          "batch_line_id": "d32.harvest.offaly.d32-offaly-cross-of-the-scriptures.offaly-ri-king.line.b7227eb519985bf3"
         },
         "learner_release": {
           "status": "blocked",
@@ -291,7 +296,7 @@
             "editorial_review_pending",
             "pedagogy_review_pending",
             "irish_language_review_pending",
-            "audio_not_generated",
+            "audio_qa_pending",
             "source_ambiguity"
           ]
         }
@@ -422,9 +427,14 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "pending",
+          "record": {
+            "status": "generated_unreviewed",
+            "clip_sha256": "39ce0f2ff8ed15d5544d28bb1f8c45f26fdfa37ebb8c302203812b1d4690bddd",
+            "runtime_source": "structured_batch:d32.harvest.offaly.d32-offaly-cross-of-the-scriptures.offaly-ri-king",
+            "note": "Captured output is retained for human audio QA; this record is not a QA approval."
+          },
+          "batch_line_id": "d32.harvest.offaly.d32-offaly-cross-of-the-scriptures.offaly-ri-king.line.ae5b1292c36afa81"
         },
         "learner_release": {
           "status": "blocked",
@@ -433,7 +443,7 @@
             "editorial_review_pending",
             "pedagogy_review_pending",
             "irish_language_review_pending",
-            "audio_not_generated",
+            "audio_qa_pending",
             "source_ambiguity"
           ]
         }

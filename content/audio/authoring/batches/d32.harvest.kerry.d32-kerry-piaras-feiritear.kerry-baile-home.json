@@ -58,8 +58,8 @@
         "provider_request_id": "iaVOJXCsWWsVEPP8BFhY",
         "started_at": "2026-08-02T16:31:33.057043+00:00",
         "completed_at": "2026-08-02T16:31:37.602673+00:00",
-        "reported_credits": 26.0,
-        "reported_characters": 26
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": {
         "code": "semantic_quarantine",
@@ -116,8 +116,8 @@
         "provider_request_id": "qoDk037GV2Gdcnckyrvz",
         "started_at": "2026-08-02T16:31:33.057043+00:00",
         "completed_at": "2026-08-02T16:31:37.602673+00:00",
-        "reported_credits": 26.0,
-        "reported_characters": 26
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": {
         "code": "semantic_quarantine",
@@ -142,23 +142,58 @@
       }
     }
   ],
+  "chronology": {
+    "status": "post_hoc_unverified",
+    "disposition": "post-hoc/chronology-unverified",
+    "original_evidence_preserved": true,
+    "unresolved_ordering": [
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:31:37.602673+00:00",
+        "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-baile-home"
+      },
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "spend.usage_before.captured_at",
+        "later_at": "2026-08-02T16:31:33.057043+00:00",
+        "line_id": ""
+      },
+      {
+        "earlier_field": "execution.approved_at",
+        "earlier_at": "2026-08-02T16:49:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:31:37.602673+00:00",
+        "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-baile-home"
+      },
+      {
+        "earlier_field": "line.claim.claimed_at",
+        "earlier_at": "2026-08-02T16:49:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:31:37.602673+00:00",
+        "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-baile-home.line.4106f09e9f3b1479"
+      }
+    ]
+  },
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 0.0,
-    "estimated_cumulative_credits": 13369.0,
-    "actual_batch_credits": 0.0,
-    "actual_cumulative_credits": 95062.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 0,
+    "estimated_cumulative_credits": 13369,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": 95062,
     "usage_before": {
       "captured_at": "2026-08-02T16:31:33.057043+00:00",
-      "used_credits": 95062.0,
-      "remaining_credits": 141037.0
+      "used_credits": 95062,
+      "remaining_credits": 141037
     },
     "usage_after": {
       "captured_at": "2026-08-02T16:31:37.602673+00:00",
-      "used_credits": 95062.0,
-      "remaining_credits": 141037.0
+      "used_credits": 95062,
+      "remaining_credits": 141037
     },
     "cap_authorization": {
       "status": "payload_limited",
@@ -166,8 +201,12 @@
       "authorized_at": "2026-08-02T16:54:00Z",
       "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
       "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-05-retry",
-      "baseline_used_credits": 95062.0,
-      "payload_credit_limit": 52.0
+      "baseline_used_credits": 95062,
+      "payload_credit_limit": 52
+    },
+    "settlement": {
+      "status": "aggregate_only_delayed_metering",
+      "settlement_ref": "d32.personal-atlas.audio-drain.2026-08-02"
     }
   },
   "counts": {
@@ -178,5 +217,5 @@
     "succeeded": 2,
     "failed": 0
   },
-  "manifest_identity_sha256": "e49cd88a26703ec01163d8b275ebbdb854ca2d135faf4fde475a582fd010cbdd"
+  "manifest_identity_sha256": "d45400ce2861535885c37fdab1c9fa4aec0aaac57281939f4ea350571096a074"
 }

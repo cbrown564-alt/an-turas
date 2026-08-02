@@ -280,9 +280,14 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "pending",
+          "record": {
+            "status": "generated_unreviewed",
+            "clip_sha256": "d3d14117c07b5be1ce941ace82dbf5c9ff5b58cdf40c59ae2df30469652312f0",
+            "runtime_source": "structured_batch:d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-ainm-name",
+            "note": "Captured output is retained for human audio QA; this record is not a QA approval."
+          },
+          "batch_line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-ainm-name.line.c3719f707d178d89"
         },
         "learner_release": {
           "status": "blocked",
@@ -291,7 +296,7 @@
             "editorial_review_pending",
             "pedagogy_review_pending",
             "irish_language_review_pending",
-            "audio_not_generated",
+            "audio_qa_pending",
             "source_ambiguity"
           ]
         }
@@ -422,9 +427,14 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "pending",
+          "record": {
+            "status": "generated_unreviewed",
+            "clip_sha256": "7068c7818527ae9e64f4ac9b2832a2e941728f40dc751b08cb501f7b98cb875e",
+            "runtime_source": "structured_batch:d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-ainm-name",
+            "note": "Captured output is retained for human audio QA; this record is not a QA approval."
+          },
+          "batch_line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-ainm-name.line.302036a0312307e7"
         },
         "learner_release": {
           "status": "blocked",
@@ -433,7 +443,7 @@
             "editorial_review_pending",
             "pedagogy_review_pending",
             "irish_language_review_pending",
-            "audio_not_generated",
+            "audio_qa_pending",
             "source_ambiguity"
           ]
         }

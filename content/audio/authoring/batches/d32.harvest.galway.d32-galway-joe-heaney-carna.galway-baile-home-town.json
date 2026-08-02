@@ -58,8 +58,8 @@
         "provider_request_id": "ZJAc9u5S3MHhExUkVMHV",
         "started_at": "2026-08-02T16:26:13.677751+00:00",
         "completed_at": "2026-08-02T16:26:17.568931+00:00",
-        "reported_credits": 17.0,
-        "reported_characters": 17
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -106,8 +106,8 @@
         "provider_request_id": "ZISZ7WeCmrAgloWPJW7o",
         "started_at": "2026-08-02T16:26:13.677751+00:00",
         "completed_at": "2026-08-02T16:26:17.568931+00:00",
-        "reported_credits": 17.0,
-        "reported_characters": 17
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -122,23 +122,58 @@
       }
     }
   ],
+  "chronology": {
+    "status": "post_hoc_unverified",
+    "disposition": "post-hoc/chronology-unverified",
+    "original_evidence_preserved": true,
+    "unresolved_ordering": [
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:26:17.568931+00:00",
+        "line_id": "d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town"
+      },
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "spend.usage_before.captured_at",
+        "later_at": "2026-08-02T16:26:13.677751+00:00",
+        "line_id": ""
+      },
+      {
+        "earlier_field": "execution.approved_at",
+        "earlier_at": "2026-08-02T16:29:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:26:17.568931+00:00",
+        "line_id": "d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town"
+      },
+      {
+        "earlier_field": "line.claim.claimed_at",
+        "earlier_at": "2026-08-02T16:29:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:26:17.568931+00:00",
+        "line_id": "d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town.line.08d4f08146ccca52"
+      }
+    ]
+  },
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 34.0,
-    "estimated_cumulative_credits": 13351.0,
-    "actual_batch_credits": 0.0,
-    "actual_cumulative_credits": 95001.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 34,
+    "estimated_cumulative_credits": 13351,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": 95001,
     "usage_before": {
       "captured_at": "2026-08-02T16:26:13.677751+00:00",
-      "used_credits": 95001.0,
-      "remaining_credits": 141098.0
+      "used_credits": 95001,
+      "remaining_credits": 141098
     },
     "usage_after": {
       "captured_at": "2026-08-02T16:26:17.568931+00:00",
-      "used_credits": 95001.0,
-      "remaining_credits": 141098.0
+      "used_credits": 95001,
+      "remaining_credits": 141098
     },
     "cap_authorization": {
       "status": "payload_limited",
@@ -146,8 +181,12 @@
       "authorized_at": "2026-08-02T16:31:00Z",
       "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
       "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-03-retry",
-      "baseline_used_credits": 95001.0,
-      "payload_credit_limit": 34.0
+      "baseline_used_credits": 95001,
+      "payload_credit_limit": 34
+    },
+    "settlement": {
+      "status": "aggregate_only_delayed_metering",
+      "settlement_ref": "d32.personal-atlas.audio-drain.2026-08-02"
     }
   },
   "counts": {
@@ -158,5 +197,5 @@
     "succeeded": 2,
     "failed": 0
   },
-  "manifest_identity_sha256": "70054a6bea126862bf16560acf819ac6ce735cdccaa8cb2825e689302e23ec58"
+  "manifest_identity_sha256": "f6cabe189e9459c7fcdc209860600c2cbc9dd00c21211a88ac39f3ee08152a7e"
 }

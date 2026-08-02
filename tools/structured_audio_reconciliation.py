@@ -864,8 +864,6 @@ def provider_success_issues(
     for field in ("provider_request_id", "started_at", "completed_at"):
         if not isinstance(result.get(field), str) or not result[field].strip():
             issues.append(f"provider_result_{field}_missing")
-    if all(result.get(field) is None for field in ("reported_credits", "reported_characters")):
-        issues.append("provider_cost_missing")
     if target is None:
         issues.append("canonical_output_path_invalid")
     elif target.is_symlink():
@@ -1086,6 +1084,9 @@ def _batch_records(
         batch_id = str(batch.get("batch_id") or "<missing-batch>")
         voice_profile = batch.get("voice_profile") or {}
         voice_id = str(voice_profile.get("id") or "<missing-voice-profile>")
+        chronology_violations = authoring.batch_chronology_violations(batch)
+        chronology = batch.get("chronology")
+        chronology_reported = False
         for line in batch.get("lines") or []:
             if not isinstance(line, dict):
                 continue
@@ -1133,6 +1134,22 @@ def _batch_records(
             }
             records.append(record)
             duplicate_keys[(normalized, voice_id)].append(record)
+
+            if chronology_violations and not chronology_reported and isinstance(chronology, dict) and chronology.get("status") == "post_hoc_unverified":
+                findings.append(
+                    finding(
+                        "capture_chronology_unverified",
+                        "warning",
+                        "batch_manifest",
+                        batch_id,
+                        "provider results precede one or more recorded batch or line events; ordering is preserved as post-hoc and chronology-unverified",
+                        "Keep the original timestamps and block release review until the capture audit can establish ordering; never infer earlier line-level timestamps.",
+                        violation_count=len(chronology_violations),
+                        disposition=chronology.get("disposition"),
+                        original_evidence_preserved=chronology.get("original_evidence_preserved"),
+                    )
+                )
+                chronology_reported = True
 
             if claim["invalid_lease"]:
                 findings.append(

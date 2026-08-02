@@ -417,9 +417,14 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "pending",
+          "record": {
+            "status": "generated_unreviewed",
+            "clip_sha256": "6d9d9c9af4bec61a6a4c53dc98beefd56fb5f24b66edbb8490f55afa1eade220",
+            "runtime_source": "structured_batch:d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town",
+            "note": "Captured output is retained for human audio QA; this record is not a QA approval."
+          },
+          "batch_line_id": "d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town.line.f463ce0e4109a07f"
         },
         "learner_release": {
           "status": "blocked",
@@ -428,7 +433,7 @@
             "editorial_review_pending",
             "pedagogy_review_pending",
             "irish_language_review_pending",
-            "audio_not_generated",
+            "audio_qa_pending",
             "source_ambiguity"
           ]
         }
@@ -563,9 +568,14 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "pending",
+          "record": {
+            "status": "generated_unreviewed",
+            "clip_sha256": "2f0c59832aec338fb59571fc87bdbda28c50f8055bb2c47e09af6054d0b46f28",
+            "runtime_source": "structured_batch:d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town",
+            "note": "Captured output is retained for human audio QA; this record is not a QA approval."
+          },
+          "batch_line_id": "d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town.line.08d4f08146ccca52"
         },
         "learner_release": {
           "status": "blocked",
@@ -574,7 +584,7 @@
             "editorial_review_pending",
             "pedagogy_review_pending",
             "irish_language_review_pending",
-            "audio_not_generated",
+            "audio_qa_pending",
             "source_ambiguity"
           ]
         }

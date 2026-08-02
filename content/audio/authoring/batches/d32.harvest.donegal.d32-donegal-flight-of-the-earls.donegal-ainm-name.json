@@ -58,8 +58,8 @@
         "provider_request_id": "yTuge3DwZKi4BxjNjcLF",
         "started_at": "2026-08-02T16:20:17.916883+00:00",
         "completed_at": "2026-08-02T16:20:27.753076+00:00",
-        "reported_credits": 33.0,
-        "reported_characters": 33
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -106,8 +106,8 @@
         "provider_request_id": "wL57AhdtoDXeUzql3mY5",
         "started_at": "2026-08-02T16:20:17.916883+00:00",
         "completed_at": "2026-08-02T16:20:27.753076+00:00",
-        "reported_credits": 38.0,
-        "reported_characters": 38
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -154,8 +154,8 @@
         "provider_request_id": "m3jq6sonwIZYELQLYsuj",
         "started_at": "2026-08-02T16:20:17.916883+00:00",
         "completed_at": "2026-08-02T16:20:27.753076+00:00",
-        "reported_credits": 28.0,
-        "reported_characters": 28
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -202,8 +202,8 @@
         "provider_request_id": "vJItwkuOHHTz9KI5dg8q",
         "started_at": "2026-08-02T16:20:17.916883+00:00",
         "completed_at": "2026-08-02T16:20:27.753076+00:00",
-        "reported_credits": 28.0,
-        "reported_characters": 28
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -218,23 +218,44 @@
       }
     }
   ],
+  "chronology": {
+    "status": "post_hoc_unverified",
+    "disposition": "post-hoc/chronology-unverified",
+    "original_evidence_preserved": true,
+    "unresolved_ordering": [
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:20:27.753076+00:00",
+        "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-ainm-name"
+      },
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "spend.usage_before.captured_at",
+        "later_at": "2026-08-02T16:20:17.916883+00:00",
+        "line_id": ""
+      }
+    ]
+  },
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 127.0,
-    "estimated_cumulative_credits": 13444.0,
-    "actual_batch_credits": 0.0,
-    "actual_cumulative_credits": 94899.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 127,
+    "estimated_cumulative_credits": 13444,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": 94899,
     "usage_before": {
       "captured_at": "2026-08-02T16:20:17.916883+00:00",
-      "used_credits": 94899.0,
-      "remaining_credits": 141200.0
+      "used_credits": 94899,
+      "remaining_credits": 141200
     },
     "usage_after": {
       "captured_at": "2026-08-02T16:20:27.753076+00:00",
-      "used_credits": 94899.0,
-      "remaining_credits": 141200.0
+      "used_credits": 94899,
+      "remaining_credits": 141200
     },
     "cap_authorization": {
       "status": "payload_limited",
@@ -242,8 +263,12 @@
       "authorized_at": "2026-08-02T16:17:00Z",
       "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
       "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-01",
-      "baseline_used_credits": 94899.0,
-      "payload_credit_limit": 127.0
+      "baseline_used_credits": 94899,
+      "payload_credit_limit": 127
+    },
+    "settlement": {
+      "status": "aggregate_only_delayed_metering",
+      "settlement_ref": "d32.personal-atlas.audio-drain.2026-08-02"
     }
   },
   "counts": {
@@ -254,5 +279,5 @@
     "succeeded": 4,
     "failed": 0
   },
-  "manifest_identity_sha256": "668ddb890b08c433df3843c5e54459ff736a3914174227930d0801e561279b09"
+  "manifest_identity_sha256": "c654ba9c3edee814452a67077f0fb95b58704d60f22ac231607424d55e5d23ae"
 }

@@ -55,6 +55,12 @@ class StructuredAudioGenerationTests(unittest.TestCase):
             authoring.batch_identity_sha256(batch),
         )
 
+    def test_provider_costs_do_not_relabel_the_request_estimate(self):
+        costs = generation.provider_reported_costs(
+            {"estimated_credits": 42.0, "estimated_characters": 42}
+        )
+        self.assertEqual(costs, {"reported_credits": None, "reported_characters": None})
+
     def test_copy_without_overwrite_preserves_existing_bytes(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

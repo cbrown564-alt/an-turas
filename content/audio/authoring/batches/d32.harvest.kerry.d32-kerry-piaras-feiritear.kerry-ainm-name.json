@@ -58,8 +58,8 @@
         "provider_request_id": "KLpL0XXWDD33pQeoYFs2",
         "started_at": "2026-08-02T16:28:26.389891+00:00",
         "completed_at": "2026-08-02T16:28:31.673712+00:00",
-        "reported_credits": 42.0,
-        "reported_characters": 42
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -106,8 +106,8 @@
         "provider_request_id": "T8GfCl8YRS5sgIyQ6Y4N",
         "started_at": "2026-08-02T16:28:26.389891+00:00",
         "completed_at": "2026-08-02T16:28:31.673712+00:00",
-        "reported_credits": 37.0,
-        "reported_characters": 37
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -122,23 +122,58 @@
       }
     }
   ],
+  "chronology": {
+    "status": "post_hoc_unverified",
+    "disposition": "post-hoc/chronology-unverified",
+    "original_evidence_preserved": true,
+    "unresolved_ordering": [
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:28:31.673712+00:00",
+        "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-ainm-name"
+      },
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "spend.usage_before.captured_at",
+        "later_at": "2026-08-02T16:28:26.389891+00:00",
+        "line_id": ""
+      },
+      {
+        "earlier_field": "execution.approved_at",
+        "earlier_at": "2026-08-02T16:38:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:28:31.673712+00:00",
+        "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-ainm-name"
+      },
+      {
+        "earlier_field": "line.claim.claimed_at",
+        "earlier_at": "2026-08-02T16:38:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:28:31.673712+00:00",
+        "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-ainm-name.line.302036a0312307e7"
+      }
+    ]
+  },
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 79.0,
-    "estimated_cumulative_credits": 13396.0,
-    "actual_batch_credits": 0.0,
-    "actual_cumulative_credits": 95019.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 79,
+    "estimated_cumulative_credits": 13396,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": 95019,
     "usage_before": {
       "captured_at": "2026-08-02T16:28:26.389891+00:00",
-      "used_credits": 95019.0,
-      "remaining_credits": 141080.0
+      "used_credits": 95019,
+      "remaining_credits": 141080
     },
     "usage_after": {
       "captured_at": "2026-08-02T16:28:31.673712+00:00",
-      "used_credits": 95019.0,
-      "remaining_credits": 141080.0
+      "used_credits": 95019,
+      "remaining_credits": 141080
     },
     "cap_authorization": {
       "status": "payload_limited",
@@ -146,8 +181,12 @@
       "authorized_at": "2026-08-02T16:38:00Z",
       "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
       "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-04",
-      "baseline_used_credits": 95019.0,
-      "payload_credit_limit": 79.0
+      "baseline_used_credits": 95019,
+      "payload_credit_limit": 79
+    },
+    "settlement": {
+      "status": "aggregate_only_delayed_metering",
+      "settlement_ref": "d32.personal-atlas.audio-drain.2026-08-02"
     }
   },
   "counts": {
@@ -158,5 +197,5 @@
     "succeeded": 2,
     "failed": 0
   },
-  "manifest_identity_sha256": "3702c3a227a1fe786311e8adb67cd341d3452720e8e8eb595807e9972df3e7cd"
+  "manifest_identity_sha256": "77f704eb06b30f7a06b608078ea30e874b3c00126d8f9368e2f1bd98a39d7f0c"
 }

@@ -58,8 +58,8 @@
         "provider_request_id": "uugW2xPiNLIaiRqZHQIJ",
         "started_at": "2026-08-02T16:23:01.878696+00:00",
         "completed_at": "2026-08-02T16:23:06.793516+00:00",
-        "reported_credits": 28.0,
-        "reported_characters": 28
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -106,8 +106,8 @@
         "provider_request_id": "wFQGUsm6CmdJ1ARPolml",
         "started_at": "2026-08-02T16:23:01.878696+00:00",
         "completed_at": "2026-08-02T16:23:06.793516+00:00",
-        "reported_credits": 33.0,
-        "reported_characters": 33
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -122,23 +122,44 @@
       }
     }
   ],
+  "chronology": {
+    "status": "post_hoc_unverified",
+    "disposition": "post-hoc/chronology-unverified",
+    "original_evidence_preserved": true,
+    "unresolved_ordering": [
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:23:06.793516+00:00",
+        "line_id": "d32.harvest.dublin.dublin-sihtric-penny.ainm-name-noun"
+      },
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "spend.usage_before.captured_at",
+        "later_at": "2026-08-02T16:23:01.878696+00:00",
+        "line_id": ""
+      }
+    ]
+  },
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 61.0,
-    "estimated_cumulative_credits": 13378.0,
-    "actual_batch_credits": 0.0,
-    "actual_cumulative_credits": 94968.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 61,
+    "estimated_cumulative_credits": 13378,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": 94968,
     "usage_before": {
       "captured_at": "2026-08-02T16:23:01.878696+00:00",
-      "used_credits": 94968.0,
-      "remaining_credits": 141131.0
+      "used_credits": 94968,
+      "remaining_credits": 141131
     },
     "usage_after": {
       "captured_at": "2026-08-02T16:23:06.793516+00:00",
-      "used_credits": 94968.0,
-      "remaining_credits": 141131.0
+      "used_credits": 94968,
+      "remaining_credits": 141131
     },
     "cap_authorization": {
       "status": "payload_limited",
@@ -146,8 +167,12 @@
       "authorized_at": "2026-08-02T16:23:00Z",
       "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
       "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-02",
-      "baseline_used_credits": 94968.0,
-      "payload_credit_limit": 61.0
+      "baseline_used_credits": 94968,
+      "payload_credit_limit": 61
+    },
+    "settlement": {
+      "status": "aggregate_only_delayed_metering",
+      "settlement_ref": "d32.personal-atlas.audio-drain.2026-08-02"
     }
   },
   "counts": {
@@ -158,5 +183,5 @@
     "succeeded": 2,
     "failed": 0
   },
-  "manifest_identity_sha256": "a9309bf29e861b3c578235861575c8cfbc7fce04fdd0a95f815747c2c34b9414"
+  "manifest_identity_sha256": "aa0e6bba68e51ec526a9885a6448a3b2ece1132971bfe426556647f8dac956f4"
 }

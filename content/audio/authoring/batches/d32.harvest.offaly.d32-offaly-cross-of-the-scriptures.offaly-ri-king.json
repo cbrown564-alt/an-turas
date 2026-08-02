@@ -58,8 +58,8 @@
         "provider_request_id": "5c9JyuXTBcpRQfVtCr4Q",
         "started_at": "2026-08-02T16:40:56.995705+00:00",
         "completed_at": "2026-08-02T16:41:00.960894+00:00",
-        "reported_credits": 20.0,
-        "reported_characters": 20
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -106,8 +106,8 @@
         "provider_request_id": "Fy84f1BhC5JmQ512hRim",
         "started_at": "2026-08-02T16:40:56.995705+00:00",
         "completed_at": "2026-08-02T16:41:00.960894+00:00",
-        "reported_credits": 20.0,
-        "reported_characters": 20
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -122,23 +122,58 @@
       }
     }
   ],
+  "chronology": {
+    "status": "post_hoc_unverified",
+    "disposition": "post-hoc/chronology-unverified",
+    "original_evidence_preserved": true,
+    "unresolved_ordering": [
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:41:00.960894+00:00",
+        "line_id": "d32.harvest.offaly.d32-offaly-cross-of-the-scriptures.offaly-ri-king"
+      },
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "spend.usage_before.captured_at",
+        "later_at": "2026-08-02T16:40:56.995705+00:00",
+        "line_id": ""
+      },
+      {
+        "earlier_field": "execution.approved_at",
+        "earlier_at": "2026-08-02T17:46:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:41:00.960894+00:00",
+        "line_id": "d32.harvest.offaly.d32-offaly-cross-of-the-scriptures.offaly-ri-king"
+      },
+      {
+        "earlier_field": "line.claim.claimed_at",
+        "earlier_at": "2026-08-02T17:46:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:41:00.960894+00:00",
+        "line_id": "d32.harvest.offaly.d32-offaly-cross-of-the-scriptures.offaly-ri-king.line.ae5b1292c36afa81"
+      }
+    ]
+  },
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 40.0,
-    "estimated_cumulative_credits": 13357.0,
-    "actual_batch_credits": 0.0,
-    "actual_cumulative_credits": 95153.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 40,
+    "estimated_cumulative_credits": 13357,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": 95153,
     "usage_before": {
       "captured_at": "2026-08-02T16:40:56.995705+00:00",
-      "used_credits": 95153.0,
-      "remaining_credits": 140946.0
+      "used_credits": 95153,
+      "remaining_credits": 140946
     },
     "usage_after": {
       "captured_at": "2026-08-02T16:41:00.960894+00:00",
-      "used_credits": 95153.0,
-      "remaining_credits": 140946.0
+      "used_credits": 95153,
+      "remaining_credits": 140946
     },
     "cap_authorization": {
       "status": "payload_limited",
@@ -146,8 +181,12 @@
       "authorized_at": "2026-08-02T17:52:00Z",
       "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
       "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-08-retry",
-      "baseline_used_credits": 95153.0,
-      "payload_credit_limit": 40.0
+      "baseline_used_credits": 95153,
+      "payload_credit_limit": 40
+    },
+    "settlement": {
+      "status": "aggregate_only_delayed_metering",
+      "settlement_ref": "d32.personal-atlas.audio-drain.2026-08-02"
     }
   },
   "counts": {
@@ -158,5 +197,5 @@
     "succeeded": 2,
     "failed": 0
   },
-  "manifest_identity_sha256": "f50b0f251fb5073dc826f157f5d9aa6758fabc8a866cccc2644bc0a679366cd9"
+  "manifest_identity_sha256": "a956d0841d120f0b472c5734e76662f67dae989a8102a1b294d09b5271e0beff"
 }

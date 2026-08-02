@@ -58,8 +58,8 @@
         "provider_request_id": "mp9AVRCOCUNMNBOaQxqW",
         "started_at": "2026-08-02T16:34:42.724385+00:00",
         "completed_at": "2026-08-02T16:34:47.525788+00:00",
-        "reported_credits": 17.0,
-        "reported_characters": 17
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -106,8 +106,8 @@
         "provider_request_id": "NCARwxEDDp2L7UzEmVzN",
         "started_at": "2026-08-02T16:34:42.724385+00:00",
         "completed_at": "2026-08-02T16:34:47.525788+00:00",
-        "reported_credits": 17.0,
-        "reported_characters": 17
+        "reported_credits": null,
+        "reported_characters": null
       },
       "error": null,
       "audio": {
@@ -122,23 +122,58 @@
       }
     }
   ],
+  "chronology": {
+    "status": "post_hoc_unverified",
+    "disposition": "post-hoc/chronology-unverified",
+    "original_evidence_preserved": true,
+    "unresolved_ordering": [
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:34:47.525788+00:00",
+        "line_id": "d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-place"
+      },
+      {
+        "earlier_field": "batch.created_at",
+        "earlier_at": "2026-08-02T18:00:00+01:00",
+        "later_field": "spend.usage_before.captured_at",
+        "later_at": "2026-08-02T16:34:42.724385+00:00",
+        "line_id": ""
+      },
+      {
+        "earlier_field": "execution.approved_at",
+        "earlier_at": "2026-08-02T17:04:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:34:47.525788+00:00",
+        "line_id": "d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-place"
+      },
+      {
+        "earlier_field": "line.claim.claimed_at",
+        "earlier_at": "2026-08-02T17:04:00Z",
+        "later_field": "line.provider_result.completed_at",
+        "later_at": "2026-08-02T16:34:47.525788+00:00",
+        "line_id": "d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-place.line.cbbfaae903bed319"
+      }
+    ]
+  },
   "spend": {
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
-    "credits_per_character": 1.0,
-    "estimated_batch_credits": 34.0,
-    "estimated_cumulative_credits": 13351.0,
-    "actual_batch_credits": 0.0,
-    "actual_cumulative_credits": 95090.0,
+    "credits_per_character": 1,
+    "estimated_batch_credits": 34,
+    "estimated_cumulative_credits": 13351,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": 95090,
     "usage_before": {
       "captured_at": "2026-08-02T16:34:42.724385+00:00",
-      "used_credits": 95090.0,
-      "remaining_credits": 141009.0
+      "used_credits": 95090,
+      "remaining_credits": 141009
     },
     "usage_after": {
       "captured_at": "2026-08-02T16:34:47.525788+00:00",
-      "used_credits": 95090.0,
-      "remaining_credits": 141009.0
+      "used_credits": 95090,
+      "remaining_credits": 141009
     },
     "cap_authorization": {
       "status": "payload_limited",
@@ -146,8 +181,12 @@
       "authorized_at": "2026-08-02T17:09:00Z",
       "reason": "The delegated user request explicitly authorizes this exact D32 eight-manifest, 18-line emergency-harvest payload; review and learner release remain blocked.",
       "payload_id": "d32.personal-atlas.audio-drain.2026-08-02.payload-06-retry",
-      "baseline_used_credits": 95090.0,
-      "payload_credit_limit": 34.0
+      "baseline_used_credits": 95090,
+      "payload_credit_limit": 34
+    },
+    "settlement": {
+      "status": "aggregate_only_delayed_metering",
+      "settlement_ref": "d32.personal-atlas.audio-drain.2026-08-02"
     }
   },
   "counts": {
@@ -158,5 +197,5 @@
     "succeeded": 2,
     "failed": 0
   },
-  "manifest_identity_sha256": "a34fae4cd625a9763f3b8396bd782076808d6bd86342e0963bf43f8554066315"
+  "manifest_identity_sha256": "c63c9e14f3eab7f12efef89c053b2a11854808aa41f95870fe0b0134f77bb6e3"
 }

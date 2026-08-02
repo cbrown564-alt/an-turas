@@ -865,9 +865,14 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "pending",
+          "record": {
+            "status": "generated_unreviewed",
+            "clip_sha256": "3f9df6461088ce7df655ed1ca90d99a5436ca34aa5c5a2de02fb791c4a91cede",
+            "runtime_source": "structured_batch:d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-place",
+            "note": "Captured output is retained for human audio QA; this record is not a QA approval."
+          },
+          "batch_line_id": "d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-place.line.d1f45ac82a7c5309"
         },
         "learner_release": {
           "status": "blocked",
@@ -876,7 +881,7 @@
             "editorial_review_pending",
             "pedagogy_review_pending",
             "irish_language_review_pending",
-            "audio_not_generated",
+            "audio_qa_pending",
             "source_ambiguity"
           ]
         }
@@ -1011,9 +1016,14 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "pending",
+          "record": {
+            "status": "generated_unreviewed",
+            "clip_sha256": "a51e21f1d03e7757e0040dd29196d5a6c36bbd8ca39f50715811291c809a89d8",
+            "runtime_source": "structured_batch:d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-place",
+            "note": "Captured output is retained for human audio QA; this record is not a QA approval."
+          },
+          "batch_line_id": "d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-place.line.cbbfaae903bed319"
         },
         "learner_release": {
           "status": "blocked",
@@ -1022,7 +1032,7 @@
             "editorial_review_pending",
             "pedagogy_review_pending",
             "irish_language_review_pending",
-            "audio_not_generated",
+            "audio_qa_pending",
             "source_ambiguity"
           ]
         }

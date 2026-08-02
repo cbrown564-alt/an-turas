@@ -231,6 +231,16 @@ class StructuredAudioReconciliationTests(unittest.TestCase):
         self.assertIn("interrupted_provider_attempt", codes)
         self.assertIn("stale_claim_lease", codes)
 
+    def test_post_hoc_capture_chronology_is_reported_without_rewriting_timestamps(self):
+        report = reconciliation.reconcile(root=REPO_ROOT, as_of=reconciliation.parse_timestamp("2026-08-02T20:00:00Z"))
+        chronology = [
+            finding
+            for finding in report["findings"]
+            if finding["code"] == "capture_chronology_unverified"
+        ]
+        self.assertGreaterEqual(len(chronology), 8)
+        self.assertTrue(all(item["original_evidence_preserved"] is True for item in chronology))
+
     def test_resume_plan_is_explicitly_read_only(self):
         report = reconciliation.reconcile(
             REPO_ROOT,

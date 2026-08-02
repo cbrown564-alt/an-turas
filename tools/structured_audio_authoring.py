@@ -122,6 +122,7 @@ LOCKED_VOICE_PROFILE = {
 CAPTURE_DISPOSITION = "generated_unreviewed"
 CAPTURE_DISPOSITIONS = {CAPTURE_DISPOSITION, "quarantined_semantic"}
 SEMANTIC_QUARANTINE_CODE = "semantic_quarantine"
+CHRONOLOGY_DISPOSITION = "post-hoc/chronology-unverified"
 APPROVED_CREDIT_CAP = 25_000
 CREDITS_PER_CHARACTER = 1.0
 ESTIMATE_BASIS = "estimated_credits = Unicode character count × credits_per_character"
@@ -548,6 +549,113 @@ def parse_timestamp(value: str, label: str) -> datetime:
     if parsed.tzinfo is None:
         raise ValueError(f"{label} must include a timezone: {value!r}")
     return parsed
+
+
+def batch_chronology_violations(batch: dict[str, Any]) -> list[dict[str, str]]:
+    """Return recorded event orderings that cannot be true as written.
+
+    The audit trail is evidence, not a license to infer replacement timestamps. A
+    manifest may carry an explicit post-hoc disposition for an already-captured
+    batch, but a new impossible ordering must fail validation until it is reviewed.
+    """
+    events: list[tuple[str, str, str | None]] = []
+
+    def add(field: str, value: object, line_id: str | None = None) -> None:
+        if isinstance(value, str) and value.strip():
+            events.append((field, value, line_id))
+
+    add("batch.created_at", batch.get("created_at"))
+    execution = batch.get("execution") or {}
+    add("execution.approved_at", execution.get("approved_at"))
+    spend = batch.get("spend") or {}
+    usage_before = spend.get("usage_before") or {}
+    usage_after = spend.get("usage_after") or {}
+    add("spend.usage_before.captured_at", usage_before.get("captured_at"))
+    add("spend.usage_after.captured_at", usage_after.get("captured_at"))
+
+    for line in batch.get("lines") or []:
+        if not isinstance(line, dict):
+            continue
+        line_id = line.get("line_id")
+        line_id = line_id if isinstance(line_id, str) else None
+        request = line.get("request") or {}
+        claim = line.get("claim") or {}
+        result = line.get("provider_result") or {}
+        add("line.request.approved_at", request.get("approved_at"), line_id)
+        add("line.claim.claimed_at", claim.get("claimed_at"), line_id)
+        add("line.provider_result.started_at", result.get("started_at"), line_id)
+        add("line.provider_result.completed_at", result.get("completed_at"), line_id)
+
+    parsed: list[tuple[str, datetime, str | None, str]] = []
+    violations: list[dict[str, str]] = []
+    for field, value, line_id in events:
+        try:
+            parsed.append((field, parse_timestamp(value, field), line_id, value))
+        except ValueError:
+            violations.append(
+                {
+                    "earlier_field": field,
+                    "earlier_at": value,
+                    "later_field": "<invalid_timestamp>",
+                    "later_at": value,
+                    "line_id": line_id or "",
+                }
+            )
+
+    def compare(before: tuple[str, datetime, str | None, str], after: tuple[str, datetime, str | None, str]) -> None:
+        if before[1] > after[1]:
+            violations.append(
+                {
+                    "earlier_field": before[0],
+                    "earlier_at": before[3],
+                    "later_field": after[0],
+                    "later_at": after[3],
+                    "line_id": after[2] or before[2] or "",
+                }
+            )
+
+    created = next((row for row in parsed if row[0] == "batch.created_at"), None)
+    approved = next((row for row in parsed if row[0] == "execution.approved_at"), None)
+    before = next((row for row in parsed if row[0] == "spend.usage_before.captured_at"), None)
+    after = next((row for row in parsed if row[0] == "spend.usage_after.captured_at"), None)
+    if created:
+        for row in parsed:
+            if row is not created:
+                compare(created, row)
+    if approved:
+        for row in parsed:
+            if row[0].startswith("line."):
+                compare(approved, row)
+    if before and after:
+        compare(before, after)
+    for line in batch.get("lines") or []:
+        if not isinstance(line, dict):
+            continue
+        line_id = line.get("line_id")
+        request = next((row for row in parsed if row[0] == "line.request.approved_at" and row[2] == line_id), None)
+        claim = next((row for row in parsed if row[0] == "line.claim.claimed_at" and row[2] == line_id), None)
+        started = next((row for row in parsed if row[0] == "line.provider_result.started_at" and row[2] == line_id), None)
+        completed = next((row for row in parsed if row[0] == "line.provider_result.completed_at" and row[2] == line_id), None)
+        if request and claim:
+            compare(request, claim)
+        if claim and started:
+            compare(claim, started)
+        if started and completed:
+            compare(started, completed)
+        if request and started:
+            compare(request, started)
+
+    unique: dict[tuple[str, str, str, str, str], dict[str, str]] = {}
+    for violation in violations:
+        key = (
+            violation["earlier_field"],
+            violation["earlier_at"],
+            violation["later_field"],
+            violation["later_at"],
+            violation["line_id"],
+        )
+        unique[key] = violation
+    return list(unique.values())
 
 
 def emergency_partition_key_for_member(
@@ -1492,6 +1600,26 @@ def validate_batch(
     for field in ("batch_id", "created_at", "purpose"):
         if not isinstance(batch.get(field), str) or not batch[field].strip():
             errors.append(f"{label}: {field} is required")
+    chronology_violations = batch_chronology_violations(batch)
+    if chronology_violations:
+        chronology = batch.get("chronology")
+        if not isinstance(chronology, dict):
+            errors.append(
+                f"{label}: impossible event ordering requires an explicit chronology disposition"
+            )
+        else:
+            if chronology.get("status") != "post_hoc_unverified":
+                errors.append(f"{label}: impossible event ordering must be marked post_hoc_unverified")
+            if chronology.get("disposition") != CHRONOLOGY_DISPOSITION:
+                errors.append(f"{label}: chronology disposition must be {CHRONOLOGY_DISPOSITION!r}")
+            if chronology.get("original_evidence_preserved") is not True:
+                errors.append(f"{label}: chronology disposition must preserve original evidence")
+            if not isinstance(chronology.get("unresolved_ordering"), list) or not chronology["unresolved_ordering"]:
+                errors.append(f"{label}: chronology disposition must list unresolved ordering evidence")
+    elif batch.get("chronology") is not None:
+        chronology = batch.get("chronology")
+        if not isinstance(chronology, dict) or chronology.get("status") != "verified":
+            errors.append(f"{label}: chronology metadata is not valid for an ordered batch")
     execution = batch.get("execution")
     if not isinstance(execution, dict):
         errors.append(f"{label}: execution must be an object")
@@ -1571,6 +1699,15 @@ def validate_batch(
         snapshot = spend.get(field)
         if snapshot is not None and not isinstance(snapshot, dict):
             errors.append(f"{label}: spend {field} must be null or an object")
+    settlement = spend.get("settlement")
+    if settlement is not None:
+        if not isinstance(settlement, dict):
+            errors.append(f"{label}: spend settlement must be an object")
+        else:
+            if settlement.get("status") not in {"batch_observed", "aggregate_only_delayed_metering"}:
+                errors.append(f"{label}: invalid spend settlement status")
+            if not isinstance(settlement.get("settlement_ref"), str) or not settlement["settlement_ref"].strip():
+                errors.append(f"{label}: spend settlement requires settlement_ref")
 
     lines = batch.get("lines")
     if not isinstance(lines, list):
@@ -1743,11 +1880,6 @@ def validate_batch(
                 for field in ("reported_credits", "reported_characters")
             ):
                 errors.append(f"{llabel}: unfinished provider result must not claim reported cost")
-            if result_status == "succeeded" and all(
-                result.get(field) is None
-                for field in ("reported_credits", "reported_characters")
-            ):
-                errors.append(f"{llabel}: succeeded provider result requires reported cost")
         error = line.get("error")
         if result_status == "failed":
             if not isinstance(error, dict) or not all(
@@ -2048,6 +2180,52 @@ def validate_contract(root: Path = ROOT, store_path: Path | None = None) -> tupl
     batch_ids = [ref.get("batch_id") for ref in batch_refs if isinstance(ref, dict)]
     if not is_sorted_unique_string_list(batch_ids):
         errors.append("store: batch documents require sorted unique batch_id strings")
+    settlements = store.get("credit_settlements")
+    if not isinstance(settlements, list):
+        errors.append("store: credit_settlements must be a list")
+        settlements = []
+    for index, settlement in enumerate(settlements):
+        label = f"store.credit_settlements[{index}]"
+        if not isinstance(settlement, dict):
+            errors.append(f"{label}: settlement must be an object")
+            continue
+        required = (
+            "settlement_id",
+            "scope",
+            "batch_ids",
+            "line_count",
+            "usable_line_count",
+            "quarantined_line_count",
+            "usage_before",
+            "usage_after",
+            "aggregate_delta_credits",
+            "allocation_status",
+            "per_batch_allocations",
+        )
+        for field in required:
+            if field not in settlement:
+                errors.append(f"{label}: missing {field}")
+        settlement_batch_ids = settlement.get("batch_ids")
+        if not is_sorted_unique_string_list(settlement_batch_ids):
+            errors.append(f"{label}: batch_ids must be sorted unique strings")
+        elif any(batch_id not in batch_ids for batch_id in settlement_batch_ids):
+            errors.append(f"{label}: settlement references an unregistered batch")
+        before = settlement.get("usage_before") or {}
+        after = settlement.get("usage_after") or {}
+        if not all(isinstance(snapshot, dict) for snapshot in (before, after)):
+            errors.append(f"{label}: usage snapshots must be objects")
+        else:
+            before_used = before.get("used_credits")
+            after_used = after.get("used_credits")
+            delta = settlement.get("aggregate_delta_credits")
+            if not all(isinstance(value, (int, float)) and not isinstance(value, bool) for value in (before_used, after_used, delta)):
+                errors.append(f"{label}: settlement usage and delta must be numeric")
+            elif round(after_used - before_used, 3) != round(delta, 3):
+                errors.append(f"{label}: aggregate delta does not match usage snapshots")
+        if settlement.get("allocation_status") != "aggregate_only_delayed_metering":
+            errors.append(f"{label}: delayed metering settlement must remain aggregate-only")
+        if settlement.get("per_batch_allocations") is not None:
+            errors.append(f"{label}: delayed metering settlement must not invent per-batch allocations")
     for batch_ref in batch_refs:
         path = resolve_repo_path(root, batch_ref.get("path") if isinstance(batch_ref, dict) else "")
         if path is None or not path.is_file():

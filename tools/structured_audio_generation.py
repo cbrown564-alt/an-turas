@@ -337,6 +337,16 @@ def immutable_batch_identity(batch: dict[str, Any]) -> str:
     return sha256_bytes(encoded)
 
 
+def provider_reported_costs(_line: dict[str, Any]) -> dict[str, None]:
+    """Return only costs actually supplied by the provider response.
+
+    The ElevenLabs TTS response used here has no per-line credit field. The
+    request estimate remains on the line and account usage settlement remains
+    on the batch spend record.
+    """
+    return {"reported_credits": None, "reported_characters": None}
+
+
 def preflight(
     canonical_root: Path,
     batch_raw: str,
@@ -634,13 +644,17 @@ def generate(batch_info: dict[str, Any]) -> dict[str, Any]:
                     "next_retry_at": None,
                 }
             )
+            reported_costs = provider_reported_costs(line)
             line["provider_result"] = {
                 "status": "succeeded",
                 "provider_request_id": item["provider_request_id"],
                 "started_at": usage_before.captured_at,
                 "completed_at": usage_after.captured_at,
-                "reported_credits": float(line["estimated_credits"]),
-                "reported_characters": int(line["estimated_characters"]),
+                # ElevenLabs does not return a per-line credit charge in this
+                # response. Keep the deterministic request estimate separate
+                # from account-level settlement instead of relabelling it as
+                # provider-reported usage.
+                **reported_costs,
             }
             target = item["target"]
             line["audio"].update(
@@ -655,6 +669,10 @@ def generate(batch_info: dict[str, Any]) -> dict[str, Any]:
             {
                 "actual_batch_credits": round(actual_batch_credits, 3),
                 "actual_cumulative_credits": round(usage_after.used_credits, 3),
+                "settlement": {
+                    "status": "batch_observed",
+                    "settlement_ref": batch["batch_id"],
+                },
                 "usage_before": usage_before.as_dict(),
                 "usage_after": usage_after.as_dict(),
             }

@@ -104,6 +104,27 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
             ],
         )
 
+    def test_post_hoc_capture_chronology_requires_an_explicit_disposition(self):
+        batch = next(
+            batch
+            for batch in self.loaded.batches
+            if batch["batch_id"]
+            == "d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town"
+        )
+        self.assertTrue(contract.batch_chronology_violations(batch))
+        without_disposition = copy.deepcopy(batch)
+        without_disposition.pop("chronology", None)
+        errors: list[str] = []
+        contract.validate_batch(without_disposition, self.loaded, REPO_ROOT, errors)
+        self.assertTrue(any("explicit chronology disposition" in error for error in errors))
+
+    def test_audio_drain_settlement_is_aggregate_only(self):
+        settlement = self.loaded.store["credit_settlements"][0]
+        self.assertEqual(settlement["aggregate_delta_credits"], 254.0)
+        self.assertEqual(settlement["line_count"], 18)
+        self.assertEqual(settlement["usable_line_count"], 16)
+        self.assertIsNone(settlement["per_batch_allocations"])
+
     def test_county_pack_validator_can_resolve_canonical_v2_members(self):
         members = validate_county_pack.load_phrase_family_members("mayo")
         self.assertEqual(

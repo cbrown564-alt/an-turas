@@ -25,6 +25,7 @@
     "purpose": { "type": "string", "minLength": 1 },
     "voice_profile": { "$ref": "#/$defs/lockedVoiceProfile" },
     "execution": { "$ref": "#/$defs/execution" },
+    "chronology": { "$ref": "#/$defs/chronology" },
     "spend": { "$ref": "#/$defs/spend" },
     "lines": {
       "type": "array",
@@ -119,6 +120,31 @@
           }
         }
       ]
+    },
+    "chronology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "disposition", "original_evidence_preserved", "unresolved_ordering"],
+      "properties": {
+        "status": { "enum": ["verified", "post_hoc_unverified"] },
+        "disposition": { "type": "string", "minLength": 1 },
+        "original_evidence_preserved": { "type": "boolean" },
+        "unresolved_ordering": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["earlier_field", "earlier_at", "later_field", "later_at", "line_id"],
+            "properties": {
+              "earlier_field": { "type": "string", "minLength": 1 },
+              "earlier_at": { "type": "string", "minLength": 1 },
+              "later_field": { "type": "string", "minLength": 1 },
+              "later_at": { "type": "string", "minLength": 1 },
+              "line_id": { "type": "string" }
+            }
+          }
+        }
+      }
     },
     "claim": {
       "type": "object",
@@ -252,6 +278,15 @@
         },
         "usage_after": {
           "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/usageSnapshot" }]
+        },
+        "settlement": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "settlement_ref"],
+          "properties": {
+            "status": { "enum": ["batch_observed", "aggregate_only_delayed_metering"] },
+            "settlement_ref": { "type": "string", "minLength": 1 }
+          }
         },
         "cap_authorization": {
           "type": "object",
