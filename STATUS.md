@@ -120,14 +120,17 @@ capture target is a post-harvest selection guide, not an emergency cap.
 
 **D32 Track E integrity scoreboard (2026-08-02):** the read-only production-loop
 scoreboard (`python3 -B tools/structured_audio_authoring.py reconcile --scoreboard
---json`) reports **261** authored families, **525** complete members, **317** unique
-texts, and **16** counties after the first two bulk authoring tranches. The registered
-batch ledger still contains **5** lines (**1** approved, **0** currently claimed,
-**1** succeeded, **0** failed), so batch preparation remains the throughput bottleneck.
-The bundle contains **1** source-labeled new-v2 clip and **362** legacy/runtime clips;
-all **363/363** checksums verify with no missing or orphan MP3s. No current line needs
-manual claim recovery. The v2 learner-release-eligible count remains **0**, and the
-audit and resume plan make no automatic file, manifest, claim, lease, or release changes.
+--json`) reports **640** authored families, **1,283** complete members, **513** unique
+texts, all **640** atlas placements, and all **32** counties. The registered ledger
+contains **514** lines: **510** approved, **509** actively claimed, **1** succeeded,
+and **0** failed. Forty resumable all-county manifests expose **505** missing-file
+preflight candidates; the remaining approved lines already have reusable files or a
+completed result. The queued provider work is approximately **9,137** characters/
+credits. The bundle currently contains **1** source-labeled new-v2 clip and **362**
+legacy/runtime clips; all **363/363** checksums verify with no missing or orphan MP3s.
+The v2 learner-release-eligible count remains **0**. Provider execution is awaiting
+explicit external-action approval for the exact all-county payload, destination, and
+spend; the queue and recovery records are otherwise ready.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
