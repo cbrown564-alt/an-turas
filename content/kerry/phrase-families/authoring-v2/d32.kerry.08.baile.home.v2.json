@@ -5,7 +5,9 @@
   "county": "kerry",
   "story_ref": {
     "path": "content/audio/authoring/d32-county-harvest-uses.json",
-    "record_id": "d32.kerry.piaras-feiritear"
+    "record_id": "d32.kerry.piaras-feiritear",
+    "record_scope": "stories",
+    "record_index": 0
   },
   "target": {
     "lexeme_id": "lex.baile",
@@ -52,7 +54,9 @@
         "county": "kerry",
         "story_ref": {
           "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.kerry.piaras-feiritear"
+          "record_id": "d32.kerry.piaras-feiritear",
+          "record_scope": "stories",
+          "record_index": 0
         },
         "atlas_placement_ids": [
           "atlas.kerry.08.baile"
@@ -176,14 +180,16 @@
         "text_sha256": "9d775261d1957fa46c77163ce5651a49b885059330b39e55cb1d75d649e21a20"
       },
       "english": {
-        "intent": "Corca Dhuibhne is a town or settlement.",
-        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+        "intent": "RETIRED — Corca Dhuibhne subject classification is blocked pending review; not learner-usable.",
+        "literal_note": "Retired semantic quarantine: Logainm classifies Corca Dhuibhne as a barony, not a town or settlement. The captured sentence is retained only as audit data; no replacement Irish for ‘barony’ has been authored."
       },
       "binding": {
         "county": "kerry",
         "story_ref": {
           "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.kerry.piaras-feiritear"
+          "record_id": "d32.kerry.piaras-feiritear",
+          "record_scope": "stories",
+          "record_index": 0
         },
         "atlas_placement_ids": [
           "atlas.kerry.08.baile"
@@ -224,7 +230,9 @@
           {
             "path": "content/audio/authoring/d32-county-harvest-uses.json",
             "record_id": "d32.kerry.piaras-feiritear",
-            "supports": "pattern_only"
+            "supports": "pattern_only",
+            "record_scope": "stories",
+            "record_index": 0
           },
           {
             "path": "content/personal-atlas/logainm-v2-source-index.json",
@@ -240,7 +248,7 @@
       },
       "states": {
         "authoring": {
-          "status": "complete",
+          "status": "retired",
           "revision": 1,
           "author_ref": "track-a.personal-atlas-name-place-authoring",
           "completed_at": "2026-08-02"
@@ -260,14 +268,14 @@
           }
         },
         "capture_request": {
-          "status": "requested",
+          "status": "cancelled",
           "requested_by": "codex.luna.audio-drain",
           "requested_at": "2026-08-02T16:49:00Z",
           "authorization": {
             "basis": "d32_emergency_harvest",
             "authorized_by": "user.delegated.019fc314",
             "authorized_at": "2026-08-02T16:49:00Z",
-            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked. Request later cancelled by semantic quarantine.",
             "fixture_only": false,
             "harvest_deadline": "2026-08-11",
             "learner_release_blocked": true
@@ -277,19 +285,21 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "failed",
+          "record": {
+            "reviewer_ref": "sol.review.959728f",
+            "reviewed_at": "2026-08-02",
+            "clip_sha256": "bb4300af69bb1a8d90995dad13b40ca79c823bea7209634eea38d5c417b5e811",
+            "note": "Semantic quarantine: Corca Dhuibhne is a Logainm barony, not a town or settlement. Retired and excluded from learner use. This disposition is not linguistic validation."
+          },
+          "batch_line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-baile-home.line.4106f09e9f3b1479"
         },
         "learner_release": {
-          "status": "blocked",
+          "status": "retired",
           "reasons": [
-            "invented_text",
-            "editorial_review_pending",
-            "pedagogy_review_pending",
-            "irish_language_review_pending",
-            "audio_not_generated",
-            "source_ambiguity"
+            "semantic_quarantine",
+            "incorrect_place_classification",
+            "barony_subject_review_blocked"
           ]
         }
       },
@@ -318,14 +328,16 @@
         "text_sha256": "9dd2072b06f0c1bd2e66690846949744b9a3914cfbf91c30414aa7e64e04f709"
       },
       "english": {
-        "intent": "Is Corca Dhuibhne a town or settlement?",
-        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+        "intent": "RETIRED — Corca Dhuibhne subject classification is blocked pending review; not learner-usable.",
+        "literal_note": "Retired semantic quarantine: Logainm classifies Corca Dhuibhne as a barony, not a town or settlement. The captured sentence is retained only as audit data; no replacement Irish for ‘barony’ has been authored."
       },
       "binding": {
         "county": "kerry",
         "story_ref": {
           "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.kerry.piaras-feiritear"
+          "record_id": "d32.kerry.piaras-feiritear",
+          "record_scope": "stories",
+          "record_index": 0
         },
         "atlas_placement_ids": [
           "atlas.kerry.08.baile"
@@ -366,7 +378,9 @@
           {
             "path": "content/audio/authoring/d32-county-harvest-uses.json",
             "record_id": "d32.kerry.piaras-feiritear",
-            "supports": "pattern_only"
+            "supports": "pattern_only",
+            "record_scope": "stories",
+            "record_index": 0
           },
           {
             "path": "content/personal-atlas/logainm-v2-source-index.json",
@@ -382,7 +396,7 @@
       },
       "states": {
         "authoring": {
-          "status": "complete",
+          "status": "retired",
           "revision": 1,
           "author_ref": "track-a.personal-atlas-name-place-authoring",
           "completed_at": "2026-08-02"
@@ -402,14 +416,14 @@
           }
         },
         "capture_request": {
-          "status": "requested",
+          "status": "cancelled",
           "requested_by": "codex.luna.audio-drain",
           "requested_at": "2026-08-02T16:49:00Z",
           "authorization": {
             "basis": "d32_emergency_harvest",
             "authorized_by": "user.delegated.019fc314",
             "authorized_at": "2026-08-02T16:49:00Z",
-            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked. Request later cancelled by semantic quarantine.",
             "fixture_only": false,
             "harvest_deadline": "2026-08-11",
             "learner_release_blocked": true
@@ -419,19 +433,21 @@
           ]
         },
         "audio_qa": {
-          "status": "not_generated",
-          "record": null,
-          "batch_line_id": null
+          "status": "failed",
+          "record": {
+            "reviewer_ref": "sol.review.959728f",
+            "reviewed_at": "2026-08-02",
+            "clip_sha256": "7743b126e43c3ab681e9daa6105ba4170d0bced05cb21d6a110cc6f3e4345e3b",
+            "note": "Semantic quarantine: Corca Dhuibhne is a Logainm barony, not a town or settlement. Retired and excluded from learner use. This disposition is not linguistic validation."
+          },
+          "batch_line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-baile-home.line.c65ee6faed3d7391"
         },
         "learner_release": {
-          "status": "blocked",
+          "status": "retired",
           "reasons": [
-            "invented_text",
-            "editorial_review_pending",
-            "pedagogy_review_pending",
-            "irish_language_review_pending",
-            "audio_not_generated",
-            "source_ambiguity"
+            "semantic_quarantine",
+            "incorrect_place_classification",
+            "barony_subject_review_blocked"
           ]
         }
       },
@@ -467,7 +483,9 @@
         "county": "kerry",
         "story_ref": {
           "path": "content/audio/authoring/d32-county-harvest-uses.json",
-          "record_id": "d32.kerry.piaras-feiritear"
+          "record_id": "d32.kerry.piaras-feiritear",
+          "record_scope": "stories",
+          "record_index": 0
         },
         "atlas_placement_ids": [
           "atlas.kerry.08.baile"

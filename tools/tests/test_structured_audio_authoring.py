@@ -66,6 +66,44 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
     def test_checked_in_contract_is_valid(self):
         self.assertEqual(self.errors, [])
 
+    def test_ambiguous_story_lookup_requires_an_explicit_scope_and_index(self):
+        ref = {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill",
+        }
+        errors: list[str] = []
+        contract.validate_ref(ref, REPO_ROOT, "story", errors)
+        self.assertTrue(any("is ambiguous" in error for error in errors))
+
+        ref.update({"record_scope": "stories", "record_index": 0})
+        errors = []
+        record = contract.validate_ref(ref, REPO_ROOT, "story", errors)
+        self.assertEqual(errors, [])
+        self.assertEqual(record["county"], "antrim")
+
+    def test_corca_dhuibhne_capture_is_quarantined_without_losing_audit_bytes(self):
+        batch = next(
+            batch
+            for batch in self.loaded.batches
+            if batch["batch_id"]
+            == "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-baile-home"
+        )
+        self.assertEqual(
+            [(line["request"]["status"], line["capture_disposition"]) for line in batch["lines"]],
+            [("cancelled", "quarantined_semantic"), ("cancelled", "quarantined_semantic")],
+        )
+        self.assertEqual(
+            [line["provider_result"]["status"] for line in batch["lines"]],
+            ["succeeded", "succeeded"],
+        )
+        self.assertEqual(
+            [line["audio"]["sha256"] for line in batch["lines"]],
+            [
+                "bb4300af69bb1a8d90995dad13b40ca79c823bea7209634eea38d5c417b5e811",
+                "7743b126e43c3ab681e9daa6105ba4170d0bced05cb21d6a110cc6f3e4345e3b",
+            ],
+        )
+
     def test_county_pack_validator_can_resolve_canonical_v2_members(self):
         members = validate_county_pack.load_phrase_family_members("mayo")
         self.assertEqual(

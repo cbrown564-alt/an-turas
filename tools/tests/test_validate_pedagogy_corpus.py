@@ -97,6 +97,31 @@ class PedagogyCorpusTests(unittest.TestCase):
                     )
                 )
 
+    def test_source_record_field_and_exact_irish_text_are_bound(self) -> None:
+        payload = copy.deepcopy(self.payload)
+        line = next(
+            line
+            for lesson in payload["lessons"]
+            for line in lesson["lines"]
+            if line["id"] == "grammar.identity-origin.framing"
+        )
+        source = line["source_refs"][0]
+
+        source["record_id"] = "mayo.in-the-record.retrieve-origin"
+        errors = validator.validate_payload(payload, REPO_ROOT)
+        self.assertTrue(any("id selector(s)" in error for error in errors))
+
+        payload = copy.deepcopy(self.payload)
+        line = next(
+            line
+            for lesson in payload["lessons"]
+            for line in lesson["lines"]
+            if line["id"] == "grammar.identity-origin.framing"
+        )
+        line["irish_examples"] = ["This is not the repository answer."]
+        errors = validator.validate_payload(payload, REPO_ROOT)
+        self.assertTrue(any("does not match any Irish example" in error for error in errors))
+
     def test_deterministic_flags_are_present_without_linguistic_judgment(self) -> None:
         for lesson in self.payload["lessons"]:
             for line in lesson["lines"]:

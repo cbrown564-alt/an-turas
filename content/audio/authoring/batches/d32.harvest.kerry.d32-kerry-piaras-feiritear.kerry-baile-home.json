@@ -35,7 +35,7 @@
       "inventory_slug": "is-baile-ee-corca-dhuibhne",
       "estimated_characters": 26,
       "estimated_credits": 26.0,
-      "capture_disposition": "generated_unreviewed",
+      "capture_disposition": "quarantined_semantic",
       "claim": {
         "status": "completed",
         "owner_id": "codex.luna.audio-drain",
@@ -43,7 +43,7 @@
         "lease_expires_at": "2026-08-02T18:49:00Z"
       },
       "request": {
-        "status": "approved",
+        "status": "cancelled",
         "approved_by": "user.delegated.019fc314",
         "approved_at": "2026-08-02T16:49:00Z"
       },
@@ -61,7 +61,12 @@
         "reported_credits": 26.0,
         "reported_characters": 26
       },
-      "error": null,
+      "error": {
+        "code": "semantic_quarantine",
+        "message": "Corca Dhuibhne is classified by Logainm as a barony, not a town or settlement; retain captured bytes for audit but do not use this line for learners.",
+        "retriable": false,
+        "occurred_at": "2026-08-02T00:00:00Z"
+      },
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/is-baile-ee-corca-dhuibhne.mp3",
         "sha256": "bb4300af69bb1a8d90995dad13b40ca79c823bea7209634eea38d5c417b5e811",
@@ -69,8 +74,13 @@
         "duration_seconds": 2.4
       },
       "audio_qa": {
-        "status": "pending",
-        "record": null
+        "status": "failed",
+        "record": {
+          "reviewer_ref": "sol.review.959728f",
+          "reviewed_at": "2026-08-02",
+          "clip_sha256": "bb4300af69bb1a8d90995dad13b40ca79c823bea7209634eea38d5c417b5e811",
+          "note": "Semantic quarantine: incorrect town/settlement classification. Bytes and provider result retained for audit; not learner-usable. This disposition is not linguistic validation."
+        }
       }
     },
     {
@@ -83,7 +93,7 @@
       "inventory_slug": "an-baile-ee-corca-dhuibhne",
       "estimated_characters": 26,
       "estimated_credits": 26.0,
-      "capture_disposition": "generated_unreviewed",
+      "capture_disposition": "quarantined_semantic",
       "claim": {
         "status": "completed",
         "owner_id": "codex.luna.audio-drain",
@@ -91,7 +101,7 @@
         "lease_expires_at": "2026-08-02T18:49:00Z"
       },
       "request": {
-        "status": "approved",
+        "status": "cancelled",
         "approved_by": "user.delegated.019fc314",
         "approved_at": "2026-08-02T16:49:00Z"
       },
@@ -109,7 +119,12 @@
         "reported_credits": 26.0,
         "reported_characters": 26
       },
-      "error": null,
+      "error": {
+        "code": "semantic_quarantine",
+        "message": "Corca Dhuibhne is classified by Logainm as a barony, not a town or settlement; retain captured bytes for audit but do not use this line for learners.",
+        "retriable": false,
+        "occurred_at": "2026-08-02T00:00:00Z"
+      },
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/an-baile-ee-corca-dhuibhne.mp3",
         "sha256": "7743b126e43c3ab681e9daa6105ba4170d0bced05cb21d6a110cc6f3e4345e3b",
@@ -117,8 +132,13 @@
         "duration_seconds": 2.56
       },
       "audio_qa": {
-        "status": "pending",
-        "record": null
+        "status": "failed",
+        "record": {
+          "reviewer_ref": "sol.review.959728f",
+          "reviewed_at": "2026-08-02",
+          "clip_sha256": "7743b126e43c3ab681e9daa6105ba4170d0bced05cb21d6a110cc6f3e4345e3b",
+          "note": "Semantic quarantine: incorrect town/settlement classification. Bytes and provider result retained for audit; not learner-usable. This disposition is not linguistic validation."
+        }
       }
     }
   ],
@@ -126,7 +146,7 @@
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
     "credits_per_character": 1.0,
-    "estimated_batch_credits": 52.0,
+    "estimated_batch_credits": 0.0,
     "estimated_cumulative_credits": 13369.0,
     "actual_batch_credits": 0.0,
     "actual_cumulative_credits": 95062.0,
@@ -154,9 +174,9 @@
     "lines": 2,
     "member_references": 2,
     "planned": 0,
-    "approved": 2,
+    "approved": 0,
     "succeeded": 2,
     "failed": 0
   },
-  "manifest_identity_sha256": "24009656fa97c6569c88dad6c50293018ea0a050b547d22184c752d8f979a42c"
+  "manifest_identity_sha256": "e49cd88a26703ec01163d8b275ebbdb854ca2d135faf4fde475a582fd010cbdd"
 }

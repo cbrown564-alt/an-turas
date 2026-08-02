@@ -38,8 +38,8 @@
             },
             {
               "path": "content/mayo/grainne-1593.pack.draft.json",
-              "record_id": "mayo.rockfleet.grammar-pattern",
-              "field": "pack.chapters.pages[id=mayo.rockfleet.grammar-pattern].exercise",
+              "record_id": "pattern.ta-anseo",
+              "field": "resources[id=pattern.ta-anseo]",
               "supports": "exercise_context"
             }
           ],
@@ -220,9 +220,9 @@
           "irish_examples": ["Cad is ainm duit?"],
           "source_refs": [
             {
-              "path": "content/audio/launch-phrases-conversations-v1.json",
-              "record_id": "launch.mayo.phrases.11",
-              "field": "counties.mayo.phrases[10].text",
+              "path": "content/audio/irish-inventory-v1.json",
+              "record_id": "cad-is-ainm-duit",
+              "field": "entries[slug=cad-is-ainm-duit].text",
               "supports": "migration_only"
             }
           ],
@@ -259,8 +259,8 @@
           "source_refs": [
             {
               "path": "ios/AnTuras/Resources/chapter1.json",
-              "record_id": "note.two-to-bes",
-              "field": "sessions[chapter1].pages[type=note,title=An síneadh fada].paras",
+              "record_id": "note.two-flavours",
+              "field": "sessions.pages[type=note,title=An síneadh fada — the long mark].paras",
               "supports": "repository_text"
             },
             {
@@ -403,13 +403,13 @@
             {
               "path": "ios/AnTuras/Resources/chapter1.json",
               "record_id": "v-caol",
-              "field": "values[id=v-caol].frame",
-              "supports": "repository_text"
+              "field": "visits[id=v-caol].frame",
+              "supports": "pattern_only"
             },
             {
               "path": "ios/AnTuras/Resources/chapter1.json",
-              "record_id": "discover.caol-le-caol",
-              "field": "sessions[chapter1].pages[type=discover].steps",
+              "record_id": "lex.caol-le-caol",
+              "field": "lexicon[id=lex.caol-le-caol]",
               "supports": "pattern_only"
             }
           ],
@@ -466,8 +466,8 @@
           "source_refs": [
             {
               "path": "ios/AnTuras/Resources/chapter1.json",
-              "record_id": "discover.caol-le-caol",
-              "field": "sessions[chapter1].pages[type=discover].steps",
+              "record_id": "lex.caol-le-caol",
+              "field": "lexicon[id=lex.caol-le-caol]",
               "supports": "pattern_only"
             }
           ],
@@ -496,8 +496,8 @@
             {
               "path": "ios/AnTuras/Resources/chapter1.json",
               "record_id": "v-caol",
-              "field": "values[id=v-caol].answer",
-              "supports": "repository_text"
+              "field": "visits[id=v-caol].answer",
+              "supports": "pattern_only"
             }
           ],
           "provenance": {
@@ -603,8 +603,8 @@
             },
             {
               "path": "ios/AnTuras/Resources/chapter1.json",
-              "record_id": "choice.sean-sound",
-              "field": "sessions[chapter1].pages[type=choice,prompt=In the name Seán]",
+              "record_id": "lex.sean-name",
+              "field": "lexicon[id=lex.sean-name].ga",
               "supports": "repository_text"
             }
           ],

@@ -338,7 +338,9 @@
         "inventory_slug": { "type": "string", "minLength": 1 },
         "estimated_characters": { "type": "integer", "minimum": 0 },
         "estimated_credits": { "type": "number", "minimum": 0 },
-        "capture_disposition": { "const": "generated_unreviewed" },
+        "capture_disposition": {
+          "enum": ["generated_unreviewed", "quarantined_semantic"]
+        },
         "claim": { "$ref": "#/$defs/claim" },
         "request": { "$ref": "#/$defs/request" },
         "retry": { "$ref": "#/$defs/retry" },

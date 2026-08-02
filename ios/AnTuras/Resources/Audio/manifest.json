@@ -474,7 +474,7 @@
       "codec": "mp3",
       "sample_rate_hz": 44100,
       "channels": 1,
-      "qa_state": "generated_unreviewed"
+      "qa_state": "failed"
     },
     {
       "slug": "an-baile-ee-dubhlinn",
@@ -7900,7 +7900,7 @@
       "codec": "mp3",
       "sample_rate_hz": 44100,
       "channels": 1,
-      "qa_state": "generated_unreviewed"
+      "qa_state": "failed"
     },
     {
       "slug": "is-baile-ee-dubhlinn",
@@ -16685,5 +16685,16 @@
       "qa_state": "generated_unreviewed"
     }
   ],
-  "dynamic_exclusions": []
+  "dynamic_exclusions": [
+    {
+      "slug": "an-baile-ee-corca-dhuibhne",
+      "reason": "semantic_quarantine",
+      "note": "Corca Dhuibhne is a Logainm barony, not a town or settlement; retained bytes are not learner-usable pending subject/source review."
+    },
+    {
+      "slug": "is-baile-ee-corca-dhuibhne",
+      "reason": "semantic_quarantine",
+      "note": "Corca Dhuibhne is a Logainm barony, not a town or settlement; retained bytes are not learner-usable pending subject/source review."
+    }
+  ]
 }

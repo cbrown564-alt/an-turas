@@ -120,6 +120,8 @@ LOCKED_VOICE_PROFILE = {
     "voice_settings": {"mode": "provider_defaults", "overrides": {}},
 }
 CAPTURE_DISPOSITION = "generated_unreviewed"
+CAPTURE_DISPOSITIONS = {CAPTURE_DISPOSITION, "quarantined_semantic"}
+SEMANTIC_QUARANTINE_CODE = "semantic_quarantine"
 APPROVED_CREDIT_CAP = 25_000
 CREDITS_PER_CHARACTER = 1.0
 ESTIMATE_BASIS = "estimated_credits = Unicode character count × credits_per_character"
@@ -129,6 +131,16 @@ IRISH_PRIORITY_ORDER = [
     "place/story openings and recaps",
     "controlled listening contrasts required by a defined learning action",
 ]
+SCOPED_STORY_FAMILY_IDS = {
+    "d32.donegal.20.ainm.name",
+    "d32.galway.09.baile.home-town",
+    "d32.kerry.08.baile.home",
+    "d32.kerry.20.ainm.name",
+    "d32.mayo.04.ait.place",
+    "d32.offaly.04.ri.king",
+    "dublin.sihtric-penny.ainm.name-noun",
+    "mayo.grainne-1593.ainm.name-noun",
+}
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -859,11 +871,35 @@ def walk_objects(value: Any) -> Iterable[dict[str, Any]]:
             yield from walk_objects(child)
 
 
-def record_by_id(payload: Any, record_id: str) -> dict[str, Any] | None:
-    return next(
-        (record for record in walk_objects(payload) if record.get("id") == record_id),
-        None,
-    )
+def records_by_id(
+    payload: Any, record_id: str, record_scope: str | None = None
+) -> list[dict[str, Any]]:
+    """Return all matching records, optionally within one named collection.
+
+    An unscoped lookup intentionally searches the whole JSON document. A source
+    with repeated ids must either be repaired or name its collection; callers
+    must never recover ambiguity by selecting the first match.
+    """
+
+    search_root = payload
+    if record_scope is not None:
+        if not isinstance(payload, dict) or not isinstance(
+            payload.get(record_scope), (dict, list)
+        ):
+            return []
+        search_root = payload[record_scope]
+    return [
+        record for record in walk_objects(search_root) if record.get("id") == record_id
+    ]
+
+
+def record_by_id(
+    payload: Any, record_id: str, record_scope: str | None = None
+) -> dict[str, Any] | None:
+    """Resolve one stable record id; ambiguous ids are never silently selected."""
+
+    matches = records_by_id(payload, record_id, record_scope)
+    return matches[0] if len(matches) == 1 else None
 
 
 def nested_value(record: dict[str, Any], dotted_field: str) -> Any:
@@ -882,6 +918,7 @@ def validate_ref(
     errors: list[str],
     *,
     expected_text: str | None = None,
+    reject_ambiguous: bool = True,
 ) -> dict[str, Any] | None:
     if not isinstance(ref, dict):
         errors.append(f"{label}: reference must be an object")
@@ -902,12 +939,44 @@ def validate_ref(
     if not isinstance(record_id, str) or not record_id.strip():
         errors.append(f"{label}: record_id is required")
         return None
-    record = record_by_id(payload, record_id)
-    if record is None:
+    record_scope = ref.get("record_scope")
+    if record_scope is not None and (
+        not isinstance(record_scope, str) or not record_scope.strip()
+    ):
+        errors.append(f"{label}: record_scope must be a non-empty collection name")
+        return None
+    record_index = ref.get("record_index")
+    if record_index is not None and (
+        not isinstance(record_index, int)
+        or isinstance(record_index, bool)
+        or record_index < 0
+    ):
+        errors.append(f"{label}: record_index must be a non-negative integer")
+        return None
+    if record_index is not None and record_scope is None:
+        errors.append(f"{label}: record_index requires record_scope")
+        return None
+    matches = records_by_id(payload, record_id, record_scope)
+    if not matches:
         errors.append(
             f"{label}: record_id {record_id!r} not found in {ref.get('path')!r}"
         )
         return None
+    if len(matches) > 1 and record_index is not None:
+        if record_index >= len(matches):
+            errors.append(
+                f"{label}: record_index {record_index} is outside {len(matches)} matches for record_id {record_id!r}"
+            )
+            return None
+        record = matches[record_index]
+    elif len(matches) > 1 and (reject_ambiguous or record_scope is not None):
+        errors.append(
+            f"{label}: record_id {record_id!r} is ambiguous ({len(matches)} matches) in {ref.get('path')!r}"
+            + (f" within scope {record_scope!r}" if record_scope else "")
+        )
+        return None
+    else:
+        record = matches[0]
     if expected_text is not None:
         text_field = ref.get("text_field")
         if not isinstance(text_field, str) or not text_field:
@@ -1014,6 +1083,8 @@ def validate_member(
     placements: dict[str, dict[str, Any]],
     inventory: dict[str, dict[str, Any]],
     errors: list[str],
+    *,
+    reject_ambiguous_refs: bool = False,
 ) -> None:
     label = f"member:{member.get('id', '<missing>')}" if isinstance(member, dict) else "member"
     if not isinstance(member, dict):
@@ -1156,7 +1227,13 @@ def validate_member(
                 errors.append(f"{clabel}: invalid response family")
             if consumer.get("container") not in CONTAINERS:
                 errors.append(f"{clabel}: invalid container")
-            record = validate_ref(consumer, root, clabel, errors)
+            record = validate_ref(
+                consumer,
+                root,
+                clabel,
+                errors,
+                reject_ambiguous=reject_ambiguous_refs,
+            )
             exercise = record.get("exercise") if isinstance(record, dict) else None
             if isinstance(exercise, dict):
                 if exercise.get("family") != consumer.get("response_family"):
@@ -1203,6 +1280,7 @@ def validate_member(
                         if complete and supports in {"repository_text", "external_attestation"}
                         else None
                     ),
+                    reject_ambiguous=reject_ambiguous_refs,
                 )
 
     risk_flags = member.get("risk_flags")
@@ -1263,8 +1341,12 @@ def validate_member(
                     errors.append(f"{label}: unsafe authorization for invented capture")
             elif basis not in {"repository_draft_owner", "pedagogy_approved", "d32_emergency_harvest"}:
                 errors.append(f"{label}: invalid authorization for sourced capture")
-    elif isinstance(capture, dict) and capture.get("authorization") is not None:
-        errors.append(f"{label}: only requested capture may carry authorization")
+    elif (
+        isinstance(capture, dict)
+        and capture.get("authorization") is not None
+        and capture_status not in {"requested", "cancelled"}
+    ):
+                errors.append(f"{label}: only requested or cancelled capture may carry authorization")
     if isinstance(capture, dict):
         batch_line_ids = capture.get("batch_line_ids")
         if not is_sorted_unique_string_list(batch_line_ids):
@@ -1522,9 +1604,10 @@ def validate_batch(
         estimated_credits = line.get("estimated_credits")
         if estimated_credits != round(len(normalized) * CREDITS_PER_CHARACTER, 3):
             errors.append(f"{llabel}: estimated_credits mismatch")
-        if line.get("capture_disposition") != CAPTURE_DISPOSITION:
+        capture_disposition = line.get("capture_disposition")
+        if capture_disposition not in CAPTURE_DISPOSITIONS:
             errors.append(
-                f"{llabel}: capture_disposition must be {CAPTURE_DISPOSITION!r}"
+                f"{llabel}: capture_disposition must be one of {sorted(CAPTURE_DISPOSITIONS)!r}"
             )
         prior_slug_text = seen_slugs.get(slug)
         if prior_slug_text is not None and prior_slug_text != normalized:
@@ -1544,7 +1627,11 @@ def validate_batch(
             if member is None:
                 errors.append(f"{llabel}: unknown member {member_id!r}")
                 continue
-            if member.get("states", {}).get("authoring", {}).get("status") != "complete":
+            member_status = member.get("states", {}).get("authoring", {}).get("status")
+            quarantined = capture_disposition == "quarantined_semantic"
+            if member_status != "complete" and not (
+                quarantined and member_status == "retired"
+            ):
                 errors.append(f"{llabel}: batch references incomplete member {member_id!r}")
             if member.get("irish", {}).get("normalized_text") != normalized:
                 errors.append(f"{llabel}: member text does not match line")
@@ -1612,8 +1699,15 @@ def validate_batch(
         result = line.get("provider_result")
         result_status = result.get("status") if isinstance(result, dict) else None
         if isinstance(request, dict) and request.get("status") == "cancelled":
-            if result_status != "not_started":
+            if capture_disposition != "quarantined_semantic" and result_status != "not_started":
                 errors.append(f"{llabel}: cancelled line must not claim provider work")
+            if capture_disposition == "quarantined_semantic" and result_status not in {
+                "succeeded",
+                "failed",
+            }:
+                errors.append(
+                    f"{llabel}: semantic quarantine must preserve a completed or failed provider result"
+                )
             output = resolve_repo_path(root, (line.get("audio") or {}).get("output_path"))
             if output is None or not output.is_file():
                 errors.append(f"{llabel}: cancelled line must retain an existing canonical audio file")
@@ -1621,7 +1715,11 @@ def validate_batch(
             errors.append(f"{llabel}: invalid provider result state")
         if execution_state == "draft" and result_status != "not_started":
             errors.append(f"{llabel}: draft batch cannot claim a provider result")
-        if result_status != "not_started":
+        if result_status != "not_started" and not (
+            capture_disposition == "quarantined_semantic"
+            and isinstance(request, dict)
+            and request.get("status") == "cancelled"
+        ):
             if execution_state not in {"approved", "closed"} or request.get("status") != "approved":
                 errors.append(f"{llabel}: provider work requires approved batch and line request")
             if claim_status in {None, "unclaimed"}:
@@ -1658,8 +1756,17 @@ def validate_batch(
                 errors.append(f"{llabel}: failed result requires structured error metadata")
             if not isinstance(attempt_count, int) or attempt_count < 1:
                 errors.append(f"{llabel}: failed result requires an attempt")
-        elif error is not None:
+        elif error is not None and not (
+            capture_disposition == "quarantined_semantic"
+            and isinstance(error, dict)
+            and error.get("code") == SEMANTIC_QUARANTINE_CODE
+        ):
             errors.append(f"{llabel}: non-failed result must not carry an error")
+        if capture_disposition == "quarantined_semantic":
+            if not isinstance(request, dict) or request.get("status") != "cancelled":
+                errors.append(f"{llabel}: semantic quarantine requires a cancelled line request")
+            if not isinstance(error, dict) or error.get("code") != SEMANTIC_QUARANTINE_CODE:
+                errors.append(f"{llabel}: semantic quarantine requires a structured quarantine error")
 
         audio = line.get("audio")
         expected_output = f"ios/AnTuras/Resources/Audio/{slug}.mp3"
@@ -1846,7 +1953,13 @@ def validate_contract(root: Path = ROOT, store_path: Path | None = None) -> tupl
                 )
         if county not in atlas.get("counties", {}):
             errors.append(f"family:{family.get('id')}: unknown county")
-        validate_ref(family.get("story_ref"), root, f"family:{family.get('id')}.story_ref", errors)
+        validate_ref(
+            family.get("story_ref"),
+            root,
+            f"family:{family.get('id')}.story_ref",
+            errors,
+            reject_ambiguous=family.get("id") in SCOPED_STORY_FAMILY_IDS,
+        )
         target = family.get("target")
         if not isinstance(target, dict) or not all(
             isinstance(target.get(field), str) and target[field].strip()
@@ -1879,7 +1992,15 @@ def validate_contract(root: Path = ROOT, store_path: Path | None = None) -> tupl
                     errors.append(f"store: duplicate member id {member_id!r}")
                 else:
                     members[member_id] = member
-            validate_member(member, family, root, placements, inventory, errors)
+            validate_member(
+                member,
+                family,
+                root,
+                placements,
+                inventory,
+                errors,
+                reject_ambiguous_refs=family.get("id") in SCOPED_STORY_FAMILY_IDS,
+            )
 
     slug_owners: dict[str, str] = {}
     for member in members.values():

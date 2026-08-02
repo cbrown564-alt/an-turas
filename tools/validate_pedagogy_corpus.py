@@ -61,9 +61,18 @@ NAMED_ENTITY_PATTERNS = (
     "Seán",
 )
 
+FIELD_COMPONENT_RE = re.compile(r"^(?P<name>[^\[]+)(?P<brackets>(?:\[[^\]]+\])*)$")
+BRACKET_RE = re.compile(r"\[([^\]]+)\]")
+ID_SELECTOR_RE = re.compile(r"(?:^|,)\s*id\s*=\s*([^,\]]+)")
+EXACT_IRISH_FIELD_NAMES = {"answer", "modelText", "text"}
+
 
 def load_payload(root: Path = ROOT) -> dict[str, Any]:
     return json.loads((root / CORPUS_PATH).read_text(encoding="utf-8"))
+
+
+def normalize_spoken_text(text: str) -> str:
+    return " ".join(unicodedata.normalize("NFC", text).strip().split())
 
 
 def deterministic_risk_flags(lesson: dict[str, Any], line: dict[str, Any]) -> set[str]:
@@ -95,6 +104,151 @@ def _required_text(value: Any, label: str, errors: list[str]) -> bool:
         errors.append(f"{label}: required non-empty text")
         return False
     return True
+
+
+def _split_field_path(field: str) -> list[str]:
+    """Split dotted paths without treating dots inside selectors as separators."""
+
+    components: list[str] = []
+    current: list[str] = []
+    bracket_depth = 0
+    for token in field:
+        if token == "[":
+            bracket_depth += 1
+        elif token == "]":
+            bracket_depth -= 1
+        if token == "." and bracket_depth == 0:
+            if current:
+                components.append("".join(current))
+                current = []
+        else:
+            current.append(token)
+    if current:
+        components.append("".join(current))
+    return components
+
+
+def _selector_matches(record: Any, selector: str) -> bool:
+    if not isinstance(record, dict):
+        return False
+    clauses = [clause.strip() for clause in selector.split(",") if clause.strip()]
+    for clause in clauses:
+        if "=" not in clause:
+            return False
+        key, expected = (part.strip() for part in clause.split("=", 1))
+        if str(record.get(key)) != expected:
+            return False
+    return True
+
+
+def _apply_bracket(value: Any, selector: str) -> list[Any]:
+    if isinstance(value, list):
+        if selector.isdigit():
+            index = int(selector)
+            return [value[index]] if 0 <= index < len(value) else []
+        if selector.startswith("chapter") and selector[7:].isdigit():
+            index = int(selector[7:]) - 1
+            return [value[index]] if 0 <= index < len(value) else []
+        return [item for item in value if _selector_matches(item, selector)]
+    if isinstance(value, dict) and selector in value:
+        return [value[selector]]
+    return []
+
+
+def resolve_field(payload: Any, field: str) -> list[Any]:
+    """Resolve the repository field notation used by the current corpus.
+
+    It supports dotted object paths, list selectors such as ``pages[id=...]``,
+    compound selectors, numeric indexes, and the existing ``sessions[chapter1]``
+    shorthand. Lists are flattened when a path continues through a list of
+    records, as in ``pack.chapters.pages[id=...]``.
+    """
+
+    values = [payload]
+    for component in _split_field_path(field):
+        match = FIELD_COMPONENT_RE.match(component)
+        if match is None:
+            return []
+        name = match.group("name")
+        selectors = BRACKET_RE.findall(match.group("brackets"))
+        next_values: list[Any] = []
+        for value in values:
+            candidates = value if isinstance(value, list) else [value]
+            for candidate in candidates:
+                if isinstance(candidate, dict) and name in candidate:
+                    next_values.append(candidate[name])
+                elif isinstance(candidate, list):
+                    for item in candidate:
+                        if isinstance(item, dict) and name in item:
+                            next_values.append(item[name])
+                elif isinstance(candidate, dict):
+                    # A few legacy references omit the enclosing `pack` or
+                    # collection name. Search nested objects only as a path
+                    # compatibility fallback; selectors still resolve exactly.
+                    def nested_named(value: Any) -> None:
+                        if isinstance(value, dict):
+                            if name in value:
+                                next_values.append(value[name])
+                            else:
+                                for child in value.values():
+                                    nested_named(child)
+                        elif isinstance(value, list):
+                            for child in value:
+                                nested_named(child)
+
+                    nested_named(candidate)
+        values = next_values
+        for selector in selectors:
+            selected: list[Any] = []
+            for value in values:
+                selected.extend(_apply_bracket(value, selector))
+            values = selected
+        if not values:
+            return []
+    return values
+
+
+def _nested_strings(value: Any) -> list[str]:
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, dict):
+        return [text for child in value.values() for text in _nested_strings(child)]
+    if isinstance(value, list):
+        return [text for child in value for text in _nested_strings(child)]
+    return []
+
+
+def _is_exact_irish_field(field: str) -> bool:
+    final_component = _split_field_path(field)[-1] if field else ""
+    final_component = final_component.split("[", 1)[0]
+    return final_component in EXACT_IRISH_FIELD_NAMES
+
+
+def _field_id_selectors(field: str) -> set[str]:
+    """Return explicit record ids embedded in selectors such as ``pages[id=x]``."""
+
+    return {
+        match.group(1).strip()
+        for bracket in BRACKET_RE.findall(field)
+        for match in ID_SELECTOR_RE.finditer(bracket)
+    }
+
+
+def _record_matches(payload: Any, record_id: str) -> list[dict[str, Any]]:
+    matches: list[dict[str, Any]] = []
+
+    def walk(value: Any) -> None:
+        if isinstance(value, dict):
+            if value.get("id") == record_id or value.get("slug") == record_id:
+                matches.append(value)
+            for child in value.values():
+                walk(child)
+        elif isinstance(value, list):
+            for child in value:
+                walk(child)
+
+    walk(payload)
+    return matches
 
 
 def validate_payload(payload: Any, root: Path = ROOT) -> list[str]:
@@ -204,8 +358,66 @@ def validate_payload(payload: Any, root: Path = ROOT) -> list[str]:
                     }:
                         errors.append(f"{source_label}.supports: unsupported provenance type")
                     source_path = source.get("path")
-                    if isinstance(source_path, str) and not (root / source_path).is_file():
-                        errors.append(f"{source_label}.path: file does not exist: {source_path}")
+                    if isinstance(source_path, str):
+                        source_file = root / source_path
+                        if not source_file.is_file():
+                            errors.append(f"{source_label}.path: file does not exist: {source_path}")
+                            continue
+                        try:
+                            source_payload = json.loads(source_file.read_text(encoding="utf-8"))
+                        except (OSError, json.JSONDecodeError) as error:
+                            errors.append(f"{source_label}: cannot read JSON source: {error}")
+                            continue
+                        record_id = source.get("record_id")
+                        if not isinstance(record_id, str) or not record_id.strip():
+                            continue
+                        records = _record_matches(source_payload, record_id)
+                        if len(records) == 0:
+                            errors.append(
+                                f"{source_label}.record_id: record {record_id!r} was not found"
+                            )
+                            continue
+                        if len(records) > 1:
+                            errors.append(
+                                f"{source_label}.record_id: record {record_id!r} is ambiguous ({len(records)} matches)"
+                            )
+                            continue
+                        field = source.get("field")
+                        if not isinstance(field, str) or not field.strip():
+                            continue
+                        field_record_ids = _field_id_selectors(field)
+                        if field_record_ids and field_record_ids != {record_id}:
+                            errors.append(
+                                f"{source_label}.field: id selector(s) {sorted(field_record_ids)!r} do not match record_id {record_id!r}"
+                            )
+                            continue
+                        resolved = resolve_field(source_payload, field)
+                        if len(resolved) != 1:
+                            errors.append(
+                                f"{source_label}.field: expected one value at {field!r}, found {len(resolved)}"
+                            )
+                            continue
+                        if source.get("supports") in {
+                            "repository_text",
+                            "exercise_context",
+                            "migration_only",
+                        } and _is_exact_irish_field(field):
+                            expected_examples = {
+                                normalize_spoken_text(example)
+                                for example in examples
+                                if isinstance(example, str)
+                            }
+                            source_texts = {
+                                normalize_spoken_text(text)
+                                for text in _nested_strings(resolved[0])
+                            }
+                            if (
+                                source_texts
+                                and not expected_examples.intersection(source_texts)
+                            ):
+                                errors.append(
+                                    f"{source_label}.field: resolved text at {field!r} does not match any Irish example"
+                                )
 
             provenance = line.get("provenance")
             if not isinstance(provenance, dict):
