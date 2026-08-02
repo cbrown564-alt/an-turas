@@ -120,16 +120,14 @@ capture target is a post-harvest selection guide, not an emergency cap.
 
 **D32 Track E integrity scoreboard (2026-08-02):** the read-only production-loop
 scoreboard (`python3 -B tools/structured_audio_authoring.py reconcile --scoreboard
---json`) runs in about 0.13 seconds on this checkout. It reports **2** authored
-families, **4** complete members, **4** unique texts, and **1** county; **5** registered
-batch lines (**1** approved, **1** claimed, **0** succeeded, **0** failed); **0**
-source-labeled new-v2 bundled clips versus **362** legacy/runtime rows; and **362/362**
-bundle checksums verified with no missing or orphan MP3s. **292** runtime rows are
-inventory-backed and **47** inventory entries carry an explicit QA disposition, while
-the v2 learner-release-eligible count remains **0**. One authorized line remains
-manual-recovery work because its claim lease is expired; there are no preflight
-candidates until that lease is resolved explicitly. The audit and resume plan make no
-automatic file, manifest, claim, lease, or release changes.
+--json`) reports **261** authored families, **525** complete members, **317** unique
+texts, and **16** counties after the first two bulk authoring tranches. The registered
+batch ledger still contains **5** lines (**1** approved, **0** currently claimed,
+**1** succeeded, **0** failed), so batch preparation remains the throughput bottleneck.
+The bundle contains **1** source-labeled new-v2 clip and **362** legacy/runtime clips;
+all **363/363** checksums verify with no missing or orphan MP3s. No current line needs
+manual claim recovery. The v2 learner-release-eligible count remains **0**, and the
+audit and resume plan make no automatic file, manifest, claim, lease, or release changes.
 
 **24 July rebuild update:** Phase 0's product contract is complete. The Phase
 1 version-two page-pack model, deterministic beat-to-page migration, dual-mode
