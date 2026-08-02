@@ -27,6 +27,8 @@ final class FreezeRunUITests: XCTestCase {
         // Step 1 — F1 listen and choose: answerable cold open, repair window,
         // struggle on the second wrong, next-touch repair (D1/D3/F1).
         XCTAssertTrue(app.staticTexts["Tap what you hear"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Farraige · sea"].exists)
+        XCTAssertTrue(app.staticTexts["The word belongs to the water you are looking at."].exists)
         tapChoice("island", in: app)
         XCTAssertTrue(app.staticTexts["That's land, not water."].waitForExistence(timeout: 2))
         XCTAssertFalse(app.staticTexts["Not quite"].exists)

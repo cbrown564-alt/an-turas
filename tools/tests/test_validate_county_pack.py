@@ -266,6 +266,10 @@ class AddedRules(unittest.TestCase):
                         page = candidate
                         exercise = candidate["exercise"]
                         break
+        # Keep this regression focused on the inventory bind rule. The current
+        # representative pack also carries a phrase-family binding on its first
+        # exercise; leaving it in place would mask the intended audio error.
+        exercise["phraseFamilyMemberIDs"] = []
         exercise["audioText"] = "Níl an líne seo san inventory."
         exercise.pop("phraseFamilyMemberIDs", None)
         self._expect("audioNotInInventory")

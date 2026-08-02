@@ -275,6 +275,29 @@ through a v2 batch manifest rather than inferred from inventory membership.
 
 ## Gated execution and canonical output
 
+The provider tooling uses the hash-locked Python 3.11 resolution in
+`tools/tts-bakeoff/requirements.lock.txt`. Create or refresh the shared environment
+without reading provider credentials:
+
+```bash
+uv venv tools/tts-bakeoff/.venv --python 3.11
+uv pip sync \
+  --python tools/tts-bakeoff/.venv/bin/python \
+  tools/tts-bakeoff/requirements.lock.txt
+```
+
+Refresh the lock only when `tools/tts-bakeoff/requirements.txt` changes or dependency
+resolution is deliberately updated:
+
+```bash
+uv pip compile tools/tts-bakeoff/requirements.txt \
+  --output-file tools/tts-bakeoff/requirements.lock.txt \
+  --generate-hashes --universal --python-version 3.11
+```
+
+Credentials remain local in the ignored repository `.env` or exported shell
+environment. Do not add them to the repository or lockfile.
+
 Provider execution is deliberately separate from authoring validation. Run the offline
 preflight from any worktree through the existing project UV environment:
 

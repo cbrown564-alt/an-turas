@@ -89,7 +89,12 @@ struct CountyStoryExperienceView: View {
                         VStack(alignment: .leading, spacing: isExercise ? 0 : 24) {
                             Color.clear.frame(height: 0).id("county-page-top")
                             if isExercise {
-                                exercisePage(page, isComplete: isComplete, topPadding: 8)
+                                exercisePage(
+                                    page,
+                                    isComplete: isComplete,
+                                    topPadding: 8,
+                                    showsStoryContext: index == 0
+                                )
                                     // Force a fresh activity engine per page — without this,
                                     // SwiftUI reuses @State from the previous exercise and
                                     // leaves the bank locked as already-complete.
@@ -152,7 +157,11 @@ struct CountyStoryExperienceView: View {
                         atlas.finish(pack, mode: mode)
                         withAnimation(reduceMotion ? nil : Motion.settle) { finishedMode = mode }
                     } else {
-                        move(to: visible[index + 1])
+                        let next = visible[index + 1]
+                        move(
+                            to: next,
+                            animated: !(page.kind == .exercise && next.kind == .exercise)
+                        )
                     }
                 }
             )
@@ -168,10 +177,16 @@ struct CountyStoryExperienceView: View {
     }
 
     @ViewBuilder
-    private func exercisePage(_ page: CountyStoryPage, isComplete: Bool, topPadding: CGFloat) -> some View {
+    private func exercisePage(
+        _ page: CountyStoryPage,
+        isComplete: Bool,
+        topPadding: CGFloat,
+        showsStoryContext: Bool
+    ) -> some View {
         CountyExerciseView(
             page: page,
             alreadyComplete: isComplete,
+            showsStoryContext: showsStoryContext,
             onComplete: {
                 locallyCompletedPageIDs.insert(page.id)
                 atlas.markPageComplete(page.id, in: pack)
@@ -199,9 +214,13 @@ struct CountyStoryExperienceView: View {
         .frame(maxWidth: .infinity)
     }
 
-    private func move(to page: CountyStoryPage) {
+    private func move(to page: CountyStoryPage, animated: Bool = true) {
         Haptics.tap()
-        withAnimation(reduceMotion ? nil : Motion.settle) {
+        if animated {
+            withAnimation(reduceMotion ? nil : Motion.settle) {
+                atlas.setActivePage(page.id, in: pack)
+            }
+        } else {
             atlas.setActivePage(page.id, in: pack)
         }
     }
