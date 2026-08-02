@@ -31,6 +31,9 @@ learning outcomes or promoted for public release.
   and no remaining resumable or manual-recovery work.
 - The Personal Atlas tranche contains **80** subjects—**50 names** and **30 places**—
   with two spoken forms each and **160** newly captured clips.
+- **20** pre-D31 worktree captures are checksum-verified in a quarantine archive;
+  they are excluded from the runtime and v2 ledger pending explicit migration, and one
+  conflicts with an existing canonical slug.
 - All v2 captures remain `generated_unreviewed`; the learner-release-eligible count is
   **0**.
 
@@ -94,8 +97,14 @@ and physical-device run is still required before promotion.
 - `python3 -B tools/structured_audio_authoring.py reconcile --scoreboard --json` —
   passed with the counts above.
 - `python3 -B -m unittest discover -s tools/tests` — **149/149 passed** on 2026-08-02.
-- Commit `26d3825` records the latest Personal Atlas audio tranche. The working tree
-  was clean before this status update.
+- The complete nine-step Clew Bay UI walk and focused screenshot-capture test pass on
+  an iPhone 17 Pro simulator after the recovered context/transition change. Direct
+  inspection confirms the first task shows its *Farraige · sea* arrival cue without
+  displacing its listening control or choices.
+- Reconciliation of the original D32 worktrees is complete. Ten formerly dirty states
+  are retained under `worktree-archive/*` tags; superseded, retired, and temporary
+  material was not promoted into active source. Three new, active worktrees now own the
+  Personal Atlas name tranche, audio-anomaly quarantine, and narrative-pedagogy tranche.
 
 ## Active implementation sequence
 
