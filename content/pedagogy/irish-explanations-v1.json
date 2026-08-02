@@ -625,6 +625,304 @@
           }
         }
       ]
+    },
+    {
+      "id": "grammar.identity-origin",
+      "title": "Keep identity and origin in their frames",
+      "area": "grammar",
+      "memory_hook": "Is mise names the person; Is as places the origin; keep each short frame intact.",
+      "scope": "Two Mayo exercise frames for identity and origin only; this is not a complete account of the copula or prepositional phrases.",
+      "lines": [
+        {
+          "id": "grammar.identity-origin.framing",
+          "kind": "framing",
+          "english": "The Mayo sequence lets a person be named and placed: Is mise Gráinne. then Is as Maigh Eo mé. Keep the story's identity and origin frames visible before comparing their parts.",
+          "irish_examples": ["Is mise Gráinne.", "Is as Maigh Eo mé."],
+          "source_refs": [
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "mayo.in-the-record.build-identity",
+              "field": "pack.chapters.pages[id=mayo.in-the-record.build-identity].exercise.answer",
+              "supports": "exercise_context"
+            },
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "mayo.in-the-record.retrieve-origin",
+              "field": "pack.chapters.pages[id=mayo.in-the-record.retrieve-origin].exercise.answer",
+              "supports": "exercise_context"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "English framing is a provisional narrative-pedagogy composition; both Irish sentences are copied exactly from the cited Mayo exercise answers."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "pronoun_reference", "named_entity", "long_sentence"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "grammar.identity-origin.intuition",
+          "kind": "intuition",
+          "english": "Use two memory hooks from the story: Is mise keeps the self-identification together; Is as [place] mé keeps the origin sentence together. The brackets describe a frame, not a new Irish example.",
+          "irish_examples": ["Is mise Gráinne.", "Is as Maigh Eo mé."],
+          "source_refs": [
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "mayo.in-the-record.build-identity",
+              "field": "pack.chapters.pages[id=mayo.in-the-record.build-identity].exercise.modelText",
+              "supports": "exercise_context"
+            },
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "mayo.in-the-record.retrieve-origin",
+              "field": "pack.chapters.pages[id=mayo.in-the-record.retrieve-origin].exercise.modelText",
+              "supports": "exercise_context"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The English memory hooks are provisional; the exact Irish examples and frame cues are copied from the cited Mayo exercise model text and hint."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "pronoun_reference", "named_entity", "long_sentence"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "grammar.identity-origin.example",
+          "kind": "example",
+          "english": "Return to the origin line after the story has made place meaningful: I am from Mayo.",
+          "irish_examples": ["Is as Maigh Eo mé."],
+          "source_refs": [
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "mayo.in-the-record.retrieve-origin",
+              "field": "pack.chapters.pages[id=mayo.in-the-record.retrieve-origin].exercise.answer",
+              "supports": "exercise_context"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "English framing is provisional; the Irish sentence is copied exactly from the cited delayed-recall exercise answer."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "pronoun_reference"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "grammar.identity-origin.boundary",
+          "kind": "boundary",
+          "english": "This note stays with the two Mayo exercise frames. It does not claim that every Irish identity or origin sentence follows these exact words, and it does not replace Irish-language review.",
+          "irish_examples": ["Is mise Gráinne.", "Is as Maigh Eo mé."],
+          "source_refs": [
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "mayo.in-the-record.build-identity",
+              "field": "pack.chapters.pages[id=mayo.in-the-record.build-identity].exercise.answer",
+              "supports": "exercise_context"
+            },
+            {
+              "path": "content/mayo/grainne-1593.pack.draft.json",
+              "record_id": "mayo.in-the-record.retrieve-origin",
+              "field": "pack.chapters.pages[id=mayo.in-the-record.retrieve-origin].exercise.answer",
+              "supports": "exercise_context"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The boundary language is authored to prevent overgeneralisation; no new Irish wording is introduced."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "pronoun_reference", "named_entity", "long_sentence"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "pronunciation.farraige-frames",
+      "title": "Follow the sea word through the frame",
+      "area": "pronunciation",
+      "memory_hook": "Keep the sea word inside its whole phrase; notice the written opening and leave the sound decision to review.",
+      "scope": "Three exact Mayo phrase-family members using farraige; this is a written noticing prompt, not a complete account of mutation or dialect pronunciation.",
+      "lines": [
+        {
+          "id": "pronunciation.farraige-frames.framing",
+          "kind": "framing",
+          "english": "The Mayo phrase family returns to the sea in three frames: a statement, a ship sentence, and a location question. Read the written opening of each line before asking what the mouth does.",
+          "irish_examples": ["Tá an fharraige anseo.", "Tá an long ar an bhfarraige.", "Cá bhfuil an fharraige?"],
+          "source_refs": [
+            {
+              "path": "content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json",
+              "record_id": "farraige.sea-here",
+              "field": "members[id=farraige.sea-here].irish.text",
+              "supports": "repository_text"
+            },
+            {
+              "path": "content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json",
+              "record_id": "farraige.ship-on-sea",
+              "field": "members[id=farraige.ship-on-sea].irish.text",
+              "supports": "repository_text"
+            },
+            {
+              "path": "content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json",
+              "record_id": "farraige.where-sea",
+              "field": "members[id=farraige.where-sea].irish.text",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "English framing is a provisional pronunciation-noticing composition; all three Irish sentences are copied exactly from the cited phrase-family members."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "initial_mutation", "audio_pronunciation", "dialect_register", "long_sentence"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "pronunciation.farraige-frames.contrast",
+          "kind": "contrast",
+          "english": "Use the written pair as a listening cue: the sea word appears as fharraige after an, and as bhfarraige inside ar an bhfarraige. The sidecar records the repository forms without telling the learner to simplify either one.",
+          "irish_examples": ["Tá an fharraige anseo.", "Tá an long ar an bhfarraige."],
+          "source_refs": [
+            {
+              "path": "content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json",
+              "record_id": "farraige.sea-here",
+              "field": "members[id=farraige.sea-here].irish.text",
+              "supports": "repository_text"
+            },
+            {
+              "path": "content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json",
+              "record_id": "farraige.ship-on-sea",
+              "field": "members[id=farraige.ship-on-sea].irish.text",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The comparison is provisional English framing around two exact repository sentences; pronunciation and linguistic interpretation remain open."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "initial_mutation", "audio_pronunciation", "dialect_register", "long_sentence"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "pronunciation.farraige-frames.example",
+          "kind": "example",
+          "english": "Let the question return the sea word to the learner's ear: Where is the sea?",
+          "irish_examples": ["Cá bhfuil an fharraige?"],
+          "source_refs": [
+            {
+              "path": "content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json",
+              "record_id": "farraige.where-sea",
+              "field": "members[id=farraige.where-sea].irish.text",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "English framing is provisional; the question is copied exactly from the cited phrase-family member and is not a pronunciation approval."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "initial_mutation", "audio_pronunciation", "dialect_register"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        },
+        {
+          "id": "pronunciation.farraige-frames.boundary",
+          "kind": "boundary",
+          "english": "This note keeps the three phrase-family forms visible. It does not settle the grammar, sound, or dialect meaning of the changes, and it does not authorize audio or learner release.",
+          "irish_examples": ["Tá an fharraige anseo.", "Tá an long ar an bhfarraige.", "Cá bhfuil an fharraige?"],
+          "source_refs": [
+            {
+              "path": "content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json",
+              "record_id": "farraige.sea-here",
+              "field": "members[id=farraige.sea-here].irish.text",
+              "supports": "repository_text"
+            },
+            {
+              "path": "content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json",
+              "record_id": "farraige.ship-on-sea",
+              "field": "members[id=farraige.ship-on-sea].irish.text",
+              "supports": "repository_text"
+            },
+            {
+              "path": "content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json",
+              "record_id": "farraige.where-sea",
+              "field": "members[id=farraige.where-sea].irish.text",
+              "supports": "repository_text"
+            }
+          ],
+          "provenance": {
+            "origin": "invented_pedagogical",
+            "invented": true,
+            "composition_note": "The boundary is authored to keep the pronunciation purpose narrow; all Irish examples remain exact repository text and all review gates remain pending."
+          },
+          "risk_flags": ["scope_guard", "invented_text", "explanation_claim", "fada", "initial_mutation", "audio_pronunciation", "dialect_register"],
+          "reviews": {
+            "pedagogy": {"status": "pending", "record": null},
+            "irish_language": {"status": "pending", "record": null},
+            "audio_pronunciation": {"status": "pending", "record": null}
+          },
+          "learner_release": {
+            "status": "blocked",
+            "reasons": ["pedagogy_review_pending", "irish_language_review_pending", "audio_pronunciation_review_pending", "corpus_not_runtime_bound"]
+          }
+        }
+      ]
     }
   ]
 }
