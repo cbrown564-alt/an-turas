@@ -1,0 +1,272 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.louth.01.tarbh.bull",
+  "county": "louth",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.louth.cu-chulainn-cooley"
+  },
+  "target": {
+    "lexeme_id": "lex.tarbh",
+    "citation_form": "tarbh",
+    "sense_id": "louth.tarbh.bull",
+    "part_of_speech": "lexical item",
+    "english_sense": "bull"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.louth.01.tarbh",
+      "gloss": "bull"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.louth.01.tarbh.bull.opening",
+      "family_id": "d32.louth.01.tarbh.bull",
+      "target": {
+        "lexeme_id": "lex.tarbh",
+        "citation_form": "tarbh",
+        "sense_id": "louth.tarbh.bull",
+        "part_of_speech": "lexical item",
+        "target_form": "tarbh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá tarbh anseo.",
+        "normalized_text": "Tá tarbh anseo.",
+        "inventory_slug": "taa-tarbh-anseo",
+        "text_sha256": "948b5c6441d1aaa2eb7be6b5edecfd22d7de4b7741f4ae742861070ca1a1cbf0"
+      },
+      "english": {
+        "intent": "The bull is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "louth",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley"
+        },
+        "atlas_placement_ids": [
+          "atlas.louth.01.tarbh"
+        ],
+        "place": {
+          "id": "d32.louth.place",
+          "label": "Lú / Louth"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the louth story with the atlas-bound bull at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley.opening.01",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the louth story with the atlas-bound bull at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.louth.cu-chulainn-cooley.opening.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.louth.01.tarbh.bull.dialogue",
+      "family_id": "d32.louth.01.tarbh.bull",
+      "target": {
+        "lexeme_id": "lex.tarbh",
+        "citation_form": "tarbh",
+        "sense_id": "louth.tarbh.bull",
+        "part_of_speech": "lexical item",
+        "target_form": "tarbh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil tarbh anseo?",
+        "normalized_text": "An bhfuil tarbh anseo?",
+        "inventory_slug": "an-bhfuil-tarbh-anseo",
+        "text_sha256": "5af335fe9c37a135b0ed9ababde328659a83ea35dafec5e60960305fd84b1c5c"
+      },
+      "english": {
+        "intent": "Is the bull here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "louth",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley"
+        },
+        "atlas_placement_ids": [
+          "atlas.louth.01.tarbh"
+        ],
+        "place": {
+          "id": "d32.louth.place",
+          "label": "Lú / Louth"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse tarbh in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley.dialogue.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse tarbh in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.louth.cu-chulainn-cooley.dialogue.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

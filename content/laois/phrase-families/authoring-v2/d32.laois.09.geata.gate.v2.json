@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.laois.09.geata.gate",
+  "county": "laois",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.laois.rock-of-dunamase"
+  },
+  "target": {
+    "lexeme_id": "lex.geata",
+    "citation_form": "geata",
+    "sense_id": "laois.geata.gate",
+    "part_of_speech": "noun",
+    "english_sense": "gate"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.laois.09.geata",
+      "gloss": "gate"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.laois.09.geata.gate.opening",
+      "family_id": "d32.laois.09.geata.gate",
+      "target": {
+        "lexeme_id": "lex.geata",
+        "citation_form": "geata",
+        "sense_id": "laois.geata.gate",
+        "part_of_speech": "noun",
+        "target_form": "geata",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá geata anseo.",
+        "normalized_text": "Tá geata anseo.",
+        "inventory_slug": "taa-geata-anseo",
+        "text_sha256": "56af12c77935c32a206c0605d88e9595dcdb37e6eae465af9da171707576e2a7"
+      },
+      "english": {
+        "intent": "The gate is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "laois",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.laois.rock-of-dunamase"
+        },
+        "atlas_placement_ids": [
+          "atlas.laois.09.geata"
+        ],
+        "place": {
+          "id": "d32.laois.place",
+          "label": "Laois"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the laois story with the atlas-bound gate at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.laois.rock-of-dunamase.opening.09",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the laois story with the atlas-bound gate at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.laois.rock-of-dunamase.opening.09",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.laois.09.geata.gate.return",
+      "family_id": "d32.laois.09.geata.gate",
+      "target": {
+        "lexeme_id": "lex.geata",
+        "citation_form": "geata",
+        "sense_id": "laois.geata.gate",
+        "part_of_speech": "noun",
+        "target_form": "geata",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá geata sa scéal.",
+        "normalized_text": "Tá geata sa scéal.",
+        "inventory_slug": "taa-geata-sa-sceeal",
+        "text_sha256": "2db24b3ae0b3cab14a72c0dbdce1e2019cc537af5faaef301868e684d1b8b270"
+      },
+      "english": {
+        "intent": "The gate is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "laois",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.laois.rock-of-dunamase"
+        },
+        "atlas_placement_ids": [
+          "atlas.laois.09.geata"
+        ],
+        "place": {
+          "id": "d32.laois.place",
+          "label": "Laois"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry geata from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.laois.rock-of-dunamase.return.09",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry geata from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.laois.rock-of-dunamase.return.09",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

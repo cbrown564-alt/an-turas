@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.kilkenny.06.breitheamh.judge",
+  "county": "kilkenny",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.kilkenny.alice-kyteler"
+  },
+  "target": {
+    "lexeme_id": "lex.breitheamh",
+    "citation_form": "breitheamh",
+    "sense_id": "kilkenny.breitheamh.judge",
+    "part_of_speech": "lexical item",
+    "english_sense": "judge"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.kilkenny.06.breitheamh",
+      "gloss": "judge"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.kilkenny.06.breitheamh.judge.opening",
+      "family_id": "d32.kilkenny.06.breitheamh.judge",
+      "target": {
+        "lexeme_id": "lex.breitheamh",
+        "citation_form": "breitheamh",
+        "sense_id": "kilkenny.breitheamh.judge",
+        "part_of_speech": "lexical item",
+        "target_form": "breitheamh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá breitheamh anseo.",
+        "normalized_text": "Tá breitheamh anseo.",
+        "inventory_slug": "taa-breitheamh-anseo",
+        "text_sha256": "e6be05f5ad06736f0a05c9f958625accb91dd6e566056c110c0be45ccf8449b2"
+      },
+      "english": {
+        "intent": "The judge is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kilkenny",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler"
+        },
+        "atlas_placement_ids": [
+          "atlas.kilkenny.06.breitheamh"
+        ],
+        "place": {
+          "id": "d32.kilkenny.place",
+          "label": "Cill Chainnigh / Kilkenny"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the kilkenny story with the atlas-bound judge at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler.opening.06",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the kilkenny story with the atlas-bound judge at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kilkenny.alice-kyteler.opening.06",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.kilkenny.06.breitheamh.judge.return",
+      "family_id": "d32.kilkenny.06.breitheamh.judge",
+      "target": {
+        "lexeme_id": "lex.breitheamh",
+        "citation_form": "breitheamh",
+        "sense_id": "kilkenny.breitheamh.judge",
+        "part_of_speech": "lexical item",
+        "target_form": "breitheamh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá breitheamh sa scéal.",
+        "normalized_text": "Tá breitheamh sa scéal.",
+        "inventory_slug": "taa-breitheamh-sa-sceeal",
+        "text_sha256": "6c71892c698624d9d8487e106378f18c6f49ee698feab0c988cc0fafe233ce21"
+      },
+      "english": {
+        "intent": "The judge is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kilkenny",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler"
+        },
+        "atlas_placement_ids": [
+          "atlas.kilkenny.06.breitheamh"
+        ],
+        "place": {
+          "id": "d32.kilkenny.place",
+          "label": "Cill Chainnigh / Kilkenny"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry breitheamh from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler.return.06",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry breitheamh from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kilkenny.alice-kyteler.return.06",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

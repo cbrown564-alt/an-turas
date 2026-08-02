@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.kilkenny.12.labhair.speak",
+  "county": "kilkenny",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.kilkenny.alice-kyteler"
+  },
+  "target": {
+    "lexeme_id": "lex.labhair",
+    "citation_form": "labhair",
+    "sense_id": "kilkenny.labhair.speak",
+    "part_of_speech": "verb",
+    "english_sense": "speak"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.kilkenny.12.labhair",
+      "gloss": "speak"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.kilkenny.12.labhair.speak.opening",
+      "family_id": "d32.kilkenny.12.labhair.speak",
+      "target": {
+        "lexeme_id": "lex.labhair",
+        "citation_form": "labhair",
+        "sense_id": "kilkenny.labhair.speak",
+        "part_of_speech": "verb",
+        "target_form": "labhair",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá labhair anseo.",
+        "normalized_text": "Tá labhair anseo.",
+        "inventory_slug": "taa-labhair-anseo",
+        "text_sha256": "729a324043a15f2600c227e7f2103847ac25e783904b3097c2bcc3c9d755d794"
+      },
+      "english": {
+        "intent": "The speak is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kilkenny",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler"
+        },
+        "atlas_placement_ids": [
+          "atlas.kilkenny.12.labhair"
+        ],
+        "place": {
+          "id": "d32.kilkenny.place",
+          "label": "Cill Chainnigh / Kilkenny"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the kilkenny story with the atlas-bound speak at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler.opening.12",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the kilkenny story with the atlas-bound speak at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kilkenny.alice-kyteler.opening.12",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.kilkenny.12.labhair.speak.return",
+      "family_id": "d32.kilkenny.12.labhair.speak",
+      "target": {
+        "lexeme_id": "lex.labhair",
+        "citation_form": "labhair",
+        "sense_id": "kilkenny.labhair.speak",
+        "part_of_speech": "verb",
+        "target_form": "labhair",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá labhair sa scéal.",
+        "normalized_text": "Tá labhair sa scéal.",
+        "inventory_slug": "taa-labhair-sa-sceeal",
+        "text_sha256": "ff517d2f6a6bb1157f0f5aed908863706c3ac6057f220ea2ed3f26d429897266"
+      },
+      "english": {
+        "intent": "The speak is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kilkenny",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler"
+        },
+        "atlas_placement_ids": [
+          "atlas.kilkenny.12.labhair"
+        ],
+        "place": {
+          "id": "d32.kilkenny.place",
+          "label": "Cill Chainnigh / Kilkenny"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry labhair from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler.return.12",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry labhair from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kilkenny.alice-kyteler.return.12",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

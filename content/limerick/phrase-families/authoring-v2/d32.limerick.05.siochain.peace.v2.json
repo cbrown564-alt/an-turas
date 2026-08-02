@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.limerick.05.siochain.peace",
+  "county": "limerick",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.limerick.treaty-of-limerick"
+  },
+  "target": {
+    "lexeme_id": "lex.siochain",
+    "citation_form": "síocháin",
+    "sense_id": "limerick.siochain.peace",
+    "part_of_speech": "lexical item",
+    "english_sense": "peace"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.limerick.05.siochain",
+      "gloss": "peace"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.limerick.05.siochain.peace.opening",
+      "family_id": "d32.limerick.05.siochain.peace",
+      "target": {
+        "lexeme_id": "lex.siochain",
+        "citation_form": "síocháin",
+        "sense_id": "limerick.siochain.peace",
+        "part_of_speech": "lexical item",
+        "target_form": "síocháin",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá síocháin anseo.",
+        "normalized_text": "Tá síocháin anseo.",
+        "inventory_slug": "taa-siiochaain-anseo",
+        "text_sha256": "1e293c1722a0e5bef6d212c5fbf92e5a763f9e99dee743eb4b2d47e7da6ed4cc"
+      },
+      "english": {
+        "intent": "The peace is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "limerick",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick"
+        },
+        "atlas_placement_ids": [
+          "atlas.limerick.05.siochain"
+        ],
+        "place": {
+          "id": "d32.limerick.place",
+          "label": "Luimneach / Limerick"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the limerick story with the atlas-bound peace at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick.opening.05",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the limerick story with the atlas-bound peace at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.limerick.treaty-of-limerick.opening.05",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.limerick.05.siochain.peace.recap",
+      "family_id": "d32.limerick.05.siochain.peace",
+      "target": {
+        "lexeme_id": "lex.siochain",
+        "citation_form": "síocháin",
+        "sense_id": "limerick.siochain.peace",
+        "part_of_speech": "lexical item",
+        "target_form": "síocháin",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar síocháin.",
+        "normalized_text": "Féach ar síocháin.",
+        "inventory_slug": "feeach-ar-siiochaain",
+        "text_sha256": "e88f53305c732af7b879f7fc271ea4c128d07e9fb7fcfe156c7d4c6a2f438aac"
+      },
+      "english": {
+        "intent": "Look at the peace.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "limerick",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick"
+        },
+        "atlas_placement_ids": [
+          "atlas.limerick.05.siochain"
+        ],
+        "place": {
+          "id": "d32.limerick.place",
+          "label": "Luimneach / Limerick"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the peace placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick.recap.05",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the peace placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.limerick.treaty-of-limerick.recap.05",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.kildare.16.cabhraigh.help",
+  "county": "kildare",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.kildare.brigid-fire"
+  },
+  "target": {
+    "lexeme_id": "lex.cabhraigh",
+    "citation_form": "cabhraigh",
+    "sense_id": "kildare.cabhraigh.help",
+    "part_of_speech": "verb",
+    "english_sense": "help"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.kildare.16.cabhraigh",
+      "gloss": "help"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.kildare.16.cabhraigh.help.opening",
+      "family_id": "d32.kildare.16.cabhraigh.help",
+      "target": {
+        "lexeme_id": "lex.cabhraigh",
+        "citation_form": "cabhraigh",
+        "sense_id": "kildare.cabhraigh.help",
+        "part_of_speech": "verb",
+        "target_form": "cabhraigh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cabhraigh anseo.",
+        "normalized_text": "Tá cabhraigh anseo.",
+        "inventory_slug": "taa-cabhraigh-anseo",
+        "text_sha256": "638eaf8c2c0c8503b88f6f050f17d2b299791c90d915770e8d9a71c590388b20"
+      },
+      "english": {
+        "intent": "The help is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kildare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire"
+        },
+        "atlas_placement_ids": [
+          "atlas.kildare.16.cabhraigh"
+        ],
+        "place": {
+          "id": "d32.kildare.place",
+          "label": "Cill Dara / Kildare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the kildare story with the atlas-bound help at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire.opening.16",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the kildare story with the atlas-bound help at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kildare.brigid-fire.opening.16",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.kildare.16.cabhraigh.help.return",
+      "family_id": "d32.kildare.16.cabhraigh.help",
+      "target": {
+        "lexeme_id": "lex.cabhraigh",
+        "citation_form": "cabhraigh",
+        "sense_id": "kildare.cabhraigh.help",
+        "part_of_speech": "verb",
+        "target_form": "cabhraigh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cabhraigh sa scéal.",
+        "normalized_text": "Tá cabhraigh sa scéal.",
+        "inventory_slug": "taa-cabhraigh-sa-sceeal",
+        "text_sha256": "0fca75a14adc10f5fd2b948a95a054cc6ef9213eafbbadf7be299f88f80d09a8"
+      },
+      "english": {
+        "intent": "The help is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kildare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire"
+        },
+        "atlas_placement_ids": [
+          "atlas.kildare.16.cabhraigh"
+        ],
+        "place": {
+          "id": "d32.kildare.place",
+          "label": "Cill Dara / Kildare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry cabhraigh from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire.return.16",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry cabhraigh from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kildare.brigid-fire.return.16",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.longford.01.bothar.road",
+  "county": "longford",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.longford.corlea-trackway"
+  },
+  "target": {
+    "lexeme_id": "lex.bothar",
+    "citation_form": "bóthar",
+    "sense_id": "longford.bothar.road",
+    "part_of_speech": "noun",
+    "english_sense": "road"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.longford.01.bothar",
+      "gloss": "road"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.longford.01.bothar.road.opening",
+      "family_id": "d32.longford.01.bothar.road",
+      "target": {
+        "lexeme_id": "lex.bothar",
+        "citation_form": "bóthar",
+        "sense_id": "longford.bothar.road",
+        "part_of_speech": "noun",
+        "target_form": "bóthar",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá bóthar anseo.",
+        "normalized_text": "Tá bóthar anseo.",
+        "inventory_slug": "taa-boothar-anseo",
+        "text_sha256": "bf8df54a400f7a70d0937ea6152298503196db585d6ad015150a6a613036386e"
+      },
+      "english": {
+        "intent": "The road is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "longford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.longford.corlea-trackway"
+        },
+        "atlas_placement_ids": [
+          "atlas.longford.01.bothar"
+        ],
+        "place": {
+          "id": "d32.longford.place",
+          "label": "an Longfort / Longford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the longford story with the atlas-bound road at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.longford.corlea-trackway.opening.01",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the longford story with the atlas-bound road at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.longford.corlea-trackway.opening.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.longford.01.bothar.road.dialogue",
+      "family_id": "d32.longford.01.bothar.road",
+      "target": {
+        "lexeme_id": "lex.bothar",
+        "citation_form": "bóthar",
+        "sense_id": "longford.bothar.road",
+        "part_of_speech": "noun",
+        "target_form": "bóthar",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil bóthar anseo?",
+        "normalized_text": "An bhfuil bóthar anseo?",
+        "inventory_slug": "an-bhfuil-boothar-anseo",
+        "text_sha256": "9b6fc75330dfad64b748e6b75ae228194e1b01535348570bc79c4d0ba5209a39"
+      },
+      "english": {
+        "intent": "Is the road here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "longford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.longford.corlea-trackway"
+        },
+        "atlas_placement_ids": [
+          "atlas.longford.01.bothar"
+        ],
+        "place": {
+          "id": "d32.longford.place",
+          "label": "an Longfort / Longford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse bóthar in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.longford.corlea-trackway.dialogue.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse bóthar in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.longford.corlea-trackway.dialogue.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

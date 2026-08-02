@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.kildare.03.baile.home",
+  "county": "kildare",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.kildare.brigid-fire"
+  },
+  "target": {
+    "lexeme_id": "lex.baile",
+    "citation_form": "baile",
+    "sense_id": "kildare.baile.home",
+    "part_of_speech": "noun",
+    "english_sense": "home"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.kildare.03.baile",
+      "gloss": "home"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.kildare.03.baile.home.opening",
+      "family_id": "d32.kildare.03.baile.home",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "kildare.baile.home",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá baile anseo.",
+        "normalized_text": "Tá baile anseo.",
+        "inventory_slug": "taa-baile-anseo",
+        "text_sha256": "6dea1095abd34dba2257f186ba1d40ed3902a6b7a5bc11685ea2e443ba5e62ae"
+      },
+      "english": {
+        "intent": "The home is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kildare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire"
+        },
+        "atlas_placement_ids": [
+          "atlas.kildare.03.baile"
+        ],
+        "place": {
+          "id": "d32.kildare.place",
+          "label": "Cill Dara / Kildare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the kildare story with the atlas-bound home at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire.opening.03",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the kildare story with the atlas-bound home at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kildare.brigid-fire.opening.03",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.kildare.03.baile.home.recap",
+      "family_id": "d32.kildare.03.baile.home",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "kildare.baile.home",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar baile.",
+        "normalized_text": "Féach ar baile.",
+        "inventory_slug": "feeach-ar-baile",
+        "text_sha256": "1c9a0d7ef37ba0b7f6c3e08256d5a9c40d854f8187c365836c30a4dcda55f95a"
+      },
+      "english": {
+        "intent": "Look at the home.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kildare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire"
+        },
+        "atlas_placement_ids": [
+          "atlas.kildare.03.baile"
+        ],
+        "place": {
+          "id": "d32.kildare.place",
+          "label": "Cill Dara / Kildare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the home placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire.recap.03",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the home placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kildare.brigid-fire.recap.03",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

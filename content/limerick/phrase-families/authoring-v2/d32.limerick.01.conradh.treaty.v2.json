@@ -1,0 +1,272 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.limerick.01.conradh.treaty",
+  "county": "limerick",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.limerick.treaty-of-limerick"
+  },
+  "target": {
+    "lexeme_id": "lex.conradh",
+    "citation_form": "conradh",
+    "sense_id": "limerick.conradh.treaty",
+    "part_of_speech": "lexical item",
+    "english_sense": "treaty"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.limerick.01.conradh",
+      "gloss": "treaty"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.limerick.01.conradh.treaty.opening",
+      "family_id": "d32.limerick.01.conradh.treaty",
+      "target": {
+        "lexeme_id": "lex.conradh",
+        "citation_form": "conradh",
+        "sense_id": "limerick.conradh.treaty",
+        "part_of_speech": "lexical item",
+        "target_form": "conradh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá conradh anseo.",
+        "normalized_text": "Tá conradh anseo.",
+        "inventory_slug": "taa-conradh-anseo",
+        "text_sha256": "2c887791bd4426024794dc4521d0ca57630ccf7d2e63ac3f30488068a21d8466"
+      },
+      "english": {
+        "intent": "The treaty is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "limerick",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick"
+        },
+        "atlas_placement_ids": [
+          "atlas.limerick.01.conradh"
+        ],
+        "place": {
+          "id": "d32.limerick.place",
+          "label": "Luimneach / Limerick"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the limerick story with the atlas-bound treaty at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick.opening.01",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the limerick story with the atlas-bound treaty at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.limerick.treaty-of-limerick.opening.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.limerick.01.conradh.treaty.dialogue",
+      "family_id": "d32.limerick.01.conradh.treaty",
+      "target": {
+        "lexeme_id": "lex.conradh",
+        "citation_form": "conradh",
+        "sense_id": "limerick.conradh.treaty",
+        "part_of_speech": "lexical item",
+        "target_form": "conradh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil conradh anseo?",
+        "normalized_text": "An bhfuil conradh anseo?",
+        "inventory_slug": "an-bhfuil-conradh-anseo",
+        "text_sha256": "7343e637396b428ee4d6640aa95ec834a6c4aa17cfad05693723d1212f24ce7a"
+      },
+      "english": {
+        "intent": "Is the treaty here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "limerick",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick"
+        },
+        "atlas_placement_ids": [
+          "atlas.limerick.01.conradh"
+        ],
+        "place": {
+          "id": "d32.limerick.place",
+          "label": "Luimneach / Limerick"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse conradh in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick.dialogue.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse conradh in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.limerick.treaty-of-limerick.dialogue.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.louth.03.laoch.warrior",
+  "county": "louth",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.louth.cu-chulainn-cooley"
+  },
+  "target": {
+    "lexeme_id": "lex.laoch",
+    "citation_form": "laoch",
+    "sense_id": "louth.laoch.warrior",
+    "part_of_speech": "lexical item",
+    "english_sense": "warrior"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.louth.03.laoch",
+      "gloss": "warrior"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.louth.03.laoch.warrior.opening",
+      "family_id": "d32.louth.03.laoch.warrior",
+      "target": {
+        "lexeme_id": "lex.laoch",
+        "citation_form": "laoch",
+        "sense_id": "louth.laoch.warrior",
+        "part_of_speech": "lexical item",
+        "target_form": "laoch",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá laoch anseo.",
+        "normalized_text": "Tá laoch anseo.",
+        "inventory_slug": "taa-laoch-anseo",
+        "text_sha256": "2f8f38661f7d34f91dda147512bea0bb222587378ccb0921e5bb56876999c7c0"
+      },
+      "english": {
+        "intent": "The warrior is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "louth",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley"
+        },
+        "atlas_placement_ids": [
+          "atlas.louth.03.laoch"
+        ],
+        "place": {
+          "id": "d32.louth.place",
+          "label": "Lú / Louth"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the louth story with the atlas-bound warrior at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley.opening.03",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the louth story with the atlas-bound warrior at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.louth.cu-chulainn-cooley.opening.03",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.louth.03.laoch.warrior.return",
+      "family_id": "d32.louth.03.laoch.warrior",
+      "target": {
+        "lexeme_id": "lex.laoch",
+        "citation_form": "laoch",
+        "sense_id": "louth.laoch.warrior",
+        "part_of_speech": "lexical item",
+        "target_form": "laoch",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá laoch sa scéal.",
+        "normalized_text": "Tá laoch sa scéal.",
+        "inventory_slug": "taa-laoch-sa-sceeal",
+        "text_sha256": "1b2a8f80b14efb840e4aaea5e956a464e2e7d54a00e0be03dc32fb84bf3463b6"
+      },
+      "english": {
+        "intent": "The warrior is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "louth",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley"
+        },
+        "atlas_placement_ids": [
+          "atlas.louth.03.laoch"
+        ],
+        "place": {
+          "id": "d32.louth.place",
+          "label": "Lú / Louth"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry laoch from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley.return.03",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry laoch from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.louth.cu-chulainn-cooley.return.03",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

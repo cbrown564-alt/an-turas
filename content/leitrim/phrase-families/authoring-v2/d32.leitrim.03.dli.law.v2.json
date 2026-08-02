@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.leitrim.03.dli.law",
+  "county": "leitrim",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.leitrim.brian-na-murtha"
+  },
+  "target": {
+    "lexeme_id": "lex.dli",
+    "citation_form": "dlí",
+    "sense_id": "leitrim.dli.law",
+    "part_of_speech": "lexical item",
+    "english_sense": "law"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.leitrim.03.dli",
+      "gloss": "law"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.leitrim.03.dli.law.opening",
+      "family_id": "d32.leitrim.03.dli.law",
+      "target": {
+        "lexeme_id": "lex.dli",
+        "citation_form": "dlí",
+        "sense_id": "leitrim.dli.law",
+        "part_of_speech": "lexical item",
+        "target_form": "dlí",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá dlí anseo.",
+        "normalized_text": "Tá dlí anseo.",
+        "inventory_slug": "taa-dlii-anseo",
+        "text_sha256": "ec350800d38818c247a54823e9f309abba6adda522ad1ea34167d991a0c97df4"
+      },
+      "english": {
+        "intent": "The law is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "leitrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.leitrim.brian-na-murtha"
+        },
+        "atlas_placement_ids": [
+          "atlas.leitrim.03.dli"
+        ],
+        "place": {
+          "id": "d32.leitrim.place",
+          "label": "Liatroim / Leitrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the leitrim story with the atlas-bound law at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.leitrim.brian-na-murtha.opening.03",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the leitrim story with the atlas-bound law at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.leitrim.brian-na-murtha.opening.03",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.leitrim.03.dli.law.recap",
+      "family_id": "d32.leitrim.03.dli.law",
+      "target": {
+        "lexeme_id": "lex.dli",
+        "citation_form": "dlí",
+        "sense_id": "leitrim.dli.law",
+        "part_of_speech": "lexical item",
+        "target_form": "dlí",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar dlí.",
+        "normalized_text": "Féach ar dlí.",
+        "inventory_slug": "feeach-ar-dlii",
+        "text_sha256": "72dbf54fa2d4ae4f9cb7d4f9bbc831f7e8b74d0595a5a1e6a29d68827105d667"
+      },
+      "english": {
+        "intent": "Look at the law.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "leitrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.leitrim.brian-na-murtha"
+        },
+        "atlas_placement_ids": [
+          "atlas.leitrim.03.dli"
+        ],
+        "place": {
+          "id": "d32.leitrim.place",
+          "label": "Liatroim / Leitrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the law placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.leitrim.brian-na-murtha.recap.03",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the law placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.leitrim.brian-na-murtha.recap.03",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

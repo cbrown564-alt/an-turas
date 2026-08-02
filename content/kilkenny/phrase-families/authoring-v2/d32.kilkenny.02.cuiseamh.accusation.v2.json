@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.kilkenny.02.cuiseamh.accusation",
+  "county": "kilkenny",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.kilkenny.alice-kyteler"
+  },
+  "target": {
+    "lexeme_id": "lex.cuiseamh",
+    "citation_form": "cúiseamh",
+    "sense_id": "kilkenny.cuiseamh.accusation",
+    "part_of_speech": "lexical item",
+    "english_sense": "accusation"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.kilkenny.02.cuiseamh",
+      "gloss": "accusation"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.kilkenny.02.cuiseamh.accusation.opening",
+      "family_id": "d32.kilkenny.02.cuiseamh.accusation",
+      "target": {
+        "lexeme_id": "lex.cuiseamh",
+        "citation_form": "cúiseamh",
+        "sense_id": "kilkenny.cuiseamh.accusation",
+        "part_of_speech": "lexical item",
+        "target_form": "cúiseamh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cúiseamh anseo.",
+        "normalized_text": "Tá cúiseamh anseo.",
+        "inventory_slug": "taa-cuuiseamh-anseo",
+        "text_sha256": "5a27f4749ef79d30b5a5a4d6cc45ba25076f72053f8d9b6d0c7ae6d9eeb8c87b"
+      },
+      "english": {
+        "intent": "The accusation is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kilkenny",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler"
+        },
+        "atlas_placement_ids": [
+          "atlas.kilkenny.02.cuiseamh"
+        ],
+        "place": {
+          "id": "d32.kilkenny.place",
+          "label": "Cill Chainnigh / Kilkenny"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the kilkenny story with the atlas-bound accusation at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler.opening.02",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the kilkenny story with the atlas-bound accusation at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kilkenny.alice-kyteler.opening.02",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.kilkenny.02.cuiseamh.accusation.recap",
+      "family_id": "d32.kilkenny.02.cuiseamh.accusation",
+      "target": {
+        "lexeme_id": "lex.cuiseamh",
+        "citation_form": "cúiseamh",
+        "sense_id": "kilkenny.cuiseamh.accusation",
+        "part_of_speech": "lexical item",
+        "target_form": "cúiseamh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar cúiseamh.",
+        "normalized_text": "Féach ar cúiseamh.",
+        "inventory_slug": "feeach-ar-cuuiseamh",
+        "text_sha256": "6cf32cda758db3ed8602c6840c4eb73b32c6ade8686db5584f8b517c61140f3e"
+      },
+      "english": {
+        "intent": "Look at the accusation.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kilkenny",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler"
+        },
+        "atlas_placement_ids": [
+          "atlas.kilkenny.02.cuiseamh"
+        ],
+        "place": {
+          "id": "d32.kilkenny.place",
+          "label": "Cill Chainnigh / Kilkenny"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the accusation placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler.recap.02",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the accusation placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kilkenny.alice-kyteler.recap.02",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

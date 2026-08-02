@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.leitrim.04.taistil.travel",
+  "county": "leitrim",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.leitrim.brian-na-murtha"
+  },
+  "target": {
+    "lexeme_id": "lex.taistil",
+    "citation_form": "taistil",
+    "sense_id": "leitrim.taistil.travel",
+    "part_of_speech": "lexical item",
+    "english_sense": "travel"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.leitrim.04.taistil",
+      "gloss": "travel"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.leitrim.04.taistil.travel.opening",
+      "family_id": "d32.leitrim.04.taistil.travel",
+      "target": {
+        "lexeme_id": "lex.taistil",
+        "citation_form": "taistil",
+        "sense_id": "leitrim.taistil.travel",
+        "part_of_speech": "lexical item",
+        "target_form": "taistil",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá taistil anseo.",
+        "normalized_text": "Tá taistil anseo.",
+        "inventory_slug": "taa-taistil-anseo",
+        "text_sha256": "b204ee5743b6727d4c7b995313a62c46a982c688a3c7af791ecbc3f8f4613cb4"
+      },
+      "english": {
+        "intent": "The travel is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "leitrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.leitrim.brian-na-murtha"
+        },
+        "atlas_placement_ids": [
+          "atlas.leitrim.04.taistil"
+        ],
+        "place": {
+          "id": "d32.leitrim.place",
+          "label": "Liatroim / Leitrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the leitrim story with the atlas-bound travel at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.leitrim.brian-na-murtha.opening.04",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the leitrim story with the atlas-bound travel at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.leitrim.brian-na-murtha.opening.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.leitrim.04.taistil.travel.return",
+      "family_id": "d32.leitrim.04.taistil.travel",
+      "target": {
+        "lexeme_id": "lex.taistil",
+        "citation_form": "taistil",
+        "sense_id": "leitrim.taistil.travel",
+        "part_of_speech": "lexical item",
+        "target_form": "taistil",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá taistil sa scéal.",
+        "normalized_text": "Tá taistil sa scéal.",
+        "inventory_slug": "taa-taistil-sa-sceeal",
+        "text_sha256": "bbb1f62a675c03eaa528d3604d3081cc3d28cb9f44e53e8be703fac13170e68d"
+      },
+      "english": {
+        "intent": "The travel is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "leitrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.leitrim.brian-na-murtha"
+        },
+        "atlas_placement_ids": [
+          "atlas.leitrim.04.taistil"
+        ],
+        "place": {
+          "id": "d32.leitrim.place",
+          "label": "Liatroim / Leitrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry taistil from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.leitrim.brian-na-murtha.return.04",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry taistil from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.leitrim.brian-na-murtha.return.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

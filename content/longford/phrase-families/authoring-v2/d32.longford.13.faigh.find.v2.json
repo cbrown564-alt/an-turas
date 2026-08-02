@@ -1,0 +1,272 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.longford.13.faigh.find",
+  "county": "longford",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.longford.corlea-trackway"
+  },
+  "target": {
+    "lexeme_id": "lex.faigh",
+    "citation_form": "faigh",
+    "sense_id": "longford.faigh.find",
+    "part_of_speech": "verb",
+    "english_sense": "find"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.longford.13.faigh",
+      "gloss": "find"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.longford.13.faigh.find.opening",
+      "family_id": "d32.longford.13.faigh.find",
+      "target": {
+        "lexeme_id": "lex.faigh",
+        "citation_form": "faigh",
+        "sense_id": "longford.faigh.find",
+        "part_of_speech": "verb",
+        "target_form": "faigh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá faigh anseo.",
+        "normalized_text": "Tá faigh anseo.",
+        "inventory_slug": "taa-faigh-anseo",
+        "text_sha256": "8f18125ccfca30ee0acf8c13461ac474cd175421f303fc9df2b0610a8cc7e81a"
+      },
+      "english": {
+        "intent": "The find is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "longford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.longford.corlea-trackway"
+        },
+        "atlas_placement_ids": [
+          "atlas.longford.13.faigh"
+        ],
+        "place": {
+          "id": "d32.longford.place",
+          "label": "an Longfort / Longford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the longford story with the atlas-bound find at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.longford.corlea-trackway.opening.13",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the longford story with the atlas-bound find at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.longford.corlea-trackway.opening.13",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.longford.13.faigh.find.dialogue",
+      "family_id": "d32.longford.13.faigh.find",
+      "target": {
+        "lexeme_id": "lex.faigh",
+        "citation_form": "faigh",
+        "sense_id": "longford.faigh.find",
+        "part_of_speech": "verb",
+        "target_form": "faigh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil faigh anseo?",
+        "normalized_text": "An bhfuil faigh anseo?",
+        "inventory_slug": "an-bhfuil-faigh-anseo",
+        "text_sha256": "05be680032e4cd7a15c1abdf194261e7b306932658b3c2487580701d586ad935"
+      },
+      "english": {
+        "intent": "Is the find here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "longford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.longford.corlea-trackway"
+        },
+        "atlas_placement_ids": [
+          "atlas.longford.13.faigh"
+        ],
+        "place": {
+          "id": "d32.longford.place",
+          "label": "an Longfort / Longford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse faigh in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.longford.corlea-trackway.dialogue.13",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse faigh in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.longford.corlea-trackway.dialogue.13",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

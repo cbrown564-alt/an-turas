@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.limerick.09.cogadh.war",
+  "county": "limerick",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.limerick.treaty-of-limerick"
+  },
+  "target": {
+    "lexeme_id": "lex.cogadh",
+    "citation_form": "cogadh",
+    "sense_id": "limerick.cogadh.war",
+    "part_of_speech": "lexical item",
+    "english_sense": "war"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.limerick.09.cogadh",
+      "gloss": "war"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.limerick.09.cogadh.war.opening",
+      "family_id": "d32.limerick.09.cogadh.war",
+      "target": {
+        "lexeme_id": "lex.cogadh",
+        "citation_form": "cogadh",
+        "sense_id": "limerick.cogadh.war",
+        "part_of_speech": "lexical item",
+        "target_form": "cogadh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cogadh anseo.",
+        "normalized_text": "Tá cogadh anseo.",
+        "inventory_slug": "taa-cogadh-anseo",
+        "text_sha256": "2aafbcb22cfe6c01a50b88f61d340ae4f89a39bf7454342c75d9c384a0285a06"
+      },
+      "english": {
+        "intent": "The war is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "limerick",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick"
+        },
+        "atlas_placement_ids": [
+          "atlas.limerick.09.cogadh"
+        ],
+        "place": {
+          "id": "d32.limerick.place",
+          "label": "Luimneach / Limerick"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the limerick story with the atlas-bound war at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick.opening.09",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the limerick story with the atlas-bound war at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.limerick.treaty-of-limerick.opening.09",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.limerick.09.cogadh.war.return",
+      "family_id": "d32.limerick.09.cogadh.war",
+      "target": {
+        "lexeme_id": "lex.cogadh",
+        "citation_form": "cogadh",
+        "sense_id": "limerick.cogadh.war",
+        "part_of_speech": "lexical item",
+        "target_form": "cogadh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cogadh sa scéal.",
+        "normalized_text": "Tá cogadh sa scéal.",
+        "inventory_slug": "taa-cogadh-sa-sceeal",
+        "text_sha256": "48e31b92098b973d7c3b3d4eaecda2219ae001ec33d45b55fef4017c3b8a0bd3"
+      },
+      "english": {
+        "intent": "The war is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "limerick",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick"
+        },
+        "atlas_placement_ids": [
+          "atlas.limerick.09.cogadh"
+        ],
+        "place": {
+          "id": "d32.limerick.place",
+          "label": "Luimneach / Limerick"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry cogadh from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick.return.09",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry cogadh from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.limerick.treaty-of-limerick.return.09",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}
