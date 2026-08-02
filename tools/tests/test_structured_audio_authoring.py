@@ -66,7 +66,7 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
     def test_checked_in_contract_is_valid(self):
         self.assertEqual(self.errors, [])
 
-    def test_ambiguous_story_lookup_requires_an_explicit_scope_and_index(self):
+    def test_ambiguous_story_lookup_rejects_ordinal_only_pointers(self):
         ref = {
             "path": "content/audio/authoring/d32-county-harvest-uses.json",
             "record_id": "d32.antrim.fionn-mac-cumhaill",
@@ -77,9 +77,44 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
 
         ref.update({"record_scope": "stories", "record_index": 0})
         errors = []
-        record = contract.validate_ref(ref, REPO_ROOT, "story", errors)
+        self.assertIsNone(contract.validate_ref(ref, REPO_ROOT, "story", errors))
+        self.assertTrue(any("record_index is ordinal-only" in error for error in errors))
+
+        stable_ref = {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kerry.piaras-feiritear",
+            "record_scope": "stories",
+            "record_instance_id": "d32.kerry.piaras-feiritear.primary",
+        }
+        errors = []
+        record = contract.validate_ref(stable_ref, REPO_ROOT, "story", errors)
         self.assertEqual(errors, [])
-        self.assertEqual(record["county"], "antrim")
+        self.assertEqual(record["title"], "Piaras Feiritéar")
+
+        with tempfile.TemporaryDirectory() as temporary:
+            source = json.loads(
+                (REPO_ROOT / "content/audio/authoring/d32-county-harvest-uses.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            selected = next(
+                story
+                for story in source["stories"]
+                if story.get("record_instance_id") == "d32.kerry.piaras-feiritear.primary"
+            )
+            source["stories"] = [
+                story
+                for story in source["stories"]
+                if story is not selected
+            ] + [selected]
+            Path(temporary, "stories.json").write_text(
+                json.dumps(source, ensure_ascii=False), encoding="utf-8"
+            )
+            reordered_ref = dict(stable_ref, path="stories.json")
+            errors = []
+            record = contract.validate_ref(reordered_ref, Path(temporary), "story", errors)
+            self.assertEqual(errors, [])
+            self.assertEqual(record["record_instance_id"], "d32.kerry.piaras-feiritear.primary")
 
     def test_corca_dhuibhne_capture_is_quarantined_without_losing_audit_bytes(self):
         batch = next(

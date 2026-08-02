@@ -1,5 +1,33 @@
 import AVFoundation
 
+private struct SpeechRuntimeManifest: Decodable {
+    let lines: [SpeechRuntimeLine]
+    let dynamicExclusions: [SpeechRuntimeExclusion]
+
+    enum CodingKeys: String, CodingKey {
+        case lines
+        case dynamicExclusions = "dynamic_exclusions"
+    }
+}
+
+private struct SpeechRuntimeLine: Decodable {
+    let slug: String
+    let text: String
+    let file: String
+    let qaState: String
+
+    enum CodingKeys: String, CodingKey {
+        case slug
+        case text
+        case file
+        case qaState = "qa_state"
+    }
+}
+
+private struct SpeechRuntimeExclusion: Decodable {
+    let slug: String
+}
+
 // MARK: - An Guth — the voice.
 // All release-path speech uses reviewed, bundled clips generated with the
 // ElevenLabs Irish Cultural Guide house voice. We deliberately do not fall
@@ -147,12 +175,38 @@ final class SpeechService: NSObject, ObservableObject {
 
     nonisolated static func bundledURL(for text: String) -> URL? {
         let name = slug(for: text)
+        guard let line = runtimeManifestLine(forSlug: name),
+              line.text == text,
+              ["generated_unreviewed", "spot_flagged", "qa_passed"].contains(line.qaState),
+              !runtimeManifestExclusions.contains(name)
+        else { return nil }
+
+        let manifestFile = URL(fileURLWithPath: line.file).lastPathComponent
+        guard manifestFile == "\(name).mp3" else { return nil }
+
         for ext in ["mp3", "m4a", "wav", "caf"] {
-            if let url = Bundle.main.url(forResource: name, withExtension: ext) {
+            if let url = Bundle.main.url(forResource: name, withExtension: ext),
+               url.lastPathComponent == manifestFile {
                 return url
             }
         }
         return nil
+    }
+
+    nonisolated private static var runtimeManifestExclusions: Set<String> {
+        guard let manifest = runtimeManifest() else { return [] }
+        return Set(manifest.dynamicExclusions.map(\.slug))
+    }
+
+    nonisolated private static func runtimeManifestLine(forSlug slug: String) -> SpeechRuntimeLine? {
+        runtimeManifest()?.lines.first { $0.slug == slug }
+    }
+
+    nonisolated private static func runtimeManifest() -> SpeechRuntimeManifest? {
+        guard let url = Bundle.main.url(forResource: "manifest", withExtension: "json"),
+              let data = try? Data(contentsOf: url)
+        else { return nil }
+        return try? JSONDecoder().decode(SpeechRuntimeManifest.self, from: data)
     }
 
     nonisolated static func bundledURL(named assetName: String) -> URL? {

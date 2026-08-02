@@ -108,6 +108,18 @@ SOURCE_SUPPORT = {
     "exercise_context",
     "migration_only",
 }
+# These five D32 source ids predate durable record instances and retain their
+# checked-in ordinal pointers until their own source repair. New ambiguous
+# pointers, including the repaired Piaras records, must use record_instance_id.
+LEGACY_ORDINAL_RECORD_IDS = frozenset(
+    {
+        "d32.donegal.flight-of-the-earls",
+        "d32.dublin.sihtric-penny",
+        "d32.galway.joe-heaney-carna",
+        "d32.mayo.grainne-1593",
+        "d32.offaly.cross-of-the-scriptures",
+    }
+)
 LOCKED_VOICE_PROFILE = {
     "id": "voice.irish-cultural-guide.eleven-v3.v1",
     "revision": 1,
@@ -1064,13 +1076,45 @@ def validate_ref(
     if record_index is not None and record_scope is None:
         errors.append(f"{label}: record_index requires record_scope")
         return None
+    record_instance_id = ref.get("record_instance_id")
+    if record_instance_id is not None and (
+        not isinstance(record_instance_id, str) or not record_instance_id.strip()
+    ):
+        errors.append(f"{label}: record_instance_id must be a non-empty string")
+        return None
+    if record_instance_id is not None and record_index is not None:
+        errors.append(f"{label}: record_instance_id and record_index are mutually exclusive")
+        return None
     matches = records_by_id(payload, record_id, record_scope)
     if not matches:
         errors.append(
             f"{label}: record_id {record_id!r} not found in {ref.get('path')!r}"
         )
         return None
-    if len(matches) > 1 and record_index is not None:
+    if record_instance_id is not None:
+        instance_matches = [
+            record
+            for record in matches
+            if record.get("record_instance_id") == record_instance_id
+        ]
+        if len(instance_matches) != 1:
+            errors.append(
+                f"{label}: record_instance_id {record_instance_id!r} resolved to "
+                f"{len(instance_matches)} records for record_id {record_id!r}"
+            )
+            return None
+        record = instance_matches[0]
+    elif (
+        len(matches) > 1
+        and record_index is not None
+        and record_id not in LEGACY_ORDINAL_RECORD_IDS
+    ):
+        errors.append(
+            f"{label}: record_id {record_id!r} is ambiguous ({len(matches)} matches); "
+            "record_index is ordinal-only, use record_instance_id"
+        )
+        return None
+    elif len(matches) > 1 and record_index is not None:
         if record_index >= len(matches):
             errors.append(
                 f"{label}: record_index {record_index} is outside {len(matches)} matches for record_id {record_id!r}"
@@ -1083,6 +1127,13 @@ def validate_ref(
             + (f" within scope {record_scope!r}" if record_scope else "")
         )
         return None
+    elif record_index is not None:
+        if record_index >= len(matches):
+            errors.append(
+                f"{label}: record_index {record_index} is outside {len(matches)} matches for record_id {record_id!r}"
+            )
+            return None
+        record = matches[record_index]
     else:
         record = matches[0]
     if expected_text is not None:

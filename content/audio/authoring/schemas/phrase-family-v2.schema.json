@@ -51,6 +51,7 @@
         "path": { "type": "string", "minLength": 1 },
         "record_id": { "type": "string", "minLength": 1 },
         "record_scope": { "type": "string", "minLength": 1 },
+        "record_instance_id": { "type": "string", "minLength": 1 },
         "record_index": { "type": "integer", "minimum": 0 }
       }
     },
@@ -62,6 +63,7 @@
         "path": { "type": "string", "minLength": 1 },
         "record_id": { "type": "string", "minLength": 1 },
         "record_scope": { "type": "string", "minLength": 1 },
+        "record_instance_id": { "type": "string", "minLength": 1 },
         "record_index": { "type": "integer", "minimum": 0 },
         "text_field": { "type": "string", "minLength": 1 },
         "supports": {

@@ -40,6 +40,7 @@ class StructuredAudioReconciliationTests(unittest.TestCase):
         self.assertGreaterEqual(scoreboard["registered_lines"]["approved"], 1)
         self.assertEqual(scoreboard["registered_lines"]["claimed"], 0)
         self.assertGreaterEqual(scoreboard["registered_lines"]["succeeded"], 1)
+        self.assertEqual(scoreboard["registered_lines"]["retired_quarantined"], 2)
         self.assertEqual(scoreboard["registered_lines"]["failed"], 0)
         self.assertGreaterEqual(scoreboard["bundled_clips"]["new_v2"], 1)
         self.assertEqual(scoreboard["bundled_clips"]["legacy"], 362)
@@ -51,7 +52,15 @@ class StructuredAudioReconciliationTests(unittest.TestCase):
         self.assertEqual(report["asset_checks"]["missing_bundle_files"], [])
         self.assertEqual(report["asset_checks"]["orphan_bundle_files"], [])
         self.assertEqual(report["asset_checks"]["bundle_checksum_mismatches"], [])
+        self.assertEqual(report["stage_counts"]["captured"]["v2_retired_quarantined_records"], 2)
+        self.assertEqual(report["stage_counts"]["checksum_verified"]["v2_retired_quarantined_records"], 2)
+        self.assertEqual(report["stage_counts"]["bundled"]["v2_retired_quarantined_records"], 2)
+        self.assertEqual(
+            report["state_counts"]["batch_capture_dispositions"]["quarantined_semantic"],
+            2,
+        )
         codes = {item["code"] for item in report["findings"]}
+        self.assertNotIn("invalid_provider_success", codes)
         self.assertIn("duplicate_batch_normalized_text_voice", codes)
         self.assertIn("bundle_lines_outside_inventory", codes)
         self.assertIn("inventory_bundle_qa_drift", codes)
@@ -207,6 +216,32 @@ class StructuredAudioReconciliationTests(unittest.TestCase):
         self.assertTrue(issues["checksum_ok"] is False)
         self.assertIn("audio_checksum_mismatch", issues["issues"])
 
+    def test_cancelled_semantic_quarantine_success_is_retired_but_auditable(self):
+        _, loaded = authoring.validate_contract()
+        batch = next(
+            batch
+            for batch in loaded.batches
+            if batch["batch_id"]
+            == "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-baile-home"
+        )
+        for line in batch["lines"]:
+            issues = reconciliation.provider_success_issues(REPO_ROOT, batch, line)
+            self.assertTrue(issues["valid"], line["inventory_slug"])
+            self.assertTrue(issues["retired_capture"])
+            self.assertTrue(issues["checksum_ok"])
+
+        unauthorized = copy.deepcopy(batch["lines"][0])
+        unauthorized["capture_disposition"] = "generated_unreviewed"
+        issues = reconciliation.provider_success_issues(REPO_ROOT, batch, unauthorized)
+        self.assertFalse(issues["valid"])
+        self.assertIn("line_request_not_approved", issues["issues"])
+
+        corrupted = copy.deepcopy(batch["lines"][0])
+        corrupted["audio"]["sha256"] = "0" * 64
+        issues = reconciliation.provider_success_issues(REPO_ROOT, batch, corrupted)
+        self.assertFalse(issues["valid"])
+        self.assertIn("audio_checksum_mismatch", issues["issues"])
+
     def test_interrupted_attempt_and_expired_lease_are_findings(self):
         _, loaded = authoring.validate_contract()
         synthetic = copy.deepcopy(loaded)
@@ -254,6 +289,13 @@ class StructuredAudioReconciliationTests(unittest.TestCase):
         self.assertTrue(all(not item["automatic_mutations"] for item in plan["plans"]))
         stale = next(item for item in plan["plans"] if item["inventory_slug"] == "graainne-is-ainm-di")
         self.assertEqual(stale["disposition"], "do_not_resume")
+        retired_plan = reconciliation.build_resume_plan(
+            report,
+            batch_id="d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-baile-home",
+        )
+        retired = next(item for item in retired_plan["plans"] if item["inventory_slug"] == "is-baile-ee-corca-dhuibhne")
+        self.assertEqual(retired["disposition"], "retired_semantic_quarantine")
+        self.assertIn("learner_release_unavailable", retired["reasons"])
         self.assertTrue(all("--json" in command for command in plan["commands"]))
 
     def test_reconciliation_does_not_change_checked_in_json(self):

@@ -849,11 +849,21 @@ def provider_success_issues(
     issues: list[str] = []
     checksum_ok = False
     target = _canonical_batch_output(root, line)
+    retired_capture = (
+        (line.get("request") or {}).get("status") == "cancelled"
+        and line.get("capture_disposition") == "quarantined_semantic"
+    )
     if result.get("status") != "succeeded":
-        return {"valid": False, "issues": [], "checksum_ok": False, "target": target}
+        return {
+            "valid": False,
+            "issues": [],
+            "checksum_ok": False,
+            "target": target,
+            "retired_capture": retired_capture,
+        }
     if (batch.get("execution") or {}).get("state") not in {"approved", "closed"}:
         issues.append("batch_not_approved_or_closed")
-    if (line.get("request") or {}).get("status") != "approved":
+    if (line.get("request") or {}).get("status") != "approved" and not retired_capture:
         issues.append("line_request_not_approved")
     claim = line.get("claim") or {}
     if claim.get("status") != "completed":
@@ -888,6 +898,7 @@ def provider_success_issues(
         "issues": sorted(set(issues)),
         "checksum_ok": checksum_ok,
         "target": target,
+        "retired_capture": retired_capture,
     }
 
 
@@ -1116,6 +1127,8 @@ def _batch_records(
                 "execution_state": (batch.get("execution") or {}).get("state"),
                 "provider_calls_allowed": (batch.get("execution") or {}).get("provider_calls_allowed"),
                 "request_status": (line.get("request") or {}).get("status"),
+                "capture_disposition": line.get("capture_disposition"),
+                "retired_capture": bool(success.get("retired_capture")),
                 "authorized": authorized,
                 "claim": claim,
                 "provider_result_status": result.get("status"),
@@ -1264,6 +1277,7 @@ def _stage_counts(
     raw_successes = [
         record for record in batch_records if record["provider_result_status"] == "succeeded"
     ]
+    retired_quarantined = [record for record in batch_records if record["retired_capture"]]
     valid_successes = [record for record in raw_successes if record["provider_success_valid"]]
     checksum_successes = [record for record in valid_successes if record["checksum_verified"]]
     bundled_v2 = [record for record in checksum_successes if record["runtime_checksum_verified"]]
@@ -1305,6 +1319,7 @@ def _stage_counts(
         },
         "captured": {
             "v2_provider_success_records": len(raw_successes),
+            "v2_retired_quarantined_records": len(retired_quarantined),
             "v2_valid_provider_success_records": len(valid_successes),
             "v2_unique_texts": len({record["normalized_text"] for record in valid_successes}),
             "runtime_manifest_records": len(runtime_rows),
@@ -1314,6 +1329,9 @@ def _stage_counts(
         },
         "checksum_verified": {
             "v2_records": len(checksum_successes),
+            "v2_retired_quarantined_records": sum(
+                1 for record in checksum_successes if record["retired_capture"]
+            ),
             "v2_unique_texts": len({record["normalized_text"] for record in checksum_successes}),
             "runtime_manifest_records": len(runtime_checksum_rows),
             "bundle_files": len(runtime_checksum_rows),
@@ -1326,12 +1344,18 @@ def _stage_counts(
                 set(inventory_scan["by_slug"]) & verified_runtime_slugs
             ),
             "v2_checksum_verified_records": len(bundled_v2),
+            "v2_retired_quarantined_records": sum(
+                1 for record in bundled_v2 if record["retired_capture"]
+            ),
             "v2_checksum_verified_unique_texts": len(
                 {record["normalized_text"] for record in bundled_v2}
             ),
         },
         "audio_qa_reviewed": {
             "v2_line_records": len(v2_audio_qa),
+            "v2_retired_quarantined_records": sum(
+                1 for record in v2_audio_qa if record["retired_capture"]
+            ),
             "v2_members": len(v2_audio_qa_members),
             "inventory_entries": len(inventory_scan["reviewed_entries"]),
             "inventory_passed_entries": len(inventory_scan["passed_entries"]),
@@ -2103,6 +2127,7 @@ def live_scoreboard(
         "approved": sum(record.get("request_status") == "approved" for record in batch_records),
         "claimed": sum((record.get("claim") or {}).get("status") == "claimed" for record in batch_records),
         "succeeded": sum(record.get("provider_result_status") == "succeeded" for record in batch_records),
+        "retired_quarantined": sum(record.get("retired_capture") is True for record in batch_records),
         "failed": sum(record.get("provider_result_status") == "failed" for record in batch_records),
         "cancelled": sum(record.get("request_status") == "cancelled" for record in batch_records),
         "unique_normalized_texts": len(
@@ -2307,6 +2332,9 @@ def reconcile(
             "batch_provider_results": dict(
                 sorted(Counter(str(record["provider_result_status"]) for record in batch_records).items())
             ),
+            "batch_capture_dispositions": dict(
+                sorted(Counter(str(record.get("capture_disposition")) for record in batch_records).items())
+            ),
             "batch_claims": dict(
                 sorted(Counter(str(record["claim"]["status"]) for record in batch_records).items())
             ),
@@ -2360,7 +2388,19 @@ def build_resume_plan(
         request = record.get("request_status")
         claim = record.get("claim") or {}
         target_exists = bool(record.get("target_exists"))
-        if request == "cancelled":
+        if record.get("retired_capture"):
+            if result == "succeeded" and record.get("provider_success_valid"):
+                disposition = "retired_semantic_quarantine"
+                reasons = [
+                    "cancelled_request",
+                    "preserved_provider_success",
+                    "checksum_verified" if record.get("checksum_verified") else "checksum_not_verified",
+                    "learner_release_unavailable",
+                ]
+            else:
+                disposition = "manual_recovery_required"
+                reasons = ["retired_capture_has_invalid_provider_success"]
+        elif request == "cancelled":
             disposition = "leave_cancelled"
             reasons = ["line_request_cancelled"]
         elif result == "succeeded":
