@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.carlow.02.muileann.mill",
+  "county": "carlow",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.carlow.st-moling"
+  },
+  "target": {
+    "lexeme_id": "lex.muileann",
+    "citation_form": "muileann",
+    "sense_id": "carlow.muileann.mill",
+    "part_of_speech": "noun",
+    "english_sense": "mill"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.carlow.02.muileann",
+      "gloss": "mill"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.carlow.02.muileann.mill.opening",
+      "family_id": "d32.carlow.02.muileann.mill",
+      "target": {
+        "lexeme_id": "lex.muileann",
+        "citation_form": "muileann",
+        "sense_id": "carlow.muileann.mill",
+        "part_of_speech": "noun",
+        "target_form": "muileann",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá muileann anseo.",
+        "normalized_text": "Tá muileann anseo.",
+        "inventory_slug": "taa-muileann-anseo",
+        "text_sha256": "ecb8827ffbc766c43db270ecc1cabb7d3afa378b12c38476cfc2c297707a2d2b"
+      },
+      "english": {
+        "intent": "The mill is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "carlow",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.carlow.st-moling"
+        },
+        "atlas_placement_ids": [
+          "atlas.carlow.02.muileann"
+        ],
+        "place": {
+          "id": "d32.carlow.place",
+          "label": "Ceatharlach / Carlow"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the carlow story with the atlas-bound mill at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.carlow.st-moling.opening.02",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the carlow story with the atlas-bound mill at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.carlow.st-moling.opening.02",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.carlow.02.muileann.mill.return",
+      "family_id": "d32.carlow.02.muileann.mill",
+      "target": {
+        "lexeme_id": "lex.muileann",
+        "citation_form": "muileann",
+        "sense_id": "carlow.muileann.mill",
+        "part_of_speech": "noun",
+        "target_form": "muileann",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá muileann sa scéal.",
+        "normalized_text": "Tá muileann sa scéal.",
+        "inventory_slug": "taa-muileann-sa-sceeal",
+        "text_sha256": "a747d8cbf8e648119cbcb643c4d7f91b06293bbc0eb641749b6ef50f93b2791f"
+      },
+      "english": {
+        "intent": "The mill is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "carlow",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.carlow.st-moling"
+        },
+        "atlas_placement_ids": [
+          "atlas.carlow.02.muileann"
+        ],
+        "place": {
+          "id": "d32.carlow.place",
+          "label": "Ceatharlach / Carlow"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry muileann from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.carlow.st-moling.return.02",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry muileann from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.carlow.st-moling.return.02",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

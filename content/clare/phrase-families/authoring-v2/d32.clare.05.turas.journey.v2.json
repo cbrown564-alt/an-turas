@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.clare.05.turas.journey",
+  "county": "clare",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.clare.brian-boru-kincora"
+  },
+  "target": {
+    "lexeme_id": "lex.turas",
+    "citation_form": "turas",
+    "sense_id": "clare.turas.journey",
+    "part_of_speech": "noun",
+    "english_sense": "journey"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.clare.05.turas",
+      "gloss": "journey"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.clare.05.turas.journey.opening",
+      "family_id": "d32.clare.05.turas.journey",
+      "target": {
+        "lexeme_id": "lex.turas",
+        "citation_form": "turas",
+        "sense_id": "clare.turas.journey",
+        "part_of_speech": "noun",
+        "target_form": "turas",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá turas anseo.",
+        "normalized_text": "Tá turas anseo.",
+        "inventory_slug": "taa-turas-anseo",
+        "text_sha256": "0d429a80ba27e5cc74e4fcdc3c667546a76334c44500b1c566afd6e5597b98f6"
+      },
+      "english": {
+        "intent": "The journey is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "clare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora"
+        },
+        "atlas_placement_ids": [
+          "atlas.clare.05.turas"
+        ],
+        "place": {
+          "id": "d32.clare.place",
+          "label": "an Clár / Clare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the clare story with the atlas-bound journey at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora.opening.05",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the clare story with the atlas-bound journey at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.clare.brian-boru-kincora.opening.05",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.clare.05.turas.journey.recap",
+      "family_id": "d32.clare.05.turas.journey",
+      "target": {
+        "lexeme_id": "lex.turas",
+        "citation_form": "turas",
+        "sense_id": "clare.turas.journey",
+        "part_of_speech": "noun",
+        "target_form": "turas",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar turas.",
+        "normalized_text": "Féach ar turas.",
+        "inventory_slug": "feeach-ar-turas",
+        "text_sha256": "78c7241bde1c496610ab7f3987aa947a3c9a256b43e22e19eea4a99fd5f62601"
+      },
+      "english": {
+        "intent": "Look at the journey.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "clare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora"
+        },
+        "atlas_placement_ids": [
+          "atlas.clare.05.turas"
+        ],
+        "place": {
+          "id": "d32.clare.place",
+          "label": "an Clár / Clare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the journey placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora.recap.05",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the journey placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.clare.brian-boru-kincora.recap.05",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

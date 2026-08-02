@@ -1,0 +1,272 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.cork.14.cabhraigh.help",
+  "county": "cork",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.cork.nano-nagle"
+  },
+  "target": {
+    "lexeme_id": "lex.cabhraigh",
+    "citation_form": "cabhraigh",
+    "sense_id": "cork.cabhraigh.help",
+    "part_of_speech": "verb",
+    "english_sense": "help"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.cork.14.cabhraigh",
+      "gloss": "help"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.cork.14.cabhraigh.help.opening",
+      "family_id": "d32.cork.14.cabhraigh.help",
+      "target": {
+        "lexeme_id": "lex.cabhraigh",
+        "citation_form": "cabhraigh",
+        "sense_id": "cork.cabhraigh.help",
+        "part_of_speech": "verb",
+        "target_form": "cabhraigh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cabhraigh anseo.",
+        "normalized_text": "Tá cabhraigh anseo.",
+        "inventory_slug": "taa-cabhraigh-anseo",
+        "text_sha256": "638eaf8c2c0c8503b88f6f050f17d2b299791c90d915770e8d9a71c590388b20"
+      },
+      "english": {
+        "intent": "The help is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "cork",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.cork.nano-nagle"
+        },
+        "atlas_placement_ids": [
+          "atlas.cork.14.cabhraigh"
+        ],
+        "place": {
+          "id": "d32.cork.place",
+          "label": "Corcaigh / Cork"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the cork story with the atlas-bound help at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.cork.nano-nagle.opening.14",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the cork story with the atlas-bound help at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.cork.nano-nagle.opening.14",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.cork.14.cabhraigh.help.dialogue",
+      "family_id": "d32.cork.14.cabhraigh.help",
+      "target": {
+        "lexeme_id": "lex.cabhraigh",
+        "citation_form": "cabhraigh",
+        "sense_id": "cork.cabhraigh.help",
+        "part_of_speech": "verb",
+        "target_form": "cabhraigh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil cabhraigh anseo?",
+        "normalized_text": "An bhfuil cabhraigh anseo?",
+        "inventory_slug": "an-bhfuil-cabhraigh-anseo",
+        "text_sha256": "88f3e0f04edfe391550f8d4d269000f95064efebba67d5c4eb77ac5d98fe1195"
+      },
+      "english": {
+        "intent": "Is the help here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "cork",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.cork.nano-nagle"
+        },
+        "atlas_placement_ids": [
+          "atlas.cork.14.cabhraigh"
+        ],
+        "place": {
+          "id": "d32.cork.place",
+          "label": "Corcaigh / Cork"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse cabhraigh in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.cork.nano-nagle.dialogue.14",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse cabhraigh in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.cork.nano-nagle.dialogue.14",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

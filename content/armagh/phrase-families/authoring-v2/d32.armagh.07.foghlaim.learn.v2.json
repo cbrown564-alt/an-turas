@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.armagh.07.foghlaim.learn",
+  "county": "armagh",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.armagh.book-of-armagh"
+  },
+  "target": {
+    "lexeme_id": "lex.foghlaim",
+    "citation_form": "foghlaim",
+    "sense_id": "armagh.foghlaim.learn",
+    "part_of_speech": "verb",
+    "english_sense": "learn"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.armagh.07.foghlaim",
+      "gloss": "learn"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.armagh.07.foghlaim.learn.opening",
+      "family_id": "d32.armagh.07.foghlaim.learn",
+      "target": {
+        "lexeme_id": "lex.foghlaim",
+        "citation_form": "foghlaim",
+        "sense_id": "armagh.foghlaim.learn",
+        "part_of_speech": "verb",
+        "target_form": "foghlaim",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá foghlaim anseo.",
+        "normalized_text": "Tá foghlaim anseo.",
+        "inventory_slug": "taa-foghlaim-anseo",
+        "text_sha256": "aeab86884449935ce27df07c6ee5ccbef16a419b9f7cc6383db31b1f4621fa2f"
+      },
+      "english": {
+        "intent": "The learn is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "armagh",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh"
+        },
+        "atlas_placement_ids": [
+          "atlas.armagh.07.foghlaim"
+        ],
+        "place": {
+          "id": "d32.armagh.place",
+          "label": "Ard Mhacha / Armagh"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the armagh story with the atlas-bound learn at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh.opening.07",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the armagh story with the atlas-bound learn at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.armagh.book-of-armagh.opening.07",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.armagh.07.foghlaim.learn.recap",
+      "family_id": "d32.armagh.07.foghlaim.learn",
+      "target": {
+        "lexeme_id": "lex.foghlaim",
+        "citation_form": "foghlaim",
+        "sense_id": "armagh.foghlaim.learn",
+        "part_of_speech": "verb",
+        "target_form": "foghlaim",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar foghlaim.",
+        "normalized_text": "Féach ar foghlaim.",
+        "inventory_slug": "feeach-ar-foghlaim",
+        "text_sha256": "be8749e07ad541c68a24a86af088439abf11e84253254023e5f5957215fff90f"
+      },
+      "english": {
+        "intent": "Look at the learn.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "armagh",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh"
+        },
+        "atlas_placement_ids": [
+          "atlas.armagh.07.foghlaim"
+        ],
+        "place": {
+          "id": "d32.armagh.place",
+          "label": "Ard Mhacha / Armagh"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the learn placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh.recap.07",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the learn placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.armagh.book-of-armagh.recap.07",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}
