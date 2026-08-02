@@ -16,7 +16,7 @@ import sys
 import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, Sequence
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -170,6 +170,359 @@ def folded_for_match(text: str) -> str:
     return "".join(
         char for char in decomposed if unicodedata.category(char) != "Mn"
     )
+
+
+def stable_identifier(value: Any) -> bool:
+    """Whether an authored id is safe to preserve as a durable reference."""
+    return (
+        isinstance(value, str)
+        and bool(value.strip())
+        and value == value.strip()
+        and not any(char.isspace() for char in value)
+        and "/" not in value
+        and "\\" not in value
+    )
+
+
+def canonicalize_family_document(
+    family: dict[str, Any], errors: list[str] | None = None
+) -> dict[str, Any]:
+    """Return a deterministic, NFC-normalized copy of a Track A family document.
+
+    This function only normalizes identity-bearing text fields. It never invents or
+    repairs missing authoring, provenance, review, capture, QA, or release state.
+    """
+    local_errors = errors if errors is not None else []
+    normalized_family = copy.deepcopy(family)
+    family_id = normalized_family.get("id")
+    if not stable_identifier(family_id):
+        local_errors.append("family: id must be a stable non-whitespace path-safe identifier")
+
+    placements = normalized_family.get("atlas_placements")
+    if isinstance(placements, list):
+        placement_ids = [item.get("id") for item in placements if isinstance(item, dict)]
+        if any(not stable_identifier(value) for value in placement_ids):
+            local_errors.append(f"family:{family_id}: atlas placement ids must be stable identifiers")
+        normalized_family["atlas_placements"] = sorted(
+            placements, key=lambda item: str(item.get("id", ""))
+        )
+
+    members = normalized_family.get("members")
+    if not isinstance(members, list):
+        local_errors.append(f"family:{family_id}: members must be a list")
+        return normalized_family
+
+    seen_member_ids: set[str] = set()
+    for member in members:
+        if not isinstance(member, dict):
+            local_errors.append(f"family:{family_id}: member must be an object")
+            continue
+        member_id = member.get("id")
+        if not stable_identifier(member_id):
+            local_errors.append(
+                f"family:{family_id}: member id must be a stable non-whitespace path-safe identifier"
+            )
+        elif member_id in seen_member_ids:
+            local_errors.append(f"family:{family_id}: duplicate member id {member_id!r}")
+        else:
+            seen_member_ids.add(member_id)
+
+        irish = member.get("irish")
+        if isinstance(irish, dict) and isinstance(irish.get("text"), str):
+            normalized = normalize_spoken_text(irish["text"])
+            irish["text"] = normalized
+            irish["normalized_text"] = normalized
+            irish["inventory_slug"] = canonical_audio_slug(normalized)
+            irish["text_sha256"] = text_sha256(normalized)
+        target = member.get("target")
+        if isinstance(target, dict):
+            for field in ("citation_form", "target_form"):
+                if isinstance(target.get(field), str):
+                    target[field] = unicodedata.normalize("NFC", target[field].strip())
+
+    normalized_family["members"] = sorted(
+        members, key=lambda item: str(item.get("id", ""))
+    )
+    target = normalized_family.get("target")
+    if isinstance(target, dict):
+        for field in ("citation_form",):
+            if isinstance(target.get(field), str):
+                target[field] = unicodedata.normalize("NFC", target[field].strip())
+    return normalized_family
+
+
+def collect_family_documents(root: Path, inputs: Sequence[str]) -> list[tuple[Path, dict[str, Any]]]:
+    """Load explicit Track A files or directories in deterministic path order."""
+    paths: set[Path] = set()
+    for raw in inputs:
+        candidate = resolve_repo_path(root, raw)
+        if candidate is None:
+            raise ValueError(f"family input is outside the repository or invalid: {raw!r}")
+        if candidate.is_dir():
+            paths.update(path for path in candidate.rglob("*.v2.json") if path.is_file())
+        elif candidate.is_file() and candidate.suffixes[-2:] == [".v2", ".json"]:
+            paths.add(candidate)
+        else:
+            raise ValueError(f"family input must be a .v2.json file or directory: {raw!r}")
+    if not paths:
+        raise ValueError("family input matched no .v2.json documents")
+    documents: list[tuple[Path, dict[str, Any]]] = []
+    for path in sorted(paths):
+        try:
+            payload = load_json(path)
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ValueError(f"cannot read family document {path}: {exc}") from exc
+        if not isinstance(payload, dict):
+            raise ValueError(f"family document must be a JSON object: {path}")
+        documents.append((path, payload))
+    return documents
+
+
+def family_partition_key(family: dict[str, Any]) -> tuple[str, str, str]:
+    story_ref = family.get("story_ref") or {}
+    target = family.get("target") or {}
+    return (
+        str(family.get("county", "")),
+        str(story_ref.get("record_id", "")),
+        str(target.get("sense_id", "")),
+    )
+
+
+def harvest_batch_id(partition: tuple[str, str, str]) -> str:
+    county, story_id, sense_id = partition
+    return ".".join(
+        [
+            "d32",
+            "harvest",
+            identifier_slug(county),
+            identifier_slug(story_id),
+            identifier_slug(sense_id),
+        ]
+    )
+
+
+def registered_text_voice_index(
+    contract: LoadedContract,
+) -> dict[tuple[str, str], list[str]]:
+    """Index all registered lines so a rerun can resume instead of re-requesting."""
+    indexed: dict[tuple[str, str], list[str]] = {}
+    for batch in contract.batches:
+        voice_id = (batch.get("voice_profile") or {}).get("id", "")
+        for line in batch.get("lines", []):
+            if not isinstance(line, dict):
+                continue
+            digest = line.get("text_sha256")
+            if isinstance(digest, str) and digest:
+                indexed.setdefault((digest, voice_id), []).append(str(batch.get("batch_id")))
+    return indexed
+
+
+def merge_harvest_contract(
+    contract: LoadedContract,
+    families: Sequence[dict[str, Any]],
+) -> LoadedContract:
+    """Overlay normalized Track A families while preserving the canonical contract."""
+    merged = copy.deepcopy(contract)
+    family_by_id = {family.get("id"): family for family in merged.families}
+    member_by_id = dict(merged.members)
+    for family in families:
+        family_id = family.get("id")
+        family_by_id[family_id] = family
+        for member in family.get("members", []):
+            if isinstance(member, dict):
+                member_by_id[member.get("id")] = member
+    merged.families = [family_by_id[key] for key in sorted(family_by_id)]
+    merged.members = {key: member_by_id[key] for key in sorted(member_by_id)}
+    return merged
+
+
+def prepare_harvest(
+    contract: LoadedContract,
+    documents: Sequence[tuple[Path, dict[str, Any]]],
+    *,
+    root: Path = ROOT,
+    created_at: str,
+) -> dict[str, Any]:
+    """Normalize Track A families and prepare resumable, provider-blocked batches.
+
+    Registered text/voice lines are reported and skipped. Duplicate candidate text is
+    represented by one line with sorted member references; the report retains every
+    duplicate so an author can inspect the merge. Incomplete members are reported as
+    blocked and never enter a generation manifest.
+    """
+    errors: list[str] = []
+    normalized_documents: list[dict[str, Any]] = []
+    source_paths: dict[str, str] = {}
+    family_by_id: dict[str, dict[str, Any]] = {}
+    for path, document in documents:
+        normalized = canonicalize_family_document(document, errors)
+        family_id = normalized.get("id")
+        if family_id in family_by_id:
+            errors.append(f"duplicate family id {family_id!r} in Track A inputs")
+        else:
+            family_by_id[family_id] = normalized
+        relative = str(path.resolve().relative_to(root.resolve()))
+        source_paths[family_id] = relative
+        if normalized.get("schema_version") != 2 or normalized.get("contract") != "irish_phrase_family":
+            errors.append(f"family:{family_id}: invalid v2 family schema/contract")
+        county = normalized.get("county")
+        if county not in {
+            placement.get("county") for placement in contract.placements.values()
+        }:
+            errors.append(f"family:{family_id}: unknown county")
+        validate_ref(
+            normalized.get("story_ref"),
+            root,
+            f"family:{family_id}.story_ref",
+            errors,
+        )
+        target = normalized.get("target")
+        if not isinstance(target, dict) or not all(
+            isinstance(target.get(field), str) and target[field].strip()
+            for field in ("lexeme_id", "citation_form", "sense_id", "part_of_speech", "english_sense")
+        ):
+            errors.append(f"family:{family_id}: complete target identity is required")
+        for atlas_ref in normalized.get("atlas_placements", []):
+            placement_id = atlas_ref.get("id") if isinstance(atlas_ref, dict) else None
+            placement = contract.placements.get(placement_id)
+            if placement is None:
+                errors.append(f"family:{family_id}: unknown atlas placement {placement_id!r}")
+                continue
+            if placement["county"] != county or placement["citation_form"] != (target or {}).get("citation_form"):
+                errors.append(f"family:{family_id}: atlas placement identity mismatch")
+            if atlas_ref.get("gloss") != placement["gloss"]:
+                errors.append(f"family:{family_id}: atlas placement gloss mismatch")
+        for member in normalized.get("members", []):
+            validate_member(
+                member,
+                normalized,
+                root,
+                contract.placements,
+                contract.inventory,
+                errors,
+            )
+        normalized_documents.append(
+            {"path": relative, "family": normalized}
+        )
+
+    merged = merge_harvest_contract(contract, list(family_by_id.values()))
+    candidates_by_text: dict[str, list[tuple[str, str, tuple[str, str, str]]]] = {}
+    blocked: list[dict[str, str]] = []
+    member_seen: set[str] = set()
+    for family_id in sorted(family_by_id):
+        family = family_by_id[family_id]
+        partition = family_partition_key(family)
+        for member in family.get("members", []):
+            if not isinstance(member, dict):
+                continue
+            member_id = member.get("id")
+            if member_id in member_seen:
+                errors.append(f"duplicate member id {member_id!r} across Track A inputs")
+                continue
+            member_seen.add(member_id)
+            authoring_status = (member.get("states") or {}).get("authoring", {}).get("status")
+            irish = member.get("irish")
+            normalized_text = irish.get("normalized_text") if isinstance(irish, dict) else None
+            if authoring_status != "complete" or not isinstance(normalized_text, str) or not normalized_text:
+                blocked.append(
+                    {
+                        "member_id": str(member_id),
+                        "reason": "authoring_incomplete_or_missing_canonical_irish",
+                    }
+                )
+                continue
+            digest = text_sha256(normalized_text)
+            candidates_by_text.setdefault(normalized_text, []).append(
+                (str(member_id), digest, partition)
+            )
+
+    locked_voice_id = contract.store.get("irish_generation_lock", {}).get(
+        "required_voice_profile_id", ""
+    )
+    registered = registered_text_voice_index(contract)
+    duplicate_findings: list[dict[str, Any]] = []
+    skipped_registered: list[dict[str, Any]] = []
+    partition_members: dict[tuple[str, str, str], set[str]] = {}
+    for normalized_text in sorted(candidates_by_text):
+        candidates = sorted(candidates_by_text[normalized_text], key=lambda item: (item[2], item[0]))
+        digest = candidates[0][1]
+        member_ids = sorted({item[0] for item in candidates})
+        partitions = sorted({item[2] for item in candidates})
+        if len(member_ids) > 1:
+            duplicate_findings.append(
+                {
+                    "normalized_text": normalized_text,
+                    "text_sha256": digest,
+                    "voice_profile_id": locked_voice_id,
+                    "member_ids": member_ids,
+                    "partitions": [list(partition) for partition in partitions],
+                    "action": "merge_one_manifest_line",
+                }
+            )
+        prior_batches = registered.get((digest, locked_voice_id), [])
+        if prior_batches:
+            skipped_registered.append(
+                {
+                    "normalized_text": normalized_text,
+                    "text_sha256": digest,
+                    "member_ids": member_ids,
+                    "registered_batch_ids": sorted(set(prior_batches)),
+                    "action": "reuse_registered_line",
+                }
+            )
+            continue
+        owner_partition = partitions[0]
+        partition_members.setdefault(owner_partition, set()).update(member_ids)
+
+    batches: list[dict[str, Any]] = []
+    for partition in sorted(partition_members):
+        batch_id = harvest_batch_id(partition)
+        purpose = (
+            "D32 emergency harvest — "
+            f"{partition[0]} / {partition[1]} / {partition[2]}"
+        )
+        batch = build_batch(
+            merged,
+            batch_id=batch_id,
+            member_ids=sorted(partition_members[partition]),
+            voice_profile_id=locked_voice_id,
+            created_at=created_at,
+            purpose=purpose,
+        )
+        # Harvest preparation never authorizes provider calls. Any later approval is
+        # an explicit operation on the named manifest and line, outside this planner.
+        if batch["execution"]["state"] != "draft" or batch["execution"]["provider_calls_allowed"]:
+            raise ValueError("harvest planner produced a provider-enabled draft")
+        batches.append(batch)
+
+    return {
+        "errors": errors,
+        "normalized_documents": normalized_documents,
+        "batches": batches,
+        "contract": merged,
+        "blocked_members": blocked,
+        "duplicate_findings": duplicate_findings,
+        "skipped_registered": skipped_registered,
+        "source_paths": source_paths,
+    }
+
+
+def harvest_report(plan: dict[str, Any]) -> dict[str, Any]:
+    """Small stable report shape for handoffs and machine checks."""
+    return {
+        "scope": "D32 provisional harvest preparation; not learner-release approval",
+        "batch_ids": [batch["batch_id"] for batch in plan.get("batches", [])],
+        "batch_line_counts": {
+            batch["batch_id"]: batch["counts"]["lines"]
+            for batch in plan.get("batches", [])
+        },
+        "normalized_family_documents": [
+            document["path"] for document in plan.get("normalized_documents", [])
+        ],
+        "blocked_members": plan.get("blocked_members", []),
+        "duplicate_findings": plan.get("duplicate_findings", []),
+        "skipped_registered": plan.get("skipped_registered", []),
+    }
 
 
 def is_unique_string_list(value: Any, *, allow_empty: bool = True) -> bool:
@@ -1461,6 +1814,106 @@ def build_batch(
     return batch
 
 
+def write_harvest_outputs(
+    plan: dict[str, Any],
+    *,
+    root: Path = ROOT,
+    output_dir: str | None = None,
+    normalized_output_dir: str | None = None,
+    register: bool = False,
+) -> list[str]:
+    """Write deterministic draft manifests and optional normalized family copies."""
+    written: list[str] = []
+    output_path: Path | None = None
+    store: dict[str, Any] | None = None
+    store_path: Path | None = None
+    if register:
+        canonical_batch_dir = root / "content/audio/authoring/batches"
+        output_path = resolve_repo_path(root, output_dir or "")
+        if output_path != canonical_batch_dir:
+            raise ValueError(
+                "--register requires --output-dir content/audio/authoring/batches"
+            )
+        store_path = root / STORE_PATH.relative_to(ROOT)
+        store = load_json(store_path)
+        family_refs = {
+            ref.get("family_id"): ref.get("path")
+            for ref in store.get("family_documents", [])
+            if isinstance(ref, dict)
+        }
+        for document in plan.get("normalized_documents", []):
+            family_id = document["family"].get("id")
+            if family_refs.get(family_id) != document["path"]:
+                raise ValueError(
+                    "--register requires every input family to already be registered "
+                    f"at its canonical path: {family_id!r}"
+                )
+    if output_dir is not None:
+        output_path = resolve_repo_path(root, output_dir)
+        if output_path is None:
+            raise ValueError("harvest output directory must be inside the repository")
+        output_path.mkdir(parents=True, exist_ok=True)
+        prepared_contract = plan.get("contract")
+        if isinstance(prepared_contract, LoadedContract):
+            for batch in plan.get("batches", []):
+                validation_errors: list[str] = []
+                validate_batch(batch, prepared_contract, root, validation_errors)
+                if validation_errors:
+                    raise ValueError(
+                        "prepared manifest failed contract validation:\n"
+                        + "\n".join(validation_errors)
+                    )
+        for batch in plan.get("batches", []):
+            destination = output_path / f"{batch['batch_id']}.json"
+            if destination.exists():
+                raise ValueError(f"refusing to overwrite existing manifest: {destination}")
+            destination.write_text(
+                json.dumps(batch, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+            )
+            written.append(str(destination.relative_to(root)))
+
+    if normalized_output_dir is not None:
+        normalized_path = resolve_repo_path(root, normalized_output_dir)
+        if normalized_path is None:
+            raise ValueError("normalized family output directory must be inside the repository")
+        normalized_path.mkdir(parents=True, exist_ok=True)
+        for document in plan.get("normalized_documents", []):
+            source_name = Path(document["path"]).name
+            destination = normalized_path / source_name
+            if destination.exists():
+                raise ValueError(f"refusing to overwrite normalized family: {destination}")
+            destination.write_text(
+                json.dumps(document["family"], ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            written.append(str(destination.relative_to(root)))
+
+    if register:
+        assert store is not None and store_path is not None
+        existing_ids = {
+            ref.get("batch_id") for ref in store.get("batch_documents", []) if isinstance(ref, dict)
+        }
+        new_refs: list[dict[str, str]] = []
+        for batch in plan.get("batches", []):
+            if batch["batch_id"] in existing_ids:
+                raise ValueError(f"refusing to replace registered batch: {batch['batch_id']}")
+            new_refs.append(
+                {
+                    "batch_id": batch["batch_id"],
+                    "path": f"content/audio/authoring/batches/{batch['batch_id']}.json",
+                }
+            )
+        store["batch_documents"] = sorted(
+            [ref for ref in store.get("batch_documents", []) if isinstance(ref, dict)] + new_refs,
+            key=lambda ref: ref.get("batch_id", ""),
+        )
+        store_path.write_text(
+            json.dumps(store, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        written.append(str(store_path.relative_to(root)))
+    return written
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -1473,6 +1926,30 @@ def main(argv: list[str] | None = None) -> int:
     build.add_argument("--created-at", required=True, help="explicit ISO timestamp; never inferred")
     build.add_argument("--purpose", required=True, help="documented learning/capture purpose")
     build.add_argument("--output", required=True)
+    prepare = subparsers.add_parser(
+        "prepare-harvest",
+        help="normalize Track A families and prepare resumable D32 draft batches",
+    )
+    prepare.add_argument(
+        "--input",
+        action="append",
+        required=True,
+        help="Track A .v2.json family file or directory; repeat for multiple inputs",
+    )
+    prepare.add_argument("--created-at", required=True, help="explicit ISO timestamp; never inferred")
+    prepare.add_argument(
+        "--output-dir",
+        help="write new provider-blocked manifests to this repository directory",
+    )
+    prepare.add_argument(
+        "--normalized-output-dir",
+        help="write NFC-normalized family copies to this repository directory",
+    )
+    prepare.add_argument(
+        "--register",
+        action="store_true",
+        help="register written manifests in the sorted canonical store batch_documents list",
+    )
     args = parser.parse_args(argv)
 
     errors, contract = validate_contract()
@@ -1484,6 +1961,42 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.command == "report":
         print(json.dumps(coverage_report(contract), ensure_ascii=False, indent=2))
+        return 0
+    if args.command == "prepare-harvest":
+        try:
+            documents = collect_family_documents(ROOT, args.input)
+            plan = prepare_harvest(
+                contract,
+                documents,
+                root=ROOT,
+                created_at=args.created_at,
+            )
+        except (OSError, ValueError) as exc:
+            print(str(exc), file=sys.stderr)
+            return 1
+        if plan["errors"]:
+            print("\n".join(plan["errors"]), file=sys.stderr)
+            return 1
+        if args.register and not args.output_dir:
+            print("--register requires --output-dir", file=sys.stderr)
+            return 1
+        if args.output_dir or args.normalized_output_dir or args.register:
+            try:
+                written = write_harvest_outputs(
+                    plan,
+                    root=ROOT,
+                    output_dir=args.output_dir,
+                    normalized_output_dir=args.normalized_output_dir,
+                    register=args.register,
+                )
+            except (OSError, ValueError) as exc:
+                print(str(exc), file=sys.stderr)
+                return 1
+            plan["written"] = written
+        report = harvest_report(plan)
+        if plan.get("written"):
+            report["written"] = plan["written"]
+        print(json.dumps(report, ensure_ascii=False, indent=2))
         return 0
     batch = build_batch(
         contract,

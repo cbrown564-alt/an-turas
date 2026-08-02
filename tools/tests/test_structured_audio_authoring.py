@@ -179,6 +179,10 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
 
     def test_unreviewed_invention_cannot_silently_request_capture(self):
         member = copy.deepcopy(self.loaded.members["farraige.sea-here"])
+        member["states"]["reviews"]["pedagogy"] = {
+            "status": "pending",
+            "record": None,
+        }
         member["states"]["capture_request"] = {
             "status": "requested",
             "requested_by": "author.synthetic",
@@ -276,6 +280,126 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
         )
         self.assertFalse(first["execution"]["provider_calls_allowed"])
 
+    def test_harvest_planner_normalizes_nfc_and_reuses_registered_lines(self):
+        family = copy.deepcopy(self.families["mayo.grainne-1593.ainm.name-noun"])
+        family["members"][0]["irish"]["text"] = "Gra\u0301inne is ainm di."
+        family["members"][0]["irish"]["normalized_text"] = "stale"
+        plan = contract.prepare_harvest(
+            self.loaded,
+            [(REPO_ROOT / "content/mayo/phrase-families/authoring-v2/ainm.name-noun.v2.json", family)],
+            root=REPO_ROOT,
+            created_at="2026-08-02T00:00:00Z",
+        )
+        self.assertEqual(plan["errors"], [])
+        normalized = plan["normalized_documents"][0]["family"]["members"][0]["irish"]
+        self.assertEqual(normalized["text"], "Gráinne is ainm di.")
+        self.assertEqual(normalized["normalized_text"], "Gráinne is ainm di.")
+        self.assertEqual(normalized["text_sha256"], contract.text_sha256(normalized["text"]))
+        self.assertEqual(plan["batches"], [])
+        self.assertEqual(plan["skipped_registered"][0]["action"], "reuse_registered_line")
+
+    def test_harvest_planner_merges_duplicate_text_voice_lines_and_blocks_drafts(self):
+        first = copy.deepcopy(self.families["mayo.grainne-1593.ainm.name-noun"])
+        duplicate = copy.deepcopy(self.families["mayo.grainne-1593.farraige.sea-noun"])
+        duplicate["id"] = "mayo.grainne-1593.farraige.duplicate-sense"
+        duplicate["members"] = [duplicate["members"][1]]
+        duplicate["target"]["sense_id"] = "farraige.duplicate-sense"
+        duplicate["members"][0]["family_id"] = duplicate["id"]
+        duplicate["members"][0]["target"]["sense_id"] = "farraige.duplicate-sense"
+        duplicate["members"][0]["target"]["target_form"] = "Gráinne"
+        duplicate["members"][0]["irish"]["text"] = "Gráinne is ainm di."
+        duplicate["members"][0]["states"]["audio_qa"] = {
+            "status": "not_generated",
+            "record": None,
+            "batch_line_id": None,
+        }
+        duplicate["members"][0]["exercise_consumers"] = [
+            copy.deepcopy(self.families["mayo.grainne-1593.farraige.sea-noun"]["members"][1]["exercise_consumers"][0])
+        ]
+        duplicate["members"][0]["exercise_consumers"][0]["record_id"] = "mayo.farraige-family.build-sea-here"
+        draft = copy.deepcopy(first["members"][0])
+        draft["id"] = "ainm.future-draft"
+        draft["family_id"] = first["id"]
+        draft["states"]["authoring"]["status"] = "draft"
+        draft["irish"] = None
+        draft["english"] = None
+        draft["exercise_consumers"] = []
+        draft["target"]["target_form"] = None
+        draft["states"]["capture_request"] = {
+            "status": "not_requested",
+            "requested_by": None,
+            "requested_at": None,
+            "authorization": None,
+            "batch_line_ids": [],
+        }
+        first["members"].append(draft)
+        test_contract = copy.deepcopy(self.loaded)
+        test_contract.batches = []
+        plan = contract.prepare_harvest(
+            test_contract,
+            [
+                (REPO_ROOT / "first.v2.json", first),
+                (REPO_ROOT / "duplicate.v2.json", duplicate),
+            ],
+            root=REPO_ROOT,
+            created_at="2026-08-02T00:00:00Z",
+        )
+        self.assertEqual(plan["errors"], [])
+        self.assertEqual(len(plan["duplicate_findings"]), 1)
+        self.assertEqual(
+            plan["duplicate_findings"][0]["action"], "merge_one_manifest_line"
+        )
+        self.assertEqual(len(plan["batches"]), 1)
+        batch = plan["batches"][0]
+        self.assertFalse(batch["execution"]["provider_calls_allowed"])
+        self.assertEqual(batch["execution"]["state"], "draft")
+        self.assertEqual(batch["lines"][0]["member_ids"], ["ainm.grainne-named", "farraige.sea-here"])
+        self.assertEqual(
+            plan["blocked_members"],
+            [{"member_id": "ainm.future-draft", "reason": "authoring_incomplete_or_missing_canonical_irish"}],
+        )
+
+    def test_harvest_batch_ids_partition_county_story_and_sense(self):
+        family = copy.deepcopy(self.families["mayo.grainne-1593.farraige.sea-noun"])
+        family["members"] = [family["members"][0]]
+        test_contract = copy.deepcopy(self.loaded)
+        test_contract.batches = []
+        plan = contract.prepare_harvest(
+            test_contract,
+            [(REPO_ROOT / "farraige.v2.json", family)],
+            root=REPO_ROOT,
+            created_at="2026-08-02T00:00:00Z",
+        )
+        self.assertEqual(
+            [batch["batch_id"] for batch in plan["batches"]],
+            ["d32.harvest.mayo.mayo-grainne-1593.farraige-sea-noun"],
+        )
+        self.assertTrue(
+            plan["batches"][0]["purpose"].startswith("D32 emergency harvest — mayo /")
+        )
+
+    def test_harvest_writer_emits_only_draft_manifests_without_registration(self):
+        test_contract = copy.deepcopy(self.loaded)
+        test_contract.batches = []
+        family = copy.deepcopy(self.families["mayo.grainne-1593.farraige.sea-noun"])
+        plan = contract.prepare_harvest(
+            test_contract,
+            [(REPO_ROOT / "farraige.v2.json", family)],
+            root=REPO_ROOT,
+            created_at="2026-08-02T00:00:00Z",
+        )
+        with tempfile.TemporaryDirectory(dir=REPO_ROOT) as temporary:
+            output_dir = Path(temporary).relative_to(REPO_ROOT)
+            written = contract.write_harvest_outputs(
+                plan,
+                root=REPO_ROOT,
+                output_dir=str(output_dir),
+            )
+            self.assertEqual(len(written), 1)
+            manifest = json.loads((REPO_ROOT / written[0]).read_text(encoding="utf-8"))
+            self.assertEqual(manifest["execution"]["state"], "draft")
+            self.assertFalse(manifest["execution"]["provider_calls_allowed"])
+
     def test_batch_capture_disposition_is_required_and_locked(self):
         batch = copy.deepcopy(self.loaded.batches[0])
         batch["lines"][0].pop("capture_disposition")
@@ -336,7 +460,8 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
         self.assertTrue(any("manifest identity checksum mismatch" in error for error in errors))
 
     def test_approved_batch_requires_explicit_member_capture_request(self):
-        batch = copy.deepcopy(self.loaded.batches[0])
+        loaded = copy.deepcopy(self.loaded)
+        batch = copy.deepcopy(loaded.batches[0])
         batch["execution"] = {
             "state": "approved",
             "provider_calls_allowed": True,
@@ -348,9 +473,17 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
             "approved_by": "owner.synthetic",
             "approved_at": "2026-08-01T11:00:00Z",
         }
+        for member_id in batch["lines"][0]["member_ids"]:
+            loaded.members[member_id]["states"]["capture_request"] = {
+                "status": "not_requested",
+                "requested_by": None,
+                "requested_at": None,
+                "authorization": None,
+                "batch_line_ids": [],
+            }
         batch["counts"] = contract.expected_batch_counts(batch)
         errors: list[str] = []
-        contract.validate_batch(batch, self.loaded, REPO_ROOT, errors)
+        contract.validate_batch(batch, loaded, REPO_ROOT, errors)
         self.assertTrue(any("requires requested member capture" in error for error in errors))
 
     def test_succeeded_result_requires_real_checksum_and_retry_metadata(self):

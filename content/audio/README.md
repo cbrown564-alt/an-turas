@@ -108,6 +108,39 @@ checksum matches. Text membership in `irish-inventory-v1.json` never sets that r
 After inspecting a new draft, register its id/path in the store's sorted
 `batch_documents` list; unregistered manifests are not part of the canonical handoff.
 
+## Track B harvest preparation
+
+`tools/structured_audio_authoring.py prepare-harvest` is the repeatable offline
+normalization and batch-planning step for Track A family documents. It accepts one or
+more `.v2.json` files or directories, canonicalizes Irish text to NFC with folded
+whitespace, recomputes the inventory slug and text SHA-256, preserves stable family and
+member ids, reports duplicate text/voice lines, and partitions new work by
+county/story/sense. A normalized line already present in any registered batch is
+reported for reuse rather than scheduled again. Incomplete members are reported as
+blocked and never enter a manifest.
+
+Dry-run the current representative material:
+
+```bash
+python3 -B tools/structured_audio_authoring.py prepare-harvest \
+  --input content/mayo/phrase-families/authoring-v2/ainm.name-noun.v2.json \
+  --input content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json \
+  --created-at 2026-08-02T12:00:00Z
+```
+
+To write new drafts, add `--output-dir`; to retain normalized family copies, add
+`--normalized-output-dir`. `--register` is explicit and only accepts canonical family
+paths plus `content/audio/authoring/batches`; it registers new manifest references in
+sorted order. Every prepared manifest is `execution.state: draft` with
+`provider_calls_allowed: false`. Preparation never approves a line, creates a claim,
+changes a lease, performs provider work, or grants learner release.
+
+Track C may execute a prepared line only after the canonical manifest is registered,
+the manifest and exact line request are explicitly approved, the worker owns an active
+claim and lease, the locked voice snapshot is unchanged, and the usage/checksum/result
+requirements below are satisfied. Native-language, pedagogy, historical, exercise, and
+audio-QA gates remain independent and continue to block learner release.
+
 ## Locked Irish voice and model
 
 All Irish generation—teaching, story, and dialogue—must use exactly:
