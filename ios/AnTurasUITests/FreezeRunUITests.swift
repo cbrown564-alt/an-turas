@@ -19,6 +19,8 @@ final class FreezeRunUITests: XCTestCase {
             "--transient-test-state",
             "--microphone-denied",
             "--appearance", "light",
+            "-UIPreferredContentSizeCategoryName",
+            "UICTContentSizeCategoryLarge",
         ]
         app.launch()
 
@@ -51,11 +53,22 @@ final class FreezeRunUITests: XCTestCase {
         // Step 3 — F2 construction: explicit Check; wrong units stay editable
         // and correct work survives (F2/D3).
         XCTAssertTrue(app.staticTexts["Build the sentence"].waitForExistence(timeout: 5))
-        for token in ["as", "Is", "Maigh Eo", "mé."] { tapButton(token, in: app) }
+        func tapBuilderToken(_ label: String) {
+            let button = app.buttons["builder-bank-\(label)"]
+            XCTAssertTrue(button.waitForExistence(timeout: 5), "Missing builder bank token: \(label)")
+            for _ in 0..<7 where !button.isHittable { app.swipeUp() }
+            if button.isHittable {
+                button.tap()
+            } else {
+                // Covered by the bottom bar after some transitions — tap its frame centre.
+                button.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+            }
+        }
+        for token in ["as", "Is", "Maigh Eo", "mé."] { tapBuilderToken(token) }
         tapButton("Check the order", in: app)
         XCTAssertTrue(app.staticTexts["Not quite"].waitForExistence(timeout: 2))
         for token in ["as", "Maigh Eo", "mé."] { tapButton(token, in: app) }
-        for token in ["as", "Maigh Eo", "mé."] { tapButton(token, in: app) }
+        for token in ["as", "Maigh Eo", "mé."] { tapBuilderToken(token) }
         tapButton("Check the order", in: app)
         finishExercise(in: app)
 

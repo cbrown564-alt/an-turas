@@ -1,9 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — iOS app teaching Irish through history, culture,
-and visual narrative. English → Irish only. Updated 2026-08-01 (D30 Mayo densify
-complete for all 20; kin wired; phrase-family schema + Learning refs; foundation gate
-remainder open).*
+and visual narrative. English → Irish only. Updated 2026-08-01 (foundation gate
+engineering PASS; next is one Mayo production slice consuming D30 B/C).*
 
 ## Where we are
 
@@ -39,14 +38,15 @@ credits from ~236k banked for the 289-string sprint). Generation is no longer th
 resource. Expand **exposure density around taught lexemes** via phrase families.
 **B+C craft ACCEPT** and **pedagogue + native QA passed** on *farraige*. **Mayo densify
 complete for all 20 taught lexemes** under `content/mayo/phrase-families/` (coastal +
-petition/motion + kin batches). **Foundation wiring landed:** optional
-`phraseFamilyMemberIDs` on exercises; Python + Swift validators enforce catalog resolve
-+ bind-rule text match; Rockfleet and Mayo draft Learning pages wired where answers
-already matched members; catalog bundled at
-`ios/AnTuras/Resources/PhraseFamilies/mayo/`. **Next:** finish foundation gate
-(gallery matrix, VoiceOver rotor, physical device, persistence residuals) then migrate
-one production Mayo slice that *consumes* B/C patterns end-to-end; per-family QA on
-non-*farraige* drafts before teaching claims.
+petition/motion + kin batches). **Foundation wiring landed** earlier today. **Foundation
+gate engineering PASS (2026-08-01):** resolved `learningContract` mandatory under
+`enforceLearningQuality`; four memory signals persist with debt-free review seeding;
+manifest gallery opens C1/C3/C5 on the freeze fixture; freeze + shell + gallery UI
+verified on iPhone 17 Pro. Record:
+[`docs/activity-quality/FOUNDATION-GATE-2026-08-01.md`](docs/activity-quality/FOUNDATION-GATE-2026-08-01.md).
+**Next:** migrate one production Mayo Learning slice that consumes B/C patterns
+end-to-end; per-family QA on non-*farraige* drafts before teaching claims; full
+VoiceOver rotor + physical-device foundation walk remain residual owner checks.
 
 **Supporting engineering:** rebuild-plan phases 0–3 are complete. Shared activity shell
 and state engine are ACCEPT. Harden authored contract/schema/validators and run the
@@ -342,6 +342,7 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
 
 | Date | Work | Where |
 |---|---|---|
+| 2026-08-01 | **Foundation gate engineering PASS.** Resolved contracts mandatory under `enforceLearningQuality`; four memory signals + debt-free review seed; C1/C3/C5 gallery; freeze/shell/gallery UI green; device build installed (locked at launch). Next: one Mayo production B/C slice. | `CountyLearnerMemory.swift`, `CountyStoryPack.swift`, `CountyExerciseSystem.swift`, `AtlasPrototype.swift`, `FOUNDATION-GATE-2026-08-01.md`, `STATUS.md` |
 | 2026-08-01 | **D30 Mayo densify complete + kin batch + Learning wiring.** All 20 taught lexemes have phrase-family drafts; kin (*teaghlach/mac/bean/deartháir*) included. Schema: `phraseFamilyMemberIDs`; Swift/Python validators; catalog bundled; Mayo draft 25 + Rockfleet 6 exercises wired. Full foundation gate (gallery/device) still open. | `content/mayo/phrase-families/`, `ios/AnTuras/Resources/PhraseFamilies/`, `CountyStoryPack.swift`, `validate_county_pack.py`, packs, `STATUS.md` |
 | 2026-08-01 | **D30 *farraige* pedagogue + native QA passed; Mayo coastal densify started.** Family scale-ready; inventory four strings `qa_passed`. Drafted *bá* / *long* / *áit* / *caisleán* phrase families (attested-first, ≤1 invented each where needed). Next densify: *teaghlach* / *iarr* / kin by demand. | `content/mayo/phrase-families/`, `content/audio/irish-inventory-v1.json`, `STATUS.md` |
 | 2026-08-01 | **D30 *farraige* C craft ACCEPT.** Delayed reuse via freeTyping + `delayedRecall`: build sea-here → bay narrative → type where-sea; mean 4.6/5; F3 + D30-C Pass. C shape locked (not contextual review / Words you carry). Unblocks pedagogue + native QA gate before Mayo densify. | `docs/activity-quality/SCORECARD-farraige-family-c-2026-08-01.md`, `mayo.farraige-family-c.json`, `FarraigeFamilyCUITests.swift`, `CountyFarraigeFamilyCFixtureTests.swift`, `farraige.v1.json`, `STATUS.md` |
@@ -480,15 +481,14 @@ passes may proceed in cluster order; D29 freezes the Clew Bay representative run
     re-score ACCEPT + Grok PASS
     ([`SCORECARD-activity-shell-rescore-2026-07-31.md`](docs/activity-quality/SCORECARD-activity-shell-rescore-2026-07-31.md)).
     Persistence of attempt credit stays with steps 14–15/17.
-14. **Harden the authored contract, schema, memory handoff, and validators** — ~~phrase-
-    family member refs (D30) landed~~; still open: mandatory learningContract on
-    enforced-quality packs, failing fixtures for remaining invariants, deterministic
-    debt-free review behavior, progress preservation.
-15. **Run the foundation gate** — complete automated transition, schema, persistence,
-    UI, branching, offline, and failure checks plus direct simulator, VoiceOver rotor,
-    appearance, contrast, motion, audio, microphone, keyboard/fada, gallery matrix for
-    C1/C3/C5, residual D5/D2 polish, and physical-device verification. Record the result
-    before spreading the system. Grammar/Greenfield stay parked until this passes.
+14. **~~Harden the authored contract, schema, memory handoff, and validators~~ (done —
+    2026-08-01)** — resolved contracts mandatory under `enforceLearningQuality`;
+    incomplete / recovery-without-fresh-response fixtures; four memory signals persist
+    with debt-free review seeding; older progress JSON survives.
+15. **~~Run the foundation gate~~ (engineering PASS — 2026-08-01)** — see
+    [`docs/activity-quality/FOUNDATION-GATE-2026-08-01.md`](docs/activity-quality/FOUNDATION-GATE-2026-08-01.md).
+    Gallery C1/C3/C5 operable; freeze + shell UI green; device build installed (launch
+    needs unlock). Residual: full VoiceOver rotor walk + unlocked-device spot-check.
 16. **Migrate the activity families in bounded groups** — recognition greenfield;
     construction listen-and-type; contextual use (grammar, radio, production conversation
     graphs); then **Words you carry** and scheduler-owned mistake review. Prefer patterns

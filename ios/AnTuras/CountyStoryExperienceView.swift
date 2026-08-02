@@ -90,6 +90,10 @@ struct CountyStoryExperienceView: View {
                             Color.clear.frame(height: 0).id("county-page-top")
                             if isExercise {
                                 exercisePage(page, isComplete: isComplete, topPadding: 8)
+                                    // Force a fresh activity engine per page — without this,
+                                    // SwiftUI reuses @State from the previous exercise and
+                                    // leaves the bank locked as already-complete.
+                                    .id(page.id)
                                     // Stage zoning: a short exercise page fills the
                                     // viewport so the shell can center its working area;
                                     // AX-size content outgrows this and scrolls as one
@@ -184,8 +188,9 @@ struct CountyStoryExperienceView: View {
             onCollect: {
                 atlas.recordFixtureCollection(collectionWords.map(\.ga), in: pack)
             },
-            onStruggle: {
-                atlas.recordStruggle(page.id, in: pack)
+            onStruggle: nil,
+            onMemoryEvent: { event in
+                atlas.recordMemoryEvent(event, in: pack)
             }
         )
         .padding(.horizontal, EditorialLayout.pageInset)

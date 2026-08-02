@@ -42,8 +42,10 @@ struct CountyExerciseView: View {
     let collectionHandoff: String
     let onCollect: (() -> Void)?
     /// D27 struggle memory event: fires when a repair window closes uncorrected
-    /// or an explicit Check fails.
+    /// or an explicit Check fails. Prefer `onMemoryEvent` for the full quartet.
     let onStruggle: (() -> Void)?
+    /// Exactly-once success/struggle/hint/recovery handoff (rebuild plan step 11).
+    let onMemoryEvent: ((CountyMemoryEvent) -> Void)?
 
     /// The pure lifecycle engine owns correctness, support, retry, completion
     /// and exactly-once memory credit (rebuild plan step 3). The view keeps
@@ -69,7 +71,8 @@ struct CountyExerciseView: View {
         collectionWords: [AtlasWord] = [],
         collectionHandoff: String = "",
         onCollect: (() -> Void)? = nil,
-        onStruggle: (() -> Void)? = nil
+        onStruggle: (() -> Void)? = nil,
+        onMemoryEvent: ((CountyMemoryEvent) -> Void)? = nil
     ) {
         self.page = page
         self.alreadyComplete = alreadyComplete
@@ -82,6 +85,7 @@ struct CountyExerciseView: View {
         self.collectionHandoff = collectionHandoff
         self.onCollect = onCollect
         self.onStruggle = onStruggle
+        self.onMemoryEvent = onMemoryEvent
         let exercise = page.exercise!
         let reviewCandidate = CountyContextualReviewTargeting.candidate(
             from: exercise.reviewCandidates ?? [],
@@ -219,13 +223,15 @@ struct CountyExerciseView: View {
         return engine.updateResponse(CountyActivityResponse(familyResponseKind))
     }
 
-    /// Memory events reach their current consumers: struggle feeds the run's
-    /// ordered record (C3/D27). Success, hint and recovery are emitted
-    /// exactly once by the engine; their persistence lands with the
-    /// learner-memory handoff (rebuild plan step 11).
+    /// Memory events reach their consumers: struggle feeds the run's ordered
+    /// C3 record; all four kinds persist through the learner-memory handoff
+    /// (rebuild plan step 11) for debt-free review seeding.
     private func apply(_ transition: CountyActivityTransition) {
-        for event in transition.memoryEvents where event.kind == .struggle {
-            onStruggle?()
+        for event in transition.memoryEvents {
+            onMemoryEvent?(event)
+            if event.kind == .struggle {
+                onStruggle?()
+            }
         }
     }
 
@@ -1923,6 +1929,7 @@ private struct CountyBuilderSurface: View {
                         chosen.append(slot)
                         publishCheckState()
                     }
+                    .accessibilityIdentifier("builder-bank-\(token)")
                     .accessibilityLabel(token)
                     .accessibilityHint("Add to your answer.")
                 }
@@ -2160,13 +2167,15 @@ private struct CountyMatchingSurface: View {
         guard let leftSelection = selectedLeft, celebratingPairID == nil else { return }
         if leftSelection.id == pair.id {
             Haptics.chisel()
+            // Clear the mismatch note on the repairing tap (D27 next-touch
+            // repair) — do not wait for the celebration settle.
+            missedRightID = nil
             celebratingPairID = pair.id
             onRepair()
             let settleDelay = reduceMotion ? 0 : 0.38
             DispatchQueue.main.asyncAfter(deadline: .now() + settleDelay) {
                 matched.insert(pair.id)
                 self.selectedLeft = nil
-                missedRightID = nil
                 celebratingPairID = nil
                 if matched.count == exercise.pairs.count {
                     onComplete(exercise.feedback)
@@ -2640,56 +2649,131 @@ private struct CountySpeakingSurface: View {
 
 // MARK: - Internal exercise gallery
 
-struct CountyExerciseGalleryView: View {
-    private let states: [(CountyExercisePhase, String, String)] = [
-        (.unanswered, "Unanswered", "One clear task and a visible response area."),
-        (.incorrect, "Not quite", "Diagnostic feedback names the mismatch while the response stays editable."),
-        (.hint, "Hint", "A hint supports another attempt without revealing a score."),
-        (.complete, "Complete", "Completion is quiet and does not add points or celebration."),
+/// Manifest entry for the foundation-gate mechanics gallery. Deep-links into
+/// the Clew Bay freeze fixture for operable C1/C3/C5 and failure inspection.
+struct CountyGalleryManifestEntry: Identifiable, Equatable {
+    enum Kind: String {
+        case container
+        case family
+        case failure
+    }
+
+    let id: String
+    let kind: Kind
+    let title: String
+    let detail: String
+    /// Freeze page to open, when the entry is operable on the shared shell.
+    let freezePageID: String?
+}
+
+enum CountyExerciseGalleryManifest {
+    static let entries: [CountyGalleryManifestEntry] = [
+        CountyGalleryManifestEntry(
+            id: "c1",
+            kind: .container,
+            title: "C1 Conversation",
+            detail: "Turn graph, misfit diagnostic, branch that changes a later partner line, exact-node resume.",
+            freezePageID: "mayo.clew-bay.conversation-origin"
+        ),
+        CountyGalleryManifestEntry(
+            id: "c3",
+            kind: .container,
+            title: "C3 Contextual review",
+            detail: "Re-enters the earliest struggled target from its original sound or sentence.",
+            freezePageID: "mayo.clew-bay.review-struggle"
+        ),
+        CountyGalleryManifestEntry(
+            id: "c5",
+            kind: .container,
+            title: "C5 Completion",
+            detail: "Capability summary and fixture collection handoff — no gold, no scheduler.",
+            freezePageID: "mayo.clew-bay.completion"
+        ),
+        CountyGalleryManifestEntry(
+            id: "f1",
+            kind: .family,
+            title: "Listen and choose",
+            detail: "Cold open → wrong repair window → complete.",
+            freezePageID: "mayo.clew-bay.listen-farraige"
+        ),
+        CountyGalleryManifestEntry(
+            id: "f2",
+            kind: .family,
+            title: "Sentence construction",
+            detail: "Tile build with Check / Continue primacy.",
+            freezePageID: "mayo.clew-bay.build-origin"
+        ),
+        CountyGalleryManifestEntry(
+            id: "f3",
+            kind: .family,
+            title: "Free typed production",
+            detail: "Fada toolbar and in-place recovery.",
+            freezePageID: "mayo.clew-bay.type-origin"
+        ),
+        CountyGalleryManifestEntry(
+            id: "f5",
+            kind: .family,
+            title: "Matching",
+            detail: "Thumb-native board; brief wrong-pair unlock.",
+            freezePageID: "mayo.clew-bay.match-coast"
+        ),
+        CountyGalleryManifestEntry(
+            id: "f6",
+            kind: .family,
+            title: "Read or listen and respond",
+            detail: "Comprehension with listen-or-read route.",
+            freezePageID: "mayo.clew-bay.comprehend-coast"
+        ),
+        CountyGalleryManifestEntry(
+            id: "f7",
+            kind: .family,
+            title: "Record and compare",
+            detail: "Record owns ink; quiet escape unless mic denied.",
+            freezePageID: "mayo.clew-bay.speak-origin"
+        ),
+        CountyGalleryManifestEntry(
+            id: "missing-audio",
+            kind: .failure,
+            title: "Missing audio",
+            detail: "Authored fallback keeps the task completable without sound.",
+            freezePageID: nil
+        ),
+        CountyGalleryManifestEntry(
+            id: "mic-denied",
+            kind: .failure,
+            title: "Denied microphone",
+            detail: "Listening remains available; progress is never trapped. Launch freeze with --microphone-denied.",
+            freezePageID: "mayo.clew-bay.speak-origin"
+        ),
+        CountyGalleryManifestEntry(
+            id: "long-copy",
+            kind: .failure,
+            title: "Long-copy accessibility",
+            detail: "Diagnostic wrap must leave the response and primary action reachable at largest Dynamic Type.",
+            freezePageID: nil
+        ),
     ]
+}
+
+struct CountyExerciseGalleryView: View {
+    let onOpenFreezePage: (String) -> Void
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
                 EditorialScreenHeader(
                     context: "Internal exercise gallery",
-                    title: "One feedback model across the activity layers",
-                    detail: "Use this screen to inspect copy length, state language, missing resources and accessibility recomposition."
+                    title: "Foundation gate matrix",
+                    detail: "Operate C1, C3, and C5 on the shared shell, then walk families and failure states. Each operable row opens the Clew Bay freeze fixture at that page."
                 )
 
-                VStack(alignment: .leading, spacing: 10) {
-                    ForEach(CountyExerciseFamily.allCases, id: \.self) { family in
-                        Label(family.title, systemImage: "circle")
-                            .font(.body)
-                            .foregroundStyle(Theme.ink)
-                            .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
-                    }
-                }
+                section(title: "Containers", entries: CountyExerciseGalleryManifest.entries.filter { $0.kind == .container })
+                section(title: "Response families", entries: CountyExerciseGalleryManifest.entries.filter { $0.kind == .family })
+                section(title: "Failure and edge states", entries: CountyExerciseGalleryManifest.entries.filter { $0.kind == .failure })
 
-                EditorialSectionHeader(context: nil, title: "Feedback states", detail: nil)
-                ForEach(states, id: \.0) { state in
-                    HStack(alignment: .top, spacing: 12) {
-                        Image(systemName: state.0 == .incorrect ? "arrow.uturn.left" : "checkmark.circle")
-                            .foregroundStyle(state.0 == .incorrect ? Theme.rust : Theme.moss)
-                            .frame(width: 28, height: 28)
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(state.1).font(.headline)
-                            Text(state.2).font(.body).foregroundStyle(Theme.inkSoft)
-                        }
-                    }
-                    .padding(16)
-                    .background(Theme.raised)
-                    .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.tileRadius))
-                }
-
-                EditorialSectionHeader(context: nil, title: "Failure and edge states", detail: nil)
                 MissingAudioNotice()
-                Label("Denied microphone: listening remains available and progress is never trapped.", systemImage: "mic.slash")
-                    .font(.body)
-                    .foregroundStyle(Theme.inkSoft)
-                    .padding(16)
-                    .background(Theme.sunk)
-                    .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.tileRadius))
+                    .accessibilityLabel("Missing audio failure state")
+
                 Text("Long-copy and accessibility-size check: a diagnostic explanation can wrap across several lines without covering the response or pushing the only primary action beneath the home indicator.")
                     .font(.body)
                     .foregroundStyle(Theme.ink)
@@ -2707,5 +2791,43 @@ struct CountyExerciseGalleryView: View {
         .background(Theme.bg.ignoresSafeArea())
         .navigationTitle("Exercise gallery")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    @ViewBuilder
+    private func section(title: String, entries: [CountyGalleryManifestEntry]) -> some View {
+        EditorialSectionHeader(context: nil, title: title, detail: nil)
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(entries) { entry in
+                if let pageID = entry.freezePageID {
+                    Button {
+                        onOpenFreezePage(pageID)
+                    } label: {
+                        entryRow(entry, actionable: true)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Open \(entry.title)")
+                } else {
+                    entryRow(entry, actionable: false)
+                }
+            }
+        }
+    }
+
+    private func entryRow(_ entry: CountyGalleryManifestEntry, actionable: Bool) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: actionable ? "play.circle" : "info.circle")
+                .foregroundStyle(Theme.moss)
+                .frame(width: 28, height: 28)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(entry.title).font(.headline).foregroundStyle(Theme.ink)
+                Text(entry.detail).font(.body).foregroundStyle(Theme.inkSoft)
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+        .background(Theme.raised)
+        .clipShape(RoundedRectangle(cornerRadius: ExerciseSurface.tileRadius))
+        .contentShape(Rectangle())
     }
 }
