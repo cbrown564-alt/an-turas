@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.waterford.12.diol.sell",
+  "county": "waterford",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.waterford.reginalds-tower"
+  },
+  "target": {
+    "lexeme_id": "lex.diol",
+    "citation_form": "díol",
+    "sense_id": "waterford.diol.sell",
+    "part_of_speech": "verb",
+    "english_sense": "sell"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.waterford.12.diol",
+      "gloss": "sell"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.waterford.12.diol.sell.opening",
+      "family_id": "d32.waterford.12.diol.sell",
+      "target": {
+        "lexeme_id": "lex.diol",
+        "citation_form": "díol",
+        "sense_id": "waterford.diol.sell",
+        "part_of_speech": "verb",
+        "target_form": "díol",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá díol anseo.",
+        "normalized_text": "Tá díol anseo.",
+        "inventory_slug": "taa-diiol-anseo",
+        "text_sha256": "a945264e2c2ae81350d7ddb57c35b244166c25a681977d4e88744d1f13921e70"
+      },
+      "english": {
+        "intent": "The sell is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "waterford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower"
+        },
+        "atlas_placement_ids": [
+          "atlas.waterford.12.diol"
+        ],
+        "place": {
+          "id": "d32.waterford.place",
+          "label": "Port Láirge / Waterford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the waterford story with the atlas-bound sell at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower.opening.12",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the waterford story with the atlas-bound sell at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.waterford.reginalds-tower.opening.12",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.waterford.12.diol.sell.dialogue",
+      "family_id": "d32.waterford.12.diol.sell",
+      "target": {
+        "lexeme_id": "lex.diol",
+        "citation_form": "díol",
+        "sense_id": "waterford.diol.sell",
+        "part_of_speech": "verb",
+        "target_form": "díol",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil díol anseo?",
+        "normalized_text": "An bhfuil díol anseo?",
+        "inventory_slug": "an-bhfuil-diiol-anseo",
+        "text_sha256": "c5466faeebebe8bdb81ae19303a0b4a001810f176ac10b47970a947c51263c3e"
+      },
+      "english": {
+        "intent": "Is the sell here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "waterford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower"
+        },
+        "atlas_placement_ids": [
+          "atlas.waterford.12.diol"
+        ],
+        "place": {
+          "id": "d32.waterford.place",
+          "label": "Port Láirge / Waterford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse díol in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower.dialogue.12",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse díol in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.waterford.reginalds-tower.dialogue.12",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

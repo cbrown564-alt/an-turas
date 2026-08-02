@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.waterford.10.cladach.shore",
+  "county": "waterford",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.waterford.reginalds-tower"
+  },
+  "target": {
+    "lexeme_id": "lex.cladach",
+    "citation_form": "cladach",
+    "sense_id": "waterford.cladach.shore",
+    "part_of_speech": "noun",
+    "english_sense": "shore"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.waterford.10.cladach",
+      "gloss": "shore"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.waterford.10.cladach.shore.opening",
+      "family_id": "d32.waterford.10.cladach.shore",
+      "target": {
+        "lexeme_id": "lex.cladach",
+        "citation_form": "cladach",
+        "sense_id": "waterford.cladach.shore",
+        "part_of_speech": "noun",
+        "target_form": "cladach",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cladach anseo.",
+        "normalized_text": "Tá cladach anseo.",
+        "inventory_slug": "taa-cladach-anseo",
+        "text_sha256": "eada10bc3185c076eb26e02eac97e280231ae5f90dd1d2485103e91d7da2b842"
+      },
+      "english": {
+        "intent": "The shore is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "waterford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower"
+        },
+        "atlas_placement_ids": [
+          "atlas.waterford.10.cladach"
+        ],
+        "place": {
+          "id": "d32.waterford.place",
+          "label": "Port Láirge / Waterford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the waterford story with the atlas-bound shore at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower.opening.10",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the waterford story with the atlas-bound shore at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.waterford.reginalds-tower.opening.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.waterford.10.cladach.shore.recap",
+      "family_id": "d32.waterford.10.cladach.shore",
+      "target": {
+        "lexeme_id": "lex.cladach",
+        "citation_form": "cladach",
+        "sense_id": "waterford.cladach.shore",
+        "part_of_speech": "noun",
+        "target_form": "cladach",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar cladach.",
+        "normalized_text": "Féach ar cladach.",
+        "inventory_slug": "feeach-ar-cladach",
+        "text_sha256": "b34e0faf0c99da0f5448a52872df1b169f3206e6b0b9e70290a5d178905ec6b2"
+      },
+      "english": {
+        "intent": "Look at the shore.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "waterford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower"
+        },
+        "atlas_placement_ids": [
+          "atlas.waterford.10.cladach"
+        ],
+        "place": {
+          "id": "d32.waterford.place",
+          "label": "Port Láirge / Waterford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the shore placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower.recap.10",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the shore placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.waterford.reginalds-tower.recap.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

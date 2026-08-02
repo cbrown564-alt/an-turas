@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.wexford.03.eagla.fear",
+  "county": "wexford",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.wexford.bagenal-harvey-1798"
+  },
+  "target": {
+    "lexeme_id": "lex.eagla",
+    "citation_form": "eagla",
+    "sense_id": "wexford.eagla.fear",
+    "part_of_speech": "noun",
+    "english_sense": "fear"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.wexford.03.eagla",
+      "gloss": "fear"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.wexford.03.eagla.fear.opening",
+      "family_id": "d32.wexford.03.eagla.fear",
+      "target": {
+        "lexeme_id": "lex.eagla",
+        "citation_form": "eagla",
+        "sense_id": "wexford.eagla.fear",
+        "part_of_speech": "noun",
+        "target_form": "eagla",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá eagla anseo.",
+        "normalized_text": "Tá eagla anseo.",
+        "inventory_slug": "taa-eagla-anseo",
+        "text_sha256": "eaedbdb3793e58d6292ccddba7aa73540c4e39688a2112099c3d33b05a50e3c2"
+      },
+      "english": {
+        "intent": "The fear is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "wexford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798"
+        },
+        "atlas_placement_ids": [
+          "atlas.wexford.03.eagla"
+        ],
+        "place": {
+          "id": "d32.wexford.place",
+          "label": "Loch Garman / Wexford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the wexford story with the atlas-bound fear at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798.opening.03",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the wexford story with the atlas-bound fear at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wexford.bagenal-harvey-1798.opening.03",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.wexford.03.eagla.fear.recap",
+      "family_id": "d32.wexford.03.eagla.fear",
+      "target": {
+        "lexeme_id": "lex.eagla",
+        "citation_form": "eagla",
+        "sense_id": "wexford.eagla.fear",
+        "part_of_speech": "noun",
+        "target_form": "eagla",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar eagla.",
+        "normalized_text": "Féach ar eagla.",
+        "inventory_slug": "feeach-ar-eagla",
+        "text_sha256": "204c981e7d0666eb0f8993811baac9eb178c67bc0976cfa24e773d6b057b6498"
+      },
+      "english": {
+        "intent": "Look at the fear.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "wexford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798"
+        },
+        "atlas_placement_ids": [
+          "atlas.wexford.03.eagla"
+        ],
+        "place": {
+          "id": "d32.wexford.place",
+          "label": "Loch Garman / Wexford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the fear placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798.recap.03",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the fear placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wexford.bagenal-harvey-1798.recap.03",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

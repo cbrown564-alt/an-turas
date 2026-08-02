@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.tipperary.10.solas.light",
+  "county": "tipperary",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.tipperary.cormac-chapel"
+  },
+  "target": {
+    "lexeme_id": "lex.solas",
+    "citation_form": "solas",
+    "sense_id": "tipperary.solas.light",
+    "part_of_speech": "noun",
+    "english_sense": "light"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.tipperary.10.solas",
+      "gloss": "light"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.tipperary.10.solas.light.opening",
+      "family_id": "d32.tipperary.10.solas.light",
+      "target": {
+        "lexeme_id": "lex.solas",
+        "citation_form": "solas",
+        "sense_id": "tipperary.solas.light",
+        "part_of_speech": "noun",
+        "target_form": "solas",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá solas anseo.",
+        "normalized_text": "Tá solas anseo.",
+        "inventory_slug": "taa-solas-anseo",
+        "text_sha256": "646dea2b574920bc2e0aad59c014991e10d72a8ff47724abd43c185ee21db188"
+      },
+      "english": {
+        "intent": "The light is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "tipperary",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tipperary.cormac-chapel"
+        },
+        "atlas_placement_ids": [
+          "atlas.tipperary.10.solas"
+        ],
+        "place": {
+          "id": "d32.tipperary.place",
+          "label": "Tiobraid Árann / Tipperary"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the tipperary story with the atlas-bound light at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tipperary.cormac-chapel.opening.10",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the tipperary story with the atlas-bound light at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tipperary.cormac-chapel.opening.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.tipperary.10.solas.light.recap",
+      "family_id": "d32.tipperary.10.solas.light",
+      "target": {
+        "lexeme_id": "lex.solas",
+        "citation_form": "solas",
+        "sense_id": "tipperary.solas.light",
+        "part_of_speech": "noun",
+        "target_form": "solas",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar solas.",
+        "normalized_text": "Féach ar solas.",
+        "inventory_slug": "feeach-ar-solas",
+        "text_sha256": "922dcd353ed8a2c474eb6bb48e78097eb61fb253fb483506eeab76232310da0b"
+      },
+      "english": {
+        "intent": "Look at the light.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "tipperary",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tipperary.cormac-chapel"
+        },
+        "atlas_placement_ids": [
+          "atlas.tipperary.10.solas"
+        ],
+        "place": {
+          "id": "d32.tipperary.place",
+          "label": "Tiobraid Árann / Tipperary"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the light placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tipperary.cormac-chapel.recap.10",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the light placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tipperary.cormac-chapel.recap.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

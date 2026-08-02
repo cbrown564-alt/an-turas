@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.tipperary.01.carraig.rock",
+  "county": "tipperary",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.tipperary.cormac-chapel"
+  },
+  "target": {
+    "lexeme_id": "lex.carraig",
+    "citation_form": "carraig",
+    "sense_id": "tipperary.carraig.rock",
+    "part_of_speech": "noun",
+    "english_sense": "rock"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.tipperary.01.carraig",
+      "gloss": "rock"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.tipperary.01.carraig.rock.opening",
+      "family_id": "d32.tipperary.01.carraig.rock",
+      "target": {
+        "lexeme_id": "lex.carraig",
+        "citation_form": "carraig",
+        "sense_id": "tipperary.carraig.rock",
+        "part_of_speech": "noun",
+        "target_form": "carraig",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá carraig anseo.",
+        "normalized_text": "Tá carraig anseo.",
+        "inventory_slug": "taa-carraig-anseo",
+        "text_sha256": "af0353654f5561bfb9557096c452d5f3705d13c8c02f5e963cc1bd2545382569"
+      },
+      "english": {
+        "intent": "The rock is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "tipperary",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tipperary.cormac-chapel"
+        },
+        "atlas_placement_ids": [
+          "atlas.tipperary.01.carraig"
+        ],
+        "place": {
+          "id": "d32.tipperary.place",
+          "label": "Tiobraid Árann / Tipperary"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the tipperary story with the atlas-bound rock at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tipperary.cormac-chapel.opening.01",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the tipperary story with the atlas-bound rock at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tipperary.cormac-chapel.opening.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.tipperary.01.carraig.rock.recap",
+      "family_id": "d32.tipperary.01.carraig.rock",
+      "target": {
+        "lexeme_id": "lex.carraig",
+        "citation_form": "carraig",
+        "sense_id": "tipperary.carraig.rock",
+        "part_of_speech": "noun",
+        "target_form": "carraig",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar carraig.",
+        "normalized_text": "Féach ar carraig.",
+        "inventory_slug": "feeach-ar-carraig",
+        "text_sha256": "79389bf8adc2caa07fbe99b48b9599fd730e2ea83569def62a40614dff22e829"
+      },
+      "english": {
+        "intent": "Look at the rock.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "tipperary",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tipperary.cormac-chapel"
+        },
+        "atlas_placement_ids": [
+          "atlas.tipperary.01.carraig"
+        ],
+        "place": {
+          "id": "d32.tipperary.place",
+          "label": "Tiobraid Árann / Tipperary"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the rock placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tipperary.cormac-chapel.recap.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the rock placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tipperary.cormac-chapel.recap.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

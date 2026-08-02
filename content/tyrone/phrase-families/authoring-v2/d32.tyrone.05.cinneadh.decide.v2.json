@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.tyrone.05.cinneadh.decide",
+  "county": "tyrone",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.tyrone.hugh-oneill-dungannon"
+  },
+  "target": {
+    "lexeme_id": "lex.cinneadh",
+    "citation_form": "cinneadh",
+    "sense_id": "tyrone.cinneadh.decide",
+    "part_of_speech": "lexical item",
+    "english_sense": "decide"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.tyrone.05.cinneadh",
+      "gloss": "decide"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.tyrone.05.cinneadh.decide.opening",
+      "family_id": "d32.tyrone.05.cinneadh.decide",
+      "target": {
+        "lexeme_id": "lex.cinneadh",
+        "citation_form": "cinneadh",
+        "sense_id": "tyrone.cinneadh.decide",
+        "part_of_speech": "lexical item",
+        "target_form": "cinneadh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cinneadh anseo.",
+        "normalized_text": "Tá cinneadh anseo.",
+        "inventory_slug": "taa-cinneadh-anseo",
+        "text_sha256": "460b14171f61de83e1834b7efc31470cae5029d8846586a36cc15a8f5040a907"
+      },
+      "english": {
+        "intent": "The decide is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "tyrone",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tyrone.hugh-oneill-dungannon"
+        },
+        "atlas_placement_ids": [
+          "atlas.tyrone.05.cinneadh"
+        ],
+        "place": {
+          "id": "d32.tyrone.place",
+          "label": "Tír Eoghain / Tyrone"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the tyrone story with the atlas-bound decide at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tyrone.hugh-oneill-dungannon.opening.05",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the tyrone story with the atlas-bound decide at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tyrone.hugh-oneill-dungannon.opening.05",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.tyrone.05.cinneadh.decide.return",
+      "family_id": "d32.tyrone.05.cinneadh.decide",
+      "target": {
+        "lexeme_id": "lex.cinneadh",
+        "citation_form": "cinneadh",
+        "sense_id": "tyrone.cinneadh.decide",
+        "part_of_speech": "lexical item",
+        "target_form": "cinneadh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cinneadh sa scéal.",
+        "normalized_text": "Tá cinneadh sa scéal.",
+        "inventory_slug": "taa-cinneadh-sa-sceeal",
+        "text_sha256": "9c5f1d64ce9f6b721c48d92a6d692ee4473bdf84ceeebbda1a9f1bb364690326"
+      },
+      "english": {
+        "intent": "The decide is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "tyrone",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tyrone.hugh-oneill-dungannon"
+        },
+        "atlas_placement_ids": [
+          "atlas.tyrone.05.cinneadh"
+        ],
+        "place": {
+          "id": "d32.tyrone.place",
+          "label": "Tír Eoghain / Tyrone"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry cinneadh from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tyrone.hugh-oneill-dungannon.return.05",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry cinneadh from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tyrone.hugh-oneill-dungannon.return.05",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.wexford.01.cruinniu.meeting",
+  "county": "wexford",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.wexford.bagenal-harvey-1798"
+  },
+  "target": {
+    "lexeme_id": "lex.cruinniu",
+    "citation_form": "cruinniú",
+    "sense_id": "wexford.cruinniu.meeting",
+    "part_of_speech": "lexical item",
+    "english_sense": "meeting"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.wexford.01.cruinniu",
+      "gloss": "meeting"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.wexford.01.cruinniu.meeting.opening",
+      "family_id": "d32.wexford.01.cruinniu.meeting",
+      "target": {
+        "lexeme_id": "lex.cruinniu",
+        "citation_form": "cruinniú",
+        "sense_id": "wexford.cruinniu.meeting",
+        "part_of_speech": "lexical item",
+        "target_form": "cruinniú",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cruinniú anseo.",
+        "normalized_text": "Tá cruinniú anseo.",
+        "inventory_slug": "taa-cruinniuu-anseo",
+        "text_sha256": "1cbf8dbe67f2ae9aed5594a7edd0384c5ab84b9b9c49d3f1a21df15b7d25f621"
+      },
+      "english": {
+        "intent": "The meeting is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "wexford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798"
+        },
+        "atlas_placement_ids": [
+          "atlas.wexford.01.cruinniu"
+        ],
+        "place": {
+          "id": "d32.wexford.place",
+          "label": "Loch Garman / Wexford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the wexford story with the atlas-bound meeting at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798.opening.01",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the wexford story with the atlas-bound meeting at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wexford.bagenal-harvey-1798.opening.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.wexford.01.cruinniu.meeting.return",
+      "family_id": "d32.wexford.01.cruinniu.meeting",
+      "target": {
+        "lexeme_id": "lex.cruinniu",
+        "citation_form": "cruinniú",
+        "sense_id": "wexford.cruinniu.meeting",
+        "part_of_speech": "lexical item",
+        "target_form": "cruinniú",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cruinniú sa scéal.",
+        "normalized_text": "Tá cruinniú sa scéal.",
+        "inventory_slug": "taa-cruinniuu-sa-sceeal",
+        "text_sha256": "80f0c1c4356e6d2e832f16281ffc62efadd8ddd5e22a477cce6c8778ed37d1e0"
+      },
+      "english": {
+        "intent": "The meeting is in the story.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "wexford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798"
+        },
+        "atlas_placement_ids": [
+          "atlas.wexford.01.cruinniu"
+        ],
+        "place": {
+          "id": "d32.wexford.place",
+          "label": "Loch Garman / Wexford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Carry cruinniú from the place opening into a reusable story recap.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798.return.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Carry cruinniú from the place opening into a reusable story recap."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wexford.bagenal-harvey-1798.return.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

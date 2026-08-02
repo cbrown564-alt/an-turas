@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.wexford.17.dochas.hope",
+  "county": "wexford",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.wexford.bagenal-harvey-1798"
+  },
+  "target": {
+    "lexeme_id": "lex.dochas",
+    "citation_form": "dóchas",
+    "sense_id": "wexford.dochas.hope",
+    "part_of_speech": "noun",
+    "english_sense": "hope"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.wexford.17.dochas",
+      "gloss": "hope"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.wexford.17.dochas.hope.opening",
+      "family_id": "d32.wexford.17.dochas.hope",
+      "target": {
+        "lexeme_id": "lex.dochas",
+        "citation_form": "dóchas",
+        "sense_id": "wexford.dochas.hope",
+        "part_of_speech": "noun",
+        "target_form": "dóchas",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá dóchas anseo.",
+        "normalized_text": "Tá dóchas anseo.",
+        "inventory_slug": "taa-doochas-anseo",
+        "text_sha256": "3bcc4e744663a2abddf55dd28f2a00c93821107a131ce1c19124c02f22b399c0"
+      },
+      "english": {
+        "intent": "The hope is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "wexford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798"
+        },
+        "atlas_placement_ids": [
+          "atlas.wexford.17.dochas"
+        ],
+        "place": {
+          "id": "d32.wexford.place",
+          "label": "Loch Garman / Wexford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the wexford story with the atlas-bound hope at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798.opening.17",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the wexford story with the atlas-bound hope at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wexford.bagenal-harvey-1798.opening.17",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.wexford.17.dochas.hope.dialogue",
+      "family_id": "d32.wexford.17.dochas.hope",
+      "target": {
+        "lexeme_id": "lex.dochas",
+        "citation_form": "dóchas",
+        "sense_id": "wexford.dochas.hope",
+        "part_of_speech": "noun",
+        "target_form": "dóchas",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil dóchas anseo?",
+        "normalized_text": "An bhfuil dóchas anseo?",
+        "inventory_slug": "an-bhfuil-doochas-anseo",
+        "text_sha256": "36cbc1a1f53309b28109519086dd1ad4acd33cc754fcac42900740e3ccb91168"
+      },
+      "english": {
+        "intent": "Is the hope here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "wexford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798"
+        },
+        "atlas_placement_ids": [
+          "atlas.wexford.17.dochas"
+        ],
+        "place": {
+          "id": "d32.wexford.place",
+          "label": "Loch Garman / Wexford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse dóchas in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798.dialogue.17",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse dóchas in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wexford.bagenal-harvey-1798.dialogue.17",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

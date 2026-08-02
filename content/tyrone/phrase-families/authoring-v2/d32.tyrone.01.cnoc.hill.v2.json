@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.tyrone.01.cnoc.hill",
+  "county": "tyrone",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.tyrone.hugh-oneill-dungannon"
+  },
+  "target": {
+    "lexeme_id": "lex.cnoc",
+    "citation_form": "cnoc",
+    "sense_id": "tyrone.cnoc.hill",
+    "part_of_speech": "noun",
+    "english_sense": "hill"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.tyrone.01.cnoc",
+      "gloss": "hill"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.tyrone.01.cnoc.hill.opening",
+      "family_id": "d32.tyrone.01.cnoc.hill",
+      "target": {
+        "lexeme_id": "lex.cnoc",
+        "citation_form": "cnoc",
+        "sense_id": "tyrone.cnoc.hill",
+        "part_of_speech": "noun",
+        "target_form": "cnoc",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cnoc anseo.",
+        "normalized_text": "Tá cnoc anseo.",
+        "inventory_slug": "taa-cnoc-anseo",
+        "text_sha256": "97f8a0f51451ac23e0c3d8b08375d0baaaeb2974e3d2e29922d4e93ed2f88ac6"
+      },
+      "english": {
+        "intent": "The hill is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "tyrone",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tyrone.hugh-oneill-dungannon"
+        },
+        "atlas_placement_ids": [
+          "atlas.tyrone.01.cnoc"
+        ],
+        "place": {
+          "id": "d32.tyrone.place",
+          "label": "Tír Eoghain / Tyrone"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the tyrone story with the atlas-bound hill at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tyrone.hugh-oneill-dungannon.opening.01",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the tyrone story with the atlas-bound hill at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tyrone.hugh-oneill-dungannon.opening.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.tyrone.01.cnoc.hill.recap",
+      "family_id": "d32.tyrone.01.cnoc.hill",
+      "target": {
+        "lexeme_id": "lex.cnoc",
+        "citation_form": "cnoc",
+        "sense_id": "tyrone.cnoc.hill",
+        "part_of_speech": "noun",
+        "target_form": "cnoc",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar cnoc.",
+        "normalized_text": "Féach ar cnoc.",
+        "inventory_slug": "feeach-ar-cnoc",
+        "text_sha256": "eccbf98dcbf37dde28126b02995b424296b6240d2c9fefb78a670ddb2bc56cb9"
+      },
+      "english": {
+        "intent": "Look at the hill.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "tyrone",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tyrone.hugh-oneill-dungannon"
+        },
+        "atlas_placement_ids": [
+          "atlas.tyrone.01.cnoc"
+        ],
+        "place": {
+          "id": "d32.tyrone.place",
+          "label": "Tír Eoghain / Tyrone"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the hill placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.tyrone.hugh-oneill-dungannon.recap.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the hill placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tyrone.hugh-oneill-dungannon.recap.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

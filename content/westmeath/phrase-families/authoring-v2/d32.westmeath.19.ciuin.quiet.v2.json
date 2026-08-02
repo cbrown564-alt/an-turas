@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.westmeath.19.ciuin.quiet",
+  "county": "westmeath",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.westmeath.st-fechin-fore"
+  },
+  "target": {
+    "lexeme_id": "lex.ciuin",
+    "citation_form": "ciúin",
+    "sense_id": "westmeath.ciuin.quiet",
+    "part_of_speech": "lexical item",
+    "english_sense": "quiet"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.westmeath.19.ciuin",
+      "gloss": "quiet"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.westmeath.19.ciuin.quiet.opening",
+      "family_id": "d32.westmeath.19.ciuin.quiet",
+      "target": {
+        "lexeme_id": "lex.ciuin",
+        "citation_form": "ciúin",
+        "sense_id": "westmeath.ciuin.quiet",
+        "part_of_speech": "lexical item",
+        "target_form": "ciúin",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá ciúin anseo.",
+        "normalized_text": "Tá ciúin anseo.",
+        "inventory_slug": "taa-ciuuin-anseo",
+        "text_sha256": "89daf06dc14fb3ccbb2f95bc246f3fc81b19a8722c34fdb5e091b7c9fb5d4ed2"
+      },
+      "english": {
+        "intent": "The quiet is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "westmeath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore"
+        },
+        "atlas_placement_ids": [
+          "atlas.westmeath.19.ciuin"
+        ],
+        "place": {
+          "id": "d32.westmeath.place",
+          "label": "an Iarmhí / Westmeath"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the westmeath story with the atlas-bound quiet at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore.opening.19",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the westmeath story with the atlas-bound quiet at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.westmeath.st-fechin-fore.opening.19",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.westmeath.19.ciuin.quiet.recap",
+      "family_id": "d32.westmeath.19.ciuin.quiet",
+      "target": {
+        "lexeme_id": "lex.ciuin",
+        "citation_form": "ciúin",
+        "sense_id": "westmeath.ciuin.quiet",
+        "part_of_speech": "lexical item",
+        "target_form": "ciúin",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar ciúin.",
+        "normalized_text": "Féach ar ciúin.",
+        "inventory_slug": "feeach-ar-ciuuin",
+        "text_sha256": "e99ad76ead058591c799847663631674c50630646c689789a7ea5d9c53f6a13c"
+      },
+      "english": {
+        "intent": "Look at the quiet.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "westmeath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore"
+        },
+        "atlas_placement_ids": [
+          "atlas.westmeath.19.ciuin"
+        ],
+        "place": {
+          "id": "d32.westmeath.place",
+          "label": "an Iarmhí / Westmeath"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the quiet placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore.recap.19",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the quiet placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.westmeath.st-fechin-fore.recap.19",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}
