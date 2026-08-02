@@ -31,6 +31,16 @@ ARCHIVE_RELATIVE = Path("content/audio/archive")
 PBX_PROJECT_RELATIVE = Path("ios/AnTuras.xcodeproj/project.pbxproj")
 REPORT_SCHEMA_VERSION = 1
 REPORT_CONTRACT = "irish_audio_reconciliation_report"
+EXTENDED_ARTIFACT_SCHEMA_VERSION = 1
+ATLAS_SUBJECTS_RELATIVE = Path("ios/AnTuras/Resources/personal-atlas-subjects.json")
+ATLAS_HEADWORDS_RELATIVE = Path("content/audio/atlas-headwords-v1.json")
+PEDAGOGY_DRAFT_GLOB = "content/*/*.pack.draft.json"
+PEDAGOGY_RUNTIME_GLOB = "ios/AnTuras/Resources/CountyStories/*.json"
+EXTERNAL_REFERENCE_RELATIVES = (
+    Path("content/personal-atlas/logainm-audit.json"),
+    Path("content/personal-atlas/logainm-hierarchy-repairs.json"),
+    Path("content/personal-atlas/logainm-ni-review.json"),
+)
 REVIEWED_V2_AUDIO_QA = frozenset({"passed", "flagged", "failed"})
 REVIEWED_RUNTIME_QA = frozenset({"spot_flagged", "qa_passed", "failed"})
 GENERATED_INVENTORY_QA = frozenset(
@@ -1316,6 +1326,623 @@ def classify_bundled_clips(
     )
 
 
+def _first_nonempty(mapping: dict[str, Any], keys: Iterable[str]) -> object:
+    for key in keys:
+        value = mapping.get(key)
+        if value is not None and value != "":
+            return value
+    return None
+
+
+def _record_provenance(record: dict[str, Any]) -> bool:
+    """Return whether a record carries an inspectable provenance pointer."""
+    for key in (
+        "evidence",
+        "evidenceIds",
+        "sources",
+        "source",
+        "citation",
+        "stableURL",
+        "attribution",
+        "resourceIDs",
+    ):
+        value = record.get(key)
+        if value not in (None, "", [], {}):
+            return True
+    return False
+
+
+def _record_status(record: dict[str, Any]) -> str | None:
+    value = _first_nonempty(record, ("status", "releaseState", "depth", "state"))
+    return str(value) if value is not None else None
+
+
+def _status_is_open(status: str | None) -> bool:
+    if not status:
+        return False
+    lowered = status.lower()
+    return any(
+        token in lowered
+        for token in (
+            "open",
+            "pending",
+            "draft",
+            "provisional",
+            "foundation",
+            "pilot",
+            "in_progress",
+            "in-progress",
+            "retry",
+        )
+    )
+
+
+def _status_is_failed(status: str | None) -> bool:
+    return bool(status and any(token in status.lower() for token in ("fail", "error")))
+
+
+def _status_is_interrupted(status: str | None) -> bool:
+    return bool(status and status.lower() in {"in_progress", "in-progress", "interrupted"})
+
+
+def _artifact_checksum_state(root: Path, path: Path, payload: dict[str, Any]) -> dict[str, Any]:
+    actual = sha256_file(path)
+    recorded = _first_nonempty(payload, ("sha256", "checksum", "content_sha256"))
+    valid_recorded = isinstance(recorded, str) and bool(SHA256_RE.fullmatch(recorded))
+    return {
+        "path": relative_path(root, path),
+        "actual_sha256": actual,
+        "recorded_sha256": recorded if valid_recorded else None,
+        "verified": valid_recorded and recorded == actual,
+        "missing_recorded_checksum": not valid_recorded,
+        "mismatched": valid_recorded and recorded != actual,
+    }
+
+
+def _summarize_extended_artifact(
+    root: Path,
+    path: Path,
+    kind: str,
+    records: list[dict[str, Any]],
+    *,
+    payload: dict[str, Any],
+    metadata: dict[str, Any] | None = None,
+) -> tuple[dict[str, Any], list[dict[str, object]]]:
+    """Summarize a non-audio JSON artifact without promoting its contents."""
+    findings: list[dict[str, object]] = []
+    by_id: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    by_text: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    declared_ids = 0
+    missing_ids = 0
+    provenance_records = 0
+    statuses: Counter[str] = Counter()
+    kinds: Counter[str] = Counter()
+    counties: set[str] = set()
+    for index, record in enumerate(records):
+        record_id = _first_nonempty(record, ("id", "stable_id", "stableId", "slug"))
+        if isinstance(record_id, str) and record_id.strip():
+            declared_ids += 1
+            by_id[record_id.strip()].append(record)
+        else:
+            missing_ids += 1
+        text_value = _first_nonempty(
+            record,
+            ("text", "ga", "irish", "normalized_text", "canonicalDisplay", "body", "value"),
+        )
+        normalized = normalize_text(text_value)
+        if normalized:
+            by_text[normalized].append(record)
+        if _record_provenance(record):
+            provenance_records += 1
+        status = _record_status(record)
+        if status:
+            statuses[status] += 1
+        record_kind = record.get("kind")
+        if isinstance(record_kind, str) and record_kind:
+            kinds[record_kind] += 1
+        county = record.get("county")
+        if isinstance(county, str) and county.strip():
+            counties.add(county.strip())
+
+    duplicate_ids = {
+        identifier: len(rows)
+        for identifier, rows in by_id.items()
+        if len(rows) > 1
+    }
+    duplicate_texts = {
+        text: len(rows)
+        for text, rows in by_text.items()
+        if len(rows) > 1
+    }
+    checksum = _artifact_checksum_state(root, path, payload)
+    open_status_records = sum(count for status, count in statuses.items() if _status_is_open(status))
+    failed_records = sum(count for status, count in statuses.items() if _status_is_failed(status))
+    interrupted_records = sum(count for status, count in statuses.items() if _status_is_interrupted(status))
+    manual_recovery = len(duplicate_ids) + (1 if checksum["mismatched"] else 0)
+    summary: dict[str, Any] = {
+        "kind": kind,
+        "path": relative_path(root, path),
+        "records": len(records),
+        "declared_stable_ids": declared_ids,
+        "missing_stable_ids": missing_ids,
+        "unique_stable_ids": len(by_id),
+        "unique_normalized_texts": len(by_text),
+        "counties": sorted(counties),
+        "record_kinds": dict(sorted(kinds.items())),
+        "statuses": dict(sorted(statuses.items())),
+        "provenance": {
+            "records_with_provenance": provenance_records,
+            "records_missing_provenance": len(records) - provenance_records,
+        },
+        "collision_state": {
+            "duplicate_stable_ids": duplicate_ids,
+            "duplicate_normalized_texts": duplicate_texts,
+        },
+        "checksum_state": checksum,
+        "resumability": {
+            "open_or_review_pending_records": open_status_records,
+            "failed_records": failed_records,
+            "interrupted_records": interrupted_records,
+            "resumable_records": open_status_records + failed_records,
+            "manual_recovery_required": manual_recovery,
+        },
+    }
+    if metadata:
+        summary.update(metadata)
+
+    if missing_ids:
+        findings.append(
+            finding(
+                "artifact_records_missing_stable_id",
+                "warning",
+                kind,
+                relative_path(root, path),
+                f"{missing_ids} artifact records do not declare a stable id",
+                "Keep the source artifact unchanged and assign a durable id through its owner schema before relying on it for resumable work.",
+                missing_records=missing_ids,
+            )
+        )
+    if duplicate_ids:
+        findings.append(
+            finding(
+                "artifact_duplicate_stable_id",
+                "error",
+                kind,
+                relative_path(root, path),
+                "artifact contains duplicate declared stable ids",
+                "Resolve the collision manually and preserve both source records until ownership is explicit.",
+                duplicate_ids=duplicate_ids,
+            )
+        )
+    if duplicate_texts:
+        findings.append(
+            finding(
+                "artifact_duplicate_normalized_text",
+                "warning",
+                kind,
+                relative_path(root, path),
+                "artifact contains repeated normalized text values",
+                "Retain intentional place or story reuse, but bind each use to a stable id; do not deduplicate by deleting source material.",
+                duplicate_count=len(duplicate_texts),
+            )
+        )
+    if len(records) and len(records) != provenance_records:
+        findings.append(
+            finding(
+                "artifact_records_missing_provenance",
+                "warning",
+                kind,
+                relative_path(root, path),
+                f"{len(records) - provenance_records} artifact records lack an inspectable provenance pointer",
+                "Keep the artifact provisional until the owner adds a source, evidence, citation, or equivalent durable pointer.",
+                missing_records=len(records) - provenance_records,
+            )
+        )
+    if checksum["missing_recorded_checksum"]:
+        findings.append(
+            finding(
+                "artifact_checksum_not_recorded",
+                "warning",
+                kind,
+                relative_path(root, path),
+                "artifact exists but does not record a SHA-256 for reconciliation",
+                "Record the checksum in the owning manifest or retain this file as unverified; never infer verification from file presence alone.",
+                actual_sha256=checksum["actual_sha256"],
+            )
+        )
+    if checksum["mismatched"]:
+        findings.append(
+            finding(
+                "artifact_checksum_mismatch",
+                "error",
+                kind,
+                relative_path(root, path),
+                "artifact recorded checksum does not match its current bytes",
+                "Preserve the artifact and checksum record and resolve the mismatch manually before bundling or resuming work.",
+                recorded_sha256=checksum["recorded_sha256"],
+                actual_sha256=checksum["actual_sha256"],
+            )
+        )
+    return summary, findings
+
+
+def _load_extended_json(root: Path, path: Path) -> tuple[dict[str, Any] | None, list[dict[str, object]]]:
+    if not path.is_file():
+        return None, [
+            finding(
+                "artifact_file_missing",
+                "error",
+                "extended_artifact",
+                relative_path(root, path),
+                "canonical extended artifact is missing",
+                "Restore or inspect the owner artifact manually; this audit never reconstructs, deletes, or overwrites it.",
+            )
+        ]
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        return None, [
+            finding(
+                "artifact_file_unreadable",
+                "error",
+                "extended_artifact",
+                relative_path(root, path),
+                f"cannot read extended artifact: {error}",
+                "Preserve the last known-good artifact and resolve it through its owner workflow.",
+            )
+        ]
+    if not isinstance(payload, dict):
+        return None, [
+            finding(
+                "artifact_payload_invalid",
+                "error",
+                "extended_artifact",
+                relative_path(root, path),
+                "extended artifact must be a JSON object",
+                "Resolve the artifact shape manually before bundling or recovery.",
+            )
+        ]
+    return payload, []
+
+
+def _atlas_artifact_records(payload: dict[str, Any], kind: str) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    if kind == "atlas_names_places":
+        records = [record for record in payload.get("subjects", []) if isinstance(record, dict)]
+        return records, {
+            "subject_kinds": dict(
+                sorted(Counter(str(record.get("kind")) for record in records).items())
+            ),
+            "content_date": payload.get("contentDate"),
+            "attribution_present": bool(payload.get("attribution")),
+        }
+    records: list[dict[str, Any]] = []
+    for county, county_payload in (payload.get("counties") or {}).items():
+        if not isinstance(county_payload, dict):
+            continue
+        source = county_payload.get("source")
+        for index, word in enumerate(county_payload.get("words") or [], start=1):
+            if not isinstance(word, dict):
+                continue
+            records.append(
+                {
+                    **word,
+                    "county": county,
+                    "status": payload.get("status"),
+                    "_source": source,
+                    "_placement_index": index,
+                }
+            )
+    return records, {
+        "headword_status": payload.get("status"),
+        "content_date": payload.get("generated_at"),
+        "attribution_present": False,
+    }
+
+
+def _pedagogy_artifact_records(payload: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    pack = payload.get("pack", payload)
+    records: list[dict[str, Any]] = []
+    for chapter in pack.get("chapters", []) if isinstance(pack, dict) else []:
+        if not isinstance(chapter, dict):
+            continue
+        for page in chapter.get("pages", []) or []:
+            if isinstance(page, dict):
+                records.append(page)
+    gates = [gate for gate in pack.get("reviewGates", []) if isinstance(gate, dict)] if isinstance(pack, dict) else []
+    resources = [resource for resource in pack.get("resources", []) if isinstance(resource, dict)] if isinstance(pack, dict) else []
+    narration_pages = sum(record.get("kind") == "narrative" for record in records)
+    return records, {
+        "pack_id": pack.get("id") if isinstance(pack, dict) else None,
+        "revision": pack.get("revision") if isinstance(pack, dict) else None,
+        "narration_pages": narration_pages,
+        "review_gates": dict(sorted(Counter(str(gate.get("status")) for gate in gates).items())),
+        "review_gates_open": sum(str(gate.get("status")) not in {"complete", "passed"} for gate in gates),
+        "resource_records": len(resources),
+        "resource_ids": sorted(str(resource.get("id")) for resource in resources if resource.get("id")),
+    }
+
+
+def _external_artifact_records(payload: dict[str, Any], path: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    if path.name == "logainm-hierarchy-repairs.json":
+        records = []
+        for identifier, record in (payload.get("records") or {}).items():
+            if isinstance(record, dict):
+                records.append({"id": str(identifier), **record})
+        return records, {"snapshot_at": payload.get("reviewedAt"), "record_type": "hierarchy_repair"}
+    if path.name == "logainm-ni-review.json":
+        ni = payload.get("northernIreland") or {}
+        records = [
+            {"id": f"county:{item.get('county')}", **item}
+            for item in ni.get("counties", [])
+            if isinstance(item, dict) and item.get("county")
+        ]
+        return records, {
+            "snapshot_at": payload.get("snapshotFetchedAt"),
+            "record_type": "county_comparison",
+            "summary": ni.get("summary", {}),
+        }
+    records = [
+        {"id": f"county:{item.get('county')}", **item}
+        for item in payload.get("counties", [])
+        if isinstance(item, dict) and item.get("county")
+    ]
+    return records, {
+        "snapshot_at": payload.get("snapshotFetchedAt"),
+        "generated_at": payload.get("generatedAt"),
+        "record_type": "source_coverage_comparison",
+        "summary": payload.get("summary", {}),
+    }
+
+
+def _compare_pedagogy_artifacts(artifacts: list[dict[str, Any]]) -> tuple[dict[str, Any], list[dict[str, object]]]:
+    findings: list[dict[str, object]] = []
+    by_pack: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for artifact in artifacts:
+        pack_id = artifact.get("pack_id")
+        if pack_id:
+            by_pack[str(pack_id)].append(artifact)
+    pairs = 0
+    missing_side = 0
+    page_id_drift = 0
+    text_drift = 0
+    for pack_id, pair in sorted(by_pack.items()):
+        if len(pair) < 2:
+            missing_side += 1
+            continue
+        source = next((item for item in pair if ".pack.draft.json" in item["path"]), None)
+        runtime = next((item for item in pair if "CountyStories/" in item["path"]), None)
+        if not source or not runtime:
+            missing_side += 1
+            continue
+        pairs += 1
+        source_ids = set(source.pop("_page_ids", [])) if "_page_ids" in source else set()
+        runtime_ids = set(runtime.pop("_page_ids", [])) if "_page_ids" in runtime else set()
+        if source_ids != runtime_ids:
+            page_id_drift += 1
+        source_texts = source.pop("_page_texts", {}) if "_page_texts" in source else {}
+        runtime_texts = runtime.pop("_page_texts", {}) if "_page_texts" in runtime else {}
+        if source_texts != runtime_texts:
+            text_drift += 1
+    if missing_side:
+        findings.append(
+            finding(
+                "pedagogy_narration_pair_missing",
+                "warning",
+                "pedagogy_narration",
+                "pack_pairs",
+                f"{missing_side} story pack ids do not have both draft and runtime artifacts",
+                "Keep draft/runtime ownership explicit and resume only from the named side after a manual comparison.",
+                missing_pairs=missing_side,
+            )
+        )
+    if page_id_drift or text_drift:
+        findings.append(
+            finding(
+                "pedagogy_narration_runtime_drift",
+                "warning",
+                "pedagogy_narration",
+                "pack_pairs",
+                "draft and runtime narration artifacts differ in page ids or normalized text",
+                "Inspect the owner pack and generated runtime resource manually; do not overwrite one side from the other automatically.",
+                page_id_drift=page_id_drift,
+                text_drift=text_drift,
+            )
+        )
+    return {
+        "paired_pack_ids": pairs,
+        "missing_pair_sides": missing_side,
+        "page_id_drift": page_id_drift,
+        "text_drift": text_drift,
+    }, findings
+
+
+def scan_extended_artifacts(root: Path) -> tuple[dict[str, Any], list[dict[str, object]]]:
+    """Reconcile atlas, pedagogy narration, and external-reference artifacts."""
+    findings: list[dict[str, object]] = []
+    category_artifacts: dict[str, list[dict[str, Any]]] = defaultdict(list)
+
+    atlas_specs = [
+        (ATLAS_SUBJECTS_RELATIVE, "atlas_names_places"),
+        (ATLAS_HEADWORDS_RELATIVE, "atlas_headwords"),
+    ]
+    for relative, kind in atlas_specs:
+        path = root / relative
+        payload, load_findings = _load_extended_json(root, path)
+        findings.extend(load_findings)
+        if payload is None:
+            continue
+        records, metadata = _atlas_artifact_records(payload, kind)
+        summary, artifact_findings = _summarize_extended_artifact(
+            root, path, kind, records, payload=payload, metadata=metadata
+        )
+        category_artifacts["atlas_names_places"].append(summary)
+        findings.extend(artifact_findings)
+
+    for pattern, kind in ((PEDAGOGY_DRAFT_GLOB, "pedagogy_narration_draft"), (PEDAGOGY_RUNTIME_GLOB, "pedagogy_narration_runtime")):
+        for path in sorted(root.glob(pattern)):
+            payload, load_findings = _load_extended_json(root, path)
+            findings.extend(load_findings)
+            if payload is None:
+                continue
+            records, metadata = _pedagogy_artifact_records(payload)
+            page_ids = [str(record.get("id")) for record in records if record.get("id")]
+            page_texts = {
+                str(record.get("id")): normalize_text(record.get("body"))
+                for record in records
+                if record.get("id") and record.get("kind") == "narrative"
+            }
+            metadata.update({"_page_ids": page_ids, "_page_texts": page_texts})
+            summary, artifact_findings = _summarize_extended_artifact(
+                root, path, kind, records, payload=payload, metadata=metadata
+            )
+            category_artifacts["pedagogy_narration"].append(summary)
+            findings.extend(artifact_findings)
+
+    for relative in EXTERNAL_REFERENCE_RELATIVES:
+        path = root / relative
+        payload, load_findings = _load_extended_json(root, path)
+        findings.extend(load_findings)
+        if payload is None:
+            continue
+        records, metadata = _external_artifact_records(payload, path)
+        summary, artifact_findings = _summarize_extended_artifact(
+            root, path, "external_reference_comparison", records, payload=payload, metadata=metadata
+        )
+        category_artifacts["external_reference_comparison"].append(summary)
+        findings.extend(artifact_findings)
+
+    def aggregate(category: str) -> dict[str, Any]:
+        artifacts = category_artifacts.get(category, [])
+        all_records = sum(int(item["records"]) for item in artifacts)
+        declared = sum(int(item["declared_stable_ids"]) for item in artifacts)
+        missing = sum(int(item["missing_stable_ids"]) for item in artifacts)
+        provenance = sum(int(item["provenance"]["records_with_provenance"]) for item in artifacts)
+        duplicate_ids = sum(len(item["collision_state"]["duplicate_stable_ids"]) for item in artifacts)
+        duplicate_texts = sum(len(item["collision_state"]["duplicate_normalized_texts"]) for item in artifacts)
+        checksum_records = [item["checksum_state"] for item in artifacts]
+        open_records = sum(
+            int(item["resumability"]["open_or_review_pending_records"])
+            + int(item.get("review_gates_open", 0))
+            for item in artifacts
+        )
+        failed_records = sum(int(item["resumability"]["failed_records"]) for item in artifacts)
+        interrupted_records = sum(int(item["resumability"]["interrupted_records"]) for item in artifacts)
+        resumable = sum(
+            int(item["resumability"]["resumable_records"])
+            + int(item.get("review_gates_open", 0))
+            for item in artifacts
+        )
+        counties = sorted({county for item in artifacts for county in item.get("counties", [])})
+        result = {
+            "schema_version": EXTENDED_ARTIFACT_SCHEMA_VERSION,
+            "artifacts": artifacts,
+            "artifact_count": len(artifacts),
+            "records": all_records,
+            "stable_ids": {
+                "declared": declared,
+                "missing": missing,
+                "unique": sum(int(item["unique_stable_ids"]) for item in artifacts),
+            },
+            "unique_normalized_texts": sum(int(item["unique_normalized_texts"]) for item in artifacts),
+            "counties": counties,
+            "provenance": {
+                "records_with_provenance": provenance,
+                "records_missing_provenance": all_records - provenance,
+            },
+            "collision_state": {
+                "artifacts_with_duplicate_stable_ids": duplicate_ids,
+                "artifacts_with_duplicate_normalized_texts": duplicate_texts,
+            },
+            "checksum_state": {
+                "artifact_files": len(checksum_records),
+                "verified": sum(bool(item["verified"]) for item in checksum_records),
+                "missing_recorded_checksum": sum(bool(item["missing_recorded_checksum"]) for item in checksum_records),
+                "mismatched": sum(bool(item["mismatched"]) for item in checksum_records),
+            },
+            "remaining_resumable_work": {
+                "open_or_review_pending_records": open_records,
+                "failed_records": failed_records,
+                "interrupted_records": interrupted_records,
+                "resumable_records": resumable,
+                "manual_recovery_required": sum(int(item["resumability"]["manual_recovery_required"]) for item in artifacts),
+            },
+        }
+        if category == "atlas_names_places":
+            result["subject_kinds"] = dict(
+                sorted(
+                    Counter(
+                        kind
+                        for item in artifacts
+                        for kind, count in item.get("subject_kinds", {}).items()
+                        for _ in range(count)
+                    ).items()
+                )
+            )
+            result["names"] = result["subject_kinds"].get("name", 0)
+            result["places"] = result["subject_kinds"].get("place", 0)
+        if category == "pedagogy_narration":
+            result["narration_pages"] = sum(int(item.get("narration_pages", 0)) for item in artifacts)
+            result["review_gates_open"] = sum(int(item.get("review_gates_open", 0)) for item in artifacts)
+            result["comparison"], comparison_findings = _compare_pedagogy_artifacts(artifacts)
+            findings.extend(comparison_findings)
+        if category == "external_reference_comparison":
+            snapshots = sorted(
+                {
+                    str(item.get("snapshot_at"))[:10]
+                    for item in artifacts
+                    if item.get("snapshot_at")
+                }
+            )
+            result["comparison"] = {
+                "snapshot_dates": snapshots,
+                "snapshot_drift": len(snapshots) > 1,
+                "hierarchy_repair_records": sum(
+                    int(item["records"])
+                    for item in artifacts
+                    if item.get("record_type") == "hierarchy_repair"
+                ),
+                "open_countyless_records": next(
+                    (
+                        int(item.get("summary", {}).get("countylessRecords", 0))
+                        for item in artifacts
+                        if item.get("record_type") == "source_coverage_comparison"
+                    ),
+                    0,
+                ),
+                "open_multi_county_records": next(
+                    (
+                        int(item.get("summary", {}).get("multipleCountyRecords", 0))
+                        for item in artifacts
+                        if item.get("record_type") == "source_coverage_comparison"
+                    ),
+                    0,
+                ),
+            }
+            result["remaining_resumable_work"]["open_comparison_queue"] = (
+                result["comparison"]["open_countyless_records"]
+                + result["comparison"]["open_multi_county_records"]
+            )
+            if result["comparison"]["snapshot_drift"]:
+                findings.append(
+                    finding(
+                        "external_reference_snapshot_drift",
+                        "warning",
+                        category,
+                        "snapshot_dates",
+                        "external-reference artifacts do not share one snapshot date",
+                        "Compare the named snapshots manually before resuming an ingest or promoting a comparison result.",
+                        snapshot_dates=snapshots,
+                    )
+                )
+        return result
+
+    return {
+        "atlas_names_places": aggregate("atlas_names_places"),
+        "pedagogy_narration": aggregate("pedagogy_narration"),
+        "external_reference_comparison": aggregate("external_reference_comparison"),
+    }, findings
+
+
 def _preflight_candidate(record: dict[str, Any]) -> bool:
     if record.get("execution_state") != "approved":
         return False
@@ -1346,6 +1973,7 @@ def live_scoreboard(
     inventory_scan: dict[str, Any],
     archive_scan: dict[str, Any],
     bundle_classification: dict[str, Any],
+    extended_artifacts: dict[str, Any],
     *,
     observed_at: str,
 ) -> dict[str, Any]:
@@ -1458,6 +2086,7 @@ def live_scoreboard(
             "preflight_candidates": preflight_candidates,
             "manual_recovery_required": stale_claims + invalid_claims + interrupted,
         },
+        "extended_artifacts": extended_artifacts,
     }
 
 
@@ -1494,6 +2123,7 @@ def reconcile(
         bundle,
         (batch.get("batch_id") for batch in contract.batches if isinstance(batch, dict)),
     )
+    extended_artifacts, extended_artifact_findings = scan_extended_artifacts(root)
 
     all_findings = [
         *bundle["findings"],
@@ -1502,6 +2132,7 @@ def reconcile(
         *xcode_scan["findings"],
         *batch_findings,
         *bundle_classification_findings,
+        *extended_artifact_findings,
     ]
     for error in contract_errors:
         all_findings.append(
@@ -1546,8 +2177,19 @@ def reconcile(
             "runtime_manifest": MANIFEST_RELATIVE.as_posix(),
             "checksum_archives": ARCHIVE_RELATIVE.as_posix(),
             "generated_xcode_project": PBX_PROJECT_RELATIVE.as_posix(),
+            "extended_artifacts": {
+                "atlas_names_places": [
+                    ATLAS_SUBJECTS_RELATIVE.as_posix(),
+                    ATLAS_HEADWORDS_RELATIVE.as_posix(),
+                ],
+                "pedagogy_narration": [PEDAGOGY_DRAFT_GLOB, PEDAGOGY_RUNTIME_GLOB],
+                "external_reference_comparison": [
+                    path.as_posix() for path in EXTERNAL_REFERENCE_RELATIVES
+                ],
+            },
         },
         "stage_counts": stage_counts,
+        "extended_artifacts": extended_artifacts,
         "scoreboard": live_scoreboard(
             contract,
             batch_records,
@@ -1555,6 +2197,7 @@ def reconcile(
             inventory_scan,
             archive_scan,
             bundle_classification,
+            extended_artifacts,
             observed_at=observed_at,
         ),
         "state_counts": {

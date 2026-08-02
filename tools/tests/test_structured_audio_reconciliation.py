@@ -121,6 +121,59 @@ class StructuredAudioReconciliationTests(unittest.TestCase):
         self.assertEqual(classification["legacy_records"], 1)
         self.assertEqual(findings, [])
 
+    def test_extended_ledgers_report_ids_provenance_checksums_and_resume_work(self):
+        report = reconciliation.reconcile(
+            REPO_ROOT,
+            as_of=datetime(2026, 8, 2, 12, 0, tzinfo=timezone.utc),
+        )
+        extended = report["scoreboard"]["extended_artifacts"]
+        atlas = extended["atlas_names_places"]
+        self.assertEqual(atlas["names"], 50)
+        self.assertEqual(atlas["places"], 30)
+        self.assertEqual(atlas["stable_ids"]["declared"], 80)
+        self.assertEqual(atlas["stable_ids"]["missing"], 640)
+        self.assertEqual(atlas["checksum_state"]["verified"], 0)
+        self.assertEqual(atlas["checksum_state"]["missing_recorded_checksum"], 2)
+
+        narration = extended["pedagogy_narration"]
+        self.assertGreater(narration["narration_pages"], 0)
+        self.assertEqual(narration["comparison"]["paired_pack_ids"], 4)
+        self.assertGreater(narration["review_gates_open"], 0)
+
+        references = extended["external_reference_comparison"]
+        self.assertEqual(references["comparison"]["hierarchy_repair_records"], 4)
+        self.assertEqual(references["comparison"]["open_countyless_records"], 229)
+        self.assertEqual(references["comparison"]["open_multi_county_records"], 312)
+        codes = {item["code"] for item in report["findings"]}
+        self.assertIn("artifact_records_missing_stable_id", codes)
+        self.assertIn("artifact_checksum_not_recorded", codes)
+        self.assertIn("pedagogy_narration_runtime_drift", codes)
+
+    def test_extended_artifact_scan_keeps_duplicate_ids_as_manual_error(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            path = root / "synthetic.json"
+            payload = {"sha256": "0" * 64}
+            path.write_text(json.dumps(payload), encoding="utf-8")
+            summary, findings = reconciliation._summarize_extended_artifact(
+                root,
+                path,
+                "synthetic_artifact",
+                [
+                    {"id": "same", "text": "Dia dhuit", "source": "source-a"},
+                    {"id": "same", "text": "  Dia   dhuit ", "source": "source-b"},
+                ],
+                payload=payload,
+            )
+
+        self.assertEqual(summary["collision_state"]["duplicate_stable_ids"], {"same": 2})
+        self.assertEqual(summary["collision_state"]["duplicate_normalized_texts"], {"Dia dhuit": 2})
+        self.assertEqual(summary["checksum_state"]["mismatched"], True)
+        codes = {item["code"] for item in findings}
+        self.assertIn("artifact_duplicate_stable_id", codes)
+        self.assertIn("artifact_duplicate_normalized_text", codes)
+        self.assertIn("artifact_checksum_mismatch", codes)
+
     def test_provider_success_requires_durable_file_and_checksum(self):
         line = {
             "inventory_slug": "good",
@@ -198,6 +251,10 @@ class StructuredAudioReconciliationTests(unittest.TestCase):
             authoring.STORE_PATH,
             authoring.INVENTORY_PATH,
             REPO_ROOT / "ios/AnTuras/Resources/Audio/manifest.json",
+            REPO_ROOT / "ios/AnTuras/Resources/personal-atlas-subjects.json",
+            REPO_ROOT / "content/audio/atlas-headwords-v1.json",
+            REPO_ROOT / "content/personal-atlas/logainm-audit.json",
+            REPO_ROOT / "content/mayo/grainne-1593.pack.draft.json",
         ]
         before = {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
         reconciliation.reconcile(

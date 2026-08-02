@@ -98,6 +98,17 @@ approved/claimed/succeeded/failed lines, new v2 versus legacy bundled clips, che
 state, and remaining resumable or manual-recovery work. The full `reconcile` output
 retains the per-record findings and source drift details.
 
+The same JSON scoreboard carries `extended_artifacts` for the adjacent production
+ledgers: `atlas_names_places` counts the 50-name/30-place pilot pack and provisional
+county headwords with declared-id, provenance, checksum, collision, and review-pending
+states; `pedagogy_narration` checks draft/runtime page ids and narration text drift plus
+open review gates; and `external_reference_comparison` compares retained Logainm
+snapshot dates, hierarchy repairs, and open countyless/multi-county queues. A derived
+placement key or matching file hash is reported as evidence for reconciliation only; it
+does not create a stable id, provenance, pedagogy review, native review, or learner-release
+state. Missing checksums and open queues are surfaced as warnings or resumable work, and
+any collision or checksum mismatch remains manual recovery.
+
 In that scoreboard, **new v2** means a runtime row explicitly sourced from a registered
 `structured_batch:<batch_id>`; **legacy** means every other bundled row. Inventory
 membership or a matching checksum never upgrades a legacy row into a v2 capture.
