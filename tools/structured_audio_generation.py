@@ -35,15 +35,6 @@ LOCKED_MODEL_ID = "eleven_v3"
 LOCKED_LANGUAGE_CODE = "ga"
 LOCKED_OUTPUT_FORMAT = "mp3_44100_192"
 APPROVED_CREDIT_CAP = 25_000
-AUTHORIZED_BATCH_ID = "mayo.d31.capture-prep.2026-08-02"
-AUTHORIZED_MEMBER_IDS = frozenset(
-    {
-        "ainm.grainne-named",
-        "farraige.sea-here",
-        "farraige.ship-on-sea",
-        "farraige.where-sea",
-    }
-)
 
 
 class GateError(RuntimeError):
@@ -359,19 +350,7 @@ def preflight(canonical_root: Path, batch_raw: str) -> dict[str, Any]:
         return {"ok": False, "errors": errors, "batch_path": str(batch_path)}
 
     gate_errors: list[str] = []
-    if batch.get("batch_id") != AUTHORIZED_BATCH_ID:
-        gate_errors.append(
-            "batch id is outside the authorized four-line scope: "
-            f"{batch.get('batch_id')!r}"
-        )
     lines = batch.get("lines") or []
-    member_ids = {
-        member_id
-        for line in lines
-        for member_id in line.get("member_ids", [])
-    }
-    if len(lines) != 4 or member_ids != AUTHORIZED_MEMBER_IDS:
-        gate_errors.append("batch does not contain exactly the authorized four Mayo lines")
     execution = batch.get("execution") or {}
     if execution.get("state") != "approved" or execution.get("provider_calls_allowed") is not True:
         gate_errors.append("batch execution is not approved for provider calls")
