@@ -223,6 +223,29 @@ generation control before it can enter the learner-facing corpus.
 5. Treat harvested output as review-pending until native-speaker, pedagogy, historical,
    and exercise checks promote it.
 
+## D32 Track D mechanical review audit
+
+The canonical spot-listen record carries the risk-ranked editorial queue in
+`SPOT-LISTEN-2026-07-31.md`. The companion audit checks inventory identity, launch bind
+coverage, exact-text intent conflicts, retired legacy generation inputs, named/mutation
+review prompts, and batch-state hazards:
+
+```bash
+python3 -B tools/audit_irish_review_queue.py report
+python3 -B tools/audit_irish_review_queue.py check
+```
+
+The audit is deliberately non-linguistic: it does not decide whether Irish is idiomatic
+or correctly pronounced, and it never changes review, capture, audio-QA, checksum, claim,
+lease, or learner-release state. Its report separates `capture_blocked` findings, which
+withhold a line even from provisional capture, from `review_before_release` findings,
+which may remain D32 capture candidates when the v2 and batch contracts are satisfied,
+and `operational_watch` findings, which identify existing claims or leases that must not
+be duplicated. A non-zero `check` means capture blockers remain; review-only risks do
+not fail it, so the audit does not turn the emergency harvest into a blanket stop. This
+is not evidence that any external language, pedagogy, history, or audio review has been
+completed.
+
 ## Coverage accounting
 
 `report` currently distinguishes 640 atlas placements, 191 orthographic spellings, 12
