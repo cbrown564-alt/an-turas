@@ -337,10 +337,20 @@ def immutable_batch_identity(batch: dict[str, Any]) -> str:
     return sha256_bytes(encoded)
 
 
-def preflight(canonical_root: Path, batch_raw: str) -> dict[str, Any]:
+def preflight(
+    canonical_root: Path,
+    batch_raw: str,
+    *,
+    validated_contract: Any | None = None,
+    contract_errors: list[str] | None = None,
+) -> dict[str, Any]:
     import structured_audio_authoring as authoring
 
-    errors, contract = authoring.validate_contract(root=canonical_root)
+    if validated_contract is None:
+        errors, contract = authoring.validate_contract(root=canonical_root)
+    else:
+        errors = list(contract_errors or [])
+        contract = validated_contract
     batch_path = resolve_inside(canonical_root, batch_raw)
     if not batch_path.is_file():
         errors.append(f"batch manifest is missing: {batch_raw}")

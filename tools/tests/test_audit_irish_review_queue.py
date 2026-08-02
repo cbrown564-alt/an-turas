@@ -23,7 +23,7 @@ class IrishReviewAuditTests(unittest.TestCase):
     def test_current_source_counts_are_explicit(self) -> None:
         self.assertEqual(self.result["summary"]["launch_rows"], 104)
         self.assertEqual(self.result["summary"]["legacy_members"], 79)
-        self.assertEqual(self.result["summary"]["v2_members"], 4)
+        self.assertEqual(self.result["summary"]["v2_members"], 1283)
         self.assertEqual(self.result["summary"]["inventory_spot_flagged"], 43)
 
     def test_missing_launch_inventory_is_a_hard_bind_rule_finding(self) -> None:
@@ -69,7 +69,7 @@ class IrishReviewAuditTests(unittest.TestCase):
         self.assertEqual(item["gate"], audit.CAPTURE_BLOCKED)
         self.assertEqual(self.result["summary"]["legacy_pending_generation"], 7)
 
-    def test_active_claim_without_provider_result_is_operationally_visible(self) -> None:
+    def test_completed_capture_has_no_stale_operational_claim_watch(self) -> None:
         matching = [
             finding
             for finding in self.findings
@@ -78,9 +78,8 @@ class IrishReviewAuditTests(unittest.TestCase):
                 "batch.mayo.d31.capture-prep.2026-08-02"
             )
         ]
-        self.assertTrue(matching)
-        self.assertTrue(any("not_started" in item["message"] for item in matching))
-        self.assertTrue(any(item["gate"] == audit.OPERATIONAL_WATCH for item in matching))
+        self.assertFalse(matching)
+        self.assertEqual(self.result["summary"]["operational_watches"], 0)
 
     def test_gate_counts_keep_review_risks_out_of_capture_check(self) -> None:
         summary = self.result["summary"]

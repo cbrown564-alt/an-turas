@@ -39,7 +39,7 @@
       "estimated_credits": 17,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "claimed",
+        "status": "completed",
         "owner_id": "codex.track-c.d32-drain",
         "claimed_at": "2026-08-02T10:52:00Z",
         "lease_expires_at": "2026-08-03T10:52:00Z"
@@ -50,28 +50,28 @@
         "approved_at": "2026-08-02T10:52:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T12:41:50.203316+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "42ZXW41aZYRzgl9Kvpqr",
+        "started_at": "2026-08-02T12:41:47.599834+00:00",
+        "completed_at": "2026-08-02T12:41:50.194807+00:00",
+        "reported_credits": 17.0,
+        "reported_characters": 17
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/taa-eeist-sa-sceeal.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "0a56e66787a050f02b7d7252048b2dec1f6e35d8f7fc4f78b8335d2aeabb7d3e",
+        "bytes": 49572,
+        "duration_seconds": 2.0
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -82,10 +82,18 @@
     "credits_per_character": 1,
     "estimated_batch_credits": 17,
     "estimated_cumulative_credits": 55,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 89578.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T12:41:47.599834+00:00",
+      "used_credits": 89578.0,
+      "remaining_credits": 146521.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T12:41:50.194807+00:00",
+      "used_credits": 89578.0,
+      "remaining_credits": 146521.0
+    },
     "cap_authorization": {
       "status": "payload_limited",
       "authorized_by": "user.d32.scale.019fc1ba",
@@ -101,7 +109,7 @@
     "member_references": 3,
     "planned": 0,
     "approved": 1,
-    "succeeded": 0,
+    "succeeded": 1,
     "failed": 0
   },
   "manifest_identity_sha256": "d816396d678c768fbc014228a0da46a32452382c09cba3a188901865dd49a0cb"

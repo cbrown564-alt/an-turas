@@ -37,7 +37,7 @@
       "estimated_credits": 25,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "claimed",
+        "status": "completed",
         "owner_id": "codex.track-c.d32-drain",
         "claimed_at": "2026-08-02T10:52:00Z",
         "lease_expires_at": "2026-08-03T10:52:00Z"
@@ -48,28 +48,28 @@
         "approved_at": "2026-08-02T10:52:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T13:15:49.287721+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "MjXFhO30z3oMvoqy67PF",
+        "started_at": "2026-08-02T13:15:44.737271+00:00",
+        "completed_at": "2026-08-02T13:15:49.275003+00:00",
+        "reported_credits": 25.0,
+        "reported_characters": 25
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/tar-ar-ais-chuig-an-ainm.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "b9756825e0543904210da7bcc3ac8543ded98676eec6aa59d1e5ae166232d724",
+        "bytes": 53333,
+        "duration_seconds": 2.16
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,15 +85,15 @@
       "estimated_credits": 54,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "claimed",
-        "owner_id": "codex.track-c.d32-drain",
-        "claimed_at": "2026-08-02T10:52:00Z",
-        "lease_expires_at": "2026-08-03T10:52:00Z"
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
       },
       "request": {
-        "status": "approved",
-        "approved_by": "user.d32.scale.019fc1ba",
-        "approved_at": "2026-08-02T10:52:00Z"
+        "status": "cancelled",
+        "approved_by": null,
+        "approved_at": null
       },
       "retry": {
         "attempt_count": 0,
@@ -133,7 +133,7 @@
       "estimated_credits": 23,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "claimed",
+        "status": "completed",
         "owner_id": "codex.track-c.d32-drain",
         "claimed_at": "2026-08-02T10:52:00Z",
         "lease_expires_at": "2026-08-03T10:52:00Z"
@@ -144,28 +144,28 @@
         "approved_at": "2026-08-02T10:52:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T13:15:49.287894+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "yQed6pAjArEHxZosLMVw",
+        "started_at": "2026-08-02T13:15:44.737271+00:00",
+        "completed_at": "2026-08-02T13:15:49.275003+00:00",
+        "reported_credits": 23.0,
+        "reported_characters": 23
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/sihtric-is-ainm-don-rii.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "5a66602a7eee140af1f00b19f066bc17d60b1ae9cabfaee9a361955e78aa6955",
+        "bytes": 51453,
+        "duration_seconds": 2.08
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -174,12 +174,20 @@
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
     "credits_per_character": 1,
-    "estimated_batch_credits": 102,
+    "estimated_batch_credits": 48,
     "estimated_cumulative_credits": 140,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 92445.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T13:15:44.737271+00:00",
+      "used_credits": 92445.0,
+      "remaining_credits": 143654.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T13:15:49.275003+00:00",
+      "used_credits": 92445.0,
+      "remaining_credits": 143654.0
+    },
     "cap_authorization": {
       "status": "payload_limited",
       "authorized_by": "user.d32.scale.019fc1ba",
@@ -194,9 +202,9 @@
     "lines": 3,
     "member_references": 3,
     "planned": 0,
-    "approved": 3,
-    "succeeded": 0,
+    "approved": 2,
+    "succeeded": 2,
     "failed": 0
   },
-  "manifest_identity_sha256": "8edf4786326fdfc12154bf95f6d11c80fac51aebbf023a2699907da64bdb2002"
+  "manifest_identity_sha256": "0ac078667e30a676cb0aa08ab95802b1b6a587452e087e61ceca3093b22739cd"
 }

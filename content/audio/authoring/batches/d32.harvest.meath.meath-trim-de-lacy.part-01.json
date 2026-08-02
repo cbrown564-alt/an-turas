@@ -37,7 +37,7 @@
       "estimated_credits": 38,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "claimed",
+        "status": "completed",
         "owner_id": "codex.track-c.d32-drain",
         "claimed_at": "2026-08-02T10:52:00Z",
         "lease_expires_at": "2026-08-03T10:52:00Z"
@@ -48,28 +48,28 @@
         "approved_at": "2026-08-02T10:52:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T13:15:58.338186+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "R3ASiRWnOSTnMyZ7BgZa",
+        "started_at": "2026-08-02T13:15:54.566200+00:00",
+        "completed_at": "2026-08-02T13:15:58.326290+00:00",
+        "reported_credits": 38.0,
+        "reported_characters": 38
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/taa-an-t-aath-anseo-taa-an-baile-ansiuud.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "4d614642b7028ab40945295e35695f12605b3323e48f9a8a71ee21e3b92891e1",
+        "bytes": 82173,
+        "duration_seconds": 3.36
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,15 +85,15 @@
       "estimated_credits": 44,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "claimed",
-        "owner_id": "codex.track-c.d32-drain",
-        "claimed_at": "2026-08-02T10:52:00Z",
-        "lease_expires_at": "2026-08-03T10:52:00Z"
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
       },
       "request": {
-        "status": "approved",
-        "approved_by": "user.d32.scale.019fc1ba",
-        "approved_at": "2026-08-02T10:52:00Z"
+        "status": "cancelled",
+        "approved_by": null,
+        "approved_at": null
       },
       "retry": {
         "attempt_count": 0,
@@ -133,15 +133,15 @@
       "estimated_credits": 49,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "claimed",
-        "owner_id": "codex.track-c.d32-drain",
-        "claimed_at": "2026-08-02T10:52:00Z",
-        "lease_expires_at": "2026-08-03T10:52:00Z"
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
       },
       "request": {
-        "status": "approved",
-        "approved_by": "user.d32.scale.019fc1ba",
-        "approved_at": "2026-08-02T10:52:00Z"
+        "status": "cancelled",
+        "approved_by": null,
+        "approved_at": null
       },
       "retry": {
         "attempt_count": 0,
@@ -174,12 +174,20 @@
     "approved_cap": 25000,
     "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
     "credits_per_character": 1,
-    "estimated_batch_credits": 131,
+    "estimated_batch_credits": 38,
     "estimated_cumulative_credits": 169,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 92445.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T13:15:54.566200+00:00",
+      "used_credits": 92445.0,
+      "remaining_credits": 143654.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T13:15:58.326290+00:00",
+      "used_credits": 92445.0,
+      "remaining_credits": 143654.0
+    },
     "cap_authorization": {
       "status": "payload_limited",
       "authorized_by": "user.d32.scale.019fc1ba",
@@ -194,9 +202,9 @@
     "lines": 3,
     "member_references": 3,
     "planned": 0,
-    "approved": 3,
-    "succeeded": 0,
+    "approved": 1,
+    "succeeded": 1,
     "failed": 0
   },
-  "manifest_identity_sha256": "527dabb203140a253945c88738ad78d5c616e88356e45891cfe33bd148315ca3"
+  "manifest_identity_sha256": "840d29f86678d1ab83e0ed04496d9ab1d4552ec27d5e44784aff8471fcd4dfcf"
 }

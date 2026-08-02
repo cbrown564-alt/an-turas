@@ -60,7 +60,15 @@ def drain(root: Path, dry_run: bool = False) -> dict[str, Any]:
             result["batches"].append(row)
             continue
 
-        info = generation.preflight(root, batch_path)
+        # The complete authoring contract is immutable for the duration of one
+        # drain. Reusing the validated snapshot avoids an O(batches * corpus)
+        # rescan before provider work while preserving every per-batch gate.
+        info = generation.preflight(
+            root,
+            batch_path,
+            validated_contract=contract,
+            contract_errors=errors,
+        )
         if not info.get("ok"):
             row.update({"status": "blocked", "errors": info.get("errors", [])})
             result["blocked"].append(row)

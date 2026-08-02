@@ -436,11 +436,18 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
             claim_owner="codex.track-c.synthetic",
             claimed_at="2026-08-02T00:00:00Z",
             lease_expires_at="2026-08-02T18:00:00Z",
+            payload_id="d32.test.payload",
+            baseline_used_credits=1_000,
+            payload_credit_limit=500,
         )
         self.assertTrue(plan["emergency_approved"])
         self.assertGreater(len(plan["batches"]), 0)
         for batch in plan["batches"]:
             self.assertTrue(batch["execution"]["provider_calls_allowed"])
+            self.assertEqual(
+                batch["spend"]["cap_authorization"]["status"],
+                "payload_limited",
+            )
             for line in batch["lines"]:
                 self.assertEqual(line["request"]["status"], "approved")
                 self.assertEqual(line["claim"]["status"], "claimed")

@@ -46,7 +46,7 @@
       "estimated_credits": 14,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "claimed",
+        "status": "completed",
         "owner_id": "codex.track-c.d32-drain",
         "claimed_at": "2026-08-02T10:52:00Z",
         "lease_expires_at": "2026-08-03T10:52:00Z"
@@ -57,28 +57,28 @@
         "approved_at": "2026-08-02T10:52:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T11:57:11.926923+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "i0yuwisp4yHeuOtrpYs7",
+        "started_at": "2026-08-02T11:57:08.760778+00:00",
+        "completed_at": "2026-08-02T11:57:11.923730+00:00",
+        "reported_credits": 14.0,
+        "reported_characters": 14
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/taa-sean-anseo.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "f3ed2d517b91c514259343b3e7b8faee31cf2b9ef5b1bd3753495c0c79e3caed",
+        "bytes": 32017,
+        "duration_seconds": 1.28
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -104,7 +104,7 @@
       "estimated_credits": 16,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "claimed",
+        "status": "completed",
         "owner_id": "codex.track-c.d32-drain",
         "claimed_at": "2026-08-02T10:52:00Z",
         "lease_expires_at": "2026-08-03T10:52:00Z"
@@ -115,28 +115,28 @@
         "approved_at": "2026-08-02T10:52:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-02T11:57:11.926973+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
-        "reported_credits": null,
-        "reported_characters": null
+        "status": "succeeded",
+        "provider_request_id": "KRHeIILA4eUC3cDFdwsz",
+        "started_at": "2026-08-02T11:57:08.760778+00:00",
+        "completed_at": "2026-08-02T11:57:11.923730+00:00",
+        "reported_credits": 16.0,
+        "reported_characters": 16
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/taa-talamh-anseo.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "5f07cab62fa48a59f7e5cc036ff9d71f41e5d8dcc07750f7aadf35bf780e632a",
+        "bytes": 34525,
+        "duration_seconds": 1.36
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -147,10 +147,18 @@
     "credits_per_character": 1,
     "estimated_batch_credits": 30,
     "estimated_cumulative_credits": 68,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 88458.0,
+    "usage_before": {
+      "captured_at": "2026-08-02T11:57:08.760778+00:00",
+      "used_credits": 88458.0,
+      "remaining_credits": 147641.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-02T11:57:11.923730+00:00",
+      "used_credits": 88458.0,
+      "remaining_credits": 147641.0
+    },
     "cap_authorization": {
       "status": "payload_limited",
       "authorized_by": "user.d32.scale.019fc1ba",
@@ -166,7 +174,7 @@
     "member_references": 21,
     "planned": 0,
     "approved": 2,
-    "succeeded": 0,
+    "succeeded": 2,
     "failed": 0
   },
   "manifest_identity_sha256": "ad6708c9a06f534e47d7a632b245d29f5cb81d652b3645919ef8434f15654fcb"
