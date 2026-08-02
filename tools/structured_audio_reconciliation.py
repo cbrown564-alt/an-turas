@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import structured_audio_authoring as authoring
+import audio_technical_anomalies as technical_audio
 
 
 ROOT = authoring.ROOT
@@ -305,6 +306,7 @@ def scan_runtime_bundle(
     missing_files: list[str] = []
     checksum_mismatches: list[str] = []
     byte_mismatches: list[str] = []
+    integrity_by_file: dict[str, dict[str, Any]] = {}
     for index, row in enumerate(rows):
         identifier = str(row.get("slug") or f"row-{index}")
         slug = row.get("slug")
@@ -414,6 +416,10 @@ def scan_runtime_bundle(
             continue
         actual_sha = sha256_file(path)
         actual_bytes = path.stat().st_size
+        integrity_by_file[filename] = {
+            "sha256": actual_sha,
+            "bytes": actual_bytes,
+        }
         if row.get("sha256") != actual_sha:
             checksum_mismatches.append(slug)
             findings.append(
@@ -468,6 +474,11 @@ def scan_runtime_bundle(
 
     orphan_files = sorted(set(actual_files) - referenced_files)
     for filename in orphan_files:
+        if filename not in integrity_by_file:
+            integrity_by_file[filename] = {
+                "sha256": sha256_file(actual_files[filename]),
+                "bytes": actual_files[filename].stat().st_size,
+            }
         findings.append(
             finding(
                 "orphan_bundle_file",
@@ -477,6 +488,77 @@ def scan_runtime_bundle(
                 "MP3 exists in the canonical Audio directory but is not referenced by the runtime manifest",
                 "Keep the file intact and decide manually whether to register, archive, or retire it; this audit never deletes it.",
                 file=relative_path(root, actual_files[filename]),
+            )
+        )
+
+    technical_entries: list[dict[str, Any]] = []
+    for row in rows:
+        filename = row.get("file")
+        if not isinstance(filename, str) or Path(filename).name != filename:
+            continue
+        path = actual_files.get(filename)
+        integrity = integrity_by_file.get(filename, {})
+        technical_entries.append(
+            {
+                "slug": row.get("slug"),
+                "file": filename,
+                "path": path,
+                "text": row.get("text"),
+                "sources": row.get("sources"),
+                "recorded_sha256": row.get("sha256"),
+                "actual_sha256": integrity.get("sha256"),
+            }
+        )
+    for filename in orphan_files:
+        integrity = integrity_by_file[filename]
+        technical_entries.append(
+            {
+                "slug": Path(filename).stem,
+                "file": filename,
+                "path": actual_files[filename],
+                "text": None,
+                "sources": [],
+                "recorded_sha256": None,
+                "actual_sha256": integrity["sha256"],
+            }
+        )
+    technical_report = technical_audio.audit_inventory(
+        technical_entries,
+        source_manifest=relative_path(root, manifest_path),
+    )
+    for row in technical_report["rows"]:
+        status = row["status"]
+        if status not in {"quarantine", "review"}:
+            continue
+        reasons = row["reasons"]
+        disposition = "quarantine" if status == "quarantine" else "review"
+        severity = "error" if disposition == "quarantine" else "warning"
+        findings.append(
+            finding(
+                "audio_technical_quarantine" if disposition == "quarantine" else "audio_technical_review_required",
+                severity,
+                "bundle",
+                str(row.get("slug") or row.get("file")),
+                f"local technical audio inspection requires {disposition}: {', '.join(reasons)}",
+                "Keep the clip out of learner release and inspect or replace it through an explicit reviewed audio operation; this reconciliation never mutates files or QA state.",
+                disposition=disposition,
+                reasons=reasons,
+                file=row.get("file"),
+                measurements=row.get("measurements"),
+                provenance=row.get("provenance"),
+                technical_audit=technical_report["contract"],
+            )
+        )
+    if technical_report["summary"]["decoder_unavailable"]:
+        findings.append(
+            finding(
+                "audio_technical_audit_unavailable",
+                "error",
+                "bundle",
+                technical_report["decoder"]["program"],
+                "the configured local decoder was unavailable, so technical audio inspection could not complete",
+                "Install or restore the declared local decoder before treating the tranche as technically inspected; no provider or network fallback is allowed.",
+                technical_audit=technical_report["contract"],
             )
         )
 
@@ -494,6 +576,7 @@ def scan_runtime_bundle(
         "checksum_mismatches": sorted(checksum_mismatches),
         "byte_mismatches": sorted(byte_mismatches),
         "checksum_verified_rows": checksum_verified_rows,
+        "technical_audio": technical_report,
         "findings": findings,
     }
 
@@ -2071,6 +2154,7 @@ def live_scoreboard(
                 for snapshot in archive_scan["snapshots"]
             ),
         },
+        "technical_audio": bundle["technical_audio"]["summary"],
         "remaining_resumable_work": {
             "authorized_not_succeeded_lines": authorized_not_succeeded,
             "approved_not_started_lines": sum(
@@ -2221,6 +2305,7 @@ def reconcile(
             "orphan_bundle_files": bundle["orphan_files"],
             "bundle_checksum_mismatches": bundle["checksum_mismatches"],
             "bundle_byte_count_mismatches": bundle["byte_mismatches"],
+            "technical_audio": bundle["technical_audio"]["summary"],
             "inventory_not_bundled": inventory_scan["inventory_not_bundled"],
             "bundle_not_in_inventory": inventory_scan["bundle_not_inventory"],
             "inventory_bundle_qa_drift": inventory_scan["qa_drift"],

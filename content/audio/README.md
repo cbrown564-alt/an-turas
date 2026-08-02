@@ -257,6 +257,28 @@ not fail it, so the audit does not turn the emergency harvest into a blanket sto
 is not evidence that any external language, pedagogy, history, or audio review has been
 completed.
 
+`tools/audio_technical_anomalies.py` is the read-only technical pass used by
+`tools/structured_audio_reconciliation.py` after each tranche. The reconciliation
+inspects every manifest row and orphan MP3 it can address with the local `ffmpeg`
+decoder, recording stable measurements, SHA-256 provenance, and the detector contract
+version. Missing or undecodable files, silence, clipping, and absolute duration failures
+are emitted as `audio_technical_quarantine` findings. Distribution outliers for duration
+or level are emitted as `audio_technical_review_required` findings. Each finding has a
+clear reason and disposition; nothing is moved, deleted, overwritten, or promoted to a
+different QA state. A decoder-unavailable result is itself blocking because the tranche
+was not technically inspected.
+
+Run the full post-tranche pass with:
+
+```bash
+python3 -B tools/structured_audio_authoring.py reconcile --json
+```
+
+This pass is a technical anomaly screen only. It cannot judge pronunciation, dialect,
+meaning, pedagogy, or learner-release suitability, and it does not replace the
+risk-stratified human listening queue or the separately disabled ABAIR reference
+comparison.
+
 ## Coverage accounting
 
 `report` currently distinguishes 640 atlas placements, 191 orthographic spellings, 12
