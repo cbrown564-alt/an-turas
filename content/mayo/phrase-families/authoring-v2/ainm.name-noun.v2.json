@@ -1,0 +1,150 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "mayo.grainne-1593.ainm.name-noun",
+  "county": "mayo",
+  "story_ref": {
+    "path": "content/mayo/grainne-1593.pack.draft.json",
+    "record_id": "mayo.grainne-1593"
+  },
+  "target": {
+    "lexeme_id": "lex.ainm.name-noun",
+    "citation_form": "ainm",
+    "sense_id": "ainm.name-noun",
+    "part_of_speech": "noun",
+    "english_sense": "name"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.mayo.14.ainm",
+      "gloss": "name"
+    }
+  ],
+  "status": "representative_contract_example",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "Repository-draft example proving the contract shape; all review and release gates remain explicit."
+  },
+  "members": [
+    {
+      "id": "ainm.grainne-named",
+      "family_id": "mayo.grainne-1593.ainm.name-noun",
+      "target": {
+        "lexeme_id": "lex.ainm.name-noun",
+        "citation_form": "ainm",
+        "sense_id": "ainm.name-noun",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "name-identification frame"
+      },
+      "irish": {
+        "text": "Gráinne is ainm di.",
+        "normalized_text": "Gráinne is ainm di.",
+        "inventory_slug": "graainne-is-ainm-di",
+        "text_sha256": "233f5789f0bbfdbdc880dca5dc435bf71bbf73ac6e684dcbc794850af822f78c"
+      },
+      "english": {
+        "intent": "Her name is Gráinne.",
+        "literal_note": "The line identifies Gráinne by name; it is not dialogue spoken as Gráinne."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/mayo/grainne-1593.pack.draft.json",
+          "record_id": "mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.14.ainm"
+        ],
+        "place": {
+          "id": "mayo.rockfleet-umhaill",
+          "label": "Rockfleet / Umhaill"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "productive_pattern"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral third-person identification",
+        "purpose": "Produce ainm in a complete sentence tied to the documentary name-find.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/mayo/grainne-1593.pack.draft.json",
+          "record_id": "mayo.in-the-record.type-name",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "productive pattern"
+        }
+      ],
+      "provenance": {
+        "origin": "repository_draft",
+        "invented": false,
+        "composition_note": "Exact text is already present in the Mayo review draft; repository presence is not linguistic approval.",
+        "source_refs": [
+          {
+            "path": "content/mayo/grainne-1593.pack.draft.json",
+            "record_id": "mayo.in-the-record.type-name",
+            "text_field": "exercise.answer",
+            "supports": "repository_text"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "migration.contract-repair",
+          "completed_at": "2026-08-01"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "not_requested",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "fada",
+        "pronoun_reference"
+      ]
+    }
+  ]
+}

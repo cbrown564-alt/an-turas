@@ -1,0 +1,418 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://antur.as/schemas/irish-phrase-family-v2.schema.json",
+  "title": "An Turas Irish phrase-family authoring document",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract",
+    "id",
+    "county",
+    "story_ref",
+    "target",
+    "atlas_placements",
+    "status",
+    "claims",
+    "members"
+  ],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "contract": { "const": "irish_phrase_family" },
+    "id": { "type": "string", "minLength": 1 },
+    "county": { "type": "string", "minLength": 1 },
+    "story_ref": { "$ref": "#/$defs/repositoryRef" },
+    "target": { "$ref": "#/$defs/familyTarget" },
+    "atlas_placements": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/atlasPlacement" }
+    },
+    "status": {
+      "enum": ["draft", "active", "representative_contract_example", "retired"]
+    },
+    "claims": { "$ref": "#/$defs/claims" },
+    "members": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/member" }
+    }
+  },
+  "$defs": {
+    "nullableString": {
+      "type": ["string", "null"]
+    },
+    "repositoryRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "record_id"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "record_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "record_id", "supports"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "record_id": { "type": "string", "minLength": 1 },
+        "text_field": { "type": "string", "minLength": 1 },
+        "supports": {
+          "enum": [
+            "repository_text",
+            "external_attestation",
+            "pattern_only",
+            "exercise_context",
+            "migration_only"
+          ]
+        }
+      }
+    },
+    "atlasPlacement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "gloss"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "gloss": { "type": "string", "minLength": 1 }
+      }
+    },
+    "familyTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lexeme_id", "citation_form", "sense_id", "part_of_speech", "english_sense"],
+      "properties": {
+        "lexeme_id": { "type": "string", "minLength": 1 },
+        "citation_form": { "type": "string", "minLength": 1 },
+        "sense_id": { "type": "string", "minLength": 1 },
+        "part_of_speech": { "type": "string", "minLength": 1 },
+        "english_sense": { "type": "string", "minLength": 1 }
+      }
+    },
+    "memberTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lexeme_id", "citation_form", "sense_id", "part_of_speech", "target_form", "morphology"],
+      "properties": {
+        "lexeme_id": { "type": "string", "minLength": 1 },
+        "citation_form": { "type": "string", "minLength": 1 },
+        "sense_id": { "type": "string", "minLength": 1 },
+        "part_of_speech": { "type": "string", "minLength": 1 },
+        "target_form": { "$ref": "#/$defs/nullableString" },
+        "morphology": { "$ref": "#/$defs/nullableString" }
+      }
+    },
+    "irishText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "normalized_text", "inventory_slug", "text_sha256"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "normalized_text": { "type": "string", "minLength": 1 },
+        "inventory_slug": { "type": "string", "minLength": 1 },
+        "text_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "englishIntent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intent", "literal_note"],
+      "properties": {
+        "intent": { "type": "string", "minLength": 1 },
+        "literal_note": { "type": "string" }
+      }
+    },
+    "place": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 }
+      }
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["county", "story_ref", "atlas_placement_ids", "place", "setting", "learner_role"],
+      "properties": {
+        "county": { "type": "string", "minLength": 1 },
+        "story_ref": { "$ref": "#/$defs/repositoryRef" },
+        "atlas_placement_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "place": { "$ref": "#/$defs/place" },
+        "setting": { "enum": ["present_day", "historical_bounded"] },
+        "learner_role": { "enum": ["present_day_self", "self_observer"] }
+      }
+    },
+    "learning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stages", "roles", "dialect", "register", "purpose", "fixture_only"],
+      "properties": {
+        "stages": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": ["introduction", "retrieval", "phrase_or_sentence_use", "later_reuse"]
+          }
+        },
+        "roles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "context_introduction",
+              "productive_pattern",
+              "dialogue_turn",
+              "morphology_contrast",
+              "listening_contrast",
+              "later_reuse",
+              "story_opening",
+              "story_recap"
+            ]
+          }
+        },
+        "dialect": { "type": "string", "minLength": 1 },
+        "register": { "type": "string", "minLength": 1 },
+        "purpose": { "type": "string", "minLength": 1 },
+        "fixture_only": { "type": "boolean" }
+      }
+    },
+    "exerciseConsumer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "record_id", "response_family", "container", "use"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "record_id": { "type": "string", "minLength": 1 },
+        "response_family": {
+          "enum": [
+            "pictureMapSelection",
+            "sentenceConstruction",
+            "freeTyping",
+            "fillGap",
+            "listenChoose",
+            "listenType",
+            "recordCompare",
+            "matching",
+            "readListenRespond",
+            "grammarDiscovery"
+          ]
+        },
+        "container": {
+          "enum": ["none", "conversation", "radioListening", "contextualMistakeReview", "wordsYouCarry", "completion"]
+        },
+        "use": { "type": "string", "minLength": 1 }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin", "invented", "composition_note", "source_refs"],
+      "properties": {
+        "origin": {
+          "enum": ["repository_draft", "attested_external", "invented_pedagogical", "legacy_unknown"]
+        },
+        "invented": { "type": ["boolean", "null"] },
+        "composition_note": { "type": "string", "minLength": 1 },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/sourceRef" }
+        }
+      }
+    },
+    "reviewRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewer_ref", "reviewed_at", "scope", "evidence_ref"],
+      "properties": {
+        "reviewer_ref": { "type": "string", "minLength": 1 },
+        "reviewed_at": { "type": "string", "minLength": 1 },
+        "scope": { "type": "string", "minLength": 1 },
+        "evidence_ref": { "type": "string", "minLength": 1 }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "record"],
+      "properties": {
+        "status": { "enum": ["not_requested", "pending", "approved", "changes_requested", "rejected"] },
+        "record": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/reviewRecord" }
+          ]
+        }
+      }
+    },
+    "authoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "revision", "author_ref", "completed_at"],
+      "properties": {
+        "status": { "enum": ["draft", "complete", "retired"] },
+        "revision": { "type": "integer", "minimum": 1 },
+        "author_ref": { "$ref": "#/$defs/nullableString" },
+        "completed_at": { "$ref": "#/$defs/nullableString" }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["basis", "authorized_by", "authorized_at", "reason", "fixture_only"],
+      "properties": {
+        "basis": { "enum": ["repository_draft_owner", "pedagogy_approved", "fixture_owner_exception"] },
+        "authorized_by": { "type": "string", "minLength": 1 },
+        "authorized_at": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 },
+        "fixture_only": { "type": "boolean" }
+      }
+    },
+    "captureRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "requested_by", "requested_at", "authorization", "batch_line_ids"],
+      "properties": {
+        "status": { "enum": ["not_requested", "planned", "requested", "cancelled"] },
+        "requested_by": { "$ref": "#/$defs/nullableString" },
+        "requested_at": { "$ref": "#/$defs/nullableString" },
+        "authorization": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/authorization" }
+          ]
+        },
+        "batch_line_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "audioQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "record", "batch_line_id"],
+      "properties": {
+        "status": { "enum": ["not_generated", "pending", "passed", "flagged", "failed", "legacy_unverified"] },
+        "record": { "type": ["object", "null"] },
+        "batch_line_id": { "$ref": "#/$defs/nullableString" }
+      }
+    },
+    "learnerRelease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reasons"],
+      "properties": {
+        "status": { "enum": ["blocked", "eligible", "retired"] },
+        "reasons": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "states": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authoring", "reviews", "capture_request", "audio_qa", "learner_release"],
+      "properties": {
+        "authoring": { "$ref": "#/$defs/authoring" },
+        "reviews": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["editorial", "pedagogy", "irish_language"],
+          "properties": {
+            "editorial": { "$ref": "#/$defs/review" },
+            "pedagogy": { "$ref": "#/$defs/review" },
+            "irish_language": { "$ref": "#/$defs/review" }
+          }
+        },
+        "capture_request": { "$ref": "#/$defs/captureRequest" },
+        "audio_qa": { "$ref": "#/$defs/audioQa" },
+        "learner_release": { "$ref": "#/$defs/learnerRelease" }
+      }
+    },
+    "claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["linguistic_approval", "historical_authenticity", "note"],
+      "properties": {
+        "linguistic_approval": { "type": "boolean" },
+        "historical_authenticity": { "type": "boolean" },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "member": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "family_id",
+        "target",
+        "irish",
+        "english",
+        "binding",
+        "learning",
+        "exercise_consumers",
+        "provenance",
+        "states",
+        "risk_flags"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "family_id": { "type": "string", "minLength": 1 },
+        "target": { "$ref": "#/$defs/memberTarget" },
+        "irish": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/irishText" }
+          ]
+        },
+        "english": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/englishIntent" }
+          ]
+        },
+        "binding": { "$ref": "#/$defs/binding" },
+        "learning": { "$ref": "#/$defs/learning" },
+        "exercise_consumers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/exerciseConsumer" }
+        },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "states": { "$ref": "#/$defs/states" },
+        "risk_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "invented_text",
+              "initial_mutation",
+              "fada",
+              "dialect_register",
+              "historical_roleplay",
+              "pronoun_reference",
+              "long_sentence",
+              "audio_pronunciation",
+              "source_ambiguity",
+              "sense_ambiguity"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

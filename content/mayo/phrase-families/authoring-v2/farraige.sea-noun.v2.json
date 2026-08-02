@@ -1,0 +1,419 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "mayo.grainne-1593.farraige.sea-noun",
+  "county": "mayo",
+  "story_ref": {
+    "path": "content/mayo/grainne-1593.pack.draft.json",
+    "record_id": "mayo.grainne-1593"
+  },
+  "target": {
+    "lexeme_id": "lex.farraige.sea-noun",
+    "citation_form": "farraige",
+    "sense_id": "farraige.sea-noun",
+    "part_of_speech": "noun",
+    "english_sense": "sea"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.mayo.01.farraige",
+      "gloss": "sea"
+    }
+  ],
+  "status": "representative_contract_example",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "Migrated from the accepted D30 exercise proof, but the v2 example deliberately does not promote owner-reported legacy review into a v2 approval record."
+  },
+  "members": [
+    {
+      "id": "farraige.ship-on-sea",
+      "family_id": "mayo.grainne-1593.farraige.sea-noun",
+      "target": {
+        "lexeme_id": "lex.farraige.sea-noun",
+        "citation_form": "farraige",
+        "sense_id": "farraige.sea-noun",
+        "part_of_speech": "noun",
+        "target_form": "bhfarraige",
+        "morphology": "eclipsis in the prepositional article frame ar an bhfarraige"
+      },
+      "irish": {
+        "text": "Tá an long ar an bhfarraige.",
+        "normalized_text": "Tá an long ar an bhfarraige.",
+        "inventory_slug": "taa-an-long-ar-an-bhfarraige",
+        "text_sha256": "051000ebecb78b9d459655e40157c54a1a0d33e588cf5daf20b9a8ec63798af4"
+      },
+      "english": {
+        "intent": "The ship is on the sea.",
+        "literal_note": "A story-grounded ship sentence, not a claim that the learner is present in the historical scene."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/mayo/grainne-1593.pack.draft.json",
+          "record_id": "mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.01.farraige"
+        ],
+        "place": {
+          "id": "mayo.clew-bay-umhaill",
+          "label": "Clew Bay / Umhaill"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "context_introduction",
+          "productive_pattern"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral declarative",
+        "purpose": "Put the taught sea lexeme inside the working ship context before a surround change.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/mayo/grainne-1593.pack.draft.json",
+          "record_id": "mayo.power-at-sea.type-sea",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "complete sentence production"
+        },
+        {
+          "path": "ios/AnTuras/Resources/Fixtures/mayo.farraige-family-b.json",
+          "record_id": "mayo.farraige-family.build-sea-here",
+          "response_family": "sentenceConstruction",
+          "container": "none",
+          "use": "heard source for surround change"
+        }
+      ],
+      "provenance": {
+        "origin": "repository_draft",
+        "invented": false,
+        "composition_note": "Exact text is present in the Mayo review draft; repository presence is not linguistic approval.",
+        "source_refs": [
+          {
+            "path": "content/mayo/grainne-1593.pack.draft.json",
+            "record_id": "mayo.power-at-sea.type-sea",
+            "text_field": "exercise.answer",
+            "supports": "repository_text"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "migration.contract-repair",
+          "completed_at": "2026-08-01"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "not_requested",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "legacy_unverified",
+          "record": {
+            "evidence_ref": "content/audio/irish-inventory-v1.json",
+            "note": "The legacy inventory says qa_passed, but no v2 batch/result/reviewer record has been imported."
+          },
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "v2_review_records_pending",
+            "legacy_audio_result_not_imported"
+          ]
+        }
+      },
+      "risk_flags": [
+        "fada",
+        "initial_mutation"
+      ]
+    },
+    {
+      "id": "farraige.sea-here",
+      "family_id": "mayo.grainne-1593.farraige.sea-noun",
+      "target": {
+        "lexeme_id": "lex.farraige.sea-noun",
+        "citation_form": "farraige",
+        "sense_id": "farraige.sea-noun",
+        "part_of_speech": "noun",
+        "target_form": "fharraige",
+        "morphology": "lenition after the singular article"
+      },
+      "irish": {
+        "text": "Tá an fharraige anseo.",
+        "normalized_text": "Tá an fharraige anseo.",
+        "inventory_slug": "taa-an-fharraige-anseo",
+        "text_sha256": "2fcbf0511aa62476531dc90f3d3971eb72b91f443d6f4975992f784fe3be90bd"
+      },
+      "english": {
+        "intent": "The sea is here.",
+        "literal_note": "A controlled pedagogical surround for the visible Clew Bay setting."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/mayo/grainne-1593.pack.draft.json",
+          "record_id": "mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.01.farraige"
+        ],
+        "place": {
+          "id": "mayo.clew-bay-umhaill",
+          "label": "Clew Bay / Umhaill"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "productive_pattern",
+          "morphology_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral present-day location",
+        "purpose": "Change the surround after the ship sentence while keeping the same target lexeme.",
+        "fixture_only": true
+      },
+      "exercise_consumers": [
+        {
+          "path": "ios/AnTuras/Resources/Fixtures/mayo.farraige-family-b.json",
+          "record_id": "mayo.farraige-family.build-sea-here",
+          "response_family": "sentenceConstruction",
+          "container": "none",
+          "use": "surround-change production"
+        },
+        {
+          "path": "ios/AnTuras/Resources/Fixtures/mayo.farraige-family-c.json",
+          "record_id": "mayo.farraige-family-c.encounter-sea-here",
+          "response_family": "sentenceConstruction",
+          "container": "none",
+          "use": "encounter before delayed reuse"
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Controlled invented surround retained visibly as invented after any future review.",
+        "source_refs": [
+          {
+            "path": "content/mayo/phrase-families/farraige.v1.json",
+            "record_id": "farraige.sea-here",
+            "supports": "migration_only"
+          },
+          {
+            "path": "ios/AnTuras/Resources/Fixtures/mayo.farraige-family-b.json",
+            "record_id": "mayo.farraige-family.build-sea-here",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "migration.contract-repair",
+          "completed_at": "2026-08-01"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "not_requested",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "legacy_unverified",
+          "record": {
+            "evidence_ref": "content/audio/irish-inventory-v1.json",
+            "note": "The legacy inventory says qa_passed, but no v2 batch/result/reviewer record has been imported."
+          },
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "v2_review_records_pending",
+            "legacy_audio_result_not_imported"
+          ]
+        }
+      },
+      "risk_flags": [
+        "invented_text",
+        "fada",
+        "initial_mutation"
+      ]
+    },
+    {
+      "id": "farraige.where-sea",
+      "family_id": "mayo.grainne-1593.farraige.sea-noun",
+      "target": {
+        "lexeme_id": "lex.farraige.sea-noun",
+        "citation_form": "farraige",
+        "sense_id": "farraige.sea-noun",
+        "part_of_speech": "noun",
+        "target_form": "fharraige",
+        "morphology": "lenition after the singular article in a location question"
+      },
+      "irish": {
+        "text": "Cá bhfuil an fharraige?",
+        "normalized_text": "Cá bhfuil an fharraige?",
+        "inventory_slug": "caa-bhfuil-an-fharraige",
+        "text_sha256": "1c506d688f0e5114f10e65e72431033bc732a0eef0a8ccbb103f4446ef76610a"
+      },
+      "english": {
+        "intent": "Where is the sea?",
+        "literal_note": "A controlled location question used after an intervening story beat."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/mayo/grainne-1593.pack.draft.json",
+          "record_id": "mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.01.farraige"
+        ],
+        "place": {
+          "id": "mayo.clew-bay-umhaill",
+          "label": "Clew Bay / Umhaill"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "retrieval",
+          "later_reuse"
+        ],
+        "roles": [
+          "later_reuse",
+          "productive_pattern"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral present-day question",
+        "purpose": "Retrieve the same lexeme in a different question frame after intervening narrative.",
+        "fixture_only": true
+      },
+      "exercise_consumers": [
+        {
+          "path": "ios/AnTuras/Resources/Fixtures/mayo.farraige-family-c.json",
+          "record_id": "mayo.farraige-family-c.delayed-where-sea",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "delayed retrieval"
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Controlled invented question retained visibly as invented after any future review.",
+        "source_refs": [
+          {
+            "path": "content/mayo/phrase-families/farraige.v1.json",
+            "record_id": "farraige.where-sea",
+            "supports": "migration_only"
+          },
+          {
+            "path": "ios/AnTuras/Resources/Fixtures/mayo.farraige-family-c.json",
+            "record_id": "mayo.farraige-family-c.delayed-where-sea",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "migration.contract-repair",
+          "completed_at": "2026-08-01"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "not_requested",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "legacy_unverified",
+          "record": {
+            "evidence_ref": "content/audio/irish-inventory-v1.json",
+            "note": "The legacy inventory says qa_passed, but no v2 batch/result/reviewer record has been imported."
+          },
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "v2_review_records_pending",
+            "legacy_audio_result_not_imported"
+          ]
+        }
+      },
+      "risk_flags": [
+        "invented_text",
+        "fada",
+        "initial_mutation"
+      ]
+    }
+  ]
+}

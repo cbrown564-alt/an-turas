@@ -2,6 +2,43 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D31 — Structured Irish authoring and controlled pre-expiry capture (2026-08-01)
+
+**Decision:** Replace the proposed four-slots-per-spelling queue with an appendable v2
+authoring store. Canonical family documents are county-, story-, placement-, and
+lexeme-sense-specific; each member carries normalized Irish and English intent,
+exercise consumers, provenance and durable invention state, risk metadata, and
+independent authoring, review, capture-request, audio-QA, and learner-release states.
+Generation uses an explicit, resumable batch manifest with a locked voice snapshot,
+stable text/hash/slug and line identity, claim ownership, request/attempt/retry state,
+provider result, error, file checksum, and QA. Inventory membership never proves a clip
+was generated, and unreviewed capture never grants learner release.
+
+**Capacity decision:** The pre-expiry planning target—not a claimed universal standard—
+is approximately **3,000–5,000** controlled, metadata-rich An Turas utterances captured,
+with roughly **1,200–1,500** of the strongest exercise-integrated lines selected for the
+first learner-facing corpus. Within Irish, order work as exercise-bound phrase families,
+reusable dialogue roles, place/story openings and recaps, then controlled listening
+contrasts required by a named learning action. Exceed 5,000 only when every additional
+line has a documented family, lesson pattern, dialogue variation, opening/recap, or
+other learning use. Reserve capacity for weak-clip regeneration. A bounded minority of
+remaining prepaid credits may support **Speaking Clearly** paired cue demonstrations as
+separate-project work with separate contract records.
+
+**Voice/model lock:** All Irish—teaching, story, and dialogue—uses ElevenLabs Irish
+Cultural Guide (`NPWroowF4phQhaPWjXPj`) with `eleven_v3`, language `ga`, output
+`mp3_44100_192`, and provider-default voice settings. The user has tested alternatives
+and found them poor at Irish pronunciation. Do not schedule, suggest, or permit an
+alternate Irish voice/model bake-off or V2/V3 migration. A manifest cannot override the
+profile; any deviation requires a new explicit user decision and versioned contract
+change before it can validate.
+
+**Consequences:** `content/audio/authoring/phrase-family-store-v2.json` indexes canonical
+families and batches; schemas and the offline validator live beside it. The unsafe
+four-slot queue/seed is retired as migration input only and may never feed generation.
+Coverage reports placement, spelling, gloss, sense, county, capture, and release counts
+separately. D30's exercise-demand and place/story rules remain in force.
+
 ## D30 — Phrase-family fluency model for Irish teaching audio (2026-07-31)
 
 **Decision:** Expand Irish teaching exposure as **phrase families** around soft-frozen

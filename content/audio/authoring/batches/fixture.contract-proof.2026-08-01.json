@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "fixture.contract-proof.2026-08-01",
+  "created_at": "2026-08-01T00:00:00Z",
+  "purpose": "Contract proof only; no provider execution is authorised.",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 19.0,
+    "estimated_cumulative_credits": 19.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "lines": [
+    {
+      "line_id": "fixture.contract-proof.2026-08-01.line.3db7de3f60203217",
+      "member_ids": [
+        "ainm.grainne-named"
+      ],
+      "normalized_text": "Gráinne is ainm di.",
+      "text_sha256": "233f5789f0bbfdbdc880dca5dc435bf71bbf73ac6e684dcbc794850af822f78c",
+      "inventory_slug": "graainne-is-ainm-di",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/graainne-is-ainm-di.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "counts": {
+    "lines": 1,
+    "member_references": 1,
+    "planned": 1,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "fdfe27eb484327e48e5ecc4723a08b5485c7924699e2a3cc6507b7fd432fca70"
+}

@@ -141,23 +141,34 @@ def load_irish_inventory_texts() -> set[str] | None:
 
 
 def load_phrase_family_members(county: str) -> dict[str, dict]:
-    """Load D30 phrase-family members for a county from content/{county}/phrase-families/."""
+    """Load legacy runtime and canonical v2 authoring members for a county."""
     folder = REPO_ROOT / "content" / county / "phrase-families"
     members: dict[str, dict] = {}
     if not folder.is_dir():
         return members
-    for path in sorted(folder.glob("*.v1.json")):
+    paths = sorted(folder.glob("*.v1.json"))
+    paths.extend(sorted((folder / "authoring-v2").glob("*.v2.json")))
+    for path in paths:
         payload = json.loads(path.read_text())
-        lexeme_id_value = payload.get("lexeme_id")
+        lexeme_id_value = payload.get("lexeme_id") or (payload.get("target") or {}).get(
+            "lexeme_id"
+        )
         for member in payload.get("members", []):
             mid = member.get("id")
-            text = member.get("text")
+            text = member.get("text") or (member.get("irish") or {}).get("normalized_text")
             if isinstance(mid, str) and isinstance(text, str) and mid and text.strip():
-                members[mid] = {
+                candidate = {
                     "text": text.strip(),
                     "lexeme_id": lexeme_id_value,
                     "family_id": payload.get("id"),
                 }
+                existing = members.get(mid)
+                if existing is not None and existing["text"] != candidate["text"]:
+                    raise PackValidationError(
+                        "duplicatePhraseFamilyMember",
+                        f"{mid!r} has conflicting text in legacy/v2 family documents",
+                    )
+                members[mid] = candidate
     return members
 
 
@@ -169,6 +180,17 @@ def _validate_phrase_family_members(page_id: str, pack_id: str, exercise: dict) 
     """D30: named family members must resolve and match answer/audio/model text."""
     member_ids = exercise.get("phraseFamilyMemberIDs") or []
     if not member_ids:
+        return
+    audio_text = exercise.get("audioText")
+    inventory = load_irish_inventory_texts()
+    if (
+        isinstance(audio_text, str)
+        and audio_text.strip()
+        and inventory is not None
+        and audio_text.strip() not in inventory
+    ):
+        # The pack-level bind rule below owns this earlier failure. Avoid masking
+        # audioNotInInventory with a derivative member-text mismatch.
         return
     county = pack_id.split(".", 1)[0] if isinstance(pack_id, str) else ""
     catalog = load_phrase_family_members(county)

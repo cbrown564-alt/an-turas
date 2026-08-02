@@ -1,0 +1,84 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family_authoring_store",
+  "description": "Canonical index for appendable county/story/sense phrase-family authoring. Counts are computed, never used as coverage claims.",
+  "atlas_source": "content/audio/atlas-headwords-v1.json",
+  "inventory_source": "content/audio/irish-inventory-v1.json",
+  "voice_profiles_source": "content/audio/authoring/voice-profiles-v1.json",
+  "schema_documents": [
+    {
+      "path": "content/audio/authoring/schemas/generation-batch-v1.schema.json"
+    },
+    {
+      "path": "content/audio/authoring/schemas/phrase-family-v2.schema.json"
+    }
+  ],
+  "capacity_policy": {
+    "status": "planning_target_not_industry_standard",
+    "primary_project": "An Turas structured exercise corpus",
+    "capture_inventory_target": {
+      "minimum_utterances": 3000,
+      "maximum_utterances": 5000
+    },
+    "first_release_target": {
+      "minimum_utterances": 1200,
+      "maximum_utterances": 1500
+    },
+    "above_capture_maximum_requires": "Every additional utterance must name a phrase family, lesson pattern, dialogue variation, story/place opening or recap, or another documented learning use.",
+    "irish_priority_order": [
+      "exercise-bound phrase families",
+      "reusable dialogue roles",
+      "place/story openings and recaps",
+      "controlled listening contrasts required by a defined learning action"
+    ],
+    "reserves": {
+      "weak_clip_regeneration": "reserved",
+      "configuration_experiments": "bounded and only within a separately user-approved amendment to the locked configuration",
+      "speaking_clearly": "bounded minority of remaining prepaid credits; separate project and separate contract records"
+    },
+    "invariants": [
+      "Capture inventory and learner-release inventory are separate.",
+      "Volume never permits unstructured, unsupported, or provenance-free text.",
+      "Unreviewed capture is not learner-release approval."
+    ]
+  },
+  "irish_generation_lock": {
+    "status": "user_locked",
+    "required_voice_profile_id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "applies_to": [
+      "teaching",
+      "story",
+      "dialogue"
+    ],
+    "alternative_voice_or_model_bakeoff_allowed": false,
+    "v2_v3_migration_allowed": false,
+    "deviation_policy": "A batch may not override this profile. Any deviation requires a new explicit user decision and a versioned contract change before a manifest can validate."
+  },
+  "family_documents": [
+    {
+      "family_id": "mayo.grainne-1593.ainm.name-noun",
+      "path": "content/mayo/phrase-families/authoring-v2/ainm.name-noun.v2.json"
+    },
+    {
+      "family_id": "mayo.grainne-1593.farraige.sea-noun",
+      "path": "content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json"
+    }
+  ],
+  "batch_documents": [
+    {
+      "batch_id": "fixture.contract-proof.2026-08-01",
+      "path": "content/audio/authoring/batches/fixture.contract-proof.2026-08-01.json"
+    },
+    {
+      "batch_id": "mayo.d31.capture-prep.2026-08-02",
+      "path": "content/audio/authoring/batches/mayo.d31.capture-prep.2026-08-02.json"
+    }
+  ],
+  "retired_inputs": [
+    {
+      "contract": "structured_authoring_queue_v1",
+      "path": "content/audio/authoring/migration/structured-authoring-v1-fixture.json",
+      "use": "migration_input_only"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "contract": "structured_authoring_v1_migration_fixture",
+  "status": "retired_migration_input_only",
+  "generation_allowed": false,
+  "reason": "The four-slot queue collapsed county/sense coverage and could misclassify invented text. These strings are preserved only for explicit v2 disposition.",
+  "records": [
+    {
+      "legacy_id": "mayo.ainm.context_phrase",
+      "irish": "Gráinne is ainm di.",
+      "corrected_origin": "repository_draft",
+      "disposition": "migrated",
+      "canonical_member_id": "ainm.grainne-named"
+    },
+    {
+      "legacy_id": "mayo.ainm.sentence_pattern",
+      "irish": "Cén t-ainm atá ar an áit?",
+      "corrected_origin": "invented_pedagogical",
+      "disposition": "hold_for_v2_authoring"
+    },
+    {
+      "legacy_id": "mayo.ainm.dialogue_turn",
+      "irish": "Cén t-ainm atá ort?",
+      "corrected_origin": "invented_pedagogical",
+      "disposition": "hold_spot_flagged_audio"
+    },
+    {
+      "legacy_id": "mayo.ainm.morphology_register_variant",
+      "irish": "Cad is ainm duit?",
+      "corrected_origin": "invented_pedagogical",
+      "disposition": "hold_for_v2_authoring"
+    },
+    {
+      "legacy_id": "dublin.margadh.context_phrase",
+      "irish": "Tá an margadh ar an abhainn.",
+      "corrected_origin": "invented_pedagogical",
+      "disposition": "hold_for_v2_authoring"
+    },
+    {
+      "legacy_id": "dublin.margadh.sentence_pattern",
+      "irish": "Téigh go dtí an mhargadh.",
+      "corrected_origin": "invented_pedagogical",
+      "disposition": "hold_for_v2_authoring"
+    },
+    {
+      "legacy_id": "dublin.margadh.dialogue_turn",
+      "irish": "Cá bhfuil an margadh?",
+      "corrected_origin": "invented_pedagogical",
+      "disposition": "hold_for_v2_authoring"
+    },
+    {
+      "legacy_id": "dublin.margadh.morphology_register_variant",
+      "irish": "Tá ainm an rí ar airgead an mhargaidh agus na trádála.",
+      "corrected_origin": "repository_draft",
+      "disposition": "hold_for_v2_authoring"
+    },
+    {
+      "legacy_id": "meath.caislean.context_phrase",
+      "irish": "Tá cónaí sa teach; seas sa chaisleán.",
+      "corrected_origin": "repository_draft",
+      "disposition": "reject_nonidiomatic_intent"
+    },
+    {
+      "legacy_id": "meath.caislean.sentence_pattern",
+      "irish": "Tóg an caisleán.",
+      "corrected_origin": "invented_pedagogical",
+      "disposition": "hold_historical_role_risk"
+    },
+    {
+      "legacy_id": "meath.caislean.dialogue_turn",
+      "irish": "Féach ar an gcaisleán.",
+      "corrected_origin": "invented_pedagogical",
+      "disposition": "hold_for_v2_authoring"
+    },
+    {
+      "legacy_id": "meath.caislean.morphology_register_variant",
+      "irish": "Féach ar an sean-chaisleán agus ar an mbaile nua.",
+      "corrected_origin": "repository_draft",
+      "disposition": "hold_for_v2_authoring"
+    },
+    {
+      "legacy_id": "offaly.cros.context_phrase",
+      "irish": "Tá an chloch agus an chros anseo anois.",
+      "corrected_origin": "repository_draft",
+      "disposition": "hold_for_v2_authoring"
+    },
+    {
+      "legacy_id": "offaly.cros.sentence_pattern",
+      "irish": "Déan cros mhór don rí le sonraí beaga.",
+      "corrected_origin": "repository_draft",
+      "disposition": "hold_historical_role_risk"
+    },
+    {
+      "legacy_id": "offaly.cros.dialogue_turn",
+      "irish": "Cá bhfuil an chros?",
+      "corrected_origin": "invented_pedagogical",
+      "disposition": "hold_for_v2_authoring"
+    },
+    {
+      "legacy_id": "offaly.cros.morphology_register_variant",
+      "irish": "Seas ag an gcros.",
+      "corrected_origin": "invented_pedagogical",
+      "disposition": "hold_for_v2_authoring"
+    }
+  ]
+}

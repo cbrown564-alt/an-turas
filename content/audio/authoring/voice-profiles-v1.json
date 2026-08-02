@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "contract": "irish_voice_profiles",
+  "lock_policy": "Only the user-locked profile below may appear in an Irish generation manifest. No alternate voice/model bake-off or V2/V3 migration is authorised.",
+  "profiles": [
+    {
+      "id": "voice.irish-cultural-guide.eleven-v3.v1",
+      "revision": 1,
+      "provider": "ElevenLabs",
+      "voice_name": "Irish Cultural Guide",
+      "voice_id": "NPWroowF4phQhaPWjXPj",
+      "model_id": "eleven_v3",
+      "language_code": "ga",
+      "output_format": "mp3_44100_192",
+      "voice_settings": {
+        "mode": "provider_defaults",
+        "overrides": {}
+      }
+    }
+  ]
+}
