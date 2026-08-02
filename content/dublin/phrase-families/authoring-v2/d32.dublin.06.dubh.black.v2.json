@@ -1,0 +1,272 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.dublin.06.dubh.black",
+  "county": "dublin",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.dublin.sihtric-penny"
+  },
+  "target": {
+    "lexeme_id": "lex.dubh",
+    "citation_form": "dubh",
+    "sense_id": "dublin.dubh.black",
+    "part_of_speech": "adjective",
+    "english_sense": "black"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.dublin.06.dubh",
+      "gloss": "black"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.dublin.06.dubh.black.opening",
+      "family_id": "d32.dublin.06.dubh.black",
+      "target": {
+        "lexeme_id": "lex.dubh",
+        "citation_form": "dubh",
+        "sense_id": "dublin.dubh.black",
+        "part_of_speech": "adjective",
+        "target_form": "dubh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá dubh anseo.",
+        "normalized_text": "Tá dubh anseo.",
+        "inventory_slug": "taa-dubh-anseo",
+        "text_sha256": "cd2b28fa17625575d4a532dd7508e665a38646d22b14fff829ac4128ac90f8e0"
+      },
+      "english": {
+        "intent": "The black is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.06.dubh"
+        ],
+        "place": {
+          "id": "d32.dublin.place",
+          "label": "Baile Átha Cliath / Dublin"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the dublin story with the atlas-bound black at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny.opening.06",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the dublin story with the atlas-bound black at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.dublin.sihtric-penny.opening.06",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.dublin.06.dubh.black.dialogue",
+      "family_id": "d32.dublin.06.dubh.black",
+      "target": {
+        "lexeme_id": "lex.dubh",
+        "citation_form": "dubh",
+        "sense_id": "dublin.dubh.black",
+        "part_of_speech": "adjective",
+        "target_form": "dubh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil dubh anseo?",
+        "normalized_text": "An bhfuil dubh anseo?",
+        "inventory_slug": "an-bhfuil-dubh-anseo",
+        "text_sha256": "b97fc020dcc5a2f4dabd4ee6f89c0e8dd9e452e3eba52653c79b31ae384ec8e0"
+      },
+      "english": {
+        "intent": "Is the black here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.06.dubh"
+        ],
+        "place": {
+          "id": "d32.dublin.place",
+          "label": "Baile Átha Cliath / Dublin"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse dubh in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny.dialogue.06",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse dubh in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.dublin.sihtric-penny.dialogue.06",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

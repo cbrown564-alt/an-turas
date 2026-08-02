@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.fermanagh.04.cosain.guard",
+  "county": "fermanagh",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.fermanagh.enniskillen-castle"
+  },
+  "target": {
+    "lexeme_id": "lex.cosain",
+    "citation_form": "cosain",
+    "sense_id": "fermanagh.cosain.guard",
+    "part_of_speech": "lexical item",
+    "english_sense": "guard"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.fermanagh.04.cosain",
+      "gloss": "guard"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.fermanagh.04.cosain.guard.opening",
+      "family_id": "d32.fermanagh.04.cosain.guard",
+      "target": {
+        "lexeme_id": "lex.cosain",
+        "citation_form": "cosain",
+        "sense_id": "fermanagh.cosain.guard",
+        "part_of_speech": "lexical item",
+        "target_form": "cosain",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cosain anseo.",
+        "normalized_text": "Tá cosain anseo.",
+        "inventory_slug": "taa-cosain-anseo",
+        "text_sha256": "80796b982d0a8267eab38b5c582b5b1e122b4b173d9acf4bb130bc2552aaa052"
+      },
+      "english": {
+        "intent": "The guard is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "fermanagh",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.fermanagh.enniskillen-castle"
+        },
+        "atlas_placement_ids": [
+          "atlas.fermanagh.04.cosain"
+        ],
+        "place": {
+          "id": "d32.fermanagh.place",
+          "label": "Fear Manach / Fermanagh"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the fermanagh story with the atlas-bound guard at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.fermanagh.enniskillen-castle.opening.04",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the fermanagh story with the atlas-bound guard at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.fermanagh.enniskillen-castle.opening.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.fermanagh.04.cosain.guard.recap",
+      "family_id": "d32.fermanagh.04.cosain.guard",
+      "target": {
+        "lexeme_id": "lex.cosain",
+        "citation_form": "cosain",
+        "sense_id": "fermanagh.cosain.guard",
+        "part_of_speech": "lexical item",
+        "target_form": "cosain",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar cosain.",
+        "normalized_text": "Féach ar cosain.",
+        "inventory_slug": "feeach-ar-cosain",
+        "text_sha256": "325ba003691977c74e5a3232ed23d38468d0454c92830e2c510038d086837347"
+      },
+      "english": {
+        "intent": "Look at the guard.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "fermanagh",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.fermanagh.enniskillen-castle"
+        },
+        "atlas_placement_ids": [
+          "atlas.fermanagh.04.cosain"
+        ],
+        "place": {
+          "id": "d32.fermanagh.place",
+          "label": "Fear Manach / Fermanagh"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the guard placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.fermanagh.enniskillen-castle.recap.04",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the guard placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.fermanagh.enniskillen-castle.recap.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

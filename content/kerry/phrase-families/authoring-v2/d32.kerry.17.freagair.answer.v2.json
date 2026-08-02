@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.kerry.17.freagair.answer",
+  "county": "kerry",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.kerry.piaras-feiritear"
+  },
+  "target": {
+    "lexeme_id": "lex.freagair",
+    "citation_form": "freagair",
+    "sense_id": "kerry.freagair.answer",
+    "part_of_speech": "lexical item",
+    "english_sense": "answer"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.kerry.17.freagair",
+      "gloss": "answer"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.kerry.17.freagair.answer.opening",
+      "family_id": "d32.kerry.17.freagair.answer",
+      "target": {
+        "lexeme_id": "lex.freagair",
+        "citation_form": "freagair",
+        "sense_id": "kerry.freagair.answer",
+        "part_of_speech": "lexical item",
+        "target_form": "freagair",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá freagair anseo.",
+        "normalized_text": "Tá freagair anseo.",
+        "inventory_slug": "taa-freagair-anseo",
+        "text_sha256": "4ded761c9fea188f50d1ba7362538b75873c3fe703143d71e38ab02f224559da"
+      },
+      "english": {
+        "intent": "The answer is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kerry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear"
+        },
+        "atlas_placement_ids": [
+          "atlas.kerry.17.freagair"
+        ],
+        "place": {
+          "id": "d32.kerry.place",
+          "label": "Ciarraí / Kerry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the kerry story with the atlas-bound answer at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear.opening.17",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the kerry story with the atlas-bound answer at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kerry.piaras-feiritear.opening.17",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.kerry.17.freagair.answer.recap",
+      "family_id": "d32.kerry.17.freagair.answer",
+      "target": {
+        "lexeme_id": "lex.freagair",
+        "citation_form": "freagair",
+        "sense_id": "kerry.freagair.answer",
+        "part_of_speech": "lexical item",
+        "target_form": "freagair",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar freagair.",
+        "normalized_text": "Féach ar freagair.",
+        "inventory_slug": "feeach-ar-freagair",
+        "text_sha256": "2f8c43912baccbbfde50413360c12c278d49c1f1f59816c99b524d581f338c22"
+      },
+      "english": {
+        "intent": "Look at the answer.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "kerry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear"
+        },
+        "atlas_placement_ids": [
+          "atlas.kerry.17.freagair"
+        ],
+        "place": {
+          "id": "d32.kerry.place",
+          "label": "Ciarraí / Kerry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the answer placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear.recap.17",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the answer placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kerry.piaras-feiritear.recap.17",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

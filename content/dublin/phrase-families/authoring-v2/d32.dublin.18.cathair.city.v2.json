@@ -1,0 +1,272 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.dublin.18.cathair.city",
+  "county": "dublin",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.dublin.sihtric-penny"
+  },
+  "target": {
+    "lexeme_id": "lex.cathair",
+    "citation_form": "cathair",
+    "sense_id": "dublin.cathair.city",
+    "part_of_speech": "noun",
+    "english_sense": "city"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.dublin.18.cathair",
+      "gloss": "city"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.dublin.18.cathair.city.opening",
+      "family_id": "d32.dublin.18.cathair.city",
+      "target": {
+        "lexeme_id": "lex.cathair",
+        "citation_form": "cathair",
+        "sense_id": "dublin.cathair.city",
+        "part_of_speech": "noun",
+        "target_form": "cathair",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá cathair anseo.",
+        "normalized_text": "Tá cathair anseo.",
+        "inventory_slug": "taa-cathair-anseo",
+        "text_sha256": "86db30beb5c6a98db6acc3abb6cafb00bd66cbc7b38658d6bb296c3d82617b51"
+      },
+      "english": {
+        "intent": "The city is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.18.cathair"
+        ],
+        "place": {
+          "id": "d32.dublin.place",
+          "label": "Baile Átha Cliath / Dublin"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the dublin story with the atlas-bound city at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny.opening.18",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the dublin story with the atlas-bound city at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.dublin.sihtric-penny.opening.18",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.dublin.18.cathair.city.dialogue",
+      "family_id": "d32.dublin.18.cathair.city",
+      "target": {
+        "lexeme_id": "lex.cathair",
+        "citation_form": "cathair",
+        "sense_id": "dublin.cathair.city",
+        "part_of_speech": "noun",
+        "target_form": "cathair",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil cathair anseo?",
+        "normalized_text": "An bhfuil cathair anseo?",
+        "inventory_slug": "an-bhfuil-cathair-anseo",
+        "text_sha256": "d924df79910d3284b534fe6a5552f0a2787a61cd6787980ebf5632df56905e2d"
+      },
+      "english": {
+        "intent": "Is the city here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.18.cathair"
+        ],
+        "place": {
+          "id": "d32.dublin.place",
+          "label": "Baile Átha Cliath / Dublin"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse cathair in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny.dialogue.18",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse cathair in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.dublin.sihtric-penny.dialogue.18",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

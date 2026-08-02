@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.dublin.10.diol.sell",
+  "county": "dublin",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.dublin.sihtric-penny"
+  },
+  "target": {
+    "lexeme_id": "lex.diol",
+    "citation_form": "díol",
+    "sense_id": "dublin.diol.sell",
+    "part_of_speech": "verb",
+    "english_sense": "sell"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.dublin.10.diol",
+      "gloss": "sell"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.dublin.10.diol.sell.opening",
+      "family_id": "d32.dublin.10.diol.sell",
+      "target": {
+        "lexeme_id": "lex.diol",
+        "citation_form": "díol",
+        "sense_id": "dublin.diol.sell",
+        "part_of_speech": "verb",
+        "target_form": "díol",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá díol anseo.",
+        "normalized_text": "Tá díol anseo.",
+        "inventory_slug": "taa-diiol-anseo",
+        "text_sha256": "a945264e2c2ae81350d7ddb57c35b244166c25a681977d4e88744d1f13921e70"
+      },
+      "english": {
+        "intent": "The sell is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.10.diol"
+        ],
+        "place": {
+          "id": "d32.dublin.place",
+          "label": "Baile Átha Cliath / Dublin"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the dublin story with the atlas-bound sell at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny.opening.10",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the dublin story with the atlas-bound sell at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.dublin.sihtric-penny.opening.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.dublin.10.diol.sell.recap",
+      "family_id": "d32.dublin.10.diol.sell",
+      "target": {
+        "lexeme_id": "lex.diol",
+        "citation_form": "díol",
+        "sense_id": "dublin.diol.sell",
+        "part_of_speech": "verb",
+        "target_form": "díol",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar díol.",
+        "normalized_text": "Féach ar díol.",
+        "inventory_slug": "feeach-ar-diiol",
+        "text_sha256": "62a621aa081aa0dc20e42bc7bf601e18ca5701928f5ee9cc72f6a5c210673b6b"
+      },
+      "english": {
+        "intent": "Look at the sell.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.10.diol"
+        ],
+        "place": {
+          "id": "d32.dublin.place",
+          "label": "Baile Átha Cliath / Dublin"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the sell placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny.recap.10",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the sell placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.dublin.sihtric-penny.recap.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

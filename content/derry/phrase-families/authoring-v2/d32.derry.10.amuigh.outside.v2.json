@@ -1,0 +1,272 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.derry.10.amuigh.outside",
+  "county": "derry",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.derry.city-walls-siege"
+  },
+  "target": {
+    "lexeme_id": "lex.amuigh",
+    "citation_form": "amuigh",
+    "sense_id": "derry.amuigh.outside",
+    "part_of_speech": "adverb",
+    "english_sense": "outside"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.derry.10.amuigh",
+      "gloss": "outside"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.derry.10.amuigh.outside.opening",
+      "family_id": "d32.derry.10.amuigh.outside",
+      "target": {
+        "lexeme_id": "lex.amuigh",
+        "citation_form": "amuigh",
+        "sense_id": "derry.amuigh.outside",
+        "part_of_speech": "adverb",
+        "target_form": "amuigh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá amuigh anseo.",
+        "normalized_text": "Tá amuigh anseo.",
+        "inventory_slug": "taa-amuigh-anseo",
+        "text_sha256": "266067f73266ddf8ad19b694ddfdde1c97c6b0548adf096cc706f88a4dbadd09"
+      },
+      "english": {
+        "intent": "The outside is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "derry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege"
+        },
+        "atlas_placement_ids": [
+          "atlas.derry.10.amuigh"
+        ],
+        "place": {
+          "id": "d32.derry.place",
+          "label": "Doire / Derry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the derry story with the atlas-bound outside at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege.opening.10",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the derry story with the atlas-bound outside at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.derry.city-walls-siege.opening.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.derry.10.amuigh.outside.dialogue",
+      "family_id": "d32.derry.10.amuigh.outside",
+      "target": {
+        "lexeme_id": "lex.amuigh",
+        "citation_form": "amuigh",
+        "sense_id": "derry.amuigh.outside",
+        "part_of_speech": "adverb",
+        "target_form": "amuigh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An bhfuil amuigh anseo?",
+        "normalized_text": "An bhfuil amuigh anseo?",
+        "inventory_slug": "an-bhfuil-amuigh-anseo",
+        "text_sha256": "2c67114f93f04b6254ba7100f95d24682c49a2151a85a66772a904c367c156b3"
+      },
+      "english": {
+        "intent": "Is the outside here?",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "derry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege"
+        },
+        "atlas_placement_ids": [
+          "atlas.derry.10.amuigh"
+        ],
+        "place": {
+          "id": "d32.derry.place",
+          "label": "Doire / Derry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse amuigh in a short county-bound question after the opening encounter.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege.dialogue.10",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Reuse amuigh in a short county-bound question after the opening encounter."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.derry.city-walls-siege.dialogue.10",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

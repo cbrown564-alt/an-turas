@@ -1,0 +1,273 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.donegal.15.scriobh.write",
+  "county": "donegal",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.donegal.flight-of-the-earls"
+  },
+  "target": {
+    "lexeme_id": "lex.scriobh",
+    "citation_form": "scríobh",
+    "sense_id": "donegal.scriobh.write",
+    "part_of_speech": "verb",
+    "english_sense": "write"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.donegal.15.scriobh",
+      "gloss": "write"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.donegal.15.scriobh.write.opening",
+      "family_id": "d32.donegal.15.scriobh.write",
+      "target": {
+        "lexeme_id": "lex.scriobh",
+        "citation_form": "scríobh",
+        "sense_id": "donegal.scriobh.write",
+        "part_of_speech": "verb",
+        "target_form": "scríobh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá scríobh anseo.",
+        "normalized_text": "Tá scríobh anseo.",
+        "inventory_slug": "taa-scriiobh-anseo",
+        "text_sha256": "44ed2f7b4161834b4f9a690b6b5fef3a3135a1ab12ee87efe45e0c012b449857"
+      },
+      "english": {
+        "intent": "The write is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "donegal",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls"
+        },
+        "atlas_placement_ids": [
+          "atlas.donegal.15.scriobh"
+        ],
+        "place": {
+          "id": "d32.donegal.place",
+          "label": "Dún na nGall / Donegal"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the donegal story with the atlas-bound write at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls.opening.15",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the donegal story with the atlas-bound write at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.donegal.flight-of-the-earls.opening.15",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.donegal.15.scriobh.write.recap",
+      "family_id": "d32.donegal.15.scriobh.write",
+      "target": {
+        "lexeme_id": "lex.scriobh",
+        "citation_form": "scríobh",
+        "sense_id": "donegal.scriobh.write",
+        "part_of_speech": "verb",
+        "target_form": "scríobh",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar scríobh.",
+        "normalized_text": "Féach ar scríobh.",
+        "inventory_slug": "feeach-ar-scriiobh",
+        "text_sha256": "c95da2ee8071bfe9384c0b096b09a61c1f0fd9c2b055371497873aa5e981d2cc"
+      },
+      "english": {
+        "intent": "Look at the write.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "donegal",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls"
+        },
+        "atlas_placement_ids": [
+          "atlas.donegal.15.scriobh"
+        ],
+        "place": {
+          "id": "d32.donegal.place",
+          "label": "Dún na nGall / Donegal"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the write placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls.recap.15",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the write placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.donegal.flight-of-the-earls.recap.15",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}

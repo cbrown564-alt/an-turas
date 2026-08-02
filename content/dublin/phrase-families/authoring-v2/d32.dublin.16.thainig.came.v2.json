@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.dublin.16.thainig.came",
+  "county": "dublin",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.dublin.sihtric-penny"
+  },
+  "target": {
+    "lexeme_id": "lex.thainig",
+    "citation_form": "tháinig",
+    "sense_id": "dublin.thainig.came",
+    "part_of_speech": "verb",
+    "english_sense": "came"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.dublin.16.thainig",
+      "gloss": "came"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 provisional family; text is invented pedagogical material and carries no attestation or release claim."
+  },
+  "members": [
+    {
+      "id": "d32.dublin.16.thainig.came.opening",
+      "family_id": "d32.dublin.16.thainig.came",
+      "target": {
+        "lexeme_id": "lex.thainig",
+        "citation_form": "tháinig",
+        "sense_id": "dublin.thainig.came",
+        "part_of_speech": "verb",
+        "target_form": "tháinig",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá tháinig anseo.",
+        "normalized_text": "Tá tháinig anseo.",
+        "inventory_slug": "taa-thaainig-anseo",
+        "text_sha256": "47dae0bbae22734151d4a730644ec2104245bfc6679b8e211bb72b46c6fe21f8"
+      },
+      "english": {
+        "intent": "The came is here.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.16.thainig"
+        ],
+        "place": {
+          "id": "d32.dublin.place",
+          "label": "Baile Átha Cliath / Dublin"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "story_opening"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Open the dublin story with the atlas-bound came at its named place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny.opening.16",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Open the dublin story with the atlas-bound came at its named place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.dublin.sihtric-penny.opening.16",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.dublin.16.thainig.came.recap",
+      "family_id": "d32.dublin.16.thainig.came",
+      "target": {
+        "lexeme_id": "lex.thainig",
+        "citation_form": "tháinig",
+        "sense_id": "dublin.thainig.came",
+        "part_of_speech": "verb",
+        "target_form": "tháinig",
+        "morphology": "atlas citation form; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar tháinig.",
+        "normalized_text": "Féach ar tháinig.",
+        "inventory_slug": "feeach-ar-thaainig",
+        "text_sha256": "ac540847e3e564c841dfbdf64075a12b3b2c4c0731e0ad7d76c88fed8d5ea56b"
+      },
+      "english": {
+        "intent": "Look at the came.",
+        "literal_note": "D32 invented pedagogical line; not an attested quotation."
+      },
+      "binding": {
+        "county": "dublin",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny"
+        },
+        "atlas_placement_ids": [
+          "atlas.dublin.16.thainig"
+        ],
+        "place": {
+          "id": "d32.dublin.place",
+          "label": "Baile Átha Cliath / Dublin"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Recap the came placement with a short present-day instruction.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.dublin.sihtric-penny.recap.16",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Recap the came placement with a short present-day instruction."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed from the provisional atlas gloss and the county story-slate place binding for the D32 emergency harvest; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.dublin.sihtric-penny.recap.16",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-scale-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    }
+  ]
+}
