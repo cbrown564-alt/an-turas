@@ -289,3 +289,10 @@ overwrite an existing clip or silently reuse one from an older batch; a missing-
 batch is required for that case. It then records checksums, usage snapshots, and
 unreviewed QA state in the registered batch and runtime manifest. Temporary worktrees,
 legacy bakeoff folders, and unregistered manifests are never valid destinations.
+
+For the D32 emergency window, run \`emergency-harvest\` once per committed Track A
+tranche, repeating \`--input\` for each family directory. It normalizes NFC Irish,
+deduplicates by normalized text and the locked voice, partitions county/story batches,
+registers them, and creates deterministic active claims/leases. Emergency approval
+only opens the provider-call gate; editorial, pedagogy, native-language, audio-QA,
+checksum/result, and learner-release gates remain independent.

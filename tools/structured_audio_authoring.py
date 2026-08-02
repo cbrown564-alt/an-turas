@@ -15,6 +15,7 @@ import json
 import sys
 import unicodedata
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable, Sequence
 
@@ -523,6 +524,288 @@ def harvest_report(plan: dict[str, Any]) -> dict[str, Any]:
         "duplicate_findings": plan.get("duplicate_findings", []),
         "skipped_registered": plan.get("skipped_registered", []),
     }
+
+
+def parse_timestamp(value: str, label: str) -> datetime:
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"{label} must be an explicit ISO timestamp")
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ValueError(f"{label} must be an explicit ISO timestamp: {value!r}") from exc
+    if parsed.tzinfo is None:
+        raise ValueError(f"{label} must include a timezone: {value!r}")
+    return parsed
+
+
+def emergency_partition_key_for_member(
+    contract: LoadedContract, member_id: str
+) -> tuple[str, str]:
+    families = [
+        family
+        for family in contract.families
+        if any(
+            isinstance(member, dict) and member.get("id") == member_id
+            for member in family.get("members", [])
+        )
+    ]
+    if len(families) != 1:
+        raise ValueError(f"member {member_id!r} must belong to exactly one family")
+    family = families[0]
+    story_ref = family.get("story_ref") or {}
+    county = family.get("county")
+    story_id = story_ref.get("record_id")
+    if not stable_identifier(county) or not stable_identifier(story_id):
+        raise ValueError(f"member {member_id!r} has an unsafe county/story partition")
+    return str(county), str(story_id)
+
+
+def build_emergency_batches(
+    plan: dict[str, Any],
+    *,
+    created_at: str,
+    batch_prefix: str,
+    max_lines_per_batch: int,
+) -> list[dict[str, Any]]:
+    """Partition new planner lines into practical, resumable county/story batches."""
+    if not stable_identifier(batch_prefix) or not batch_prefix.strip("."):
+        raise ValueError("batch prefix must be a stable dotted identifier")
+    if not isinstance(max_lines_per_batch, int) or max_lines_per_batch < 1:
+        raise ValueError("max_lines_per_batch must be a positive integer")
+    contract = plan.get("contract")
+    if not isinstance(contract, LoadedContract):
+        raise ValueError("harvest plan is missing its loaded contract")
+
+    family_for_member = {
+        member.get("id"): family
+        for family in contract.families
+        for member in family.get("members", [])
+        if isinstance(member, dict) and member.get("id")
+    }
+    grouped_lines: dict[str, dict[str, Any]] = {}
+    for seed_batch in plan.get("batches", []):
+        for line in seed_batch.get("lines", []):
+            text = line.get("normalized_text")
+            member_ids = sorted(set(line.get("member_ids") or []))
+            if not isinstance(text, str) or not text or not member_ids:
+                continue
+            partition = emergency_partition_key_for_member(contract, member_ids[0])
+            existing = grouped_lines.get(text)
+            if existing is None:
+                grouped_lines[text] = {
+                    "member_ids": set(member_ids),
+                    "partition": partition,
+                }
+            else:
+                existing["member_ids"].update(member_ids)
+
+    grouped: dict[tuple[str, str], list[tuple[str, list[str]]]] = {}
+    for text in sorted(grouped_lines):
+        entry = grouped_lines[text]
+        grouped.setdefault(entry["partition"], []).append(
+            (text, sorted(entry["member_ids"]))
+        )
+
+    batches: list[dict[str, Any]] = []
+    for (county, story_id), entries in sorted(grouped.items()):
+        for offset in range(0, len(entries), max_lines_per_batch):
+            chunk = entries[offset : offset + max_lines_per_batch]
+            member_ids = sorted({member_id for _, ids in chunk for member_id in ids})
+            sense_ids = sorted(
+                {
+                    family_for_member[member_id].get("target", {}).get("sense_id", "")
+                    for _, ids in chunk
+                    for member_id in ids
+                    if member_id in family_for_member
+                }
+            )
+            part_number = offset // max_lines_per_batch + 1
+            batch_id = (
+                f"{batch_prefix}.{identifier_slug(county)}."
+                f"{identifier_slug(story_id)}.part-{part_number:02d}"
+            )
+            purpose = (
+                f"D32 emergency harvest — {county} / {story_id} / "
+                f"senses {', '.join(sense_ids)} / part {part_number:02d}"
+            )
+            batches.append(
+                build_batch(
+                    contract,
+                    batch_id=batch_id,
+                    member_ids=member_ids,
+                    voice_profile_id=contract.store["irish_generation_lock"][
+                        "required_voice_profile_id"
+                    ],
+                    created_at=created_at,
+                    purpose=purpose,
+                )
+            )
+    return sorted(batches, key=lambda batch: batch["batch_id"])
+
+
+def approve_emergency_harvest(
+    plan: dict[str, Any],
+    *,
+    approved_by: str,
+    approved_at: str,
+    requested_by: str,
+    claim_owner: str,
+    claimed_at: str,
+    lease_expires_at: str,
+) -> dict[str, Any]:
+    """Authorize only D32 capture; retain every independent review/release gate."""
+    for label, value in (
+        ("approved_by", approved_by),
+        ("requested_by", requested_by),
+        ("claim_owner", claim_owner),
+    ):
+        if not stable_identifier(value):
+            raise ValueError(f"{label} must be a stable identifier")
+    approved_time = parse_timestamp(approved_at, "approved_at")
+    claimed_time = parse_timestamp(claimed_at, "claimed_at")
+    lease_time = parse_timestamp(lease_expires_at, "lease_expires_at")
+    if lease_time <= claimed_time:
+        raise ValueError("lease_expires_at must be later than claimed_at")
+    if approved_time > claimed_time:
+        raise ValueError("approved_at must not be later than claimed_at")
+    contract = plan.get("contract")
+    if not isinstance(contract, LoadedContract):
+        raise ValueError("harvest plan is missing its loaded contract")
+
+    for batch in plan.get("batches", []):
+        batch["execution"] = {
+            "state": "approved",
+            "provider_calls_allowed": True,
+            "approved_by": approved_by,
+            "approved_at": approved_at,
+        }
+        for line in batch.get("lines", []):
+            line["claim"] = {
+                "status": "claimed",
+                "owner_id": claim_owner,
+                "claimed_at": claimed_at,
+                "lease_expires_at": lease_expires_at,
+            }
+            line["request"] = {
+                "status": "approved",
+                "approved_by": approved_by,
+                "approved_at": approved_at,
+            }
+            line_id = line["line_id"]
+            for member_id in line["member_ids"]:
+                member = contract.members[member_id]
+                capture = member["states"]["capture_request"]
+                if capture["status"] == "requested":
+                    if (capture.get("authorization") or {}).get("basis") != "d32_emergency_harvest":
+                        raise ValueError(
+                            f"member {member_id!r} already has a non-D32 capture request"
+                        )
+                elif capture["status"] not in {"not_requested", "planned", "cancelled"}:
+                    raise ValueError(
+                        f"member {member_id!r} has an unsafe capture state {capture['status']!r}"
+                    )
+                capture.update(
+                    {
+                        "status": "requested",
+                        "requested_by": requested_by,
+                        "requested_at": claimed_at,
+                        "authorization": {
+                            "basis": "d32_emergency_harvest",
+                            "authorized_by": approved_by,
+                            "authorized_at": approved_at,
+                            "reason": (
+                                "Explicit D32 emergency-harvest authorization for provisional "
+                                "capture; review and learner release remain blocked."
+                            ),
+                            "fixture_only": False,
+                            "harvest_deadline": "2026-08-11",
+                            "learner_release_blocked": True,
+                        },
+                        "batch_line_ids": sorted(
+                            set(capture.get("batch_line_ids", [])) | {line_id}
+                        ),
+                    }
+                )
+        batch["counts"] = expected_batch_counts(batch)
+    for document in plan.get("normalized_documents", []):
+        family = document["family"]
+        for index, member in enumerate(family.get("members", [])):
+            member_id = member.get("id") if isinstance(member, dict) else None
+            if member_id in contract.members:
+                family["members"][index] = contract.members[member_id]
+    plan["batches"] = sorted(plan.get("batches", []), key=lambda batch: batch["batch_id"])
+    plan["emergency_approved"] = True
+    plan["claim_owner"] = claim_owner
+    plan["lease_expires_at"] = lease_expires_at
+    return plan
+
+
+def write_emergency_harvest(plan: dict[str, Any], *, root: Path = ROOT) -> list[str]:
+    """Persist approved manifests and family requests, then register sorted refs."""
+    if not plan.get("emergency_approved"):
+        raise ValueError("emergency harvest must be explicitly approved before writing")
+    batches = plan.get("batches", [])
+    if not batches:
+        return []
+    store_path = root / STORE_PATH.relative_to(ROOT)
+    store = load_json(store_path)
+    family_refs = {
+        ref.get("family_id"): ref.get("path")
+        for ref in store.get("family_documents", [])
+        if isinstance(ref, dict)
+    }
+    for document in plan.get("normalized_documents", []):
+        family = document["family"]
+        if family_refs.get(family.get("id")) != document["path"]:
+            raise ValueError(
+                "emergency harvest requires canonical registered family paths: "
+                f"{family.get('id')!r}"
+            )
+    batch_dir = root / "content/audio/authoring/batches"
+    existing_batch_ids = {
+        ref.get("batch_id")
+        for ref in store.get("batch_documents", [])
+        if isinstance(ref, dict)
+    }
+    for batch in batches:
+        if batch["batch_id"] in existing_batch_ids:
+            raise ValueError(f"refusing to replace registered batch {batch['batch_id']!r}")
+        errors: list[str] = []
+        validate_batch(batch, plan["contract"], root, errors)
+        if errors:
+            raise ValueError("approved manifest failed validation:\n" + "\n".join(errors))
+        if (batch_dir / f"{batch['batch_id']}.json").exists():
+            raise ValueError(f"refusing to overwrite manifest {batch['batch_id']!r}")
+
+    written: list[str] = []
+    for document in plan.get("normalized_documents", []):
+        path = root / document["path"]
+        path.write_text(
+            json.dumps(document["family"], ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        written.append(document["path"])
+    batch_dir.mkdir(parents=True, exist_ok=True)
+    new_refs: list[dict[str, str]] = []
+    for batch in batches:
+        path = batch_dir / f"{batch['batch_id']}.json"
+        path.write_text(
+            json.dumps(batch, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        relative = str(path.relative_to(root))
+        written.append(relative)
+        new_refs.append({"batch_id": batch["batch_id"], "path": relative})
+    store["batch_documents"] = sorted(
+        [ref for ref in store.get("batch_documents", []) if isinstance(ref, dict)] + new_refs,
+        key=lambda ref: ref.get("batch_id", ""),
+    )
+    store_path.write_text(
+        json.dumps(store, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    written.append(str(store_path.relative_to(root)))
+    return written
 
 
 def is_unique_string_list(value: Any, *, allow_empty: bool = True) -> bool:
@@ -1974,6 +2257,34 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="register written manifests in the sorted canonical store batch_documents list",
     )
+    emergency = subparsers.add_parser(
+        "emergency-harvest",
+        help="ingest a Track A tranche, approve D32 capture, claim lines, and register manifests",
+    )
+    emergency.add_argument(
+        "--input",
+        action="append",
+        required=True,
+        help="Track A .v2.json family file or directory; repeat for multiple inputs",
+    )
+    emergency.add_argument("--created-at", required=True, help="explicit ISO timestamp")
+    emergency.add_argument("--approved-by", required=True, help="explicit D32 approval identity")
+    emergency.add_argument("--approved-at", required=True, help="explicit D32 approval timestamp")
+    emergency.add_argument("--requested-by", required=True, help="capture-request author identity")
+    emergency.add_argument("--claim-owner", required=True, help="deterministic Track C claim owner")
+    emergency.add_argument("--claimed-at", required=True, help="claim timestamp")
+    emergency.add_argument("--lease-expires-at", required=True, help="claim lease expiry timestamp")
+    emergency.add_argument(
+        "--max-lines-per-batch",
+        type=int,
+        default=100,
+        help="maximum unique normalized text/voice lines per county/story manifest",
+    )
+    emergency.add_argument(
+        "--batch-prefix",
+        default="d32.harvest",
+        help="stable dotted prefix for generated batch ids",
+    )
     args = parser.parse_args(argv)
 
     if args.command in {"reconcile", "resume-plan"}:
@@ -2044,6 +2355,53 @@ def main(argv: list[str] | None = None) -> int:
         report = harvest_report(plan)
         if plan.get("written"):
             report["written"] = plan["written"]
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return 0
+    if args.command == "emergency-harvest":
+        try:
+            documents = collect_family_documents(ROOT, args.input)
+            plan = prepare_harvest(
+                contract,
+                documents,
+                root=ROOT,
+                created_at=args.created_at,
+            )
+            if plan["errors"]:
+                print("\n".join(plan["errors"]), file=sys.stderr)
+                return 1
+            plan["batches"] = build_emergency_batches(
+                plan,
+                created_at=args.created_at,
+                batch_prefix=args.batch_prefix,
+                max_lines_per_batch=args.max_lines_per_batch,
+            )
+            approve_emergency_harvest(
+                plan,
+                approved_by=args.approved_by,
+                approved_at=args.approved_at,
+                requested_by=args.requested_by,
+                claim_owner=args.claim_owner,
+                claimed_at=args.claimed_at,
+                lease_expires_at=args.lease_expires_at,
+            )
+            written = write_emergency_harvest(plan, root=ROOT)
+            final_errors, _ = validate_contract()
+            if final_errors:
+                print("\n".join(final_errors), file=sys.stderr)
+                return 1
+        except (OSError, ValueError) as exc:
+            print(str(exc), file=sys.stderr)
+            return 1
+        report = harvest_report(plan)
+        report.update(
+            {
+                "emergency_approved": True,
+                "provider_calls_allowed": True,
+                "claim_owner": args.claim_owner,
+                "lease_expires_at": args.lease_expires_at,
+                "written": written,
+            }
+        )
         print(json.dumps(report, ensure_ascii=False, indent=2))
         return 0
     batch = build_batch(

@@ -308,7 +308,9 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
         first = copy.deepcopy(self.families["mayo.grainne-1593.ainm.name-noun"])
         duplicate = copy.deepcopy(self.families["mayo.grainne-1593.farraige.sea-noun"])
         duplicate["id"] = "mayo.grainne-1593.farraige.duplicate-sense"
-        duplicate["members"] = [duplicate["members"][1]]
+        duplicate["members"] = [
+            member for member in duplicate["members"] if member["id"] == "farraige.sea-here"
+        ]
         duplicate["target"]["sense_id"] = "farraige.duplicate-sense"
         duplicate["members"][0]["family_id"] = duplicate["id"]
         duplicate["members"][0]["target"]["sense_id"] = "farraige.duplicate-sense"
@@ -319,9 +321,13 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
             "record": None,
             "batch_line_id": None,
         }
-        duplicate["members"][0]["exercise_consumers"] = [
-            copy.deepcopy(self.families["mayo.grainne-1593.farraige.sea-noun"]["members"][1]["exercise_consumers"][0])
-        ]
+        source_consumer = next(
+            consumer
+            for member in self.families["mayo.grainne-1593.farraige.sea-noun"]["members"]
+            for consumer in member["exercise_consumers"]
+            if consumer["record_id"] == "mayo.farraige-family.build-sea-here"
+        )
+        duplicate["members"][0]["exercise_consumers"] = [copy.deepcopy(source_consumer)]
         duplicate["members"][0]["exercise_consumers"][0]["record_id"] = "mayo.farraige-family.build-sea-here"
         draft = copy.deepcopy(first["members"][0])
         draft["id"] = "ainm.future-draft"
@@ -405,6 +411,49 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
             manifest = json.loads((REPO_ROOT / written[0]).read_text(encoding="utf-8"))
             self.assertEqual(manifest["execution"]["state"], "draft")
             self.assertFalse(manifest["execution"]["provider_calls_allowed"])
+
+    def test_emergency_harvest_approves_lines_and_claims_without_release(self):
+        test_contract = copy.deepcopy(self.loaded)
+        test_contract.batches = []
+        family = copy.deepcopy(self.families["mayo.grainne-1593.farraige.sea-noun"])
+        plan = contract.prepare_harvest(
+            test_contract,
+            [(REPO_ROOT / "farraige.v2.json", family)],
+            root=REPO_ROOT,
+            created_at="2026-08-02T00:00:00Z",
+        )
+        plan["batches"] = contract.build_emergency_batches(
+            plan,
+            created_at="2026-08-02T00:00:00Z",
+            batch_prefix="d32.test",
+            max_lines_per_batch=1,
+        )
+        contract.approve_emergency_harvest(
+            plan,
+            approved_by="user.delegation.synthetic",
+            approved_at="2026-08-02T00:00:00Z",
+            requested_by="codex.track-b.synthetic",
+            claim_owner="codex.track-c.synthetic",
+            claimed_at="2026-08-02T00:00:00Z",
+            lease_expires_at="2026-08-02T18:00:00Z",
+        )
+        self.assertTrue(plan["emergency_approved"])
+        self.assertGreater(len(plan["batches"]), 0)
+        for batch in plan["batches"]:
+            self.assertTrue(batch["execution"]["provider_calls_allowed"])
+            for line in batch["lines"]:
+                self.assertEqual(line["request"]["status"], "approved")
+                self.assertEqual(line["claim"]["status"], "claimed")
+                self.assertEqual(line["claim"]["owner_id"], "codex.track-c.synthetic")
+                for member_id in line["member_ids"]:
+                    member = plan["contract"].members[member_id]
+                    capture = member["states"]["capture_request"]
+                    self.assertEqual(capture["status"], "requested")
+                    self.assertEqual(
+                        capture["authorization"]["basis"], "d32_emergency_harvest"
+                    )
+                    self.assertTrue(capture["authorization"]["learner_release_blocked"])
+                    self.assertEqual(member["states"]["learner_release"]["status"], "blocked")
 
     def test_batch_capture_disposition_is_required_and_locked(self):
         batch = copy.deepcopy(self.loaded.batches[0])

@@ -272,11 +272,13 @@
       "additionalProperties": false,
       "required": ["basis", "authorized_by", "authorized_at", "reason", "fixture_only"],
       "properties": {
-        "basis": { "enum": ["repository_draft_owner", "pedagogy_approved", "fixture_owner_exception"] },
+        "basis": { "enum": ["repository_draft_owner", "pedagogy_approved", "fixture_owner_exception", "d32_emergency_harvest"] },
         "authorized_by": { "type": "string", "minLength": 1 },
         "authorized_at": { "type": "string", "minLength": 1 },
         "reason": { "type": "string", "minLength": 1 },
-        "fixture_only": { "type": "boolean" }
+        "fixture_only": { "type": "boolean" },
+        "harvest_deadline": { "type": ["string", "null"] },
+        "learner_release_blocked": { "type": ["boolean", "null"] }
       }
     },
     "captureRequest": {
