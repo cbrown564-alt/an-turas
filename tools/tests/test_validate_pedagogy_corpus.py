@@ -23,8 +23,8 @@ class PedagogyCorpusTests(unittest.TestCase):
         cls.summary = validator.summarize(cls.payload)
 
     def test_corpus_counts_are_explicit(self) -> None:
-        self.assertEqual(self.summary["lessons"], 7)
-        self.assertEqual(self.summary["lines"], 26)
+        self.assertEqual(self.summary["lessons"], 9)
+        self.assertEqual(self.summary["lines"], 29)
 
     def test_narrative_tranche_reuses_exact_repository_examples(self) -> None:
         lessons = {lesson["id"]: lesson for lesson in self.payload["lessons"]}
@@ -138,10 +138,10 @@ class PedagogyCorpusTests(unittest.TestCase):
 
     def test_report_keeps_review_and_release_counts_visible(self) -> None:
         report = validator.render_report(self.summary, self.errors)
-        self.assertIn("Lessons: **7**", report)
-        self.assertIn("Explanation lines: **26**", report)
+        self.assertIn("Lessons: **9**", report)
+        self.assertIn("Explanation lines: **29**", report)
         self.assertIn("pedagogy:pending", report)
-        self.assertIn("'blocked': 26", report)
+        self.assertIn("'blocked': 29", report)
         self.assertIn("does not grant teaching", report)
 
 

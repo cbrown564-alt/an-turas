@@ -4,6 +4,32 @@ Operational queue for Track A's provisional phrase-family authoring. The atlas a
 story slate remain the source inputs; queue membership is not evidence of historical,
 Irish-language, pedagogy, rights, audio-QA, or learner-release approval.
 
+**Current priority:** bulk Track A across parallel avenues until `prepare-harvest`
+reports hundreds to thousands of net-new unique lines. See [`STATUS.md`](../../../STATUS.md)
+§ *Bulk Track A — parallel authoring targets* for the authoritative target table,
+preflight gate, and merge rules. Tracks B–E wait on that slice.
+
+## Bulk Track A avenues (parallel)
+
+These streams are independent where noted. Each must land complete v2 members with
+exercise consumers before store registration. Yield is **unique normalized text**, not
+member count.
+
+| Id | Avenue | Queue / scope | Tool or path |
+| --- | --- | --- | --- |
+| A1 | Personal Atlas names and places | All counties; expand past **80** pilot subjects | [`tools/generate_personal_atlas_name_place_families.py`](../../../tools/generate_personal_atlas_name_place_families.py) |
+| A2 | Story dialogue and exercise roles | All **32** story bindings | County packs + [`tools/generate_d32_county_families.py`](../../../tools/generate_d32_county_families.py); uses ledger in [`d32-county-harvest-uses.json`](d32-county-harvest-uses.json) |
+| A3 | Mutation, fada, minimal-pair contrasts | Risk-sample senses first, then breadth | [`tools/generate_d32_harvest_extension_tranche.py`](../../../tools/generate_d32_harvest_extension_tranche.py) pattern |
+| A4 | Pedagogy-bound examples | Cross-county lessons | [`content/pedagogy/irish-explanations-v1.json`](../../pedagogy/irish-explanations-v1.json) + [`tools/validate_pedagogy_corpus.py`](../../../tools/validate_pedagogy_corpus.py) |
+| A5 | Evidence-led expansion | **`queue-02-evidence-led-next`** (8 counties) | Manual/source register per county below |
+| A6 | Source-packet expansion | **`queue-03-source-packet`** (14 counties) | Confirm packet before family volume |
+| A7 | Sensitive expansion | **`queue-04-sensitive-review-first`** (6 counties) | Review route before volume |
+| A8 | Story-slate historical names | Story anchors | `STORY_SLATE_SUBJECTS` in personal-atlas generator |
+
+**Preflight before Track B:** merged slice must pass `structured_audio_authoring.py check`
+and show **≥500** net-new registrable lines on `prepare-harvest` unless explicitly scoped
+smaller.
+
 ## Partition
 
 | Queue | Counties | Entry condition |

@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.extension.mayo.d32-mayo-grainne-1593.part-01",
+  "created_at": "2026-08-03T18:30:00Z",
+  "purpose": "D32 emergency harvest — mayo / d32.mayo.grainne-1593 / senses mayo.ainm.name / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.delegated.019fc314",
+    "approved_at": "2026-08-03T18:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.extension.mayo.d32-mayo-grainne-1593.part-01.line.f689a038f470556f",
+      "member_ids": [
+        "d32.mayo.contrast.sean-fada.adjective-old"
+      ],
+      "normalized_text": "Ní hainm é sin; tá an teach sean.",
+      "text_sha256": "b60838c434235a1ac84228fd08c9cfe86b6be0b6cc9ec0bdcf91837928cc7829",
+      "inventory_slug": "nii-hainm-ee-sin-taa-an-teach-sean",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T18:30:00Z",
+        "lease_expires_at": "2026-08-04T18:30:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-03T18:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-03T18:32:39.204578+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ZiCzV90rnA356Hvo1Dox",
+        "started_at": "2026-08-03T18:32:35.111114+00:00",
+        "completed_at": "2026-08-03T18:32:39.199078+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/nii-hainm-ee-sin-taa-an-teach-sean.mp3",
+        "sha256": "a0c95574a0a03fcac8f701e597f3db1f6928270dc4d43fc7afa4d6cc322a7c08",
+        "bytes": 74649,
+        "duration_seconds": 3.04
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 33.0,
+    "estimated_cumulative_credits": 13808.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 95227.0,
+    "usage_before": {
+      "captured_at": "2026-08-03T18:32:35.111114+00:00",
+      "used_credits": 95227.0,
+      "remaining_credits": 140872.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-03T18:32:39.199078+00:00",
+      "used_credits": 95227.0,
+      "remaining_credits": 140872.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.delegated.019fc314",
+      "authorized_at": "2026-08-03T18:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.extension.2026-08-03",
+      "baseline_used_credits": 95153.0,
+      "payload_credit_limit": 800.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.extension.mayo.d32-mayo-grainne-1593.part-01"
+    }
+  },
+  "counts": {
+    "lines": 1,
+    "member_references": 1,
+    "planned": 0,
+    "approved": 1,
+    "succeeded": 1,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "2af44d00c4efe208f096954892c91341b0b39319acc110ddfaa1671299811220"
+}

@@ -148,8 +148,13 @@ After inspecting a new draft, register its id/path in the store's sorted
 ## Track B harvest preparation
 
 `tools/structured_audio_authoring.py prepare-harvest` is the repeatable offline
-normalization and batch-planning step for Track A family documents. It accepts one or
-more `.v2.json` files or directories, canonicalizes Irish text to NFC with folded
+normalization and batch-planning step for Track A family documents. **Do not approve a
+D32 emergency-harvest payload when preflight reports zero or trivial net-new lines** —
+that state means Track A has not yet produced billable unique text. See
+[`STATUS.md`](../../STATUS.md) § *Bulk Track A* for the **≥500 line / ≥5,000 credit**
+preflight gate and parallel avenue table.
+
+It accepts one or more `.v2.json` files or directories, canonicalizes Irish text to NFC with folded
 whitespace, recomputes the inventory slug and text SHA-256, preserves stable family and
 member ids, reports duplicate text/voice lines, and partitions new work by
 county/story/sense. A normalized line already present in any registered batch is

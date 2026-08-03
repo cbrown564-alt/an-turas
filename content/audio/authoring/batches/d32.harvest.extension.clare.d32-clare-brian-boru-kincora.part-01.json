@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.extension.clare.d32-clare-brian-boru-kincora.part-01",
+  "created_at": "2026-08-03T18:30:00Z",
+  "purpose": "D32 emergency harvest — clare / d32.clare.brian-boru-kincora / senses clare.ainm.name / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.delegated.019fc314",
+    "approved_at": "2026-08-03T18:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.extension.clare.d32-clare-brian-boru-kincora.part-01.line.2f412b87807f1168",
+      "member_ids": [
+        "d32.clare.20.ainm.name.personal-atlas.historical-name-brian-boru.context"
+      ],
+      "normalized_text": "Is ainm stairiúil é Brian Boru.",
+      "text_sha256": "07a74e59debc5d389403c5ffc299f350cba23d6ff9acd676d227acfcf4ada76b",
+      "inventory_slug": "is-ainm-stairiuuil-ee-brian-boru",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T18:30:00Z",
+        "lease_expires_at": "2026-08-04T18:30:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-03T18:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-03T18:32:26.535185+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "IobTHalEdczDwuKHI3g1",
+        "started_at": "2026-08-03T18:32:21.427664+00:00",
+        "completed_at": "2026-08-03T18:32:26.528126+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ainm-stairiuuil-ee-brian-boru.mp3",
+        "sha256": "1f6e49dd072c95b5b240ff788fb875dfdf3f8f87e9ac9e161519d0d7ccfcd108",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.extension.clare.d32-clare-brian-boru-kincora.part-01.line.423549a5573cd3e9",
+      "member_ids": [
+        "d32.clare.20.ainm.name.personal-atlas.historical-name-brian-boru.dialogue"
+      ],
+      "normalized_text": "An é Brian Boru an t-ainm stairiúil?",
+      "text_sha256": "0e8d91b43772c5549786629b0a486ad78112f6fc7ff98d5d736bdc26e957cf81",
+      "inventory_slug": "an-ee-brian-boru-an-t-ainm-stairiuuil",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T18:30:00Z",
+        "lease_expires_at": "2026-08-04T18:30:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-03T18:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-03T18:32:26.535264+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ToEJxz6ka3hZ11RHAs84",
+        "started_at": "2026-08-03T18:32:21.427664+00:00",
+        "completed_at": "2026-08-03T18:32:26.528126+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-brian-boru-an-t-ainm-stairiuuil.mp3",
+        "sha256": "e65ee85546524c1f3741cbf779f8e2d5be0c50d8fb62b280e96d7cf727381e82",
+        "bytes": 76530,
+        "duration_seconds": 3.12
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 67.0,
+    "estimated_cumulative_credits": 13842.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 95175.0,
+    "usage_before": {
+      "captured_at": "2026-08-03T18:32:21.427664+00:00",
+      "used_credits": 95175.0,
+      "remaining_credits": 140924.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-03T18:32:26.528126+00:00",
+      "used_credits": 95175.0,
+      "remaining_credits": 140924.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.delegated.019fc314",
+      "authorized_at": "2026-08-03T18:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.extension.2026-08-03",
+      "baseline_used_credits": 95153.0,
+      "payload_credit_limit": 800.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.extension.clare.d32-clare-brian-boru-kincora.part-01"
+    }
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "33715d2fa70129cd42c250eac75d405bd28ae09863b89890abd384dcbbfa110c"
+}

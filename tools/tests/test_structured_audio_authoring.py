@@ -67,19 +67,6 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
         self.assertEqual(self.errors, [])
 
     def test_ambiguous_story_lookup_rejects_ordinal_only_pointers(self):
-        ref = {
-            "path": "content/audio/authoring/d32-county-harvest-uses.json",
-            "record_id": "d32.antrim.fionn-mac-cumhaill",
-        }
-        errors: list[str] = []
-        contract.validate_ref(ref, REPO_ROOT, "story", errors)
-        self.assertTrue(any("is ambiguous" in error for error in errors))
-
-        ref.update({"record_scope": "stories", "record_index": 0})
-        errors = []
-        self.assertIsNone(contract.validate_ref(ref, REPO_ROOT, "story", errors))
-        self.assertTrue(any("record_index is ordinal-only" in error for error in errors))
-
         stable_ref = {
             "path": "content/audio/authoring/d32-county-harvest-uses.json",
             "record_id": "d32.kerry.piaras-feiritear",
@@ -97,6 +84,33 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
                     encoding="utf-8"
                 )
             )
+            antrim = next(
+                story
+                for story in source["stories"]
+                if story.get("id") == "d32.antrim.fionn-mac-cumhaill"
+            )
+            duplicate = copy.deepcopy(antrim)
+            duplicate["record_instance_id"] = "d32.antrim.fionn-mac-cumhaill.variant"
+            source["stories"].append(duplicate)
+            Path(temporary, "ambiguous-stories.json").write_text(
+                json.dumps(source, ensure_ascii=False), encoding="utf-8"
+            )
+            ambiguous_ref = {
+                "path": "ambiguous-stories.json",
+                "record_id": "d32.antrim.fionn-mac-cumhaill",
+                "record_scope": "stories",
+            }
+            errors = []
+            contract.validate_ref(ambiguous_ref, Path(temporary), "story", errors)
+            self.assertTrue(any("is ambiguous" in error for error in errors))
+
+            ordinal_ref = dict(ambiguous_ref, record_index=0)
+            errors = []
+            self.assertIsNone(
+                contract.validate_ref(ordinal_ref, Path(temporary), "story", errors)
+            )
+            self.assertTrue(any("record_index is ordinal-only" in error for error in errors))
+
             selected = next(
                 story
                 for story in source["stories"]
@@ -107,6 +121,12 @@ class StructuredAudioAuthoringTests(unittest.TestCase):
                 for story in source["stories"]
                 if story is not selected
             ] + [selected]
+            mayo = next(
+                story
+                for story in source["stories"]
+                if story.get("id") == "d32.mayo.grainne-1593"
+            )
+            source["stories"].append(copy.deepcopy(mayo))
             Path(temporary, "stories.json").write_text(
                 json.dumps(source, ensure_ascii=False), encoding="utf-8"
             )

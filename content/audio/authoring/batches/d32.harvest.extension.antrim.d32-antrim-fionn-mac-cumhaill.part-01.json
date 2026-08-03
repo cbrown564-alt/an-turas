@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.extension.antrim.d32-antrim-fionn-mac-cumhaill.part-01",
+  "created_at": "2026-08-03T18:30:00Z",
+  "purpose": "D32 emergency harvest — antrim / d32.antrim.fionn-mac-cumhaill / senses antrim.sceal.story, clare.sceal.story, down.sceal.story, galway.sceal.story, kilkenny.sceal.story, louth.sceal.story, roscommon.sceal.story / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.delegated.019fc314",
+    "approved_at": "2026-08-03T18:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.extension.antrim.d32-antrim-fionn-mac-cumhaill.part-01.line.c80174c01d33790a",
+      "member_ids": [
+        "d32.antrim.08.sceal.story.story-transition",
+        "d32.clare.09.sceal.story.story-transition",
+        "d32.down.08.sceal.story.story-transition",
+        "d32.galway.14.sceal.story.story-transition",
+        "d32.kilkenny.10.sceal.story.story-transition",
+        "d32.louth.09.sceal.story.story-transition",
+        "d32.roscommon.10.sceal.story.story-transition"
+      ],
+      "normalized_text": "Anois, fillimis ar an scéal.",
+      "text_sha256": "63924b8c532b5f291fef869c5bd3c55777ddd954d27426f210fc8543fde1993c",
+      "inventory_slug": "anois-fillimis-ar-an-sceeal",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T18:30:00Z",
+        "lease_expires_at": "2026-08-04T18:30:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-03T18:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-03T18:32:20.144314+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "q6XkLvDRTv5Dq3gI4Hcx",
+        "started_at": "2026-08-03T18:32:14.600118+00:00",
+        "completed_at": "2026-08-03T18:32:20.140034+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/anois-fillimis-ar-an-sceeal.mp3",
+        "sha256": "d749376a130c9b7049fcfa0016d85c05e15cf3f7f789ff5945d623968d131c61",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 28.0,
+    "estimated_cumulative_credits": 13803.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 95175.0,
+    "usage_before": {
+      "captured_at": "2026-08-03T18:32:14.600118+00:00",
+      "used_credits": 95175.0,
+      "remaining_credits": 140924.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-03T18:32:20.140034+00:00",
+      "used_credits": 95175.0,
+      "remaining_credits": 140924.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.delegated.019fc314",
+      "authorized_at": "2026-08-03T18:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.extension.2026-08-03",
+      "baseline_used_credits": 95153.0,
+      "payload_credit_limit": 800.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.extension.antrim.d32-antrim-fionn-mac-cumhaill.part-01"
+    }
+  },
+  "counts": {
+    "lines": 1,
+    "member_references": 7,
+    "planned": 0,
+    "approved": 1,
+    "succeeded": 1,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "5da93d47a38eefd7ac2a7635c1da5168eeeb42e8f17a227b006e449809e5ecd9"
+}

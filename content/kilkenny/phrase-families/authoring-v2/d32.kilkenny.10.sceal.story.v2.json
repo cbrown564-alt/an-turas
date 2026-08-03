@@ -288,6 +288,137 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.kilkenny.10.sceal.story.story-transition",
+      "family_id": "d32.kilkenny.10.sceal.story",
+      "target": {
+        "lexeme_id": "lex.sceal",
+        "citation_form": "scéal",
+        "sense_id": "kilkenny.sceal.story",
+        "part_of_speech": "noun",
+        "english_sense": "story",
+        "target_form": "scéal"
+      },
+      "irish": {
+        "text": "Anois, fillimis ar an scéal.",
+        "normalized_text": "Anois, fillimis ar an scéal.",
+        "inventory_slug": "anois-fillimis-ar-an-sceeal",
+        "text_sha256": "63924b8c532b5f291fef869c5bd3c55777ddd954d27426f210fc8543fde1993c"
+      },
+      "english": {
+        "intent": "Now, let us return to the story.",
+        "literal_note": "Invented reusable county story transition; not attested dialogue."
+      },
+      "binding": {
+        "county": "kilkenny",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler"
+        },
+        "atlas_placement_ids": [
+          "atlas.kilkenny.10.sceal"
+        ],
+        "place": {
+          "id": "d32.kilkenny.place",
+          "label": "Cill Chainnigh / Kilkenny"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Return from a place or name beat to the county story thread.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kilkenny.alice-kyteler.transition.shared",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Return from a place or name beat to the county story thread."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic reusable story-transition frame for the D32 harvest extension tranche; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kilkenny.alice-kyteler.transition.shared",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.d32-harvest-extension",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-c.d32-drain",
+          "requested_at": "2026-08-03T18:30:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.delegated.019fc314",
+            "authorized_at": "2026-08-03T18:30:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.extension.antrim.d32-antrim-fionn-mac-cumhaill.part-01.line.c80174c01d33790a"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "invented_text",
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation"
+      ]
     }
   ]
 }

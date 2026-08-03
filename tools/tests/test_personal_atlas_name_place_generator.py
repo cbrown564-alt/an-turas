@@ -17,7 +17,7 @@ import generate_personal_atlas_name_place_families as generator  # noqa: E402
 class PersonalAtlasNamePlaceGeneratorTests(unittest.TestCase):
     def test_story_slate_subjects_have_stable_source_and_family_routes(self):
         indexed = generator.family_index()
-        self.assertEqual(len(generator.STORY_SLATE_SUBJECTS), 9)
+        self.assertEqual(len(generator.STORY_SLATE_SUBJECTS), 17)
         ids = [subject["id"] for subject in generator.STORY_SLATE_SUBJECTS]
         self.assertEqual(len(ids), len(set(ids)))
 
@@ -38,7 +38,7 @@ class PersonalAtlasNamePlaceGeneratorTests(unittest.TestCase):
             for subject in generator.STORY_SLATE_SUBJECTS
             if subject.get("authoring_kind") == "historical_name"
         ]
-        self.assertEqual(len(historical), 5)
+        self.assertEqual(len(historical), 10)
         self.assertTrue(all(subject["kind"] == "name" for subject in historical))
         self.assertTrue(all(subject["canonicalDisplay"] for subject in historical))
         self.assertTrue(
@@ -53,7 +53,7 @@ class PersonalAtlasNamePlaceGeneratorTests(unittest.TestCase):
                 for subject in generator.STORY_SLATE_SUBJECTS
                 if subject["kind"] == "place"
             ]
-            self.assertEqual(len(places), 4)
+            self.assertEqual(len(places), 7)
             for subject in places:
                 match = generator.logainm_match(subject, connection)
                 self.assertIsNotNone(match, subject["id"])

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.extension.cork.d32-cork-nano-nagle.part-01",
+  "created_at": "2026-08-03T18:30:00Z",
+  "purpose": "D32 emergency harvest — cork / d32.cork.nano-nagle / senses cork.ainm.name / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.delegated.019fc314",
+    "approved_at": "2026-08-03T18:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.extension.cork.d32-cork-nano-nagle.part-01.line.6e3dd01625d3f752",
+      "member_ids": [
+        "d32.cork.20.ainm.name.personal-atlas.historical-name-nano-nagle.context"
+      ],
+      "normalized_text": "Is ainm stairiúil é Nano Nagle.",
+      "text_sha256": "1be6cfee6a9a7308024e04ef03b5ec0f93ff93d56c84e9bf478dc294ddb554c6",
+      "inventory_slug": "is-ainm-stairiuuil-ee-nano-nagle",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T18:30:00Z",
+        "lease_expires_at": "2026-08-04T18:30:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-03T18:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-03T18:32:33.790727+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "4P0kCuBkKS8tNUSH3RnR",
+        "started_at": "2026-08-03T18:32:28.169356+00:00",
+        "completed_at": "2026-08-03T18:32:33.782486+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ainm-stairiuuil-ee-nano-nagle.mp3",
+        "sha256": "bb21f27fec2618d4257c9e3372f019b26b13ec6cb814c921d962d1cb54356983",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.extension.cork.d32-cork-nano-nagle.part-01.line.c12921432429dc67",
+      "member_ids": [
+        "d32.cork.20.ainm.name.personal-atlas.historical-name-nano-nagle.dialogue"
+      ],
+      "normalized_text": "An é Nano Nagle an t-ainm stairiúil?",
+      "text_sha256": "1225373e7058fe5dcac75f0b763872971186d496ca17933ee9038d3bf4dacc59",
+      "inventory_slug": "an-ee-nano-nagle-an-t-ainm-stairiuuil",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T18:30:00Z",
+        "lease_expires_at": "2026-08-04T18:30:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-03T18:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-03T18:32:33.790803+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "0LgoksmeUDePKa3wSfln",
+        "started_at": "2026-08-03T18:32:28.169356+00:00",
+        "completed_at": "2026-08-03T18:32:33.782486+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-nano-nagle-an-t-ainm-stairiuuil.mp3",
+        "sha256": "9567f296b39b554eea35f5214c1274bd5755825597a8221c2bdd06595d5acb88",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 67.0,
+    "estimated_cumulative_credits": 13842.0,
+    "actual_batch_credits": 52.0,
+    "actual_cumulative_credits": 95227.0,
+    "usage_before": {
+      "captured_at": "2026-08-03T18:32:28.169356+00:00",
+      "used_credits": 95175.0,
+      "remaining_credits": 140924.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-03T18:32:33.782486+00:00",
+      "used_credits": 95227.0,
+      "remaining_credits": 140872.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.delegated.019fc314",
+      "authorized_at": "2026-08-03T18:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.extension.2026-08-03",
+      "baseline_used_credits": 95153.0,
+      "payload_credit_limit": 800.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.extension.cork.d32-cork-nano-nagle.part-01"
+    }
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "3b32d736ae2ed67e0fc58333484a47659147d624629de45beff4e35af2d27028"
+}

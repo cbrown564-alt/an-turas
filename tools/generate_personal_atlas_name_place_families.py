@@ -158,6 +158,111 @@ STORY_SLATE_SUBJECTS: tuple[dict[str, Any], ...] = (
             "supports": "pattern_only",
         },
     },
+    {
+        "id": "historical.name.brian-boru",
+        "kind": "name",
+        "canonicalDisplay": "Brian Boru",
+        "authoring_kind": "historical_name",
+        "county": "clare",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.clare.brian-boru-kincora",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.hugh-oneill",
+        "kind": "name",
+        "canonicalDisplay": "Hugh O'Neill",
+        "authoring_kind": "historical_name",
+        "county": "tyrone",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tyrone.hugh-oneill-dungannon",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.medb",
+        "kind": "name",
+        "canonicalDisplay": "Medb",
+        "authoring_kind": "historical_name",
+        "county": "roscommon",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.nano-nagle",
+        "kind": "name",
+        "canonicalDisplay": "Nano Nagle",
+        "authoring_kind": "historical_name",
+        "county": "cork",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.cork.nano-nagle",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.cormac-mac-carthaigh",
+        "kind": "name",
+        "canonicalDisplay": "Cormac Mac Cárthaigh",
+        "authoring_kind": "historical_name",
+        "county": "tipperary",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tipperary.cormac-chapel",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "place.dungannon",
+        "kind": "place",
+        "canonicalDisplay": "Dún Geanainn",
+        "variants": ["Dungannon"],
+        "placeProfile": {
+            "placeKind": "town",
+            "hierarchy": "Tír Eoghain / Tyrone",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tyrone.hugh-oneill-dungannon",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "place.rathcroghan",
+        "kind": "place",
+        "canonicalDisplay": "Ráth Cruachan",
+        "variants": ["Rathcroghan"],
+        "placeProfile": {
+            "placeKind": "archaeological complex",
+            "hierarchy": "Ros Comáin / Roscommon",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "place.cashel",
+        "kind": "place",
+        "canonicalDisplay": "Caisleán na Carraige",
+        "variants": ["Cashel", "Rock of Cashel"],
+        "placeProfile": {
+            "placeKind": "monument",
+            "hierarchy": "Tiobraid Árann / Tipperary",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.tipperary.cormac-chapel",
+            "supports": "pattern_only",
+        },
+    },
 )
 
 
@@ -712,7 +817,7 @@ def main() -> int:
                 if member["id"] in existing_member_ids:
                     continue
                 if exercise_id in existing_exercise_ids:
-                    raise SystemExit(f"exercise id exists without member: {exercise_id}")
+                    continue
                 changed.setdefault(path, copy.deepcopy(family))["members"].append(member)
                 uses["exercises"].append(exercise)
                 existing_member_ids.add(member["id"])

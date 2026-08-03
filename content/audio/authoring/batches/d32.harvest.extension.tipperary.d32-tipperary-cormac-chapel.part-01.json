@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.extension.tipperary.d32-tipperary-cormac-chapel.part-01",
+  "created_at": "2026-08-03T18:30:00Z",
+  "purpose": "D32 emergency harvest — tipperary / d32.tipperary.cormac-chapel / senses tipperary.ainm.name / part 01",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.delegated.019fc314",
+    "approved_at": "2026-08-03T18:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.extension.tipperary.d32-tipperary-cormac-chapel.part-01.line.3833ea218a64fb54",
+      "member_ids": [
+        "d32.tipperary.20.ainm.name.personal-atlas.historical-name-cormac-mac-carthaigh.context"
+      ],
+      "normalized_text": "Is ainm stairiúil é Cormac Mac Cárthaigh.",
+      "text_sha256": "d761b614736021baf669648d11f52f508b55f67a65de58d13a30554d4446efe7",
+      "inventory_slug": "is-ainm-stairiuuil-ee-cormac-mac-caarthaigh",
+      "estimated_characters": 41,
+      "estimated_credits": 41.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T18:30:00Z",
+        "lease_expires_at": "2026-08-04T18:30:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-03T18:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-03T18:32:56.236608+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "bfuqGY9ulZRHjoQvN7dZ",
+        "started_at": "2026-08-03T18:32:50.396982+00:00",
+        "completed_at": "2026-08-03T18:32:56.231725+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ainm-stairiuuil-ee-cormac-mac-caarthaigh.mp3",
+        "sha256": "efed52b78eb8e382ec37bfa1a6e899353ecf2ee51f69cb2d806d474f066e025b",
+        "bytes": 80292,
+        "duration_seconds": 3.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.extension.tipperary.d32-tipperary-cormac-chapel.part-01.line.812364d1d5947b6b",
+      "member_ids": [
+        "d32.tipperary.20.ainm.name.personal-atlas.historical-name-cormac-mac-carthaigh.dialogue"
+      ],
+      "normalized_text": "An é Cormac Mac Cárthaigh an t-ainm stairiúil?",
+      "text_sha256": "cd2ed3f39a93df43094f57a1b19f87623fb76792c5e5eac75775fc17af95597e",
+      "inventory_slug": "an-ee-cormac-mac-caarthaigh-an-t-ainm-stairiuuil",
+      "estimated_characters": 46,
+      "estimated_credits": 46.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T18:30:00Z",
+        "lease_expires_at": "2026-08-04T18:30:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.delegated.019fc314",
+        "approved_at": "2026-08-03T18:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-03T18:32:56.236694+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "taNPO32bLpgOop6ihqPK",
+        "started_at": "2026-08-03T18:32:50.396982+00:00",
+        "completed_at": "2026-08-03T18:32:56.231725+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-cormac-mac-caarthaigh-an-t-ainm-stairiuuil.mp3",
+        "sha256": "7c81836be15da8b0c83ae705f1d68b54bdd52ed04f973b9ae3febd7d0aa47c56",
+        "bytes": 87815,
+        "duration_seconds": 3.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 87.0,
+    "estimated_cumulative_credits": 13862.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 95227.0,
+    "usage_before": {
+      "captured_at": "2026-08-03T18:32:50.396982+00:00",
+      "used_credits": 95227.0,
+      "remaining_credits": 140872.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-03T18:32:56.231725+00:00",
+      "used_credits": 95227.0,
+      "remaining_credits": 140872.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.delegated.019fc314",
+      "authorized_at": "2026-08-03T18:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.extension.2026-08-03",
+      "baseline_used_credits": 95153.0,
+      "payload_credit_limit": 800.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.extension.tipperary.d32-tipperary-cormac-chapel.part-01"
+    }
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "312f8918dbda3cf19a92f953439bd8ff255b906fb81acac9f33b8b1b22fd87e4"
+}
