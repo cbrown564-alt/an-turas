@@ -1,0 +1,278 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.mayo.contrast.ba-fada",
+  "county": "mayo",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.mayo.grainne-1593"
+  },
+  "target": {
+    "lexeme_id": "lex.ba",
+    "citation_form": "bá",
+    "sense_id": "mayo.ba.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "bay"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.mayo.02.ba",
+      "gloss": "bay"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.mayo.contrast.ba-fada.bay-with-fada",
+      "family_id": "d32.mayo.contrast.ba-fada",
+      "target": {
+        "lexeme_id": "lex.ba",
+        "citation_form": "bá",
+        "sense_id": "mayo.ba.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "bay",
+        "target_form": "bá",
+        "morphology": "bá with fada meaning bay"
+      },
+      "irish": {
+        "text": "Tá bá mhór anseo.",
+        "normalized_text": "Tá bá mhór anseo.",
+        "inventory_slug": "taa-baa-mhoor-anseo",
+        "text_sha256": "1b38a4bd4c8dbc09013fc54b1dcea8c4c9e7657236c937725fbea096e97ee5d5"
+      },
+      "english": {
+        "intent": "There is a large bay here.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.02.ba"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada_minimal_pair contrast: There is a large bay here.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.ba-fada.bay-with-fada",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada_minimal_pair contrast: There is a large bay here."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.ba-fada.bay-with-fada",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.ba-fada.copula-past",
+      "family_id": "d32.mayo.contrast.ba-fada",
+      "target": {
+        "lexeme_id": "lex.ba",
+        "citation_form": "bá",
+        "sense_id": "mayo.ba.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "bay",
+        "target_form": "Ba",
+        "morphology": "past copula ba without fada"
+      },
+      "irish": {
+        "text": "Ba mhór an long í.",
+        "normalized_text": "Ba mhór an long í.",
+        "inventory_slug": "ba-mhoor-an-long-ii",
+        "text_sha256": "6a97f27ccf8acb9bf124eabee11b7ffd856afa481d7734368ba02565b26cfc15"
+      },
+      "english": {
+        "intent": "It was a large ship.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.02.ba"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada_minimal_pair contrast: It was a large ship.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.ba-fada.copula-past",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada_minimal_pair contrast: It was a large ship."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.ba-fada.copula-past",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text",
+        "sense_ambiguity"
+      ]
+    }
+  ]
+}

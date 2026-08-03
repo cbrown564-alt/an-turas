@@ -1,0 +1,276 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.mayo.contrast.teigh-fada",
+  "county": "mayo",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.mayo.grainne-1593"
+  },
+  "target": {
+    "lexeme_id": "lex.teigh",
+    "citation_form": "téigh",
+    "sense_id": "mayo.teigh.contrast",
+    "part_of_speech": "verb",
+    "english_sense": "go"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.mayo.13.teigh",
+      "gloss": "go"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.mayo.contrast.teigh-fada.imperative-go",
+      "family_id": "d32.mayo.contrast.teigh-fada",
+      "target": {
+        "lexeme_id": "lex.teigh",
+        "citation_form": "téigh",
+        "sense_id": "mayo.teigh.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "go",
+        "target_form": "Téigh",
+        "morphology": "imperative téigh with fada"
+      },
+      "irish": {
+        "text": "Téigh go dtí an áit chiúin.",
+        "normalized_text": "Téigh go dtí an áit chiúin.",
+        "inventory_slug": "teeigh-go-dtii-an-aait-chiuuin",
+        "text_sha256": "a1fe8aa7e9e7075df46bb01cfa3d65fc1e36d7e7c54f569ae668f7d7476fcb6f"
+      },
+      "english": {
+        "intent": "Go to the quiet place.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.13.teigh"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Go to the quiet place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.teigh-fada.imperative-go",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Go to the quiet place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.teigh-fada.imperative-go",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.teigh-fada.negative-go",
+      "family_id": "d32.mayo.contrast.teigh-fada",
+      "target": {
+        "lexeme_id": "lex.teigh",
+        "citation_form": "téigh",
+        "sense_id": "mayo.teigh.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "go",
+        "target_form": "téigh",
+        "morphology": "negative imperative keeping téigh with fada"
+      },
+      "irish": {
+        "text": "Ná téigh amach anocht.",
+        "normalized_text": "Ná téigh amach anocht.",
+        "inventory_slug": "naa-teeigh-amach-anocht",
+        "text_sha256": "5a05451e6e2f4a0a22b8ac909bd828da839a438b1c5340e30c20ab429c1eb76f"
+      },
+      "english": {
+        "intent": "Do not go out tonight.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.13.teigh"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Do not go out tonight.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.teigh-fada.negative-go",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Do not go out tonight."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.teigh-fada.negative-go",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    }
+  ]
+}

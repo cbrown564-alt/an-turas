@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.louth.contrast.droichead-atha-place",
+  "county": "louth",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.louth.cu-chulainn-cooley"
+  },
+  "target": {
+    "lexeme_id": "lex.ainm",
+    "citation_form": "ainm",
+    "sense_id": "louth.ainm.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "name"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.louth.20.ainm",
+      "gloss": "name"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.louth.contrast.droichead-atha-place.place-name",
+      "family_id": "d32.louth.contrast.droichead-atha-place",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "louth.ainm.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "name",
+        "target_form": "ainm",
+        "morphology": "Droichead Átha with fada on Átha"
+      },
+      "irish": {
+        "text": "Is é Droichead Átha ainm na háite úd.",
+        "normalized_text": "Is é Droichead Átha ainm na háite úd.",
+        "inventory_slug": "is-ee-droichead-aatha-ainm-na-haaite-uud",
+        "text_sha256": "0c059d0913d6b946868451194a48a8c187c37942996f09f4a1d8cd328369dc3c"
+      },
+      "english": {
+        "intent": "Drogheda is the name of that place.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "louth",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley"
+        },
+        "atlas_placement_ids": [
+          "atlas.louth.20.ainm"
+        ],
+        "place": {
+          "id": "d32.louth.place",
+          "label": "Lú / Louth"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Drogheda is the name of that place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley.contrast.droichead-atha-place.place-name",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Drogheda is the name of that place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.louth.cu-chulainn-cooley.contrast.droichead-atha-place.place-name",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.louth.contrast.droichead-atha-place.place-question",
+      "family_id": "d32.louth.contrast.droichead-atha-place",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "louth.ainm.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "name",
+        "target_form": "ainm",
+        "morphology": "Droichead Átha place-name question"
+      },
+      "irish": {
+        "text": "An é Droichead Átha ainm na háite seo?",
+        "normalized_text": "An é Droichead Átha ainm na háite seo?",
+        "inventory_slug": "an-ee-droichead-aatha-ainm-na-haaite-seo",
+        "text_sha256": "b3d56b050abc03f390daa97150ae6ce2d62f025044132343c7654726d26ffca1"
+      },
+      "english": {
+        "intent": "Is Drogheda the name of this place?",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "louth",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley"
+        },
+        "atlas_placement_ids": [
+          "atlas.louth.20.ainm"
+        ],
+        "place": {
+          "id": "d32.louth.place",
+          "label": "Lú / Louth"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Is Drogheda the name of this place?",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.louth.cu-chulainn-cooley.contrast.droichead-atha-place.place-question",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Is Drogheda the name of this place?"
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.louth.cu-chulainn-cooley.contrast.droichead-atha-place.place-question",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.carlow.contrast.oilithreacht-mutation",
+  "county": "carlow",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.carlow.st-moling"
+  },
+  "target": {
+    "lexeme_id": "lex.oilithreacht",
+    "citation_form": "oilithreacht",
+    "sense_id": "carlow.oilithreacht.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "pilgrimage"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.carlow.06.oilithreacht",
+      "gloss": "pilgrimage"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.carlow.contrast.oilithreacht-mutation.citation",
+      "family_id": "d32.carlow.contrast.oilithreacht-mutation",
+      "target": {
+        "lexeme_id": "lex.oilithreacht",
+        "citation_form": "oilithreacht",
+        "sense_id": "carlow.oilithreacht.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "pilgrimage",
+        "target_form": "oilithreacht",
+        "morphology": "citation oilithreacht"
+      },
+      "irish": {
+        "text": "Is oilithreacht fhada í.",
+        "normalized_text": "Is oilithreacht fhada í.",
+        "inventory_slug": "is-oilithreacht-fhada-ii",
+        "text_sha256": "b250b8eae04500cccc6056eb8a404181824260dfae8acc3609298c4d2840204f"
+      },
+      "english": {
+        "intent": "It is a long pilgrimage.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "carlow",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.carlow.st-moling"
+        },
+        "atlas_placement_ids": [
+          "atlas.carlow.06.oilithreacht"
+        ],
+        "place": {
+          "id": "d32.carlow.place",
+          "label": "Ceatharlach / Carlow"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is a long pilgrimage.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.carlow.st-moling.contrast.oilithreacht-mutation.citation",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is a long pilgrimage."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.carlow.st-moling.contrast.oilithreacht-mutation.citation",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "initial_mutation",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.carlow.contrast.oilithreacht-mutation.definite",
+      "family_id": "d32.carlow.contrast.oilithreacht-mutation",
+      "target": {
+        "lexeme_id": "lex.oilithreacht",
+        "citation_form": "oilithreacht",
+        "sense_id": "carlow.oilithreacht.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "pilgrimage",
+        "target_form": "oilithreacht",
+        "morphology": "oilithreacht after an"
+      },
+      "irish": {
+        "text": "An oilithreacht atá romhainn.",
+        "normalized_text": "An oilithreacht atá romhainn.",
+        "inventory_slug": "an-oilithreacht-ataa-romhainn",
+        "text_sha256": "ba7053c5ca9f311a0f097875016b611f32288ceaeb6adbefcf4f63fe5bb35b6a"
+      },
+      "english": {
+        "intent": "It is the pilgrimage that is before us.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "carlow",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.carlow.st-moling"
+        },
+        "atlas_placement_ids": [
+          "atlas.carlow.06.oilithreacht"
+        ],
+        "place": {
+          "id": "d32.carlow.place",
+          "label": "Ceatharlach / Carlow"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is the pilgrimage that is before us.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.carlow.st-moling.contrast.oilithreacht-mutation.definite",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is the pilgrimage that is before us."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.carlow.st-moling.contrast.oilithreacht-mutation.definite",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text"
+      ]
+    }
+  ]
+}

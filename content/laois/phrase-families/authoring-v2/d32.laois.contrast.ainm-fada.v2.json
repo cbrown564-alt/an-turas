@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.laois.contrast.ainm-fada",
+  "county": "laois",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.laois.rock-of-dunamase"
+  },
+  "target": {
+    "lexeme_id": "lex.ainm",
+    "citation_form": "ainm",
+    "sense_id": "laois.ainm.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "name"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.laois.20.ainm",
+      "gloss": "name"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.laois.contrast.ainm-fada.place-name",
+      "family_id": "d32.laois.contrast.ainm-fada",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "laois.ainm.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "name",
+        "target_form": "ainm",
+        "morphology": "place name with fada"
+      },
+      "irish": {
+        "text": "Is é Dún Másc ainm na háite.",
+        "normalized_text": "Is é Dún Másc ainm na háite.",
+        "inventory_slug": "is-ee-duun-maasc-ainm-na-haaite",
+        "text_sha256": "f1ec7063bc3951b92c765a6dd191db55b9e9bd30dded21958ca7a4c9aaa31c23"
+      },
+      "english": {
+        "intent": "Dunamase is the name of the place.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "laois",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.laois.rock-of-dunamase"
+        },
+        "atlas_placement_ids": [
+          "atlas.laois.20.ainm"
+        ],
+        "place": {
+          "id": "d32.laois.place",
+          "label": "Laois"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Dunamase is the name of the place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.laois.rock-of-dunamase.contrast.ainm-fada.place-name",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Dunamase is the name of the place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.laois.rock-of-dunamase.contrast.ainm-fada.place-name",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.laois.contrast.ainm-fada.place-question",
+      "family_id": "d32.laois.contrast.ainm-fada",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "laois.ainm.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "name",
+        "target_form": "ainm",
+        "morphology": "place-name question"
+      },
+      "irish": {
+        "text": "An é Dún Másc ainm na háite seo?",
+        "normalized_text": "An é Dún Másc ainm na háite seo?",
+        "inventory_slug": "an-ee-duun-maasc-ainm-na-haaite-seo",
+        "text_sha256": "8a11e3ec0efb99891f2e221c0a3fd242e55c9262551ac3a0add77218e3889596"
+      },
+      "english": {
+        "intent": "Is Dunamase the name of this place?",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "laois",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.laois.rock-of-dunamase"
+        },
+        "atlas_placement_ids": [
+          "atlas.laois.20.ainm"
+        ],
+        "place": {
+          "id": "d32.laois.place",
+          "label": "Laois"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Is Dunamase the name of this place?",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.laois.rock-of-dunamase.contrast.ainm-fada.place-question",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Is Dunamase the name of this place?"
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.laois.rock-of-dunamase.contrast.ainm-fada.place-question",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    }
+  ]
+}

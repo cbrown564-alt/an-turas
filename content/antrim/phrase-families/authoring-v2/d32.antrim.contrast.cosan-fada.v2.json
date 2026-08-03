@@ -1,0 +1,276 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.antrim.contrast.cosan-fada",
+  "county": "antrim",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.antrim.fionn-mac-cumhaill"
+  },
+  "target": {
+    "lexeme_id": "lex.cosan",
+    "citation_form": "cosán",
+    "sense_id": "antrim.cosan.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "path"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.antrim.06.cosan",
+      "gloss": "path"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.antrim.contrast.cosan-fada.path-clear",
+      "family_id": "d32.antrim.contrast.cosan-fada",
+      "target": {
+        "lexeme_id": "lex.cosan",
+        "citation_form": "cosán",
+        "sense_id": "antrim.cosan.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "path",
+        "target_form": "cosán",
+        "morphology": "cosán with fada"
+      },
+      "irish": {
+        "text": "Tá cosán cúng anseo.",
+        "normalized_text": "Tá cosán cúng anseo.",
+        "inventory_slug": "taa-cosaan-cuung-anseo",
+        "text_sha256": "d0b58a95f6bffe12da5c758428da7f8dab0d2845e523969cddf6ebb3615329ff"
+      },
+      "english": {
+        "intent": "There is a narrow path here.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.06.cosan"
+        ],
+        "place": {
+          "id": "d32.antrim.place",
+          "label": "Aontroim / Antrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: There is a narrow path here.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.cosan-fada.path-clear",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: There is a narrow path here."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.cosan-fada.path-clear",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.antrim.contrast.cosan-fada.path-eclipsis",
+      "family_id": "d32.antrim.contrast.cosan-fada",
+      "target": {
+        "lexeme_id": "lex.cosan",
+        "citation_form": "cosán",
+        "sense_id": "antrim.cosan.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "path",
+        "target_form": "gcosán",
+        "morphology": "eclipsed gcosán after ar an"
+      },
+      "irish": {
+        "text": "Siúil ar an gcosán.",
+        "normalized_text": "Siúil ar an gcosán.",
+        "inventory_slug": "siuuil-ar-an-gcosaan",
+        "text_sha256": "8395de91b49884f8f5018a27e2a71ecb02e2c698eefc980931fa2c3520874f55"
+      },
+      "english": {
+        "intent": "Walk on the path.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.06.cosan"
+        ],
+        "place": {
+          "id": "d32.antrim.place",
+          "label": "Aontroim / Antrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Walk on the path.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.cosan-fada.path-eclipsis",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Walk on the path."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.cosan-fada.path-eclipsis",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text"
+      ]
+    }
+  ]
+}

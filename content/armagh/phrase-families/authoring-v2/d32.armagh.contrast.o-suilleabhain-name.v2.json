@@ -1,0 +1,276 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.armagh.contrast.o-suilleabhain-name",
+  "county": "armagh",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.armagh.book-of-armagh"
+  },
+  "target": {
+    "lexeme_id": "lex.ainm",
+    "citation_form": "ainm",
+    "sense_id": "armagh.ainm.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "name"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.armagh.18.ainm",
+      "gloss": "name"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.armagh.contrast.o-suilleabhain-name.family-name",
+      "family_id": "d32.armagh.contrast.o-suilleabhain-name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "armagh.ainm.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "name",
+        "target_form": "ainm",
+        "morphology": "Ó Súilleabháin with multiple fadas"
+      },
+      "irish": {
+        "text": "Is é Ó Súilleabháin an t-ainm teaghlaigh aige.",
+        "normalized_text": "Is é Ó Súilleabháin an t-ainm teaghlaigh aige.",
+        "inventory_slug": "is-ee-oo-suuilleabhaain-an-t-ainm-teaghlaigh-aige",
+        "text_sha256": "1945860daae07d96068d1e32e0a67795779d175975a38954020a44fedb71b02d"
+      },
+      "english": {
+        "intent": "Ó Súilleabháin is his family name.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "armagh",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh"
+        },
+        "atlas_placement_ids": [
+          "atlas.armagh.18.ainm"
+        ],
+        "place": {
+          "id": "d32.armagh.place",
+          "label": "Ard Mhacha / Armagh"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Ó Súilleabháin is his family name.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh.contrast.o-suilleabhain-name.family-name",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Ó Súilleabháin is his family name."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.armagh.book-of-armagh.contrast.o-suilleabhain-name.family-name",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.armagh.contrast.o-suilleabhain-name.family-question",
+      "family_id": "d32.armagh.contrast.o-suilleabhain-name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "armagh.ainm.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "name",
+        "target_form": "ainm",
+        "morphology": "Ó Súilleabháin family-name question"
+      },
+      "irish": {
+        "text": "An é Ó Súilleabháin d'ainm teaghlaigh sa scéal?",
+        "normalized_text": "An é Ó Súilleabháin d'ainm teaghlaigh sa scéal?",
+        "inventory_slug": "an-ee-oo-suuilleabhaain-d-ainm-teaghlaigh-sa-sceeal",
+        "text_sha256": "4dd344ac0d9e47b994cb4db348f1e87516d51ca1fbeb97d858f427ddcbc1b1da"
+      },
+      "english": {
+        "intent": "Is Ó Súilleabháin your family name in the story?",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "armagh",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh"
+        },
+        "atlas_placement_ids": [
+          "atlas.armagh.18.ainm"
+        ],
+        "place": {
+          "id": "d32.armagh.place",
+          "label": "Ard Mhacha / Armagh"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Is Ó Súilleabháin your family name in the story?",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh.contrast.o-suilleabhain-name.family-question",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Is Ó Súilleabháin your family name in the story?"
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.armagh.book-of-armagh.contrast.o-suilleabhain-name.family-question",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text"
+      ]
+    }
+  ]
+}

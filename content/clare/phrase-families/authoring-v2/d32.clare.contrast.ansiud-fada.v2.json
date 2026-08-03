@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.clare.contrast.ansiud-fada",
+  "county": "clare",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.clare.brian-boru-kincora"
+  },
+  "target": {
+    "lexeme_id": "lex.ansiud",
+    "citation_form": "ansiúd",
+    "sense_id": "clare.ansiud.contrast",
+    "part_of_speech": "adverb",
+    "english_sense": "there"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.clare.18.ansiud",
+      "gloss": "there"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.clare.contrast.ansiud-fada.there-clear",
+      "family_id": "d32.clare.contrast.ansiud-fada",
+      "target": {
+        "lexeme_id": "lex.ansiud",
+        "citation_form": "ansiúd",
+        "sense_id": "clare.ansiud.contrast",
+        "part_of_speech": "adverb",
+        "english_sense": "there",
+        "target_form": "ansiúd",
+        "morphology": "ansiúd with fada"
+      },
+      "irish": {
+        "text": "Tá an caisleán ansiúd.",
+        "normalized_text": "Tá an caisleán ansiúd.",
+        "inventory_slug": "taa-an-caisleaan-ansiuud",
+        "text_sha256": "5a63c5ccf46a99eee5c23b49db1aa6d45f15667e55a205a0814fd9d74ad226da"
+      },
+      "english": {
+        "intent": "The castle is over there.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "clare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora"
+        },
+        "atlas_placement_ids": [
+          "atlas.clare.18.ansiud"
+        ],
+        "place": {
+          "id": "d32.clare.place",
+          "label": "an Clár / Clare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: The castle is over there.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora.contrast.ansiud-fada.there-clear",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: The castle is over there."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.clare.brian-boru-kincora.contrast.ansiud-fada.there-clear",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.clare.contrast.ansiud-fada.there-question",
+      "family_id": "d32.clare.contrast.ansiud-fada",
+      "target": {
+        "lexeme_id": "lex.ansiud",
+        "citation_form": "ansiúd",
+        "sense_id": "clare.ansiud.contrast",
+        "part_of_speech": "adverb",
+        "english_sense": "there",
+        "target_form": "ansiúd",
+        "morphology": "fronted ansiúd for listening prominence"
+      },
+      "irish": {
+        "text": "An ansiúd atá Brian?",
+        "normalized_text": "An ansiúd atá Brian?",
+        "inventory_slug": "an-ansiuud-ataa-brian",
+        "text_sha256": "c0df8ef237016744af21cda0f80cbfded26ed23f6b773a12a32b4260090d7c22"
+      },
+      "english": {
+        "intent": "Is it over there that Brian is?",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "clare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora"
+        },
+        "atlas_placement_ids": [
+          "atlas.clare.18.ansiud"
+        ],
+        "place": {
+          "id": "d32.clare.place",
+          "label": "an Clár / Clare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Is it over there that Brian is?",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora.contrast.ansiud-fada.there-question",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Is it over there that Brian is?"
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.clare.brian-boru-kincora.contrast.ansiud-fada.there-question",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    }
+  ]
+}

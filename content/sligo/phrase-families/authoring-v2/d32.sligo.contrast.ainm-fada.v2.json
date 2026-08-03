@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.sligo.contrast.ainm-fada",
+  "county": "sligo",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.sligo.yeats-ben-bulben"
+  },
+  "target": {
+    "lexeme_id": "lex.ainm",
+    "citation_form": "ainm",
+    "sense_id": "sligo.ainm.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "name"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.sligo.20.ainm",
+      "gloss": "name"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.sligo.contrast.ainm-fada.yeats-place",
+      "family_id": "d32.sligo.contrast.ainm-fada",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "sligo.ainm.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "name",
+        "target_form": "ainm",
+        "morphology": "place-name frame with fada on háite"
+      },
+      "irish": {
+        "text": "Is é Ben Bulben ainm na háite.",
+        "normalized_text": "Is é Ben Bulben ainm na háite.",
+        "inventory_slug": "is-ee-ben-bulben-ainm-na-haaite",
+        "text_sha256": "1036fb5159315e8e731ff5b8e16c8b74ef298938a8600c362cfea8f26b485526"
+      },
+      "english": {
+        "intent": "Ben Bulben is the name of the place.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "sligo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben"
+        },
+        "atlas_placement_ids": [
+          "atlas.sligo.20.ainm"
+        ],
+        "place": {
+          "id": "d32.sligo.place",
+          "label": "Sligeach / Sligo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Ben Bulben is the name of the place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben.contrast.ainm-fada.yeats-place",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Ben Bulben is the name of the place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.sligo.yeats-ben-bulben.contrast.ainm-fada.yeats-place",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.sligo.contrast.ainm-fada.yeats-question",
+      "family_id": "d32.sligo.contrast.ainm-fada",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "sligo.ainm.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "name",
+        "target_form": "ainm",
+        "morphology": "place-name question"
+      },
+      "irish": {
+        "text": "An é Ben Bulben ainm na háite úd?",
+        "normalized_text": "An é Ben Bulben ainm na háite úd?",
+        "inventory_slug": "an-ee-ben-bulben-ainm-na-haaite-uud",
+        "text_sha256": "ee7c5c12628a6555d9f456ea733fbf79225c5bec63c4091ab3ee25c7516a404d"
+      },
+      "english": {
+        "intent": "Is Ben Bulben the name of that place?",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "sligo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben"
+        },
+        "atlas_placement_ids": [
+          "atlas.sligo.20.ainm"
+        ],
+        "place": {
+          "id": "d32.sligo.place",
+          "label": "Sligeach / Sligo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Is Ben Bulben the name of that place?",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.sligo.yeats-ben-bulben.contrast.ainm-fada.yeats-question",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Is Ben Bulben the name of that place?"
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.sligo.yeats-ben-bulben.contrast.ainm-fada.yeats-question",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    }
+  ]
+}

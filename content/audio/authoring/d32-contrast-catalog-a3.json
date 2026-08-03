@@ -1,0 +1,2219 @@
+{
+  "schema_version": 1,
+  "contract": "d32_contrast_catalog_a3",
+  "created_at": "2026-08-03",
+  "avenue": "A3",
+  "description": "Curated mutation/fada/minimal-pair contrast pairs for bulk Track A authoring.",
+  "families": [
+    {
+      "id": "d32.mayo.contrast.sean-fada",
+      "county": "mayo",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada_minimal_pair",
+      "members": [
+        {
+          "suffix": "name-given",
+          "text": "Seán is ea an t-ainm atá air.",
+          "english": "Seán is the name that is on him.",
+          "target_form": "ainm",
+          "morphology": "given name with fada contrasted against adjective sean",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "adjective-old",
+          "text": "Ní hainm é sin; tá an teach sean.",
+          "english": "That is not the name; the house is old.",
+          "target_form": "ainm",
+          "morphology": "name frame contrasted with adjective sean without fada",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.ait-fada",
+      "county": "mayo",
+      "citation_form": "áit",
+      "english_sense": "place",
+      "part_of_speech": "noun",
+      "contrast_type": "fada_minimal_pair",
+      "members": [
+        {
+          "suffix": "place-with-fada",
+          "text": "Is áit chiúin í seo.",
+          "english": "This is a quiet place.",
+          "target_form": "áit",
+          "morphology": "áit with fada meaning place",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "strange-without-fada",
+          "text": "Is ait an scéal sin.",
+          "english": "That story is strange.",
+          "target_form": "ait",
+          "morphology": "ait without fada meaning strange",
+          "extra_risk": [
+            "fada",
+            "sense_ambiguity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.ba-fada",
+      "county": "mayo",
+      "citation_form": "bá",
+      "english_sense": "bay",
+      "part_of_speech": "noun",
+      "contrast_type": "fada_minimal_pair",
+      "members": [
+        {
+          "suffix": "bay-with-fada",
+          "text": "Tá bá mhór anseo.",
+          "english": "There is a large bay here.",
+          "target_form": "bá",
+          "morphology": "bá with fada meaning bay",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "copula-past",
+          "text": "Ba mhór an long í.",
+          "english": "It was a large ship.",
+          "target_form": "Ba",
+          "morphology": "past copula ba without fada",
+          "extra_risk": [
+            "fada",
+            "initial_mutation",
+            "sense_ambiguity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.aris-fada",
+      "county": "mayo",
+      "citation_form": "arís",
+      "english_sense": "again",
+      "part_of_speech": "adverb",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "again-clear",
+          "text": "Abair arís é, le do thoil.",
+          "english": "Say it again, please.",
+          "target_form": "arís",
+          "morphology": "arís with fada in a clear request frame",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "again-story",
+          "text": "Arís atá an scéal ag teacht.",
+          "english": "Again the story is coming.",
+          "target_form": "Arís",
+          "morphology": "fronted arís with fada for listening prominence",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.teigh-fada",
+      "county": "mayo",
+      "citation_form": "téigh",
+      "english_sense": "go",
+      "part_of_speech": "verb",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "imperative-go",
+          "text": "Téigh go dtí an áit chiúin.",
+          "english": "Go to the quiet place.",
+          "target_form": "Téigh",
+          "morphology": "imperative téigh with fada",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "negative-go",
+          "text": "Ná téigh amach anocht.",
+          "english": "Do not go out tonight.",
+          "target_form": "téigh",
+          "morphology": "negative imperative keeping téigh with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.costa-fada",
+      "county": "mayo",
+      "citation_form": "cósta",
+      "english_sense": "coast",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "coast-clear",
+          "text": "An cósta fada é?",
+          "english": "Is it the long coast?",
+          "target_form": "cósta",
+          "morphology": "cósta with fada in a question frame",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "coast-eclipsis",
+          "text": "Féach ar an gcósta anocht.",
+          "english": "Look at the coast tonight.",
+          "target_form": "gcósta",
+          "morphology": "eclipsed cósta after ar an",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.dearthair-mutation",
+      "county": "mayo",
+      "citation_form": "deartháir",
+      "english_sense": "brother",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is deartháir é.",
+          "english": "He is a brother.",
+          "target_form": "deartháir",
+          "morphology": "citation deartháir with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "lenited",
+          "text": "Mo dheartháir atá ann.",
+          "english": "It is my brother who is there.",
+          "target_form": "dheartháir",
+          "morphology": "lenited dheartháir after mo",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.farraige-mutation",
+      "county": "mayo",
+      "citation_form": "farraige",
+      "english_sense": "sea",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is farraige fhuar í.",
+          "english": "It is a cold sea.",
+          "target_form": "farraige",
+          "morphology": "citation farraige before article mutation",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "lenited",
+          "text": "Tá an fharraige ciúin anocht.",
+          "english": "The sea is quiet tonight.",
+          "target_form": "fharraige",
+          "morphology": "lenited fharraige after an",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.farraige-eclipsis",
+      "county": "mayo",
+      "citation_form": "farraige",
+      "english_sense": "sea",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "on-sea-eclipsis",
+          "text": "Tá sí ar an bhfarraige anocht.",
+          "english": "She is on the sea tonight.",
+          "target_form": "bhfarraige",
+          "morphology": "eclipsed bhfarraige after ar an",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "from-sea",
+          "text": "Tagann an long ón bhfarraige.",
+          "english": "The ship comes from the sea.",
+          "target_form": "bhfarraige",
+          "morphology": "eclipsed bhfarraige after ón",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.mac-mutation",
+      "county": "mayo",
+      "citation_form": "mac",
+      "english_sense": "son",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Ní mac liom é.",
+          "english": "He is not a son of mine.",
+          "target_form": "mac",
+          "morphology": "citation mac",
+          "extra_risk": []
+        },
+        {
+          "suffix": "lenited",
+          "text": "Is é mo mhac é.",
+          "english": "He is my son.",
+          "target_form": "mhac",
+          "morphology": "lenited mhac after mo",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.bean-mutation",
+      "county": "mayo",
+      "citation_form": "bean",
+      "english_sense": "woman",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Bean atá inti.",
+          "english": "It is a woman who is in her.",
+          "target_form": "Bean",
+          "morphology": "citation bean",
+          "extra_risk": []
+        },
+        {
+          "suffix": "lenited",
+          "text": "Tá an bhean ag an gcaisleán.",
+          "english": "The woman is at the castle.",
+          "target_form": "bhean",
+          "morphology": "lenited bhean after an",
+          "extra_risk": [
+            "initial_mutation",
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.caislean-mutation",
+      "county": "mayo",
+      "citation_form": "caisleán",
+      "english_sense": "castle",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "lenited",
+          "text": "Táimid sa chaisleán anois.",
+          "english": "We are in the castle now.",
+          "target_form": "chaisleán",
+          "morphology": "lenited chaisleán after sa",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "eclipsed",
+          "text": "Táimid ag an gcaisleán anocht.",
+          "english": "We are at the castle tonight.",
+          "target_form": "gcaisleán",
+          "morphology": "eclipsed gcaisleán after ag an",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.teaghlach-mutation",
+      "county": "mayo",
+      "citation_form": "teaghlach",
+      "english_sense": "family",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is teaghlach mór é.",
+          "english": "It is a large family.",
+          "target_form": "teaghlach",
+          "morphology": "citation teaghlach",
+          "extra_risk": []
+        },
+        {
+          "suffix": "lenited",
+          "text": "Mo theaghlach atá anseo.",
+          "english": "It is my family that is here.",
+          "target_form": "theaghlach",
+          "morphology": "lenited theaghlach after mo",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.caill-mutation",
+      "county": "mayo",
+      "citation_form": "caill",
+      "english_sense": "lose",
+      "part_of_speech": "verb",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "imperative",
+          "text": "Ná caill an t-ainm úd.",
+          "english": "Do not lose that name.",
+          "target_form": "caill",
+          "morphology": "citation caill in negative imperative",
+          "extra_risk": []
+        },
+        {
+          "suffix": "past-lenited",
+          "text": "Chaill sí an long mhór.",
+          "english": "She lost the large ship.",
+          "target_form": "Chaill",
+          "morphology": "past chaill with lenition",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.freagair-mutation",
+      "county": "mayo",
+      "citation_form": "freagair",
+      "english_sense": "answer",
+      "part_of_speech": "verb",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "imperative",
+          "text": "Freagair an cheist anocht.",
+          "english": "Answer the question tonight.",
+          "target_form": "Freagair",
+          "morphology": "citation freagair",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "past-lenited",
+          "text": "D'fhreagair sí arís go bog.",
+          "english": "She answered again softly.",
+          "target_form": "fhreagair",
+          "morphology": "past d'fhreagair with fh lenition",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.tabhair-mutation",
+      "county": "mayo",
+      "citation_form": "tabhair",
+      "english_sense": "give",
+      "part_of_speech": "verb",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "imperative",
+          "text": "Tabhair an t-ainm dom anocht.",
+          "english": "Give me the name tonight.",
+          "target_form": "Tabhair",
+          "morphology": "citation tabhair",
+          "extra_risk": []
+        },
+        {
+          "suffix": "verbal-noun",
+          "text": "Tá sí ag tabhairt an ainm.",
+          "english": "She is giving the name.",
+          "target_form": "tabhairt",
+          "morphology": "verbal noun tabhairt from tabhair",
+          "extra_risk": []
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.long-mutation",
+      "county": "mayo",
+      "citation_form": "long",
+      "english_sense": "ship",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is long mhór í anocht.",
+          "english": "It is a large ship tonight.",
+          "target_form": "long",
+          "morphology": "citation long",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "genitive-frame",
+          "text": "Ainm na loinge atá ann.",
+          "english": "It is the name of the ship that is there.",
+          "target_form": "loinge",
+          "morphology": "genitive loinge as a listening contrast to long",
+          "extra_risk": [
+            "sense_ambiguity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.iarr-mutation",
+      "county": "mayo",
+      "citation_form": "iarr",
+      "english_sense": "ask",
+      "part_of_speech": "verb",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "imperative",
+          "text": "Iarr an t-ainm arís.",
+          "english": "Ask for the name again.",
+          "target_form": "Iarr",
+          "morphology": "citation iarr",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "past",
+          "text": "D'iarr sí an áit chiúin.",
+          "english": "She asked for the quiet place.",
+          "target_form": "iarr",
+          "morphology": "past d'iarr",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.tar-minimal",
+      "county": "mayo",
+      "citation_form": "tar",
+      "english_sense": "come",
+      "part_of_speech": "verb",
+      "contrast_type": "minimal_pair",
+      "members": [
+        {
+          "suffix": "come",
+          "text": "Tar isteach anois.",
+          "english": "Come in now.",
+          "target_form": "Tar",
+          "morphology": "imperative tar meaning come",
+          "extra_risk": []
+        },
+        {
+          "suffix": "over",
+          "text": "Tá an long thar an mbá.",
+          "english": "The ship is over the bay.",
+          "target_form": "thar",
+          "morphology": "thar meaning over; listening contrast with tar",
+          "extra_risk": [
+            "initial_mutation",
+            "fada",
+            "sense_ambiguity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.as-mutation",
+      "county": "mayo",
+      "citation_form": "as",
+      "english_sense": "from",
+      "part_of_speech": "preposition",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "from-place",
+          "text": "Is as an áit í.",
+          "english": "She is from the place.",
+          "target_form": "as",
+          "morphology": "as meaning from",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "out-of",
+          "text": "Tar as an gcaisleán.",
+          "english": "Come out of the castle.",
+          "target_form": "as",
+          "morphology": "as with eclipsis on following noun",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.ba-mutation",
+      "county": "mayo",
+      "citation_form": "bá",
+      "english_sense": "bay",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "lenited",
+          "text": "Sa bhá atá an long.",
+          "english": "It is in the bay that the ship is.",
+          "target_form": "bhá",
+          "morphology": "lenited bhá after sa",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "eclipsed",
+          "text": "Féach ar an mbá anocht.",
+          "english": "Look at the bay tonight.",
+          "target_form": "mbá",
+          "morphology": "eclipsed mbá after ar an",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.ait-mutation",
+      "county": "mayo",
+      "citation_form": "áit",
+      "english_sense": "place",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "lenited-adjective",
+          "text": "Áit bhreá atá againn.",
+          "english": "It is a fine place that we have.",
+          "target_form": "Áit",
+          "morphology": "áit with lenited adjective bhreá",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "definite-place",
+          "text": "Fan san áit seo anocht.",
+          "english": "Stay in this place tonight.",
+          "target_form": "áit",
+          "morphology": "áit after san",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.caislean-fada",
+      "county": "mayo",
+      "citation_form": "caisleán",
+      "english_sense": "castle",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "castle-clear",
+          "text": "Caisleán ard atá romhainn.",
+          "english": "It is a tall castle that is before us.",
+          "target_form": "Caisleán",
+          "morphology": "caisleán with fada fronted for listening",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "castle-name",
+          "text": "Is caisleán é Caisleán na Circe fós.",
+          "english": "Carrickahowley is still a castle.",
+          "target_form": "caisleán",
+          "morphology": "caisleán with fada in a Mayo castle name frame",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.mise-minimal",
+      "county": "mayo",
+      "citation_form": "mise",
+      "english_sense": "me / I",
+      "part_of_speech": "pronoun",
+      "contrast_type": "minimal_pair",
+      "members": [
+        {
+          "suffix": "emphatic-i",
+          "text": "Mise atá anseo anocht.",
+          "english": "It is I who am here tonight.",
+          "target_form": "Mise",
+          "morphology": "emphatic mise",
+          "extra_risk": [
+            "pronoun_reference"
+          ]
+        },
+        {
+          "suffix": "plain-i",
+          "text": "Tá mé ag an mbá anois.",
+          "english": "I am at the bay now.",
+          "target_form": "mé",
+          "morphology": "plain mé contrasted with emphatic mise",
+          "extra_risk": [
+            "fada",
+            "initial_mutation",
+            "pronoun_reference",
+            "sense_ambiguity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.kerry.contrast.dan-fada",
+      "county": "kerry",
+      "citation_form": "dán",
+      "english_sense": "poem",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "poem-clear",
+          "text": "Is dán álainn é.",
+          "english": "It is a beautiful poem.",
+          "target_form": "dán",
+          "morphology": "dán with fada meaning poem",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "poem-lenited",
+          "text": "Mo dhán atá á léamh.",
+          "english": "It is my poem that is being read.",
+          "target_form": "dhán",
+          "morphology": "lenited dhán after mo",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.antrim.contrast.breag-fada",
+      "county": "antrim",
+      "citation_form": "bréag",
+      "english_sense": "false / lie",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "lie-clear",
+          "text": "Ní bréag é sin.",
+          "english": "That is not a lie.",
+          "target_form": "bréag",
+          "morphology": "bréag with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "lie-lenited",
+          "text": "An bhréag atá sa scéal.",
+          "english": "It is the lie that is in the story.",
+          "target_form": "bhréag",
+          "morphology": "lenited bhréag after an",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.antrim.contrast.cosan-fada",
+      "county": "antrim",
+      "citation_form": "cosán",
+      "english_sense": "path",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "path-clear",
+          "text": "Tá cosán cúng anseo.",
+          "english": "There is a narrow path here.",
+          "target_form": "cosán",
+          "morphology": "cosán with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "path-eclipsis",
+          "text": "Siúil ar an gcosán.",
+          "english": "Walk on the path.",
+          "target_form": "gcosán",
+          "morphology": "eclipsed gcosán after ar an",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.antrim.contrast.dushlan-fada",
+      "county": "antrim",
+      "citation_form": "dúshlán",
+      "english_sense": "challenge",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "challenge-clear",
+          "text": "Is dúshlán mór é.",
+          "english": "It is a great challenge.",
+          "target_form": "dúshlán",
+          "morphology": "dúshlán with two fadas",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "challenge-fronted",
+          "text": "An dúshlán atá romhainn.",
+          "english": "It is the challenge that is before us.",
+          "target_form": "dúshlán",
+          "morphology": "dúshlán after an",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.kildare.contrast.la-fada",
+      "county": "kildare",
+      "citation_form": "lá",
+      "english_sense": "day",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "day-clear",
+          "text": "Lá álainn atá ann.",
+          "english": "It is a beautiful day.",
+          "target_form": "Lá",
+          "morphology": "lá with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "day-definite",
+          "text": "Tá an lá ag titim.",
+          "english": "The day is falling.",
+          "target_form": "lá",
+          "morphology": "lá after an",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.kerry.contrast.cuimhne-mutation",
+      "county": "kerry",
+      "citation_form": "cuimhne",
+      "english_sense": "memory",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is cuimhne bheo í.",
+          "english": "It is a living memory.",
+          "target_form": "cuimhne",
+          "morphology": "citation cuimhne",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "lenited",
+          "text": "Mo chuimhne atá sa dán.",
+          "english": "It is my memory that is in the poem.",
+          "target_form": "chuimhne",
+          "morphology": "lenited chuimhne after mo",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.donegal.contrast.scriobh-fada",
+      "county": "donegal",
+      "citation_form": "scríobh",
+      "english_sense": "write",
+      "part_of_speech": "verb",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "imperative",
+          "text": "Scríobh an t-ainm go soiléir.",
+          "english": "Write the name clearly.",
+          "target_form": "Scríobh",
+          "morphology": "imperative scríobh with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "past",
+          "text": "Scríobh sí an dán arís.",
+          "english": "She wrote the poem again.",
+          "target_form": "Scríobh",
+          "morphology": "past scríobh with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.wexford.contrast.roghnaigh-mutation",
+      "county": "wexford",
+      "citation_form": "roghnaigh",
+      "english_sense": "choose",
+      "part_of_speech": "verb",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "imperative",
+          "text": "Roghnaigh an t-ainm ceart.",
+          "english": "Choose the correct name.",
+          "target_form": "Roghnaigh",
+          "morphology": "citation roghnaigh",
+          "extra_risk": []
+        },
+        {
+          "suffix": "past",
+          "text": "Roghnaigh sí an áit úd inné.",
+          "english": "She chose that place yesterday.",
+          "target_form": "Roghnaigh",
+          "morphology": "past roghnaigh in a clear listening frame",
+          "extra_risk": [
+            "fada",
+            "sense_ambiguity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.cork.contrast.scoil-mutation",
+      "county": "cork",
+      "citation_form": "scoil",
+      "english_sense": "school",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is scoil nua í.",
+          "english": "It is a new school.",
+          "target_form": "scoil",
+          "morphology": "citation scoil",
+          "extra_risk": []
+        },
+        {
+          "suffix": "in-school",
+          "text": "Sa scoil atá an scéal.",
+          "english": "It is in the school that the story is.",
+          "target_form": "scoil",
+          "morphology": "scoil after sa",
+          "extra_risk": []
+        }
+      ]
+    },
+    {
+      "id": "d32.tyrone.contrast.cath-mutation",
+      "county": "tyrone",
+      "citation_form": "cath",
+      "english_sense": "battle",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is cath mór é.",
+          "english": "It is a great battle.",
+          "target_form": "cath",
+          "morphology": "citation cath",
+          "extra_risk": []
+        },
+        {
+          "suffix": "genitive-lenited",
+          "text": "I ndiaidh an chatha.",
+          "english": "After the battle.",
+          "target_form": "chatha",
+          "morphology": "genitive lenited chatha",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.antrim.contrast.cladach-mutation",
+      "county": "antrim",
+      "citation_form": "cladach",
+      "english_sense": "shore",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is cladach garbh é.",
+          "english": "It is a rough shore.",
+          "target_form": "cladach",
+          "morphology": "citation cladach",
+          "extra_risk": []
+        },
+        {
+          "suffix": "eclipsed",
+          "text": "Ar an gcladach atáimid.",
+          "english": "It is on the shore that we are.",
+          "target_form": "gcladach",
+          "morphology": "eclipsed gcladach after ar an",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.dublin.contrast.pingin-mutation",
+      "county": "dublin",
+      "citation_form": "pingin",
+      "english_sense": "penny",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is pingin airgid í.",
+          "english": "It is a silver penny.",
+          "target_form": "pingin",
+          "morphology": "citation pingin",
+          "extra_risk": []
+        },
+        {
+          "suffix": "lenited",
+          "text": "An phingin atá sa scéal.",
+          "english": "It is the penny that is in the story.",
+          "target_form": "phingin",
+          "morphology": "lenited phingin after an",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.carlow.contrast.oilithreacht-mutation",
+      "county": "carlow",
+      "citation_form": "oilithreacht",
+      "english_sense": "pilgrimage",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is oilithreacht fhada í.",
+          "english": "It is a long pilgrimage.",
+          "target_form": "oilithreacht",
+          "morphology": "citation oilithreacht",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "definite",
+          "text": "An oilithreacht atá romhainn.",
+          "english": "It is the pilgrimage that is before us.",
+          "target_form": "oilithreacht",
+          "morphology": "oilithreacht after an",
+          "extra_risk": []
+        }
+      ]
+    },
+    {
+      "id": "d32.derry.contrast.labhair-mutation",
+      "county": "derry",
+      "citation_form": "labhair",
+      "english_sense": "speak",
+      "part_of_speech": "verb",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "imperative",
+          "text": "Labhair go mall, le do thoil.",
+          "english": "Speak slowly, please.",
+          "target_form": "Labhair",
+          "morphology": "citation labhair",
+          "extra_risk": []
+        },
+        {
+          "suffix": "past",
+          "text": "Labhair sí os ard aréir.",
+          "english": "She spoke aloud last night.",
+          "target_form": "Labhair",
+          "morphology": "past labhair",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.cork.contrast.tabhair-mutation",
+      "county": "cork",
+      "citation_form": "tabhair",
+      "english_sense": "give",
+      "part_of_speech": "verb",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "imperative",
+          "text": "Tabhair aire don scoil.",
+          "english": "Give care to the school.",
+          "target_form": "Tabhair",
+          "morphology": "citation tabhair in Cork school frame",
+          "extra_risk": []
+        },
+        {
+          "suffix": "past",
+          "text": "Thug sí an leabhar di.",
+          "english": "She gave the book to her.",
+          "target_form": "Thug",
+          "morphology": "suppletive past thug of tabhair",
+          "extra_risk": [
+            "initial_mutation",
+            "sense_ambiguity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.meath.contrast.nua-mutation",
+      "county": "meath",
+      "citation_form": "nua",
+      "english_sense": "new",
+      "part_of_speech": "adjective",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is áit nua í.",
+          "english": "It is a new place.",
+          "target_form": "nua",
+          "morphology": "citation nua",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "attributive",
+          "text": "An áit nua atá romhainn.",
+          "english": "It is the new place that is before us.",
+          "target_form": "nua",
+          "morphology": "nua after feminine noun",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.clare.contrast.ansiud-fada",
+      "county": "clare",
+      "citation_form": "ansiúd",
+      "english_sense": "there",
+      "part_of_speech": "adverb",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "there-clear",
+          "text": "Tá an caisleán ansiúd.",
+          "english": "The castle is over there.",
+          "target_form": "ansiúd",
+          "morphology": "ansiúd with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "there-question",
+          "text": "An ansiúd atá Brian?",
+          "english": "Is it over there that Brian is?",
+          "target_form": "ansiúd",
+          "morphology": "fronted ansiúd for listening prominence",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.derry.contrast.teigh-fada",
+      "county": "derry",
+      "citation_form": "téigh",
+      "english_sense": "go",
+      "part_of_speech": "verb",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "imperative",
+          "text": "Téigh go dtí an chathair.",
+          "english": "Go to the city.",
+          "target_form": "Téigh",
+          "morphology": "téigh with fada in Derry frame",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "future",
+          "text": "Rachaidh sí amach arís.",
+          "english": "She will go out again.",
+          "target_form": "Rachaidh",
+          "morphology": "suppletive future of téigh",
+          "extra_risk": [
+            "fada",
+            "sense_ambiguity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.antrim.contrast.grainne-name-fada",
+      "county": "antrim",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "grainne-name",
+          "text": "Is é Gráinne an t-ainm aici.",
+          "english": "Gráinne is her name.",
+          "target_form": "ainm",
+          "morphology": "Gráinne with fadas in a name frame",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "grainne-question",
+          "text": "An é Gráinne d'ainm anocht?",
+          "english": "Is Gráinne your name tonight?",
+          "target_form": "ainm",
+          "morphology": "Gráinne with fadas in a question name frame",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.longford.contrast.tadhg-name",
+      "county": "longford",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "tadhg-name",
+          "text": "Is é Tadhg an t-ainm aige.",
+          "english": "Tadhg is his name.",
+          "target_form": "ainm",
+          "morphology": "Tadhg in a clear name frame",
+          "extra_risk": []
+        },
+        {
+          "suffix": "tadhg-question",
+          "text": "An é Tadhg d'ainm sa scéal?",
+          "english": "Is Tadhg your name in the story?",
+          "target_form": "ainm",
+          "morphology": "Tadhg in a story-bound name question",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.louth.contrast.droichead-atha-place",
+      "county": "louth",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "place-name",
+          "text": "Is é Droichead Átha ainm na háite úd.",
+          "english": "Drogheda is the name of that place.",
+          "target_form": "ainm",
+          "morphology": "Droichead Átha with fada on Átha",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "place-question",
+          "text": "An é Droichead Átha ainm na háite seo?",
+          "english": "Is Drogheda the name of this place?",
+          "target_form": "ainm",
+          "morphology": "Droichead Átha place-name question",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.meath.contrast.si-an-bhru-place",
+      "county": "meath",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "place-name",
+          "text": "Is é Sí an Bhrú ainm na háite mhóire.",
+          "english": "Newgrange is the name of the great place.",
+          "target_form": "ainm",
+          "morphology": "Sí an Bhrú with fadas and lenition",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "place-question",
+          "text": "An é Sí an Bhrú an t-ainm ceart?",
+          "english": "Is Newgrange the correct name?",
+          "target_form": "ainm",
+          "morphology": "Sí an Bhrú name confirmation",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.armagh.contrast.o-suilleabhain-name",
+      "county": "armagh",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "family-name",
+          "text": "Is é Ó Súilleabháin an t-ainm teaghlaigh aige.",
+          "english": "Ó Súilleabháin is his family name.",
+          "target_form": "ainm",
+          "morphology": "Ó Súilleabháin with multiple fadas",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "family-question",
+          "text": "An é Ó Súilleabháin d'ainm teaghlaigh sa scéal?",
+          "english": "Is Ó Súilleabháin your family name in the story?",
+          "target_form": "ainm",
+          "morphology": "Ó Súilleabháin family-name question",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.galway.contrast.o-cuinn-name",
+      "county": "galway",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "family-name",
+          "text": "Is é Ó Cuinn an t-ainm teaghlaigh aici.",
+          "english": "Ó Cuinn is her family name.",
+          "target_form": "ainm",
+          "morphology": "Ó Cuinn with fada on Ó",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "family-question",
+          "text": "An é Ó Cuinn d'ainm teaghlaigh sa Ghaillimh?",
+          "english": "Is Ó Cuinn your family name in Galway?",
+          "target_form": "ainm",
+          "morphology": "Ó Cuinn with eclipsis on Gaillimh",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.limerick.contrast.deirdre-name",
+      "county": "limerick",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "given-name",
+          "text": "Is é Deirdre an t-ainm baininscneach.",
+          "english": "Deirdre is the feminine name.",
+          "target_form": "ainm",
+          "morphology": "Deirdre in a clear name frame",
+          "extra_risk": []
+        },
+        {
+          "suffix": "given-question",
+          "text": "An é Deirdre an t-ainm atá uirthi?",
+          "english": "Is Deirdre the name that is on her?",
+          "target_form": "ainm",
+          "morphology": "Deirdre name confirmation",
+          "extra_risk": []
+        }
+      ]
+    },
+    {
+      "id": "d32.wicklow.contrast.o-broin-name",
+      "county": "wicklow",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "family-name",
+          "text": "Is é Ó Broin an t-ainm teaghlaigh sa scéal.",
+          "english": "Ó Broin is the family name in the story.",
+          "target_form": "ainm",
+          "morphology": "Ó Broin with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "family-question",
+          "text": "An é Ó Broin d'ainm teaghlaigh fós?",
+          "english": "Is Ó Broin still your family name?",
+          "target_form": "ainm",
+          "morphology": "Ó Broin family-name question",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.leitrim.contrast.mag-uidhir-name",
+      "county": "leitrim",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "family-name",
+          "text": "Is é Mag Uidhir an t-ainm teaghlaigh úd.",
+          "english": "Mag Uidhir is that family name.",
+          "target_form": "ainm",
+          "morphology": "Mag Uidhir family name",
+          "extra_risk": []
+        },
+        {
+          "suffix": "family-question",
+          "text": "An é Mag Uidhir d'ainm teaghlaigh anseo?",
+          "english": "Is Mag Uidhir your family name here?",
+          "target_form": "ainm",
+          "morphology": "Mag Uidhir family-name question",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.donegal.contrast.de-paor-name",
+      "county": "donegal",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "family-name",
+          "text": "Is é de Paor an t-ainm teaghlaigh sa teaghlach.",
+          "english": "de Paor is the family name in the family.",
+          "target_form": "ainm",
+          "morphology": "de Paor family name",
+          "extra_risk": []
+        },
+        {
+          "suffix": "family-question",
+          "text": "An é de Paor d'ainm teaghlaigh sa teaghlach seo?",
+          "english": "Is de Paor your family name in this family?",
+          "target_form": "ainm",
+          "morphology": "de Paor family-name question",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.limerick.contrast.de-burca-name",
+      "county": "limerick",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "family-name",
+          "text": "Is é de Búrca an t-ainm teaghlaigh úd.",
+          "english": "de Búrca is that family name.",
+          "target_form": "ainm",
+          "morphology": "de Búrca with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "family-question",
+          "text": "An é de Búrca d'ainm teaghlaigh anocht?",
+          "english": "Is de Búrca your family name tonight?",
+          "target_form": "ainm",
+          "morphology": "de Búrca family-name question",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.kerry.contrast.cillian-name",
+      "county": "kerry",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "given-name",
+          "text": "Is é Cillian an t-ainm aige sa dán.",
+          "english": "Cillian is his name in the poem.",
+          "target_form": "ainm",
+          "morphology": "Cillian in a poem-bound name frame",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "given-question",
+          "text": "An é Cillian d'ainm, a chara?",
+          "english": "Is Cillian your name, friend?",
+          "target_form": "ainm",
+          "morphology": "Cillian name question with lenited chara",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.louth.contrast.aisling-name",
+      "county": "louth",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "given-name",
+          "text": "Is é Aisling an t-ainm baininscneach úd.",
+          "english": "Aisling is that feminine name.",
+          "target_form": "ainm",
+          "morphology": "Aisling given-name frame",
+          "extra_risk": []
+        },
+        {
+          "suffix": "given-question",
+          "text": "An é Aisling an t-ainm atá uirthi?",
+          "english": "Is Aisling the name that is on her?",
+          "target_form": "ainm",
+          "morphology": "Aisling name confirmation",
+          "extra_risk": []
+        }
+      ]
+    },
+    {
+      "id": "d32.dublin.contrast.long-mutation",
+      "county": "dublin",
+      "citation_form": "long",
+      "english_sense": "ship",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is long thrádála í.",
+          "english": "It is a trading ship.",
+          "target_form": "long",
+          "morphology": "citation long with lenited adjective",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "definite",
+          "text": "Tá an long sa chuan anois.",
+          "english": "The ship is in the harbour now.",
+          "target_form": "long",
+          "morphology": "long after an; lenition on chuan",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.offaly.contrast.cros-mutation",
+      "county": "offaly",
+      "citation_form": "cros",
+      "english_sense": "cross",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is cros mhór chloiche í fós.",
+          "english": "It is still a great stone cross.",
+          "target_form": "cros",
+          "morphology": "citation cros with lenited adjectives",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "eclipsed",
+          "text": "Féach ar an gcros anocht.",
+          "english": "Look at the cross tonight.",
+          "target_form": "gcros",
+          "morphology": "eclipsed gcros after ar an",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.down.contrast.nua-mutation",
+      "county": "down",
+      "citation_form": "nua",
+      "english_sense": "new",
+      "part_of_speech": "adjective",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "new-clear",
+          "text": "Scéal nua atá le cloisteáil.",
+          "english": "It is a new story that is to be heard.",
+          "target_form": "nua",
+          "morphology": "nua in a listening frame",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "new-definite",
+          "text": "An scéal nua, éist leis.",
+          "english": "The new story, listen to it.",
+          "target_form": "nua",
+          "morphology": "nua after masculine noun",
+          "extra_risk": []
+        }
+      ]
+    },
+    {
+      "id": "d32.limerick.contrast.labhair-mutation",
+      "county": "limerick",
+      "citation_form": "labhair",
+      "english_sense": "speak",
+      "part_of_speech": "verb",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "imperative",
+          "text": "Labhair Gaeilge anois.",
+          "english": "Speak Irish now.",
+          "target_form": "Labhair",
+          "morphology": "citation labhair",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "verbal-noun",
+          "text": "Tá sí ag labhairt go bog.",
+          "english": "She is speaking softly.",
+          "target_form": "labhairt",
+          "morphology": "verbal noun labhairt",
+          "extra_risk": []
+        }
+      ]
+    },
+    {
+      "id": "d32.galway.contrast.sceal-mutation",
+      "county": "galway",
+      "citation_form": "scéal",
+      "english_sense": "story",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is scéal fada é.",
+          "english": "It is a long story.",
+          "target_form": "scéal",
+          "morphology": "citation scéal with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "possessive",
+          "text": "Mo scéal atá á insint.",
+          "english": "It is my story that is being told.",
+          "target_form": "scéal",
+          "morphology": "scéal after mo",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.kerry.contrast.eist-mutation",
+      "county": "kerry",
+      "citation_form": "éist",
+      "english_sense": "listen",
+      "part_of_speech": "verb",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "imperative",
+          "text": "Éist leis an dán anocht.",
+          "english": "Listen to the poem tonight.",
+          "target_form": "Éist",
+          "morphology": "imperative éist with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "verbal-noun",
+          "text": "Táimid ag éisteacht leis.",
+          "english": "We are listening to it.",
+          "target_form": "éisteacht",
+          "morphology": "verbal noun éisteacht from éist",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.clare.contrast.ainm-mutation",
+      "county": "clare",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is ainm stairiúil é Brian.",
+          "english": "Brian is a historical name.",
+          "target_form": "ainm",
+          "morphology": "citation ainm",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "h-prothesis",
+          "text": "Ní hainm nua é sin.",
+          "english": "That is not a new name.",
+          "target_form": "hainm",
+          "morphology": "h-prothesis hainm after ní",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.roscommon.contrast.ainm-mutation",
+      "county": "roscommon",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "possessive",
+          "text": "A hainm atá soiléir.",
+          "english": "It is her name that is clear.",
+          "target_form": "hainm",
+          "morphology": "h-prothesis after a (her)",
+          "extra_risk": [
+            "initial_mutation",
+            "pronoun_reference"
+          ]
+        },
+        {
+          "suffix": "our-name-eclipsis",
+          "text": "Ár n-ainm atá sa scéal.",
+          "english": "It is our name that is in the story.",
+          "target_form": "n-ainm",
+          "morphology": "eclipsis n-ainm after ár",
+          "extra_risk": [
+            "fada",
+            "initial_mutation",
+            "pronoun_reference"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.tipperary.contrast.ainm-fada",
+      "county": "tipperary",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "cormac-name",
+          "text": "Is é Cormac an t-ainm stairiúil.",
+          "english": "Cormac is the historical name.",
+          "target_form": "ainm",
+          "morphology": "Cormac name frame with fada on stairiúil",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "cormac-question",
+          "text": "An é Cormac an t-ainm ceart?",
+          "english": "Is Cormac the correct name?",
+          "target_form": "ainm",
+          "morphology": "Cormac name confirmation",
+          "extra_risk": []
+        }
+      ]
+    },
+    {
+      "id": "d32.waterford.contrast.ainm-fada",
+      "county": "waterford",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "tower-name",
+          "text": "Is é Ragnall an t-ainm sa túr.",
+          "english": "Ragnall is the name in the tower.",
+          "target_form": "ainm",
+          "morphology": "name frame with fada on túr",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "tower-question",
+          "text": "An é Ragnall an t-ainm ceart?",
+          "english": "Is Ragnall the correct name?",
+          "target_form": "ainm",
+          "morphology": "Ragnall name confirmation",
+          "extra_risk": []
+        }
+      ]
+    },
+    {
+      "id": "d32.sligo.contrast.ainm-fada",
+      "county": "sligo",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "yeats-place",
+          "text": "Is é Ben Bulben ainm na háite.",
+          "english": "Ben Bulben is the name of the place.",
+          "target_form": "ainm",
+          "morphology": "place-name frame with fada on háite",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "yeats-question",
+          "text": "An é Ben Bulben ainm na háite úd?",
+          "english": "Is Ben Bulben the name of that place?",
+          "target_form": "ainm",
+          "morphology": "place-name question",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.fermanagh.contrast.caislean-mutation",
+      "county": "fermanagh",
+      "citation_form": "caisleán",
+      "english_sense": "castle",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is caisleán láidir é.",
+          "english": "It is a strong castle.",
+          "target_form": "caisleán",
+          "morphology": "citation caisleán",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "lenited",
+          "text": "Sa chaisleán atá an scéal.",
+          "english": "It is in the castle that the story is.",
+          "target_form": "chaisleán",
+          "morphology": "lenited chaisleán after sa",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.westmeath.contrast.baile-mutation",
+      "county": "westmeath",
+      "citation_form": "baile",
+      "english_sense": "settlement",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is baile álainn é.",
+          "english": "It is a beautiful town.",
+          "target_form": "baile",
+          "morphology": "citation baile",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "eclipsed",
+          "text": "Ar an mbaile atáimid.",
+          "english": "It is in the town that we are.",
+          "target_form": "mbaile",
+          "morphology": "eclipsed mbaile after ar an",
+          "extra_risk": [
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.monaghan.contrast.ainm-fada",
+      "county": "monaghan",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "kavanagh-name",
+          "text": "Is é Ó Cabhánáin an t-ainm teaghlaigh.",
+          "english": "Ó Cabhánáin is the family name.",
+          "target_form": "ainm",
+          "morphology": "family name with fadas",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "kavanagh-question",
+          "text": "An é Ó Cabhánáin d'ainm teaghlaigh?",
+          "english": "Is Ó Cabhánáin your family name?",
+          "target_form": "ainm",
+          "morphology": "family-name question",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.cavan.contrast.ainm-mutation",
+      "county": "cavan",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "family-name",
+          "text": "Is é Ó Raghallaigh an t-ainm teaghlaigh.",
+          "english": "Ó Raghallaigh is the family name.",
+          "target_form": "ainm",
+          "morphology": "family name with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "family-question",
+          "text": "An é Ó Raghallaigh d'ainm teaghlaigh?",
+          "english": "Is Ó Raghallaigh your family name?",
+          "target_form": "ainm",
+          "morphology": "family-name question",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.laois.contrast.ainm-fada",
+      "county": "laois",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "place-name",
+          "text": "Is é Dún Másc ainm na háite.",
+          "english": "Dunamase is the name of the place.",
+          "target_form": "ainm",
+          "morphology": "place name with fada",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "place-question",
+          "text": "An é Dún Másc ainm na háite seo?",
+          "english": "Is Dunamase the name of this place?",
+          "target_form": "ainm",
+          "morphology": "place-name question",
+          "extra_risk": [
+            "fada"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.kilkenny.contrast.ainm-fada",
+      "county": "kilkenny",
+      "citation_form": "ainm",
+      "english_sense": "name",
+      "part_of_speech": "noun",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "kyteler-name",
+          "text": "Is é Alice Kyteler an t-ainm sa scéal.",
+          "english": "Alice Kyteler is the name in the story.",
+          "target_form": "ainm",
+          "morphology": "story-bound name frame",
+          "extra_risk": []
+        },
+        {
+          "suffix": "kyteler-question",
+          "text": "An é Alice Kyteler an t-ainm ceart?",
+          "english": "Is Alice Kyteler the correct name?",
+          "target_form": "ainm",
+          "morphology": "name confirmation",
+          "extra_risk": []
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.freagair-fada",
+      "county": "mayo",
+      "citation_form": "freagair",
+      "english_sense": "answer",
+      "part_of_speech": "verb",
+      "contrast_type": "fada",
+      "members": [
+        {
+          "suffix": "question-frame",
+          "text": "An bhfreagraíonn sí arís?",
+          "english": "Does she answer again?",
+          "target_form": "bhfreagraíonn",
+          "morphology": "eclipsed present of freagair",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        },
+        {
+          "suffix": "negative",
+          "text": "Ní fhreagraíonn sé fós.",
+          "english": "He does not answer yet.",
+          "target_form": "fhreagraíonn",
+          "morphology": "lenited present after ní",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.costa-mutation",
+      "county": "mayo",
+      "citation_form": "cósta",
+      "english_sense": "coast",
+      "part_of_speech": "noun",
+      "contrast_type": "mutation",
+      "members": [
+        {
+          "suffix": "citation",
+          "text": "Is cósta fada é.",
+          "english": "It is a long coast.",
+          "target_form": "cósta",
+          "morphology": "citation cósta",
+          "extra_risk": [
+            "fada"
+          ]
+        },
+        {
+          "suffix": "lenited",
+          "text": "Ar an gcósta atáimid fós.",
+          "english": "It is on the coast that we still are.",
+          "target_form": "gcósta",
+          "morphology": "eclipsed gcósta after ar an",
+          "extra_risk": [
+            "fada",
+            "initial_mutation"
+          ]
+        }
+      ]
+    }
+  ]
+}

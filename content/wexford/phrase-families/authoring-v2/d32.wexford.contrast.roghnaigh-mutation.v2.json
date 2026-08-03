@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.wexford.contrast.roghnaigh-mutation",
+  "county": "wexford",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.wexford.bagenal-harvey-1798"
+  },
+  "target": {
+    "lexeme_id": "lex.roghnaigh",
+    "citation_form": "roghnaigh",
+    "sense_id": "wexford.roghnaigh.contrast",
+    "part_of_speech": "verb",
+    "english_sense": "choose"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.wexford.04.roghnaigh",
+      "gloss": "choose"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.wexford.contrast.roghnaigh-mutation.imperative",
+      "family_id": "d32.wexford.contrast.roghnaigh-mutation",
+      "target": {
+        "lexeme_id": "lex.roghnaigh",
+        "citation_form": "roghnaigh",
+        "sense_id": "wexford.roghnaigh.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "choose",
+        "target_form": "Roghnaigh",
+        "morphology": "citation roghnaigh"
+      },
+      "irish": {
+        "text": "Roghnaigh an t-ainm ceart.",
+        "normalized_text": "Roghnaigh an t-ainm ceart.",
+        "inventory_slug": "roghnaigh-an-t-ainm-ceart",
+        "text_sha256": "89c720711f06ffa680f8f648c6eef7574df4bbdedf0407e05f550764d4913688"
+      },
+      "english": {
+        "intent": "Choose the correct name.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "wexford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798"
+        },
+        "atlas_placement_ids": [
+          "atlas.wexford.04.roghnaigh"
+        ],
+        "place": {
+          "id": "d32.wexford.place",
+          "label": "Loch Garman / Wexford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: Choose the correct name.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798.contrast.roghnaigh-mutation.imperative",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: Choose the correct name."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wexford.bagenal-harvey-1798.contrast.roghnaigh-mutation.imperative",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.wexford.contrast.roghnaigh-mutation.past",
+      "family_id": "d32.wexford.contrast.roghnaigh-mutation",
+      "target": {
+        "lexeme_id": "lex.roghnaigh",
+        "citation_form": "roghnaigh",
+        "sense_id": "wexford.roghnaigh.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "choose",
+        "target_form": "Roghnaigh",
+        "morphology": "past roghnaigh in a clear listening frame"
+      },
+      "irish": {
+        "text": "Roghnaigh sí an áit úd inné.",
+        "normalized_text": "Roghnaigh sí an áit úd inné.",
+        "inventory_slug": "roghnaigh-sii-an-aait-uud-innee",
+        "text_sha256": "d7155be340ca36ddf822e5a5deaaad02a9121240061f9287b6c9554fcd53207c"
+      },
+      "english": {
+        "intent": "She chose that place yesterday.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "wexford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798"
+        },
+        "atlas_placement_ids": [
+          "atlas.wexford.04.roghnaigh"
+        ],
+        "place": {
+          "id": "d32.wexford.place",
+          "label": "Loch Garman / Wexford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: She chose that place yesterday.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.wexford.bagenal-harvey-1798.contrast.roghnaigh-mutation.past",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: She chose that place yesterday."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wexford.bagenal-harvey-1798.contrast.roghnaigh-mutation.past",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "sense_ambiguity"
+      ]
+    }
+  ]
+}

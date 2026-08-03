@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.kerry.contrast.eist-mutation",
+  "county": "kerry",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.kerry.piaras-feiritear"
+  },
+  "target": {
+    "lexeme_id": "lex.eist",
+    "citation_form": "éist",
+    "sense_id": "kerry.eist.contrast",
+    "part_of_speech": "verb",
+    "english_sense": "listen"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.kerry.14.eist",
+      "gloss": "listen"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.kerry.contrast.eist-mutation.imperative",
+      "family_id": "d32.kerry.contrast.eist-mutation",
+      "target": {
+        "lexeme_id": "lex.eist",
+        "citation_form": "éist",
+        "sense_id": "kerry.eist.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "listen",
+        "target_form": "Éist",
+        "morphology": "imperative éist with fada"
+      },
+      "irish": {
+        "text": "Éist leis an dán anocht.",
+        "normalized_text": "Éist leis an dán anocht.",
+        "inventory_slug": "eeist-leis-an-daan-anocht",
+        "text_sha256": "490155e14c6c7106fb46b060c296b9696026808ff6959f033e1e358360790b58"
+      },
+      "english": {
+        "intent": "Listen to the poem tonight.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "kerry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear"
+        },
+        "atlas_placement_ids": [
+          "atlas.kerry.14.eist"
+        ],
+        "place": {
+          "id": "d32.kerry.place",
+          "label": "Ciarraí / Kerry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: Listen to the poem tonight.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear.contrast.eist-mutation.imperative",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: Listen to the poem tonight."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kerry.piaras-feiritear.contrast.eist-mutation.imperative",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.kerry.contrast.eist-mutation.verbal-noun",
+      "family_id": "d32.kerry.contrast.eist-mutation",
+      "target": {
+        "lexeme_id": "lex.eist",
+        "citation_form": "éist",
+        "sense_id": "kerry.eist.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "listen",
+        "target_form": "éisteacht",
+        "morphology": "verbal noun éisteacht from éist"
+      },
+      "irish": {
+        "text": "Táimid ag éisteacht leis.",
+        "normalized_text": "Táimid ag éisteacht leis.",
+        "inventory_slug": "taaimid-ag-eeisteacht-leis",
+        "text_sha256": "d534e4e2a876aa53a12b16db299160cbd25c16293d84f5ac1d5957baa5396391"
+      },
+      "english": {
+        "intent": "We are listening to it.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "kerry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear"
+        },
+        "atlas_placement_ids": [
+          "atlas.kerry.14.eist"
+        ],
+        "place": {
+          "id": "d32.kerry.place",
+          "label": "Ciarraí / Kerry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: We are listening to it.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear.contrast.eist-mutation.verbal-noun",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: We are listening to it."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kerry.piaras-feiritear.contrast.eist-mutation.verbal-noun",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    }
+  ]
+}

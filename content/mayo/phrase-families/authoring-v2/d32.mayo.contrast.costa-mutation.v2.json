@@ -1,0 +1,276 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.mayo.contrast.costa-mutation",
+  "county": "mayo",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.mayo.grainne-1593"
+  },
+  "target": {
+    "lexeme_id": "lex.costa",
+    "citation_form": "cósta",
+    "sense_id": "mayo.costa.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "coast"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.mayo.20.costa",
+      "gloss": "coast"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.mayo.contrast.costa-mutation.citation",
+      "family_id": "d32.mayo.contrast.costa-mutation",
+      "target": {
+        "lexeme_id": "lex.costa",
+        "citation_form": "cósta",
+        "sense_id": "mayo.costa.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "coast",
+        "target_form": "cósta",
+        "morphology": "citation cósta"
+      },
+      "irish": {
+        "text": "Is cósta fada é.",
+        "normalized_text": "Is cósta fada é.",
+        "inventory_slug": "is-coosta-fada-ee",
+        "text_sha256": "adab950717d87c20c08d655f16d615f53b413014f91bbc4f799ac54532d29a27"
+      },
+      "english": {
+        "intent": "It is a long coast.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.20.costa"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is a long coast.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.costa-mutation.citation",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is a long coast."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.costa-mutation.citation",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.costa-mutation.lenited",
+      "family_id": "d32.mayo.contrast.costa-mutation",
+      "target": {
+        "lexeme_id": "lex.costa",
+        "citation_form": "cósta",
+        "sense_id": "mayo.costa.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "coast",
+        "target_form": "gcósta",
+        "morphology": "eclipsed gcósta after ar an"
+      },
+      "irish": {
+        "text": "Ar an gcósta atáimid fós.",
+        "normalized_text": "Ar an gcósta atáimid fós.",
+        "inventory_slug": "ar-an-gcoosta-ataaimid-foos",
+        "text_sha256": "a2a7a6617e9637c433afeeacf5e91432645292f992d5b58696764da37ad628db"
+      },
+      "english": {
+        "intent": "It is on the coast that we still are.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.20.costa"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is on the coast that we still are.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.costa-mutation.lenited",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is on the coast that we still are."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.costa-mutation.lenited",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.mayo.contrast.iarr-mutation",
+  "county": "mayo",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.mayo.grainne-1593"
+  },
+  "target": {
+    "lexeme_id": "lex.iarr",
+    "citation_form": "iarr",
+    "sense_id": "mayo.iarr.contrast",
+    "part_of_speech": "verb",
+    "english_sense": "ask"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.mayo.12.iarr",
+      "gloss": "ask"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.mayo.contrast.iarr-mutation.imperative",
+      "family_id": "d32.mayo.contrast.iarr-mutation",
+      "target": {
+        "lexeme_id": "lex.iarr",
+        "citation_form": "iarr",
+        "sense_id": "mayo.iarr.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "ask",
+        "target_form": "Iarr",
+        "morphology": "citation iarr"
+      },
+      "irish": {
+        "text": "Iarr an t-ainm arís.",
+        "normalized_text": "Iarr an t-ainm arís.",
+        "inventory_slug": "iarr-an-t-ainm-ariis",
+        "text_sha256": "4ab5f68e8d940dcb2e4ee013c0fca18c3ebd94c739d8271dd93e0eb2d1c03884"
+      },
+      "english": {
+        "intent": "Ask for the name again.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.12.iarr"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: Ask for the name again.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.iarr-mutation.imperative",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: Ask for the name again."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.iarr-mutation.imperative",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.iarr-mutation.past",
+      "family_id": "d32.mayo.contrast.iarr-mutation",
+      "target": {
+        "lexeme_id": "lex.iarr",
+        "citation_form": "iarr",
+        "sense_id": "mayo.iarr.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "ask",
+        "target_form": "iarr",
+        "morphology": "past d'iarr"
+      },
+      "irish": {
+        "text": "D'iarr sí an áit chiúin.",
+        "normalized_text": "D'iarr sí an áit chiúin.",
+        "inventory_slug": "d-iarr-sii-an-aait-chiuuin",
+        "text_sha256": "9b50e5c529111acddcb6080a76d06b2ef9ae235737042f3e0b06c869e4aa3001"
+      },
+      "english": {
+        "intent": "She asked for the quiet place.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.12.iarr"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: She asked for the quiet place.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.iarr-mutation.past",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: She asked for the quiet place."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.iarr-mutation.past",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.antrim.contrast.cladach-mutation",
+  "county": "antrim",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.antrim.fionn-mac-cumhaill"
+  },
+  "target": {
+    "lexeme_id": "lex.cladach",
+    "citation_form": "cladach",
+    "sense_id": "antrim.cladach.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "shore"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.antrim.01.cladach",
+      "gloss": "shore"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.antrim.contrast.cladach-mutation.citation",
+      "family_id": "d32.antrim.contrast.cladach-mutation",
+      "target": {
+        "lexeme_id": "lex.cladach",
+        "citation_form": "cladach",
+        "sense_id": "antrim.cladach.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "shore",
+        "target_form": "cladach",
+        "morphology": "citation cladach"
+      },
+      "irish": {
+        "text": "Is cladach garbh é.",
+        "normalized_text": "Is cladach garbh é.",
+        "inventory_slug": "is-cladach-garbh-ee",
+        "text_sha256": "d158a5682ddbb06b634e8d75a0d132402bf2c4e29b32a11783b52efe295744ec"
+      },
+      "english": {
+        "intent": "It is a rough shore.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.01.cladach"
+        ],
+        "place": {
+          "id": "d32.antrim.place",
+          "label": "Aontroim / Antrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is a rough shore.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.cladach-mutation.citation",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is a rough shore."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.cladach-mutation.citation",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.antrim.contrast.cladach-mutation.eclipsed",
+      "family_id": "d32.antrim.contrast.cladach-mutation",
+      "target": {
+        "lexeme_id": "lex.cladach",
+        "citation_form": "cladach",
+        "sense_id": "antrim.cladach.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "shore",
+        "target_form": "gcladach",
+        "morphology": "eclipsed gcladach after ar an"
+      },
+      "irish": {
+        "text": "Ar an gcladach atáimid.",
+        "normalized_text": "Ar an gcladach atáimid.",
+        "inventory_slug": "ar-an-gcladach-ataaimid",
+        "text_sha256": "b7adb57111668bba67026e555a19287773b5827bb765d02ae915a0d094bb2e7f"
+      },
+      "english": {
+        "intent": "It is on the shore that we are.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.01.cladach"
+        ],
+        "place": {
+          "id": "d32.antrim.place",
+          "label": "Aontroim / Antrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is on the shore that we are.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.cladach-mutation.eclipsed",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is on the shore that we are."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.cladach-mutation.eclipsed",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "initial_mutation",
+        "invented_text"
+      ]
+    }
+  ]
+}

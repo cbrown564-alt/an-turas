@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.cork.contrast.tabhair-mutation",
+  "county": "cork",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.cork.nano-nagle"
+  },
+  "target": {
+    "lexeme_id": "lex.tabhair",
+    "citation_form": "tabhair",
+    "sense_id": "cork.tabhair.contrast",
+    "part_of_speech": "verb",
+    "english_sense": "give"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.cork.13.tabhair",
+      "gloss": "give"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.cork.contrast.tabhair-mutation.imperative",
+      "family_id": "d32.cork.contrast.tabhair-mutation",
+      "target": {
+        "lexeme_id": "lex.tabhair",
+        "citation_form": "tabhair",
+        "sense_id": "cork.tabhair.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "give",
+        "target_form": "Tabhair",
+        "morphology": "citation tabhair in Cork school frame"
+      },
+      "irish": {
+        "text": "Tabhair aire don scoil.",
+        "normalized_text": "Tabhair aire don scoil.",
+        "inventory_slug": "tabhair-aire-don-scoil",
+        "text_sha256": "db64229d1401149b5140e2db0ec48db7d4dab8329df7423e2171e5fc8e2405a5"
+      },
+      "english": {
+        "intent": "Give care to the school.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "cork",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.cork.nano-nagle"
+        },
+        "atlas_placement_ids": [
+          "atlas.cork.13.tabhair"
+        ],
+        "place": {
+          "id": "d32.cork.place",
+          "label": "Corcaigh / Cork"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: Give care to the school.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.cork.nano-nagle.contrast.tabhair-mutation.imperative",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: Give care to the school."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.cork.nano-nagle.contrast.tabhair-mutation.imperative",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.cork.contrast.tabhair-mutation.past",
+      "family_id": "d32.cork.contrast.tabhair-mutation",
+      "target": {
+        "lexeme_id": "lex.tabhair",
+        "citation_form": "tabhair",
+        "sense_id": "cork.tabhair.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "give",
+        "target_form": "Thug",
+        "morphology": "suppletive past thug of tabhair"
+      },
+      "irish": {
+        "text": "Thug sí an leabhar di.",
+        "normalized_text": "Thug sí an leabhar di.",
+        "inventory_slug": "thug-sii-an-leabhar-di",
+        "text_sha256": "df398c045f1e60bfa4e21114e1e3526b0755f46dd8aa02f0ac28a3c9c51ba6f2"
+      },
+      "english": {
+        "intent": "She gave the book to her.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "cork",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.cork.nano-nagle"
+        },
+        "atlas_placement_ids": [
+          "atlas.cork.13.tabhair"
+        ],
+        "place": {
+          "id": "d32.cork.place",
+          "label": "Corcaigh / Cork"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: She gave the book to her.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.cork.nano-nagle.contrast.tabhair-mutation.past",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: She gave the book to her."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.cork.nano-nagle.contrast.tabhair-mutation.past",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "initial_mutation",
+        "invented_text",
+        "sense_ambiguity"
+      ]
+    }
+  ]
+}

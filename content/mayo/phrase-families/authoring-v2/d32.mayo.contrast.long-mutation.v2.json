@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.mayo.contrast.long-mutation",
+  "county": "mayo",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.mayo.grainne-1593"
+  },
+  "target": {
+    "lexeme_id": "lex.long",
+    "citation_form": "long",
+    "sense_id": "mayo.long.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "ship"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.mayo.03.long",
+      "gloss": "ship"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.mayo.contrast.long-mutation.citation",
+      "family_id": "d32.mayo.contrast.long-mutation",
+      "target": {
+        "lexeme_id": "lex.long",
+        "citation_form": "long",
+        "sense_id": "mayo.long.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "ship",
+        "target_form": "long",
+        "morphology": "citation long"
+      },
+      "irish": {
+        "text": "Is long mhór í anocht.",
+        "normalized_text": "Is long mhór í anocht.",
+        "inventory_slug": "is-long-mhoor-ii-anocht",
+        "text_sha256": "d93fe978007b61ecd8ad592d7572ca9f4afbaa511cf41cfa940648bdcd316f7b"
+      },
+      "english": {
+        "intent": "It is a large ship tonight.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.03.long"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is a large ship tonight.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.long-mutation.citation",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is a large ship tonight."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.long-mutation.citation",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "initial_mutation",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.long-mutation.genitive-frame",
+      "family_id": "d32.mayo.contrast.long-mutation",
+      "target": {
+        "lexeme_id": "lex.long",
+        "citation_form": "long",
+        "sense_id": "mayo.long.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "ship",
+        "target_form": "loinge",
+        "morphology": "genitive loinge as a listening contrast to long"
+      },
+      "irish": {
+        "text": "Ainm na loinge atá ann.",
+        "normalized_text": "Ainm na loinge atá ann.",
+        "inventory_slug": "ainm-na-loinge-ataa-ann",
+        "text_sha256": "c0b9deab8749c17fa3bd1869f949adc6f2c2d455c3244575ac144afd3002c14a"
+      },
+      "english": {
+        "intent": "It is the name of the ship that is there.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.03.long"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is the name of the ship that is there.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.long-mutation.genitive-frame",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is the name of the ship that is there."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.long-mutation.genitive-frame",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "sense_ambiguity"
+      ]
+    }
+  ]
+}

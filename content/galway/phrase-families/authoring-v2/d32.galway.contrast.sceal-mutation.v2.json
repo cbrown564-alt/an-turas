@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.galway.contrast.sceal-mutation",
+  "county": "galway",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.galway.joe-heaney-carna"
+  },
+  "target": {
+    "lexeme_id": "lex.sceal",
+    "citation_form": "scéal",
+    "sense_id": "galway.sceal.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "story"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.galway.14.sceal",
+      "gloss": "story"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.galway.contrast.sceal-mutation.citation",
+      "family_id": "d32.galway.contrast.sceal-mutation",
+      "target": {
+        "lexeme_id": "lex.sceal",
+        "citation_form": "scéal",
+        "sense_id": "galway.sceal.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "story",
+        "target_form": "scéal",
+        "morphology": "citation scéal with fada"
+      },
+      "irish": {
+        "text": "Is scéal fada é.",
+        "normalized_text": "Is scéal fada é.",
+        "inventory_slug": "is-sceeal-fada-ee",
+        "text_sha256": "8f60fb2d42c24aca4fb074aa03d697c2f9f696b763a5883326e68fc70fdaacbe"
+      },
+      "english": {
+        "intent": "It is a long story.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "galway",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna"
+        },
+        "atlas_placement_ids": [
+          "atlas.galway.14.sceal"
+        ],
+        "place": {
+          "id": "d32.galway.place",
+          "label": "na Gaillimhe / Galway"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is a long story.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna.contrast.sceal-mutation.citation",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is a long story."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.galway.joe-heaney-carna.contrast.sceal-mutation.citation",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.galway.contrast.sceal-mutation.possessive",
+      "family_id": "d32.galway.contrast.sceal-mutation",
+      "target": {
+        "lexeme_id": "lex.sceal",
+        "citation_form": "scéal",
+        "sense_id": "galway.sceal.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "story",
+        "target_form": "scéal",
+        "morphology": "scéal after mo"
+      },
+      "irish": {
+        "text": "Mo scéal atá á insint.",
+        "normalized_text": "Mo scéal atá á insint.",
+        "inventory_slug": "mo-sceeal-ataa-aa-insint",
+        "text_sha256": "50723d9392b1673386dcd05a0963bff2a37e47d48afd5c4355ce781427921641"
+      },
+      "english": {
+        "intent": "It is my story that is being told.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "galway",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna"
+        },
+        "atlas_placement_ids": [
+          "atlas.galway.14.sceal"
+        ],
+        "place": {
+          "id": "d32.galway.place",
+          "label": "na Gaillimhe / Galway"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is my story that is being told.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna.contrast.sceal-mutation.possessive",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is my story that is being told."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.galway.joe-heaney-carna.contrast.sceal-mutation.possessive",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    }
+  ]
+}

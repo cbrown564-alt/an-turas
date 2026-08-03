@@ -1,0 +1,276 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.antrim.contrast.grainne-name-fada",
+  "county": "antrim",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.antrim.fionn-mac-cumhaill"
+  },
+  "target": {
+    "lexeme_id": "lex.ainm",
+    "citation_form": "ainm",
+    "sense_id": "antrim.ainm.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "name"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.antrim.19.ainm",
+      "gloss": "name"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.antrim.contrast.grainne-name-fada.grainne-name",
+      "family_id": "d32.antrim.contrast.grainne-name-fada",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "antrim.ainm.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "name",
+        "target_form": "ainm",
+        "morphology": "Gráinne with fadas in a name frame"
+      },
+      "irish": {
+        "text": "Is é Gráinne an t-ainm aici.",
+        "normalized_text": "Is é Gráinne an t-ainm aici.",
+        "inventory_slug": "is-ee-graainne-an-t-ainm-aici",
+        "text_sha256": "b94e18e6d77349d782c46e1917428b11bd9325f2ddcec886a19fcb465de36d4a"
+      },
+      "english": {
+        "intent": "Gráinne is her name.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.19.ainm"
+        ],
+        "place": {
+          "id": "d32.antrim.place",
+          "label": "Aontroim / Antrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Gráinne is her name.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.grainne-name-fada.grainne-name",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Gráinne is her name."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.grainne-name-fada.grainne-name",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.antrim.contrast.grainne-name-fada.grainne-question",
+      "family_id": "d32.antrim.contrast.grainne-name-fada",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "antrim.ainm.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "name",
+        "target_form": "ainm",
+        "morphology": "Gráinne with fadas in a question name frame"
+      },
+      "irish": {
+        "text": "An é Gráinne d'ainm anocht?",
+        "normalized_text": "An é Gráinne d'ainm anocht?",
+        "inventory_slug": "an-ee-graainne-d-ainm-anocht",
+        "text_sha256": "78af543db81d7059d1d44a5bcc44126d4d51ddf5470bd386dc1529e4e5dc0f06"
+      },
+      "english": {
+        "intent": "Is Gráinne your name tonight?",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.19.ainm"
+        ],
+        "place": {
+          "id": "d32.antrim.place",
+          "label": "Aontroim / Antrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Is Gráinne your name tonight?",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.grainne-name-fada.grainne-question",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Is Gráinne your name tonight?"
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.grainne-name-fada.grainne-question",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.kildare.contrast.la-fada",
+  "county": "kildare",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.kildare.brigid-fire"
+  },
+  "target": {
+    "lexeme_id": "lex.la",
+    "citation_form": "lá",
+    "sense_id": "kildare.la.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "day"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.kildare.10.la",
+      "gloss": "day"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.kildare.contrast.la-fada.day-clear",
+      "family_id": "d32.kildare.contrast.la-fada",
+      "target": {
+        "lexeme_id": "lex.la",
+        "citation_form": "lá",
+        "sense_id": "kildare.la.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "day",
+        "target_form": "Lá",
+        "morphology": "lá with fada"
+      },
+      "irish": {
+        "text": "Lá álainn atá ann.",
+        "normalized_text": "Lá álainn atá ann.",
+        "inventory_slug": "laa-aalainn-ataa-ann",
+        "text_sha256": "d461eff5e3b4a2ac7343f20c748898bdc337afac3ab3f1adc5aa7e8edbed4cc2"
+      },
+      "english": {
+        "intent": "It is a beautiful day.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "kildare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire"
+        },
+        "atlas_placement_ids": [
+          "atlas.kildare.10.la"
+        ],
+        "place": {
+          "id": "d32.kildare.place",
+          "label": "Cill Dara / Kildare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: It is a beautiful day.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire.contrast.la-fada.day-clear",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: It is a beautiful day."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kildare.brigid-fire.contrast.la-fada.day-clear",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.kildare.contrast.la-fada.day-definite",
+      "family_id": "d32.kildare.contrast.la-fada",
+      "target": {
+        "lexeme_id": "lex.la",
+        "citation_form": "lá",
+        "sense_id": "kildare.la.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "day",
+        "target_form": "lá",
+        "morphology": "lá after an"
+      },
+      "irish": {
+        "text": "Tá an lá ag titim.",
+        "normalized_text": "Tá an lá ag titim.",
+        "inventory_slug": "taa-an-laa-ag-titim",
+        "text_sha256": "50a23fde937ab1953f8aa027fb3c78b859ed97c68728aec4b65fec2ccdbfa1d7"
+      },
+      "english": {
+        "intent": "The day is falling.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "kildare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire"
+        },
+        "atlas_placement_ids": [
+          "atlas.kildare.10.la"
+        ],
+        "place": {
+          "id": "d32.kildare.place",
+          "label": "Cill Dara / Kildare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: The day is falling.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire.contrast.la-fada.day-definite",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: The day is falling."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kildare.brigid-fire.contrast.la-fada.day-definite",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    }
+  ]
+}
