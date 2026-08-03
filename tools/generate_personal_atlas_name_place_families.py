@@ -158,6 +158,9 @@ STORY_SLATE_SUBJECTS: tuple[dict[str, Any], ...] = (
             "supports": "pattern_only",
         },
     },
+    # Extension tranche: further county story-slate anchors not yet covered above.
+    # Subject ids stay outside the Personal Atlas pack namespace (name.given.* /
+    # name.surname.* / place.*) so A1 general-subject expansion can remain disjoint.
     {
         "id": "historical.name.brian-boru",
         "kind": "name",
@@ -219,7 +222,211 @@ STORY_SLATE_SUBJECTS: tuple[dict[str, Any], ...] = (
         },
     },
     {
-        "id": "place.dungannon",
+        "id": "historical.name.fionn-mac-cumhaill",
+        "kind": "name",
+        "canonicalDisplay": "Fionn mac Cumhaill",
+        "authoring_kind": "historical_name",
+        "county": "antrim",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.naomh-padraig",
+        "kind": "name",
+        "canonicalDisplay": "Naomh Pádraig",
+        "authoring_kind": "historical_name",
+        "county": "armagh",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.armagh.book-of-armagh",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.naomh-moling",
+        "kind": "name",
+        "canonicalDisplay": "Naomh Moling",
+        "authoring_kind": "historical_name",
+        "county": "carlow",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.carlow.st-moling",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.giolla-iosa-ruadh",
+        "kind": "name",
+        "canonicalDisplay": "Giolla Íosa Ruadh Ó Raghallaigh",
+        "authoring_kind": "historical_name",
+        "county": "cavan",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.cavan.oreillys-east-breifne",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.seosamh-o-heanai",
+        "kind": "name",
+        "canonicalDisplay": "Seosamh Ó hÉanaí",
+        "authoring_kind": "historical_name",
+        "county": "galway",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.galway.joe-heaney-carna",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.naomh-brid",
+        "kind": "name",
+        "canonicalDisplay": "Naomh Bríd",
+        "authoring_kind": "historical_name",
+        "county": "kildare",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kildare.brigid-fire",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.alice-kyteler",
+        "kind": "name",
+        "canonicalDisplay": "Alice Kyteler",
+        "authoring_kind": "historical_name",
+        "county": "kilkenny",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kilkenny.alice-kyteler",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.brian-na-murtha",
+        "kind": "name",
+        "canonicalDisplay": "Brian na Múrtha Ó Ruairc",
+        "authoring_kind": "historical_name",
+        "county": "leitrim",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.leitrim.brian-na-murtha",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.padraig-sairseal",
+        "kind": "name",
+        "canonicalDisplay": "Pádraig Sáirséal",
+        "authoring_kind": "historical_name",
+        "county": "limerick",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.limerick.treaty-of-limerick",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.cu-chulainn",
+        "kind": "name",
+        "canonicalDisplay": "Cú Chulainn",
+        "authoring_kind": "historical_name",
+        "county": "louth",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.louth.cu-chulainn-cooley",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.hugh-de-lacy",
+        "kind": "name",
+        "canonicalDisplay": "Hugh de Lacy",
+        "authoring_kind": "historical_name",
+        "county": "meath",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.meath.trim-de-lacy",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.padraig-caomhanach",
+        "kind": "name",
+        "canonicalDisplay": "Pádraig Caomhánach",
+        "authoring_kind": "historical_name",
+        "county": "monaghan",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.monaghan.patrick-kavanagh",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.wb-yeats",
+        "kind": "name",
+        "canonicalDisplay": "W. B. Yeats",
+        "authoring_kind": "historical_name",
+        "county": "sligo",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.sligo.yeats-ben-bulben",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.raghnall",
+        "kind": "name",
+        "canonicalDisplay": "Raghnall",
+        "authoring_kind": "historical_name",
+        "county": "waterford",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.waterford.reginalds-tower",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.naomh-feichin",
+        "kind": "name",
+        "canonicalDisplay": "Naomh Féichín",
+        "authoring_kind": "historical_name",
+        "county": "westmeath",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.westmeath.st-fechin-fore",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.bagenal-harvey",
+        "kind": "name",
+        "canonicalDisplay": "Bagenal Harvey",
+        "authoring_kind": "historical_name",
+        "county": "wexford",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wexford.bagenal-harvey-1798",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "historical.name.naomh-caoimhin",
+        "kind": "name",
+        "canonicalDisplay": "Naomh Caoimhín",
+        "authoring_kind": "historical_name",
+        "county": "wicklow",
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wicklow.st-kevin-glendalough",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.dungannon",
         "kind": "place",
         "canonicalDisplay": "Dún Geanainn",
         "variants": ["Dungannon"],
@@ -234,12 +441,12 @@ STORY_SLATE_SUBJECTS: tuple[dict[str, Any], ...] = (
         },
     },
     {
-        "id": "place.rathcroghan",
+        "id": "story.place.rathcroghan",
         "kind": "place",
         "canonicalDisplay": "Ráth Cruachan",
         "variants": ["Rathcroghan"],
         "placeProfile": {
-            "placeKind": "archaeological complex",
+            "placeKind": "monument",
             "hierarchy": "Ros Comáin / Roscommon",
         },
         "authoring_source": {
@@ -249,17 +456,212 @@ STORY_SLATE_SUBJECTS: tuple[dict[str, Any], ...] = (
         },
     },
     {
-        "id": "place.cashel",
+        "id": "story.place.carraig-phadraig",
         "kind": "place",
-        "canonicalDisplay": "Caisleán na Carraige",
-        "variants": ["Cashel", "Rock of Cashel"],
+        "canonicalDisplay": "Carraig Phádraig",
+        "variants": ["Rock of Cashel", "Cashel"],
         "placeProfile": {
-            "placeKind": "monument",
+            "placeKind": "rock or rocks",
             "hierarchy": "Tiobraid Árann / Tipperary",
         },
         "authoring_source": {
             "path": "content/audio/authoring/d32-county-harvest-uses.json",
             "record_id": "d32.tipperary.cormac-chapel",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.ceann-cora",
+        "kind": "place",
+        "canonicalDisplay": "Ceann Cora",
+        "variants": ["Kincora"],
+        "placeProfile": {
+            "placeKind": "monument",
+            "hierarchy": "An Clár / Clare",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.clare.brian-boru-kincora",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.tigh-moling",
+        "kind": "place",
+        "canonicalDisplay": "Tigh Moling",
+        "variants": ["Saint Mullin's", "St Mullins"],
+        "placeProfile": {
+            "placeKind": "population centre",
+            "hierarchy": "Ceatharlach / Carlow",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.carlow.st-moling",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.sabhall",
+        "kind": "place",
+        "canonicalDisplay": "Sabhall",
+        "variants": ["Saul"],
+        "placeProfile": {
+            "placeKind": "population centre",
+            "hierarchy": "An Dún / Down",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.down.patrick-saul",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.inis-ceithleann",
+        "kind": "place",
+        "canonicalDisplay": "Inis Ceithleann",
+        "variants": ["Enniskillen"],
+        "placeProfile": {
+            "placeKind": "town",
+            "hierarchy": "Fear Manach / Fermanagh",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.fermanagh.enniskillen-castle",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.dun-masc",
+        "kind": "place",
+        "canonicalDisplay": "Dún Másc",
+        "variants": ["Dunamase", "Rock of Dunamase"],
+        "placeProfile": {
+            "placeKind": "monument",
+            "hierarchy": "Laois",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.laois.rock-of-dunamase",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.an-chorr-liath",
+        "kind": "place",
+        "canonicalDisplay": "An Chorr Liath",
+        "variants": ["Corlea"],
+        "placeProfile": {
+            "placeKind": "townland",
+            "hierarchy": "An Longfort / Longford",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.longford.corlea-trackway",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.cuaille",
+        "kind": "place",
+        "canonicalDisplay": "Cuaille",
+        "variants": ["Cooley"],
+        "placeProfile": {
+            "placeKind": "locality",
+            "hierarchy": "Lú / Louth",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.louth.cu-chulainn-cooley",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.caislean-bhaile-atha-troim",
+        "kind": "place",
+        "canonicalDisplay": "Caisleán Bhaile Átha Troim",
+        "variants": ["Trim Castle"],
+        "placeProfile": {
+            "placeKind": "castle",
+            "hierarchy": "An Mhí / Meath",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.meath.trim-de-lacy",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.inis-caoin",
+        "kind": "place",
+        "canonicalDisplay": "Inis Caoin",
+        "variants": ["Inishkeen", "Iniskeen"],
+        "placeProfile": {
+            "placeKind": "civil parish",
+            "hierarchy": "Muineachán / Monaghan",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.monaghan.patrick-kavanagh",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.binn-ghulbain",
+        "kind": "place",
+        "canonicalDisplay": "Binn Ghulbain",
+        "variants": ["Benbulbin", "Ben Bulben"],
+        "placeProfile": {
+            "placeKind": "mountain or mountain range",
+            "hierarchy": "Sligeach / Sligo",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.sligo.yeats-ben-bulben",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.tur-raghnaill",
+        "kind": "place",
+        "canonicalDisplay": "Túr Raghnaill",
+        "variants": ["Reginald's Tower"],
+        "placeProfile": {
+            "placeKind": "man-made feature",
+            "hierarchy": "Port Láirge / Waterford",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.waterford.reginalds-tower",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.baile-fhobhair",
+        "kind": "place",
+        "canonicalDisplay": "Baile Fhobhair",
+        "variants": ["Fore"],
+        "placeProfile": {
+            "placeKind": "population centre",
+            "hierarchy": "An Iarmhí / Westmeath",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.westmeath.st-fechin-fore",
+            "supports": "pattern_only",
+        },
+    },
+    {
+        "id": "story.place.gleann-da-loch",
+        "kind": "place",
+        "canonicalDisplay": "Gleann Dá Loch",
+        "variants": ["Glendalough"],
+        "placeProfile": {
+            "placeKind": "population centre",
+            "hierarchy": "Cill Mhantáin / Wicklow",
+        },
+        "authoring_source": {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.wicklow.st-kevin-glendalough",
             "supports": "pattern_only",
         },
     },
@@ -419,13 +821,16 @@ def place_family(indexed: dict[tuple[str, str], tuple[Path, dict[str, Any]]], su
     place_kind = str((subject.get("placeProfile") or {}).get("placeKind") or "").casefold()
     if "city" in place_kind:
         preferred = ["cathair", "baile", "ainm", "áit"]
-    elif "castle" in place_kind:
+    elif "castle" in place_kind or "caisleán" in place_kind:
         preferred = ["caisleán", "áit", "ainm"]
     elif "island" in place_kind:
         preferred = ["oileán", "áit", "ainm"]
     elif any(token in place_kind for token in ("monastery", "abbey", "ecclesiastical")):
         preferred = ["mainistir", "áit", "ainm"]
-    elif any(token in place_kind for token in ("town", "village", "settlement")):
+    elif any(
+        token in place_kind
+        for token in ("town", "village", "settlement", "population centre", "civil parish")
+    ):
         preferred = ["baile", "áit", "ainm"]
     else:
         preferred = ["áit", "baile", "ainm"]
@@ -697,6 +1102,13 @@ def main() -> int:
         for member in family.get("members", [])
         if isinstance(member, dict) and isinstance(member.get("id"), str)
     }
+    existing_normalized_texts = {
+        normalize_spoken_text(member["irish"]["normalized_text"])
+        for family in families_after_cleanup
+        for member in family.get("members", [])
+        if isinstance(member, dict)
+        and isinstance((member.get("irish") or {}).get("normalized_text"), str)
+    }
     existing_exercise_ids = {
         exercise["id"]
         for exercise in uses.get("exercises", [])
@@ -814,13 +1226,15 @@ def main() -> int:
                     use=use,
                     logainm=logainm,
                 )
-                if member["id"] in existing_member_ids:
+                normalized = member["irish"]["normalized_text"]
+                if member["id"] in existing_member_ids or normalized in existing_normalized_texts:
                     continue
                 if exercise_id in existing_exercise_ids:
                     continue
                 changed.setdefault(path, copy.deepcopy(family))["members"].append(member)
                 uses["exercises"].append(exercise)
                 existing_member_ids.add(member["id"])
+                existing_normalized_texts.add(normalized)
                 existing_exercise_ids.add(exercise_id)
                 added_members += 1
                 added_exercises += 1
