@@ -1,7 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-03 (bulk Track A priority).*
+stories and places of Ireland. Updated 2026-08-03 (Track A bulk merge on
+`track-a/bulk-integration`).*
 
 ## Current outcome
 
@@ -9,15 +10,14 @@ An Turas has a verified representative Mayo Story-and-Learning loop, shared lear
 runtime, four in-app county review packs, a nationwide Personal Atlas foundation, and
 a controlled Irish authoring/audio pipeline.
 
-The immediate phase is the **D32 emergency Irish audio harvest**. The first all-county
-tranche, a story-linked Personal Atlas tranche, and an extension tranche (names/places,
-story transitions, mutation/fada contrasts, pedagogy examples) are complete, but the
-harvest is not: **140,872 ElevenLabs credits remained at the last observed provider
-check**. The latest extension payload used **74** aggregate credits for **16**
-successful captures. The provider does not expose a trustworthy per-batch credit
-allocation, so the ledger records that delta only at the aggregate checkpoint.
-Provisional generation may continue during the subscription window. Capture does not
-imply linguistic approval or learner release.
+The immediate phase is the **D32 emergency Irish audio harvest**. Bulk Track A avenues
+**A1–A8** are authored and merged on `track-a/bulk-integration`: about **2,820**
+net-new unique normalized texts sit above the prior **707** batch-registered set
+(authored corpus **3,527** unique / **4,316** members / **714** families). The
+preflight gate (≥500 net-new unique) is cleared for Track B. Do not open a provider
+payload until `prepare-harvest` writes resumable manifests sized to a credit
+checkpoint. **140,872** ElevenLabs credits remained at the last observed provider
+check. Capture does not imply linguistic approval or learner release.
 
 The product is implemented as a substantial prototype. It has not been validated for
 learning outcomes or promoted for public release.
@@ -26,12 +26,14 @@ learning outcomes or promoted for public release.
 
 ### Irish corpus and audio
 
-- **641** phrase families, **1,484** authored members, **1,482** complete members, and
-  **705** unique normalized texts across all **32** counties. The two incomplete members
-  are the deliberately retired Corca Dhuibhne lines described below.
+- **714** phrase families, **4,316** authored members (**4,314** with
+  `states.authoring.status = complete`), and **3,527** unique normalized texts across
+  all **32** counties after the Track A bulk merge. About **2,820** of those unique
+  texts are absent from the prior batch registry (**707** registered unique texts).
+  The two incomplete members remain the deliberately retired Corca Dhuibhne lines.
 - **708** registered audio lines: **698** approved, **700** provider successes, **2**
   retired semantic quarantines, **9** cancelled, **0** failed, and **0** actively
-  claimed. There is no remaining resumable or manual-recovery work.
+  claimed. Track B has not yet registered the Track A bulk slice.
 - **1,062** bundled MP3s: **700** source-labelled v2 captures and **362** legacy/runtime
   clips.
 - **1,062/1,062** checksums verify. There are no missing, mismatched, or orphan files.
@@ -40,13 +42,14 @@ learning outcomes or promoted for public release.
   Corca Dhuibhne captures are retained byte-for-byte for audit but are semantically
   retired, dynamically excluded, failed for learner QA, and unavailable through both
   text and named-asset runtime paths.
-- The Personal Atlas tranche contains **80** subjects—**50 names** and **30 places**—
-  with two spoken forms each and **160** newly captured clips.
-- The extension tranche adds **23** authored members across **641** families: **14**
-  story-linked historical name/place lines, **7** shared story-transition recaps, **2**
-  Sean/fada contrast lines, and **2** pedagogy-sidecar lessons. **16** lines were
-  registered, drained, and reconciled in payload `d32.harvest.extension.2026-08-03`
-  with **0** failures and **0** unresolved claims.
+- The learner Personal Atlas pack remains **80** subjects (**50** names / **30** places)
+  with **160** captured clips. A1 adds **318** authoring-only bulk subjects (**636**
+  unique texts) without promoting them into the Swift pilot pack.
+- A8 expands `STORY_SLATE_SUBJECTS` **9 → 47** (**76** incremental unique texts), kept
+  id-disjoint from A1 (`story.place.*` / `historical.name.*`).
+- The extension tranche (pre-merge base) added historical name/place lines, story
+  transitions, Sean/fada contrast lines, and pedagogy examples; **16** lines were
+  registered, drained, and reconciled in payload `d32.harvest.extension.2026-08-03`.
 - The prior story-linked authoring tranche adds **9** name/place subjects and **18**
   lines across eight resumable manifests. Sixteen lines remain pending human QA; the two
   Corca Dhuibhne lines are the retired captures above.
@@ -116,10 +119,16 @@ promotion.
 
 ### Verification at the current revision
 
-- `python3 -B tools/structured_audio_authoring.py check` — passed.
-- `python3 -B tools/structured_audio_authoring.py reconcile --scoreboard --json` —
-  passed with **0 errors**, the counts above, and checksum-verified retired captures.
-- `python3 -B -m unittest discover -s tools/tests` — **167/167 passed** on 2026-08-03.
+- `python3 -B tools/structured_audio_authoring.py check` — passed on the merged Track A
+  store (**714** family documents).
+- Net-new unique-text preflight (authored NFC texts minus batch-registered texts):
+  **≈2,820** (≥500 Track A → Track B gate).
+- Focused Track A unit tests green after merge (personal-atlas generator, pedagogy
+  corpus, contrast families, evidence-led tranche, source-packet expansion, story
+  dialogue). Full `unittest discover` and `reconcile --scoreboard` not re-run on this
+  host for the bulk merge; rerun before provider approval.
+- Prior revision: `reconcile --scoreboard` passed with checksum-verified retired
+  captures; `unittest discover` was **167/167** before the bulk merge.
 - Swift parse checks passed for the speech runtime and catalog tests. The Xcode resource
   scan finds **1,062/1,062** expected MP3s with no missing, mismatched, or orphan
   resources.
@@ -139,64 +148,51 @@ promotion.
 
 ### Completed in the latest coordinated cycle
 
-- Authored and captured the D32 extension tranche: **14** historical name/place members,
-  **7** story-transition recaps, **2** Sean/fada contrast lines, and **2** pedagogy
-  lessons; drained **16** lines under payload `d32.harvest.extension.2026-08-03` with
-  a **74**-credit aggregate checkpoint and full reconciliation.
-- Deduplicated duplicate story records in `d32-county-harvest-uses.json` so emergency
-  harvest registration resolves stable story identity.
-- Added two narrative-pedagogy lessons and eight exact, repository-bound Irish examples.
-- Authored nine story-linked Personal Atlas name/place subjects and captured 18 bounded
-  payload lines with no failures or unresolved claims.
-- Replaced the anomaly audit's slow per-file probing with batched inspection and metadata
-  stratification; the cold run improved from about **37.4 s** to **10.0 s**, with cached
-  runs near **0.01 s**.
-- Repaired manifest membership, Xcode resources, aggregate credit accounting, exact
-  source identity, retired-capture reconciliation, and runtime fail-closed speech lookup.
-- Recorded nine post-hoc capture chronology warnings explicitly. Those manifests remain
-  `chronology_unverified` and blocked from release until a human reviews the historical
-  ledger sequence.
+- Merged parallel Track A branches onto `track-a/bulk-integration` (extension WIP base
+  + A1–A8). Uses ledger kept at **32** stories / **4,305** exercises; store indexes
+  **714** families. `structured_audio_authoring.py check` passed.
+- **A1:** 318 bulk Personal Atlas subjects / **636** unique texts (pilot pack still 80).
+- **A2:** **904** story-dialogue / exercise-role unique texts across 32 counties.
+- **A3:** 74 contrast families / **148** unique listening texts.
+- **A4:** pedagogy sidecar **21** lessons / **203** lines / **148** unique examples.
+- **A5:** queue-02 evidence-led — **520** unique texts across 8 counties.
+- **A6:** queue-03 source-packet — **560** unique texts across 14 counties (packets
+  confirmed; Monaghan/Kilkenny bounded).
+- **A7:** review-route register only; **0** new unique texts; volume blocked.
+- **A8:** story-slate subjects **9 → 47** / **76** incremental unique texts.
+- Authored and captured the D32 extension tranche before the bulk merge; drained **16**
+  lines under payload `d32.harvest.extension.2026-08-03`.
 
 ## Active implementation sequence
 
-**Next priority: bulk Track A.** Tracks B–E stay ready, but do not open another provider
-payload until Track A produces a large net-new unique-text slice. As of this revision,
-**705/705** unique normalized texts are already registered and **700** are captured; a
-full `prepare-harvest` dry-run over all families yields **0** new registrable lines.
-Extension tranches that add county-bound variants of existing text will not scale credit
-use. Target the D32 planning band of **3,000–5,000** utterances — roughly **2,300–4,300**
-net-new unique lines remain — and run the avenues below **in parallel** where inputs are
-independent.
+**Next priority: Track B — normalize, dedupe, and build resumable manifests** for the
+merged Track A slice. Do not call the provider until manifests pass credit preflight.
+Estimated headroom toward the D32 **3,000–5,000** planning band: about **2,820**
+net-new unique texts are authored and not yet batch-registered.
 
-### 1. Bulk Track A — parallel authoring targets (next session)
+### 1. Bulk Track A — parallel authoring targets (merged)
 
-Each avenue must output complete v2 members (stable id, NFC Irish, English intent,
-story/atlas binding, exercise consumer, provenance, risk flags). Count **net-new unique
-normalized text**, not member count. Merge through the store, run `check`, then
-`prepare-harvest` preflight before any emergency-harvest approval.
+Avenues A1–A8 landed on `track-a/bulk-integration`. Count remains **net-new unique
+normalized text**. Merge rules applied: union by member/exercise id, keep deduped
+story records, sorted store family index, one `check` on the merged slice.
 
-| # | Avenue | Primary inputs | Tool / owner | Counties / scope | Parallelism | Order-of-magnitude unique-text yield |
-| --- | --- | --- | --- | --- | --- | --- |
-| A1 | **Personal Atlas names and places** | `personal-atlas-subjects.json`, Logainm index, story slate anchors | [`tools/generate_personal_atlas_name_place_families.py`](tools/generate_personal_atlas_name_place_families.py) | All 32; expand beyond **80** pilot subjects | High — shard by county or subject batch | **400–1,600** (2 spoken forms per subject at 200–800 new subjects) |
-| A2 | **Story dialogue and exercise roles** | County story packs, `d32-county-harvest-uses.json` | Manual family append + uses ledger; extend [`tools/generate_d32_county_families.py`](tools/generate_d32_county_families.py) role templates | All 32 stories | High — one stream per county | **300–1,000** (dialogue, listen-choose surrounds, story-specific lines beyond scaffold) |
-| A3 | **Mutation, fada, and minimal-pair contrasts** | Atlas headwords, high-risk sampler strata | Pattern in [`tools/generate_d32_harvest_extension_tranche.py`](tools/generate_d32_harvest_extension_tranche.py); new contrast families per sense | Start Mayo + counties in risk sample; spread to all senses with mutation/fada exposure | High — shard by sense or contrast type | **100–400** |
-| A4 | **Pedagogy-bound Irish examples** | [`content/pedagogy/irish-explanations-v1.json`](content/pedagogy/irish-explanations-v1.json) | [`tools/validate_pedagogy_corpus.py`](tools/validate_pedagogy_corpus.py); bind each example to an existing or new family member | Cross-county | High — shard by lesson | **50–200** (29 lines today; scale lessons with exact repository Irish) |
-| A5 | **Evidence-led county expansion** | [`docs/COUNTY-STORY-SLATE.md`](docs/COUNTY-STORY-SLATE.md) | [`content/audio/authoring/d32-county-authoring-queue.md`](content/audio/authoring/d32-county-authoring-queue.md) queue **`queue-02-evidence-led-next`** | Cork, Galway, Kerry, Longford, Louth, Roscommon, Tipperary, Waterford | High — one county per stream | **200–600** |
-| A6 | **Source-packet county expansion** | Story source packets, place forms, exercise shells | Same queue doc — **`queue-03-source-packet`** | Antrim, Armagh, Carlow, Cavan, Clare, Down, Fermanagh, Kildare, Kilkenny, Laois, Monaghan, Sligo, Westmeath, Wicklow | High — one county per stream after packet confirmed | **300–900** |
-| A7 | **Sensitive county expansion** | Community/history review route | Same queue doc — **`queue-04-sensitive-review-first`** | Derry, Donegal, Leitrim, Limerick, Tyrone, Wexford | Limited — secure review route before volume | **TBD** (do not score-chase) |
-| A8 | **Historical and story-slate proper names** | Story slate named figures and linked places | Extend `STORY_SLATE_SUBJECTS` in personal-atlas generator + ainm families | Per story anchor | Medium — overlaps A1; dedupe by normalized text | **50–150** incremental if not merged into A1 |
+| # | Avenue | Merged result (unique-text order of magnitude) | Branch |
+| --- | --- | --- | --- |
+| A1 | Personal Atlas names and places | **636** (318 bulk subjects × 2) | `bulk-a1-personal-atlas` |
+| A2 | Story dialogue and exercise roles | **904** | `track-a/a2-story-dialogue` |
+| A3 | Mutation, fada, and minimal-pair contrasts | **148** | `bulk-a3-mutation-fada-contrasts` |
+| A4 | Pedagogy-bound Irish examples | **148** unique examples (21 lessons) | `track-a/a4-pedagogy-examples` |
+| A5 | Evidence-led county expansion | **520** | `track-a/a5-evidence-led-next` |
+| A6 | Source-packet county expansion | **560** | `track-a/a6-source-packet` |
+| A7 | Sensitive county expansion | **0** (review route only) | `track-a/a7-sensitive-review-first` |
+| A8 | Historical and story-slate proper names | **76** | `track-a/a8-story-slate-names` |
 
 **Not bulk Track A (quick maintenance only):** re-approve **7** cancelled batch lines
 (~300 estimated credits); retire or replace **2** Corca Dhuibhne quarantine members.
 
-**Track A preflight gate (before Track B):** `prepare-harvest` over the merged slice
-must report **≥500 net-new unique lines** (or **≥5,000** estimated credits) unless an
-explicit smaller payload is delegated. Size `payload_credit_limit` to the preflight
-estimate, not a nominal cap.
-
-**Parallel merge rules:** register families in sorted store order; never fork competing
-plans; one `check` + one reconcile per merged slice; deduplication is by normalized text
-+ locked voice — prefer new sentences over county variants of captured text.
+**Track A preflight gate:** cleared on unique-text inventory (**≈2,820** net-new vs
+batch registry). Next: run `prepare-harvest` over the merged inputs, size
+`payload_credit_limit` to that estimate, then Track C drain with checkpoints.
 
 Canonical queue partition: [`content/audio/authoring/d32-county-authoring-queue.md`](content/audio/authoring/d32-county-authoring-queue.md).
 

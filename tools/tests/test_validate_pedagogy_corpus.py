@@ -89,9 +89,12 @@ class PedagogyCorpusTests(unittest.TestCase):
                 / "content/mayo/phrase-families/authoring-v2/farraige.sea-noun.v2.json"
             ).read_text(encoding="utf-8")
         )
-        self.assertEqual(
-            sea_examples,
-            {member["irish"]["text"] for member in sea_source["members"]},
+        # Pedagogy must reuse exact repository Irish; the family may also hold
+        # additional story-dialogue members outside this lesson.
+        self.assertTrue(
+            sea_examples.issubset(
+                {member["irish"]["text"] for member in sea_source["members"]}
+            )
         )
 
         for lesson_id in ("grammar.identity-origin", "pronunciation.farraige-frames"):

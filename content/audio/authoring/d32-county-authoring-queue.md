@@ -4,10 +4,10 @@ Operational queue for Track A's provisional phrase-family authoring. The atlas a
 story slate remain the source inputs; queue membership is not evidence of historical,
 Irish-language, pedagogy, rights, audio-QA, or learner-release approval.
 
-**Current priority:** bulk Track A across parallel avenues until `prepare-harvest`
-reports hundreds to thousands of net-new unique lines. See [`STATUS.md`](../../../STATUS.md)
-§ *Bulk Track A — parallel authoring targets* for the authoritative target table,
-preflight gate, and merge rules. Tracks B–E wait on that slice.
+**Current priority:** Track B `prepare-harvest` on the merged A1–A8 slice on
+`track-a/bulk-integration` (≈2,820 net-new unique texts vs the prior batch registry).
+See [`STATUS.md`](../../../STATUS.md) for the merged yield table and credit-sizing
+rules. Do not open Track C until manifests pass preflight.
 
 ## Bulk Track A avenues (parallel)
 
