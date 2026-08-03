@@ -11,6 +11,15 @@
 - The 80-subject pack is a **foundation index**, not 80 showcase experiences. See
   `SHOWCASE-CANDIDATES.md` for the deliberately small Phase 1b promotion queue.
 
+## Track A A1 authoring bulk
+
+- Authoring-only subject source: `content/personal-atlas/a1-bulk-subjects.json`
+- Rebuild with `python3 tools/expand_personal_atlas_a1_subjects.py`
+- Generate phrase-family members with `python3 tools/generate_personal_atlas_name_place_families.py`
+- Bulk subjects stay out of the learner pilot pack until curated promotion; they are
+  complete v2 authoring inputs (present-day pedagogical frames, provisional provenance).
+- Historical / story-slate proper names remain in `STORY_SLATE_SUBJECTS` (avenue A8).
+
 ## Editorial posture
 
 Pilot name packs are **editorial syntheses** pending specialist review and a licensed modern surname authority. They must not be treated as final scholarship. Place forms lean on Logainm (CC BY 4.0) where an id is present; other place notes are pilot shells awaiting monthly ingest.
