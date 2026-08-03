@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-tar-come",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — kildare / d32.kildare.brigid-fire / kildare.tar.come",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-tar-come.line.5fc3bf321ce739a4",
+      "member_ids": [
+        "d32.kildare.14.tar.come.packet-place"
+      ],
+      "normalized_text": "Tá tar i Cill Dara.",
+      "text_sha256": "b2bdf5effb6019e8196ca37ffaaffef24e0f8d945dfc317b83e9021b3783060b",
+      "inventory_slug": "taa-tar-i-cill-dara",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-tar-i-cill-dara.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-tar-come.line.b6e295b603d35e04",
+      "member_ids": [
+        "d32.kildare.14.tar.come.packet-ask"
+      ],
+      "normalized_text": "An bhfuil tar i Cill Dara?",
+      "text_sha256": "ba5a907e285c7adecd35911cf75e32820e7edf6291e1689a7723f953bb4a0f6a",
+      "inventory_slug": "an-bhfuil-tar-i-cill-dara",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-tar-i-cill-dara.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 45.0,
+    "estimated_cumulative_credits": 14342.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "1a2061eb434e10b1083933c4c38d9b9290b9f38b78d05946ef67bfe5f0e675c0"
+}

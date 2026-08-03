@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — carlow / d32.carlow.st-moling / carlow.teigh.go",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.line.7efc0b036f395a7c",
+      "member_ids": [
+        "d32.carlow.12.teigh.go.packet-place"
+      ],
+      "normalized_text": "Tá téigh i Ceatharlach.",
+      "text_sha256": "bd66ec7e7414c697961ada957fb932a99a4efdd8e39dd0820364e6535646922d",
+      "inventory_slug": "taa-teeigh-i-ceatharlach",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-teeigh-i-ceatharlach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.line.986daf40cd023c36",
+      "member_ids": [
+        "d32.carlow.12.teigh.go.packet-ask"
+      ],
+      "normalized_text": "An bhfuil téigh i Ceatharlach?",
+      "text_sha256": "e117f5c986433e6ec48eb097b6e92cb30fa77b8dfd5dd89b7b11df4ed529da4f",
+      "inventory_slug": "an-bhfuil-teeigh-i-ceatharlach",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-teeigh-i-ceatharlach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 53.0,
+    "estimated_cumulative_credits": 14350.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "252235961e7c5c76c991de3a613f998cde02bab8dea16bbc5b8a79eff422086b"
+}

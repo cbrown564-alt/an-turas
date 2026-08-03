@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.monaghan.d32-monaghan-patrick-kavanagh.monaghan-siuil-walk",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — monaghan / d32.monaghan.patrick-kavanagh / monaghan.siuil.walk",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.monaghan.d32-monaghan-patrick-kavanagh.monaghan-siuil-walk.line.0b437d1f83dc7a69",
+      "member_ids": [
+        "d32.monaghan.16.siuil.walk.packet-place"
+      ],
+      "normalized_text": "Tá siúil i Muineachán.",
+      "text_sha256": "8ad0d4c8bec7ee261c0928b82956dcae1d4d239a2b4c2863ea1525038116e528",
+      "inventory_slug": "taa-siuuil-i-muineachaan",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-siuuil-i-muineachaan.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.monaghan.d32-monaghan-patrick-kavanagh.monaghan-siuil-walk.line.238374d8c2cf044a",
+      "member_ids": [
+        "d32.monaghan.16.siuil.walk.packet-remember"
+      ],
+      "normalized_text": "Cuimhnigh: siúil i Muineachán.",
+      "text_sha256": "790c9bbfe2fbb21c1ebc22fbeae217c625236e344a7c0cbbea239585fac830d6",
+      "inventory_slug": "cuimhnigh-siuuil-i-muineachaan",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cuimhnigh-siuuil-i-muineachaan.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 52.0,
+    "estimated_cumulative_credits": 14349.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "f0cf08845368bf3edad28b48020aa97c568e876fe82b28e1f6c94c0eabc06ddb"
+}

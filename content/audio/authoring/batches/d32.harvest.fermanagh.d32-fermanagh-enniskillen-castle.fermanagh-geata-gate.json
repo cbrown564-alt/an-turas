@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-geata-gate",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — fermanagh / d32.fermanagh.enniskillen-castle / fermanagh.geata.gate",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-geata-gate.line.1ed1abb411de689d",
+      "member_ids": [
+        "d32.fermanagh.07.geata.gate.packet-place"
+      ],
+      "normalized_text": "Tá geata i Fear Manach.",
+      "text_sha256": "549167287385528b907fd1ba91c584da0792fcc9f2541c1bee4ef12d75ce9f72",
+      "inventory_slug": "taa-geata-i-fear-manach",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-geata-i-fear-manach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-geata-gate.line.8bedc4a5478519fa",
+      "member_ids": [
+        "d32.fermanagh.07.geata.gate.packet-ask"
+      ],
+      "normalized_text": "An bhfuil geata i Fear Manach?",
+      "text_sha256": "4569425cf89c36eb5af0e045d593a75e761d971ab8273a7f5db4f73247605368",
+      "inventory_slug": "an-bhfuil-geata-i-fear-manach",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-geata-i-fear-manach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 53.0,
+    "estimated_cumulative_credits": 14350.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "ae027e0cbca162e7f4a6910adfac85c1a1ef5c4034ae7e368d00214eb0ef365a"
+}

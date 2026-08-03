@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.monaghan.d32-monaghan-patrick-kavanagh.monaghan-sean-old",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — monaghan / d32.monaghan.patrick-kavanagh / monaghan.sean.old",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.monaghan.d32-monaghan-patrick-kavanagh.monaghan-sean-old.line.1c880bd3e9a2d519",
+      "member_ids": [
+        "d32.monaghan.19.sean.old.packet-remember"
+      ],
+      "normalized_text": "Cuimhnigh: sean i Muineachán.",
+      "text_sha256": "3f501f5b5bf53df3adcd2748e05b77dd973de410de51e73e314bd4ad2ca7c92c",
+      "inventory_slug": "cuimhnigh-sean-i-muineachaan",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cuimhnigh-sean-i-muineachaan.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.monaghan.d32-monaghan-patrick-kavanagh.monaghan-sean-old.line.f9db1e16ade561b0",
+      "member_ids": [
+        "d32.monaghan.19.sean.old.packet-place"
+      ],
+      "normalized_text": "Tá sean i Muineachán.",
+      "text_sha256": "e6416c13abe7d18a4e93d99b2ed9b578711b5a992b3aab524c94327c10a3ac0d",
+      "inventory_slug": "taa-sean-i-muineachaan",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-sean-i-muineachaan.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 50.0,
+    "estimated_cumulative_credits": 14347.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "f6db0c3f381c98f31279f69480e1d3a382d98f1731552cc3fa0b17e4e4a7e2c7"
+}

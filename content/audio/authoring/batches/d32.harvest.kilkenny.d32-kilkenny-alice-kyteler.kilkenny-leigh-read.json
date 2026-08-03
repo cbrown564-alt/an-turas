@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-leigh-read",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — kilkenny / d32.kilkenny.alice-kyteler / kilkenny.leigh.read",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-leigh-read.line.0be1a4ebb7b09c58",
+      "member_ids": [
+        "d32.kilkenny.14.leigh.read.packet-place"
+      ],
+      "normalized_text": "Tá léigh i Cill Chainnigh.",
+      "text_sha256": "7f7e2c5efaa46b85c8000c3574ec084ae8ca06e1c7db227026f2967b20fb9a98",
+      "inventory_slug": "taa-leeigh-i-cill-chainnigh",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-leeigh-i-cill-chainnigh.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-leigh-read.line.57b8fa73ca26f204",
+      "member_ids": [
+        "d32.kilkenny.14.leigh.read.packet-mark"
+      ],
+      "normalized_text": "Cuimhnigh ar léigh i Cill Chainnigh.",
+      "text_sha256": "a30c11b3a7ef9a16307ca56862ac8cbe4322bc497837d2a40fd6ba5950ac7cf8",
+      "inventory_slug": "cuimhnigh-ar-leeigh-i-cill-chainnigh",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cuimhnigh-ar-leeigh-i-cill-chainnigh.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 62.0,
+    "estimated_cumulative_credits": 14359.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "fab5a039e73acbb08454b91f83008144c82ad35c4bdb92554f0b7da21fab0778"
+}

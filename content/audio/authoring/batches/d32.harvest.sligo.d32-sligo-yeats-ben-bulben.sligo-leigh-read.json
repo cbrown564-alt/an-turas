@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-leigh-read",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — sligo / d32.sligo.yeats-ben-bulben / sligo.leigh.read",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-leigh-read.line.3a15cea4dc24ab9f",
+      "member_ids": [
+        "d32.sligo.11.leigh.read.packet-place"
+      ],
+      "normalized_text": "Tá léigh i Sligeach.",
+      "text_sha256": "1e9c1e44651bc51ef9d940aaffdee75581e3b98e717d2a44dfa2d9598c2a1c41",
+      "inventory_slug": "taa-leeigh-i-sligeach",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-leeigh-i-sligeach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-leigh-read.line.c9f3bb237049c769",
+      "member_ids": [
+        "d32.sligo.11.leigh.read.packet-ask"
+      ],
+      "normalized_text": "An bhfuil léigh i Sligeach?",
+      "text_sha256": "d2e6b5c427c8ef84403371dd0b43f73c4b46da7539ab731cb11695cb5ea0a1b9",
+      "inventory_slug": "an-bhfuil-leeigh-i-sligeach",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-leeigh-i-sligeach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 47.0,
+    "estimated_cumulative_credits": 14344.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "44bbcd96216b7db064dd1aceeb052b966c79102373322dfc236177c2979bcea1"
+}

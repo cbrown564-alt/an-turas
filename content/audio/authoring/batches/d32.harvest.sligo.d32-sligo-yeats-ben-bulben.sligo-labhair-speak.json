@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-labhair-speak",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — sligo / d32.sligo.yeats-ben-bulben / sligo.labhair.speak",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-labhair-speak.line.782fc9c18cab3300",
+      "member_ids": [
+        "d32.sligo.14.labhair.speak.packet-place"
+      ],
+      "normalized_text": "Tá labhair i Sligeach.",
+      "text_sha256": "6c3ed3c002a875ce761777f0056043fedbc7272c3c49d6e1dd8440066a7a8e91",
+      "inventory_slug": "taa-labhair-i-sligeach",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-labhair-i-sligeach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-labhair-speak.line.8dd2febd86a31520",
+      "member_ids": [
+        "d32.sligo.14.labhair.speak.packet-ask"
+      ],
+      "normalized_text": "An bhfuil labhair i Sligeach?",
+      "text_sha256": "b69c54096d2b8cf386bdc5c85aa0f0e791a50092c8fdd08b353a242fd9f8e4ad",
+      "inventory_slug": "an-bhfuil-labhair-i-sligeach",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-labhair-i-sligeach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 51.0,
+    "estimated_cumulative_credits": 14348.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "a47761cd3287a39a19ca0e23acd4a1095393e77c6e268fba5ea59351275910f8"
+}

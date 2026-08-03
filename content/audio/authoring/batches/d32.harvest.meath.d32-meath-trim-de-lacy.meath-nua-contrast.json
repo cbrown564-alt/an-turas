@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.meath.d32-meath-trim-de-lacy.meath-nua-contrast",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — meath / d32.meath.trim-de-lacy / meath.nua.contrast",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.meath.d32-meath-trim-de-lacy.meath-nua-contrast.line.1991647345a1f629",
+      "member_ids": [
+        "d32.meath.contrast.nua-mutation.citation"
+      ],
+      "normalized_text": "Is áit nua í.",
+      "text_sha256": "c3f7b448ffc93e2eb200c8358cbe7ad3a171c46824f02b61be581a2af5ea3fe6",
+      "inventory_slug": "is-aait-nua-ii",
+      "estimated_characters": 13,
+      "estimated_credits": 13.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-aait-nua-ii.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.meath.d32-meath-trim-de-lacy.meath-nua-contrast.line.99a9726839978977",
+      "member_ids": [
+        "d32.meath.contrast.nua-mutation.attributive"
+      ],
+      "normalized_text": "An áit nua atá romhainn.",
+      "text_sha256": "ae314defdc350ebb6a07fdd5abf1ab347882a1d02d73013c84c5a57812fd5d55",
+      "inventory_slug": "an-aait-nua-ataa-romhainn",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-aait-nua-ataa-romhainn.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 37.0,
+    "estimated_cumulative_credits": 14334.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "8999be71d52b31b4f650451de45486d02414afbb585ffc2117fc5857b2104a26"
+}

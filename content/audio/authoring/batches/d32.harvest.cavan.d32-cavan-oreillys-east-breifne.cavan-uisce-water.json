@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-uisce-water",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — cavan / d32.cavan.oreillys-east-breifne / cavan.uisce.water",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-uisce-water.line.7df957a45a065f6f",
+      "member_ids": [
+        "d32.cavan.10.uisce.water.packet-ask"
+      ],
+      "normalized_text": "An bhfuil uisce i an Cabhán?",
+      "text_sha256": "351ab26ffdce6114a9616f96290bd4c880ccbbe4eca163ef5e2f815f3260a656",
+      "inventory_slug": "an-bhfuil-uisce-i-an-cabhaan",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-uisce-i-an-cabhaan.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-uisce-water.line.8c2f253b2eaf6a16",
+      "member_ids": [
+        "d32.cavan.10.uisce.water.packet-place"
+      ],
+      "normalized_text": "Tá uisce i an Cabhán.",
+      "text_sha256": "39ed1f067d0457370c5524a59965a2ff98734f5ad77e613e9e162223b667c705",
+      "inventory_slug": "taa-uisce-i-an-cabhaan",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-uisce-i-an-cabhaan.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 49.0,
+    "estimated_cumulative_credits": 14346.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "1c8edd4bb8b785a6654d6c53d6ee8179d2dcbc324381be5cee94e6c5f29856f7"
+}

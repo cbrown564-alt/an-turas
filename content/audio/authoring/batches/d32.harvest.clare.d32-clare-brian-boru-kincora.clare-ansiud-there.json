@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.clare.d32-clare-brian-boru-kincora.clare-ansiud-there",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — clare / d32.clare.brian-boru-kincora / clare.ansiud.there",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.clare.d32-clare-brian-boru-kincora.clare-ansiud-there.line.50ab4de441594792",
+      "member_ids": [
+        "d32.clare.18.ansiud.there.packet-place"
+      ],
+      "normalized_text": "Tá ansiúd i an Clár.",
+      "text_sha256": "4c9935db17ddac8e3cff32e6789ff9d4b1bec2fc2b0b4d3ad012bc1b35bf340d",
+      "inventory_slug": "taa-ansiuud-i-an-claar",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-ansiuud-i-an-claar.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.clare.d32-clare-brian-boru-kincora.clare-ansiud-there.line.bad06307a0298f21",
+      "member_ids": [
+        "d32.clare.18.ansiud.there.packet-ask"
+      ],
+      "normalized_text": "An bhfuil ansiúd i an Clár?",
+      "text_sha256": "db3b687e06f3da29947430bd61e5b924c7ceb242d61b5541788d0d21ca9ed1fa",
+      "inventory_slug": "an-bhfuil-ansiuud-i-an-claar",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-ansiuud-i-an-claar.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 47.0,
+    "estimated_cumulative_credits": 14344.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "bc7f17d80746f7a643d09a5d384d78581a33c37079cd17164eb79eb1513948bd"
+}

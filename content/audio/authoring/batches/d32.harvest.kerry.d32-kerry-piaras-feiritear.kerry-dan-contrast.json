@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-contrast",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — kerry / d32.kerry.piaras-feiritear / kerry.dan.contrast",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-contrast.line.5c7856cf8de5e926",
+      "member_ids": [
+        "d32.kerry.contrast.dan-fada.poem-clear"
+      ],
+      "normalized_text": "Is dán álainn é.",
+      "text_sha256": "559a72b48372121d8794ccd209f61f09d425fa8a1a23835103386785f89cd4ca",
+      "inventory_slug": "is-daan-aalainn-ee",
+      "estimated_characters": 16,
+      "estimated_credits": 16.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-daan-aalainn-ee.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-contrast.line.ed1f0ebe24917598",
+      "member_ids": [
+        "d32.kerry.contrast.dan-fada.poem-lenited"
+      ],
+      "normalized_text": "Mo dhán atá á léamh.",
+      "text_sha256": "2f7045d7ec1db7e1df2ddf45b1bfb688622cc91e48a7f2f22ea24cb26de6bfa5",
+      "inventory_slug": "mo-dhaan-ataa-aa-leeamh",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/mo-dhaan-ataa-aa-leeamh.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 36.0,
+    "estimated_cumulative_credits": 14333.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "a4b8f6f2be54aff5421f616228104c66a1def11a865d5d7886317135c4bf6cf3"
+}

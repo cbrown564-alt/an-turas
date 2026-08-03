@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.monaghan.d32-monaghan-patrick-kavanagh.monaghan-scriobh-write",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — monaghan / d32.monaghan.patrick-kavanagh / monaghan.scriobh.write",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.monaghan.d32-monaghan-patrick-kavanagh.monaghan-scriobh-write.line.26212421e47b15fd",
+      "member_ids": [
+        "d32.monaghan.12.scriobh.write.packet-place"
+      ],
+      "normalized_text": "Tá scríobh i Muineachán.",
+      "text_sha256": "ea70bdeb50651426709d29929f503716a1f4023027f26949110e2e6816c925ab",
+      "inventory_slug": "taa-scriiobh-i-muineachaan",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-scriiobh-i-muineachaan.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.monaghan.d32-monaghan-patrick-kavanagh.monaghan-scriobh-write.line.7357e71ca96016cc",
+      "member_ids": [
+        "d32.monaghan.12.scriobh.write.packet-remember"
+      ],
+      "normalized_text": "Cuimhnigh: scríobh i Muineachán.",
+      "text_sha256": "76c7ad43245cee79229793778604b1c1ed82edcedf11e7960bbae238250b74dd",
+      "inventory_slug": "cuimhnigh-scriiobh-i-muineachaan",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cuimhnigh-scriiobh-i-muineachaan.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 56.0,
+    "estimated_cumulative_credits": 14353.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "d6f1e6fdf3e910c5b2e5bdcfda1e271453b588c6253a2bc644b469fcad91b80e"
+}

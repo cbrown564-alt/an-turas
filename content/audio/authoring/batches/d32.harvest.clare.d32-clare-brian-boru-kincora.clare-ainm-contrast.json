@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.clare.d32-clare-brian-boru-kincora.clare-ainm-contrast",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — clare / d32.clare.brian-boru-kincora / clare.ainm.contrast",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.clare.d32-clare-brian-boru-kincora.clare-ainm-contrast.line.66cd24d7485dc418",
+      "member_ids": [
+        "d32.clare.contrast.ainm-mutation.h-prothesis"
+      ],
+      "normalized_text": "Ní hainm nua é sin.",
+      "text_sha256": "4a61b46137d5cc67152e348c228f017cb5b8e7ec8fdcb6e719a165393b5712f6",
+      "inventory_slug": "nii-hainm-nua-ee-sin",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/nii-hainm-nua-ee-sin.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.clare.d32-clare-brian-boru-kincora.clare-ainm-contrast.line.af3efe896b1b2051",
+      "member_ids": [
+        "d32.clare.contrast.ainm-mutation.citation"
+      ],
+      "normalized_text": "Is ainm stairiúil é Brian.",
+      "text_sha256": "0bb2de0a71c8380e9b025e1e7b343cc4ee5d3f21ae9779ffe83fd3b64958562d",
+      "inventory_slug": "is-ainm-stairiuuil-ee-brian",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ainm-stairiuuil-ee-brian.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 45.0,
+    "estimated_cumulative_credits": 14342.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "691091991b1761fe52c4bd0dbce17084bf8e4534cf94aaa73bad5b0b2db35996"
+}

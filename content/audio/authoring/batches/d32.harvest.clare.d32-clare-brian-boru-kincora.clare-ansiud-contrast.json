@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.clare.d32-clare-brian-boru-kincora.clare-ansiud-contrast",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — clare / d32.clare.brian-boru-kincora / clare.ansiud.contrast",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.clare.d32-clare-brian-boru-kincora.clare-ansiud-contrast.line.4eb85704fc134a52",
+      "member_ids": [
+        "d32.clare.contrast.ansiud-fada.there-question"
+      ],
+      "normalized_text": "An ansiúd atá Brian?",
+      "text_sha256": "c0df8ef237016744af21cda0f80cbfded26ed23f6b773a12a32b4260090d7c22",
+      "inventory_slug": "an-ansiuud-ataa-brian",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ansiuud-ataa-brian.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.clare.d32-clare-brian-boru-kincora.clare-ansiud-contrast.line.87740468b9f1f3cc",
+      "member_ids": [
+        "d32.clare.contrast.ansiud-fada.there-clear"
+      ],
+      "normalized_text": "Tá an caisleán ansiúd.",
+      "text_sha256": "5a63c5ccf46a99eee5c23b49db1aa6d45f15667e55a205a0814fd9d74ad226da",
+      "inventory_slug": "taa-an-caisleaan-ansiuud",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-caisleaan-ansiuud.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 42.0,
+    "estimated_cumulative_credits": 14339.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "53ed1e8524ad859991a0541acda293587aa7e696d3f5a2f381ecf36472911852"
+}

@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.down.d32-down-patrick-saul.down-nua-contrast",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — down / d32.down.patrick-saul / down.nua.contrast",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.down.d32-down-patrick-saul.down-nua-contrast.line.8d0bfe265c0a3f61",
+      "member_ids": [
+        "d32.down.contrast.nua-mutation.new-definite"
+      ],
+      "normalized_text": "An scéal nua, éist leis.",
+      "text_sha256": "4b58c3bbf2d21cc614716a2d6a9bb1aa109eb73b9e1c041e503c72905e162ee5",
+      "inventory_slug": "an-sceeal-nua-eeist-leis",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-sceeal-nua-eeist-leis.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.down.d32-down-patrick-saul.down-nua-contrast.line.fd4059cf3c247dc4",
+      "member_ids": [
+        "d32.down.contrast.nua-mutation.new-clear"
+      ],
+      "normalized_text": "Scéal nua atá le cloisteáil.",
+      "text_sha256": "24caab63f3af5100b604abdd140b71a5912eddd33120b5e1d8d22923d1a18c9d",
+      "inventory_slug": "sceeal-nua-ataa-le-cloisteaail",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/sceeal-nua-ataa-le-cloisteaail.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 52.0,
+    "estimated_cumulative_credits": 14349.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "e4057cfb7d943d52eb84d57fc326477829ec95106187c2ccc373f117e4cc4c1e"
+}

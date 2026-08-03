@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-cnoc-hill",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — laois / d32.laois.rock-of-dunamase / laois.cnoc.hill",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-cnoc-hill.line.9e3237c8ad345f4d",
+      "member_ids": [
+        "d32.laois.07.cnoc.hill.packet-place"
+      ],
+      "normalized_text": "Tá cnoc i Laois.",
+      "text_sha256": "195f3e652c17cf93ddb113888538ed524d6a37d1433c5d5735c6fd5712287785",
+      "inventory_slug": "taa-cnoc-i-laois",
+      "estimated_characters": 16,
+      "estimated_credits": 16.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-cnoc-i-laois.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-cnoc-hill.line.e8d8b1562e6c72a4",
+      "member_ids": [
+        "d32.laois.07.cnoc.hill.packet-ask"
+      ],
+      "normalized_text": "An bhfuil cnoc i Laois?",
+      "text_sha256": "5b23d85e9f9948651b675b49c1c67c4521cc1f4387a17b4884761f9bf437337a",
+      "inventory_slug": "an-bhfuil-cnoc-i-laois",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-cnoc-i-laois.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 39.0,
+    "estimated_cumulative_credits": 14336.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "2343838c6947ea9b47847530cca7ed1662df9a1533349921e828ea2997aa87a3"
+}

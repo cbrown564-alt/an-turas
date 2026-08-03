@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-failte-welcome",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — carlow / d32.carlow.st-moling / carlow.failte.welcome",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-failte-welcome.line.6fa47640fd2a7768",
+      "member_ids": [
+        "d32.carlow.05.failte.welcome.packet-ask"
+      ],
+      "normalized_text": "An bhfuil fáilte i Ceatharlach?",
+      "text_sha256": "991c296b89fa4830461372aa1d6c860a135dfa932528109f4296412f44ee5037",
+      "inventory_slug": "an-bhfuil-faailte-i-ceatharlach",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-faailte-i-ceatharlach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-failte-welcome.line.d3f68c1040503dbf",
+      "member_ids": [
+        "d32.carlow.05.failte.welcome.packet-place"
+      ],
+      "normalized_text": "Tá fáilte i Ceatharlach.",
+      "text_sha256": "de13feb2663d2504786adfe10c5c290288f7afa8516faac64398bb2c3f0d740c",
+      "inventory_slug": "taa-faailte-i-ceatharlach",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-faailte-i-ceatharlach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 55.0,
+    "estimated_cumulative_credits": 14352.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "c4a18a20fc3b62f0238e4417c9b24399e8657b35260580093f33957914f9cabf"
+}

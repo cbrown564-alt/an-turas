@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-caill-lose",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — fermanagh / d32.fermanagh.enniskillen-castle / fermanagh.caill.lose",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-caill-lose.line.450d896d8f6461fb",
+      "member_ids": [
+        "d32.fermanagh.12.caill.lose.packet-ask"
+      ],
+      "normalized_text": "An bhfuil caill i Fear Manach?",
+      "text_sha256": "17f702deb65a7efd960e30ea003e21760a2f3980294d4f7327c3044b3a677361",
+      "inventory_slug": "an-bhfuil-caill-i-fear-manach",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-caill-i-fear-manach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-caill-lose.line.ac5121f95ecc5ad0",
+      "member_ids": [
+        "d32.fermanagh.12.caill.lose.packet-place"
+      ],
+      "normalized_text": "Tá caill i Fear Manach.",
+      "text_sha256": "fa1638ed6bd569b0fede2811aef871a9464f71936456e6316aa819e80e277824",
+      "inventory_slug": "taa-caill-i-fear-manach",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-caill-i-fear-manach.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 53.0,
+    "estimated_cumulative_credits": 14350.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "c563e977064ee96438291e381f38c978cbf0a9e3940008ce3a1d2caeecb44142"
+}

@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.tipperary.d32-tipperary-cormac-chapel.tipperary-ainm-contrast",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — tipperary / d32.tipperary.cormac-chapel / tipperary.ainm.contrast",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.tipperary.d32-tipperary-cormac-chapel.tipperary-ainm-contrast.line.297e9655674ebb28",
+      "member_ids": [
+        "d32.tipperary.contrast.ainm-fada.cormac-name"
+      ],
+      "normalized_text": "Is é Cormac an t-ainm stairiúil.",
+      "text_sha256": "645de3225e49253189262ee2681d766e000928cbb74e82419c5063bc5a8bcebf",
+      "inventory_slug": "is-ee-cormac-an-t-ainm-stairiuuil",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/is-ee-cormac-an-t-ainm-stairiuuil.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.tipperary.d32-tipperary-cormac-chapel.tipperary-ainm-contrast.line.ec9afe6c73560c50",
+      "member_ids": [
+        "d32.tipperary.contrast.ainm-fada.cormac-question"
+      ],
+      "normalized_text": "An é Cormac an t-ainm ceart?",
+      "text_sha256": "7bfe2ea107094545811cad7370d887d6439daac0e6f736536d6bd4968228c401",
+      "inventory_slug": "an-ee-cormac-an-t-ainm-ceart",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-ee-cormac-an-t-ainm-ceart.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 60.0,
+    "estimated_cumulative_credits": 14357.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "1a5b05eaffce0c4319c775a8617216db3c87bc4f438b16d09a249d5c3c6aeb50"
+}

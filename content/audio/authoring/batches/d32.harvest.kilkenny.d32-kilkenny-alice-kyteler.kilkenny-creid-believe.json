@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-creid-believe",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — kilkenny / d32.kilkenny.alice-kyteler / kilkenny.creid.believe",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-creid-believe.line.6ab099ab42faafe8",
+      "member_ids": [
+        "d32.kilkenny.13.creid.believe.packet-place"
+      ],
+      "normalized_text": "Tá creid i Cill Chainnigh.",
+      "text_sha256": "39b4c407993e57797bd035e8bfa22657410867e6dfaf5d5d02617684fa8e29e9",
+      "inventory_slug": "taa-creid-i-cill-chainnigh",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-creid-i-cill-chainnigh.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-creid-believe.line.b8becb2533d16872",
+      "member_ids": [
+        "d32.kilkenny.13.creid.believe.packet-mark"
+      ],
+      "normalized_text": "Cuimhnigh ar creid i Cill Chainnigh.",
+      "text_sha256": "8571608cc785c8ee184d7ba84ee3a7768d88ebda788c44f1d6cc76d964ccbb62",
+      "inventory_slug": "cuimhnigh-ar-creid-i-cill-chainnigh",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cuimhnigh-ar-creid-i-cill-chainnigh.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 62.0,
+    "estimated_cumulative_credits": 14359.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "06ed6a57024ceb6b655f297c353c1232d7f3c2780520174b84da6ad913a467a8"
+}

@@ -1,7 +1,7 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-03 (Track A bulk merge on
+stories and places of Ireland. Updated 2026-08-03 (Track B prepare-harvest on
 `track-a/bulk-integration`).*
 
 ## Current outcome
@@ -10,14 +10,15 @@ An Turas has a verified representative Mayo Story-and-Learning loop, shared lear
 runtime, four in-app county review packs, a nationwide Personal Atlas foundation, and
 a controlled Irish authoring/audio pipeline.
 
-The immediate phase is the **D32 emergency Irish audio harvest**. Bulk Track A avenues
-**A1–A8** are authored and merged on `track-a/bulk-integration`: about **2,820**
-net-new unique normalized texts sit above the prior **707** batch-registered set
-(authored corpus **3,527** unique / **4,316** members / **714** families). The
-preflight gate (≥500 net-new unique) is cleared for Track B. Do not open a provider
-payload until `prepare-harvest` writes resumable manifests sized to a credit
-checkpoint. **140,872** ElevenLabs credits remained at the last observed provider
-check. Capture does not imply linguistic approval or learner release.
+The immediate phase is the **D32 emergency Irish audio harvest**. Bulk Track A is
+merged and Track B has prepared **557** provider-blocked draft manifests covering
+**2,820** net-new unique lines (~**75,087** estimated credits). Six partition
+collisions with prior approved batches were remapped to `.part-02`. Two Corca
+Dhuibhne members remain blocked. **Do not approve Track C** until an explicit
+payload credit limit and approval identity are set; manifests stay
+`execution.state: draft` / `provider_calls_allowed: false`. **140,872** ElevenLabs
+credits remained at the last observed provider check. Capture does not imply
+linguistic approval or learner release.
 
 The product is implemented as a substantial prototype. It has not been validated for
 learning outcomes or promoted for public release.
@@ -31,9 +32,10 @@ learning outcomes or promoted for public release.
   all **32** counties after the Track A bulk merge. About **2,820** of those unique
   texts are absent from the prior batch registry (**707** registered unique texts).
   The two incomplete members remain the deliberately retired Corca Dhuibhne lines.
-- **708** registered audio lines: **698** approved, **700** provider successes, **2**
-  retired semantic quarantines, **9** cancelled, **0** failed, and **0** actively
-  claimed. Track B has not yet registered the Track A bulk slice.
+- **708** captured/registered audio lines remain as before (**698** approved, **700**
+  provider successes, **2** retired semantic quarantines, **9** cancelled). Track B
+  added **557** new **draft** batch manifests (**2,820** planned lines; not captured).
+  Store `batch_documents` now totals **646**.
 - **1,062** bundled MP3s: **700** source-labelled v2 captures and **362** legacy/runtime
   clips.
 - **1,062/1,062** checksums verify. There are no missing, mismatched, or orphan files.
@@ -119,16 +121,17 @@ promotion.
 
 ### Verification at the current revision
 
-- `python3 -B tools/structured_audio_authoring.py check` — passed on the merged Track A
-  store (**714** family documents).
-- Net-new unique-text preflight (authored NFC texts minus batch-registered texts):
-  **≈2,820** (≥500 Track A → Track B gate).
-- Focused Track A unit tests green after merge (personal-atlas generator, pedagogy
-  corpus, contrast families, evidence-led tranche, source-packet expansion, story
-  dialogue). Full `unittest discover` and `reconcile --scoreboard` not re-run on this
-  host for the bulk merge; rerun before provider approval.
-- Prior revision: `reconcile --scoreboard` passed with checksum-verified retired
-  captures; `unittest discover` was **167/167** before the bulk merge.
+- Track B `prepare-harvest` over all **32** county `authoring-v2` trees:
+  **2,820** new draft lines / **557** batches / **705** skipped as already registered /
+  **244** duplicate-text merges / **2** blocked (Corca Dhuibhne). Summary:
+  [`content/audio/authoring/d32-track-b-prepare-harvest-summary.json`](content/audio/authoring/d32-track-b-prepare-harvest-summary.json).
+- Estimated Track B spend **~75,087** credits vs **140,872** last-known remaining
+  (headroom positive; size `payload_credit_limit` per drained payload, not the full
+  band at once).
+- All new manifests assert `draft` and `provider_calls_allowed: false`.
+- Prior: `structured_audio_authoring.py check` passed on the merged Track A store
+  (**714** families). Full `reconcile --scoreboard` / `unittest discover` should be
+  re-run before any provider approval.
 - Swift parse checks passed for the speech runtime and catalog tests. The Xcode resource
   scan finds **1,062/1,062** expected MP3s with no missing, mismatched, or orphan
   resources.
@@ -148,6 +151,11 @@ promotion.
 
 ### Completed in the latest coordinated cycle
 
+- Track B `prepare-harvest` registered **557** draft manifests (**2,820** lines;
+  **~75,087** estimated credits); remapped **6** partition collisions to `.part-02`;
+  left provider calls disabled. Reports:
+  `d32-track-b-prepare-harvest-summary.json` /
+  `d32-track-b-prepare-harvest-report.json`.
 - Merged parallel Track A branches onto `track-a/bulk-integration` (extension WIP base
   + A1–A8). Uses ledger kept at **32** stories / **4,305** exercises; store indexes
   **714** families. `structured_audio_authoring.py check` passed.
@@ -165,10 +173,10 @@ promotion.
 
 ## Active implementation sequence
 
-**Next priority: Track B — normalize, dedupe, and build resumable manifests** for the
-merged Track A slice. Do not call the provider until manifests pass credit preflight.
-Estimated headroom toward the D32 **3,000–5,000** planning band: about **2,820**
-net-new unique texts are authored and not yet batch-registered.
+**Next priority: Track C — drain prepared manifests** in bounded payloads with
+explicit credit checkpoints. Track B draft registration is complete (**2,820** lines /
+**~75k** estimated credits). Approve only named manifests and lines; keep a
+regeneration reserve against the **140,872** last-known credit balance.
 
 ### 1. Bulk Track A — parallel authoring targets (merged)
 
@@ -190,9 +198,10 @@ story records, sorted store family index, one `check` on the merged slice.
 **Not bulk Track A (quick maintenance only):** re-approve **7** cancelled batch lines
 (~300 estimated credits); retire or replace **2** Corca Dhuibhne quarantine members.
 
-**Track A preflight gate:** cleared on unique-text inventory (**≈2,820** net-new vs
-batch registry). Next: run `prepare-harvest` over the merged inputs, size
-`payload_credit_limit` to that estimate, then Track C drain with checkpoints.
+**Track A/B preflight gate:** cleared — **2,820** draft lines registered
+(~**75,087** estimated credits). Next: choose a first Track C payload size, set
+`payload_credit_limit`, approve named drafts, claim, and drain with checkpoints.
+Do not enable provider calls on the full 557-batch band in one shot.
 
 Canonical queue partition: [`content/audio/authoring/d32-county-authoring-queue.md`](content/audio/authoring/d32-county-authoring-queue.md).
 

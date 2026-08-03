@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-firinne-truth",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — kilkenny / d32.kilkenny.alice-kyteler / kilkenny.firinne.truth",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-firinne-truth.line.0628d8ca3be135b7",
+      "member_ids": [
+        "d32.kilkenny.18.firinne.truth.packet-mark"
+      ],
+      "normalized_text": "Cuimhnigh ar fírinne i Cill Chainnigh.",
+      "text_sha256": "38502441d52198b007c33451430c5907b91634c405205ec98fab12c49a96da30",
+      "inventory_slug": "cuimhnigh-ar-fiirinne-i-cill-chainnigh",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cuimhnigh-ar-fiirinne-i-cill-chainnigh.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-firinne-truth.line.6843e97e1f367cb2",
+      "member_ids": [
+        "d32.kilkenny.18.firinne.truth.packet-place"
+      ],
+      "normalized_text": "Tá fírinne i Cill Chainnigh.",
+      "text_sha256": "2e0be3b991f4a8a2b791031bdf69f3fb1bcef3bc6afb9d21108de60923b44c10",
+      "inventory_slug": "taa-fiirinne-i-cill-chainnigh",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-fiirinne-i-cill-chainnigh.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 66.0,
+    "estimated_cumulative_credits": 14363.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "6b7445528bb972fba1dd2abed92c3f7a3b52c236c26556d7aafa2440543e4f30"
+}

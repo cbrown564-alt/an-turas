@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-dushlan-challenge",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — antrim / d32.antrim.fionn-mac-cumhaill / antrim.dushlan.challenge",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-dushlan-challenge.line.5e303395b8047c88",
+      "member_ids": [
+        "d32.antrim.05.dushlan.challenge.packet-ask"
+      ],
+      "normalized_text": "An bhfuil dúshlán i Aontroim?",
+      "text_sha256": "a958568fbe6aa8d70249b943f73c11e74fa26a65f71a20ea16a94bdbb0e364e9",
+      "inventory_slug": "an-bhfuil-duushlaan-i-aontroim",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-duushlaan-i-aontroim.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-dushlan-challenge.line.bec9f2acfa7c3e3c",
+      "member_ids": [
+        "d32.antrim.05.dushlan.challenge.packet-place"
+      ],
+      "normalized_text": "Tá dúshlán i Aontroim.",
+      "text_sha256": "d32fc0f8c28a016d4c840b7708cb031af8c5a2e33d2a724d3152219bc30b9221",
+      "inventory_slug": "taa-duushlaan-i-aontroim",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-duushlaan-i-aontroim.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 51.0,
+    "estimated_cumulative_credits": 14348.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "7b53b075407b5315f78178bf7d6d893d6cc0361db02ccfc16fd0856deb342c3d"
+}

@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-sliabh-mountain",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — wicklow / d32.wicklow.st-kevin-glendalough / wicklow.sliabh.mountain",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-sliabh-mountain.line.0a28a499c19d2430",
+      "member_ids": [
+        "d32.wicklow.07.sliabh.mountain.packet-place"
+      ],
+      "normalized_text": "Tá sliabh i Cill Mhantáin.",
+      "text_sha256": "f906add46fd2154c0d27e0bcbc7899e0befb649ff79d20c273b0b80913349595",
+      "inventory_slug": "taa-sliabh-i-cill-mhantaain",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-sliabh-i-cill-mhantaain.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-sliabh-mountain.line.d1ef8bd3c6f05396",
+      "member_ids": [
+        "d32.wicklow.07.sliabh.mountain.packet-ask"
+      ],
+      "normalized_text": "An bhfuil sliabh i Cill Mhantáin?",
+      "text_sha256": "aa9403f7f02e5eeaf9b8f1f2d402a42fba93c033faff978cd9b3e0f259f9ce78",
+      "inventory_slug": "an-bhfuil-sliabh-i-cill-mhantaain",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-sliabh-i-cill-mhantaain.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 59.0,
+    "estimated_cumulative_credits": 14356.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "de74e4deb80debc85db7b6700f14d5f7c9d4afc67da4a96a041f9cef5b3c904c"
+}

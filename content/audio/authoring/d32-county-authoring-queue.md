@@ -4,10 +4,11 @@ Operational queue for Track A's provisional phrase-family authoring. The atlas a
 story slate remain the source inputs; queue membership is not evidence of historical,
 Irish-language, pedagogy, rights, audio-QA, or learner-release approval.
 
-**Current priority:** Track B `prepare-harvest` on the merged A1–A8 slice on
-`track-a/bulk-integration` (≈2,820 net-new unique texts vs the prior batch registry).
-See [`STATUS.md`](../../../STATUS.md) for the merged yield table and credit-sizing
-rules. Do not open Track C until manifests pass preflight.
+**Current priority:** Track C drain of Track B drafts on `track-a/bulk-integration`
+(**557** manifests / **2,820** lines / ~**75k** estimated credits; all
+`provider_calls_allowed: false`). See
+[`d32-track-b-prepare-harvest-summary.json`](d32-track-b-prepare-harvest-summary.json)
+and [`STATUS.md`](../../../STATUS.md). Approve bounded payloads only.
 
 ## Bulk Track A avenues (parallel)
 

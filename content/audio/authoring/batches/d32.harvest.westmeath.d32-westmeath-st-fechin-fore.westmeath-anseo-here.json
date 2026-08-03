@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-anseo-here",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — westmeath / d32.westmeath.st-fechin-fore / westmeath.anseo.here",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-anseo-here.line.db4ddc43ec89ab29",
+      "member_ids": [
+        "d32.westmeath.17.anseo.here.packet-place"
+      ],
+      "normalized_text": "Tá anseo i an Iarmhí.",
+      "text_sha256": "7f93bd088e30d69449307988347a64718d20de1f36082f01099a2d4df3a721ed",
+      "inventory_slug": "taa-anseo-i-an-iarmhii",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-anseo-i-an-iarmhii.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-anseo-here.line.fcb518e910ba4a6c",
+      "member_ids": [
+        "d32.westmeath.17.anseo.here.packet-ask"
+      ],
+      "normalized_text": "An bhfuil anseo i an Iarmhí?",
+      "text_sha256": "719ce590d2e05d9ef7f1192d16711cf41dd77a4069d444dd4afbccacc4650131",
+      "inventory_slug": "an-bhfuil-anseo-i-an-iarmhii",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-anseo-i-an-iarmhii.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 49.0,
+    "estimated_cumulative_credits": 14346.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "1907a0ebc6cfd673159b0942b18de710a2e24f1779ae51a2280029a124009229"
+}

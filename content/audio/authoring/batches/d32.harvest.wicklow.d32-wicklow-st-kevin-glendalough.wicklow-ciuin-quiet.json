@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — wicklow / d32.wicklow.st-kevin-glendalough / wicklow.ciuin.quiet",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.line.7b3bfd4087b6229e",
+      "member_ids": [
+        "d32.wicklow.05.ciuin.quiet.packet-ask"
+      ],
+      "normalized_text": "An bhfuil ciúin i Cill Mhantáin?",
+      "text_sha256": "e5d08d84ec58658a6f1ca92a6daf5af6ef9fcbc00e39c71364a7f4a47e66d455",
+      "inventory_slug": "an-bhfuil-ciuuin-i-cill-mhantaain",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-ciuuin-i-cill-mhantaain.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.line.7df496f7f081586b",
+      "member_ids": [
+        "d32.wicklow.05.ciuin.quiet.packet-place"
+      ],
+      "normalized_text": "Tá ciúin i Cill Mhantáin.",
+      "text_sha256": "f762a739315c984dbf6dae3a3f8e6c416251a2f0a380da9d09d15bc613dee31c",
+      "inventory_slug": "taa-ciuuin-i-cill-mhantaain",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-ciuuin-i-cill-mhantaain.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 57.0,
+    "estimated_cumulative_credits": 14354.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "71a5191bcea0b64b297f856a4b1cb9c0de3964da6a8bf97a141623e70a8bb4dd"
+}

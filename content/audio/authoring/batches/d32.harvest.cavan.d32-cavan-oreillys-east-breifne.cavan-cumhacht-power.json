@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-cumhacht-power",
+  "created_at": "2026-08-03T21:00:00Z",
+  "purpose": "D32 emergency harvest — cavan / d32.cavan.oreillys-east-breifne / cavan.cumhacht.power",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "draft",
+    "provider_calls_allowed": false,
+    "approved_by": null,
+    "approved_at": null
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-cumhacht-power.line.a7782d8ea7a8a07d",
+      "member_ids": [
+        "d32.cavan.12.cumhacht.power.packet-place"
+      ],
+      "normalized_text": "Tá cumhacht i an Cabhán.",
+      "text_sha256": "3966879e2355fa27b2a23bbc09447b4d4872d78c0bdfead7af9af6b55e3e8c00",
+      "inventory_slug": "taa-cumhacht-i-an-cabhaan",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-cumhacht-i-an-cabhaan.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-cumhacht-power.line.e94aaf6810c9ca8d",
+      "member_ids": [
+        "d32.cavan.12.cumhacht.power.packet-ask"
+      ],
+      "normalized_text": "An bhfuil cumhacht i an Cabhán?",
+      "text_sha256": "a3390779d96a0055757799cfded6a6d2e2a0961a73902bede74918cc659f7a42",
+      "inventory_slug": "an-bhfuil-cumhacht-i-an-cabhaan",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "unclaimed",
+        "owner_id": null,
+        "claimed_at": null,
+        "lease_expires_at": null
+      },
+      "request": {
+        "status": "planned",
+        "approved_by": null,
+        "approved_at": null
+      },
+      "retry": {
+        "attempt_count": 0,
+        "max_attempts": 3,
+        "last_attempt_at": null,
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "not_started",
+        "provider_request_id": null,
+        "started_at": null,
+        "completed_at": null,
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-cumhacht-i-an-cabhaan.mp3",
+        "sha256": null,
+        "bytes": null,
+        "duration_seconds": null
+      },
+      "audio_qa": {
+        "status": "not_started",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 55.0,
+    "estimated_cumulative_credits": 14352.0,
+    "actual_batch_credits": null,
+    "actual_cumulative_credits": null,
+    "usage_before": null,
+    "usage_after": null
+  },
+  "counts": {
+    "lines": 2,
+    "member_references": 2,
+    "planned": 2,
+    "approved": 0,
+    "succeeded": 0,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "6063acddaac61ed843791a74fe4f92eb002397a705c60d731e1b38418fe81245"
+}
