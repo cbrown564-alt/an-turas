@@ -288,6 +288,518 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.roscommon.01.banrion.queen.evidence",
+      "family_id": "d32.roscommon.01.banrion.queen",
+      "target": {
+        "lexeme_id": "lex.banrion",
+        "citation_form": "banríon",
+        "sense_id": "roscommon.banrion.queen",
+        "part_of_speech": "lexical item",
+        "target_form": "banríon",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is finscéal é: tá banríon ag Ráth Cruachan.",
+        "normalized_text": "Is finscéal é: tá banríon ag Ráth Cruachan.",
+        "inventory_slug": "is-finsceeal-ee-taa-banriion-ag-raath-cruachan",
+        "text_sha256": "a07a829d8e69ce537793de3c482ca5033dcc796a7d1985f516347670ed10e40e"
+      },
+      "english": {
+        "intent": "It is myth: the queen is at Rathcroghan.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.01.banrion"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led evidence for banríon/queen in roscommon (collocate=queen; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.evidence.01",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "A5 evidence-led evidence for banríon/queen in roscommon (collocate=queen; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.evidence.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.roscommon.01.banrion.queen.pattern",
+      "family_id": "d32.roscommon.01.banrion.queen",
+      "target": {
+        "lexeme_id": "lex.banrion",
+        "citation_form": "banríon",
+        "sense_id": "roscommon.banrion.queen",
+        "part_of_speech": "lexical item",
+        "target_form": "banríon",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Ordaíonn an bhanríon an banríon.",
+        "normalized_text": "Ordaíonn an bhanríon an banríon.",
+        "inventory_slug": "ordaiionn-an-bhanriion-an-banriion",
+        "text_sha256": "5bd2a50368ede21419d67bed7479433bc01e73119c9605640dac3fa0ed0b982e"
+      },
+      "english": {
+        "intent": "The queen commands the queen.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.01.banrion"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "productive_pattern"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led pattern for banríon/queen in roscommon (collocate=queen; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.pattern.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led pattern for banríon/queen in roscommon (collocate=queen; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.pattern.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.roscommon.01.banrion.queen.notice",
+      "family_id": "d32.roscommon.01.banrion.queen",
+      "target": {
+        "lexeme_id": "lex.banrion",
+        "citation_form": "banríon",
+        "sense_id": "roscommon.banrion.queen",
+        "part_of_speech": "lexical item",
+        "target_form": "banríon",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá uaimh agus banríon sa tírdhreach.",
+        "normalized_text": "Tá uaimh agus banríon sa tírdhreach.",
+        "inventory_slug": "taa-uaimh-agus-banriion-sa-tiirdhreach",
+        "text_sha256": "5277f526c9b8690162361a58cf846689ea2e51289d233f3b3ad7a19427e1e20e"
+      },
+      "english": {
+        "intent": "Myth-labelled Roscommon frame for queen.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.01.banrion"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led notice for banríon/queen in roscommon (collocate=queen; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.notice.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led notice for banríon/queen in roscommon (collocate=queen; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.notice.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.roscommon.01.banrion.queen.myth",
+      "family_id": "d32.roscommon.01.banrion.queen",
+      "target": {
+        "lexeme_id": "lex.banrion",
+        "citation_form": "banríon",
+        "sense_id": "roscommon.banrion.queen",
+        "part_of_speech": "lexical item",
+        "target_form": "banríon",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Abair é: finscéal Ros Comáin faoin banríon.",
+        "normalized_text": "Abair é: finscéal Ros Comáin faoin banríon.",
+        "inventory_slug": "abair-ee-finsceeal-ros-comaain-faoin-banriion",
+        "text_sha256": "670b0beb4d3ce74b830bcf326de20efdb3c376f41d0b28d69f551a17aa550d7c"
+      },
+      "english": {
+        "intent": "Say it: a Roscommon myth about the queen.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.01.banrion"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led myth for banríon/queen in roscommon (collocate=queen; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.myth.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led myth for banríon/queen in roscommon (collocate=queen; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.myth.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

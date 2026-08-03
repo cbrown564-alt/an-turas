@@ -288,6 +288,386 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.waterford.02.abhainn.river.evidence",
+      "family_id": "d32.waterford.02.abhainn.river",
+      "target": {
+        "lexeme_id": "lex.abhainn",
+        "citation_form": "abhainn",
+        "sense_id": "waterford.abhainn.river",
+        "part_of_speech": "noun",
+        "target_form": "abhainn",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar an abhainn ag Port Láirge.",
+        "normalized_text": "Féach ar an abhainn ag Port Láirge.",
+        "inventory_slug": "feeach-ar-an-abhainn-ag-port-laairge",
+        "text_sha256": "e9a9a3196759fcfde3e26dbc3c8c37c3d244d98ecfd90ccad371261103974fb2"
+      },
+      "english": {
+        "intent": "Look at the river at Waterford.",
+        "literal_note": "D32 invented pedagogical line; evidence-orienting frame only; not an attested quotation."
+      },
+      "binding": {
+        "county": "waterford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower"
+        },
+        "atlas_placement_ids": [
+          "atlas.waterford.02.abhainn"
+        ],
+        "place": {
+          "id": "d32.waterford.place",
+          "label": "Port Láirge / Waterford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional evidence-led county context",
+        "register": "neutral evidence-orienting pedagogical frame",
+        "purpose": "A5 evidence-led evidence for abhainn/river in waterford (collocate=river; myth=False).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower.evidence.02",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "A5 evidence-led evidence for abhainn/river in waterford (collocate=river; myth=False)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.waterford",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.waterford.reginalds-tower.evidence.02",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.waterford.02.abhainn.river.pattern",
+      "family_id": "d32.waterford.02.abhainn.river",
+      "target": {
+        "lexeme_id": "lex.abhainn",
+        "citation_form": "abhainn",
+        "sense_id": "waterford.abhainn.river",
+        "part_of_speech": "noun",
+        "target_form": "abhainn",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tagann an abhainn leis an abhainn.",
+        "normalized_text": "Tagann an abhainn leis an abhainn.",
+        "inventory_slug": "tagann-an-abhainn-leis-an-abhainn",
+        "text_sha256": "80332110b142f405d82992f70f9b4249b44aa3b1e076d5bf8b848e5342f54528"
+      },
+      "english": {
+        "intent": "The river comes with the river.",
+        "literal_note": "D32 invented pedagogical line; evidence-orienting frame only; not an attested quotation."
+      },
+      "binding": {
+        "county": "waterford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower"
+        },
+        "atlas_placement_ids": [
+          "atlas.waterford.02.abhainn"
+        ],
+        "place": {
+          "id": "d32.waterford.place",
+          "label": "Port Láirge / Waterford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "productive_pattern"
+        ],
+        "dialect": "standard Irish; provisional evidence-led county context",
+        "register": "neutral evidence-orienting pedagogical frame",
+        "purpose": "A5 evidence-led pattern for abhainn/river in waterford (collocate=river; myth=False).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower.pattern.02",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led pattern for abhainn/river in waterford (collocate=river; myth=False)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.waterford",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.waterford.reginalds-tower.pattern.02",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.waterford.02.abhainn.river.notice",
+      "family_id": "d32.waterford.02.abhainn.river",
+      "target": {
+        "lexeme_id": "lex.abhainn",
+        "citation_form": "abhainn",
+        "sense_id": "waterford.abhainn.river",
+        "part_of_speech": "noun",
+        "target_form": "abhainn",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Insíonn an túr an abhainn.",
+        "normalized_text": "Insíonn an túr an abhainn.",
+        "inventory_slug": "insiionn-an-tuur-an-abhainn",
+        "text_sha256": "a48c0737ddbe51588c993ea7a6caa3d02cf86bb433f20497402954a9831c255d"
+      },
+      "english": {
+        "intent": "Waterford tower/town frame for river; no invented annal text.",
+        "literal_note": "D32 invented pedagogical line; evidence-orienting frame only; not an attested quotation."
+      },
+      "binding": {
+        "county": "waterford",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower"
+        },
+        "atlas_placement_ids": [
+          "atlas.waterford.02.abhainn"
+        ],
+        "place": {
+          "id": "d32.waterford.place",
+          "label": "Port Láirge / Waterford"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional evidence-led county context",
+        "register": "neutral evidence-orienting pedagogical frame",
+        "purpose": "A5 evidence-led notice for abhainn/river in waterford (collocate=river; myth=False).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.waterford.reginalds-tower.notice.02",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led notice for abhainn/river in waterford (collocate=river; myth=False)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.waterford",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.waterford.reginalds-tower.notice.02",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

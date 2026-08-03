@@ -288,6 +288,518 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.roscommon.04.teastaigh.want.evidence",
+      "family_id": "d32.roscommon.04.teastaigh.want",
+      "target": {
+        "lexeme_id": "lex.teastaigh",
+        "citation_form": "teastaigh",
+        "sense_id": "roscommon.teastaigh.want",
+        "part_of_speech": "lexical item",
+        "target_form": "teastaigh",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is finscéal é: tá teastaigh ag Ráth Cruachan.",
+        "normalized_text": "Is finscéal é: tá teastaigh ag Ráth Cruachan.",
+        "inventory_slug": "is-finsceeal-ee-taa-teastaigh-ag-raath-cruachan",
+        "text_sha256": "09ec86d931552a1031f44427b6fcf8bec0718dfc461699e8a4c272a148ff051f"
+      },
+      "english": {
+        "intent": "It is myth: the want is at Rathcroghan.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.04.teastaigh"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led evidence for teastaigh/want in roscommon (collocate=want; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.evidence.04",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "A5 evidence-led evidence for teastaigh/want in roscommon (collocate=want; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.evidence.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.roscommon.04.teastaigh.want.pattern",
+      "family_id": "d32.roscommon.04.teastaigh.want",
+      "target": {
+        "lexeme_id": "lex.teastaigh",
+        "citation_form": "teastaigh",
+        "sense_id": "roscommon.teastaigh.want",
+        "part_of_speech": "lexical item",
+        "target_form": "teastaigh",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Ordaíonn an bhanríon an teastaigh.",
+        "normalized_text": "Ordaíonn an bhanríon an teastaigh.",
+        "inventory_slug": "ordaiionn-an-bhanriion-an-teastaigh",
+        "text_sha256": "4be8101e608148b7d67d032d610bade57386274ec258d31e4e6faf88aceb1da9"
+      },
+      "english": {
+        "intent": "The queen commands the want.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.04.teastaigh"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "productive_pattern"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led pattern for teastaigh/want in roscommon (collocate=want; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.pattern.04",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led pattern for teastaigh/want in roscommon (collocate=want; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.pattern.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.roscommon.04.teastaigh.want.notice",
+      "family_id": "d32.roscommon.04.teastaigh.want",
+      "target": {
+        "lexeme_id": "lex.teastaigh",
+        "citation_form": "teastaigh",
+        "sense_id": "roscommon.teastaigh.want",
+        "part_of_speech": "lexical item",
+        "target_form": "teastaigh",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Féach ar an teastaigh agus an eallach.",
+        "normalized_text": "Féach ar an teastaigh agus an eallach.",
+        "inventory_slug": "feeach-ar-an-teastaigh-agus-an-eallach",
+        "text_sha256": "e4042169bab6ddcf6058eab38ce91de0e2409ded2e48019603d892345d76046b"
+      },
+      "english": {
+        "intent": "Myth-labelled Roscommon frame for want.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.04.teastaigh"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led notice for teastaigh/want in roscommon (collocate=want; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.notice.04",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led notice for teastaigh/want in roscommon (collocate=want; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.notice.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.roscommon.04.teastaigh.want.myth",
+      "family_id": "d32.roscommon.04.teastaigh.want",
+      "target": {
+        "lexeme_id": "lex.teastaigh",
+        "citation_form": "teastaigh",
+        "sense_id": "roscommon.teastaigh.want",
+        "part_of_speech": "lexical item",
+        "target_form": "teastaigh",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Abair é: finscéal Ros Comáin faoin teastaigh.",
+        "normalized_text": "Abair é: finscéal Ros Comáin faoin teastaigh.",
+        "inventory_slug": "abair-ee-finsceeal-ros-comaain-faoin-teastaigh",
+        "text_sha256": "75d95488b9f98563c2ca2d538d0d0c6c11d16b32b594d9c446a245ea31e96ff5"
+      },
+      "english": {
+        "intent": "Say it: a Roscommon myth about the want.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.04.teastaigh"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led myth for teastaigh/want in roscommon (collocate=want; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.myth.04",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led myth for teastaigh/want in roscommon (collocate=want; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.myth.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

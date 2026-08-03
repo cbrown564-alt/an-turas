@@ -288,6 +288,518 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.roscommon.11.iarr.ask.evidence",
+      "family_id": "d32.roscommon.11.iarr.ask",
+      "target": {
+        "lexeme_id": "lex.iarr",
+        "citation_form": "iarr",
+        "sense_id": "roscommon.iarr.ask",
+        "part_of_speech": "verb",
+        "target_form": "iarr",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is finscéal é: tá iarr ag Ráth Cruachan.",
+        "normalized_text": "Is finscéal é: tá iarr ag Ráth Cruachan.",
+        "inventory_slug": "is-finsceeal-ee-taa-iarr-ag-raath-cruachan",
+        "text_sha256": "d77bb969e7f9f86d9e2428f7042e1ded394f624e47c93677b82b67d9a2cf0a24"
+      },
+      "english": {
+        "intent": "It is myth: the ask is at Rathcroghan.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.11.iarr"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led evidence for iarr/ask in roscommon (collocate=queen; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.evidence.11",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "A5 evidence-led evidence for iarr/ask in roscommon (collocate=queen; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.evidence.11",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.roscommon.11.iarr.ask.pattern",
+      "family_id": "d32.roscommon.11.iarr.ask",
+      "target": {
+        "lexeme_id": "lex.iarr",
+        "citation_form": "iarr",
+        "sense_id": "roscommon.iarr.ask",
+        "part_of_speech": "verb",
+        "target_form": "iarr",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Ordaíonn an bhanríon an iarr.",
+        "normalized_text": "Ordaíonn an bhanríon an iarr.",
+        "inventory_slug": "ordaiionn-an-bhanriion-an-iarr",
+        "text_sha256": "715b9af81c7334c5ff670209e2b574d2d949ca67e7191281fe1576e236503204"
+      },
+      "english": {
+        "intent": "The queen commands the ask.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.11.iarr"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "productive_pattern"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led pattern for iarr/ask in roscommon (collocate=queen; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.pattern.11",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led pattern for iarr/ask in roscommon (collocate=queen; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.pattern.11",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.roscommon.11.iarr.ask.notice",
+      "family_id": "d32.roscommon.11.iarr.ask",
+      "target": {
+        "lexeme_id": "lex.iarr",
+        "citation_form": "iarr",
+        "sense_id": "roscommon.iarr.ask",
+        "part_of_speech": "verb",
+        "target_form": "iarr",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Tá uaimh agus iarr sa tírdhreach.",
+        "normalized_text": "Tá uaimh agus iarr sa tírdhreach.",
+        "inventory_slug": "taa-uaimh-agus-iarr-sa-tiirdhreach",
+        "text_sha256": "cc4aa5fefd7b26ff0329918f8c204022f79539e0335f9fff97104e6b356e9eef"
+      },
+      "english": {
+        "intent": "Myth-labelled Roscommon frame for ask.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.11.iarr"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led notice for iarr/ask in roscommon (collocate=queen; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.notice.11",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led notice for iarr/ask in roscommon (collocate=queen; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.notice.11",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.roscommon.11.iarr.ask.myth",
+      "family_id": "d32.roscommon.11.iarr.ask",
+      "target": {
+        "lexeme_id": "lex.iarr",
+        "citation_form": "iarr",
+        "sense_id": "roscommon.iarr.ask",
+        "part_of_speech": "verb",
+        "target_form": "iarr",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Abair é: finscéal Ros Comáin faoin iarr.",
+        "normalized_text": "Abair é: finscéal Ros Comáin faoin iarr.",
+        "inventory_slug": "abair-ee-finsceeal-ros-comaain-faoin-iarr",
+        "text_sha256": "714b763d180d61ab6bca53068265e86472c71731a5dff2bb8f6748d1d51ea0ab"
+      },
+      "english": {
+        "intent": "Say it: a Roscommon myth about the ask.",
+        "literal_note": "D32 invented pedagogical line; myth-labelled literary framing; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "roscommon",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan"
+        },
+        "atlas_placement_ids": [
+          "atlas.roscommon.11.iarr"
+        ],
+        "place": {
+          "id": "d32.roscommon.place",
+          "label": "Ros Comáin / Roscommon"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional myth-labelled county context",
+        "register": "neutral myth-labelled pedagogical frame",
+        "purpose": "A5 evidence-led myth for iarr/ask in roscommon (collocate=queen; myth=True).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.roscommon.medb-rathcroghan.myth.11",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led myth for iarr/ask in roscommon (collocate=queen; myth=True)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.roscommon",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.roscommon.medb-rathcroghan.myth.11",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

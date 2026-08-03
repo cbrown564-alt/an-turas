@@ -288,6 +288,387 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.galway.01.guth.voice.evidence",
+      "family_id": "d32.galway.01.guth.voice",
+      "target": {
+        "lexeme_id": "lex.guth",
+        "citation_form": "guth",
+        "sense_id": "galway.guth.voice",
+        "part_of_speech": "lexical item",
+        "target_form": "guth",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Éist leis an guth ó Charna.",
+        "normalized_text": "Éist leis an guth ó Charna.",
+        "inventory_slug": "eeist-leis-an-guth-oo-charna",
+        "text_sha256": "04a06fe875fbd9596e7f654dc4e0ff3e1416c17b945ddabbb9298da59259f4e4"
+      },
+      "english": {
+        "intent": "Listen for the voice from Carna.",
+        "literal_note": "D32 invented pedagogical line; evidence-orienting frame only; not an attested quotation."
+      },
+      "binding": {
+        "county": "galway",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna"
+        },
+        "atlas_placement_ids": [
+          "atlas.galway.01.guth"
+        ],
+        "place": {
+          "id": "d32.galway.place",
+          "label": "na Gaillimhe / Galway"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional evidence-led county context",
+        "register": "neutral evidence-orienting pedagogical frame",
+        "purpose": "A5 evidence-led evidence for guth/voice in galway (collocate=voice; myth=False).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna.evidence.01",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "A5 evidence-led evidence for guth/voice in galway (collocate=voice; myth=False)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.galway",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.galway.joe-heaney-carna.evidence.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.galway.01.guth.voice.pattern",
+      "family_id": "d32.galway.01.guth.voice",
+      "target": {
+        "lexeme_id": "lex.guth",
+        "citation_form": "guth",
+        "sense_id": "galway.guth.voice",
+        "part_of_speech": "lexical item",
+        "target_form": "guth",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Cuimhnigh ar an guth sa traidisiún.",
+        "normalized_text": "Cuimhnigh ar an guth sa traidisiún.",
+        "inventory_slug": "cuimhnigh-ar-an-guth-sa-traidisiuun",
+        "text_sha256": "fea83c63106faa9934737b7330358bc1504f68708e0740151a36751de5607128"
+      },
+      "english": {
+        "intent": "Remember the voice in the tradition.",
+        "literal_note": "D32 invented pedagogical line; evidence-orienting frame only; not an attested quotation."
+      },
+      "binding": {
+        "county": "galway",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna"
+        },
+        "atlas_placement_ids": [
+          "atlas.galway.01.guth"
+        ],
+        "place": {
+          "id": "d32.galway.place",
+          "label": "na Gaillimhe / Galway"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "productive_pattern"
+        ],
+        "dialect": "standard Irish; provisional evidence-led county context",
+        "register": "neutral evidence-orienting pedagogical frame",
+        "purpose": "A5 evidence-led pattern for guth/voice in galway (collocate=voice; myth=False).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna.pattern.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led pattern for guth/voice in galway (collocate=voice; myth=False)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.galway",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.galway.joe-heaney-carna.pattern.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.galway.01.guth.voice.notice",
+      "family_id": "d32.galway.01.guth.voice",
+      "target": {
+        "lexeme_id": "lex.guth",
+        "citation_form": "guth",
+        "sense_id": "galway.guth.voice",
+        "part_of_speech": "lexical item",
+        "target_form": "guth",
+        "morphology": "atlas citation form; evidence-led provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Ní luaitear amhrán anseo; tá guth ann.",
+        "normalized_text": "Ní luaitear amhrán anseo; tá guth ann.",
+        "inventory_slug": "nii-luaitear-amhraan-anseo-taa-guth-ann",
+        "text_sha256": "15d5a0b533f06e9448d86d5579df850983412dd888f887fa2ac1690ccd930bb7"
+      },
+      "english": {
+        "intent": "Provisional Galway frame for voice; no archival performance is quoted.",
+        "literal_note": "D32 invented pedagogical line; evidence-orienting frame only; not an attested quotation."
+      },
+      "binding": {
+        "county": "galway",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna"
+        },
+        "atlas_placement_ids": [
+          "atlas.galway.01.guth"
+        ],
+        "place": {
+          "id": "d32.galway.place",
+          "label": "na Gaillimhe / Galway"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional evidence-led county context",
+        "register": "neutral evidence-orienting pedagogical frame",
+        "purpose": "A5 evidence-led notice for guth/voice in galway (collocate=voice; myth=False).",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna.notice.01",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "A5 evidence-led notice for guth/voice in galway (collocate=voice; myth=False)."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed for queue-02 evidence-led expansion from the county story slate anchor, source register, and atlas headword; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-queue-02-evidence-source-register.json",
+            "record_id": "register.galway",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.galway.joe-heaney-carna.notice.01",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a5-evidence-led-next",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }
