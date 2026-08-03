@@ -1,0 +1,278 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.mayo.contrast.mise-minimal",
+  "county": "mayo",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.mayo.grainne-1593"
+  },
+  "target": {
+    "lexeme_id": "lex.mise",
+    "citation_form": "mise",
+    "sense_id": "mayo.mise.contrast",
+    "part_of_speech": "pronoun",
+    "english_sense": "me / I"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.mayo.15.mise",
+      "gloss": "me / I"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.mayo.contrast.mise-minimal.emphatic-i",
+      "family_id": "d32.mayo.contrast.mise-minimal",
+      "target": {
+        "lexeme_id": "lex.mise",
+        "citation_form": "mise",
+        "sense_id": "mayo.mise.contrast",
+        "part_of_speech": "pronoun",
+        "english_sense": "me / I",
+        "target_form": "Mise",
+        "morphology": "emphatic mise"
+      },
+      "irish": {
+        "text": "Mise atá anseo anocht.",
+        "normalized_text": "Mise atá anseo anocht.",
+        "inventory_slug": "mise-ataa-anseo-anocht",
+        "text_sha256": "2ecd083c6bb09306953775c880c9aaf9b68ec05e4620723c72267e1df870d539"
+      },
+      "english": {
+        "intent": "It is I who am here tonight.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.15.mise"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled minimal_pair contrast: It is I who am here tonight.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.mise-minimal.emphatic-i",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled minimal_pair contrast: It is I who am here tonight."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.mise-minimal.emphatic-i",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "pronoun_reference"
+      ]
+    },
+    {
+      "id": "d32.mayo.contrast.mise-minimal.plain-i",
+      "family_id": "d32.mayo.contrast.mise-minimal",
+      "target": {
+        "lexeme_id": "lex.mise",
+        "citation_form": "mise",
+        "sense_id": "mayo.mise.contrast",
+        "part_of_speech": "pronoun",
+        "english_sense": "me / I",
+        "target_form": "mé",
+        "morphology": "plain mé contrasted with emphatic mise"
+      },
+      "irish": {
+        "text": "Tá mé ag an mbá anois.",
+        "normalized_text": "Tá mé ag an mbá anois.",
+        "inventory_slug": "taa-mee-ag-an-mbaa-anois",
+        "text_sha256": "910350c167215f3702d0e0a52634fc79a2c677b675d137401e0b3c0df9489767"
+      },
+      "english": {
+        "intent": "I am at the bay now.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "mayo",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593"
+        },
+        "atlas_placement_ids": [
+          "atlas.mayo.15.mise"
+        ],
+        "place": {
+          "id": "d32.mayo.place",
+          "label": "Maigh Eo / Mayo"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard-with-Connacht-context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled minimal_pair contrast: I am at the bay now.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.mayo.grainne-1593.contrast.mise-minimal.plain-i",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled minimal_pair contrast: I am at the bay now."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.mayo.grainne-1593.contrast.mise-minimal.plain-i",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text",
+        "pronoun_reference",
+        "sense_ambiguity"
+      ]
+    }
+  ]
+}

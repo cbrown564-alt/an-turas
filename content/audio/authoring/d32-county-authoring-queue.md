@@ -4,6 +4,10 @@ Operational queue for Track A's provisional phrase-family authoring. The atlas a
 story slate remain the source inputs; queue membership is not evidence of historical,
 Irish-language, pedagogy, rights, audio-QA, or learner-release approval.
 
+**A3 contrast slice (2026-08-03):** mutation / fada / minimal-pair listening families
+authored offline via `tools/generate_d32_contrast_families.py` (**74** families,
+**148** unique texts; Mayo-first, then risk-sample counties). No provider capture.
+
 ## Partition
 
 | Queue | Counties | Entry condition |

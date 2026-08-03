@@ -1,0 +1,277 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.derry.contrast.teigh-fada",
+  "county": "derry",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.derry.city-walls-siege"
+  },
+  "target": {
+    "lexeme_id": "lex.teigh",
+    "citation_form": "téigh",
+    "sense_id": "derry.teigh.contrast",
+    "part_of_speech": "verb",
+    "english_sense": "go"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.derry.12.teigh",
+      "gloss": "go"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.derry.contrast.teigh-fada.imperative",
+      "family_id": "d32.derry.contrast.teigh-fada",
+      "target": {
+        "lexeme_id": "lex.teigh",
+        "citation_form": "téigh",
+        "sense_id": "derry.teigh.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "go",
+        "target_form": "Téigh",
+        "morphology": "téigh with fada in Derry frame"
+      },
+      "irish": {
+        "text": "Téigh go dtí an chathair.",
+        "normalized_text": "Téigh go dtí an chathair.",
+        "inventory_slug": "teeigh-go-dtii-an-chathair",
+        "text_sha256": "d4992951b55ee447a47a948246a8b49e7a350958b2017a445c4da66d002027d4"
+      },
+      "english": {
+        "intent": "Go to the city.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "derry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege"
+        },
+        "atlas_placement_ids": [
+          "atlas.derry.12.teigh"
+        ],
+        "place": {
+          "id": "d32.derry.place",
+          "label": "Doire / Derry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Go to the city.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege.contrast.teigh-fada.imperative",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Go to the city."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.derry.city-walls-siege.contrast.teigh-fada.imperative",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.derry.contrast.teigh-fada.future",
+      "family_id": "d32.derry.contrast.teigh-fada",
+      "target": {
+        "lexeme_id": "lex.teigh",
+        "citation_form": "téigh",
+        "sense_id": "derry.teigh.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "go",
+        "target_form": "Rachaidh",
+        "morphology": "suppletive future of téigh"
+      },
+      "irish": {
+        "text": "Rachaidh sí amach arís.",
+        "normalized_text": "Rachaidh sí amach arís.",
+        "inventory_slug": "rachaidh-sii-amach-ariis",
+        "text_sha256": "a47a3ad910f3d324dd6f8475c10732e70c7da5a562c81642643415cf7c3a71dc"
+      },
+      "english": {
+        "intent": "She will go out again.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "derry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege"
+        },
+        "atlas_placement_ids": [
+          "atlas.derry.12.teigh"
+        ],
+        "place": {
+          "id": "d32.derry.place",
+          "label": "Doire / Derry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: She will go out again.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege.contrast.teigh-fada.future",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: She will go out again."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.derry.city-walls-siege.contrast.teigh-fada.future",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "sense_ambiguity"
+      ]
+    }
+  ]
+}

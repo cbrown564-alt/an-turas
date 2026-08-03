@@ -1,0 +1,276 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.antrim.contrast.breag-fada",
+  "county": "antrim",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.antrim.fionn-mac-cumhaill"
+  },
+  "target": {
+    "lexeme_id": "lex.breag",
+    "citation_form": "bréag",
+    "sense_id": "antrim.breag.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "false / lie"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.antrim.10.breag",
+      "gloss": "false / lie"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.antrim.contrast.breag-fada.lie-clear",
+      "family_id": "d32.antrim.contrast.breag-fada",
+      "target": {
+        "lexeme_id": "lex.breag",
+        "citation_form": "bréag",
+        "sense_id": "antrim.breag.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "false / lie",
+        "target_form": "bréag",
+        "morphology": "bréag with fada"
+      },
+      "irish": {
+        "text": "Ní bréag é sin.",
+        "normalized_text": "Ní bréag é sin.",
+        "inventory_slug": "nii-breeag-ee-sin",
+        "text_sha256": "24cbf53dacf5cb07a1bc337076ecf27b74fc2455b6b9c0f0d68ba9d2698b0507"
+      },
+      "english": {
+        "intent": "That is not a lie.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.10.breag"
+        ],
+        "place": {
+          "id": "d32.antrim.place",
+          "label": "Aontroim / Antrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: That is not a lie.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.breag-fada.lie-clear",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: That is not a lie."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.breag-fada.lie-clear",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.antrim.contrast.breag-fada.lie-lenited",
+      "family_id": "d32.antrim.contrast.breag-fada",
+      "target": {
+        "lexeme_id": "lex.breag",
+        "citation_form": "bréag",
+        "sense_id": "antrim.breag.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "false / lie",
+        "target_form": "bhréag",
+        "morphology": "lenited bhréag after an"
+      },
+      "irish": {
+        "text": "An bhréag atá sa scéal.",
+        "normalized_text": "An bhréag atá sa scéal.",
+        "inventory_slug": "an-bhreeag-ataa-sa-sceeal",
+        "text_sha256": "adbee69968414d6a706f0bb84ff0071876ea731232a82e3a0e17028c1c52c5a4"
+      },
+      "english": {
+        "intent": "It is the lie that is in the story.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.10.breag"
+        ],
+        "place": {
+          "id": "d32.antrim.place",
+          "label": "Aontroim / Antrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: It is the lie that is in the story.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.breag-fada.lie-lenited",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: It is the lie that is in the story."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill.contrast.breag-fada.lie-lenited",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text"
+      ]
+    }
+  ]
+}

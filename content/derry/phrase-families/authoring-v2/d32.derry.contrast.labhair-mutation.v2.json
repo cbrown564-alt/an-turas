@@ -1,0 +1,274 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.derry.contrast.labhair-mutation",
+  "county": "derry",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.derry.city-walls-siege"
+  },
+  "target": {
+    "lexeme_id": "lex.labhair",
+    "citation_form": "labhair",
+    "sense_id": "derry.labhair.contrast",
+    "part_of_speech": "verb",
+    "english_sense": "speak"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.derry.16.labhair",
+      "gloss": "speak"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.derry.contrast.labhair-mutation.imperative",
+      "family_id": "d32.derry.contrast.labhair-mutation",
+      "target": {
+        "lexeme_id": "lex.labhair",
+        "citation_form": "labhair",
+        "sense_id": "derry.labhair.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "speak",
+        "target_form": "Labhair",
+        "morphology": "citation labhair"
+      },
+      "irish": {
+        "text": "Labhair go mall, le do thoil.",
+        "normalized_text": "Labhair go mall, le do thoil.",
+        "inventory_slug": "labhair-go-mall-le-do-thoil",
+        "text_sha256": "381598f76f6542b6d3203e2ac11c459d4d1fa7992c7d903600e44ca5ebb5ca92"
+      },
+      "english": {
+        "intent": "Speak slowly, please.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "derry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege"
+        },
+        "atlas_placement_ids": [
+          "atlas.derry.16.labhair"
+        ],
+        "place": {
+          "id": "d32.derry.place",
+          "label": "Doire / Derry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: Speak slowly, please.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege.contrast.labhair-mutation.imperative",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: Speak slowly, please."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.derry.city-walls-siege.contrast.labhair-mutation.imperative",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.derry.contrast.labhair-mutation.past",
+      "family_id": "d32.derry.contrast.labhair-mutation",
+      "target": {
+        "lexeme_id": "lex.labhair",
+        "citation_form": "labhair",
+        "sense_id": "derry.labhair.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "speak",
+        "target_form": "Labhair",
+        "morphology": "past labhair"
+      },
+      "irish": {
+        "text": "Labhair sí os ard aréir.",
+        "normalized_text": "Labhair sí os ard aréir.",
+        "inventory_slug": "labhair-sii-os-ard-areeir",
+        "text_sha256": "c2fbbd35f8543640aa2f7aa60b8b6532c096881dbc50dcda6356728876e63eb1"
+      },
+      "english": {
+        "intent": "She spoke aloud last night.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "derry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege"
+        },
+        "atlas_placement_ids": [
+          "atlas.derry.16.labhair"
+        ],
+        "place": {
+          "id": "d32.derry.place",
+          "label": "Doire / Derry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: She spoke aloud last night.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege.contrast.labhair-mutation.past",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: She spoke aloud last night."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.derry.city-walls-siege.contrast.labhair-mutation.past",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    }
+  ]
+}

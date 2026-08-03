@@ -1,0 +1,276 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.kerry.contrast.cuimhne-mutation",
+  "county": "kerry",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.kerry.piaras-feiritear"
+  },
+  "target": {
+    "lexeme_id": "lex.cuimhne",
+    "citation_form": "cuimhne",
+    "sense_id": "kerry.cuimhne.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "memory"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.kerry.04.cuimhne",
+      "gloss": "memory"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.kerry.contrast.cuimhne-mutation.citation",
+      "family_id": "d32.kerry.contrast.cuimhne-mutation",
+      "target": {
+        "lexeme_id": "lex.cuimhne",
+        "citation_form": "cuimhne",
+        "sense_id": "kerry.cuimhne.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "memory",
+        "target_form": "cuimhne",
+        "morphology": "citation cuimhne"
+      },
+      "irish": {
+        "text": "Is cuimhne bheo í.",
+        "normalized_text": "Is cuimhne bheo í.",
+        "inventory_slug": "is-cuimhne-bheo-ii",
+        "text_sha256": "e224f03ea6604ecb898c5ebcd7b387c53b0c3a10cf978e0692a4337f7c69a8e4"
+      },
+      "english": {
+        "intent": "It is a living memory.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "kerry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear"
+        },
+        "atlas_placement_ids": [
+          "atlas.kerry.04.cuimhne"
+        ],
+        "place": {
+          "id": "d32.kerry.place",
+          "label": "Ciarraí / Kerry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is a living memory.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear.contrast.cuimhne-mutation.citation",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is a living memory."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kerry.piaras-feiritear.contrast.cuimhne-mutation.citation",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "initial_mutation",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.kerry.contrast.cuimhne-mutation.lenited",
+      "family_id": "d32.kerry.contrast.cuimhne-mutation",
+      "target": {
+        "lexeme_id": "lex.cuimhne",
+        "citation_form": "cuimhne",
+        "sense_id": "kerry.cuimhne.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "memory",
+        "target_form": "chuimhne",
+        "morphology": "lenited chuimhne after mo"
+      },
+      "irish": {
+        "text": "Mo chuimhne atá sa dán.",
+        "normalized_text": "Mo chuimhne atá sa dán.",
+        "inventory_slug": "mo-chuimhne-ataa-sa-daan",
+        "text_sha256": "081bc26323b52e6da715bd36ef7f422bc17a346cb27113421aa8c72c346659e2"
+      },
+      "english": {
+        "intent": "It is my memory that is in the poem.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "kerry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear"
+        },
+        "atlas_placement_ids": [
+          "atlas.kerry.04.cuimhne"
+        ],
+        "place": {
+          "id": "d32.kerry.place",
+          "label": "Ciarraí / Kerry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is my memory that is in the poem.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear.contrast.cuimhne-mutation.lenited",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is my memory that is in the poem."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kerry.piaras-feiritear.contrast.cuimhne-mutation.lenited",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text"
+      ]
+    }
+  ]
+}

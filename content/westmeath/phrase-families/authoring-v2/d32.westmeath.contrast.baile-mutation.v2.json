@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.westmeath.contrast.baile-mutation",
+  "county": "westmeath",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.westmeath.st-fechin-fore"
+  },
+  "target": {
+    "lexeme_id": "lex.baile",
+    "citation_form": "baile",
+    "sense_id": "westmeath.baile.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "settlement"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.westmeath.09.baile",
+      "gloss": "settlement"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.westmeath.contrast.baile-mutation.citation",
+      "family_id": "d32.westmeath.contrast.baile-mutation",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "westmeath.baile.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "settlement",
+        "target_form": "baile",
+        "morphology": "citation baile"
+      },
+      "irish": {
+        "text": "Is baile álainn é.",
+        "normalized_text": "Is baile álainn é.",
+        "inventory_slug": "is-baile-aalainn-ee",
+        "text_sha256": "ea6b2efefe1f3df373aa488513562916b6566005be4b8eec7c4c3c50d5e7dad8"
+      },
+      "english": {
+        "intent": "It is a beautiful town.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "westmeath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore"
+        },
+        "atlas_placement_ids": [
+          "atlas.westmeath.09.baile"
+        ],
+        "place": {
+          "id": "d32.westmeath.place",
+          "label": "an Iarmhí / Westmeath"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is a beautiful town.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore.contrast.baile-mutation.citation",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is a beautiful town."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.westmeath.st-fechin-fore.contrast.baile-mutation.citation",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.westmeath.contrast.baile-mutation.eclipsed",
+      "family_id": "d32.westmeath.contrast.baile-mutation",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "westmeath.baile.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "settlement",
+        "target_form": "mbaile",
+        "morphology": "eclipsed mbaile after ar an"
+      },
+      "irish": {
+        "text": "Ar an mbaile atáimid.",
+        "normalized_text": "Ar an mbaile atáimid.",
+        "inventory_slug": "ar-an-mbaile-ataaimid",
+        "text_sha256": "557d0e70efa5a2264320cbccd3af3de04e5af5cbbfc7d93a67bd048bf1205584"
+      },
+      "english": {
+        "intent": "It is in the town that we are.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "westmeath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore"
+        },
+        "atlas_placement_ids": [
+          "atlas.westmeath.09.baile"
+        ],
+        "place": {
+          "id": "d32.westmeath.place",
+          "label": "an Iarmhí / Westmeath"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is in the town that we are.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore.contrast.baile-mutation.eclipsed",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is in the town that we are."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.westmeath.st-fechin-fore.contrast.baile-mutation.eclipsed",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "initial_mutation",
+        "invented_text"
+      ]
+    }
+  ]
+}

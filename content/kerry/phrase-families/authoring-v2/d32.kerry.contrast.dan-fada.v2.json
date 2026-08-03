@@ -1,0 +1,276 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.kerry.contrast.dan-fada",
+  "county": "kerry",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.kerry.piaras-feiritear"
+  },
+  "target": {
+    "lexeme_id": "lex.dan",
+    "citation_form": "dán",
+    "sense_id": "kerry.dan.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "poem"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.kerry.10.dan",
+      "gloss": "poem"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.kerry.contrast.dan-fada.poem-clear",
+      "family_id": "d32.kerry.contrast.dan-fada",
+      "target": {
+        "lexeme_id": "lex.dan",
+        "citation_form": "dán",
+        "sense_id": "kerry.dan.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "poem",
+        "target_form": "dán",
+        "morphology": "dán with fada meaning poem"
+      },
+      "irish": {
+        "text": "Is dán álainn é.",
+        "normalized_text": "Is dán álainn é.",
+        "inventory_slug": "is-daan-aalainn-ee",
+        "text_sha256": "559a72b48372121d8794ccd209f61f09d425fa8a1a23835103386785f89cd4ca"
+      },
+      "english": {
+        "intent": "It is a beautiful poem.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "kerry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear"
+        },
+        "atlas_placement_ids": [
+          "atlas.kerry.10.dan"
+        ],
+        "place": {
+          "id": "d32.kerry.place",
+          "label": "Ciarraí / Kerry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: It is a beautiful poem.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear.contrast.dan-fada.poem-clear",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: It is a beautiful poem."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kerry.piaras-feiritear.contrast.dan-fada.poem-clear",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.kerry.contrast.dan-fada.poem-lenited",
+      "family_id": "d32.kerry.contrast.dan-fada",
+      "target": {
+        "lexeme_id": "lex.dan",
+        "citation_form": "dán",
+        "sense_id": "kerry.dan.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "poem",
+        "target_form": "dhán",
+        "morphology": "lenited dhán after mo"
+      },
+      "irish": {
+        "text": "Mo dhán atá á léamh.",
+        "normalized_text": "Mo dhán atá á léamh.",
+        "inventory_slug": "mo-dhaan-ataa-aa-leeamh",
+        "text_sha256": "2f7045d7ec1db7e1df2ddf45b1bfb688622cc91e48a7f2f22ea24cb26de6bfa5"
+      },
+      "english": {
+        "intent": "It is my poem that is being read.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "kerry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear"
+        },
+        "atlas_placement_ids": [
+          "atlas.kerry.10.dan"
+        ],
+        "place": {
+          "id": "d32.kerry.place",
+          "label": "Ciarraí / Kerry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: It is my poem that is being read.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kerry.piaras-feiritear.contrast.dan-fada.poem-lenited",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: It is my poem that is being read."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kerry.piaras-feiritear.contrast.dan-fada.poem-lenited",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text"
+      ]
+    }
+  ]
+}

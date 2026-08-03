@@ -1,0 +1,274 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.limerick.contrast.labhair-mutation",
+  "county": "limerick",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.limerick.treaty-of-limerick"
+  },
+  "target": {
+    "lexeme_id": "lex.labhair",
+    "citation_form": "labhair",
+    "sense_id": "limerick.labhair.contrast",
+    "part_of_speech": "verb",
+    "english_sense": "speak"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.limerick.17.labhair",
+      "gloss": "speak"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.limerick.contrast.labhair-mutation.imperative",
+      "family_id": "d32.limerick.contrast.labhair-mutation",
+      "target": {
+        "lexeme_id": "lex.labhair",
+        "citation_form": "labhair",
+        "sense_id": "limerick.labhair.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "speak",
+        "target_form": "Labhair",
+        "morphology": "citation labhair"
+      },
+      "irish": {
+        "text": "Labhair Gaeilge anois.",
+        "normalized_text": "Labhair Gaeilge anois.",
+        "inventory_slug": "labhair-gaeilge-anois",
+        "text_sha256": "3acb4a52e8b1d00e4430b59e9e3a505e41447c74af26a4349935ea0c74efb553"
+      },
+      "english": {
+        "intent": "Speak Irish now.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "limerick",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick"
+        },
+        "atlas_placement_ids": [
+          "atlas.limerick.17.labhair"
+        ],
+        "place": {
+          "id": "d32.limerick.place",
+          "label": "Luimneach / Limerick"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: Speak Irish now.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick.contrast.labhair-mutation.imperative",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: Speak Irish now."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.limerick.treaty-of-limerick.contrast.labhair-mutation.imperative",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.limerick.contrast.labhair-mutation.verbal-noun",
+      "family_id": "d32.limerick.contrast.labhair-mutation",
+      "target": {
+        "lexeme_id": "lex.labhair",
+        "citation_form": "labhair",
+        "sense_id": "limerick.labhair.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "speak",
+        "target_form": "labhairt",
+        "morphology": "verbal noun labhairt"
+      },
+      "irish": {
+        "text": "Tá sí ag labhairt go bog.",
+        "normalized_text": "Tá sí ag labhairt go bog.",
+        "inventory_slug": "taa-sii-ag-labhairt-go-bog",
+        "text_sha256": "9446bf77a7c2e79a5b1adb9ac29c2a01dbf9d1dc2d8912fe105131e401afb1fa"
+      },
+      "english": {
+        "intent": "She is speaking softly.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "limerick",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick"
+        },
+        "atlas_placement_ids": [
+          "atlas.limerick.17.labhair"
+        ],
+        "place": {
+          "id": "d32.limerick.place",
+          "label": "Luimneach / Limerick"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: She is speaking softly.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.limerick.treaty-of-limerick.contrast.labhair-mutation.verbal-noun",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: She is speaking softly."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.limerick.treaty-of-limerick.contrast.labhair-mutation.verbal-noun",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text"
+      ]
+    }
+  ]
+}

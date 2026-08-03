@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.offaly.contrast.cros-mutation",
+  "county": "offaly",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.offaly.cross-of-the-scriptures"
+  },
+  "target": {
+    "lexeme_id": "lex.cros",
+    "citation_form": "cros",
+    "sense_id": "offaly.cros.contrast",
+    "part_of_speech": "noun",
+    "english_sense": "cross"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.offaly.03.cros",
+      "gloss": "cross"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.offaly.contrast.cros-mutation.citation",
+      "family_id": "d32.offaly.contrast.cros-mutation",
+      "target": {
+        "lexeme_id": "lex.cros",
+        "citation_form": "cros",
+        "sense_id": "offaly.cros.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "cross",
+        "target_form": "cros",
+        "morphology": "citation cros with lenited adjectives"
+      },
+      "irish": {
+        "text": "Is cros mhór chloiche í fós.",
+        "normalized_text": "Is cros mhór chloiche í fós.",
+        "inventory_slug": "is-cros-mhoor-chloiche-ii-foos",
+        "text_sha256": "5fd34a9a9fe0f748907bccaf15916608e84ad5297ad2a0ffdb7a7fc24b60a6c5"
+      },
+      "english": {
+        "intent": "It is still a great stone cross.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "offaly",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures"
+        },
+        "atlas_placement_ids": [
+          "atlas.offaly.03.cros"
+        ],
+        "place": {
+          "id": "d32.offaly.place",
+          "label": "Uíbh Fhailí / Offaly"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is still a great stone cross.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures.contrast.cros-mutation.citation",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is still a great stone cross."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.offaly.cross-of-the-scriptures.contrast.cros-mutation.citation",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "initial_mutation",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.offaly.contrast.cros-mutation.eclipsed",
+      "family_id": "d32.offaly.contrast.cros-mutation",
+      "target": {
+        "lexeme_id": "lex.cros",
+        "citation_form": "cros",
+        "sense_id": "offaly.cros.contrast",
+        "part_of_speech": "noun",
+        "english_sense": "cross",
+        "target_form": "gcros",
+        "morphology": "eclipsed gcros after ar an"
+      },
+      "irish": {
+        "text": "Féach ar an gcros anocht.",
+        "normalized_text": "Féach ar an gcros anocht.",
+        "inventory_slug": "feeach-ar-an-gcros-anocht",
+        "text_sha256": "3c8098091bb1245aabdb42d1768f1c2fac84f05d2e281cb7d128646e8b75800d"
+      },
+      "english": {
+        "intent": "Look at the cross tonight.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "offaly",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures"
+        },
+        "atlas_placement_ids": [
+          "atlas.offaly.03.cros"
+        ],
+        "place": {
+          "id": "d32.offaly.place",
+          "label": "Uíbh Fhailí / Offaly"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: Look at the cross tonight.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.offaly.cross-of-the-scriptures.contrast.cros-mutation.eclipsed",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: Look at the cross tonight."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.offaly.cross-of-the-scriptures.contrast.cros-mutation.eclipsed",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "initial_mutation",
+        "invented_text"
+      ]
+    }
+  ]
+}

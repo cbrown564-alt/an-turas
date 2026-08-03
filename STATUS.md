@@ -1,7 +1,7 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-02.*
+stories and places of Ireland. Updated 2026-08-03 (bulk Track A avenue A3 authored).*
 
 ## Current outcome
 
@@ -24,9 +24,16 @@ learning outcomes or promoted for public release.
 
 ### Irish corpus and audio
 
-- **640** phrase families, **1,461** authored members, **1,459** complete members, and
-  **689** unique normalized texts across all **32** counties. The two incomplete members
+- **714** phrase families, **1,609** authored members, **1,607** complete members, and
+  **839** unique normalized texts across all **32** counties. The two incomplete members
   are the deliberately retired Corca Dhuibhne lines described below.
+- Bulk Track A avenue **A3** (mutation / fada / minimal-pair contrasts) authored
+  **74** contrast families and **148** net-new unique listening texts via
+  [`tools/generate_d32_contrast_families.py`](tools/generate_d32_contrast_families.py)
+  and [`content/audio/authoring/d32-contrast-catalog-a3.json`](content/audio/authoring/d32-contrast-catalog-a3.json).
+  Mayo leads with **52** members; coverage then spreads across risk-sample counties.
+  Contrast types in this pass: mutation **82**, fada **56**, fada minimal pair **6**,
+  other minimal pair **4**. Authoring only — no provider capture.
 - **692** registered audio lines: **682** approved, **684** provider successes, **2**
   retired semantic quarantines, **9** cancelled, **0** failed, and **0** actively
   claimed. There is no remaining resumable or manual-recovery work.
@@ -153,7 +160,8 @@ Continue Track A in independently appendable tranches. Prioritize:
    represented in the Personal Atlas or county stories;
 2. story openings, recaps, transitions, and reusable dialogue roles;
 3. phrase-family contrasts that exercise mutations, inflections, fadas, and likely
-   pronunciation failures;
+   pronunciation failures — A3 authored slice complete (**148** unique texts; see
+   corpus evidence above);
 4. narrative pedagogy examples with a named grammar or pronunciation purpose.
 
 Every member must retain a stable ID, exact Irish text, English intent, source or

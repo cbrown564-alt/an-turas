@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.donegal.contrast.scriobh-fada",
+  "county": "donegal",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.donegal.flight-of-the-earls"
+  },
+  "target": {
+    "lexeme_id": "lex.scriobh",
+    "citation_form": "scríobh",
+    "sense_id": "donegal.scriobh.contrast",
+    "part_of_speech": "verb",
+    "english_sense": "write"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.donegal.15.scriobh",
+      "gloss": "write"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.donegal.contrast.scriobh-fada.imperative",
+      "family_id": "d32.donegal.contrast.scriobh-fada",
+      "target": {
+        "lexeme_id": "lex.scriobh",
+        "citation_form": "scríobh",
+        "sense_id": "donegal.scriobh.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "write",
+        "target_form": "Scríobh",
+        "morphology": "imperative scríobh with fada"
+      },
+      "irish": {
+        "text": "Scríobh an t-ainm go soiléir.",
+        "normalized_text": "Scríobh an t-ainm go soiléir.",
+        "inventory_slug": "scriiobh-an-t-ainm-go-soileeir",
+        "text_sha256": "149b4f7413d970d538ab305f9511e162d3410fecd225f1cecb671441b6558620"
+      },
+      "english": {
+        "intent": "Write the name clearly.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "donegal",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls"
+        },
+        "atlas_placement_ids": [
+          "atlas.donegal.15.scriobh"
+        ],
+        "place": {
+          "id": "d32.donegal.place",
+          "label": "Dún na nGall / Donegal"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: Write the name clearly.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls.contrast.scriobh-fada.imperative",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: Write the name clearly."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.donegal.flight-of-the-earls.contrast.scriobh-fada.imperative",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.donegal.contrast.scriobh-fada.past",
+      "family_id": "d32.donegal.contrast.scriobh-fada",
+      "target": {
+        "lexeme_id": "lex.scriobh",
+        "citation_form": "scríobh",
+        "sense_id": "donegal.scriobh.contrast",
+        "part_of_speech": "verb",
+        "english_sense": "write",
+        "target_form": "Scríobh",
+        "morphology": "past scríobh with fada"
+      },
+      "irish": {
+        "text": "Scríobh sí an dán arís.",
+        "normalized_text": "Scríobh sí an dán arís.",
+        "inventory_slug": "scriiobh-sii-an-daan-ariis",
+        "text_sha256": "a9e60456d3388991872f74647b4ccfe6882493f79fff96ceee0ee3cd98ede162"
+      },
+      "english": {
+        "intent": "She wrote the poem again.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "donegal",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls"
+        },
+        "atlas_placement_ids": [
+          "atlas.donegal.15.scriobh"
+        ],
+        "place": {
+          "id": "d32.donegal.place",
+          "label": "Dún na nGall / Donegal"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled fada contrast: She wrote the poem again.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.donegal.flight-of-the-earls.contrast.scriobh-fada.past",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled fada contrast: She wrote the poem again."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.donegal.flight-of-the-earls.contrast.scriobh-fada.past",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "schema_version": 2,
+  "contract": "irish_phrase_family",
+  "id": "d32.down.contrast.nua-mutation",
+  "county": "down",
+  "story_ref": {
+    "path": "content/audio/authoring/d32-county-harvest-uses.json",
+    "record_id": "d32.down.patrick-saul"
+  },
+  "target": {
+    "lexeme_id": "lex.nua",
+    "citation_form": "nua",
+    "sense_id": "down.nua.contrast",
+    "part_of_speech": "adjective",
+    "english_sense": "new"
+  },
+  "atlas_placements": [
+    {
+      "id": "atlas.down.20.nua",
+      "gloss": "new"
+    }
+  ],
+  "status": "draft",
+  "claims": {
+    "linguistic_approval": false,
+    "historical_authenticity": false,
+    "note": "D32 contrast family; invented pedagogical listening frames only."
+  },
+  "members": [
+    {
+      "id": "d32.down.contrast.nua-mutation.new-clear",
+      "family_id": "d32.down.contrast.nua-mutation",
+      "target": {
+        "lexeme_id": "lex.nua",
+        "citation_form": "nua",
+        "sense_id": "down.nua.contrast",
+        "part_of_speech": "adjective",
+        "english_sense": "new",
+        "target_form": "nua",
+        "morphology": "nua in a listening frame"
+      },
+      "irish": {
+        "text": "Scéal nua atá le cloisteáil.",
+        "normalized_text": "Scéal nua atá le cloisteáil.",
+        "inventory_slug": "sceeal-nua-ataa-le-cloisteaail",
+        "text_sha256": "24caab63f3af5100b604abdd140b71a5912eddd33120b5e1d8d22923d1a18c9d"
+      },
+      "english": {
+        "intent": "It is a new story that is to be heard.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "down",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.down.patrick-saul"
+        },
+        "atlas_placement_ids": [
+          "atlas.down.20.nua"
+        ],
+        "place": {
+          "id": "d32.down.place",
+          "label": "an Dún / Down"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: It is a new story that is to be heard.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.down.patrick-saul.contrast.nua-mutation.new-clear",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: It is a new story that is to be heard."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.down.patrick-saul.contrast.nua-mutation.new-clear",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text"
+      ]
+    },
+    {
+      "id": "d32.down.contrast.nua-mutation.new-definite",
+      "family_id": "d32.down.contrast.nua-mutation",
+      "target": {
+        "lexeme_id": "lex.nua",
+        "citation_form": "nua",
+        "sense_id": "down.nua.contrast",
+        "part_of_speech": "adjective",
+        "english_sense": "new",
+        "target_form": "nua",
+        "morphology": "nua after masculine noun"
+      },
+      "irish": {
+        "text": "An scéal nua, éist leis.",
+        "normalized_text": "An scéal nua, éist leis.",
+        "inventory_slug": "an-sceeal-nua-eeist-leis",
+        "text_sha256": "4b58c3bbf2d21cc614716a2d6a9bb1aa109eb73b9e1c041e503c72905e162ee5"
+      },
+      "english": {
+        "intent": "The new story, listen to it.",
+        "literal_note": "Invented listening contrast frame; not attested text."
+      },
+      "binding": {
+        "county": "down",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.down.patrick-saul"
+        },
+        "atlas_placement_ids": [
+          "atlas.down.20.nua"
+        ],
+        "place": {
+          "id": "d32.down.place",
+          "label": "an Dún / Down"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "morphology_contrast",
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral listening contrast",
+        "purpose": "Controlled mutation contrast: The new story, listen to it.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.down.patrick-saul.contrast.nua-mutation.new-definite",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Controlled mutation contrast: The new story, listen to it."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic mutation/fada/minimal-pair contrast member for bulk Track A avenue A3; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.down.patrick-saul.contrast.nua-mutation.new-definite",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a3-mutation-fada-contrasts",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text"
+      ]
+    }
+  ]
+}
