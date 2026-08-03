@@ -98,4 +98,7 @@ or permission is recorded.
 Every sensitive or contested row needs an independent local historian or
 community reader before copy approval. That is especially important for Derry,
 Limerick, Leitrim, Tyrone, Wexford, the Flight of the Earls, and all material
-whose source has a strong political or hagiographical point of view.
+whose source has a strong political or hagiographical point of view. The Track A
+operational checklist for the six sensitive-queue counties lives in
+[`content/sensitive-county-review-route.md`](content/sensitive-county-review-route.md);
+it records required review lanes and does not invent approvals.
