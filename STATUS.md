@@ -1,7 +1,7 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-02.*
+stories and places of Ireland. Updated 2026-08-03 (A6 source-packet tranche).*
 
 ## Current outcome
 
@@ -24,9 +24,12 @@ learning outcomes or promoted for public release.
 
 ### Irish corpus and audio
 
-- **640** phrase families, **1,461** authored members, **1,459** complete members, and
-  **689** unique normalized texts across all **32** counties. The two incomplete members
-  are the deliberately retired Corca Dhuibhne lines described below.
+- **640** phrase families, **2,021** authored members, **2,019** complete members, and
+  **1,251** unique normalized texts across all **32** counties. The two incomplete members
+  are the deliberately retired Corca Dhuibhne lines described below. The A6 /
+  `queue-03-source-packet` tranche on `track-a/a6-source-packet` added **560** complete
+  members (**560** net-new unique texts) after confirming source-packet stubs, county
+  place forms, and exercise shells for all 14 queue counties; capture was not run.
 - **692** registered audio lines: **682** approved, **684** provider successes, **2**
   retired semantic quarantines, **9** cancelled, **0** failed, and **0** actively
   claimed. There is no remaining resumable or manual-recovery work.
@@ -155,6 +158,11 @@ Continue Track A in independently appendable tranches. Prioritize:
 3. phrase-family contrasts that exercise mutations, inflections, fadas, and likely
    pronunciation failures;
 4. narrative pedagogy examples with a named grammar or pronunciation purpose.
+
+A6 source-packet expansion for `queue-03-source-packet` is landed on
+`track-a/a6-source-packet` (stubs in `content/*/*-source-brief.md`, register in
+`content/audio/authoring/d32-queue-03-source-packets.json`). Monaghan remains
+rights-bounded for literary quotation; Kilkenny remains sensitivity-bounded.
 
 Every member must retain a stable ID, exact Irish text, English intent, source or
 invented status, risk flags, and a plausible story/place/learning use. D32 permits

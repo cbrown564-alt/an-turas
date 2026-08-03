@@ -29,3 +29,33 @@ the store; this queue does not authorize provider execution.
 
 Source inputs: `content/audio/atlas-headwords-v1.json`, `docs/COUNTY-STORY-SLATE.md`,
 and the four existing `content/{mayo,offaly,dublin,meath}/*.pack.draft.json` records.
+
+## A6 / `queue-03-source-packet` progress (2026-08-03)
+
+Branch: `track-a/a6-source-packet`. Tool:
+[`tools/generate_d32_source_packet_expansion.py`](../../../tools/generate_d32_source_packet_expansion.py).
+Packet register:
+[`d32-queue-03-source-packets.json`](d32-queue-03-source-packets.json).
+
+Entry order followed for all 14 counties: source-packet stub + county/place forms +
+existing exercise shell confirmed, then family members authored. Capture was not run.
+
+| County | Packet | Support | Authored members | Notes |
+| --- | --- | --- | ---: | --- |
+| Antrim | stub confirmed | full_provisional | 40 | `Clochán an Aifir` Logainm-confirmed |
+| Armagh | stub confirmed | full_provisional | 40 | manuscript excerpt gate open |
+| Carlow | stub confirmed | full_provisional | 40 | Moling Life translation gate open |
+| Cavan | stub confirmed | full_provisional | 40 | site Irish forms pending Logainm |
+| Clare | stub confirmed | full_provisional | 40 | Kincora/Killaloe forms pending |
+| Down | stub confirmed | full_provisional | 40 | Saul form pending |
+| Fermanagh | stub confirmed | full_provisional | 40 | Enniskillen form pending |
+| Kildare | stub confirmed | full_provisional | 40 | `Cill Dara` Logainm-confirmed |
+| Kilkenny | stub confirmed | bounded_sensitive | 40 | descriptive frames only; no trial-as-game |
+| Laois | stub confirmed | full_provisional | 40 | Dunamase form pending |
+| Monaghan | stub confirmed | rights_bounded | 40 | no Kavanagh quotation; rights blocker recorded |
+| Sligo | stub confirmed | full_provisional | 40 | no Yeats quotation in this tranche |
+| Westmeath | stub confirmed | full_provisional | 40 | Fore form pending |
+| Wicklow | stub confirmed | full_provisional | 40 | Glendalough form pending |
+
+**Yield:** 560 net-new unique normalized texts (within the 300–900 A6 band). Uses ledger
+updated; identical duplicate story rows collapsed 602 → 32.
