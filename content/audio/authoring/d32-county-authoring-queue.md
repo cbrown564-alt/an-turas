@@ -39,6 +39,31 @@ smaller.
 | `queue-03-source-packet` | Antrim, Armagh, Carlow, Cavan, Clare, Down, Fermanagh, Kildare, Kilkenny, Laois, Monaghan, Sligo, Westmeath, Wicklow | Build or confirm the story source packet, county/place forms, and consuming exercise shell before writing family members. |
 | `queue-04-sensitive-review-first` | Derry, Donegal, Leitrim, Limerick, Tyrone, Wexford | Secure multi-perspective history/community review route, rights, and language source before family expansion; no score-chasing treatment of sensitive material. |
 
+## A7 / `queue-04-sensitive-review-first` — current gate
+
+**Status (2026-08-03):** review route scaffolded; **volume blocked**; yield remains
+**TBD**. Do not author net-new unique text for score. Do not invent community or
+historian approval. See [`STATUS.md`](../../../STATUS.md) avenue A7 for the Track A
+parallelism rule (limited — secure review route before volume).
+
+Canonical checklist and county lanes:
+
+- [`docs/content/sensitive-county-review-route.md`](../../../docs/content/sensitive-county-review-route.md)
+- [`queue-04-sensitive-review-register.json`](queue-04-sensitive-review-register.json)
+
+| County | Story id | Volume |
+| --- | --- | --- |
+| Derry | `d32.derry.city-walls-siege` | Blocked until history, community, rights, and language lanes have named owners and a first packet |
+| Donegal | `d32.donegal.flight-of-the-earls` | Blocked (Flight of the Earls / Ulster memory) |
+| Leitrim | `d32.leitrim.brian-na-murtha` | Blocked (conquest-narrative risk) |
+| Limerick | `d32.limerick.treaty-of-limerick` | Blocked (contested treaty memory) |
+| Tyrone | `d32.tyrone.hugh-oneill-dungannon` | Blocked (competing leader descriptions; Donegal sequence) |
+| Wexford | `d32.wexford.bagenal-harvey-1798` | Blocked (1798 multi-community civilian experience) |
+
+Existing provisional D32 families for these counties stay draft and release-blocked.
+Member learner-release reasons now include sensitive-route markers; that is a gate,
+not an approval record.
+
 ## Slice handoff
 
 The first representative slice is the three registered family documents in the

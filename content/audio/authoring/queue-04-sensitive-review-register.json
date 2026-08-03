@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "id": "queue-04-sensitive-review-first",
+  "avenue": "A7",
+  "title": "Sensitive county expansion — review route before volume",
+  "updated_at": "2026-08-03",
+  "policy": {
+    "review_route_before_volume": true,
+    "score_chase_forbidden": true,
+    "invented_community_approval_forbidden": true,
+    "provider_capture_in_scope": false,
+    "yield": "TBD",
+    "status": "review_route_scaffolded_volume_blocked",
+    "documentation": "docs/content/sensitive-county-review-route.md",
+    "queue_doc": "content/audio/authoring/d32-county-authoring-queue.md",
+    "strategy_open_item": "STRATEGY.md#U7",
+    "slate_rule": "docs/COUNTY-STORY-SLATE.md"
+  },
+  "shared_lanes": [
+    "history",
+    "community",
+    "rights",
+    "language"
+  ],
+  "release_reason_markers": [
+    "sensitive_county_review_pending",
+    "history_community_review_pending",
+    "rights_review_pending",
+    "language_source_review_pending"
+  ],
+  "counties": [
+    {
+      "county": "derry",
+      "irish_english_label": "Doire / Derry",
+      "story_id": "d32.derry.city-walls-siege",
+      "slate_anchor": "the city walls and the siege of 1688–89",
+      "sensitivity_summary": "Contested siege memory; inside and outside the walls; public naming practice.",
+      "volume_gate": "blocked",
+      "approval_claim": "none",
+      "lanes": {
+        "history": {
+          "status": "required_open",
+          "who_must_review": "Independent local / period historian for multi-perspective 1688–89 treatment",
+          "what_must_be_reviewed": "Attributed contemporary voices from more than one viewpoint; wall-as-map framing; contested date and naming precision",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "community": {
+          "status": "required_open",
+          "who_must_review": "Cross-community local reader(s); NI terminology-aware editor",
+          "what_must_be_reviewed": "Doire / Derry / Londonderry presentation; civilian experience; no single-community endorsement implied",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "rights": {
+          "status": "required_open",
+          "who_must_review": "Rights owner / managing editor against source register",
+          "what_must_be_reviewed": "Edition and permission for every contemporary quotation or image before learner-facing use",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "language": {
+          "status": "required_open",
+          "who_must_review": "Irish-language reviewer; Logainm / NI placename source check",
+          "what_must_be_reviewed": "Place forms, invented pedagogical frames, no premature dialect claim",
+          "named_reviewer": null,
+          "review_record": null
+        }
+      }
+    },
+    {
+      "county": "donegal",
+      "irish_english_label": "Dún na nGall / Donegal",
+      "story_id": "d32.donegal.flight-of-the-earls",
+      "slate_anchor": "Aodh (Hugh) Ó Néill at Rathmullan; 1607 Flight of the Earls",
+      "sensitivity_summary": "Flight of the Earls and plantation aftermath; Ulster political memory; no generic witness headline.",
+      "volume_gate": "blocked",
+      "approval_claim": "none",
+      "lanes": {
+        "history": {
+          "status": "required_open",
+          "who_must_review": "Early-modern Ulster historian",
+          "what_must_be_reviewed": "Short contemporary account or annal plus place-based departure source; sequential link to Tyrone without duplication",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "community": {
+          "status": "required_open",
+          "who_must_review": "Donegal / Ulster community or local-history reader",
+          "what_must_be_reviewed": "Departure framing, grief/leave language, avoidance of triumphalist or single-nation reading",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "rights": {
+          "status": "required_open",
+          "who_must_review": "Rights owner / managing editor",
+          "what_must_be_reviewed": "Annal/edition quotation rights; Personal Atlas historical-name lines remain non-attestations",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "language": {
+          "status": "required_open",
+          "who_must_review": "Irish-language reviewer with Ulster awareness",
+          "what_must_be_reviewed": "Standard provisional frames vs any future Ulster-register claim; Rathmullan / person forms",
+          "named_reviewer": null,
+          "review_record": null
+        }
+      }
+    },
+    {
+      "county": "leitrim",
+      "irish_english_label": "Liatroim / Leitrim",
+      "story_id": "d32.leitrim.brian-na-murtha",
+      "slate_anchor": "Brian na Múrtha O'Rourke; sixteenth century",
+      "sensitivity_summary": "Gaelic polity under Tudor pressure; London trial and execution; conquest-narrative risk.",
+      "volume_gate": "blocked",
+      "approval_claim": "none",
+      "lanes": {
+        "history": {
+          "status": "required_open",
+          "who_must_review": "Sixteenth-century / Breifne specialist",
+          "what_must_be_reviewed": "Paired contemporary state record and Irish source; no simple conquest narrative",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "community": {
+          "status": "required_open",
+          "who_must_review": "Leitrim / Breifne local-history reader",
+          "what_must_be_reviewed": "Chief, land, law, and lose framing without humiliation spectacle",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "rights": {
+          "status": "required_open",
+          "who_must_review": "Rights owner / managing editor",
+          "what_must_be_reviewed": "State-paper and Irish-source edition permissions before quotation",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "language": {
+          "status": "required_open",
+          "who_must_review": "Irish-language reviewer",
+          "what_must_be_reviewed": "Person and place forms; no invented trial speech presented as attestation",
+          "named_reviewer": null,
+          "review_record": null
+        }
+      }
+    },
+    {
+      "county": "limerick",
+      "irish_english_label": "Luimneach / Limerick",
+      "story_id": "d32.limerick.treaty-of-limerick",
+      "slate_anchor": "Patrick Sarsfield and the Treaty of Limerick; 1691",
+      "sensitivity_summary": "Contested treaty memory; promise versus aftermath; civilian-aware context required.",
+      "volume_gate": "blocked",
+      "approval_claim": "none",
+      "lanes": {
+        "history": {
+          "status": "required_open",
+          "who_must_review": "Williamite / Jacobite war historian",
+          "what_must_be_reviewed": "Short treaty clause plus civilian-aware consequences; contested memory labelled",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "community": {
+          "status": "required_open",
+          "who_must_review": "Limerick local / cross-tradition reader",
+          "what_must_be_reviewed": "Treaty, promise, peace language without triumphalism or erasure of aftermath",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "rights": {
+          "status": "required_open",
+          "who_must_review": "Rights owner / managing editor",
+          "what_must_be_reviewed": "Treaty-text licence; no unsourced clause paraphrase as documentary fact",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "language": {
+          "status": "required_open",
+          "who_must_review": "Irish-language reviewer",
+          "what_must_be_reviewed": "Place forms; Munster-register claims only after named language source",
+          "named_reviewer": null,
+          "review_record": null
+        }
+      }
+    },
+    {
+      "county": "tyrone",
+      "irish_english_label": "Tír Eoghain / Tyrone",
+      "story_id": "d32.tyrone.hugh-oneill-dungannon",
+      "slate_anchor": "Hugh O'Neill at Dungannon; late sixteenth century",
+      "sensitivity_summary": "Competing descriptions of one leader; must connect to Donegal flight without repeating departure scene.",
+      "volume_gate": "blocked",
+      "approval_claim": "none",
+      "lanes": {
+        "history": {
+          "status": "required_open",
+          "who_must_review": "Nine Years' War / O'Neill specialist",
+          "what_must_be_reviewed": "Annal or state-paper contrast; power at Dungannon before flight; no single-voice biography",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "community": {
+          "status": "required_open",
+          "who_must_review": "Tyrone / Ulster reader",
+          "what_must_be_reviewed": "Leader framing, sequential Donegal link, avoidance of mythic heroisation",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "rights": {
+          "status": "required_open",
+          "who_must_review": "Rights owner / managing editor",
+          "what_must_be_reviewed": "Edition rights for competing excerpts; historical-name pedagogy lines are not attestations",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "language": {
+          "status": "required_open",
+          "who_must_review": "Irish-language reviewer",
+          "what_must_be_reviewed": "Dungannon / person forms; historical_roleplay and source_ambiguity remain until review",
+          "named_reviewer": null,
+          "review_record": null
+        }
+      }
+    },
+    {
+      "county": "wexford",
+      "irish_english_label": "Loch Garman / Wexford",
+      "story_id": "d32.wexford.bagenal-harvey-1798",
+      "slate_anchor": "Bagenal Harvey and the 1798 Rebellion",
+      "sensitivity_summary": "Uprising, reprisal, and aftermath; multi-community civilian experience mandatory.",
+      "volume_gate": "blocked",
+      "approval_claim": "none",
+      "lanes": {
+        "history": {
+          "status": "required_open",
+          "who_must_review": "1798 specialist historian",
+          "what_must_be_reviewed": "Short balanced primary accounts from more than one community; complexity over puzzle/game framing",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "community": {
+          "status": "required_open",
+          "who_must_review": "Multi-community Wexford readers",
+          "what_must_be_reviewed": "Meeting, fear, choose, remember language; civilian aftermath; no endorsement claimed",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "rights": {
+          "status": "required_open",
+          "who_must_review": "Rights owner / managing editor",
+          "what_must_be_reviewed": "Permissions for 1798 sources and any adaptation before quotation",
+          "named_reviewer": null,
+          "review_record": null
+        },
+        "language": {
+          "status": "required_open",
+          "who_must_review": "Irish-language reviewer",
+          "what_must_be_reviewed": "Invented pedagogical frames; no invented rebel speech as attestation",
+          "named_reviewer": null,
+          "review_record": null
+        }
+      }
+    }
+  ]
+}
