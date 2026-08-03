@@ -41,7 +41,7 @@ struct SpeechRuntimeIndex {
         exclusions: []
     )
 
-    func isLearnerUsable(_ line: SpeechRuntimeLine) -> Bool {
+    fileprivate func isLearnerUsable(_ line: SpeechRuntimeLine) -> Bool {
         ["generated_unreviewed", "spot_flagged", "qa_passed"].contains(line.qaState)
             && !exclusions.contains(line.slug)
     }

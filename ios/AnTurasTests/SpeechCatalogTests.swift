@@ -20,7 +20,7 @@ final class SpeechCatalogTests: XCTestCase {
         let lines = try XCTUnwrap(object["lines"] as? [[String: Any]])
         let exclusions = try XCTUnwrap(object["dynamic_exclusions"] as? [[String: Any]])
         let excludedSlugs = Set(exclusions.compactMap { $0["slug"] as? String })
-        let failedSlugs = Set(lines.compactMap { line in
+        let failedSlugs = Set(lines.compactMap { line -> String? in
             guard line["qa_state"] as? String == "failed" else { return nil }
             return line["slug"] as? String
         })
