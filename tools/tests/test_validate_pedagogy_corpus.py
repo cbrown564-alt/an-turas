@@ -5,6 +5,7 @@ from __future__ import annotations
 import copy
 import json
 import sys
+import unicodedata
 import unittest
 from pathlib import Path
 
@@ -15,16 +16,29 @@ sys.path.insert(0, str(REPO_ROOT / "tools"))
 import validate_pedagogy_corpus as validator  # noqa: E402
 
 
+def _nfc(text: str) -> str:
+    return " ".join(unicodedata.normalize("NFC", text).strip().split())
+
+
 class PedagogyCorpusTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.payload = validator.load_payload(REPO_ROOT)
         cls.errors = validator.validate_payload(cls.payload, REPO_ROOT)
         cls.summary = validator.summarize(cls.payload)
+        cls.unique_texts = {
+            _nfc(example)
+            for lesson in cls.payload["lessons"]
+            for line in lesson["lines"]
+            for example in line["irish_examples"]
+        }
 
     def test_corpus_counts_are_explicit(self) -> None:
-        self.assertEqual(self.summary["lessons"], 9)
-        self.assertEqual(self.summary["lines"], 29)
+        self.assertEqual(self.summary["lessons"], 21)
+        self.assertEqual(self.summary["lines"], 203)
+        self.assertGreaterEqual(len(self.unique_texts), 50)
+        self.assertLessEqual(len(self.unique_texts), 200)
+        self.assertEqual(len(self.unique_texts), 148)
 
     def test_narrative_tranche_reuses_exact_repository_examples(self) -> None:
         lessons = {lesson["id"]: lesson for lesson in self.payload["lessons"]}
@@ -85,6 +99,59 @@ class PedagogyCorpusTests(unittest.TestCase):
                 self.assertTrue(line["source_refs"])
                 self.assertTrue(all(ref["path"] for ref in line["source_refs"]))
 
+    def test_a4_lessons_bind_to_existing_family_members(self) -> None:
+        lessons = {lesson["id"]: lesson for lesson in self.payload["lessons"]}
+        required = {
+            "grammar.historical-name",
+            "grammar.place-name",
+            "grammar.baile-identity",
+            "grammar.cathair-identity",
+            "grammar.caislean-identity",
+            "grammar.given-name",
+            "grammar.surname-name",
+            "grammar.presence-question",
+            "grammar.place-noun-anseo",
+            "pronunciation.feach-frame",
+            "grammar.name-relation",
+            "grammar.story-place-frames",
+            "spelling.fada-place-person",
+            "pronunciation.sean-name-shell",
+        }
+        self.assertTrue(required.issubset(set(lessons)))
+
+        for lesson_id in required:
+            for line in lessons[lesson_id]["lines"]:
+                self.assertTrue(line["source_refs"])
+                for ref in line["source_refs"]:
+                    self.assertTrue(
+                        ref["path"].endswith(".v2.json"),
+                        msg=f"{line['id']} should bind a v2 family path",
+                    )
+                    self.assertEqual(ref["supports"], "repository_text")
+                    self.assertIn("members[id=", ref["field"])
+                    self.assertTrue(ref["field"].endswith(".irish.text"))
+
+        historical = {
+            example
+            for line in lessons["grammar.historical-name"]["lines"]
+            for example in line["irish_examples"]
+        }
+        self.assertIn("Is ainm stairiúil é Gráinne Ní Mháille.", historical)
+        self.assertIn("An é Sihtric an t-ainm stairiúil?", historical)
+
+        castle = {
+            example
+            for line in lessons["grammar.caislean-identity"]["lines"]
+            for example in line["irish_examples"]
+        }
+        self.assertEqual(
+            castle,
+            {
+                "Is caisleán é Caisleán Charraig an Logha.",
+                "An caisleán é Caisleán Charraig an Logha?",
+            },
+        )
+
     def test_current_corpus_is_valid_and_release_blocked(self) -> None:
         self.assertEqual(self.errors, [])
         for lesson in self.payload["lessons"]:
@@ -138,10 +205,10 @@ class PedagogyCorpusTests(unittest.TestCase):
 
     def test_report_keeps_review_and_release_counts_visible(self) -> None:
         report = validator.render_report(self.summary, self.errors)
-        self.assertIn("Lessons: **9**", report)
-        self.assertIn("Explanation lines: **29**", report)
+        self.assertIn("Lessons: **21**", report)
+        self.assertIn("Explanation lines: **203**", report)
         self.assertIn("pedagogy:pending", report)
-        self.assertIn("'blocked': 29", report)
+        self.assertIn("'blocked': 203", report)
         self.assertIn("does not grant teaching", report)
 
 

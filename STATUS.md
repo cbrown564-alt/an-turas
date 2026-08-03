@@ -82,8 +82,9 @@ Canonical records:
 
 ### Pedagogy
 
-- The authoring-only pedagogy sidecar contains **9** narrative lessons and **29**
-  English-framed lines around exact repository Irish examples.
+- The authoring-only pedagogy sidecar contains **21** lessons and **203**
+  English-framed lines around **148** unique exact repository Irish examples
+  (A4 yield band 50–200).
 - Source references, invented pedagogical framing, risk flags, and separate pedagogy,
   Irish-language, pronunciation, and learner-release states are recorded.
 - All review gates remain open. The sidecar is implemented and mechanically verified,
@@ -256,7 +257,7 @@ story relevance, reuse, pedagogical purpose, risk, and mechanical audio quality.
 | --- | --- | --- |
 | Irish authoring | Provisional at scale | Selected records corrected and approved for their stated intent |
 | Audio QA | Mechanically checked, human gate open | Qualified Irish speaker approves the selected learner-facing subset and recorded scope |
-| Pedagogy | Nine-lesson draft only | Pedagogue and Irish-language review the exact sidecar revision |
+| Pedagogy | 21-lesson draft / 148 unique texts; review open | Pedagogue and Irish-language review the exact sidecar revision |
 | ABAIR comparison | Adapter implemented, no references loaded | Lawful local references with permission, provenance, and checksums |
 | Mayo production | Nine-chapter draft, representative runtime proof | History, pedagogy, language, audio, rights, accessibility, and device gates close |
 | Offaly | Review draft | Medieval history and art/inscription review plus shared launch gates |
