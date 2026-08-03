@@ -1,7 +1,7 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-02.*
+stories and places of Ireland. Updated 2026-08-03.*
 
 ## Current outcome
 
@@ -24,9 +24,14 @@ learning outcomes or promoted for public release.
 
 ### Irish corpus and audio
 
-- **640** phrase families, **1,461** authored members, **1,459** complete members, and
-  **689** unique normalized texts across all **32** counties. The two incomplete members
-  are the deliberately retired Corca Dhuibhne lines described below.
+- **640** phrase families, with an A5 evidence-led append of **520** net-new complete
+  members (**520** unique normalized texts) across Cork, Galway, Kerry, Longford, Louth,
+  Roscommon, Tipperary, and Waterford (`queue-02-evidence-led-next`). Capture remains
+  planned only; no provider run. Source register:
+  [`content/audio/authoring/d32-queue-02-evidence-source-register.json`](content/audio/authoring/d32-queue-02-evidence-source-register.json).
+- Pre-A5 baseline was **1,461** authored members / **689** unique normalized texts across
+  all **32** counties. The two incomplete members are the deliberately retired Corca
+  Dhuibhne lines described below.
 - **692** registered audio lines: **682** approved, **684** provider successes, **2**
   retired semantic quarantines, **9** cancelled, **0** failed, and **0** actively
   claimed. There is no remaining resumable or manual-recovery work.
