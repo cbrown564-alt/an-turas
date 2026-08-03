@@ -28,12 +28,13 @@ from tools.structured_audio_authoring import (
 
 ROOT = Path(__file__).resolve().parents[1]
 SUBJECTS_PATH = ROOT / "ios/AnTuras/Resources/personal-atlas-subjects.json"
+A1_BULK_SUBJECTS_PATH = ROOT / "content/personal-atlas/a1-bulk-subjects.json"
 FOUNDATION_PATH = ROOT / "ios/AnTuras/Resources/personal-atlas-foundation.sqlite"
 USES_PATH = ROOT / "content/audio/authoring/d32-county-harvest-uses.json"
 LOGAINM_SOURCE_INDEX_PATH = ROOT / "content/personal-atlas/logainm-v2-source-index.json"
 FAMILY_GLOB = "content/*/phrase-families/authoring-v2/d32.*.v2.json"
 LEGACY_NAME_FAMILY_GLOB = "content/{county}/phrase-families/authoring-v2/ainm.name-noun.v2.json"
-CREATED_AT = "2026-08-02"
+CREATED_AT = "2026-08-03"
 
 
 # A small, appendable extension for high-value names and places already present
@@ -203,6 +204,34 @@ def load_json(path: Path) -> dict[str, Any]:
 
 def write_json(path: Path, payload: dict[str, Any]) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def load_a1_bulk_subjects() -> list[dict[str, Any]]:
+    """Load Track A A1 authoring-only subjects; empty when the bulk file is absent."""
+    if not A1_BULK_SUBJECTS_PATH.exists():
+        return []
+    payload = load_json(A1_BULK_SUBJECTS_PATH)
+    subjects = payload.get("subjects")
+    if not isinstance(subjects, list):
+        return []
+    return [subject for subject in subjects if isinstance(subject, dict) and subject.get("id")]
+
+
+def authoring_subject_list() -> list[dict[str, Any]]:
+    """Pilot pack + story-slate anchors + A1 bulk subjects, deduped by id."""
+    merged: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for subject in [
+        *load_json(SUBJECTS_PATH).get("subjects", []),
+        *STORY_SLATE_SUBJECTS,
+        *load_a1_bulk_subjects(),
+    ]:
+        subject_id = subject.get("id")
+        if not isinstance(subject_id, str) or subject_id in seen:
+            continue
+        seen.add(subject_id)
+        merged.append(subject)
+    return merged
 
 
 def expected_county(subject: dict[str, Any]) -> str | None:
@@ -509,7 +538,8 @@ def make_member(
 
 def main() -> int:
     subjects = load_json(SUBJECTS_PATH)["subjects"]
-    authoring_subjects = [*subjects, *STORY_SLATE_SUBJECTS]
+    a1_bulk_subjects = load_a1_bulk_subjects()
+    authoring_subjects = authoring_subject_list()
     uses = load_json(USES_PATH)
     indexed = family_index()
     name_families = sorted(
@@ -592,6 +622,13 @@ def main() -> int:
         for member in family.get("members", [])
         if isinstance(member, dict) and isinstance(member.get("id"), str)
     }
+    # Legacy ainm.name-noun.v2.json families are outside FAMILY_GLOB but already hold
+    # story-slate Personal Atlas members; include them so regeneration stays idempotent.
+    for legacy_path in sorted(ROOT.glob("content/*/phrase-families/authoring-v2/*.v2.json")):
+        legacy_family = changed.get(legacy_path) or load_json(legacy_path)
+        for member in legacy_family.get("members", []):
+            if isinstance(member, dict) and isinstance(member.get("id"), str):
+                existing_member_ids.add(member["id"])
     existing_exercise_ids = {
         exercise["id"]
         for exercise in uses.get("exercises", [])
@@ -709,10 +746,8 @@ def main() -> int:
                     use=use,
                     logainm=logainm,
                 )
-                if member["id"] in existing_member_ids:
+                if member["id"] in existing_member_ids or exercise_id in existing_exercise_ids:
                     continue
-                if exercise_id in existing_exercise_ids:
-                    raise SystemExit(f"exercise id exists without member: {exercise_id}")
                 changed.setdefault(path, copy.deepcopy(family))["members"].append(member)
                 uses["exercises"].append(exercise)
                 existing_member_ids.add(member["id"])
@@ -732,7 +767,7 @@ def main() -> int:
 
     subject_by_slug = {
         identifier_slug(subject["id"]): subject
-        for subject in subjects
+        for subject in authoring_subjects
         if subject.get("kind") == "place"
     }
     for path, family in indexed.values():
@@ -794,6 +829,9 @@ def main() -> int:
                     if subject["id"] in covered_subjects
                 ),
                 "story_slate_subjects": len(STORY_SLATE_SUBJECTS),
+                "a1_bulk_subjects": len(a1_bulk_subjects),
+                "authoring_subjects_total": len(authoring_subjects),
+                "pilot_subjects": len(subjects),
                 "skipped_subjects": skipped_subjects,
                 "logainm_source_snapshot": "ios/AnTuras/Resources/personal-atlas-foundation.sqlite",
             },

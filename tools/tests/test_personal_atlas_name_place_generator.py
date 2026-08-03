@@ -64,6 +64,33 @@ class PersonalAtlasNamePlaceGeneratorTests(unittest.TestCase):
         finally:
             connection.close()
 
+    def test_a1_bulk_subjects_are_deduped_and_family_routable(self):
+        bulk = generator.load_a1_bulk_subjects()
+        self.assertGreaterEqual(len(bulk), 100)
+        ids = [subject["id"] for subject in bulk]
+        self.assertEqual(len(ids), len(set(ids)))
+
+        authoring = generator.authoring_subject_list()
+        authoring_ids = [subject["id"] for subject in authoring]
+        self.assertEqual(len(authoring_ids), len(set(authoring_ids)))
+        self.assertGreaterEqual(len(authoring), 80 + len(generator.STORY_SLATE_SUBJECTS))
+
+        indexed = generator.family_index()
+        sample = bulk[:20] + bulk[-20:]
+        for subject in sample:
+            family = generator.subject_family(indexed, subject)
+            if subject.get("kind") == "name":
+                self.assertIsNotNone(family, subject["id"])
+            else:
+                self.assertIsNotNone(family, subject["id"])
+                self.assertEqual(family["county"], generator.expected_county(subject))
+
+    def test_a1_bulk_subjects_leave_story_slate_ids_untouched(self):
+        bulk_ids = {subject["id"] for subject in generator.load_a1_bulk_subjects()}
+        story_ids = {subject["id"] for subject in generator.STORY_SLATE_SUBJECTS}
+        self.assertFalse(bulk_ids & story_ids)
+        self.assertFalse(any(subject_id.startswith("historical.name.") for subject_id in bulk_ids))
+
 
 if __name__ == "__main__":
     unittest.main()
