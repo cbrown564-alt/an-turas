@@ -288,6 +288,259 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.antrim.06.cosan.path.packet-place",
+      "family_id": "d32.antrim.06.cosan.path",
+      "target": {
+        "lexeme_id": "lex.cosan",
+        "citation_form": "cosán",
+        "sense_id": "antrim.cosan.path",
+        "part_of_speech": "noun",
+        "target_form": "cosán",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "Tá cosán i Aontroim.",
+        "normalized_text": "Tá cosán i Aontroim.",
+        "inventory_slug": "taa-cosaan-i-aontroim",
+        "text_sha256": "94a14a15c21b2fc43affe307fc3bce81a8f4afc0286c2cc21f859e2bcb155b14"
+      },
+      "english": {
+        "intent": "There is path in Antrim.",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.06.cosan"
+        ],
+        "place": {
+          "id": "d32.antrim.place",
+          "label": "Aontroim / Antrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse the atlas headword inside the antrim source-packet county place frame.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill.packet-place.06.cosan.path",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Reuse the atlas headword inside the antrim source-packet county place frame."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill.packet-place.06.cosan.path",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.antrim.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.antrim.06.cosan.path.packet-ask",
+      "family_id": "d32.antrim.06.cosan.path",
+      "target": {
+        "lexeme_id": "lex.cosan",
+        "citation_form": "cosán",
+        "sense_id": "antrim.cosan.path",
+        "part_of_speech": "noun",
+        "target_form": "cosán",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "An bhfuil cosán i Aontroim?",
+        "normalized_text": "An bhfuil cosán i Aontroim?",
+        "inventory_slug": "an-bhfuil-cosaan-i-aontroim",
+        "text_sha256": "e084c5060dd24424d62139f9b4ce160804df5ded6fb7c9862beb47546fa5e401"
+      },
+      "english": {
+        "intent": "Is there path in Antrim?",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.06.cosan"
+        ],
+        "place": {
+          "id": "d32.antrim.place",
+          "label": "Aontroim / Antrim"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Ask a short county-bound question supported by the antrim source-packet stub.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill.packet-ask.06.cosan.path",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Ask a short county-bound question supported by the antrim source-packet stub."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill.packet-ask.06.cosan.path",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.antrim.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

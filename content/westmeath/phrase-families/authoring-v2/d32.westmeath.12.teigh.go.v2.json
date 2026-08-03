@@ -288,6 +288,259 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.westmeath.12.teigh.go.packet-place",
+      "family_id": "d32.westmeath.12.teigh.go",
+      "target": {
+        "lexeme_id": "lex.teigh",
+        "citation_form": "téigh",
+        "sense_id": "westmeath.teigh.go",
+        "part_of_speech": "verb",
+        "target_form": "téigh",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "Tá téigh i an Iarmhí.",
+        "normalized_text": "Tá téigh i an Iarmhí.",
+        "inventory_slug": "taa-teeigh-i-an-iarmhii",
+        "text_sha256": "bcd58f874bf52492ebf2f68de621c29bc36949514e7d19d6f125c556324b6ba4"
+      },
+      "english": {
+        "intent": "There is go in Westmeath.",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "westmeath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore"
+        },
+        "atlas_placement_ids": [
+          "atlas.westmeath.12.teigh"
+        ],
+        "place": {
+          "id": "d32.westmeath.place",
+          "label": "an Iarmhí / Westmeath"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse the atlas headword inside the westmeath source-packet county place frame.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore.packet-place.12.teigh.go",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Reuse the atlas headword inside the westmeath source-packet county place frame."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.westmeath.st-fechin-fore.packet-place.12.teigh.go",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.westmeath.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.westmeath.12.teigh.go.packet-ask",
+      "family_id": "d32.westmeath.12.teigh.go",
+      "target": {
+        "lexeme_id": "lex.teigh",
+        "citation_form": "téigh",
+        "sense_id": "westmeath.teigh.go",
+        "part_of_speech": "verb",
+        "target_form": "téigh",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "An bhfuil téigh i an Iarmhí?",
+        "normalized_text": "An bhfuil téigh i an Iarmhí?",
+        "inventory_slug": "an-bhfuil-teeigh-i-an-iarmhii",
+        "text_sha256": "95e461a1b3a5377cc55bc9ecc38aba9567a98c546d828ec0f4703c0796a548ed"
+      },
+      "english": {
+        "intent": "Is there go in Westmeath?",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "westmeath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore"
+        },
+        "atlas_placement_ids": [
+          "atlas.westmeath.12.teigh"
+        ],
+        "place": {
+          "id": "d32.westmeath.place",
+          "label": "an Iarmhí / Westmeath"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Ask a short county-bound question supported by the westmeath source-packet stub.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore.packet-ask.12.teigh.go",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Ask a short county-bound question supported by the westmeath source-packet stub."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.westmeath.st-fechin-fore.packet-ask.12.teigh.go",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.westmeath.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

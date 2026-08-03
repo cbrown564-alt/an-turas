@@ -288,6 +288,258 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.kildare.07.teach.house.packet-place",
+      "family_id": "d32.kildare.07.teach.house",
+      "target": {
+        "lexeme_id": "lex.teach",
+        "citation_form": "teach",
+        "sense_id": "kildare.teach.house",
+        "part_of_speech": "noun",
+        "target_form": "teach",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "Tá teach i Cill Dara.",
+        "normalized_text": "Tá teach i Cill Dara.",
+        "inventory_slug": "taa-teach-i-cill-dara",
+        "text_sha256": "c11e3cc8c2601076f09c90d8f27110e7983d5bbb2865258a42a0aea165f3b55d"
+      },
+      "english": {
+        "intent": "There is house in Kildare.",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "kildare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire"
+        },
+        "atlas_placement_ids": [
+          "atlas.kildare.07.teach"
+        ],
+        "place": {
+          "id": "d32.kildare.place",
+          "label": "Cill Dara / Kildare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse the atlas headword inside the kildare source-packet county place frame.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire.packet-place.07.teach.house",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Reuse the atlas headword inside the kildare source-packet county place frame."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kildare.brigid-fire.packet-place.07.teach.house",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.kildare.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.kildare.07.teach.house.packet-ask",
+      "family_id": "d32.kildare.07.teach.house",
+      "target": {
+        "lexeme_id": "lex.teach",
+        "citation_form": "teach",
+        "sense_id": "kildare.teach.house",
+        "part_of_speech": "noun",
+        "target_form": "teach",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "An bhfuil teach i Cill Dara?",
+        "normalized_text": "An bhfuil teach i Cill Dara?",
+        "inventory_slug": "an-bhfuil-teach-i-cill-dara",
+        "text_sha256": "72c050264f5f084d209918cbfc10fd4faabb0e2c053fa2ee0c6cc8a14f42dfd1"
+      },
+      "english": {
+        "intent": "Is there house in Kildare?",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "kildare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire"
+        },
+        "atlas_placement_ids": [
+          "atlas.kildare.07.teach"
+        ],
+        "place": {
+          "id": "d32.kildare.place",
+          "label": "Cill Dara / Kildare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Ask a short county-bound question supported by the kildare source-packet stub.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.kildare.brigid-fire.packet-ask.07.teach.house",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Ask a short county-bound question supported by the kildare source-packet stub."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.kildare.brigid-fire.packet-ask.07.teach.house",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.kildare.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "initial_mutation",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

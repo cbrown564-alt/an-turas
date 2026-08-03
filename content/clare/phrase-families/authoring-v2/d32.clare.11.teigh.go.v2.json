@@ -288,6 +288,259 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.clare.11.teigh.go.packet-place",
+      "family_id": "d32.clare.11.teigh.go",
+      "target": {
+        "lexeme_id": "lex.teigh",
+        "citation_form": "téigh",
+        "sense_id": "clare.teigh.go",
+        "part_of_speech": "verb",
+        "target_form": "téigh",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "Tá téigh i an Clár.",
+        "normalized_text": "Tá téigh i an Clár.",
+        "inventory_slug": "taa-teeigh-i-an-claar",
+        "text_sha256": "8bd6389d30ee3d158865b1f83ef761bea89b032e43e46c2f324df5d242abbe33"
+      },
+      "english": {
+        "intent": "There is go in Clare.",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "clare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora"
+        },
+        "atlas_placement_ids": [
+          "atlas.clare.11.teigh"
+        ],
+        "place": {
+          "id": "d32.clare.place",
+          "label": "an Clár / Clare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse the atlas headword inside the clare source-packet county place frame.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora.packet-place.11.teigh.go",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Reuse the atlas headword inside the clare source-packet county place frame."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.clare.brian-boru-kincora.packet-place.11.teigh.go",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.clare.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.clare.11.teigh.go.packet-ask",
+      "family_id": "d32.clare.11.teigh.go",
+      "target": {
+        "lexeme_id": "lex.teigh",
+        "citation_form": "téigh",
+        "sense_id": "clare.teigh.go",
+        "part_of_speech": "verb",
+        "target_form": "téigh",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "An bhfuil téigh i an Clár?",
+        "normalized_text": "An bhfuil téigh i an Clár?",
+        "inventory_slug": "an-bhfuil-teeigh-i-an-claar",
+        "text_sha256": "5cb781576d4b4af8fdf48c01b5a427ff15e714c113d574d3fa8dbee1744df4a4"
+      },
+      "english": {
+        "intent": "Is there go in Clare?",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "clare",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora"
+        },
+        "atlas_placement_ids": [
+          "atlas.clare.11.teigh"
+        ],
+        "place": {
+          "id": "d32.clare.place",
+          "label": "an Clár / Clare"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Ask a short county-bound question supported by the clare source-packet stub.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.clare.brian-boru-kincora.packet-ask.11.teigh.go",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Ask a short county-bound question supported by the clare source-packet stub."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.clare.brian-boru-kincora.packet-ask.11.teigh.go",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.clare.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "initial_mutation",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

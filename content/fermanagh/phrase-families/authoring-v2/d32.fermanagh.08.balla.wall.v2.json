@@ -288,6 +288,258 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.fermanagh.08.balla.wall.packet-place",
+      "family_id": "d32.fermanagh.08.balla.wall",
+      "target": {
+        "lexeme_id": "lex.balla",
+        "citation_form": "balla",
+        "sense_id": "fermanagh.balla.wall",
+        "part_of_speech": "noun",
+        "target_form": "balla",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "Tá balla i Fear Manach.",
+        "normalized_text": "Tá balla i Fear Manach.",
+        "inventory_slug": "taa-balla-i-fear-manach",
+        "text_sha256": "0ed523c7dad00fef6c0d78ed0dc4c2ea59667db0c0724d9117f1c315a0751853"
+      },
+      "english": {
+        "intent": "There is wall in Fermanagh.",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "fermanagh",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.fermanagh.enniskillen-castle"
+        },
+        "atlas_placement_ids": [
+          "atlas.fermanagh.08.balla"
+        ],
+        "place": {
+          "id": "d32.fermanagh.place",
+          "label": "Fear Manach / Fermanagh"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Reuse the atlas headword inside the fermanagh source-packet county place frame.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.fermanagh.enniskillen-castle.packet-place.08.balla.wall",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Reuse the atlas headword inside the fermanagh source-packet county place frame."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.fermanagh.enniskillen-castle.packet-place.08.balla.wall",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.fermanagh.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.fermanagh.08.balla.wall.packet-ask",
+      "family_id": "d32.fermanagh.08.balla.wall",
+      "target": {
+        "lexeme_id": "lex.balla",
+        "citation_form": "balla",
+        "sense_id": "fermanagh.balla.wall",
+        "part_of_speech": "noun",
+        "target_form": "balla",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "An bhfuil balla i Fear Manach?",
+        "normalized_text": "An bhfuil balla i Fear Manach?",
+        "inventory_slug": "an-bhfuil-balla-i-fear-manach",
+        "text_sha256": "51048791f5cc3ec5b13e1f0913b0d0a6967ac27cf120c020a2a898cc7188da10"
+      },
+      "english": {
+        "intent": "Is there wall in Fermanagh?",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "fermanagh",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.fermanagh.enniskillen-castle"
+        },
+        "atlas_placement_ids": [
+          "atlas.fermanagh.08.balla"
+        ],
+        "place": {
+          "id": "d32.fermanagh.place",
+          "label": "Fear Manach / Fermanagh"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Ask a short county-bound question supported by the fermanagh source-packet stub.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.fermanagh.enniskillen-castle.packet-ask.08.balla.wall",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Ask a short county-bound question supported by the fermanagh source-packet stub."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.fermanagh.enniskillen-castle.packet-ask.08.balla.wall",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.fermanagh.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "initial_mutation",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

@@ -288,6 +288,258 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.monaghan.02.pairc.field.packet-place",
+      "family_id": "d32.monaghan.02.pairc.field",
+      "target": {
+        "lexeme_id": "lex.pairc",
+        "citation_form": "páirc",
+        "sense_id": "monaghan.pairc.field",
+        "part_of_speech": "noun",
+        "target_form": "páirc",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "Tá páirc i Muineachán.",
+        "normalized_text": "Tá páirc i Muineachán.",
+        "inventory_slug": "taa-paairc-i-muineachaan",
+        "text_sha256": "ae7c6f93437d38dcd54008134b543d56282d698aef153588793119db3c912ef0"
+      },
+      "english": {
+        "intent": "There is field in Monaghan.",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "monaghan",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.monaghan.patrick-kavanagh"
+        },
+        "atlas_placement_ids": [
+          "atlas.monaghan.02.pairc"
+        ],
+        "place": {
+          "id": "d32.monaghan.place",
+          "label": "Muineachán / Monaghan"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Place-bound frame for Monaghan; no literary quotation from the packet-blocked corpus.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.monaghan.patrick-kavanagh.packet-place.02.pairc.field",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Place-bound frame for Monaghan; no literary quotation from the packet-blocked corpus."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.monaghan.patrick-kavanagh.packet-place.02.pairc.field",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.monaghan.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.monaghan.02.pairc.field.packet-remember",
+      "family_id": "d32.monaghan.02.pairc.field",
+      "target": {
+        "lexeme_id": "lex.pairc",
+        "citation_form": "páirc",
+        "sense_id": "monaghan.pairc.field",
+        "part_of_speech": "noun",
+        "target_form": "páirc",
+        "morphology": "atlas citation form; source-packet county place frame"
+      },
+      "irish": {
+        "text": "Cuimhnigh: páirc i Muineachán.",
+        "normalized_text": "Cuimhnigh: páirc i Muineachán.",
+        "inventory_slug": "cuimhnigh-paairc-i-muineachaan",
+        "text_sha256": "c5c4fbaf6c8ae5594d1cca86ffe131c606b56e524c2d41ed43acd5392eb220c4"
+      },
+      "english": {
+        "intent": "Remember: field in Monaghan.",
+        "literal_note": "A6 invented pedagogical line from a queue-03 source-packet stub; not an attested quotation."
+      },
+      "binding": {
+        "county": "monaghan",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.monaghan.patrick-kavanagh"
+        },
+        "atlas_placement_ids": [
+          "atlas.monaghan.02.pairc"
+        ],
+        "place": {
+          "id": "d32.monaghan.place",
+          "label": "Muineachán / Monaghan"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "later_reuse"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Memory vocabulary supported by the Monaghan stub without quoting Kavanagh.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.monaghan.patrick-kavanagh.packet-remember.02.pairc.field",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Memory vocabulary supported by the Monaghan stub without quoting Kavanagh."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministic A6 source-packet expansion from the queue-03 stub, atlas headword, and county place form; not attested text.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.monaghan.patrick-kavanagh.packet-remember.02.pairc.field",
+            "supports": "exercise_context"
+          },
+          {
+            "path": "content/audio/authoring/d32-queue-03-source-packets.json",
+            "record_id": "d32.packet.monaghan.county-form",
+            "supports": "pattern_only"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a6-source-packet",
+          "completed_at": "2026-08-03"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }
