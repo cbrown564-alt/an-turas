@@ -707,6 +707,270 @@
       ]
     },
     {
+      "id": "d32.laois.20.ainm.name.personal-atlas.story-place-dun-masc.context",
+      "family_id": "d32.laois.20.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "laois.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is ainm áite é Dún Másc.",
+        "normalized_text": "Is ainm áite é Dún Másc.",
+        "inventory_slug": "is-ainm-aaite-ee-duun-maasc",
+        "text_sha256": "10c3dcd8752718647fe8d46da79103cbfe3b65cfc8fceb66ed6eebc6cde2a352"
+      },
+      "english": {
+        "intent": "Dún Másc is a place-name.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "laois",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.laois.rock-of-dunamase"
+        },
+        "atlas_placement_ids": [
+          "atlas.laois.20.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.laois",
+          "label": "Laois / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Introduce the Personal Atlas place-name Dún Másc in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-laois-20-ainm-name.story-place-dun-masc.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas place-name Dún Másc in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.laois.rock-of-dunamase",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.1166072",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-laois-20-ainm-name.story-place-dun-masc.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.laois.20.ainm.name.personal-atlas.story-place-dun-masc.dialogue",
+      "family_id": "d32.laois.20.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "laois.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An ainm áite é Dún Másc?",
+        "normalized_text": "An ainm áite é Dún Másc?",
+        "inventory_slug": "an-ainm-aaite-ee-duun-maasc",
+        "text_sha256": "87896a9e245e5e5fab2855e9034fd4531bdcd67c96679715042d3ffe706fcca2"
+      },
+      "english": {
+        "intent": "Is Dún Másc a place-name?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "laois",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.laois.rock-of-dunamase"
+        },
+        "atlas_placement_ids": [
+          "atlas.laois.20.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.laois",
+          "label": "Laois / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Retrieve the Personal Atlas place-name Dún Másc in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-laois-20-ainm-name.story-place-dun-masc.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas place-name Dún Másc in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.laois.rock-of-dunamase",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.1166072",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-laois-20-ainm-name.story-place-dun-masc.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
       "id": "d32.laois.20.ainm.name.recap",
       "family_id": "d32.laois.20.ainm.name",
       "target": {

@@ -159,6 +159,262 @@
       ]
     },
     {
+      "id": "d32.galway.20.ainm.name.personal-atlas.historical-name-seosamh-o-heanai.context",
+      "family_id": "d32.galway.20.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "galway.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is ainm stairiúil é Seosamh Ó hÉanaí.",
+        "normalized_text": "Is ainm stairiúil é Seosamh Ó hÉanaí.",
+        "inventory_slug": "is-ainm-stairiuuil-ee-seosamh-oo-heeanaii",
+        "text_sha256": "0111bf2e81a04d2da7da92201b96882023ec87babc178bc9565b031b0d301482"
+      },
+      "english": {
+        "intent": "Seosamh Ó hÉanaí is a historical name.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "galway",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna"
+        },
+        "atlas_placement_ids": [
+          "atlas.galway.20.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.galway",
+          "label": "Galway / present-day Personal Atlas context"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional historical-name context",
+        "register": "neutral historical-bounded frame",
+        "purpose": "Introduce the Personal Atlas given or family name Seosamh Ó hÉanaí in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-galway-20-ainm-name.historical-name-seosamh-o-heanai.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas given or family name Seosamh Ó hÉanaí in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.galway.joe-heaney-carna",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-galway-20-ainm-name.historical-name-seosamh-o-heanai.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.galway.20.ainm.name.personal-atlas.historical-name-seosamh-o-heanai.dialogue",
+      "family_id": "d32.galway.20.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "galway.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An é Seosamh Ó hÉanaí an t-ainm stairiúil?",
+        "normalized_text": "An é Seosamh Ó hÉanaí an t-ainm stairiúil?",
+        "inventory_slug": "an-ee-seosamh-oo-heeanaii-an-t-ainm-stairiuuil",
+        "text_sha256": "e9f361bb7e05836c3dfb2c2abaaf3addb7a857fbefb78e73aeec298269599bdb"
+      },
+      "english": {
+        "intent": "Is Seosamh Ó hÉanaí the historical name?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "galway",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.galway.joe-heaney-carna"
+        },
+        "atlas_placement_ids": [
+          "atlas.galway.20.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.galway",
+          "label": "Galway / present-day Personal Atlas context"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional historical-name context",
+        "register": "neutral historical-bounded frame",
+        "purpose": "Retrieve the Personal Atlas given or family name Seosamh Ó hÉanaí in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-galway-20-ainm-name.historical-name-seosamh-o-heanai.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas given or family name Seosamh Ó hÉanaí in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.galway.joe-heaney-carna",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-galway-20-ainm-name.historical-name-seosamh-o-heanai.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
       "id": "d32.galway.20.ainm.name.personal-atlas.name-given-orla.context",
       "family_id": "d32.galway.20.ainm.name",
       "target": {

@@ -571,6 +571,270 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.westmeath.09.baile.settlement.personal-atlas.story-place-baile-fhobhair.context",
+      "family_id": "d32.westmeath.09.baile.settlement",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "westmeath.baile.settlement",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is baile é Baile Fhobhair.",
+        "normalized_text": "Is baile é Baile Fhobhair.",
+        "inventory_slug": "is-baile-ee-baile-fhobhair",
+        "text_sha256": "6110c6580879972163cccb8eb1b4952721ee7b481724e5bbdf25f49db1752caf"
+      },
+      "english": {
+        "intent": "Baile Fhobhair is a town or settlement.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "westmeath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore"
+        },
+        "atlas_placement_ids": [
+          "atlas.westmeath.09.baile"
+        ],
+        "place": {
+          "id": "personal-atlas.westmeath",
+          "label": "Westmeath / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Introduce the Personal Atlas place-name Baile Fhobhair in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-westmeath-09-baile-settlement.story-place-baile-fhobhair.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas place-name Baile Fhobhair in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.westmeath.st-fechin-fore",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.1413770",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-westmeath-09-baile-settlement.story-place-baile-fhobhair.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.westmeath.09.baile.settlement.personal-atlas.story-place-baile-fhobhair.dialogue",
+      "family_id": "d32.westmeath.09.baile.settlement",
+      "target": {
+        "lexeme_id": "lex.baile",
+        "citation_form": "baile",
+        "sense_id": "westmeath.baile.settlement",
+        "part_of_speech": "noun",
+        "target_form": "baile",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An baile é Baile Fhobhair?",
+        "normalized_text": "An baile é Baile Fhobhair?",
+        "inventory_slug": "an-baile-ee-baile-fhobhair",
+        "text_sha256": "25cb2c9b47e5bf80263e21e4d8f0a724e37c7c0f98ac5aae346bb360e52acb25"
+      },
+      "english": {
+        "intent": "Is Baile Fhobhair a town or settlement?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "westmeath",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.westmeath.st-fechin-fore"
+        },
+        "atlas_placement_ids": [
+          "atlas.westmeath.09.baile"
+        ],
+        "place": {
+          "id": "personal-atlas.westmeath",
+          "label": "Westmeath / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Retrieve the Personal Atlas place-name Baile Fhobhair in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-westmeath-09-baile-settlement.story-place-baile-fhobhair.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas place-name Baile Fhobhair in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.westmeath.st-fechin-fore",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.1413770",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-westmeath-09-baile-settlement.story-place-baile-fhobhair.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

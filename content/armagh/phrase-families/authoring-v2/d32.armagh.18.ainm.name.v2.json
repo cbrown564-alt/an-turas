@@ -289,6 +289,262 @@
       ]
     },
     {
+      "id": "d32.armagh.18.ainm.name.personal-atlas.historical-name-naomh-padraig.context",
+      "family_id": "d32.armagh.18.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "armagh.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is ainm stairiúil é Naomh Pádraig.",
+        "normalized_text": "Is ainm stairiúil é Naomh Pádraig.",
+        "inventory_slug": "is-ainm-stairiuuil-ee-naomh-paadraig",
+        "text_sha256": "910473ad291d9baed643cafd17befe8d7fccb381e4d1c8e62fb82ecbb42d3871"
+      },
+      "english": {
+        "intent": "Naomh Pádraig is a historical name.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "armagh",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh"
+        },
+        "atlas_placement_ids": [
+          "atlas.armagh.18.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.armagh",
+          "label": "Armagh / present-day Personal Atlas context"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional historical-name context",
+        "register": "neutral historical-bounded frame",
+        "purpose": "Introduce the Personal Atlas given or family name Naomh Pádraig in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-armagh-18-ainm-name.historical-name-naomh-padraig.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas given or family name Naomh Pádraig in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.armagh.book-of-armagh",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-armagh-18-ainm-name.historical-name-naomh-padraig.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.armagh.18.ainm.name.personal-atlas.historical-name-naomh-padraig.dialogue",
+      "family_id": "d32.armagh.18.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "armagh.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An é Naomh Pádraig an t-ainm stairiúil?",
+        "normalized_text": "An é Naomh Pádraig an t-ainm stairiúil?",
+        "inventory_slug": "an-ee-naomh-paadraig-an-t-ainm-stairiuuil",
+        "text_sha256": "e717d55814012805998d395c5fceccd8249740d9a8754cbc1633ade7931dc3e8"
+      },
+      "english": {
+        "intent": "Is Naomh Pádraig the historical name?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "armagh",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.armagh.book-of-armagh"
+        },
+        "atlas_placement_ids": [
+          "atlas.armagh.18.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.armagh",
+          "label": "Armagh / present-day Personal Atlas context"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional historical-name context",
+        "register": "neutral historical-bounded frame",
+        "purpose": "Retrieve the Personal Atlas given or family name Naomh Pádraig in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-armagh-18-ainm-name.historical-name-naomh-padraig.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas given or family name Naomh Pádraig in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.armagh.book-of-armagh",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-armagh-18-ainm-name.historical-name-naomh-padraig.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
       "id": "d32.armagh.18.ainm.name.personal-atlas.name-given-aoife.context",
       "family_id": "d32.armagh.18.ainm.name",
       "target": {

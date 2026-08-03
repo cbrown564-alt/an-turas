@@ -159,6 +159,262 @@
       ]
     },
     {
+      "id": "d32.antrim.19.ainm.name.personal-atlas.historical-name-fionn-mac-cumhaill.context",
+      "family_id": "d32.antrim.19.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "antrim.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is ainm stairiúil é Fionn mac Cumhaill.",
+        "normalized_text": "Is ainm stairiúil é Fionn mac Cumhaill.",
+        "inventory_slug": "is-ainm-stairiuuil-ee-fionn-mac-cumhaill",
+        "text_sha256": "75d8cbc428fb760a748527dbf3dd2f0aedda065cbeab2858955874e52618e2e8"
+      },
+      "english": {
+        "intent": "Fionn mac Cumhaill is a historical name.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.19.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.antrim",
+          "label": "Antrim / present-day Personal Atlas context"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional historical-name context",
+        "register": "neutral historical-bounded frame",
+        "purpose": "Introduce the Personal Atlas given or family name Fionn mac Cumhaill in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-antrim-19-ainm-name.historical-name-fionn-mac-cumhaill.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas given or family name Fionn mac Cumhaill in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-antrim-19-ainm-name.historical-name-fionn-mac-cumhaill.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.antrim.19.ainm.name.personal-atlas.historical-name-fionn-mac-cumhaill.dialogue",
+      "family_id": "d32.antrim.19.ainm.name",
+      "target": {
+        "lexeme_id": "lex.ainm",
+        "citation_form": "ainm",
+        "sense_id": "antrim.ainm.name",
+        "part_of_speech": "noun",
+        "target_form": "ainm",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An é Fionn mac Cumhaill an t-ainm stairiúil?",
+        "normalized_text": "An é Fionn mac Cumhaill an t-ainm stairiúil?",
+        "inventory_slug": "an-ee-fionn-mac-cumhaill-an-t-ainm-stairiuuil",
+        "text_sha256": "410e9f2201e5d8f36052e2c4473d5f6c11c180c13a297c86098347f073a04b94"
+      },
+      "english": {
+        "intent": "Is Fionn mac Cumhaill the historical name?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "antrim",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.antrim.fionn-mac-cumhaill"
+        },
+        "atlas_placement_ids": [
+          "atlas.antrim.19.ainm"
+        ],
+        "place": {
+          "id": "personal-atlas.antrim",
+          "label": "Antrim / present-day Personal Atlas context"
+        },
+        "setting": "historical_bounded",
+        "learner_role": "self_observer"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional historical-name context",
+        "register": "neutral historical-bounded frame",
+        "purpose": "Retrieve the Personal Atlas given or family name Fionn mac Cumhaill in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-antrim-19-ainm-name.historical-name-fionn-mac-cumhaill.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas given or family name Fionn mac Cumhaill in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.antrim.fionn-mac-cumhaill",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-antrim-19-ainm-name.historical-name-fionn-mac-cumhaill.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "historical_roleplay",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
       "id": "d32.antrim.19.ainm.name.personal-atlas.name-given-grainne.context",
       "family_id": "d32.antrim.19.ainm.name",
       "target": {

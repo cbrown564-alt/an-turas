@@ -159,6 +159,270 @@
       ]
     },
     {
+      "id": "d32.down.06.ait.place.personal-atlas.story-place-sabhall.context",
+      "family_id": "d32.down.06.ait.place",
+      "target": {
+        "lexeme_id": "lex.ait",
+        "citation_form": "áit",
+        "sense_id": "down.ait.place",
+        "part_of_speech": "noun",
+        "target_form": "áit",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "Is áit í Sabhall.",
+        "normalized_text": "Is áit í Sabhall.",
+        "inventory_slug": "is-aait-ii-sabhall",
+        "text_sha256": "2b9dba34c944ec611acbcd1c6d34d8ccace7b6a073bac7e8338495066c155176"
+      },
+      "english": {
+        "intent": "Sabhall is a place.",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "down",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.down.patrick-saul"
+        },
+        "atlas_placement_ids": [
+          "atlas.down.06.ait"
+        ],
+        "place": {
+          "id": "personal-atlas.down",
+          "label": "Down / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "introduction"
+        ],
+        "roles": [
+          "context_introduction"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Introduce the Personal Atlas place-name Sabhall in a present-day county context.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-down-06-ait-place.story-place-sabhall.context",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Introduce the Personal Atlas place-name Sabhall in a present-day county context."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.down.patrick-saul",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.1166648",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-down-06-ait-place.story-place-sabhall.context",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.down.06.ait.place.personal-atlas.story-place-sabhall.dialogue",
+      "family_id": "d32.down.06.ait.place",
+      "target": {
+        "lexeme_id": "lex.ait",
+        "citation_form": "áit",
+        "sense_id": "down.ait.place",
+        "part_of_speech": "noun",
+        "target_form": "áit",
+        "morphology": "atlas citation form; Personal Atlas context; provisional surrounding frame"
+      },
+      "irish": {
+        "text": "An áit í Sabhall?",
+        "normalized_text": "An áit í Sabhall?",
+        "inventory_slug": "an-aait-ii-sabhall",
+        "text_sha256": "f872913a47039ab7c3e64d3609beaa4d03929ae7c75074e615a10ea62a5ace88"
+      },
+      "english": {
+        "intent": "Is Sabhall a place?",
+        "literal_note": "Invented pedagogical frame around a Personal Atlas subject; not an attested quotation or historical claim."
+      },
+      "binding": {
+        "county": "down",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.down.patrick-saul"
+        },
+        "atlas_placement_ids": [
+          "atlas.down.06.ait"
+        ],
+        "place": {
+          "id": "personal-atlas.down",
+          "label": "Down / present-day Personal Atlas context"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "retrieval"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional name/place context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Retrieve the Personal Atlas place-name Sabhall in a short dialogue.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "personal-atlas.d32-down-06-ait-place.story-place-sabhall.dialogue",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Retrieve the Personal Atlas place-name Sabhall in a short dialogue."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "Deterministically composed around a county/story subject and the current bundled Logainm foundation snapshot where a matching row exists; the sentence is not attested and makes no historical claim.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.down.patrick-saul",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/personal-atlas/logainm-v2-source-index.json",
+            "record_id": "logainm.1166648",
+            "supports": "pattern_only"
+          },
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "personal-atlas.d32-down-06-ait-place.story-place-sabhall.dialogue",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.personal-atlas-name-place-authoring",
+          "completed_at": "2026-08-02"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "planned",
+          "requested_by": null,
+          "requested_at": null,
+          "authorization": null,
+          "batch_line_ids": []
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated",
+            "source_ambiguity"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
       "id": "d32.down.06.ait.place.recap",
       "family_id": "d32.down.06.ait.place",
       "target": {
