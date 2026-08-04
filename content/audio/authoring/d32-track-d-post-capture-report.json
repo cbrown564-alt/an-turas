@@ -1,0 +1,558 @@
+{
+  "contract": "irish_audio_track_d_post_tranche_review",
+  "created_at": "2026-08-04T09:00:00+01:00",
+  "source_revision": "aeae92d",
+  "payload_id": "d32.harvest.track-b.2026-08-03",
+  "scope": "Track D mechanical anomaly sampling after Track C capture; not linguistic approval or learner release",
+  "read_only": true,
+  "risk_stratification": {
+    "path": "content/audio/authoring/sampling/d32-risk-stratification-2026-08-04.json",
+    "seed": "d32.audio-risk.v1",
+    "sample_quota_per_stratum": 8,
+    "summary": {
+      "category_counts": {
+        "duplicates": 244,
+        "fadas": 3220,
+        "high_risk": 706,
+        "launch_lines": 6,
+        "mutations": 2601,
+        "names": 3085,
+        "outliers": 598,
+        "phoneme_grapheme": 68,
+        "places": 3527,
+        "provisional_source": 3517,
+        "story_lines": 1695
+      },
+      "duplicate_keys": 244,
+      "family_documents": 714,
+      "member_references": 4316,
+      "sample_count": 86,
+      "unfilled_strata": [
+        "launch_lines"
+      ],
+      "unique_text_voice_keys": 3527
+    }
+  },
+  "technical_audio": {
+    "inspected": 3880,
+    "passed": 3865,
+    "review_required": 15,
+    "quarantined": 0,
+    "decoder_unavailable": false,
+    "quarantine_slugs": [],
+    "review_slugs": [
+      "abair-ee-finsceeal-luu-faoin-anseo",
+      "abair-ee-finsceeal-luu-faoin-tabhair",
+      "abair-ee-finsceeal-ros-comaain-faoin-eeist",
+      "an-baile-ee-duun-moor",
+      "an-bhfuil-see-nua",
+      "an-ee-oo-hanluain-d-ainm-teaghlaigh",
+      "an-ee-oo-nuallaain-d-ainm-teaghlaigh",
+      "corcra-gorm-dearg-buii-dubh-baan",
+      "cuuig",
+      "dearg",
+      "dia-dhuit",
+      "feear",
+      "scriiobh-leeigh-meil-ith-codail",
+      "seo-sceeal-liatroim-taoiseach",
+      "taa-teeigh-i-ceatharlach"
+    ],
+    "reason_counts": {
+      "duration_outlier_high": 6,
+      "level_outlier_high": 4,
+      "level_outlier_low": 6
+    }
+  },
+  "technical_review_required": [
+    {
+      "slug": "abair-ee-finsceeal-luu-faoin-anseo",
+      "file": "abair-ee-finsceeal-luu-faoin-anseo.mp3",
+      "reasons": [
+        "duration_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 4.56,
+        "peak_db": -3.1396,
+        "rms_db": -18.4975,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-anseo-here"
+      ]
+    },
+    {
+      "slug": "abair-ee-finsceeal-luu-faoin-tabhair",
+      "file": "abair-ee-finsceeal-luu-faoin-tabhair.mp3",
+      "reasons": [
+        "duration_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 4.56,
+        "peak_db": -3.0292,
+        "rms_db": -18.4854,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-tabhair-give"
+      ]
+    },
+    {
+      "slug": "abair-ee-finsceeal-ros-comaain-faoin-eeist",
+      "file": "abair-ee-finsceeal-ros-comaain-faoin-eeist.mp3",
+      "reasons": [
+        "duration_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 4.48,
+        "peak_db": -2.0773,
+        "rms_db": -16.4516,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.roscommon.d32-roscommon-medb-rathcroghan.roscommon-eist-listen"
+      ]
+    },
+    {
+      "slug": "an-baile-ee-duun-moor",
+      "file": "an-baile-ee-duun-moor.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.0,
+        "peak_db": -1.5889,
+        "rms_db": -11.8025,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town.part-02"
+      ]
+    },
+    {
+      "slug": "an-bhfuil-see-nua",
+      "file": "an-bhfuil-see-nua.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 1.52,
+        "peak_db": -2.1949,
+        "rms_db": -12.0279,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "inventory:conversation:meath"
+      ]
+    },
+    {
+      "slug": "an-ee-oo-hanluain-d-ainm-teaghlaigh",
+      "file": "an-ee-oo-hanluain-d-ainm-teaghlaigh.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.48,
+        "peak_db": -1.2304,
+        "rms_db": -11.8272,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.limerick.d32-limerick-treaty-of-limerick.limerick-ainm-name"
+      ]
+    },
+    {
+      "slug": "an-ee-oo-nuallaain-d-ainm-teaghlaigh",
+      "file": "an-ee-oo-nuallaain-d-ainm-teaghlaigh.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.48,
+        "peak_db": -0.9367,
+        "rms_db": -11.5385,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.personal-atlas.meath.d32-meath-trim-de-lacy.part-01"
+      ]
+    },
+    {
+      "slug": "corcra-gorm-dearg-buii-dubh-baan",
+      "file": "corcra-gorm-dearg-buii-dubh-baan.mp3",
+      "reasons": [
+        "duration_outlier_high",
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 7.76,
+        "peak_db": -2.6004,
+        "rms_db": -21.2648,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "chapter2.json:speech"
+      ]
+    },
+    {
+      "slug": "cuuig",
+      "file": "cuuig.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.52,
+        "peak_db": -5.9562,
+        "rms_db": -23.0905,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "chapter2.json:listen"
+      ]
+    },
+    {
+      "slug": "dearg",
+      "file": "dearg.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.44,
+        "peak_db": -4.8926,
+        "rms_db": -23.5077,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "chapter2.json:listen"
+      ]
+    },
+    {
+      "slug": "dia-dhuit",
+      "file": "dia-dhuit.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.68,
+        "peak_db": -6.6504,
+        "rms_db": -24.8428,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "chapter1.json:speech"
+      ]
+    },
+    {
+      "slug": "feear",
+      "file": "feear.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.44,
+        "peak_db": -1.616,
+        "rms_db": -23.9648,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "chapter1.json:listen"
+      ]
+    },
+    {
+      "slug": "scriiobh-leeigh-meil-ith-codail",
+      "file": "scriiobh-leeigh-meil-ith-codail.mp3",
+      "reasons": [
+        "duration_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 5.6,
+        "peak_db": -1.3885,
+        "rms_db": -20.5708,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "chapter2.json:speech"
+      ]
+    },
+    {
+      "slug": "seo-sceeal-liatroim-taoiseach",
+      "file": "seo-sceeal-liatroim-taoiseach.mp3",
+      "reasons": [
+        "duration_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 3.12,
+        "peak_db": -2.1245,
+        "rms_db": -18.1658,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-taoiseach-chief"
+      ]
+    },
+    {
+      "slug": "taa-teeigh-i-ceatharlach",
+      "file": "taa-teeigh-i-ceatharlach.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.76,
+        "peak_db": -4.6888,
+        "rms_db": -21.5742,
+        "clipped_sample_count": 0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go"
+      ]
+    }
+  ],
+  "review_queue_audit": {
+    "batch_lines": 3528,
+    "capture_blockers": 17,
+    "findings": 158,
+    "hard_findings": 17,
+    "inventory_entries": 292,
+    "inventory_spot_flagged": 43,
+    "launch_missing_inventory": 2,
+    "launch_rows": 104,
+    "legacy_members": 79,
+    "legacy_pending_generation": 7,
+    "operational_watches": 0,
+    "p0_findings": 18,
+    "pack_audio_rows": 35,
+    "review_before_release": 141,
+    "spot_listen_present": true,
+    "v2_learner_release_eligible": 0,
+    "v2_members": 4316
+  },
+  "reconcile": {
+    "blocking": true,
+    "contract_check": {
+      "valid": true,
+      "error_count": 0,
+      "errors": []
+    },
+    "finding_counts": {
+      "total": 58,
+      "by_severity": {
+        "error": 1,
+        "warning": 57
+      },
+      "by_code": {
+        "archive_snapshot_drift": 4,
+        "artifact_checksum_not_recorded": 13,
+        "artifact_duplicate_normalized_text": 1,
+        "artifact_records_missing_provenance": 10,
+        "artifact_records_missing_stable_id": 1,
+        "audio_technical_review_required": 15,
+        "bundle_lines_outside_inventory": 1,
+        "capture_chronology_unverified": 9,
+        "duplicate_batch_normalized_text_voice": 1,
+        "inventory_bundle_qa_drift": 1,
+        "pedagogy_narration_runtime_drift": 1,
+        "xcode_audio_resource_missing": 1
+      }
+    },
+    "scoreboard": {
+      "registered_lines": {
+        "registered": 3528,
+        "approved": 3516,
+        "claimed": 0,
+        "succeeded": 3518,
+        "retired_quarantined": 2,
+        "failed": 0,
+        "cancelled": 11,
+        "unique_normalized_texts": 3527
+      },
+      "bundled_clips": {
+        "total": 3880,
+        "new_v2": 3518,
+        "legacy": 362,
+        "unattributed": 0,
+        "new_v2_checksum_verified": 3518,
+        "legacy_checksum_verified": 362,
+        "inventory_backed": 292
+      },
+      "checksum_state": {
+        "bundle_manifest_records": 3880,
+        "bundle_files": 3880,
+        "verified": 3880,
+        "unverified_manifest_records": 0,
+        "missing_files": 0,
+        "mismatched_files": 0,
+        "orphan_files": 0,
+        "exact_archive_snapshots": 0
+      },
+      "technical_audio": {
+        "inspected": 3880,
+        "passed": 3865,
+        "review_required": 15,
+        "quarantined": 0,
+        "decoder_unavailable": false,
+        "quarantine_slugs": [],
+        "review_slugs": [
+          "abair-ee-finsceeal-luu-faoin-anseo",
+          "abair-ee-finsceeal-luu-faoin-tabhair",
+          "abair-ee-finsceeal-ros-comaain-faoin-eeist",
+          "an-baile-ee-duun-moor",
+          "an-bhfuil-see-nua",
+          "an-ee-oo-hanluain-d-ainm-teaghlaigh",
+          "an-ee-oo-nuallaain-d-ainm-teaghlaigh",
+          "corcra-gorm-dearg-buii-dubh-baan",
+          "cuuig",
+          "dearg",
+          "dia-dhuit",
+          "feear",
+          "scriiobh-leeigh-meil-ith-codail",
+          "seo-sceeal-liatroim-taoiseach",
+          "taa-teeigh-i-ceatharlach"
+        ]
+      }
+    },
+    "error_findings": [
+      {
+        "code": "xcode_audio_resource_missing",
+        "severity": "error",
+        "scope": "bundle_resources",
+        "identifier": "ios/AnTuras.xcodeproj/project.pbxproj",
+        "detail": "bundled MP3 files are absent from the generated Xcode Audio group",
+        "recommendation": "Regenerate ios/AnTuras.xcodeproj from ios/project.yml after reviewing the resource set; do not hand-delete project references.",
+        "file_count": 2834,
+        "files_sample": [
+          "a-hainm-ataa-soileeir.mp3",
+          "aait-bhreaa-ataa-againn.mp3",
+          "aar-n-ainm-ataa-sa-sceeal.mp3",
+          "abair-ariis-ee-le-do-thoil.mp3",
+          "abair-ee-finsceeal-luu-faoin-aath.mp3",
+          "abair-ee-finsceeal-luu-faoin-abhainn.mp3",
+          "abair-ee-finsceeal-luu-faoin-ainm.mp3",
+          "abair-ee-finsceeal-luu-faoin-anseo.mp3",
+          "abair-ee-finsceeal-luu-faoin-cath.mp3",
+          "abair-ee-finsceeal-luu-faoin-cosain.mp3"
+        ]
+      }
+    ],
+    "warning_codes": {
+      "audio_technical_review_required": {
+        "count_findings": 15,
+        "identifiers": [
+          "abair-ee-finsceeal-luu-faoin-anseo",
+          "abair-ee-finsceeal-luu-faoin-tabhair",
+          "abair-ee-finsceeal-ros-comaain-faoin-eeist",
+          "an-baile-ee-duun-moor",
+          "an-bhfuil-see-nua",
+          "an-ee-oo-hanluain-d-ainm-teaghlaigh",
+          "an-ee-oo-nuallaain-d-ainm-teaghlaigh",
+          "corcra-gorm-dearg-buii-dubh-baan",
+          "cuuig",
+          "dearg",
+          "dia-dhuit",
+          "feear",
+          "scriiobh-leeigh-meil-ith-codail",
+          "seo-sceeal-liatroim-taoiseach",
+          "taa-teeigh-i-ceatharlach"
+        ]
+      },
+      "inventory_bundle_qa_drift": {
+        "count_findings": 1,
+        "identifiers": [
+          "runtime-qa-metadata"
+        ],
+        "reported_count": 47
+      },
+      "bundle_lines_outside_inventory": {
+        "count_findings": 1,
+        "identifiers": [
+          "runtime-only"
+        ],
+        "reported_count": 3588
+      },
+      "archive_snapshot_drift": {
+        "count_findings": 4,
+        "identifiers": [
+          "checksums-conversation-2026-07-31.json",
+          "checksums-headword-2026-07-31.json",
+          "checksums-inventory-2026-07-31.json",
+          "checksums-phrase-2026-07-31.json"
+        ]
+      },
+      "capture_chronology_unverified": {
+        "count_findings": 9,
+        "identifiers": [
+          "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-ainm-name",
+          "d32.harvest.dublin.dublin-sihtric-penny.ainm-name-noun",
+          "d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town",
+          "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-ainm-name",
+          "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-baile-home",
+          "d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-place",
+          "d32.harvest.mayo.mayo-grainne-1593.ainm-name-noun",
+          "d32.harvest.offaly.d32-offaly-cross-of-the-scriptures.offaly-ri-king",
+          "d32.personal-atlas.antrim.d32-antrim-fionn-mac-cumhaill.part-01"
+        ]
+      },
+      "duplicate_batch_normalized_text_voice": {
+        "count_findings": 1,
+        "identifiers": [
+          "fixture.contract-proof.2026-08-01:fixture.contract-proof.2026-08-01.line.3db7de3f60203217,mayo.d31.capture-prep.2026-08-02:mayo.d31.capture-prep.2026-08-02.line.3db7de3f60203217"
+        ]
+      },
+      "artifact_checksum_not_recorded": {
+        "count_findings": 13,
+        "identifiers": [
+          "ios/AnTuras/Resources/personal-atlas-subjects.json",
+          "content/audio/atlas-headwords-v1.json",
+          "content/dublin/sihtric-penny.pack.draft.json",
+          "content/mayo/grainne-1593.pack.draft.json",
+          "content/meath/trim-de-lacy.pack.draft.json",
+          "content/offaly/cross-of-the-scriptures.pack.draft.json",
+          "ios/AnTuras/Resources/CountyStories/dublin.sihtric-penny.json",
+          "ios/AnTuras/Resources/CountyStories/mayo.grainne-1593.json",
+          "ios/AnTuras/Resources/CountyStories/meath.trim-de-lacy.json",
+          "ios/AnTuras/Resources/CountyStories/offaly.cross-of-the-scriptures.json",
+          "content/personal-atlas/logainm-audit.json",
+          "content/personal-atlas/logainm-hierarchy-repairs.json",
+          "content/personal-atlas/logainm-ni-review.json"
+        ]
+      },
+      "artifact_records_missing_stable_id": {
+        "count_findings": 1,
+        "identifiers": [
+          "content/audio/atlas-headwords-v1.json"
+        ]
+      },
+      "artifact_duplicate_normalized_text": {
+        "count_findings": 1,
+        "identifiers": [
+          "content/audio/atlas-headwords-v1.json"
+        ]
+      },
+      "artifact_records_missing_provenance": {
+        "count_findings": 10,
+        "identifiers": [
+          "content/audio/atlas-headwords-v1.json",
+          "content/dublin/sihtric-penny.pack.draft.json",
+          "content/mayo/grainne-1593.pack.draft.json",
+          "content/meath/trim-de-lacy.pack.draft.json",
+          "content/offaly/cross-of-the-scriptures.pack.draft.json",
+          "ios/AnTuras/Resources/CountyStories/dublin.sihtric-penny.json",
+          "ios/AnTuras/Resources/CountyStories/meath.trim-de-lacy.json",
+          "ios/AnTuras/Resources/CountyStories/offaly.cross-of-the-scriptures.json",
+          "content/personal-atlas/logainm-audit.json",
+          "content/personal-atlas/logainm-ni-review.json"
+        ]
+      },
+      "pedagogy_narration_runtime_drift": {
+        "count_findings": 1,
+        "identifiers": [
+          "pack_pairs"
+        ]
+      }
+    }
+  },
+  "notes": [
+    "0 audio_technical_quarantine findings; 15 duration/level distribution outliers require targeted listening review",
+    "reconcile blocking=true from xcode_audio_resource_missing only; regenerate ios/AnTuras.xcodeproj from ios/project.yml under Track E",
+    "mechanical review-queue check remains non-zero with 17 capture blockers; review-before-release count is 141",
+    "risk sample grew 78 -> 86; launch_lines stratum remains short at 6 of quota 8"
+  ]
+}

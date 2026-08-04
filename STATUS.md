@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-04 (Track C capture complete on
-`track-a/bulk-integration`; content still largely uncommitted).*
+stories and places of Ireland. Updated 2026-08-04 (Track D anomaly sampling complete
+on `track-a/bulk-integration`; content still largely uncommitted).*
 
 ## Current outcome
 
@@ -14,10 +14,12 @@ The immediate phase is the **D32 emergency Irish audio harvest**. Track C payloa
 `d32.harvest.track-b.2026-08-03` finished provider capture: **2,818 / 2,818** approved
 lines succeeded (**0** pending), under the user-authorized **75,000** credit limit
 (observed spend about **42,952** credits from baseline **95,461** → **138,413** used).
-Two colliding lines were cancelled earlier so existing clips were reused. Capture does
-not imply linguistic approval or learner release. Batch manifests, family capture
-requests, runtime `manifest.json`, and new MP3s remain in the working tree for a
-follow-up content commit after Track E reconcile.
+Two colliding lines were cancelled earlier so existing clips were reused. Track D
+post-capture anomaly sampling and risk stratification are complete on the expanded
+bundle. Capture does not imply linguistic approval or learner release. Batch
+manifests, family capture requests, runtime `manifest.json`, and new MP3s remain in
+the working tree for a follow-up content commit after Track E reconcile (including
+Xcode project regeneration for the new Audio resources).
 
 The product is implemented as a substantial prototype. It has not been validated for
 learning outcomes or promoted for public release.
@@ -31,18 +33,22 @@ learning outcomes or promoted for public release.
   all **32** counties after the Track A bulk merge. About **2,820** of those unique
   texts are absent from the prior batch registry (**707** registered unique texts).
   The two incomplete members remain the deliberately retired Corca Dhuibhne lines.
-- **708** captured/registered audio lines remain as before (**698** approved, **700**
-  provider successes, **2** retired semantic quarantines, **9** cancelled). Track B
-  added **557** new **draft** batch manifests (**2,820** planned lines; not captured).
-  Store `batch_documents` now totals **646**.
-- **1,062** bundled MP3s: **700** source-labelled v2 captures and **362** legacy/runtime
-  clips.
-- **1,062/1,062** checksums verify. There are no missing, mismatched, or orphan files.
-- The technical anomaly audit inspected all **1,046** clips: **1,036** pass, **10** need
-  targeted listening review, and **0** require technical quarantine. Two additional
-  Corca Dhuibhne captures are retained byte-for-byte for audit but are semantically
-  retired, dynamically excluded, failed for learner QA, and unavailable through both
-  text and named-asset runtime paths.
+- Registered batch scoreboard after Track C: **3,528** registered lines (**3,516**
+  approved, **3,518** provider successes, **2** retired semantic quarantines, **11**
+  cancelled, **0** failed / claimed). Store `batch_documents` remains the Track B
+  harvest set plus prior batches.
+- **3,880** bundled runtime MP3s / manifest lines. Checksums verify for all **3,880**
+  runtime records and bundle files; there are no missing, mismatched, or orphan
+  runtime files at the filesystem/manifest layer.
+- Post-capture Track D technical anomaly audit inspected all **3,880** clips:
+  **3,865** pass, **15** need targeted listening review (duration/level distribution
+  outliers), and **0** require technical quarantine. Decoder was available. Two
+  additional Corca Dhuibhne captures remain retained byte-for-byte for audit but are
+  semantically retired, dynamically excluded, failed for learner QA, and unavailable
+  through both text and named-asset runtime paths.
+- Read-only reconcile is **blocking** only on `xcode_audio_resource_missing`: new MP3s
+  are on disk and in `manifest.json` but absent from the generated Xcode Audio group.
+  That is a Track E project-regeneration step, not an audio-byte defect.
 - The learner Personal Atlas pack remains **80** subjects (**50** names / **30** places)
   with **160** captured clips. A1 adds **318** authoring-only bulk subjects (**636**
   unique texts) without promoting them into the Swift pilot pack.
@@ -65,13 +71,14 @@ Canonical records:
 
 - [`content/audio/authoring/phrase-family-store-v2.json`](content/audio/authoring/phrase-family-store-v2.json)
 - [`ios/AnTuras/Resources/Audio/manifest.json`](ios/AnTuras/Resources/Audio/manifest.json)
+- [`content/audio/authoring/d32-track-d-post-capture-report.json`](content/audio/authoring/d32-track-d-post-capture-report.json)
 - [`content/audio/README.md`](content/audio/README.md)
 
 ### Mechanistic review
 
-- Deterministic disjoint sampling selects **78** clips across **11** risk strata,
-  including names, places, mutations, fadas, launch lines, duplicates, source risk,
-  and acoustic outliers.
+- Deterministic disjoint sampling now selects **86** clips across **11** risk strata
+  (**8** per stratum quota; `launch_lines` remains short at **6**). Prior
+  2026-08-02 sample (**78**) is superseded for post-Track-C review planning.
 - The offline ABAIR comparator records provenance and checksums and compares duration,
   level, spectral shape, zero-crossing rate, and coarse envelopes against locally
   supplied reference clips.
@@ -80,7 +87,8 @@ Canonical records:
 
 Canonical records:
 
-- [`content/audio/authoring/sampling/d32-risk-stratification-2026-08-02.json`](content/audio/authoring/sampling/d32-risk-stratification-2026-08-02.json)
+- [`content/audio/authoring/sampling/d32-risk-stratification-2026-08-04.json`](content/audio/authoring/sampling/d32-risk-stratification-2026-08-04.json)
+- [`content/audio/authoring/sampling/d32-risk-stratification-2026-08-02.json`](content/audio/authoring/sampling/d32-risk-stratification-2026-08-02.json) (superseded sample)
 - [`docs/ABAIR.md`](docs/ABAIR.md)
 - [`tools/abair_reference_compare.py`](tools/abair_reference_compare.py)
 
@@ -120,20 +128,25 @@ promotion.
 
 ### Verification at the current revision
 
+- Track D (2026-08-04): risk sample regenerated (**86** clips);
+  `reconcile --json` inspected **3,880** clips (**3,865** pass / **15** review /
+  **0** quarantine); review-queue audit still reports **17** capture blockers /
+  **141** review-before-release / **0** learner-release-eligible. Report:
+  [`content/audio/authoring/d32-track-d-post-capture-report.json`](content/audio/authoring/d32-track-d-post-capture-report.json).
 - Track B `prepare-harvest` over all **32** county `authoring-v2` trees:
   **2,820** new draft lines / **557** batches / **705** skipped as already registered /
   **244** duplicate-text merges / **2** blocked (Corca Dhuibhne). Summary:
   [`content/audio/authoring/d32-track-b-prepare-harvest-summary.json`](content/audio/authoring/d32-track-b-prepare-harvest-summary.json).
 - Estimated Track B spend **~75,087** credits vs **140,872** last-known remaining
   (headroom positive; size `payload_credit_limit` per drained payload, not the full
-  band at once).
-- All new manifests assert `draft` and `provider_calls_allowed: false`.
+  band at once). Observed Track C spend for this payload was about **42,952** credits.
+- Track C capture for this payload is complete; manifests are no longer draft/provider-
+  blocked for the drained lines.
 - Prior: `structured_audio_authoring.py check` passed on the merged Track A store
-  (**714** families). Full `reconcile --scoreboard` / `unittest discover` should be
-  re-run before any provider approval.
-- Swift parse checks passed for the speech runtime and catalog tests. The Xcode resource
-  scan finds **1,062/1,062** expected MP3s with no missing, mismatched, or orphan
-  resources.
+  (**714** families).
+- Runtime filesystem/manifest checksums: **3,880/3,880**. Generated Xcode project
+  Audio group still omits the new MP3s (`xcode_audio_resource_missing`) until
+  `xcodegen` regenerates `ios/AnTuras.xcodeproj` from `ios/project.yml`.
 - A generic-device Xcode build reached Swift compilation but could not complete asset
   catalog compilation because this host has no CoreSimulator runtime. iOS XCTest,
   playback, accessibility, appearance, and physical-device checks were therefore not
@@ -150,10 +163,15 @@ promotion.
 
 ### Completed in the latest coordinated cycle
 
+- Track D post-capture: regenerated
+  `sampling/d32-risk-stratification-2026-08-04.json` (**86** sample clips); ran full
+  technical anomaly reconcile across **3,880** clips (**15** review-required
+  duration/level outliers, **0** quarantine); re-ran mechanical review-queue audit.
+  Report: `d32-track-d-post-capture-report.json`.
+- Track C drained payload `d32.harvest.track-b.2026-08-03` (**2,818** successes).
 - Track B `prepare-harvest` registered **557** draft manifests (**2,820** lines;
-  **~75,087** estimated credits); remapped **6** partition collisions to `.part-02`;
-  left provider calls disabled. Reports:
-  `d32-track-b-prepare-harvest-summary.json` /
+  **~75,087** estimated credits); remapped **6** partition collisions to `.part-02`.
+  Reports: `d32-track-b-prepare-harvest-summary.json` /
   `d32-track-b-prepare-harvest-report.json`.
 - Merged parallel Track A branches onto `track-a/bulk-integration` (extension WIP base
   + A1–A8). Uses ledger kept at **32** stories / **4,305** exercises; store indexes
@@ -172,8 +190,11 @@ promotion.
 
 ## Active implementation sequence
 
-**Current priority: Track E reconcile + Track D anomaly sampling** for payload
-`d32.harvest.track-b.2026-08-03`, then commit the captured audio/batch corpus.
+**Current priority: Track E reconcile** for payload `d32.harvest.track-b.2026-08-03`
+(regenerate Xcode Audio group from `ios/project.yml`, clear remaining reconcile
+warnings that are commit blockers, then commit the captured audio/batch corpus).
+Track D post-capture sampling is done: report
+[`d32-track-d-post-capture-report.json`](content/audio/authoring/d32-track-d-post-capture-report.json).
 Approval identity `user.d32.track-c.2026-08-03`; claim owner `codex.track-c.d32-drain`.
 
 **Resume / re-drain tooling (committed):** portable `pwsh` at
@@ -210,8 +231,10 @@ story records, sorted store family index, one `check` on the merged slice.
 **Not bulk Track A (quick maintenance only):** re-approve **7** cancelled batch lines
 (~300 estimated credits); retire or replace **2** Corca Dhuibhne quarantine members.
 
-**Track C gate:** closed for this payload — **2,818** lines captured. Next gate is
-reconcile/checksums before committing the audio bundle.
+**Track C gate:** closed for this payload — **2,818** lines captured.
+**Track D gate:** closed for mechanical sampling/anomaly screen on this payload
+(**3,880** inspected; **15** listening-review outliers; **0** technical quarantine).
+Next gate is Track E reconcile (Xcode resource regeneration + commit readiness).
 
 Canonical queue partition: [`content/audio/authoring/d32-county-authoring-queue.md`](content/audio/authoring/d32-county-authoring-queue.md).
 

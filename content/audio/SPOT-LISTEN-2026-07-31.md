@@ -329,6 +329,39 @@ tail: `abhainn`, `arm`, `as`, `bia`, `bá`, `bád`, `can`, `cath`, `chuaigh`, `c
 the original record. Review these in the locked `Irish Cultural Guide` profile; no
 pronunciation judgment is made by the queue.
 
+## D32 Track D — post-Track-C mechanical pass (2026-08-04)
+
+After payload `d32.harvest.track-b.2026-08-03`, Track D regenerated the deterministic
+risk sample and ran the local technical anomaly screen across the full runtime bundle.
+This remains non-linguistic: no pronunciation, dialect, pedagogy, or learner-release
+decision is implied.
+
+Canonical artifacts:
+
+- risk sample:
+  `content/audio/authoring/sampling/d32-risk-stratification-2026-08-04.json`
+  (**86** selected clips; `launch_lines` short at **6**/8);
+- post-capture report:
+  `content/audio/authoring/d32-track-d-post-capture-report.json`;
+- technical screen via `python3 -B tools/structured_audio_authoring.py reconcile --json`.
+
+Technical result: **3,880** inspected, **3,865** pass, **15**
+`audio_technical_review_required`, **0** `audio_technical_quarantine`. The fifteen
+review slugs are duration/level distribution outliers only:
+
+- duration high: `abair-ee-finsceeal-luu-faoin-anseo`,
+  `abair-ee-finsceeal-luu-faoin-tabhair`, `abair-ee-finsceeal-ros-comaain-faoin-eeist`,
+  `scriiobh-leeigh-meil-ith-codail`, `seo-sceeal-liatroim-taoiseach`, and
+  `corcra-gorm-dearg-buii-dubh-baan` (also level low);
+- level high: `an-baile-ee-duun-moor`, `an-bhfuil-see-nua`,
+  `an-ee-oo-hanluain-d-ainm-teaghlaigh`, `an-ee-oo-nuallaain-d-ainm-teaghlaigh`;
+- level low: `cuuig`, `dearg`, `dia-dhuit`, `feear`, `taa-teeigh-i-ceatharlach`.
+
+Keep these out of learner release until a reviewed audio operation inspects or replaces
+them. Mechanical review-queue `check` remains non-zero (**17** capture blockers /
+**141** review-before-release); that is unchanged editorial triage, not a new capture
+stop for already-drained Track C lines.
+
 ### Capture boundary and external gates
 
 - The only checked-in line that is structurally in an approved v2 capture request is
