@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-03 (Track B prepare-harvest on
-`track-a/bulk-integration`).*
+stories and places of Ireland. Updated 2026-08-04 (Track C capture complete on
+`track-a/bulk-integration`; content still largely uncommitted).*
 
 ## Current outcome
 
@@ -10,15 +10,14 @@ An Turas has a verified representative Mayo Story-and-Learning loop, shared lear
 runtime, four in-app county review packs, a nationwide Personal Atlas foundation, and
 a controlled Irish authoring/audio pipeline.
 
-The immediate phase is the **D32 emergency Irish audio harvest**. Bulk Track A is
-merged and Track B has prepared **557** provider-blocked draft manifests covering
-**2,820** net-new unique lines (~**75,087** estimated credits). Six partition
-collisions with prior approved batches were remapped to `.part-02`. Two Corca
-Dhuibhne members remain blocked. **Do not approve Track C** until an explicit
-payload credit limit and approval identity are set; manifests stay
-`execution.state: draft` / `provider_calls_allowed: false`. **140,872** ElevenLabs
-credits remained at the last observed provider check. Capture does not imply
-linguistic approval or learner release.
+The immediate phase is the **D32 emergency Irish audio harvest**. Track C payload
+`d32.harvest.track-b.2026-08-03` finished provider capture: **2,818 / 2,818** approved
+lines succeeded (**0** pending), under the user-authorized **75,000** credit limit
+(observed spend about **42,952** credits from baseline **95,461** → **138,413** used).
+Two colliding lines were cancelled earlier so existing clips were reused. Capture does
+not imply linguistic approval or learner release. Batch manifests, family capture
+requests, runtime `manifest.json`, and new MP3s remain in the working tree for a
+follow-up content commit after Track E reconcile.
 
 The product is implemented as a substantial prototype. It has not been validated for
 learning outcomes or promoted for public release.
@@ -173,10 +172,23 @@ promotion.
 
 ## Active implementation sequence
 
-**Next priority: Track C — drain prepared manifests** in bounded payloads with
-explicit credit checkpoints. Track B draft registration is complete (**2,820** lines /
-**~75k** estimated credits). Approve only named manifests and lines; keep a
-regeneration reserve against the **140,872** last-known credit balance.
+**Current priority: Track E reconcile + Track D anomaly sampling** for payload
+`d32.harvest.track-b.2026-08-03`, then commit the captured audio/batch corpus.
+Approval identity `user.d32.track-c.2026-08-03`; claim owner `codex.track-c.d32-drain`.
+
+**Resume / re-drain tooling (committed):** portable `pwsh` at
+`~/.local/powershell/pwsh`. Detached launcher:
+
+```powershell
+~/.local/powershell/pwsh -NoProfile -File tools/start-track-c-drain-detached.ps1
+```
+
+Worker: [`tools/run-track-c-drain.ps1`](tools/run-track-c-drain.ps1). Python loop:
+[`tools/run_track_c_batch_loop.py`](tools/run_track_c_batch_loop.py) (retries 429 /
+connection resets; requires `ANTURAS_CANONICAL_ALLOW_NON_MAIN=1` on this branch).
+Approval report:
+[`d32-track-c-approve-prepared-report.json`](content/audio/authoring/d32-track-c-approve-prepared-report.json).
+Runtime logs (ephemeral): `/tmp/track-c-drain/`.
 
 ### 1. Bulk Track A — parallel authoring targets (merged)
 
@@ -198,10 +210,8 @@ story records, sorted store family index, one `check` on the merged slice.
 **Not bulk Track A (quick maintenance only):** re-approve **7** cancelled batch lines
 (~300 estimated credits); retire or replace **2** Corca Dhuibhne quarantine members.
 
-**Track A/B preflight gate:** cleared — **2,820** draft lines registered
-(~**75,087** estimated credits). Next: choose a first Track C payload size, set
-`payload_credit_limit`, approve named drafts, claim, and drain with checkpoints.
-Do not enable provider calls on the full 557-batch band in one shot.
+**Track C gate:** closed for this payload — **2,818** lines captured. Next gate is
+reconcile/checksums before committing the audio bundle.
 
 Canonical queue partition: [`content/audio/authoring/d32-county-authoring-queue.md`](content/audio/authoring/d32-county-authoring-queue.md).
 

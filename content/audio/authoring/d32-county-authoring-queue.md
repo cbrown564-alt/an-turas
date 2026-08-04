@@ -4,11 +4,12 @@ Operational queue for Track A's provisional phrase-family authoring. The atlas a
 story slate remain the source inputs; queue membership is not evidence of historical,
 Irish-language, pedagogy, rights, audio-QA, or learner-release approval.
 
-**Current priority:** Track C drain of Track B drafts on `track-a/bulk-integration`
-(**557** manifests / **2,820** lines / ~**75k** estimated credits; all
-`provider_calls_allowed: false`). See
-[`d32-track-b-prepare-harvest-summary.json`](d32-track-b-prepare-harvest-summary.json)
-and [`STATUS.md`](../../../STATUS.md). Approve bounded payloads only.
+**Current priority:** Track C capture complete for payload
+`d32.harvest.track-b.2026-08-03` (**2,818** lines). Next: Track E reconcile / Track D
+anomaly sampling, then commit audio+batch corpus. Resume tooling:
+[`tools/start-track-c-drain-detached.ps1`](../../../tools/start-track-c-drain-detached.ps1).
+See [`d32-track-c-approve-prepared-report.json`](d32-track-c-approve-prepared-report.json)
+and [`STATUS.md`](../../../STATUS.md).
 
 ## Bulk Track A avenues (parallel)
 

@@ -19,6 +19,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -126,6 +127,7 @@ def primary_worktree(repo_root: Path) -> Path:
 
 
 def canonical_root_from_args(raw: Path | None) -> Path:
+    explicit = raw is not None or bool(os.environ.get("ANTURAS_CANONICAL_ROOT"))
     if raw is not None:
         candidate = raw.expanduser().resolve()
     else:
@@ -151,9 +153,16 @@ def canonical_root_from_args(raw: Path | None) -> Path:
         text=True,
     ).stdout.strip()
     if branch != "main":
-        raise GateError(
-            "canonical repository must be the main worktree; "
-            f"resolved branch is {branch or '<detached>'}"
+        allow_non_main = os.environ.get("ANTURAS_CANONICAL_ALLOW_NON_MAIN") == "1"
+        if not (explicit and allow_non_main):
+            raise GateError(
+                "canonical repository must be the main worktree; "
+                f"resolved branch is {branch or '<detached>'}"
+            )
+        print(
+            "WARNING: draining into explicitly authorized non-main canonical root "
+            f"{candidate} on branch {branch}",
+            file=sys.stderr,
         )
     return candidate
 
@@ -196,15 +205,34 @@ def usage_snapshot(payload: dict[str, Any]) -> UsageSnapshot:
     )
 
 
-def query_usage(session: Any) -> UsageSnapshot:
-    try:
-        response = session.get(
-            "https://api.elevenlabs.io/v1/user/subscription", timeout=30
-        )
-        response.raise_for_status()
-        return usage_snapshot(response.json())
-    except Exception as error:
-        raise GateError(f"ElevenLabs usage query failed: {error}") from error
+def query_usage(session: Any, *, attempts: int = 8) -> UsageSnapshot:
+    """Query subscription usage, retrying transient provider rate limits."""
+    # requests stays lazy so offline preflight does not require the provider stack.
+    import requests
+
+    last_error: Exception | None = None
+    for attempt in range(attempts):
+        try:
+            response = session.get(
+                "https://api.elevenlabs.io/v1/user/subscription", timeout=30
+            )
+            if response.status_code == 429 or 500 <= response.status_code < 600:
+                retry_after = response.headers.get("Retry-After")
+                try:
+                    delay = float(retry_after) if retry_after else min(60.0, 2.0 ** attempt)
+                except ValueError:
+                    delay = min(60.0, 2.0 ** attempt)
+                time.sleep(delay)
+                last_error = GateError(
+                    f"ElevenLabs usage query failed: {response.status_code} {response.reason}"
+                )
+                continue
+            response.raise_for_status()
+            return usage_snapshot(response.json())
+        except (requests.RequestException, ValueError, GateError) as error:
+            last_error = error
+            time.sleep(min(60.0, 2.0 ** attempt))
+    raise GateError(f"ElevenLabs usage query failed: {last_error}") from last_error
 
 
 def verify_voice(session: Any) -> None:

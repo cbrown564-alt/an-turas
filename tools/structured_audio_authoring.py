@@ -982,6 +982,129 @@ def write_emergency_harvest(plan: dict[str, Any], *, root: Path = ROOT) -> list[
     return written
 
 
+def load_prepared_draft_batches(
+    contract: LoadedContract,
+    batch_ids: Sequence[str],
+    *,
+    root: Path = ROOT,
+) -> list[dict[str, Any]]:
+    """Load named registered draft manifests for Track C approval."""
+    if not batch_ids:
+        raise ValueError("at least one batch id is required")
+    if len(batch_ids) != len(set(batch_ids)):
+        raise ValueError("batch ids must be unique")
+    refs = {
+        ref.get("batch_id"): ref.get("path")
+        for ref in contract.store.get("batch_documents", [])
+        if isinstance(ref, dict)
+    }
+    batches: list[dict[str, Any]] = []
+    for batch_id in batch_ids:
+        if not stable_identifier(batch_id):
+            raise ValueError(f"batch id must be a stable identifier: {batch_id!r}")
+        raw_path = refs.get(batch_id)
+        if not isinstance(raw_path, str):
+            raise ValueError(f"batch {batch_id!r} is not registered in the store")
+        path = resolve_repo_path(root, raw_path)
+        if path is None or not path.is_file():
+            raise ValueError(f"registered batch document is missing: {batch_id!r}")
+        batch = load_json(path)
+        if batch.get("batch_id") != batch_id:
+            raise ValueError(f"batch document id mismatch for {batch_id!r}")
+        execution = batch.get("execution") or {}
+        if execution.get("state") != "draft" or execution.get("provider_calls_allowed") is not False:
+            raise ValueError(
+                f"batch {batch_id!r} is not a provider-blocked draft "
+                f"(state={execution.get('state')!r})"
+            )
+        batches.append(batch)
+    return batches
+
+
+def write_prepared_approval(plan: dict[str, Any], *, root: Path = ROOT) -> list[str]:
+    """Persist Track C approval onto already-registered draft manifests and members."""
+    if not plan.get("emergency_approved"):
+        raise ValueError("prepared harvest must be explicitly approved before writing")
+    batches = plan.get("batches", [])
+    if not batches:
+        return []
+    contract = plan.get("contract")
+    if not isinstance(contract, LoadedContract):
+        raise ValueError("prepared approval plan is missing its loaded contract")
+    store_path = root / STORE_PATH.relative_to(ROOT)
+    store = load_json(store_path)
+    family_refs = {
+        ref.get("family_id"): ref.get("path")
+        for ref in store.get("family_documents", [])
+        if isinstance(ref, dict)
+    }
+    batch_refs = {
+        ref.get("batch_id"): ref.get("path")
+        for ref in store.get("batch_documents", [])
+        if isinstance(ref, dict)
+    }
+    batch_dir = root / "content/audio/authoring/batches"
+    for batch in batches:
+        batch_id = batch["batch_id"]
+        raw_path = batch_refs.get(batch_id)
+        if not isinstance(raw_path, str):
+            raise ValueError(f"refusing to write unregistered batch {batch_id!r}")
+        path = resolve_repo_path(root, raw_path)
+        if path is None or path.parent != batch_dir or path.suffix != ".json":
+            raise ValueError(f"registered batch path is unsafe: {batch_id!r}")
+        if not path.is_file():
+            raise ValueError(f"registered draft manifest is missing: {batch_id!r}")
+        existing = load_json(path)
+        existing_execution = existing.get("execution") or {}
+        if (
+            existing_execution.get("state") != "draft"
+            or existing_execution.get("provider_calls_allowed") is not False
+        ):
+            raise ValueError(f"refusing to overwrite non-draft batch {batch_id!r}")
+        errors: list[str] = []
+        validate_batch(batch, contract, root, errors)
+        if errors:
+            raise ValueError("approved prepared manifest failed validation:\n" + "\n".join(errors))
+
+    affected_family_ids: set[str] = set()
+    for batch in batches:
+        for line in batch.get("lines", []):
+            for member_id in line.get("member_ids", []):
+                member = contract.members.get(member_id)
+                if not isinstance(member, dict):
+                    raise ValueError(f"approved line references unknown member {member_id!r}")
+                family_id = member.get("family_id")
+                if not isinstance(family_id, str):
+                    raise ValueError(f"member {member_id!r} lacks family_id")
+                affected_family_ids.add(family_id)
+
+    family_by_id = {family.get("id"): family for family in contract.families}
+    written: list[str] = []
+    for family_id in sorted(affected_family_ids):
+        raw_path = family_refs.get(family_id)
+        family = family_by_id.get(family_id)
+        if not isinstance(raw_path, str) or not isinstance(family, dict):
+            raise ValueError(f"approved members require a registered family: {family_id!r}")
+        if family_refs.get(family_id) != raw_path:
+            raise ValueError(f"family path mismatch for {family_id!r}")
+        path = root / raw_path
+        path.write_text(
+            json.dumps(family, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        written.append(raw_path)
+
+    for batch in batches:
+        raw_path = batch_refs[batch["batch_id"]]
+        path = root / raw_path
+        path.write_text(
+            json.dumps(batch, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        written.append(raw_path)
+    return written
+
+
 def is_unique_string_list(value: Any, *, allow_empty: bool = True) -> bool:
     return (
         isinstance(value, list)
@@ -2697,6 +2820,25 @@ def main(argv: list[str] | None = None) -> int:
         default="d32.harvest",
         help="stable dotted prefix for generated batch ids",
     )
+    approve_prepared = subparsers.add_parser(
+        "approve-prepared",
+        help="approve named Track B draft manifests for a bounded Track C provider payload",
+    )
+    approve_prepared.add_argument(
+        "--batch-id",
+        action="append",
+        required=True,
+        help="registered draft batch id; repeat for each named manifest in the payload",
+    )
+    approve_prepared.add_argument("--approved-by", required=True, help="explicit D32 approval identity")
+    approve_prepared.add_argument("--approved-at", required=True, help="explicit D32 approval timestamp")
+    approve_prepared.add_argument("--requested-by", required=True, help="capture-request author identity")
+    approve_prepared.add_argument("--claim-owner", required=True, help="deterministic Track C claim owner")
+    approve_prepared.add_argument("--claimed-at", required=True, help="claim timestamp")
+    approve_prepared.add_argument("--lease-expires-at", required=True, help="claim lease expiry timestamp")
+    approve_prepared.add_argument("--payload-id", required=True, help="stable identifier for the explicitly approved provider payload")
+    approve_prepared.add_argument("--baseline-used-credits", required=True, type=float, help="live provider usage baseline for this payload")
+    approve_prepared.add_argument("--payload-credit-limit", required=True, type=float, help="maximum incremental provider credits authorized for this payload")
     args = parser.parse_args(argv)
 
     if args.command in {"reconcile", "resume-plan"}:
@@ -2818,6 +2960,64 @@ def main(argv: list[str] | None = None) -> int:
             }
         )
         print(json.dumps(report, ensure_ascii=False, indent=2))
+        return 0
+    if args.command == "approve-prepared":
+        try:
+            batches = load_prepared_draft_batches(contract, args.batch_id, root=ROOT)
+            plan = {
+                "contract": contract,
+                "batches": batches,
+                "normalized_documents": [],
+                "errors": [],
+            }
+            approve_emergency_harvest(
+                plan,
+                approved_by=args.approved_by,
+                approved_at=args.approved_at,
+                requested_by=args.requested_by,
+                claim_owner=args.claim_owner,
+                claimed_at=args.claimed_at,
+                lease_expires_at=args.lease_expires_at,
+                payload_id=args.payload_id,
+                baseline_used_credits=args.baseline_used_credits,
+                payload_credit_limit=args.payload_credit_limit,
+            )
+            written = write_prepared_approval(plan, root=ROOT)
+            final_errors, _ = validate_contract()
+            if final_errors:
+                print("\n".join(final_errors), file=sys.stderr)
+                return 1
+        except (OSError, ValueError) as exc:
+            print(str(exc), file=sys.stderr)
+            return 1
+        estimated = round(
+            sum(
+                float(line.get("estimated_credits") or 0)
+                for batch in plan["batches"]
+                for line in batch.get("lines", [])
+            ),
+            3,
+        )
+        print(
+            json.dumps(
+                {
+                    "emergency_approved": True,
+                    "provider_calls_allowed": True,
+                    "payload_id": args.payload_id,
+                    "baseline_used_credits": args.baseline_used_credits,
+                    "payload_credit_limit": args.payload_credit_limit,
+                    "claim_owner": args.claim_owner,
+                    "lease_expires_at": args.lease_expires_at,
+                    "batches": len(plan["batches"]),
+                    "lines": sum(len(batch.get("lines", [])) for batch in plan["batches"]),
+                    "estimated_credits": estimated,
+                    "batch_ids": [batch["batch_id"] for batch in plan["batches"]],
+                    "written": written,
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
         return 0
     batch = build_batch(
         contract,
