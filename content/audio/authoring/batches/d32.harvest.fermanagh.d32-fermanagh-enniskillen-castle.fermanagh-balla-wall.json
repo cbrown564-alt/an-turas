@@ -19,10 +19,10 @@
     }
   },
   "execution": {
-    "state": "draft",
-    "provider_calls_allowed": false,
-    "approved_by": null,
-    "approved_at": null
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-03",
+    "approved_at": "2026-08-03T21:40:00Z"
   },
   "lines": [
     {
@@ -37,39 +37,39 @@
       "estimated_credits": 30.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T21:40:00Z",
+        "lease_expires_at": "2026-08-11T00:00:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-03",
+        "approved_at": "2026-08-03T21:40:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-03T23:09:33.617622+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
+        "status": "succeeded",
+        "provider_request_id": "SpSdFo0oAwjwjOel5FgS",
+        "started_at": "2026-08-03T23:09:29.539749+00:00",
+        "completed_at": "2026-08-03T23:09:33.600198+00:00",
         "reported_credits": null,
         "reported_characters": null
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-balla-i-fear-manach.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "87ac43635ef50c489b99a4c4c5887bf63da87932baee9886838ced2c217ca82c",
+        "bytes": 51453,
+        "duration_seconds": 2.08
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,39 +85,39 @@
       "estimated_credits": 23.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T21:40:00Z",
+        "lease_expires_at": "2026-08-11T00:00:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-03",
+        "approved_at": "2026-08-03T21:40:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-03T23:09:33.617736+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
+        "status": "succeeded",
+        "provider_request_id": "GkB4nor8yN8cDQ3DPDVj",
+        "started_at": "2026-08-03T23:09:29.539749+00:00",
+        "completed_at": "2026-08-03T23:09:33.600198+00:00",
         "reported_credits": null,
         "reported_characters": null
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/taa-balla-i-fear-manach.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "60ccef5bb90812d0e0a498d664d3d0d907b00a95f75ac4ca9304380a77dd717d",
+        "bytes": 49572,
+        "duration_seconds": 2.0
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -128,17 +128,38 @@
     "credits_per_character": 1.0,
     "estimated_batch_credits": 53.0,
     "estimated_cumulative_credits": 14350.0,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 106548.0,
+    "usage_before": {
+      "captured_at": "2026-08-03T23:09:29.539749+00:00",
+      "used_credits": 106548.0,
+      "remaining_credits": 129551.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-03T23:09:33.600198+00:00",
+      "used_credits": 106548.0,
+      "remaining_credits": 129551.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-03",
+      "authorized_at": "2026-08-03T21:40:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-03",
+      "baseline_used_credits": 95461.0,
+      "payload_credit_limit": 75000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-balla-wall"
+    }
   },
   "counts": {
     "lines": 2,
     "member_references": 2,
-    "planned": 2,
-    "approved": 0,
-    "succeeded": 0,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
     "failed": 0
   },
   "manifest_identity_sha256": "fb9534d910be8cfa198f9743d139fcd2cd8668fa3bb9e76b65e9aac1e3fd7aee"

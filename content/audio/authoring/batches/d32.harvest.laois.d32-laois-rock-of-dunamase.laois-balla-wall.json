@@ -19,10 +19,10 @@
     }
   },
   "execution": {
-    "state": "draft",
-    "provider_calls_allowed": false,
-    "approved_by": null,
-    "approved_at": null
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-03",
+    "approved_at": "2026-08-03T21:40:00Z"
   },
   "lines": [
     {
@@ -37,39 +37,39 @@
       "estimated_credits": 24.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T21:40:00Z",
+        "lease_expires_at": "2026-08-11T00:00:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-03",
+        "approved_at": "2026-08-03T21:40:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-03T23:52:37.150029+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
+        "status": "succeeded",
+        "provider_request_id": "V0xPuDFgqCV0M6SzlskN",
+        "started_at": "2026-08-03T23:52:33.692076+00:00",
+        "completed_at": "2026-08-03T23:52:37.139678+00:00",
         "reported_credits": null,
         "reported_characters": null
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-balla-i-laois.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "12f448b68fa85451bd2d83d9a62ce8b93aa01ce7ff53663f499545c6f041b1ba",
+        "bytes": 42049,
+        "duration_seconds": 1.68
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,39 +85,39 @@
       "estimated_credits": 17.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T21:40:00Z",
+        "lease_expires_at": "2026-08-11T00:00:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-03",
+        "approved_at": "2026-08-03T21:40:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-03T23:52:37.150193+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
+        "status": "succeeded",
+        "provider_request_id": "qRMc2JUeRrNa7HTEai4V",
+        "started_at": "2026-08-03T23:52:33.692076+00:00",
+        "completed_at": "2026-08-03T23:52:37.139678+00:00",
         "reported_credits": null,
         "reported_characters": null
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/taa-balla-i-laois.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "c99cb38ad3b6177037f04dc0d5b83cb0a30ba4533582734cfd509e2925422cc6",
+        "bytes": 40168,
+        "duration_seconds": 1.6
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -128,17 +128,38 @@
     "credits_per_character": 1.0,
     "estimated_batch_credits": 41.0,
     "estimated_cumulative_credits": 14338.0,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 115939.0,
+    "usage_before": {
+      "captured_at": "2026-08-03T23:52:33.692076+00:00",
+      "used_credits": 115939.0,
+      "remaining_credits": 120160.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-03T23:52:37.139678+00:00",
+      "used_credits": 115939.0,
+      "remaining_credits": 120160.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-03",
+      "authorized_at": "2026-08-03T21:40:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-03",
+      "baseline_used_credits": 95461.0,
+      "payload_credit_limit": 75000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-balla-wall"
+    }
   },
   "counts": {
     "lines": 2,
     "member_references": 2,
-    "planned": 2,
-    "approved": 0,
-    "succeeded": 0,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
     "failed": 0
   },
   "manifest_identity_sha256": "9a76d3c4d44219ab99a4c6a0615e3f3791d8c5fb930d15380b730850f7293406"

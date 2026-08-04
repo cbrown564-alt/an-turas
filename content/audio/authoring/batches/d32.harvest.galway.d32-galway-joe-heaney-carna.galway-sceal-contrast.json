@@ -19,10 +19,10 @@
     }
   },
   "execution": {
-    "state": "draft",
-    "provider_calls_allowed": false,
-    "approved_by": null,
-    "approved_at": null
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-03",
+    "approved_at": "2026-08-03T21:40:00Z"
   },
   "lines": [
     {
@@ -37,39 +37,39 @@
       "estimated_credits": 16.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T21:40:00Z",
+        "lease_expires_at": "2026-08-11T00:00:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-03",
+        "approved_at": "2026-08-03T21:40:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-03T23:22:47.490479+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
+        "status": "succeeded",
+        "provider_request_id": "kLICp8CvSON8jpk5AXCW",
+        "started_at": "2026-08-03T23:22:43.957205+00:00",
+        "completed_at": "2026-08-03T23:22:47.482270+00:00",
         "reported_credits": null,
         "reported_characters": null
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/is-sceeal-fada-ee.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "cb03297fc7476123ecf34c55095c95f183e5f233d7febf10d2deae896e33e42c",
+        "bytes": 40168,
+        "duration_seconds": 1.6
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,39 +85,39 @@
       "estimated_credits": 22.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T21:40:00Z",
+        "lease_expires_at": "2026-08-11T00:00:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-03",
+        "approved_at": "2026-08-03T21:40:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-03T23:22:47.490532+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
+        "status": "succeeded",
+        "provider_request_id": "bYw886VrxrwN2wdVLvow",
+        "started_at": "2026-08-03T23:22:43.957205+00:00",
+        "completed_at": "2026-08-03T23:22:47.482270+00:00",
         "reported_credits": null,
         "reported_characters": null
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/mo-sceeal-ataa-aa-insint.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "1b0040b0229f6db413a6dda65b221077a76e4d928577d32c9a67baaff671388a",
+        "bytes": 58976,
+        "duration_seconds": 2.4
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -128,17 +128,38 @@
     "credits_per_character": 1.0,
     "estimated_batch_credits": 38.0,
     "estimated_cumulative_credits": 14335.0,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 110664.0,
+    "usage_before": {
+      "captured_at": "2026-08-03T23:22:43.957205+00:00",
+      "used_credits": 110664.0,
+      "remaining_credits": 125435.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-03T23:22:47.482270+00:00",
+      "used_credits": 110664.0,
+      "remaining_credits": 125435.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-03",
+      "authorized_at": "2026-08-03T21:40:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-03",
+      "baseline_used_credits": 95461.0,
+      "payload_credit_limit": 75000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.galway.d32-galway-joe-heaney-carna.galway-sceal-contrast"
+    }
   },
   "counts": {
     "lines": 2,
     "member_references": 2,
-    "planned": 2,
-    "approved": 0,
-    "succeeded": 0,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
     "failed": 0
   },
   "manifest_identity_sha256": "e4a9d3f7881f2a87750d48c523147fb5988cd83553e83065b408e05cb3ef2415"

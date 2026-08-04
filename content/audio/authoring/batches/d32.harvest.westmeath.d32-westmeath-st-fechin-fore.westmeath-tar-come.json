@@ -19,10 +19,10 @@
     }
   },
   "execution": {
-    "state": "draft",
-    "provider_calls_allowed": false,
-    "approved_by": null,
-    "approved_at": null
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-03",
+    "approved_at": "2026-08-03T21:40:00Z"
   },
   "lines": [
     {
@@ -37,39 +37,39 @@
       "estimated_credits": 26.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T21:40:00Z",
+        "lease_expires_at": "2026-08-11T00:00:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-03",
+        "approved_at": "2026-08-03T21:40:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-04T07:25:54.384144+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
+        "status": "succeeded",
+        "provider_request_id": "RGtXuotf26pakERy0w9i",
+        "started_at": "2026-08-04T07:25:50.640057+00:00",
+        "completed_at": "2026-08-04T07:25:54.367503+00:00",
         "reported_credits": null,
         "reported_characters": null
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-tar-i-an-iarmhii.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "cd9084c93422906e68c024abca90bcea30b1a0bd0db8e3e8de91f44781d82d6f",
+        "bytes": 43929,
+        "duration_seconds": 1.76
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,39 +85,39 @@
       "estimated_credits": 19.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T21:40:00Z",
+        "lease_expires_at": "2026-08-11T00:00:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-03",
+        "approved_at": "2026-08-03T21:40:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-04T07:25:54.384209+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
+        "status": "succeeded",
+        "provider_request_id": "H8GF1vnOVKjb28pZZLM9",
+        "started_at": "2026-08-04T07:25:50.640057+00:00",
+        "completed_at": "2026-08-04T07:25:54.367503+00:00",
         "reported_credits": null,
         "reported_characters": null
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/taa-tar-i-an-iarmhii.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "a4676f73e412a5af41139f24febdc107085d02a94cc00a0c1e37c4e1e46e91bc",
+        "bytes": 42049,
+        "duration_seconds": 1.68
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -128,17 +128,38 @@
     "credits_per_character": 1.0,
     "estimated_batch_credits": 45.0,
     "estimated_cumulative_credits": 14342.0,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 136331.0,
+    "usage_before": {
+      "captured_at": "2026-08-04T07:25:50.640057+00:00",
+      "used_credits": 136331.0,
+      "remaining_credits": 99768.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-04T07:25:54.367503+00:00",
+      "used_credits": 136331.0,
+      "remaining_credits": 99768.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-03",
+      "authorized_at": "2026-08-03T21:40:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-03",
+      "baseline_used_credits": 95461.0,
+      "payload_credit_limit": 75000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-tar-come"
+    }
   },
   "counts": {
     "lines": 2,
     "member_references": 2,
-    "planned": 2,
-    "approved": 0,
-    "succeeded": 0,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
     "failed": 0
   },
   "manifest_identity_sha256": "5ee95ec51b6e3ca6f5c102e01238708bd0c20fcb0bf552b7aecb9f1cf8b6d26c"

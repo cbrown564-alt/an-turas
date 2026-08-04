@@ -19,10 +19,10 @@
     }
   },
   "execution": {
-    "state": "draft",
-    "provider_calls_allowed": false,
-    "approved_by": null,
-    "approved_at": null
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-03",
+    "approved_at": "2026-08-03T21:40:00Z"
   },
   "lines": [
     {
@@ -37,39 +37,39 @@
       "estimated_credits": 37.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T21:40:00Z",
+        "lease_expires_at": "2026-08-11T00:00:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-03",
+        "approved_at": "2026-08-03T21:40:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-03T22:46:15.050532+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
+        "status": "succeeded",
+        "provider_request_id": "NuGR4EuRUGwc2gCRBMXf",
+        "started_at": "2026-08-03T22:46:07.321177+00:00",
+        "completed_at": "2026-08-03T22:46:15.039990+00:00",
         "reported_credits": null,
         "reported_characters": null
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/an-bhfuil-oilithreacht-i-ceatharlach.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "7c6ca73156b209671ed3c4bae4ba1e0181d318a443511ce2b924d05bb7aec8bd",
+        "bytes": 55214,
+        "duration_seconds": 2.24
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     },
@@ -85,39 +85,39 @@
       "estimated_credits": 30.0,
       "capture_disposition": "generated_unreviewed",
       "claim": {
-        "status": "unclaimed",
-        "owner_id": null,
-        "claimed_at": null,
-        "lease_expires_at": null
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-drain",
+        "claimed_at": "2026-08-03T21:40:00Z",
+        "lease_expires_at": "2026-08-11T00:00:00Z"
       },
       "request": {
-        "status": "planned",
-        "approved_by": null,
-        "approved_at": null
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-03",
+        "approved_at": "2026-08-03T21:40:00Z"
       },
       "retry": {
-        "attempt_count": 0,
+        "attempt_count": 1,
         "max_attempts": 3,
-        "last_attempt_at": null,
+        "last_attempt_at": "2026-08-03T22:46:15.050651+00:00",
         "next_retry_at": null
       },
       "provider_result": {
-        "status": "not_started",
-        "provider_request_id": null,
-        "started_at": null,
-        "completed_at": null,
+        "status": "succeeded",
+        "provider_request_id": "DaUpgeAiIjEsBFrTMhnI",
+        "started_at": "2026-08-03T22:46:07.321177+00:00",
+        "completed_at": "2026-08-03T22:46:15.039990+00:00",
         "reported_credits": null,
         "reported_characters": null
       },
       "error": null,
       "audio": {
         "output_path": "ios/AnTuras/Resources/Audio/taa-oilithreacht-i-ceatharlach.mp3",
-        "sha256": null,
-        "bytes": null,
-        "duration_seconds": null
+        "sha256": "f4bedfa0bc4d20e85306e441438f8d60c7cd614589fe1c4b09517a37111b617c",
+        "bytes": 49572,
+        "duration_seconds": 2.0
       },
       "audio_qa": {
-        "status": "not_started",
+        "status": "pending",
         "record": null
       }
     }
@@ -128,17 +128,38 @@
     "credits_per_character": 1.0,
     "estimated_batch_credits": 67.0,
     "estimated_cumulative_credits": 14364.0,
-    "actual_batch_credits": null,
-    "actual_cumulative_credits": null,
-    "usage_before": null,
-    "usage_after": null
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 98811.0,
+    "usage_before": {
+      "captured_at": "2026-08-03T22:46:07.321177+00:00",
+      "used_credits": 98811.0,
+      "remaining_credits": 137288.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-03T22:46:15.039990+00:00",
+      "used_credits": 98811.0,
+      "remaining_credits": 137288.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-03",
+      "authorized_at": "2026-08-03T21:40:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-03",
+      "baseline_used_credits": 95461.0,
+      "payload_credit_limit": 75000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.carlow.d32-carlow-st-moling.carlow-oilithreacht-pilgrimage"
+    }
   },
   "counts": {
     "lines": 2,
     "member_references": 2,
-    "planned": 2,
-    "approved": 0,
-    "succeeded": 0,
+    "planned": 0,
+    "approved": 2,
+    "succeeded": 2,
     "failed": 0
   },
   "manifest_identity_sha256": "9aeb8455c8abb880aafb58105138b876ab553a4f795d820b0fff30245cbc7995"

@@ -385,11 +385,21 @@
           }
         },
         "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
+          "status": "requested",
+          "requested_by": "codex.track-b.d32-prepare",
+          "requested_at": "2026-08-03T21:40:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.track-c.2026-08-03",
+            "authorized_at": "2026-08-03T21:40:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-tar-come.line.5fc3bf321ce739a4"
+          ]
         },
         "audio_qa": {
           "status": "not_generated",
@@ -511,11 +521,21 @@
           }
         },
         "capture_request": {
-          "status": "planned",
-          "requested_by": null,
-          "requested_at": null,
-          "authorization": null,
-          "batch_line_ids": []
+          "status": "requested",
+          "requested_by": "codex.track-b.d32-prepare",
+          "requested_at": "2026-08-03T21:40:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.track-c.2026-08-03",
+            "authorized_at": "2026-08-03T21:40:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-tar-come.line.b6e295b603d35e04"
+          ]
         },
         "audio_qa": {
           "status": "not_generated",
