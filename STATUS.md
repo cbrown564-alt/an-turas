@@ -1,8 +1,8 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-04 (Track D anomaly sampling complete
-on `track-a/bulk-integration`; content still largely uncommitted).*
+stories and places of Ireland. Updated 2026-08-04 (Track E reconcile closed on
+`track-a/bulk-integration` for payload `d32.harvest.track-b.2026-08-03`).*
 
 ## Current outcome
 
@@ -10,16 +10,15 @@ An Turas has a verified representative Mayo Story-and-Learning loop, shared lear
 runtime, four in-app county review packs, a nationwide Personal Atlas foundation, and
 a controlled Irish authoring/audio pipeline.
 
-The immediate phase is the **D32 emergency Irish audio harvest**. Track C payload
-`d32.harvest.track-b.2026-08-03` finished provider capture: **2,818 / 2,818** approved
-lines succeeded (**0** pending), under the user-authorized **75,000** credit limit
-(observed spend about **42,952** credits from baseline **95,461** → **138,413** used).
-Two colliding lines were cancelled earlier so existing clips were reused. Track D
-post-capture anomaly sampling and risk stratification are complete on the expanded
-bundle. Capture does not imply linguistic approval or learner release. Batch
-manifests, family capture requests, runtime `manifest.json`, and new MP3s remain in
-the working tree for a follow-up content commit after Track E reconcile (including
-Xcode project regeneration for the new Audio resources).
+The immediate phase is the **D32 emergency Irish audio harvest**. For payload
+`d32.harvest.track-b.2026-08-03`, Tracks **C** (capture), **D** (anomaly sampling),
+and **E** (reconcile) are closed: **2,818 / 2,818** approved lines succeeded, checksums
+verify for **3,880 / 3,880** runtime clips, Xcode Audio resources are regenerated,
+reconcile is non-blocking, and remaining resumable work is **zero**. Observed
+aggregate provider spend for the payload is **42,891** credits (baseline **95,461** →
+**138,352** used; **97,747** remaining), under the authorized **75,000** limit. Two
+colliding lines were cancelled so existing clips were reused. Capture still does not
+imply linguistic approval or learner release.
 
 The product is implemented as a substantial prototype. It has not been validated for
 learning outcomes or promoted for public release.
@@ -46,9 +45,10 @@ learning outcomes or promoted for public release.
   additional Corca Dhuibhne captures remain retained byte-for-byte for audit but are
   semantically retired, dynamically excluded, failed for learner QA, and unavailable
   through both text and named-asset runtime paths.
-- Read-only reconcile is **blocking** only on `xcode_audio_resource_missing`: new MP3s
-  are on disk and in `manifest.json` but absent from the generated Xcode Audio group.
-  That is a Track E project-regeneration step, not an audio-byte defect.
+- Track E regenerated `ios/AnTuras.xcodeproj` from `ios/project.yml`; all **3,880**
+  MP3s are in the Xcode Audio group. Read-only reconcile is **non-blocking** (**0**
+  errors; **57** warnings for known chronology, archive/provenance drift, inventory
+  legacy gaps, pedagogy drift, and the **15** technical review outliers).
 - The learner Personal Atlas pack remains **80** subjects (**50** names / **30** places)
   with **160** captured clips. A1 adds **318** authoring-only bulk subjects (**636**
   unique texts) without promoting them into the Swift pilot pack.
@@ -72,6 +72,7 @@ Canonical records:
 - [`content/audio/authoring/phrase-family-store-v2.json`](content/audio/authoring/phrase-family-store-v2.json)
 - [`ios/AnTuras/Resources/Audio/manifest.json`](ios/AnTuras/Resources/Audio/manifest.json)
 - [`content/audio/authoring/d32-track-d-post-capture-report.json`](content/audio/authoring/d32-track-d-post-capture-report.json)
+- [`content/audio/authoring/d32-track-e-reconcile-report.json`](content/audio/authoring/d32-track-e-reconcile-report.json)
 - [`content/audio/README.md`](content/audio/README.md)
 
 ### Mechanistic review
@@ -128,6 +129,10 @@ promotion.
 
 ### Verification at the current revision
 
+- Track E (2026-08-04): `xcodegen generate` synced Audio resources; reconcile
+  **blocking=false**; authoring `check` valid; scoreboard remaining resumable work
+  **0**. Report:
+  [`content/audio/authoring/d32-track-e-reconcile-report.json`](content/audio/authoring/d32-track-e-reconcile-report.json).
 - Track D (2026-08-04): risk sample regenerated (**86** clips);
   `reconcile --json` inspected **3,880** clips (**3,865** pass / **15** review /
   **0** quarantine); review-queue audit still reports **17** capture blockers /
@@ -139,14 +144,16 @@ promotion.
   [`content/audio/authoring/d32-track-b-prepare-harvest-summary.json`](content/audio/authoring/d32-track-b-prepare-harvest-summary.json).
 - Estimated Track B spend **~75,087** credits vs **140,872** last-known remaining
   (headroom positive; size `payload_credit_limit` per drained payload, not the full
-  band at once). Observed Track C spend for this payload was about **42,952** credits.
+  band at once). Observed Track C/E ledger spend for this payload is **42,891** credits
+  (baseline **95,461** → **138,352** used; **97,747** remaining).
 - Track C capture for this payload is complete; manifests are no longer draft/provider-
   blocked for the drained lines.
 - Prior: `structured_audio_authoring.py check` passed on the merged Track A store
   (**714** families).
-- Runtime filesystem/manifest checksums: **3,880/3,880**. Generated Xcode project
-  Audio group still omits the new MP3s (`xcode_audio_resource_missing`) until
-  `xcodegen` regenerates `ios/AnTuras.xcodeproj` from `ios/project.yml`.
+- Runtime filesystem/manifest checksums: **3,880/3,880**. Xcode Audio group regenerated
+  via `xcodegen`; `xcode_audio_resource_missing` cleared.
+- Track E scoreboard: **0** remaining resumable work; authoring `check` valid;
+  report [`d32-track-e-reconcile-report.json`](content/audio/authoring/d32-track-e-reconcile-report.json).
 - A generic-device Xcode build reached Swift compilation but could not complete asset
   catalog compilation because this host has no CoreSimulator runtime. iOS XCTest,
   playback, accessibility, appearance, and physical-device checks were therefore not
@@ -163,6 +170,10 @@ promotion.
 
 ### Completed in the latest coordinated cycle
 
+- Track E reconcile: regenerated Xcode Audio resources; reconcile **non-blocking**;
+  checksums **3,880/3,880**; remaining resumable work **0**; credit ledger
+  **95,461 → 138,352** used (**42,891** spend / **75,000** limit). Report:
+  `d32-track-e-reconcile-report.json`.
 - Track D post-capture: regenerated
   `sampling/d32-risk-stratification-2026-08-04.json` (**86** sample clips); ran full
   technical anomaly reconcile across **3,880** clips (**15** review-required
@@ -190,11 +201,11 @@ promotion.
 
 ## Active implementation sequence
 
-**Current priority: Track E reconcile** for payload `d32.harvest.track-b.2026-08-03`
-(regenerate Xcode Audio group from `ios/project.yml`, clear remaining reconcile
-warnings that are commit blockers, then commit the captured audio/batch corpus).
-Track D post-capture sampling is done: report
-[`d32-track-d-post-capture-report.json`](content/audio/authoring/d32-track-d-post-capture-report.json).
+**Current priority: harvest freeze / learner-facing slice selection** (STATUS step 6)
+for the closed Track B/C/D/E payload `d32.harvest.track-b.2026-08-03`. Do not open a
+new provider payload while selecting and gating the first reviewed subset. Track E
+report:
+[`d32-track-e-reconcile-report.json`](content/audio/authoring/d32-track-e-reconcile-report.json).
 Approval identity `user.d32.track-c.2026-08-03`; claim owner `codex.track-c.d32-drain`.
 
 **Resume / re-drain tooling (committed):** portable `pwsh` at
@@ -234,7 +245,8 @@ story records, sorted store family index, one `check` on the merged slice.
 **Track C gate:** closed for this payload — **2,818** lines captured.
 **Track D gate:** closed for mechanical sampling/anomaly screen on this payload
 (**3,880** inspected; **15** listening-review outliers; **0** technical quarantine).
-Next gate is Track E reconcile (Xcode resource regeneration + commit readiness).
+**Track E gate:** closed — Xcode Audio regenerated, reconcile non-blocking, checksums
+complete, resumable work zero, credit ledger recorded.
 
 Canonical queue partition: [`content/audio/authoring/d32-county-authoring-queue.md`](content/audio/authoring/d32-county-authoring-queue.md).
 

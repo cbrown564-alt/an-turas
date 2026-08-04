@@ -4,12 +4,12 @@ Operational queue for Track A's provisional phrase-family authoring. The atlas a
 story slate remain the source inputs; queue membership is not evidence of historical,
 Irish-language, pedagogy, rights, audio-QA, or learner-release approval.
 
-**Current priority:** Track C capture and Track D anomaly sampling are complete for
-payload `d32.harvest.track-b.2026-08-03` (**2,818** captured lines; **3,880** runtime
-clips inspected). Next: Track E reconcile (regenerate Xcode Audio group from
-`ios/project.yml`, clear commit-blocking reconcile errors), then commit audio+batch
-corpus. Track D report:
-[`d32-track-d-post-capture-report.json`](d32-track-d-post-capture-report.json). See
+**Current priority:** Tracks C–E are closed for payload
+`d32.harvest.track-b.2026-08-03` (**2,818** captured lines; **3,880** runtime clips
+checksum-verified; reconcile non-blocking). Next: harvest freeze / learner-facing
+slice selection — do not open a new provider payload for this tranche. Reports:
+[`d32-track-d-post-capture-report.json`](d32-track-d-post-capture-report.json),
+[`d32-track-e-reconcile-report.json`](d32-track-e-reconcile-report.json). See
 [`STATUS.md`](../../../STATUS.md).
 
 ## Bulk Track A avenues (parallel)

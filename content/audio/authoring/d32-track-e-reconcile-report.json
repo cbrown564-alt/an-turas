@@ -1,0 +1,252 @@
+{
+  "contract": "irish_audio_track_e_tranche_reconcile",
+  "created_at": "2026-08-04T09:40:00+01:00",
+  "source_revision": "1d39c79",
+  "payload_id": "d32.harvest.track-b.2026-08-03",
+  "scope": "Track E post-tranche reconcile after Track C capture, Track D anomaly sampling, and Xcode Audio regeneration; not linguistic approval or learner release",
+  "read_only": true,
+  "gates": {
+    "track_c_capture": "closed",
+    "track_d_anomaly_sampling": "closed",
+    "track_e_reconcile": "closed",
+    "reconcile_blocking": false,
+    "authoring_check": "valid",
+    "remaining_resumable_work": {
+      "authorized_not_succeeded_lines": 0,
+      "approved_not_started_lines": 0,
+      "claim_resolution_required_lines": 0,
+      "stale_claims": 0,
+      "invalid_claim_leases": 0,
+      "interrupted_attempts": 0,
+      "retryable_failed_lines": 0,
+      "preflight_candidates": 0,
+      "manual_recovery_required": 0
+    }
+  },
+  "xcode_resources": {
+    "action": "xcodegen generate --spec ios/project.yml",
+    "result": "all 3880 runtime MP3s present in ios/AnTuras.xcodeproj/project.pbxproj",
+    "prior_blocking_finding": "xcode_audio_resource_missing cleared"
+  },
+  "scoreboard": {
+    "authored": {
+      "families": 714,
+      "members": 4316,
+      "complete_members": 4314,
+      "unique_texts": 3525,
+      "counties": [
+        "antrim",
+        "armagh",
+        "carlow",
+        "cavan",
+        "clare",
+        "cork",
+        "derry",
+        "donegal",
+        "down",
+        "dublin",
+        "fermanagh",
+        "galway",
+        "kerry",
+        "kildare",
+        "kilkenny",
+        "laois",
+        "leitrim",
+        "limerick",
+        "longford",
+        "louth",
+        "mayo",
+        "meath",
+        "monaghan",
+        "offaly",
+        "roscommon",
+        "sligo",
+        "tipperary",
+        "tyrone",
+        "waterford",
+        "westmeath",
+        "wexford",
+        "wicklow"
+      ],
+      "county_count": 32
+    },
+    "registered_lines": {
+      "registered": 3528,
+      "approved": 3516,
+      "claimed": 0,
+      "succeeded": 3518,
+      "retired_quarantined": 2,
+      "failed": 0,
+      "cancelled": 11,
+      "unique_normalized_texts": 3527
+    },
+    "authorized_lines": 3516,
+    "bundled_clips": {
+      "total": 3880,
+      "new_v2": 3518,
+      "legacy": 362,
+      "unattributed": 0,
+      "new_v2_checksum_verified": 3518,
+      "legacy_checksum_verified": 362,
+      "inventory_backed": 292
+    },
+    "checksum_state": {
+      "bundle_manifest_records": 3880,
+      "bundle_files": 3880,
+      "verified": 3880,
+      "unverified_manifest_records": 0,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "orphan_files": 0,
+      "exact_archive_snapshots": 0
+    },
+    "technical_audio": {
+      "inspected": 3880,
+      "passed": 3865,
+      "review_required": 15,
+      "quarantined": 0,
+      "decoder_unavailable": false,
+      "quarantine_slugs": [],
+      "review_slugs": [
+        "abair-ee-finsceeal-luu-faoin-anseo",
+        "abair-ee-finsceeal-luu-faoin-tabhair",
+        "abair-ee-finsceeal-ros-comaain-faoin-eeist",
+        "an-baile-ee-duun-moor",
+        "an-bhfuil-see-nua",
+        "an-ee-oo-hanluain-d-ainm-teaghlaigh",
+        "an-ee-oo-nuallaain-d-ainm-teaghlaigh",
+        "corcra-gorm-dearg-buii-dubh-baan",
+        "cuuig",
+        "dearg",
+        "dia-dhuit",
+        "feear",
+        "scriiobh-leeigh-meil-ith-codail",
+        "seo-sceeal-liatroim-taoiseach",
+        "taa-teeigh-i-ceatharlach"
+      ]
+    }
+  },
+  "payload_batch_rollups": {
+    "batches": 557,
+    "lines": 2820,
+    "approved": 2818,
+    "succeeded": 2818,
+    "failed": 0,
+    "cancelled_request_lines": [
+      {
+        "batch_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-margadh-market",
+        "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-margadh-market.line.54375ad713910666",
+        "normalized_text": "Cá bhfuil an margadh?",
+        "inventory_slug": "caa-bhfuil-an-margadh",
+        "reuse_note": "request cancelled; existing runtime clip retained for identical normalized text"
+      },
+      {
+        "batch_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-caislean-castle",
+        "line_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-caislean-castle.line.0e4555a1a16dd73b",
+        "normalized_text": "Cá bhfuil an caisleán?",
+        "inventory_slug": "caa-bhfuil-an-caisleaan",
+        "reuse_note": "request cancelled; existing runtime clip retained for identical normalized text"
+      }
+    ],
+    "estimated_batch_credits_sum": 75044.0,
+    "actual_batch_credits_sum": 29621.0,
+    "actual_batch_credits_note": "provider per-batch actuals are incomplete; use aggregate usage_after checkpoints for ledger delta"
+  },
+  "credit_ledger": {
+    "approval_baseline_used_credits": 95461.0,
+    "approval_baseline_remaining_credits": 140638.0,
+    "payload_credit_limit": 75000.0,
+    "observed_usage_before_min": 95461.0,
+    "observed_usage_after_max": 138352.0,
+    "observed_remaining_at_after_max": 97747.0,
+    "observed_payload_spend": 42891.0,
+    "within_payload_credit_limit": true,
+    "settlement_basis": "batch spend.usage_after.used_credits maxima across the 557 approved Track B manifests"
+  },
+  "coverage": {
+    "atlas_names_places": {
+      "pilot_subjects": 80,
+      "artifacts": [
+        {
+          "kind": "atlas_names_places",
+          "path": "ios/AnTuras/Resources/personal-atlas-subjects.json",
+          "records": 80,
+          "record_kinds": {
+            "name": 50,
+            "place": 30
+          },
+          "missing_recorded_checksum": true
+        },
+        {
+          "kind": "atlas_headwords",
+          "path": "content/audio/atlas-headwords-v1.json",
+          "records": 640,
+          "record_kinds": null,
+          "missing_recorded_checksum": true
+        }
+      ]
+    },
+    "pedagogy_narration": {
+      "artifact_count": 8,
+      "paths": [
+        "content/dublin/sihtric-penny.pack.draft.json",
+        "content/mayo/grainne-1593.pack.draft.json",
+        "content/meath/trim-de-lacy.pack.draft.json",
+        "content/offaly/cross-of-the-scriptures.pack.draft.json",
+        "ios/AnTuras/Resources/CountyStories/dublin.sihtric-penny.json",
+        "ios/AnTuras/Resources/CountyStories/mayo.grainne-1593.json",
+        "ios/AnTuras/Resources/CountyStories/meath.trim-de-lacy.json",
+        "ios/AnTuras/Resources/CountyStories/offaly.cross-of-the-scriptures.json"
+      ],
+      "note": "pedagogy sidecar and pack drafts remain review-open; Track E does not promote learner release"
+    }
+  },
+  "reconcile_findings": {
+    "blocking": false,
+    "error_count": 0,
+    "warning_count": 57,
+    "warning_codes": {
+      "audio_technical_review_required": {
+        "finding_rows": 15
+      },
+      "inventory_bundle_qa_drift": {
+        "finding_rows": 1,
+        "reported_count": 47
+      },
+      "bundle_lines_outside_inventory": {
+        "finding_rows": 1,
+        "reported_count": 3588
+      },
+      "archive_snapshot_drift": {
+        "finding_rows": 4
+      },
+      "capture_chronology_unverified": {
+        "finding_rows": 9
+      },
+      "duplicate_batch_normalized_text_voice": {
+        "finding_rows": 1
+      },
+      "artifact_checksum_not_recorded": {
+        "finding_rows": 13
+      },
+      "artifact_records_missing_stable_id": {
+        "finding_rows": 1
+      },
+      "artifact_duplicate_normalized_text": {
+        "finding_rows": 1
+      },
+      "artifact_records_missing_provenance": {
+        "finding_rows": 10
+      },
+      "pedagogy_narration_runtime_drift": {
+        "finding_rows": 1
+      }
+    },
+    "non_blocking_note": "warnings include known chronology, archive drift, artifact provenance gaps, inventory/legacy drift, pedagogy drift, and the 15 Track D technical review outliers"
+  },
+  "next": [
+    "Do not open a new provider payload for this tranche; remaining_resumable_work is zero",
+    "Proceed to harvest freeze / learner-facing slice selection (STATUS step 6) when ready",
+    "Human listening remains open for the 15 technical review-required slugs and the editorial review queue"
+  ]
+}

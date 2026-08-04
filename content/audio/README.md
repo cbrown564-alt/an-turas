@@ -245,7 +245,8 @@ The canonical spot-listen record carries the risk-ranked editorial queue in
 `SPOT-LISTEN-2026-07-31.md`, including the 2026-08-04 post-Track-C technical outlier
 list. The current risk sample is
 `authoring/sampling/d32-risk-stratification-2026-08-04.json`; the compact post-capture
-report is `authoring/d32-track-d-post-capture-report.json`. The companion audit checks
+report is `authoring/d32-track-d-post-capture-report.json`; the Track E reconcile
+closeout is `authoring/d32-track-e-reconcile-report.json`. The companion audit checks
 inventory identity, launch bind coverage, exact-text intent conflicts, retired legacy
 generation inputs, named/mutation review prompts, and batch-state hazards:
 
