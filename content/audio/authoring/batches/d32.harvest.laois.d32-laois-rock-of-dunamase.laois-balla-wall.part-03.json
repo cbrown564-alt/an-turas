@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-balla-wall.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — laois / d32.laois.rock-of-dunamase / laois.balla.wall",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-balla-wall.part-03.line.1d5b7abe70b0ef47",
+      "member_ids": [
+        "d32.laois.08.balla.wall.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Laois leis an balla.",
+      "text_sha256": "4bdec6e45c62b86881241ca761058ca1618b45d031060e6dd3b56553747cc62e",
+      "inventory_slug": "baineann-sceeal-laois-leis-an-balla",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:55:12.271105+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "dxJr25o99CSqm4w20W46",
+        "started_at": "2026-08-05T10:54:59.040290+00:00",
+        "completed_at": "2026-08-05T10:55:12.227151+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-laois-leis-an-balla.mp3",
+        "sha256": "e21c1ded9b9a616713bd0e923158fdbaf370a188b586270620383a85dc969dd0",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-balla-wall.part-03.line.4ae637893be0d60c",
+      "member_ids": [
+        "d32.laois.08.balla.wall.speak-about"
+      ],
+      "normalized_text": "Labhair faoin balla i Laois.",
+      "text_sha256": "5c9e21b6436c9d47e42a8e0e0d99499d88569c799ea0114e19fb86fb50f1a3b0",
+      "inventory_slug": "labhair-faoin-balla-i-laois",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:55:12.271227+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "sN64x69l6cVrrmL9wG3u",
+        "started_at": "2026-08-05T10:54:59.040290+00:00",
+        "completed_at": "2026-08-05T10:55:12.227151+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-balla-i-laois.mp3",
+        "sha256": "13fe1dfa2361a16927cd52cab73afc02aa8c4b98f2d6711f0126340b3e1a974b",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-balla-wall.part-03.line.6fd683f8ae695e55",
+      "member_ids": [
+        "d32.laois.08.balla.wall.ask-what"
+      ],
+      "normalized_text": "Cad é an balla i Laois?",
+      "text_sha256": "a1a6bb1c5d3e4c459f108fef0962cdfeaf4e2af465cb216144afaa150ac080bf",
+      "inventory_slug": "cad-ee-an-balla-i-laois",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:55:12.271311+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "39oY3EuNu4nfiXOaYmaM",
+        "started_at": "2026-08-05T10:54:59.040290+00:00",
+        "completed_at": "2026-08-05T10:55:12.227151+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-balla-i-laois.mp3",
+        "sha256": "8e399160834b8e9c5f9e5ba8dd3ea034cf8ff0003e7c427bca800e4016c612ea",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-balla-wall.part-03.line.87692fd78ac5a333",
+      "member_ids": [
+        "d32.laois.08.balla.wall.story-important"
+      ],
+      "normalized_text": "Tá an balla tábhachtach i scéal Laois.",
+      "text_sha256": "403589a0445aa7b8493390deab40d8ab54f22cdff03425bb736d958db5bad2d6",
+      "inventory_slug": "taa-an-balla-taabhachtach-i-sceeal-laois",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:55:12.271390+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "MiSERlvwoNswA6n322uj",
+        "started_at": "2026-08-05T10:54:59.040290+00:00",
+        "completed_at": "2026-08-05T10:55:12.227151+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-balla-taabhachtach-i-sceeal-laois.mp3",
+        "sha256": "c6c004647570e32913a8a703955b0de4f4a4c4ec4d3a0e12d6c0ae7831ddd013",
+        "bytes": 78411,
+        "duration_seconds": 3.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-balla-wall.part-03.line.917df3908a6042e5",
+      "member_ids": [
+        "d32.laois.08.balla.wall.see-here"
+      ],
+      "normalized_text": "Feicim an balla i Laois.",
+      "text_sha256": "3a75b120ac0675167b06b5e21213ffded7095950874e47796236533a1a80844f",
+      "inventory_slug": "feicim-an-balla-i-laois",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:55:12.271493+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "aJYPcI0yqTPsGoHz15wc",
+        "started_at": "2026-08-05T10:54:59.040290+00:00",
+        "completed_at": "2026-08-05T10:55:12.227151+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-balla-i-laois.mp3",
+        "sha256": "82f68f60e9846287a9a838e6dd59b3ad541f64e83deae4a91cc7385fe90d688d",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-balla-wall.part-03.line.9b8386f51ee9092a",
+      "member_ids": [
+        "d32.laois.08.balla.wall.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an balla ceart i Laois.",
+      "text_sha256": "7b9e1b69171a0529d913376c2df3afc42e80b3ea656d679bd86d15bf385d1c7a",
+      "inventory_slug": "roghnaigh-an-balla-ceart-i-laois",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:55:12.271573+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "XVI2lKZrplnVN9eXqCVI",
+        "started_at": "2026-08-05T10:54:59.040290+00:00",
+        "completed_at": "2026-08-05T10:55:12.227151+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-balla-ceart-i-laois.mp3",
+        "sha256": "df2e8a27c54be022dddef25d2eb67bae62234787fea9ed384e84435f77ae4c3c",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-balla-wall.part-03.line.b1a0408e385b32d0",
+      "member_ids": [
+        "d32.laois.08.balla.wall.listen-surround"
+      ],
+      "normalized_text": "Éist leis an balla i Laois.",
+      "text_sha256": "a42f255c5271afc1a5e0062f38b6be9a26bbbae6bd5287b4eb87ec55e785d0f1",
+      "inventory_slug": "eeist-leis-an-balla-i-laois",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:55:12.271672+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "34s6kywVlrgmM8orOj0m",
+        "started_at": "2026-08-05T10:54:59.040290+00:00",
+        "completed_at": "2026-08-05T10:55:12.227151+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-balla-i-laois.mp3",
+        "sha256": "2921d3990ac9dd0d4b4e0449bbbeb2742bd85bed68e919333e5eb9297acad5a3",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-balla-wall.part-03.line.bee5220b3f49be23",
+      "member_ids": [
+        "d32.laois.08.balla.wall.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an balla i Laois?",
+      "text_sha256": "e6a621c680761707b2ab3f41cd02ee934d6b6c4ebdfad315ba13edaaa460beee",
+      "inventory_slug": "caa-bhfuil-an-balla-i-laois",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:55:12.271751+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "KcXKl3dEdFJsmQweISj1",
+        "started_at": "2026-08-05T10:54:59.040290+00:00",
+        "completed_at": "2026-08-05T10:55:12.227151+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-balla-i-laois.mp3",
+        "sha256": "01cb7aff6387dbc396c610f61fc083e0485ebaeee0869a15d75501de0b149633",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 235.0,
+    "estimated_cumulative_credits": 89576.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 160629.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:54:59.040290+00:00",
+      "used_credits": 160629.0,
+      "remaining_credits": 75470.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:55:12.227151+00:00",
+      "used_credits": 160629.0,
+      "remaining_credits": 75470.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.laois.d32-laois-rock-of-dunamase.laois-balla-wall.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "88aa555382bfa52ba56bc99556889902400dad65dc35703799bb76738cd58fdf"
+}

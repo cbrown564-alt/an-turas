@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-uaigh-grave.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — sligo / d32.sligo.yeats-ben-bulben / sligo.uaigh.grave",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-uaigh-grave.part-03.line.0c78a750b270dfe5",
+      "member_ids": [
+        "d32.sligo.02.uaigh.grave.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an uaigh ceart.",
+      "text_sha256": "ab0bcba73b91fa19b49cd1fc2886a439e8d19679593d14b7065f166981d8fe32",
+      "inventory_slug": "roghnaigh-an-uaigh-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:53.984034+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "YJVBQ2QWRy87oFI11Spc",
+        "started_at": "2026-08-05T11:47:46.306954+00:00",
+        "completed_at": "2026-08-05T11:47:53.932625+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-uaigh-ceart.mp3",
+        "sha256": "36295345077d84c4e4b1744089c504c107151eda4cc5fb545a5272514b729db3",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-uaigh-grave.part-03.line.382390add995a176",
+      "member_ids": [
+        "d32.sligo.02.uaigh.grave.speak-about"
+      ],
+      "normalized_text": "Labhair faoin uaigh.",
+      "text_sha256": "6e77844e2c530ea48f6f7b6ec3b131f521c31b75a91113a35fc0b45c2bb21e27",
+      "inventory_slug": "labhair-faoin-uaigh",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:53.984159+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "kPyRIPr4jbMHC0MqrpB2",
+        "started_at": "2026-08-05T11:47:46.306954+00:00",
+        "completed_at": "2026-08-05T11:47:53.932625+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-uaigh.mp3",
+        "sha256": "69f4dfb9e2ee8b00c45f54394424e24a75babfc02649cc356f92ba224396b36a",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-uaigh-grave.part-03.line.a0f8291b09fd13de",
+      "member_ids": [
+        "d32.sligo.02.uaigh.grave.story-important"
+      ],
+      "normalized_text": "Tá an uaigh tábhachtach sa scéal.",
+      "text_sha256": "be9fe73410c649cd1c1ab27360ed17d9f36e742fd90f32f8bfeed783f3b45d0a",
+      "inventory_slug": "taa-an-uaigh-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:53.984223+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "jNGjnuX5SpJBbeYg78RX",
+        "started_at": "2026-08-05T11:47:46.306954+00:00",
+        "completed_at": "2026-08-05T11:47:53.932625+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-uaigh-taabhachtach-sa-sceeal.mp3",
+        "sha256": "d1e0af5adafd59a82bad0afa777a59a368134cdfb098479a5af7ede4be6f2dda",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-uaigh-grave.part-03.line.c067ec248a24a4dc",
+      "member_ids": [
+        "d32.sligo.02.uaigh.grave.see-here"
+      ],
+      "normalized_text": "Feicim an uaigh anseo.",
+      "text_sha256": "2df383621d9042fad24db9d82c437aa8bbb16d09b3e7f693da40092da36d9ebe",
+      "inventory_slug": "feicim-an-uaigh-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:53.984313+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "mkQWwG38zqE2KVeUj2tz",
+        "started_at": "2026-08-05T11:47:46.306954+00:00",
+        "completed_at": "2026-08-05T11:47:53.932625+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-uaigh-anseo.mp3",
+        "sha256": "67d69641d3c39de5dfd5e3cdb02b6e01f2014dc185e5bf847fc10a3f71c285c7",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 100.0,
+    "estimated_cumulative_credits": 89441.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 176234.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T11:47:46.306954+00:00",
+      "used_credits": 176234.0,
+      "remaining_credits": 59865.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T11:47:53.932625+00:00",
+      "used_credits": 176234.0,
+      "remaining_credits": 59865.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-uaigh-grave.part-03"
+    }
+  },
+  "counts": {
+    "lines": 4,
+    "member_references": 4,
+    "planned": 0,
+    "approved": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "f3de9ed17808462884080ccc7a6904383bebd7b2a90f9e02294e01bed5de92c7"
+}

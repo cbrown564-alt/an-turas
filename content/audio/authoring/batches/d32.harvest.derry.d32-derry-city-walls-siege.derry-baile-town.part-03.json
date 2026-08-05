@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-baile-town.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — derry / d32.derry.city-walls-siege / derry.baile.town",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-baile-town.part-03.line.0b1122e6cbe4654a",
+      "member_ids": [
+        "d32.derry.03.baile.town.speak-about"
+      ],
+      "normalized_text": "Labhair faoin baile i Doire.",
+      "text_sha256": "5dcb108b5bcb7c1712c3a1cc06072b5bc57452ec94571385196c625b92b79601",
+      "inventory_slug": "labhair-faoin-baile-i-doire",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:24.997934+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "7DvEGkuh9xDxZfROAmlU",
+        "started_at": "2026-08-05T10:25:16.997050+00:00",
+        "completed_at": "2026-08-05T10:25:24.970245+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-baile-i-doire.mp3",
+        "sha256": "385a8749a31ffac55ef22ed28c4db3af00f68164487da1e7648c0177469d25f5",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-baile-town.part-03.line.19eed73a14339926",
+      "member_ids": [
+        "d32.derry.03.baile.town.see-here"
+      ],
+      "normalized_text": "Feicim an baile i Doire.",
+      "text_sha256": "e64eb6b4c3e3a676fd79e68a4aebf7e34fd3029446bce5d8ca93512cf1e7483c",
+      "inventory_slug": "feicim-an-baile-i-doire",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:24.998097+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "V3DYlD7AyagZdQ2XH8J4",
+        "started_at": "2026-08-05T10:25:16.997050+00:00",
+        "completed_at": "2026-08-05T10:25:24.970245+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-baile-i-doire.mp3",
+        "sha256": "90f1ea3f04736e92e5b318af030086b8536fb2788977bfb2ee082133a1ec656e",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-baile-town.part-03.line.8532be161d3f2999",
+      "member_ids": [
+        "d32.derry.03.baile.town.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an baile ceart i Doire.",
+      "text_sha256": "f750b448fa61ebee18f33f3dd417d71fe67eca179517ed8572eb9bba8e4db305",
+      "inventory_slug": "roghnaigh-an-baile-ceart-i-doire",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:24.998212+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "PCS9bxAh6MdTeSZp6M7L",
+        "started_at": "2026-08-05T10:25:16.997050+00:00",
+        "completed_at": "2026-08-05T10:25:24.970245+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-baile-ceart-i-doire.mp3",
+        "sha256": "fcab6eb0cc1e68e57d719716d5006b85ba2829edc23ed2cfa673614ae5c5df58",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-baile-town.part-03.line.eecffc605dd9df5b",
+      "member_ids": [
+        "d32.derry.03.baile.town.story-important"
+      ],
+      "normalized_text": "Tá an baile tábhachtach i scéal Doire.",
+      "text_sha256": "4c3c4e8ff0d5846cd51eec3d0cc4345ac56b9e0ce7067f22d56d85045e0a6e65",
+      "inventory_slug": "taa-an-baile-taabhachtach-i-sceeal-doire",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:24.998343+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "zzstJMJQPYy2EG2oCEFq",
+        "started_at": "2026-08-05T10:25:16.997050+00:00",
+        "completed_at": "2026-08-05T10:25:24.970245+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-baile-taabhachtach-i-sceeal-doire.mp3",
+        "sha256": "b216d14bbafe317b53bee02ca91c5e35dd121be8d619ba9c95617f5175531497",
+        "bytes": 85934,
+        "duration_seconds": 3.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 123.0,
+    "estimated_cumulative_credits": 89464.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 147179.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:25:16.997050+00:00",
+      "used_credits": 147179.0,
+      "remaining_credits": 88920.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:25:24.970245+00:00",
+      "used_credits": 147179.0,
+      "remaining_credits": 88920.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.derry.d32-derry-city-walls-siege.derry-baile-town.part-03"
+    }
+  },
+  "counts": {
+    "lines": 4,
+    "member_references": 4,
+    "planned": 0,
+    "approved": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "054ddcf497da9a906c76f6e0a583721d30e833f53a849a92d5cc7969b97e58cc"
+}

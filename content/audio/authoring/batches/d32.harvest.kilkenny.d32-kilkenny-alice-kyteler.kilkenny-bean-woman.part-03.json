@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-bean-woman.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — kilkenny / d32.kilkenny.alice-kyteler / kilkenny.bean.woman",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-bean-woman.part-03.line.1da3d3127916481c",
+      "member_ids": [
+        "d32.kilkenny.08.bean.woman.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an bean ceart.",
+      "text_sha256": "55a62665e4f470144ba940d37f813f7100f998170cea6517593ff8897a6b96c7",
+      "inventory_slug": "roghnaigh-an-bean-ceart",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:52:14.006488+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "3WGbLhzuSfusjSgP2LVj",
+        "started_at": "2026-08-05T10:52:01.874476+00:00",
+        "completed_at": "2026-08-05T10:52:13.978163+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-bean-ceart.mp3",
+        "sha256": "e309e806dfe9f329db2f9ec8dcd66f1c125a7cea0f1c9c91a2994df0841190a2",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-bean-woman.part-03.line.246d21c7b96b4f21",
+      "member_ids": [
+        "d32.kilkenny.08.bean.woman.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an bean?",
+      "text_sha256": "2f71e2f0cdb7e561945f34e6c4858c8692bbe7416a5a0fcd01dfab039cf54334",
+      "inventory_slug": "caa-bhfuil-an-bean",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:52:14.007025+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "6mNp03mi1lbdmnH8DuP9",
+        "started_at": "2026-08-05T10:52:01.874476+00:00",
+        "completed_at": "2026-08-05T10:52:13.978163+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-bean.mp3",
+        "sha256": "590ec0fcc7de54b4b787f55d77c1f4121759884100b3cf68eb6633d084ca2a58",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-bean-woman.part-03.line.3aa6c08ca45675e7",
+      "member_ids": [
+        "d32.kilkenny.08.bean.woman.ask-what"
+      ],
+      "normalized_text": "Cad é an bean?",
+      "text_sha256": "c6f3b629e79334dc031feed04d61ce8cbb474ffb83ce75965100553efe7c2900",
+      "inventory_slug": "cad-ee-an-bean",
+      "estimated_characters": 14,
+      "estimated_credits": 14.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:52:14.007090+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "9J9xoJ6QPVxBQwV7JQ6O",
+        "started_at": "2026-08-05T10:52:01.874476+00:00",
+        "completed_at": "2026-08-05T10:52:13.978163+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-bean.mp3",
+        "sha256": "8e029a2be0fb54ebee2c98c37f578922dffc5ad056e2a8387ab743fad9c6f798",
+        "bytes": 30137,
+        "duration_seconds": 1.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-bean-woman.part-03.line.407488a6c1e93648",
+      "member_ids": [
+        "d32.kilkenny.08.bean.woman.story-important"
+      ],
+      "normalized_text": "Tá an bean tábhachtach sa scéal.",
+      "text_sha256": "c6a2f18eda187c323c6b6607c8a88a2f85cb4998b19e1f5f1a694872167bba08",
+      "inventory_slug": "taa-an-bean-taabhachtach-sa-sceeal",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:52:14.007136+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "goReLByH0eNXzk3HvNzC",
+        "started_at": "2026-08-05T10:52:01.874476+00:00",
+        "completed_at": "2026-08-05T10:52:13.978163+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-bean-taabhachtach-sa-sceeal.mp3",
+        "sha256": "2e3766babeb98226f90e77e7cbfb0478ee2bc9af97bcd76ca9ead7f1be3c15bd",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-bean-woman.part-03.line.49b6d1db6d92b98c",
+      "member_ids": [
+        "d32.kilkenny.08.bean.woman.listen-surround"
+      ],
+      "normalized_text": "Éist leis an bean.",
+      "text_sha256": "08b06c029710ea560645799c4011650dddfb7be13af0bf1bae61ac1271f70ed0",
+      "inventory_slug": "eeist-leis-an-bean",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:52:14.007253+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "eUv2R1y4FISc3643AbK3",
+        "started_at": "2026-08-05T10:52:01.874476+00:00",
+        "completed_at": "2026-08-05T10:52:13.978163+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-bean.mp3",
+        "sha256": "87c6d207b355ac3706e63312c866e6aca68b89dc185b843afb555c272a14817e",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-bean-woman.part-03.line.49baed4287b9b5d4",
+      "member_ids": [
+        "d32.kilkenny.08.bean.woman.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an bean.",
+      "text_sha256": "6d4fd5a50c4bf21dbf7303459435ac851c4f98b9aa3ad6853503259c8bf5dc66",
+      "inventory_slug": "baineann-an-sceeal-leis-an-bean",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:52:14.007325+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ocYUWlQweLl5KMVKbTvg",
+        "started_at": "2026-08-05T10:52:01.874476+00:00",
+        "completed_at": "2026-08-05T10:52:13.978163+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-bean.mp3",
+        "sha256": "6896cc516ba6044c8ee43543b9ddc6bb7e598a14a9fbde6b6063d35ff01ba95f",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-bean-woman.part-03.line.d212739628a5fdd6",
+      "member_ids": [
+        "d32.kilkenny.08.bean.woman.see-here"
+      ],
+      "normalized_text": "Feicim an bean anseo.",
+      "text_sha256": "84a4133265afaa8ada5a7265a330dd5fbe1042e2305ed43c530705e686640edb",
+      "inventory_slug": "feicim-an-bean-anseo",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:52:14.007415+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "8rlofRqPBBFzDuWNYkgB",
+        "started_at": "2026-08-05T10:52:01.874476+00:00",
+        "completed_at": "2026-08-05T10:52:13.978163+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-bean-anseo.mp3",
+        "sha256": "94a77d190b3263cce0bc3f69fe1886220df8f5f467ac0315bc737d3c49fd5bee",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-bean-woman.part-03.line.e88eec7ab793f013",
+      "member_ids": [
+        "d32.kilkenny.08.bean.woman.speak-about"
+      ],
+      "normalized_text": "Labhair faoin bean.",
+      "text_sha256": "bdcf1bf8413b5f2866336f227a0a3ab524ddef3b2b820349e5788519e8a06bc7",
+      "inventory_slug": "labhair-faoin-bean",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:52:14.007480+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "WVb7wVDl1nvqQEhOQFXK",
+        "started_at": "2026-08-05T10:52:01.874476+00:00",
+        "completed_at": "2026-08-05T10:52:13.978163+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-bean.mp3",
+        "sha256": "aaef278649b22d6017ce488a2283fda51a9aeb15ce11910511410e1839d9d201",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 177.0,
+    "estimated_cumulative_credits": 89518.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 159269.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:52:01.874476+00:00",
+      "used_credits": 159269.0,
+      "remaining_credits": 76830.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:52:13.978163+00:00",
+      "used_credits": 159269.0,
+      "remaining_credits": 76830.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-bean-woman.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "6399adf06fddbf0c552d59ef4706ec8f46086d2e01be4161dd8b221fd40e61e6"
+}

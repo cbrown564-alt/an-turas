@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-seas-stand.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — antrim / d32.antrim.fionn-mac-cumhaill / antrim.seas.stand",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-seas-stand.part-03.line.0707e002431c1107",
+      "member_ids": [
+        "d32.antrim.14.seas.stand.speak-about"
+      ],
+      "normalized_text": "Labhair faoin seas.",
+      "text_sha256": "c608f31925295a3477035d8a7aab1eae2e4c59bba3d2f06dd928c709591b6083",
+      "inventory_slug": "labhair-faoin-seas",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:51.949481+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "0uitwGeqQqtWif2TKhDo",
+        "started_at": "2026-08-05T09:16:40.495525+00:00",
+        "completed_at": "2026-08-05T09:16:51.910865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-seas.mp3",
+        "sha256": "253cf971e3e8507c51ee5c8f96b3587ae73788f6851c6a07044164c9eb2b156e",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-seas-stand.part-03.line.274dc8aa61f0b38d",
+      "member_ids": [
+        "d32.antrim.14.seas.stand.see-here"
+      ],
+      "normalized_text": "Feicim an seas anseo.",
+      "text_sha256": "2bece9e9c1c043719c5b398178eb36c02755e370986038163bb4f9dd1c6ce51f",
+      "inventory_slug": "feicim-an-seas-anseo",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:51.949592+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "hQNNatBFgTAXsQRzaS94",
+        "started_at": "2026-08-05T09:16:40.495525+00:00",
+        "completed_at": "2026-08-05T09:16:51.910865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-seas-anseo.mp3",
+        "sha256": "45e7a1405e4ae0358f3cd2347cbb2e39ef62fd52d54c93dc695b707578ac9917",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-seas-stand.part-03.line.736c4874b4eb3caf",
+      "member_ids": [
+        "d32.antrim.14.seas.stand.story-important"
+      ],
+      "normalized_text": "Tá an seas tábhachtach sa scéal.",
+      "text_sha256": "4b2feb3aabeebff0a0c8e2b068fbffee3b56153f270455ee83c651920adbd0f3",
+      "inventory_slug": "taa-an-seas-taabhachtach-sa-sceeal",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:51.949676+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "e3mUAYb9bhkSUCmfy5Cv",
+        "started_at": "2026-08-05T09:16:40.495525+00:00",
+        "completed_at": "2026-08-05T09:16:51.910865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-seas-taabhachtach-sa-sceeal.mp3",
+        "sha256": "41026b42b413b4a3cd57a071cfbbe5c0c90d8700f51eac074e19e3e2a0959f60",
+        "bytes": 72769,
+        "duration_seconds": 2.96
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-seas-stand.part-03.line.80fba1612e0993c9",
+      "member_ids": [
+        "d32.antrim.14.seas.stand.ask-what"
+      ],
+      "normalized_text": "Cad é an seas?",
+      "text_sha256": "d7cae6ac38f76ef036d9d388fffddeaff55bf6c697b2033c6bb73a4724a5c0bd",
+      "inventory_slug": "cad-ee-an-seas",
+      "estimated_characters": 14,
+      "estimated_credits": 14.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:51.949780+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "AhNkriu1ui92lXvjCBoj",
+        "started_at": "2026-08-05T09:16:40.495525+00:00",
+        "completed_at": "2026-08-05T09:16:51.910865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-seas.mp3",
+        "sha256": "73b23aa171fb82cecafa7fbc8b6005a947075cd2ec9f7c6ece6b2b05e56810aa",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-seas-stand.part-03.line.b399f8d384a4a935",
+      "member_ids": [
+        "d32.antrim.14.seas.stand.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an seas ceart.",
+      "text_sha256": "759ad23660753d2822fccf4c304a40be34455718f8663c825ef9d2478fa53734",
+      "inventory_slug": "roghnaigh-an-seas-ceart",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:51.949852+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "aG4bbXqQBaBSZJ6r8pyO",
+        "started_at": "2026-08-05T09:16:40.495525+00:00",
+        "completed_at": "2026-08-05T09:16:51.910865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-seas-ceart.mp3",
+        "sha256": "e91119de1c216070a9811c48498ecf1811fb90564732a1ea8d1b67ed3a434cb7",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-seas-stand.part-03.line.ccab637f74e8e036",
+      "member_ids": [
+        "d32.antrim.14.seas.stand.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an seas?",
+      "text_sha256": "c2b73ab615ada1aa49c47a9a4ee78e44e744f652dbc5e2c9e9e34e0d191f4a0c",
+      "inventory_slug": "caa-bhfuil-an-seas",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:51.949929+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "V36ncAqlJwDroGTK5G6Z",
+        "started_at": "2026-08-05T09:16:40.495525+00:00",
+        "completed_at": "2026-08-05T09:16:51.910865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-seas.mp3",
+        "sha256": "0c3c278b3beb0f58456723fe8db986d458aa698a93831b4d714696898888dd3a",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-seas-stand.part-03.line.e1306e358dbfac4e",
+      "member_ids": [
+        "d32.antrim.14.seas.stand.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an seas.",
+      "text_sha256": "3ddb3d1376687e7552136e5e723649473ac5e85493ba72f62321d26b23353630",
+      "inventory_slug": "baineann-an-sceeal-leis-an-seas",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:51.950000+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "T5gn681Ny2rde8nNU6m9",
+        "started_at": "2026-08-05T09:16:40.495525+00:00",
+        "completed_at": "2026-08-05T09:16:51.910865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-seas.mp3",
+        "sha256": "683fe0a040b138139eaa0e2ba8de873c25a198dba04cdb75da1c472d6737d572",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-seas-stand.part-03.line.fa96540eeef18b55",
+      "member_ids": [
+        "d32.antrim.14.seas.stand.listen-surround"
+      ],
+      "normalized_text": "Éist leis an seas.",
+      "text_sha256": "97bf09625a89db9ab3d241f042f22e810483a697f8ded65ca927ded4bd13d090",
+      "inventory_slug": "eeist-leis-an-seas",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:51.950090+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "EYb3PTzV6Bu4CclHqOrX",
+        "started_at": "2026-08-05T09:16:40.495525+00:00",
+        "completed_at": "2026-08-05T09:16:51.910865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-seas.mp3",
+        "sha256": "271d69096a9c582127e9fa8bc79c8a869eba4c96c4af46c1ae9bb53ab4701805",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 177.0,
+    "estimated_cumulative_credits": 89518.0,
+    "actual_batch_credits": 394.0,
+    "actual_cumulative_credits": 139643.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T09:16:40.495525+00:00",
+      "used_credits": 139249.0,
+      "remaining_credits": 96850.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T09:16:51.910865+00:00",
+      "used_credits": 139643.0,
+      "remaining_credits": 96456.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-seas-stand.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "cd0174c10eb1c14c006ee3373313bf051c241e52c6a2fd8ef479a88b40c1f2d3"
+}

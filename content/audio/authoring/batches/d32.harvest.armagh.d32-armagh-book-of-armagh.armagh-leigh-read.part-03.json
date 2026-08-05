@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leigh-read.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — armagh / d32.armagh.book-of-armagh / armagh.leigh.read",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leigh-read.part-03.line.0234f6b5d3fbb78d",
+      "member_ids": [
+        "d32.armagh.08.leigh.read.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an léigh?",
+      "text_sha256": "0fda7a732847200aed75b6261c5cd92aa6aea66c8f1aee8ca9805fb596811423",
+      "inventory_slug": "caa-bhfuil-an-leeigh",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:34.683969+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "DR5QfJ602g4UVG2vegba",
+        "started_at": "2026-08-05T10:11:22.708242+00:00",
+        "completed_at": "2026-08-05T10:11:34.643354+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-leeigh.mp3",
+        "sha256": "5afc7d7afae56778fc7eb2548d7c9614cc7a3cf98dc660cc35ae06d2e178dbff",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leigh-read.part-03.line.45a80ed4d69ae7ac",
+      "member_ids": [
+        "d32.armagh.08.leigh.read.speak-about"
+      ],
+      "normalized_text": "Labhair faoin léigh.",
+      "text_sha256": "b67f8cfd9e31bb9567a6d1274666992df09eb75a3f1bb7b5879962b91c5c0a0a",
+      "inventory_slug": "labhair-faoin-leeigh",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:34.684068+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "PkOWLMum21WN0Z85EbR9",
+        "started_at": "2026-08-05T10:11:22.708242+00:00",
+        "completed_at": "2026-08-05T10:11:34.643354+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-leeigh.mp3",
+        "sha256": "3c88d6cf8c05832a14b36b08eebf4b596abe6ca6252e275fc66b66016fa5c78a",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leigh-read.part-03.line.654c71dfc39fce95",
+      "member_ids": [
+        "d32.armagh.08.leigh.read.ask-what"
+      ],
+      "normalized_text": "Cad é an léigh?",
+      "text_sha256": "168a19cd2913a613ee8083f5892a9daee7c6cd3c2c8e3cc2b6a3693ed890bbed",
+      "inventory_slug": "cad-ee-an-leeigh",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:34.684143+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "v4TuYwWUUTqPwy2Urzb6",
+        "started_at": "2026-08-05T10:11:22.708242+00:00",
+        "completed_at": "2026-08-05T10:11:34.643354+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-leeigh.mp3",
+        "sha256": "d128ed4a7c4e7d27bf4641ca02e003ff8afa2516cb7347daf742b25bfa653675",
+        "bytes": 30137,
+        "duration_seconds": 1.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leigh-read.part-03.line.8be6c6f0ce17a966",
+      "member_ids": [
+        "d32.armagh.08.leigh.read.see-here"
+      ],
+      "normalized_text": "Feicim an léigh anseo.",
+      "text_sha256": "5c4894ad34e9f570d99bc871884e86fd48c3a56606c262df682bc9e21d236ede",
+      "inventory_slug": "feicim-an-leeigh-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:34.684207+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ndYiTdUcfsSHZKDTnCtz",
+        "started_at": "2026-08-05T10:11:22.708242+00:00",
+        "completed_at": "2026-08-05T10:11:34.643354+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-leeigh-anseo.mp3",
+        "sha256": "9978858617eb3cc800eaf6b488738a2e880e8c2a895e959151975b64109a10a7",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leigh-read.part-03.line.aba91dcb87c57aab",
+      "member_ids": [
+        "d32.armagh.08.leigh.read.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an léigh ceart.",
+      "text_sha256": "629570ac624d69fe67f40197b781fc11e792446d49e5cb59b785a73c1ff89707",
+      "inventory_slug": "roghnaigh-an-leeigh-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:34.684388+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "4bNYMe6J7kXCIzw6lewO",
+        "started_at": "2026-08-05T10:11:22.708242+00:00",
+        "completed_at": "2026-08-05T10:11:34.643354+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-leeigh-ceart.mp3",
+        "sha256": "90e39f38c5be1ad298f63bc12f95b5d486b174b62e904c122c3f754d70d66fd1",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leigh-read.part-03.line.b8460eba792f7e36",
+      "member_ids": [
+        "d32.armagh.08.leigh.read.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an léigh.",
+      "text_sha256": "360419d1bf01b4c624ddf377651d31956b109ba78dc9564297e8128c2d3820a1",
+      "inventory_slug": "baineann-an-sceeal-leis-an-leeigh",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:34.684466+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ylhoDCEjmh8udOYU4dFs",
+        "started_at": "2026-08-05T10:11:22.708242+00:00",
+        "completed_at": "2026-08-05T10:11:34.643354+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-leeigh.mp3",
+        "sha256": "90c76617490f60c9e16a81821edec0d98c2444dfed06affb0a75056fdb550811",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leigh-read.part-03.line.ece960fe62b6805e",
+      "member_ids": [
+        "d32.armagh.08.leigh.read.listen-surround"
+      ],
+      "normalized_text": "Éist leis an léigh.",
+      "text_sha256": "c5926ea97553188c6f096569e8744bf9926739bf1c89f185070c624fab443a8b",
+      "inventory_slug": "eeist-leis-an-leeigh",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:34.684648+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "yXMIsfHda1h1aPT5Zhkf",
+        "started_at": "2026-08-05T10:11:22.708242+00:00",
+        "completed_at": "2026-08-05T10:11:34.643354+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-leeigh.mp3",
+        "sha256": "4b5018ed1be5e3ca026051c8271599a3943a0ea75331f710bff25ce70b00e44f",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leigh-read.part-03.line.f427806b286b0e58",
+      "member_ids": [
+        "d32.armagh.08.leigh.read.story-important"
+      ],
+      "normalized_text": "Tá an léigh tábhachtach sa scéal.",
+      "text_sha256": "ab51e71657c7d099d6704c6ef5262ad58be6f1abf48e1b286bb6b35e07361820",
+      "inventory_slug": "taa-an-leeigh-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:34.684714+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "lv9ic6nvPuzbtepMR5yC",
+        "started_at": "2026-08-05T10:11:22.708242+00:00",
+        "completed_at": "2026-08-05T10:11:34.643354+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-leeigh-taabhachtach-sa-sceeal.mp3",
+        "sha256": "65965fe13f4b34a9c904805d31d957c293736a23b0f0262bef2f1e1436bdfa03",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 203.0,
+    "actual_cumulative_credits": 141159.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:11:22.708242+00:00",
+      "used_credits": 140956.0,
+      "remaining_credits": 95143.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:11:34.643354+00:00",
+      "used_credits": 141159.0,
+      "remaining_credits": 94940.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leigh-read.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "a84e4cdf74927ac74504b7d97b4c60a975d9ac0b9fd72e4c18b16b9a337eca4c"
+}

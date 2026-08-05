@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-nua-new.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — longford / d32.longford.corlea-trackway / longford.nua.new",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-nua-new.part-03.line.2d90b46db4840b1c",
+      "member_ids": [
+        "d32.longford.10.nua.new.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an nua ceart.",
+      "text_sha256": "9de8bf215ff83010f639d39a7a3f5b3b205c3e808a5375ad3aab5bce861ad7ce",
+      "inventory_slug": "roghnaigh-an-nua-ceart",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:25:04.632827+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "OD82tL7SLa9jCEPDfifR",
+        "started_at": "2026-08-05T11:24:52.116678+00:00",
+        "completed_at": "2026-08-05T11:25:04.605460+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-nua-ceart.mp3",
+        "sha256": "4302b43e64877889e199fc4ee2b47169faa268657b7b0427ede51a0e1562e85d",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-nua-new.part-03.line.51330f5fcf8eacc4",
+      "member_ids": [
+        "d32.longford.10.nua.new.speak-about"
+      ],
+      "normalized_text": "Labhair faoin nua.",
+      "text_sha256": "c0b168b5b529f410b4b38568a080a79ecc87039c8ad5d626abea432f62fa969d",
+      "inventory_slug": "labhair-faoin-nua",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:25:04.632894+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "7Xf1Fdp3IuGKjkNlu1kd",
+        "started_at": "2026-08-05T11:24:52.116678+00:00",
+        "completed_at": "2026-08-05T11:25:04.605460+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-nua.mp3",
+        "sha256": "4212407d4b32b50c6ed535fa023b80421177d370febedb00ccffa6c2a6b93467",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-nua-new.part-03.line.68c1c60f67496bb2",
+      "member_ids": [
+        "d32.longford.10.nua.new.listen-surround"
+      ],
+      "normalized_text": "Éist leis an nua.",
+      "text_sha256": "fd6e8490110e0ee0662b97a40e22c8e43741a525d0756a852971a5be4687f144",
+      "inventory_slug": "eeist-leis-an-nua",
+      "estimated_characters": 17,
+      "estimated_credits": 17.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:25:04.632940+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "hhBsneDp6MG6oyhwJo0d",
+        "started_at": "2026-08-05T11:24:52.116678+00:00",
+        "completed_at": "2026-08-05T11:25:04.605460+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-nua.mp3",
+        "sha256": "1f62303e7245158a6ac43fc1d94d4b3009a0875193528c1ede4854dbf29138c9",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-nua-new.part-03.line.6cbbe122a1990c79",
+      "member_ids": [
+        "d32.longford.10.nua.new.see-here"
+      ],
+      "normalized_text": "Feicim an nua anseo.",
+      "text_sha256": "329596d873a04fd2d5f85077d0b14fef1d890d63c502ab157e2efc2b732f8a4a",
+      "inventory_slug": "feicim-an-nua-anseo",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:25:04.632983+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "65GekoqCYX32izFZ2sVY",
+        "started_at": "2026-08-05T11:24:52.116678+00:00",
+        "completed_at": "2026-08-05T11:25:04.605460+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-nua-anseo.mp3",
+        "sha256": "2a64a8cedc05920b4219aa9e2e4f22006736322686eac8774596c6476dd10434",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-nua-new.part-03.line.7046020fd4790b46",
+      "member_ids": [
+        "d32.longford.10.nua.new.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an nua?",
+      "text_sha256": "32662659fb68c86c7018d2d54d4a60fdd193f0beb2bbc60f373a18dcfadfa1f2",
+      "inventory_slug": "caa-bhfuil-an-nua",
+      "estimated_characters": 17,
+      "estimated_credits": 17.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:25:04.633032+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "pDttZNghKG0g6dBkHWh9",
+        "started_at": "2026-08-05T11:24:52.116678+00:00",
+        "completed_at": "2026-08-05T11:25:04.605460+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-nua.mp3",
+        "sha256": "93a15e677d7ba274a2eec819cdf4a257ad34836013814c019ff4bbe22699f3dc",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-nua-new.part-03.line.73ca17163fe6384b",
+      "member_ids": [
+        "d32.longford.10.nua.new.ask-what"
+      ],
+      "normalized_text": "Cad é an nua?",
+      "text_sha256": "105b2049d5dc7c28b8faef2351cce743b428ee0e929e572598917ec3ae2d96c6",
+      "inventory_slug": "cad-ee-an-nua",
+      "estimated_characters": 13,
+      "estimated_credits": 13.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:25:04.633074+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Yt4KOBtSb6p2waU4sIBj",
+        "started_at": "2026-08-05T11:24:52.116678+00:00",
+        "completed_at": "2026-08-05T11:25:04.605460+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-nua.mp3",
+        "sha256": "4f68a8c3fb6b04769435412eb01061f7c0de044f4cbccdeb0d180f31e23cf06a",
+        "bytes": 30137,
+        "duration_seconds": 1.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-nua-new.part-03.line.ebfd3d8c3f1a2169",
+      "member_ids": [
+        "d32.longford.10.nua.new.story-important"
+      ],
+      "normalized_text": "Tá an nua tábhachtach sa scéal.",
+      "text_sha256": "a229cbcad4f82a8518b31e00430e5da53055c51da28a4c4bd8761264340ebecb",
+      "inventory_slug": "taa-an-nua-taabhachtach-sa-sceeal",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:25:04.633114+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "fOAgRRFfFhO6QO3KpThB",
+        "started_at": "2026-08-05T11:24:52.116678+00:00",
+        "completed_at": "2026-08-05T11:25:04.605460+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-nua-taabhachtach-sa-sceeal.mp3",
+        "sha256": "535751803eb96845f6bef521b592ccdac6e7816a95c44a099fe816832fe39cdd",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-nua-new.part-03.line.f050463d12f77c8a",
+      "member_ids": [
+        "d32.longford.10.nua.new.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an nua.",
+      "text_sha256": "a48e8a6fea718760851a92c224b39ae81ec29a289eccab07cf13e66985b5ec86",
+      "inventory_slug": "baineann-an-sceeal-leis-an-nua",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:25:04.633174+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "dG5fWW5llmqwJWBPc3FW",
+        "started_at": "2026-08-05T11:24:52.116678+00:00",
+        "completed_at": "2026-08-05T11:25:04.605460+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-nua.mp3",
+        "sha256": "a2a989fe4c1f3dd1c9734799b2a5ac77ad5c81655e6a319072f8b1261b7cab0f",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 169.0,
+    "estimated_cumulative_credits": 89510.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 166251.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T11:24:52.116678+00:00",
+      "used_credits": 166251.0,
+      "remaining_credits": 69848.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T11:25:04.605460+00:00",
+      "used_credits": 166251.0,
+      "remaining_credits": 69848.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.longford.d32-longford-corlea-trackway.longford-nua-new.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "9b34cf1153d894f410d627178eb68235bb8a382cf2946ad611a66b1ba636d723"
+}

@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-dunta-fort.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — cavan / d32.cavan.oreillys-east-breifne / cavan.dunta.fort",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-dunta-fort.part-03.line.0d0cad902ec31636",
+      "member_ids": [
+        "d32.cavan.07.dunta.fort.speak-about"
+      ],
+      "normalized_text": "Labhair faoin dúnta.",
+      "text_sha256": "50fe6e4d2c34a8af0d6cb3251aa1240de235742f1e623889d7ef2c03b075e5b3",
+      "inventory_slug": "labhair-faoin-duunta",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:17.720988+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "9z3VuMEVvoVebXTpyKbq",
+        "started_at": "2026-08-05T10:17:03.120316+00:00",
+        "completed_at": "2026-08-05T10:17:17.681034+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-duunta.mp3",
+        "sha256": "2094a30f78fe6ac4c4f8c4d5c1902e137058190d42ce5f1b25a1d326e4b99fb7",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-dunta-fort.part-03.line.533eb6738a0bf70a",
+      "member_ids": [
+        "d32.cavan.07.dunta.fort.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an dúnta?",
+      "text_sha256": "f642f3f0aa30f4aba97c20d74326c9a2d997c1db340be2e809dba7e78fdd9eff",
+      "inventory_slug": "caa-bhfuil-an-duunta",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:17.721087+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "WvKjikO2FkXuF7gqGWLw",
+        "started_at": "2026-08-05T10:17:03.120316+00:00",
+        "completed_at": "2026-08-05T10:17:17.681034+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-duunta.mp3",
+        "sha256": "0d8608bfac6fde4da62163bc39fe4eb4f89c2c7aad354effaa46f319b2f352bd",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-dunta-fort.part-03.line.63b8ff287876847b",
+      "member_ids": [
+        "d32.cavan.07.dunta.fort.story-important"
+      ],
+      "normalized_text": "Tá an dúnta tábhachtach sa scéal.",
+      "text_sha256": "6e14be8d26b0be9c4f63dcb2c901039364fc557a25059c12e685fe71a8ab7155",
+      "inventory_slug": "taa-an-duunta-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:17.721161+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "RobvX9mWskQRf7dbu3mE",
+        "started_at": "2026-08-05T10:17:03.120316+00:00",
+        "completed_at": "2026-08-05T10:17:17.681034+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-duunta-taabhachtach-sa-sceeal.mp3",
+        "sha256": "7468966cd1f1aea9d76a0945e0a5850f9cd5ff99ff80f620a51ebd69d81b9f08",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-dunta-fort.part-03.line.a34d7e239d8734e4",
+      "member_ids": [
+        "d32.cavan.07.dunta.fort.ask-what"
+      ],
+      "normalized_text": "Cad é an dúnta?",
+      "text_sha256": "0d8c62b9dce2819075fbd6875e08fc2770dcb407e02c03803fe8ebe88496b07d",
+      "inventory_slug": "cad-ee-an-duunta",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:17.721261+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ewXL4v77F0YZmDJM5CkL",
+        "started_at": "2026-08-05T10:17:03.120316+00:00",
+        "completed_at": "2026-08-05T10:17:17.681034+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-duunta.mp3",
+        "sha256": "c79b9c9d2da4da7282ae8eb55efe3fc958a20cf816d8c7f404ae7ea75cd3805a",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-dunta-fort.part-03.line.b817898b6cd6cbed",
+      "member_ids": [
+        "d32.cavan.07.dunta.fort.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an dúnta ceart.",
+      "text_sha256": "aca11e351a866536b6740b71d2dd4902775b7664de4cc4a823a901441b7b0624",
+      "inventory_slug": "roghnaigh-an-duunta-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:17.721331+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "RENwnN1MkesLydp4nE0V",
+        "started_at": "2026-08-05T10:17:03.120316+00:00",
+        "completed_at": "2026-08-05T10:17:17.681034+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-duunta-ceart.mp3",
+        "sha256": "4772413bceac002b3db67e5609fe78dd94d2f57827756f49ba85c7181eed7d6b",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-dunta-fort.part-03.line.d448263775ac3ebc",
+      "member_ids": [
+        "d32.cavan.07.dunta.fort.see-here"
+      ],
+      "normalized_text": "Feicim an dúnta anseo.",
+      "text_sha256": "4bf24442563208623115060a1ffe682defec7bb1102fd21dcf6585edc19229a0",
+      "inventory_slug": "feicim-an-duunta-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:17.721411+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "GUn4RYjQ0yaqTYAbUllE",
+        "started_at": "2026-08-05T10:17:03.120316+00:00",
+        "completed_at": "2026-08-05T10:17:17.681034+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-duunta-anseo.mp3",
+        "sha256": "92d4a465bd75aab5e13f1404d9770cf1a468b4a290e4aead1952265e434c7311",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-dunta-fort.part-03.line.df2e762d04bc5ee0",
+      "member_ids": [
+        "d32.cavan.07.dunta.fort.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an dúnta.",
+      "text_sha256": "43bcf6bcadc79851f3553e1031df46de3187db642973411a05baeefdefed02df",
+      "inventory_slug": "baineann-an-sceeal-leis-an-duunta",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:17.721486+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "npvvKDRW27qOE2VS5y4o",
+        "started_at": "2026-08-05T10:17:03.120316+00:00",
+        "completed_at": "2026-08-05T10:17:17.681034+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-duunta.mp3",
+        "sha256": "af299ccf32ae4575cfa6ad2bfa3d48790d84350129c48784d5da39d35a50c2fb",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-dunta-fort.part-03.line.fbf0788e646d58f2",
+      "member_ids": [
+        "d32.cavan.07.dunta.fort.listen-surround"
+      ],
+      "normalized_text": "Éist leis an dúnta.",
+      "text_sha256": "d48b3ab8fd395376f7734e5950b3b6e7332fdb0e3c3a84870c8272e7603a3fa1",
+      "inventory_slug": "eeist-leis-an-duunta",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:17.721570+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "TLln0P39eikzWa8iCyfh",
+        "started_at": "2026-08-05T10:17:03.120316+00:00",
+        "completed_at": "2026-08-05T10:17:17.681034+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-duunta.mp3",
+        "sha256": "563422bdbc08fa8660d47b44f313f1f6f37416e42002e2ab40cea3df5313597a",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 143422.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:17:03.120316+00:00",
+      "used_credits": 143422.0,
+      "remaining_credits": 92677.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:17:17.681034+00:00",
+      "used_credits": 143422.0,
+      "remaining_credits": 92677.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-dunta-fort.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "3298100f5b1ab9c5b5b85624ab380b5be596c93ee22fad3b5b8be0a0ed5a7925"
+}

@@ -825,6 +825,532 @@
         "invented_text",
         "source_ambiguity"
       ]
+    },
+    {
+      "id": "d32.derry.04.ocras.hunger.see-here",
+      "family_id": "d32.derry.04.ocras.hunger",
+      "target": {
+        "lexeme_id": "lex.ocras",
+        "citation_form": "ocras",
+        "sense_id": "derry.ocras.hunger",
+        "part_of_speech": "noun",
+        "target_form": "ocras",
+        "morphology": "atlas citation form; provisional surrounding frame",
+        "english_sense": "hunger"
+      },
+      "irish": {
+        "text": "Feicim an ocras anseo.",
+        "normalized_text": "Feicim an ocras anseo.",
+        "inventory_slug": "feicim-an-ocras-anseo",
+        "text_sha256": "99624145d8b5acf0afb6786fa95bc0b0a30150f3e4bf52c92d628bec52249839"
+      },
+      "english": {
+        "intent": "I see the hunger here.",
+        "literal_note": "A2 invented story dialogue / exercise-role line; not an attested quotation."
+      },
+      "binding": {
+        "county": "derry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege"
+        },
+        "atlas_placement_ids": [
+          "atlas.derry.04.ocras"
+        ],
+        "place": {
+          "id": "d32.derry.place",
+          "label": "Doire / Derry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Produce a present-day noticing line for the story-bound hunger.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege.see-here.04",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Produce a present-day noticing line for the story-bound hunger."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "A2 deepen dialogue noticing frame; invented pedagogical Irish, not attested speech.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.derry.city-walls-siege.see-here.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a2-story-dialogue.cycle-2",
+          "completed_at": "2026-08-05"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-b.d32-cycle2-prepare",
+          "requested_at": "2026-08-05T09:30:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.track-c.2026-08-05",
+            "authorized_at": "2026-08-05T09:30:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.derry.d32-derry-city-walls-siege.derry-ocras-hunger.part-03.line.b57a37abc3e42ad3"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.derry.04.ocras.hunger.choose-surround",
+      "family_id": "d32.derry.04.ocras.hunger",
+      "target": {
+        "lexeme_id": "lex.ocras",
+        "citation_form": "ocras",
+        "sense_id": "derry.ocras.hunger",
+        "part_of_speech": "noun",
+        "target_form": "ocras",
+        "morphology": "atlas citation form; provisional surrounding frame",
+        "english_sense": "hunger"
+      },
+      "irish": {
+        "text": "Roghnaigh an ocras ceart.",
+        "normalized_text": "Roghnaigh an ocras ceart.",
+        "inventory_slug": "roghnaigh-an-ocras-ceart",
+        "text_sha256": "18da2ed0254d7e0b5b60c4dad3d8e39f10421e8912b0c65de0303b4349b76232"
+      },
+      "english": {
+        "intent": "Choose the correct hunger.",
+        "literal_note": "A2 invented story dialogue / exercise-role line; not an attested quotation."
+      },
+      "binding": {
+        "county": "derry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege"
+        },
+        "atlas_placement_ids": [
+          "atlas.derry.04.ocras"
+        ],
+        "place": {
+          "id": "d32.derry.place",
+          "label": "Doire / Derry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "listening_contrast"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Prompt a listen-choose selection around the hunger.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege.choose-surround.04",
+          "response_family": "listenChoose",
+          "container": "none",
+          "use": "Prompt a listen-choose selection around the hunger."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "A2 deepen listen-choose surround; invented pedagogical Irish, not attested speech.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.derry.city-walls-siege.choose-surround.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a2-story-dialogue.cycle-2",
+          "completed_at": "2026-08-05"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-b.d32-cycle2-prepare",
+          "requested_at": "2026-08-05T09:30:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.track-c.2026-08-05",
+            "authorized_at": "2026-08-05T09:30:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.derry.d32-derry-city-walls-siege.derry-ocras-hunger.part-03.line.a9d846d24e12675d"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.derry.04.ocras.hunger.speak-about",
+      "family_id": "d32.derry.04.ocras.hunger",
+      "target": {
+        "lexeme_id": "lex.ocras",
+        "citation_form": "ocras",
+        "sense_id": "derry.ocras.hunger",
+        "part_of_speech": "noun",
+        "target_form": "ocras",
+        "morphology": "atlas citation form; provisional surrounding frame",
+        "english_sense": "hunger"
+      },
+      "irish": {
+        "text": "Labhair faoin ocras.",
+        "normalized_text": "Labhair faoin ocras.",
+        "inventory_slug": "labhair-faoin-ocras",
+        "text_sha256": "8e18d87da787a02d8a4e93f7b70f92ec906a7c8f2d2f02b93b2b457f89cc9a46"
+      },
+      "english": {
+        "intent": "Speak about the hunger.",
+        "literal_note": "A2 invented story dialogue / exercise-role line; not an attested quotation."
+      },
+      "binding": {
+        "county": "derry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege"
+        },
+        "atlas_placement_ids": [
+          "atlas.derry.04.ocras"
+        ],
+        "place": {
+          "id": "d32.derry.place",
+          "label": "Doire / Derry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "phrase_or_sentence_use"
+        ],
+        "roles": [
+          "dialogue_turn"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Cue productive talk about the story-bound hunger.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege.speak-about.04",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Cue productive talk about the story-bound hunger."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "A2 deepen dialogue prompt; invented pedagogical Irish, not attested speech.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.derry.city-walls-siege.speak-about.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a2-story-dialogue.cycle-2",
+          "completed_at": "2026-08-05"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-b.d32-cycle2-prepare",
+          "requested_at": "2026-08-05T09:30:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.track-c.2026-08-05",
+            "authorized_at": "2026-08-05T09:30:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.derry.d32-derry-city-walls-siege.derry-ocras-hunger.part-03.line.4c2b3eac375ce879"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "initial_mutation",
+        "invented_text",
+        "source_ambiguity"
+      ]
+    },
+    {
+      "id": "d32.derry.04.ocras.hunger.story-important",
+      "family_id": "d32.derry.04.ocras.hunger",
+      "target": {
+        "lexeme_id": "lex.ocras",
+        "citation_form": "ocras",
+        "sense_id": "derry.ocras.hunger",
+        "part_of_speech": "noun",
+        "target_form": "ocras",
+        "morphology": "atlas citation form; provisional surrounding frame",
+        "english_sense": "hunger"
+      },
+      "irish": {
+        "text": "Tá an ocras tábhachtach sa scéal.",
+        "normalized_text": "Tá an ocras tábhachtach sa scéal.",
+        "inventory_slug": "taa-an-ocras-taabhachtach-sa-sceeal",
+        "text_sha256": "40a30c6ada688968e36905f767b397cbf5ab66ac1d718f5f2863681679751ff4"
+      },
+      "english": {
+        "intent": "The hunger is important in the story.",
+        "literal_note": "A2 invented story dialogue / exercise-role line; not an attested quotation."
+      },
+      "binding": {
+        "county": "derry",
+        "story_ref": {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege"
+        },
+        "atlas_placement_ids": [
+          "atlas.derry.04.ocras"
+        ],
+        "place": {
+          "id": "d32.derry.place",
+          "label": "Doire / Derry"
+        },
+        "setting": "present_day",
+        "learner_role": "present_day_self"
+      },
+      "learning": {
+        "stages": [
+          "later_reuse"
+        ],
+        "roles": [
+          "story_recap"
+        ],
+        "dialect": "standard Irish; provisional county context",
+        "register": "neutral pedagogical frame",
+        "purpose": "Mark the hunger as a story-important exercise role line.",
+        "fixture_only": false
+      },
+      "exercise_consumers": [
+        {
+          "path": "content/audio/authoring/d32-county-harvest-uses.json",
+          "record_id": "d32.derry.city-walls-siege.story-important.04",
+          "response_family": "freeTyping",
+          "container": "none",
+          "use": "Mark the hunger as a story-important exercise role line."
+        }
+      ],
+      "provenance": {
+        "origin": "invented_pedagogical",
+        "invented": true,
+        "composition_note": "A2 deepen story-exercise role; invented pedagogical Irish, not attested speech.",
+        "source_refs": [
+          {
+            "path": "content/audio/authoring/d32-county-harvest-uses.json",
+            "record_id": "d32.derry.city-walls-siege.story-important.04",
+            "supports": "exercise_context"
+          }
+        ]
+      },
+      "states": {
+        "authoring": {
+          "status": "complete",
+          "revision": 1,
+          "author_ref": "track-a.a2-story-dialogue.cycle-2",
+          "completed_at": "2026-08-05"
+        },
+        "reviews": {
+          "editorial": {
+            "status": "pending",
+            "record": null
+          },
+          "pedagogy": {
+            "status": "pending",
+            "record": null
+          },
+          "irish_language": {
+            "status": "pending",
+            "record": null
+          }
+        },
+        "capture_request": {
+          "status": "requested",
+          "requested_by": "codex.track-b.d32-cycle2-prepare",
+          "requested_at": "2026-08-05T09:30:00Z",
+          "authorization": {
+            "basis": "d32_emergency_harvest",
+            "authorized_by": "user.d32.track-c.2026-08-05",
+            "authorized_at": "2026-08-05T09:30:00Z",
+            "reason": "Explicit D32 emergency-harvest authorization for provisional capture; review and learner release remain blocked.",
+            "fixture_only": false,
+            "harvest_deadline": "2026-08-11",
+            "learner_release_blocked": true
+          },
+          "batch_line_ids": [
+            "d32.harvest.derry.d32-derry-city-walls-siege.derry-ocras-hunger.part-03.line.107e5ba42a6c437d"
+          ]
+        },
+        "audio_qa": {
+          "status": "not_generated",
+          "record": null,
+          "batch_line_id": null
+        },
+        "learner_release": {
+          "status": "blocked",
+          "reasons": [
+            "invented_text",
+            "editorial_review_pending",
+            "pedagogy_review_pending",
+            "irish_language_review_pending",
+            "audio_not_generated"
+          ]
+        }
+      },
+      "risk_flags": [
+        "audio_pronunciation",
+        "fada",
+        "invented_text",
+        "source_ambiguity"
+      ]
     }
   ]
 }

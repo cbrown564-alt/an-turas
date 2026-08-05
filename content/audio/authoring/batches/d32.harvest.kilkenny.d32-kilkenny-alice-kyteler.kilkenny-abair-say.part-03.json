@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-abair-say.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — kilkenny / d32.kilkenny.alice-kyteler / kilkenny.abair.say",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-abair-say.part-03.line.15147d92e81189b4",
+      "member_ids": [
+        "d32.kilkenny.05.abair.say.see-here"
+      ],
+      "normalized_text": "Feicim an abair anseo.",
+      "text_sha256": "ab05ba3374c3ddb8d75b54fe856f19e454c415293bdf1af2860d5f3cda3075aa",
+      "inventory_slug": "feicim-an-abair-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:51:40.769148+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "O7odMeMvKJo6lHYBmgm4",
+        "started_at": "2026-08-05T10:51:28.183649+00:00",
+        "completed_at": "2026-08-05T10:51:40.741749+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-abair-anseo.mp3",
+        "sha256": "1421fc5ddf4665cc047e2d3f7e63d5f663d89345b79fd2b6eff4ae63a23d2d75",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-abair-say.part-03.line.2af70f772ca61129",
+      "member_ids": [
+        "d32.kilkenny.05.abair.say.speak-about"
+      ],
+      "normalized_text": "Labhair faoin abair.",
+      "text_sha256": "812e67f9a4460b70c436d02059eed67e4104fccd074b4572f3eef88dc5a2de26",
+      "inventory_slug": "labhair-faoin-abair",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:51:40.769341+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "nCbEp6mxUai6wFL2pNAp",
+        "started_at": "2026-08-05T10:51:28.183649+00:00",
+        "completed_at": "2026-08-05T10:51:40.741749+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-abair.mp3",
+        "sha256": "d1c99dfcce760e0cabe299b47e5fd59a038bfba325ffed71d9fe73ea7fcd9a85",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-abair-say.part-03.line.3372f4b22546ed35",
+      "member_ids": [
+        "d32.kilkenny.05.abair.say.ask-what"
+      ],
+      "normalized_text": "Cad é an abair?",
+      "text_sha256": "33a7034e8e48cdb9b9cd962f6d8a29f70260865e2374e4912807144a27ccd7c1",
+      "inventory_slug": "cad-ee-an-abair",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:51:40.769402+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "YaaUIaFhKxlViEWGHuhP",
+        "started_at": "2026-08-05T10:51:28.183649+00:00",
+        "completed_at": "2026-08-05T10:51:40.741749+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-abair.mp3",
+        "sha256": "01c82bd84cc83d453dc2312f6a3d3d46131c0758f7b74af2116ce5ed5fdd12fd",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-abair-say.part-03.line.7ac2809ef1809a3c",
+      "member_ids": [
+        "d32.kilkenny.05.abair.say.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an abair?",
+      "text_sha256": "576ea6ab11cb1191f1401e0fce7d6e0acaea88214f87649e9d910cb969e36383",
+      "inventory_slug": "caa-bhfuil-an-abair",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:51:40.769464+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "nOal2PiEGkOKyejUV1Po",
+        "started_at": "2026-08-05T10:51:28.183649+00:00",
+        "completed_at": "2026-08-05T10:51:40.741749+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-abair.mp3",
+        "sha256": "4a8be05f13ea701ea7d8d2cd796502fa7dedc873b4c2627e0521a3b3dfd96db4",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-abair-say.part-03.line.bb0abb20126e70f2",
+      "member_ids": [
+        "d32.kilkenny.05.abair.say.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an abair ceart.",
+      "text_sha256": "b0dea51b284666b1cde5880f462d4e6b9ac400e3b7a0cb58b54e21cd3425ae89",
+      "inventory_slug": "roghnaigh-an-abair-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:51:40.769517+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "DFFKoM8ZurSZg5lbWYYk",
+        "started_at": "2026-08-05T10:51:28.183649+00:00",
+        "completed_at": "2026-08-05T10:51:40.741749+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-abair-ceart.mp3",
+        "sha256": "25b84320a712aafa205e0ba3590fdf27d8bd723d01c4d580c648a048f2b141c0",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-abair-say.part-03.line.ce219ef5ba0a0b82",
+      "member_ids": [
+        "d32.kilkenny.05.abair.say.listen-surround"
+      ],
+      "normalized_text": "Éist leis an abair.",
+      "text_sha256": "5e1a70162ca2c374f29414d3b1d6bdc28cf65c5e4d29519d92daed7a5a28dfbc",
+      "inventory_slug": "eeist-leis-an-abair",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:51:40.769570+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "1S60XE1MaIcWuT1puHPq",
+        "started_at": "2026-08-05T10:51:28.183649+00:00",
+        "completed_at": "2026-08-05T10:51:40.741749+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-abair.mp3",
+        "sha256": "fb32fc2efea37a35fddb272b355d1d5395686b8039a9fbde90af5d99be5e525c",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-abair-say.part-03.line.d408c2fb28c51a6d",
+      "member_ids": [
+        "d32.kilkenny.05.abair.say.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an abair.",
+      "text_sha256": "9acde6a1c3251e7d7efa9bcd94053434eef2b43c4694dff79e1943ed00b81e64",
+      "inventory_slug": "baineann-an-sceeal-leis-an-abair",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:51:40.769635+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "jlwHAIMGDkMulDvrKh3G",
+        "started_at": "2026-08-05T10:51:28.183649+00:00",
+        "completed_at": "2026-08-05T10:51:40.741749+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-abair.mp3",
+        "sha256": "72f380ed5ff2fe02375391cbda1ab45c15fdaeb214444b90c2c68c7fe4caf07d",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-abair-say.part-03.line.e95be7baf4dc4393",
+      "member_ids": [
+        "d32.kilkenny.05.abair.say.story-important"
+      ],
+      "normalized_text": "Tá an abair tábhachtach sa scéal.",
+      "text_sha256": "207c1277fc75a5648155344d712f96ed3dd248ad38f935e82fb7ee057172060a",
+      "inventory_slug": "taa-an-abair-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:51:40.769712+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "LYtkip7wnYhQOS21JZ6n",
+        "started_at": "2026-08-05T10:51:28.183649+00:00",
+        "completed_at": "2026-08-05T10:51:40.741749+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-abair-taabhachtach-sa-sceeal.mp3",
+        "sha256": "2a7bb4ba1fe4f021d242c5b64c42e097b63bb75aa82340eae88599fbf5e8352f",
+        "bytes": 72769,
+        "duration_seconds": 2.96
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 158951.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:51:28.183649+00:00",
+      "used_credits": 158951.0,
+      "remaining_credits": 77148.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:51:40.741749+00:00",
+      "used_credits": 158951.0,
+      "remaining_credits": 77148.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-abair-say.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "d55710ca72dd023384c3e22990ba3db7d39bc3b4f058421d697d73544cce3f95"
+}

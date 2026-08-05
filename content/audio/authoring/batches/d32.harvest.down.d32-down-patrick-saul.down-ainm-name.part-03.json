@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.down.d32-down-patrick-saul.down-ainm-name.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — down / d32.down.patrick-saul / down.ainm.name",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.down.d32-down-patrick-saul.down-ainm-name.part-03.line.0503362990576140",
+      "member_ids": [
+        "d32.down.07.ainm.name.speak-about"
+      ],
+      "normalized_text": "Labhair faoin ainm.",
+      "text_sha256": "e576f6d1aed9ae7af6e8fd463ee522ccc40bd6185505aefa6562a608f4eb9cce",
+      "inventory_slug": "labhair-faoin-ainm",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:32:24.615306+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "2pl1hHNyerOj9gbTi92G",
+        "started_at": "2026-08-05T10:32:11.859619+00:00",
+        "completed_at": "2026-08-05T10:32:24.590910+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-ainm.mp3",
+        "sha256": "be7a8e207573c2644c7948be7f5fe97fdae624d366d407bff42ac0c7b33598a8",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.down.d32-down-patrick-saul.down-ainm-name.part-03.line.1ccf8439ccbfe661",
+      "member_ids": [
+        "d32.down.07.ainm.name.story-important"
+      ],
+      "normalized_text": "Tá an ainm tábhachtach sa scéal.",
+      "text_sha256": "a68b802cd92edef92af279b8c990390c1dd9cb413fdb036353ea12624bdcb959",
+      "inventory_slug": "taa-an-ainm-taabhachtach-sa-sceeal",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:32:24.615358+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "WldSz5fT0leY3lU2gIjf",
+        "started_at": "2026-08-05T10:32:11.859619+00:00",
+        "completed_at": "2026-08-05T10:32:24.590910+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-ainm-taabhachtach-sa-sceeal.mp3",
+        "sha256": "6b132872f610bae82a34b27b50cd9521d5a492041a11f3eced9c0421300912bc",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.down.d32-down-patrick-saul.down-ainm-name.part-03.line.249d576870774c1c",
+      "member_ids": [
+        "d32.down.07.ainm.name.ask-what"
+      ],
+      "normalized_text": "Cad é an ainm?",
+      "text_sha256": "08062f184622dc52e1cc129a835a29caf1c48a3d7e8dd7f6713d5256dd5eace4",
+      "inventory_slug": "cad-ee-an-ainm",
+      "estimated_characters": 14,
+      "estimated_credits": 14.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:32:24.615415+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "RiUQK3kd6yEQR92zyfN8",
+        "started_at": "2026-08-05T10:32:11.859619+00:00",
+        "completed_at": "2026-08-05T10:32:24.590910+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-ainm.mp3",
+        "sha256": "65deac6f0159c5cd207f7c920cb72b27a33be4720c5fa2f7cfd976cb2482c2ed",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.down.d32-down-patrick-saul.down-ainm-name.part-03.line.35674e95068ecc0b",
+      "member_ids": [
+        "d32.down.07.ainm.name.listen-surround"
+      ],
+      "normalized_text": "Éist leis an ainm.",
+      "text_sha256": "e3922298751c6a26c1b3f3db8266f41b1bd47b88c3c3e74ae0949fe8adb52633",
+      "inventory_slug": "eeist-leis-an-ainm",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:32:24.615454+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "xIeTjPpNvOUQR9KD0nFj",
+        "started_at": "2026-08-05T10:32:11.859619+00:00",
+        "completed_at": "2026-08-05T10:32:24.590910+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-ainm.mp3",
+        "sha256": "ba2927370dcaad97bf1f4fffde9bbbb83ffebc7f444d2ef6e321c6ff060ca298",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.down.d32-down-patrick-saul.down-ainm-name.part-03.line.54f60570c6f02fad",
+      "member_ids": [
+        "d32.down.07.ainm.name.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an ainm ceart.",
+      "text_sha256": "8bd9fe9abb186e1940c86f945158917c0cc2f8383e3ced0393390fe71b57345e",
+      "inventory_slug": "roghnaigh-an-ainm-ceart",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:32:24.615496+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ip2VOdOpHVQSZqm355hG",
+        "started_at": "2026-08-05T10:32:11.859619+00:00",
+        "completed_at": "2026-08-05T10:32:24.590910+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-ainm-ceart.mp3",
+        "sha256": "81b71c2f4d7af7d03b0b9ac1c7e3766513ac928d34833977dea8d62a2fb8d140",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.down.d32-down-patrick-saul.down-ainm-name.part-03.line.62a3f82bb000f5e7",
+      "member_ids": [
+        "d32.down.07.ainm.name.see-here"
+      ],
+      "normalized_text": "Feicim an ainm anseo.",
+      "text_sha256": "f7088c78a6ec5a92c999db1cb28f7b8bbff1d463a9019566be42413ebad3f2f9",
+      "inventory_slug": "feicim-an-ainm-anseo",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:32:24.615541+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Efwk61x3ALY0ZG7stn2E",
+        "started_at": "2026-08-05T10:32:11.859619+00:00",
+        "completed_at": "2026-08-05T10:32:24.590910+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-ainm-anseo.mp3",
+        "sha256": "df525e21ea917d19084fec8b780f0b743288a13446d19b3f6012139c7afb622a",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.down.d32-down-patrick-saul.down-ainm-name.part-03.line.a35e1704fcaf1fb9",
+      "member_ids": [
+        "d32.down.07.ainm.name.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an ainm?",
+      "text_sha256": "efc0eabbd23f1fe0b034e8bbf7aa6be9c1fbd26f9c03d02a6674d33c562cbe06",
+      "inventory_slug": "caa-bhfuil-an-ainm",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:32:24.615586+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "miRNWtGDkjYD1dHtUcST",
+        "started_at": "2026-08-05T10:32:11.859619+00:00",
+        "completed_at": "2026-08-05T10:32:24.590910+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-ainm.mp3",
+        "sha256": "44a0df580cb25d634a13b0016e93430788529b016fe02f883f16d3d5758b8a63",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.down.d32-down-patrick-saul.down-ainm-name.part-03.line.a9d8cc7ef091daf3",
+      "member_ids": [
+        "d32.down.07.ainm.name.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an ainm.",
+      "text_sha256": "f75afae0dc17ee370044fdc9549ed9b6ba12c899c778f03e67e888af5100e90f",
+      "inventory_slug": "baineann-an-sceeal-leis-an-ainm",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:32:24.615623+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "QwEnzubb3sdOpr7vYCy4",
+        "started_at": "2026-08-05T10:32:11.859619+00:00",
+        "completed_at": "2026-08-05T10:32:24.590910+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-ainm.mp3",
+        "sha256": "4a046a22313ff2d6f222b6b9a367feb6eb39f17543873734acb20fc2b4a91057",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 177.0,
+    "estimated_cumulative_credits": 89518.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 150276.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:32:11.859619+00:00",
+      "used_credits": 150276.0,
+      "remaining_credits": 85823.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:32:24.590910+00:00",
+      "used_credits": 150276.0,
+      "remaining_credits": 85823.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.down.d32-down-patrick-saul.down-ainm-name.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "109a9c3184f23cc75d7bf2c57d0b7a26643eb4c65c5e2487c4b0e6fe56dcba8c"
+}

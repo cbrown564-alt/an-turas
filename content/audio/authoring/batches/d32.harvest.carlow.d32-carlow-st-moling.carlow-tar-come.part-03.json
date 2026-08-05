@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-tar-come.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — carlow / d32.carlow.st-moling / carlow.tar.come",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-tar-come.part-03.line.155ac70e33e8ea4c",
+      "member_ids": [
+        "d32.carlow.11.tar.come.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Ceatharlach leis an tar.",
+      "text_sha256": "7e7529fcb3abaf93cd5a06bd2d6ddf66a265fbe1bb0cc8c57369ff3119928cf8",
+      "inventory_slug": "baineann-sceeal-ceatharlach-leis-an-tar",
+      "estimated_characters": 39,
+      "estimated_credits": 39.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:01.062186+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "gco75sQPl4nfWdkP91yt",
+        "started_at": "2026-08-05T10:14:46.500384+00:00",
+        "completed_at": "2026-08-05T10:15:01.026297+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-ceatharlach-leis-an-tar.mp3",
+        "sha256": "341841913912b5c74d9d8be08c4902d13796c9099f563e5b04afb8b8a9595801",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-tar-come.part-03.line.2f24ea69f861c98d",
+      "member_ids": [
+        "d32.carlow.11.tar.come.speak-about"
+      ],
+      "normalized_text": "Labhair faoin tar i Ceatharlach.",
+      "text_sha256": "e6f78e5f83e6096bf77ed586d6145d6c40d026f2a51895b3d276366ac398683e",
+      "inventory_slug": "labhair-faoin-tar-i-ceatharlach",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:01.062318+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "lWRJ6Vp8C7EZR8EzytoN",
+        "started_at": "2026-08-05T10:14:46.500384+00:00",
+        "completed_at": "2026-08-05T10:15:01.026297+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-tar-i-ceatharlach.mp3",
+        "sha256": "253266a1e5069ecd9c5bd38b84b17b7d82579cfa7813a7fe924660df6b78e645",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-tar-come.part-03.line.3e4c24ab941709e6",
+      "member_ids": [
+        "d32.carlow.11.tar.come.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an tar i Ceatharlach?",
+      "text_sha256": "9389e317692dd46c3f6a083732a0b40d2d83e65f6c2b0038c4b9a98760f41995",
+      "inventory_slug": "caa-bhfuil-an-tar-i-ceatharlach",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:01.062404+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "yfE4JpeilrQvjXu82m3w",
+        "started_at": "2026-08-05T10:14:46.500384+00:00",
+        "completed_at": "2026-08-05T10:15:01.026297+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-tar-i-ceatharlach.mp3",
+        "sha256": "538a8dfdc45fb6431e6f4863381d19a22bc9ebca9864bdb7f7476817af7cd5a7",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-tar-come.part-03.line.432a96551b96b576",
+      "member_ids": [
+        "d32.carlow.11.tar.come.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an tar ceart i Ceatharlach.",
+      "text_sha256": "8a97483c8947fc13b629093d4e2c4a1956ae6d561b4cf8185309fc80c3dd6b74",
+      "inventory_slug": "roghnaigh-an-tar-ceart-i-ceatharlach",
+      "estimated_characters": 37,
+      "estimated_credits": 37.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:01.062484+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "IJX1JUpfXh5LJUtQuQAm",
+        "started_at": "2026-08-05T10:14:46.500384+00:00",
+        "completed_at": "2026-08-05T10:15:01.026297+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-tar-ceart-i-ceatharlach.mp3",
+        "sha256": "de218f6499cd46c1160f9c5199c0d5ec8c1cc90582b440c2134f3569550ff256",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-tar-come.part-03.line.a81288e3d0d9bc53",
+      "member_ids": [
+        "d32.carlow.11.tar.come.listen-surround"
+      ],
+      "normalized_text": "Éist leis an tar i Ceatharlach.",
+      "text_sha256": "88970f9b13c65bfda7c8ad62308ad6a5d95679ee760fc24b482aa4835cb9b81e",
+      "inventory_slug": "eeist-leis-an-tar-i-ceatharlach",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:01.062570+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "fmog1bv1H0D1c8efkzvR",
+        "started_at": "2026-08-05T10:14:46.500384+00:00",
+        "completed_at": "2026-08-05T10:15:01.026297+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-tar-i-ceatharlach.mp3",
+        "sha256": "2d704f4774995575c0dceeeaf41df94b74fec59b029e638075d6857a6df10173",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-tar-come.part-03.line.af6cf17af45d69a6",
+      "member_ids": [
+        "d32.carlow.11.tar.come.story-important"
+      ],
+      "normalized_text": "Tá an tar tábhachtach i scéal Ceatharlach.",
+      "text_sha256": "23c56b0c3862f1026ef455628ea8747aad747f52cce63b528d5a6b09cd86f2c7",
+      "inventory_slug": "taa-an-tar-taabhachtach-i-sceeal-ceatharlach",
+      "estimated_characters": 42,
+      "estimated_credits": 42.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:01.062662+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "TqYqwRurYfuzKRnSbJ6a",
+        "started_at": "2026-08-05T10:14:46.500384+00:00",
+        "completed_at": "2026-08-05T10:15:01.026297+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-tar-taabhachtach-i-sceeal-ceatharlach.mp3",
+        "sha256": "9d178f855da55d9a4a6ea2580872d080258f0bd3c85f914fbe7f11a4a7ad85d4",
+        "bytes": 84053,
+        "duration_seconds": 3.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-tar-come.part-03.line.c64b71a040319a27",
+      "member_ids": [
+        "d32.carlow.11.tar.come.ask-what"
+      ],
+      "normalized_text": "Cad é an tar i Ceatharlach?",
+      "text_sha256": "998b920360cb7edf8c5e32b272f054f4e84dc710a8f176366a89d0bf9ef710e0",
+      "inventory_slug": "cad-ee-an-tar-i-ceatharlach",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:01.062770+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "WIcSiTEgRfnkftlVvQIM",
+        "started_at": "2026-08-05T10:14:46.500384+00:00",
+        "completed_at": "2026-08-05T10:15:01.026297+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-tar-i-ceatharlach.mp3",
+        "sha256": "6a7cc77ef9ad2ee75cb871822a462d65aa9453c0d5760326b7e682a52c83f017",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-tar-come.part-03.line.f5103b3ef2c6b2dc",
+      "member_ids": [
+        "d32.carlow.11.tar.come.see-here"
+      ],
+      "normalized_text": "Feicim an tar i Ceatharlach.",
+      "text_sha256": "def0d6980de67c4935939a2aaad90954b45cecfabe152d3df9fef29dc0aa99aa",
+      "inventory_slug": "feicim-an-tar-i-ceatharlach",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:01.062846+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "YRXu431GQHdPPz87cgl9",
+        "started_at": "2026-08-05T10:14:46.500384+00:00",
+        "completed_at": "2026-08-05T10:15:01.026297+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-tar-i-ceatharlach.mp3",
+        "sha256": "ca495c39cb1794876b4dc3dfd16ae9f87d6d4e2b4fabde511c5e8c1ea38229a7",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 267.0,
+    "estimated_cumulative_credits": 89608.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 142551.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:14:46.500384+00:00",
+      "used_credits": 142551.0,
+      "remaining_credits": 93548.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:15:01.026297+00:00",
+      "used_credits": 142551.0,
+      "remaining_credits": 93548.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.carlow.d32-carlow-st-moling.carlow-tar-come.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "5a2b781d52f89ad87f3c55bf69f0a307e425f1b607fb60c983316f9c3aaedcca"
+}

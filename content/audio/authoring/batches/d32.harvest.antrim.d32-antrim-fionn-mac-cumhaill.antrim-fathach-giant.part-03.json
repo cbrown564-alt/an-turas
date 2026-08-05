@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fathach-giant.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — antrim / d32.antrim.fionn-mac-cumhaill / antrim.fathach.giant",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fathach-giant.part-03.line.0744087baaba1c95",
+      "member_ids": [
+        "d32.antrim.04.fathach.giant.speak-about"
+      ],
+      "normalized_text": "Labhair faoin fathach.",
+      "text_sha256": "010065395006970ff126edaecf09a7d25537675eb91ae722cab02b54940956df",
+      "inventory_slug": "labhair-faoin-fathach",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:15:46.451998+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "QXgLkwCFvMwdEMAcAdhb",
+        "started_at": "2026-08-05T09:15:39.094707+00:00",
+        "completed_at": "2026-08-05T09:15:46.417545+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-fathach.mp3",
+        "sha256": "06b830c9c81d094121e869f636146ed57abc5b0851dcc94bf9e9b4aa79d08027",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fathach-giant.part-03.line.6ecf4914e530c47b",
+      "member_ids": [
+        "d32.antrim.04.fathach.giant.see-here"
+      ],
+      "normalized_text": "Feicim an fathach anseo.",
+      "text_sha256": "9f9ce2b17f092536e8f79e98364aeaf6042f84934fca049488675aeb5c8ffce2",
+      "inventory_slug": "feicim-an-fathach-anseo",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:15:46.452147+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "hTHvy3lu5dzwABFanLGq",
+        "started_at": "2026-08-05T09:15:39.094707+00:00",
+        "completed_at": "2026-08-05T09:15:46.417545+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-fathach-anseo.mp3",
+        "sha256": "45c125b8e1c64fc36af640a561dfe8655e2ad63dae848fbf89fba04425154f42",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fathach-giant.part-03.line.c294fe17886e0eae",
+      "member_ids": [
+        "d32.antrim.04.fathach.giant.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an fathach ceart.",
+      "text_sha256": "a1c4b67765bac79a3b61382673c42ec4b12303df29ae4de73516dcec22b3cdb6",
+      "inventory_slug": "roghnaigh-an-fathach-ceart",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:15:46.452233+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "G5Dnj4Nmr0SNk9nna4Kx",
+        "started_at": "2026-08-05T09:15:39.094707+00:00",
+        "completed_at": "2026-08-05T09:15:46.417545+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-fathach-ceart.mp3",
+        "sha256": "50a09310037f1dcd1e57361517bffd318723d09a13e9c9a03ca7466fd2768441",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fathach-giant.part-03.line.c5b71c82343d9a2e",
+      "member_ids": [
+        "d32.antrim.04.fathach.giant.story-important"
+      ],
+      "normalized_text": "Tá an fathach tábhachtach sa scéal.",
+      "text_sha256": "70f4b959165d4c45b6517dbf9550909dec3fb4ea19c28c2626631a91eb878635",
+      "inventory_slug": "taa-an-fathach-taabhachtach-sa-sceeal",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:15:46.452314+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ioxCR1n82degFTjhQT9l",
+        "started_at": "2026-08-05T09:15:39.094707+00:00",
+        "completed_at": "2026-08-05T09:15:46.417545+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-fathach-taabhachtach-sa-sceeal.mp3",
+        "sha256": "3cc809872c9b32ec9aae7f7a13fec586f559903953adc672ff815f313539f095",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 108.0,
+    "estimated_cumulative_credits": 89449.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 139249.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T09:15:39.094707+00:00",
+      "used_credits": 139249.0,
+      "remaining_credits": 96850.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T09:15:46.417545+00:00",
+      "used_credits": 139249.0,
+      "remaining_credits": 96850.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fathach-giant.part-03"
+    }
+  },
+  "counts": {
+    "lines": 4,
+    "member_references": 4,
+    "planned": 0,
+    "approved": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "dc3dac7898d01bc2c96d86ea0c23d1f3f7f1e63ead839684c1617a87b4077200"
+}

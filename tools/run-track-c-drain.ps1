@@ -29,7 +29,7 @@ $Loop = Join-Path $RepoRoot 'tools/run_track_c_batch_loop.py'
 
 & $Python -u $Loop `
     --canonical-root $RepoRoot `
-    --payload-id 'd32.harvest.track-b.2026-08-03' `
+    --payload-id 'd32.harvest.track-b.2026-08-05' `
     --progress-log $Progress `
     --result-json $Result
 $Code = $LASTEXITCODE

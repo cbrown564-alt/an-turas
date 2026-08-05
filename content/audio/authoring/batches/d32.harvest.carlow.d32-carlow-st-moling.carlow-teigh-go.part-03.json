@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — carlow / d32.carlow.st-moling / carlow.teigh.go",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.part-03.line.0d71a68ebd85bda5",
+      "member_ids": [
+        "d32.carlow.12.teigh.go.see-here"
+      ],
+      "normalized_text": "Feicim an téigh anseo.",
+      "text_sha256": "dae412eb1c7b86fb7dc167049c2a75adaace81eb2479e4caa392728b588e114b",
+      "inventory_slug": "feicim-an-teeigh-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:34.135112+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "BxKqqh39qOslikSkyf97",
+        "started_at": "2026-08-05T10:15:21.983046+00:00",
+        "completed_at": "2026-08-05T10:15:34.020349+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-teeigh-anseo.mp3",
+        "sha256": "3a224a00115e28cadc54dfb79c23c4239d8b18ca1eb4f448200c33c8f6c9d943",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.part-03.line.49405eb6fc5a4722",
+      "member_ids": [
+        "d32.carlow.12.teigh.go.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an téigh.",
+      "text_sha256": "161dfafc7b09c436bd7000f00dc57eb0283fa1910c9e4361f17e53fe505af66e",
+      "inventory_slug": "baineann-an-sceeal-leis-an-teeigh",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:34.135169+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Gmp0hJOt9CHaRmjRzVZx",
+        "started_at": "2026-08-05T10:15:21.983046+00:00",
+        "completed_at": "2026-08-05T10:15:34.020349+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-teeigh.mp3",
+        "sha256": "bcef446555bbd190d0245f537cdff2c1e6198d3f60ea7017b6521477da201bc5",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.part-03.line.50f48ade1e7679f7",
+      "member_ids": [
+        "d32.carlow.12.teigh.go.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an téigh?",
+      "text_sha256": "a7f4d5dc126a1d65c34f72d7430d97a1b7cde1a2d610c034ed9d7392648a0f8a",
+      "inventory_slug": "caa-bhfuil-an-teeigh",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:34.135221+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "LezLVHuunLoNX1ibfOlE",
+        "started_at": "2026-08-05T10:15:21.983046+00:00",
+        "completed_at": "2026-08-05T10:15:34.020349+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-teeigh.mp3",
+        "sha256": "8348fde16cbd46319624d8f416e2d6c89c68c3fb23c5496af8827dd3a40800af",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.part-03.line.56c3d0967345c9c4",
+      "member_ids": [
+        "d32.carlow.12.teigh.go.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an téigh ceart.",
+      "text_sha256": "cc52f435fde7625675af5b9a2322a463338de93e9848d8ea666187b5badc8e66",
+      "inventory_slug": "roghnaigh-an-teeigh-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:34.135258+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "sydwds3hUJ6IOv0HaOf4",
+        "started_at": "2026-08-05T10:15:21.983046+00:00",
+        "completed_at": "2026-08-05T10:15:34.020349+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-teeigh-ceart.mp3",
+        "sha256": "df3ed87745269cf845afa593f49593a6b7b010cabc052446853341d684345c4b",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.part-03.line.7fdc3e749d892cf1",
+      "member_ids": [
+        "d32.carlow.12.teigh.go.speak-about"
+      ],
+      "normalized_text": "Labhair faoin téigh.",
+      "text_sha256": "233729cc5e5a28ddf01368f876eca9269efe66f9123e7df2b4f691b6db140d50",
+      "inventory_slug": "labhair-faoin-teeigh",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:34.135303+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "7tzcpzulwNusFENTENVT",
+        "started_at": "2026-08-05T10:15:21.983046+00:00",
+        "completed_at": "2026-08-05T10:15:34.020349+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-teeigh.mp3",
+        "sha256": "77f0c29a36c31cacdee1aa29e257c558bdb96ae48f78753f0a5584975fbe4a29",
+        "bytes": 30137,
+        "duration_seconds": 1.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.part-03.line.be10a659d23d639c",
+      "member_ids": [
+        "d32.carlow.12.teigh.go.ask-what"
+      ],
+      "normalized_text": "Cad é an téigh?",
+      "text_sha256": "305dfad2014d46c4f78f504b1b7f209174dab4683f5fb8f4f996b544f3a67985",
+      "inventory_slug": "cad-ee-an-teeigh",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:34.135342+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "yHw359Hze4Qz0p6JlRw1",
+        "started_at": "2026-08-05T10:15:21.983046+00:00",
+        "completed_at": "2026-08-05T10:15:34.020349+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-teeigh.mp3",
+        "sha256": "b8c42d9da2e111302c6c664384afc556a2628f0b77bc0870fbebbf00685d6197",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.part-03.line.d8521b11ae09e49a",
+      "member_ids": [
+        "d32.carlow.12.teigh.go.listen-surround"
+      ],
+      "normalized_text": "Éist leis an téigh.",
+      "text_sha256": "f53f0025eccbda6ea0a00471e48fe0077f05f0070c2fb5c11c448463165dfbb3",
+      "inventory_slug": "eeist-leis-an-teeigh",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:34.135384+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "aLS71BzMoprVm4NBqSJO",
+        "started_at": "2026-08-05T10:15:21.983046+00:00",
+        "completed_at": "2026-08-05T10:15:34.020349+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-teeigh.mp3",
+        "sha256": "a39bdc6b0aea29462e761d8d81fb623f0d8d323f627a6492207b02189e9bb5b9",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.part-03.line.e850fcf749c2a3a6",
+      "member_ids": [
+        "d32.carlow.12.teigh.go.story-important"
+      ],
+      "normalized_text": "Tá an téigh tábhachtach sa scéal.",
+      "text_sha256": "9edf54a41c7f64f2734ed0c8ae8cc8f64d815b03354f09aa8daeb944e71625c8",
+      "inventory_slug": "taa-an-teeigh-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:34.135424+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "oAup3Yurng5JkO7L1HvC",
+        "started_at": "2026-08-05T10:15:21.983046+00:00",
+        "completed_at": "2026-08-05T10:15:34.020349+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-teeigh-taabhachtach-sa-sceeal.mp3",
+        "sha256": "e7a67bb9c2d2c8017dddad3b58eb2ec8613a66c3b6be5fa4e280d0bb12ae1e44",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 142551.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:15:21.983046+00:00",
+      "used_credits": 142551.0,
+      "remaining_credits": 93548.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:15:34.020349+00:00",
+      "used_credits": 142551.0,
+      "remaining_credits": 93548.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "6d97c148f0890c45d2aea336f257b52c038ae1824f47f4a942ab9e46a7d54a6f"
+}

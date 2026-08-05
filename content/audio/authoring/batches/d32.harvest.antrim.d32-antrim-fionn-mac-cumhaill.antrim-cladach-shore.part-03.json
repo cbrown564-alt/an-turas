@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-cladach-shore.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — antrim / d32.antrim.fionn-mac-cumhaill / antrim.cladach.shore",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-cladach-shore.part-03.line.296543a046441057",
+      "member_ids": [
+        "d32.antrim.01.cladach.shore.speak-about"
+      ],
+      "normalized_text": "Labhair faoin cladach.",
+      "text_sha256": "b82a4cf35422f3933eac0812b13e87953f1eab40873899ecb5821d631bef8648",
+      "inventory_slug": "labhair-faoin-cladach",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:06.073765+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "QyWrPFf2VEj0vLe6AR6D",
+        "started_at": "2026-08-05T09:08:57.676299+00:00",
+        "completed_at": "2026-08-05T09:09:05.941206+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-cladach.mp3",
+        "sha256": "d2f4b71af53dff637d2f3881ed70df6b09510e883e73f8335c1176aab62d801b",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-cladach-shore.part-03.line.3b05cdadb16e076a",
+      "member_ids": [
+        "d32.antrim.01.cladach.shore.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an cladach ceart.",
+      "text_sha256": "4612051d00138d370805cfb8ae0974b7d810e868b5c1a0eefd86bbc7c7d1066f",
+      "inventory_slug": "roghnaigh-an-cladach-ceart",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:06.073894+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "tVO7F5lzQTPpcud6Xsvs",
+        "started_at": "2026-08-05T09:08:57.676299+00:00",
+        "completed_at": "2026-08-05T09:09:05.941206+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-cladach-ceart.mp3",
+        "sha256": "75edaa4564e4d3f660cd52ed397bcba09a9fbdfe2a6a423909886418ca7592a0",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-cladach-shore.part-03.line.3fa2c686695e6d11",
+      "member_ids": [
+        "d32.antrim.01.cladach.shore.see-here"
+      ],
+      "normalized_text": "Feicim an cladach anseo.",
+      "text_sha256": "f7026a970037b4464d8df8ecf3e1fb93d018b82cc06107594b3f0c78d4e85b6a",
+      "inventory_slug": "feicim-an-cladach-anseo",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:06.073962+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "3phTVcYggl5zp0IrEkmV",
+        "started_at": "2026-08-05T09:08:57.676299+00:00",
+        "completed_at": "2026-08-05T09:09:05.941206+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-cladach-anseo.mp3",
+        "sha256": "b8e89e6aa4f76a6f791afc9d3dbb9a62b1277c1762bc48a33e174d12a6474346",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-cladach-shore.part-03.line.55d2b8d670aaaf39",
+      "member_ids": [
+        "d32.antrim.01.cladach.shore.story-important"
+      ],
+      "normalized_text": "Tá an cladach tábhachtach sa scéal.",
+      "text_sha256": "69a3105f36dc21bc877f1b8cce5b5696160f80ff6d35b2f26c586811300de4ae",
+      "inventory_slug": "taa-an-cladach-taabhachtach-sa-sceeal",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:06.074025+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "2tt5disbABMnHnpK85dP",
+        "started_at": "2026-08-05T09:08:57.676299+00:00",
+        "completed_at": "2026-08-05T09:09:05.941206+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-cladach-taabhachtach-sa-sceeal.mp3",
+        "sha256": "3334328eb68085378e95b29d59aff3d3750095fda6e653fdf2b9d75aa372c7bf",
+        "bytes": 74649,
+        "duration_seconds": 3.04
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 108.0,
+    "estimated_cumulative_credits": 89449.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 138622.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T09:08:57.676299+00:00",
+      "used_credits": 138622.0,
+      "remaining_credits": 97477.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T09:09:05.941206+00:00",
+      "used_credits": 138622.0,
+      "remaining_credits": 97477.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-cladach-shore.part-03"
+    }
+  },
+  "counts": {
+    "lines": 4,
+    "member_references": 4,
+    "planned": 0,
+    "approved": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "8c4c7bb40c6ec83bcb01d5389fe81f2199d875c250890903179c1bbf8f8212b1"
+}

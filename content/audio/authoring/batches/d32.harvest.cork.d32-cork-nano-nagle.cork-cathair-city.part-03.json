@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-cathair-city.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — cork / d32.cork.nano-nagle / cork.cathair.city",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-cathair-city.part-03.line.2be410e1d907cbad",
+      "member_ids": [
+        "d32.cork.07.cathair.city.ask-what"
+      ],
+      "normalized_text": "Cad é an cathair i Corcaigh?",
+      "text_sha256": "31f797b067145c35eb41e002cebfb1c5841b7c695149cf2c4fb87bfdcc1f9811",
+      "inventory_slug": "cad-ee-an-cathair-i-corcaigh",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:23:34.824399+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "XjNBemT9sxNWg9ceiKpj",
+        "started_at": "2026-08-05T10:23:21.921748+00:00",
+        "completed_at": "2026-08-05T10:23:34.783312+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-cathair-i-corcaigh.mp3",
+        "sha256": "1e1289142cb6945388a1f6c6ccad3b03e131bc6901798f26b10be10c33420de2",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-cathair-city.part-03.line.36a262165e52b0cd",
+      "member_ids": [
+        "d32.cork.07.cathair.city.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an cathair i Corcaigh?",
+      "text_sha256": "189b46990602839791229aff7f8f78628d78850a3e03e7aa842d2e6ba22c35c1",
+      "inventory_slug": "caa-bhfuil-an-cathair-i-corcaigh",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:23:34.824500+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "QNCkv5y33jKV7evldULt",
+        "started_at": "2026-08-05T10:23:21.921748+00:00",
+        "completed_at": "2026-08-05T10:23:34.783312+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-cathair-i-corcaigh.mp3",
+        "sha256": "9f5fa9810505c57e54e3911c7bba6d88a1fd98e4bae77ce5adb750b9823d0d47",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-cathair-city.part-03.line.3c39d02cacc48fc3",
+      "member_ids": [
+        "d32.cork.07.cathair.city.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Corcaigh leis an cathair.",
+      "text_sha256": "3678faa2dc0d0fa17a559d0075f6039641271c0f854a9d5f9689bc32b096760e",
+      "inventory_slug": "baineann-sceeal-corcaigh-leis-an-cathair",
+      "estimated_characters": 40,
+      "estimated_credits": 40.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:23:34.824590+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "tStYGnUAEbH4RwcaYABF",
+        "started_at": "2026-08-05T10:23:21.921748+00:00",
+        "completed_at": "2026-08-05T10:23:34.783312+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-corcaigh-leis-an-cathair.mp3",
+        "sha256": "fee7dbda1e84d924ee74704fe1745607ec945ba02ac66ebb01c09033651c49aa",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-cathair-city.part-03.line.4461c0d9ae58ebcd",
+      "member_ids": [
+        "d32.cork.07.cathair.city.story-important"
+      ],
+      "normalized_text": "Tá an cathair tábhachtach sa scéal.",
+      "text_sha256": "adfa57b7dc52b96387de467b31ad0d65244f7bcba3a1a2f0a757d96be858d031",
+      "inventory_slug": "taa-an-cathair-taabhachtach-sa-sceeal",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:23:34.824693+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "y4oTwoepduzYGRoqByJi",
+        "started_at": "2026-08-05T10:23:21.921748+00:00",
+        "completed_at": "2026-08-05T10:23:34.783312+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-cathair-taabhachtach-sa-sceeal.mp3",
+        "sha256": "b7cfc6c4d3852aff20db2abe512b060eeba7fd8bb26f8dcb31d9d60c22be7fb5",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-cathair-city.part-03.line.8b6897f4cd3e95f0",
+      "member_ids": [
+        "d32.cork.07.cathair.city.speak-about"
+      ],
+      "normalized_text": "Labhair faoin cathair.",
+      "text_sha256": "91ece005ae705f565ce08031a2db64266226e6ab6a274a3b12cee4c501443e9e",
+      "inventory_slug": "labhair-faoin-cathair",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:23:34.824786+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "OPR015QFJSZXdJMZkjoQ",
+        "started_at": "2026-08-05T10:23:21.921748+00:00",
+        "completed_at": "2026-08-05T10:23:34.783312+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-cathair.mp3",
+        "sha256": "c29d6e7402a05569deb99ed159630f1b80734e7cc0782de52edce933f552c9c0",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-cathair-city.part-03.line.8f9eac0c5f28129b",
+      "member_ids": [
+        "d32.cork.07.cathair.city.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an cathair ceart.",
+      "text_sha256": "ce35a7afbda044a3fc338b57f4ca28056f030bdb6b2185a4dd4b74ece04cff5b",
+      "inventory_slug": "roghnaigh-an-cathair-ceart",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:23:34.824853+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "xp8DOAQhrwuRghOxOqzf",
+        "started_at": "2026-08-05T10:23:21.921748+00:00",
+        "completed_at": "2026-08-05T10:23:34.783312+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-cathair-ceart.mp3",
+        "sha256": "cecdd12648509416e7e8e85a2ccae15bd595710d130c7c8f04bab3f9c4bcf9af",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-cathair-city.part-03.line.92920f16b38fcb9d",
+      "member_ids": [
+        "d32.cork.07.cathair.city.see-here"
+      ],
+      "normalized_text": "Feicim an cathair anseo.",
+      "text_sha256": "97f0541261a54fe67a1ae321b57c6efcf4d18e1118fa2be6cd1ac9ef6c938bc4",
+      "inventory_slug": "feicim-an-cathair-anseo",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:23:34.824929+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "GirQPiWxKSKArUUcS7iI",
+        "started_at": "2026-08-05T10:23:21.921748+00:00",
+        "completed_at": "2026-08-05T10:23:34.783312+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-cathair-anseo.mp3",
+        "sha256": "d3c463076a0d4e10eefd0b82f72c65054550288d1d66b53026a3123749f5650d",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-cathair-city.part-03.line.fa6e32f76428cbeb",
+      "member_ids": [
+        "d32.cork.07.cathair.city.listen-surround"
+      ],
+      "normalized_text": "Éist leis an cathair i Corcaigh.",
+      "text_sha256": "b622020e3f5ec01bc07d4ffe8292c52cc63d89a3f4c1b8c2538ccfe2a678f951",
+      "inventory_slug": "eeist-leis-an-cathair-i-corcaigh",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:23:34.825004+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "wbqxKXfLd1pMfzIh8Usi",
+        "started_at": "2026-08-05T10:23:21.921748+00:00",
+        "completed_at": "2026-08-05T10:23:34.783312+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-cathair-i-corcaigh.mp3",
+        "sha256": "8df58d5e34f9ec0a8951ca988bc84c7d83014139326e378d9061a9e1a559ecfb",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 240.0,
+    "estimated_cumulative_credits": 89581.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 146050.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:23:21.921748+00:00",
+      "used_credits": 146050.0,
+      "remaining_credits": 90049.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:23:34.783312+00:00",
+      "used_credits": 146050.0,
+      "remaining_credits": 90049.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.cork.d32-cork-nano-nagle.cork-cathair-city.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "039d37d5a89a8d09e620b376678bd442d09a5f3443dacede17e6cdae52f36ba3"
+}

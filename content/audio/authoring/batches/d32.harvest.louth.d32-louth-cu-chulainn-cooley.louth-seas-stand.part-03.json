@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-seas-stand.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — louth / d32.louth.cu-chulainn-cooley / louth.seas.stand",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-seas-stand.part-03.line.0ebee044e3ce3434",
+      "member_ids": [
+        "d32.louth.11.seas.stand.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Lú leis an seas.",
+      "text_sha256": "b38cf99b004c73cece51007d4fff74ab9b2cd757b8a411414dc7004bd7f3a5f8",
+      "inventory_slug": "baineann-sceeal-luu-leis-an-seas",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:58.413463+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "tXdjpCSBXxR8NQEqk0qo",
+        "started_at": "2026-08-05T11:27:44.560917+00:00",
+        "completed_at": "2026-08-05T11:27:58.383171+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-luu-leis-an-seas.mp3",
+        "sha256": "775292259298327cf037c061c20b38c2bb241dd73097ef3a0682158d56e1cdb3",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-seas-stand.part-03.line.1523dcf125ae55b2",
+      "member_ids": [
+        "d32.louth.11.seas.stand.see-here"
+      ],
+      "normalized_text": "Feicim an seas i Lú.",
+      "text_sha256": "8c6171e8a03d2908286c964b2fda816a56a934329729d8609e89295890b4bb27",
+      "inventory_slug": "feicim-an-seas-i-luu",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:58.413551+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "tU6xqOrYTpUv3qyPJTCN",
+        "started_at": "2026-08-05T11:27:44.560917+00:00",
+        "completed_at": "2026-08-05T11:27:58.383171+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-seas-i-luu.mp3",
+        "sha256": "dd49cf765ea67bcd2f70655a7165b30fb3dead9180ccabb5278b837ea0e73d6f",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-seas-stand.part-03.line.2c8c21f3ec0129a8",
+      "member_ids": [
+        "d32.louth.11.seas.stand.ask-what"
+      ],
+      "normalized_text": "Cad é an seas i Lú?",
+      "text_sha256": "ea643acfdadba45e419c3c7b1d7f53471df11d45881ae82ca00abdbff91603bc",
+      "inventory_slug": "cad-ee-an-seas-i-luu",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:58.413660+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "F2Ds6r9Pa7Eq9DtVMlUj",
+        "started_at": "2026-08-05T11:27:44.560917+00:00",
+        "completed_at": "2026-08-05T11:27:58.383171+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-seas-i-luu.mp3",
+        "sha256": "9d4189b1c34fd76f73ee275a8245e8143452513da1fbc42e0482a678ce01ad3d",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-seas-stand.part-03.line.53db57222e64257c",
+      "member_ids": [
+        "d32.louth.11.seas.stand.story-important"
+      ],
+      "normalized_text": "Tá an seas tábhachtach i scéal Lú.",
+      "text_sha256": "7e0f9649eb346831fb5fe1e5118aea2784909b65f32303402f5d1ef350adf5de",
+      "inventory_slug": "taa-an-seas-taabhachtach-i-sceeal-luu",
+      "estimated_characters": 34,
+      "estimated_credits": 34.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:58.413723+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "O9urDEuwuqUdH4O9MrFt",
+        "started_at": "2026-08-05T11:27:44.560917+00:00",
+        "completed_at": "2026-08-05T11:27:58.383171+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-seas-taabhachtach-i-sceeal-luu.mp3",
+        "sha256": "c958fe01d678ac2cc22eebb609921839ce63356c07547083aeee307128f6aa01",
+        "bytes": 80292,
+        "duration_seconds": 3.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-seas-stand.part-03.line.73fef17d399f2377",
+      "member_ids": [
+        "d32.louth.11.seas.stand.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an seas i Lú?",
+      "text_sha256": "fd9b997004de61aec3538a8445ab5f33376b27c38816f097e1134860b12cc2cf",
+      "inventory_slug": "caa-bhfuil-an-seas-i-luu",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:58.413799+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "vfPEH8CO9YVwwh9w8lGL",
+        "started_at": "2026-08-05T11:27:44.560917+00:00",
+        "completed_at": "2026-08-05T11:27:58.383171+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-seas-i-luu.mp3",
+        "sha256": "bc6107c1076ea71d7cf2e436d6ceee76847951958f000312b05c21ee22585b73",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-seas-stand.part-03.line.b4fdbf80c417908f",
+      "member_ids": [
+        "d32.louth.11.seas.stand.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an seas ceart i Lú.",
+      "text_sha256": "aa73829f686de24b95951988a03c8f2bff983390b52722e5e41412fd01a0a4b8",
+      "inventory_slug": "roghnaigh-an-seas-ceart-i-luu",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:58.413854+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "x6P7GRQvnKz2dG2JO5L3",
+        "started_at": "2026-08-05T11:27:44.560917+00:00",
+        "completed_at": "2026-08-05T11:27:58.383171+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-seas-ceart-i-luu.mp3",
+        "sha256": "7c4b19b4b7c431edf035c73b22daaa1b5f397c924f40fc261ee30b4917560fbc",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-seas-stand.part-03.line.c7d24e8670801a8d",
+      "member_ids": [
+        "d32.louth.11.seas.stand.listen-surround"
+      ],
+      "normalized_text": "Éist leis an seas i Lú.",
+      "text_sha256": "a72d1fee3f081632d91a158c3d0c364859a8df9e41708acd248af29fbadf7d97",
+      "inventory_slug": "eeist-leis-an-seas-i-luu",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:58.413917+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "BS7evtyuhEzYACJlZ5AJ",
+        "started_at": "2026-08-05T11:27:44.560917+00:00",
+        "completed_at": "2026-08-05T11:27:58.383171+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-seas-i-luu.mp3",
+        "sha256": "da83a1e7a71bab98c97c43a40b9cc9d048e4d9c35d714eaa6d58f2feea4fb843",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-seas-stand.part-03.line.e6d8f28b0d22f9ac",
+      "member_ids": [
+        "d32.louth.11.seas.stand.speak-about"
+      ],
+      "normalized_text": "Labhair faoin seas i Lú.",
+      "text_sha256": "b43c82068030bdb89552640484187c11c9f063c75f23348bd1d66e7656936926",
+      "inventory_slug": "labhair-faoin-seas-i-luu",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:58.413974+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "JOSdKNxHsNzBFtYhhKsE",
+        "started_at": "2026-08-05T11:27:44.560917+00:00",
+        "completed_at": "2026-08-05T11:27:58.383171+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-seas-i-luu.mp3",
+        "sha256": "44f146bf1e83461de956c8c76d9c9e1913e93370444bb8fe4f522746c1dbb29a",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 203.0,
+    "estimated_cumulative_credits": 89544.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 166986.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T11:27:44.560917+00:00",
+      "used_credits": 166986.0,
+      "remaining_credits": 69113.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T11:27:58.383171+00:00",
+      "used_credits": 166986.0,
+      "remaining_credits": 69113.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-seas-stand.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "35fab1499d06003bc9d2e0165fc02877639654de473d3cf155f2a49aa2b8b6a1"
+}

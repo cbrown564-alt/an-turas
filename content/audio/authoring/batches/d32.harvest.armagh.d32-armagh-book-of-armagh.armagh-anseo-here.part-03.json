@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-anseo-here.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — armagh / d32.armagh.book-of-armagh / armagh.anseo.here",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-anseo-here.part-03.line.0f058e7f6ca208e8",
+      "member_ids": [
+        "d32.armagh.12.anseo.here.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an anseo ceart.",
+      "text_sha256": "4e440cf366ca631a9f49ae58f2f99b9c29034f4b74f07d15810e72e29d7077fe",
+      "inventory_slug": "roghnaigh-an-anseo-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:53:55.771785+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "fA4ObNE2Pr7qBOXhJ0YI",
+        "started_at": "2026-08-05T09:53:43.462916+00:00",
+        "completed_at": "2026-08-05T09:53:55.748761+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-anseo-ceart.mp3",
+        "sha256": "514e7f2f1a6ab1afe8bec79838add341f9a1c70f3c07542dc5fff8909e9f582e",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-anseo-here.part-03.line.29372a1359f89f61",
+      "member_ids": [
+        "d32.armagh.12.anseo.here.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an anseo?",
+      "text_sha256": "47248d8b43416fbae4a5b0cfc432d29854898aac320c0c57afe6b2d1c1ce22ae",
+      "inventory_slug": "caa-bhfuil-an-anseo",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:53:55.771874+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "YGdJrK5p1pgee9UcJPsP",
+        "started_at": "2026-08-05T09:53:43.462916+00:00",
+        "completed_at": "2026-08-05T09:53:55.748761+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-anseo.mp3",
+        "sha256": "de9f7b84c1a4ef9b8e2135071eb383396e949e54d363a931360fa8d4ac66ddc6",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-anseo-here.part-03.line.35918cd57fe3d659",
+      "member_ids": [
+        "d32.armagh.12.anseo.here.story-important"
+      ],
+      "normalized_text": "Tá an anseo tábhachtach sa scéal.",
+      "text_sha256": "74f6458807a0e6d80b5bd49be97467bc4d8c2f051f88ac52da8f678fd29a8f86",
+      "inventory_slug": "taa-an-anseo-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:53:55.771932+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "LjciiHr7JNq0Fz22klq2",
+        "started_at": "2026-08-05T09:53:43.462916+00:00",
+        "completed_at": "2026-08-05T09:53:55.748761+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-anseo-taabhachtach-sa-sceeal.mp3",
+        "sha256": "8d6d6c5397a2bff40d9eea0baa5d9e3141ae2a05b159940406df9a8e0d3ac905",
+        "bytes": 74649,
+        "duration_seconds": 3.04
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-anseo-here.part-03.line.47aceb9527a02931",
+      "member_ids": [
+        "d32.armagh.12.anseo.here.speak-about"
+      ],
+      "normalized_text": "Labhair faoin anseo.",
+      "text_sha256": "0de2d85c39eb8ea3b9a2b528fadef7f1ce9a0de37a0c6cc0fb1709265b8cf0e6",
+      "inventory_slug": "labhair-faoin-anseo",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:53:55.772013+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "WLIgqBiRtu3QZzX7mgmL",
+        "started_at": "2026-08-05T09:53:43.462916+00:00",
+        "completed_at": "2026-08-05T09:53:55.748761+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-anseo.mp3",
+        "sha256": "3e75d4f25f26ffbc15a8e7e41df3dcb107308bedef187d61f353ae90ed29dfb1",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-anseo-here.part-03.line.5dbf22b09fa813f2",
+      "member_ids": [
+        "d32.armagh.12.anseo.here.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an anseo.",
+      "text_sha256": "f15b36fe297e301e4342961cbb211bd793cb6b1e7cb8427cb0db4d81ed482450",
+      "inventory_slug": "baineann-an-sceeal-leis-an-anseo",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:53:55.772063+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "cU5Uaqys39qXS5pXbVGh",
+        "started_at": "2026-08-05T09:53:43.462916+00:00",
+        "completed_at": "2026-08-05T09:53:55.748761+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-anseo.mp3",
+        "sha256": "d1e528fc1e8a8f3b8f38310dacb706080ab370925beccb9717f44d1ab675f10e",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-anseo-here.part-03.line.98e7678606490f6e",
+      "member_ids": [
+        "d32.armagh.12.anseo.here.ask-what"
+      ],
+      "normalized_text": "Cad é an anseo?",
+      "text_sha256": "3c84da3c5a85aa990744c77fc7bce32a902042f8de6db58e95164259ae066b2c",
+      "inventory_slug": "cad-ee-an-anseo",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:53:55.772128+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Eu8hhQgHKvJUGMU6noIQ",
+        "started_at": "2026-08-05T09:53:43.462916+00:00",
+        "completed_at": "2026-08-05T09:53:55.748761+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-anseo.mp3",
+        "sha256": "b33527931a5b78f25b751f316fc3b9544439fb1caa9fa491dac9133c5e6be778",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-anseo-here.part-03.line.c8cf98f2d85a61a7",
+      "member_ids": [
+        "d32.armagh.12.anseo.here.see-here"
+      ],
+      "normalized_text": "Feicim an anseo anseo.",
+      "text_sha256": "ebb12bfb8912282ce9bab323b4079635916bffc4234efbb75ba4073ee6bc422f",
+      "inventory_slug": "feicim-an-anseo-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:53:55.772175+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "CSAwGIVZLFYUv87zkxRR",
+        "started_at": "2026-08-05T09:53:43.462916+00:00",
+        "completed_at": "2026-08-05T09:53:55.748761+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-anseo-anseo.mp3",
+        "sha256": "484cd9afbcf58b885119d14703a67e81a670454777d16e5f0c561a62490f48dc",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-anseo-here.part-03.line.cef169a4ec7560f5",
+      "member_ids": [
+        "d32.armagh.12.anseo.here.listen-surround"
+      ],
+      "normalized_text": "Éist leis an anseo.",
+      "text_sha256": "02f604d2425cf6567de7bb35b55552f4a3e9cd6a8e36d6250cb300ae92c0d694",
+      "inventory_slug": "eeist-leis-an-anseo",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:53:55.772235+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "A2HKpmf9YFcgqTqo0Flw",
+        "started_at": "2026-08-05T09:53:43.462916+00:00",
+        "completed_at": "2026-08-05T09:53:55.748761+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-anseo.mp3",
+        "sha256": "e93020ae727de474402056d45e3560d0586c9ef99ea383342dee36a75244caaa",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 140091.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T09:53:43.462916+00:00",
+      "used_credits": 140091.0,
+      "remaining_credits": 96008.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T09:53:55.748761+00:00",
+      "used_credits": 140091.0,
+      "remaining_credits": 96008.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-anseo-here.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "adf9d461dd3de3f9188284cbe1ab54f568062287f84fa1b7cdafc69a7dfedb04"
+}

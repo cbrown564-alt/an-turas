@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-rith-run.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — louth / d32.louth.cu-chulainn-cooley / louth.rith.run",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-rith-run.part-03.line.0b40ab16ca73f25c",
+      "member_ids": [
+        "d32.louth.12.rith.run.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an rith?",
+      "text_sha256": "2cd310552d8ea5df1dcf2cb9a0ad804a54dcd49b1cb53996f361a1c18fa08693",
+      "inventory_slug": "caa-bhfuil-an-rith",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:41.436450+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "daizQOBIyvmg27tXEwgZ",
+        "started_at": "2026-08-05T11:27:28.994230+00:00",
+        "completed_at": "2026-08-05T11:27:41.388792+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-rith.mp3",
+        "sha256": "36c8c5e94eca91057ded0f878ad679eac2d76e08d44f604f30b984d86305e22f",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-rith-run.part-03.line.1401a807edf1bdce",
+      "member_ids": [
+        "d32.louth.12.rith.run.ask-what"
+      ],
+      "normalized_text": "Cad é an rith?",
+      "text_sha256": "60da321972074a5e3dbe01a471817b230d0b07182a58543a0903003a373b5e5c",
+      "inventory_slug": "cad-ee-an-rith",
+      "estimated_characters": 14,
+      "estimated_credits": 14.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:41.436555+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "eBDRh6ykMTxRSZ6szh0X",
+        "started_at": "2026-08-05T11:27:28.994230+00:00",
+        "completed_at": "2026-08-05T11:27:41.388792+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-rith.mp3",
+        "sha256": "825c000e859dc2b970b606e544d78edd5e518d156b9278fcf7a26e0fccdb760d",
+        "bytes": 28256,
+        "duration_seconds": 1.12
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-rith-run.part-03.line.1f2c18748a91dc74",
+      "member_ids": [
+        "d32.louth.12.rith.run.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an rith ceart.",
+      "text_sha256": "7ba9efeda27967974419e8e518cb4d8700a50462fd6d8eacce59e02e51470b62",
+      "inventory_slug": "roghnaigh-an-rith-ceart",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:41.436622+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "l51tX7Oneot0fbotr5Zv",
+        "started_at": "2026-08-05T11:27:28.994230+00:00",
+        "completed_at": "2026-08-05T11:27:41.388792+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-rith-ceart.mp3",
+        "sha256": "e3e465dc8aa235856bbce33253305c41dbdbcff398ecaa80c5029e81753042a6",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-rith-run.part-03.line.3faac871f3104dcd",
+      "member_ids": [
+        "d32.louth.12.rith.run.listen-surround"
+      ],
+      "normalized_text": "Éist leis an rith.",
+      "text_sha256": "b7f6a2fa153ee1ae963d10b4a7c7ca91f87b4e83715913641884fc1f2da87f1b",
+      "inventory_slug": "eeist-leis-an-rith",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:41.436706+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "z12mcJo8gZQ4slXd4l1k",
+        "started_at": "2026-08-05T11:27:28.994230+00:00",
+        "completed_at": "2026-08-05T11:27:41.388792+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-rith.mp3",
+        "sha256": "4aaa4a79b8373b6a6058b2f6b49315e9e20f33d3b17879221cd36af4d839340a",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-rith-run.part-03.line.75be53054aefb4b3",
+      "member_ids": [
+        "d32.louth.12.rith.run.speak-about"
+      ],
+      "normalized_text": "Labhair faoin rith.",
+      "text_sha256": "b13a368c7a57bb0820f962ceb51d5613cb9946052f0075e8fc3e7f0c002c2b2f",
+      "inventory_slug": "labhair-faoin-rith",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:41.436770+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "2FJyatV6CuJasIy4fyQS",
+        "started_at": "2026-08-05T11:27:28.994230+00:00",
+        "completed_at": "2026-08-05T11:27:41.388792+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-rith.mp3",
+        "sha256": "ef639eb8bd0ed0a91c53770d6de1d113640c2c2d7a2a401912da0ba603274075",
+        "bytes": 28256,
+        "duration_seconds": 1.12
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-rith-run.part-03.line.868ecb4568705d11",
+      "member_ids": [
+        "d32.louth.12.rith.run.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an rith.",
+      "text_sha256": "e7bbf90f01588f314fdd34fb27c0d7dc6de1e85eb14a469e67a356fa27b55892",
+      "inventory_slug": "baineann-an-sceeal-leis-an-rith",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:41.436832+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "0GD4zs7ysjnMi2RJwDaH",
+        "started_at": "2026-08-05T11:27:28.994230+00:00",
+        "completed_at": "2026-08-05T11:27:41.388792+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-rith.mp3",
+        "sha256": "759a4d7ea102eedb8caae1937f03dfe61ebb1f7ce89c64d0c17f2657b534a06e",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-rith-run.part-03.line.9fafa2a5cc4c78d4",
+      "member_ids": [
+        "d32.louth.12.rith.run.see-here"
+      ],
+      "normalized_text": "Feicim an rith anseo.",
+      "text_sha256": "22e59235c1ce2cd888e219aa67dc4c2814f1c2eb9089b9b0e799ea8acbe893fc",
+      "inventory_slug": "feicim-an-rith-anseo",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:41.436915+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "3qozlwl5apltBmmlcH0w",
+        "started_at": "2026-08-05T11:27:28.994230+00:00",
+        "completed_at": "2026-08-05T11:27:41.388792+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-rith-anseo.mp3",
+        "sha256": "a322b5fae006937a0ffd9f3575a8212cd4249278368f868535fc0ce46af194b0",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-rith-run.part-03.line.d7419a3dab1c6f26",
+      "member_ids": [
+        "d32.louth.12.rith.run.story-important"
+      ],
+      "normalized_text": "Tá an rith tábhachtach sa scéal.",
+      "text_sha256": "a149310c11418a4958b79bfbf51165237267c10486df3cb4bf3fda2097da8d75",
+      "inventory_slug": "taa-an-rith-taabhachtach-sa-sceeal",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:27:41.436985+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "aVovpNWP8XLP65Yd3Jqb",
+        "started_at": "2026-08-05T11:27:28.994230+00:00",
+        "completed_at": "2026-08-05T11:27:41.388792+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-rith-taabhachtach-sa-sceeal.mp3",
+        "sha256": "abb04f634bffdfc545b092157d2bd362c2442e7683ca48269a9630c7d1b21b4a",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 177.0,
+    "estimated_cumulative_credits": 89518.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 166986.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T11:27:28.994230+00:00",
+      "used_credits": 166986.0,
+      "remaining_credits": 69113.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T11:27:41.388792+00:00",
+      "used_credits": 166986.0,
+      "remaining_credits": 69113.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-rith-run.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "1bceebf83a860fa38f4df52ee0e42011f0e06a8f2ae08d3ad0ce7b261b36ec0f"
+}

@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-leabhar-book.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — cork / d32.cork.nano-nagle / cork.leabhar.book",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-leabhar-book.part-03.line.0bf80393377b29e7",
+      "member_ids": [
+        "d32.cork.10.leabhar.book.speak-about"
+      ],
+      "normalized_text": "Labhair faoin leabhar i Corcaigh.",
+      "text_sha256": "01cf4da0a658353e8eb4868e02273b24018a53a94d8bb478810a3dbea2088443",
+      "inventory_slug": "labhair-faoin-leabhar-i-corcaigh",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:24:09.408068+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "lP7sBzawXsJoiO6ISYCo",
+        "started_at": "2026-08-05T10:23:55.415055+00:00",
+        "completed_at": "2026-08-05T10:24:09.325009+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-leabhar-i-corcaigh.mp3",
+        "sha256": "55caa74b40267b1539738dd804505443b2259412a3f2677c22134826104f6d62",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-leabhar-book.part-03.line.2758688fc9c489ee",
+      "member_ids": [
+        "d32.cork.10.leabhar.book.ask-what"
+      ],
+      "normalized_text": "Cad é an leabhar i Corcaigh?",
+      "text_sha256": "6eb8305ae7338ac71c8cf733854c9231b5630338bd0e500c85a74d59fbf6a7fb",
+      "inventory_slug": "cad-ee-an-leabhar-i-corcaigh",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:24:09.408125+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "zEBREGpoR3Wkt3zsEV3Z",
+        "started_at": "2026-08-05T10:23:55.415055+00:00",
+        "completed_at": "2026-08-05T10:24:09.325009+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-leabhar-i-corcaigh.mp3",
+        "sha256": "adedf71ab4957ca5ea628927b11c9d7fbdd508949147be89a699b936830b9f01",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-leabhar-book.part-03.line.449a28ac85c5ba08",
+      "member_ids": [
+        "d32.cork.10.leabhar.book.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an leabhar ceart i Corcaigh.",
+      "text_sha256": "a76ffef0fa1a2aade44c6d99694453f0e7500b2f4676059a500fa60283f5937d",
+      "inventory_slug": "roghnaigh-an-leabhar-ceart-i-corcaigh",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:24:09.408176+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "vZWc9oJuLKOxeeoqqFUX",
+        "started_at": "2026-08-05T10:23:55.415055+00:00",
+        "completed_at": "2026-08-05T10:24:09.325009+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-leabhar-ceart-i-corcaigh.mp3",
+        "sha256": "4e6ae736378a11fb279798f3b8beb266f97b03fc0d698a7bbcd3f7a83fccb7f6",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-leabhar-book.part-03.line.45a1067ae30181de",
+      "member_ids": [
+        "d32.cork.10.leabhar.book.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an leabhar i Corcaigh?",
+      "text_sha256": "584792ddd47a1612632c65c65273663e043ee05963a891c9cecb85e2968e65ed",
+      "inventory_slug": "caa-bhfuil-an-leabhar-i-corcaigh",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:24:09.408233+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "xwvLwz87ZdXU6wQpjMxF",
+        "started_at": "2026-08-05T10:23:55.415055+00:00",
+        "completed_at": "2026-08-05T10:24:09.325009+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-leabhar-i-corcaigh.mp3",
+        "sha256": "6a4ae00077bd8d155dec5cda01900c7a6c19d931eabb14e93b5296a234873450",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-leabhar-book.part-03.line.4a069fc84fa62709",
+      "member_ids": [
+        "d32.cork.10.leabhar.book.see-here"
+      ],
+      "normalized_text": "Feicim an leabhar i Corcaigh.",
+      "text_sha256": "5a94eef04343d7491509057c7f9f9dd7d04e563daa325c3f63d3e89ae605e11e",
+      "inventory_slug": "feicim-an-leabhar-i-corcaigh",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:24:09.408278+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "T7g8HxW9srMrS9KImCtQ",
+        "started_at": "2026-08-05T10:23:55.415055+00:00",
+        "completed_at": "2026-08-05T10:24:09.325009+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-leabhar-i-corcaigh.mp3",
+        "sha256": "3eec35576a9ef7064c7b048dbbde79888d4d5e3f8c260ee4537e4124c6c7b428",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-leabhar-book.part-03.line.b6d6551d12e030d9",
+      "member_ids": [
+        "d32.cork.10.leabhar.book.listen-surround"
+      ],
+      "normalized_text": "Éist leis an leabhar i Corcaigh.",
+      "text_sha256": "1cbff64fc070efdd8c3f131cd0f18ace59449562716cb02ee1a9268138afe273",
+      "inventory_slug": "eeist-leis-an-leabhar-i-corcaigh",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:24:09.408324+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "9GIBShiyKkSDPrk3Ormb",
+        "started_at": "2026-08-05T10:23:55.415055+00:00",
+        "completed_at": "2026-08-05T10:24:09.325009+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-leabhar-i-corcaigh.mp3",
+        "sha256": "e4e63e41dd069b0eb21f65bf1e21fd1c2a10052e2ac7a74d508615fb99ecee83",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-leabhar-book.part-03.line.bc065a122ff93a46",
+      "member_ids": [
+        "d32.cork.10.leabhar.book.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Corcaigh leis an leabhar.",
+      "text_sha256": "d89bb3ecf6d09fe70d6d63465a6c1c6e554a8e5e7d0119b56e0e1b122e44f0ab",
+      "inventory_slug": "baineann-sceeal-corcaigh-leis-an-leabhar",
+      "estimated_characters": 40,
+      "estimated_credits": 40.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:24:09.408371+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "JkXMCqSCHIXGu5MmwvEo",
+        "started_at": "2026-08-05T10:23:55.415055+00:00",
+        "completed_at": "2026-08-05T10:24:09.325009+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-corcaigh-leis-an-leabhar.mp3",
+        "sha256": "4f6af7583f8725666332fd52d0c2c115d4b03c3d6e75619bebd7151bb58be60f",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cork.d32-cork-nano-nagle.cork-leabhar-book.part-03.line.e16479e759f8efba",
+      "member_ids": [
+        "d32.cork.10.leabhar.book.story-important"
+      ],
+      "normalized_text": "Tá an leabhar tábhachtach i scéal Corcaigh.",
+      "text_sha256": "cf4acc5518bba38850193531b17f8df4d4c0b74ff1409be7d83bf4da33056379",
+      "inventory_slug": "taa-an-leabhar-taabhachtach-i-sceeal-corcaigh",
+      "estimated_characters": 43,
+      "estimated_credits": 43.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:24:09.408427+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "3dW8oUn3Z95aMlEL4Xqb",
+        "started_at": "2026-08-05T10:23:55.415055+00:00",
+        "completed_at": "2026-08-05T10:24:09.325009+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-leabhar-taabhachtach-i-sceeal-corcaigh.mp3",
+        "sha256": "d9c51b42559953e72d55e877e197bbf4a3259d78e226d63821f49b67dd7dd1e0",
+        "bytes": 84053,
+        "duration_seconds": 3.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 275.0,
+    "estimated_cumulative_credits": 89616.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 146547.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:23:55.415055+00:00",
+      "used_credits": 146547.0,
+      "remaining_credits": 89552.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:24:09.325009+00:00",
+      "used_credits": 146547.0,
+      "remaining_credits": 89552.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.cork.d32-cork-nano-nagle.cork-leabhar-book.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "9d612a408572259b3f9c736492de043cee8a035dfdaf0967a272706a6df9030c"
+}

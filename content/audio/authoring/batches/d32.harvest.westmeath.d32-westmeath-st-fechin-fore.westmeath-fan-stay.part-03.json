@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-fan-stay.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — westmeath / d32.westmeath.st-fechin-fore / westmeath.fan.stay",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-fan-stay.part-03.line.2a0c2375bc9f6714",
+      "member_ids": [
+        "d32.westmeath.13.fan.stay.speak-about"
+      ],
+      "normalized_text": "Labhair faoin fan i an Iarmhí.",
+      "text_sha256": "c397d0815bba60842862f52bb6fa1de7fafec6d05c096290de7123835e5fe5f7",
+      "inventory_slug": "labhair-faoin-fan-i-an-iarmhii",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:59:38.575294+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "0dXdBcbY3HwwU0BcChBb",
+        "started_at": "2026-08-05T11:59:24.329231+00:00",
+        "completed_at": "2026-08-05T11:59:38.520208+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-fan-i-an-iarmhii.mp3",
+        "sha256": "282cdfa1764661495dcdcdda826977a05ffa3ab60e078ec98b426a2bbbf6daf3",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-fan-stay.part-03.line.7416a89b45f93348",
+      "member_ids": [
+        "d32.westmeath.13.fan.stay.see-here"
+      ],
+      "normalized_text": "Feicim an fan i an Iarmhí.",
+      "text_sha256": "bbe8f2b3d8aae26b3c09d35240319644097032344410ff8486a99b918202c833",
+      "inventory_slug": "feicim-an-fan-i-an-iarmhii",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:59:38.575443+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "A8pQlYX7dUPmbcl5pApj",
+        "started_at": "2026-08-05T11:59:24.329231+00:00",
+        "completed_at": "2026-08-05T11:59:38.520208+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-fan-i-an-iarmhii.mp3",
+        "sha256": "ea38d5fa239f415e5c31686792730e89d47c81b1b8dac19a598af86a9b81f806",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-fan-stay.part-03.line.8726be1f52d4c857",
+      "member_ids": [
+        "d32.westmeath.13.fan.stay.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an fan i an Iarmhí?",
+      "text_sha256": "61ace364d7684cf0e38ed4adef2e58fadf3fe1ec495c3e21e820e3668cca6ebe",
+      "inventory_slug": "caa-bhfuil-an-fan-i-an-iarmhii",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:59:38.575531+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "9knH2nZoPrmcXWzdL0wB",
+        "started_at": "2026-08-05T11:59:24.329231+00:00",
+        "completed_at": "2026-08-05T11:59:38.520208+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-fan-i-an-iarmhii.mp3",
+        "sha256": "cc81e700b5b47671b25dce3a225109e15e2dbebab5bdbbd69e664ae68498fc5e",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-fan-stay.part-03.line.951c4c498bef6f5a",
+      "member_ids": [
+        "d32.westmeath.13.fan.stay.listen-surround"
+      ],
+      "normalized_text": "Éist leis an fan i an Iarmhí.",
+      "text_sha256": "387b7ee091740004770daf12f06a57f4eff1b883e0282a5b60e3a090232073f3",
+      "inventory_slug": "eeist-leis-an-fan-i-an-iarmhii",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:59:38.575612+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "B8SGoGxrHsB9bEU8Ud9E",
+        "started_at": "2026-08-05T11:59:24.329231+00:00",
+        "completed_at": "2026-08-05T11:59:38.520208+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-fan-i-an-iarmhii.mp3",
+        "sha256": "ab031956ad14dc77d51b32e45100f5a9d1faf182d029c7bd814936672ab4ec13",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-fan-stay.part-03.line.aca5299273254e8e",
+      "member_ids": [
+        "d32.westmeath.13.fan.stay.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal an Iarmhí leis an fan.",
+      "text_sha256": "fadf35c89856ceb17a5eabe02f7f96ce5e6d5e52b0abcd72ddab3e7a468fcd2b",
+      "inventory_slug": "baineann-sceeal-an-iarmhii-leis-an-fan",
+      "estimated_characters": 37,
+      "estimated_credits": 37.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:59:38.575701+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "VK0fL0TszLikmvn2jGoD",
+        "started_at": "2026-08-05T11:59:24.329231+00:00",
+        "completed_at": "2026-08-05T11:59:38.520208+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-an-iarmhii-leis-an-fan.mp3",
+        "sha256": "0bf07078a8ef8aa9445e211b5d96a8be035edf25a9076b725e49894abecb673a",
+        "bytes": 80292,
+        "duration_seconds": 3.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-fan-stay.part-03.line.c7cdf604bd3f7299",
+      "member_ids": [
+        "d32.westmeath.13.fan.stay.ask-what"
+      ],
+      "normalized_text": "Cad é an fan i an Iarmhí?",
+      "text_sha256": "0d185f4f91394f7cd7e2eeff639593e03e4208926e384b418ce932cd7d0c972c",
+      "inventory_slug": "cad-ee-an-fan-i-an-iarmhii",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:59:38.575811+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "GwDq1fgHTTy0XIMYGsF2",
+        "started_at": "2026-08-05T11:59:24.329231+00:00",
+        "completed_at": "2026-08-05T11:59:38.520208+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-fan-i-an-iarmhii.mp3",
+        "sha256": "e057965305d5497cba7e94fb183ad857b7aa5445ebb9fb50b1e8368e303bef03",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-fan-stay.part-03.line.dae247ff365d9bba",
+      "member_ids": [
+        "d32.westmeath.13.fan.stay.story-important"
+      ],
+      "normalized_text": "Tá an fan tábhachtach i scéal an Iarmhí.",
+      "text_sha256": "dc525edb013a5ed0c47929490ace4bf876be3387529644a84f7cf20b74eecc9c",
+      "inventory_slug": "taa-an-fan-taabhachtach-i-sceeal-an-iarmhii",
+      "estimated_characters": 40,
+      "estimated_credits": 40.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:59:38.575890+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "jM3d1KfkxEstv1sAa3W2",
+        "started_at": "2026-08-05T11:59:24.329231+00:00",
+        "completed_at": "2026-08-05T11:59:38.520208+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-fan-taabhachtach-i-sceeal-an-iarmhii.mp3",
+        "sha256": "3ef8a7b48d0f1db378cf3acc497b30b78744db482d9841ce46cf129a8ea8128c",
+        "bytes": 82173,
+        "duration_seconds": 3.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-fan-stay.part-03.line.e3c72a26e50436db",
+      "member_ids": [
+        "d32.westmeath.13.fan.stay.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an fan ceart i an Iarmhí.",
+      "text_sha256": "5f97b4aa845196dde39e13f915d7ac49a9c5f09ad72c692a185b3c8e72413dbb",
+      "inventory_slug": "roghnaigh-an-fan-ceart-i-an-iarmhii",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:59:38.575987+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Qvuon7rn0SCvntRREug5",
+        "started_at": "2026-08-05T11:59:24.329231+00:00",
+        "completed_at": "2026-08-05T11:59:38.520208+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-fan-ceart-i-an-iarmhii.mp3",
+        "sha256": "775ed6fa95e966172c8ed5a3cd81b513ea1f198eb813fe6c275f3c361ef25302",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 251.0,
+    "estimated_cumulative_credits": 89592.0,
+    "actual_batch_credits": 355.0,
+    "actual_cumulative_credits": 181391.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T11:59:24.329231+00:00",
+      "used_credits": 181036.0,
+      "remaining_credits": 55063.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T11:59:38.520208+00:00",
+      "used_credits": 181391.0,
+      "remaining_credits": 54708.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.westmeath.d32-westmeath-st-fechin-fore.westmeath-fan-stay.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "4663a4bb4dc54ecd73439d0b45c5ce21cf36b264ead5abcea7ea7bf7e886640c"
+}

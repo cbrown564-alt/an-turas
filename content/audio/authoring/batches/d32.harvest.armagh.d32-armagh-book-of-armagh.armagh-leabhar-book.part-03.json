@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leabhar-book.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — armagh / d32.armagh.book-of-armagh / armagh.leabhar.book",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leabhar-book.part-03.line.69397090a4f0cea7",
+      "member_ids": [
+        "d32.armagh.02.leabhar.book.see-here"
+      ],
+      "normalized_text": "Feicim an leabhar anseo.",
+      "text_sha256": "663f75139ad521b5cd23c0b6b713d055f79b48ec5367a6f97cc6539cff6e7b18",
+      "inventory_slug": "feicim-an-leabhar-anseo",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:19.967418+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "XFw63FO3WOy38CJVTusJ",
+        "started_at": "2026-08-05T10:11:12.493768+00:00",
+        "completed_at": "2026-08-05T10:11:19.949697+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-leabhar-anseo.mp3",
+        "sha256": "d626cc6f1aab5826e34f0ea18750d4d1b0a2c11ebf1525c187de2d0e45eec42f",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leabhar-book.part-03.line.b1c140eae028f648",
+      "member_ids": [
+        "d32.armagh.02.leabhar.book.speak-about"
+      ],
+      "normalized_text": "Labhair faoin leabhar.",
+      "text_sha256": "4f5552989060eb1aeff8e5be5715aaa8c449399f723a25a3062216b3c9e358ac",
+      "inventory_slug": "labhair-faoin-leabhar",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:19.967490+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "byacCi45XYOIB3fQ3rw6",
+        "started_at": "2026-08-05T10:11:12.493768+00:00",
+        "completed_at": "2026-08-05T10:11:19.949697+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-leabhar.mp3",
+        "sha256": "2df885087337b2b1997dbb528a69f5133cfffbfee065fd6133ebb02ed729a6f0",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leabhar-book.part-03.line.b8d8e11181008a10",
+      "member_ids": [
+        "d32.armagh.02.leabhar.book.story-important"
+      ],
+      "normalized_text": "Tá an leabhar tábhachtach sa scéal.",
+      "text_sha256": "76471360eca349caf01908fc8455eaa9d4b6da86f4c22e1d091293c786993aa5",
+      "inventory_slug": "taa-an-leabhar-taabhachtach-sa-sceeal",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:19.967534+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "WpH42W6lGuUZlUVa1Ay1",
+        "started_at": "2026-08-05T10:11:12.493768+00:00",
+        "completed_at": "2026-08-05T10:11:19.949697+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-leabhar-taabhachtach-sa-sceeal.mp3",
+        "sha256": "5133981cc3a8cc40921fca5ce37e8c820a9baab6f46c5eba474db9db0bc233bd",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leabhar-book.part-03.line.f3f9f6c9741e3dfc",
+      "member_ids": [
+        "d32.armagh.02.leabhar.book.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an leabhar ceart.",
+      "text_sha256": "1c751945495b0fcd582e9e092f12a2e261675937fee8e675bf078e5953c39be9",
+      "inventory_slug": "roghnaigh-an-leabhar-ceart",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:19.967591+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "nggzK4SUV1uSGEoFTHJY",
+        "started_at": "2026-08-05T10:11:12.493768+00:00",
+        "completed_at": "2026-08-05T10:11:19.949697+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-leabhar-ceart.mp3",
+        "sha256": "83509f7456e108b9d227c686531b8260bb43a3be774b7b1b39138a082dd497e9",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 108.0,
+    "estimated_cumulative_credits": 89449.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 140956.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:11:12.493768+00:00",
+      "used_credits": 140956.0,
+      "remaining_credits": 95143.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:11:19.949697+00:00",
+      "used_credits": 140956.0,
+      "remaining_credits": 95143.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-leabhar-book.part-03"
+    }
+  },
+  "counts": {
+    "lines": 4,
+    "member_references": 4,
+    "planned": 0,
+    "approved": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "d31da41ff34d288755a3066a302f60c4e8bd9352e7aa1361cb53a6d32f954d61"
+}

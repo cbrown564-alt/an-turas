@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-bia-food.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — kildare / d32.kildare.brigid-fire / kildare.bia.food",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-bia-food.part-03.line.222eaa939699fb7d",
+      "member_ids": [
+        "d32.kildare.02.bia.food.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an bia ceart.",
+      "text_sha256": "ee3a34ed6c6ed8f68f152535107a289858e139c4756b5d18c758f864de2be48c",
+      "inventory_slug": "roghnaigh-an-bia-ceart",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:01.378537+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "2fE1Y77yETj8Vs3sAjQR",
+        "started_at": "2026-08-05T10:47:55.145882+00:00",
+        "completed_at": "2026-08-05T10:48:01.356277+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-bia-ceart.mp3",
+        "sha256": "9f84ded3eac38954fee408891f67dff8fa8b87cea27c72b439d78e6c14a7ac4e",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-bia-food.part-03.line.58f2419a0c78637a",
+      "member_ids": [
+        "d32.kildare.02.bia.food.story-important"
+      ],
+      "normalized_text": "Tá an bia tábhachtach sa scéal.",
+      "text_sha256": "613802e770743132c0493bfb8c868f6a26cc0d7852446008097ed8b4db673853",
+      "inventory_slug": "taa-an-bia-taabhachtach-sa-sceeal",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:01.378637+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "uSOi7AlNmA23f1OYw3A5",
+        "started_at": "2026-08-05T10:47:55.145882+00:00",
+        "completed_at": "2026-08-05T10:48:01.356277+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-bia-taabhachtach-sa-sceeal.mp3",
+        "sha256": "d1833326c632d6ff0f0f158be575cb342dd016eebabf950399115ff950019a01",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-bia-food.part-03.line.79a275d59551bd2c",
+      "member_ids": [
+        "d32.kildare.02.bia.food.speak-about"
+      ],
+      "normalized_text": "Labhair faoin bia.",
+      "text_sha256": "df5ba33c4714abff5b19749e59d8081e6e62d435f8c37380ab5f011bf181553a",
+      "inventory_slug": "labhair-faoin-bia",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:01.378708+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "t9tzGMpoD9pETYyFNxiL",
+        "started_at": "2026-08-05T10:47:55.145882+00:00",
+        "completed_at": "2026-08-05T10:48:01.356277+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-bia.mp3",
+        "sha256": "1d5883b892930c451b30eca59b06009e53dda094e0df053464018b0254a51427",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-bia-food.part-03.line.ebe21b5bbd9a12d6",
+      "member_ids": [
+        "d32.kildare.02.bia.food.see-here"
+      ],
+      "normalized_text": "Feicim an bia anseo.",
+      "text_sha256": "cbb4518dd27e7ffcbf7822a6b52319aa5d8fbecc4234eddfd666941ff66e5d74",
+      "inventory_slug": "feicim-an-bia-anseo",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:01.378753+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "HPIiq1nXK5pVLvzeRmiL",
+        "started_at": "2026-08-05T10:47:55.145882+00:00",
+        "completed_at": "2026-08-05T10:48:01.356277+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-bia-anseo.mp3",
+        "sha256": "21f6ad967a252265e514a622227b3eb4e6140fac23b20a910dd5ab083236f73e",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 92.0,
+    "estimated_cumulative_credits": 89433.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 157396.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:47:55.145882+00:00",
+      "used_credits": 157396.0,
+      "remaining_credits": 78703.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:48:01.356277+00:00",
+      "used_credits": 157396.0,
+      "remaining_credits": 78703.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-bia-food.part-03"
+    }
+  },
+  "counts": {
+    "lines": 4,
+    "member_references": 4,
+    "planned": 0,
+    "approved": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "39833975d64e340ec5938aa307e592eaf5887bb635c1ef59d185444ad8cd1bd2"
+}

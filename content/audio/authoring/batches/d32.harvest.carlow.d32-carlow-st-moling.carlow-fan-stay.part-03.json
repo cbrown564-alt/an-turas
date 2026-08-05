@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-fan-stay.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — carlow / d32.carlow.st-moling / carlow.fan.stay",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-fan-stay.part-03.line.103d80f10f65acc7",
+      "member_ids": [
+        "d32.carlow.13.fan.stay.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an fan i Ceatharlach?",
+      "text_sha256": "dc9c714822adf2c50b32e1023837808d79308953a45a68b4505044c81f22e7f9",
+      "inventory_slug": "caa-bhfuil-an-fan-i-ceatharlach",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:13:56.920564+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "1AqG7yKAE2Zhmwq39QeS",
+        "started_at": "2026-08-05T10:13:41.152315+00:00",
+        "completed_at": "2026-08-05T10:13:56.877960+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-fan-i-ceatharlach.mp3",
+        "sha256": "b1b2b3cfecdb78b5a89796bd0affe3ba72120f111d9f4b55f6d61d01ae4f9adc",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-fan-stay.part-03.line.11273092b396eeb7",
+      "member_ids": [
+        "d32.carlow.13.fan.stay.ask-what"
+      ],
+      "normalized_text": "Cad é an fan i Ceatharlach?",
+      "text_sha256": "8cb33508ffa5caf4909327bfce1d2a36af978d8594023b5bd0ca09d3e634c36b",
+      "inventory_slug": "cad-ee-an-fan-i-ceatharlach",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:13:56.920708+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "x8AoB4qYflGYzgwoGR5I",
+        "started_at": "2026-08-05T10:13:41.152315+00:00",
+        "completed_at": "2026-08-05T10:13:56.877960+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-fan-i-ceatharlach.mp3",
+        "sha256": "3f8716756874cf9fa095b1081472697834c473fcdbf68b8909bcd5256f36ad5d",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-fan-stay.part-03.line.21a56765bccd7ee0",
+      "member_ids": [
+        "d32.carlow.13.fan.stay.see-here"
+      ],
+      "normalized_text": "Feicim an fan i Ceatharlach.",
+      "text_sha256": "1d9c627f4ff2c24d7180a04e174ff82d61f2741799de58c86e18505b84929c78",
+      "inventory_slug": "feicim-an-fan-i-ceatharlach",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:13:56.920799+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "uEbfdlV1wP85AJxb8XSh",
+        "started_at": "2026-08-05T10:13:41.152315+00:00",
+        "completed_at": "2026-08-05T10:13:56.877960+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-fan-i-ceatharlach.mp3",
+        "sha256": "4a533fd898fb266614c08d34ed91e895c2ba186fdc3305aed3881c78abf75d0a",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-fan-stay.part-03.line.485d649ed32c2241",
+      "member_ids": [
+        "d32.carlow.13.fan.stay.listen-surround"
+      ],
+      "normalized_text": "Éist leis an fan i Ceatharlach.",
+      "text_sha256": "c7015b3410c38673b74cc1c41a3c3e7607354602f2a3515022feda94cedd4716",
+      "inventory_slug": "eeist-leis-an-fan-i-ceatharlach",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:13:56.920883+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "YeiLHiBuWC4GIm03PlgZ",
+        "started_at": "2026-08-05T10:13:41.152315+00:00",
+        "completed_at": "2026-08-05T10:13:56.877960+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-fan-i-ceatharlach.mp3",
+        "sha256": "0183dcd18a6f8723120a42d3516938c02752b39cd01c9e1e07f3813b59889c15",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-fan-stay.part-03.line.855dd2c9689958b1",
+      "member_ids": [
+        "d32.carlow.13.fan.stay.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Ceatharlach leis an fan.",
+      "text_sha256": "b5d81d38525c097ae59cfca635fd4e925dcc2a78296b6857223d1745bd26dab5",
+      "inventory_slug": "baineann-sceeal-ceatharlach-leis-an-fan",
+      "estimated_characters": 39,
+      "estimated_credits": 39.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:13:56.920985+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "FRmf9pFMgqazx6A5pfIL",
+        "started_at": "2026-08-05T10:13:41.152315+00:00",
+        "completed_at": "2026-08-05T10:13:56.877960+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-ceatharlach-leis-an-fan.mp3",
+        "sha256": "d63f003e4e55c98689f33a443f7a3295a602af27bf9f0422e33068347a7a8d8e",
+        "bytes": 72769,
+        "duration_seconds": 2.96
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-fan-stay.part-03.line.86ffe9d1f589f103",
+      "member_ids": [
+        "d32.carlow.13.fan.stay.story-important"
+      ],
+      "normalized_text": "Tá an fan tábhachtach i scéal Ceatharlach.",
+      "text_sha256": "bc5d65cdd938d30b679f571117737fa22e90df67354641c14c9042328519ddee",
+      "inventory_slug": "taa-an-fan-taabhachtach-i-sceeal-ceatharlach",
+      "estimated_characters": 42,
+      "estimated_credits": 42.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:13:56.921092+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "FRx562Zbgta76DP5Sj15",
+        "started_at": "2026-08-05T10:13:41.152315+00:00",
+        "completed_at": "2026-08-05T10:13:56.877960+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-fan-taabhachtach-i-sceeal-ceatharlach.mp3",
+        "sha256": "dbd0ea284a49f787a86cd56a202fe663f4a2482cdd95c7483f02e30e807316d8",
+        "bytes": 84053,
+        "duration_seconds": 3.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-fan-stay.part-03.line.cf19607cc98a1910",
+      "member_ids": [
+        "d32.carlow.13.fan.stay.speak-about"
+      ],
+      "normalized_text": "Labhair faoin fan i Ceatharlach.",
+      "text_sha256": "3570a8fd8e12b4982893b77cf1072fdb269ce5ebe7ca3a6b3e3e6081a5e01c2a",
+      "inventory_slug": "labhair-faoin-fan-i-ceatharlach",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:13:56.921202+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ap3UZjynO9Ukf6FPl48d",
+        "started_at": "2026-08-05T10:13:41.152315+00:00",
+        "completed_at": "2026-08-05T10:13:56.877960+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-fan-i-ceatharlach.mp3",
+        "sha256": "14b8fb9efc159ada96a702fa73fa32adf1596e62af10c42fe85c3dbd5d20dda3",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-fan-stay.part-03.line.e69076449f608156",
+      "member_ids": [
+        "d32.carlow.13.fan.stay.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an fan ceart i Ceatharlach.",
+      "text_sha256": "98c3b7007e5f88abd22d873d6a9bbe9229af76ea5b68cf25108248195f959c84",
+      "inventory_slug": "roghnaigh-an-fan-ceart-i-ceatharlach",
+      "estimated_characters": 37,
+      "estimated_credits": 37.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:13:56.921287+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "YKLZcGZmdrhKUNV6DCav",
+        "started_at": "2026-08-05T10:13:41.152315+00:00",
+        "completed_at": "2026-08-05T10:13:56.877960+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-fan-ceart-i-ceatharlach.mp3",
+        "sha256": "89e182b12e9607797b574dc427132f0de8c5964f382ad9d128e34b3cf8e133f9",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 267.0,
+    "estimated_cumulative_credits": 89608.0,
+    "actual_batch_credits": 551.0,
+    "actual_cumulative_credits": 142207.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:13:41.152315+00:00",
+      "used_credits": 141656.0,
+      "remaining_credits": 94443.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:13:56.877960+00:00",
+      "used_credits": 142207.0,
+      "remaining_credits": 93892.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.carlow.d32-carlow-st-moling.carlow-fan-stay.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "dd5ca177dfe45ffc07909dc6f32e3fd4982b601c1c4e49045c65d50e32a08d6f"
+}

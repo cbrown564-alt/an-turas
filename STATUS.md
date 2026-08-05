@@ -1,8 +1,9 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-04 (Track E reconcile closed on
-`track-a/bulk-integration` for payload `d32.harvest.track-b.2026-08-03`).*
+stories and places of Ireland. Updated 2026-08-05 (D32 harvest cycle 2 Track C
+closed; Track D/E next; prior payload `d32.harvest.track-b.2026-08-03` remains
+reconciled).*
 
 ## Current outcome
 
@@ -10,15 +11,15 @@ An Turas has a verified representative Mayo Story-and-Learning loop, shared lear
 runtime, four in-app county review packs, a nationwide Personal Atlas foundation, and
 a controlled Irish authoring/audio pipeline.
 
-The immediate phase is the **D32 emergency Irish audio harvest**. For payload
-`d32.harvest.track-b.2026-08-03`, Tracks **C** (capture), **D** (anomaly sampling),
-and **E** (reconcile) are closed: **2,818 / 2,818** approved lines succeeded, checksums
-verify for **3,880 / 3,880** runtime clips, Xcode Audio resources are regenerated,
-reconcile is non-blocking, and remaining resumable work is **zero**. Observed
-aggregate provider spend for the payload is **42,891** credits (baseline **95,461** →
-**138,352** used; **97,747** remaining), under the authorized **75,000** limit. Two
-colliding lines were cancelled so existing clips were reused. Capture still does not
-imply linguistic approval or learner release.
+The immediate phase is the **D32 emergency Irish audio harvest**, which continues while
+prepaid ElevenLabs credits remain (D32). Cycle 1 payload
+`d32.harvest.track-b.2026-08-03` is closed and reconciled. Cycle 2 payload
+`d32.harvest.track-b.2026-08-05` Track C is closed: **2,744 / 2,744** approved lines
+succeeded across **391** manifests (A2 dialogue depth 14/14 all counties; partition
+ids remapped to free `.part-0N` suffixes). Observed spend for the payload is about
+**47,495** credits (baseline **138,576** → **186,071** used; **50,028** remaining),
+under the authorized **90,000** limit. Next: Track D anomaly sampling and Track E
+reconcile. Capture still does not imply linguistic approval or learner release.
 
 The product is implemented as a substantial prototype. It has not been validated for
 learning outcomes or promoted for public release.
@@ -201,12 +202,15 @@ promotion.
 
 ## Active implementation sequence
 
-**Current priority: harvest freeze / learner-facing slice selection** (STATUS step 6)
-for the closed Track B/C/D/E payload `d32.harvest.track-b.2026-08-03`. Do not open a
-new provider payload while selecting and gating the first reviewed subset. Track E
-report:
+**Current priority: D32 harvest cycle 2 Track D → Track E** for closed Track C
+payload `d32.harvest.track-b.2026-08-05` (**2,744** captured lines / **391**
+batches / ~**47,495** credits / **90,000** limit). Approval:
+[`d32-cycle2-track-c-approve-prepared-report.json`](content/audio/authoring/d32-cycle2-track-c-approve-prepared-report.json).
+Prepare summary:
+[`d32-cycle2-track-b-prepare-harvest-summary.json`](content/audio/authoring/d32-cycle2-track-b-prepare-harvest-summary.json).
+Approval identity `user.d32.track-c.2026-08-05`; claim owner
+`codex.track-c.d32-cycle2-drain`. Cycle 1 Track E report remains closed:
 [`d32-track-e-reconcile-report.json`](content/audio/authoring/d32-track-e-reconcile-report.json).
-Approval identity `user.d32.track-c.2026-08-03`; claim owner `codex.track-c.d32-drain`.
 
 **Resume / re-drain tooling (committed):** portable `pwsh` at
 `~/.local/powershell/pwsh`. Detached launcher:

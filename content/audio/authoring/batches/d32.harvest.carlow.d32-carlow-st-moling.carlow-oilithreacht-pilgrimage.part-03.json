@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-oilithreacht-pilgrimage.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — carlow / d32.carlow.st-moling / carlow.oilithreacht.pilgrimage",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-oilithreacht-pilgrimage.part-03.line.2cf6975c244a923d",
+      "member_ids": [
+        "d32.carlow.06.oilithreacht.pilgrimage.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an oilithreacht ceart.",
+      "text_sha256": "564b312f61f25602adb91363fa7996b4c39ad405dbcb296712a8aa53baebca8f",
+      "inventory_slug": "roghnaigh-an-oilithreacht-ceart",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:14:43.621470+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "qmVOQWrEo47TmcSupbfv",
+        "started_at": "2026-08-05T10:14:30.104082+00:00",
+        "completed_at": "2026-08-05T10:14:43.586872+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-oilithreacht-ceart.mp3",
+        "sha256": "36abf3d4a24c050e788dfa366c9c3d1e8e6768e3fc86597c14ac1aa01c51b67a",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-oilithreacht-pilgrimage.part-03.line.56efee103c285ed2",
+      "member_ids": [
+        "d32.carlow.06.oilithreacht.pilgrimage.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an oilithreacht?",
+      "text_sha256": "dfe25780c78bfcdfc4aea69e8ee157b423bebbe97fe5f91c57652ebdc0c81c4c",
+      "inventory_slug": "caa-bhfuil-an-oilithreacht",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:14:43.621572+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "90d7sq1qUnTS0uFqg624",
+        "started_at": "2026-08-05T10:14:30.104082+00:00",
+        "completed_at": "2026-08-05T10:14:43.586872+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-oilithreacht.mp3",
+        "sha256": "fb8165646c876a14b45ab1b23930eead749ca86e8c790d5bfa3b2a17d06d18b3",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-oilithreacht-pilgrimage.part-03.line.72aa6af3d33d37fd",
+      "member_ids": [
+        "d32.carlow.06.oilithreacht.pilgrimage.listen-surround"
+      ],
+      "normalized_text": "Éist leis an oilithreacht.",
+      "text_sha256": "2720b6c3ada4d9ddd1ed7c1210b58f3dda2d10a5b0064311663cc05d0d1c4bcb",
+      "inventory_slug": "eeist-leis-an-oilithreacht",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:14:43.621634+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "SoHInE7Wv3cCse5ABeKS",
+        "started_at": "2026-08-05T10:14:30.104082+00:00",
+        "completed_at": "2026-08-05T10:14:43.586872+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-oilithreacht.mp3",
+        "sha256": "931699f4b437bbf3d31339563382a21c3c92909679a14dd43a858b9a128d8fd6",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-oilithreacht-pilgrimage.part-03.line.8c7bc281dd0a5703",
+      "member_ids": [
+        "d32.carlow.06.oilithreacht.pilgrimage.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an oilithreacht.",
+      "text_sha256": "472c93e95ac1e0c7f02c849f0db80ac481c68826ce33b907001d41f30ba7ae37",
+      "inventory_slug": "baineann-an-sceeal-leis-an-oilithreacht",
+      "estimated_characters": 39,
+      "estimated_credits": 39.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:14:43.621697+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "aiwny5mSuvkSw7Wbm8fv",
+        "started_at": "2026-08-05T10:14:30.104082+00:00",
+        "completed_at": "2026-08-05T10:14:43.586872+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-oilithreacht.mp3",
+        "sha256": "c22a58b3ca9f97433b8213ead482284126ca3f94b31673891eda5b39c6b1164c",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-oilithreacht-pilgrimage.part-03.line.8eb2b3f78e243d80",
+      "member_ids": [
+        "d32.carlow.06.oilithreacht.pilgrimage.see-here"
+      ],
+      "normalized_text": "Feicim an oilithreacht anseo.",
+      "text_sha256": "27b8e6ffd1a2e62f23216df515bf982244e9f97cd78b6238d6cd8ad671f6c814",
+      "inventory_slug": "feicim-an-oilithreacht-anseo",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:14:43.621775+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "h9lt6GNr4XwOOHJzStTA",
+        "started_at": "2026-08-05T10:14:30.104082+00:00",
+        "completed_at": "2026-08-05T10:14:43.586872+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-oilithreacht-anseo.mp3",
+        "sha256": "e5f917a9b2d106d5e61dc4f9fefb32a2758eb79fb32db077fbfb6d603b3fe088",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-oilithreacht-pilgrimage.part-03.line.a8f5697420245783",
+      "member_ids": [
+        "d32.carlow.06.oilithreacht.pilgrimage.ask-what"
+      ],
+      "normalized_text": "Cad é an oilithreacht?",
+      "text_sha256": "788344da060cdd5a00677eea963d1482035768585d6e2561ffbdcb58c1aa2bd1",
+      "inventory_slug": "cad-ee-an-oilithreacht",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:14:43.621849+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "klEo2EUd4QoAB6GH6uOB",
+        "started_at": "2026-08-05T10:14:30.104082+00:00",
+        "completed_at": "2026-08-05T10:14:43.586872+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-oilithreacht.mp3",
+        "sha256": "046ce572675651f60c5b18f9cc83b56145e3e94a5c803185479d9e93628a83cd",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-oilithreacht-pilgrimage.part-03.line.ae9b59420f510437",
+      "member_ids": [
+        "d32.carlow.06.oilithreacht.pilgrimage.speak-about"
+      ],
+      "normalized_text": "Labhair faoin oilithreacht.",
+      "text_sha256": "8f528844d41a0c1bf423c7bb652cac07ccc8cf6746f4ba1f967b25410fba8cd7",
+      "inventory_slug": "labhair-faoin-oilithreacht",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:14:43.621920+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "nwxexYFqxt0281yWfPrW",
+        "started_at": "2026-08-05T10:14:30.104082+00:00",
+        "completed_at": "2026-08-05T10:14:43.586872+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-oilithreacht.mp3",
+        "sha256": "ddec10f8ac41743ec6070b6d008ee1bc040f63560791da90a84075287e837090",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-oilithreacht-pilgrimage.part-03.line.be84922b56ef6022",
+      "member_ids": [
+        "d32.carlow.06.oilithreacht.pilgrimage.story-important"
+      ],
+      "normalized_text": "Tá an oilithreacht tábhachtach sa scéal.",
+      "text_sha256": "a7ba727276dbdecd0e7c8ef461b208dc65f03c2bd865db178848f0c4d0394efb",
+      "inventory_slug": "taa-an-oilithreacht-taabhachtach-sa-sceeal",
+      "estimated_characters": 40,
+      "estimated_credits": 40.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:14:43.621984+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "qP3QmCnOY3IYIVR2EZNI",
+        "started_at": "2026-08-05T10:14:30.104082+00:00",
+        "completed_at": "2026-08-05T10:14:43.586872+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-oilithreacht-taabhachtach-sa-sceeal.mp3",
+        "sha256": "dab12a965383a829e4c8b30bd5701f4d56daa62aada89b133c18bafe20ec4601",
+        "bytes": 80292,
+        "duration_seconds": 3.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 241.0,
+    "estimated_cumulative_credits": 89582.0,
+    "actual_batch_credits": 344.0,
+    "actual_cumulative_credits": 142551.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:14:30.104082+00:00",
+      "used_credits": 142207.0,
+      "remaining_credits": 93892.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:14:43.586872+00:00",
+      "used_credits": 142551.0,
+      "remaining_credits": 93548.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.carlow.d32-carlow-st-moling.carlow-oilithreacht-pilgrimage.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "69ad5cab618dc36c53e43cdbaa3a187e76cd6872e086e590c051eeed53eea44e"
+}

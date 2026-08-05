@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-fag-leave.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — donegal / d32.donegal.flight-of-the-earls / donegal.fag.leave",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-fag-leave.part-03.line.13c62945f3dda640",
+      "member_ids": [
+        "d32.donegal.03.fag.leave.speak-about"
+      ],
+      "normalized_text": "Labhair faoin fág.",
+      "text_sha256": "61f332cbdce9a8c999157d4cc09d3104aff400da46baeae8d252e985e9340e9d",
+      "inventory_slug": "labhair-faoin-faag",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:29:32.314498+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "NQyaI99JsFvkRBsDaLPe",
+        "started_at": "2026-08-05T10:29:24.885347+00:00",
+        "completed_at": "2026-08-05T10:29:32.288250+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-faag.mp3",
+        "sha256": "94b4aec1f442e4d21107f99943ec4b5054e2ea9bf25df5d2572ba002d81fa1f5",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-fag-leave.part-03.line.202dd335ff74ec90",
+      "member_ids": [
+        "d32.donegal.03.fag.leave.story-important"
+      ],
+      "normalized_text": "Tá an fág tábhachtach sa scéal.",
+      "text_sha256": "6a3e50b949f1dc54ea80fa12ab36642ff80b48a8d76766386191a9eae1725c9e",
+      "inventory_slug": "taa-an-faag-taabhachtach-sa-sceeal",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:29:32.314589+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "hw8UuraHsgdYCeHSejpq",
+        "started_at": "2026-08-05T10:29:24.885347+00:00",
+        "completed_at": "2026-08-05T10:29:32.288250+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-faag-taabhachtach-sa-sceeal.mp3",
+        "sha256": "1fe9db3f12f834817bd213c9891200730d8974b0ccc1d75ae4745820a2d7944f",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-fag-leave.part-03.line.21eaa59ce8323f7d",
+      "member_ids": [
+        "d32.donegal.03.fag.leave.see-here"
+      ],
+      "normalized_text": "Feicim an fág anseo.",
+      "text_sha256": "20276a25a30a641617869261dec2678577d8a988c1188631be2b207944bd9c43",
+      "inventory_slug": "feicim-an-faag-anseo",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:29:32.314681+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "IynKToLpuJXcBBCKyNkh",
+        "started_at": "2026-08-05T10:29:24.885347+00:00",
+        "completed_at": "2026-08-05T10:29:32.288250+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-faag-anseo.mp3",
+        "sha256": "c537fa20b2053e1b34d972e37b22985a1142d5ef36cdb55951141574fbc9bf2c",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-fag-leave.part-03.line.ce41bd0c0ef1b7fe",
+      "member_ids": [
+        "d32.donegal.03.fag.leave.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an fág ceart.",
+      "text_sha256": "bdc089028735dbc35b2a5f6ff710fa9465b928f579b106acea6693a8c9261d24",
+      "inventory_slug": "roghnaigh-an-faag-ceart",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:29:32.314739+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "2TGf9Rru3D5SuAp0k8rH",
+        "started_at": "2026-08-05T10:29:24.885347+00:00",
+        "completed_at": "2026-08-05T10:29:32.288250+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-faag-ceart.mp3",
+        "sha256": "18ab7aa98a687186ef04e76855e912b6b755a44e39b9609d45ed347148e45be5",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 92.0,
+    "estimated_cumulative_credits": 89433.0,
+    "actual_batch_credits": 361.0,
+    "actual_cumulative_credits": 149151.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:29:24.885347+00:00",
+      "used_credits": 148790.0,
+      "remaining_credits": 87309.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:29:32.288250+00:00",
+      "used_credits": 149151.0,
+      "remaining_credits": 86948.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-fag-leave.part-03"
+    }
+  },
+  "counts": {
+    "lines": 4,
+    "member_references": 4,
+    "planned": 0,
+    "approved": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "c567b85f59af75cbb0f9eb0243de1809a21bba583e210b51b3c56d79897cf6cc"
+}

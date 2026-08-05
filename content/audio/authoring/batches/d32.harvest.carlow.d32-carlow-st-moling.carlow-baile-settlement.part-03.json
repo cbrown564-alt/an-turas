@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-baile-settlement.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — carlow / d32.carlow.st-moling / carlow.baile.settlement",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-baile-settlement.part-03.line.0d5056b51cc8be02",
+      "member_ids": [
+        "d32.carlow.07.baile.settlement.ask-what"
+      ],
+      "normalized_text": "Cad é an baile i Ceatharlach?",
+      "text_sha256": "b8ffaaa7ed9add8607a4d3a527c89204d676af9f702a2d6a745dc27d49ccdf5e",
+      "inventory_slug": "cad-ee-an-baile-i-ceatharlach",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:46.176219+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "tLssKli2VHAvFOEc0GtX",
+        "started_at": "2026-08-05T10:12:31.479223+00:00",
+        "completed_at": "2026-08-05T10:12:46.136992+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-baile-i-ceatharlach.mp3",
+        "sha256": "363593aef723cc9dbb36364afe5445f8a5aa68c80284752265c308f8e1f22d4c",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-baile-settlement.part-03.line.5c4f2687548bb770",
+      "member_ids": [
+        "d32.carlow.07.baile.settlement.see-here"
+      ],
+      "normalized_text": "Feicim an baile i Ceatharlach.",
+      "text_sha256": "02c0c0c8db2558f80c2e24e48e88d43044cc4e93121f87a39b00fc029a51960d",
+      "inventory_slug": "feicim-an-baile-i-ceatharlach",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:46.176334+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Cb7IRsLkAKatzIU9qUZy",
+        "started_at": "2026-08-05T10:12:31.479223+00:00",
+        "completed_at": "2026-08-05T10:12:46.136992+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-baile-i-ceatharlach.mp3",
+        "sha256": "9f03312b3cd6f4ea8287a459c3ff16a388543e25a5f4d39027b3b2c4bd4756e7",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-baile-settlement.part-03.line.6fb8504ed5d84bc0",
+      "member_ids": [
+        "d32.carlow.07.baile.settlement.speak-about"
+      ],
+      "normalized_text": "Labhair faoin baile i Ceatharlach.",
+      "text_sha256": "bd87fa18221239d5c4c704338941996118c588e12b4d56ac40f591bcae087ab9",
+      "inventory_slug": "labhair-faoin-baile-i-ceatharlach",
+      "estimated_characters": 34,
+      "estimated_credits": 34.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:46.176418+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "56i5hLeNgUOa8EpadZxU",
+        "started_at": "2026-08-05T10:12:31.479223+00:00",
+        "completed_at": "2026-08-05T10:12:46.136992+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-baile-i-ceatharlach.mp3",
+        "sha256": "7caf87ccdf202ae7a36f94520cc2dbe511dcccd69130097e4e039463427ed9ba",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-baile-settlement.part-03.line.7aeb5892091372ab",
+      "member_ids": [
+        "d32.carlow.07.baile.settlement.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Ceatharlach leis an baile.",
+      "text_sha256": "49a8ef97a9df37b759730cd500f4aa7bfd5717b663512e7497f048dd4cc1fe5f",
+      "inventory_slug": "baineann-sceeal-ceatharlach-leis-an-baile",
+      "estimated_characters": 41,
+      "estimated_credits": 41.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:46.176505+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "5lR8SGEwaxFuS6087gRK",
+        "started_at": "2026-08-05T10:12:31.479223+00:00",
+        "completed_at": "2026-08-05T10:12:46.136992+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-ceatharlach-leis-an-baile.mp3",
+        "sha256": "e8eb4fcb2ecd8ba71af616b8939bfd74a41d73a15f6efd52332aa85304b020c9",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-baile-settlement.part-03.line.923775d089327442",
+      "member_ids": [
+        "d32.carlow.07.baile.settlement.story-important"
+      ],
+      "normalized_text": "Tá an baile tábhachtach i scéal Ceatharlach.",
+      "text_sha256": "d0629f4dc0aa90b537116c6bfe85bd6e6c11714077e738446e727d2f1dc95c14",
+      "inventory_slug": "taa-an-baile-taabhachtach-i-sceeal-ceatharlach",
+      "estimated_characters": 44,
+      "estimated_credits": 44.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:46.176602+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "lQ6stpPppG1zpG7mZwF0",
+        "started_at": "2026-08-05T10:12:31.479223+00:00",
+        "completed_at": "2026-08-05T10:12:46.136992+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-baile-taabhachtach-i-sceeal-ceatharlach.mp3",
+        "sha256": "69ff8371fac0987c8af6ed92da3ad1f97dbfd83d0ad03ebdd2b249edca7171ce",
+        "bytes": 85934,
+        "duration_seconds": 3.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-baile-settlement.part-03.line.d3458380b5ecfe8a",
+      "member_ids": [
+        "d32.carlow.07.baile.settlement.listen-surround"
+      ],
+      "normalized_text": "Éist leis an baile i Ceatharlach.",
+      "text_sha256": "1a96c0cf7c9aa08f2508ebbd299279dd62eeec1b46629335525d2ce858a41c40",
+      "inventory_slug": "eeist-leis-an-baile-i-ceatharlach",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:46.176714+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "wX478iWVteTzteYU6iV3",
+        "started_at": "2026-08-05T10:12:31.479223+00:00",
+        "completed_at": "2026-08-05T10:12:46.136992+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-baile-i-ceatharlach.mp3",
+        "sha256": "9e21a09830c4f06352d4bf92789d1ea4c9965ee81e6caf157f8081fec0ceb16c",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-baile-settlement.part-03.line.d5c5d654b185dcbf",
+      "member_ids": [
+        "d32.carlow.07.baile.settlement.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an baile i Ceatharlach?",
+      "text_sha256": "4df9f65e07337cb629e7a56d464780963319eb15e67a98c76b6f0a83965b088d",
+      "inventory_slug": "caa-bhfuil-an-baile-i-ceatharlach",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:46.176801+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "yVoqoczj1pInxEnx3jNz",
+        "started_at": "2026-08-05T10:12:31.479223+00:00",
+        "completed_at": "2026-08-05T10:12:46.136992+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-baile-i-ceatharlach.mp3",
+        "sha256": "cfc5feeea393dfb7cd25fd149180c109f53e71545cb1b0a65475d4fa923c7700",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-baile-settlement.part-03.line.ec128f946028465e",
+      "member_ids": [
+        "d32.carlow.07.baile.settlement.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an baile ceart i Ceatharlach.",
+      "text_sha256": "ef07eef1827fd36f8f0211ab3117ab484ff77bbc49157640132cccecce93eeb8",
+      "inventory_slug": "roghnaigh-an-baile-ceart-i-ceatharlach",
+      "estimated_characters": 39,
+      "estimated_credits": 39.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:46.176894+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "UgrbwsL8OyX3rpoTbfuR",
+        "started_at": "2026-08-05T10:12:31.479223+00:00",
+        "completed_at": "2026-08-05T10:12:46.136992+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-baile-ceart-i-ceatharlach.mp3",
+        "sha256": "865f6d4f3d5b90c5a7316e3b4edd7c471b376024cf0ba037917c146dad763079",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 283.0,
+    "estimated_cumulative_credits": 89624.0,
+    "actual_batch_credits": 497.0,
+    "actual_cumulative_credits": 141656.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:12:31.479223+00:00",
+      "used_credits": 141159.0,
+      "remaining_credits": 94940.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:12:46.136992+00:00",
+      "used_credits": 141656.0,
+      "remaining_credits": 94443.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.carlow.d32-carlow-st-moling.carlow-baile-settlement.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "1a16e05a2f4ee1c1c9fc01a46c9adf8f6222f4ca99f1ae81a4c8f9482fa9647e"
+}

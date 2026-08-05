@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-uisce-water.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — carlow / d32.carlow.st-moling / carlow.uisce.water",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-uisce-water.part-03.line.0d717c641705b16a",
+      "member_ids": [
+        "d32.carlow.10.uisce.water.story-important"
+      ],
+      "normalized_text": "Tá an uisce tábhachtach sa scéal.",
+      "text_sha256": "b59bb0a881681e8b83c1ae8e7cea7b7518729c786e6764fa8001304de2380241",
+      "inventory_slug": "taa-an-uisce-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:49.643721+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "6qTQk4iFkRqdFVj2HMvo",
+        "started_at": "2026-08-05T10:15:36.928309+00:00",
+        "completed_at": "2026-08-05T10:15:49.604481+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-uisce-taabhachtach-sa-sceeal.mp3",
+        "sha256": "9abc4b2776617c38855598f7ceec796975eeeac2f0f587596d0e68d919386524",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-uisce-water.part-03.line.0f2c56276b8d1dd2",
+      "member_ids": [
+        "d32.carlow.10.uisce.water.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an uisce.",
+      "text_sha256": "6ebc80d8fd07df2eba84f59c43725898ba844ee3f11533b16f447614c4902b24",
+      "inventory_slug": "baineann-an-sceeal-leis-an-uisce",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:49.643843+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "wU6VxDWhmeBI9iQz8To2",
+        "started_at": "2026-08-05T10:15:36.928309+00:00",
+        "completed_at": "2026-08-05T10:15:49.604481+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-uisce.mp3",
+        "sha256": "d5593449673dd4a7e328b497f77ccc95bee8e43ef76d915656fc6a6a1101deae",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-uisce-water.part-03.line.13609b06a33fb3df",
+      "member_ids": [
+        "d32.carlow.10.uisce.water.ask-what"
+      ],
+      "normalized_text": "Cad é an uisce?",
+      "text_sha256": "ad978a94530139aee7455f3de1fc4adf425055538fb486ddad4ee84dfc500aa1",
+      "inventory_slug": "cad-ee-an-uisce",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:49.643931+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "yhqQAcPeyh09L1lHNfWE",
+        "started_at": "2026-08-05T10:15:36.928309+00:00",
+        "completed_at": "2026-08-05T10:15:49.604481+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-uisce.mp3",
+        "sha256": "40e3388dcbb3fdf74454fb52aa21c733cd2b4ae036b6db01d8dde77704a9ce9f",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-uisce-water.part-03.line.5fd423b5d1caeb4c",
+      "member_ids": [
+        "d32.carlow.10.uisce.water.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an uisce?",
+      "text_sha256": "04cfd90579ed180c4799526871e7b1ef3418ae611992971f66d8fa5ae0680422",
+      "inventory_slug": "caa-bhfuil-an-uisce",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:49.643994+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "WC3WSlahEbb94AYyBRix",
+        "started_at": "2026-08-05T10:15:36.928309+00:00",
+        "completed_at": "2026-08-05T10:15:49.604481+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-uisce.mp3",
+        "sha256": "cff77c1a9b4c6ac15d6509f71e72149441a7ebfa074872ba0993c1572fe975b5",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-uisce-water.part-03.line.9d07a93c5393411c",
+      "member_ids": [
+        "d32.carlow.10.uisce.water.listen-surround"
+      ],
+      "normalized_text": "Éist leis an uisce.",
+      "text_sha256": "fd82cac5e983e809bbf554c5e39b128155660400d521f460fa04363e63ed62a7",
+      "inventory_slug": "eeist-leis-an-uisce",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:49.644067+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "WJ6SDXT8ByL4VbZkGDpq",
+        "started_at": "2026-08-05T10:15:36.928309+00:00",
+        "completed_at": "2026-08-05T10:15:49.604481+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-uisce.mp3",
+        "sha256": "ba864a42e653560c6435a0811f463de3a9bdbe1255f80c5d0eb0a4cada042d0a",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-uisce-water.part-03.line.9e8faa030b88138e",
+      "member_ids": [
+        "d32.carlow.10.uisce.water.see-here"
+      ],
+      "normalized_text": "Feicim an uisce anseo.",
+      "text_sha256": "d7ecfdfa399b1a908431c1fff1249ff2745112e658c065a7d157d70047615f31",
+      "inventory_slug": "feicim-an-uisce-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:49.644134+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ckACqRKvJO4GYxve3WFi",
+        "started_at": "2026-08-05T10:15:36.928309+00:00",
+        "completed_at": "2026-08-05T10:15:49.604481+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-uisce-anseo.mp3",
+        "sha256": "f2c526537a475f4376f24634060e62285b87aa34cafbfd41bfddeaf66d574abd",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-uisce-water.part-03.line.d5bf649824979a27",
+      "member_ids": [
+        "d32.carlow.10.uisce.water.speak-about"
+      ],
+      "normalized_text": "Labhair faoin uisce.",
+      "text_sha256": "5bd963ceabcf6322509d275ef90a66a14312130f908c13d2b6fe3bf8e7677169",
+      "inventory_slug": "labhair-faoin-uisce",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:49.644209+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "iGlzRcHjQ6Kss4qMYda2",
+        "started_at": "2026-08-05T10:15:36.928309+00:00",
+        "completed_at": "2026-08-05T10:15:49.604481+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-uisce.mp3",
+        "sha256": "11369c850287a937c7e65c0f938cc5f091fc4d42c631af5c809a8cb1973d8f62",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.carlow.d32-carlow-st-moling.carlow-uisce-water.part-03.line.fc2eecfe147ef75d",
+      "member_ids": [
+        "d32.carlow.10.uisce.water.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an uisce ceart.",
+      "text_sha256": "0d3d0d952774920320ab82c3ba9461ec5327976f3c0aae23e7e87c4ba5df79e0",
+      "inventory_slug": "roghnaigh-an-uisce-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:15:49.644278+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "0NjZkkVm8a0B9LpwTwLf",
+        "started_at": "2026-08-05T10:15:36.928309+00:00",
+        "completed_at": "2026-08-05T10:15:49.604481+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-uisce-ceart.mp3",
+        "sha256": "2677c16652f5f32435558dbe53d409abe4d9e5ce371d8febf6ff532e8097b153",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 603.0,
+    "actual_cumulative_credits": 143154.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:15:36.928309+00:00",
+      "used_credits": 142551.0,
+      "remaining_credits": 93548.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:15:49.604481+00:00",
+      "used_credits": 143154.0,
+      "remaining_credits": 92945.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.carlow.d32-carlow-st-moling.carlow-uisce-water.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "f373ff41a87418e91548079624551e128fba7e1fcd179b78e1bf2a6fde4d47bf"
+}

@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — wicklow / d32.wicklow.st-kevin-glendalough / wicklow.ciuin.quiet",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.part-03.line.1afb0f2c15a9e5fd",
+      "member_ids": [
+        "d32.wicklow.05.ciuin.quiet.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an ciúin ceart.",
+      "text_sha256": "8ca04c38560f0b1dc76337f8777bd3af45d8d404bdd1dc62d20ccb2fbd18abcf",
+      "inventory_slug": "roghnaigh-an-ciuuin-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T12:06:21.220173+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "UItVkfcNV4Etxe5dggjL",
+        "started_at": "2026-08-05T12:06:08.630555+00:00",
+        "completed_at": "2026-08-05T12:06:21.167923+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-ciuuin-ceart.mp3",
+        "sha256": "751f12e584d3878774d6e737eb25088c8cdc2f88c1329c82d9e9e0ba461f14d3",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.part-03.line.1f813022a3c8295a",
+      "member_ids": [
+        "d32.wicklow.05.ciuin.quiet.ask-what"
+      ],
+      "normalized_text": "Cad é an ciúin?",
+      "text_sha256": "9a235078733f3e4ce4179a4c1388bb2cd32a18d4f793a9b074d88e40b18b5510",
+      "inventory_slug": "cad-ee-an-ciuuin",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T12:06:21.220292+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "D3J1yO3IyMzLO5mKb8LW",
+        "started_at": "2026-08-05T12:06:08.630555+00:00",
+        "completed_at": "2026-08-05T12:06:21.167923+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-ciuuin.mp3",
+        "sha256": "b559092a57c2b06290afdae55b75a63e2ccaca258f39308c122788868fa6a3b4",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.part-03.line.2b717796efa9657a",
+      "member_ids": [
+        "d32.wicklow.05.ciuin.quiet.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an ciúin?",
+      "text_sha256": "aac0f765c13b1c2fd40e27fa6303aa78e76bffca4d30d18a48a974775d2ed538",
+      "inventory_slug": "caa-bhfuil-an-ciuuin",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T12:06:21.220366+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "T5BZ2nDG03Voe3HMcJpK",
+        "started_at": "2026-08-05T12:06:08.630555+00:00",
+        "completed_at": "2026-08-05T12:06:21.167923+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-ciuuin.mp3",
+        "sha256": "6b8a74b93933a78326b0dc41ffcd7a4217d9b5c5ae7b46caa3b64faa9ea7108b",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.part-03.line.70de71155c0fe449",
+      "member_ids": [
+        "d32.wicklow.05.ciuin.quiet.see-here"
+      ],
+      "normalized_text": "Feicim an ciúin anseo.",
+      "text_sha256": "e44d576fc53b1b571a342231e254ba7fbe3358848cbdf1c324978807d7fafe1a",
+      "inventory_slug": "feicim-an-ciuuin-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T12:06:21.220450+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "HIM21UuRBaNmqkAyKqCn",
+        "started_at": "2026-08-05T12:06:08.630555+00:00",
+        "completed_at": "2026-08-05T12:06:21.167923+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-ciuuin-anseo.mp3",
+        "sha256": "8692ceae380647c5ad793008693e6aed2104e76761747b66bef294e98ebb0bc8",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.part-03.line.bdb828800d9abc72",
+      "member_ids": [
+        "d32.wicklow.05.ciuin.quiet.speak-about"
+      ],
+      "normalized_text": "Labhair faoin ciúin.",
+      "text_sha256": "c78e92ef996aa2021ccc0d9e39b49862aee4f5389e104fe4b359cc8f0422ab84",
+      "inventory_slug": "labhair-faoin-ciuuin",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T12:06:21.220567+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "afBAZbTFc2tY3Cqe9P1h",
+        "started_at": "2026-08-05T12:06:08.630555+00:00",
+        "completed_at": "2026-08-05T12:06:21.167923+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-ciuuin.mp3",
+        "sha256": "1ee8a4036035eeedb0831ae761139d7a5cca3efe5df1c642cfa9ca73dd7de61e",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.part-03.line.ea50a3d727438f30",
+      "member_ids": [
+        "d32.wicklow.05.ciuin.quiet.listen-surround"
+      ],
+      "normalized_text": "Éist leis an ciúin.",
+      "text_sha256": "6fed83cf0a37c5f9d9786b04cb8ca1af0171fac39ec67cfe583db4362e74c7a2",
+      "inventory_slug": "eeist-leis-an-ciuuin",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T12:06:21.220668+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "wbl2yTFxsj5oeJ449cG9",
+        "started_at": "2026-08-05T12:06:08.630555+00:00",
+        "completed_at": "2026-08-05T12:06:21.167923+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-ciuuin.mp3",
+        "sha256": "8a2cadcdebd8c831fc6e5e157a33ff86101228c4ceb7eb53b2164d655208bef6",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.part-03.line.f463d33af2ce4437",
+      "member_ids": [
+        "d32.wicklow.05.ciuin.quiet.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an ciúin.",
+      "text_sha256": "3f67a84792d3c4d90012b7d85c72ad6188b182bc612fb608c2c3e761bddaa442",
+      "inventory_slug": "baineann-an-sceeal-leis-an-ciuuin",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T12:06:21.220765+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "q8Icud7x2WrdJ47SEsH5",
+        "started_at": "2026-08-05T12:06:08.630555+00:00",
+        "completed_at": "2026-08-05T12:06:21.167923+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-ciuuin.mp3",
+        "sha256": "19f7434e3d12d96b5f175aab898626c79be095ecda9e76b5b62e5499ba6ccaf0",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.part-03.line.f9335411b01696a4",
+      "member_ids": [
+        "d32.wicklow.05.ciuin.quiet.story-important"
+      ],
+      "normalized_text": "Tá an ciúin tábhachtach sa scéal.",
+      "text_sha256": "7bc6cfa31fb867e031129615e338ba127cf6bd94b2b7d9b043062833bd8216e3",
+      "inventory_slug": "taa-an-ciuuin-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T12:06:21.220857+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "2t8ysyIdkZHqbgzWjDP5",
+        "started_at": "2026-08-05T12:06:08.630555+00:00",
+        "completed_at": "2026-08-05T12:06:21.167923+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-ciuuin-taabhachtach-sa-sceeal.mp3",
+        "sha256": "829445c480ac301c99561279d0fd6acafd9e526566715f12e95c5a704d595165",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 184349.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T12:06:08.630555+00:00",
+      "used_credits": 184349.0,
+      "remaining_credits": 51750.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T12:06:21.167923+00:00",
+      "used_credits": 184349.0,
+      "remaining_credits": 51750.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ciuin-quiet.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "30bcb9e151d675c2f762805289c0726361d0f4c0b7bc29b1f282f9e2db7d2601"
+}

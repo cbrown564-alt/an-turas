@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-poem.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — kerry / d32.kerry.piaras-feiritear / kerry.dan.poem",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-poem.part-03.line.2d0eb42493fc812b",
+      "member_ids": [
+        "d32.kerry.10.dan.poem.speak-about"
+      ],
+      "normalized_text": "Labhair faoin dán.",
+      "text_sha256": "430471846b91eda33ff4278366247a52d23d391d9282e731ab64b8af8d80002c",
+      "inventory_slug": "labhair-faoin-daan",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:45:58.626652+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "iXaC6NWMj6oCuPHcV3zL",
+        "started_at": "2026-08-05T10:45:47.917834+00:00",
+        "completed_at": "2026-08-05T10:45:58.603418+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-daan.mp3",
+        "sha256": "55aa89e59118d148371f788e4c82760b053503d21acfbbec01337470a786187d",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-poem.part-03.line.5241bb6a0ad82ce6",
+      "member_ids": [
+        "d32.kerry.10.dan.poem.see-here"
+      ],
+      "normalized_text": "Feicim an dán anseo.",
+      "text_sha256": "5fa67712cf7640b416eb2b5aa4798277ead084d33c8d0b1188c9b3f8b900794e",
+      "inventory_slug": "feicim-an-daan-anseo",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:45:58.626726+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "YKzH6RXVqr3YKYHFrXqd",
+        "started_at": "2026-08-05T10:45:47.917834+00:00",
+        "completed_at": "2026-08-05T10:45:58.603418+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-daan-anseo.mp3",
+        "sha256": "5b446cc009423c3a60e20d1a7e883239e2a838d8891abf2844320c8779b6a487",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-poem.part-03.line.61b5c649777e09b0",
+      "member_ids": [
+        "d32.kerry.10.dan.poem.ask-what"
+      ],
+      "normalized_text": "Cad é an dán?",
+      "text_sha256": "6a63b660c375571ea7d79f7eed3ba70c17b1030c405e348d73d74e4c811889ae",
+      "inventory_slug": "cad-ee-an-daan",
+      "estimated_characters": 13,
+      "estimated_credits": 13.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:45:58.626780+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "U08TcMDIrivhPnHoI3R1",
+        "started_at": "2026-08-05T10:45:47.917834+00:00",
+        "completed_at": "2026-08-05T10:45:58.603418+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-daan.mp3",
+        "sha256": "140bdcca82f539516f5c584b0ff58aa0ed5fa4259a99ec78cd71ff58bf37a2a9",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-poem.part-03.line.6b553a47c8e0a0f7",
+      "member_ids": [
+        "d32.kerry.10.dan.poem.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an dán ceart.",
+      "text_sha256": "490901162b39c0221b6e651255946773e46df0e7925cc2cb5ebf3b3dd91a6c4d",
+      "inventory_slug": "roghnaigh-an-daan-ceart",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:45:58.626824+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ts4eN7iDKloIOJZdSGDr",
+        "started_at": "2026-08-05T10:45:47.917834+00:00",
+        "completed_at": "2026-08-05T10:45:58.603418+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-daan-ceart.mp3",
+        "sha256": "a3773421f8ad0a558bc806806c76f41b5a4fe75dca1a7ed8a7fc1b82afb52dcb",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-poem.part-03.line.707b51b875982057",
+      "member_ids": [
+        "d32.kerry.10.dan.poem.story-important"
+      ],
+      "normalized_text": "Tá an dán tábhachtach sa scéal.",
+      "text_sha256": "59fe706f322a9a6bd6015437cb4e87b9f60535b4bd71dd5fa1ef590f7ab6472d",
+      "inventory_slug": "taa-an-daan-taabhachtach-sa-sceeal",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:45:58.626880+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "zwcvDQu2ah7kOwIfXoUJ",
+        "started_at": "2026-08-05T10:45:47.917834+00:00",
+        "completed_at": "2026-08-05T10:45:58.603418+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-daan-taabhachtach-sa-sceeal.mp3",
+        "sha256": "3772de60bab54ba28d10e1fe132823fb0b51748054d3c5d450f667cfbd6c08ba",
+        "bytes": 72769,
+        "duration_seconds": 2.96
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-poem.part-03.line.aea5f6c39d6e83e3",
+      "member_ids": [
+        "d32.kerry.10.dan.poem.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an dán.",
+      "text_sha256": "76260252bfcfeec89557fdfae752b057afd5810894345924f2bd25906f118ef2",
+      "inventory_slug": "baineann-an-sceeal-leis-an-daan",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:45:58.626960+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Y4BFp0IUtE1I4snSaTDC",
+        "started_at": "2026-08-05T10:45:47.917834+00:00",
+        "completed_at": "2026-08-05T10:45:58.603418+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-daan.mp3",
+        "sha256": "170139f1f4a6bf70d03cfe2fe6360dab9241f8cfce09f85d1df606078260a91f",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-poem.part-03.line.c6ec15d930ce79db",
+      "member_ids": [
+        "d32.kerry.10.dan.poem.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an dán?",
+      "text_sha256": "6a6000730f25c14ed95e1a4cb15b3bc9bb38cb7e27cba2b53a14329ceac72e9c",
+      "inventory_slug": "caa-bhfuil-an-daan",
+      "estimated_characters": 17,
+      "estimated_credits": 17.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:45:58.627027+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "o4DT5Eq7H7y6osfAVODK",
+        "started_at": "2026-08-05T10:45:47.917834+00:00",
+        "completed_at": "2026-08-05T10:45:58.603418+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-daan.mp3",
+        "sha256": "06af008a02a9b94551c19743283a48cfde39c84a3b86b6aa0a4b4ab82b5c03e9",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-poem.part-03.line.c8c1a4aa97bf09b1",
+      "member_ids": [
+        "d32.kerry.10.dan.poem.listen-surround"
+      ],
+      "normalized_text": "Éist leis an dán.",
+      "text_sha256": "a8c945aaca1c004567177c3971550afe4176fdb09199870aa78df5406c98fe12",
+      "inventory_slug": "eeist-leis-an-daan",
+      "estimated_characters": 17,
+      "estimated_credits": 17.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:45:58.627074+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "QAF5Os6EFcRRV0A0r7FY",
+        "started_at": "2026-08-05T10:45:47.917834+00:00",
+        "completed_at": "2026-08-05T10:45:58.603418+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-daan.mp3",
+        "sha256": "e63aee4ef5c3c97c50dd6bc9c7e05dcaef9e39773c99cd2fd9e634241f4ca449",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 169.0,
+    "estimated_cumulative_credits": 89510.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 156577.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:45:47.917834+00:00",
+      "used_credits": 156577.0,
+      "remaining_credits": 79522.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:45:58.603418+00:00",
+      "used_credits": 156577.0,
+      "remaining_credits": 79522.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.kerry.d32-kerry-piaras-feiritear.kerry-dan-poem.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "78c911e6f91708ea9b03fe18abf290fb92767cb18fd7a4a05d7efcc2cd083e02"
+}

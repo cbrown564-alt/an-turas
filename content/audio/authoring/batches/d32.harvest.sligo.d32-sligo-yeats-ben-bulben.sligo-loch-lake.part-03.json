@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-loch-lake.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — sligo / d32.sligo.yeats-ben-bulben / sligo.loch.lake",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-loch-lake.part-03.line.0e1c2b57466aa9bd",
+      "member_ids": [
+        "d32.sligo.08.loch.lake.ask-what"
+      ],
+      "normalized_text": "Cad é an loch i Sligeach?",
+      "text_sha256": "336d8073ea6ba6315a63ad064abedc89a5b0392d455f678db819a343fa726252",
+      "inventory_slug": "cad-ee-an-loch-i-sligeach",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:11.590020+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "029ucQ4TqCLKs2eUkTZj",
+        "started_at": "2026-08-05T11:46:53.205924+00:00",
+        "completed_at": "2026-08-05T11:47:11.538690+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-loch-i-sligeach.mp3",
+        "sha256": "b337e538356ee0ac05bcf1d41c061aedb1e3e13981c2516c4e87204d624969f2",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-loch-lake.part-03.line.11425cfeb549757e",
+      "member_ids": [
+        "d32.sligo.08.loch.lake.story-important"
+      ],
+      "normalized_text": "Tá an loch tábhachtach i scéal Sligeach.",
+      "text_sha256": "2403d5018653e92800fa45b54c014e85f80529a3a34334eb880f82447c0d3922",
+      "inventory_slug": "taa-an-loch-taabhachtach-i-sceeal-sligeach",
+      "estimated_characters": 40,
+      "estimated_credits": 40.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:11.590125+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "VX1HdWQPP1xKHTDey9ME",
+        "started_at": "2026-08-05T11:46:53.205924+00:00",
+        "completed_at": "2026-08-05T11:47:11.538690+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-loch-taabhachtach-i-sceeal-sligeach.mp3",
+        "sha256": "12b24ee2ea75df60a6835d0636fb1ea867e136a3bcaeea8602050429ba44ba5c",
+        "bytes": 87815,
+        "duration_seconds": 3.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-loch-lake.part-03.line.671e434e5743a7fe",
+      "member_ids": [
+        "d32.sligo.08.loch.lake.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an loch i Sligeach?",
+      "text_sha256": "f55968086e0ad1a75018b688399d8b2c87c590ba494546b0709e71ec81edb6d0",
+      "inventory_slug": "caa-bhfuil-an-loch-i-sligeach",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:11.590234+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Jw9MQjw10TNx96QHjPK1",
+        "started_at": "2026-08-05T11:46:53.205924+00:00",
+        "completed_at": "2026-08-05T11:47:11.538690+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-loch-i-sligeach.mp3",
+        "sha256": "fcc0ebc68291b99565be53971349d12336cc99e87b4b7d48a9c08108aeb7cb6f",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-loch-lake.part-03.line.7b03cfa79d0897c6",
+      "member_ids": [
+        "d32.sligo.08.loch.lake.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Sligeach leis an loch.",
+      "text_sha256": "12822a8c8b6177db7a643ecdeef44016000a56835e06f4c0e4e8276a2faf0c29",
+      "inventory_slug": "baineann-sceeal-sligeach-leis-an-loch",
+      "estimated_characters": 37,
+      "estimated_credits": 37.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:11.590307+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Fgs3jaK4ZFaBhBzP0Rtq",
+        "started_at": "2026-08-05T11:46:53.205924+00:00",
+        "completed_at": "2026-08-05T11:47:11.538690+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-sligeach-leis-an-loch.mp3",
+        "sha256": "0712b05ce7e224a832bd6d94c2b40cc1d10897fac65ad8e6d309ab2ac74cab82",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-loch-lake.part-03.line.937c94cc9b9068b1",
+      "member_ids": [
+        "d32.sligo.08.loch.lake.speak-about"
+      ],
+      "normalized_text": "Labhair faoin loch i Sligeach.",
+      "text_sha256": "5b8f62589eb47680c2584c560d2b0620ea2c617e802a7d04d8471b81eb172115",
+      "inventory_slug": "labhair-faoin-loch-i-sligeach",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:11.590391+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "NlWX90J00XgiubtM1dat",
+        "started_at": "2026-08-05T11:46:53.205924+00:00",
+        "completed_at": "2026-08-05T11:47:11.538690+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-loch-i-sligeach.mp3",
+        "sha256": "6abfe2cbc1f2eccd22d4a35d7740f94091cc11c62172ab586c1ac6531bf4528f",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-loch-lake.part-03.line.b47f441cca763950",
+      "member_ids": [
+        "d32.sligo.08.loch.lake.see-here"
+      ],
+      "normalized_text": "Feicim an loch i Sligeach.",
+      "text_sha256": "19be083b7f5cc85c1fed995927bfacd77aba86fc730d8581a9b9462aa3cd9afa",
+      "inventory_slug": "feicim-an-loch-i-sligeach",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:11.590462+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Uu7BVIVs1n32v3AwqWE2",
+        "started_at": "2026-08-05T11:46:53.205924+00:00",
+        "completed_at": "2026-08-05T11:47:11.538690+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-loch-i-sligeach.mp3",
+        "sha256": "0bd84f3522ef9970db741e0bf3185f11a96a00c1e72e89a7d495d2ffb1315bdd",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-loch-lake.part-03.line.cddde6969edb73da",
+      "member_ids": [
+        "d32.sligo.08.loch.lake.listen-surround"
+      ],
+      "normalized_text": "Éist leis an loch i Sligeach.",
+      "text_sha256": "3d2cae119adc65f0b30bbdd4c3317c568165cf910addb1e4c2731a302c45c76f",
+      "inventory_slug": "eeist-leis-an-loch-i-sligeach",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:11.590540+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "8y5dwyFlvMiKaZtpuB8M",
+        "started_at": "2026-08-05T11:46:53.205924+00:00",
+        "completed_at": "2026-08-05T11:47:11.538690+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-loch-i-sligeach.mp3",
+        "sha256": "a408a7bdbd1fe1c86d418ff07964acdd0a160ae6a0b85a75a7a743a894d40f3c",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-loch-lake.part-03.line.d3661183f70813c5",
+      "member_ids": [
+        "d32.sligo.08.loch.lake.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an loch ceart i Sligeach.",
+      "text_sha256": "f32f897af644d325a823d754da4d873910c2fe7909e8cd188f1e81fe58f39fbd",
+      "inventory_slug": "roghnaigh-an-loch-ceart-i-sligeach",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:47:11.590615+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "9amOaN8wrUFPNYkiO9Hu",
+        "started_at": "2026-08-05T11:46:53.205924+00:00",
+        "completed_at": "2026-08-05T11:47:11.538690+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-loch-ceart-i-sligeach.mp3",
+        "sha256": "ff46a8a8436ee55d312fbc580d31c78f251815640213ac5a0a4caf46cdba0685",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 251.0,
+    "estimated_cumulative_credits": 89592.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 175872.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T11:46:53.205924+00:00",
+      "used_credits": 175872.0,
+      "remaining_credits": 60227.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T11:47:11.538690+00:00",
+      "used_credits": 175872.0,
+      "remaining_credits": 60227.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-loch-lake.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "43966ea89e6cae300cce3c4582af552887585a62cdc41e5be330a53463e90836"
+}

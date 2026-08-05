@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-caill-lose.part-02",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — donegal / d32.donegal.flight-of-the-earls / donegal.caill.lose",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-caill-lose.part-02.line.21db145a22d0875a",
+      "member_ids": [
+        "d32.donegal.14.caill.lose.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an caill?",
+      "text_sha256": "bd61f7ed3008c46b436bf61bc7ee71dd4d19063d0636721ab42ce003be4ed803",
+      "inventory_slug": "caa-bhfuil-an-caill",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:28:50.302767+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "I6clydkROz6JxH16di8h",
+        "started_at": "2026-08-05T10:28:37.833322+00:00",
+        "completed_at": "2026-08-05T10:28:50.284816+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-caill.mp3",
+        "sha256": "1582f04d1778a1000ab20820ec96054756e0440cfab49bc68dd46606d9c12d4f",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-caill-lose.part-02.line.4ba9208f6e2ae3f1",
+      "member_ids": [
+        "d32.donegal.14.caill.lose.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an caill.",
+      "text_sha256": "f9b97482c7a799b6ea8177e26e8e972f8d6b9a4e479e3719da16865a7950cd7f",
+      "inventory_slug": "baineann-an-sceeal-leis-an-caill",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:28:50.302848+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "J4C2XnzBOXKD3MYSBAqT",
+        "started_at": "2026-08-05T10:28:37.833322+00:00",
+        "completed_at": "2026-08-05T10:28:50.284816+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-caill.mp3",
+        "sha256": "ea8868ac5b92aef8a6b300f630b667127c6390cf05a5d1cb0ad9fd67d37e7738",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-caill-lose.part-02.line.7ef3440e510a8fe1",
+      "member_ids": [
+        "d32.donegal.14.caill.lose.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an caill ceart.",
+      "text_sha256": "3800b2deee7214a474c34ee9463f61513be85c2e4a70afade65196b5c7212bc2",
+      "inventory_slug": "roghnaigh-an-caill-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:28:50.302911+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "UhF9PTQbkvLbqAfkz6iT",
+        "started_at": "2026-08-05T10:28:37.833322+00:00",
+        "completed_at": "2026-08-05T10:28:50.284816+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-caill-ceart.mp3",
+        "sha256": "b8df76fdadfe14e875a685f425fe4bc4379c59e9980943ed1236d0ca084a7468",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-caill-lose.part-02.line.8c2ed758c7dafd4a",
+      "member_ids": [
+        "d32.donegal.14.caill.lose.ask-what"
+      ],
+      "normalized_text": "Cad é an caill?",
+      "text_sha256": "b26d8888f2ceb8ffeb16d7de787267fc93d90eca279e7381c130124cfd70733d",
+      "inventory_slug": "cad-ee-an-caill",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:28:50.302959+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "7xJDWPoC3xYOA7hMtAFa",
+        "started_at": "2026-08-05T10:28:37.833322+00:00",
+        "completed_at": "2026-08-05T10:28:50.284816+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-caill.mp3",
+        "sha256": "daf540b846aa713342a5cf46c43de9d46dcb28d26e12252fa3f6baaaf8fde5b1",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-caill-lose.part-02.line.92305183b23e1fd5",
+      "member_ids": [
+        "d32.donegal.14.caill.lose.see-here"
+      ],
+      "normalized_text": "Feicim an caill anseo.",
+      "text_sha256": "837757828d8d278dcb0a1a75051a7641f59af5dc9eabc6d0f03abf2e46542fdc",
+      "inventory_slug": "feicim-an-caill-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:28:50.302996+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "WV1Ld8BHvMD7p168IJsW",
+        "started_at": "2026-08-05T10:28:37.833322+00:00",
+        "completed_at": "2026-08-05T10:28:50.284816+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-caill-anseo.mp3",
+        "sha256": "a030a83e77f2bd8dfeafb741cddb5c4400f6e360a1aca8559c5b962b70c0cd9e",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-caill-lose.part-02.line.97f7159e7fd1fb1b",
+      "member_ids": [
+        "d32.donegal.14.caill.lose.speak-about"
+      ],
+      "normalized_text": "Labhair faoin caill.",
+      "text_sha256": "219190309f9f3b8dc1c372e9919b35c9cb127d65c9ad5612d6c189b0405bcbf7",
+      "inventory_slug": "labhair-faoin-caill",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:28:50.303039+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "8Qhn7dAjJTMSn79QQMSA",
+        "started_at": "2026-08-05T10:28:37.833322+00:00",
+        "completed_at": "2026-08-05T10:28:50.284816+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-caill.mp3",
+        "sha256": "c5491f46e52f7f8063a679488d7825fa9d547374ecbd67bcecedb10c294b94a3",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-caill-lose.part-02.line.a36d56439365589b",
+      "member_ids": [
+        "d32.donegal.14.caill.lose.listen-surround"
+      ],
+      "normalized_text": "Éist leis an caill.",
+      "text_sha256": "1f1598c265f0562b412dd12f20448a3b86bd24b1e4a4dc88f9d9ed7091339fc4",
+      "inventory_slug": "eeist-leis-an-caill",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:28:50.303080+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Phm9mpUDOGG0wZ6X1TZI",
+        "started_at": "2026-08-05T10:28:37.833322+00:00",
+        "completed_at": "2026-08-05T10:28:50.284816+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-caill.mp3",
+        "sha256": "ebd2c64e88198fd4d19c5b85ce3b6f934005d4db5b00a1f23c2e1a3fb85c4607",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-caill-lose.part-02.line.cd0087e208c6bbc3",
+      "member_ids": [
+        "d32.donegal.14.caill.lose.story-important"
+      ],
+      "normalized_text": "Tá an caill tábhachtach sa scéal.",
+      "text_sha256": "4cfeef368a5e356cc8bf8cc2ec097709aee234e94bc9e339b64f94f4ccb43f6c",
+      "inventory_slug": "taa-an-caill-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:28:50.303120+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "xg18BOC1Xet0jQjYcvag",
+        "started_at": "2026-08-05T10:28:37.833322+00:00",
+        "completed_at": "2026-08-05T10:28:50.284816+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-caill-taabhachtach-sa-sceeal.mp3",
+        "sha256": "4e2dd1e288d167f23dccc0bf4090fbdbe95846a2fbbedfbe97ba1fa872a216db",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 148790.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:28:37.833322+00:00",
+      "used_credits": 148790.0,
+      "remaining_credits": 87309.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:28:50.284816+00:00",
+      "used_credits": 148790.0,
+      "remaining_credits": 87309.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-caill-lose.part-02"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "4dcb8f006460b7c4807ad74ddb63db883c387787163672ed6489461643693307"
+}

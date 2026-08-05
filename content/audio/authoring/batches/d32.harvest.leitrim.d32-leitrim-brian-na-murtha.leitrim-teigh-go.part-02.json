@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-teigh-go.part-02",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — leitrim / d32.leitrim.brian-na-murtha / leitrim.teigh.go",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-teigh-go.part-02.line.20080c92e1c4a292",
+      "member_ids": [
+        "d32.leitrim.11.teigh.go.ask-what"
+      ],
+      "normalized_text": "Cad é an téigh i Liatroim?",
+      "text_sha256": "9f487881adc929c5fa02abdfb9be148526e410adf4ae1aa7ddd611c7ed348b55",
+      "inventory_slug": "cad-ee-an-teeigh-i-liatroim",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:01:40.573356+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "m8n6VBuh2CiIs3UcVfaZ",
+        "started_at": "2026-08-05T11:01:25.216861+00:00",
+        "completed_at": "2026-08-05T11:01:40.530543+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-teeigh-i-liatroim.mp3",
+        "sha256": "63b4739caa44859d1d3ef5afc132a9d8a85281058fed966bf96e9db40da08396",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-teigh-go.part-02.line.33bf33dd83c1ed0a",
+      "member_ids": [
+        "d32.leitrim.11.teigh.go.listen-surround"
+      ],
+      "normalized_text": "Éist leis an téigh i Liatroim.",
+      "text_sha256": "dcfa381936dea46fb159cc3a20bb2e492a5520a65561d5c23de01e187bc78a76",
+      "inventory_slug": "eeist-leis-an-teeigh-i-liatroim",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:01:40.573454+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "USB4kdfEAbEG7QozcFxD",
+        "started_at": "2026-08-05T11:01:25.216861+00:00",
+        "completed_at": "2026-08-05T11:01:40.530543+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-teeigh-i-liatroim.mp3",
+        "sha256": "73b6e713ba6a80786ffa797934529016d0eaacd3c07bcd5ec96c5c8a42168187",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-teigh-go.part-02.line.3fe8faa28bd16ff2",
+      "member_ids": [
+        "d32.leitrim.11.teigh.go.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Liatroim leis an téigh.",
+      "text_sha256": "567fa310d9d1e5ad8e1b0ee3ff59a0aae43dd1397030c680beaf4c0e2e17068e",
+      "inventory_slug": "baineann-sceeal-liatroim-leis-an-teeigh",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:01:40.573549+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "FBIhAmwzHiIbIE9nGOmi",
+        "started_at": "2026-08-05T11:01:25.216861+00:00",
+        "completed_at": "2026-08-05T11:01:40.530543+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-liatroim-leis-an-teeigh.mp3",
+        "sha256": "4b0e34edde8aef1316ec23c76540b015ab20217461278d3205dc40f6fc0f195f",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-teigh-go.part-02.line.664aeb4f12ab4fc3",
+      "member_ids": [
+        "d32.leitrim.11.teigh.go.speak-about"
+      ],
+      "normalized_text": "Labhair faoin téigh i Liatroim.",
+      "text_sha256": "dfcb8bca8932ced800eae333b1133e802f7cf99bcaf3b95d919ab44e1e0fe0d9",
+      "inventory_slug": "labhair-faoin-teeigh-i-liatroim",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:01:40.573637+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ETSv74D4BFV0vYvR9dli",
+        "started_at": "2026-08-05T11:01:25.216861+00:00",
+        "completed_at": "2026-08-05T11:01:40.530543+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-teeigh-i-liatroim.mp3",
+        "sha256": "e0e8b0f1a7e224790e41da242b7b41cc72b1b7e2bceed8c9e9ed391f872b3357",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-teigh-go.part-02.line.6c9402a4870ad4f5",
+      "member_ids": [
+        "d32.leitrim.11.teigh.go.story-important"
+      ],
+      "normalized_text": "Tá an téigh tábhachtach i scéal Liatroim.",
+      "text_sha256": "14140c9118f027b9258c7a3ac9780903971bf873e3683d8273891088484a73b4",
+      "inventory_slug": "taa-an-teeigh-taabhachtach-i-sceeal-liatroim",
+      "estimated_characters": 41,
+      "estimated_credits": 41.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:01:40.573713+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "88NYfJkkNwm5W0JgeXV5",
+        "started_at": "2026-08-05T11:01:25.216861+00:00",
+        "completed_at": "2026-08-05T11:01:40.530543+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-teeigh-taabhachtach-i-sceeal-liatroim.mp3",
+        "sha256": "c64f114729656405e7ff1e42ba8e078d6d298d4977a01a66b83b674639710914",
+        "bytes": 84053,
+        "duration_seconds": 3.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-teigh-go.part-02.line.cdb12b568b79fc41",
+      "member_ids": [
+        "d32.leitrim.11.teigh.go.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an téigh ceart i Liatroim.",
+      "text_sha256": "c5fa1665ffde47afe6c58be2361ede78884db561bdaf531c20134a803e00e969",
+      "inventory_slug": "roghnaigh-an-teeigh-ceart-i-liatroim",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:01:40.573811+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "r3EmDf04qXLsfbaPEWHR",
+        "started_at": "2026-08-05T11:01:25.216861+00:00",
+        "completed_at": "2026-08-05T11:01:40.530543+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-teeigh-ceart-i-liatroim.mp3",
+        "sha256": "5b02997ea6c9f9cac6d8518f1f968d1b0d5c3b201dd9006ccc99e1e515da436e",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-teigh-go.part-02.line.f1839e8b66b42157",
+      "member_ids": [
+        "d32.leitrim.11.teigh.go.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an téigh i Liatroim?",
+      "text_sha256": "b582634ed14774e82c935cf3ec84c955b6e5eb65a51acc782dfd61057fe30131",
+      "inventory_slug": "caa-bhfuil-an-teeigh-i-liatroim",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:01:40.573891+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "N2cSlITagvQmgPloygiG",
+        "started_at": "2026-08-05T11:01:25.216861+00:00",
+        "completed_at": "2026-08-05T11:01:40.530543+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-teeigh-i-liatroim.mp3",
+        "sha256": "033010c170204455aee3515d78969691c951b2323b63170571ca827913b321ae",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-teigh-go.part-02.line.f785984216a77a09",
+      "member_ids": [
+        "d32.leitrim.11.teigh.go.see-here"
+      ],
+      "normalized_text": "Feicim an téigh i Liatroim.",
+      "text_sha256": "b1b42cbd092313bf132228674d9c850ee0b21a7e022c346b4b93af63a9c5f06d",
+      "inventory_slug": "feicim-an-teeigh-i-liatroim",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:01:40.573966+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "HgBuwVEfOW8kL6FtljGf",
+        "started_at": "2026-08-05T11:01:25.216861+00:00",
+        "completed_at": "2026-08-05T11:01:40.530543+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-teeigh-i-liatroim.mp3",
+        "sha256": "6416df51f098bef9bbe6549afa48bf00769a89d042b5389c8bee09e13937c8f2",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 259.0,
+    "estimated_cumulative_credits": 89600.0,
+    "actual_batch_credits": 287.0,
+    "actual_cumulative_credits": 163899.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T11:01:25.216861+00:00",
+      "used_credits": 163612.0,
+      "remaining_credits": 72487.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T11:01:40.530543+00:00",
+      "used_credits": 163899.0,
+      "remaining_credits": 72200.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-teigh-go.part-02"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "2c59b00bf96cbba424b560dbecbe0e1c864463054f39bdd48db50cabe0d620a1"
+}

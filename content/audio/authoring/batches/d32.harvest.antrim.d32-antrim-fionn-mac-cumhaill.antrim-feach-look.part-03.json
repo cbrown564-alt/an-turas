@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-feach-look.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — antrim / d32.antrim.fionn-mac-cumhaill / antrim.feach.look",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-feach-look.part-03.line.314ac9b48b6dff2b",
+      "member_ids": [
+        "d32.antrim.13.feach.look.ask-what"
+      ],
+      "normalized_text": "Cad é an féach i Aontroim?",
+      "text_sha256": "e62b61947f0486cea417d45292257be18bfefbdf82e0ef6b71742d3dcf4cc38a",
+      "inventory_slug": "cad-ee-an-feeach-i-aontroim",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:03.658717+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "hTkvqb0H25aYW7G44ong",
+        "started_at": "2026-08-05T09:15:49.299883+00:00",
+        "completed_at": "2026-08-05T09:16:03.624343+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-feeach-i-aontroim.mp3",
+        "sha256": "3abd7d1734b66820aff931b45665effb725bf83c9e40d1b346342a5a8aa0f7a7",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-feach-look.part-03.line.3cc639c7746c2e4e",
+      "member_ids": [
+        "d32.antrim.13.feach.look.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an féach i Aontroim?",
+      "text_sha256": "62eb910f9642a289f0adf679f561c9c01f3868000784b82d0c6cb12a6ec30879",
+      "inventory_slug": "caa-bhfuil-an-feeach-i-aontroim",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:03.658824+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "k8hxm8p5WUlK61Yuf5lt",
+        "started_at": "2026-08-05T09:15:49.299883+00:00",
+        "completed_at": "2026-08-05T09:16:03.624343+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-feeach-i-aontroim.mp3",
+        "sha256": "b737e7bcefa0c63f583da52463fe380a72e822802bede0d74ee7e2a89195c210",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-feach-look.part-03.line.4aefcd0d2deccd5f",
+      "member_ids": [
+        "d32.antrim.13.feach.look.speak-about"
+      ],
+      "normalized_text": "Labhair faoin féach.",
+      "text_sha256": "c7197b6c1691b061f8fdbdabcef9a69b0c49acf3333a3213dc66c872691c280c",
+      "inventory_slug": "labhair-faoin-feeach",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:03.658927+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "wompV9UwRfu2CgVgsYHC",
+        "started_at": "2026-08-05T09:15:49.299883+00:00",
+        "completed_at": "2026-08-05T09:16:03.624343+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-feeach.mp3",
+        "sha256": "2b04947e7973613629081b1a4dd75030582b5c14b56e7c1b4cfaf9abeb8c983b",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-feach-look.part-03.line.77761f273adc80e9",
+      "member_ids": [
+        "d32.antrim.13.feach.look.listen-surround"
+      ],
+      "normalized_text": "Éist leis an féach i Aontroim.",
+      "text_sha256": "160cb0aa3bf909d44f3a509f1b1503949a2f6855e14c0235b4150b522c0a96a3",
+      "inventory_slug": "eeist-leis-an-feeach-i-aontroim",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:03.658994+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "iwRhHQwCY1ZI7Neg8EDo",
+        "started_at": "2026-08-05T09:15:49.299883+00:00",
+        "completed_at": "2026-08-05T09:16:03.624343+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-feeach-i-aontroim.mp3",
+        "sha256": "8f7ef6aceb4f405653c7ce9098814be7bc2ed2cdb9ffb5ef6a18e59e4044c22a",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-feach-look.part-03.line.806eff2319abc5e4",
+      "member_ids": [
+        "d32.antrim.13.feach.look.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an féach ceart.",
+      "text_sha256": "1211a546fcfdb1315025a08215c21d9525b21b1d05449603f90982ba9f30a02c",
+      "inventory_slug": "roghnaigh-an-feeach-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:03.659088+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "qC4PgGf2BP8RH2gXfW2b",
+        "started_at": "2026-08-05T09:15:49.299883+00:00",
+        "completed_at": "2026-08-05T09:16:03.624343+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-feeach-ceart.mp3",
+        "sha256": "132a2234350416339b6e1f01437e1ac315cbee3e907bde1bca1347b80422c3b0",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-feach-look.part-03.line.8ff4a44e42f12fb5",
+      "member_ids": [
+        "d32.antrim.13.feach.look.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Aontroim leis an féach.",
+      "text_sha256": "29ca26e0419819ebfdc648bec8e75c6bc778df51de38d44cc203a6170f7ecf24",
+      "inventory_slug": "baineann-sceeal-aontroim-leis-an-feeach",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:03.659171+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "FK0plebngrJiZZz9cg11",
+        "started_at": "2026-08-05T09:15:49.299883+00:00",
+        "completed_at": "2026-08-05T09:16:03.624343+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-aontroim-leis-an-feeach.mp3",
+        "sha256": "87fe516afd9116558d19b8a99b9fcba290f584ab64a3986389b8269c7ae8d461",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-feach-look.part-03.line.b884b194c1a80d50",
+      "member_ids": [
+        "d32.antrim.13.feach.look.story-important"
+      ],
+      "normalized_text": "Tá an féach tábhachtach sa scéal.",
+      "text_sha256": "d0837ef1ef62049e20a51c06614af2b94a3f84d41ccd49c129fc42c0faa2d3c4",
+      "inventory_slug": "taa-an-feeach-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:03.659265+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "01XJFMYFXJ4wI3FTjMc8",
+        "started_at": "2026-08-05T09:15:49.299883+00:00",
+        "completed_at": "2026-08-05T09:16:03.624343+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-feeach-taabhachtach-sa-sceeal.mp3",
+        "sha256": "b3e05a1d4ae28628bb236acf31bf355633710c7daf9ae3acb4ad485c5863cdf0",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-feach-look.part-03.line.d02dd286b9c12921",
+      "member_ids": [
+        "d32.antrim.13.feach.look.see-here"
+      ],
+      "normalized_text": "Feicim an féach anseo.",
+      "text_sha256": "e34cda889d71c6d11df1187c64e60fbcec13ccfe5f064f73e7efaea861757a7d",
+      "inventory_slug": "feicim-an-feeach-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:03.659360+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "1CyzV2dFiPYuqPOpx8QM",
+        "started_at": "2026-08-05T09:15:49.299883+00:00",
+        "completed_at": "2026-08-05T09:16:03.624343+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-feeach-anseo.mp3",
+        "sha256": "d1a9939104466ff77cb9a0ec3f1779e7a153f457c1d990c9745edb45a9b35cbf",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 224.0,
+    "estimated_cumulative_credits": 89565.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 139249.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T09:15:49.299883+00:00",
+      "used_credits": 139249.0,
+      "remaining_credits": 96850.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T09:16:03.624343+00:00",
+      "used_credits": 139249.0,
+      "remaining_credits": 96850.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-feach-look.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "12bd02df5ee593982eebcb9796a1da2fbcd3fe246217227097c48e972541b9cf"
+}

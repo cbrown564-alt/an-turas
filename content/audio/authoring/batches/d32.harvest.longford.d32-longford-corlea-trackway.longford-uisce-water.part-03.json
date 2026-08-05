@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-uisce-water.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — longford / d32.longford.corlea-trackway / longford.uisce.water",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-uisce-water.part-03.line.1e059ad839f8ae4e",
+      "member_ids": [
+        "d32.longford.08.uisce.water.speak-about"
+      ],
+      "normalized_text": "Labhair faoin uisce i an Longfort.",
+      "text_sha256": "d81765d8ad6048a3f20c517dce9fccd30fc6fa4168a6cba2eda39044b736ff1b",
+      "inventory_slug": "labhair-faoin-uisce-i-an-longfort",
+      "estimated_characters": 34,
+      "estimated_credits": 34.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:26:15.736085+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "XEfSStlXtnASGiXTHj0n",
+        "started_at": "2026-08-05T11:26:00.419893+00:00",
+        "completed_at": "2026-08-05T11:26:15.685426+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-uisce-i-an-longfort.mp3",
+        "sha256": "d649effed671068d2a45c3c012462f15e0ef5dab116602f394dfb516a51c0685",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-uisce-water.part-03.line.44511be153a503c1",
+      "member_ids": [
+        "d32.longford.08.uisce.water.story-important"
+      ],
+      "normalized_text": "Tá an uisce tábhachtach i scéal an Longfort.",
+      "text_sha256": "172536141ab12a529b2bb2fafccfaa8fad0d8c50b21ae5c1bff1320a21b6760a",
+      "inventory_slug": "taa-an-uisce-taabhachtach-i-sceeal-an-longfort",
+      "estimated_characters": 44,
+      "estimated_credits": 44.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:26:15.736211+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "iYBwdPoZDQzD1hNmfT5W",
+        "started_at": "2026-08-05T11:26:00.419893+00:00",
+        "completed_at": "2026-08-05T11:26:15.685426+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-uisce-taabhachtach-i-sceeal-an-longfort.mp3",
+        "sha256": "e27db2b30964a1bcb9589eeb3d904eb0a7dfc2fd20d9771460006ce63fb8b20d",
+        "bytes": 87815,
+        "duration_seconds": 3.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-uisce-water.part-03.line.45b47dc9b5907170",
+      "member_ids": [
+        "d32.longford.08.uisce.water.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an uisce i an Longfort?",
+      "text_sha256": "5ccd212dee0579546ed6b62a985fd3abba34515ce0b93e7fdd619c8258b58275",
+      "inventory_slug": "caa-bhfuil-an-uisce-i-an-longfort",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:26:15.736323+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "9rknyk0RbgIPavhPx9JR",
+        "started_at": "2026-08-05T11:26:00.419893+00:00",
+        "completed_at": "2026-08-05T11:26:15.685426+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-uisce-i-an-longfort.mp3",
+        "sha256": "55dce63cbb209cc8a03ce620c7e4e60874aa9ac5cf034b2ab5b074ddf51dad87",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-uisce-water.part-03.line.a45ea02d80e12936",
+      "member_ids": [
+        "d32.longford.08.uisce.water.listen-surround"
+      ],
+      "normalized_text": "Éist leis an uisce i an Longfort.",
+      "text_sha256": "6a710297c658e39d92b50548f142bd70b4987308c8f1f16dba9176ae57952e8f",
+      "inventory_slug": "eeist-leis-an-uisce-i-an-longfort",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:26:15.736405+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "WCWyQbbyv8JjWkhZK2rr",
+        "started_at": "2026-08-05T11:26:00.419893+00:00",
+        "completed_at": "2026-08-05T11:26:15.685426+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-uisce-i-an-longfort.mp3",
+        "sha256": "0007b02fb4e6cf5d0680b9bf9cd04e7713e1f8409796d1d9af34bf038e42659d",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-uisce-water.part-03.line.b4d1c0834f8de2b5",
+      "member_ids": [
+        "d32.longford.08.uisce.water.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an uisce ceart i an Longfort.",
+      "text_sha256": "03c35102cf2c418ca398c3121a9ff923069960f5af4e01b5a8c4ef26bd352d30",
+      "inventory_slug": "roghnaigh-an-uisce-ceart-i-an-longfort",
+      "estimated_characters": 39,
+      "estimated_credits": 39.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:26:15.736492+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "C821AhxiSojGx8gMErXs",
+        "started_at": "2026-08-05T11:26:00.419893+00:00",
+        "completed_at": "2026-08-05T11:26:15.685426+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-uisce-ceart-i-an-longfort.mp3",
+        "sha256": "3edf0f55c1697cd46cd782ddfd05dbedefe879fa30cd7ed72212daf34b4b2595",
+        "bytes": 76530,
+        "duration_seconds": 3.12
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-uisce-water.part-03.line.d058fb6926455826",
+      "member_ids": [
+        "d32.longford.08.uisce.water.ask-what"
+      ],
+      "normalized_text": "Cad é an uisce i an Longfort?",
+      "text_sha256": "f7ef03ea801cde2bfebd5d994a55ba8f8b8347494b0d7e449be4fd22b34ba0fa",
+      "inventory_slug": "cad-ee-an-uisce-i-an-longfort",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:26:15.736582+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "VfkaGgHepz9AtTNVPEgg",
+        "started_at": "2026-08-05T11:26:00.419893+00:00",
+        "completed_at": "2026-08-05T11:26:15.685426+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-uisce-i-an-longfort.mp3",
+        "sha256": "80768c5194570de84c61f04f130a4823f2583d189644d8ef8e24eac0bdff7c18",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-uisce-water.part-03.line.d393892081802560",
+      "member_ids": [
+        "d32.longford.08.uisce.water.see-here"
+      ],
+      "normalized_text": "Feicim an uisce i an Longfort.",
+      "text_sha256": "cead8f86380dbd3cac047a9b6ba94e00ed4f163498c4d685c1cd4439e0f87253",
+      "inventory_slug": "feicim-an-uisce-i-an-longfort",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:26:15.736660+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "dDOY4Z0Myi0FG9fowWj4",
+        "started_at": "2026-08-05T11:26:00.419893+00:00",
+        "completed_at": "2026-08-05T11:26:15.685426+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-uisce-i-an-longfort.mp3",
+        "sha256": "744b98ca7f80ba5a236ab87f64fc9961db11f6cc5459c0d6cd9bb66bc034c818",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.longford.d32-longford-corlea-trackway.longford-uisce-water.part-03.line.edb36a7799a67a13",
+      "member_ids": [
+        "d32.longford.08.uisce.water.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal an Longfort leis an uisce.",
+      "text_sha256": "761ec4ef610bfbe2755f5c68829a4f19b622075faaf8fc572817c2fb3ce0d52b",
+      "inventory_slug": "baineann-sceeal-an-longfort-leis-an-uisce",
+      "estimated_characters": 41,
+      "estimated_credits": 41.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:26:15.736736+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "1dV6qo1ACjl7zl7tx7JO",
+        "started_at": "2026-08-05T11:26:00.419893+00:00",
+        "completed_at": "2026-08-05T11:26:15.685426+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-an-longfort-leis-an-uisce.mp3",
+        "sha256": "065674dfc8ac52b462e4276a21d89b1116d6d2de6a5c73e18428a0687054773b",
+        "bytes": 78411,
+        "duration_seconds": 3.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 283.0,
+    "estimated_cumulative_credits": 89624.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 166560.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T11:26:00.419893+00:00",
+      "used_credits": 166560.0,
+      "remaining_credits": 69539.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T11:26:15.685426+00:00",
+      "used_credits": 166560.0,
+      "remaining_credits": 69539.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.longford.d32-longford-corlea-trackway.longford-uisce-water.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "b9acb0982eb56b16791d24a2514a43963b0e329597419d7db22d3a2e16edda1b"
+}

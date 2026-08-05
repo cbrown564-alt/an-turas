@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-litir-letter.part-02",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — donegal / d32.donegal.flight-of-the-earls / donegal.litir.letter",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-litir-letter.part-02.line.18cbbebfd3a00950",
+      "member_ids": [
+        "d32.donegal.05.litir.letter.see-here"
+      ],
+      "normalized_text": "Feicim an litir anseo.",
+      "text_sha256": "81b61d724c39eafa5398d2ce6b0eb5aedeb36d46ca77bfa3083cc3110346b8b3",
+      "inventory_slug": "feicim-an-litir-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:30:27.463597+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "SYHXBMiJzjEZIBklRvg4",
+        "started_at": "2026-08-05T10:30:15.454215+00:00",
+        "completed_at": "2026-08-05T10:30:27.444865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-litir-anseo.mp3",
+        "sha256": "5a621b3e7b3aaa960817d9f34762140e005988ddb0cfe9fc2afe7fec87a20e0a",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-litir-letter.part-02.line.2a83bee535e64f4b",
+      "member_ids": [
+        "d32.donegal.05.litir.letter.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an litir?",
+      "text_sha256": "90cabef33bc7a6553ae1df364164cff10383603f0742a4845b4e86609af76f7c",
+      "inventory_slug": "caa-bhfuil-an-litir",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:30:27.463676+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ebEjzKLwoZxmDZ1QLc4r",
+        "started_at": "2026-08-05T10:30:15.454215+00:00",
+        "completed_at": "2026-08-05T10:30:27.444865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-litir.mp3",
+        "sha256": "21d57bef8ad671a011162ad2a45215c29cbb53becb79c2ddeaab2c944c83ac75",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-litir-letter.part-02.line.5737654582e0fb8e",
+      "member_ids": [
+        "d32.donegal.05.litir.letter.ask-what"
+      ],
+      "normalized_text": "Cad é an litir?",
+      "text_sha256": "79e43872200dd7798576536e95066a62c9da6db7a8591344d176c02cdc1fda23",
+      "inventory_slug": "cad-ee-an-litir",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:30:27.463724+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "PhGphSNZP8iBXvNynbMF",
+        "started_at": "2026-08-05T10:30:15.454215+00:00",
+        "completed_at": "2026-08-05T10:30:27.444865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-litir.mp3",
+        "sha256": "7285ed0ab164192e39937ea78fa92f5550cd7869f1d730bd0c08201a411037d3",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-litir-letter.part-02.line.9e9655a0da03fc8f",
+      "member_ids": [
+        "d32.donegal.05.litir.letter.speak-about"
+      ],
+      "normalized_text": "Labhair faoin litir.",
+      "text_sha256": "68fc489170bf8e9ebe4ce1cb072ec3fb9f119faa742dd97efe9efb809ba060e4",
+      "inventory_slug": "labhair-faoin-litir",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:30:27.463766+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "cnswiLbiMgBinpFYrYZM",
+        "started_at": "2026-08-05T10:30:15.454215+00:00",
+        "completed_at": "2026-08-05T10:30:27.444865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-litir.mp3",
+        "sha256": "d5001373f4f5f717628025ff55c78b29c5a8ee780212d191714bb67237712289",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-litir-letter.part-02.line.ab3430cecfe09d0b",
+      "member_ids": [
+        "d32.donegal.05.litir.letter.listen-surround"
+      ],
+      "normalized_text": "Éist leis an litir.",
+      "text_sha256": "44126dbab26a6fe5a2271c608f0d5dd44872e5d1cba5893e7a955358758db523",
+      "inventory_slug": "eeist-leis-an-litir",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:30:27.463806+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Y5GKdcG6udXHDe5MdhiK",
+        "started_at": "2026-08-05T10:30:15.454215+00:00",
+        "completed_at": "2026-08-05T10:30:27.444865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-litir.mp3",
+        "sha256": "4cd8a63c71d580c69120f6bf5430d90e13f5712691d0970aa5e904d554129693",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-litir-letter.part-02.line.b57c15b7fdf19c8a",
+      "member_ids": [
+        "d32.donegal.05.litir.letter.story-important"
+      ],
+      "normalized_text": "Tá an litir tábhachtach sa scéal.",
+      "text_sha256": "779372911cc9cd71d2237523e509019917c30610c6c06a5dc69af817f1f5e357",
+      "inventory_slug": "taa-an-litir-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:30:27.463844+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "NvvovEEgv9zimRRKrqnf",
+        "started_at": "2026-08-05T10:30:15.454215+00:00",
+        "completed_at": "2026-08-05T10:30:27.444865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-litir-taabhachtach-sa-sceeal.mp3",
+        "sha256": "f0323164f1594812bced2c2d93de80a9de3c90ae0b8e1c265a4d713373bd94f0",
+        "bytes": 74649,
+        "duration_seconds": 3.04
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-litir-letter.part-02.line.f577a21d9e4fd647",
+      "member_ids": [
+        "d32.donegal.05.litir.letter.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an litir.",
+      "text_sha256": "fdd02c2095f67340815d1a232bbb163dad26eff47ce704634fd2b6fa94d397c0",
+      "inventory_slug": "baineann-an-sceeal-leis-an-litir",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:30:27.463904+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "EaHbCpTWtcJZTJDRyg4O",
+        "started_at": "2026-08-05T10:30:15.454215+00:00",
+        "completed_at": "2026-08-05T10:30:27.444865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-litir.mp3",
+        "sha256": "6d411e2f10345fc837382f264cd59035241a1dd86b9b93be906dbff4fde53237",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-litir-letter.part-02.line.fedca3bff5644e2c",
+      "member_ids": [
+        "d32.donegal.05.litir.letter.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an litir ceart.",
+      "text_sha256": "49682441b3dc9666bf502b7ba9cad28986f79c12b56f433725e872f94c8f9bec",
+      "inventory_slug": "roghnaigh-an-litir-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:30:27.463954+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "NpIfgjACJD19keehIP5R",
+        "started_at": "2026-08-05T10:30:15.454215+00:00",
+        "completed_at": "2026-08-05T10:30:27.444865+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-litir-ceart.mp3",
+        "sha256": "bddee8e4095582c0ab06efc56301c17e230b4d51eaf16a1c79abf30120707ede",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 149151.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:30:15.454215+00:00",
+      "used_credits": 149151.0,
+      "remaining_credits": 86948.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:30:27.444865+00:00",
+      "used_credits": 149151.0,
+      "remaining_credits": 86948.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-litir-letter.part-02"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "bb008c7499f1dea75eb982eeb333948034a10651fc1ab41efaf0e1a168d85c9f"
+}

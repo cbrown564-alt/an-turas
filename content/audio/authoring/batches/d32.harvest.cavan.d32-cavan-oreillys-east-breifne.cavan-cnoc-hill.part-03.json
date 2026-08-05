@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-cnoc-hill.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — cavan / d32.cavan.oreillys-east-breifne / cavan.cnoc.hill",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-cnoc-hill.part-03.line.731471833f20e503",
+      "member_ids": [
+        "d32.cavan.02.cnoc.hill.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an cnoc ceart.",
+      "text_sha256": "5bdd857df93ef936e5aab3decf3916f82d6f4ac5a3c1234c4aac4ad1ab2f9c1c",
+      "inventory_slug": "roghnaigh-an-cnoc-ceart",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:16:27.297895+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "cvo0ydRzMdOIcCglRtcl",
+        "started_at": "2026-08-05T10:16:20.544702+00:00",
+        "completed_at": "2026-08-05T10:16:27.261606+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-cnoc-ceart.mp3",
+        "sha256": "b2cdcbab759aa33ed124ad95e9515fdea638275cd25167c0fde33b24dc8717a0",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-cnoc-hill.part-03.line.7b66f769c8a1191e",
+      "member_ids": [
+        "d32.cavan.02.cnoc.hill.speak-about"
+      ],
+      "normalized_text": "Labhair faoin cnoc.",
+      "text_sha256": "65db46cef37994f97f9b6526992c5ba5745310d0081159c73f4c417c9124dbda",
+      "inventory_slug": "labhair-faoin-cnoc",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:16:27.298015+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "RTJckoigbLvUSiGyQdia",
+        "started_at": "2026-08-05T10:16:20.544702+00:00",
+        "completed_at": "2026-08-05T10:16:27.261606+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-cnoc.mp3",
+        "sha256": "dbd2947e239b29a860af7999d5146debb01c132454faddd9be5353f5decc2043",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-cnoc-hill.part-03.line.b183289779881ba3",
+      "member_ids": [
+        "d32.cavan.02.cnoc.hill.story-important"
+      ],
+      "normalized_text": "Tá an cnoc tábhachtach sa scéal.",
+      "text_sha256": "d2745f2f1f396e6196cd2cb90b15ca6eaef814fcd3354c507e23cd018eecb625",
+      "inventory_slug": "taa-an-cnoc-taabhachtach-sa-sceeal",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:16:27.298090+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "rEM6h6nfO07qV3LtnGwN",
+        "started_at": "2026-08-05T10:16:20.544702+00:00",
+        "completed_at": "2026-08-05T10:16:27.261606+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-cnoc-taabhachtach-sa-sceeal.mp3",
+        "sha256": "48694aa759d5c3c888a229be8da1f4adc528005632b463a6cfc82bf23549817e",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-cnoc-hill.part-03.line.f191e49982118784",
+      "member_ids": [
+        "d32.cavan.02.cnoc.hill.see-here"
+      ],
+      "normalized_text": "Feicim an cnoc anseo.",
+      "text_sha256": "01d328a8baa2795f12351f09ca4bfcc499806cd80d6176ff91ad2ff7d3d8b140",
+      "inventory_slug": "feicim-an-cnoc-anseo",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:16:27.298203+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "1Krhbx2jRl4YgvfsQupx",
+        "started_at": "2026-08-05T10:16:20.544702+00:00",
+        "completed_at": "2026-08-05T10:16:27.261606+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-cnoc-anseo.mp3",
+        "sha256": "7649954adc0ef1100d653807b478c121dd5e65f6bf3d514986b3af3544973b3e",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 96.0,
+    "estimated_cumulative_credits": 89437.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 143154.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:16:20.544702+00:00",
+      "used_credits": 143154.0,
+      "remaining_credits": 92945.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:16:27.261606+00:00",
+      "used_credits": 143154.0,
+      "remaining_credits": 92945.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-cnoc-hill.part-03"
+    }
+  },
+  "counts": {
+    "lines": 4,
+    "member_references": 4,
+    "planned": 0,
+    "approved": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "509e661833385d4324db4732a4676fae5038da69acb8c5afb177380b766a30a1"
+}

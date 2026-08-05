@@ -4,13 +4,13 @@ Operational queue for Track A's provisional phrase-family authoring. The atlas a
 story slate remain the source inputs; queue membership is not evidence of historical,
 Irish-language, pedagogy, rights, audio-QA, or learner-release approval.
 
-**Current priority:** Tracks C–E are closed for payload
-`d32.harvest.track-b.2026-08-03` (**2,818** captured lines; **3,880** runtime clips
-checksum-verified; reconcile non-blocking). Next: harvest freeze / learner-facing
-slice selection — do not open a new provider payload for this tranche. Reports:
-[`d32-track-d-post-capture-report.json`](d32-track-d-post-capture-report.json),
-[`d32-track-e-reconcile-report.json`](d32-track-e-reconcile-report.json). See
-[`STATUS.md`](../../../STATUS.md).
+**Current priority:** Cycle 2 payload `d32.harvest.track-b.2026-08-05` Track C is
+closed (**2,744 / 2,744** captured; ~**47,495** credits; limit **90,000**). Next:
+Track D anomaly sampling → Track E reconcile. Track A lever used: A2 story-dialogue
+depth `--lean-words 14 --deepen-words 14` across all 32 counties (contrast hosts
+excluded). See
+[`d32-cycle2-track-c-approve-prepared-report.json`](d32-cycle2-track-c-approve-prepared-report.json)
+and [`STATUS.md`](../../../STATUS.md).
 
 ## Bulk Track A avenues (parallel)
 

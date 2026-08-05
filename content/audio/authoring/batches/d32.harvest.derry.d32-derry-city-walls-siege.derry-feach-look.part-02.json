@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-feach-look.part-02",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — derry / d32.derry.city-walls-siege / derry.feach.look",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-feach-look.part-02.line.2643ae381a148589",
+      "member_ids": [
+        "d32.derry.14.feach.look.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Doire leis an féach.",
+      "text_sha256": "17719f82305211db04c9b37f69fbe4f8ba45982a626efdd0f167d748477fb1c3",
+      "inventory_slug": "baineann-sceeal-doire-leis-an-feeach",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:58.763314+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "JYEdddQNaHAgUpq01Dg1",
+        "started_at": "2026-08-05T10:26:44.449292+00:00",
+        "completed_at": "2026-08-05T10:26:58.730071+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-doire-leis-an-feeach.mp3",
+        "sha256": "d88586a813e48d6e82e59dd5bb99d48792f2e78b37f16cd20bf0bd45e2e3800f",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-feach-look.part-02.line.3f791d5f397b712e",
+      "member_ids": [
+        "d32.derry.14.feach.look.speak-about"
+      ],
+      "normalized_text": "Labhair faoin féach i Doire.",
+      "text_sha256": "6debf4779a34058e98599bbf66f03ef6ef28b9162bbbaeb4e685038f64e80925",
+      "inventory_slug": "labhair-faoin-feeach-i-doire",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:58.763457+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "eynVa1ROl09M9O6IW7J2",
+        "started_at": "2026-08-05T10:26:44.449292+00:00",
+        "completed_at": "2026-08-05T10:26:58.730071+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-feeach-i-doire.mp3",
+        "sha256": "0eef7f8d182acb3e878fb596bd3f34b56b1f3c89bb24b8302044f2fed5cfa5f1",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-feach-look.part-02.line.61a8a36cb74ca35a",
+      "member_ids": [
+        "d32.derry.14.feach.look.ask-what"
+      ],
+      "normalized_text": "Cad é an féach i Doire?",
+      "text_sha256": "d170bd221082ce4242b826243b512b26d1e719f132ae79e85bd8ccb5d5dcea19",
+      "inventory_slug": "cad-ee-an-feeach-i-doire",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:58.763535+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "js2zMG00ndzgyHXh0IUk",
+        "started_at": "2026-08-05T10:26:44.449292+00:00",
+        "completed_at": "2026-08-05T10:26:58.730071+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-feeach-i-doire.mp3",
+        "sha256": "4606164237130f666873164d77ab5aceefac5bded9324e03ed0f12d17e062133",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-feach-look.part-02.line.6545187081b15324",
+      "member_ids": [
+        "d32.derry.14.feach.look.see-here"
+      ],
+      "normalized_text": "Feicim an féach i Doire.",
+      "text_sha256": "06c6117a2920833fdb243a9b2af8960b48b0f0f764b0964da562c3c2e81c2f53",
+      "inventory_slug": "feicim-an-feeach-i-doire",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:58.763604+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "lFg4Vt1ChV0xn2JLR7Va",
+        "started_at": "2026-08-05T10:26:44.449292+00:00",
+        "completed_at": "2026-08-05T10:26:58.730071+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-feeach-i-doire.mp3",
+        "sha256": "1b1887399011b162c528902840ef0f45abf38909e23dd9598d4673fb53936c81",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-feach-look.part-02.line.6594e7af8f8d55a4",
+      "member_ids": [
+        "d32.derry.14.feach.look.listen-surround"
+      ],
+      "normalized_text": "Éist leis an féach i Doire.",
+      "text_sha256": "c6b61d0e98e99271611ea0b6a389e7171d91760d48f75f7473beb8ff2e63a519",
+      "inventory_slug": "eeist-leis-an-feeach-i-doire",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:58.763675+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "SToX3oC8oY8YzS7EcNeL",
+        "started_at": "2026-08-05T10:26:44.449292+00:00",
+        "completed_at": "2026-08-05T10:26:58.730071+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-feeach-i-doire.mp3",
+        "sha256": "9add092190b68453f73c00c29d2c5f1746291eb5714e7e9b6bea0adbbdad11ce",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-feach-look.part-02.line.88dd626ae97db727",
+      "member_ids": [
+        "d32.derry.14.feach.look.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an féach ceart i Doire.",
+      "text_sha256": "a2c0436ed3be4df0d6d643626ad0190732ff67cbcebdd59a51dee913791c387e",
+      "inventory_slug": "roghnaigh-an-feeach-ceart-i-doire",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:58.763748+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "v35y5CJFuJnNOLAECtsf",
+        "started_at": "2026-08-05T10:26:44.449292+00:00",
+        "completed_at": "2026-08-05T10:26:58.730071+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-feeach-ceart-i-doire.mp3",
+        "sha256": "0ce28871e7c0db089a252e8e40024811eea1b6a68cf654e86721768cda7f9c94",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-feach-look.part-02.line.9b3e9d28c2c1a6f5",
+      "member_ids": [
+        "d32.derry.14.feach.look.story-important"
+      ],
+      "normalized_text": "Tá an féach tábhachtach i scéal Doire.",
+      "text_sha256": "1395196af7f27949acea9a510150395f3e49bc3aaff6ac10c36b256111cad7bd",
+      "inventory_slug": "taa-an-feeach-taabhachtach-i-sceeal-doire",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:58.763862+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "hgoAP7jammFL0mDMRz2G",
+        "started_at": "2026-08-05T10:26:44.449292+00:00",
+        "completed_at": "2026-08-05T10:26:58.730071+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-feeach-taabhachtach-i-sceeal-doire.mp3",
+        "sha256": "7e12ae530d514f94d42cdef21fa2be27117f9f705f7cb56933849e4b64601223",
+        "bytes": 82173,
+        "duration_seconds": 3.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-feach-look.part-02.line.dabe6dd2ec8c7274",
+      "member_ids": [
+        "d32.derry.14.feach.look.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an féach i Doire?",
+      "text_sha256": "108450b407a9363fd68d8b8889e15d5cfda6c15333930018cd681cb844c14a9e",
+      "inventory_slug": "caa-bhfuil-an-feeach-i-doire",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:58.764000+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "P0BLdWC44dN56CGvJa3g",
+        "started_at": "2026-08-05T10:26:44.449292+00:00",
+        "completed_at": "2026-08-05T10:26:58.730071+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-feeach-i-doire.mp3",
+        "sha256": "0e0b2e4cc4471d471086b58cf56bfca6287dc523d513bb2b5dae5cb2d58bd4dc",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 235.0,
+    "estimated_cumulative_credits": 89576.0,
+    "actual_batch_credits": 504.0,
+    "actual_cumulative_credits": 148036.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:26:44.449292+00:00",
+      "used_credits": 147532.0,
+      "remaining_credits": 88567.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:26:58.730071+00:00",
+      "used_credits": 148036.0,
+      "remaining_credits": 88063.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.derry.d32-derry-city-walls-siege.derry-feach-look.part-02"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "ae1d795943f9250b5febb17a8fda8ae8a47bec4f4302ce8e058b5500f3689b49"
+}

@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-eist-listen.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — kilkenny / d32.kilkenny.alice-kyteler / kilkenny.eist.listen",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-eist-listen.part-03.line.07c3e1dd34cd09a5",
+      "member_ids": [
+        "d32.kilkenny.11.eist.listen.speak-about"
+      ],
+      "normalized_text": "Labhair faoin éist i Cill Chainnigh.",
+      "text_sha256": "696918deb227c778749eac7770b2c349b4394273fa765a007dfd2b16b3c05582",
+      "inventory_slug": "labhair-faoin-eeist-i-cill-chainnigh",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:53:48.495223+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "0kutNRnmtWnj52XWstai",
+        "started_at": "2026-08-05T10:53:33.081148+00:00",
+        "completed_at": "2026-08-05T10:53:48.467166+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-eeist-i-cill-chainnigh.mp3",
+        "sha256": "fce9062ebf245a7d9aa0854fc41347233cbf8e601140adea9a2e45de38682d7b",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-eist-listen.part-03.line.2433d5bb994f0c3c",
+      "member_ids": [
+        "d32.kilkenny.11.eist.listen.story-important"
+      ],
+      "normalized_text": "Tá an éist tábhachtach i scéal Cill Chainnigh.",
+      "text_sha256": "f9e1ddcb6c48ae32ddb66c512de8540a09a18a98878b29093f8dbb51d5d35eb5",
+      "inventory_slug": "taa-an-eeist-taabhachtach-i-sceeal-cill-chainnigh",
+      "estimated_characters": 46,
+      "estimated_credits": 46.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:53:48.495451+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "LSXENNGT3EXsGiKFb2Gc",
+        "started_at": "2026-08-05T10:53:33.081148+00:00",
+        "completed_at": "2026-08-05T10:53:48.467166+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-eeist-taabhachtach-i-sceeal-cill-chainnigh.mp3",
+        "sha256": "1b055eab64d7773519facd10eaabd02e330ef4024ba4a5fa3b1008d845312be9",
+        "bytes": 87815,
+        "duration_seconds": 3.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-eist-listen.part-03.line.2c39a73391dfc6e2",
+      "member_ids": [
+        "d32.kilkenny.11.eist.listen.listen-surround"
+      ],
+      "normalized_text": "Éist leis an éist i Cill Chainnigh.",
+      "text_sha256": "d8c0b20461b064cee258394412c700232b0921b61cffbe47687c77c91752e69e",
+      "inventory_slug": "eeist-leis-an-eeist-i-cill-chainnigh",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:53:48.495822+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "B2TbvtD0qNPwxFFFLpgf",
+        "started_at": "2026-08-05T10:53:33.081148+00:00",
+        "completed_at": "2026-08-05T10:53:48.467166+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-eeist-i-cill-chainnigh.mp3",
+        "sha256": "75a9fdf8c5d1498a40d01f2d0a559fa0258f6248c78b764b2520ebb26f54e151",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-eist-listen.part-03.line.43529e67dd59c41c",
+      "member_ids": [
+        "d32.kilkenny.11.eist.listen.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an éist ceart i Cill Chainnigh.",
+      "text_sha256": "7e3149d215b955f6976e1476d83f29e43155c06c400fd4ab4cda12afb71f6824",
+      "inventory_slug": "roghnaigh-an-eeist-ceart-i-cill-chainnigh",
+      "estimated_characters": 41,
+      "estimated_credits": 41.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:53:48.495979+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "8kJgPHqTq8P6oHq6a6Pp",
+        "started_at": "2026-08-05T10:53:33.081148+00:00",
+        "completed_at": "2026-08-05T10:53:48.467166+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-eeist-ceart-i-cill-chainnigh.mp3",
+        "sha256": "15b371ba7caffbe6023d1242b210551b349b23e3da7a9e669088eff52b800f31",
+        "bytes": 78411,
+        "duration_seconds": 3.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-eist-listen.part-03.line.4ee5a8e364a5812a",
+      "member_ids": [
+        "d32.kilkenny.11.eist.listen.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Cill Chainnigh leis an éist.",
+      "text_sha256": "42a6c9483d79b6ca080bb8c380688ea8a842e2232df9202b45c054e4a3ce2393",
+      "inventory_slug": "baineann-sceeal-cill-chainnigh-leis-an-eeist",
+      "estimated_characters": 43,
+      "estimated_credits": 43.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:53:48.496121+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "AGDRnFVaEi2PML9zox2Z",
+        "started_at": "2026-08-05T10:53:33.081148+00:00",
+        "completed_at": "2026-08-05T10:53:48.467166+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-cill-chainnigh-leis-an-eeist.mp3",
+        "sha256": "e6af590aaca0ec0505eb2230095c9ae0ff95478708d6b03dbcd2843e4467d8fe",
+        "bytes": 78411,
+        "duration_seconds": 3.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-eist-listen.part-03.line.7788ac3cf21db5a4",
+      "member_ids": [
+        "d32.kilkenny.11.eist.listen.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an éist i Cill Chainnigh?",
+      "text_sha256": "8fb60b29c2194c8069be8c9c9d763139b2c664bb6dcd7071d86aa0437bd394b1",
+      "inventory_slug": "caa-bhfuil-an-eeist-i-cill-chainnigh",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:53:48.496292+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "37Kkq6ATZPOLRgdadskn",
+        "started_at": "2026-08-05T10:53:33.081148+00:00",
+        "completed_at": "2026-08-05T10:53:48.467166+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-eeist-i-cill-chainnigh.mp3",
+        "sha256": "b5e7e5005932537d9616d37712f0d8a9ab99321db81f2fca59fb81c9159fee28",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-eist-listen.part-03.line.91fab6f287978fb9",
+      "member_ids": [
+        "d32.kilkenny.11.eist.listen.see-here"
+      ],
+      "normalized_text": "Feicim an éist i Cill Chainnigh.",
+      "text_sha256": "87fb3f4f250575a642a980b32f1bf2fca5ee276ecf97454e39f0d786409cfded",
+      "inventory_slug": "feicim-an-eeist-i-cill-chainnigh",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:53:48.496444+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Yu23yUnjg5oX0W32OIkh",
+        "started_at": "2026-08-05T10:53:33.081148+00:00",
+        "completed_at": "2026-08-05T10:53:48.467166+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-eeist-i-cill-chainnigh.mp3",
+        "sha256": "fc7e77dbdcebfab8de6910eeae8f558b2e824aa548c646eb3cc33eaea8c66769",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-eist-listen.part-03.line.dfc154c3f7d0e9d1",
+      "member_ids": [
+        "d32.kilkenny.11.eist.listen.ask-what"
+      ],
+      "normalized_text": "Cad é an éist i Cill Chainnigh?",
+      "text_sha256": "670766c2e79a382972a92ec41ac5dbc0c5ca217df0f04e8f172e7d5b9cd4f3a0",
+      "inventory_slug": "cad-ee-an-eeist-i-cill-chainnigh",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:53:48.496574+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "pIrKHDjT8VPhDhlEUWgu",
+        "started_at": "2026-08-05T10:53:33.081148+00:00",
+        "completed_at": "2026-08-05T10:53:48.467166+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-eeist-i-cill-chainnigh.mp3",
+        "sha256": "5f1a6d25e6c62e5e10332c47f24fa6ce52cc0b9ebf5d036532b1699cb28b1bc4",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 299.0,
+    "estimated_cumulative_credits": 89640.0,
+    "actual_batch_credits": 549.0,
+    "actual_cumulative_credits": 160109.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:53:33.081148+00:00",
+      "used_credits": 159560.0,
+      "remaining_credits": 76539.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:53:48.467166+00:00",
+      "used_credits": 160109.0,
+      "remaining_credits": 75990.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.kilkenny.d32-kilkenny-alice-kyteler.kilkenny-eist-listen.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "c8e92f2d82793dcd744545d410008f9a053afe421d621a141b9ec2452b1bb01b"
+}

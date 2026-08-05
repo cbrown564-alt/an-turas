@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.dublin.d32-dublin-sihtric-penny.dublin-long-ship.part-02",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — dublin / d32.dublin.sihtric-penny / dublin.long.ship",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.dublin.d32-dublin-sihtric-penny.dublin-long-ship.part-02.line.18c6d24e8f5ba3c2",
+      "member_ids": [
+        "d32.dublin.07.long.ship.speak-about"
+      ],
+      "normalized_text": "Labhair faoin long i Baile Átha Cliath.",
+      "text_sha256": "5f6f85bda45ed5c73a5369b8e5fe0f94b34b0266d16a50b7e8ad88d067afc1c9",
+      "inventory_slug": "labhair-faoin-long-i-baile-aatha-cliath",
+      "estimated_characters": 39,
+      "estimated_credits": 39.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:37:19.710073+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "gX7X89DPBOocyeyn0slJ",
+        "started_at": "2026-08-05T10:37:02.591580+00:00",
+        "completed_at": "2026-08-05T10:37:19.681982+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-long-i-baile-aatha-cliath.mp3",
+        "sha256": "f618421cf24b919638d9b3274cfa85068e8fec1c2aa7a9eabe78df6bfcffb13e",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.dublin.d32-dublin-sihtric-penny.dublin-long-ship.part-02.line.5378e3f103ea0acb",
+      "member_ids": [
+        "d32.dublin.07.long.ship.listen-surround"
+      ],
+      "normalized_text": "Éist leis an long i Baile Átha Cliath.",
+      "text_sha256": "069433b669ebc2e2b76b6d8b18c6ae59410cd092272f423cf1f1f152bae31723",
+      "inventory_slug": "eeist-leis-an-long-i-baile-aatha-cliath",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:37:19.710203+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "VMYZda6gPwI2yLBMOTNP",
+        "started_at": "2026-08-05T10:37:02.591580+00:00",
+        "completed_at": "2026-08-05T10:37:19.681982+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-long-i-baile-aatha-cliath.mp3",
+        "sha256": "57a83646c72a3ada67185898b1e397f63a7a5ea5603f93afddd0d297cb937905",
+        "bytes": 74649,
+        "duration_seconds": 3.04
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.dublin.d32-dublin-sihtric-penny.dublin-long-ship.part-02.line.b75507f3c96b006c",
+      "member_ids": [
+        "d32.dublin.07.long.ship.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an long i Baile Átha Cliath?",
+      "text_sha256": "af1f29b530b8f223b0a3c2627f5ed1a8906550e3db4eae553df7041c7140aa33",
+      "inventory_slug": "caa-bhfuil-an-long-i-baile-aatha-cliath",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:37:19.710270+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "UNJbtj1zZLDxsT33xRhZ",
+        "started_at": "2026-08-05T10:37:02.591580+00:00",
+        "completed_at": "2026-08-05T10:37:19.681982+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-long-i-baile-aatha-cliath.mp3",
+        "sha256": "7c75e4e8d21acb07338d4dfdb5221a282ad0b24ce50f8b4ded6b07cc4ffdee5d",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.dublin.d32-dublin-sihtric-penny.dublin-long-ship.part-02.line.d6806dc2af8cce6e",
+      "member_ids": [
+        "d32.dublin.07.long.ship.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an long ceart i Baile Átha Cliath.",
+      "text_sha256": "5797341a5b1b22190f0783f86ba8d2bdaca7b9b0c9f3216c36debdc1d7f25354",
+      "inventory_slug": "roghnaigh-an-long-ceart-i-baile-aatha-cliath",
+      "estimated_characters": 44,
+      "estimated_credits": 44.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:37:19.710331+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ESSykPxx734Fzslb0LB3",
+        "started_at": "2026-08-05T10:37:02.591580+00:00",
+        "completed_at": "2026-08-05T10:37:19.681982+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-long-ceart-i-baile-aatha-cliath.mp3",
+        "sha256": "e06534249a916a9ceb2604b74e27982a87adc0e84b497b0c6c8cceeb2bed40e5",
+        "bytes": 80292,
+        "duration_seconds": 3.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.dublin.d32-dublin-sihtric-penny.dublin-long-ship.part-02.line.dd2448c5bda8c5f6",
+      "member_ids": [
+        "d32.dublin.07.long.ship.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Baile Átha Cliath leis an long.",
+      "text_sha256": "d4c737c2d017202bc9fc6c75b6fe2cfac9e9d9fe4daae935ab6034500adadeb5",
+      "inventory_slug": "baineann-sceeal-baile-aatha-cliath-leis-an-long",
+      "estimated_characters": 46,
+      "estimated_credits": 46.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:37:19.710399+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "CJvJ21F7wjqAEkOeS8qr",
+        "started_at": "2026-08-05T10:37:02.591580+00:00",
+        "completed_at": "2026-08-05T10:37:19.681982+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-baile-aatha-cliath-leis-an-long.mp3",
+        "sha256": "94a7d796e01b568eb91cfbd097198b76cf21fa1b00bd897c858ddff698115d75",
+        "bytes": 82173,
+        "duration_seconds": 3.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.dublin.d32-dublin-sihtric-penny.dublin-long-ship.part-02.line.e333ee719501b0a5",
+      "member_ids": [
+        "d32.dublin.07.long.ship.see-here"
+      ],
+      "normalized_text": "Feicim an long i Baile Átha Cliath.",
+      "text_sha256": "03caa88a53131a62b64d51a96c6d62398d016fdb639cc583c69fb6cf1fb6d1c5",
+      "inventory_slug": "feicim-an-long-i-baile-aatha-cliath",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:37:19.710466+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "gvDeXlRiLkOJnnmGEddA",
+        "started_at": "2026-08-05T10:37:02.591580+00:00",
+        "completed_at": "2026-08-05T10:37:19.681982+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-long-i-baile-aatha-cliath.mp3",
+        "sha256": "4381d912b11b010d8d14b02de3edf1c59219296d6e7fcfba2b7ff0a51c9602c1",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.dublin.d32-dublin-sihtric-penny.dublin-long-ship.part-02.line.e3403d814854aece",
+      "member_ids": [
+        "d32.dublin.07.long.ship.ask-what"
+      ],
+      "normalized_text": "Cad é an long i Baile Átha Cliath?",
+      "text_sha256": "9fe791d4ef21b2a77b9e0f45856b8c72215e0373373194e47fe51844be86dd0e",
+      "inventory_slug": "cad-ee-an-long-i-baile-aatha-cliath",
+      "estimated_characters": 34,
+      "estimated_credits": 34.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:37:19.710527+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "zytEI9LDsSTLxmGxZrce",
+        "started_at": "2026-08-05T10:37:02.591580+00:00",
+        "completed_at": "2026-08-05T10:37:19.681982+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-long-i-baile-aatha-cliath.mp3",
+        "sha256": "9a5af0a69c8c539347d1212148b1cc1d998081554952bc6083120131f00e6df0",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.dublin.d32-dublin-sihtric-penny.dublin-long-ship.part-02.line.fadace2f9bb43a1c",
+      "member_ids": [
+        "d32.dublin.07.long.ship.story-important"
+      ],
+      "normalized_text": "Tá an long tábhachtach i scéal Baile Átha Cliath.",
+      "text_sha256": "92a21aa10b194acd4136ae7c7ef0afdafb4e006bb0c27eaa321b544d11857549",
+      "inventory_slug": "taa-an-long-taabhachtach-i-sceeal-baile-aatha-cliath",
+      "estimated_characters": 49,
+      "estimated_credits": 49.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:37:19.710585+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "E5rbrYXl6NeL1GVhLlvb",
+        "started_at": "2026-08-05T10:37:02.591580+00:00",
+        "completed_at": "2026-08-05T10:37:19.681982+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-long-taabhachtach-i-sceeal-baile-aatha-cliath.mp3",
+        "sha256": "85661dc083108fbcab9be54529c487f8bda06dfa6b9e6c25ae3c6751eefead5f",
+        "bytes": 97846,
+        "duration_seconds": 4.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 323.0,
+    "estimated_cumulative_credits": 89664.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 152206.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:37:02.591580+00:00",
+      "used_credits": 152206.0,
+      "remaining_credits": 83893.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:37:19.681982+00:00",
+      "used_credits": 152206.0,
+      "remaining_credits": 83893.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.dublin.d32-dublin-sihtric-penny.dublin-long-ship.part-02"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "5d137c988195f7bad711e8ee679e360066952326fd7abf42aa135083b088afa6"
+}

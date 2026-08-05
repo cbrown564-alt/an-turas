@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.waterford.d32-waterford-reginalds-tower.waterford-diol-sell.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — waterford / d32.waterford.reginalds-tower / waterford.diol.sell",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.waterford.d32-waterford-reginalds-tower.waterford-diol-sell.part-03.line.2ca6bb9e5da27689",
+      "member_ids": [
+        "d32.waterford.12.diol.sell.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an díol ceart i Port Láirge.",
+      "text_sha256": "dd489a5577603a311314c065e9251bca03984c0ddd23e08ba3ec2baa17525acc",
+      "inventory_slug": "roghnaigh-an-diiol-ceart-i-port-laairge",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:56:37.839811+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "w98GZrlctYPopZh7YHC9",
+        "started_at": "2026-08-05T11:56:20.451557+00:00",
+        "completed_at": "2026-08-05T11:56:37.787381+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-diiol-ceart-i-port-laairge.mp3",
+        "sha256": "9704b6dc9d5eb4352649e590bd5a4c402b6ec0ce9b36f8d42f06facdca99a821",
+        "bytes": 84053,
+        "duration_seconds": 3.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.waterford.d32-waterford-reginalds-tower.waterford-diol-sell.part-03.line.31ef248721c5d3f9",
+      "member_ids": [
+        "d32.waterford.12.diol.sell.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an díol i Port Láirge?",
+      "text_sha256": "ff00003d92c86afb7f6bf786525d7466dbf6b2c9bc53e45c7fa0c9a79105cf60",
+      "inventory_slug": "caa-bhfuil-an-diiol-i-port-laairge",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:56:37.839959+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "IHZgdlOkVZIocilsMten",
+        "started_at": "2026-08-05T11:56:20.451557+00:00",
+        "completed_at": "2026-08-05T11:56:37.787381+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-diiol-i-port-laairge.mp3",
+        "sha256": "df14deea0ddf8ea09c73852ff2551cbce5eab094385bf98267ea2c3a4350ae6d",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.waterford.d32-waterford-reginalds-tower.waterford-diol-sell.part-03.line.6492e1acba8db770",
+      "member_ids": [
+        "d32.waterford.12.diol.sell.ask-what"
+      ],
+      "normalized_text": "Cad é an díol i Port Láirge?",
+      "text_sha256": "fe2310323db3802c76b941a7d48714df1b95368e4ed4e302527b98f32092be07",
+      "inventory_slug": "cad-ee-an-diiol-i-port-laairge",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:56:37.840043+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "d1plMTxlmkFscDeSKiET",
+        "started_at": "2026-08-05T11:56:20.451557+00:00",
+        "completed_at": "2026-08-05T11:56:37.787381+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-diiol-i-port-laairge.mp3",
+        "sha256": "efd58c590e61ab877b0a5b908c38a19132534de923b97dd3e46bdd0c013ed805",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.waterford.d32-waterford-reginalds-tower.waterford-diol-sell.part-03.line.a96486af443ab503",
+      "member_ids": [
+        "d32.waterford.12.diol.sell.story-important"
+      ],
+      "normalized_text": "Tá an díol tábhachtach i scéal Port Láirge.",
+      "text_sha256": "83783c8c436b7774b7da0c854daffc1dfcad709bfa0f25f1b68af16340712c2c",
+      "inventory_slug": "taa-an-diiol-taabhachtach-i-sceeal-port-laairge",
+      "estimated_characters": 43,
+      "estimated_credits": 43.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:56:37.840122+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "MqieJ4mez6QaealqBOig",
+        "started_at": "2026-08-05T11:56:20.451557+00:00",
+        "completed_at": "2026-08-05T11:56:37.787381+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-diiol-taabhachtach-i-sceeal-port-laairge.mp3",
+        "sha256": "e15c2f76b855c4f202a9fd5f3fdca04a598bd054f25eefa73e270f5433ce8536",
+        "bytes": 99727,
+        "duration_seconds": 4.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.waterford.d32-waterford-reginalds-tower.waterford-diol-sell.part-03.line.c4d849fdc4ddb8c0",
+      "member_ids": [
+        "d32.waterford.12.diol.sell.listen-surround"
+      ],
+      "normalized_text": "Éist leis an díol i Port Láirge.",
+      "text_sha256": "f6c18ff50a008a474243d5dddf8017b34636b3b39af1a3e7ac63730e08a9c2ab",
+      "inventory_slug": "eeist-leis-an-diiol-i-port-laairge",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:56:37.840238+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "DvgofuDhSzaaMZ0GvsWA",
+        "started_at": "2026-08-05T11:56:20.451557+00:00",
+        "completed_at": "2026-08-05T11:56:37.787381+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-diiol-i-port-laairge.mp3",
+        "sha256": "3e9f928b9402a27103ef9ad59cf06e2c9ff140974d4dff982155066eb3ed69ab",
+        "bytes": 78411,
+        "duration_seconds": 3.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.waterford.d32-waterford-reginalds-tower.waterford-diol-sell.part-03.line.ea9e8dc828da0a98",
+      "member_ids": [
+        "d32.waterford.12.diol.sell.speak-about"
+      ],
+      "normalized_text": "Labhair faoin díol i Port Láirge.",
+      "text_sha256": "0068b0ea850feea92769cbd52a57937af39d68b0140219fb81eec1f34040be7b",
+      "inventory_slug": "labhair-faoin-diiol-i-port-laairge",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:56:37.840331+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "vbYKMoo0NdTuFDoP9FyO",
+        "started_at": "2026-08-05T11:56:20.451557+00:00",
+        "completed_at": "2026-08-05T11:56:37.787381+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-diiol-i-port-laairge.mp3",
+        "sha256": "79809b29add88b9ad7be78baa1ecc606f435a1e53a11c4331f1070786dc71994",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.waterford.d32-waterford-reginalds-tower.waterford-diol-sell.part-03.line.eaaf254286fb2dc2",
+      "member_ids": [
+        "d32.waterford.12.diol.sell.see-here"
+      ],
+      "normalized_text": "Feicim an díol i Port Láirge.",
+      "text_sha256": "d4de512a1941f307051d12fdd7f0068d4f8f29f29e78a89360c2b02421d9a573",
+      "inventory_slug": "feicim-an-diiol-i-port-laairge",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:56:37.840411+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "oVwcZncxI8pEEKuG0UGK",
+        "started_at": "2026-08-05T11:56:20.451557+00:00",
+        "completed_at": "2026-08-05T11:56:37.787381+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-diiol-i-port-laairge.mp3",
+        "sha256": "bcc0e2585a9b72df990de41f59b69b0651189fcd2c00532d6ae1d40a1c23f67e",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.waterford.d32-waterford-reginalds-tower.waterford-diol-sell.part-03.line.f2bf60b59d8fd454",
+      "member_ids": [
+        "d32.waterford.12.diol.sell.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Port Láirge leis an díol.",
+      "text_sha256": "a385e1f74669cd89a98afa3c4bcc1cebb70c3f5668a1966330049de5306c2826",
+      "inventory_slug": "baineann-sceeal-port-laairge-leis-an-diiol",
+      "estimated_characters": 40,
+      "estimated_credits": 40.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:56:37.840495+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "W4aNWkjcoBH0TXansoed",
+        "started_at": "2026-08-05T11:56:20.451557+00:00",
+        "completed_at": "2026-08-05T11:56:37.787381+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-port-laairge-leis-an-diiol.mp3",
+        "sha256": "91915c13d344982fc1e68d809eba46cd9c9b54ac1a2681aec214868ba99ca773",
+        "bytes": 82173,
+        "duration_seconds": 3.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 275.0,
+    "estimated_cumulative_credits": 89616.0,
+    "actual_batch_credits": 434.0,
+    "actual_cumulative_credits": 180103.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T11:56:20.451557+00:00",
+      "used_credits": 179669.0,
+      "remaining_credits": 56430.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T11:56:37.787381+00:00",
+      "used_credits": 180103.0,
+      "remaining_credits": 55996.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.waterford.d32-waterford-reginalds-tower.waterford-diol-sell.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "e909d9d7a1e3d680100c764f3fa3914448efa16e7beba2977c51be1099abba90"
+}

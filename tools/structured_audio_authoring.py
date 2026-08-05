@@ -352,6 +352,39 @@ def harvest_batch_id(partition: tuple[str, str, str]) -> str:
     )
 
 
+def allocate_unique_harvest_batch_id(
+    base_batch_id: str,
+    taken: set[str],
+    *,
+    root: Path = ROOT,
+) -> tuple[str, bool]:
+    """Return a free harvest batch id, appending .part-NN when the base is taken.
+
+    A base id is taken when it is already registered in the store or when its
+    manifest file already exists on disk. Later harvest cycles must never overwrite
+    a closed or draft manifest for the same county/story/sense partition.
+    """
+    batch_dir = root / "content/audio/authoring/batches"
+
+    def is_taken(batch_id: str) -> bool:
+        if batch_id in taken:
+            return True
+        return (batch_dir / f"{batch_id}.json").exists()
+
+    if not is_taken(base_batch_id):
+        taken.add(base_batch_id)
+        return base_batch_id, False
+    part = 2
+    while True:
+        candidate = f"{base_batch_id}.part-{part:02d}"
+        if not is_taken(candidate):
+            taken.add(candidate)
+            return candidate, True
+        part += 1
+        if part > 99:
+            raise ValueError(f"exhausted part suffixes for harvest batch {base_batch_id!r}")
+
+
 def registered_text_voice_index(
     contract: LoadedContract,
 ) -> dict[tuple[str, str], list[str]]:
@@ -525,9 +558,22 @@ def prepare_harvest(
         owner_partition = partitions[0]
         partition_members.setdefault(owner_partition, set()).update(member_ids)
 
+    taken_batch_ids = {
+        str(batch.get("batch_id"))
+        for batch in contract.batches
+        if isinstance(batch, dict) and batch.get("batch_id")
+    }
     batches: list[dict[str, Any]] = []
+    remapped_collisions: dict[str, str] = {}
     for partition in sorted(partition_members):
-        batch_id = harvest_batch_id(partition)
+        base_batch_id = harvest_batch_id(partition)
+        batch_id, remapped = allocate_unique_harvest_batch_id(
+            base_batch_id,
+            taken_batch_ids,
+            root=root,
+        )
+        if remapped:
+            remapped_collisions[base_batch_id] = batch_id
         purpose = (
             "D32 emergency harvest — "
             f"{partition[0]} / {partition[1]} / {partition[2]}"
@@ -554,12 +600,14 @@ def prepare_harvest(
         "blocked_members": blocked,
         "duplicate_findings": duplicate_findings,
         "skipped_registered": skipped_registered,
+        "remapped_collisions": remapped_collisions,
         "source_paths": source_paths,
     }
 
 
 def harvest_report(plan: dict[str, Any]) -> dict[str, Any]:
     """Small stable report shape for handoffs and machine checks."""
+    remapped = plan.get("remapped_collisions") or {}
     return {
         "scope": "D32 provisional harvest preparation; not learner-release approval",
         "batch_ids": [batch["batch_id"] for batch in plan.get("batches", [])],
@@ -573,6 +621,18 @@ def harvest_report(plan: dict[str, Any]) -> dict[str, Any]:
         "blocked_members": plan.get("blocked_members", []),
         "duplicate_findings": plan.get("duplicate_findings", []),
         "skipped_registered": plan.get("skipped_registered", []),
+        "remapped_collisions": remapped,
+        "totals": {
+            "batches": len(plan.get("batches", [])),
+            "lines": sum(
+                int(batch.get("counts", {}).get("lines") or 0)
+                for batch in plan.get("batches", [])
+            ),
+            "skipped_registered": len(plan.get("skipped_registered", [])),
+            "duplicate_findings": len(plan.get("duplicate_findings", [])),
+            "blocked_members": len(plan.get("blocked_members", [])),
+            "remapped_collisions": len(remapped),
+        },
     }
 
 

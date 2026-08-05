@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fior-true.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — antrim / d32.antrim.fionn-mac-cumhaill / antrim.fior.true",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fior-true.part-03.line.05744ce87a0c0e3c",
+      "member_ids": [
+        "d32.antrim.09.fior.true.see-here"
+      ],
+      "normalized_text": "Feicim an fíor anseo.",
+      "text_sha256": "757906ecaa8c920fea2e7f0c75644dda30ee7926f8342c57abd12ede187daea5",
+      "inventory_slug": "feicim-an-fiior-anseo",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:18.601602+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "OvFK5hrpepBGNpQb5Ovm",
+        "started_at": "2026-08-05T09:16:06.484819+00:00",
+        "completed_at": "2026-08-05T09:16:18.573589+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-fiior-anseo.mp3",
+        "sha256": "dac4ed0d7b75095c657cd05aadc6c73e64f7bd0c23f85b3b24ef9ac986d0659a",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fior-true.part-03.line.1e1d4fdbec9f2a10",
+      "member_ids": [
+        "d32.antrim.09.fior.true.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an fíor ceart.",
+      "text_sha256": "e1844b655f9fe38fed8f4621694c5b98070fa6b92155f76ae60885c3543385af",
+      "inventory_slug": "roghnaigh-an-fiior-ceart",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:18.601793+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "foOYDSFyHlNWoa04YTqB",
+        "started_at": "2026-08-05T09:16:06.484819+00:00",
+        "completed_at": "2026-08-05T09:16:18.573589+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-fiior-ceart.mp3",
+        "sha256": "e259c14ed9b23a718221797fd2ee12beceea477b529e61081d3871598fd3de98",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fior-true.part-03.line.2f73b63f13300dc3",
+      "member_ids": [
+        "d32.antrim.09.fior.true.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an fíor.",
+      "text_sha256": "9999b7edc01f200fa9b87f873426895330832e940390854fb34388736393973a",
+      "inventory_slug": "baineann-an-sceeal-leis-an-fiior",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:18.601973+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Y5fYjawPN5nmQWnlI8vR",
+        "started_at": "2026-08-05T09:16:06.484819+00:00",
+        "completed_at": "2026-08-05T09:16:18.573589+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-fiior.mp3",
+        "sha256": "3edae1fc2a624f92e1ad68e2c222cad4285c9e91e226fc36ca1317feb007dc27",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fior-true.part-03.line.347f2c9330a12f43",
+      "member_ids": [
+        "d32.antrim.09.fior.true.listen-surround"
+      ],
+      "normalized_text": "Éist leis an fíor.",
+      "text_sha256": "9dcd75a8c38114224a08a3764a9c004ef4f213e1f4aa0f74bbcd9d766d0f9166",
+      "inventory_slug": "eeist-leis-an-fiior",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:18.602110+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "TNCPF9UWW74HgQRufnSe",
+        "started_at": "2026-08-05T09:16:06.484819+00:00",
+        "completed_at": "2026-08-05T09:16:18.573589+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-fiior.mp3",
+        "sha256": "0d535ac972d03a3e34be0e8dbb222ee76b819b48b221309c4a54a79920e6f18a",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fior-true.part-03.line.4a53f39f7a23fb88",
+      "member_ids": [
+        "d32.antrim.09.fior.true.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an fíor?",
+      "text_sha256": "672af163d8c12485994a8b13afce0903494c26269019a515770fd7e0d52152a4",
+      "inventory_slug": "caa-bhfuil-an-fiior",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:18.602229+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ACOuF52CdkIP6Zkau1Ma",
+        "started_at": "2026-08-05T09:16:06.484819+00:00",
+        "completed_at": "2026-08-05T09:16:18.573589+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-fiior.mp3",
+        "sha256": "a93fd3c84b8fa3908daba6ce44770473bee633f794f6c2e15c178906a72570f0",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fior-true.part-03.line.6aed8f3edf863eae",
+      "member_ids": [
+        "d32.antrim.09.fior.true.speak-about"
+      ],
+      "normalized_text": "Labhair faoin fíor.",
+      "text_sha256": "3d2c9f70bc55f644380c68bc1f8b25e5787538a98122e5ef44c9b2ac79fa57f3",
+      "inventory_slug": "labhair-faoin-fiior",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:18.602297+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "IrZIfgu1FdJP8sbqruQa",
+        "started_at": "2026-08-05T09:16:06.484819+00:00",
+        "completed_at": "2026-08-05T09:16:18.573589+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-fiior.mp3",
+        "sha256": "fb23d521e8eda4a0cfbc60e27a0c9fbe9f8da202955c2a170e2a20bcdb31e558",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fior-true.part-03.line.e4d6ce23c5725340",
+      "member_ids": [
+        "d32.antrim.09.fior.true.story-important"
+      ],
+      "normalized_text": "Tá an fíor tábhachtach sa scéal.",
+      "text_sha256": "71dd56667b6b4f0965fd12b853e813abe13d60d077067b03a008c6fd4a176043",
+      "inventory_slug": "taa-an-fiior-taabhachtach-sa-sceeal",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:18.602362+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "znYIpHrfVjWCrZoQPVPI",
+        "started_at": "2026-08-05T09:16:06.484819+00:00",
+        "completed_at": "2026-08-05T09:16:18.573589+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-fiior-taabhachtach-sa-sceeal.mp3",
+        "sha256": "82ff8df347f274a68d82d86ef7e5f8f9d0fe4fea37cd6bab3c47f87d058d1006",
+        "bytes": 72769,
+        "duration_seconds": 2.96
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fior-true.part-03.line.f24f9d374a92c7fb",
+      "member_ids": [
+        "d32.antrim.09.fior.true.ask-what"
+      ],
+      "normalized_text": "Cad é an fíor?",
+      "text_sha256": "42b7ad4728d19277353acac3c60a7491a89ff7abceb1bdf18b4152a8bc890b5a",
+      "inventory_slug": "cad-ee-an-fiior",
+      "estimated_characters": 14,
+      "estimated_credits": 14.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:16:18.602566+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Rufup2VSQXp0VBo3dijU",
+        "started_at": "2026-08-05T09:16:06.484819+00:00",
+        "completed_at": "2026-08-05T09:16:18.573589+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-fiior.mp3",
+        "sha256": "46697665ad7a2a496d72751fe537a44f195aa77aad375850cb3d541b7465622b",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 177.0,
+    "estimated_cumulative_credits": 89518.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 139249.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T09:16:06.484819+00:00",
+      "used_credits": 139249.0,
+      "remaining_credits": 96850.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T09:16:18.573589+00:00",
+      "used_credits": 139249.0,
+      "remaining_credits": 96850.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-fior-true.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "843209fc8c5a4706d4612d2689fb490a888eff1363d44fba44b3e43908745fec"
+}

@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-naomh-saint.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — armagh / d32.armagh.book-of-armagh / armagh.naomh.saint",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-naomh-saint.part-03.line.1b6a4a4603fa7040",
+      "member_ids": [
+        "d32.armagh.09.naomh.saint.ask-what"
+      ],
+      "normalized_text": "Cad é an naomh?",
+      "text_sha256": "7dedba264a0b4600f2d251a5ca2499cb05760d1826b3bf4c5250bc012e202175",
+      "inventory_slug": "cad-ee-an-naomh",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:51.081389+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "qeKgRqgN6bymF9i1tr0N",
+        "started_at": "2026-08-05T10:11:37.810701+00:00",
+        "completed_at": "2026-08-05T10:11:51.048399+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-naomh.mp3",
+        "sha256": "82024ac54b9573e7d67a451fa4464594cbb9ad1a25879b5c65cc0822146b86bc",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-naomh-saint.part-03.line.4c91ca262b44c27c",
+      "member_ids": [
+        "d32.armagh.09.naomh.saint.listen-surround"
+      ],
+      "normalized_text": "Éist leis an naomh.",
+      "text_sha256": "051545f23912f8741170b326c14ec5328252c2e5b44c09865046a03ed7a0328b",
+      "inventory_slug": "eeist-leis-an-naomh",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:51.081528+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "y9HP3ztI6t0aAConjOqx",
+        "started_at": "2026-08-05T10:11:37.810701+00:00",
+        "completed_at": "2026-08-05T10:11:51.048399+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-naomh.mp3",
+        "sha256": "d0d6a22bdf1aca891e4c160f52d980e8c227935a606066cee3cb601c61fa7383",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-naomh-saint.part-03.line.7c41b944fc3e8f6e",
+      "member_ids": [
+        "d32.armagh.09.naomh.saint.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an naomh ceart.",
+      "text_sha256": "1cf22f66212ab8073a7ecc72c0fbb8396153b2b5076cdd03177ab8709fa3d87c",
+      "inventory_slug": "roghnaigh-an-naomh-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:51.081603+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "PrALL5IOXigQj6y3adRG",
+        "started_at": "2026-08-05T10:11:37.810701+00:00",
+        "completed_at": "2026-08-05T10:11:51.048399+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-naomh-ceart.mp3",
+        "sha256": "c5e28f9293bdcda1bce3c6e72a0e07685458086f08a266950ef0c12b3d05b7eb",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-naomh-saint.part-03.line.8a70443a888cfdcf",
+      "member_ids": [
+        "d32.armagh.09.naomh.saint.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an naomh?",
+      "text_sha256": "2b0b090257dd474fd061d5e3a243e050503de1effed88982b23b7a5063a6112f",
+      "inventory_slug": "caa-bhfuil-an-naomh",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:51.081678+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "aCbH6hRqCdzc1983MDuz",
+        "started_at": "2026-08-05T10:11:37.810701+00:00",
+        "completed_at": "2026-08-05T10:11:51.048399+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-naomh.mp3",
+        "sha256": "d9304d755ca33af400045bde57bde428c7738a1c71b7223a4054accd57675239",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-naomh-saint.part-03.line.a186c0bd619d1865",
+      "member_ids": [
+        "d32.armagh.09.naomh.saint.see-here"
+      ],
+      "normalized_text": "Feicim an naomh anseo.",
+      "text_sha256": "04ffc8d028f7b7492b536b2befbea4f482f8270b1c5a562754d222bba73186ae",
+      "inventory_slug": "feicim-an-naomh-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:51.081743+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "rHEu6jYVXNb0vFtnA8PY",
+        "started_at": "2026-08-05T10:11:37.810701+00:00",
+        "completed_at": "2026-08-05T10:11:51.048399+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-naomh-anseo.mp3",
+        "sha256": "248d82289153fac24efb757095ea637854428292737d15c71a5c24a0c9c02ddb",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-naomh-saint.part-03.line.a38ddf5baf7f24f6",
+      "member_ids": [
+        "d32.armagh.09.naomh.saint.speak-about"
+      ],
+      "normalized_text": "Labhair faoin naomh.",
+      "text_sha256": "fbfabeb1f4d48929d6ab88d621fbfd4159ebb96283e4c39b04a99e8dfc3168e5",
+      "inventory_slug": "labhair-faoin-naomh",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:51.081813+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Inyy33m9K00gnqCHo3U5",
+        "started_at": "2026-08-05T10:11:37.810701+00:00",
+        "completed_at": "2026-08-05T10:11:51.048399+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-naomh.mp3",
+        "sha256": "ddb8680b0673d95a3198f6feff4132462d2175b4fc566f5ed70bfb6bd16bfa00",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-naomh-saint.part-03.line.a43bfb3fa47b3ef5",
+      "member_ids": [
+        "d32.armagh.09.naomh.saint.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an naomh.",
+      "text_sha256": "47a22e3bea98ad26c4235e6790cc6956302269fd771b612f6d8432e322a1d630",
+      "inventory_slug": "baineann-an-sceeal-leis-an-naomh",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:51.081873+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "DHb0TOyXnNH6EuXonuuc",
+        "started_at": "2026-08-05T10:11:37.810701+00:00",
+        "completed_at": "2026-08-05T10:11:51.048399+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-naomh.mp3",
+        "sha256": "8fa0b0397fb9668bf3da95a53c56030cbd38af6612a56dd471fa8d5cf44b8dc1",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-naomh-saint.part-03.line.d425ffcb39a575ee",
+      "member_ids": [
+        "d32.armagh.09.naomh.saint.story-important"
+      ],
+      "normalized_text": "Tá an naomh tábhachtach sa scéal.",
+      "text_sha256": "856d9bf68948e7bc002dfdd6db7313bdb392fd4f521674344983d95bfee5ec4e",
+      "inventory_slug": "taa-an-naomh-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:11:51.081958+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "SN1MQZMr6ko6c9QSbt4d",
+        "started_at": "2026-08-05T10:11:37.810701+00:00",
+        "completed_at": "2026-08-05T10:11:51.048399+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-naomh-taabhachtach-sa-sceeal.mp3",
+        "sha256": "84c57b9f0ad917df6e1de60483a728e6924c6c2d5cdffd1e83db3469bc0d8e39",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 141159.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:11:37.810701+00:00",
+      "used_credits": 141159.0,
+      "remaining_credits": 94940.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:11:51.048399+00:00",
+      "used_credits": 141159.0,
+      "remaining_credits": 94940.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-naomh-saint.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "6f371025037182c220214cb63b70e9a4ee445fd5b2ac3db897cbb07d7388c7ca"
+}

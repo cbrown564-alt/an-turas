@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-breag-false-lie.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — antrim / d32.antrim.fionn-mac-cumhaill / antrim.breag.false-lie",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-breag-false-lie.part-03.line.4cc1e712b93ceba6",
+      "member_ids": [
+        "d32.antrim.10.breag.false-lie.listen-surround"
+      ],
+      "normalized_text": "Éist leis an bréag.",
+      "text_sha256": "08ece50b459a9e3bb5fd79cbaadd42f93136c322b56f3fc271ff7c9645eaff37",
+      "inventory_slug": "eeist-leis-an-breeag",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:08:42.792318+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "dZjdz6V2ec1yJeSfhezj",
+        "started_at": "2026-08-05T09:08:26.841844+00:00",
+        "completed_at": "2026-08-05T09:08:42.757160+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-breeag.mp3",
+        "sha256": "50ed0fb7d6faaed5a436bbda286441c2f757b256864514128ac1c92567fd96d0",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-breag-false-lie.part-03.line.a345a5aba5545447",
+      "member_ids": [
+        "d32.antrim.10.breag.false-lie.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an bréag?",
+      "text_sha256": "ffa15ac95341e7b9e2159a4e55d3c6b8c36a5b02f8eb34be06e1653c7aaace97",
+      "inventory_slug": "caa-bhfuil-an-breeag",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:08:42.792421+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "VFpETFmLiD1cBIzRpxIO",
+        "started_at": "2026-08-05T09:08:26.841844+00:00",
+        "completed_at": "2026-08-05T09:08:42.757160+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-breeag.mp3",
+        "sha256": "04edd879e89b44f732b26eba869a8f8592746b51015a84255b50f9c5b0d0f0b7",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-breag-false-lie.part-03.line.a38c86044e0f99a3",
+      "member_ids": [
+        "d32.antrim.10.breag.false-lie.story-important"
+      ],
+      "normalized_text": "Tá an bréag tábhachtach sa scéal.",
+      "text_sha256": "4573136c18f01721607d22175a4105fe68a2ca308343a1c7e37fef3437e3999a",
+      "inventory_slug": "taa-an-breeag-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:08:42.792506+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ovied2ia7SdjCm1hvsSl",
+        "started_at": "2026-08-05T09:08:26.841844+00:00",
+        "completed_at": "2026-08-05T09:08:42.757160+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-breeag-taabhachtach-sa-sceeal.mp3",
+        "sha256": "fac72bc69d79dd8068ce45f2e9c0d6b0caa25bb6a77015a871f01ddceb84b4eb",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-breag-false-lie.part-03.line.d33a86fd7fbf1a01",
+      "member_ids": [
+        "d32.antrim.10.breag.false-lie.ask-what"
+      ],
+      "normalized_text": "Cad é an bréag?",
+      "text_sha256": "89eaee311d89ccfc5586564639c09f1b183cf7147d9261ddc11ac048d307cb5e",
+      "inventory_slug": "cad-ee-an-breeag",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:08:42.792616+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "x5JQLfUfIOyS57RNHaOA",
+        "started_at": "2026-08-05T09:08:26.841844+00:00",
+        "completed_at": "2026-08-05T09:08:42.757160+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-breeag.mp3",
+        "sha256": "563b4181c7eb05d078c9cf3fdbdd1c7bf7b08d259542cc203eb5cfe45232a5c3",
+        "bytes": 34525,
+        "duration_seconds": 1.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-breag-false-lie.part-03.line.e245ad5c93c0114b",
+      "member_ids": [
+        "d32.antrim.10.breag.false-lie.speak-about"
+      ],
+      "normalized_text": "Labhair faoin bréag.",
+      "text_sha256": "5aafe1ae613059a2e76aa9242e8200103639aad6cc9ff08fc49bb17b2e2752bd",
+      "inventory_slug": "labhair-faoin-breeag",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:08:42.792684+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "6PqCRXRelNgjq2N3lj0a",
+        "started_at": "2026-08-05T09:08:26.841844+00:00",
+        "completed_at": "2026-08-05T09:08:42.757160+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-breeag.mp3",
+        "sha256": "4eeada962df3b0fe9a6725f8ae3fbeec0c9d2df91709fc881502ce4f93bbf63e",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-breag-false-lie.part-03.line.e6832c08ccee7913",
+      "member_ids": [
+        "d32.antrim.10.breag.false-lie.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an bréag ceart.",
+      "text_sha256": "c6174752b2a3c11a22e590c249bf5e3f4c640d240e6d6e6e648bea2fba7cebff",
+      "inventory_slug": "roghnaigh-an-breeag-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:08:42.792749+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "PJ9eHUDpEtWdSKt4Vw6U",
+        "started_at": "2026-08-05T09:08:26.841844+00:00",
+        "completed_at": "2026-08-05T09:08:42.757160+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-breeag-ceart.mp3",
+        "sha256": "2e520684aa8f9b907a89d53022d2bf5e11ec7d40e67abaa07e7b7071987ec91d",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-breag-false-lie.part-03.line.e7ec7711ccfb243d",
+      "member_ids": [
+        "d32.antrim.10.breag.false-lie.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an bréag.",
+      "text_sha256": "5690992306d8311e965fd03152dded1301aff904419b3257ebbab025f2858908",
+      "inventory_slug": "baineann-an-sceeal-leis-an-breeag",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:08:42.792827+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "7UzpP9kD4tytD5VnKobw",
+        "started_at": "2026-08-05T09:08:26.841844+00:00",
+        "completed_at": "2026-08-05T09:08:42.757160+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-breeag.mp3",
+        "sha256": "f7621a18d68ccbd55eac11bba65d66d825c5424729c42710bc262fadf92e4d18",
+        "bytes": 57095,
+        "duration_seconds": 2.32
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-breag-false-lie.part-03.line.ed87d2e92b826f5a",
+      "member_ids": [
+        "d32.antrim.10.breag.false-lie.see-here"
+      ],
+      "normalized_text": "Feicim an bréag anseo.",
+      "text_sha256": "d1ea9c0259630961e1bb4e8ae02eea46ba338335b9dbad5092f7b5addfe665c3",
+      "inventory_slug": "feicim-an-breeag-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:08:42.792921+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "iLL4D8H1yHduswLvpMKE",
+        "started_at": "2026-08-05T09:08:26.841844+00:00",
+        "completed_at": "2026-08-05T09:08:42.757160+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-breeag-anseo.mp3",
+        "sha256": "a3926bf8818a98425f05bd3cc4bc48aa2845c4436c005cb2b2d1774a0a1792b2",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 46.0,
+    "actual_cumulative_credits": 138622.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T09:08:26.841844+00:00",
+      "used_credits": 138576.0,
+      "remaining_credits": 97523.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T09:08:42.757160+00:00",
+      "used_credits": 138622.0,
+      "remaining_credits": 97477.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-breag-false-lie.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "c8c66c38131d718cad8f85d341fdbf3eba1850725a3c182914aeb24095ea9af1"
+}

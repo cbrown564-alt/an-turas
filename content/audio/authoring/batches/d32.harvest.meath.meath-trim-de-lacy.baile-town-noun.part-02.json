@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.meath.meath-trim-de-lacy.baile-town-noun.part-02",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — meath / meath.trim-de-lacy / baile.town-noun",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.meath.meath-trim-de-lacy.baile-town-noun.part-02.line.4326f1f7d5ee902f",
+      "member_ids": [
+        "meath.trim-de-lacy.baile.town-noun.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal an Mhí leis an baile.",
+      "text_sha256": "408b9be10073ff8583070d6fc2369458e4718462b6f40a2fb4ae31f978f9df50",
+      "inventory_slug": "baineann-sceeal-an-mhii-leis-an-baile",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:34:16.904949+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "g2QE0YaLWWaaLD26ZX3Q",
+        "started_at": "2026-08-05T11:34:02.795318+00:00",
+        "completed_at": "2026-08-05T11:34:16.866794+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-an-mhii-leis-an-baile.mp3",
+        "sha256": "415bfc64d7615dd6138af7f28bb864877810b69a80483bf3f0a43d3554d491a1",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.meath.meath-trim-de-lacy.baile-town-noun.part-02.line.59c020f60e319f01",
+      "member_ids": [
+        "meath.trim-de-lacy.baile.town-noun.speak-about"
+      ],
+      "normalized_text": "Labhair faoin baile i an Mhí.",
+      "text_sha256": "79988fe7a95c25065d7e7e2c269e48a0439076f76b57974b5bf70c5462e9062b",
+      "inventory_slug": "labhair-faoin-baile-i-an-mhii",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:34:16.905052+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "lPu199qnyMP17nF5PWeh",
+        "started_at": "2026-08-05T11:34:02.795318+00:00",
+        "completed_at": "2026-08-05T11:34:16.866794+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-baile-i-an-mhii.mp3",
+        "sha256": "0b83792759e5ffdd3aded3e48f72cd552eb917d42efaa8a6e470d866370cd238",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.meath.meath-trim-de-lacy.baile-town-noun.part-02.line.6ac181805b089662",
+      "member_ids": [
+        "meath.trim-de-lacy.baile.town-noun.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an baile i an Mhí?",
+      "text_sha256": "372c7ca36af4c5825cb16222ac3b85cbfeb35be4c6a695a39c7e3b86bb148eb9",
+      "inventory_slug": "caa-bhfuil-an-baile-i-an-mhii",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:34:16.905120+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "QapoNUfSMPrfhXnUBYIB",
+        "started_at": "2026-08-05T11:34:02.795318+00:00",
+        "completed_at": "2026-08-05T11:34:16.866794+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-baile-i-an-mhii.mp3",
+        "sha256": "2c80912e87989901cd21a591ec9fdbbd1defd761cb4211ef697d2418b579cce2",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.meath.meath-trim-de-lacy.baile-town-noun.part-02.line.9d8841815c510801",
+      "member_ids": [
+        "meath.trim-de-lacy.baile.town-noun.see-here"
+      ],
+      "normalized_text": "Feicim an baile i an Mhí.",
+      "text_sha256": "41d74a35cccd3f52130b9fac818f65f4dd8c05f1c3386a1c02e17bab19b3dabf",
+      "inventory_slug": "feicim-an-baile-i-an-mhii",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:34:16.905186+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "RmmBrlW8s85uYLQ8N84S",
+        "started_at": "2026-08-05T11:34:02.795318+00:00",
+        "completed_at": "2026-08-05T11:34:16.866794+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-baile-i-an-mhii.mp3",
+        "sha256": "9b014ee2e6380eb8c2b2a76886fe33d7eb0ecdfb54c60158a3f6650784d24dfe",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.meath.meath-trim-de-lacy.baile-town-noun.part-02.line.bff62318a3ceead9",
+      "member_ids": [
+        "meath.trim-de-lacy.baile.town-noun.listen-surround"
+      ],
+      "normalized_text": "Éist leis an baile i an Mhí.",
+      "text_sha256": "cd3c4fa1d720b5c3527b73ceaaa971a102dc21b97df72d4ff2995f67ed28b574",
+      "inventory_slug": "eeist-leis-an-baile-i-an-mhii",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:34:16.905249+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "nKebyRPgnVuuyroPMwiH",
+        "started_at": "2026-08-05T11:34:02.795318+00:00",
+        "completed_at": "2026-08-05T11:34:16.866794+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-baile-i-an-mhii.mp3",
+        "sha256": "4193c3ee757191489a5474a3d49e1dc43a0ef96213d40c7620c1b7cb7ea48931",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.meath.meath-trim-de-lacy.baile-town-noun.part-02.line.dc15a5972a5fa3f5",
+      "member_ids": [
+        "meath.trim-de-lacy.baile.town-noun.ask-what"
+      ],
+      "normalized_text": "Cad é an baile i an Mhí?",
+      "text_sha256": "b4986e705876ee60b1beb254e5ded5fa62b338b388de4e0777d2d3016cb39689",
+      "inventory_slug": "cad-ee-an-baile-i-an-mhii",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:34:16.905317+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "x3trRIQ2YPnQK6DdBt86",
+        "started_at": "2026-08-05T11:34:02.795318+00:00",
+        "completed_at": "2026-08-05T11:34:16.866794+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-baile-i-an-mhii.mp3",
+        "sha256": "e1a7a70a65b2d9c67f7b05b5b024141f5668471e52b0a75929ddd393948a32fd",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.meath.meath-trim-de-lacy.baile-town-noun.part-02.line.ebcfff9519b395de",
+      "member_ids": [
+        "meath.trim-de-lacy.baile.town-noun.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an baile ceart i an Mhí.",
+      "text_sha256": "979d53cf674fb3d42f959d52dbce40151fa9bd96574e8f0b60fa99a7dd277292",
+      "inventory_slug": "roghnaigh-an-baile-ceart-i-an-mhii",
+      "estimated_characters": 34,
+      "estimated_credits": 34.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:34:16.905378+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "ovNDvsr2JhzkcBhyDrQ2",
+        "started_at": "2026-08-05T11:34:02.795318+00:00",
+        "completed_at": "2026-08-05T11:34:16.866794+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-baile-ceart-i-an-mhii.mp3",
+        "sha256": "58378e6b450beba9010cf0cf5268e3a340ee43e76c68aa793a04edd9b5c5e864",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.meath.meath-trim-de-lacy.baile-town-noun.part-02.line.ef99e4d1cb7c1d02",
+      "member_ids": [
+        "meath.trim-de-lacy.baile.town-noun.story-important"
+      ],
+      "normalized_text": "Tá an baile tábhachtach i scéal an Mhí.",
+      "text_sha256": "2dac330e59d86bb196160f26eb54ee59b372745358dc5cf1d15ec2693796c6c8",
+      "inventory_slug": "taa-an-baile-taabhachtach-i-sceeal-an-mhii",
+      "estimated_characters": 39,
+      "estimated_credits": 39.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T11:34:16.905451+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "cimzSNCCKtcALHGJPjVg",
+        "started_at": "2026-08-05T11:34:02.795318+00:00",
+        "completed_at": "2026-08-05T11:34:16.866794+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-baile-taabhachtach-i-sceeal-an-mhii.mp3",
+        "sha256": "e7f3dbc59885c9640ab5dd9241f4de051d4e2e80173aa063906ffb2ba62a17dc",
+        "bytes": 80292,
+        "duration_seconds": 3.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 243.0,
+    "estimated_cumulative_credits": 89584.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 169905.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T11:34:02.795318+00:00",
+      "used_credits": 169905.0,
+      "remaining_credits": 66194.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T11:34:16.866794+00:00",
+      "used_credits": 169905.0,
+      "remaining_credits": 66194.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.meath.meath-trim-de-lacy.baile-town-noun.part-02"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "63aa7dff408bd6e536ea26d5bc1f02a3a42f0cab5f623b72c5eb8cc95464b39e"
+}

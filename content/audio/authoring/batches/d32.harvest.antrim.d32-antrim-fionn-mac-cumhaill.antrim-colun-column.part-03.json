@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-colun-column.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — antrim / d32.antrim.fionn-mac-cumhaill / antrim.colun.column",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-colun-column.part-03.line.1732847b550b557c",
+      "member_ids": [
+        "d32.antrim.07.colun.column.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an colún ceart.",
+      "text_sha256": "1aca0664ae0ff2a90ffd860524cc0cc7d643acfdab153f5de2c37b9b6b98e25c",
+      "inventory_slug": "roghnaigh-an-coluun-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:22.947619+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "CdUlcvLnH3UrF6HgvkZL",
+        "started_at": "2026-08-05T09:09:08.976678+00:00",
+        "completed_at": "2026-08-05T09:09:22.917907+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-coluun-ceart.mp3",
+        "sha256": "2f842a61fe5ff9eb7dacf36b115b2688113da77d4b228e2f6f76ae3b2db739e2",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-colun-column.part-03.line.2ff67e6f143a5090",
+      "member_ids": [
+        "d32.antrim.07.colun.column.ask-what"
+      ],
+      "normalized_text": "Cad é an colún?",
+      "text_sha256": "f9d753e9941e35e5a6cdff3bf5099a971c8ea75ec81633349c2fdf443e625b61",
+      "inventory_slug": "cad-ee-an-coluun",
+      "estimated_characters": 15,
+      "estimated_credits": 15.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:22.947716+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "GeThOBxT2sP1yVgsZDao",
+        "started_at": "2026-08-05T09:09:08.976678+00:00",
+        "completed_at": "2026-08-05T09:09:22.917907+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-coluun.mp3",
+        "sha256": "87820dfbf39038af6f9b3f5774ab7adb4c1772521296be1b0c4e6e946b19388c",
+        "bytes": 32017,
+        "duration_seconds": 1.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-colun-column.part-03.line.6311cda1f7214f89",
+      "member_ids": [
+        "d32.antrim.07.colun.column.listen-surround"
+      ],
+      "normalized_text": "Éist leis an colún.",
+      "text_sha256": "d9ba302c9ca876962ef91cc5d631b996ea0cfd9a42d035604b58c9b6038ed95b",
+      "inventory_slug": "eeist-leis-an-coluun",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:22.947780+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "xEhSwaru6syTOBPNWfpA",
+        "started_at": "2026-08-05T09:09:08.976678+00:00",
+        "completed_at": "2026-08-05T09:09:22.917907+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-coluun.mp3",
+        "sha256": "fb952440e964f7d816a5cfae426395083591fe8f5d3740f602e1482767c27439",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-colun-column.part-03.line.6c70c0cd10937d6a",
+      "member_ids": [
+        "d32.antrim.07.colun.column.story-important"
+      ],
+      "normalized_text": "Tá an colún tábhachtach sa scéal.",
+      "text_sha256": "7f2341f084e71b56c94286b99739de5dbf56dbfa29b42f25e0722d419a113d61",
+      "inventory_slug": "taa-an-coluun-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:22.947842+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Zk5IN2bt7lSqXB036ozH",
+        "started_at": "2026-08-05T09:09:08.976678+00:00",
+        "completed_at": "2026-08-05T09:09:22.917907+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-coluun-taabhachtach-sa-sceeal.mp3",
+        "sha256": "4ce7331ae41dc03c0404f987c89d2edb2d3564a5331692502075f4ca7af13f35",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-colun-column.part-03.line.9ff6ac203ade8a4e",
+      "member_ids": [
+        "d32.antrim.07.colun.column.see-here"
+      ],
+      "normalized_text": "Feicim an colún anseo.",
+      "text_sha256": "68e8b9c72bf9f42b5271b1ba2ccb591fa9fe344c0bf10c9ee86cb4e35f0550b8",
+      "inventory_slug": "feicim-an-coluun-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:22.947929+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "PWe0A7lGW6ZoRfoFT2YY",
+        "started_at": "2026-08-05T09:09:08.976678+00:00",
+        "completed_at": "2026-08-05T09:09:22.917907+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-coluun-anseo.mp3",
+        "sha256": "fbb45d2dad5000cd256ce5d82be5c24dfa9983a1b123232958d63bb0ec2d394a",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-colun-column.part-03.line.b786e01433d8f4bc",
+      "member_ids": [
+        "d32.antrim.07.colun.column.speak-about"
+      ],
+      "normalized_text": "Labhair faoin colún.",
+      "text_sha256": "5e95c945efa64d97025c8ed213c23deaa612e88e4cabac34af849199906d799f",
+      "inventory_slug": "labhair-faoin-coluun",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:22.948005+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "SucdybjASeZu6dMvZv0v",
+        "started_at": "2026-08-05T09:09:08.976678+00:00",
+        "completed_at": "2026-08-05T09:09:22.917907+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-coluun.mp3",
+        "sha256": "24f817a9505aeced270b85c624519a1b781fc05feeadc8e774b13e9ccdef1c10",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-colun-column.part-03.line.d2a2d0f7f5319968",
+      "member_ids": [
+        "d32.antrim.07.colun.column.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an colún.",
+      "text_sha256": "737fa4e507d13eb8af5ee05c648be2b091e2e1bec3f07e5c76a035e541decc6d",
+      "inventory_slug": "baineann-an-sceeal-leis-an-coluun",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:22.948075+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Ypld90idyjkdVrugrrPD",
+        "started_at": "2026-08-05T09:09:08.976678+00:00",
+        "completed_at": "2026-08-05T09:09:22.917907+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-coluun.mp3",
+        "sha256": "cfda0e31f895a4928a1b038f4be0a68217c81028a6e2663c0da2df3f3124f6ca",
+        "bytes": 60857,
+        "duration_seconds": 2.48
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-colun-column.part-03.line.ff764cd248b4ef7f",
+      "member_ids": [
+        "d32.antrim.07.colun.column.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an colún?",
+      "text_sha256": "47426423bf6527078133afd16eb045cf0d3cd2fac52aa1649f873046acaeec0c",
+      "inventory_slug": "caa-bhfuil-an-coluun",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:09:22.948160+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "jiiyrJjVfSZ54Gc8oCFs",
+        "started_at": "2026-08-05T09:09:08.976678+00:00",
+        "completed_at": "2026-08-05T09:09:22.917907+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-coluun.mp3",
+        "sha256": "524447dc4eba4718041d8543e7344d8c56b5c2e2988b483c3eaadb4ae16900a8",
+        "bytes": 38287,
+        "duration_seconds": 1.52
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 185.0,
+    "estimated_cumulative_credits": 89526.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 138622.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T09:09:08.976678+00:00",
+      "used_credits": 138622.0,
+      "remaining_credits": 97477.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T09:09:22.917907+00:00",
+      "used_credits": 138622.0,
+      "remaining_credits": 97477.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.antrim.d32-antrim-fionn-mac-cumhaill.antrim-colun-column.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "d975c692078fbd4ac561f6a8d3a646125af1ba1df7d976e066d7dee0f5b4ecb4"
+}

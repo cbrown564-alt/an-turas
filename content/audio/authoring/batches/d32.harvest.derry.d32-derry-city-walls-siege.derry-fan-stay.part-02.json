@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-fan-stay.part-02",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — derry / d32.derry.city-walls-siege / derry.fan.stay",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-fan-stay.part-02.line.2ca985aef5fa4bae",
+      "member_ids": [
+        "d32.derry.11.fan.stay.listen-surround"
+      ],
+      "normalized_text": "Éist leis an fan i Doire.",
+      "text_sha256": "f12e51c464781104fdb24ee4fff4dd4843dae65f6a7b03ff4b509799fd7e94db",
+      "inventory_slug": "eeist-leis-an-fan-i-doire",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:41.630260+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "o9Hcm9aKgdvkmBbK1zBs",
+        "started_at": "2026-08-05T10:26:28.356702+00:00",
+        "completed_at": "2026-08-05T10:26:41.606566+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-fan-i-doire.mp3",
+        "sha256": "e2ddeaee1bdfb3dd6a9642df26842ff05583700828bd10e1a0d281aad4cc5a3d",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-fan-stay.part-02.line.4f729df934304c5f",
+      "member_ids": [
+        "d32.derry.11.fan.stay.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Doire leis an fan.",
+      "text_sha256": "72ea077d2652806a9f720176fc8ed0599f89eb18c86fa0fb8c87f84ef4e0dd00",
+      "inventory_slug": "baineann-sceeal-doire-leis-an-fan",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:41.630363+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "cW451snHj0apCwRVuudH",
+        "started_at": "2026-08-05T10:26:28.356702+00:00",
+        "completed_at": "2026-08-05T10:26:41.606566+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-doire-leis-an-fan.mp3",
+        "sha256": "852af6ae6ed10db225ae32647c6e01c4fbb28972525fd5f974379d40b045b63d",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-fan-stay.part-02.line.5e93b55f1e203201",
+      "member_ids": [
+        "d32.derry.11.fan.stay.ask-what"
+      ],
+      "normalized_text": "Cad é an fan i Doire?",
+      "text_sha256": "90cd930485bcf2128a51e726933371d7d97c1811e5f6c34ac85e63e96df1653a",
+      "inventory_slug": "cad-ee-an-fan-i-doire",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:41.630436+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "GW56gGrxvjTa35cQikgT",
+        "started_at": "2026-08-05T10:26:28.356702+00:00",
+        "completed_at": "2026-08-05T10:26:41.606566+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-fan-i-doire.mp3",
+        "sha256": "1151fe260862a4da7d78a39121a2acb3de1f938fd61be9d1f4ac38a6d5383287",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-fan-stay.part-02.line.612e89aa66896a3d",
+      "member_ids": [
+        "d32.derry.11.fan.stay.story-important"
+      ],
+      "normalized_text": "Tá an fan tábhachtach i scéal Doire.",
+      "text_sha256": "50c9df94f2513b5f8aaa4612dbbf72ce19782a90c365934c88c853210da6c716",
+      "inventory_slug": "taa-an-fan-taabhachtach-i-sceeal-doire",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:41.630492+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "HGxfepxhC6TkZ2ePzDxR",
+        "started_at": "2026-08-05T10:26:28.356702+00:00",
+        "completed_at": "2026-08-05T10:26:41.606566+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-fan-taabhachtach-i-sceeal-doire.mp3",
+        "sha256": "cce15fceae3eebb5925973863bf49eee5b2a811962cd6d8cacb0e9c2c38be79d",
+        "bytes": 78411,
+        "duration_seconds": 3.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-fan-stay.part-02.line.7f66b82e93d11fce",
+      "member_ids": [
+        "d32.derry.11.fan.stay.speak-about"
+      ],
+      "normalized_text": "Labhair faoin fan i Doire.",
+      "text_sha256": "535c6b34ccbe45bad401295af9bd2ede059e9d05ee0f12619ab55c95b532d7af",
+      "inventory_slug": "labhair-faoin-fan-i-doire",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:41.630563+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "esvr8h8ydELd7e0J7iV2",
+        "started_at": "2026-08-05T10:26:28.356702+00:00",
+        "completed_at": "2026-08-05T10:26:41.606566+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-fan-i-doire.mp3",
+        "sha256": "127aad5fba675117793666b287ce28b25d358f410aaa73b6c67c8e01098e3b90",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-fan-stay.part-02.line.9cc389a587356641",
+      "member_ids": [
+        "d32.derry.11.fan.stay.see-here"
+      ],
+      "normalized_text": "Feicim an fan i Doire.",
+      "text_sha256": "1b586d4534669a6cd9149b2538ef8fc72f3eaffb2662c273a13253bf893fb64c",
+      "inventory_slug": "feicim-an-fan-i-doire",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:41.630616+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "RQjWChCz80hTeluzIgNC",
+        "started_at": "2026-08-05T10:26:28.356702+00:00",
+        "completed_at": "2026-08-05T10:26:41.606566+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-fan-i-doire.mp3",
+        "sha256": "5f4b6ebe568d428c535abd348f426cfdb655bda10881e6248de0980fdbc67796",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-fan-stay.part-02.line.ad89adb551c04fc0",
+      "member_ids": [
+        "d32.derry.11.fan.stay.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an fan ceart i Doire.",
+      "text_sha256": "5796f973f8127f5101c4391800c7ab36b3faa23f47a8cbf598091a88dfa3134a",
+      "inventory_slug": "roghnaigh-an-fan-ceart-i-doire",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:41.630664+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "7nrBRq6Bf0ju5lUOknPu",
+        "started_at": "2026-08-05T10:26:28.356702+00:00",
+        "completed_at": "2026-08-05T10:26:41.606566+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-fan-ceart-i-doire.mp3",
+        "sha256": "5fb14bd7b28f5a1b5c73d13b370a4d91117af0d5ebb02459724d3b01f47e8521",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-fan-stay.part-02.line.d7be58948c069539",
+      "member_ids": [
+        "d32.derry.11.fan.stay.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an fan i Doire?",
+      "text_sha256": "c5b42f076ab6e729ca2385208959aad6d6255826bd4e8ec11baad5832dcdf010",
+      "inventory_slug": "caa-bhfuil-an-fan-i-doire",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:26:41.630724+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "4g62mMuvYeOW3vgW4NZX",
+        "started_at": "2026-08-05T10:26:28.356702+00:00",
+        "completed_at": "2026-08-05T10:26:41.606566+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-fan-i-doire.mp3",
+        "sha256": "88ae1725dc039bcc5837d8142e1af968c3b447fcb2053f25511b0742697f7d12",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 219.0,
+    "estimated_cumulative_credits": 89560.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 147532.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:26:28.356702+00:00",
+      "used_credits": 147532.0,
+      "remaining_credits": 88567.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:26:41.606566+00:00",
+      "used_credits": 147532.0,
+      "remaining_credits": 88567.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.derry.d32-derry-city-walls-siege.derry-fan-stay.part-02"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "31833a42873252e41ce1a80e9cfac85047091c55b1c3ee9b072020f423327e68"
+}

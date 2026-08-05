@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-teach-house.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — armagh / d32.armagh.book-of-armagh / armagh.teach.house",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-teach-house.part-03.line.3a877921ad729f09",
+      "member_ids": [
+        "d32.armagh.10.teach.house.see-here"
+      ],
+      "normalized_text": "Feicim an teach anseo.",
+      "text_sha256": "d525c9e8214cef8efebb92889947c8c158d98437b95409d971ab5971773e28df",
+      "inventory_slug": "feicim-an-teach-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:16.686997+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "W1aZ9ne6vB6V1THHtHAp",
+        "started_at": "2026-08-05T10:12:03.635675+00:00",
+        "completed_at": "2026-08-05T10:12:16.646780+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-teach-anseo.mp3",
+        "sha256": "4f4f101c36a5a766c38e531eff540ba270964a17e4bcad394921d114c66ce10c",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-teach-house.part-03.line.55f525518937ba2e",
+      "member_ids": [
+        "d32.armagh.10.teach.house.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an teach i Ard Mhacha?",
+      "text_sha256": "aebd584753e0c4a355b2883a3dcfe4bcd06200264b6d94f7d16f63b265ddeff4",
+      "inventory_slug": "caa-bhfuil-an-teach-i-ard-mhacha",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:16.687121+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "vKMWiQHmLL5vll0WB3nN",
+        "started_at": "2026-08-05T10:12:03.635675+00:00",
+        "completed_at": "2026-08-05T10:12:16.646780+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-teach-i-ard-mhacha.mp3",
+        "sha256": "a5d47e57844f270e66ac12ac545d50fb25c4f0c7c8bdbb143b211aee30159146",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-teach-house.part-03.line.644f377e1241056c",
+      "member_ids": [
+        "d32.armagh.10.teach.house.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an teach ceart.",
+      "text_sha256": "6036ac957a4d8f63fea4c4092d0b567c2be3ebe16f2320d0bb88f73c8e4cff1b",
+      "inventory_slug": "roghnaigh-an-teach-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:16.687224+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Ic5gkmJHm36NXFFOoYig",
+        "started_at": "2026-08-05T10:12:03.635675+00:00",
+        "completed_at": "2026-08-05T10:12:16.646780+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-teach-ceart.mp3",
+        "sha256": "7f5e82630d25c8436b99edcdf5372a183f8aaef9d5f140b7bd6871cb469cce37",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-teach-house.part-03.line.87aefe57b4f8cff4",
+      "member_ids": [
+        "d32.armagh.10.teach.house.listen-surround"
+      ],
+      "normalized_text": "Éist leis an teach i Ard Mhacha.",
+      "text_sha256": "637ebdae323170e6d332cb4b8da8d673342c1b0afa78d5c8e74cd138e49ba69e",
+      "inventory_slug": "eeist-leis-an-teach-i-ard-mhacha",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:16.687320+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "PtfhoDGe9xuH8i65GxLp",
+        "started_at": "2026-08-05T10:12:03.635675+00:00",
+        "completed_at": "2026-08-05T10:12:16.646780+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-teach-i-ard-mhacha.mp3",
+        "sha256": "8b2160d69b7d66ddc076c0c4a5bcbe1169f2f8a29888d447f775513c29d2d69a",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-teach-house.part-03.line.90dda6166bba9911",
+      "member_ids": [
+        "d32.armagh.10.teach.house.speak-about"
+      ],
+      "normalized_text": "Labhair faoin teach.",
+      "text_sha256": "7abcaa840d5247c7132b9e88b198bd771472d010f765f09b23eeef8831a65573",
+      "inventory_slug": "labhair-faoin-teach",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:16.687431+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "iP0fjzssVPWvjlHOuFHg",
+        "started_at": "2026-08-05T10:12:03.635675+00:00",
+        "completed_at": "2026-08-05T10:12:16.646780+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-teach.mp3",
+        "sha256": "2e013a27877b3a2049c500e7ac18fc9471f7ae02788502f024ceafc4e82efecb",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-teach-house.part-03.line.98d77e64a9e847be",
+      "member_ids": [
+        "d32.armagh.10.teach.house.story-important"
+      ],
+      "normalized_text": "Tá an teach tábhachtach sa scéal.",
+      "text_sha256": "ec1a9468a3d0339a8d8096bb3d0998c495b4c6e11f25a5b6b4fa56b054724f4d",
+      "inventory_slug": "taa-an-teach-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:16.687501+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "zL4s0RkMWLrhH0Ru9IGX",
+        "started_at": "2026-08-05T10:12:03.635675+00:00",
+        "completed_at": "2026-08-05T10:12:16.646780+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-teach-taabhachtach-sa-sceeal.mp3",
+        "sha256": "c45cfe381afec2b3fa92218eda893fe6c696f3b68d1672ff9b7a1c984f383c26",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-teach-house.part-03.line.acfa689f7f0abb10",
+      "member_ids": [
+        "d32.armagh.10.teach.house.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Ard Mhacha leis an teach.",
+      "text_sha256": "dc8257bc4e66d2016c33d54eba37a4cc108f1c40023e63646fd9e2790122c448",
+      "inventory_slug": "baineann-sceeal-ard-mhacha-leis-an-teach",
+      "estimated_characters": 40,
+      "estimated_credits": 40.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:16.687597+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "O7bStxWFGjqNFFcmU8f2",
+        "started_at": "2026-08-05T10:12:03.635675+00:00",
+        "completed_at": "2026-08-05T10:12:16.646780+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-ard-mhacha-leis-an-teach.mp3",
+        "sha256": "e983e29a91ed83cd3aca0005e35ccb3d6350257a4ef89249baf9c81e399cb075",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-teach-house.part-03.line.bcdb18e3a9249fb2",
+      "member_ids": [
+        "d32.armagh.10.teach.house.ask-what"
+      ],
+      "normalized_text": "Cad é an teach i Ard Mhacha?",
+      "text_sha256": "aaa87d76feb93f8a4ed5b4bd7987ff1daa2d8fb52f580da1ada85e7c174bf545",
+      "inventory_slug": "cad-ee-an-teach-i-ard-mhacha",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:12:16.687695+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Bes94Sm7PmOgvdbxCTOy",
+        "started_at": "2026-08-05T10:12:03.635675+00:00",
+        "completed_at": "2026-08-05T10:12:16.646780+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-teach-i-ard-mhacha.mp3",
+        "sha256": "e9e795720991f43803c8820cfea1fe04374b535eab897936aac1ef16942658a6",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 232.0,
+    "estimated_cumulative_credits": 89573.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 141159.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:12:03.635675+00:00",
+      "used_credits": 141159.0,
+      "remaining_credits": 94940.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:12:16.646780+00:00",
+      "used_credits": 141159.0,
+      "remaining_credits": 94940.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-teach-house.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "fa83d1d4a0728f2ccbeba5d80c6e56bd894ff47aa0f2cc63c9efe85df67c1934"
+}

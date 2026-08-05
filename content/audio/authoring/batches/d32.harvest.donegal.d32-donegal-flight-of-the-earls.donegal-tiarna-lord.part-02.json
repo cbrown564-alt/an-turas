@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tiarna-lord.part-02",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — donegal / d32.donegal.flight-of-the-earls / donegal.tiarna.lord",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tiarna-lord.part-02.line.1945a3ec8819430b",
+      "member_ids": [
+        "d32.donegal.08.tiarna.lord.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an tiarna ceart.",
+      "text_sha256": "b3bda6284287e164455c1a618345221bc98aa9deedb26c6356ebc6a3615e390a",
+      "inventory_slug": "roghnaigh-an-tiarna-ceart",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:31:50.108010+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "whTn7Nbaz1HXpGKYg35m",
+        "started_at": "2026-08-05T10:31:34.614050+00:00",
+        "completed_at": "2026-08-05T10:31:50.082018+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-tiarna-ceart.mp3",
+        "sha256": "d16de075fbc0d919d58cbc228b5c9b7ea86067eab35fe44f8791469795f426ed",
+        "bytes": 53333,
+        "duration_seconds": 2.16
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tiarna-lord.part-02.line.435604f820c13d70",
+      "member_ids": [
+        "d32.donegal.08.tiarna.lord.speak-about"
+      ],
+      "normalized_text": "Labhair faoin tiarna.",
+      "text_sha256": "92fd7913ef20ff954fdf400d205fc166d4c57aa8a4e21c5ac679a17ea3c59824",
+      "inventory_slug": "labhair-faoin-tiarna",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:31:50.108116+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "FBIK3RB1TA0GI4zsXyJH",
+        "started_at": "2026-08-05T10:31:34.614050+00:00",
+        "completed_at": "2026-08-05T10:31:50.082018+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-tiarna.mp3",
+        "sha256": "e52a91062b11ddd4647e90c22bd474b227c5bfd7f536cfeb649424eb1beffb07",
+        "bytes": 36406,
+        "duration_seconds": 1.44
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tiarna-lord.part-02.line.6aa1a0a2d94723db",
+      "member_ids": [
+        "d32.donegal.08.tiarna.lord.story-important"
+      ],
+      "normalized_text": "Tá an tiarna tábhachtach sa scéal.",
+      "text_sha256": "3f05cfb2a56c545717f2255f732faa991938947d0b90e0b4525b16041c9f6fa9",
+      "inventory_slug": "taa-an-tiarna-taabhachtach-sa-sceeal",
+      "estimated_characters": 34,
+      "estimated_credits": 34.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:31:50.108181+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "DXqAAGhlPYZwSB6Re1r9",
+        "started_at": "2026-08-05T10:31:34.614050+00:00",
+        "completed_at": "2026-08-05T10:31:50.082018+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-tiarna-taabhachtach-sa-sceeal.mp3",
+        "sha256": "fe9c570ab5cd8ee2b12c727d2c7e9ad99c5c0351e3c4d5aad926ff16de7ee534",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tiarna-lord.part-02.line.7294b1234676cb0e",
+      "member_ids": [
+        "d32.donegal.08.tiarna.lord.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an tiarna i Dún na nGall?",
+      "text_sha256": "996dd2075683515f17e02d7c729bfa2a60feea281526322a972b95bc76007abb",
+      "inventory_slug": "caa-bhfuil-an-tiarna-i-duun-na-ngall",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:31:50.108269+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "3jh0kO0rfutPbTFgfRRq",
+        "started_at": "2026-08-05T10:31:34.614050+00:00",
+        "completed_at": "2026-08-05T10:31:50.082018+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-tiarna-i-duun-na-ngall.mp3",
+        "sha256": "f3e471acc46cbc658d68e3dc5ad3c901ccc8558924372ed7b5cf80421cec0dc4",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tiarna-lord.part-02.line.738e868432f26006",
+      "member_ids": [
+        "d32.donegal.08.tiarna.lord.ask-what"
+      ],
+      "normalized_text": "Cad é an tiarna i Dún na nGall?",
+      "text_sha256": "9edfb5895da9cc317dfd426a301096eed2885dd212a43da27df15aee8e635031",
+      "inventory_slug": "cad-ee-an-tiarna-i-duun-na-ngall",
+      "estimated_characters": 31,
+      "estimated_credits": 31.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:31:50.108355+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "tqbIeOqB2V8DEWlOvlHS",
+        "started_at": "2026-08-05T10:31:34.614050+00:00",
+        "completed_at": "2026-08-05T10:31:50.082018+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-tiarna-i-duun-na-ngall.mp3",
+        "sha256": "a466bd408ed681d8d47713514115e0763351e7055e212004782ee6a4478977c4",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tiarna-lord.part-02.line.7986641d9afa9d0c",
+      "member_ids": [
+        "d32.donegal.08.tiarna.lord.listen-surround"
+      ],
+      "normalized_text": "Éist leis an tiarna i Dún na nGall.",
+      "text_sha256": "fc7a0b7489a0e9e99793264515b48d9af05073862118efd8a2d0f3f5795677cb",
+      "inventory_slug": "eeist-leis-an-tiarna-i-duun-na-ngall",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:31:50.108432+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "abdHMohx3fWDiwoAO0kN",
+        "started_at": "2026-08-05T10:31:34.614050+00:00",
+        "completed_at": "2026-08-05T10:31:50.082018+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-tiarna-i-duun-na-ngall.mp3",
+        "sha256": "528ad1154e757115f202dfef821733de1c97f51ba534569955484511ba53a76c",
+        "bytes": 65245,
+        "duration_seconds": 2.64
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tiarna-lord.part-02.line.7fe80550d7d3d6d2",
+      "member_ids": [
+        "d32.donegal.08.tiarna.lord.see-here"
+      ],
+      "normalized_text": "Feicim an tiarna anseo.",
+      "text_sha256": "87741eea76aa6e06a354cde49352145b6741ecd487d8f9dc9ad599d6ba8cd095",
+      "inventory_slug": "feicim-an-tiarna-anseo",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:31:50.108511+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "7Sqt0kLeQjtO6Ssbvle9",
+        "started_at": "2026-08-05T10:31:34.614050+00:00",
+        "completed_at": "2026-08-05T10:31:50.082018+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-tiarna-anseo.mp3",
+        "sha256": "9ead456f550fb1675fe6e3997992b88628b5dc2ca7c08c5bdc96a1cd3ded97a7",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tiarna-lord.part-02.line.a59fd1d87a0ebc64",
+      "member_ids": [
+        "d32.donegal.08.tiarna.lord.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Dún na nGall leis an tiarna.",
+      "text_sha256": "33eb294010a03d0c7ed5c3a46d87776383fea4dd2ba89270460395962e16d84c",
+      "inventory_slug": "baineann-sceeal-duun-na-ngall-leis-an-tiarna",
+      "estimated_characters": 43,
+      "estimated_credits": 43.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:31:50.108584+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "gqtUqvGyWgNvHmPZz3lw",
+        "started_at": "2026-08-05T10:31:34.614050+00:00",
+        "completed_at": "2026-08-05T10:31:50.082018+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-duun-na-ngall-leis-an-tiarna.mp3",
+        "sha256": "73ca8df49b07a4e1690551c756d429a04c654ee8b0d2e67accbcf2a547d0360a",
+        "bytes": 80292,
+        "duration_seconds": 3.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 248.0,
+    "estimated_cumulative_credits": 89589.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 149860.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:31:34.614050+00:00",
+      "used_credits": 149860.0,
+      "remaining_credits": 86239.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:31:50.082018+00:00",
+      "used_credits": 149860.0,
+      "remaining_credits": 86239.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tiarna-lord.part-02"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "d7947e8ea79837dd3e272a3d1dbf8a0b3d89b25cde1078031687172bb874c01c"
+}

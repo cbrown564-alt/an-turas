@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-ocras-hunger.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — derry / d32.derry.city-walls-siege / derry.ocras.hunger",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-ocras-hunger.part-03.line.107e5ba42a6c437d",
+      "member_ids": [
+        "d32.derry.04.ocras.hunger.story-important"
+      ],
+      "normalized_text": "Tá an ocras tábhachtach sa scéal.",
+      "text_sha256": "40a30c6ada688968e36905f767b397cbf5ab66ac1d718f5f2863681679751ff4",
+      "inventory_slug": "taa-an-ocras-taabhachtach-sa-sceeal",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:27:34.318783+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "iK4W7v1PWlgQoonTqX3Z",
+        "started_at": "2026-08-05T10:27:26.365706+00:00",
+        "completed_at": "2026-08-05T10:27:34.301719+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-ocras-taabhachtach-sa-sceeal.mp3",
+        "sha256": "a86126ad148089061038625f09b83cf01608baa02f9928d30cc08ea770dbddc3",
+        "bytes": 74649,
+        "duration_seconds": 3.04
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-ocras-hunger.part-03.line.4c2b3eac375ce879",
+      "member_ids": [
+        "d32.derry.04.ocras.hunger.speak-about"
+      ],
+      "normalized_text": "Labhair faoin ocras.",
+      "text_sha256": "8e18d87da787a02d8a4e93f7b70f92ec906a7c8f2d2f02b93b2b457f89cc9a46",
+      "inventory_slug": "labhair-faoin-ocras",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:27:34.318872+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "6XT6U0ePkRYHyxxcxYoN",
+        "started_at": "2026-08-05T10:27:26.365706+00:00",
+        "completed_at": "2026-08-05T10:27:34.301719+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-ocras.mp3",
+        "sha256": "f9d6509047d22d654d4a0fa3ebeb9e218ed61eeb4a88547447f6927c0d5a1c03",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-ocras-hunger.part-03.line.a9d846d24e12675d",
+      "member_ids": [
+        "d32.derry.04.ocras.hunger.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an ocras ceart.",
+      "text_sha256": "18da2ed0254d7e0b5b60c4dad3d8e39f10421e8912b0c65de0303b4349b76232",
+      "inventory_slug": "roghnaigh-an-ocras-ceart",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:27:34.318923+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "8slvCCXw11Z14x1Nn4Hd",
+        "started_at": "2026-08-05T10:27:26.365706+00:00",
+        "completed_at": "2026-08-05T10:27:34.301719+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-ocras-ceart.mp3",
+        "sha256": "ec267b814e2ea3a4c5ac0e4f68d0e05f3c580968b0361fe291b21e98ca700f99",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-ocras-hunger.part-03.line.b57a37abc3e42ad3",
+      "member_ids": [
+        "d32.derry.04.ocras.hunger.see-here"
+      ],
+      "normalized_text": "Feicim an ocras anseo.",
+      "text_sha256": "99624145d8b5acf0afb6786fa95bc0b0a30150f3e4bf52c92d628bec52249839",
+      "inventory_slug": "feicim-an-ocras-anseo",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:27:34.318968+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "GZQXbELwBxugPIKEP3S2",
+        "started_at": "2026-08-05T10:27:26.365706+00:00",
+        "completed_at": "2026-08-05T10:27:34.301719+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-ocras-anseo.mp3",
+        "sha256": "7270d41a9a3dcd989dd5a33111d7d96f4bcece4f8bc14ef615f89afb71bc6a95",
+        "bytes": 47691,
+        "duration_seconds": 1.92
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 100.0,
+    "estimated_cumulative_credits": 89441.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 148036.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:27:26.365706+00:00",
+      "used_credits": 148036.0,
+      "remaining_credits": 88063.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:27:34.301719+00:00",
+      "used_credits": 148036.0,
+      "remaining_credits": 88063.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.derry.d32-derry-city-walls-siege.derry-ocras-hunger.part-03"
+    }
+  },
+  "counts": {
+    "lines": 4,
+    "member_references": 4,
+    "planned": 0,
+    "approved": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "7f8aa96c2a1290a382ae7b08e110eedbe1b73d2f4cb1365e1ea13509b90f50b1"
+}

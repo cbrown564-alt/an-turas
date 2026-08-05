@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-caislean-castle.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — fermanagh / d32.fermanagh.enniskillen-castle / fermanagh.caislean.castle",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-caislean-castle.part-03.line.0e8ea7f75369fcb3",
+      "member_ids": [
+        "d32.fermanagh.01.caislean.castle.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an caisleán ceart i Fear Manach.",
+      "text_sha256": "f633aafa021423072247f721078f308588529c8f3b41a15394742e6438ad5b6f",
+      "inventory_slug": "roghnaigh-an-caisleaan-ceart-i-fear-manach",
+      "estimated_characters": 42,
+      "estimated_credits": 42.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:40:29.625162+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "olUKsQqW88LNywlS2AUi",
+        "started_at": "2026-08-05T10:40:20.163342+00:00",
+        "completed_at": "2026-08-05T10:40:29.596128+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-caisleaan-ceart-i-fear-manach.mp3",
+        "sha256": "d7ffaecfb765b0b32bf23ef5b67b4bc3a4eb0553d2c75b1babeac16826c2cc91",
+        "bytes": 87815,
+        "duration_seconds": 3.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-caislean-castle.part-03.line.54a5a4593623c4fb",
+      "member_ids": [
+        "d32.fermanagh.01.caislean.castle.speak-about"
+      ],
+      "normalized_text": "Labhair faoin caisleán i Fear Manach.",
+      "text_sha256": "aa988fdc9cd8f4a084ea5b119d076607e052b0abf41445a12308e89430e9f3ea",
+      "inventory_slug": "labhair-faoin-caisleaan-i-fear-manach",
+      "estimated_characters": 37,
+      "estimated_credits": 37.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:40:29.625276+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "z6q4hHuLk6hwEtC3ekZf",
+        "started_at": "2026-08-05T10:40:20.163342+00:00",
+        "completed_at": "2026-08-05T10:40:29.596128+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-caisleaan-i-fear-manach.mp3",
+        "sha256": "7c4590cdbb69e6b8df108e596245278e3f65215577bc7a6de209380af03586a4",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-caislean-castle.part-03.line.c0f9a9e60c21490b",
+      "member_ids": [
+        "d32.fermanagh.01.caislean.castle.see-here"
+      ],
+      "normalized_text": "Feicim an caisleán i Fear Manach.",
+      "text_sha256": "88b1d949c0b6c9e68886498775a41ac86cbb73a28fc4d71a7c780ae03d3156bb",
+      "inventory_slug": "feicim-an-caisleaan-i-fear-manach",
+      "estimated_characters": 33,
+      "estimated_credits": 33.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:40:29.625359+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "lkdWQwPF9jfVRzJMtwJY",
+        "started_at": "2026-08-05T10:40:20.163342+00:00",
+        "completed_at": "2026-08-05T10:40:29.596128+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-caisleaan-i-fear-manach.mp3",
+        "sha256": "a71d74a24aef00d70e1204901fbb04d41774a11d5549d75b0c6985b747e00005",
+        "bytes": 72769,
+        "duration_seconds": 2.96
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-caislean-castle.part-03.line.d164bf0faceb8759",
+      "member_ids": [
+        "d32.fermanagh.01.caislean.castle.story-important"
+      ],
+      "normalized_text": "Tá an caisleán tábhachtach i scéal Fear Manach.",
+      "text_sha256": "8a188f51e29c5988834ada93cd6c9fa1f23cfd849f6d5d9334abdd0f9951b368",
+      "inventory_slug": "taa-an-caisleaan-taabhachtach-i-sceeal-fear-manach",
+      "estimated_characters": 47,
+      "estimated_credits": 47.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:40:29.625471+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "bYsSwfOlrnzh2ymX0r6A",
+        "started_at": "2026-08-05T10:40:20.163342+00:00",
+        "completed_at": "2026-08-05T10:40:29.596128+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-caisleaan-taabhachtach-i-sceeal-fear-manach.mp3",
+        "sha256": "b3881f633a6540e9cc72f72fd49c089f99173187508056d63f27d52d6bc6fe76",
+        "bytes": 93457,
+        "duration_seconds": 3.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 159.0,
+    "estimated_cumulative_credits": 89500.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 153677.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:40:20.163342+00:00",
+      "used_credits": 153677.0,
+      "remaining_credits": 82422.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:40:29.596128+00:00",
+      "used_credits": 153677.0,
+      "remaining_credits": 82422.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-caislean-castle.part-03"
+    }
+  },
+  "counts": {
+    "lines": 4,
+    "member_references": 4,
+    "planned": 0,
+    "approved": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "fcc966df7f6a08ecbc021dbffc4a25bd41568dbc6743bc19068f26cb8fc4b038"
+}

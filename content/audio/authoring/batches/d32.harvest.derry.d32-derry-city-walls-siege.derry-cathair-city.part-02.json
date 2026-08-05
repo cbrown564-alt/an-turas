@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-cathair-city.part-02",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — derry / d32.derry.city-walls-siege / derry.cathair.city",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-cathair-city.part-02.line.1cfdfd166d6a8894",
+      "member_ids": [
+        "d32.derry.06.cathair.city.speak-about"
+      ],
+      "normalized_text": "Labhair faoin cathair i Doire.",
+      "text_sha256": "2bbcdd2b2543b3064310e01162b2ddd34f3c69389a1f3e6d85c606eb4b767bab",
+      "inventory_slug": "labhair-faoin-cathair-i-doire",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:51.398602+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "xdzAN5TYas7Z7CrUg12I",
+        "started_at": "2026-08-05T10:25:37.611823+00:00",
+        "completed_at": "2026-08-05T10:25:51.367714+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-cathair-i-doire.mp3",
+        "sha256": "9fd1d91174ed8e5941fdf1a4055880ac24c7a735dfd28a14dcb89562d5b1be1c",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-cathair-city.part-02.line.2ae80db687baf187",
+      "member_ids": [
+        "d32.derry.06.cathair.city.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an cathair ceart i Doire.",
+      "text_sha256": "73241302a130e1ebf1dc96170298548a3e2da74ba73a98699a61e57d308f6a78",
+      "inventory_slug": "roghnaigh-an-cathair-ceart-i-doire",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:51.398690+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "QL14USNWXaB0IOkmbQAp",
+        "started_at": "2026-08-05T10:25:37.611823+00:00",
+        "completed_at": "2026-08-05T10:25:51.367714+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-cathair-ceart-i-doire.mp3",
+        "sha256": "46b915e85e14bd06ec285f8dd96fede2be166514f2a85c7598159fc54f230eae",
+        "bytes": 67126,
+        "duration_seconds": 2.72
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-cathair-city.part-02.line.35796fd4b8ccb073",
+      "member_ids": [
+        "d32.derry.06.cathair.city.see-here"
+      ],
+      "normalized_text": "Feicim an cathair i Doire.",
+      "text_sha256": "b2d69b2cab69c989b5b7cf7e5369efa31492f4df3a9075a77c789c977f5adba2",
+      "inventory_slug": "feicim-an-cathair-i-doire",
+      "estimated_characters": 26,
+      "estimated_credits": 26.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:51.398764+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "JM6wjloNkTsXy4Sq7N6X",
+        "started_at": "2026-08-05T10:25:37.611823+00:00",
+        "completed_at": "2026-08-05T10:25:51.367714+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-cathair-i-doire.mp3",
+        "sha256": "073adc6a494bcce2150c1e8ad501cd0fde1d34ebb9777527ecdc707a74c25bd9",
+        "bytes": 49572,
+        "duration_seconds": 2.0
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-cathair-city.part-02.line.9f7b7b2d5245fcb8",
+      "member_ids": [
+        "d32.derry.06.cathair.city.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an cathair i Doire?",
+      "text_sha256": "832a85dbfdc8365d09f7786311a5d8998f4b8ace9f3e6112527f4059519c440d",
+      "inventory_slug": "caa-bhfuil-an-cathair-i-doire",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:51.398821+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "PdJTTtgOsxm1kTWWMxc7",
+        "started_at": "2026-08-05T10:25:37.611823+00:00",
+        "completed_at": "2026-08-05T10:25:51.367714+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-cathair-i-doire.mp3",
+        "sha256": "d3601763fab807e004ba14eac86738f501cffaaf605ce314de49e50345746ae9",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-cathair-city.part-02.line.a0b41e31b4c1652e",
+      "member_ids": [
+        "d32.derry.06.cathair.city.listen-surround"
+      ],
+      "normalized_text": "Éist leis an cathair i Doire.",
+      "text_sha256": "777901620539d5d2b5803f7998052bfbb2a0abca0b62b2ba8a0fb00517ae2445",
+      "inventory_slug": "eeist-leis-an-cathair-i-doire",
+      "estimated_characters": 29,
+      "estimated_credits": 29.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:51.398890+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "XhqaIz7WCUSgT4ASdZhu",
+        "started_at": "2026-08-05T10:25:37.611823+00:00",
+        "completed_at": "2026-08-05T10:25:51.367714+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-cathair-i-doire.mp3",
+        "sha256": "f3cbbcbf6dc083cc6e0d02137d3faee9aca8586ac205776580a2ea10ab4edb52",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-cathair-city.part-02.line.cd338894b8fdb9de",
+      "member_ids": [
+        "d32.derry.06.cathair.city.story-concerns"
+      ],
+      "normalized_text": "Baineann scéal Doire leis an cathair.",
+      "text_sha256": "0aad6495b8511147aec21a4a5424e74e77e9e10d5eb5c92adfd46c3af9578774",
+      "inventory_slug": "baineann-sceeal-doire-leis-an-cathair",
+      "estimated_characters": 37,
+      "estimated_credits": 37.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:51.398991+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "a328U2kLg8fVLXDp5kkm",
+        "started_at": "2026-08-05T10:25:37.611823+00:00",
+        "completed_at": "2026-08-05T10:25:51.367714+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-sceeal-doire-leis-an-cathair.mp3",
+        "sha256": "db15fb2437bad33911133bf949bdd017c6dbd4e05365678f2bc62fbdabd091a7",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-cathair-city.part-02.line.d264af737e748931",
+      "member_ids": [
+        "d32.derry.06.cathair.city.ask-what"
+      ],
+      "normalized_text": "Cad é an cathair i Doire?",
+      "text_sha256": "f05051f7e8ec2534e6ddb5dac2cd275e9fbb84f36af657ad5ffbfe5ed5f3cd5f",
+      "inventory_slug": "cad-ee-an-cathair-i-doire",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:51.399099+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "Ju7hvpgdLGYqpIYxTj1r",
+        "started_at": "2026-08-05T10:25:37.611823+00:00",
+        "completed_at": "2026-08-05T10:25:51.367714+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-cathair-i-doire.mp3",
+        "sha256": "c3034c2779e228206c5a3cad5921e207c0ff400b0465eec2d2b319974074a06b",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.derry.d32-derry-city-walls-siege.derry-cathair-city.part-02.line.e84fe884283cff66",
+      "member_ids": [
+        "d32.derry.06.cathair.city.story-important"
+      ],
+      "normalized_text": "Tá an cathair tábhachtach i scéal Doire.",
+      "text_sha256": "8e4c521bb5c8e790e2358fa159a47cb0e9c33ba6bc80c9aff5c5915fd5010cb7",
+      "inventory_slug": "taa-an-cathair-taabhachtach-i-sceeal-doire",
+      "estimated_characters": 40,
+      "estimated_credits": 40.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:25:51.399199+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "El7qAA5XUcwc46CDcFT0",
+        "started_at": "2026-08-05T10:25:37.611823+00:00",
+        "completed_at": "2026-08-05T10:25:51.367714+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-cathair-taabhachtach-i-sceeal-doire.mp3",
+        "sha256": "9573a27b6e269dd06b619db05f019996608e8916f548a66046463b6074fca6de",
+        "bytes": 78411,
+        "duration_seconds": 3.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 251.0,
+    "estimated_cumulative_credits": 89592.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 147532.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:25:37.611823+00:00",
+      "used_credits": 147532.0,
+      "remaining_credits": 88567.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:25:51.367714+00:00",
+      "used_credits": 147532.0,
+      "remaining_credits": 88567.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.derry.d32-derry-city-walls-siege.derry-cathair-city.part-02"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "2bed3673508d02f535548560edf74bc6a9096f873c5905d112aa940cf24a7cdb"
+}

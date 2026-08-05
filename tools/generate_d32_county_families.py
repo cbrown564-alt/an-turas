@@ -28,8 +28,8 @@ ATLAS_PATH = ROOT / "content/audio/atlas-headwords-v1.json"
 STORE_PATH = ROOT / "content/audio/authoring/phrase-family-store-v2.json"
 USES_PATH = ROOT / "content/audio/authoring/d32-county-harvest-uses.json"
 
-A2_AUTHOR_REF = "track-a.a2-story-dialogue"
-A2_COMPLETED_AT = "2026-08-03"
+A2_AUTHOR_REF = "track-a.a2-story-dialogue.cycle-2"
+A2_COMPLETED_AT = "2026-08-05"
 
 QUEUE_02_EVIDENCE_LED = (
     "cork",
@@ -469,14 +469,30 @@ def load_existing_unique_texts(store: dict) -> set[str]:
 
 
 def family_index_by_placement(store: dict) -> dict[str, dict[str, str]]:
+    """Map atlas placements to host families for A2 dialogue expansion.
+
+    Prefer non-contrast families when a placement is shared. Contrast documents
+    are listening-pair hosts and must not receive story-dialogue role members or
+    steal exercise bindings from the primary county family.
+    """
     index: dict[str, dict[str, str]] = {}
     for family_ref in store.get("family_documents", []):
         family = json.loads((ROOT / family_ref["path"]).read_text(encoding="utf-8"))
+        family_id = family["id"]
+        is_contrast = ".contrast." in family_id
         for placement in family.get("atlas_placements", []):
             placement_id = placement.get("id")
-            if isinstance(placement_id, str) and placement_id:
+            if not isinstance(placement_id, str) or not placement_id:
+                continue
+            existing = index.get(placement_id)
+            if existing is None:
                 index[placement_id] = {
-                    "family_id": family["id"],
+                    "family_id": family_id,
+                    "path": family_ref["path"],
+                }
+            elif ".contrast." in existing["family_id"] and not is_contrast:
+                index[placement_id] = {
+                    "family_id": family_id,
                     "path": family_ref["path"],
                 }
     return index

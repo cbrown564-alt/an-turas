@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-ardeaglais-cathedral.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — armagh / d32.armagh.book-of-armagh / armagh.ardeaglais.cathedral",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-ardeaglais-cathedral.part-03.line.3d670c269c75550f",
+      "member_ids": [
+        "d32.armagh.06.ardeaglais.cathedral.speak-about"
+      ],
+      "normalized_text": "Labhair faoin ardeaglais.",
+      "text_sha256": "75bd248f24d1c4b29af7347965d9c80b15985b49d24b4f02eb626da5fc463e5a",
+      "inventory_slug": "labhair-faoin-ardeaglais",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:54:28.045785+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "1H8EzrSKrD5BQPsdwMma",
+        "started_at": "2026-08-05T09:54:14.489171+00:00",
+        "completed_at": "2026-08-05T09:54:28.007335+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-ardeaglais.mp3",
+        "sha256": "337e8621a6a18f0c404fbd50aed81e10c47baf8470d79f9cd703592365daaa3c",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-ardeaglais-cathedral.part-03.line.4958af09782de6ea",
+      "member_ids": [
+        "d32.armagh.06.ardeaglais.cathedral.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an ardeaglais?",
+      "text_sha256": "b58a5b88753b642b59d870d57d799aac45e3d46e23d48f438b842e5f28cca6cc",
+      "inventory_slug": "caa-bhfuil-an-ardeaglais",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:54:28.045880+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "MRu8AV3n4KkbkD1pBpni",
+        "started_at": "2026-08-05T09:54:14.489171+00:00",
+        "completed_at": "2026-08-05T09:54:28.007335+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-ardeaglais.mp3",
+        "sha256": "6e32c49935462d2f00d812887066ca170ea804a4c56cd81e928596535319b5c6",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-ardeaglais-cathedral.part-03.line.5f072ff1ce904e1c",
+      "member_ids": [
+        "d32.armagh.06.ardeaglais.cathedral.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an ardeaglais ceart.",
+      "text_sha256": "231d6797d814283d1f74661798cf57b2b0347176b9d5b4b64b8424f8bc441568",
+      "inventory_slug": "roghnaigh-an-ardeaglais-ceart",
+      "estimated_characters": 30,
+      "estimated_credits": 30.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:54:28.045963+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "uf2nyeQBl6gOKLGWdrKP",
+        "started_at": "2026-08-05T09:54:14.489171+00:00",
+        "completed_at": "2026-08-05T09:54:28.007335+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-ardeaglais-ceart.mp3",
+        "sha256": "7141fc9c8e7da2befa5a4758b703beef9fbd1de952d1b70949d82bb119f45161",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-ardeaglais-cathedral.part-03.line.94ef11319836d554",
+      "member_ids": [
+        "d32.armagh.06.ardeaglais.cathedral.story-important"
+      ],
+      "normalized_text": "Tá an ardeaglais tábhachtach sa scéal.",
+      "text_sha256": "30c7e08110e0406e413ba42cb7ea37c2ac56e7686fef2e1eec28427545650dc2",
+      "inventory_slug": "taa-an-ardeaglais-taabhachtach-sa-sceeal",
+      "estimated_characters": 38,
+      "estimated_credits": 38.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:54:28.046053+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "gBTKJz9j9FmHIoGnv3Fv",
+        "started_at": "2026-08-05T09:54:14.489171+00:00",
+        "completed_at": "2026-08-05T09:54:28.007335+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-ardeaglais-taabhachtach-sa-sceeal.mp3",
+        "sha256": "bdd8767c3f18b02a0ba5659d6f84eabe96cadf701a4f7829233a2aaa6a1c0379",
+        "bytes": 80292,
+        "duration_seconds": 3.28
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-ardeaglais-cathedral.part-03.line.c12bd6020b536f09",
+      "member_ids": [
+        "d32.armagh.06.ardeaglais.cathedral.see-here"
+      ],
+      "normalized_text": "Feicim an ardeaglais anseo.",
+      "text_sha256": "cb60941bf321a6f3cb806365c3e693617142b3114db46cbf1f25bf5d9975e91a",
+      "inventory_slug": "feicim-an-ardeaglais-anseo",
+      "estimated_characters": 27,
+      "estimated_credits": 27.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:54:28.046159+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "R0foI164ik1H8qaoQx4u",
+        "started_at": "2026-08-05T09:54:14.489171+00:00",
+        "completed_at": "2026-08-05T09:54:28.007335+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-ardeaglais-anseo.mp3",
+        "sha256": "c3aef763011d371f7e347696f09d8f2184668d25433d1db0e541d595d892dbdb",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-ardeaglais-cathedral.part-03.line.d8c0ca2341e827bc",
+      "member_ids": [
+        "d32.armagh.06.ardeaglais.cathedral.listen-surround"
+      ],
+      "normalized_text": "Éist leis an ardeaglais.",
+      "text_sha256": "e99af1f69187e2c45afa8300219822871c2b439a670d213a38b8bdefc83347cd",
+      "inventory_slug": "eeist-leis-an-ardeaglais",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:54:28.046245+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "LRh6McE906hIXBii2mXi",
+        "started_at": "2026-08-05T09:54:14.489171+00:00",
+        "completed_at": "2026-08-05T09:54:28.007335+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-ardeaglais.mp3",
+        "sha256": "f3867cb9241943d5e6d8c7cd2e46c7709873de8197afb7a2c9b1947735bd90ce",
+        "bytes": 51453,
+        "duration_seconds": 2.08
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-ardeaglais-cathedral.part-03.line.e3b4a7e01f58110f",
+      "member_ids": [
+        "d32.armagh.06.ardeaglais.cathedral.ask-what"
+      ],
+      "normalized_text": "Cad é an ardeaglais?",
+      "text_sha256": "e3c8d3a389a01ab127ac35e2a0856f76d47e6605b57c4efa4aaebb2282f5c041",
+      "inventory_slug": "cad-ee-an-ardeaglais",
+      "estimated_characters": 20,
+      "estimated_credits": 20.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:54:28.046324+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "QwuFHUmEnhlDvBEMPUFC",
+        "started_at": "2026-08-05T09:54:14.489171+00:00",
+        "completed_at": "2026-08-05T09:54:28.007335+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-ardeaglais.mp3",
+        "sha256": "17ff0fad5272a6f30b791023821731009e3829bb2de4f0b7c70286d85a2db3bb",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-ardeaglais-cathedral.part-03.line.f45ff0b852a6d954",
+      "member_ids": [
+        "d32.armagh.06.ardeaglais.cathedral.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an ardeaglais.",
+      "text_sha256": "88a8f6fd2058103d487a922df4bb068651cdfcc2d94dc05c383e22b766747fa4",
+      "inventory_slug": "baineann-an-sceeal-leis-an-ardeaglais",
+      "estimated_characters": 37,
+      "estimated_credits": 37.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T09:54:28.046397+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "7lieLGTRBn8AMOL8jVP7",
+        "started_at": "2026-08-05T09:54:14.489171+00:00",
+        "completed_at": "2026-08-05T09:54:28.007335+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-ardeaglais.mp3",
+        "sha256": "fd389c2f71c99600b402967d978ca4880d60e388cc112e275f4defe153adb81d",
+        "bytes": 70888,
+        "duration_seconds": 2.88
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 225.0,
+    "estimated_cumulative_credits": 89566.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 140091.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T09:54:14.489171+00:00",
+      "used_credits": 140091.0,
+      "remaining_credits": 96008.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T09:54:28.007335+00:00",
+      "used_credits": 140091.0,
+      "remaining_credits": 96008.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-ardeaglais-cathedral.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "7bb75b6e1535eeda24ce9c7891a0fe8469d3ef4bc751ccd48eec01695b70b738"
+}

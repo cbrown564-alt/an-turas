@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-loch-lake.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — cavan / d32.cavan.oreillys-east-breifne / cavan.loch.lake",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-loch-lake.part-03.line.275e012d45cb88d1",
+      "member_ids": [
+        "d32.cavan.01.loch.lake.see-here"
+      ],
+      "normalized_text": "Feicim an loch anseo.",
+      "text_sha256": "37eb4b07cc97876749e1472c267e50ac54a70dff217fe7e710569f5fe50af725",
+      "inventory_slug": "feicim-an-loch-anseo",
+      "estimated_characters": 21,
+      "estimated_credits": 21.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:26.892667+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "101cuBUy82JPvLqaKT1u",
+        "started_at": "2026-08-05T10:17:20.503820+00:00",
+        "completed_at": "2026-08-05T10:17:26.854182+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-loch-anseo.mp3",
+        "sha256": "53ff4de98c32803f407b457953d1024be98dfa1582521f3b4845d40eaa97c172",
+        "bytes": 42049,
+        "duration_seconds": 1.68
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-loch-lake.part-03.line.e0e28ee704619865",
+      "member_ids": [
+        "d32.cavan.01.loch.lake.speak-about"
+      ],
+      "normalized_text": "Labhair faoin loch.",
+      "text_sha256": "14a71a1fb69c671c9bf95ea09710dc0408473d31e3694544261f6e4666f9aa81",
+      "inventory_slug": "labhair-faoin-loch",
+      "estimated_characters": 19,
+      "estimated_credits": 19.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:26.892776+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "rqJ5FIdOcMS3fe1MhlFn",
+        "started_at": "2026-08-05T10:17:20.503820+00:00",
+        "completed_at": "2026-08-05T10:17:26.854182+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-loch.mp3",
+        "sha256": "fad495d27a437a4ed1cfb1bba91928f5738bee23e80332816afee1fed7ce2251",
+        "bytes": 30137,
+        "duration_seconds": 1.2
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-loch-lake.part-03.line.e6858f38bb614300",
+      "member_ids": [
+        "d32.cavan.01.loch.lake.story-important"
+      ],
+      "normalized_text": "Tá an loch tábhachtach sa scéal.",
+      "text_sha256": "e485225819f57fce68992064e4254e42829b886fe5d5d86d00a9983101b1a01f",
+      "inventory_slug": "taa-an-loch-taabhachtach-sa-sceeal",
+      "estimated_characters": 32,
+      "estimated_credits": 32.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:26.892851+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "hea75UYFm8wVSZ27wUz2",
+        "started_at": "2026-08-05T10:17:20.503820+00:00",
+        "completed_at": "2026-08-05T10:17:26.854182+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-loch-taabhachtach-sa-sceeal.mp3",
+        "sha256": "6c625603ca69428126294d7420b5482c3aff518c457cb520b650dcb33eed9672",
+        "bytes": 69007,
+        "duration_seconds": 2.8
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-loch-lake.part-03.line.fe7d2b9ca42f8d77",
+      "member_ids": [
+        "d32.cavan.01.loch.lake.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an loch ceart.",
+      "text_sha256": "3debb52e3bff6e73dc9fb36875a98bc84b14eeed9b022f7aeb70d2f6ce4dd368",
+      "inventory_slug": "roghnaigh-an-loch-ceart",
+      "estimated_characters": 24,
+      "estimated_credits": 24.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:17:26.892959+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "3tI9rMQSHZwtFYiwwqwb",
+        "started_at": "2026-08-05T10:17:20.503820+00:00",
+        "completed_at": "2026-08-05T10:17:26.854182+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-loch-ceart.mp3",
+        "sha256": "5b7d80c9efe35200d65b73b5058b36724ccbbad6dcd77e8a6702dc232d1b4a7f",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 96.0,
+    "estimated_cumulative_credits": 89437.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 143422.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:17:20.503820+00:00",
+      "used_credits": 143422.0,
+      "remaining_credits": 92677.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:17:26.854182+00:00",
+      "used_credits": 143422.0,
+      "remaining_credits": 92677.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.cavan.d32-cavan-oreillys-east-breifne.cavan-loch-lake.part-03"
+    }
+  },
+  "counts": {
+    "lines": 4,
+    "member_references": 4,
+    "planned": 0,
+    "approved": 4,
+    "succeeded": 4,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "91fee59825ed941bc956e0688b647bfa48fc834a6f032609ab9c194dd7fe7f39"
+}

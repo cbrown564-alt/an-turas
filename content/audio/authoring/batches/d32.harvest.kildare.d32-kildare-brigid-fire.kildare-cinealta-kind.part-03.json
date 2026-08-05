@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "contract": "irish_generation_batch",
+  "batch_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-cinealta-kind.part-03",
+  "created_at": "2026-08-05T09:00:00Z",
+  "purpose": "D32 emergency harvest — kildare / d32.kildare.brigid-fire / kildare.cinealta.kind",
+  "voice_profile": {
+    "id": "voice.irish-cultural-guide.eleven-v3.v1",
+    "revision": 1,
+    "provider": "ElevenLabs",
+    "voice_name": "Irish Cultural Guide",
+    "voice_id": "NPWroowF4phQhaPWjXPj",
+    "model_id": "eleven_v3",
+    "language_code": "ga",
+    "output_format": "mp3_44100_192",
+    "voice_settings": {
+      "mode": "provider_defaults",
+      "overrides": {}
+    }
+  },
+  "execution": {
+    "state": "approved",
+    "provider_calls_allowed": true,
+    "approved_by": "user.d32.track-c.2026-08-05",
+    "approved_at": "2026-08-05T09:30:00Z"
+  },
+  "lines": [
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-cinealta-kind.part-03.line.0984f74134b6f317",
+      "member_ids": [
+        "d32.kildare.05.cinealta.kind.choose-surround"
+      ],
+      "normalized_text": "Roghnaigh an cineálta ceart.",
+      "text_sha256": "82bc65b602ce8dc603c11aab8df70fb2d8f3fc1751fca5217579876d148e06dc",
+      "inventory_slug": "roghnaigh-an-cineaalta-ceart",
+      "estimated_characters": 28,
+      "estimated_credits": 28.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:17.100038+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "yBwqbVTzAPRSFgEFqTMM",
+        "started_at": "2026-08-05T10:48:04.148368+00:00",
+        "completed_at": "2026-08-05T10:48:17.073605+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/roghnaigh-an-cineaalta-ceart.mp3",
+        "sha256": "0db2149f450fa3f65b56a4cbe6d1a1484d9bc84bf889b6d16188c03377a480b6",
+        "bytes": 58976,
+        "duration_seconds": 2.4
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-cinealta-kind.part-03.line.3ea4277b419b5413",
+      "member_ids": [
+        "d32.kildare.05.cinealta.kind.speak-about"
+      ],
+      "normalized_text": "Labhair faoin cineálta.",
+      "text_sha256": "382d2077b6c57a6246d60189fe54cc131d5293ea302b0a18baa868706ece463c",
+      "inventory_slug": "labhair-faoin-cineaalta",
+      "estimated_characters": 23,
+      "estimated_credits": 23.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:17.100127+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "TXbRBUYPlaa1qQPxgrgf",
+        "started_at": "2026-08-05T10:48:04.148368+00:00",
+        "completed_at": "2026-08-05T10:48:17.073605+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/labhair-faoin-cineaalta.mp3",
+        "sha256": "785f297edea66707de28778a88518342f3ffc20982509a518d85e424e7d22de8",
+        "bytes": 45810,
+        "duration_seconds": 1.84
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-cinealta-kind.part-03.line.520f59eda3943bbd",
+      "member_ids": [
+        "d32.kildare.05.cinealta.kind.ask-where"
+      ],
+      "normalized_text": "Cá bhfuil an cineálta?",
+      "text_sha256": "2a772b106ba4ecabd4ab527786b9200113ab981a12bcaed10f2f12aa38603f52",
+      "inventory_slug": "caa-bhfuil-an-cineaalta",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:17.100179+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "nh0pxLrC2oksMknf1TSL",
+        "started_at": "2026-08-05T10:48:04.148368+00:00",
+        "completed_at": "2026-08-05T10:48:17.073605+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/caa-bhfuil-an-cineaalta.mp3",
+        "sha256": "8fceaaad56f8f022739e1ca7ac36cdb69731a04cadfa1f7df951ee20f971a925",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-cinealta-kind.part-03.line.78903a2dedc46b9c",
+      "member_ids": [
+        "d32.kildare.05.cinealta.kind.story-concerns"
+      ],
+      "normalized_text": "Baineann an scéal leis an cineálta.",
+      "text_sha256": "8ee5942bd82a8e8fb334fbdfd5c786a9f198bfe2e0f49cdcf130d770c6b7fe99",
+      "inventory_slug": "baineann-an-sceeal-leis-an-cineaalta",
+      "estimated_characters": 35,
+      "estimated_credits": 35.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:17.100225+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "9HdADppYOwvyETSSZJDl",
+        "started_at": "2026-08-05T10:48:04.148368+00:00",
+        "completed_at": "2026-08-05T10:48:17.073605+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/baineann-an-sceeal-leis-an-cineaalta.mp3",
+        "sha256": "014b4b3efd8ee09f54e3a5306b14e85eae87b9d85233a1964298ff47c88fc366",
+        "bytes": 62737,
+        "duration_seconds": 2.56
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-cinealta-kind.part-03.line.9491019f9a6ad35a",
+      "member_ids": [
+        "d32.kildare.05.cinealta.kind.listen-surround"
+      ],
+      "normalized_text": "Éist leis an cineálta.",
+      "text_sha256": "97c9e1f56d1d6595a340c5160739b763a2dba0ae3284f91fa962161c7a303cb0",
+      "inventory_slug": "eeist-leis-an-cineaalta",
+      "estimated_characters": 22,
+      "estimated_credits": 22.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:17.100281+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "E6YqUV6V30keSZ0xkv2d",
+        "started_at": "2026-08-05T10:48:04.148368+00:00",
+        "completed_at": "2026-08-05T10:48:17.073605+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/eeist-leis-an-cineaalta.mp3",
+        "sha256": "b7ca3b9a8b2032fd5d93a423ff833a983882527057c57622815ca356464b836a",
+        "bytes": 43929,
+        "duration_seconds": 1.76
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-cinealta-kind.part-03.line.da4aca8abf09eaa6",
+      "member_ids": [
+        "d32.kildare.05.cinealta.kind.ask-what"
+      ],
+      "normalized_text": "Cad é an cineálta?",
+      "text_sha256": "fc19e1d0689bad92affdeab96031006e5aef288c0fc25338786659142c68d3d5",
+      "inventory_slug": "cad-ee-an-cineaalta",
+      "estimated_characters": 18,
+      "estimated_credits": 18.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:17.100325+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "r5m1ud768zR6DDfDV2D7",
+        "started_at": "2026-08-05T10:48:04.148368+00:00",
+        "completed_at": "2026-08-05T10:48:17.073605+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/cad-ee-an-cineaalta.mp3",
+        "sha256": "6cef86f7362d7907a1321ab1d384f488b507671bd331d3ccb7bd179d99c6a458",
+        "bytes": 40168,
+        "duration_seconds": 1.6
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-cinealta-kind.part-03.line.df266afd7fe02288",
+      "member_ids": [
+        "d32.kildare.05.cinealta.kind.story-important"
+      ],
+      "normalized_text": "Tá an cineálta tábhachtach sa scéal.",
+      "text_sha256": "0288ab8da09009778229a919b001d610c038d04332bf2097196097bfa353951d",
+      "inventory_slug": "taa-an-cineaalta-taabhachtach-sa-sceeal",
+      "estimated_characters": 36,
+      "estimated_credits": 36.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:17.100368+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "VVrWVAcllNaom6HVwjxq",
+        "started_at": "2026-08-05T10:48:04.148368+00:00",
+        "completed_at": "2026-08-05T10:48:17.073605+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/taa-an-cineaalta-taabhachtach-sa-sceeal.mp3",
+        "sha256": "88955ccbb2e801630096a38d2269bd3d612cd26bcf997d1d2c8c91b63ab1e9d6",
+        "bytes": 82173,
+        "duration_seconds": 3.36
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    },
+    {
+      "line_id": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-cinealta-kind.part-03.line.f9d3aea39deeec5a",
+      "member_ids": [
+        "d32.kildare.05.cinealta.kind.see-here"
+      ],
+      "normalized_text": "Feicim an cineálta anseo.",
+      "text_sha256": "26bd6723533b7ddcac8861b7bad8d7a208603cdaf56b67c33c51d589f86315f7",
+      "inventory_slug": "feicim-an-cineaalta-anseo",
+      "estimated_characters": 25,
+      "estimated_credits": 25.0,
+      "capture_disposition": "generated_unreviewed",
+      "claim": {
+        "status": "completed",
+        "owner_id": "codex.track-c.d32-cycle2-drain",
+        "claimed_at": "2026-08-05T09:30:00Z",
+        "lease_expires_at": "2026-08-14T00:00:00Z"
+      },
+      "request": {
+        "status": "approved",
+        "approved_by": "user.d32.track-c.2026-08-05",
+        "approved_at": "2026-08-05T09:30:00Z"
+      },
+      "retry": {
+        "attempt_count": 1,
+        "max_attempts": 3,
+        "last_attempt_at": "2026-08-05T10:48:17.100437+00:00",
+        "next_retry_at": null
+      },
+      "provider_result": {
+        "status": "succeeded",
+        "provider_request_id": "w5LM4BQmVk2Y0zgDCipj",
+        "started_at": "2026-08-05T10:48:04.148368+00:00",
+        "completed_at": "2026-08-05T10:48:17.073605+00:00",
+        "reported_credits": null,
+        "reported_characters": null
+      },
+      "error": null,
+      "audio": {
+        "output_path": "ios/AnTuras/Resources/Audio/feicim-an-cineaalta-anseo.mp3",
+        "sha256": "6ab9d025563b624322f3223571bf014099b32df20f89d346c667427c44af9ff2",
+        "bytes": 55214,
+        "duration_seconds": 2.24
+      },
+      "audio_qa": {
+        "status": "pending",
+        "record": null
+      }
+    }
+  ],
+  "spend": {
+    "approved_cap": 25000,
+    "estimate_basis": "estimated_credits = Unicode character count × credits_per_character",
+    "credits_per_character": 1.0,
+    "estimated_batch_credits": 209.0,
+    "estimated_cumulative_credits": 89550.0,
+    "actual_batch_credits": 0.0,
+    "actual_cumulative_credits": 157396.0,
+    "usage_before": {
+      "captured_at": "2026-08-05T10:48:04.148368+00:00",
+      "used_credits": 157396.0,
+      "remaining_credits": 78703.0
+    },
+    "usage_after": {
+      "captured_at": "2026-08-05T10:48:17.073605+00:00",
+      "used_credits": 157396.0,
+      "remaining_credits": 78703.0
+    },
+    "cap_authorization": {
+      "status": "payload_limited",
+      "authorized_by": "user.d32.track-c.2026-08-05",
+      "authorized_at": "2026-08-05T09:30:00Z",
+      "reason": "The user explicitly authorized this exact D32 emergency-harvest payload and its manifest-estimated provider spend.",
+      "payload_id": "d32.harvest.track-b.2026-08-05",
+      "baseline_used_credits": 138576.0,
+      "payload_credit_limit": 90000.0
+    },
+    "settlement": {
+      "status": "batch_observed",
+      "settlement_ref": "d32.harvest.kildare.d32-kildare-brigid-fire.kildare-cinealta-kind.part-03"
+    }
+  },
+  "counts": {
+    "lines": 8,
+    "member_references": 8,
+    "planned": 0,
+    "approved": 8,
+    "succeeded": 8,
+    "failed": 0
+  },
+  "manifest_identity_sha256": "af5590f6724fd4cd4cf9b7b7430374e15b05dd0bcf55ba32039cbbc0b9d17622"
+}
