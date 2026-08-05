@@ -1,0 +1,896 @@
+{
+  "contract": "irish_audio_track_d_post_tranche_review",
+  "created_at": "2026-08-05T18:45:00+01:00",
+  "source_revision": "54b6ef9",
+  "payload_id": "d32.harvest.track-b.2026-08-05",
+  "scope": "Track D mechanical anomaly sampling after cycle-2 Track C capture; not linguistic approval or learner release",
+  "read_only": true,
+  "risk_stratification": {
+    "path": "content/audio/authoring/sampling/d32-risk-stratification-2026-08-05.json",
+    "seed": "d32.audio-risk.v1",
+    "sample_quota_per_stratum": 8,
+    "summary": {
+      "category_counts": {
+        "duplicates": 244,
+        "fadas": 5439,
+        "high_risk": 1255,
+        "launch_lines": 6,
+        "mutations": 5345,
+        "names": 5702,
+        "outliers": 866,
+        "phoneme_grapheme": 51,
+        "places": 6271,
+        "provisional_source": 6261,
+        "story_lines": 2381
+      },
+      "duplicate_keys": 244,
+      "family_documents": 714,
+      "member_references": 7060,
+      "sample_count": 86,
+      "unfilled_strata": [
+        "launch_lines"
+      ],
+      "unique_text_voice_keys": 6271
+    }
+  },
+  "technical_audio": {
+    "inspected": 6624,
+    "passed": 6581,
+    "review_required": 43,
+    "quarantined": 0,
+    "decoder_unavailable": false,
+    "quarantine_slugs": [],
+    "review_slugs": [
+      "an-baile-ee-duun-moor",
+      "an-baile-ee-na-mullaii",
+      "an-baile-ee-ooraan-moor",
+      "an-bhfuil-cosain-i-fear-manach",
+      "an-bhfuil-duun-i-an-claar",
+      "an-bhfuil-duun-i-laois",
+      "an-bhfuil-nua-i-an-duun",
+      "an-bhfuil-see-nua",
+      "an-ee-naomh-moling-an-t-ainm-stairiuuil",
+      "an-ee-oo-domhnaill-d-ainm-teaghlaigh",
+      "an-ee-oo-hanluain-d-ainm-teaghlaigh",
+      "an-ee-oo-maaille-d-ainm-teaghlaigh",
+      "an-ee-oo-nuallaain-d-ainm-teaghlaigh",
+      "an-ee-ragnall-an-t-ainm-ceart",
+      "an-ee-seosamh-oo-heeanaii-an-t-ainm-stairiuuil",
+      "an-ee-sii-an-bhruu-an-t-ainm-ceart",
+      "caa-bhfuil-an-duun-i-doire",
+      "caa-bhfuil-an-long-i-maigh-eo",
+      "caa-bhfuil-an-muuin-i-na-gaillimhe",
+      "caa-bhfuil-an-tar-i-duun-na-ngall",
+      "corcra-gorm-dearg-buii-dubh-baan",
+      "cuuig",
+      "dearg",
+      "dia-dhuit",
+      "eeist-leis-an-sceeal-i-ard-mhacha-eaglais",
+      "eeist-leis-an-tiarna-i-duun-na-ngall",
+      "fanann-an-muuin-le-doochas",
+      "feeach-ar-taobh",
+      "feeach-ar-tuairim",
+      "feear",
+      "feicim-an-muuin-i-na-gaillimhe",
+      "is-ait-an-sceeal-sin",
+      "is-finsceeal-ee-taa-eeist-ag-cuaille",
+      "roghnaigh-an-nua-ceart",
+      "scriiobh-leeigh-meil-ith-codail",
+      "seo-sceeal-liatroim-taoiseach",
+      "taa-an-aisling-taabhachtach-sa-sceeal",
+      "taa-geata-sa-sceeal",
+      "taa-nua-i-an-duun",
+      "taa-scriiobh-sa-sceeal",
+      "taa-teach-i-ceatharlach",
+      "taa-teeigh-i-ceatharlach",
+      "taa-teeigh-sa-sceeal"
+    ],
+    "reason_counts": {
+      "level_outlier_high": 25,
+      "duration_outlier_high": 4,
+      "level_outlier_low": 16
+    }
+  },
+  "technical_review_required": [
+    {
+      "slug": "an-baile-ee-duun-moor",
+      "file": "an-baile-ee-duun-moor.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.0,
+        "peak_db": -1.5889,
+        "rms_db": -11.8025,
+        "peak_linear": 0.832825,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town.part-02"
+      ]
+    },
+    {
+      "slug": "an-baile-ee-na-mullaii",
+      "file": "an-baile-ee-na-mullaii.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.0,
+        "peak_db": -2.0239,
+        "rms_db": -12.538,
+        "peak_linear": 0.792145,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.monaghan.d32-monaghan-patrick-kavanagh.monaghan-baile-village-home"
+      ]
+    },
+    {
+      "slug": "an-baile-ee-ooraan-moor",
+      "file": "an-baile-ee-ooraan-moor.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.16,
+        "peak_db": -0.6276,
+        "rms_db": -12.5796,
+        "peak_linear": 0.930298,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.galway.d32-galway-joe-heaney-carna.galway-baile-home-town.part-02"
+      ]
+    },
+    {
+      "slug": "an-bhfuil-cosain-i-fear-manach",
+      "file": "an-bhfuil-cosain-i-fear-manach.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.16,
+        "peak_db": -0.6239,
+        "rms_db": -12.5985,
+        "peak_linear": 0.930695,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.fermanagh.d32-fermanagh-enniskillen-castle.fermanagh-cosain-guard"
+      ]
+    },
+    {
+      "slug": "an-bhfuil-duun-i-an-claar",
+      "file": "an-bhfuil-duun-i-an-claar.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.0,
+        "peak_db": -1.145,
+        "rms_db": -12.1567,
+        "peak_linear": 0.876495,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.clare.d32-clare-brian-boru-kincora.clare-dun-fort"
+      ]
+    },
+    {
+      "slug": "an-bhfuil-duun-i-laois",
+      "file": "an-bhfuil-duun-i-laois.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.0,
+        "peak_db": -1.8097,
+        "rms_db": -12.4175,
+        "peak_linear": 0.81192,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.laois.d32-laois-rock-of-dunamase.laois-dun-fort"
+      ]
+    },
+    {
+      "slug": "an-bhfuil-nua-i-an-duun",
+      "file": "an-bhfuil-nua-i-an-duun.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.08,
+        "peak_db": -1.3022,
+        "rms_db": -12.0653,
+        "peak_linear": 0.860779,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.down.d32-down-patrick-saul.down-nua-new"
+      ]
+    },
+    {
+      "slug": "an-bhfuil-see-nua",
+      "file": "an-bhfuil-see-nua.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 1.52,
+        "peak_db": -2.1949,
+        "rms_db": -12.0279,
+        "peak_linear": 0.776703,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "inventory:conversation:meath"
+      ]
+    },
+    {
+      "slug": "an-ee-naomh-moling-an-t-ainm-stairiuuil",
+      "file": "an-ee-naomh-moling-an-t-ainm-stairiuuil.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.88,
+        "peak_db": -0.6847,
+        "rms_db": -12.2998,
+        "peak_linear": 0.924194,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.carlow.d32-carlow-st-moling.carlow-ainm-name"
+      ]
+    },
+    {
+      "slug": "an-ee-oo-domhnaill-d-ainm-teaghlaigh",
+      "file": "an-ee-oo-domhnaill-d-ainm-teaghlaigh.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.64,
+        "peak_db": -1.1984,
+        "rms_db": -12.5425,
+        "peak_linear": 0.871124,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.wicklow.d32-wicklow-st-kevin-glendalough.wicklow-ainm-name"
+      ]
+    },
+    {
+      "slug": "an-ee-oo-hanluain-d-ainm-teaghlaigh",
+      "file": "an-ee-oo-hanluain-d-ainm-teaghlaigh.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.48,
+        "peak_db": -1.2304,
+        "rms_db": -11.8272,
+        "peak_linear": 0.86792,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.limerick.d32-limerick-treaty-of-limerick.limerick-ainm-name"
+      ]
+    },
+    {
+      "slug": "an-ee-oo-maaille-d-ainm-teaghlaigh",
+      "file": "an-ee-oo-maaille-d-ainm-teaghlaigh.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.48,
+        "peak_db": -1.2527,
+        "rms_db": -12.1157,
+        "peak_linear": 0.865692,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.personal-atlas.down.d32-down-patrick-saul.part-01"
+      ]
+    },
+    {
+      "slug": "an-ee-oo-nuallaain-d-ainm-teaghlaigh",
+      "file": "an-ee-oo-nuallaain-d-ainm-teaghlaigh.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.48,
+        "peak_db": -0.9367,
+        "rms_db": -11.5385,
+        "peak_linear": 0.897766,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.personal-atlas.meath.d32-meath-trim-de-lacy.part-01"
+      ]
+    },
+    {
+      "slug": "an-ee-ragnall-an-t-ainm-ceart",
+      "file": "an-ee-ragnall-an-t-ainm-ceart.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.48,
+        "peak_db": -0.6908,
+        "rms_db": -12.3957,
+        "peak_linear": 0.923553,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.waterford.d32-waterford-reginalds-tower.waterford-ainm-contrast"
+      ]
+    },
+    {
+      "slug": "an-ee-seosamh-oo-heeanaii-an-t-ainm-stairiuuil",
+      "file": "an-ee-seosamh-oo-heeanaii-an-t-ainm-stairiuuil.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 3.6,
+        "peak_db": -0.8553,
+        "rms_db": -13.3608,
+        "peak_linear": 0.906219,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.galway.d32-galway-joe-heaney-carna.galway-ainm-name"
+      ]
+    },
+    {
+      "slug": "an-ee-sii-an-bhruu-an-t-ainm-ceart",
+      "file": "an-ee-sii-an-bhruu-an-t-ainm-ceart.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.8,
+        "peak_db": -2.3131,
+        "rms_db": -13.2914,
+        "peak_linear": 0.766205,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.meath.d32-meath-trim-de-lacy.meath-ainm-contrast"
+      ]
+    },
+    {
+      "slug": "caa-bhfuil-an-duun-i-doire",
+      "file": "caa-bhfuil-an-duun-i-doire.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 1.92,
+        "peak_db": -1.2785,
+        "rms_db": -12.5497,
+        "peak_linear": 0.863129,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.derry.d32-derry-city-walls-siege.derry-dun-close-fort.part-02"
+      ]
+    },
+    {
+      "slug": "caa-bhfuil-an-long-i-maigh-eo",
+      "file": "caa-bhfuil-an-long-i-maigh-eo.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.24,
+        "peak_db": -1.32,
+        "rms_db": -12.4981,
+        "peak_linear": 0.859009,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.mayo.d32-mayo-grainne-1593.mayo-long-ship"
+      ]
+    },
+    {
+      "slug": "caa-bhfuil-an-muuin-i-na-gaillimhe",
+      "file": "caa-bhfuil-an-muuin-i-na-gaillimhe.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.24,
+        "peak_db": -0.6367,
+        "rms_db": -12.099,
+        "peak_linear": 0.929321,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.galway.d32-galway-joe-heaney-carna.galway-muin-teach.part-03"
+      ]
+    },
+    {
+      "slug": "caa-bhfuil-an-tar-i-duun-na-ngall",
+      "file": "caa-bhfuil-an-tar-i-duun-na-ngall.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.24,
+        "peak_db": -1.2497,
+        "rms_db": -13.181,
+        "peak_linear": 0.865997,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tar-come.part-02"
+      ]
+    },
+    {
+      "slug": "corcra-gorm-dearg-buii-dubh-baan",
+      "file": "corcra-gorm-dearg-buii-dubh-baan.mp3",
+      "reasons": [
+        "duration_outlier_high",
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 7.76,
+        "peak_db": -2.6004,
+        "rms_db": -21.2648,
+        "peak_linear": 0.741272,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "chapter2.json:speech"
+      ]
+    },
+    {
+      "slug": "cuuig",
+      "file": "cuuig.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.52,
+        "peak_db": -5.9562,
+        "rms_db": -23.0905,
+        "peak_linear": 0.503723,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "chapter2.json:listen"
+      ]
+    },
+    {
+      "slug": "dearg",
+      "file": "dearg.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.44,
+        "peak_db": -4.8926,
+        "rms_db": -23.5077,
+        "peak_linear": 0.569336,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "chapter2.json:listen"
+      ]
+    },
+    {
+      "slug": "dia-dhuit",
+      "file": "dia-dhuit.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.68,
+        "peak_db": -6.6504,
+        "rms_db": -24.8428,
+        "peak_linear": 0.465027,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "chapter1.json:speech"
+      ]
+    },
+    {
+      "slug": "eeist-leis-an-sceeal-i-ard-mhacha-eaglais",
+      "file": "eeist-leis-an-sceeal-i-ard-mhacha-eaglais.mp3",
+      "reasons": [
+        "duration_outlier_high",
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 5.6,
+        "peak_db": -0.8926,
+        "rms_db": -19.0256,
+        "peak_linear": 0.902344,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.armagh.d32-armagh-book-of-armagh.armagh-eaglais-church"
+      ]
+    },
+    {
+      "slug": "eeist-leis-an-tiarna-i-duun-na-ngall",
+      "file": "eeist-leis-an-tiarna-i-duun-na-ngall.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.64,
+        "peak_db": -1.4384,
+        "rms_db": -12.7639,
+        "peak_linear": 0.847382,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.donegal.d32-donegal-flight-of-the-earls.donegal-tiarna-lord.part-02"
+      ]
+    },
+    {
+      "slug": "fanann-an-muuin-le-doochas",
+      "file": "fanann-an-muuin-le-doochas.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.0,
+        "peak_db": -0.8644,
+        "rms_db": -12.5466,
+        "peak_linear": 0.905273,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.cork.d32-cork-nano-nagle.cork-muin-teach"
+      ]
+    },
+    {
+      "slug": "feeach-ar-taobh",
+      "file": "feeach-ar-taobh.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.2,
+        "peak_db": -4.2386,
+        "rms_db": -20.0398,
+        "peak_linear": 0.613861,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.derry.d32-derry-city-walls-siege.part-01"
+      ]
+    },
+    {
+      "slug": "feeach-ar-tuairim",
+      "file": "feeach-ar-tuairim.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.44,
+        "peak_db": -4.6847,
+        "rms_db": -19.7558,
+        "peak_linear": 0.58313,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.kerry.d32-kerry-piaras-feiritear.part-01"
+      ]
+    },
+    {
+      "slug": "feear",
+      "file": "feear.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.44,
+        "peak_db": -1.616,
+        "rms_db": -23.9648,
+        "peak_linear": 0.830231,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "chapter1.json:listen"
+      ]
+    },
+    {
+      "slug": "feicim-an-muuin-i-na-gaillimhe",
+      "file": "feicim-an-muuin-i-na-gaillimhe.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.24,
+        "peak_db": -0.9223,
+        "rms_db": -12.3066,
+        "peak_linear": 0.899261,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.galway.d32-galway-joe-heaney-carna.galway-muin-teach.part-03"
+      ]
+    },
+    {
+      "slug": "is-ait-an-sceeal-sin",
+      "file": "is-ait-an-sceeal-sin.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.76,
+        "peak_db": -3.3161,
+        "rms_db": -18.9455,
+        "peak_linear": 0.682648,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.mayo.d32-mayo-grainne-1593.mayo-ait-contrast"
+      ]
+    },
+    {
+      "slug": "is-finsceeal-ee-taa-eeist-ag-cuaille",
+      "file": "is-finsceeal-ee-taa-eeist-ag-cuaille.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 3.36,
+        "peak_db": -3.2696,
+        "rms_db": -19.0564,
+        "peak_linear": 0.68631,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.louth.d32-louth-cu-chulainn-cooley.louth-eist-listen"
+      ]
+    },
+    {
+      "slug": "roghnaigh-an-nua-ceart",
+      "file": "roghnaigh-an-nua-ceart.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 2.16,
+        "peak_db": -0.6853,
+        "rms_db": -10.4973,
+        "peak_linear": 0.924133,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.longford.d32-longford-corlea-trackway.longford-nua-new.part-03"
+      ]
+    },
+    {
+      "slug": "scriiobh-leeigh-meil-ith-codail",
+      "file": "scriiobh-leeigh-meil-ith-codail.mp3",
+      "reasons": [
+        "duration_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 5.6,
+        "peak_db": -1.3885,
+        "rms_db": -20.5708,
+        "peak_linear": 0.852264,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "chapter2.json:speech"
+      ]
+    },
+    {
+      "slug": "seo-sceeal-liatroim-taoiseach",
+      "file": "seo-sceeal-liatroim-taoiseach.mp3",
+      "reasons": [
+        "duration_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 3.12,
+        "peak_db": -2.1245,
+        "rms_db": -18.1658,
+        "peak_linear": 0.78302,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.leitrim.d32-leitrim-brian-na-murtha.leitrim-taoiseach-chief"
+      ]
+    },
+    {
+      "slug": "taa-an-aisling-taabhachtach-sa-sceeal",
+      "file": "taa-an-aisling-taabhachtach-sa-sceeal.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 3.12,
+        "peak_db": -2.7254,
+        "rms_db": -19.0749,
+        "peak_linear": 0.730682,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.sligo.d32-sligo-yeats-ben-bulben.sligo-aisling-dream.part-03"
+      ]
+    },
+    {
+      "slug": "taa-geata-sa-sceeal",
+      "file": "taa-geata-sa-sceeal.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.84,
+        "peak_db": -2.8041,
+        "rms_db": -19.7388,
+        "peak_linear": 0.724091,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.laois.d32-laois-rock-of-dunamase.part-01"
+      ]
+    },
+    {
+      "slug": "taa-nua-i-an-duun",
+      "file": "taa-nua-i-an-duun.mp3",
+      "reasons": [
+        "level_outlier_high"
+      ],
+      "measurements": {
+        "duration_seconds": 1.92,
+        "peak_db": -1.2819,
+        "rms_db": -11.9963,
+        "peak_linear": 0.862793,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.down.d32-down-patrick-saul.down-nua-new"
+      ]
+    },
+    {
+      "slug": "taa-scriiobh-sa-sceeal",
+      "file": "taa-scriiobh-sa-sceeal.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.84,
+        "peak_db": -5.511,
+        "rms_db": -19.9241,
+        "peak_linear": 0.530212,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.kerry.d32-kerry-piaras-feiritear.part-01"
+      ]
+    },
+    {
+      "slug": "taa-teach-i-ceatharlach",
+      "file": "taa-teach-i-ceatharlach.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.6,
+        "peak_db": -1.4516,
+        "rms_db": -20.0708,
+        "peak_linear": 0.8461,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.carlow.d32-carlow-st-moling.carlow-teach-house"
+      ]
+    },
+    {
+      "slug": "taa-teeigh-i-ceatharlach",
+      "file": "taa-teeigh-i-ceatharlach.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.76,
+        "peak_db": -4.6888,
+        "rms_db": -21.5742,
+        "peak_linear": 0.582855,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.carlow.d32-carlow-st-moling.carlow-teigh-go"
+      ]
+    },
+    {
+      "slug": "taa-teeigh-sa-sceeal",
+      "file": "taa-teeigh-sa-sceeal.mp3",
+      "reasons": [
+        "level_outlier_low"
+      ],
+      "measurements": {
+        "duration_seconds": 1.68,
+        "peak_db": -3.0135,
+        "rms_db": -19.9467,
+        "peak_linear": 0.706848,
+        "clipped_sample_count": 0,
+        "clipped_fraction": 0.0
+      },
+      "manifest_sources": [
+        "structured_batch:d32.harvest.derry.d32-derry-city-walls-siege.part-01"
+      ]
+    }
+  ],
+  "review_queue_audit": {
+    "batch_lines": 7052,
+    "capture_blockers": 17,
+    "findings": 158,
+    "hard_findings": 17,
+    "inventory_entries": 292,
+    "inventory_spot_flagged": 43,
+    "launch_missing_inventory": 2,
+    "launch_rows": 104,
+    "legacy_members": 79,
+    "legacy_pending_generation": 7,
+    "operational_watches": 0,
+    "p0_findings": 18,
+    "pack_audio_rows": 35,
+    "review_before_release": 141,
+    "spot_listen_present": true,
+    "v2_learner_release_eligible": 0,
+    "v2_members": 7060
+  },
+  "notes": [
+    "13 Antrim cycle-2 manifests received explicit post_hoc_unverified chronology dispositions for claim/capture timestamp ordering; bytes and checksums remain auditable.",
+    "xcode_audio_resource_missing remains until Track E regenerates the Xcode project.",
+    "Capture still does not imply linguistic approval or learner release."
+  ]
+}

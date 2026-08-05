@@ -1,9 +1,9 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-05 (D32 harvest cycle 2 Track C
-closed; Track D/E next; prior payload `d32.harvest.track-b.2026-08-03` remains
-reconciled).*
+stories and places of Ireland. Updated 2026-08-05 (D32 harvest cycle 2 Track E
+reconcile closed on `track-a/bulk-integration` for payload
+`d32.harvest.track-b.2026-08-05`).*
 
 ## Current outcome
 
@@ -12,14 +12,13 @@ runtime, four in-app county review packs, a nationwide Personal Atlas foundation
 a controlled Irish authoring/audio pipeline.
 
 The immediate phase is the **D32 emergency Irish audio harvest**, which continues while
-prepaid ElevenLabs credits remain (D32). Cycle 1 payload
-`d32.harvest.track-b.2026-08-03` is closed and reconciled. Cycle 2 payload
-`d32.harvest.track-b.2026-08-05` Track C is closed: **2,744 / 2,744** approved lines
-succeeded across **391** manifests (A2 dialogue depth 14/14 all counties; partition
-ids remapped to free `.part-0N` suffixes). Observed spend for the payload is about
-**47,495** credits (baseline **138,576** → **186,071** used; **50,028** remaining),
-under the authorized **90,000** limit. Next: Track D anomaly sampling and Track E
-reconcile. Capture still does not imply linguistic approval or learner release.
+prepaid ElevenLabs credits remain (D32). Cycle 2 payload
+`d32.harvest.track-b.2026-08-05` Tracks **C/D/E** are closed: **2,744 / 2,744**
+approved lines succeeded, checksums verify for **6,624 / 6,624** runtime clips, Xcode
+Audio resources are regenerated, reconcile is non-blocking, and remaining resumable
+work is **zero**. Observed spend for the payload is **47,495** credits (baseline
+**138,576** → **186,071** used; **50,028** remaining), under the authorized
+**90,000** limit. Capture still does not imply linguistic approval or learner release.
 
 The product is implemented as a substantial prototype. It has not been validated for
 learning outcomes or promoted for public release.
@@ -28,28 +27,27 @@ learning outcomes or promoted for public release.
 
 ### Irish corpus and audio
 
-- **714** phrase families, **4,316** authored members (**4,314** with
-  `states.authoring.status = complete`), and **3,527** unique normalized texts across
-  all **32** counties after the Track A bulk merge. About **2,820** of those unique
-  texts are absent from the prior batch registry (**707** registered unique texts).
-  The two incomplete members remain the deliberately retired Corca Dhuibhne lines.
-- Registered batch scoreboard after Track C: **3,528** registered lines (**3,516**
-  approved, **3,518** provider successes, **2** retired semantic quarantines, **11**
-  cancelled, **0** failed / claimed). Store `batch_documents` remains the Track B
-  harvest set plus prior batches.
-- **3,880** bundled runtime MP3s / manifest lines. Checksums verify for all **3,880**
+- **714** phrase families, **7,060** authored members (**7,058** with
+  `states.authoring.status = complete`), and **6,269** unique normalized texts across
+  all **32** counties after cycle-2 A2 depth expansion. The two incomplete members
+  remain the deliberately retired Corca Dhuibhne lines.
+- Registered batch scoreboard after cycle-2 Track C: **7,052** registered lines
+  (**6,260** approved, **6,262** provider successes, **2** retired semantic
+  quarantines, **11** cancelled, **0** failed / claimed).
+- **6,624** bundled runtime MP3s / manifest lines. Checksums verify for all **6,624**
   runtime records and bundle files; there are no missing, mismatched, or orphan
   runtime files at the filesystem/manifest layer.
-- Post-capture Track D technical anomaly audit inspected all **3,880** clips:
-  **3,865** pass, **15** need targeted listening review (duration/level distribution
+- Post-capture Track D technical anomaly audit inspected all **6,624** clips:
+  **6,581** pass, **43** need targeted listening review (duration/level distribution
   outliers), and **0** require technical quarantine. Decoder was available. Two
   additional Corca Dhuibhne captures remain retained byte-for-byte for audit but are
   semantically retired, dynamically excluded, failed for learner QA, and unavailable
   through both text and named-asset runtime paths.
-- Track E regenerated `ios/AnTuras.xcodeproj` from `ios/project.yml`; all **3,880**
+- Track E regenerated `ios/AnTuras.xcodeproj` from `ios/project.yml`; all **6,624**
   MP3s are in the Xcode Audio group. Read-only reconcile is **non-blocking** (**0**
-  errors; **57** warnings for known chronology, archive/provenance drift, inventory
-  legacy gaps, pedagogy drift, and the **15** technical review outliers).
+  errors; **878** warnings dominated by duplicate text/voice across harvest parts,
+  chronology post-hoc markers, archive/provenance drift, and the **43** technical
+  review outliers).
 - The learner Personal Atlas pack remains **80** subjects (**50** names / **30** places)
   with **160** captured clips. A1 adds **318** authoring-only bulk subjects (**636**
   unique texts) without promoting them into the Swift pilot pack.
@@ -72,15 +70,17 @@ Canonical records:
 
 - [`content/audio/authoring/phrase-family-store-v2.json`](content/audio/authoring/phrase-family-store-v2.json)
 - [`ios/AnTuras/Resources/Audio/manifest.json`](ios/AnTuras/Resources/Audio/manifest.json)
-- [`content/audio/authoring/d32-track-d-post-capture-report.json`](content/audio/authoring/d32-track-d-post-capture-report.json)
-- [`content/audio/authoring/d32-track-e-reconcile-report.json`](content/audio/authoring/d32-track-e-reconcile-report.json)
+- [`content/audio/authoring/d32-cycle2-track-d-post-capture-report.json`](content/audio/authoring/d32-cycle2-track-d-post-capture-report.json)
+- [`content/audio/authoring/d32-cycle2-track-e-reconcile-report.json`](content/audio/authoring/d32-cycle2-track-e-reconcile-report.json)
+- [`content/audio/authoring/d32-track-d-post-capture-report.json`](content/audio/authoring/d32-track-d-post-capture-report.json) (cycle 1)
+- [`content/audio/authoring/d32-track-e-reconcile-report.json`](content/audio/authoring/d32-track-e-reconcile-report.json) (cycle 1)
 - [`content/audio/README.md`](content/audio/README.md)
 
 ### Mechanistic review
 
 - Deterministic disjoint sampling now selects **86** clips across **11** risk strata
-  (**8** per stratum quota; `launch_lines` remains short at **6**). Prior
-  2026-08-02 sample (**78**) is superseded for post-Track-C review planning.
+  (**8** per stratum quota; `launch_lines` remains short at **6**). The
+  2026-08-05 sample supersedes the 2026-08-04 sample for post-cycle-2 review planning.
 - The offline ABAIR comparator records provenance and checksums and compares duration,
   level, spectral shape, zero-crossing rate, and coarse envelopes against locally
   supplied reference clips.
@@ -89,7 +89,8 @@ Canonical records:
 
 Canonical records:
 
-- [`content/audio/authoring/sampling/d32-risk-stratification-2026-08-04.json`](content/audio/authoring/sampling/d32-risk-stratification-2026-08-04.json)
+- [`content/audio/authoring/sampling/d32-risk-stratification-2026-08-05.json`](content/audio/authoring/sampling/d32-risk-stratification-2026-08-05.json)
+- [`content/audio/authoring/sampling/d32-risk-stratification-2026-08-04.json`](content/audio/authoring/sampling/d32-risk-stratification-2026-08-04.json) (superseded sample)
 - [`content/audio/authoring/sampling/d32-risk-stratification-2026-08-02.json`](content/audio/authoring/sampling/d32-risk-stratification-2026-08-02.json) (superseded sample)
 - [`docs/ABAIR.md`](docs/ABAIR.md)
 - [`tools/abair_reference_compare.py`](tools/abair_reference_compare.py)
@@ -130,31 +131,27 @@ promotion.
 
 ### Verification at the current revision
 
-- Track E (2026-08-04): `xcodegen generate` synced Audio resources; reconcile
+- Track E (2026-08-05): `xcodegen generate` synced Audio resources; reconcile
   **blocking=false**; authoring `check` valid; scoreboard remaining resumable work
-  **0**. Report:
-  [`content/audio/authoring/d32-track-e-reconcile-report.json`](content/audio/authoring/d32-track-e-reconcile-report.json).
-- Track D (2026-08-04): risk sample regenerated (**86** clips);
-  `reconcile --json` inspected **3,880** clips (**3,865** pass / **15** review /
+  **0**; credit ledger **138,576 → 186,071** used (**47,495** spend / **90,000**
+  limit). Report:
+  [`content/audio/authoring/d32-cycle2-track-e-reconcile-report.json`](content/audio/authoring/d32-cycle2-track-e-reconcile-report.json).
+- Track D (2026-08-05): risk sample regenerated (**86** clips);
+  `reconcile --json` inspected **6,624** clips (**6,581** pass / **43** review /
   **0** quarantine); review-queue audit still reports **17** capture blockers /
   **141** review-before-release / **0** learner-release-eligible. Report:
-  [`content/audio/authoring/d32-track-d-post-capture-report.json`](content/audio/authoring/d32-track-d-post-capture-report.json).
-- Track B `prepare-harvest` over all **32** county `authoring-v2` trees:
-  **2,820** new draft lines / **557** batches / **705** skipped as already registered /
-  **244** duplicate-text merges / **2** blocked (Corca Dhuibhne). Summary:
-  [`content/audio/authoring/d32-track-b-prepare-harvest-summary.json`](content/audio/authoring/d32-track-b-prepare-harvest-summary.json).
-- Estimated Track B spend **~75,087** credits vs **140,872** last-known remaining
-  (headroom positive; size `payload_credit_limit` per drained payload, not the full
-  band at once). Observed Track C/E ledger spend for this payload is **42,891** credits
-  (baseline **95,461** → **138,352** used; **97,747** remaining).
-- Track C capture for this payload is complete; manifests are no longer draft/provider-
-  blocked for the drained lines.
-- Prior: `structured_audio_authoring.py check` passed on the merged Track A store
-  (**714** families).
-- Runtime filesystem/manifest checksums: **3,880/3,880**. Xcode Audio group regenerated
+  [`content/audio/authoring/d32-cycle2-track-d-post-capture-report.json`](content/audio/authoring/d32-cycle2-track-d-post-capture-report.json).
+- Track C drained payload `d32.harvest.track-b.2026-08-05` (**2,744** successes).
+- Track B cycle-2 `prepare-harvest`: **2,744** new draft lines / **391** batches /
+  **3,525** skipped as already registered / **244** duplicate-text merges /
+  **2** blocked (Corca Dhuibhne); partition collisions remapped to free `.part-0N`
+  ids. Summary:
+  [`content/audio/authoring/d32-cycle2-track-b-prepare-harvest-summary.json`](content/audio/authoring/d32-cycle2-track-b-prepare-harvest-summary.json).
+- Runtime filesystem/manifest checksums: **6,624/6,624**. Xcode Audio group regenerated
   via `xcodegen`; `xcode_audio_resource_missing` cleared.
-- Track E scoreboard: **0** remaining resumable work; authoring `check` valid;
-  report [`d32-track-e-reconcile-report.json`](content/audio/authoring/d32-track-e-reconcile-report.json).
+- Thirteen Antrim cycle-2 manifests carry explicit `post_hoc_unverified` chronology
+  dispositions for claim/capture timestamp ordering; bytes and checksums remain
+  auditable.
 - A generic-device Xcode build reached Swift compilation but could not complete asset
   catalog compilation because this host has no CoreSimulator runtime. iOS XCTest,
   playback, accessibility, appearance, and physical-device checks were therefore not
@@ -171,46 +168,32 @@ promotion.
 
 ### Completed in the latest coordinated cycle
 
-- Track E reconcile: regenerated Xcode Audio resources; reconcile **non-blocking**;
-  checksums **3,880/3,880**; remaining resumable work **0**; credit ledger
-  **95,461 → 138,352** used (**42,891** spend / **75,000** limit). Report:
-  `d32-track-e-reconcile-report.json`.
-- Track D post-capture: regenerated
-  `sampling/d32-risk-stratification-2026-08-04.json` (**86** sample clips); ran full
-  technical anomaly reconcile across **3,880** clips (**15** review-required
-  duration/level outliers, **0** quarantine); re-ran mechanical review-queue audit.
-  Report: `d32-track-d-post-capture-report.json`.
-- Track C drained payload `d32.harvest.track-b.2026-08-03` (**2,818** successes).
-- Track B `prepare-harvest` registered **557** draft manifests (**2,820** lines;
-  **~75,087** estimated credits); remapped **6** partition collisions to `.part-02`.
-  Reports: `d32-track-b-prepare-harvest-summary.json` /
-  `d32-track-b-prepare-harvest-report.json`.
-- Merged parallel Track A branches onto `track-a/bulk-integration` (extension WIP base
-  + A1–A8). Uses ledger kept at **32** stories / **4,305** exercises; store indexes
-  **714** families. `structured_audio_authoring.py check` passed.
-- **A1:** 318 bulk Personal Atlas subjects / **636** unique texts (pilot pack still 80).
-- **A2:** **904** story-dialogue / exercise-role unique texts across 32 counties.
-- **A3:** 74 contrast families / **148** unique listening texts.
-- **A4:** pedagogy sidecar **21** lessons / **203** lines / **148** unique examples.
-- **A5:** queue-02 evidence-led — **520** unique texts across 8 counties.
-- **A6:** queue-03 source-packet — **560** unique texts across 14 counties (packets
-  confirmed; Monaghan/Kilkenny bounded).
-- **A7:** review-route register only; **0** new unique texts; volume blocked.
-- **A8:** story-slate subjects **9 → 47** / **76** incremental unique texts.
-- Authored and captured the D32 extension tranche before the bulk merge; drained **16**
-  lines under payload `d32.harvest.extension.2026-08-03`.
+- Track E reconcile (cycle 2): regenerated Xcode Audio resources; reconcile
+  **non-blocking**; checksums **6,624/6,624**; remaining resumable work **0**;
+  credit ledger **138,576 → 186,071** used (**47,495** spend / **90,000** limit).
+  Report: `d32-cycle2-track-e-reconcile-report.json`.
+- Track D post-capture (cycle 2): regenerated
+  `sampling/d32-risk-stratification-2026-08-05.json` (**86** sample clips); ran full
+  technical anomaly reconcile across **6,624** clips (**43** review-required
+  duration/level outliers, **0** quarantine); re-ran mechanical review-queue audit;
+  added chronology dispositions on **13** Antrim manifests. Report:
+  `d32-cycle2-track-d-post-capture-report.json`.
+- Track C drained payload `d32.harvest.track-b.2026-08-05` (**2,744** successes).
+- Track B cycle-2 `prepare-harvest` registered **391** draft manifests (**2,744**
+  lines; **~86,010** estimated credits); remapped partition collisions to free
+  `.part-0N` ids. Reports: `d32-cycle2-track-b-prepare-harvest-summary.json` /
+  `d32-cycle2-track-b-prepare-harvest-report.json`.
+- Track A cycle-2 A2 story-dialogue depth expansion (`--lean-words 14
+  --deepen-words 14` all counties; contrast hosts excluded): **2,744** net-new
+  unique texts.
 
 ## Active implementation sequence
 
-**Current priority: D32 harvest cycle 2 Track D → Track E** for closed Track C
-payload `d32.harvest.track-b.2026-08-05` (**2,744** captured lines / **391**
-batches / ~**47,495** credits / **90,000** limit). Approval:
-[`d32-cycle2-track-c-approve-prepared-report.json`](content/audio/authoring/d32-cycle2-track-c-approve-prepared-report.json).
-Prepare summary:
-[`d32-cycle2-track-b-prepare-harvest-summary.json`](content/audio/authoring/d32-cycle2-track-b-prepare-harvest-summary.json).
+**Current priority: harvest freeze / learner-facing slice selection, or open cycle 3
+while ~50k credits remain.** Cycle 2 Track E report:
+[`d32-cycle2-track-e-reconcile-report.json`](content/audio/authoring/d32-cycle2-track-e-reconcile-report.json).
 Approval identity `user.d32.track-c.2026-08-05`; claim owner
-`codex.track-c.d32-cycle2-drain`. Cycle 1 Track E report remains closed:
-[`d32-track-e-reconcile-report.json`](content/audio/authoring/d32-track-e-reconcile-report.json).
+`codex.track-c.d32-cycle2-drain` (closed payload — do not reuse).
 
 **Resume / re-drain tooling (committed):** portable `pwsh` at
 `~/.local/powershell/pwsh`. Detached launcher:
@@ -246,9 +229,10 @@ story records, sorted store family index, one `check` on the merged slice.
 **Not bulk Track A (quick maintenance only):** re-approve **7** cancelled batch lines
 (~300 estimated credits); retire or replace **2** Corca Dhuibhne quarantine members.
 
-**Track C gate:** closed for this payload — **2,818** lines captured.
-**Track D gate:** closed for mechanical sampling/anomaly screen on this payload
-(**3,880** inspected; **15** listening-review outliers; **0** technical quarantine).
+**Track C gate:** closed for cycle-2 payload — **2,744** lines captured (**2,818**
+in cycle 1).
+**Track D gate:** closed for mechanical sampling/anomaly screen on cycle 2
+(**6,624** inspected; **43** listening-review outliers; **0** technical quarantine).
 **Track E gate:** closed — Xcode Audio regenerated, reconcile non-blocking, checksums
 complete, resumable work zero, credit ledger recorded.
 
