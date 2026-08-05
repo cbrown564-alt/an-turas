@@ -6,6 +6,7 @@ Working and shipped stills have separate homes. Do not leave the “real” file
 | --- | --- | --- |
 | `ios/AnTuras/Assets.xcassets/` | **Only** learner-facing stills and evidence images (plus AppIcon) | Yes |
 | `art/exploration/` | Style-branch contact sheets (`--art` debug via `ios/art-exploration` symlink) | Debug only |
+| `art/video/` | Omni video exploration clips + prompt sidecars (`docs/OMNI-EXPLORATION.md`); contact sheet `art/video/CONTACT.md` | No until reviewed and promoted |
 | `art/direction/` | Locked north-star / palette references for docs | No |
 | `art/archive/` | Superseded prototypes (e.g. early Gráinne scenes) | No |
 | `art/candidates/` | New generations awaiting review | No |
