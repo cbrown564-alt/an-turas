@@ -379,16 +379,13 @@ struct IllustrationView: View {
             case "b6", "b6-lamh":      folder = "b6-lamh"
             default:                   folder = branch
             }
+            // `--art` debug: style branches from bundled art-exploration/.
             if let url = bundledIllustration(named: name, subdirectory: "art-exploration/\(folder)") {
                 return UIImage(contentsOfFile: url.path)
             }
-        } else {
-            // Load from canonical default art bundle
-            if let url = bundledIllustration(named: name, subdirectory: "art") {
-                return UIImage(contentsOfFile: url.path)
-            }
         }
-        return nil
+        // Shipped chapter stills live in Assets.xcassets only.
+        return UIImage(named: name)
     }
 
     private func bundledIllustration(named name: String, subdirectory: String) -> URL? {

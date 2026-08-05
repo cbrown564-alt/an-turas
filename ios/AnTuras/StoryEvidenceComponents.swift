@@ -40,14 +40,13 @@ struct TNAInterrogatoryFolio: View {
     }
 }
 
-/// Loads loose illustration files from the bundled `art` folder. SwiftUI's
-/// asset-name initializer only searches asset catalogs and otherwise logs a
-/// misleading missing-image warning for folder resources.
+/// Loads shipped stills from `Assets.xcassets`. Working copies live under
+/// repo-root `art/` and are never the runtime source of truth.
 struct StoryArtImage: View {
     let name: String
 
     var body: some View {
-        if let image = load() {
+        if let image = UIImage(named: name) {
             Image(uiImage: image).resizable()
         } else {
             ZStack {
@@ -58,20 +57,5 @@ struct StoryArtImage: View {
             }
             .accessibilityLabel("Illustration unavailable")
         }
-    }
-
-    private func load() -> UIImage? {
-        for fileExtension in ["png", "jpg", "jpeg"] {
-            if let url = Bundle.main.url(
-                forResource: name,
-                withExtension: fileExtension,
-                subdirectory: "art"
-            ),
-               let image = UIImage(contentsOfFile: url.path) {
-                return image
-            }
-        }
-        // Atmosphere stills for chapter openings also live in the asset catalog.
-        return UIImage(named: name)
     }
 }

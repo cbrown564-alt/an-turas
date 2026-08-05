@@ -979,7 +979,9 @@ experiments (HTML prototype, bake-offs, illustration funnel) are frozen as refer
 
 **Consequences:** 
 1. The style bible is documented in Section 10 of `docs/ILLUSTRATIONS.md`.
-2. Scene assets are moved into the app's default resources under `art/`.
+2. Shipped scene stills live in `ios/AnTuras/Assets.xcassets/` (catalog IDs). Working
+   exploration, direction refs, and archives live under repo-root `art/` — see
+   `art/README.md`. Do not duplicate catalog images as loose `Resources` files.
 3. `Models.swift` and `chapter1.json` are modified to support parsing and loading pages with custom image keys directly.
 4. Clean register styling is maintained—illustration is kept strictly as a window for
    **scene pages** (D8); note and exercise views remain clean and typographic.

@@ -52,6 +52,7 @@ not for rough craft — craft improves with iteration; a wrong register doesn't.
 
 ## 3. Where the art lives (the surfaces)
 
+Repo layout for working vs shipped stills is owned by [`../art/README.md`](../art/README.md).
 Inventory from the current slice (`ios/AnTuras/Resources/chapter1.json`):
 
 | Surface | Count in Ch. 1 | Notes |

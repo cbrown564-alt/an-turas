@@ -11,9 +11,9 @@ full-width accessibility band; and text-led openings of equal visual intent when
 image adds meaning. The progression below adds Gráinne's story pressure without
 turning its cinematic palette into general-purpose app chrome.
 
-![Gráinne six-episode palette progression](art-direction/grainne-six-episode-palette.png)
+![Gráinne six-episode palette progression](../art/direction/grainne-six-episode-palette.png)
 
-![Approved north-star screen progression](art-direction/grainne-six-episode-north-star.png)
+![Approved north-star screen progression](../art/direction/grainne-six-episode-north-star.png)
 
 ## Decision
 

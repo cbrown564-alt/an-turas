@@ -113,6 +113,9 @@ Canonical records:
 
 ### Product runtime
 
+- Shipped stills and evidence images live only in
+  `ios/AnTuras/Assets.xcassets/`. Working art, direction refs, and archives live under
+  repo-root `art/` ([`art/README.md`](art/README.md)); `tmp/` is gitignored.
 - The representative Rockfleet chapter has complete Story and Learning paths on the
   shared county runtime.
 - The shared activity shell, response state engine, recovery, memory handoff, review

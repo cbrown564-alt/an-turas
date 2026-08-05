@@ -198,11 +198,7 @@ final class AtlasProgressTests: XCTestCase {
     }
 
     private func bundledStillExists(named name: String) -> Bool {
-        if UIImage(named: name) != nil { return true }
-        return ["png", "jpg", "jpeg"].contains { ext in
-            Bundle.main.url(forResource: name, withExtension: ext, subdirectory: "art") != nil
-                || Bundle.main.url(forResource: name, withExtension: ext) != nil
-        }
+        UIImage(named: name) != nil
     }
 
     func testRockfleetPackProjectsOneSequenceIntoTwoHonestModes() throws {

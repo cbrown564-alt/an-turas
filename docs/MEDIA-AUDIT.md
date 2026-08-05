@@ -12,6 +12,19 @@ To deliver an evidence-grounded experience for learning Irish, *An Turas* enforc
 3. **Cinematic Video & Ambient Motion (Gemini Omni via Google Flow)**: Video assets are used selectively for ambient environmental loops (3–6s) and spatial transitions. Generated with Gemini Omni and Google Flow, video brings living weather, tide shifts, mist, and macro lighting sweeps to life, cementing the connection between language and place without introducing fake historical reenactments.
 4. **Studio & Pronunciation Audio**: Headwords and exercises require native Connacht speaker recordings.
 
+### Asset layout (repo)
+
+| Path | Role |
+| --- | --- |
+| `ios/AnTuras/Assets.xcassets/` | **Only** shipped stills and evidence images (IDs in this audit) |
+| `art/exploration/` | Style-branch contact sheets (`--art` debug) |
+| `art/direction/` | Locked north-star / palette references |
+| `art/archive/` | Superseded prototypes |
+| `art/candidates/` | Generations awaiting promotion |
+| `tmp/` | Local screenshots (gitignored) |
+
+Promotion rule and Gráinne lookup: [`../art/README.md`](../art/README.md). Do not duplicate catalog imagesets as loose files under `ios/AnTuras/Resources/`.
+
 ---
 
 ## 1. Mayo (`mayo.grainne-1593`)

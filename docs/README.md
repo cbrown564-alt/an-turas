@@ -20,7 +20,7 @@ Start with the root `README.md`, then read `PRODUCT.md`, `STATUS.md`, and the do
   is the A7 / `queue-04-sensitive-review-first` history–community–rights–language
   checklist for Derry, Donegal, Leitrim, Limerick, Tyrone, and Wexford. It gates
   volume; it does not record approvals.
-- [`MEDIA-AUDIT.md`](MEDIA-AUDIT.md) is the four-county audit of visual media, documentary evidence placeholders, and audio requirements. D28 sets chapter-opening motion density; the audit owns the Flow / Gemini Omni generation queue. Irish teaching audio inventory and bind rule live under [`../content/audio/`](../content/audio/README.md).
+- [`MEDIA-AUDIT.md`](MEDIA-AUDIT.md) is the four-county audit of visual media, documentary evidence placeholders, and audio requirements. D28 sets chapter-opening motion density; the audit owns the Flow / Gemini Omni generation queue. Irish teaching audio inventory and bind rule live under [`../content/audio/`](../content/audio/README.md). Shipped stills live only in `ios/AnTuras/Assets.xcassets/`; working art layout and promotion rules are in [`../art/README.md`](../art/README.md).
 - [`../content/pedagogy/README.md`](../content/pedagogy/README.md) owns the authoring-only Irish explanation corpus: English framing, exact Irish examples, source/provenance, deterministic risk flags, independent review gates, and blocked learner release.
 - [`STORY-LEARNING-REBUILD-PLAN.md`](STORY-LEARNING-REBUILD-PLAN.md) is the confirmed
   Phase 3 implementation plan. Canonical owners above remain authoritative for current

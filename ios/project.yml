@@ -10,10 +10,7 @@ targets:
     platform: iOS
     sources:
       - path: AnTuras
-        excludes:
-          - AnTuras/Resources/art
-      - path: AnTuras/Resources/art
-        type: folder
+      # Style-branch contact sheets for `--art` debug only (symlink → ../art/exploration).
       - path: art-exploration
         type: folder
     info:
