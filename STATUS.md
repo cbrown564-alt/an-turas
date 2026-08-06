@@ -1,9 +1,9 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-05 (D32 harvest cycle 2 Track E
-reconcile closed on `track-a/bulk-integration` for payload
-`d32.harvest.track-b.2026-08-05`).*
+stories and places of Ireland. Updated 2026-08-06 (D32 harvest frozen at cycle 2 per
+D35; `track-a/bulk-integration`, `main`, and both origin refs are at the same
+revision).*
 
 ## Current outcome
 
@@ -11,14 +11,18 @@ An Turas has a verified representative Mayo Story-and-Learning loop, shared lear
 runtime, four in-app county review packs, a nationwide Personal Atlas foundation, and
 a controlled Irish authoring/audio pipeline.
 
-The immediate phase is the **D32 emergency Irish audio harvest**, which continues while
-prepaid ElevenLabs credits remain (D32). Cycle 2 payload
-`d32.harvest.track-b.2026-08-05` Tracks **C/D/E** are closed: **2,744 / 2,744**
-approved lines succeeded, checksums verify for **6,624 / 6,624** runtime clips, Xcode
-Audio resources are regenerated, reconcile is non-blocking, and remaining resumable
-work is **zero**. Observed spend for the payload is **47,495** credits (baseline
-**138,576** → **186,071** used; **50,028** remaining), under the authorized
-**90,000** limit. Capture still does not imply linguistic approval or learner release.
+The **D32 emergency Irish audio harvest is frozen** at the end of cycle 2 (**D35**).
+Cycle 3 will not open. Payload `d32.harvest.track-b.2026-08-05` Tracks **C/D/E** are
+closed: **2,744 / 2,744** approved lines succeeded, checksums verify for
+**6,624 / 6,624** runtime clips, Xcode Audio resources are regenerated, reconcile is
+non-blocking, and remaining resumable work is **zero**. Observed spend for the payload
+is **47,495** credits (baseline **138,576** → **186,071** used), under the authorized
+**90,000** limit. The remaining **50,028** credits are held as a **regeneration
+reserve** for reviewed material, not as capture headroom. Capture still does not imply
+linguistic approval or learner release.
+
+The active phase is now **§6 — freeze, select, and prove one learner-facing slice**.
+Corpus expansion has stopped; the constraint is review, not capture.
 
 The product is implemented as a substantial prototype. It has not been validated for
 learning outcomes or promoted for public release.
@@ -111,6 +115,31 @@ Canonical records:
 - [`content/pedagogy/README.md`](content/pedagogy/README.md)
 - [`docs/DECISIONS.md`](docs/DECISIONS.md) D33
 
+### Generated video exploration
+
+- A day-one Gemini Omni Flash pass produced **14** clips in two batches (**9** concepts;
+  five 9:16 retakes after Batch A returned 16:9), each with a prompt sidecar in
+  `art/video/`. Scores, kill decisions, and the download→file map are in
+  `art/video/CONTACT.md`.
+- **Omni cannot speak Irish.** The V1 probe spent two of the ten free daily clips on
+  that question and returned unintelligible Irish: English-biased auto-ASR (no Irish
+  model available) heard *tá tú ar ais* as "Tattoo her eyes," and V1b's séimhiú and
+  fada flattened into English-shaped tokens. Recorded as **D34**; generated video is an
+  exploration and marketing surface only and is not an Irish-audio path. V7 (grant
+  reel) and V8 (seanfhocal series) are held for spoken production.
+- Kept on visual merit: **V6** (crossing as physics), **V4** (gouache survives motion),
+  **V2** (mutation-as-action, probe only), **V3** (placename plate), **V9** (with
+  notes). Killed: **V1a**, **V1b**, **V5b**; **V5a** weak. **V10** is the deliberately
+  clichéd anti-reference and is calibration-only — it never enters the asset pipeline.
+- Every output is `generated_unreviewed`. No clip is release-eligible, none is bundled
+  into the app, and SynthID marks all of them as generated.
+
+Canonical records:
+
+- [`docs/OMNI-EXPLORATION.md`](docs/OMNI-EXPLORATION.md)
+- [`art/video/CONTACT.md`](art/video/CONTACT.md)
+- [`docs/DECISIONS.md`](docs/DECISIONS.md) D34
+
 ### Product runtime
 
 - Shipped stills and evidence images live only in
@@ -171,6 +200,11 @@ promotion.
 
 ### Completed in the latest coordinated cycle
 
+- Harvest frozen at cycle 2 (**D35**); remaining **50,028** credits reclassified as a
+  regeneration reserve; `STATUS.md` §6 promoted to the active sequence.
+- Day-one Omni video exploration: **14** clips with prompt sidecars, contact sheet, and
+  review; V1 answered negatively and recorded as **D34**.
+- Art consolidated into a repo-rooted `art/` layout with asset catalogs.
 - Track E reconcile (cycle 2): regenerated Xcode Audio resources; reconcile
   **non-blocking**; checksums **6,624/6,624**; remaining resumable work **0**;
   credit ledger **138,576 → 186,071** used (**47,495** spend / **90,000** limit).
@@ -192,11 +226,16 @@ promotion.
 
 ## Active implementation sequence
 
-**Current priority: harvest freeze / learner-facing slice selection, or open cycle 3
-while ~50k credits remain.** Cycle 2 Track E report:
+**Current priority: §6 — rank the captured corpus and select one learner-facing slice.**
+The harvest is frozen (**D35**); cycle 3 is not opening and the remaining **50,028**
+credits are a regeneration reserve. Cycle 2 Track E report:
 [`d32-cycle2-track-e-reconcile-report.json`](content/audio/authoring/d32-cycle2-track-e-reconcile-report.json).
 Approval identity `user.d32.track-c.2026-08-05`; claim owner
 `codex.track-c.d32-cycle2-drain` (closed payload — do not reuse).
+
+Tracks A–E below are retained as the operating record of how the corpus was produced
+and as live tooling for reserve work. They are **not** an instruction to start another
+capture cycle; a new provider payload requires an explicit user decision (D35).
 
 **Resume / re-drain tooling (committed):** portable `pwsh` at
 `~/.local/powershell/pwsh`. Detached launcher:
@@ -231,6 +270,8 @@ story records, sorted store family index, one `check` on the merged slice.
 
 **Not bulk Track A (quick maintenance only):** re-approve **7** cancelled batch lines
 (~300 estimated credits); retire or replace **2** Corca Dhuibhne quarantine members.
+D35 permits both against the reserve — they close existing ledger state rather than
+expand the corpus.
 
 **Track C gate:** closed for cycle-2 payload — **2,744** lines captured (**2,818**
 in cycle 1).
@@ -278,10 +319,11 @@ Track E updates inventory, checksums, batch state, recovery state, Atlas/pedagog
 coverage, and the credit ledger. Do not start a new provider payload while the previous
 one has unresolved claims, missing checksums, or unregistered files.
 
-### 6. Freeze the harvest, select, and prove one learner-facing slice
+### 6. Freeze the harvest, select, and prove one learner-facing slice — **active**
 
-When the credit window closes, stop corpus expansion and rank the captured material by
-story relevance, reuse, pedagogical purpose, risk, and mechanical audio quality. Then:
+The freeze is taken (**D35**): corpus expansion has stopped. Rank the captured material
+by story relevance, reuse, pedagogical purpose, risk, and mechanical audio quality —
+this ranking is the immediate next piece of work and does not yet exist. Then:
 
 1. correct and gate the selected subset;
 2. connect one production Mayo Learning slice to reviewed phrase-family and narrative
@@ -310,7 +352,15 @@ story relevance, reuse, pedagogical purpose, risk, and mechanical audio quality.
 ## Known risks
 
 - Generating faster than the corpus can be attributed, deduplicated, and assigned a
-  plausible use would convert prepaid credits into unusable inventory.
+  plausible use would convert prepaid credits into unusable inventory. This risk is
+  what the D35 freeze answers: **6,624** clips exist and **0** are learner-release-
+  eligible, so the binding constraint is review throughput, not capture capacity.
+- The prepaid subscription window still expires. Held reserve credits are lost if the
+  selected slice is not reviewed and regenerated before expiry — the freeze buys review
+  time, it does not extend the window.
+- Generated video cannot carry Irish speech (**D34**). Any video surface that appears
+  to speak Irish must compose D31 clips over the footage; treating an Omni audio track
+  as usable would put unintelligible Irish in front of learners or funders.
 - Acoustic similarity can catch anomalies but cannot establish grammatical,
   dialectal, semantic, or pedagogical correctness.
 - Names and places are unusually sensitive to dialect, local convention, historical
@@ -337,6 +387,8 @@ story relevance, reuse, pedagogical purpose, risk, and mechanical audio quality.
 - **D32–D33:** expanded provisional authoring and audio across all 32 counties, added
   mechanistic risk sampling and offline reference comparison, began Personal Atlas
   name/place audio, and created the first reviewable narrative-pedagogy sidecar.
+- **D34–D35:** probed generated video and ruled it out as an Irish-audio path, then
+  froze the harvest at cycle 2 and turned the project from capture to review.
 
 Durable product rules and decisions remain in [`PRODUCT.md`](PRODUCT.md) and
 [`docs/DECISIONS.md`](docs/DECISIONS.md). Launch strategy and unresolved strategic
