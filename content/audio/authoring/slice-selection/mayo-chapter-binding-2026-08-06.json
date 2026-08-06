@@ -39,8 +39,9 @@
   "by_code": {
    "member_not_reviewed": 39,
    "member_without_clip": 17,
-   "unbound_exercise": 9,
+   "unbindable_by_rule": 7,
    "unbound_comprehension_exercise": 4,
+   "bindable_needs_member": 2,
    "release_state_contradiction": 1,
    "store_state_conflict": 1
   },
@@ -185,10 +186,38 @@
    "detail": "qa_state=spot_flagged in family mayo.phrase-family.as (status densify_draft)"
   },
   {
-   "code": "unbound_exercise",
+   "code": "unbindable_by_rule",
    "chapter": "mayo.clew-bay",
    "page": "mayo.clew-bay.match-coast",
-   "detail": "matching exercise names no phrase-family member; lexemes ['lex.farraige', 'lex.ba', 'lex.ait']"
+   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [
+    {
+     "pair_id": "farraige",
+     "irish": "farraige",
+     "english": "sea",
+     "member_id": "farraige.citation",
+     "qa_state": "qa_passed"
+    },
+    {
+     "pair_id": "ba",
+     "irish": "bá",
+     "english": "bay",
+     "member_id": "ba.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "ait",
+     "irish": "áit",
+     "english": "place",
+     "member_id": "ait.citation",
+     "qa_state": "spot_flagged"
+    }
+   ],
+   "lexemes": [
+    "lex.farraige",
+    "lex.ba",
+    "lex.ait"
+   ]
   },
   {
    "code": "member_not_reviewed",
@@ -198,10 +227,46 @@
    "detail": "qa_state=spot_flagged in family mayo.phrase-family.teaghlach (status densify_draft)"
   },
   {
-   "code": "unbound_exercise",
+   "code": "unbindable_by_rule",
    "chapter": "mayo.kin-alliances",
    "page": "mayo.kin-alliances.match-kin",
-   "detail": "matching exercise names no phrase-family member; lexemes ['lex.teaghlach', 'lex.mac', 'lex.dearthair', 'lex.bean']"
+   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [
+    {
+     "pair_id": "teaghlach",
+     "irish": "teaghlach",
+     "english": "family / household",
+     "member_id": "teaghlach.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "mac",
+     "irish": "mac",
+     "english": "son",
+     "member_id": "mac.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "dearthair",
+     "irish": "deartháir",
+     "english": "brother",
+     "member_id": "dearthair.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "bean",
+     "irish": "bean",
+     "english": "woman",
+     "member_id": "bean.citation",
+     "qa_state": "generated_unreviewed"
+    }
+   ],
+   "lexemes": [
+    "lex.teaghlach",
+    "lex.mac",
+    "lex.dearthair",
+    "lex.bean"
+   ]
   },
   {
    "code": "member_without_clip",
@@ -274,16 +339,56 @@
    "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.caislean (status densify_draft)"
   },
   {
-   "code": "unbound_exercise",
+   "code": "unbindable_by_rule",
    "chapter": "mayo.rockfleet",
    "page": "mayo.rockfleet.match-household",
-   "detail": "matching exercise names no phrase-family member; lexemes ['lex.caislean', 'lex.teaghlach', 'lex.mac', 'lex.bean']"
+   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [
+    {
+     "pair_id": "caislean",
+     "irish": "caisleán",
+     "english": "castle",
+     "member_id": "caislean.citation",
+     "qa_state": "generated_unreviewed"
+    },
+    {
+     "pair_id": "teaghlach",
+     "irish": "teaghlach",
+     "english": "family / household",
+     "member_id": "teaghlach.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "mac",
+     "irish": "mac",
+     "english": "son",
+     "member_id": "mac.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "bean",
+     "irish": "bean",
+     "english": "woman",
+     "member_id": "bean.citation",
+     "qa_state": "generated_unreviewed"
+    }
+   ],
+   "lexemes": [
+    "lex.caislean",
+    "lex.teaghlach",
+    "lex.mac",
+    "lex.bean"
+   ]
   },
   {
-   "code": "unbound_exercise",
+   "code": "bindable_needs_member",
    "chapter": "mayo.rockfleet",
    "page": "mayo.rockfleet.listen-build-together",
-   "detail": "sentenceConstruction exercise names no phrase-family member; lexemes ['lex.teaghlach']"
+   "detail": "sentenceConstruction exercise has Irish bind target(s) ['ta muid go leir.'] with bundled audio but no catalog member carries the text",
+   "candidates": [],
+   "lexemes": [
+    "lex.teaghlach"
+   ]
   },
   {
    "code": "member_without_clip",
@@ -324,13 +429,17 @@
    "code": "unbound_comprehension_exercise",
    "chapter": "mayo.rockfleet",
    "page": "mayo.rockfleet.comprehension",
-   "detail": "readRespond exercise names no phrase-family member; lexemes []"
+   "detail": "readRespond exercise names no phrase-family member; teaches no lexeme"
   },
   {
-   "code": "unbound_exercise",
+   "code": "bindable_needs_member",
    "chapter": "mayo.rockfleet",
    "page": "mayo.rockfleet.speaking",
-   "detail": "recordCompare exercise names no phrase-family member; lexemes ['lex.teaghlach']"
+   "detail": "recordCompare exercise has Irish bind target(s) ['ta muid go leir.'] with bundled audio but no catalog member carries the text",
+   "candidates": [],
+   "lexemes": [
+    "lex.teaghlach"
+   ]
   },
   {
    "code": "member_without_clip",
@@ -375,10 +484,16 @@
    "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.ba (status densify_draft)"
   },
   {
-   "code": "unbound_exercise",
+   "code": "unbindable_by_rule",
    "chapter": "mayo.power-at-sea",
    "page": "mayo.power-at-sea.sequence-livelihood",
-   "detail": "sentenceConstruction exercise names no phrase-family member; lexemes ['lex.long', 'lex.ba', 'lex.teaghlach']"
+   "detail": "sentenceConstruction exercise binds against ['a ship moves through the bay. | authority controls a route or toll. | the proceeds help maintain people and power.'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [],
+   "lexemes": [
+    "lex.long",
+    "lex.ba",
+    "lex.teaghlach"
+   ]
   },
   {
    "code": "member_not_reviewed",
@@ -419,7 +534,7 @@
    "code": "unbound_comprehension_exercise",
    "chapter": "mayo.bingham-pressure",
    "page": "mayo.bingham-pressure.read-voices",
-   "detail": "readRespond exercise names no phrase-family member; lexemes []"
+   "detail": "readRespond exercise names no phrase-family member; teaches no lexeme"
   },
   {
    "code": "member_without_clip",
@@ -471,10 +586,16 @@
    "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.iarr (status densify_draft)"
   },
   {
-   "code": "unbound_exercise",
+   "code": "unbindable_by_rule",
    "chapter": "mayo.road-to-london",
    "page": "mayo.road-to-london.sequence-crossing",
-   "detail": "sentenceConstruction exercise names no phrase-family member; lexemes ['lex.iarr', 'lex.teigh', 'lex.tar']"
+   "detail": "sentenceConstruction exercise binds against ['local power can no longer release her kin. | grainne petitions the queen. | she enters the london court process.'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [],
+   "lexemes": [
+    "lex.iarr",
+    "lex.teigh",
+    "lex.tar"
+   ]
   },
   {
    "code": "member_without_clip",
@@ -494,7 +615,7 @@
    "code": "unbound_comprehension_exercise",
    "chapter": "mayo.in-the-record",
    "page": "mayo.in-the-record.comprehend-source",
-   "detail": "readRespond exercise names no phrase-family member; lexemes []"
+   "detail": "readRespond exercise names no phrase-family member; teaches no lexeme"
   },
   {
    "code": "member_not_reviewed",
@@ -511,10 +632,46 @@
    "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.ainm (status densify_draft)"
   },
   {
-   "code": "unbound_exercise",
+   "code": "unbindable_by_rule",
    "chapter": "mayo.in-the-record",
    "page": "mayo.in-the-record.match-record",
-   "detail": "matching exercise names no phrase-family member; lexemes ['lex.ainm', 'lex.teaghlach', 'lex.dearthair', 'lex.bean']"
+   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [
+    {
+     "pair_id": "ainm",
+     "irish": "ainm",
+     "english": "the name at the head of the questions",
+     "member_id": "ainm.citation",
+     "qa_state": "generated_unreviewed"
+    },
+    {
+     "pair_id": "teaghlach",
+     "irish": "teaghlach",
+     "english": "the family relationships named in the answers",
+     "member_id": "teaghlach.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "dearthair",
+     "irish": "deartháir",
+     "english": "the brother later named in the royal response",
+     "member_id": "dearthair.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "bean",
+     "irish": "bean",
+     "english": "the woman whose authority the officials had to address",
+     "member_id": "bean.citation",
+     "qa_state": "generated_unreviewed"
+    }
+   ],
+   "lexemes": [
+    "lex.ainm",
+    "lex.teaghlach",
+    "lex.dearthair",
+    "lex.bean"
+   ]
   },
   {
    "code": "member_not_reviewed",
@@ -524,10 +681,16 @@
    "detail": "qa_state=spot_flagged in family mayo.phrase-family.as (status densify_draft)"
   },
   {
-   "code": "unbound_exercise",
+   "code": "unbindable_by_rule",
    "chapter": "mayo.royal-answer",
    "page": "mayo.royal-answer.notice-actions",
-   "detail": "grammarDiscovery exercise names no phrase-family member; lexemes ['lex.iarr', 'lex.freagair', 'lex.tabhair']"
+   "detail": "grammarDiscovery exercise binds against ['the verb changes the action: ask, answer, or give.'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [],
+   "lexemes": [
+    "lex.iarr",
+    "lex.freagair",
+    "lex.tabhair"
+   ]
   },
   {
    "code": "member_without_clip",
@@ -561,7 +724,7 @@
    "code": "unbound_comprehension_exercise",
    "chapter": "mayo.royal-answer",
    "page": "mayo.royal-answer.read-limit",
-   "detail": "readRespond exercise names no phrase-family member; lexemes []"
+   "detail": "readRespond exercise names no phrase-family member; teaches no lexeme"
   },
   {
    "code": "member_without_clip",

@@ -152,6 +152,16 @@ Canonical records:
   unreviewed, **17** have no bundled clip, and **9** lexeme-carrying exercises name no
   member. `mayo.clew-bay` is the cheapest first chapter (**1** unreviewed member, **1**
   unbound exercise, no missing audio).
+- The **9** lexeme-carrying unbound exercises are not a content gap. **7** are
+  **unbindable under the current rule**: the runtime binds against
+  `answer`/`audioText`/`modelText`, and for `matching` those hold `"all pairs"` (the
+  Irish is in `pairs[].left`, which the rule never reads), while the sequencing and
+  `grammarDiscovery` exercises hold English prose. Adding member references to any of
+  them would fail the pack at load. All **15** matching pairs already resolve to exact
+  citation members with bundled audio, so wiring them is a **runtime decision** —
+  include `pairs[].left` in the bind targets — not authoring. The remaining **2** are
+  genuinely bindable: both `mayo.rockfleet` exercises bind against *"Tá muid go léir."*,
+  which has a clip but no member in either store; one authored v1 member would bind both.
 - The two stores disagree on one member: `ainm.grainne-named` records every v2 review
   approved while the v1 member the app loads is `generated_unreviewed`, and its own v2
   release reasons still claim those reviews are pending. It is the only such

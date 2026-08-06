@@ -62,11 +62,9 @@ Twelve pages, **3** exercises. Current state:
 **Clew Bay is not unbound — it is two-thirds bound and blocked on review, not on wiring.**
 The work is therefore smaller than §8.4 implied, and differently shaped:
 
-1. **`match-coast` needs member references.** It is the only genuinely unbound exercise
-   in the chapter. It spans three lexemes; `farraige` is fully QA-passed, while `ba` and
-   `ait` are `densify_draft` with a mix of `generated_unreviewed`, `spot_flagged`, and
-   `pending_generation` members. Binding it means choosing members and satisfying the
-   bind rule for each pair.
+1. **`match-coast` cannot be bound under the current rule** — see §6.2. Its three
+   candidate members exist and are exact, but a `matching` exercise binds against
+   `"all pairs"`, so wiring it needs a runtime change rather than authoring.
 2. **`as.from-mayo` needs its `spot_flagged` state resolved** — review, correct, or
    replace. Until then the chapter cannot claim a clean learning path.
 3. **`ba` and `ait` need enough reviewed members** to support `match-coast`.
@@ -107,8 +105,9 @@ now; steps 3–5 are gated on a qualified Irish speaker.
 1. **Binding audit — done.** `tools/audit_chapter_binding.py` applies the runtime's own
    bind rule offline and adds the audio, bundle-drift, and store-conflict checks the
    Swift validator cannot see. See §6 for what it found.
-2. **Select `match-coast` member candidates** for `ba` and `ait` from existing v1
-   members, and record which pairs the bind rule permits. Mechanical, no new authoring.
+2. **`match-coast` candidates — done, and the answer is that the rule forbids it.**
+   The candidates exist and are unambiguous, but the bind rule cannot express a matching
+   exercise. See §6.2.
 3. **Native review of the Clew Bay set** — `farraige` is already passed; `as.from-mayo`
    plus the `ba`/`ait` candidates are the actual ask. Roughly **8–12 lines**, far smaller
    than the 60-line slice, and the honest first review batch.
@@ -165,6 +164,40 @@ This matters beyond tidiness: `rank_slice_candidates.py` reads `states.reviews` 
 lines "already approved — no review time needed", and **4** of the 60 selected lines
 carry that mark. At least one of them is not approved anywhere the runtime can see.
 Treat that flag as provisional until the stores agree.
+
+### 6.2 The nine unbound exercises split two ways, and neither is "author a binding"
+
+Classifying each unbound exercise by whether its bind targets contain Irish at all —
+tested by whether a bundled clip exists for the target — separates them cleanly:
+
+**Seven are `unbindable_by_rule`.** The bind rule reads `answer`, `audioText`, and
+`modelText`. For these families those fields hold no Irish:
+
+| Exercise family | What the bind target actually contains |
+| --- | --- |
+| `matching` (×4) | `"all pairs"` — the Irish lives in `pairs[].left`, which the rule never reads |
+| `sentenceConstruction` sequencing (×2) | English ordering prose, e.g. *"A ship moves through the bay \| Authority controls a route or toll \| …"* |
+| `grammarDiscovery` (×1) | an English rule statement, *"The verb changes the action: ask, answer, or give."* |
+
+Adding `phraseFamilyMemberIDs` to any of these would **fail the pack at load** with
+`phraseFamilyMemberMismatch`. This is not a content gap. No amount of authoring or review
+fixes it.
+
+**The candidates are nonetheless ready.** All **15** matching pairs across the four
+matching exercises resolve to an exact citation member with bundled audio — `match-coast`
+maps to `farraige.citation` (**`qa_passed`**), `ba.citation`, and `ait.citation`. The tool
+records these as `candidates` on each finding: evidence for a decision, not a binding.
+
+Wiring them needs a small runtime change — include `pairs[].left` in the bind targets in
+`CountyStoryPack.validatePhraseFamilyMembers`. That is narrower than §4's option B, but it
+still modifies enforced validation while the device gate is open, so it is a decision, not
+a cleanup.
+
+**Two are `bindable_needs_member`.** `mayo.rockfleet.listen-build-together` and
+`mayo.rockfleet.speaking` both bind against *"Tá muid go léir."*, which has a bundled,
+checksummed clip — but **no member in either store carries that text**. One authored v1
+member would bind both exercises, with no runtime change. That is the only genuine
+author-a-binding task in the pack.
 
 ## 7. What this does not change
 
