@@ -115,6 +115,34 @@ Canonical records:
 - [`content/pedagogy/README.md`](content/pedagogy/README.md)
 - [`docs/DECISIONS.md`](docs/DECISIONS.md) D33
 
+### Slice selection
+
+- `tools/rank_slice_candidates.py` ranks the frozen corpus for review planning and
+  selects a bounded slice under coverage constraints. First run over Mayo: **236**
+  members examined, **236** eligible after gates, **60** selected across **34**
+  families; **4** of the selected lines are already fully approved.
+- **2 of 236** Mayo members bind to a real page in the nine-chapter production pack.
+  The other **234** declare exercise consumers whose record ids do not exist in
+  `grainne-1593.pack.draft.json` (**237** distinct consumer ids against **100** pack
+  pages). Approving those lines would not connect them to a chapter.
+- **3 of 236** members carry either D30 consuming pattern, and all three predate the
+  harvest. The **2,744**-line cycle-2 expansion added **zero** pattern-carrying lines;
+  it widened vocabulary coverage, not pattern coverage. Their clips are bundled but
+  arrived through the pre-v2 inventory path.
+- Three of the five ranking criteria — story relevance, reuse, pedagogical purpose,
+  carrying weights 5/4/4 — are **effectively constant** across the pool (**99.2%**,
+  **98.3%**, **97.9%** at their modal value). Ranking is therefore driven by risk and
+  clip duration. The tool reports this per criterion rather than implying the
+  criteria contributed.
+- Ranking is review planning only. It approves nothing, changes no state, and a high
+  score never means the Irish is correct.
+
+Canonical records:
+
+- [`docs/SLICE-SELECTION.md`](docs/SLICE-SELECTION.md)
+- [`content/audio/authoring/slice-selection/d35-mayo-slice-2026-08-06.json`](content/audio/authoring/slice-selection/d35-mayo-slice-2026-08-06.json)
+- [`content/audio/authoring/slice-selection/d35-mayo-slice-packet-2026-08-06.md`](content/audio/authoring/slice-selection/d35-mayo-slice-packet-2026-08-06.md)
+
 ### Generated video exploration
 
 - A day-one Gemini Omni Flash pass produced **14** clips in two batches (**9** concepts;
@@ -321,9 +349,13 @@ one has unresolved claims, missing checksums, or unregistered files.
 
 ### 6. Freeze the harvest, select, and prove one learner-facing slice — **active**
 
-The freeze is taken (**D35**): corpus expansion has stopped. Rank the captured material
-by story relevance, reuse, pedagogical purpose, risk, and mechanical audio quality —
-this ranking is the immediate next piece of work and does not yet exist. Then:
+The freeze is taken (**D35**): corpus expansion has stopped. Ranking is implemented and
+run (`tools/rank_slice_candidates.py`; **60** Mayo lines selected). Step 1 is therefore
+closed, but its findings block a clean start on step 2: only **2** of **236** Mayo
+members bind to a real page in the production pack, so approving the ranked slice would
+not connect it to a chapter. **Binding one chapter's exercise consumers is unbuilt work
+that step 2 assumes already exists** — see [`docs/SLICE-SELECTION.md`](docs/SLICE-SELECTION.md)
+§8. Then:
 
 1. correct and gate the selected subset;
 2. connect one production Mayo Learning slice to reviewed phrase-family and narrative
@@ -358,6 +390,10 @@ this ranking is the immediate next piece of work and does not yet exist. Then:
 - The prepaid subscription window still expires. Held reserve credits are lost if the
   selected slice is not reviewed and regenerated before expiry — the freeze buys review
   time, it does not extend the window.
+- The harvested corpus is broad but structurally undifferentiated: nearly every member
+  carries the same consumer shape, placement count, and teaching role, and almost none
+  binds to the production pack. Volume was achieved; connection to a learning use was
+  not, which is the risk above arriving in a different form.
 - Generated video cannot carry Irish speech (**D34**). Any video surface that appears
   to speak Irish must compose D31 clips over the footage; treating an Omni audio track
   as usable would put unintelligible Irish in front of learners or funders.
