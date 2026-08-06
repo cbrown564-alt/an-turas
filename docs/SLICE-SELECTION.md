@@ -1,6 +1,8 @@
 # Slice selection — ranking the frozen corpus for review
 
-*Draft proposal, 2026-08-06. Awaiting approval; nothing here is implemented.*
+*Approved and implemented 2026-08-06 as `tools/rank_slice_candidates.py`. §8 records
+what the first run found, including three findings that change what §6 step 2 can
+assume. Ranking is review planning only and approves nothing.*
 
 `STATUS.md` §6 step 1 says to rank the captured material by story relevance, reuse,
 pedagogical purpose, risk, and mechanical audio quality. This document proposes exactly
@@ -167,15 +169,88 @@ ranker chose it." Scores are auditable, not authoritative.
 the v2 store, does not touch the credit reserve, and does not imply learner release.
 Ranking is review *planning*, exactly as the risk stratification is.
 
-## 7. Open questions
+## 7. Settled parameters
 
-1. **Slice size.** Recommend **~60 lines** — one focused native-speaker session, and
-   enough to cover both D30 patterns across several chapters. D31's 1,200–1,500 first
-   learner corpus is the eventual target, not the first review batch.
-2. **Scope confirmation.** Mayo / Gráinne 1593, per §3?
-3. **Risk direction.** Confirm risk penalizes slice selection (§1). This is the one
-   place this proposal departs from a plain reading of `STATUS.md` §6.
-4. **The 11 cross-county keys** — include as reuse-rich, or exclude as scope creep?
-   Recommend excluding from the first slice and treating shared lines as a later,
-   higher-value pass once the pattern is proven.
-5. **Weights.** 5/4/4/−3/3 as above, or a different balance?
+Approved 2026-08-06: slice size **60**; scope Mayo / Gráinne 1593; risk **penalizes**
+slice selection; the 11 cross-county keys are **excluded** from the first slice; weights
+**5 / 4 / 4 / −3 / 3**.
+
+## 8. First run — findings
+
+*2026-08-06, revision `74d45ef` corpus. Report:
+`content/audio/authoring/slice-selection/d35-mayo-slice-2026-08-06.json`; packet:
+`d35-mayo-slice-packet-2026-08-06.md`.*
+
+**236** Mayo members examined, **236** eligible after gates, **60** selected across
+**34** families. Three findings matter more than the ranking itself.
+
+### 8.1 The captured corpus is almost entirely unbound to the production pack
+
+**2 of 236** members have an exercise consumer whose `record_id` is a real page in the
+nine-chapter Mayo pack. The other **234** declare consumers such as
+`d32.mayo.grainne-1593.ask-what.08` — plausible-looking ids that **do not exist** in
+`grainne-1593.pack.draft.json`. There are **237** distinct consumer record ids against
+**100** actual pack pages.
+
+This is the finding with teeth. `STATUS.md` §6 step 2 says to "connect one production
+Mayo Learning slice to reviewed phrase-family and narrative pedagogy material" — but
+approving these lines would not connect anything, because the pack does not contain the
+records they claim to serve. **Binding is unbuilt work that the plan currently assumes
+already exists.** Reviewing first and binding later risks re-reviewing whatever the
+binding changes.
+
+### 8.2 D30's designated first proof is three lines, and they predate the harvest
+
+Only **3 of 236** members carry either D30 consuming pattern (surround change, delayed
+reuse): `farraige.sea-here`, `farraige.ship-on-sea`, `farraige.where-sea`. All three are
+the original D30 proof members. The **2,744**-line cycle-2 expansion added **zero** lines
+carrying either pattern — the harvest widened vocabulary coverage, not pattern coverage.
+
+Their clips exist and are bundled, but arrived through the pre-v2 `inventory:phrase:mayo`
+path and carry `approved:not_started` v2 batch state. The first gate draft excluded them
+as "not captured"; that was wrong — a bundled, checksummed clip satisfies the gate's
+purpose. They now pass with an explicit `legacy_inventory_provenance_not_v2_batch` note.
+
+### 8.3 Three of the five criteria cannot discriminate
+
+The tool reports this itself, per criterion, in `criterion_discrimination`:
+
+| Criterion | Weight | Modal share | Verdict |
+| --- | --- | --- | --- |
+| Story relevance | 5 | **99.2%** at 3 | effectively constant |
+| Reuse | 4 | **98.3%** at 2 | effectively constant |
+| Pedagogical purpose | 4 | **97.9%** at 2 | effectively constant |
+| Risk | −3 | 23.7% | discriminates |
+| Audio quality | 3 | 50.0% | discriminates |
+
+The three highest-weighted criteria are flat, because the harvested material is
+structurally uniform: same consumer shape, same placement count, same teaching role. So
+the ranking is in practice driven by **risk and clip duration** — mechanical properties
+that say nothing about whether a line is worth teaching.
+
+The ranking is still usable — it reliably floats the D30 proof and the *farraige*
+contrast families to the top, and it demotes name-heavy, ambiguous-source material — but
+it is ordering a pool that is far less differentiated than §4 assumed. Two criteria were
+recalibrated rather than left to lie:
+
+- **Risk** was saturating at the 0–5 cap for **201 of 233** rows, since most lines carry
+  mutation, name, and place risk simultaneously. It now accumulates an uncapped raw
+  penalty and calibrates onto 0–5 by position within the pool.
+- **`invented_text` (234/236) and `audio_pronunciation` (232/236)** are excluded from
+  scoring as non-discriminating, for the same reason `priority` was: a flag carried by
+  everything ranks nothing. Both stay recorded on every row.
+
+### 8.4 What this implies for the plan
+
+The slice is produced and reviewable, and **4** of its 60 lines are already fully
+approved and need no review time. But the first-slice premise in §6 needs a decision
+before review time is spent:
+
+1. **Bind first, then review** — author real pack-page consumers for a target chapter,
+   then rank within that bound set. Slower to start, but approval then unlocks a chapter.
+2. **Review first, bind after** — spend native-speaker time on the current ranking and
+   accept that binding may invalidate some of it.
+
+Recommendation: **bind first**, on one chapter. §8.1 means option 2 buys approved lines
+with no place to put them, which is the same failure mode D35 froze the harvest to avoid
+— producing inventory faster than it can be attached to a use.
