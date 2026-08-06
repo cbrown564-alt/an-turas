@@ -104,10 +104,9 @@ tidiness, because it modifies enforced validation while the device gate is still
 Ordered, with the review dependency made explicit. Steps 1–2 are mechanical and can start
 now; steps 3–5 are gated on a qualified Irish speaker.
 
-1. **Extend the binding audit.** A `check` that reports, per chapter: exercises without
-   member refs, refs that do not resolve, refs whose text violates the bind rule, and
-   members without a bundled clip. This is the missing mechanical gate — the Swift
-   validator catches these at pack load, but nothing reports them from the content side.
+1. **Binding audit — done.** `tools/audit_chapter_binding.py` applies the runtime's own
+   bind rule offline and adds the audio, bundle-drift, and store-conflict checks the
+   Swift validator cannot see. See §6 for what it found.
 2. **Select `match-coast` member candidates** for `ba` and `ait` from existing v1
    members, and record which pairs the bind rule permits. Mechanical, no new authoring.
 3. **Native review of the Clew Bay set** — `farraige` is already passed; `as.from-mayo`
@@ -120,7 +119,54 @@ now; steps 3–5 are gated on a qualified Irish speaker.
 Only after step 5 does §6 step 2 have something real to connect. The 60-line ranked slice
 remains useful as a *later* review queue once binding, not review, is the bottleneck.
 
-## 6. What this does not change
+## 6. Audit results
+
+*`tools/audit_chapter_binding.py report`, 2026-08-06. Report:
+`content/audio/authoring/slice-selection/mayo-chapter-binding-2026-08-06.json`.*
+
+**Every binding in the Mayo pack is valid.** All **42** references resolve against the
+v1 catalog and satisfy the bind rule, and the bundled copies match the authored files.
+**Zero blocking findings** — the pack loads. What is missing is review and audio, not
+wiring, which confirms §3 across all nine chapters rather than only Clew Bay.
+
+| Chapter | Exercises | Bound | Members | QA states |
+| --- | --- | --- | --- | --- |
+| `mayo.clew-bay` | 3 | 2 | 2 | qa_passed 1, spot_flagged 1 |
+| `mayo.kin-alliances` | 4 | 3 | 6 | unreviewed 5, spot_flagged 1 |
+| `mayo.rockfleet` | 8 | 4 | 4 | unreviewed 5 |
+| `mayo.power-at-sea` | 4 | 3 | 4 | unreviewed 4, qa_passed 2 |
+| `mayo.bingham-pressure` | 4 | 3 | 5 | spot_flagged 4, unreviewed 3 |
+| `mayo.road-to-london` | 4 | 3 | 4 | spot_flagged 2, unreviewed 2 |
+| `mayo.in-the-record` | 5 | 3 | 3 | unreviewed 2, spot_flagged 1 |
+| `mayo.royal-answer` | 3 | 1 | 2 | unreviewed 2 |
+| `mayo.return-afterlife` | 3 | 3 | 7 | unreviewed 7 |
+
+**No chapter is review-ready.** Findings: **39** bound members not reviewed, **17** bound
+members with no bundled clip, **9** lexeme-carrying exercises with no member reference,
+**4** comprehension exercises with none (expected — they teach no lexeme), and two
+state-consistency findings below.
+
+Clew Bay remains the cheapest first chapter: **1** unreviewed member (`as.from-mayo`),
+**1** unbound exercise (`match-coast`), and no missing audio.
+
+### 6.1 The two stores disagree about review state
+
+`ainm.grainne-named` records **every v2 review approved** while the **v1 member the app
+actually loads is `generated_unreviewed`**. Only the v1 answer reaches the runtime, so
+the member is unreviewed as far as the app is concerned regardless of what v2 says.
+
+The same member also contradicts *itself*: its v2 `learner_release` is `blocked` with
+reasons `editorial_review_pending, pedagogy_review_pending, irish_language_review_pending`
+— stale against its own approved review records. It is the only member in **7,060** with
+that contradiction, which points at the contract-repair migration rather than at a
+systemic fault.
+
+This matters beyond tidiness: `rank_slice_candidates.py` reads `states.reviews` to mark
+lines "already approved — no review time needed", and **4** of the 60 selected lines
+carry that mark. At least one of them is not approved anywhere the runtime can see.
+Treat that flag as provisional until the stores agree.
+
+## 7. What this does not change
 
 D35 stands: the harvest is frozen and the credits stay a regeneration reserve. Nothing
 here approves Irish, and a bound exercise is not a reviewed one. Chapter binding is

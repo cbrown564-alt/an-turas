@@ -145,9 +145,24 @@ Canonical records:
 - Ranking is review planning only. It approves nothing, changes no state, and a high
   score never means the Irish is correct.
 
+- `tools/audit_chapter_binding.py` applies the runtime's own bind rule offline. Every
+  binding in the Mayo pack is valid: all **42** references resolve, satisfy the bind
+  rule, and match their bundled copies — **0** blocking findings. What is missing is
+  review and audio, not wiring. **No chapter is review-ready**: **39** bound members are
+  unreviewed, **17** have no bundled clip, and **9** lexeme-carrying exercises name no
+  member. `mayo.clew-bay` is the cheapest first chapter (**1** unreviewed member, **1**
+  unbound exercise, no missing audio).
+- The two stores disagree on one member: `ainm.grainne-named` records every v2 review
+  approved while the v1 member the app loads is `generated_unreviewed`, and its own v2
+  release reasons still claim those reviews are pending. It is the only such
+  contradiction in **7,060** members, but it is one of the **4** lines the ranker marks
+  "already approved"; treat that mark as provisional.
+
 Canonical records:
 
 - [`docs/SLICE-SELECTION.md`](docs/SLICE-SELECTION.md)
+- [`docs/CHAPTER-BINDING.md`](docs/CHAPTER-BINDING.md)
+- [`content/audio/authoring/slice-selection/mayo-chapter-binding-2026-08-06.json`](content/audio/authoring/slice-selection/mayo-chapter-binding-2026-08-06.json)
 - [`content/audio/authoring/slice-selection/d35-mayo-slice-2026-08-06.json`](content/audio/authoring/slice-selection/d35-mayo-slice-2026-08-06.json)
 - [`content/audio/authoring/slice-selection/d35-mayo-slice-packet-2026-08-06.md`](content/audio/authoring/slice-selection/d35-mayo-slice-packet-2026-08-06.md)
 
