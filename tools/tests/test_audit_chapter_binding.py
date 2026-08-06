@@ -208,13 +208,53 @@ class BindingAuditTest(unittest.TestCase):
         self.assertIn("unbound_comprehension_exercise", self.codes(report))
         self.assertNotIn("unbound_exercise", self.codes(report))
 
-    def test_lexeme_carrying_exercise_without_members_is_a_gap(self):
+    def test_target_without_irish_audio_is_unbindable_by_rule(self):
         report = self.audit(
-            exercise={"family": "matching", "lexemeIDs": ["lex.test"], "answer": "x"},
-            members=[{"id": "m1", "text": "x", "qa_state": "qa_passed"}],
-            manifest_texts=["x"],
+            exercise={
+                "family": "matching",
+                "lexemeIDs": ["lex.test"],
+                "answer": "all pairs",
+                "pairs": [{"id": "p", "left": "farraige", "right": "sea"}],
+            },
+            members=[{"id": "m1", "text": "farraige", "qa_state": "qa_passed"}],
+            manifest_texts=["farraige"],
         )
-        self.assertIn("unbound_exercise", self.codes(report))
+        self.assertIn("unbindable_by_rule", self.codes(report))
+        self.assertNotIn("bindable_needs_member", self.codes(report))
+
+    def test_matching_pairs_propose_candidate_members(self):
+        report = self.audit(
+            exercise={
+                "family": "matching",
+                "lexemeIDs": ["lex.test"],
+                "answer": "all pairs",
+                "pairs": [
+                    {"id": "p", "left": "farraige", "right": "sea"},
+                    {"id": "q", "left": "gan-bhall", "right": "none"},
+                ],
+            },
+            members=[{"id": "m1", "text": "farraige", "qa_state": "qa_passed"}],
+            manifest_texts=["farraige"],
+        )
+        finding = next(
+            item for item in report["findings"] if item["code"] == "unbindable_by_rule"
+        )
+        candidates = {row["pair_id"]: row["member_id"] for row in finding["candidates"]}
+        self.assertEqual(candidates["p"], "m1")
+        self.assertIsNone(candidates["q"])
+
+    def test_irish_target_without_a_member_is_bindable(self):
+        report = self.audit(
+            exercise={
+                "family": "sentenceConstruction",
+                "lexemeIDs": ["lex.test"],
+                "answer": "Tá muid go léir.",
+            },
+            members=[{"id": "m1", "text": "farraige", "qa_state": "qa_passed"}],
+            manifest_texts=["Tá muid go léir.", "farraige"],
+        )
+        self.assertIn("bindable_needs_member", self.codes(report))
+        self.assertNotIn("unbindable_by_rule", self.codes(report))
 
     def test_missing_bundle_copy_blocks(self):
         report = self.audit(
