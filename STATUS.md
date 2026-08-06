@@ -125,6 +125,14 @@ Canonical records:
   The other **234** declare exercise consumers whose record ids do not exist in
   `grainne-1593.pack.draft.json` (**237** distinct consumer ids against **100** pack
   pages). Approving those lines would not connect them to a chapter.
+- The cause is **two parallel phrase-family stores**. The pack is bound — **42** member
+  references across **25** exercises — to the **v1** store
+  (`content/mayo/phrase-families/*.v1.json`, **79** members), which is also where the
+  D30 `farraige` QA pass lives. The harvest wrote **236** members into the **v2**
+  authoring store instead. `PhraseFamilyCatalog` filters bundle resources to
+  `.v1.json`, so **the harvested v2 corpus is unreachable by the running app**; native
+  review alone cannot put it in front of a learner. Scope and options:
+  [`docs/CHAPTER-BINDING.md`](docs/CHAPTER-BINDING.md).
 - **3 of 236** members carry either D30 consuming pattern, and all three predate the
   harvest. The **2,744**-line cycle-2 expansion added **zero** pattern-carrying lines;
   it widened vocabulary coverage, not pattern coverage. Their clips are bundled but
@@ -351,11 +359,13 @@ one has unresolved claims, missing checksums, or unregistered files.
 
 The freeze is taken (**D35**): corpus expansion has stopped. Ranking is implemented and
 run (`tools/rank_slice_candidates.py`; **60** Mayo lines selected). Step 1 is therefore
-closed, but its findings block a clean start on step 2: only **2** of **236** Mayo
-members bind to a real page in the production pack, so approving the ranked slice would
-not connect it to a chapter. **Binding one chapter's exercise consumers is unbuilt work
-that step 2 assumes already exists** — see [`docs/SLICE-SELECTION.md`](docs/SLICE-SELECTION.md)
-§8. Then:
+closed, but its findings block a clean start on step 2: the harvested v2 corpus is
+unreachable by the running app, which reads the v1 phrase-family store the pack is bound
+to. **Reconciling the two stores — not authoring bindings from nothing — is the
+prerequisite step 2 assumes is already done.** The scoped first chapter is
+`mayo.clew-bay`, which is two-thirds bound and blocked on review of roughly **8–12**
+lines. See [`docs/SLICE-SELECTION.md`](docs/SLICE-SELECTION.md) §8 and
+[`docs/CHAPTER-BINDING.md`](docs/CHAPTER-BINDING.md). Then:
 
 1. correct and gate the selected subset;
 2. connect one production Mayo Learning slice to reviewed phrase-family and narrative

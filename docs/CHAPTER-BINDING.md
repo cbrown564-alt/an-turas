@@ -1,0 +1,127 @@
+# Chapter binding — scope for one Mayo chapter
+
+*2026-08-06. Scopes the binding work that `docs/SLICE-SELECTION.md` §8.4 identified as a
+prerequisite for `STATUS.md` §6 step 2. Read with D30, D31, and D35.*
+
+## 1. Correction to the slice-selection finding
+
+`SLICE-SELECTION.md` §8.1 reported that only 2 of 236 Mayo members bind to a production
+pack page, and framed binding as unbuilt work. The count is right; the framing was
+wrong, and the difference changes what to do.
+
+**The pack is bound.** Its **38** exercises carry **42** phrase-family member references
+across **25** exercises. They resolve — but to a **v1** phrase-family store
+(`content/mayo/phrase-families/*.v1.json`, **79** members), not to the **v2** authoring
+store the harvest wrote into.
+
+There are two parallel stores, and the runtime only knows one of them:
+
+| | v1 store | v2 authoring store |
+| --- | --- | --- |
+| Location | `content/mayo/phrase-families/*.v1.json` | `.../authoring-v2/*.json` |
+| Mayo members | **79** | **236** |
+| Referenced by the pack | **36** distinct members | **2** |
+| Read by the app | **yes** | **no** |
+| Review metadata | family-level QA states | per-member review/release states |
+| Holds the D30 QA pass | **yes** (`farraige`, 4/4 `qa_passed`) | no |
+
+`PhraseFamilyCatalog.familyURLs` in `ios/AnTuras/CountyStoryPack.swift:1322` filters
+bundle resources to `.v1.json` and decodes the v1 shape (`lexeme_id`, `members[].text`).
+**The 236 harvested v2 members are invisible to the application.** No amount of native
+review makes a v2 member reachable by a learner.
+
+The runtime also validates binding in both directions at pack load
+(`CountyStoryPack.swift:1100`): `unknownPhraseFamilyMember` if an exercise names a member
+absent from the county catalog, and `phraseFamilyMemberMismatch` if member text does not
+match the exercise answer/audio/model under the D30 bind rule. Binding is enforced, not
+advisory — a bad binding fails the pack, it does not degrade quietly.
+
+So the accurate statement is: **the harvest is unbound and unreachable, while the pack is
+bound to a smaller, older, partly reviewed store.**
+
+## 2. What binding actually means here
+
+Three layers must agree for one exercise:
+
+1. **Pack exercise** — `phraseFamilyMemberIDs`, plus `answer` / `audioText` / `modelText`
+2. **Phrase-family catalog** — a v1 member with matching `id` and exact `text`
+3. **Audio manifest** — a bundled, checksummed clip for that text
+
+Layers 1 and 2 are enforced in Swift. Layer 3 is enforced by the reconcile tooling.
+
+## 3. Scope: `mayo.clew-bay`
+
+Twelve pages, **3** exercises. Current state:
+
+| Exercise | Family | Member refs | State |
+| --- | --- | --- | --- |
+| `listen-farraige` | listenChoose | `farraige.citation` | **`qa_passed`** — pedagogue and native audio QA passed 2026-08-01 |
+| `build-origin` | sentenceConstruction | `as.from-mayo` | **`spot_flagged`** — the `as` family is 3/3 spot_flagged, the weakest in the store |
+| `match-coast` | matching | **none** | unbound; spans `lex.farraige`, `lex.ba`, `lex.ait` |
+
+**Clew Bay is not unbound — it is two-thirds bound and blocked on review, not on wiring.**
+The work is therefore smaller than §8.4 implied, and differently shaped:
+
+1. **`match-coast` needs member references.** It is the only genuinely unbound exercise
+   in the chapter. It spans three lexemes; `farraige` is fully QA-passed, while `ba` and
+   `ait` are `densify_draft` with a mix of `generated_unreviewed`, `spot_flagged`, and
+   `pending_generation` members. Binding it means choosing members and satisfying the
+   bind rule for each pair.
+2. **`as.from-mayo` needs its `spot_flagged` state resolved** — review, correct, or
+   replace. Until then the chapter cannot claim a clean learning path.
+3. **`ba` and `ait` need enough reviewed members** to support `match-coast`.
+
+Nothing in this list requires the harvested v2 corpus. Everything in it requires native
+Irish review, which is exactly the constraint D35 identified.
+
+## 4. How harvested material could ever reach the runtime
+
+Three options, if and when the v2 corpus is wanted in the app:
+
+**A · Project selected v2 members into v1-shaped files.** The v1 schema is small
+(`lexeme_id`, `members[{id, text}]`), so a tool could emit v1 files from approved v2
+members. No Swift change. Cheapest path, and it keeps the enforced bind rule intact. Cost:
+two stores stay in sync by tooling, and v1 loses v2's per-member review states.
+
+**B · Teach the runtime to read v2.** Extend `PhraseFamilyCatalog` to decode the v2 shape
+and bundle the v2 files. Richer metadata reaches the app and one store becomes canonical.
+Cost: touches the D30 bind-rule validation and the D29 freeze fixtures, and needs device
+verification — which is already an open gate.
+
+**C · Keep v2 as the harvest ledger and promote line by line.** The pack keeps using v1;
+individual harvested lines are authored into v1 only as they pass review. Cost: manual,
+does not scale past a few hundred lines. Benefit: nothing unreviewed can reach a learner
+by accident, and no runtime change is needed to prove the first slice.
+
+**Recommendation: C now, A when volume justifies it.** The first chapter needs ~10
+correct lines, not 236 available ones. C requires no runtime change and cannot leak
+unreviewed material into the app; A becomes worth building once review throughput —
+not inventory — is the thing being scaled. B should wait until there is a reason beyond
+tidiness, because it modifies enforced validation while the device gate is still open.
+
+## 5. Proposed work for Clew Bay
+
+Ordered, with the review dependency made explicit. Steps 1–2 are mechanical and can start
+now; steps 3–5 are gated on a qualified Irish speaker.
+
+1. **Extend the binding audit.** A `check` that reports, per chapter: exercises without
+   member refs, refs that do not resolve, refs whose text violates the bind rule, and
+   members without a bundled clip. This is the missing mechanical gate — the Swift
+   validator catches these at pack load, but nothing reports them from the content side.
+2. **Select `match-coast` member candidates** for `ba` and `ait` from existing v1
+   members, and record which pairs the bind rule permits. Mechanical, no new authoring.
+3. **Native review of the Clew Bay set** — `farraige` is already passed; `as.from-mayo`
+   plus the `ba`/`ait` candidates are the actual ask. Roughly **8–12 lines**, far smaller
+   than the 60-line slice, and the honest first review batch.
+4. **Resolve `as.from-mayo`** on the review outcome: approve, correct, or replace.
+5. **Verify the bound chapter** — pack loads without a binding error, audio plays, and
+   the Story and Learning paths run. This intersects the open simulator/device gate.
+
+Only after step 5 does §6 step 2 have something real to connect. The 60-line ranked slice
+remains useful as a *later* review queue once binding, not review, is the bottleneck.
+
+## 6. What this does not change
+
+D35 stands: the harvest is frozen and the credits stay a regeneration reserve. Nothing
+here approves Irish, and a bound exercise is not a reviewed one. Chapter binding is
+plumbing; the gates in `STATUS.md` remain exactly where they were.

@@ -194,10 +194,14 @@ nine-chapter Mayo pack. The other **234** declare consumers such as
 
 This is the finding with teeth. `STATUS.md` §6 step 2 says to "connect one production
 Mayo Learning slice to reviewed phrase-family and narrative pedagogy material" — but
-approving these lines would not connect anything, because the pack does not contain the
-records they claim to serve. **Binding is unbuilt work that the plan currently assumes
-already exists.** Reviewing first and binding later risks re-reviewing whatever the
-binding changes.
+approving these lines would not connect anything.
+
+**Corrected 2026-08-06 by [`docs/CHAPTER-BINDING.md`](CHAPTER-BINDING.md) §1.** The count
+above is right, but "binding is unbuilt" was wrong. The pack *is* bound — **42** member
+references across **25** exercises — to a **v1** phrase-family store that the harvest did
+not write into. The app reads only `.v1.json` files, so the **236** harvested v2 members
+are not merely unbound but **unreachable by the runtime**. The prerequisite for step 2 is
+therefore reconciling two stores, not authoring bindings from nothing.
 
 ### 8.2 D30's designated first proof is three lines, and they predate the harvest
 
@@ -254,3 +258,8 @@ before review time is spent:
 Recommendation: **bind first**, on one chapter. §8.1 means option 2 buys approved lines
 with no place to put them, which is the same failure mode D35 froze the harvest to avoid
 — producing inventory faster than it can be attached to a use.
+
+**Scoped in [`docs/CHAPTER-BINDING.md`](CHAPTER-BINDING.md).** Clew Bay turns out to be
+two-thirds bound already and blocked on review rather than wiring: its real first review
+batch is **8–12** lines, not this 60-line slice. The slice remains the right queue for
+later, once binding rather than review is the bottleneck.
