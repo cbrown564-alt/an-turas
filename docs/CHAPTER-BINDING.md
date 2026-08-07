@@ -165,39 +165,45 @@ lines "already approved — no review time needed", and **4** of the 60 selected
 carry that mark. At least one of them is not approved anywhere the runtime can see.
 Treat that flag as provisional until the stores agree.
 
-### 6.2 The nine unbound exercises split two ways, and neither is "author a binding"
+### 6.2 The bind rule now reads `pairs[].left`
 
-Classifying each unbound exercise by whether its bind targets contain Irish at all —
-tested by whether a bundled clip exists for the target — separates them cleanly:
+**Rule change, 2026-08-06.** `CountyStoryPack.validatePhraseFamilyMembers` previously
+bound only against `answer`, `audioText`, and `modelText`. A `matching` exercise answers
+`"all pairs"` and carries its Irish in `pairs[].left`, so matching exercises could not
+name a phrase-family member at all — adding `phraseFamilyMemberIDs` would have failed the
+pack at load with `phraseFamilyMemberMismatch`. Pair left sides are now bind targets.
 
-**Seven are `unbindable_by_rule`.** The bind rule reads `answer`, `audioText`, and
-`modelText`. For these families those fields hold no Irish:
+The rule stays strict in the direction that matters: a member matching *no* pair still
+throws, covered by `testMatchingRejectsAMemberThatMatchesNoPair`. The Python audit mirrors
+the same targets so the two cannot drift.
 
-| Exercise family | What the bind target actually contains |
-| --- | --- |
-| `matching` (×4) | `"all pairs"` — the Irish lives in `pairs[].left`, which the rule never reads |
-| `sentenceConstruction` sequencing (×2) | English ordering prose, e.g. *"A ship moves through the bay \| Authority controls a route or toll \| …"* |
-| `grammarDiscovery` (×1) | an English rule statement, *"The verb changes the action: ask, answer, or give."* |
+With the rule widened, the nine lexeme-carrying unbound exercises resolve three ways:
 
-Adding `phraseFamilyMemberIDs` to any of these would **fail the pack at load** with
-`phraseFamilyMemberMismatch`. This is not a content gap. No amount of authoring or review
-fixes it.
+| Classification | Count | What it means |
+| --- | --- | --- |
+| `bindable_now` | **4** | matching exercises whose pairs resolve to existing catalog members — adding the ids is pure wiring |
+| `bindable_needs_member` | **2** | an Irish bind target with bundled audio, but no member carries the text |
+| `unbindable_by_rule` | **3** | the bind targets carry no Irish at all |
 
-**The candidates are nonetheless ready.** All **15** matching pairs across the four
-matching exercises resolve to an exact citation member with bundled audio — `match-coast`
-maps to `farraige.citation` (**`qa_passed`**), `ba.citation`, and `ait.citation`. The tool
-records these as `candidates` on each finding: evidence for a decision, not a binding.
+**The four `bindable_now` exercises** cover all **15** matching pairs, each resolving to
+an exact citation member with bundled audio: `match-coast` → `farraige.citation`
+(**`qa_passed`**), `ba.citation`, `ait.citation`; and the same pattern in `match-kin`,
+`match-household`, and `match-record`.
 
-Wiring them needs a small runtime change — include `pairs[].left` in the bind targets in
-`CountyStoryPack.validatePhraseFamilyMembers`. That is narrower than §4's option B, but it
-still modifies enforced validation while the device gate is open, so it is a decision, not
-a cleanup.
+**The two `bindable_needs_member`** are `mayo.rockfleet.listen-build-together` and
+`mayo.rockfleet.speaking`, which both bind against *"Tá muid go léir."* — a line with a
+bundled, checksummed clip that **no member in either store carries**. One authored v1
+member binds both.
 
-**Two are `bindable_needs_member`.** `mayo.rockfleet.listen-build-together` and
-`mayo.rockfleet.speaking` both bind against *"Tá muid go léir."*, which has a bundled,
-checksummed clip — but **no member in either store carries that text**. One authored v1
-member would bind both exercises, with no runtime change. That is the only genuine
-author-a-binding task in the pack.
+**The three `unbindable_by_rule`** are the two sequencing `sentenceConstruction` exercises
+(English ordering prose) and the `grammarDiscovery` exercise (an English rule statement).
+These are not content gaps and no authoring fixes them; they simply teach through English
+framing rather than through a bound Irish string.
+
+**Not yet verified in the app.** The Swift change type-checks cleanly, and the two new
+XCTest cases are written, but this host has no CoreSimulator runtime, so the iOS test
+suite has not been run. Wiring the four exercises should follow a real test run, not
+precede it.
 
 ## 7. What this does not change
 

@@ -152,16 +152,20 @@ Canonical records:
   unreviewed, **17** have no bundled clip, and **9** lexeme-carrying exercises name no
   member. `mayo.clew-bay` is the cheapest first chapter (**1** unreviewed member, **1**
   unbound exercise, no missing audio).
-- The **9** lexeme-carrying unbound exercises are not a content gap. **7** are
-  **unbindable under the current rule**: the runtime binds against
-  `answer`/`audioText`/`modelText`, and for `matching` those hold `"all pairs"` (the
-  Irish is in `pairs[].left`, which the rule never reads), while the sequencing and
-  `grammarDiscovery` exercises hold English prose. Adding member references to any of
-  them would fail the pack at load. All **15** matching pairs already resolve to exact
-  citation members with bundled audio, so wiring them is a **runtime decision** —
-  include `pairs[].left` in the bind targets — not authoring. The remaining **2** are
-  genuinely bindable: both `mayo.rockfleet` exercises bind against *"Tá muid go léir."*,
-  which has a clip but no member in either store; one authored v1 member would bind both.
+- The bind rule now reads `pairs[].left` as well as `answer`/`audioText`/`modelText`
+  (`CountyStoryPack.validatePhraseFamilyMembers`). A `matching` exercise answers
+  `"all pairs"` and carries its Irish in the pair sides, so before this change matching
+  exercises could not name a phrase-family member at all. A member matching no pair
+  still throws; the Python audit mirrors the same targets.
+- With the rule widened, the **9** lexeme-carrying unbound exercises resolve three ways:
+  **4** `bindable_now` (all **15** matching pairs resolve to existing citation members
+  with bundled audio — pure wiring), **2** `bindable_needs_member` (both `mayo.rockfleet`
+  exercises bind against *"Tá muid go léir."*, which has a clip but no member in either
+  store), and **3** `unbindable_by_rule` (sequencing and `grammarDiscovery` exercises
+  that teach through English framing and were never content gaps).
+- The Swift change type-checks and two XCTest cases are written, but **this host has no
+  CoreSimulator runtime, so the iOS suite has not been run**. Wiring the four exercises
+  should follow a real test run.
 - The two stores disagree on one member: `ainm.grainne-named` records every v2 review
   approved while the v1 member the app loads is `generated_unreviewed`, and its own v2
   release reasons still claim those reviews are pending. It is the only such

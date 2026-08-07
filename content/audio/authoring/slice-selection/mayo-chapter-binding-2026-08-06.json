@@ -39,8 +39,9 @@
   "by_code": {
    "member_not_reviewed": 39,
    "member_without_clip": 17,
-   "unbindable_by_rule": 7,
+   "bindable_now": 4,
    "unbound_comprehension_exercise": 4,
+   "unbindable_by_rule": 3,
    "bindable_needs_member": 2,
    "release_state_contradiction": 1,
    "store_state_conflict": 1
@@ -186,10 +187,10 @@
    "detail": "qa_state=spot_flagged in family mayo.phrase-family.as (status densify_draft)"
   },
   {
-   "code": "unbindable_by_rule",
+   "code": "bindable_now",
    "chapter": "mayo.clew-bay",
    "page": "mayo.clew-bay.match-coast",
-   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "detail": "matching exercise can name existing catalog member(s) ['ait.citation', 'ba.citation', 'farraige.citation']; adding the ids is pure wiring",
    "candidates": [
     {
      "pair_id": "farraige",
@@ -227,10 +228,10 @@
    "detail": "qa_state=spot_flagged in family mayo.phrase-family.teaghlach (status densify_draft)"
   },
   {
-   "code": "unbindable_by_rule",
+   "code": "bindable_now",
    "chapter": "mayo.kin-alliances",
    "page": "mayo.kin-alliances.match-kin",
-   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "detail": "matching exercise can name existing catalog member(s) ['bean.citation', 'dearthair.citation', 'mac.citation', 'teaghlach.citation']; adding the ids is pure wiring",
    "candidates": [
     {
      "pair_id": "teaghlach",
@@ -339,10 +340,10 @@
    "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.caislean (status densify_draft)"
   },
   {
-   "code": "unbindable_by_rule",
+   "code": "bindable_now",
    "chapter": "mayo.rockfleet",
    "page": "mayo.rockfleet.match-household",
-   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "detail": "matching exercise can name existing catalog member(s) ['bean.citation', 'caislean.citation', 'mac.citation', 'teaghlach.citation']; adding the ids is pure wiring",
    "candidates": [
     {
      "pair_id": "caislean",
@@ -487,7 +488,7 @@
    "code": "unbindable_by_rule",
    "chapter": "mayo.power-at-sea",
    "page": "mayo.power-at-sea.sequence-livelihood",
-   "detail": "sentenceConstruction exercise binds against ['a ship moves through the bay. | authority controls a route or toll. | the proceeds help maintain people and power.'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "detail": "sentenceConstruction exercise binds against ['a ship moves through the bay. | authority controls a route or toll. | the proceeds help maintain people and power.'], which carries no Irish",
    "candidates": [],
    "lexemes": [
     "lex.long",
@@ -589,7 +590,7 @@
    "code": "unbindable_by_rule",
    "chapter": "mayo.road-to-london",
    "page": "mayo.road-to-london.sequence-crossing",
-   "detail": "sentenceConstruction exercise binds against ['local power can no longer release her kin. | grainne petitions the queen. | she enters the london court process.'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "detail": "sentenceConstruction exercise binds against ['local power can no longer release her kin. | grainne petitions the queen. | she enters the london court process.'], which carries no Irish",
    "candidates": [],
    "lexemes": [
     "lex.iarr",
@@ -632,10 +633,10 @@
    "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.ainm (status densify_draft)"
   },
   {
-   "code": "unbindable_by_rule",
+   "code": "bindable_now",
    "chapter": "mayo.in-the-record",
    "page": "mayo.in-the-record.match-record",
-   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "detail": "matching exercise can name existing catalog member(s) ['ainm.citation', 'bean.citation', 'dearthair.citation', 'teaghlach.citation']; adding the ids is pure wiring",
    "candidates": [
     {
      "pair_id": "ainm",
@@ -684,7 +685,7 @@
    "code": "unbindable_by_rule",
    "chapter": "mayo.royal-answer",
    "page": "mayo.royal-answer.notice-actions",
-   "detail": "grammarDiscovery exercise binds against ['the verb changes the action: ask, answer, or give.'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "detail": "grammarDiscovery exercise binds against ['the verb changes the action: ask, answer, or give.'], which carries no Irish",
    "candidates": [],
    "lexemes": [
     "lex.iarr",

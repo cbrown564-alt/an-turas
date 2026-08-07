@@ -24,6 +24,52 @@ final class PhraseFamilyCatalogTests: XCTestCase {
         ))
     }
 
+    /// A matching exercise answers "all pairs" and carries its Irish in
+    /// `pairs[].left`, so the bind rule must read pair sides or matching
+    /// exercises can never name a member (docs/CHAPTER-BINDING.md §6.2).
+    func testMatchingPairLeftSatisfiesTheBindRule() throws {
+        let pack = try XCTUnwrap(CountyStoryPackCatalog.pack(id: "mayo.grainne-1593"))
+        let match = try XCTUnwrap(pack.page(id: "mayo.clew-bay.match-coast")?.exercise)
+        XCTAssertEqual(match.answer, "all pairs")
+        XCTAssertTrue(match.pairs.contains { $0.left == "farraige" })
+
+        var object = try JSONSerialization.jsonObject(with: JSONEncoder().encode(match)) as! [String: Any]
+        object["phraseFamilyMemberIDs"] = ["farraige.citation"]
+        let bound = try JSONDecoder().decode(
+            CountyExercise.self,
+            from: JSONSerialization.data(withJSONObject: object)
+        )
+        XCTAssertNoThrow(try CountyStoryPackValidator.validatePhraseFamilyMembers(
+            bound,
+            pageID: "mayo.clew-bay.match-coast",
+            packID: pack.id
+        ))
+    }
+
+    /// The widened rule must not admit a member unrelated to any pair.
+    func testMatchingRejectsAMemberThatMatchesNoPair() throws {
+        let pack = try XCTUnwrap(CountyStoryPackCatalog.pack(id: "mayo.grainne-1593"))
+        let match = try XCTUnwrap(pack.page(id: "mayo.clew-bay.match-coast")?.exercise)
+        var object = try JSONSerialization.jsonObject(with: JSONEncoder().encode(match)) as! [String: Any]
+        object["phraseFamilyMemberIDs"] = ["farraige.ship-on-sea"]
+        let bad = try JSONDecoder().decode(
+            CountyExercise.self,
+            from: JSONSerialization.data(withJSONObject: object)
+        )
+        XCTAssertThrowsError(
+            try CountyStoryPackValidator.validatePhraseFamilyMembers(
+                bad,
+                pageID: "mayo.clew-bay.match-coast",
+                packID: pack.id
+            )
+        ) { error in
+            XCTAssertEqual(
+                error as? CountyStoryPackError,
+                .phraseFamilyMemberMismatch("mayo.clew-bay.match-coast")
+            )
+        }
+    }
+
     func testPhraseFamilyMemberMismatchFailsValidation() throws {
         let pack = try XCTUnwrap(CountyStoryPackCatalog.pack(id: "mayo.grainne-1593"))
         let typed = try XCTUnwrap(pack.page(id: "mayo.rockfleet.type-castle")?.exercise)

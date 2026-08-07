@@ -355,7 +355,8 @@ struct CountyExercise: Codable, Equatable {
     let lexemeIDs: [String]
     /// D30: optional phrase-family member ids this exercise consumes. When present,
     /// validators require each id to resolve in the county's phrase-family catalog
-    /// and to match a spoken/produced Irish string on the exercise (bind rule).
+    /// and to match a spoken/produced Irish string on the exercise (bind rule):
+    /// `answer`, `audioText`, `modelText`, or the left side of any `pairs` entry.
     let phraseFamilyMemberIDs: [String]?
     let operatesOnSentence: Bool
     let recognitionMultipleChoice: Bool
@@ -1106,7 +1107,13 @@ enum CountyStoryPackValidator {
         let county = packID.split(separator: ".").first.map(String.init) ?? packID
         let catalog = PhraseFamilyCatalog.members(forCounty: county)
         var bound = Set<String>()
-        for value in [exercise.answer, exercise.audioText, exercise.modelText].compactMap({ $0 }) {
+        // A matching exercise carries no Irish in answer/audioText/modelText — its
+        // answer is "all pairs" and the taught Irish is the left side of each pair.
+        // Without these, matching exercises cannot name a phrase-family member at
+        // all (docs/CHAPTER-BINDING.md §6.2).
+        let boundValues = [exercise.answer, exercise.audioText, exercise.modelText]
+            .compactMap { $0 } + exercise.pairs.map(\.left)
+        for value in boundValues {
             let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
             if !trimmed.isEmpty { bound.insert(foldingFadas(trimmed)) }
         }

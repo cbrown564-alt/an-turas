@@ -208,7 +208,7 @@ class BindingAuditTest(unittest.TestCase):
         self.assertIn("unbound_comprehension_exercise", self.codes(report))
         self.assertNotIn("unbound_exercise", self.codes(report))
 
-    def test_target_without_irish_audio_is_unbindable_by_rule(self):
+    def test_matching_pair_with_an_existing_member_is_bindable_now(self):
         report = self.audit(
             exercise={
                 "family": "matching",
@@ -219,8 +219,48 @@ class BindingAuditTest(unittest.TestCase):
             members=[{"id": "m1", "text": "farraige", "qa_state": "qa_passed"}],
             manifest_texts=["farraige"],
         )
+        self.assertIn("bindable_now", self.codes(report))
+
+    def test_target_without_irish_is_unbindable_by_rule(self):
+        report = self.audit(
+            exercise={
+                "family": "grammarDiscovery",
+                "lexemeIDs": ["lex.test"],
+                "answer": "The verb changes the action.",
+            },
+            members=[{"id": "m1", "text": "farraige", "qa_state": "qa_passed"}],
+            manifest_texts=["farraige"],
+        )
         self.assertIn("unbindable_by_rule", self.codes(report))
-        self.assertNotIn("bindable_needs_member", self.codes(report))
+
+    def test_pair_left_satisfies_the_bind_rule(self):
+        report = self.audit(
+            exercise={
+                "family": "matching",
+                "lexemeIDs": ["lex.test"],
+                "answer": "all pairs",
+                "pairs": [{"id": "p", "left": "farraige", "right": "sea"}],
+                "phraseFamilyMemberIDs": ["m1"],
+            },
+            members=[{"id": "m1", "text": "farraige", "qa_state": "qa_passed"}],
+            manifest_texts=["farraige"],
+        )
+        self.assertNotIn("bind_rule_mismatch", self.codes(report))
+        self.assertEqual(report["summary"]["blocking"], 0)
+
+    def test_member_matching_no_pair_still_mismatches(self):
+        report = self.audit(
+            exercise={
+                "family": "matching",
+                "lexemeIDs": ["lex.test"],
+                "answer": "all pairs",
+                "pairs": [{"id": "p", "left": "farraige", "right": "sea"}],
+                "phraseFamilyMemberIDs": ["m1"],
+            },
+            members=[{"id": "m1", "text": "caisleán", "qa_state": "qa_passed"}],
+            manifest_texts=["farraige", "caisleán"],
+        )
+        self.assertIn("bind_rule_mismatch", self.codes(report))
 
     def test_matching_pairs_propose_candidate_members(self):
         report = self.audit(
@@ -237,7 +277,7 @@ class BindingAuditTest(unittest.TestCase):
             manifest_texts=["farraige"],
         )
         finding = next(
-            item for item in report["findings"] if item["code"] == "unbindable_by_rule"
+            item for item in report["findings"] if item["code"] == "bindable_now"
         )
         candidates = {row["pair_id"]: row["member_id"] for row in finding["candidates"]}
         self.assertEqual(candidates["p"], "m1")

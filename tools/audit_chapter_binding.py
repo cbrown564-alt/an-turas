@@ -3,7 +3,8 @@
 
 Three layers must agree for one exercise to run (docs/CHAPTER-BINDING.md §2):
 
-1. the pack exercise's ``phraseFamilyMemberIDs`` and its answer/audio/model text;
+1. the pack exercise's ``phraseFamilyMemberIDs`` and its bind targets —
+   ``answer``, ``audioText``, ``modelText``, and each ``pairs`` entry's left side;
 2. a v1 phrase-family member with that id and matching text;
 3. a bundled, checksummed clip for that text.
 
@@ -210,8 +211,8 @@ def pair_candidates(
 ) -> list[dict[str, Any]]:
     """Catalog members whose text equals a matching pair's Irish side.
 
-    Recorded as evidence for a decision, not as a binding. The bind rule does
-    not read ``pairs``, so these cannot be wired without a runtime change.
+    Since the bind rule reads ``pairs[].left``, a candidate here is directly
+    wirable: adding its id to ``phraseFamilyMemberIDs`` satisfies the rule.
     """
     by_text = {fold(member["text"]): member for member in catalog.values()}
     candidates: list[dict[str, Any]] = []
@@ -257,13 +258,16 @@ def audit(root: Path, *, county: str, pack_path: Path) -> dict[str, Any]:
             page_id = page.get("id")
             member_ids = exercise.get("phraseFamilyMemberIDs") or []
 
-            # The runtime binds against answer, audioText, and modelText only.
+            # The runtime binds against answer, audioText, modelText, and the
+            # left side of each pair — the last so that matching exercises,
+            # whose answer is "all pairs", can name a member at all.
             bind_targets = {
                 fold(value)
                 for value in (
                     exercise.get("answer"),
                     exercise.get("audioText"),
                     exercise.get("modelText"),
+                    *(pair.get("left") for pair in exercise.get("pairs") or []),
                 )
                 if fold(value)
             }
@@ -287,34 +291,43 @@ def audit(root: Path, *, county: str, pack_path: Path) -> dict[str, Any]:
                     continue
 
                 # A bind target with a bundled clip is real Irish, so a member
-                # carrying it would bind. A target with no clip is English prose
-                # or an instruction ("all pairs"), which the rule cannot express
-                # however the content is authored.
+                # carrying it can bind. A target with no clip is English prose
+                # or an instruction, which the rule cannot express however the
+                # content is authored.
                 irish_targets = sorted(
                     target for target in bind_targets if target in clips_by_text
                 )
+                by_text = {fold(row["text"]): row for row in catalog.values()}
+                ready = sorted(
+                    by_text[target]["id"] for target in irish_targets if target in by_text
+                )
+
+                if ready:
+                    code = "bindable_now"
+                    detail = (
+                        f"{exercise.get('family')} exercise can name existing "
+                        f"catalog member(s) {ready}; adding the ids is pure wiring"
+                    )
+                elif irish_targets:
+                    code = "bindable_needs_member"
+                    detail = (
+                        f"{exercise.get('family')} exercise has Irish bind target(s) "
+                        f"{irish_targets} with bundled audio but no catalog member "
+                        f"carries the text"
+                    )
+                else:
+                    code = "unbindable_by_rule"
+                    detail = (
+                        f"{exercise.get('family')} exercise binds against "
+                        f"{sorted(bind_targets)}, which carries no Irish"
+                    )
+
                 findings.append(
                     {
-                        "code": (
-                            "bindable_needs_member"
-                            if irish_targets
-                            else "unbindable_by_rule"
-                        ),
+                        "code": code,
                         "chapter": chapter_id,
                         "page": page_id,
-                        "detail": (
-                            (
-                                f"{exercise.get('family')} exercise has Irish bind "
-                                f"target(s) {irish_targets} with bundled audio but no "
-                                f"catalog member carries the text"
-                            )
-                            if irish_targets
-                            else (
-                                f"{exercise.get('family')} exercise binds against "
-                                f"{sorted(bind_targets)}, which carries no Irish; the "
-                                f"bind rule reads answer/audioText/modelText only"
-                            )
-                        ),
+                        "detail": detail,
                         "candidates": pair_candidates(exercise, catalog),
                         "lexemes": lexemes,
                     }
