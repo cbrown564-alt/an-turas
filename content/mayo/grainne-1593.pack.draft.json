@@ -493,6 +493,40 @@
         "status": "ai-generated-historical-atmosphere"
       },
       {
+        "id": "image.mayo-return-clew-bay",
+        "kind": "image",
+        "value": "mayo-return-clew-bay",
+        "status": "review-draft-generated-interpretation"
+      },
+      {
+        "id": "video.mayo-galway-bay-trading",
+        "kind": "video",
+        "value": "video.mayo-galway-bay-trading",
+        "status": "production-video-loop",
+        "fallbackResourceID": "image.mayo-galway-bay-trading"
+      },
+      {
+        "id": "video.mayo-tudor-pressure",
+        "kind": "video",
+        "value": "video.mayo-tudor-pressure",
+        "status": "production-video-loop",
+        "fallbackResourceID": "image.mayo-tudor-pressure"
+      },
+      {
+        "id": "video.mayo-royal-court-interior",
+        "kind": "video",
+        "value": "video.mayo-royal-court-interior",
+        "status": "production-video-loop",
+        "fallbackResourceID": "image.mayo-royal-court-interior"
+      },
+      {
+        "id": "video.mayo-clew-bay-return",
+        "kind": "video",
+        "value": "video.mayo-clew-bay-return",
+        "status": "review-draft-manual-gemini-motion",
+        "fallbackResourceID": "image.mayo-return-clew-bay"
+      },
+      {
         "id": "video.mayo-clew-bay-tide-loop",
         "kind": "video",
         "value": "video.mayo-clew-bay-tide-loop",
@@ -2382,12 +2416,12 @@
             "resourceIDs": [
               "audio.long",
               "evidence.power-c03-c04",
-              "image.mayo-galway-bay-trading"
+              "video.mayo-galway-bay-trading"
             ],
             "exercise": null,
             "presentation": "coastalOpening",
             "advanceLabel": "Set the ship in motion",
-            "visualResourceID": "image.mayo-galway-bay-trading",
+            "visualResourceID": "video.mayo-galway-bay-trading",
             "visualCaption": "Generated editorial interpretation of maritime trade and coastal reach · not documentary evidence",
             "displayItems": null
           },
@@ -2737,12 +2771,12 @@
             "introducedLexemeIDs": [],
             "resourceIDs": [
               "evidence.pressure-c08",
-              "image.mayo-tudor-pressure"
+              "video.mayo-tudor-pressure"
             ],
             "exercise": null,
             "presentation": "pressureField",
             "advanceLabel": "See where it lands",
-            "visualResourceID": "image.mayo-tudor-pressure",
+            "visualResourceID": "video.mayo-tudor-pressure",
             "visualCaption": "Generated editorial interpretation of Tudor coastal pressure · not documentary evidence",
             "displayItems": null
           },
@@ -3903,12 +3937,12 @@
               "audio.freagair",
               "source.royal-draft",
               "evidence.royal-c13-c14",
-              "image.mayo-royal-court-interior"
+              "video.mayo-royal-court-interior"
             ],
             "exercise": null,
             "presentation": "archive",
             "advanceLabel": "Open the terms",
-            "visualResourceID": "image.mayo-royal-court-interior",
+            "visualResourceID": "video.mayo-royal-court-interior",
             "visualCaption": "Generated editorial interpretation of a Tudor presence chamber · not a documentary interior",
             "displayItems": null
           },
@@ -4244,12 +4278,12 @@
             "resourceIDs": [
               "audio.aris",
               "evidence.return-c14",
-              "image.mayo-clew-bay-coastal"
+              "video.mayo-clew-bay-return"
             ],
             "exercise": null,
             "presentation": "pressureField",
             "advanceLabel": "Ask again",
-            "visualResourceID": "image.mayo-clew-bay-coastal",
+            "visualResourceID": "video.mayo-clew-bay-return",
             "visualCaption": "Generated editorial interpretation of the Mayo coast on return · not documentary evidence",
             "displayItems": null
           },

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "job_id": "rebrief.offaly-patronage-building",
+  "take_id": "offaly-patronage-building--t01",
+  "asset_id": "offaly-patronage-building",
+  "file": "offaly-patronage-building--t01.png",
+  "prompt_file": "offaly-patronage-building--t01.prompt.txt",
+  "county": "Offaly",
+  "story_id": "offaly.cross-of-the-scriptures",
+  "chapter": 3,
+  "placement": "chapter opening alternative",
+  "intended_use": "Replace an unsupported king-and-abbot meeting with settlement-scale evidence of patronage becoming public building.",
+  "provider": "OpenAI built-in image generation",
+  "task": "generate",
+  "generated_at": "2026-08-09",
+  "sources": ["content/offaly/cross-of-the-scriptures-source-brief.md#O03", "content/offaly/cross-of-the-scriptures-source-brief.md#O06", "ios/AnTuras/Resources/CountyStories/offaly.cross-of-the-scriptures.json#offaly.king-and-abbot.cathedral"],
+  "references": ["art/candidates/media-sprint-2026-08-09/offaly-clonmacnoise-monastery--t02.png"],
+  "fallback": "text-led relationship field using the annal notice",
+  "sha256": "09c84d1668b5437057bdcf87a9042fee4c5c3dcb78ecca3e81798e2c3fc6afbb",
+  "capture_state": "generated_unreviewed",
+  "review": {
+    "disposition": "reject",
+    "fundamentals_pass": false,
+    "systemic_issue": "unsupported_architectural_reconstruction",
+    "notes": "Invents confident church forms, scaffolding and a construction scene beyond what the annal notice supports."
+  }
+}

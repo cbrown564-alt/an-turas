@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "job_id": "calibration.offaly-clonmacnoise-monastery",
+  "take_id": "offaly-clonmacnoise-monastery--t01",
+  "asset_id": "offaly-clonmacnoise-monastery",
+  "file": "offaly-clonmacnoise-monastery--t01.png",
+  "county": "Offaly",
+  "story_id": "offaly.clonmacnoise-flann-colman",
+  "chapter": 2,
+  "placement": "chapter opening",
+  "narrative_purpose": "Show Clonmacnoise as a working riverside settlement rather than an empty picturesque ruin.",
+  "provider": "OpenAI built-in image generation",
+  "task": "generate",
+  "generated_at": "2026-08-09",
+  "references": ["art/direction/grainne-six-episode-palette.png"],
+  "prompt_summary": "Working early-medieval Clonmacnoise on the Shannon; river, workshops and settlement; no empty romantic ruin.",
+  "constraints": ["text-free", "generated interpretation", "distant anonymous figures only", "no fake manuscript or evidence", "no decorative Irishness"],
+  "width": 853,
+  "height": 1844,
+  "sha256": "75f0194665cb3c0bd600ee51a6869e7c9fa416cfe0941917c27bf517870954c5",
+  "capture_state": "generated_unreviewed",
+  "review": {
+    "disposition": "reject",
+    "scores": {"chapter_specificity": 3, "geographic_historical_plausibility": 2, "product_register": 3, "composition": 4, "material_quality": 4, "motion_readiness": 2},
+    "veto": "invented_specificity",
+    "notes": "Too many foreground figures and picturesque domestic details; architecture and clothing imply more certainty than the chapter can support."
+  },
+  "derived_video_id": "video.offaly-clonmacnoise-monastery"
+}

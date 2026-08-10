@@ -37,7 +37,9 @@ The expanded draft uses the [Heritage Ireland Trim Castle record](https://herita
 for the surviving keep and multi-decade build, and the CELT edition of the
 [*Song of Dermot and the Earl*](https://celt.ucc.ie/published/T250001-001.html)
 for the fortified house, trench, stockade, attack, abandonment and refortification
-sequence. The 1172 grant still needs a pinned later-copy citation and transcription;
+sequence. The 1172 grant is now pinned to the NLI catalogue record for a
+**fourteenth-century copy**, not a surviving 1172 original. A transcription and
+permission to reproduce its manuscript image are still required;
 the Song's conquest rhetoric is treated as source voice rather than neutral
 narration.
 
@@ -95,6 +97,44 @@ here, name, home, see, stand, lord, town — pedagogue to lock.
 | OPW Trim Castle imagery | Clear or commission drawings |
 | Grant text | Transcription from cited copy; modernised reading |
 | Castle plan | Original explanatory drawing preferred |
+
+## Media evidence and rights audit — 10 August 2026
+
+### Grant claim
+
+- **Claims requiring evidence:** the 1172 grant, the later date of the surviving
+  visual witness, and any legible transcription. Do not reconstruct parchment, seal,
+  handwriting, signatures, a presentation ceremony, or an original 1172 instrument.
+- **Pinned record:** [NLI MS_UR_038189](https://catalogue.nli.ie/Record/MS_UR_038189),
+  *Carta Henrici Regis Angliae Hugoni de Lacy, de terris in Hibernia*, is explicitly
+  catalogued as “A grant of lands in Meath and Dublin in 1172, 14th century copy.” It
+  points to NLI microfilm n.1182, p.1383 and Hargrave MS 313. Confidence: **high**.
+- **Text corroboration:** [CELT's *Annales Hiberniae*](https://celt.ucc.ie/published/T100001/text002.html)
+  records Henry giving Meath to Hugh; [CELT note 38](https://celt.ucc.ie/published/L100001/note038.html)
+  points to the printed charter tradition. These support the claim, not manuscript
+  appearance.
+- **Rights:** NLI requires [advance written reuse permission](https://www.nli.ie/collections/using-our-collections/permission-re-use)
+  and handles [copy supply](https://www.nli.ie/collections/using-our-collections/copying-services)
+  separately. No manuscript image is cleared by this audit.
+- **Boundary:** a live-text claim card may use the verified catalogue description and
+  an approved transcription. A manuscript facsimile or atmospheric “charter” remains
+  blocked until the correct folio is supplied and licensed.
+
+### Present-day Trim
+
+- **Claims requiring evidence:** this is Trim Castle beside the Boyne in the living
+  town now. Do not generate a photorealistic present-day view, erase the town, or
+  repair castle fabric.
+- **Institutional route:** [Heritage Ireland's Trim Castle record](https://heritageireland.ie/visit/places-to-visit/trim-castle/)
+  establishes the place. OPW requires [prior written photography permission](https://heritageireland.ie/visit/venue-hire/filming-and-photography/)
+  for a commissioned shoot.
+- **Licensable now:** Rob Hurson's [*River Boyne at Trim Castle.jpg*](https://commons.wikimedia.org/wiki/File:River_Boyne_at_Trim_Castle.jpg)
+  is CC BY-SA 4.0. Reuse requires attribution, licence link, change notice and
+  share-alike for an adaptation. Confidence: **high**, subject to product acceptance
+  of share-alike.
+- **Boundary:** authentic photography only; restrained crop/colour work with changes
+  disclosed, and no generated additions or removals. This lane is media-ready under
+  CC BY-SA 4.0, or commission-ready through OPW.
 
 ## Board checklist
 

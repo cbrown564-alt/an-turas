@@ -2,6 +2,31 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D36 — Anchor opening media in real landscape before human-scale reconstruction (2026-08-09)
+
+**Decision:** Opening media defaults to a real, geographically specific landscape or
+place. A chapter may move closer to people and a lived historical moment when surviving
+evidence supports that treatment and the closer view clarifies the account. Every
+human-scale historical moment requires a source-backed brief before generation or
+commissioning. It must not invent participants, clothing, action, dialogue, testimony,
+or a claim of likeness that the sources do not support.
+
+**Why:** The first bounded media-sprint calibration showed that landscape and distant
+settlement views can establish place and pressure with limited invented specificity.
+Prompts that move close to historical people quickly accumulate attractive but
+unsupported costume, architecture, activity, and social detail. A landscape default
+protects the product's evidence standard without banning people where the record can
+support an honest, useful treatment.
+
+**Consequences:** `docs/MEDIA-AUDIT.md` remains the operational generation queue, but a
+queued human-scale scene is not generation-ready until its sidecar names the supporting
+sources, the bounded historical claim, and the details that must remain absent or
+uncertain. Distant anonymous figures may establish scale or ordinary inhabitation only
+when they do not imply a specific undocumented participant or event. Generated images
+remain interpretations; documentary evidence and present-day place claims still require
+authentic, rights-cleared source material. Existing no-reenactment, no-burnt-in-copy,
+and interpretation-not-likeness rules remain in force.
+
 ## D35 — Freeze the D32 harvest and hold the remaining credits as reserve (2026-08-06)
 
 **Decision:** Close the D32 emergency Irish audio harvest as a production phase at the

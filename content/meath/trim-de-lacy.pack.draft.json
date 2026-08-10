@@ -177,6 +177,26 @@
         "status": "ai-generated-historical-atmosphere"
       },
       {
+        "id": "video.meath-boyne-ford",
+        "kind": "video",
+        "value": "video.meath-boyne-ford",
+        "status": "review-draft-generated-motion",
+        "fallbackResourceID": "image.meath-boyne-ford"
+      },
+      {
+        "id": "image.meath-ringwork-fortress",
+        "kind": "image",
+        "value": "meath-ringwork-fortress",
+        "status": "review-draft-generated-interpretation"
+      },
+      {
+        "id": "video.meath-ringwork-fortress",
+        "kind": "video",
+        "value": "video.meath-ringwork-fortress",
+        "status": "review-draft-manual-gemini-motion",
+        "fallbackResourceID": "image.meath-ringwork-fortress"
+      },
+      {
         "id": "evidence.meath.m01",
         "kind": "evidence",
         "value": "M01 · 1172 grant of Meath to Hugh de Lacy",
@@ -467,12 +487,12 @@
               "audio.word.sean",
               "audio.word.baile",
               "audio.word.ainm",
-              "image.meath-boyne-ford"
+              "video.meath-boyne-ford"
             ],
             "exercise": null,
             "presentation": "coastalOpening",
             "advanceLabel": "Enter the existing land",
-            "visualResourceID": "image.meath-boyne-ford",
+            "visualResourceID": "video.meath-boyne-ford",
             "visualCaption": "Generated editorial interpretation of the Boyne ford landscape · not documentary evidence",
             "displayItems": [
               {
@@ -1888,13 +1908,14 @@
               "evidence.meath.m03",
               "source.meath.song",
               "audio.word.teach",
-              "audio.word.caislean"
+              "audio.word.caislean",
+              "video.meath-ringwork-fortress"
             ],
             "exercise": null,
             "presentation": "coastalOpening",
             "advanceLabel": "Enter the timber enclosure",
-            "visualResourceID": null,
-            "visualCaption": null,
+            "visualResourceID": "video.meath-ringwork-fortress",
+            "visualCaption": "Generated editorial interpretation of the early earth-and-timber enclosure · not documentary evidence",
             "displayItems": [
               {
                 "id": "house",

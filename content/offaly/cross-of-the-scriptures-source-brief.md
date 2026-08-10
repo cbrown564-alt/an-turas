@@ -113,6 +113,57 @@ fictional-scriptorium-only words.
 | Inscription reading | Historian-approved conventional text with visible damage |
 | Annals excerpts | Public-domain translations preferred; cite edition |
 
+## Media evidence and rights audit — 10 August 2026
+
+### Patronage without an invented meeting
+
+- **Claims requiring evidence:** the Flann–Colmán relationship, the date and surviving
+  cathedral fabric, and any material feature singled out. The evidence does not
+  preserve a meeting, commission briefing, workforce, clothing, tools, scaffolding or
+  construction sequence.
+- The [OPW visitor guide](https://heritageireland.ie/assets/uploads/2026/04/7565-OPW-Clonmacnoise-A5-visitor-guide_ENG_LR.pdf)
+  says the cathedral was built in 909 by Flann Sinna and Colmán and bounds the earliest
+  surviving fabric mainly to the north wall: brown sandstone, deep antae and putlog
+  holes. The [National Monuments Service record](https://www.archaeology.ie/collections-and-publications/multimedia-resources/monuments-from-the-air/clonmacnoise/)
+  independently links the church to both men. Confidence: **high** for this bounded
+  fabric claim; **none** for a staged encounter.
+- **Rights:** commission the exact view through [OPW permission](https://heritageireland.ie/visit/venue-hire/filming-and-photography/),
+  or check an individual file in the [Commons cathedral category](https://commons.wikimedia.org/wiki/Category:Clonmacnoise_Cathedral).
+  The category is not a blanket licence.
+- **Boundary:** replace the king–abbot meeting with authentic present-day north-wall
+  fabric and live text. No people or 909 reconstruction. Brief ready; image rights open.
+
+### Damaged inscription
+
+- **Claims requiring evidence:** the exact face and zone, surviving strokes, damage,
+  and the distinction between visible letters and conventional expansion. Never
+  generate missing letters, a rubbing, or a clean inscription.
+- The institutional [UCC Text and Image record](https://research.ucc.ie/doi/tandi/Clonmacnois19-N165.html)
+  inventories the sandstone cross, records the plinth inscription, and names scholarly
+  references and image credit. Confidence: **high** as an object record; a specialist
+  must still approve the learner-facing reading.
+- Crawford's 1926 [lower east-face plate](https://commons.wikimedia.org/wiki/File:Cross_of_the_Scriptures_detail_-_Crawford_plate_146.png)
+  is public domain, but depicts a figure panel, not the inscription. It is cleared for
+  panel context only.
+- **Boundary:** use damage-aware live text with explicit gaps until a specialist picks
+  the crop and its file-specific rights are cleared. Documentary promotion and visual
+  generation remain blocked.
+
+### Original and replica
+
+- **Claims requiring evidence:** which object is the medieval original, which is the
+  modern replica, and whether the view is indoor or outdoor.
+- [Heritage Ireland highlights](https://heritageireland.ie/visit/places-to-visit/clonmacnoise-monastic-site/highlights/)
+  confirms originals in the museum and replicas outside. Confidence: **high**.
+- [*Clonmacnoise Cross of Scriptures replica Northwest face 01.png*](https://commons.wikimedia.org/wiki/File:Clonmacnoise_Cross_of_Scriptures_replica_Northwest_face_01.png)
+  is explicitly a replica and CC0: ready for a correctly captioned replica view.
+- A separately licensed indoor original is still needed. The [current site notice](https://heritageireland.ie/places-to-visit/clonmacnoise-monastic-site/)
+  reports the visitor centre closed for essential works, so a new capture requires
+  coordination.
+- **Boundary:** replica-only may proceed. The comparison remains blocked until the
+  original is cleared; never use the replica as documentary proof of the original's
+  inscription surface.
+
 ## Board checklist
 
 - [ ] Historian: lock inscription expansion for L1 vs L2

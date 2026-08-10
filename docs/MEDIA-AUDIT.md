@@ -107,7 +107,7 @@ Promotion rule and Gráinne lookup: [`../art/README.md`](../art/README.md). Do n
 | :--- | :--- | :--- |
 | `meath-boyne-ford` | River Boyne shallow ford at Trim before Norman arrival, fertile green meadows, ancient oak trees, misty morning. | Ch 1: The ancient Boyne ford |
 | `meath-gaelic-settlement` | Early medieval Gaelic settlement (*talamh*), rath earthworks, cattle pasture, river bend. | Ch 2: Gaelic Meath landscape |
-| `meath-norman-grant-arrival` | Anglo-Norman knights and surveyors on horseback overlooking the Boyne valley with wooden palisade stakes. | Ch 3: De Lacy grant & arrival |
+| `meath-grant-claim` | Live-text claim card sourced to the catalogued fourteenth-century copy; no generated manuscript, seal, ceremony, knights or surveyors. | Ch 2: A claim on paper |
 | `meath-ringwork-fortress` | Early earth-and-timber ringwork fortification at Trim, motte timber palisade overlooking river crossing. | Ch 4: First timber fortification |
 | `meath-stone-keep-rising` | Scaffolding around the towering stone curtain walls and curtain gatehouse of Trim Castle under construction. | Ch 5: Great stone keep construction |
 | `meath-trim-castle-landscape` | Majestic Trim Castle curtain wall standing beside the flowing River Boyne in evening golden hour. | Ch 6: Landscape legacy & stone |
@@ -128,7 +128,7 @@ Promotion rule and Gráinne lookup: [`../art/README.md`](../art/README.md). Do n
 **Theme**: The Cross of the Scriptures: river, king and carved prayer (6 Chapters, 68 Pages, 30 Exercises)
 
 ### A. Real Photographic & Documentary Evidence (Placeholders Required)
-* **`evidence.offaly-cross-inscription-rubbing`**: High-contrast archaeological rubbing/photo of the damaged Gaelic inscription on the West face (*RÍ ÉIREANN / FLANN*).
+* **`evidence.offaly-cross-inscription`**: Specialist-selected, rights-cleared photograph of the damaged inscription zone with gaps preserved; no generated rubbing or expansion in the image.
 * **`evidence.offaly-cross-panel-carvings`**: Photogrammetry/high-resolution scans of the sandstone carved panels (ecclesiastical & royal scenes).
 * **`source.clonmacnoise-annals`**: Manuscript folio from the *Annals of Clonmacnoise* recording Abbot Colmán and King Flann Sinna (c. 909 AD).
 
@@ -137,10 +137,10 @@ Promotion rule and Gráinne lookup: [`../art/README.md`](../art/README.md). Do n
 | :--- | :--- | :--- |
 | `offaly-shannon-callows` | River Shannon callows at Clonmacnoise, wide winding river, reeds, monastic round tower in soft morning mist. | Ch 1: Shannon river & monastic site |
 | `offaly-clonmacnoise-monastery` | 10th-century monastic city, stone churches, thatched workshops, wooden jetties along the Shannon banks. | Ch 2: Monastic working settlement |
-| `offaly-king-abbot-meeting` | 10th-century King Flann Sinna and Abbot Colmán standing near a sandstone quarry block, soft sunlight. | Ch 3: King & Abbot patronage |
+| `offaly-patronage-909-fabric` | Authentic present-day photograph of the cathedral's surviving north-wall fabric, selected against the OPW guide; no people or reconstruction. | Ch 3: Patronage through surviving fabric |
 | `offaly-carving-high-cross` | Master stone mason carving intricate biblical panels into a massive sandstone high cross with iron chisel. | Ch 4: Carving the stone cross |
-| `offaly-cross-scriptures-sunset` | Sandstone High Cross standing outdoors at Clonmacnoise against a dramatic Irish sunset over the river. | Ch 5: Carved prayer & inscription |
-| `offaly-clonmacnoise-visitor-center` | Modern indoor gallery exhibit displaying the original Cross of the Scriptures under protective lighting. | Ch 6: Original & replica preservation |
+| `offaly-inscription-attention` | Damage-aware live transcription until a specialist-selected licensed crop is available; no generated object image. | Ch 5: Carved prayer & inscription |
+| `offaly-original-and-replica` | Authentic, explicitly captioned photographs. CC0 outdoor replica is available; indoor original remains rights/access blocked. | Ch 6: Original & replica preservation |
 
 ### C. Gemini Omni / Google Flow Video Loops
 | Video ID / Filename | Prompt & Motion Spec | Target Location / Usage |
@@ -186,6 +186,14 @@ Promotion rule and Gráinne lookup: [`../art/README.md`](../art/README.md). Do n
 
 ### E. Flow / Gemini Omni generation queue (spend order)
 
+**Capability correction (10 August 2026):** central Gemini web Video mode can submit
+and complete 10-second image-led jobs even when this repository task has no local
+connector. Queue such jobs for central orchestration; retry temporary service errors,
+strip any returned audio, and keep the existing still fallback. Local tool access is
+not a provider blocker. Central ElevenLabs is likewise available for exact,
+already-authored maintenance/regeneration lines; content approval and native-speaker
+QA remain independent gates.
+
 Animate existing stills before inventing new scenes. Prompts stay text-free, muted, loopable, no people in invented historical action unless already accepted as distant atmospheric figures in the still.
 
 **Batch A — animate wired stills (highest leverage)**
@@ -208,13 +216,13 @@ Animate existing stills before inventing new scenes. Prompts stay text-free, mut
 |---|---|---|
 | `mayo-kin-alliances` (new) | Mayo Ch2 | Household/kin coast without costume drama; no invented faces as likeness |
 | `mayo-return-clew-bay` | Mayo Ch9 | Dedicated return coast; replace interim coastal still |
-| `meath-grant-claim` | Meath Ch2 | Document atmosphere only—not a fake charter facsimile |
+| `meath-grant-claim` | Meath Ch2 | Live text from the catalogued fourteenth-century copy; manuscript image only after permission |
 | `meath-ringwork-fortress` | Meath Ch4 | Timber/earth ringwork at Trim ford |
-| `meath-trim-town-afterlife` | Meath Ch6 | Living town beside curtain walls |
+| `meath-trim-town-afterlife` | Meath Ch6 | Authentic present-day photograph: checked CC BY-SA option or OPW commission |
 | `offaly-clonmacnoise-monastery` | Offaly Ch2 | Working settlement, Shannon bank |
-| `offaly-king-abbot-meeting` | Offaly Ch3 | Distant figures only; no portrait claims |
-| `offaly-inscription-attention` | Offaly Ch5 | Stone letters / damaged face as atmosphere, not fake rubbing |
-| `offaly-original-and-replica` | Offaly Ch6 | Indoor gallery light vs outdoor replica—keep non-documentary |
+| `offaly-patronage-909-fabric` | Offaly Ch3 | Authentic surviving north-wall fabric; no people or historical reconstruction |
+| `offaly-inscription-attention` | Offaly Ch5 | Live damage-aware text pending specialist-selected, licensed documentary crop |
+| `offaly-original-and-replica` | Offaly Ch6 | CC0 replica is ready; comparison waits for licensed indoor-original photograph |
 
 **Batch C — deferred:** chapter-transition bridges; phoneme articulation clips; recompress all shipped loops to ≤2 MB.
 
@@ -241,4 +249,3 @@ Animate existing stills before inventing new scenes. Prompts stay text-free, mut
   `audioText` to inventory lines. Bind rule: launch `audioText` must come from the
   inventory (`audioNotInInventory` in the county validator). Native-speaker QA still
   open (D17). English narrative VO not generated in this pass.
-

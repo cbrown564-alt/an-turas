@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "sprint_id": "media-sprint-2026-08-09",
+  "created_at": "2026-08-09T00:00:00+01:00",
+  "status": "active",
+  "phase_two_status": "integration_checkpoint_complete_source_rights_holds",
+  "phase_two_pause_reasons": [
+    "Meath grant documentary imagery requires the manuscript copy and reuse permission; a sourced live-text treatment is ready",
+    "Offaly inscription and original/replica comparison require specialist selection and rights-cleared original-object photography",
+    "some still lanes retain source, rights, or policy holds; motion-ready selected stills should be submitted through central Gemini web Video mode"
+  ],
+  "shipping_allowed": false,
+  "defaults": {
+    "initial_capture_state": "generated_unreviewed",
+    "still_format": "png",
+    "generated_asset_disclosure": "generated interpretation",
+    "text_in_image_allowed": false,
+    "documentary_evidence_allowed": false,
+    "invented_historical_action_allowed": false,
+    "motion_audio_allowed": false,
+    "motion_fallback_required": true
+  },
+  "review_scale": {
+    "range": "1-5",
+    "criteria": [
+      "chapter_specificity",
+      "geographic_historical_plausibility",
+      "product_register",
+      "composition",
+      "material_quality",
+      "motion_readiness"
+    ],
+    "vetoes": [
+      "fake_evidence",
+      "invented_likeness",
+      "costume_drama",
+      "burned_in_text",
+      "decorative_irishness",
+      "interchangeable_pretty_landscape"
+    ]
+  },
+  "jobs": [
+    {
+      "job_id": "calibration.mayo-return-clew-bay",
+      "asset_id": "mayo-return-clew-bay",
+      "derived_video_id": "video.mayo-clew-bay-return",
+      "county": "Mayo",
+      "story_id": "mayo.grainne-1593",
+      "chapter": 9,
+      "placement": "chapter opening",
+      "narrative_purpose": "Return to the same coast under changed conditions; reopen breadth and air without implying a resolved legacy.",
+      "planned_takes": 3,
+      "status": "selected_candidate",
+      "priority": 1
+    },
+    {
+      "job_id": "calibration.meath-ringwork-fortress",
+      "asset_id": "meath-ringwork-fortress",
+      "derived_video_id": "video.meath-ringwork-fortress",
+      "county": "Meath",
+      "story_id": "meath.hugh-de-lacy",
+      "chapter": 4,
+      "placement": "chapter opening",
+      "narrative_purpose": "Make the early timber-and-earth fortification at the Trim ford legible without substituting the later stone castle.",
+      "planned_takes": 3,
+      "status": "selected_candidate",
+      "priority": 2
+    },
+    {
+      "job_id": "calibration.offaly-clonmacnoise-monastery",
+      "asset_id": "offaly-clonmacnoise-monastery",
+      "derived_video_id": "video.offaly-clonmacnoise-monastery",
+      "county": "Offaly",
+      "story_id": "offaly.clonmacnoise-flann-colman",
+      "chapter": 2,
+      "placement": "chapter opening",
+      "narrative_purpose": "Show Clonmacnoise as a working riverside settlement rather than an empty picturesque ruin.",
+      "planned_takes": 3,
+      "status": "provisional_keep_history_review",
+      "priority": 3
+    },
+    {
+      "job_id": "queue.mayo-kin-alliances",
+      "asset_id": "mayo-kin-alliances",
+      "county": "Mayo",
+      "chapter": 2,
+      "status": "advanced_candidate_history_geography_review",
+      "priority": 4
+    },
+    {
+      "job_id": "queue.meath-grant-claim",
+      "asset_id": "meath-grant-claim",
+      "county": "Meath",
+      "chapter": 2,
+      "status": "brief_ready_live_text_documentary_image_blocked_permission",
+      "priority": 5
+    },
+    {
+      "job_id": "queue.meath-trim-town-afterlife",
+      "asset_id": "meath-trim-town-afterlife",
+      "county": "Meath",
+      "chapter": 6,
+      "status": "media_ready_cc_by_sa_4_or_opw_commission",
+      "priority": 6
+    },
+    {
+      "job_id": "queue.offaly-patronage-909-fabric",
+      "asset_id": "offaly-patronage-909-fabric",
+      "county": "Offaly",
+      "chapter": 3,
+      "status": "brief_ready_authentic_fabric_image_rights_open_no_reconstruction",
+      "priority": 7
+    },
+    {
+      "job_id": "queue.offaly-inscription-attention",
+      "asset_id": "offaly-inscription-attention",
+      "county": "Offaly",
+      "chapter": 5,
+      "status": "research_ready_blocked_specialist_crop_and_image_rights",
+      "priority": 8
+    },
+    {
+      "job_id": "queue.offaly-original-and-replica",
+      "asset_id": "offaly-original-and-replica",
+      "county": "Offaly",
+      "chapter": 6,
+      "status": "replica_ready_cc0_comparison_blocked_original_image_rights",
+      "priority": 9
+    }
+  ],
+  "motion_jobs": [
+    {"video_id": "video.mayo-galway-bay-trading", "source_still": "mayo-galway-bay-trading", "status": "missing_manual_result_existing_muted_video_fallback_wired"},
+    {"video_id": "video.mayo-tudor-pressure", "source_still": "mayo-tudor-pressure", "status": "manual_result_rejected_smoke_existing_muted_video_fallback_wired", "raw_result": "manual-browser-video-results/video.mayo-tudor-pressure--manual-t01.mp4", "raw_sha256": "1fa3543caf667af8c9f67f9b6b125d65c7ec8f77c1971523d4761d31921f7aec"},
+    {"video_id": "video.mayo-royal-court-interior", "source_still": "mayo-royal-court-interior", "status": "manual_duplicate_existing_muted_video_preferred_and_wired", "raw_result": "manual-browser-video-results/video.mayo-royal-court-interior--manual-t01.mp4", "raw_sha256": "e9e816141632991a967493afecaffed60f432f03c95197a7ccc5c62bdbe47fbc"},
+    {"video_id": "video.mayo-clew-bay-return", "source_take": "mayo-return-clew-bay--t02", "status": "manual_result_integrated_review_draft", "raw_result": "manual-browser-video-results/video.mayo-clew-bay-return--manual-t01.mp4", "raw_sha256": "0e2de0cb888260ad9d12396bb654f16a92913d27853ccad4d6286eb8326e3a3a", "delivery_sha256": "b83888c8143b4fba4173a7bc9701cb72d8114cae8e31f59255790095a64c9a95"},
+    {"video_id": "video.dublin-wood-quay-settlement", "source_still": "dublin-wood-quay-settlement", "status": "missing_manual_result_existing_muted_video_fallback_wired"},
+    {"video_id": "video.dublin-viking-market", "source_still": "dublin-viking-market", "status": "manual_duplicate_existing_muted_video_preferred_and_wired", "raw_result": "manual-browser-video-results/video.dublin-viking-market--manual-t01.mp4", "raw_sha256": "e872c70cfa4d5f6a924d9dfb2956dead03d954678265c1abc5a4645763d10c83"},
+    {"video_id": "video.dublin-minting-workshop", "source_still": "dublin-minting-workshop", "status": "manual_duplicate_existing_muted_video_preferred_and_wired", "raw_result": "manual-browser-video-results/video.dublin-minting-workshop--manual-t01.mp4", "raw_sha256": "ffbbabf6a1ac420491b4c42a5f0102f908c0bfb226fa3f98acbccdf8c875c772"},
+    {"video_id": "video.dublin-modern-archaeology", "source_still": "dublin-modern-archaeology", "status": "manual_duplicate_existing_muted_video_preferred_and_wired", "raw_result": "manual-browser-video-results/video.dublin-modern-archaeology--manual-t01.mp4", "raw_sha256": "2b7262caedfe7379e033bffe09ead79147fae07722b049ebba35c13c495046d7"},
+    {"video_id": "video.meath-boyne-ford", "source_still": "meath-boyne-ford", "status": "manual_duplicate_existing_muted_video_preferred_and_wired", "raw_result": "manual-browser-video-results/video.meath-boyne-ford--manual-t01.mp4", "raw_sha256": "ddb881ecd272e10633e9a88f43a55d5a55e7aff378491b2e8e16d94c92b0ace9"},
+    {"video_id": "video.meath-ringwork-fortress", "source_take": "meath-ringwork-fortress--t03", "status": "manual_result_integrated_review_draft", "raw_result": "manual-browser-video-results/video.meath-ringwork-fortress--manual-t01.mp4", "raw_sha256": "3da6b6edce433a919dad71c15ba3d022afddd1f21acbd17ac6262022b00e8469", "delivery_sha256": "98f1d7d7bf5cfa24d2cb2ed92a107c419e9799c4f37103e64577c8c4ac2e4bb3"}
+  ]
+}
