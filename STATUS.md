@@ -1,9 +1,10 @@
 # STATUS
 
 *Project: An Turas (working title) — an iOS app for learning Irish through the real
-stories and places of Ireland. Updated 2026-08-06 (D32 harvest frozen at cycle 2 per
-D35; `track-a/bulk-integration`, `main`, and both origin refs are at the same
-revision).*
+stories and places of Ireland. Updated 2026-08-15 after the approved six-commit
+integration from `origin/main` onto `codex/integrate-track-a-six`; D32 remains frozen
+at cycle 2 per D35. The integration branch is ahead of `origin/main`; the source
+`track-a/bulk-integration` worktree was not changed).*
 
 ## Current outcome
 
@@ -257,7 +258,13 @@ promotion.
   are retained under `worktree-archive/*` tags; superseded, retired, and temporary
   material was not promoted into active source. Luna implementation tasks completed the
   pedagogy, name/place authoring, capture, anomaly-audit, ledger, runtime, and provenance
-  work. A Sol review found no remaining actionable P1/P2 issue at revision `4ca6cca`.
+  work. A Sol review found no remaining actionable P1/P2 issue at the pre-integration
+  revision `4ca6cca`; that review is historical, not a verification of the current
+  integration branch.
+- On the integration branch, the two slice/binding Python test files pass (**29
+  tests**), and the affected Dublin, Meath, and Mayo draft and bundled packs pass
+  `tools/validate_county_pack.py`. iOS simulator and device verification remains open
+  because this host has no installed CoreSimulator runtime.
 
 ### Completed in the latest coordinated cycle
 
