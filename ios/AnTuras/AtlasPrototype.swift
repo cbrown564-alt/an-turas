@@ -18,7 +18,7 @@ struct AtlasPrototypeView: View {
                     atlasTabs
                 } else {
                     FirstRunIslandView(
-                        onBegin: beginStory,
+                        onBegin: { path.append(.mayoDossier) },
                         onOpenName: { path.append(.personalSearch(.name)) },
                         onOpenPlace: { path.append(.personalSearch(.place)) }
                     )
@@ -40,7 +40,8 @@ struct AtlasPrototypeView: View {
         }
         .onChange(of: atlas.progressSnapshot) { _, progress in
             #if DEBUG
-            guard !ProcessInfo.processInfo.arguments.contains("--transient-test-state") else { return }
+            let arguments = ProcessInfo.processInfo.arguments
+            guard !arguments.contains("--transient-test-state"), !arguments.contains("--demo") else { return }
             #endif
             guard restoredProgress, appState.atlasProgress != progress else { return }
             appState.atlasProgress = progress
@@ -49,9 +50,34 @@ struct AtlasPrototypeView: View {
             guard !restoredProgress else { return }
             atlas.restore(appState.atlasProgress)
             restoredProgress = true
-            if atlas.learnerName.isEmpty { atlas.learnerName = appState.learnerName }
-            #if DEBUG
             let args = ProcessInfo.processInfo.arguments
+            if !args.contains("--demo"), atlas.learnerName.isEmpty {
+                atlas.learnerName = appState.learnerName
+            }
+            #if DEBUG
+            if args.contains("--demo") {
+                atlas.resetForDemo()
+                atlas.demoMode = true
+                path.removeAll()
+                #if DEBUG
+                if args.contains("--demo-county"),
+                   let pack = CountyStoryPackCatalog.pack(id: "mayo.grainne-1593") {
+                    atlas.hasOpenedAtlas = true
+                    atlas.storyInProgress = true
+                    let modeFlag = args.firstIndex(of: "--mode")
+                    let requestedMode = modeFlag.flatMap { index in
+                        args.indices.contains(index + 1) ? CountyStoryMode(rawValue: args[index + 1]) : nil
+                    } ?? .story
+                    _ = atlas.begin(pack, mode: requestedMode)
+                    if let pageFlag = args.firstIndex(of: "--page"),
+                       args.indices.contains(pageFlag + 1),
+                       pack.page(id: args[pageFlag + 1]) != nil {
+                        atlas.setActivePage(args[pageFlag + 1], in: pack)
+                    }
+                    path = [.countyPack(pack.id)]
+                }
+                #endif
+            }
             if args.contains("--launch-road-complete") {
                 atlas.storyCompleted = true
                 atlas.storyInProgress = false
@@ -226,7 +252,10 @@ struct AtlasPrototypeView: View {
                 path = [.personalSearch(.either)]
             }
             #endif
-            if path.isEmpty, atlas.storyCompleted, !atlas.hasOpenedAtlas {
+            if args.contains("--demo") {
+                // The demo deliberately stays at the island opening so the
+                // recording begins with the public journey, not a deep link.
+            } else if path.isEmpty, atlas.storyCompleted, !atlas.hasOpenedAtlas {
                 path = [.firstTakeaway]
             } else if path.isEmpty, atlas.storyInProgress {
                 path = [.countyPack("mayo.grainne-1593")]
@@ -499,6 +528,9 @@ final class AtlasPrototypeModel: ObservableObject {
     /// D29 fixture boundary: fixture completion handoffs (pack id -> word ga),
     /// kept apart from county gold and the review scheduler.
     @Published var fixtureCollections: [String: [String]] = [:]
+    /// DEBUG-only bounded recording route. This never enters the persisted
+    /// atlas contract and only changes which already-authored pages are shown.
+    @Published var demoMode = false
     /// Exactly-once Learning memory credits and per-target review seed flags.
     /// Stored without `@Published` so recording a success/hint/recovery mid-task
     /// cannot recreate the exercise view and wipe matching/builder state.
@@ -508,6 +540,17 @@ final class AtlasPrototypeModel: ObservableObject {
     var carriedWords: [AtlasWord] {
         CountyStoryPackCatalog.pack(id: "mayo.grainne-1593")?.targetWords ?? []
     }
+
+    #if DEBUG
+    func resetForDemo() {
+        restore(AppState.AtlasProgress())
+        learnerName = ""
+        tab = .island
+        hasOpenedAtlas = false
+        demoMode = true
+        shouldFocusOpeningRoad = false
+    }
+    #endif
 
     func completeStory() {
         evidenceInspected = true

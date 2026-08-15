@@ -16,6 +16,34 @@ struct CountyStoryExperienceView: View {
 
     private var mode: CountyStoryMode? { atlas.mode(for: pack.id) }
 
+    private var demoStoryPageIDs: [String] {
+        [
+            "mayo.rockfleet.tide-detail",
+            "mayo.rockfleet.record-detail",
+            "mayo.rockfleet.limit",
+        ]
+    }
+
+    private var demoLearningPageIDs: [String] {
+        [
+            "mayo.rockfleet.household",
+            "mayo.rockfleet.match-household",
+            "mayo.rockfleet.build-household",
+            "mayo.rockfleet.type-castle",
+        ]
+    }
+
+    private func visiblePages(for mode: CountyStoryMode) -> [CountyStoryPage] {
+        let pages = pack.pages(for: mode)
+        #if DEBUG
+        guard atlas.demoMode, pack.id == "mayo.grainne-1593" else { return pages }
+        let ids = mode == .story ? demoStoryPageIDs : demoLearningPageIDs
+        return ids.compactMap { pack.page(id: $0) }
+        #else
+        return pages
+        #endif
+    }
+
     var body: some View {
         Group {
             if let finishedMode {
@@ -63,11 +91,12 @@ struct CountyStoryExperienceView: View {
 
     private func activePage(for mode: CountyStoryMode) -> CountyStoryPage? {
         guard let pageID = atlas.resumePageID(for: pack, mode: mode) else { return nil }
-        return pack.page(id: pageID)
+        return visiblePages(for: mode).first { $0.id == pageID }
+            ?? visiblePages(for: mode).first
     }
 
     private func pageExperience(_ page: CountyStoryPage, mode: CountyStoryMode) -> some View {
-        let visible = pack.pages(for: mode)
+        let visible = visiblePages(for: mode)
         let index = visible.firstIndex(where: { $0.id == page.id }) ?? 0
         let isComplete = locallyCompletedPageIDs.contains(page.id)
             || atlas.isPageComplete(page.id, in: pack.id)
@@ -241,7 +270,7 @@ struct CountyStoryExperienceView: View {
     /// C5: the words a completion container hands over — the pack's headwords
     /// that the run's exercises actually worked.
     private var collectionWords: [AtlasWord] {
-        let usedLexemes = Set(pack.pages(for: .learning).compactMap(\.exercise).flatMap(\.lexemeIDs))
+        let usedLexemes = Set(visiblePages(for: .learning).compactMap(\.exercise).flatMap(\.lexemeIDs))
         guard !usedLexemes.isEmpty else { return [] }
         return pack.targetWords.filter { word in
             usedLexemes.contains("lex." + word.ga.folding(options: .diacriticInsensitive, locale: nil).lowercased())
@@ -250,6 +279,9 @@ struct CountyStoryExperienceView: View {
 
     private var collectionHandoff: String {
         #if DEBUG
+        if atlas.demoMode {
+            return "This recording slice keeps the words in a demo collection only — no county gold, made object or scheduled reviews."
+        }
         if isInternalFixture {
             return "For this fixture run they sit in a fixture collection only — no county gold, no made object and no scheduled reviews."
         }
@@ -290,11 +322,53 @@ struct CountyStoryExperienceView: View {
                     .foregroundStyle(Theme.inkSoft)
                     .lineSpacing(4)
 
+                if !collectionWords.isEmpty {
+                    VStack(alignment: .leading, spacing: 12) {
+                        EditorialContextLabel(text: "Words you carry", color: Theme.moss)
+                        ForEach(collectionWords, id: \.ga) { word in
+                            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                                Text(word.ga)
+                                    .font(.system(.title3, design: .serif, weight: .semibold))
+                                    .foregroundStyle(Theme.ink)
+                                Spacer(minLength: 8)
+                                Text(word.en)
+                                    .font(.body)
+                                    .foregroundStyle(Theme.inkSoft)
+                            }
+                            .frame(minHeight: 44, alignment: .leading)
+                        }
+                    }
+                    .padding(16)
+                    .background(Theme.sunk)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
+
                 PrimaryButton(title: "Open the other mode", fullWidth: true) {
                     let other: CountyStoryMode = mode == .story ? .learning : .story
+                    #if DEBUG
+                    if atlas.demoMode {
+                        _ = atlas.begin(pack, mode: other)
+                        if let firstPage = visiblePages(for: other).first {
+                            atlas.setActivePage(firstPage.id, in: pack)
+                        }
+                    } else {
+                        _ = atlas.switchMode(in: pack, to: other)
+                    }
+                    #else
                     _ = atlas.switchMode(in: pack, to: other)
+                    #endif
                     finishedMode = nil
                 }
+
+                Button {
+                    onOpenEvidence()
+                } label: {
+                    Label("Open source and review status", systemImage: "doc.text.magnifyingglass")
+                        .frame(maxWidth: .infinity, minHeight: 44)
+                }
+                .buttonStyle(.bordered)
+                .tint(Theme.moss)
+
                 Button("Return to the atlas", action: onExit)
                     .buttonStyle(.bordered)
                     .tint(Theme.moss)
@@ -308,6 +382,9 @@ struct CountyStoryExperienceView: View {
     }
 
     private var completionTitle: String {
+        #if DEBUG
+        if atlas.demoMode { return "Rockfleet demo route complete" }
+        #endif
         if isFreezeFixture { return "Clew Bay fixture run complete" }
         if pack.id == CountyFarraigeFamilyBFixture.packID {
             return "Farraige family B fixture complete"
@@ -321,6 +398,13 @@ struct CountyStoryExperienceView: View {
     }
 
     private func completionDetail(for mode: CountyStoryMode) -> String {
+        #if DEBUG
+        if atlas.demoMode {
+            return mode == .story
+                ? "You followed a short, source-bounded Rockfleet passage. Next, try the learning loop and carry a few words back to the atlas."
+                : "You completed three small Irish activities, including a recoverable wrong answer, without awarding county completion."
+        }
+        #endif
         if isFreezeFixture {
             return "You walked all nine frozen steps — cold opens, in-place repairs, a branching conversation and an exact resume — on the shared county shell."
         }
@@ -345,6 +429,11 @@ struct CountyStoryExperienceView: View {
     }
 
     private var completionEffectLabel: String {
+        #if DEBUG
+        if atlas.demoMode {
+            return "Recording demo only · no county completion, gold, made object or scheduled words."
+        }
+        #endif
         if isInternalFixture {
             return "The words sit in a fixture collection; this run awards no county gold, made objects or scheduled words."
         }
@@ -358,6 +447,11 @@ struct CountyStoryExperienceView: View {
     }
 
     private var completionStatus: String {
+        #if DEBUG
+        if atlas.demoMode {
+            return "This bounded vertical slice demonstrates the Mayo/Rockfleet route. Content and media remain subject to their visible review or rights status; it does not represent a complete 32-county course."
+        }
+        #endif
         if isFreezeFixture {
             return "This is the D29 representative-run proof. Production Mayo promotion is untouched, and the fixture collection stays separate from Words you carry and the review scheduler."
         }
@@ -381,6 +475,7 @@ struct CountyStoryExperienceView: View {
 }
 
 private struct CountyModeOpeningView: View {
+    @EnvironmentObject private var atlas: AtlasPrototypeModel
     let pack: CountyStoryPack
     let onSelect: (CountyStoryMode) -> Void
 
@@ -398,6 +493,18 @@ private struct CountyModeOpeningView: View {
                     .font(.system(.title3, design: .serif))
                     .foregroundStyle(Theme.ink)
                     .lineSpacing(5)
+
+                #if DEBUG
+                if atlas.demoMode {
+                    Text("Recording route · short story passage + three learning activities")
+                        .font(.footnote.weight(.medium))
+                        .foregroundStyle(Theme.moss)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 12)
+                        .background(Theme.sunk)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                }
+                #endif
 
                 modeOption(
                     mode: .story,

@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A small An Turas exhibit about Rockfleet, Gráinne Ní Mháille, evidence, and first Irish.">
+  <title>An Turas — Rockfleet, Mayo</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #ecede7;
+      --raised: #f7f7f2;
+      --sunk: #e2e4db;
+      --ink: #23281f;
+      --soft: #5a6153;
+      --faint: #747c6d;
+      --line: #cbcec1;
+      --moss: #4c6647;
+      --moss-soft: rgba(76, 102, 71, .12);
+      --lichen: #8f7414;
+      --rust: #a34d3b;
+      --max: 72rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #131714;
+        --raised: #1c211c;
+        --sunk: #0e120f;
+        --ink: #d9dcd1;
+        --soft: #9aa294;
+        --faint: #7f897b;
+        --line: #394239;
+        --moss: #95b28b;
+        --moss-soft: rgba(149, 178, 139, .14);
+        --lichen: #d2a93c;
+        --rust: #c97a66;
+      }
+    }
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg: #ecede7; --raised: #f7f7f2; --sunk: #e2e4db;
+      --ink: #23281f; --soft: #5a6153; --faint: #747c6d; --line: #cbcec1;
+      --moss: #4c6647; --moss-soft: rgba(76, 102, 71, .12); --lichen: #8f7414; --rust: #a34d3b;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #131714; --raised: #1c211c; --sunk: #0e120f;
+      --ink: #d9dcd1; --soft: #9aa294; --faint: #7f897b; --line: #394239;
+      --moss: #95b28b; --moss-soft: rgba(149, 178, 139, .14); --lichen: #d2a93c; --rust: #c97a66;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font: 17px/1.58 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a, button { font: inherit; }
+    a { color: var(--moss); }
+    button { color: inherit; cursor: pointer; }
+    :focus-visible { outline: 3px solid var(--moss); outline-offset: 4px; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .wordmark { color: var(--ink); text-decoration: none; font: 600 1.1rem/1 "Iowan Old Style", Palatino, Georgia, serif; }
+    .top-actions { display: flex; align-items: center; gap: 14px; }
+    .eyebrow { margin: 0; color: var(--soft); font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .theme { min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--raised); color: var(--soft); }
+    main { padding-bottom: 80px; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr); gap: clamp(32px, 8vw, 110px); align-items: end; padding: clamp(68px, 12vw, 150px) 0 100px; }
+    .hero h1, h2, h3 { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-weight: 600; line-height: 1.08; text-wrap: balance; }
+    h1 { max-width: 9ch; margin: 14px 0 24px; font-size: clamp(3.4rem, 9vw, 8.5rem); letter-spacing: -.04em; }
+    h2 { margin: 0 0 18px; font-size: clamp(2rem, 4.5vw, 4.2rem); letter-spacing: -.025em; }
+    h3 { margin: 0 0 10px; font-size: 1.55rem; }
+    .hero-copy { max-width: 42rem; color: var(--soft); font-size: clamp(1.1rem, 2vw, 1.4rem); }
+    .hero-note { padding: 20px 0 0 22px; border-left: 2px solid var(--moss); color: var(--soft); }
+    .hero-note strong { display: block; margin-bottom: 8px; color: var(--ink); font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 1.25rem; }
+    .route-rail { display: flex; align-items: center; gap: 10px; margin: 0 0 28px; color: var(--soft); font-size: .77rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .route-rail::before, .route-rail::after { content: ""; height: 1px; flex: 0 1 44px; background: var(--line); }
+    .route-rail::before { display: none; }
+    .route-dot { width: 9px; height: 9px; border: 1px solid var(--stone); border-radius: 50%; background: var(--bg); }
+    .route-dot.active { border-color: var(--moss); background: var(--moss); box-shadow: 0 0 0 4px var(--moss-soft); }
+    .section { padding: 88px 0; border-top: 1px solid var(--line); }
+    .section-grid { display: grid; grid-template-columns: minmax(160px, .35fr) minmax(0, 1fr); gap: clamp(28px, 8vw, 120px); }
+    .section-label { color: var(--moss); font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .reading { max-width: 45rem; }
+    .reading p { max-width: 68ch; }
+    .reading p + p { margin-top: 18px; }
+    .map-mark { min-height: 270px; display: grid; place-items: center; margin: 34px 0; padding: 26px; background: var(--sunk); border: 1px solid var(--line); }
+    .map-mark-inner { width: min(100%, 500px); position: relative; aspect-ratio: 1.9; }
+    .water { position: absolute; inset: 9% 3%; border: 1px solid var(--moss); border-radius: 48% 52% 42% 58%; transform: rotate(-8deg); opacity: .6; }
+    .shore { position: absolute; left: 16%; top: 34%; width: 57%; height: 37%; border: 2px solid var(--ink); border-radius: 62% 34% 48% 28%; transform: rotate(11deg); opacity: .7; }
+    .rockfleet { position: absolute; left: 54%; top: 41%; width: 12px; height: 12px; border-radius: 50%; background: var(--moss); box-shadow: 0 0 0 7px var(--moss-soft); }
+    .map-caption { position: absolute; left: 68%; top: 30%; width: 150px; color: var(--soft); font-size: .8rem; }
+    .map-caption::before { content: ""; display: inline-block; width: 34px; margin: 0 8px 3px 0; border-top: 1px solid var(--moss); }
+    .evidence-list { margin: 28px 0; border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 18px; align-items: center; min-height: 72px; padding: 16px 0; cursor: pointer; font-weight: 650; }
+    summary::marker { color: var(--moss); }
+    .detail-body { margin-left: 138px; padding: 0 0 20px; color: var(--soft); }
+    .tag { display: inline-flex; align-items: center; min-height: 28px; padding: 0; color: var(--moss); font-size: .72rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+    .tag::before { content: ""; width: 8px; height: 8px; margin-right: 9px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 4px var(--moss-soft); }
+    .tag.interpretation { color: var(--lichen); }
+    .tag.interpretation::before { box-shadow: 0 0 0 4px rgba(143, 116, 20, .13); }
+    .tag.provisional { color: var(--rust); }
+    .tag.provisional::before { box-shadow: 0 0 0 4px rgba(163, 77, 59, .12); }
+    .source-line { margin-top: 12px; font-size: .9rem; }
+    .practice { padding: 26px; background: var(--sunk); border: 1px solid var(--line); border-radius: 10px; }
+    .practice-head { display: flex; justify-content: space-between; gap: 20px; align-items: start; margin-bottom: 26px; }
+    .practice p { color: var(--soft); }
+    .phrase { margin: 28px 0 24px; font: 600 clamp(1.65rem, 4vw, 2.7rem)/1.15 "Iowan Old Style", Palatino, Georgia, serif; }
+    .choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .choice { min-height: 64px; padding: 14px 16px 17px; border: 1px solid var(--line); border-radius: 12px; background: var(--raised); text-align: left; box-shadow: inset 0 -3px 0 var(--sunk); transition: border-color .16s ease, transform .16s ease; }
+    .choice:hover { border-color: var(--moss); }
+    .choice:active { transform: translateY(1px); }
+    .choice[aria-pressed="true"] { border-color: var(--moss); box-shadow: inset 0 0 0 2px var(--moss); }
+    .feedback { min-height: 30px; margin-top: 18px; color: var(--soft); }
+    .feedback.good { color: var(--moss); }
+    .feedback.try { color: var(--rust); }
+    .carry { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
+    .word { padding: 18px; background: var(--raised); border-top: 2px solid var(--moss); }
+    .word b { display: block; font: 600 1.5rem/1.1 "Iowan Old Style", Palatino, Georgia, serif; }
+    .word span { color: var(--soft); font-size: .9rem; }
+    .native { display: flex; justify-content: space-between; gap: 28px; align-items: center; padding: 28px; background: var(--ink); color: var(--bg); border-radius: 10px; }
+    .native h3 { margin-bottom: 8px; }
+    .native p { max-width: 42rem; margin: 0; color: var(--bg); opacity: .78; }
+    .native a { display: inline-flex; align-items: center; min-height: 48px; flex: 0 0 auto; padding: 10px 16px; border-radius: 4px; background: var(--bg); color: var(--ink); text-decoration: none; font-weight: 700; }
+    footer { padding: 28px 0 0; color: var(--faint); font-size: .86rem; }
+    footer p { max-width: 75ch; }
+    @media (max-width: 720px) {
+      .hero, .section-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 62px; padding-bottom: 70px; }
+      h1 { max-width: 10ch; }
+      .section { padding: 64px 0; }
+      .choices, .carry { grid-template-columns: 1fr; }
+      .native { align-items: start; flex-direction: column; }
+      .map-caption { left: 64%; width: 120px; }
+      .route-rail { gap: 6px; font-size: .65rem; justify-content: space-between; }
+      .route-rail::after { display: none; }
+      summary { grid-template-columns: 1fr; gap: 7px; min-height: 0; padding: 17px 0; }
+      .detail-body { margin-left: 0; padding-bottom: 19px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="wordmark" href="#top" aria-label="An Turas, back to the beginning">An Turas</a>
+    <div class="top-actions">
+      <p class="eyebrow">A small public exhibit</p>
+      <button class="theme" id="themeToggle" type="button" aria-pressed="false">Use dark field</button>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Maigh Eo · Mayo · late sixteenth century</p>
+        <div class="route-rail" aria-label="Exhibit route: place, evidence, first Irish, native experience"><span class="route-dot active" aria-hidden="true"></span><span>Place</span><span class="route-dot" aria-hidden="true"></span><span>Evidence</span><span class="route-dot" aria-hidden="true"></span><span>Irish</span><span class="route-dot" aria-hidden="true"></span><span>iOS</span></div>
+        <h1 id="hero-title">Rockfleet at the tide line.</h1>
+        <p class="hero-copy">An Turas teaches Irish through the real places, people, and records that gave the language its shape. This first public preview stays with one question: how could one place hold boats, family, livelihood, and authority together?</p>
+      </div>
+      <aside class="hero-note">
+        <strong>One place. One account. A little Irish.</strong>
+        <p>This is a portfolio exhibit, not the complete 32-county course. It shows the editorial and learning loop that the native iOS experience is built to carry further.</p>
+      </aside>
+    </section>
+
+    <section class="section section-grid" aria-labelledby="place-title">
+      <div><p class="section-label">01 · Place and person</p></div>
+      <div class="reading">
+        <h2 id="place-title">The coast is part of the story.</h2>
+        <p>Rockfleet, or Carraig a Chabhlaigh, sits beside Clew Bay. In the surviving record, Gráinne Ní Mháille is associated with this maritime world: boats, shore castles, family, followers, and the sea routes that made authority possible.</p>
+        <div class="map-mark" role="img" aria-label="A text-led map mark showing Clew Bay, the shore, and Rockfleet. It is an orientation diagram, not a historical map.">
+          <div class="map-mark-inner">
+            <div class="water"></div><div class="shore"></div><div class="rockfleet"></div>
+            <span class="map-caption">Rockfleet · an orientation mark, not a historical map</span>
+          </div>
+        </div>
+        <p>The documentary spine is not a complete biography. It is a set of encounters: a petition, questions and answers, royal instructions, hostile official letters, and later pressure that did not simply disappear.</p>
+      </div>
+    </section>
+
+    <section class="section section-grid" aria-labelledby="evidence-title">
+      <div><p class="section-label">02 · Evidence</p></div>
+      <div class="reading">
+        <h2 id="evidence-title">Read the account with its edges.</h2>
+        <p>An Turas keeps the main account readable, then lets you inspect what kind of claim you are looking at. Open each record below.</p>
+        <div class="evidence-list">
+          <details>
+            <summary><span class="tag">Record</span> Rockfleet is a surviving Mayo place tied to Gráinne’s household.</summary>
+            <div class="detail-body"><p>The place and its later association support a defended maritime base. The walls do not preserve a private family scene or one complete day in the household.</p><p class="source-line"><strong>Source:</strong> Rockfleet place record; prototype claim C07. Expanded story review remains open.</p></div>
+          </details>
+          <details>
+            <summary><span class="tag">Record</span> The 1593 papers carry a petition and questions connected to her crisis.</summary>
+            <div class="detail-body"><p>The surviving documentary voice is largely English administrative paperwork. The app puts Gráinne’s petition and answers near the centre while naming that bias.</p><p class="source-line"><strong>Source:</strong> The National Archives, SP 63/170. Educational use is cleared in the current prototype record.</p></div>
+          </details>
+          <details>
+            <summary><span class="tag interpretation">Interpretation</span> The coast, household, and fleet form one connected system.</summary>
+            <div class="detail-body"><p>This is an editorial reading that joins place evidence, the 1593 record, and the historical context. It is not a verbatim statement from one source.</p><p class="source-line"><strong>Review state:</strong> historian-approved prototype material; expanded review remains open.</p></div>
+          </details>
+          <details>
+            <summary><span class="tag provisional">Provisional</span> The Irish learning bridge is a prototype, not a release claim.</summary>
+            <div class="detail-body"><p>The words and pattern below are drawn from the Mayo pack. The preview uses text only: bundled/generated audio is not presented as language-reviewed here.</p><p class="source-line"><strong>Boundary:</strong> no complete county, learning-outcome, or native-speaker approval claim is made.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-grid" aria-labelledby="learn-title">
+      <div><p class="section-label">03 · First Irish</p></div>
+      <div class="reading">
+        <div class="practice" aria-labelledby="learn-title">
+          <div class="practice-head">
+            <div><h2 id="learn-title">Notice the place.</h2><p>A small, ungraded prototype interaction. Choose what the phrase names; then read the explanation.</p></div>
+            <span class="tag provisional">Text only</span>
+          </div>
+          <p class="phrase" lang="ga">Tá an caisleán anseo.</p>
+          <p lang="en">What is being located?</p>
+          <div class="choices" role="group" aria-label="Choose the meaning of the Irish phrase">
+            <button class="choice" type="button" data-answer="wrong" aria-pressed="false">The family</button>
+            <button class="choice" type="button" data-answer="right" aria-pressed="false">The castle</button>
+            <button class="choice" type="button" data-answer="wrong" aria-pressed="false">The sea</button>
+          </div>
+          <p class="feedback" id="feedback" role="status" aria-live="polite">Choose an answer to continue.</p>
+        </div>
+        <div class="carry" aria-label="Words to carry forward">
+          <div class="word"><b lang="ga">caisleán</b><span>castle · Rockfleet at the tide line</span></div>
+          <div class="word"><b lang="ga">áit</b><span>place · a place that matters</span></div>
+          <div class="word"><b lang="ga">farraige</b><span>sea · Clew Bay as a maritime world</span></div>
+        </div>
+        <p class="source-line"><strong>Language note:</strong> “Tá … anseo.” is a pedagogue-approved prototype pattern. Pronunciation audio is intentionally absent from this public preview pending the learner-release review.</p>
+      </div>
+    </section>
+
+    <section class="section section-grid" aria-labelledby="native-title">
+      <div><p class="section-label">04 · Continue</p></div>
+      <div class="reading">
+        <div class="native">
+          <div><h3 id="native-title">The native experience goes further.</h3><p>The iOS vertical slice carries this same route into Story and Learning modes, evidence access, a recoverable activity, and a small collection handoff. The public browser exhibit stops here.</p></div>
+          <a href="#native-route" aria-label="Read about the bounded native iOS route">See the iOS route ↓</a>
+        </div>
+        <div id="native-route" style="margin-top: 34px;">
+          <h3>Bounded native route</h3>
+          <p>Island opening → Mayo dossier → Rockfleet story → evidence record → two to four Irish activities → wrong-answer recovery → words carried forward. This preview does not imply that the full county or all 32 counties are complete.</p>
+          <p><a href="#evidence-title">Return to the evidence boundary</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p><strong>An Turas</strong> · a living historical atlas for learning Irish. Prototype content is labelled where review remains open. The exhibit uses no unreviewed audio or documentary imagery.</p>
+    <p>Source anchors: Rockfleet place record; The National Archives SP 63/170; project review records C06–C08. This page is a portfolio preview, not a public course release.</p>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const themeButton = document.getElementById("themeToggle");
+    themeButton.addEventListener("click", () => {
+      const dark = root.dataset.theme !== "dark";
+      root.dataset.theme = dark ? "dark" : "light";
+      themeButton.textContent = dark ? "Use light field" : "Use dark field";
+      themeButton.setAttribute("aria-pressed", String(dark));
+    });
+
+    const feedback = document.getElementById("feedback");
+    document.querySelectorAll("[data-answer]").forEach((choice) => {
+      choice.addEventListener("click", () => {
+        document.querySelectorAll("[data-answer]").forEach((item) => item.setAttribute("aria-pressed", "false"));
+        choice.setAttribute("aria-pressed", "true");
+        const correct = choice.dataset.answer === "right";
+        feedback.className = `feedback ${correct ? "good" : "try"}`;
+        feedback.textContent = correct
+          ? "Yes — caisleán means castle. Tá … anseo. gives us a calm way to place something here."
+          : "Not this time. Look at caisleán: it is the word for castle. Try again; there is no score. ";
+        if (!correct) choice.setAttribute("aria-pressed", "false");
+      });
+    });
+  </script>
+</body>
+</html>

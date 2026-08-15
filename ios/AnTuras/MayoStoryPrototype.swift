@@ -14,6 +14,12 @@ struct MayoDossierView: View {
             VStack(alignment: .leading, spacing: 0) {
                 MayoDossierHero()
 
+                Label("Clew Bay editorial landscape · interpretive image", systemImage: "photo")
+                    .font(.caption)
+                    .foregroundStyle(Theme.inkFaint)
+                    .padding(.horizontal, EditorialLayout.pageInset)
+                    .padding(.top, 10)
+
                 VStack(alignment: .leading, spacing: 24) {
                     Label("A Mayo leader · a family in danger · a case carried to London", systemImage: "doc.text")
                         .font(.caption.weight(.medium))
