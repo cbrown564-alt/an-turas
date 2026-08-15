@@ -1,0 +1,814 @@
+{
+ "schema_version": 1,
+ "contract": "county_chapter_binding_audit",
+ "scope": "mechanical binding and review-readiness audit; not linguistic approval and not learner release",
+ "read_only": true,
+ "county": "mayo",
+ "sources": {
+  "pack": "content/mayo/grainne-1593.pack.draft.json",
+  "catalog": [
+   "content/mayo/phrase-families/ainm.v1.json",
+   "content/mayo/phrase-families/ait.v1.json",
+   "content/mayo/phrase-families/aris.v1.json",
+   "content/mayo/phrase-families/as.v1.json",
+   "content/mayo/phrase-families/ba.v1.json",
+   "content/mayo/phrase-families/bean.v1.json",
+   "content/mayo/phrase-families/caill.v1.json",
+   "content/mayo/phrase-families/caislean.v1.json",
+   "content/mayo/phrase-families/costa.v1.json",
+   "content/mayo/phrase-families/dearthair.v1.json",
+   "content/mayo/phrase-families/farraige.v1.json",
+   "content/mayo/phrase-families/freagair.v1.json",
+   "content/mayo/phrase-families/iarr.v1.json",
+   "content/mayo/phrase-families/long.v1.json",
+   "content/mayo/phrase-families/mac.v1.json",
+   "content/mayo/phrase-families/mise.v1.json",
+   "content/mayo/phrase-families/tabhair.v1.json",
+   "content/mayo/phrase-families/tar.v1.json",
+   "content/mayo/phrase-families/teaghlach.v1.json",
+   "content/mayo/phrase-families/teigh.v1.json"
+  ],
+  "manifest": "ios/AnTuras/Resources/Audio/manifest.json",
+  "bind_rule": "CountyStoryPack.validatePhraseFamilyMembers; fada-folded, lowercased, trimmed comparison against answer/audioText/modelText"
+ },
+ "summary": {
+  "chapters": 9,
+  "catalog_members": 79,
+  "findings": 71,
+  "blocking": 0,
+  "by_code": {
+   "member_not_reviewed": 39,
+   "member_without_clip": 17,
+   "unbindable_by_rule": 7,
+   "unbound_comprehension_exercise": 4,
+   "bindable_needs_member": 2,
+   "release_state_contradiction": 1,
+   "store_state_conflict": 1
+  },
+  "review_ready_chapters": []
+ },
+ "chapters": [
+  {
+   "chapter": "mayo.clew-bay",
+   "exercises": 3,
+   "bound_exercises": 2,
+   "unbound_exercises": 1,
+   "bound_members": 2,
+   "distinct_members": 2,
+   "qa_states": {
+    "qa_passed": 1,
+    "spot_flagged": 1
+   },
+   "review_ready": false
+  },
+  {
+   "chapter": "mayo.kin-alliances",
+   "exercises": 4,
+   "bound_exercises": 3,
+   "unbound_exercises": 1,
+   "bound_members": 6,
+   "distinct_members": 6,
+   "qa_states": {
+    "generated_unreviewed": 5,
+    "spot_flagged": 1
+   },
+   "review_ready": false
+  },
+  {
+   "chapter": "mayo.rockfleet",
+   "exercises": 8,
+   "bound_exercises": 4,
+   "unbound_exercises": 4,
+   "bound_members": 5,
+   "distinct_members": 4,
+   "qa_states": {
+    "generated_unreviewed": 5
+   },
+   "review_ready": false
+  },
+  {
+   "chapter": "mayo.power-at-sea",
+   "exercises": 4,
+   "bound_exercises": 3,
+   "unbound_exercises": 1,
+   "bound_members": 6,
+   "distinct_members": 4,
+   "qa_states": {
+    "generated_unreviewed": 4,
+    "qa_passed": 2
+   },
+   "review_ready": false
+  },
+  {
+   "chapter": "mayo.bingham-pressure",
+   "exercises": 4,
+   "bound_exercises": 3,
+   "unbound_exercises": 1,
+   "bound_members": 7,
+   "distinct_members": 5,
+   "qa_states": {
+    "spot_flagged": 4,
+    "generated_unreviewed": 3
+   },
+   "review_ready": false
+  },
+  {
+   "chapter": "mayo.road-to-london",
+   "exercises": 4,
+   "bound_exercises": 3,
+   "unbound_exercises": 1,
+   "bound_members": 4,
+   "distinct_members": 4,
+   "qa_states": {
+    "spot_flagged": 2,
+    "generated_unreviewed": 2
+   },
+   "review_ready": false
+  },
+  {
+   "chapter": "mayo.in-the-record",
+   "exercises": 5,
+   "bound_exercises": 3,
+   "unbound_exercises": 2,
+   "bound_members": 3,
+   "distinct_members": 3,
+   "qa_states": {
+    "generated_unreviewed": 2,
+    "spot_flagged": 1
+   },
+   "review_ready": false
+  },
+  {
+   "chapter": "mayo.royal-answer",
+   "exercises": 3,
+   "bound_exercises": 1,
+   "unbound_exercises": 2,
+   "bound_members": 2,
+   "distinct_members": 2,
+   "qa_states": {
+    "generated_unreviewed": 2
+   },
+   "review_ready": false
+  },
+  {
+   "chapter": "mayo.return-afterlife",
+   "exercises": 3,
+   "bound_exercises": 3,
+   "unbound_exercises": 0,
+   "bound_members": 7,
+   "distinct_members": 7,
+   "qa_states": {
+    "generated_unreviewed": 7
+   },
+   "review_ready": false
+  }
+ ],
+ "findings": [
+  {
+   "code": "release_state_contradiction",
+   "chapter": null,
+   "page": null,
+   "member_id": "ainm.grainne-named",
+   "detail": "v2 member records every review approved but its learner_release reasons still claim ['editorial_review_pending', 'pedagogy_review_pending', 'irish_language_review_pending', 'audio_not_generated']"
+  },
+  {
+   "code": "store_state_conflict",
+   "chapter": null,
+   "page": null,
+   "member_id": "ainm.grainne-named",
+   "detail": "v2 records every review approved but the v1 member the app loads is generated_unreviewed"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.clew-bay",
+   "page": "mayo.clew-bay.build-origin",
+   "member_id": "as.from-mayo",
+   "detail": "qa_state=spot_flagged in family mayo.phrase-family.as (status densify_draft)"
+  },
+  {
+   "code": "unbindable_by_rule",
+   "chapter": "mayo.clew-bay",
+   "page": "mayo.clew-bay.match-coast",
+   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [
+    {
+     "pair_id": "farraige",
+     "irish": "farraige",
+     "english": "sea",
+     "member_id": "farraige.citation",
+     "qa_state": "qa_passed"
+    },
+    {
+     "pair_id": "ba",
+     "irish": "bá",
+     "english": "bay",
+     "member_id": "ba.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "ait",
+     "irish": "áit",
+     "english": "place",
+     "member_id": "ait.citation",
+     "qa_state": "spot_flagged"
+    }
+   ],
+   "lexemes": [
+    "lex.farraige",
+    "lex.ba",
+    "lex.ait"
+   ]
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.kin-alliances",
+   "page": "mayo.kin-alliances.listen-family",
+   "member_id": "teaghlach.citation",
+   "detail": "qa_state=spot_flagged in family mayo.phrase-family.teaghlach (status densify_draft)"
+  },
+  {
+   "code": "unbindable_by_rule",
+   "chapter": "mayo.kin-alliances",
+   "page": "mayo.kin-alliances.match-kin",
+   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [
+    {
+     "pair_id": "teaghlach",
+     "irish": "teaghlach",
+     "english": "family / household",
+     "member_id": "teaghlach.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "mac",
+     "irish": "mac",
+     "english": "son",
+     "member_id": "mac.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "dearthair",
+     "irish": "deartháir",
+     "english": "brother",
+     "member_id": "dearthair.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "bean",
+     "irish": "bean",
+     "english": "woman",
+     "member_id": "bean.citation",
+     "qa_state": "generated_unreviewed"
+    }
+   ],
+   "lexemes": [
+    "lex.teaghlach",
+    "lex.mac",
+    "lex.dearthair",
+    "lex.bean"
+   ]
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.kin-alliances",
+   "page": "mayo.kin-alliances.build-belonging",
+   "member_id": "dearthair.son-and-brother",
+   "detail": "no bundled clip for 'Tá mac agus deartháir sa teaghlach san áit seo.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.kin-alliances",
+   "page": "mayo.kin-alliances.build-belonging",
+   "member_id": "dearthair.son-and-brother",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.dearthair (status densify_draft)"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.kin-alliances",
+   "page": "mayo.kin-alliances.build-belonging",
+   "member_id": "teaghlach.kin-in-place",
+   "detail": "no bundled clip for 'Tá mac agus deartháir sa teaghlach san áit seo.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.kin-alliances",
+   "page": "mayo.kin-alliances.build-belonging",
+   "member_id": "teaghlach.kin-in-place",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.teaghlach (status densify_draft)"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.kin-alliances",
+   "page": "mayo.kin-alliances.build-belonging",
+   "member_id": "mac.son-and-brother",
+   "detail": "no bundled clip for 'Tá mac agus deartháir sa teaghlach san áit seo.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.kin-alliances",
+   "page": "mayo.kin-alliances.build-belonging",
+   "member_id": "mac.son-and-brother",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.mac (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.kin-alliances",
+   "page": "mayo.kin-alliances.fill-woman",
+   "member_id": "bean.citation",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.bean (status densify_draft)"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.kin-alliances",
+   "page": "mayo.kin-alliances.fill-woman",
+   "member_id": "bean.grainne-is-woman",
+   "detail": "no bundled clip for 'Is bean í Gráinne.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.kin-alliances",
+   "page": "mayo.kin-alliances.fill-woman",
+   "member_id": "bean.grainne-is-woman",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.bean (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.listen-caislean",
+   "member_id": "caislean.citation",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.caislean (status densify_draft)"
+  },
+  {
+   "code": "unbindable_by_rule",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.match-household",
+   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [
+    {
+     "pair_id": "caislean",
+     "irish": "caisleán",
+     "english": "castle",
+     "member_id": "caislean.citation",
+     "qa_state": "generated_unreviewed"
+    },
+    {
+     "pair_id": "teaghlach",
+     "irish": "teaghlach",
+     "english": "family / household",
+     "member_id": "teaghlach.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "mac",
+     "irish": "mac",
+     "english": "son",
+     "member_id": "mac.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "bean",
+     "irish": "bean",
+     "english": "woman",
+     "member_id": "bean.citation",
+     "qa_state": "generated_unreviewed"
+    }
+   ],
+   "lexemes": [
+    "lex.caislean",
+    "lex.teaghlach",
+    "lex.mac",
+    "lex.bean"
+   ]
+  },
+  {
+   "code": "bindable_needs_member",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.listen-build-together",
+   "detail": "sentenceConstruction exercise has Irish bind target(s) ['ta muid go leir.'] with bundled audio but no catalog member carries the text",
+   "candidates": [],
+   "lexemes": [
+    "lex.teaghlach"
+   ]
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.type-castle",
+   "member_id": "caislean.castle-here",
+   "detail": "no bundled clip for 'Tá an caisleán anseo.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.type-castle",
+   "member_id": "caislean.castle-here",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.caislean (status densify_draft)"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.dialogue",
+   "member_id": "caislean.castle-here",
+   "detail": "no bundled clip for 'Tá an caisleán anseo.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.dialogue",
+   "member_id": "caislean.castle-here",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.caislean (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.dialogue",
+   "member_id": "caislean.where-castle",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.caislean (status densify_draft)"
+  },
+  {
+   "code": "unbound_comprehension_exercise",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.comprehension",
+   "detail": "readRespond exercise names no phrase-family member; teaches no lexeme"
+  },
+  {
+   "code": "bindable_needs_member",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.speaking",
+   "detail": "recordCompare exercise has Irish bind target(s) ['ta muid go leir.'] with bundled audio but no catalog member carries the text",
+   "candidates": [],
+   "lexemes": [
+    "lex.teaghlach"
+   ]
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.delayed-retrieval",
+   "member_id": "teaghlach.household-here",
+   "detail": "no bundled clip for 'Tá an teaghlach anseo.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.rockfleet",
+   "page": "mayo.rockfleet.delayed-retrieval",
+   "member_id": "teaghlach.household-here",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.teaghlach (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.power-at-sea",
+   "page": "mayo.power-at-sea.speak-ship",
+   "member_id": "long.ship-in-bay",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.long (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.power-at-sea",
+   "page": "mayo.power-at-sea.speak-ship",
+   "member_id": "ba.ship-in-bay",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.ba (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.power-at-sea",
+   "page": "mayo.power-at-sea.build-ship-bay",
+   "member_id": "long.ship-in-bay",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.long (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.power-at-sea",
+   "page": "mayo.power-at-sea.build-ship-bay",
+   "member_id": "ba.ship-in-bay",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.ba (status densify_draft)"
+  },
+  {
+   "code": "unbindable_by_rule",
+   "chapter": "mayo.power-at-sea",
+   "page": "mayo.power-at-sea.sequence-livelihood",
+   "detail": "sentenceConstruction exercise binds against ['a ship moves through the bay. | authority controls a route or toll. | the proceeds help maintain people and power.'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [],
+   "lexemes": [
+    "lex.long",
+    "lex.ba",
+    "lex.teaghlach"
+   ]
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.bingham-pressure",
+   "page": "mayo.bingham-pressure.listen-loss",
+   "member_id": "caill.do-not-lose-ship",
+   "detail": "qa_state=spot_flagged in family mayo.phrase-family.caill (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.bingham-pressure",
+   "page": "mayo.bingham-pressure.listen-loss",
+   "member_id": "long.do-not-lose",
+   "detail": "qa_state=spot_flagged in family mayo.phrase-family.long (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.bingham-pressure",
+   "page": "mayo.bingham-pressure.fill-loss",
+   "member_id": "caill.citation",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.caill (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.bingham-pressure",
+   "page": "mayo.bingham-pressure.fill-loss",
+   "member_id": "caill.do-not-lose-ship",
+   "detail": "qa_state=spot_flagged in family mayo.phrase-family.caill (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.bingham-pressure",
+   "page": "mayo.bingham-pressure.fill-loss",
+   "member_id": "long.do-not-lose",
+   "detail": "qa_state=spot_flagged in family mayo.phrase-family.long (status densify_draft)"
+  },
+  {
+   "code": "unbound_comprehension_exercise",
+   "chapter": "mayo.bingham-pressure",
+   "page": "mayo.bingham-pressure.read-voices",
+   "detail": "readRespond exercise names no phrase-family member; teaches no lexeme"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.bingham-pressure",
+   "page": "mayo.bingham-pressure.build-kin-pressure",
+   "member_id": "dearthair.under-pressure",
+   "detail": "no bundled clip for 'Tá an mac agus an deartháir faoi bhrú.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.bingham-pressure",
+   "page": "mayo.bingham-pressure.build-kin-pressure",
+   "member_id": "dearthair.under-pressure",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.dearthair (status densify_draft)"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.bingham-pressure",
+   "page": "mayo.bingham-pressure.build-kin-pressure",
+   "member_id": "mac.son-under-pressure",
+   "detail": "no bundled clip for 'Tá an mac agus an deartháir faoi bhrú.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.bingham-pressure",
+   "page": "mayo.bingham-pressure.build-kin-pressure",
+   "member_id": "mac.son-under-pressure",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.mac (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.road-to-london",
+   "page": "mayo.road-to-london.listen-build-request",
+   "member_id": "iarr.go-and-ask",
+   "detail": "qa_state=spot_flagged in family mayo.phrase-family.iarr (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.road-to-london",
+   "page": "mayo.road-to-london.listen-build-request",
+   "member_id": "teigh.go-london-ask",
+   "detail": "qa_state=spot_flagged in family mayo.phrase-family.teigh (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.road-to-london",
+   "page": "mayo.road-to-london.dialogue-ask",
+   "member_id": "iarr.ask-answer",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.iarr (status densify_draft)"
+  },
+  {
+   "code": "unbindable_by_rule",
+   "chapter": "mayo.road-to-london",
+   "page": "mayo.road-to-london.sequence-crossing",
+   "detail": "sentenceConstruction exercise binds against ['local power can no longer release her kin. | grainne petitions the queen. | she enters the london court process.'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [],
+   "lexemes": [
+    "lex.iarr",
+    "lex.teigh",
+    "lex.tar"
+   ]
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.road-to-london",
+   "page": "mayo.road-to-london.type-arrival",
+   "member_id": "tar.come-london",
+   "detail": "no bundled clip for 'Tar go Londain.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.road-to-london",
+   "page": "mayo.road-to-london.type-arrival",
+   "member_id": "tar.come-london",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.tar (status densify_draft)"
+  },
+  {
+   "code": "unbound_comprehension_exercise",
+   "chapter": "mayo.in-the-record",
+   "page": "mayo.in-the-record.comprehend-source",
+   "detail": "readRespond exercise names no phrase-family member; teaches no lexeme"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.in-the-record",
+   "page": "mayo.in-the-record.build-identity",
+   "member_id": "mise.i-am-grainne",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.mise (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.in-the-record",
+   "page": "mayo.in-the-record.type-name",
+   "member_id": "ainm.grainne-named",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.ainm (status densify_draft)"
+  },
+  {
+   "code": "unbindable_by_rule",
+   "chapter": "mayo.in-the-record",
+   "page": "mayo.in-the-record.match-record",
+   "detail": "matching exercise binds against ['all pairs'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [
+    {
+     "pair_id": "ainm",
+     "irish": "ainm",
+     "english": "the name at the head of the questions",
+     "member_id": "ainm.citation",
+     "qa_state": "generated_unreviewed"
+    },
+    {
+     "pair_id": "teaghlach",
+     "irish": "teaghlach",
+     "english": "the family relationships named in the answers",
+     "member_id": "teaghlach.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "dearthair",
+     "irish": "deartháir",
+     "english": "the brother later named in the royal response",
+     "member_id": "dearthair.citation",
+     "qa_state": "spot_flagged"
+    },
+    {
+     "pair_id": "bean",
+     "irish": "bean",
+     "english": "the woman whose authority the officials had to address",
+     "member_id": "bean.citation",
+     "qa_state": "generated_unreviewed"
+    }
+   ],
+   "lexemes": [
+    "lex.ainm",
+    "lex.teaghlach",
+    "lex.dearthair",
+    "lex.bean"
+   ]
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.in-the-record",
+   "page": "mayo.in-the-record.retrieve-origin",
+   "member_id": "as.from-mayo",
+   "detail": "qa_state=spot_flagged in family mayo.phrase-family.as (status densify_draft)"
+  },
+  {
+   "code": "unbindable_by_rule",
+   "chapter": "mayo.royal-answer",
+   "page": "mayo.royal-answer.notice-actions",
+   "detail": "grammarDiscovery exercise binds against ['the verb changes the action: ask, answer, or give.'], which carries no Irish; the bind rule reads answer/audioText/modelText only",
+   "candidates": [],
+   "lexemes": [
+    "lex.iarr",
+    "lex.freagair",
+    "lex.tabhair"
+   ]
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.royal-answer",
+   "page": "mayo.royal-answer.build-response",
+   "member_id": "freagair.answer-and-give",
+   "detail": "no bundled clip for 'Freagair agus tabhair cabhair.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.royal-answer",
+   "page": "mayo.royal-answer.build-response",
+   "member_id": "freagair.answer-and-give",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.freagair (status densify_draft)"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.royal-answer",
+   "page": "mayo.royal-answer.build-response",
+   "member_id": "tabhair.answer-and-give",
+   "detail": "no bundled clip for 'Freagair agus tabhair cabhair.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.royal-answer",
+   "page": "mayo.royal-answer.build-response",
+   "member_id": "tabhair.answer-and-give",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.tabhair (status densify_draft)"
+  },
+  {
+   "code": "unbound_comprehension_exercise",
+   "chapter": "mayo.royal-answer",
+   "page": "mayo.royal-answer.read-limit",
+   "detail": "readRespond exercise names no phrase-family member; teaches no lexeme"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.build-again",
+   "member_id": "iarr.ask-again",
+   "detail": "no bundled clip for 'Iarr arís.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.build-again",
+   "member_id": "iarr.ask-again",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.iarr (status densify_draft)"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.build-again",
+   "member_id": "aris.ask-again",
+   "detail": "no bundled clip for 'Iarr arís.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.build-again",
+   "member_id": "aris.ask-again",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.aris (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.speak-coast",
+   "member_id": "caislean.castle-on-coast",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.caislean (status densify_draft)"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.speak-coast",
+   "member_id": "costa.castle-on-coast",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.costa (status densify_draft)"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.delayed-coast",
+   "member_id": "iarr.ask-again-coast",
+   "detail": "no bundled clip for 'Iarr arís ar an gcósta.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.delayed-coast",
+   "member_id": "iarr.ask-again-coast",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.iarr (status densify_draft)"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.delayed-coast",
+   "member_id": "costa.ask-again-coast",
+   "detail": "no bundled clip for 'Iarr arís ar an gcósta.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.delayed-coast",
+   "member_id": "costa.ask-again-coast",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.costa (status densify_draft)"
+  },
+  {
+   "code": "member_without_clip",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.delayed-coast",
+   "member_id": "aris.ask-again-coast",
+   "detail": "no bundled clip for 'Iarr arís ar an gcósta.'"
+  },
+  {
+   "code": "member_not_reviewed",
+   "chapter": "mayo.return-afterlife",
+   "page": "mayo.return-afterlife.delayed-coast",
+   "member_id": "aris.ask-again-coast",
+   "detail": "qa_state=generated_unreviewed in family mayo.phrase-family.aris (status densify_draft)"
+  }
+ ]
+}

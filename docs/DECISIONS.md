@@ -2,6 +2,62 @@
 
 Short records of decisions that shape everything downstream. Add new entries at the top.
 
+## D35 — Freeze the D32 harvest and hold the remaining credits as reserve (2026-08-06)
+
+**Decision:** Close the D32 emergency Irish audio harvest as a production phase at the
+end of cycle 2 (payload `d32.harvest.track-b.2026-08-05`). Do not open cycle 3. The
+approximately **50,028** remaining prepaid credits are held as a **regeneration
+reserve** for material that survives review, not as capture headroom. Corpus expansion
+stops; `STATUS.md` §6 — freeze, select, and prove one learner-facing slice — becomes
+the active sequence.
+
+Two small maintenance items remain permitted against the reserve because they close
+existing ledger state rather than expand the corpus: re-approving the **7** cancelled
+batch lines (~300 estimated credits), and retiring or replacing the **2** Corca
+Dhuibhne quarantine members.
+
+**Why:** The harvest achieved its stated objective. **6,624** bundled runtime clips
+exist across all **32** counties, checksums verify completely, and remaining resumable
+work is zero. What has not moved is review: **zero** lines are learner-release-eligible,
+**17** capture blockers and **141** review-before-release items are open, every v2
+capture remains `generated_unreviewed`, and no qualified Irish speaker has approved any
+subset. D32's own recorded risk — generating faster than the corpus can be attributed,
+deduplicated, and assigned a plausible use — is now the binding constraint. A third
+cycle would worsen the ratio of inventory to reviewed material and consume the reserve
+that regeneration of the selected slice will need.
+
+**Consequences:** D32's emergency capture exception lapses; the ordinary D31 gates
+govern again, and a new provider payload requires an explicit user decision. The
+harvested corpus stays as inventory with its provenance and gates intact — freezing
+capture neither approves nor retires it. Track B/C/D/E tooling remains committed and
+runnable for the reserve work; the closed cycle-2 claim owner
+`codex.track-c.d32-cycle2-drain` must not be reused.
+
+## D34 — Generated video is not an Irish-audio path (2026-08-06)
+
+**Decision:** Gemini Omni Flash generated video is an exploration and marketing surface
+only. It is not a source of spoken Irish for the app, and no in-app audio, teaching
+material, or spoken marketing asset may take its audio track. The locked D31 Irish
+Cultural Guide voice/model contract remains the sole Irish speech path.
+
+**Why:** The day-one exploration spent two of its ten free daily clips on exactly this
+question (`docs/OMNI-EXPLORATION.md` V1a/V1b). Omni did not produce intelligible Irish.
+Auto-ASR — with no Irish model available, so English-biased — heard *tá tú ar ais* as
+"Tattoo her eyes," and flattened V1b's séimhiú and fada into English-shaped tokens. The
+model's own documentation says English is fully supported and other languages have not
+been evaluated. Treat the output as English wearing Irish spelling. This is a mechanical
+signal, not a native-speaker verdict; a qualified speaker could revisit it, but nothing
+downstream may assume a different answer in the meantime.
+
+**Consequences:** V7 (the grant reel) and V8 (the seanfhocal series) are held for their
+spoken production and cannot proceed on generated audio. Silent and ambient uses are
+unaffected: V6, V4, V3, V2, and V9 remain live exploration candidates on their visual
+merits. Any future video that needs Irish speech must compose the D31 clips over the
+footage rather than use the generated track. D34 constrains audio only — it does not
+grant release eligibility to any generated visual, which stays `generated_unreviewed`
+under `OMNI-EXPLORATION.md` §2.6, and the text-free-asset rule (Design Principle 7) and
+interpretation-not-likeness rule (`docs/GRAINNE-ART-DIRECTION.md`) continue to apply.
+
 ## D32 — Nine-day Irish audio harvest (2026-08-02)
 
 **Decision:** Use the remaining ElevenLabs subscription window as a one-time production
